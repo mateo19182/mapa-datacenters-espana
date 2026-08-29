@@ -29,6 +29,7 @@ CREATE TABLE sitios (
   lat REAL,
   lon REAL,
   precision_coord TEXT,
+  no_derivar INTEGER,
   estado TEXT NOT NULL,
   estado_detalle TEXT,
   fecha_puesta_en_servicio TEXT,
@@ -78,7 +79,7 @@ const { sitios, red, actuaciones, capacidad, renovables, incidencias } = cargarT
 
 const insSitio = db.prepare(`INSERT INTO sitios VALUES (
   @id,@nombre,@tipo,@operador,@propietario,@cliente_ancla,@modelo,@municipio,@provincia,@ccaa,
-  @direccion,@lat,@lon,@precision_coord,@estado,@estado_detalle,@fecha_puesta_en_servicio,
+  @direccion,@lat,@lon,@precision_coord,@no_derivar,@estado,@estado_detalle,@fecha_puesta_en_servicio,
   @subestacion,@tension_kv,@titular_red,@mw_solicitados,@mw_concedidos,
   @superficie_parcela_m2,@superficie_construida_m2,@inversion_anunciada_eur,@refrigeracion,
   @enlaces_proyecto,@confianza,@ultima_verificacion)`)
@@ -111,6 +112,7 @@ const cargar = db.transaction(() => {
       lat: s.ubicacion.lat,
       lon: s.ubicacion.lon,
       precision_coord: s.ubicacion.precision,
+      no_derivar: s.ubicacion.no_derivar ? 1 : 0,
       estado: s.estado,
       estado_detalle: s.estado_detalle ?? null,
       fecha_puesta_en_servicio: s.fecha_puesta_en_servicio ?? null,

@@ -53,6 +53,15 @@ inversion_anunciada_eur: 3000000000
 refrigeracion: "Según los promotores, no precisa de una fuente de agua."
 
 incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      No puede determinarse si los 300 MW son capacidad del centro de datos o de su planta de
+      generación. Idealista los presenta como «potencia del proyecto»; En Castilla-La Mancha
+      describe «30 módulos de 10 MW alimentados mediante gas natural, de forma autónoma de la
+      Red Eléctrica», que son 300 MW de generación aislada. Ambas lecturas son compatibles con
+      la misma cifra y ninguna fuente las separa, así que la potencia queda sin tipificar y no
+      se compara con la de ningún otro emplazamiento.
+    fuentes: [src-idealista, src-enclm]
   - campo: estado
     descripcion: >-
       El único acto documentado es un memorándum de entendimiento con el

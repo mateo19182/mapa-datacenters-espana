@@ -13,6 +13,9 @@ ubicacion:
   ccaa: "Aragón"
   direccion: "Ámbito adyacente por el sur a la Plataforma Logístico-Industrial de Huesca (PLHUS), a unos 7,8 km al suroeste del centro de Huesca"
   precision: desconocida
+  # La fuente sitúa el ámbito a unos 7,8 km al suroeste de Huesca: el centroide
+  # municipal lo colocaría donde la fuente dice que NO está.
+  no_derivar: true
   fuentes: [src-1]
 
 estado: anunciado

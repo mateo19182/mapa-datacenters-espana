@@ -27,7 +27,9 @@ const ordenados = [...sitios].sort((a, b) => {
     <p class="sumario">
       {numero(sitios.length)} emplazamientos registrados. Las columnas de potencia son magnitudes
       distintas y no se suman entre sí: un guion significa que la fuente no publica ese dato, nunca
-      que valga cero.
+      que valga cero. La marca <span class="marca-respaldo">gen</span> señala los emplazamientos
+      cuya única cifra publicada es la potencia de sus grupos electrógenos de respaldo, que no
+      mide la capacidad del centro.
     </p>
 
     <div class="controles">
@@ -81,7 +83,18 @@ const ordenados = [...sitios].sort((a, b) => {
               <td><span class={`etiqueta estado-${s.estado}`}><span class="punto"></span>{ESTADO_ETIQUETA[s.estado]}</span></td>
               <td class="num">{numero(s.resumen_potencia.it?.valor_mw, 1) ?? <span class="silencio">—</span>}</td>
               <td class="num">{numero(s.resumen_potencia.conexion_red?.valor_mw, 1) ?? <span class="silencio">—</span>}</td>
-              <td class="num">{numero(s.resumen_potencia.no_especificado?.valor_mw, 1) ?? <span class="silencio">—</span>}</td>
+              <td class="num">
+                {numero(s.resumen_potencia.no_especificado?.valor_mw, 1) ?? <span class="silencio">—</span>}
+                {!s.resumen_potencia.it &&
+                  !s.resumen_potencia.conexion_red &&
+                  !s.resumen_potencia.no_especificado &&
+                  (s.resumen_potencia.termica_respaldo || s.resumen_potencia.generacion_asociada) && (
+                    <span
+                      class="marca-respaldo"
+                      title="La única cifra publicada es potencia de grupos de respaldo o de generación asociada, que no es capacidad del centro de datos"
+                    >gen</span>
+                  )}
+              </td>
               <td><span class={`confianza-${s.confianza}`}>{CONFIANZA_ETIQUETA[s.confianza].replace('Confianza ', '')}</span></td>
               <td class="pequeno silencio">{fechaLegible(s.ultima_verificacion)}</td>
             </tr>
@@ -161,6 +174,19 @@ const ordenados = [...sitios].sort((a, b) => {
 
   th[aria-sort='ascending']::after {
     content: ' ▴';
+  }
+
+  .marca-respaldo {
+    display: inline-block;
+    margin-left: 0.3rem;
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 0.05em 0.35em;
+    border-radius: 999px;
+    color: var(--tinta-3);
+    border: 1px solid currentColor;
+    cursor: help;
   }
 
   .marca-incert {

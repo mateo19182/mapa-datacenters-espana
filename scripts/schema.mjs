@@ -203,6 +203,10 @@ const zUbicacion = z.object({
   lat: z.number().min(35.9).max(43.9).nullable(),
   lon: z.number().min(-9.4).max(3.4).nullable(),
   precision: z.enum(PRECISIONES),
+  // Veta situar el punto en el centroide municipal. Se marca cuando la fuente
+  // dice que el emplazamiento NO está en el casco urbano: colocarlo ahí sería
+  // contradecir a la propia fuente.
+  no_derivar: z.boolean().optional(),
   fuentes: z.array(z.string()).default([]),
 })
 
@@ -276,6 +280,7 @@ export function normalizarSitio(crudo) {
     direccion: u.direccion ?? null,
     lat: numero(u.lat),
     lon: numero(u.lon),
+    no_derivar: u.no_derivar === true,
     precision: PRECISIONES.includes(slug(u.precision))
       ? slug(u.precision)
       : u.lat != null
@@ -352,9 +357,35 @@ export function normalizarSitio(crudo) {
  * Comprobaciones que van más allá de la forma: integridad referencial de las
  * fuentes y coherencia interna. Devuelve una lista de incidencias.
  */
+/**
+ * ¿Aparece el número en el texto? Tolera los formatos con que se escribe la
+ * misma cifra: coma o punto decimal, separador de millares, GW en vez de MW.
+ */
+function cifraEnTexto(valor, texto) {
+  if (valor == null || !texto) return false
+  const limpio = texto.replace(/[.\u00a0\u202f]/g, '').replace(/,/g, '.')
+  const candidatos = new Set()
+  const anotar = (n) => {
+    if (n == null || !Number.isFinite(n)) return
+    candidatos.add(String(n))
+    candidatos.add(String(Math.round(n)))
+    candidatos.add(n.toFixed(1))
+    candidatos.add(n.toFixed(2))
+  }
+  anotar(valor)
+  anotar(valor / 1000) // la fuente puede darlo en GW
+  anotar(valor * 1000)
+  for (const c of candidatos) {
+    const escapado = c.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    if (new RegExp(`(^|[^\\d.])${escapado}([^\\d]|$)`).test(limpio)) return true
+  }
+  return false
+}
+
 export function revisarCoherencia(sitio) {
   const problemas = []
   const ids = new Set(sitio.fuentes.map((f) => f.id))
+  const porId = new Map(sitio.fuentes.map((f) => [f.id, f]))
 
   const refs = [
     ['ubicacion.fuentes', sitio.ubicacion.fuentes],
@@ -386,6 +417,20 @@ export function revisarCoherencia(sitio) {
     }
     if (p.tipo === 'no_especificado') {
       problemas.push({ nivel: 'aviso', msg: `potencia[${i}] («${p.referencia ?? 'sin referencia'}») no distingue el tipo de MW` })
+    }
+    // La cita es el único mecanismo por el que un tercero puede comprobar una
+    // cifra sin rehacer la investigación. Si la cifra no está en ella, no sirve.
+    const valor = p.valor_mw ?? p.valor_mva
+    const respaldan = p.fuentes.map((id) => porId.get(id)).filter(Boolean)
+    const conCita = respaldan.filter((f) => f.cita)
+    if (valor != null && conCita.length > 0) {
+      const sostenida = conCita.some((f) => cifraEnTexto(valor, f.cita))
+      if (!sostenida) {
+        problemas.push({
+          nivel: 'aviso',
+          msg: `potencia[${i}]: la cifra ${valor} no aparece en la cita de ninguna de sus fuentes`,
+        })
+      }
     }
   }
 

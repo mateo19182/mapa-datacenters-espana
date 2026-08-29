@@ -105,10 +105,50 @@ scripts/
     <p>
       Cada construcción genera un parte de validación. Comprueba el esquema, que toda referencia a
       una fuente exista, que no haya identificadores repetidos, que las coordenadas caigan dentro de
-      España peninsular y que ningún emplazamiento se haya registrado dos veces con nombres
-      distintos. Los avisos que no bloquean —potencias sin tipificar, fichas sin coordenadas— quedan
-      a la vista porque describen los límites reales del conjunto.
+      España peninsular, que ningún emplazamiento se haya registrado dos veces con nombres distintos
+      y que cada cifra de potencia aparezca de verdad en la cita de alguna de sus fuentes.
     </p>
+    <p>
+      Los defectos que esa comprobación encuentra no se esconden: son parte de lo que hay que saber
+      sobre el conjunto antes de usarlo.
+    </p>
+
+    {resumen.calidad && (
+      <dl class="cifras">
+        <div class="cifra">
+          <dt>Cifras de potencia registradas</dt>
+          <dd>{numero(resumen.calidad.registros_potencia)}<small>en {numero(resumen.total_emplazamientos)} emplazamientos</small></dd>
+        </div>
+        <div class="cifra">
+          <dt>Sin cita que las sostenga</dt>
+          <dd>
+            {numero(resumen.calidad.cifras_sin_cita_que_las_sostenga)}
+            <small>
+              {Math.round((resumen.calidad.cifras_sin_cita_que_las_sostenga / resumen.calidad.registros_potencia) * 100)} %
+              · la fuente existe, pero el fragmento citado no contiene el número
+            </small>
+          </dd>
+        </div>
+        <div class="cifra">
+          <dt>Sin tipificar</dt>
+          <dd>{numero(resumen.calidad.cifras_sin_tipificar)}<small>MW que la fuente no aclara de qué son</small></dd>
+        </div>
+        <div class="cifra">
+          <dt>Emplazamientos sin potencia</dt>
+          <dd>{numero(resumen.calidad.emplazamientos_sin_potencia)}<small>ninguna cifra publicada</small></dd>
+        </div>
+      </dl>
+    )}
+
+    <div class="nota">
+      <strong>El defecto conocido más importante.</strong> En una parte de los registros, la fuente
+      citada respalda el dato pero el fragmento transcrito en el campo de cita no incluye la cifra.
+      El dato suele estar en la página; lo que falla es que un tercero pueda comprobarlo sin
+      rehacer la investigación, que es justamente lo que este registro promete. Corregirlo consiste
+      en sustituir esas citas por el fragmento que sí contiene el número, y está en la lista de
+      trabajo pendiente.
+    </div>
+
     <p class="pequeno">
       Último parte: <strong>{errores}</strong> {errores === 1 ? 'error' : 'errores'} y
       {' '}<strong>{avisos}</strong> {avisos === 1 ? 'aviso' : 'avisos'}.

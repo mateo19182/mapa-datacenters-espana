@@ -1,6 +1,6 @@
 // Valida el dataset y escribe un parte de incidencias legible.
 // Uso: node scripts/validate.mjs [--strict]
-import { writeFileSync } from 'node:fs'
+import { mkdirSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { cargarTodo, RAIZ } from './load.mjs'
 
@@ -36,6 +36,33 @@ if (incidencias.length) {
 }
 
 writeFileSync(join(RAIZ, 'research/informe-validacion.md'), lineas.join('\n'), 'utf8')
+
+// Indicadores de calidad que el sitio publica: los defectos conocidos forman
+// parte del producto, no son una nota interna.
+const registrosPotencia = sitios.reduce((a, s) => a + s.potencia.filter((p) => p.valor_mw != null || p.valor_mva != null).length, 0)
+const citaNoSostiene = incidencias.filter((i) => i.msg.includes('no aparece en la cita')).length
+const sinTipificar = incidencias.filter((i) => i.msg.includes('no distingue el tipo de MW')).length
+
+mkdirSync(join(RAIZ, 'build'), { recursive: true })
+writeFileSync(
+  join(RAIZ, 'build/calidad.json'),
+  JSON.stringify(
+    {
+      generado: new Date().toISOString().slice(0, 10),
+      emplazamientos: sitios.length,
+      errores: errores.length,
+      avisos: avisos.length,
+      registros_potencia: registrosPotencia,
+      cifras_sin_cita_que_las_sostenga: citaNoSostiene,
+      cifras_sin_tipificar: sinTipificar,
+      emplazamientos_sin_coordenadas: sitios.filter((s) => s.ubicacion.lat == null).length,
+      emplazamientos_sin_potencia: sitios.filter((s) => s.potencia.length === 0).length,
+    },
+    null,
+    1,
+  ),
+  'utf8',
+)
 
 for (const i of errores.slice(0, 60)) console.error(`ERROR  ${i.fichero}: ${i.msg}`)
 if (errores.length > 60) console.error(`… y ${errores.length - 60} errores más`)

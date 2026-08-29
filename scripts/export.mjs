@@ -94,6 +94,7 @@ const sitios = q('SELECT * FROM sitios ORDER BY nombre').map((s) => {
       lat: s.lat,
       lon: s.lon,
       precision: s.precision_coord,
+      no_derivar: Boolean(s.no_derivar),
       fuentes: respaldoDe('ubicacion'),
     },
     estado: s.estado,
@@ -222,6 +223,9 @@ const geojson = (items, propiedades) => ({
 let derivadas = 0
 for (const s of sitios) {
   if (s.ubicacion.lat != null) continue
+  // Hay fichas cuya fuente sitúa el emplazamiento lejos del casco urbano. Ahí
+  // el centroide no es una aproximación: es una contradicción de la fuente.
+  if (s.ubicacion.no_derivar) continue
   const c = centroideDe(s.ubicacion.municipio, s.ubicacion.provincia)
   if (!c) continue
   s.ubicacion.lat = c.lat
@@ -298,6 +302,10 @@ for (const s of sitios) {
   }
 }
 
+const calidad = existsSync(join(RAIZ, 'build/calidad.json'))
+  ? JSON.parse(readFileSync(join(RAIZ, 'build/calidad.json'), 'utf8'))
+  : null
+
 const resumen = {
   generado: new Date().toISOString().slice(0, 10),
   total_emplazamientos: sitios.length,
@@ -328,6 +336,7 @@ const resumen = {
   fuentes_distintas: todasLasFuentes.size,
   emplazamientos_con_incertidumbres: sitios.filter((s) => s.incertidumbres.length > 0).length,
   sin_region: sitios.filter((s) => !s.ubicacion.ccaa).length,
+  calidad,
   pendientes: (pendientes.proyectos ?? []).length,
   pistas_sin_municipio: (pendientes.sin_municipio ?? []).length,
 }

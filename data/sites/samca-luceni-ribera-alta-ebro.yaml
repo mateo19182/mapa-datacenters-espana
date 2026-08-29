@@ -53,7 +53,7 @@ potencia:
       "siendo la potencia activa máxima que será absorbida de la Red de Transporte por los
       tres edificios, de 300 MW, al tener en consideración la potencia IT indicada, el valor
       de diseño del Peak PUE y los coeficientes de simultaneidad".
-  - tipo: instalada_total
+  - tipo: termica_respaldo
     valor_mw: 125.5
     ambito: edificio
     referencia: "Potencia eléctrica instalada de la planta de turbinas de gas de emergencia asociada a cada edificio"

@@ -36,7 +36,22 @@ const porCcaa = [...new Set(nudos.map((n) => n.ccaa).filter(Boolean))]
 // Emplazamientos que declaran subestación: la unión documentada entre las dos capas.
 const conConexion = sitios.filter((s) => s.conexion_electrica?.subestacion)
 
-const fechaDato = capacidad[0]?.fecha_dato ?? null
+const fechaDato = capacidad[0]?.fecha_publicacion_dato ?? null
+
+// Los códigos con que Red Eléctrica identifica qué limita cada nudo.
+const LIMITANTE = {
+  Est_Dem_Nudo: 'estabilidad de la demanda en el propio nudo',
+  Est_Dem_Zona: 'estabilidad de la demanda en la zona',
+  WSCR_Nudo: 'relación de cortocircuito ponderada en el nudo',
+  Din1_Zona: 'criterio dinámico de la zona',
+}
+const explicarLimitante = (codigo) =>
+  codigo
+    ? codigo
+        .split('/')
+        .map((c) => LIMITANTE[c] ?? c)
+        .join(' · ')
+    : null
 ---
 
 <Base
@@ -53,9 +68,9 @@ const fechaDato = capacidad[0]?.fecha_dato ?? null
 
     <div class="nota">
       <strong>Demanda, no generación.</strong> Todas las cifras de capacidad de esta página se
-      refieren a la capacidad de acceso para <em>demanda</em> (consumo). La capacidad de acceso para
-      <em>generación</em> se calcula con criterios distintos, se publica en ficheros distintos y no
-      es comparable ni sumable con esta. Confundirlas es el error clásico en este terreno.
+      refieren a la capacidad de acceso para <em>demanda</em> (consumo). La capacidad de acceso
+      para <em>generación</em> se calcula con criterios distintos, se publica en ficheros distintos
+      y no es comparable ni sumable con esta. Confundirlas es el error clásico en este terreno.
     </div>
 
     {nudos.length > 0 && (
@@ -80,8 +95,8 @@ const fechaDato = capacidad[0]?.fecha_dato ?? null
         </dl>
 
         <p class="pequeno silencio">
-          Datos de Red Eléctrica{fechaDato ? `, publicados el ${fechaDato}` : ''}. Esta cifra caduca
-          en meses: se republica periódicamente y el reparto cambia con cada resolución.
+          Datos de Red Eléctrica{fechaDato ? `, publicados el ${fechaDato}` : ''}, de publicación
+          mensual. Estas cifras caducan en meses: el reparto cambia con cada resolución de acceso.
         </p>
 
         <h2>Reparto por comunidad autónoma</h2>
@@ -153,7 +168,9 @@ const fechaDato = capacidad[0]?.fecha_dato ?? null
                     </td>
                     <td class="num">{numero(n.otorgada_demanda_rdt_mw) ?? '—'}</td>
                     <td class="num">{numero(n.solicitada_en_curso_demanda_rdt_mw) ?? '—'}</td>
-                    <td class="pequeno silencio">{n.criterio_limitante_demanda ?? n.motivo_no_otorgable ?? '—'}</td>
+                    <td class="pequeno silencio" title={n.criterio_limitante_demanda ?? ''}>
+                      {explicarLimitante(n.criterio_limitante_demanda) ?? n.motivo_no_otorgable ?? '—'}
+                    </td>
                   </tr>
                 ))}
             </tbody>
