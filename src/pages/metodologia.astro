@@ -99,10 +99,16 @@ const conPotencia = (tipo) => sitios.filter((s) => s.resumen_potencia[tipo]).len
     <h2>Ámbito: campus, edificio y fase</h2>
     <p>
       Una cifra de potencia puede referirse a un campus entero, a un edificio o a una fase concreta.
-      El registro guarda ese ámbito junto al valor. Al agregar, si existe una cifra publicada para el
-      conjunto, esa manda y no se le suman las fases, porque el dato global ya las incluye. Solo
-      cuando no hay cifra de conjunto se suman las fases entre sí. Es la regla que evita contar dos
-      veces la misma potencia.
+      El registro guarda ese ámbito junto al valor. Si existe una cifra publicada para el conjunto,
+      esa manda y no se le suman las fases, porque el dato global ya las incluye.
+    </p>
+    <p>
+      Con los edificios la regla es más estricta. Una ficha puede tener tres cifras de edificio
+      porque describe tres edificios, y entonces hay que sumarlas, o porque tres fuentes dan tres
+      lecturas del mismo, y entonces sumarlas triplicaría la capacidad. El texto que acompaña a
+      cada cifra no permite distinguir un caso del otro, así que la diferencia se declara
+      explícitamente en el dato: si el registro no nombra el edificio concreto al que se refiere,
+      <strong>no se suma</strong>. Ante la duda, el conjunto se queda corto antes que inflado.
     </p>
 
     <h2>Estados</h2>

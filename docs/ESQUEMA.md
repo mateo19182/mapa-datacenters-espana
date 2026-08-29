@@ -58,6 +58,7 @@ potencia:
     valor_mva: null                   # si la fuente da MVA: se registra, NO se convierte
     acumulado: false                  # true si la cifra es el acumulado a ese hito
     ambito: fase                      # campus | edificio | fase
+    edificio: null                    # nombre de la unidad física, si la cifra es de un edificio
     referencia: "Fase 1"              # a qué se refiere exactamente
     estado_asociado: operativo        # estado de eso que se mide
     fecha_dato: "2024-05-01"          # cuándo era cierto según la fuente
@@ -135,6 +136,24 @@ capacidad del centro es un error de un orden de magnitud.
 Nunca se convierte entre tipos aplicando un PUE supuesto. Tampoco se convierte de
 MVA a MW: haría falta el factor de potencia, que no se publica. Si la fuente da
 MVA, se usa `valor_mva` y `valor_mw` queda a `null`.
+
+## Cómo se agregan las cifras de un mismo emplazamiento
+
+Es la decisión metodológica más delicada del conjunto, porque sumar mal produce
+cifras falsas con aspecto de rigor.
+
+1. Una cifra de ámbito `campus` **manda** sobre cualquier suma: se entiende que
+   el dato global ya incluye edificios y fases.
+2. Las cifras de ámbito `edificio` **solo se suman entre sí cuando nombran
+   unidades distintas** mediante el campo `edificio`. Si no lo hacen, se tratan
+   como lecturas rivales del mismo edificio y se toma la más reciente.
+3. Las de ámbito `fase` se suman, salvo las marcadas `acumulado`.
+
+El punto 2 es deliberadamente conservador. Una ficha puede tener tres cifras de
+ámbito `edificio` porque describe tres edificios (y hay que sumarlas) o porque
+tres fuentes dan tres lecturas del mismo (y sumarlas triplicaría la capacidad).
+El texto de `referencia` no permite distinguir un caso del otro, así que la
+diferencia se declara: **sin `edificio`, no se suma**.
 
 ## Fases acumuladas frente a incrementales
 

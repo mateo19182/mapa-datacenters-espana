@@ -34,14 +34,36 @@ potencia:
   - tipo: it
     valor_mw: 72
     ambito: edificio
-    referencia: "Demanda de potencia IT de cada uno de los tres centros de datos"
+    edificio: "DC «Atalaya del Ebro»"
+    referencia: "Demanda de potencia IT proyectada del edificio"
     estado_asociado: en_tramitacion
     fecha_dato: "2025-11-21"
     fuentes: [src-1]
     nota: >-
-      "Cada uno de ellos se proyecta para una demanda de potencia IT de 72 MW". Son tres
-      edificios: DC "Atalaya del Ebro", DC "Ribera Alta del Ebro" y DC "Ribera Alta del
-      Ebro II".
+      La memoria del PIGA da la misma cifra para cada uno de los tres centros: "Cada uno de
+      ellos se proyecta para una demanda de potencia IT de 72 MW".
+  - tipo: it
+    valor_mw: 72
+    ambito: edificio
+    edificio: "DC «Ribera Alta del Ebro»"
+    referencia: "Demanda de potencia IT proyectada del edificio"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2025-11-21"
+    fuentes: [src-1]
+    nota: >-
+      La memoria del PIGA da la misma cifra para cada uno de los tres centros: "Cada uno de
+      ellos se proyecta para una demanda de potencia IT de 72 MW".
+  - tipo: it
+    valor_mw: 72
+    ambito: edificio
+    edificio: "DC «Ribera Alta del Ebro II»"
+    referencia: "Demanda de potencia IT proyectada del edificio"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2025-11-21"
+    fuentes: [src-1]
+    nota: >-
+      La memoria del PIGA da la misma cifra para cada uno de los tres centros: "Cada uno de
+      ellos se proyecta para una demanda de potencia IT de 72 MW".
   - tipo: conexion_red
     valor_mw: 300
     ambito: campus
@@ -56,7 +78,7 @@ potencia:
   - tipo: termica_respaldo
     valor_mw: 125.5
     ambito: edificio
-    referencia: "Potencia eléctrica instalada de la planta de turbinas de gas de emergencia asociada a cada edificio"
+    referencia: "Potencia eléctrica instalada de la planta de turbinas de gas de emergencia de cada edificio"
     estado_asociado: en_tramitacion
     fecha_dato: "2025-11-21"
     fuentes: [src-1]

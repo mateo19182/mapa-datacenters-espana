@@ -575,7 +575,7 @@ Generado el 2026-08-29 por `npm run validate`.
 
 ### `samca-luceni-ribera-alta-ebro.yaml`
 
-- aviso: potencia[2]: la cifra 125.5 no aparece en la cita de ninguna de sus fuentes
+- aviso: potencia[4]: la cifra 125.5 no aparece en la cita de ninguna de sus fuentes
 
 ### `sarenet-derio-parque-tecnologico.yaml`
 

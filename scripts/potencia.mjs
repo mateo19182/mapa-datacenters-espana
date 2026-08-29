@@ -5,9 +5,12 @@
 // Reglas:
 //  1. Cada tipo de potencia (it / conexion_red / instalada_total / no_especificado)
 //     se agrega por separado y NUNCA se suma con otro tipo.
-//  2. Dentro de un tipo, si hay un registro de ámbito campus o edificio, ese manda
-//     y NO se le suman las fases: se entiende que el dato global ya las incluye.
-//     Si solo hay registros de fase, se suman entre sí.
+//  2. Una cifra de ámbito `campus` manda sobre cualquier suma: se entiende que
+//     el dato global ya incluye edificios y fases.
+//  2b. Los registros de ámbito `edificio` solo se suman cuando nombran unidades
+//     distintas mediante el campo `edificio`. Si no lo hacen, se tratan como
+//     lecturas rivales del mismo edificio y se toma la más reciente. Por defecto
+//     nunca se infla: sumar exige que la fuente diga que son cosas distintas.
 //  3. Cuando hay varios registros del mismo ámbito y tipo (fuentes que discrepan),
 //     se toma el más reciente por `fecha_dato` y se marca `discrepancia: true`
 //     conservando el rango observado.
@@ -17,51 +20,87 @@
 
 import { TIPOS_POTENCIA } from './schema.mjs'
 
-const ORDEN_AMBITO = { campus: 0, edificio: 0, fase: 1 }
-
 const masReciente = (a, b) => {
   const fa = a.fecha_dato ?? ''
   const fb = b.fecha_dato ?? ''
   return fb.localeCompare(fa) // descendente: primero el más nuevo
 }
 
+/** De un grupo de lecturas rivales se queda la más reciente. */
+function elegirLectura(grupo) {
+  const ordenado = [...grupo].sort(masReciente)
+  const valores = grupo.map((p) => p.valor_mw ?? p.valor_mw_max).filter((v) => v != null)
+  return {
+    valor: ordenado[0].valor_mw ?? ordenado[0].valor_mw_max,
+    fecha: ordenado[0].fecha_dato ?? null,
+    discrepancia: new Set(valores).size > 1,
+    valores,
+  }
+}
+
 /** Agrega los registros de un mismo tipo de potencia. */
 function agregarTipo(registros) {
   if (registros.length === 0) return null
 
-  const globales = registros.filter((p) => ORDEN_AMBITO[p.ambito] === 0)
-  const acumulados = registros.filter((p) => ORDEN_AMBITO[p.ambito] === 1 && p.acumulado)
+  const globales = registros.filter((p) => p.ambito === 'campus')
+  const edificios = registros.filter((p) => p.ambito === 'edificio')
+  const fases = registros.filter((p) => p.ambito === 'fase')
+  const acumuladas = fases.filter((p) => p.acumulado)
 
-  // Prioridad: cifra global publicada > hito acumulado más alto > suma de fases.
-  const usados = globales.length > 0 ? globales : acumulados.length > 0 ? acumulados : registros
-  const base =
-    globales.length > 0 ? 'global' : acumulados.length > 0 ? 'maximo_acumulado' : 'suma_de_fases'
-
-  const valores = usados.map((p) => p.valor_mw ?? p.valor_mw_max).filter((v) => v != null)
-  if (valores.length === 0) return null
-
-  let valor
-  let discrepancia = false
-  if (base === 'global') {
-    const ordenados = [...usados].sort(masReciente)
-    valor = ordenados[0].valor_mw ?? ordenados[0].valor_mw_max
-    discrepancia = new Set(valores).size > 1
-  } else if (base === 'maximo_acumulado') {
-    valor = Math.max(...valores)
-  } else {
-    valor = valores.reduce((a, b) => a + b, 0)
+  // 1. Una cifra publicada para el conjunto manda sobre cualquier suma.
+  if (globales.length) {
+    const { valor, fecha, discrepancia, valores } = elegirLectura(globales)
+    if (valor == null) return null
+    return construir(valor, 'global', discrepancia, valores, globales.length, fecha)
   }
 
-  return {
-    valor_mw: Math.round(valor * 100) / 100,
-    base,
-    discrepancia,
-    minimo_observado: Math.min(...valores),
-    maximo_observado: Math.max(...valores),
-    registros: usados.length,
-    fecha_dato: [...usados].sort(masReciente)[0].fecha_dato ?? null,
+  // 2. Edificios: solo suman los que nombran unidades distintas. Los que no
+  //    identifican edificio son lecturas del mismo, y se elige una.
+  if (edificios.length) {
+    const porUnidad = new Map()
+    for (const p of edificios) {
+      const clave = p.edificio ?? '(sin identificar)'
+      if (!porUnidad.has(clave)) porUnidad.set(clave, [])
+      porUnidad.get(clave).push(p)
+    }
+    const lecturas = [...porUnidad.values()].map(elegirLectura).filter((l) => l.valor != null)
+    if (!lecturas.length) return null
+    const valor = lecturas.reduce((a, l) => a + l.valor, 0)
+    const todos = lecturas.flatMap((l) => l.valores)
+    return construir(
+      valor,
+      porUnidad.size > 1 ? 'suma_de_edificios' : 'edificio',
+      lecturas.some((l) => l.discrepancia),
+      todos,
+      edificios.length,
+      [...edificios].sort(masReciente)[0].fecha_dato ?? null,
+    )
   }
+
+  // 3. Fases: los hitos acumulados no se suman entre sí; el resto sí.
+  const usadas = acumuladas.length ? acumuladas : fases
+  const valores = usadas.map((p) => p.valor_mw ?? p.valor_mw_max).filter((v) => v != null)
+  if (!valores.length) return null
+  const valor = acumuladas.length ? Math.max(...valores) : valores.reduce((a, b) => a + b, 0)
+  return construir(
+    valor,
+    acumuladas.length ? 'maximo_acumulado' : 'suma_de_fases',
+    false,
+    valores,
+    usadas.length,
+    [...usadas].sort(masReciente)[0].fecha_dato ?? null,
+  )
 }
+
+const construir = (valor, base, discrepancia, valores, registros, fecha) => ({
+  valor_mw: Math.round(valor * 100) / 100,
+  base,
+  discrepancia,
+  minimo_observado: Math.min(...valores),
+  maximo_observado: Math.max(...valores),
+  registros,
+  fecha_dato: fecha,
+})
 
 /** Un resumen por cada tipo de potencia presente; null donde no hay dato. */
 export function resumirPotencia(potencias) {

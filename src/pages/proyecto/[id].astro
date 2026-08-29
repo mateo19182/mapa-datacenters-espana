@@ -103,6 +103,8 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
                       {{
                         global: 'cifra global publicada',
                         suma_de_fases: 'suma de fases documentadas',
+                        suma_de_edificios: 'suma de los edificios documentados',
+                        edificio: 'cifra publicada del edificio',
                         maximo_acumulado: 'mayor hito acumulado publicado',
                       }[r[t].base]}
                       {r[t].discrepancia && ` · las fuentes discrepan (${numero(r[t].minimo_observado, 1)}–${numero(r[t].maximo_observado, 1)} MW)`}
@@ -134,6 +136,7 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
                       </td>
                       <td>{p.ambito}</td>
                       <td>
+                        {p.edificio && <><strong class="unidad">{p.edificio}</strong><br /></>}
                         {p.referencia ?? <span class="silencio">—</span>}
                         {p.nota && <span class="pequeno silencio"><br />{p.nota}</span>}
                       </td>
@@ -410,6 +413,11 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
   .pares dd {
     margin: 0;
     overflow-wrap: anywhere;
+  }
+
+  .unidad {
+    font-weight: 600;
+    font-size: 0.85rem;
   }
 
   .mono {

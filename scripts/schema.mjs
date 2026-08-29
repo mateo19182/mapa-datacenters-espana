@@ -179,6 +179,11 @@ const zPotencia = z.object({
   // 2027, 45 MW en 2028»), sus cifras no se suman entre sí: se toma la mayor.
   acumulado: z.boolean().optional(),
   ambito: z.enum(AMBITOS),
+  // Identifica la unidad física a la que se refiere la cifra. Solo se suman
+  // entre sí los registros de ámbito `edificio` que nombran unidades DISTINTAS.
+  // Sin este campo, varias cifras de un mismo edificio se tratan como lecturas
+  // rivales y se toma la más reciente: nunca se suman.
+  edificio: z.string().nullable().optional(),
   referencia: z.string().nullable().optional(),
   estado_asociado: z.enum(ESTADOS).nullable().optional(),
   fecha_dato: z.string().nullable().optional(),
@@ -298,6 +303,7 @@ export function normalizarSitio(crudo) {
     valor_mva: numero(p.valor_mva),
     acumulado: p.acumulado === true,
     ambito: AMBITOS.includes(slug(p.ambito)) ? slug(p.ambito) : 'campus',
+    edificio: p.edificio ?? null,
     referencia: p.referencia ?? null,
     estado_asociado: p.estado_asociado
       ? mapear(p.estado_asociado, SINONIMOS_ESTADO, ESTADOS, 'desconocido')

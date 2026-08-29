@@ -67,6 +67,7 @@ const sitios = q('SELECT * FROM sitios ORDER BY nombre').map((s) => {
     valor_mva: p.valor_mva,
     acumulado: Boolean(p.acumulado),
     ambito: p.ambito,
+    edificio: p.edificio,
     referencia: p.referencia,
     estado_asociado: p.estado_asociado,
     fecha_dato: p.fecha_dato,
