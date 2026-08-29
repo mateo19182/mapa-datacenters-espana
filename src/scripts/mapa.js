@@ -141,13 +141,16 @@ function pintarLista() {
   const sinCoordenadas = visibles.filter((p) => p.lat == null).length
 
   // Se dice cuántos hay y cuántos no pueden dibujarse: el mapa no es el censo.
-  $('#recuento').innerHTML =
-    (visibles.length === inventario.length
+  $('#recuento').textContent =
+    visibles.length === inventario.length
       ? `${visibles.length} emplazamientos`
-      : `${visibles.length} de ${inventario.length} emplazamientos`) +
-    (sinCoordenadas
-      ? ` <span class="silencio pequeno">· ${sinCoordenadas} sin coordenadas, fuera del mapa</span>`
-      : '')
+      : `${visibles.length} de ${inventario.length} emplazamientos`
+  const fuera = $('#fuera-mapa')
+  if (fuera) {
+    fuera.textContent = sinCoordenadas
+      ? `${sinCoordenadas} sin coordenadas publicadas, fuera del mapa`
+      : ''
+  }
 
   const conMetrica = visibles.filter((p) => p[estado.metrica] != null)
   const suma = conMetrica.reduce((a, p) => a + p[estado.metrica], 0)
@@ -279,8 +282,8 @@ async function cargarCapa(nombre) {
         source: 'lineas',
         paint: {
           'line-color': ['match', ['get', 'nivel'], '400', '#b3543f', '#7d8fa3'],
-          'line-width': ['interpolate', ['linear'], ['zoom'], 5, ['match', ['get', 'nivel'], '400', 1.1, 0.6], 12, ['match', ['get', 'nivel'], '400', 3, 1.8]],
-          'line-opacity': 0.75,
+          'line-width': ['interpolate', ['linear'], ['zoom'], 5, ['match', ['get', 'nivel'], '400', 0.9, 0.5], 12, ['match', ['get', 'nivel'], '400', 2.4, 1.4]],
+          'line-opacity': ['interpolate', ['linear'], ['zoom'], 5, 0.42, 9, 0.6],
         },
       },
       'sitios-borde',
@@ -299,9 +302,11 @@ async function cargarCapa(nombre) {
         id: 'subestaciones-simbolo',
         type: 'symbol',
         source: 'subestaciones',
+        minzoom: 4.5,
         layout: {
           'icon-image': 'cuadro-subestacion',
-          'icon-allow-overlap': true,
+          'icon-allow-overlap': false,
+          'icon-size': ['interpolate', ['linear'], ['zoom'], 5, 0.45, 11, 1],
           'text-field': ['get', 'nombre'],
           'text-size': 10,
           'text-offset': [0, 1.1],
@@ -312,7 +317,8 @@ async function cargarCapa(nombre) {
           'text-color': oscuro() ? '#c9c6c0' : '#55524c',
           'text-halo-color': oscuro() ? '#15171a' : '#fbfaf8',
           'text-halo-width': 1.2,
-          'text-opacity': ['interpolate', ['linear'], ['zoom'], 8, 0, 9.5, 1],
+          'text-opacity': ['interpolate', ['linear'], ['zoom'], 8.5, 0, 10, 0.85],
+          'icon-opacity': ['interpolate', ['linear'], ['zoom'], 5, 0.55, 10, 0.9],
         },
       },
       'sitios-borde',
@@ -426,6 +432,7 @@ function alternarCapa(nombre, activa) {
     for (const c of capas) {
       if (mapa.getLayer(c)) mapa.setLayoutProperty(c, 'visibility', activa ? 'visible' : 'none')
     }
+    actualizarLeyenda()
   }
 
   if (activa && !cargadas.has(nombre)) {
@@ -438,18 +445,19 @@ function alternarCapa(nombre, activa) {
 
 // --- arranque ----------------------------------------------------------------
 
+/** Cuadrado hueco de un píxel de trazo: presente pero sin robar protagonismo. */
 function iconoSubestacion() {
-  const tam = 12
+  const tam = 10
   const datos = new Uint8Array(tam * tam * 4)
-  const [r, g, b] = oscuro() ? [200, 180, 120] : [120, 95, 40]
+  const [r, g, b] = oscuro() ? [186, 170, 132] : [122, 106, 74]
   for (let y = 0; y < tam; y++) {
     for (let x = 0; x < tam; x++) {
       const i = (y * tam + x) * 4
-      const borde = x < 2 || y < 2 || x >= tam - 2 || y >= tam - 2
+      const borde = x === 0 || y === 0 || x === tam - 1 || y === tam - 1
       datos[i] = r
       datos[i + 1] = g
       datos[i + 2] = b
-      datos[i + 3] = borde ? 255 : 60
+      datos[i + 3] = borde ? 235 : 0
     }
   }
   return { width: tam, height: tam, data: datos }
@@ -570,6 +578,25 @@ function castellanizarRotulos() {
       // Alguna capa puede no admitir la expresión; se deja como venga.
     }
   }
+}
+
+/** Añade a la leyenda solo las capas eléctricas que estén encendidas. */
+function actualizarLeyenda() {
+  const extra = document.getElementById('leyenda-capas')
+  if (!extra) return
+  const piezas = []
+  if (estado.capas.lineas) {
+    piezas.push('<span class="leyenda-item"><span class="trazo trazo-400"></span>400 kV</span>')
+    piezas.push('<span class="leyenda-item"><span class="trazo trazo-220"></span>220 kV</span>')
+  }
+  if (estado.capas.subestaciones) {
+    piezas.push('<span class="leyenda-item"><span class="cuadro"></span>Subestación</span>')
+  }
+  if (estado.capas.renovables) {
+    piezas.push('<span class="leyenda-item"><span class="punto-renovable"></span>Renovables y BESS</span>')
+  }
+  extra.innerHTML = piezas.join('')
+  extra.hidden = piezas.length === 0
 }
 
 function conectarControles() {

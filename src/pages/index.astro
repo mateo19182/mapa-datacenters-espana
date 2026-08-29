@@ -25,6 +25,7 @@ const modelosPresentes = Object.keys(MODELO_ETIQUETA).filter((m) => sitios.some(
       <div class="panel-cabecera">
         <div>
           <p id="recuento" class="recuento">{numero(sitios.length)} emplazamientos</p>
+          <p id="fuera-mapa" class="pequeno silencio"></p>
           <p id="suma" class="pequeno"></p>
         </div>
         <button id="limpiar-filtros" type="button">Limpiar</button>
@@ -147,6 +148,7 @@ const modelosPresentes = Object.keys(MODELO_ETIQUETA).filter((m) => sitios.some(
         {ORDEN_ESTADOS.filter((e) => sitios.some((s) => s.estado === e)).map((e) => (
           <span class={`leyenda-item estado-${e}`}><span class="punto"></span>{ESTADO_ETIQUETA[e]}</span>
         ))}
+        <span id="leyenda-capas" class="leyenda-capas" hidden></span>
       </div>
     </div>
   </div>
@@ -338,6 +340,44 @@ const modelosPresentes = Object.keys(MODELO_ETIQUETA).filter((m) => sitios.some(
     display: inline-flex;
     align-items: center;
     gap: 0.3rem;
+  }
+
+  .leyenda-capas {
+    display: flex;
+    flex-basis: 100%;
+    flex-wrap: wrap;
+    gap: 0.15rem 0.7rem;
+    padding-top: 0.35rem;
+    margin-top: 0.15rem;
+    border-top: 1px solid var(--borde);
+    color: var(--tinta-2);
+  }
+
+  .leyenda :global(.trazo) {
+    width: 1.1rem;
+    height: 2px;
+    border-radius: 1px;
+  }
+
+  .leyenda :global(.trazo-400) {
+    background: #b3543f;
+  }
+
+  .leyenda :global(.trazo-220) {
+    background: #7d8fa3;
+  }
+
+  .leyenda :global(.cuadro) {
+    width: 0.6rem;
+    height: 0.6rem;
+    border: 1px solid #7a6a4a;
+  }
+
+  .leyenda :global(.punto-renovable) {
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 50%;
+    background: #c9a227;
   }
 
   .detalle-flotante {
