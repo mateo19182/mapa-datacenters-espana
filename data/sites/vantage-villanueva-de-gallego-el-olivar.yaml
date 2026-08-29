@@ -70,6 +70,15 @@ refrigeracion: null
 enlaces_proyecto: []
 
 incertidumbres:
+  - campo: estado
+    descripcion: >-
+      El estado registrado procede del BOA y de la tramitación de INAGA hasta marzo de 2026.
+      Prensa aragonesa de julio de 2026 informa de que Vantage habría renunciado a estos suelos
+      y buscaría reubicar el proyecto, por la saturación de los nudos Villanueva 220 y Peñaflor
+      220. No ha sido posible abrir esa noticia para verificar sus términos literales en esta
+      revisión, de modo que el estado no se ha modificado. Si se confirma, este emplazamiento
+      pasaría a «cancelado» y habría que dar de alta el nuevo.
+    fuentes: [src-renuncia]
   - campo: inversion_anunciada_eur
     descripcion: >-
       La tabla de inversión publicada en el BOA suma 3.200 M€ en su fila de totales, pero
@@ -117,3 +126,11 @@ fuentes:
     fecha_publicacion: "2026-03-17"
     fecha_consulta: "2026-08-29"
     cita: "el proyecto del Campus Data Center Villanueva de Gállego"
+  - id: src-renuncia
+    url: "https://www.elperiodicodearagon.com/aragon/2026/07/24/vantage-reubicara-centro-datos-renunciar-zaragoza-132732543.html"
+    titulo: "Vantage reubicará su centro de datos tras renunciar a los suelos de Zaragoza"
+    editor: "El Periódico de Aragón"
+    tipo: prensa_general
+    fecha_publicacion: "2026-07-24"
+    fecha_consulta: "2026-08-29"
+    cita: null

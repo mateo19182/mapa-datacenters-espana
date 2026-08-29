@@ -1,15 +1,15 @@
 # Informe de reconciliación
 
-Generado el 2026-08-29 por `npm run reconcile` sobre 160 emplazamientos.
+Generado el 2026-08-29 por `npm run reconcile` sobre 163 emplazamientos.
 
 Nada de lo que sigue se corrige automáticamente: son propuestas para decidir a mano.
 
-- Variantes de nombre de operador: **2**
+- Variantes de nombre de operador: **3**
 - Posibles emplazamientos duplicados: **1**
 - Potencias de fase que superan la cifra global: **0**
 - Estados en conflicto con sus fases: **0**
 - Fechas posteriores a hoy: **0**
-- Editores que no cuadran con el dominio: **60**
+- Editores que no cuadran con el dominio: **64**
 
 ## Variantes del nombre de operador
 
@@ -18,6 +18,7 @@ Si son la misma empresa, unificar el campo `operador` y dejar la otra forma como
 | Nombre A | Nombre B | Motivo |
 |---|---|---|
 | ACS Digital & Energy (1) | ACS Digital Infrastructure Development, S.L. (Grupo ACS) (1) | uno contiene al otro |
+| Echelon Iberdrola Digital Infra (1) | Iberdrola (1) | uno contiene al otro |
 | Grupo Aire (2) | Stackscale (Grupo Aire) (1) | uno contiene al otro |
 
 ## Posibles duplicados
@@ -49,6 +50,8 @@ Suele ser una cita de segunda mano: el contenido es de un medio pero el enlace a
 | `box2bit-epila-epilon` | src-3 | Wikidata | query.wikidata.org |
 | `cartagena-data-green-escombreras` | src-2 | Observatorio Español de Data Centers | observatorioedc.com |
 | `digital-valley-picassent` | src-1 | Levante-EMV | levante-emv.com |
+| `echelon-iberdrola-madrid-sur` | src-1 | Echelon Data Centres | echelon-dc.com |
+| `echelon-iberdrola-madrid-sur` | src-2 | pv magazine España | pv-magazine.es |
 | `edgemode-cordoba-green-dc` | src-2 | PV Tech | pv-tech.org |
 | `edgemode-torrecampo-green-dc` | src-1 | PV Tech | pv-tech.org |
 | `equinix-alcobendas-campus` | src-4 | Equinix | newsroom.equinix.com |
@@ -92,5 +95,7 @@ Suele ser una cita de segunda mano: el contenido es de un medio pero el enlace a
 | `templus-paterna-parque-tecnologico` | src-3 | Observatorio Español de Data Centers | observatorioedc.com |
 | `tillion-villamayor-de-gallego` | src-3 | Wikidata | query.wikidata.org |
 | `ungsc-quart-de-poblet-unictf` | src-2 | Observatorio Español de Data Centers | observatorioedc.com |
+| `valencia-docks-marina-data-center` | src-1 | Levante-EMV | levante-emv.com |
+| `valencia-docks-marina-data-center` | src-2 | Levante-EMV | levante-emv.com |
 | `vantage-villanueva-de-gallego-el-olivar` | src-3 | Wikidata | query.wikidata.org |
 | `walhalla-castellon-espaitec` | src-3 | Observatorio Español de Data Centers | observatorioedc.com |

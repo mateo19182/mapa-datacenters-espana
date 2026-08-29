@@ -1,0 +1,92 @@
+id: valencia-docks-marina-data-center
+nombre: "Data center de los Docks — Marina de València (proyecto descartado)"
+alias:
+  - "Data center de la Marina de València"
+  - "Proyecto de Nethits en los Docks"
+tipo: edificio
+operador: null
+propietario: "Ayuntamiento de València / Marina de València"
+modelo: colocation
+
+ubicacion:
+  municipio: "València"
+  provincia: "Valencia"
+  ccaa: "Comunitat Valenciana"
+  direccion: "Edificio histórico de los Docks, Marina de València"
+  lat: 39.4638
+  lon: -0.3295
+  precision: aproximada
+  fuentes: [src-1, src-3]
+
+estado: cancelado
+estado_detalle: >-
+  Proyecto para instalar el primer gran centro de datos de la Comunitat Valenciana en el
+  edificio de los Docks de la Marina de València. Impulsado inicialmente por Nethits
+  Telecom Group, fue declarado de interés público por el Ayuntamiento en agosto de 2022 y
+  después sacado a concurso, con tres ofertas (Sineasen/Datium, Nethits Telecom y Data
+  Center Docks); en febrero de 2023 Sineasen encabezaba la valoración. El gobierno
+  municipal de PP y Vox descartó después el proyecto por no querer «una granja de
+  servidores» en un edificio histórico, y Nethits trasladó su inversión al polígono de Vara
+  de Quart (ver `nxn-valencia-vara-de-quart-nx01`).
+estado_fuentes: [src-2, src-3]
+
+potencia:
+  - tipo: conexion_red
+    valor_mw: 16
+    ambito: edificio
+    referencia: "Acometida eléctrica prevista en el proyecto básico de Nethits"
+    estado_asociado: cancelado
+    fecha_dato: "2022-08-19"
+    fuentes: [src-1]
+    nota: "«El funcionamiento de todo ello requiere 16 MW de acometida eléctrica o potencia»."
+
+superficie_construida_m2: 20000
+
+incertidumbres:
+  - campo: inversion_anunciada_eur
+    descripcion: >-
+      Cifras muy dispares: 241 millones anunciados por el president Ximo Puig en Les Corts
+      en septiembre de 2021 (240 millones según Levante-EMV en agosto de 2022); 97 millones
+      en la oferta inicial de Nethits de julio de 2022; y 45, 43 y 37 millones en las tres
+      ofertas del concurso de 2023. No se registra un valor único.
+    fuentes: [src-1, src-3]
+  - campo: operador
+    descripcion: >-
+      El concurso no llegó a materializarse en una explotación. Sineasen (marca Datium)
+      encabezaba la valoración en febrero de 2023, pero el proyecto fue descartado por el
+      Ayuntamiento.
+    fuentes: [src-2, src-3]
+  - campo: ubicacion
+    descripcion: >-
+      Las coordenadas corresponden al recinto de la Marina de València, no al edificio de
+      los Docks en concreto.
+    fuentes: [src-1]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.levante-emv.com/valencia/2022/08/19/centro-datos-marina-necesitara-potencia-73633424.html"
+    titulo: "El centro de datos de la Marina necesitará tanta potencia como el alumbrado de la ciudad"
+    editor: "Levante-EMV"
+    tipo: prensa_general
+    fecha_publicacion: "2022-08-19"
+    fecha_consulta: "2026-08-29"
+    cita: "El de la Marina de València necesitará, según el proyecto básico, algo menos, 16 megavatios que se tomarán de proveedores nacionales y procedentes de energías «renovables», según el compromiso de la tecnológica que lo impulsa, la valenciana Nethits Telecom Group."
+  - id: src-2
+    url: "https://www.levante-emv.com/valencia/2025/02/28/licencia-primer-gran-centro-datos-114787139.html"
+    titulo: "Licencia para el primer gran centro de datos de Valencia que se ubicará en Vara de Quart"
+    editor: "Levante-EMV"
+    tipo: prensa_general
+    fecha_publicacion: "2025-02-28"
+    fecha_consulta: "2026-08-29"
+    cita: "Sus promotores ya optaron a la instalación de este gran centro de almacenamiento de datos informáticos en el edificio de los Docks, en la Marina de València, proyecto impulsado por el anterior gobierno progresista y desechado por el actual del PP y Vox, que no quería «una granja de servidores» en un edificio histórico."
+  - id: src-3
+    url: "https://valenciaplaza.com/valenciaplaza/sineasen-se-perfila-como-adjudicataria-del-data-center-de-los-docks"
+    titulo: "Sineasen se perfila como ganadora del concurso para el 'data center' de los Docks"
+    editor: "Valencia Plaza"
+    tipo: prensa_general
+    fecha_publicacion: "2023-02-01"
+    fecha_consulta: "2026-08-29"
+    cita: "El Ayuntamiento de València hizo público este miércoles el contenido de las tres ofertas presentadas, Sineasen, Nethits Telecom y Data Center Docks [...] El único parámetro en el que Nethits Telecom está por delante es la inversión prevista, pero por poco. Esta empresa la cifra en 45 millones de euros, frente a los 43 millones de Sineasen y los 37 de Data Center Docks."

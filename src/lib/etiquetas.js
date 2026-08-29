@@ -88,6 +88,37 @@ export const VINCULO_ETIQUETA = {
   declarado_para_cpd: 'Declarado para centros de datos',
 }
 
+/** Nombres legibles para el campo al que apunta una incertidumbre. */
+export const CAMPO_ETIQUETA = {
+  potencia: 'Potencia',
+  ubicacion: 'Ubicación',
+  ubicación: 'Ubicación',
+  estado: 'Estado',
+  fases: 'Fases',
+  operador: 'Operador',
+  propietario: 'Propietario',
+  refrigeracion: 'Refrigeración',
+  refrigeración: 'Refrigeración',
+  agua: 'Consumo de agua',
+  inversion_anunciada_eur: 'Inversión anunciada',
+  inversion: 'Inversión anunciada',
+  superficie_parcela_m2: 'Superficie de parcela',
+  superficie_construida_m2: 'Superficie construida',
+  superficie: 'Superficie',
+  conexion_electrica: 'Conexión eléctrica',
+  fecha_puesta_en_servicio: 'Puesta en servicio',
+  tipo: 'Tipo de instalación',
+  identidad: 'Identidad del proyecto',
+  general: 'General',
+}
+
+export const campoLegible = (campo) =>
+  CAMPO_ETIQUETA[campo] ??
+  String(campo ?? '')
+    .replace(/_(eur|m2|mw|kv)$/i, '')
+    .replace(/_/g, ' ')
+    .replace(/^./, (c) => c.toUpperCase())
+
 const MESES = [
   'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio',
   'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre',

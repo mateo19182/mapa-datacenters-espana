@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro'
 import regiones from '../data/regiones.json'
+import sitios from '../data/sitios.json'
 import { ESTADO_ETIQUETA, ORDEN_ESTADOS, numero } from '../lib/etiquetas.js'
 ---
 
@@ -46,6 +47,26 @@ import { ESTADO_ETIQUETA, ORDEN_ESTADOS, numero } from '../lib/etiquetas.js'
         </article>
       ))}
     </div>
+
+    {sitios.some((s) => !s.ubicacion.ccaa) && (
+      <>
+        <h2>Sin región asignada</h2>
+        <p class="pequeno silencio">
+          Proyectos cuyas fuentes no publican el municipio. Se registran igualmente, porque
+          omitirlos crearía un hueco mayor que el que describen.
+        </p>
+        <ul class="sin-region">
+          {sitios
+            .filter((s) => !s.ubicacion.ccaa)
+            .map((s) => (
+              <li>
+                <a href={`/proyecto/${s.id}`}>{s.nombre}</a>
+                <span class="silencio pequeno"> — {s.operador ?? 'operador sin determinar'}</span>
+              </li>
+            ))}
+        </ul>
+      </>
+    )}
   </div>
 </Base>
 
@@ -101,5 +122,17 @@ import { ESTADO_ETIQUETA, ORDEN_ESTADOS, numero } from '../lib/etiquetas.js'
 
   .mini dd {
     margin: 0;
+  }
+
+  .sin-region {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 3rem;
+    font-size: 0.9rem;
+  }
+
+  .sin-region li {
+    padding: 0.4rem 0;
+    border-bottom: 1px solid var(--borde);
   }
 </style>

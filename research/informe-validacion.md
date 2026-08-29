@@ -2,10 +2,10 @@
 
 Generado el 2026-08-29 por `npm run validate`.
 
-- Emplazamientos cargados: **160**
+- Emplazamientos cargados: **163**
 - Nodos de red: **133**
 - Activos renovables/BESS: **22**
-- Errores: **0** · Avisos: **206**
+- Errores: **0** · Avisos: **209**
 
 ## Incidencias por fichero
 
@@ -195,6 +195,11 @@ Generado el 2026-08-29 por `npm run validate`.
 
 - aviso: sin ningún dato de potencia
 - aviso: sin coordenadas: no aparecerá en el mapa
+
+### `echelon-iberdrola-madrid-sur.yaml`
+
+- aviso: sin coordenadas: no aparecerá en el mapa
+- aviso: sin comunidad autónoma: no aparecerá en las vistas por región
 
 ### `edgeconnex-sant-boi-bcn01.yaml`
 
@@ -455,6 +460,10 @@ Generado el 2026-08-29 por `npm run validate`.
 ### `nostrum-zamudio-moana-data.yaml`
 
 - aviso: potencia[0] («Capacidad total prevista de la instalación (tres fases de 10 MW)») no distingue el tipo de MW
+
+### `novagrid-elche-parque-empresarial-e49.yaml`
+
+- aviso: sin ningún dato de potencia
 
 ### `nunsys-paterna-parque-tecnologico.yaml`
 

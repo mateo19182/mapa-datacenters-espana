@@ -372,7 +372,11 @@ export function revisarCoherencia(sitio) {
   }
 
   if (sitio.ubicacion.lat == null) problemas.push({ nivel: 'aviso', msg: 'sin coordenadas: no aparecerá en el mapa' })
-  if (!sitio.ubicacion.ccaa) problemas.push({ nivel: 'error', msg: 'sin comunidad autónoma' })
+  // Que no se sepa dónde está es un hecho registrable, no un fallo de forma:
+  // omitir un proyecto grande por eso sería un hueco peor que el propio hueco.
+  if (!sitio.ubicacion.ccaa) {
+    problemas.push({ nivel: 'aviso', msg: 'sin comunidad autónoma: no aparecerá en las vistas por región' })
+  }
   if (sitio.estado_fuentes.length === 0) problemas.push({ nivel: 'aviso', msg: 'el estado no cita fuente' })
 
   const huerfanas = sitio.fuentes.filter((f) => {

@@ -11,6 +11,7 @@ import {
   CONFIANZA_ETIQUETA,
   CONFIANZA_DESCRIPCION,
   MODELO_ETIQUETA,
+  campoLegible,
   fechaLegible,
   numero,
   euros,
@@ -203,7 +204,7 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
             <ul class="incertidumbres">
               {s.incertidumbres.map((u) => (
                 <li>
-                  <strong>{u.campo}</strong>
+                  <strong>{campoLegible(u.campo)}</strong>
                   <span>
                     {u.descripcion}
                     {refs(u.fuentes).length > 0 && (
@@ -424,8 +425,8 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
 
   .incertidumbres li {
     display: grid;
-    grid-template-columns: 8rem 1fr;
-    gap: 0.8rem;
+    grid-template-columns: 10rem minmax(0, 1fr);
+    gap: 0.9rem;
     padding: 0.6rem 0;
     border-bottom: 1px solid var(--borde);
     font-size: 0.9rem;
@@ -435,6 +436,8 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
     color: var(--aviso);
     font-weight: 600;
     font-size: 0.82rem;
+    overflow-wrap: anywhere;
+    line-height: 1.5;
   }
 
   sup a {

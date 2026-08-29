@@ -100,7 +100,14 @@ async function comprobar(url) {
 
 const cambiadas = []
 const rotas = []
+const bloqueadas = []
 const nuevas = []
+
+// Un 403 de Cloudflare no es un enlace muerto: la página funciona para una
+// persona. Mezclar ambos casos llenaría el informe semanal de falsas alarmas.
+const CODIGOS_BLOQUEO = new Set([401, 403, 429, 503])
+const esBloqueo = (res) =>
+  CODIGOS_BLOQUEO.has(res.codigo) || res.mensaje === 'tiempo agotado'
 let comprobadas = 0
 
 if (!SOLO_CADUCADOS) {
@@ -116,8 +123,15 @@ if (!SOLO_CADUCADOS) {
       const quien = [...urls.get(url)]
 
       if (res.estado !== 'ok') {
-        rotas.push({ url, quien, motivo: res.codigo ? `HTTP ${res.codigo}` : res.mensaje })
-        huellas[url] = { ...(previa ?? {}), ultimo_fallo: hoy, motivo: res.codigo ?? res.mensaje }
+        const motivo = res.codigo ? `HTTP ${res.codigo}` : res.mensaje
+        const destino = esBloqueo(res) ? bloqueadas : rotas
+        destino.push({ url, quien, motivo })
+        huellas[url] = {
+          ...(previa ?? {}),
+          ultimo_fallo: hoy,
+          motivo,
+          clase: esBloqueo(res) ? 'bloqueada' : 'rota',
+        }
       } else if (!previa?.hash) {
         nuevas.push({ url, quien })
         huellas[url] = { hash: res.hash, longitud: res.longitud, visto: hoy }
@@ -152,7 +166,8 @@ l.push(`Generado el ${hoy} por \`npm run refresh\`. Este informe **no modifica n
 l.push('señala dónde han cambiado las fuentes para que una persona decida qué hacer.', '')
 l.push(`- Fuentes comprobadas: **${comprobadas}** de ${urls.size} registradas`)
 l.push(`- Con contenido cambiado: **${cambiadas.length}** (${cambiadas.filter(relevante).length} con cambio apreciable)`)
-l.push(`- Inaccesibles: **${rotas.length}**`)
+l.push(`- Enlaces rotos: **${rotas.length}**`)
+l.push(`- Bloqueadas a la comprobación automática: **${bloqueadas.length}** (siguen abriéndose en un navegador)`)
 l.push(`- Vistas por primera vez: **${nuevas.length}**`)
 l.push(`- Fichas sin verificar desde hace ${DIAS_CADUCIDAD} días o más: **${caducados.length}**`, '')
 
@@ -170,12 +185,23 @@ if (cambiadas.length) {
 }
 
 if (rotas.length) {
-  l.push('## Fuentes inaccesibles', '')
+  l.push('## Enlaces rotos', '')
   l.push('Un enlace roto no invalida el dato, pero sí su verificabilidad. Buscar copia en archivo')
   l.push('web o sustituir por una fuente equivalente antes de dar el dato por bueno.', '')
   l.push('| Fuente | Emplazamientos | Motivo |')
   l.push('|---|---|---|')
   for (const r of rotas) l.push(`| ${r.url} | ${referidos(r.quien)} | ${r.motivo} |`)
+  l.push('')
+}
+
+if (bloqueadas.length) {
+  l.push('## Bloqueadas a la comprobación automática', '')
+  l.push('Devuelven 403, 429 o agotan el tiempo ante un cliente automatizado, normalmente por')
+  l.push('protección antibot. **No son enlaces rotos**: se abren con normalidad en un navegador.')
+  l.push('No hay nada que corregir; se listan para que no se confundan con los rotos.', '')
+  l.push('| Fuente | Emplazamientos | Respuesta |')
+  l.push('|---|---|---|')
+  for (const r of bloqueadas) l.push(`| ${r.url} | ${referidos(r.quien)} | ${r.motivo} |`)
   l.push('')
 }
 
@@ -203,7 +229,8 @@ writeFileSync(join(RAIZ, 'research/informe-actualizacion.md'), l.join('\n'), 'ut
 
 console.log(
   `\n${comprobadas} fuentes comprobadas · ${cambiadas.length} cambiadas · ${rotas.length} rotas · ` +
-    `${caducados.length} fichas caducadas\n→ research/informe-actualizacion.md`,
+    `${bloqueadas.length} bloqueadas (antibot) · ${caducados.length} fichas caducadas\n` +
+    '→ research/informe-actualizacion.md',
 )
 
 // Señal para el flujo de CI: 10 = hay algo que revisar.

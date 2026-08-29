@@ -1,0 +1,86 @@
+id: echelon-iberdrola-madrid-sur
+nombre: "Echelon Iberdrola Digital Infra — Madrid Sur"
+alias:
+  - "Madrid Sur"
+  - "Echelon Iberdrola Digital Infra"
+tipo: campus
+operador: "Echelon Iberdrola Digital Infra"
+propietario: "Iberdrola y Echelon Data Centres (empresa conjunta)"
+modelo: mayorista
+
+ubicacion:
+  municipio: null
+  provincia: null
+  ccaa: null
+  lat: null
+  lon: null
+  precision: desconocida
+  fuentes: [src-1, src-2]
+
+estado: anunciado
+estado_detalle: >-
+  Primer proyecto de la empresa conjunta entre Iberdrola y Echelon Data Centres, anunciada en
+  julio de 2025 y cerrada en noviembre de 2025. A 29 de agosto de 2026 no consta inicio de obras.
+  Ninguna de las dos compañías ha publicado el municipio: hablan de «Madrid Sur» y de «zonas
+  estratégicas cerca de Madrid».
+estado_fuentes: [src-1, src-2]
+
+potencia:
+  - tipo: conexion_red
+    valor_mw: 230
+    ambito: campus
+    referencia: "Conexión a red asegurada para el campus"
+    estado_asociado: anunciado
+    fecha_dato: "2026-01-22"
+    fuentes: [src-1, src-2]
+    nota: "La compañía habla de «230MW grid connection» asegurada."
+  - tipo: it
+    valor_mw: 144
+    ambito: campus
+    referencia: "Capacidad de procesamiento del campus"
+    estado_asociado: anunciado
+    fecha_dato: "2025-11-26"
+    fuentes: [src-2]
+    nota: >-
+      La fuente dice «144 MW para procesamiento de datos», expresión que se corresponde con carga
+      TI y no con la potencia de acceso. Se registra como MW IT, sin convertir ni comparar con los
+      230 MW de conexión.
+
+superficie_parcela_m2: 160000
+
+incertidumbres:
+  - campo: ubicacion
+    descripcion: >-
+      Ni Iberdrola ni Echelon publican el municipio. Directorios sectoriales asocian el proyecto a
+      Aceca, que es una central térmica situada en Villaseca de la Sagra (Toledo), no en la
+      Comunidad de Madrid, y alguna cobertura lo sitúa directamente «en Madrid». Sin fuente
+      primaria que lo confirme, el emplazamiento se deja sin ubicar y no aparece en el mapa ni en
+      las vistas por región.
+    fuentes: [src-1, src-2]
+  - campo: potencia
+    descripcion: >-
+      Los 230 MW de conexión y los 144 MW de procesamiento proceden de fuentes distintas y no son
+      la misma magnitud. Ninguna compañía publica ambas cifras juntas, de modo que no puede
+      descartarse que una de las dos se refiera al conjunto de la cartera y no a este campus.
+    fuentes: [src-1, src-2]
+
+confianza: baja
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://echelon-dc.com/echelon-iberdrola-digital-infra/"
+    titulo: "Echelon Data Centres and Iberdrola form joint venture to develop data centres in Spain"
+    editor: "Echelon Data Centres"
+    tipo: empresa
+    fecha_publicacion: "2026-01-22"
+    fecha_consulta: "2026-08-29"
+    cita: "160,000 sqm data centre campus [...] 230MW grid connection [...] This project will generate about 1,500 direct and indirect jobs."
+  - id: src-2
+    url: "https://www.pv-magazine.es/2025/11/26/iberdrola-se-alia-con-echelon-para-invertir-mas-de-2-000-millones-en-centros-de-datos-en-espana/"
+    titulo: "Iberdrola se alía con Echelon para invertir más de 2.000 millones en centros de datos en España"
+    editor: "pv magazine España"
+    tipo: prensa_especializada
+    fecha_publicacion: "2025-11-26"
+    fecha_consulta: "2026-08-29"
+    cita: "144 MW para procesamiento de datos [...] conexión eléctrica de 230 MW [...] más de 700 MW en conexiones eléctricas"

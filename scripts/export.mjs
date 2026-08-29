@@ -27,6 +27,18 @@ const centroideDe = (municipio, provincia) => {
   return c?.lat != null ? c : null
 }
 
+// Estado de cada enlace según la última comprobación (npm run refresh).
+const huellas = existsSync(join(RAIZ, 'data/huellas.json'))
+  ? JSON.parse(readFileSync(join(RAIZ, 'data/huellas.json'), 'utf8'))
+  : {}
+const estadoEnlace = (url) => {
+  const h = huellas[url]
+  if (!h) return null
+  if (h.clase === 'rota') return { clase: 'rota', motivo: h.motivo, fecha: h.ultimo_fallo }
+  if (h.clase === 'bloqueada') return { clase: 'bloqueada', motivo: h.motivo, fecha: h.ultimo_fallo }
+  return { clase: 'viva', fecha: h.visto ?? null }
+}
+
 const db = new Database(join(RAIZ, 'build/datacenters.db'), { readonly: true })
 const q = (sql, ...a) => db.prepare(sql).all(...a)
 
@@ -128,6 +140,7 @@ const sitios = q('SELECT * FROM sitios ORDER BY nombre').map((s) => {
       fecha_publicacion: f.fecha_publicacion,
       fecha_consulta: f.fecha_consulta,
       cita: f.cita,
+      enlace: estadoEnlace(f.url),
     })),
   }
 })
@@ -311,6 +324,7 @@ const resumen = {
   activos_renovables: renovables.length,
   fuentes_distintas: todasLasFuentes.size,
   emplazamientos_con_incertidumbres: sitios.filter((s) => s.incertidumbres.length > 0).length,
+  sin_region: sitios.filter((s) => !s.ubicacion.ccaa).length,
 }
 
 const escribir = (nombre, datos, publico = true) => {

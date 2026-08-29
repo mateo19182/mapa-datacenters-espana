@@ -1,0 +1,84 @@
+id: novagrid-elche-parque-empresarial-e49
+nombre: "Novagrid Hub — Elche Parque Empresarial (sector E-49, Torrellano)"
+alias:
+  - "Centro de datos de Novagrid en Elche"
+tipo: campus
+operador: "Novagrid Hub"
+propietario: "Novagrid Hub"
+modelo: desconocido
+
+ubicacion:
+  municipio: "Elx / Elche"
+  provincia: "Alicante"
+  ccaa: "Comunitat Valenciana"
+  direccion: "Sector E-49, ampliación de Elche Parque Empresarial, pedanía de Torrellano/Saladas"
+  lat: 38.2896
+  lon: -0.5825
+  precision: aproximada
+  fuentes: [src-1, src-2, src-3]
+
+estado: anunciado
+estado_detalle: >-
+  Novagrid Hub fue la única licitadora del lote de suelo público de Pimesa en la ampliación
+  de Elche Parque Empresarial (siete parcelas, 102.351 m² brutos). Preadjudicación el
+  09/01/2026 por 3,6 millones de euros. El desarrollo depende de que culmine la
+  reparcelación del sector E-49, aprobada por el consejo de Pimesa el 16/07/2026 y pendiente
+  de exposición pública; las obras de urbanización del sector se licitan por 37,5 millones
+  con adjudicación esperada en el primer trimestre de 2027. Novagrid asume la urbanización
+  de su suelo.
+estado_fuentes: [src-1, src-2, src-3]
+
+conexion_electrica:
+  subestacion: "Subestación eléctrica propia prevista por el promotor dentro del sector E-49"
+  fuentes: [src-3]
+
+superficie_parcela_m2: 102351
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      Ninguna fuente publica potencia eléctrica ni superficie construida. Solo consta que
+      «requerirá de un gran suministro eléctrico» y que la subestación propia del proyecto
+      podría alimentar al resto del sector, según el gerente de Pimesa.
+    fuentes: [src-3]
+  - campo: operador
+    descripcion: >-
+      Las fuentes describen a Novagrid Hub como «dedicada a centros de gestión de datos» sin
+      aportar más información societaria. No consta si operará el centro o solo lo
+      promoverá («compañía encargada de construir el inmueble»).
+    fuentes: [src-1, src-3]
+  - campo: precio_suelo
+    descripcion: >-
+      La oferta se publicó primero como 2,9 millones de euros (precio de tasación,
+      05/12/2025) y después como 3,6 millones en la clasificación de ofertas (13/01/2026).
+      No es una inversión del proyecto sino el precio del suelo.
+    fuentes: [src-1, src-2]
+
+confianza: baja
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://alicanteplaza.es/alicanteplaza/elcheplaza/bomba-economica-pld-space-puja-por-los-500000-metros-del-porta-delx-y-un-centro-de-datos-por-100000-en-torrellano"
+    titulo: "'Bomba' económica: PLD Space puja por los 500.000 metros del Porta d'Elx y un centro de datos por 100.000 en Torrellano"
+    editor: "Alicante Plaza"
+    tipo: prensa_general
+    fecha_publicacion: "2025-12-05"
+    fecha_consulta: "2026-08-29"
+    cita: "En cuanto a la ampliación del Parque Empresarial, el nuevo sector E-49, la zona de ampliación ya está en la pedanía de Saladas. Son siete parcelas de 102.351 metros y un valor de 2,9 millones. [...] En cuanto a la compañía, es Novagrid Hub, está centrada en la gestión de datos"
+  - id: src-2
+    url: "https://alicanteplaza.es/alicanteplaza/elcheplaza/pimesa-preadjudica-en-elche-el-suelo-a-pld-space-en-el-porta-delx-y-a-novagrid-en-el-parque-empresarial"
+    titulo: "Pimesa preadjudica en Elche el suelo a PLD Space en el Porta d'Elx y a Novagrid en el Parque Empresarial"
+    editor: "Alicante Plaza"
+    tipo: prensa_general
+    fecha_publicacion: "2026-01-13"
+    fecha_consulta: "2026-08-29"
+    cita: "En este caso, PLD Space por 2,8 millones de euros, y Novagrid por 3,6 millones de euros. [...] En cuanto a Novagrid Hub, dedicada a centros de gestión de datos. Su terreno son siete parcelas de 102.351 metros, con la parcela más grande de 53.700 metros."
+  - id: src-3
+    url: "https://alicanteplaza.es/alicanteplaza/elcheplaza/elche-parque-empresarial-ya-tiene-lista-su-reparcelacion-obras-a-principios-de-2027-por-375-millones"
+    titulo: "Elche Parque Empresarial ya tiene su propuesta de reparcelación: obras en 2027 por 37,5 millones"
+    editor: "Alicante Plaza"
+    tipo: prensa_general
+    fecha_publicacion: "2026-07-16"
+    fecha_consulta: "2026-08-29"
+    cita: "En el caso del centro de datos, por ejemplo, el gerente del medio municipal, Antonio Martínez, añadía que dado que requerirá de un gran suministro eléctrico, ha ahorrado al proyecto de urbanización la instalación de centros de transformación, porque será suficiente la subestación eléctrica de la compañía."

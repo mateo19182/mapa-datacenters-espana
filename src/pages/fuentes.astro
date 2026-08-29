@@ -28,6 +28,9 @@ const porDominio = [...fuentes.reduce((m, f) => {
   .sort((a, b) => b.n - a.n)
 
 const total = fuentes.length
+const rotas = fuentes.filter((f) => f.enlace?.clase === 'rota')
+const bloqueadas = fuentes.filter((f) => f.enlace?.clase === 'bloqueada')
+const comprobadas = fuentes.filter((f) => f.enlace).length
 ---
 
 <Base
@@ -41,6 +44,14 @@ const total = fuentes.length
       ficha de los emplazamientos que documenta. Cuando dos fuentes se contradicen, ambas quedan
       registradas y la discrepancia se hace visible en la ficha en lugar de resolverse en silencio.
     </p>
+
+    {comprobadas > 0 && (
+      <p class="pequeno silencio">
+        De las {comprobadas} referencias comprobadas automáticamente, {rotas.length} devuelven un
+        enlace roto y {bloqueadas.length} rechazan al comprobador automático pero se abren con
+        normalidad en un navegador. La comprobación se repite cada semana.
+      </p>
+    )}
 
     <div class="columnas">
       <section>
@@ -97,7 +108,11 @@ const total = fuentes.length
                 <a href={f.url} rel="noopener nofollow" target="_blank">{f.titulo}</a>
                 <span class="pequeno silencio"><br />{f.editor ? `${f.editor} · ` : ''}<span class="mono">{dominio(f.url)}</span></span>
               </td>
-              <td class="pequeno">{FUENTE_ETIQUETA[f.tipo]}</td>
+              <td class="pequeno">
+                {FUENTE_ETIQUETA[f.tipo]}
+                {f.enlace?.clase === 'rota' && <span class="marca-enlace rota" title={`Enlace roto (${f.enlace.motivo})`}>enlace roto</span>}
+                {f.enlace?.clase === 'bloqueada' && <span class="marca-enlace bloqueada" title={`Rechaza al comprobador automático (${f.enlace.motivo}); se abre en un navegador`}>antibot</span>}
+              </td>
               <td class="pequeno">{fechaLegible(f.fecha_publicacion) ?? <span class="silencio">sin fecha</span>}</td>
               <td class="pequeno">
                 {f.usos.map((id, i) => (
@@ -192,6 +207,25 @@ const total = fuentes.length
   .controles input {
     flex: 1;
     max-width: 26rem;
+  }
+
+  .marca-enlace {
+    display: inline-block;
+    margin-left: 0.35rem;
+    font-size: 0.68rem;
+    padding: 0.05em 0.4em;
+    border-radius: 999px;
+    border: 1px solid currentColor;
+    white-space: nowrap;
+    cursor: help;
+  }
+
+  .rota {
+    color: var(--cancelado);
+  }
+
+  .bloqueada {
+    color: var(--tinta-3);
   }
 
   #tabla {

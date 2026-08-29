@@ -18,7 +18,7 @@ estado_detalle: "Alianza anunciada en julio de 2025 y cerrada en noviembre de 20
 fecha_firma: "2025-11-26"
 adicionalidad: no_consta
 clusters_relacionados: [madrid]
-cpds_relacionados: []
+cpds_relacionados: [echelon-iberdrola-madrid-sur]
 cpd_it_mw: 144
 cpd_conexion_mw: 230
 cpd_nota: "144 MW de procesamiento y 230 MW de conexión son magnitudes de demanda del CPD, no de generación."
