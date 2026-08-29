@@ -28,7 +28,7 @@ jobs:
       - name: Comprobar las fuentes registradas
         id: revision
         continue-on-error: true
-        run: node scripts/check-updates.mjs --dias "${{ inputs.dias || 180 }}"
+        run: node scripts/check-updates.mjs --sellar --dias "${{ inputs.dias || 180 }}"
 
       # Las propuestas pendientes se integran solo si no hay ningún conflicto.
       - name: Integrar propuestas sin conflicto

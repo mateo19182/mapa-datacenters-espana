@@ -35,9 +35,10 @@
   "visto": "2026-08-29"
  },
  "https://www.peeringdb.com/fac/5748": {
-  "hash": "d1b928431c4fa46b",
+  "hash": "8bf398eda75b811b",
   "longitud": 1903,
-  "visto": "2026-08-29"
+  "visto": "2026-08-29",
+  "anterior": "d1b928431c4fa46b"
  },
  "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1425305720606": {
   "hash": "bin:?",
@@ -55,9 +56,10 @@
   "visto": "2026-08-29"
  },
  "https://www.peeringdb.com/fac/14234": {
-  "hash": "631ae8fac291b37c",
+  "hash": "18fcdf52180faf34",
   "longitud": 1978,
-  "visto": "2026-08-29"
+  "visto": "2026-08-29",
+  "anterior": "631ae8fac291b37c"
  },
  "https://www.ocolo.io/data-centers/spain/comunidad-de-madrid/alcala-de-henares/": {
   "ultimo_fallo": "2026-08-29",
@@ -85,9 +87,10 @@
   "visto": "2026-08-29"
  },
  "https://nominatim.openstreetmap.org/search?q=Parc+de+l%27Alba%2C+Cerdanyola+del+Vall%C3%A8s&format=json&limit=3": {
-  "hash": "0f90edea58ddb87c",
+  "hash": "1a957ad15183e309",
   "longitud": 994,
-  "visto": "2026-08-29"
+  "visto": "2026-08-29",
+  "anterior": "0f90edea58ddb87c"
  },
  "https://www.euskadi.eus/gobierno-vasco/-/noticia/2023/el-lehendakari-asiste-colocacion-primera-piedra-adi-data-center-gran-centro-datos-zona-atlantica/": {
   "hash": "e6094494b37d830a",
@@ -115,9 +118,10 @@
   "visto": "2026-08-29"
  },
  "https://www.xatakamovil.com/conectividad/mapa-cables-submarinos-que-dan-internet-a-espana-hay-dos-protagonistas-andalucia-tremendo-nudo-canarias": {
-  "hash": "a02da6c891b4c605",
-  "longitud": 10596,
-  "visto": "2026-08-29"
+  "hash": "9587a5dfbd202ba5",
+  "longitud": 10600,
+  "visto": "2026-08-29",
+  "anterior": "a02da6c891b4c605"
  },
  "https://www.ptgaraia.eus/es/adi-data-center-euskadi-adjudica-a-krean-el-proyecto-del-nuevo-edificio-de-centro-de-procesamiento-de-datos-en-ptgaraia/": {
   "hash": "7d7ac6e50614ce50",
@@ -155,10 +159,10 @@
   "visto": "2026-08-29"
  },
  "https://baxtel.com/data-center/ark-dc-barcelona": {
-  "hash": "60dd4b8a8e338ed2",
-  "longitud": 11287,
+  "hash": "8ec885d33bd30c0b",
+  "longitud": 11281,
   "visto": "2026-08-29",
-  "anterior": "c1179f31250f1f4f"
+  "anterior": "60dd4b8a8e338ed2"
  },
  "https://catalonia.com/w/aq-compute-has-started-the-construction-of-a-new-data-center-in-barcelona": {
   "hash": "bc9ccecf3760f121",
@@ -166,15 +170,16 @@
   "visto": "2026-08-29"
  },
  "https://nominatim.openstreetmap.org/search?q=Logro%C3%B1o%2C+La+Rioja&format=json&limit=1": {
-  "hash": "642de613cd139e97",
+  "hash": "c8968bce225948f3",
   "longitud": 422,
-  "visto": "2026-08-29"
+  "visto": "2026-08-29",
+  "anterior": "642de613cd139e97"
  },
  "https://baxtel.com/data-center/atlasedge-barcelona-2": {
-  "hash": "7a23ff7b352e6d0a",
-  "longitud": 11390,
+  "hash": "5d9fd8f722af8f0e",
+  "longitud": 11385,
   "visto": "2026-08-29",
-  "anterior": "0dccf6032a6d91ad"
+  "anterior": "7a23ff7b352e6d0a"
  },
  "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1454107610505": {
   "hash": "bin:?",
@@ -257,10 +262,10 @@
   "visto": "2026-08-29"
  },
  "https://baxtel.com/data-center/barcelona-cls": {
-  "hash": "f7711e2bddafba01",
-  "longitud": 11058,
+  "hash": "d7eb725585e6a712",
+  "longitud": 11056,
   "visto": "2026-08-29",
-  "anterior": "9aa6e8b3ce8919a4"
+  "anterior": "f7711e2bddafba01"
  },
  "https://www.datacentermarket.es/proyectos/bbva-primer-banco-en-europa-con-un-cpd-tier-iv-gold-en-sostenibilidad-operativa/": {
   "hash": "1c583a030443a00f",
@@ -278,10 +283,10 @@
   "visto": "2026-08-29"
  },
  "https://www.elespanol.com/aragon/actualidad/zaragoza/20260512/box2bit-libera-parcelas-fallido-centro-datos-carinena-ampliacion-industria/1003744242872_0.html": {
-  "hash": "2f1cf104a00b9c4b",
-  "longitud": 8235,
+  "hash": "092be6d4b99ef5a3",
+  "longitud": 7986,
   "visto": "2026-08-29",
-  "anterior": "e4e4e9eac1a57a8c"
+  "anterior": "2f1cf104a00b9c4b"
  },
  "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1447159090404": {
   "hash": "bin:?",
@@ -299,9 +304,10 @@
   "visto": "2026-08-29"
  },
  "https://nominatim.openstreetmap.org/search?q=Pla%C3%A7a+Eusebi+G%C3%BCell%2C+Barcelona&format=json&limit=3": {
-  "hash": "eda789148f0e3f48",
+  "hash": "b0c1cea4eb9f8f61",
   "longitud": 564,
-  "visto": "2026-08-29"
+  "visto": "2026-08-29",
+  "anterior": "eda789148f0e3f48"
  },
  "https://www.datacenterdynamics.com/es/noticias/cartagena-se-postula-como-nuevo-hub-digital-con-un-centro-de-datos-refrigerado-con-gas-natural-licuado/": {
   "ultimo_fallo": "2026-08-29",
@@ -309,9 +315,10 @@
   "clase": "bloqueada"
  },
  "https://observatorioedc.com/directorio/": {
-  "hash": "1b34623f392b5a93",
-  "longitud": 25763,
-  "visto": "2026-08-29"
+  "hash": "62b87f21c2f737cf",
+  "longitud": 25762,
+  "visto": "2026-08-29",
+  "anterior": "1b34623f392b5a93"
  },
  "https://www.xunta.gal/es/notas-de-prensa/-/nova/015782/construccion-del-nuevo-cesga-sera-primero-proyecto-estrategico-investigacion": {
   "hash": "19d7618775d077c4",
@@ -319,9 +326,10 @@
   "visto": "2026-08-29"
  },
  "https://www.elcorreogallego.es/santiago/2026/03/03/supercomputador-cesga-xunta-multiplica-capacidad-127503141.html": {
-  "hash": "168a0c923fa514ab",
-  "longitud": 9353,
-  "visto": "2026-08-29"
+  "hash": "dd2c32b569162003",
+  "longitud": 9355,
+  "visto": "2026-08-29",
+  "anterior": "168a0c923fa514ab"
  },
  "https://www.comvive.es/blog/nace-sevilla-datacenter-el-mayor-centro-de-datos-de-andalucia/": {
   "hash": "2d9d2a2a09b779e6",
@@ -334,14 +342,16 @@
   "visto": "2026-08-29"
  },
  "https://andaluciaeconomica.com/comvive-triplica-la-capacidad-de-su-data-center-con-una-inversion-100-andaluza-y-sostenible/": {
-  "hash": "4b0c7dd4302f162f",
-  "longitud": 8221,
-  "visto": "2026-08-29"
+  "hash": "2b3a25c98a438e42",
+  "longitud": 8206,
+  "visto": "2026-08-29",
+  "anterior": "4b0c7dd4302f162f"
  },
  "https://mercados21.es/empresas/sevilla-datacenter-se-consolida-como-el-centro-de-datos-mas-importante-de-andalucia/": {
-  "hash": "04c6f50333f20fbd",
+  "hash": "349854967c40644d",
   "longitud": 10880,
-  "visto": "2026-08-29"
+  "visto": "2026-08-29",
+  "anterior": "04c6f50333f20fbd"
  },
  "https://www.peeringdb.com/api/fac?city=Barcelona": {
   "hash": "c73fce8db38ae9a8",
@@ -359,10 +369,10 @@
   "clase": "bloqueada"
  },
  "https://www.peeringdb.com/fac/13204": {
-  "hash": "673187e78684f360",
+  "hash": "6428c435b280016c",
   "longitud": 1887,
   "visto": "2026-08-29",
-  "anterior": "ea1ae9546f1f5cd4"
+  "anterior": "673187e78684f360"
  },
  "https://www.ocolo.io/data-centers/spain/comunidad-de-madrid/": {
   "ultimo_fallo": "2026-08-29",
@@ -370,9 +380,10 @@
   "clase": "bloqueada"
  },
  "https://www.peeringdb.com/fac/10645": {
-  "hash": "c224c57284c9e8c2",
+  "hash": "5cf02272e586023c",
   "longitud": 2484,
-  "visto": "2026-08-29"
+  "visto": "2026-08-29",
+  "anterior": "c224c57284c9e8c2"
  },
  "https://www.datacentermarket.es/mercado/data4-invierte-530-millones-en-un-campus-data-center-de-80-mw-de-potencia/": {
   "hash": "cac376cbdf264c9c",
@@ -380,10 +391,10 @@
   "visto": "2026-08-29"
  },
  "https://www.data4group.com/es/centros-de-datos-en-espana-2/": {
-  "hash": "e1f9dea1ee07aec8",
-  "longitud": 6192,
+  "hash": "382a1b172e68c079",
+  "longitud": 6191,
   "visto": "2026-08-29",
-  "anterior": "c1be3dff33d5205d"
+  "anterior": "e1f9dea1ee07aec8"
  },
  "https://bebeez.eu/2026/08/21/vapat-enters-the-data-center-market-with-a-160mw-project-in-valladolid/": {
   "hash": "04af89e137f7ddf1",
@@ -391,9 +402,10 @@
   "visto": "2026-08-29"
  },
  "https://nominatim.openstreetmap.org/search?q=Torrelobat%C3%B3n%2C+Valladolid&format=json&limit=1": {
-  "hash": "fffb6b9b74056217",
+  "hash": "54488b58105a72c1",
   "longitud": 461,
-  "visto": "2026-08-29"
+  "visto": "2026-08-29",
+  "anterior": "fffb6b9b74056217"
  },
  "https://www.digitalrealty.com/data-centers/emea/madrid/mad1": {
   "hash": "af8286b6d20c4369",
@@ -426,30 +438,34 @@
   "visto": "2026-08-29"
  },
  "https://www.ejeprime.com/industrial/digital-realty-invertira-500-millones-en-dos-nuevos-data-center-en-madrid-y-barcelona": {
-  "hash": "f6d96e9259e0df72",
+  "hash": "27de3c62111e9c0d",
   "longitud": 11546,
   "visto": "2026-08-29",
-  "anterior": "293ea7d3462d25aa"
+  "anterior": "f6d96e9259e0df72"
  },
  "https://metropoliabierta.elespanol.com/economia/20250924/hub-digital-mediterraneo-materializa-sant-adria-nuevo-centro-datos/1003742691456_0.html": {
-  "hash": "4de060e054f3574f",
-  "longitud": 8055,
-  "visto": "2026-08-29"
+  "hash": "035e01ce7edbd470",
+  "longitud": 8037,
+  "visto": "2026-08-29",
+  "anterior": "4de060e054f3574f"
  },
  "https://www.peeringdb.com/fac/130": {
-  "hash": "d50c3ea2b145babc",
+  "hash": "36294c8f009f794d",
   "longitud": 7715,
-  "visto": "2026-08-29"
+  "visto": "2026-08-29",
+  "anterior": "d50c3ea2b145babc"
  },
  "https://metropoliabierta.elespanol.com/economia/20260519/digital-realty-abre-centro-datos-chimeneas-sant-adria-proyecta-hub-digital/1003742762940_0.html": {
-  "hash": "83e0b87e30cdcbb6",
-  "longitud": 8220,
-  "visto": "2026-08-29"
+  "hash": "974b08576721ae89",
+  "longitud": 8202,
+  "visto": "2026-08-29",
+  "anterior": "83e0b87e30cdcbb6"
  },
  "https://brainsre.news/digital-realty-adquiere-suelo-madrid-data-center/": {
-  "hash": "e59ab59c1427581e",
-  "longitud": 10876,
-  "visto": "2026-08-29"
+  "hash": "04e79e36f9953e1c",
+  "longitud": 10877,
+  "visto": "2026-08-29",
+  "anterior": "e59ab59c1427581e"
  },
  "https://query.wikidata.org/sparql": {
   "ultimo_fallo": "2026-08-29",
@@ -462,9 +478,10 @@
   "visto": "2026-08-29"
  },
  "https://www.levante-emv.com/economia/2025/01/28/centro-datos-picassent-consell-anuncia-complejo-centros-datos-113786298.html": {
-  "hash": "56eb6c9faf8bd119",
-  "longitud": 9712,
-  "visto": "2026-08-29"
+  "hash": "2cae00dec1d18be9",
+  "longitud": 9442,
+  "visto": "2026-08-29",
+  "anterior": "56eb6c9faf8bd119"
  },
  "https://www.datacentermarket.es/sostenibilidad/digital-valley-la-apuesta-de-la-comunidad-valenciana-por-los-data-centers/": {
   "hash": "0f9a3d666864b576",
@@ -472,15 +489,16 @@
   "visto": "2026-08-29"
  },
  "https://www.lasprovincias.es/economia/megacentro-datos-picassent-acceso-potencia-exigida-tras-20260203193335-nt.html": {
-  "hash": "faff5cf4aeacf462",
-  "longitud": 12249,
-  "visto": "2026-08-29"
+  "hash": "b8b22d73d857ee0a",
+  "longitud": 12356,
+  "visto": "2026-08-29",
+  "anterior": "faff5cf4aeacf462"
  },
  "https://baxtel.com/data-center/digital-realty-barcelona-bcn1": {
-  "hash": "3a32582c80e5ca5d",
-  "longitud": 12472,
+  "hash": "a2a486e251a36c82",
+  "longitud": 12479,
   "visto": "2026-08-29",
-  "anterior": "9b4787cae15669c7"
+  "anterior": "3a32582c80e5ca5d"
  },
  "https://www.datacenterdynamics.com/es/noticias/digital-valley-reabre-el-debate-sobre-sostenibilidad-de-los-data-centers-en-valencia/": {
   "ultimo_fallo": "2026-08-29",
@@ -488,9 +506,10 @@
   "clase": "bloqueada"
  },
  "https://www.peeringdb.com/fac/15721": {
-  "hash": "8c35644645ad0ac3",
+  "hash": "5683912c8bc060bf",
   "longitud": 2168,
-  "visto": "2026-08-29"
+  "visto": "2026-08-29",
+  "anterior": "8c35644645ad0ac3"
  },
  "https://www.elsaltodiario.com/valencia/organizaciones-sociales-ecologistas-denuncian-impactos-del-futuro-data-center-picassent": {
   "hash": "44d9b1f40e088340",
@@ -513,14 +532,16 @@
   "visto": "2026-08-29"
  },
  "https://www.idealista.com/news/inmobiliario/activos-alternativos/2026/06/11/901439-el-municipio-de-mora-toledo-acogera-un-data-center-tras-una-inversion": {
-  "hash": "15e941fa5c4e7abc",
-  "longitud": 15595,
-  "visto": "2026-08-29"
+  "hash": "953fc584a47c1393",
+  "longitud": 15549,
+  "visto": "2026-08-29",
+  "anterior": "15e941fa5c4e7abc"
  },
  "https://www.elconciso.es/empresas/data-centers-andalucia-edgemode-goenergy-sierradc_0_2006448488.html": {
-  "hash": "a5e50a21f6944d8f",
-  "longitud": 8120,
-  "visto": "2026-08-29"
+  "hash": "52d93b58dde03bba",
+  "longitud": 8129,
+  "visto": "2026-08-29",
+  "anterior": "a5e50a21f6944d8f"
  },
  "https://www.pv-tech.org/edgemode-build-300mw-1-2gwh-solar-plus-storage-portfolio-spanish-data-centres/": {
   "hash": "184523d3d939dab6",
@@ -533,9 +554,10 @@
   "visto": "2026-08-29"
  },
  "https://nominatim.openstreetmap.org/search?q=Mora%2C+Toledo&format=json&limit=1": {
-  "hash": "f3dbaa55f67bbac4",
+  "hash": "dc361003bbbc3fd0",
   "longitud": 441,
-  "visto": "2026-08-29"
+  "visto": "2026-08-29",
+  "anterior": "f3dbaa55f67bbac4"
  },
  "https://www.equinix.com/data-centers/europe-colocation/spain-colocation/madrid-data-centers/md6": {
   "hash": "a3e47fadd4ff305e",
@@ -563,10 +585,10 @@
   "visto": "2026-08-29"
  },
  "https://baxtel.com/data-center/equinix-md3x": {
-  "hash": "695e70c14635b6d3",
-  "longitud": 14878,
+  "hash": "bd4f1b4a6ea60ce0",
+  "longitud": 14903,
   "visto": "2026-08-29",
-  "anterior": "15f5f77e8e06a6ad"
+  "anterior": "695e70c14635b6d3"
  },
  "https://www.equinix.com/data-centers/europe-colocation/spain-colocation/madrid-data-centers/md1": {
   "hash": "be931e74055f8a64",
@@ -574,15 +596,16 @@
   "visto": "2026-08-29"
  },
  "https://baxtel.com/data-center/equinix-barcelona-ba1": {
-  "hash": "5adc711965c7915f",
-  "longitud": 11245,
+  "hash": "53aaf9a03cf76064",
+  "longitud": 11244,
   "visto": "2026-08-29",
-  "anterior": "4b0d0c589a4c3d99"
+  "anterior": "5adc711965c7915f"
  },
  "https://www.peeringdb.com/fac/179": {
-  "hash": "cde2915ec92dc459",
+  "hash": "84d1a48fb14229f6",
   "longitud": 2445,
-  "visto": "2026-08-29"
+  "visto": "2026-08-29",
+  "anterior": "cde2915ec92dc459"
  },
  "https://www.espaciorack.com/": {
   "hash": "ad8f5e5171846e20",
@@ -595,14 +618,16 @@
   "visto": "2026-08-29"
  },
  "https://www.peeringdb.com/fac/4192": {
-  "hash": "4448e0fdf0d7d8f0",
+  "hash": "0f6cc728c09cb02e",
   "longitud": 1914,
-  "visto": "2026-08-29"
+  "visto": "2026-08-29",
+  "anterior": "4448e0fdf0d7d8f0"
  },
  "https://www.peeringdb.com/fac/15526": {
-  "hash": "53e756be43f04016",
+  "hash": "f034243a9e913458",
   "longitud": 2095,
-  "visto": "2026-08-29"
+  "visto": "2026-08-29",
+  "anterior": "53e756be43f04016"
  },
  "https://www.espanix.net/en/": {
   "hash": "d422c5e14820452d",
@@ -610,9 +635,10 @@
   "visto": "2026-08-29"
  },
  "https://www.peeringdb.com/fac/15527": {
-  "hash": "ae41efac6447eba1",
+  "hash": "e578a0b4af671a76",
   "longitud": 2095,
-  "visto": "2026-08-29"
+  "visto": "2026-08-29",
+  "anterior": "ae41efac6447eba1"
  },
  "https://www.peeringdb.com/api/fac?country=ES&limit=400": {
   "hash": "004add808544b9c4",
@@ -630,39 +656,46 @@
   "visto": "2026-08-29"
  },
  "https://www.elespanol.com/castilla-y-leon/region/zamora/20260829/dilema-monfarracinos-megacentro-datos-empleo-inversion-ruidos-irreversible-impacto-ambiental/1003744364453_0.html": {
-  "hash": "7ed15f1e64060543",
-  "longitud": 12877,
-  "visto": "2026-08-29"
+  "hash": "8c7388d6ae98f3ed",
+  "longitud": 12563,
+  "visto": "2026-08-29",
+  "anterior": "7ed15f1e64060543"
  },
  "https://murciaplaza.com/murciaplaza/empresas-murcia/murcia-acogera-su-primer-macroproyecto-tecnologico-fotones-impulsa-un-centro-de-datos-en-espinardo-que-costara-1150-millones-de-euros": {
-  "hash": "042899753cfe1fcd",
-  "longitud": 8158,
-  "visto": "2026-08-29"
+  "hash": "b46aceef706462ce",
+  "longitud": 8177,
+  "visto": "2026-08-29",
+  "anterior": "042899753cfe1fcd"
  },
  "https://murciaplaza.com/murciaplaza/empresas-murcia/la-inversion-de-66900-millones-de-euros-en-centros-de-datos-pasa-de-largo-por-la-region-de-murcia": {
-  "hash": "1d28a90a4f1c3615",
-  "longitud": 6495,
-  "visto": "2026-08-29"
+  "hash": "87c6b42901b8b8f6",
+  "longitud": 6514,
+  "visto": "2026-08-29",
+  "anterior": "1d28a90a4f1c3615"
  },
  "https://www.peeringdb.com/fac/121": {
-  "hash": "4bd4915ff2ed8fb0",
+  "hash": "552a5c689bff432d",
   "longitud": 3289,
-  "visto": "2026-08-29"
+  "visto": "2026-08-29",
+  "anterior": "4bd4915ff2ed8fb0"
  },
  "https://nominatim.openstreetmap.org/search?q=Monfarracinos%2C+Zamora&format=json&limit=2": {
-  "hash": "ead1dc40eeb61d6d",
+  "hash": "4ce4204698736e97",
   "longitud": 452,
-  "visto": "2026-08-29"
+  "visto": "2026-08-29",
+  "anterior": "ead1dc40eeb61d6d"
  },
  "https://www.cope.es/emisoras/extremadura/noticias/extremadura-impulsa-lusitanus-centro-datos-ia-inversion-2-800-millones-20260213_3307782.html": {
-  "hash": "b13433b94ee30ca6",
-  "longitud": 7119,
-  "visto": "2026-08-29"
+  "hash": "22a00a7e062bce98",
+  "longitud": 7150,
+  "visto": "2026-08-29",
+  "anterior": "b13433b94ee30ca6"
  },
  "https://nominatim.openstreetmap.org/search?q=Expacio+M%C3%A9rida&format=json&limit=2": {
-  "hash": "2682e4d58a49e67d",
+  "hash": "de0a54d23a241380",
   "longitud": 951,
-  "visto": "2026-08-29"
+  "visto": "2026-08-29",
+  "anterior": "2682e4d58a49e67d"
  },
  "https://www.elcritic.cat/reportatges/oportunitat-o-sacrifici-mora-la-nova-busca-convertir-se-en-epicentre-europeu-de-la-intel-ligencia-artificial-263108": {
   "ultimo_fallo": "2026-08-29",
@@ -680,10 +713,10 @@
   "visto": "2026-08-29"
  },
  "https://www.peeringdb.com/fac/4882": {
-  "hash": "e2922798a8bdd902",
+  "hash": "ef482a574e5ea7b5",
   "longitud": 2502,
   "visto": "2026-08-29",
-  "anterior": "4486687c94cc6bf7"
+  "anterior": "e2922798a8bdd902"
  },
  "https://www.grupotsk.com/en/tsk-seleccionada-por-go-energy-para-un-campus-ia-verde-hyperscale-en-huelva/": {
   "ultimo_fallo": "2026-08-29",
@@ -706,14 +739,16 @@
   "visto": "2026-08-29"
  },
  "https://www.huelva24.com/provincia/condado-campina/1000-empleos-inversion-millonaria-campus-ia-cuenta-20260219190947-nth.html": {
-  "hash": "9f2f5f8847cc8eb1",
-  "longitud": 9768,
-  "visto": "2026-08-29"
+  "hash": "8ea9e46cb47608bc",
+  "longitud": 9870,
+  "visto": "2026-08-29",
+  "anterior": "9f2f5f8847cc8eb1"
  },
  "https://www.canal21ebre.com/gigafactoria-ia-mora-nova-2028/": {
-  "hash": "09452cc79f5a7679",
-  "longitud": 9904,
-  "visto": "2026-08-29"
+  "hash": "dcd76e4ffc166b71",
+  "longitud": 9909,
+  "visto": "2026-08-29",
+  "anterior": "09452cc79f5a7679"
  },
  "https://nominatim.openstreetmap.org/search?q=Albelda+de+Iregua%2C+La+Rioja&format=json&limit=1": {
   "hash": "a99b95ff3b7935de",
@@ -721,10 +756,10 @@
   "visto": "2026-08-29"
  },
  "https://www.eldiario.es/la-rioja/rioja-sera-referente-inteligencia-artificial-asociada-espanol-centro-datos-albelda-iregua_1_12185543.html": {
-  "hash": "21ba95292c9a4ea0",
-  "longitud": 15148,
+  "hash": "140de1b63b333230",
+  "longitud": 15683,
   "visto": "2026-08-29",
-  "anterior": "00e4c7f1a12fbf35"
+  "anterior": "21ba95292c9a4ea0"
  },
  "https://www.redestelecom.es/operadoras/templus-se-queda-con-cpd-de-aire-en-lisboa-madrid-y-valencia/": {
   "hash": "cb6675565d981200",
@@ -732,9 +767,10 @@
   "visto": "2026-08-29"
  },
  "https://www.cantabriaeconomica.com/empresas/google-instalara-un-centro-de-transmision-para-su-cable-submarino-en-una-parcela-del-pctcan/": {
-  "hash": "f3db95676f689e08",
-  "longitud": 17966,
-  "visto": "2026-08-29"
+  "hash": "9966304f8d49cf14",
+  "longitud": 17967,
+  "visto": "2026-08-29",
+  "anterior": "f3db95676f689e08"
  },
  "https://www.vidaeconomica.com/2022/05/grupo-aire-en-malaga-data-center/": {
   "hash": "3f145127724cf631",
@@ -752,21 +788,22 @@
   "visto": "2026-08-29"
  },
  "https://www.peeringdb.com/fac/13938": {
-  "hash": "ba2812929f51fc4c",
+  "hash": "a3185073ef3c0da7",
   "longitud": 2430,
-  "visto": "2026-08-29"
+  "visto": "2026-08-29",
+  "anterior": "ba2812929f51fc4c"
  },
  "https://baxtel.com/data-center/gtr-barcelona": {
-  "hash": "b72f6ded77f2765a",
-  "longitud": 11037,
+  "hash": "243a691a804b02e2",
+  "longitud": 11045,
   "visto": "2026-08-29",
-  "anterior": "7627ee72a712224a"
+  "anterior": "b72f6ded77f2765a"
  },
  "https://baxtel.com/data-center/hscale-barcelona": {
-  "hash": "8e10bee1356d5ec6",
+  "hash": "99a0aa4907dfbd9f",
   "longitud": 11686,
   "visto": "2026-08-29",
-  "anterior": "f2812c92d2ce767a"
+  "anterior": "8e10bee1356d5ec6"
  },
  "https://www.pta.es/en/noticias/grupo-aire-invests-25-million-euros-in-its-new-dpc-in-malaga/": {
   "hash": "2b9489b769893fb3",
@@ -774,20 +811,22 @@
   "visto": "2026-08-29"
  },
  "https://www.elespanol.com/eldigitalcastillalamancha/economia/empresas/20260819/veto-gobierno-macroplanta-aceca-no-frena-iberdrola-proyecta-gran-centro-datos-toledo/1003744357801_0.html": {
-  "hash": "afad931148a6b11b",
-  "longitud": 10372,
+  "hash": "b35ae7db06bda53d",
+  "longitud": 10123,
   "visto": "2026-08-29",
-  "anterior": "68df4fd370b459bc"
+  "anterior": "afad931148a6b11b"
  },
  "https://www.peeringdb.com/fac/1993": {
-  "hash": "ee5542f3233e2bf6",
+  "hash": "cdb89a7b35f173eb",
   "longitud": 1897,
-  "visto": "2026-08-29"
+  "visto": "2026-08-29",
+  "anterior": "ee5542f3233e2bf6"
  },
  "https://www.elespanol.com/invertia/empresas/energia/20251126/nace-echelon-iberdrola-digital-infra-invertir-millones-euros-centros-datos-espana/1003744030247_0.html": {
-  "hash": "ef78763769b9e267",
-  "longitud": 9315,
-  "visto": "2026-08-29"
+  "hash": "b5cf3adb5a31631a",
+  "longitud": 9001,
+  "visto": "2026-08-29",
+  "anterior": "ef78763769b9e267"
  },
  "https://www.datacentermarket.es/datacenter-infrastructure/ingenostrum-presenta-un-nuevo-data-center-en-extremadura-ubicado-en-badajoz/": {
   "hash": "13a58bccdb40afc7",
@@ -800,14 +839,16 @@
   "visto": "2026-08-29"
  },
  "https://www.rankia.com/blog/bolsa-al-dia/7317729-centros-datos-espana-boom-66-900-millones-euros": {
-  "hash": "6a62e2a47001e055",
-  "longitud": 26640,
-  "visto": "2026-08-29"
+  "hash": "9f277eea55cd723d",
+  "longitud": 26136,
+  "visto": "2026-08-29",
+  "anterior": "6a62e2a47001e055"
  },
  "https://nominatim.openstreetmap.org/search?q=Plataforma+Log%C3%ADstica+del+Suroeste+Europeo%2C+Badajoz&format=json&limit=1": {
-  "hash": "9be2eba0b546f9af",
+  "hash": "9458c0d63525f1ad",
   "longitud": 512,
-  "visto": "2026-08-29"
+  "visto": "2026-08-29",
+  "anterior": "9be2eba0b546f9af"
  },
  "https://iren.com/resources/news/nostrum-announcement": {
   "hash": "6660a1098882dfb9",
@@ -815,15 +856,16 @@
   "visto": "2026-08-29"
  },
  "https://www.regiondigital.com/noticias/caceres-y-provincia/414582-el-centro-de-datos-cc-green-sera-el-motor-de-la-ampliacion-de-capellanias-ii-en-caceres.html": {
-  "hash": "96d01796810cae2c",
+  "hash": "64f057d961cf3e5a",
   "longitud": 8140,
   "visto": "2026-08-29",
-  "anterior": "d097afe978995dc5"
+  "anterior": "96d01796810cae2c"
  },
  "https://nominatim.openstreetmap.org/search?q=Pol%C3%ADgono+Industrial+Las+Capellan%C3%ADas%2C+C%C3%A1ceres&format=json&limit=1": {
-  "hash": "0ccb8c564b850b1b",
+  "hash": "b29e7e512adf29fa",
   "longitud": 520,
-  "visto": "2026-08-29"
+  "visto": "2026-08-29",
+  "anterior": "0ccb8c564b850b1b"
  },
  "https://www.xunta.gal/dog/Publicados/2025/20250123/AnuncioG0763-200125-0002_es.html": {
   "hash": "2f02d7c48cebd636",
@@ -836,9 +878,10 @@
   "visto": "2026-08-29"
  },
  "https://www.peeringdb.com/fac/1533": {
-  "hash": "8caf198ed89f0b98",
+  "hash": "721d5d098847b7d1",
   "longitud": 2266,
-  "visto": "2026-08-29"
+  "visto": "2026-08-29",
+  "anterior": "8caf198ed89f0b98"
  },
  "https://www.ironmountain.com/data-centers/locations/emea/madrid": {
   "ultimo_fallo": "2026-08-29",
@@ -856,37 +899,40 @@
   "visto": "2026-08-29"
  },
  "https://www.tecnicaindustrial.es/ecopoligono-ccgreen-caceres-acogera-el-primer-campus-data-center-neutro-en-carbono/": {
-  "hash": "f8802c38ca79baf7",
-  "longitud": 18896,
+  "hash": "c252ce418a58ff6e",
+  "longitud": 18897,
   "visto": "2026-08-29",
-  "anterior": "6d0cebd2ff816d03"
+  "anterior": "f8802c38ca79baf7"
  },
  "https://www.peeringdb.com/fac/13560": {
-  "hash": "c4826296c84b6de8",
+  "hash": "8b9e28e62f5445c8",
   "longitud": 2124,
-  "visto": "2026-08-29"
+  "visto": "2026-08-29",
+  "anterior": "c4826296c84b6de8"
  },
  "https://nominatim.openstreetmap.org/search?q=Cam%C3%AD+Ral%2C+Cerdanyola+del+Vall%C3%A8s&format=json&limit=3": {
-  "hash": "34e1900b4284bd2b",
+  "hash": "892ef6b0127b7566",
   "longitud": 497,
-  "visto": "2026-08-29"
+  "visto": "2026-08-29",
+  "anterior": "34e1900b4284bd2b"
  },
  "https://baxtel.com/data-center/itnow-cd1": {
-  "hash": "bced3111d1a10ca0",
-  "longitud": 10889,
+  "hash": "d4ae9ae33a9a4bd4",
+  "longitud": 10897,
   "visto": "2026-08-29",
-  "anterior": "76b3d72df80e1fdc"
+  "anterior": "bced3111d1a10ca0"
  },
  "https://baxtel.com/data-center/itnow-cd2": {
-  "hash": "f283c228ad59009a",
-  "longitud": 10412,
+  "hash": "d9be706c08509268",
+  "longitud": 10417,
   "visto": "2026-08-29",
-  "anterior": "48bb6d74ec334565"
+  "anterior": "f283c228ad59009a"
  },
  "https://nominatim.openstreetmap.org/search?q=Carrer+de+Creu+Casas+i+Sicart%2C+Cerdanyola+del+Vall%C3%A8s&format=json&limit=3": {
-  "hash": "6b4a11d0ac49c5b8",
+  "hash": "eeba6d6830d87359",
   "longitud": 1630,
-  "visto": "2026-08-29"
+  "visto": "2026-08-29",
+  "anterior": "6b4a11d0ac49c5b8"
  },
  "https://www.datacentermarket.es/proyectos/castilla-y-leon-invertira-99-millones-en-un-nuevo-cpd/": {
   "hash": "e91cc8ac0a25acca",
@@ -894,20 +940,22 @@
   "visto": "2026-08-29"
  },
  "https://brainsre.news/stoneshield-vende-su-filial-de-centros-de-datos-a-la-americana-iron-mountain-que-aterriza-en-espana/": {
-  "hash": "a02c77df08dd56e1",
-  "longitud": 11910,
-  "visto": "2026-08-29"
+  "hash": "9b497c6bd96b18ad",
+  "longitud": 11909,
+  "visto": "2026-08-29",
+  "anterior": "a02c77df08dd56e1"
  },
  "https://nominatim.openstreetmap.org/search?q=Antiguo+Hospital+Militar%2C+Valladolid&format=json&limit=2": {
-  "hash": "2944cd3b29d74f45",
+  "hash": "960d4d8a5531cb51",
   "longitud": 547,
-  "visto": "2026-08-29"
+  "visto": "2026-08-29",
+  "anterior": "2944cd3b29d74f45"
  },
  "https://baxtel.com/data-center/kyndryl-barcelona": {
-  "hash": "3c6ef250c004e87d",
-  "longitud": 11299,
+  "hash": "3761930629989cdb",
+  "longitud": 11301,
   "visto": "2026-08-29",
-  "anterior": "0e6d0aaf7bef6824"
+  "anterior": "3c6ef250c004e87d"
  },
  "https://www.juntadeandalucia.es/presidencia/portavoz/gobiernoaldia/191703/CentrodeProcesodeDatos/CPD/licitacion/obra/nube/icloud/Palenque/IsladelaCartuja/Sevilla/ConsejeriadelaPresidencia/Interior/DialogoSocialySimplificacionAdministrativa": {
   "hash": "93c257b1039efe29",
@@ -920,9 +968,10 @@
   "visto": "2026-08-29"
  },
  "https://murciaplaza.com/murciaplaza/el-corte-ingles-completa-la-compra-de-kio-espana-y-toma-el-control-de-su-centro-de-datos-en-murcia": {
-  "hash": "80d05041003996cf",
-  "longitud": 7666,
-  "visto": "2026-08-29"
+  "hash": "f568dde8282941a4",
+  "longitud": 7685,
+  "visto": "2026-08-29",
+  "anterior": "80d05041003996cf"
  },
  "https://www.economiadigital.es/valencia/empresas/corte-ingles-abre-centro-datos-paterna-inicia-comercializacion.html": {
   "hash": "9e1f0d66a134fbec",
@@ -930,10 +979,10 @@
   "visto": "2026-08-29"
  },
  "https://baxtel.com/data-center/lumen-bcn1": {
-  "hash": "cceae2f8797d071e",
-  "longitud": 11551,
+  "hash": "99cc398eb165906a",
+  "longitud": 11548,
   "visto": "2026-08-29",
-  "anterior": "a894900120c40b0a"
+  "anterior": "cceae2f8797d071e"
  },
  "https://sevillatechpark.es/en/arrancan-las-obras-del-nuevo-cerebro-tecnologico-de-la-junta-el-centro-de-proceso-de-datos-cpd-el-palenque/": {
   "hash": "9eec9b31bedd593a",
@@ -941,20 +990,22 @@
   "visto": "2026-08-29"
  },
  "https://nominatim.openstreetmap.org/search?q=Carrer+de+Jos%C3%A9+Agust%C3%ADn+Goytisolo%2C+Barcelona&format=json&limit=3": {
-  "hash": "53b96bb06ef15158",
+  "hash": "159500cfec288405",
   "longitud": 1615,
-  "visto": "2026-08-29"
+  "visto": "2026-08-29",
+  "anterior": "53b96bb06ef15158"
  },
  "https://baxtel.com/data-center/mediterra-barcelona": {
-  "hash": "8a61df6de8aa3013",
+  "hash": "cd42e8fc62474338",
   "longitud": 11407,
   "visto": "2026-08-29",
-  "anterior": "1e931b5e9d53ceae"
+  "anterior": "8a61df6de8aa3013"
  },
  "https://valenciaplaza.com/valenciaplaza/empresas1/un-macro-centro-de-datos-busca-espacio-en-valencia-tras-tumbarle-red-electrica-la-conexion-en-catadau": {
-  "hash": "c4f735fc9d8b67a9",
-  "longitud": 8079,
-  "visto": "2026-08-29"
+  "hash": "bcb29eea474344c0",
+  "longitud": 8083,
+  "visto": "2026-08-29",
+  "anterior": "c4f735fc9d8b67a9"
  },
  "https://www.merlinproperties.com/activos/data-center-barcelona/": {
   "hash": "24d1c5fae1088a8f",
@@ -967,14 +1018,16 @@
   "visto": "2026-08-29"
  },
  "https://metropoliabierta.elespanol.com/vivir-en-barcelona/20250513/barcelona-inaugura-un-centro-de-datos-pionero-con-supercomputacion-para-reforzar-su-posicion-en-europa/1003742657180_0.html": {
-  "hash": "16dc2c775e2130d7",
-  "longitud": 7806,
-  "visto": "2026-08-29"
+  "hash": "26f3ae8869ba094b",
+  "longitud": 7812,
+  "visto": "2026-08-29",
+  "anterior": "16dc2c775e2130d7"
  },
  "https://nominatim.openstreetmap.org/search?q=Carrer+25%2C+6%2C+Parc+Logistic+Zona+Franca%2C+Barcelona&format=json&limit=3": {
-  "hash": "27813534aa337b62",
+  "hash": "1d89e9ce8bb5b681",
   "longitud": 1082,
-  "visto": "2026-08-29"
+  "visto": "2026-08-29",
+  "anterior": "27813534aa337b62"
  },
  "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1462255950606": {
   "hash": "bin:?",
@@ -997,9 +1050,10 @@
   "visto": "2026-08-29"
  },
  "https://www.iberian.property/news/logistics/merlin-properties-leases-its-data-centres-in-spain-to-meta/": {
-  "hash": "edaa8eebb498907e",
-  "longitud": 4913,
-  "visto": "2026-08-29"
+  "hash": "9fdfc51657a13f34",
+  "longitud": 4890,
+  "visto": "2026-08-29",
+  "anterior": "edaa8eebb498907e"
  },
  "https://ir.merlinproperties.com/en/new-opportunity-in-data-centers/": {
   "hash": "5b93840f4a389b8b",
@@ -1007,35 +1061,40 @@
   "visto": "2026-08-29"
  },
  "https://www.peeringdb.com/fac/15254": {
-  "hash": "b2482ff570fcee35",
+  "hash": "5a0e3244fafdcd88",
   "longitud": 2067,
-  "visto": "2026-08-29"
+  "visto": "2026-08-29",
+  "anterior": "b2482ff570fcee35"
  },
  "https://brainsre.news/merlin-iniciar-otono-extremadura-obras-centro-datos/": {
-  "hash": "fbcb23fcee883674",
+  "hash": "c851f310551c60e9",
   "longitud": 14873,
-  "visto": "2026-08-29"
+  "visto": "2026-08-29",
+  "anterior": "fbcb23fcee883674"
  },
  "https://www.eldiario.es/extremadura/economia/junta-otorga-prioridad-autonomica-centro-datos-navalmoral-ampliacion-matadero-fregenal_1_13215547.html": {
-  "hash": "b1c2a4f5756592d4",
-  "longitud": 12580,
+  "hash": "2b27c7c14d4269ce",
+  "longitud": 13250,
   "visto": "2026-08-29",
-  "anterior": "6f57e8411bc53d89"
+  "anterior": "b1c2a4f5756592d4"
  },
  "https://www.cope.es/emisoras/extremadura/noticias/sale-informacion-publica-centro-datos-merlin-navalmoral-mata-20260522_3369660.html": {
-  "hash": "d589c22c3f4211ee",
-  "longitud": 7394,
-  "visto": "2026-08-29"
+  "hash": "decb5efdf12c4fb4",
+  "longitud": 7425,
+  "visto": "2026-08-29",
+  "anterior": "d589c22c3f4211ee"
  },
  "https://nominatim.openstreetmap.org/search?q=Expacio+Navalmoral&format=json&limit=1": {
-  "hash": "14ee8a8065f12610",
+  "hash": "d5bb90ad18c881c0",
   "longitud": 480,
-  "visto": "2026-08-29"
+  "visto": "2026-08-29",
+  "anterior": "14ee8a8065f12610"
  },
  "https://brainsre.news/merlin-prealquila-primer-data-center/": {
-  "hash": "268fb3166e91f6c0",
-  "longitud": 11137,
-  "visto": "2026-08-29"
+  "hash": "454a4411c1998c4d",
+  "longitud": 11136,
+  "visto": "2026-08-29",
+  "anterior": "268fb3166e91f6c0"
  },
  "https://www.edged.es/bilbao-arasur": {
   "ultimo_fallo": "2026-08-29",
@@ -1063,9 +1122,10 @@
   "visto": "2026-08-29"
  },
  "https://nortexpres.com/datos-alava-100-megavatios/": {
-  "hash": "aa1efebf5dfcd8de",
-  "longitud": 6074,
-  "visto": "2026-08-29"
+  "hash": "8af9914376a31aad",
+  "longitud": 6038,
+  "visto": "2026-08-29",
+  "anterior": "aa1efebf5dfcd8de"
  },
  "https://nominatim.openstreetmap.org/search?q=Valdecaballeros%2C+Badajoz&format=json&limit=1": {
   "hash": "1cb85c45b2f8d1a4",
@@ -1084,16 +1144,16 @@
   "anterior": "e9f67dc9a7bfacaf"
  },
  "https://www.elespanol.com/eldigitalcastillalamancha/economia/empresas/20260821/meta-suelo-ordenado-levantar-campus-datos-talavera-reina-nuevo-avance-obras/1003744359131_0.html": {
-  "hash": "e186d57d9d8e6156",
-  "longitud": 11149,
+  "hash": "2a3d6f9b5b574868",
+  "longitud": 10900,
   "visto": "2026-08-29",
-  "anterior": "3888b57f34f0d246"
+  "anterior": "e186d57d9d8e6156"
  },
  "https://www.eldiario.es/castilla-la-mancha/provincias/toledo/meta-visto-bueno-gobierno-page-comenzar-tramitar-obras-centro-datos-talavera_1_13466839.html": {
-  "hash": "6c89ff57f5c00fcd",
-  "longitud": 11758,
+  "hash": "16ed3391c3547019",
+  "longitud": 12323,
   "visto": "2026-08-29",
-  "anterior": "7ec071058f7f56be"
+  "anterior": "6c89ff57f5c00fcd"
  },
  "https://www.castillalamancha.es/actualidad/notasdeprensa/el-gobierno-de-castilla-la-mancha-publica-la-declaracion-de-impacto-ambiental-del-centro-de-datos": {
   "hash": "793fe2d6083526cb",
@@ -1101,10 +1161,10 @@
   "visto": "2026-08-29"
  },
  "https://www.elespanol.com/eldigitalcastillalamancha/economia/empresas/20260825/meta-garantiza-centro-datos-talavera-reina-no-causara-molestias-acusticas-visuales-vecinos/1003744362724_0.html": {
-  "hash": "9d7203553e2c18ef",
-  "longitud": 10582,
+  "hash": "bc34e5f353377220",
+  "longitud": 10333,
   "visto": "2026-08-29",
-  "anterior": "f56bffed5a10c740"
+  "anterior": "9d7203553e2c18ef"
  },
  "https://www.talaveravalley.es/el-data-center-de-meta-en-talavera-de-la-reina/": {
   "hash": "ead0923d55d4a3cf",
@@ -1112,9 +1172,10 @@
   "visto": "2026-08-29"
  },
  "https://www.xataka.com/magnet/meta-esta-a-punto-levantar-talavera-gigante-tecnologico-1-000-millones-usando-agua-tajo": {
-  "hash": "599e291285924dcb",
-  "longitud": 13194,
-  "visto": "2026-08-29"
+  "hash": "caffc66c4d567185",
+  "longitud": 13197,
+  "visto": "2026-08-29",
+  "anterior": "599e291285924dcb"
  },
  "https://nominatim.openstreetmap.org/search?q=Pol%C3%ADgono+Industrial+Torrehierro%2C+Talavera+de+la+Reina&format=json&limit=2": {
   "hash": "89d447b0e2616364",
@@ -1137,16 +1198,16 @@
   "visto": "2026-08-29"
  },
  "https://www.elespanol.com/aragon/economia/20251119/centros-datos-microsoft-aragon-consumiran-energia-toda-comunidad/1003744019227_0.html": {
-  "hash": "efad48276760d03f",
-  "longitud": 9368,
+  "hash": "be1907006fa76bc3",
+  "longitud": 9119,
   "visto": "2026-08-29",
-  "anterior": "25dcfbf693893f0f"
+  "anterior": "efad48276760d03f"
  },
  "https://www.eldiario.es/aragon/sociedad/microsoft-avanza-red-centros-datos-zaragoza-proyecta-mayores-regiones-europa_1_12768636.html": {
-  "hash": "749324ddcc956f4f",
-  "longitud": 12420,
+  "hash": "0b4e7d483570268e",
+  "longitud": 13092,
   "visto": "2026-08-29",
-  "anterior": "5a061256a6e51b01"
+  "anterior": "749324ddcc956f4f"
  },
  "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1343967440606": {
   "hash": "bin:?",
@@ -1164,9 +1225,10 @@
   "visto": "2026-08-29"
  },
  "https://www.lovetalavera.com/la-subestacion-de-calera-impulsa-la-llegada-de-meta-y-la-alta-velocidad-a-talavera/": {
-  "hash": "b5d4547ab5317629",
-  "longitud": 10797,
-  "visto": "2026-08-29"
+  "hash": "634c23746366a598",
+  "longitud": 10798,
+  "visto": "2026-08-29",
+  "anterior": "b5d4547ab5317629"
  },
  "https://nabiax.com/en/our-data-centers/spain/alcala-data-center/": {
   "hash": "c1a9a49a4ce72c88",
@@ -1189,9 +1251,10 @@
   "visto": "2026-08-29"
  },
  "https://www.peeringdb.com/fac/7069": {
-  "hash": "1c374309d0f88316",
+  "hash": "3e869d555164aaa6",
   "longitud": 1920,
-  "visto": "2026-08-29"
+  "visto": "2026-08-29",
+  "anterior": "1c374309d0f88316"
  },
  "https://www.nixval.com/": {
   "ultimo_fallo": "2026-08-29",
@@ -1204,20 +1267,22 @@
   "visto": "2026-08-29"
  },
  "https://nominatim.openstreetmap.org/search?q=Carrer+de+Bartomeu+Amat+69%2C+Terrassa&format=json&limit=3": {
-  "hash": "ac23faa240f44b2c",
+  "hash": "226a0220445bc099",
   "longitud": 517,
-  "visto": "2026-08-29"
+  "visto": "2026-08-29",
+  "anterior": "ac23faa240f44b2c"
  },
  "https://www.peeringdb.com/fac/3082": {
-  "hash": "1f8b393edbba53f8",
+  "hash": "725c83e03dad0855",
   "longitud": 2245,
   "visto": "2026-08-29",
-  "anterior": "565ae3c77a58d807"
+  "anterior": "1f8b393edbba53f8"
  },
  "https://www.guadalajara.es/es/noticia/nostrum-data-centers-creara-en-guadalajara-un-nuevo-centro-de-datos-de-40-mwe-que-reforzara-la-posicion-de-la-ciudad-como-nodo-digital-estrategic.html": {
-  "hash": "ee1b02c56cb31c30",
-  "longitud": 8169,
-  "visto": "2026-08-29"
+  "hash": "856731aae417fdba",
+  "longitud": 8055,
+  "visto": "2026-08-29",
+  "anterior": "ee1b02c56cb31c30"
  },
  "https://www.ocolo.io/data-centers/spain/comunidad-de-madrid/madrid/": {
   "ultimo_fallo": "2026-08-29",
@@ -1230,9 +1295,10 @@
   "visto": "2026-08-29"
  },
  "https://nominatim.openstreetmap.org/search?city=Guadalajara&country=Espa%C3%B1a&format=json&limit=2": {
-  "hash": "11ea153cf9125323",
+  "hash": "a363e386ac0d015b",
   "longitud": 440,
-  "visto": "2026-08-29"
+  "visto": "2026-08-29",
+  "anterior": "11ea153cf9125323"
  },
  "https://revistacloud.com/zamudio-suma-un-nuevo-centro-de-datos-de-30-mw-para-competir-en-la-economia-de-la-ia": {
   "hash": "c5e62b24cd344ca5",
@@ -1245,25 +1311,28 @@
   "visto": "2026-08-29"
  },
  "https://www.nlighten.com/en/edge-location/madrid/": {
-  "hash": "da5f0607934652e2",
+  "hash": "fd9cd44aee950f8a",
   "longitud": 8899,
   "visto": "2026-08-29",
-  "anterior": "0c1b21a5d707538c"
+  "anterior": "da5f0607934652e2"
  },
  "https://alicanteplaza.es/alicanteplaza/elcheplaza/bomba-economica-pld-space-puja-por-los-500000-metros-del-porta-delx-y-un-centro-de-datos-por-100000-en-torrellano": {
-  "hash": "5f1d1ea64a9344d8",
-  "longitud": 11907,
-  "visto": "2026-08-29"
+  "hash": "61310dcde6e236a7",
+  "longitud": 11854,
+  "visto": "2026-08-29",
+  "anterior": "5f1d1ea64a9344d8"
  },
  "https://alicanteplaza.es/alicanteplaza/elcheplaza/pimesa-preadjudica-en-elche-el-suelo-a-pld-space-en-el-porta-delx-y-a-novagrid-en-el-parque-empresarial": {
-  "hash": "a35e87c9c640e440",
-  "longitud": 7965,
-  "visto": "2026-08-29"
+  "hash": "f2ab98ec6f23afcf",
+  "longitud": 7912,
+  "visto": "2026-08-29",
+  "anterior": "a35e87c9c640e440"
  },
  "https://alicanteplaza.es/alicanteplaza/elcheplaza/elche-parque-empresarial-ya-tiene-lista-su-reparcelacion-obras-a-principios-de-2027-por-375-millones": {
-  "hash": "cc1da2aa2d990e84",
-  "longitud": 12309,
-  "visto": "2026-08-29"
+  "hash": "0c988ed400830366",
+  "longitud": 12256,
+  "visto": "2026-08-29",
+  "anterior": "cc1da2aa2d990e84"
  },
  "https://datacenter.hello.global.ntt/en/location/madrid/madrid-1-data-center": {
   "ultimo_fallo": "2026-08-29",
@@ -1271,30 +1340,34 @@
   "clase": "rota"
  },
  "https://www.peeringdb.com/fac/11297": {
-  "hash": "99196d1e0e6eb57d",
+  "hash": "7f0eb44577f13050",
   "longitud": 2607,
   "visto": "2026-08-29",
-  "anterior": "fc77ca5700b17f03"
+  "anterior": "99196d1e0e6eb57d"
  },
  "https://valenciaplaza.com/valenciaplaza/empresas1/nunsys-cloud-inaugura-su-nuevo-centro-de-datos-en-paterna-ante-la-creciente-demanda-de-ia-y-ciberseguridad": {
-  "hash": "d765973c374c2aeb",
-  "longitud": 8091,
-  "visto": "2026-08-29"
+  "hash": "8c56895074fe4f44",
+  "longitud": 8095,
+  "visto": "2026-08-29",
+  "anterior": "d765973c374c2aeb"
  },
  "https://www.lasprovincias.es/economia/nunsys-inaugura-nuevo-centro-datos-parque-tecnologico-20260707163239-nt.html": {
-  "hash": "936b4f2e5cd5efe8",
-  "longitud": 10331,
-  "visto": "2026-08-29"
+  "hash": "a8df7c467a55d6a6",
+  "longitud": 10419,
+  "visto": "2026-08-29",
+  "anterior": "936b4f2e5cd5efe8"
  },
  "https://www.levante-emv.com/valencia/2025/02/28/licencia-primer-gran-centro-datos-114787139.html": {
-  "hash": "6f084f36ce12687d",
-  "longitud": 10344,
-  "visto": "2026-08-29"
+  "hash": "12e9ef8ec9a90594",
+  "longitud": 10318,
+  "visto": "2026-08-29",
+  "anterior": "6f084f36ce12687d"
  },
  "https://www.levante-emv.com/economia/2026/02/02/primer-centro-datos-valencia-abrira-vara-de-quart-nxn-126353394.html": {
-  "hash": "b06e809370035ed5",
-  "longitud": 9503,
-  "visto": "2026-08-29"
+  "hash": "34f547f9e7afb7e3",
+  "longitud": 9233,
+  "visto": "2026-08-29",
+  "anterior": "b06e809370035ed5"
  },
  "https://observatorioinmobiliario.es/noticias/logistica/panattoni-invierte-300-millones-en-la-primera-fase-de-su-centro-de-datos-en-barcelona/": {
   "hash": "83c75c653c425ac2",
@@ -1307,15 +1380,16 @@
   "visto": "2026-08-29"
  },
  "https://en.ara.cat/economy/the-government-establishes-seven-poles-for-installing-data-centers-in-catalonia_1_5707348.html": {
-  "hash": "2a24e189acca7bc2",
-  "longitud": 7395,
-  "visto": "2026-08-29"
+  "hash": "3dba2baeb4a574f0",
+  "longitud": 7399,
+  "visto": "2026-08-29",
+  "anterior": "2a24e189acca7bc2"
  },
  "https://baxtel.com/data-center/panattoni-barcelona-campus": {
-  "hash": "ac25648953b248fe",
-  "longitud": 11997,
+  "hash": "2561df90648f6312",
+  "longitud": 11988,
   "visto": "2026-08-29",
-  "anterior": "d2249abcd2e5aa82"
+  "anterior": "ac25648953b248fe"
  },
  "https://www.eleconomista.es/tecnologia/noticias/13994814/07/26/la-fiebre-de-los-data-center-aterriza-en-alicante-valfortec-tramita-una-inversion-de-300-millones.html": {
   "hash": "a876c5ad7305c9af",
@@ -1333,9 +1407,10 @@
   "clase": "bloqueada"
  },
  "https://www.informacion.es/economia/2026/07/04/fiebre-centros-datos-llega-alicante-132104596.html": {
-  "hash": "c0be09001eef11f6",
-  "longitud": 11568,
-  "visto": "2026-08-29"
+  "hash": "04a64bb8c273d949",
+  "longitud": 11666,
+  "visto": "2026-08-29",
+  "anterior": "c0be09001eef11f6"
  },
  "https://www.datacentermarket.es/news/asg-iberia-vende-a-pure-dc-un-solar-en-madrid-para-un-data-center/": {
   "hash": "305d5dae3f52609f",
@@ -1368,20 +1443,22 @@
   "visto": "2026-08-29"
  },
  "https://baxtel.com/data-center/renta-corporation-barcelona": {
-  "hash": "776aa195b88bdb30",
-  "longitud": 11230,
+  "hash": "d88f528d5f7c6500",
+  "longitud": 11229,
   "visto": "2026-08-29",
-  "anterior": "09e2d850be912b62"
+  "anterior": "776aa195b88bdb30"
  },
  "https://brainsre.news/pure-dc-compra-activumsg-suelo-17650-m2-meco-madrid/": {
-  "hash": "316f33ba7e62b7b4",
-  "longitud": 11282,
-  "visto": "2026-08-29"
+  "hash": "01b19898113f8d2d",
+  "longitud": 11283,
+  "visto": "2026-08-29",
+  "anterior": "316f33ba7e62b7b4"
  },
  "https://www.cronicaglobal.cat/negocis/20260711/submer-flix-tarragona-centre-dades-inversio-milions/1003742778866_0.html": {
-  "hash": "fb1431cdc31bd323",
-  "longitud": 6624,
-  "visto": "2026-08-29"
+  "hash": "128ac15a35970eed",
+  "longitud": 6627,
+  "visto": "2026-08-29",
+  "anterior": "fb1431cdc31bd323"
  },
  "https://actualidad.asturias.es/-/digital-valley38": {
   "hash": "9fff4742d1398463",
@@ -1394,16 +1471,16 @@
   "clase": "bloqueada"
  },
  "https://en.ara.cat/economy/submer-will-invest-more-than-1-000-million-in-new-data-center-in-flix_1_5795996.html": {
-  "hash": "84c15d5ac9f66a3d",
-  "longitud": 6314,
+  "hash": "7ac6249d29752080",
+  "longitud": 6341,
   "visto": "2026-08-29",
-  "anterior": "0c88a913a3b48f0c"
+  "anterior": "84c15d5ac9f66a3d"
  },
  "https://www.flix.cat/2026/07/11/submer-group-invertira-mes-de-1-000-milions-deuros-en-un-centre-de-dades-dia-a-la-planta-dercros-a-flix/": {
-  "hash": "aa03acfb2df4c7d1",
+  "hash": "447bee0c59bfb579",
   "longitud": 13881,
   "visto": "2026-08-29",
-  "anterior": "9be26b23ad40e7a6"
+  "anterior": "aa03acfb2df4c7d1"
  },
  "https://www.juntadeandalucia.es/boja/2026/104/37": {
   "hash": "156fd57064826ef2",
@@ -1416,14 +1493,16 @@
   "visto": "2026-08-29"
  },
  "https://www.elconciso.es/energia/benbros-energy-proyecta-malaga-centro-datos_0_2007048570.html": {
-  "hash": "ac5da7f7d1229896",
-  "longitud": 6226,
-  "visto": "2026-08-29"
+  "hash": "ab42a8fb4b06743e",
+  "longitud": 6233,
+  "visto": "2026-08-29",
+  "anterior": "ac5da7f7d1229896"
  },
  "https://www.elconciso.es/empresas/malaga-sur-europa-centros-datos-energia_0_2007787884.html": {
-  "hash": "af609e3727d996fd",
-  "longitud": 7049,
-  "visto": "2026-08-29"
+  "hash": "7f1c1627476599c9",
+  "longitud": 7058,
+  "visto": "2026-08-29",
+  "anterior": "af609e3727d996fd"
  },
  "https://www.pta.es/noticias/junta-malaga-techpark-proyectos-data-center-imec/": {
   "hash": "ddafa1add69803f6",
@@ -1456,9 +1535,10 @@
   "visto": "2026-08-29"
  },
  "https://www.elespanol.com/invertia/disruptores/grandes-actores/tecnologicas/20260619/centro-datos-sarenet-derio-abre-puertas-mw-operativos-vista-puesta-grandes-integradores-tecnologicos/1003744291986_0.html": {
-  "hash": "fc817102df6421eb",
-  "longitud": 14866,
-  "visto": "2026-08-29"
+  "hash": "e202f52d728a646d",
+  "longitud": 14552,
+  "visto": "2026-08-29",
+  "anterior": "fc817102df6421eb"
  },
  "https://www.aragon.es/-/piga-green-it": {
   "hash": "ed716190d99c9f6c",
@@ -1486,15 +1566,16 @@
   "visto": "2026-08-29"
  },
  "https://www.eldiario.es/castilla-la-mancha/social/data-center-inteligencia-artificial-puertollano-preve-100-empleos-inversion-500-millones_1_11659102.html": {
-  "hash": "790edced1313b539",
-  "longitud": 13696,
+  "hash": "5df4e91168a89702",
+  "longitud": 14261,
   "visto": "2026-08-29",
-  "anterior": "e6195f0776612577"
+  "anterior": "790edced1313b539"
  },
  "https://nominatim.openstreetmap.org/search?q=Puertollano%2C+Ciudad+Real&format=json&limit=1": {
-  "hash": "ee590de094db7610",
+  "hash": "6df5e5198cdb90ef",
   "longitud": 459,
-  "visto": "2026-08-29"
+  "visto": "2026-08-29",
+  "anterior": "ee590de094db7610"
  },
  "https://nominatim.openstreetmap.org/search?q=Talavera+de+la+Reina%2C+Toledo&format=json&limit=1": {
   "hash": "da880fa4f915acf0",
@@ -1517,9 +1598,10 @@
   "visto": "2026-08-29"
  },
  "https://www.cantabriaeconomica.com/empresas/cantabria-declara-el-centro-de-datos-altamira-como-primer-proyecto-empresarial-estrategico/": {
-  "hash": "1d464e6f7c486bcb",
-  "longitud": 21398,
-  "visto": "2026-08-29"
+  "hash": "9ee3e4900dcc90c5",
+  "longitud": 21399,
+  "visto": "2026-08-29",
+  "anterior": "1d464e6f7c486bcb"
  },
  "http://blogs.canalsur.es/documentacionyarchivo/el-bunker-secreto-de-conil-visitas-a-la-estacion-de-cables-submarinos/": {
   "hash": "25eae0b6a6ad9a57",
@@ -1527,10 +1609,10 @@
   "visto": "2026-08-29"
  },
  "https://baxtel.com/data-center/t-systems-cerdanyola": {
-  "hash": "f2e9a13ade4d9daf",
+  "hash": "83f3fc24b2703c54",
   "longitud": 11044,
   "visto": "2026-08-29",
-  "anterior": "a1f769344c972acb"
+  "anterior": "f2e9a13ade4d9daf"
  },
  "https://www.conildelafrontera.es/noticias/659-el-ayuntamiento-de-conil-apuesta-por-las-telecomunicaciones-internacionales-establecidasen-el-municipio": {
   "hash": "3ee78a32b57414d4",
@@ -1568,10 +1650,10 @@
   "clase": "bloqueada"
  },
  "https://baxtel.com/data-center/atlasedge-barcelona": {
-  "hash": "f1e7a56c707b5baa",
+  "hash": "50deef9dbcdedd41",
   "longitud": 12677,
   "visto": "2026-08-29",
-  "anterior": "75fbc7e60fc7a6d1"
+  "anterior": "f1e7a56c707b5baa"
  },
  "https://www.datacentermarket.es/datacenter-infrastructure/templus-asume-el-control-operativo-de-los-nueve-centros-de-datos-de-atlasedge/": {
   "hash": "7a7813f05aa08b45",
@@ -1584,9 +1666,10 @@
   "visto": "2026-08-29"
  },
  "https://www.peeringdb.com/fac/4085": {
-  "hash": "26aef6317b188102",
+  "hash": "9ae3e9d358efe27c",
   "longitud": 2251,
-  "visto": "2026-08-29"
+  "visto": "2026-08-29",
+  "anterior": "26aef6317b188102"
  },
  "https://templus.com/data-centers/madrid-mad03/": {
   "hash": "2aaba623bd87a55d",
@@ -1594,9 +1677,10 @@
   "visto": "2026-08-29"
  },
  "https://www.peeringdb.com/fac/14020": {
-  "hash": "b7c58aef2449c414",
+  "hash": "21dc7dfbf1d300ac",
   "longitud": 2098,
-  "visto": "2026-08-29"
+  "visto": "2026-08-29",
+  "anterior": "b7c58aef2449c414"
  },
  "https://templus.com/data-centers/malaga-mal01/": {
   "hash": "cb9dbe3698a26bb1",
@@ -1784,10 +1868,10 @@
   "clase": "bloqueada"
  },
  "https://www.elespanol.com/eldigitalcastillalamancha/economia/20241022/centro-datos-meta-talavera-alimentara-traves-gran-parque-solar-nueva-construccion/895410584_0.html": {
-  "hash": "d4e1cbd40ca3756f",
-  "longitud": 9873,
+  "hash": "1036f0fd4d2c3be5",
+  "longitud": 9624,
   "visto": "2026-08-29",
-  "anterior": "080e600e988d338a"
+  "anterior": "d4e1cbd40ca3756f"
  },
  "https://elperiodicodelaenergia.com/frv-suministrara-energia-a-amazon-de-cinco-plantas-fotovoltaicas-en-espana/": {
   "hash": "69484b0974b76c42",
@@ -1915,18 +1999,21 @@
   "visto": "2026-08-29"
  },
  "https://www.levante-emv.com/valencia/2022/08/19/centro-datos-marina-necesitara-potencia-73633424.html": {
-  "hash": "8698933284a19ad4",
-  "longitud": 9714,
-  "visto": "2026-08-29"
+  "hash": "030a868710dab0a4",
+  "longitud": 10271,
+  "visto": "2026-08-29",
+  "anterior": "8698933284a19ad4"
  },
  "https://valenciaplaza.com/valenciaplaza/sineasen-se-perfila-como-adjudicataria-del-data-center-de-los-docks": {
-  "hash": "255ad49efb04473c",
-  "longitud": 8309,
-  "visto": "2026-08-29"
+  "hash": "20028917e63dfb2c",
+  "longitud": 8313,
+  "visto": "2026-08-29",
+  "anterior": "255ad49efb04473c"
  },
  "https://www.elperiodicodearagon.com/aragon/2026/07/24/vantage-reubicara-centro-datos-renunciar-zaragoza-132732543.html": {
-  "hash": "a3906398d7bb9819",
-  "longitud": 10514,
-  "visto": "2026-08-29"
+  "hash": "520799ce03ca609d",
+  "longitud": 10475,
+  "visto": "2026-08-29",
+  "anterior": "a3906398d7bb9819"
  }
 }

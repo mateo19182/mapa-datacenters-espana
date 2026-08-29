@@ -5,11 +5,15 @@
 // research/informe-actualizacion.md. La decisión de modificar un dato sigue
 // siendo humana: este script solo dice dónde mirar.
 //
-// Uso: node scripts/check-updates.mjs [--limite N] [--dias N] [--solo-caducados]
+// Con --sellar actualiza `ultima_verificacion` en las fichas cuyas fuentes se
+// han vuelto a leer con éxito y sin cambios. Es la única escritura que hace, y
+// no toca ningún dato: solo certifica que ese día se comprobó.
+//
+// Uso: node scripts/check-updates.mjs [--limite N] [--dias N] [--solo-caducados] [--sellar]
 import { createHash } from 'node:crypto'
 import { readFileSync, writeFileSync, existsSync } from 'node:fs'
 import { join } from 'node:path'
-import { cargarTodo, RAIZ } from './load.mjs'
+import { cargarTodo, RAIZ, DIR_SITIOS } from './load.mjs'
 
 const args = process.argv.slice(2)
 const opcion = (nombre, porDefecto) => {
@@ -20,6 +24,7 @@ const opcion = (nombre, porDefecto) => {
 const LIMITE = opcion('--limite', Infinity)
 const DIAS_CADUCIDAD = opcion('--dias', 180)
 const SOLO_CADUCADOS = args.includes('--solo-caducados')
+const SELLAR = args.includes('--sellar')
 const CONCURRENCIA = 4
 const ESPERA_MS = 400
 const TIEMPO_LIMITE_MS = 25000
@@ -152,6 +157,37 @@ if (!SOLO_CADUCADOS) {
   writeFileSync(RUTA_HUELLAS, JSON.stringify(huellas, null, 1), 'utf8')
 }
 
+// --- sellado de la fecha de verificación -------------------------------------
+
+const selladas = []
+if (SELLAR && !SOLO_CADUCADOS) {
+  const estadoUrl = new Map()
+  for (const [url, h] of Object.entries(huellas)) {
+    estadoUrl.set(url, h.visto === hoy && !h.clase ? 'ok' : 'no')
+  }
+  const cambiadaUrl = new Set(cambiadas.map((c) => c.url))
+
+  for (const s of sitios) {
+    const urls = s.fuentes.map((f) => f.url)
+    // Solo se sella si TODAS sus fuentes se releyeron hoy y ninguna cambió.
+    const todasComprobadas = urls.length > 0 && urls.every((u) => estadoUrl.get(u) === 'ok')
+    const algunaCambio = urls.some((u) => cambiadaUrl.has(u))
+    if (!todasComprobadas || algunaCambio) continue
+    if (s.ultima_verificacion === hoy) continue
+
+    const ruta = join(DIR_SITIOS, `${s.id}.yaml`)
+    const texto = readFileSync(ruta, 'utf8')
+    const nuevo = texto.replace(
+      /^ultima_verificacion:.*$/m,
+      `ultima_verificacion: "${hoy}"`,
+    )
+    if (nuevo !== texto) {
+      writeFileSync(ruta, nuevo, 'utf8')
+      selladas.push(s.id)
+    }
+  }
+}
+
 // --- informe -----------------------------------------------------------------
 
 const nombreDe = new Map(sitios.map((s) => [s.id, s.nombre]))
@@ -169,7 +205,12 @@ l.push(`- Con contenido cambiado: **${cambiadas.length}** (${cambiadas.filter(re
 l.push(`- Enlaces rotos: **${rotas.length}**`)
 l.push(`- Bloqueadas a la comprobación automática: **${bloqueadas.length}** (siguen abriéndose en un navegador)`)
 l.push(`- Vistas por primera vez: **${nuevas.length}**`)
-l.push(`- Fichas sin verificar desde hace ${DIAS_CADUCIDAD} días o más: **${caducados.length}**`, '')
+l.push(`- Fichas sin verificar desde hace ${DIAS_CADUCIDAD} días o más: **${caducados.length}**`)
+if (SELLAR) {
+  l.push(`- Fichas con fecha de verificación actualizada hoy: **${selladas.length}**`)
+  l.push('  (todas sus fuentes se releyeron con éxito y ninguna había cambiado)')
+}
+l.push('')
 
 if (cambiadas.length) {
   l.push('## Fuentes cuyo contenido ha cambiado', '')
@@ -229,7 +270,9 @@ writeFileSync(join(RAIZ, 'research/informe-actualizacion.md'), l.join('\n'), 'ut
 
 console.log(
   `\n${comprobadas} fuentes comprobadas · ${cambiadas.length} cambiadas · ${rotas.length} rotas · ` +
-    `${bloqueadas.length} bloqueadas (antibot) · ${caducados.length} fichas caducadas\n` +
+    `${bloqueadas.length} bloqueadas (antibot) · ${caducados.length} fichas caducadas` +
+    (SELLAR ? ` · ${selladas.length} selladas` : '') +
+    '\n' +
     '→ research/informe-actualizacion.md',
 )
 

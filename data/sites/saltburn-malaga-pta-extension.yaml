@@ -37,16 +37,18 @@ potencia:
     fecha_dato: "2026-05-27"
     fuentes: [src-1, src-2]
     nota: "El BOJA dice literalmente «150 MW de consumo eléctrico y 100 MW de potencia IT»."
-  - tipo: conexion_red
+  - tipo: instalada_total
     valor_mw: 150
     ambito: campus
-    referencia: "Consumo eléctrico previsto, suministrado desde el nudo SET Cártama de Red Eléctrica"
+    referencia: "Consumo eléctrico previsto del centro de datos"
     estado_asociado: en_tramitacion
     fecha_dato: "2026-05-27"
-    fuentes: [src-1, src-2, src-3, src-4]
+    fuentes: [src-1, src-2]
     nota: >-
-      La fuente oficial lo denomina «consumo eléctrico»; las fuentes de prensa lo vinculan al punto
-      de suministro en el nudo SET Cártama. No es una cifra de MW IT y no debe sumarse a ella.
+      El BOJA lo denomina «consumo eléctrico» y lo contrapone a los 100 MW de potencia IT: es la
+      potencia eléctrica total de la instalación, no la potencia de acceso concedida en el punto
+      de conexión, que el boletín no publica. La vinculación con el nudo SET Cártama procede de
+      prensa y se registra aparte, en la conexión eléctrica.
 
 conexion_electrica:
   subestacion: "SET Cártama"
@@ -60,6 +62,12 @@ enlaces_proyecto:
   - "https://www.juntadeandalucia.es/boja/2026/104/37"
 
 incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      No consta la potencia de acceso a red. El BOJA solo publica «150 MW de consumo eléctrico y
+      100 MW de potencia IT»: la primera cifra describe la instalación completa, no el permiso de
+      acceso, que suele ser distinto y no se ha localizado publicado.
+    fuentes: [src-1]
   - campo: superficie_parcela_m2
     descripcion: >-
       El BOJA da 71.415,79 m² de superficie ocupada y 47.629,40 m² edificables; las notas del

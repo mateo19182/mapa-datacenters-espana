@@ -18,7 +18,8 @@
     "propuestas:aplicar": "node scripts/apply-proposals.mjs --aplicar",
     "validate:strict": "node scripts/validate.mjs --strict",
     "geo": "node scripts/geocode-municipios.mjs",
-    "reconcile": "node scripts/reconcile.mjs"
+    "reconcile": "node scripts/reconcile.mjs",
+    "refresh:sellar": "node scripts/check-updates.mjs --sellar"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",

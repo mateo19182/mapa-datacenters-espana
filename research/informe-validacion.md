@@ -547,7 +547,7 @@ Generado el 2026-08-29 por `npm run validate`.
 
 ### `quetta-molins-de-rei.yaml`
 
-- aviso: potencia[0] («Capacidad conjunta de Quetta tras Molins de Rei y la ampliación de Madrid») no distingue el tipo de MW
+- aviso: sin ningún dato de potencia
 - aviso: sin coordenadas: no aparecerá en el mapa
 
 ### `renta-corporacion-hospitalet.yaml`

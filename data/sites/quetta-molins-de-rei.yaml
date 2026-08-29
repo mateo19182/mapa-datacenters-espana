@@ -21,24 +21,20 @@ estado_detalle: >-
   de seis centros edge en España y Portugal.
 estado_fuentes: [src-1]
 
-potencia:
-  - tipo: no_especificado
-    valor_mw: 30
-    ambito: campus
-    referencia: "Capacidad conjunta de Quetta tras Molins de Rei y la ampliación de Madrid"
-    estado_asociado: en_construccion
-    fuentes: [src-1]
-    nota: >-
-      La fuente corporativa solo publica el agregado: "a total capacity to 30 MW,
-      50% of its overall target of 60 MW". No da una cifra separada para Molins
-      de Rei. No se registra ninguna cifra individual para evitar deducirla por
-      resta.
+potencia: []
 
 refrigeracion: >-
   Refrigeración líquida directa en circuito cerrado (DLC), consumo nulo de agua
   (WUE 0) y PUE declarado inferior a 1,15.
 
 incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      No consta ninguna cifra de potencia de este emplazamiento. La compañía solo publica un
+      agregado de cartera —«a total capacity to 30 MW, 50% of its overall target of 60 MW»— que
+      suma Molins de Rei y la ampliación de Madrid, sin dar el reparto. Atribuir esos 30 MW a
+      este centro sería contarle capacidad de otro.
+    fuentes: [src-1]
   - campo: potencia
     descripcion: >-
       Prensa especializada atribuye 10 MW al centro de Molins de Rei, pero la

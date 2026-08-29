@@ -66,6 +66,7 @@ npm run dev        # valida, reconcilia, construye los datos y levanta el sitio
 | `npm run data` | Los cuatro anteriores en orden |
 | `npm run build` | `data` + construcción del sitio en `dist/` |
 | `npm run refresh` | Comprueba las fuentes registradas y arma la cola de revisión |
+| `npm run refresh:sellar` | Igual, y actualiza la fecha de verificación de las fichas comprobadas |
 | `npm run propuestas` | Simula la integración de `data/propuestas/` y separa los conflictos |
 | `npm run grid:osm` | Recachea el trazado de 220/400 kV desde OpenStreetMap |
 | `npm run geo` | Recachea los centroides municipales |
@@ -83,6 +84,11 @@ contenido con la guardada en `data/huellas.json` y escribe una cola de revisión
 en `research/informe-actualizacion.md`: qué páginas han cambiado, cuáles se han
 roto, cuáles rechazan al comprobador automático sin estar rotas, y qué fichas
 llevan demasiado tiempo sin revisar. **No modifica ningún dato.**
+
+Con `--sellar` hace además una única escritura, que no toca ninguna afirmación:
+actualiza `ultima_verificacion` en las fichas cuyas fuentes se han releído todas
+con éxito y sin cambios. Así la fecha de verificación deja de ser un sello
+uniforme y pasa a decir algo: qué se ha comprobado hace poco y qué arrastra.
 
 Las modificaciones entran como propuestas en `data/propuestas/<id>.yaml`, con la
 misma forma que el emplazamiento y solo los campos que cambian.
@@ -127,6 +133,14 @@ compañía como los informes que genera la tubería:
 | `auditoria-datos.md` | Verificación independiente de los datos de mayor impacto |
 | `red-electrica.md` | Cómo se reparte el acceso a la red (se publica en el sitio) |
 | `renovables.md` | Contratos de energía vinculados a centros de datos (se publica) |
+
+## Calidad conocida
+
+El conjunto se audita a sí mismo y publica el resultado. La comprobación más
+exigente verifica que cada cifra de potencia aparezca literalmente en la cita de
+alguna de sus fuentes; hoy falla en una parte de los registros, y esa proporción
+se muestra en la sección de datos del sitio en lugar de guardarse. Un registro
+que oculta sus defectos no es más fiable, solo lo parece.
 
 ## Licencia
 
