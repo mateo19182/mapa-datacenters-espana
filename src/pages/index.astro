@@ -161,9 +161,10 @@ const modelosPresentes = Object.keys(MODELO_ETIQUETA).filter((m) => sitios.some(
 
 <style>
   .disposicion {
+    position: relative;
     display: grid;
     grid-template-columns: 22rem 1fr;
-    height: calc(100vh - 3.1rem);
+    flex: 1 1 auto;
     min-height: 34rem;
   }
 
@@ -453,14 +454,13 @@ const modelosPresentes = Object.keys(MODELO_ETIQUETA).filter((m) => sitios.some(
   @media (max-width: 900px) {
     .disposicion {
       grid-template-columns: 1fr;
-      height: calc(100vh - 3.1rem);
     }
 
     .panel {
       position: absolute;
       z-index: 20;
-      inset: 3.1rem 0 auto 0;
-      max-height: 70vh;
+      inset: 0 0 auto 0;
+      max-height: 78%;
       border-right: 0;
       border-bottom: 1px solid var(--borde-fuerte);
       transform: translateY(-100%);
@@ -480,6 +480,11 @@ const modelosPresentes = Object.keys(MODELO_ETIQUETA).filter((m) => sitios.some(
       left: 0.6rem;
       background: var(--papel);
       border: 1px solid var(--borde-fuerte);
+    }
+
+    /* El botón de filtros flota sobre el panel: se le deja sitio. */
+    .panel-cabecera {
+      padding-left: 6rem;
     }
 
     .leyenda {

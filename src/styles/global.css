@@ -97,6 +97,11 @@ html {
 
 body {
   margin: 0;
+  /* El mapa ocupa el alto restante sea cual sea el alto del encabezado, que en
+     pantallas estrechas se reparte en varias líneas. */
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
   background: var(--papel);
   color: var(--tinta);
   font-family: var(--sans);
@@ -171,6 +176,7 @@ hr {
 }
 
 .cabecera {
+  flex: none;
   border-bottom: 1px solid var(--borde);
   background: var(--papel);
   position: sticky;
@@ -529,4 +535,11 @@ button:hover {
 
 .prosa > p:first-of-type + p em {
   font-style: normal;
+}
+
+main {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
 }
