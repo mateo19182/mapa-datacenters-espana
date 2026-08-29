@@ -17,8 +17,10 @@ ubicacion:
   precision: exacta
   fuentes: [src-1]
 
-estado: operativo
-estado_detalle: "Instalación registrada en PeeringDB, con presencia también de Civicos Networking en la misma dirección."
+estado: desconocido
+estado_detalle: >-
+  Instalación registrada en PeeringDB, con presencia también de Civicos Networking en la misma
+  dirección. Sin otra fuente que confirme el estado actual.
 estado_fuentes: [src-1]
 
 potencia: []

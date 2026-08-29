@@ -1,0 +1,26 @@
+# Nombres canónicos de operador y sus variantes.
+#
+# Seis investigadores independientes escriben la misma empresa de formas
+# distintas. Aquí se decide, a mano, cuáles son la misma organización. El
+# nombre original de cada ficha se conserva como alias, así que nada se pierde.
+#
+# Solo entran unificaciones seguras. Marcas distintas dentro de un mismo grupo
+# (Stackscale dentro de Grupo Aire, por ejemplo) se mantienen separadas: el
+# operador de esa instalación es la marca, no el grupo.
+
+Templus:
+  - Templus Datacenters
+  - Templus Data Centers
+
+MERLIN Edged:
+  - MERLIN Edged (MERLIN Properties / Edged Energy)
+
+Box2Bit:
+  - Box2bit
+  - Box2Bit (CDP Edge Solutions, S.L.U.)
+
+AFR-IX telecom:
+  - AFR-IX telecom (Medusa Submarine Cable System)
+
+Grupo Aire:
+  - Grupo Aire (OASIX)

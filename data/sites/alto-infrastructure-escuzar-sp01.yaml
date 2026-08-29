@@ -55,6 +55,7 @@ potencia:
     valor_mw: 25
     ambito: fase
     referencia: "Capacidad acumulada prevista a cierre de 2027"
+    acumulado: true
     estado_asociado: en_construccion
     fecha_dato: "2026-07-01"
     fuentes: [src-3]
@@ -62,6 +63,7 @@ potencia:
     valor_mw: 45
     ambito: fase
     referencia: "Capacidad acumulada prevista en 2028"
+    acumulado: true
     estado_asociado: en_construccion
     fecha_dato: "2026-07-01"
     fuentes: [src-3]

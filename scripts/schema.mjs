@@ -157,6 +157,9 @@ const zPotencia = z.object({
   // Algunas fuentes dan MVA (potencia aparente). No se convierte a MW: haría
   // falta el factor de potencia, que no se publica. Se registra tal cual.
   valor_mva: z.number().positive().nullable().optional(),
+  // Cuando una fuente da la capacidad ACUMULADA a cada hito («25 MW a cierre de
+  // 2027, 45 MW en 2028»), sus cifras no se suman entre sí: se toma la mayor.
+  acumulado: z.boolean().optional(),
   ambito: z.enum(AMBITOS),
   referencia: z.string().nullable().optional(),
   estado_asociado: z.enum(ESTADOS).nullable().optional(),
@@ -270,6 +273,7 @@ export function normalizarSitio(crudo) {
     valor_mw: numero(p.valor_mw),
     valor_mw_max: numero(p.valor_mw_max),
     valor_mva: numero(p.valor_mva),
+    acumulado: p.acumulado === true,
     ambito: AMBITOS.includes(slug(p.ambito)) ? slug(p.ambito) : 'campus',
     referencia: p.referencia ?? null,
     estado_asociado: p.estado_asociado

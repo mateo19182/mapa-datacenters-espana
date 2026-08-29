@@ -1,0 +1,60 @@
+id: ungsc-quart-de-poblet-unictf
+nombre: "United Nations Global Service Centre — Base de Valencia (UNICTF), Quart de Poblet"
+alias:
+  - "UNICTF"
+  - "United Nations Information Communication Technology Facility"
+  - "Base de Apoyo de Naciones Unidas en Quart de Poblet"
+tipo: edificio
+operador: "United Nations Global Service Centre"
+propietario: "Naciones Unidas"
+modelo: corporativo
+
+ubicacion:
+  municipio: "Quart de Poblet"
+  provincia: "Valencia"
+  ccaa: "Comunitat Valenciana"
+  lat: 39.4827
+  lon: -0.4439
+  precision: municipio
+  fuentes: [src-2]
+
+estado: operativo
+estado_detalle: >-
+  Instalación de tecnologías de la información y comunicaciones de Naciones Unidas que
+  actúa como centro tecnológico gemelo de la base de Brindisi, garantizando continuidad de
+  negocio y recuperación ante desastres de los servicios digitales de la ONU. El directorio
+  del Observatorio Español de Data Centers lo clasifica como público/on-premise con
+  certificación Tier III.
+estado_fuentes: [src-1, src-2]
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      No se publica potencia eléctrica ni superficie de sala. La ficha del Observatorio no
+      asigna MW.
+    fuentes: [src-2]
+  - campo: ubicacion
+    descripcion: >-
+      La web oficial de UNGSC sitúa la base en «Valencia» sin más precisión; el término
+      municipal exacto (Quart de Poblet) procede del directorio del Observatorio Español de
+      Data Centers.
+    fuentes: [src-1, src-2]
+
+confianza: baja
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.ungsc.org/our-bases"
+    titulo: "United Nations Global Service Centre | Our Bases"
+    editor: "United Nations Global Service Centre"
+    tipo: oficial
+    fecha_consulta: "2026-08-29"
+    cita: "The Base in Valencia, formally known as the United Nations Information Communication Technology Facility, UNICTF, also serves as UNGSC Brindisi's twin technology centre, an arrangement that guarantees business continuity and disaster recovery for the UN's digital technology services."
+  - id: src-2
+    url: "https://observatorioedc.com/directorio/"
+    titulo: "Data Centers — Directorio, Observatorio Español de Data Centers"
+    editor: "Observatorio Español de Data Centers"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: "United Nations | UN Global Service Centre | Quart de Poblet | Comunidad Valenciana | PUBLICO / ON PREMISE | Tier III | Operativo"

@@ -1,0 +1,58 @@
+id: exa-riba-roja-de-turia
+nombre: "EXA Infrastructure — Riba-roja de Túria"
+alias:
+  - "EXA Edge DC Valencia"
+  - "Interoute Valencia"
+tipo: edificio
+operador: "EXA Infrastructure"
+modelo: colocation
+
+ubicacion:
+  municipio: "Riba-roja de Túria"
+  provincia: "Valencia"
+  ccaa: "Comunitat Valenciana"
+  direccion: "Ribarroja de Turia, 46190"
+  lat: 39.473433
+  lon: -0.536672
+  precision: aproximada
+  fuentes: [src-1, src-pdb]
+
+estado: operativo
+estado_detalle: >-
+  Instalación de colocation del operador de infraestructura paneuropea EXA Infrastructure
+  (antes Interoute/GTT), listada como operativa en el directorio del Observatorio Español
+  de Data Centers.
+estado_fuentes: [src-1]
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      No consta potencia, superficie ni número de racks en las fuentes consultadas. No se
+      ha podido acceder a la ficha de la instalación en la web del operador ni a los
+      directorios comerciales (bloqueo de acceso automatizado).
+    fuentes: [src-1, src-pdb]
+  - campo: ubicacion
+    descripcion: >-
+      PeeringDB registra la instalación como «EXA Edge DC Valencia» con dirección
+      «Ribarroja de Turia, 46190» y coordenadas, pero sin calle ni número; precisión
+      aproximada.
+    fuentes: [src-1, src-pdb]
+
+confianza: baja
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://observatorioedc.com/directorio/"
+    titulo: "Data Centers — Directorio, Observatorio Español de Data Centers"
+    editor: "Observatorio Español de Data Centers"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: "EXA Infrastructure | Ribarroja del Turia | Comunidad Valenciana | COLOCATION | Operativo"
+  - id: src-pdb
+    url: "https://www.peeringdb.com/api/fac?country=ES&limit=400"
+    titulo: "PeeringDB — Facilities API, España"
+    editor: "PeeringDB"
+    tipo: asociacion
+    fecha_consulta: "2026-08-29"
+    cita: "EXA Edge DC Valencia | Ribarroja de Turia | Valencia | 46190 | 39.473433 -0.536672 | EXA Infrastructure"

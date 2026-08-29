@@ -52,6 +52,7 @@ const sitios = q('SELECT * FROM sitios ORDER BY nombre').map((s) => {
     valor_mw: p.valor_mw,
     valor_mw_max: p.valor_mw_max,
     valor_mva: p.valor_mva,
+    acumulado: Boolean(p.acumulado),
     ambito: p.ambito,
     referencia: p.referencia,
     estado_asociado: p.estado_asociado,
@@ -366,6 +367,19 @@ if (existsSync(lineas)) {
 
 // La propia base SQLite se publica como descarga.
 copyFileSync(join(RAIZ, 'build/datacenters.db'), join(PUBLICO, 'datacenters.db'))
+
+// Los dossieres de investigación que son material publicable se copian a src
+// para que Astro los renderice como páginas. Se generan, no se editan a mano.
+const CONTENIDO = join(RAIZ, 'src/contenido')
+mkdirSync(CONTENIDO, { recursive: true })
+for (const doc of ['red-electrica', 'renovables']) {
+  const origen = join(RAIZ, `research/${doc}.md`)
+  writeFileSync(
+    join(CONTENIDO, `${doc}.md`),
+    existsSync(origen) ? readFileSync(origen, 'utf8') : `# ${doc}\n\nDocumento pendiente.\n`,
+    'utf8',
+  )
+}
 
 // El informe de validación viaja al sitio para poder publicarlo tal cual.
 const informe = join(RAIZ, 'research/informe-validacion.md')

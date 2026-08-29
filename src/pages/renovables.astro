@@ -1,0 +1,149 @@
+---
+import Base from '../layouts/Base.astro'
+import { Content as Documento } from '../contenido/renovables.md'
+import renovables from '../data/renovables.json'
+import { VINCULO_ETIQUETA, numero } from '../lib/etiquetas.js'
+
+const porTipo = [...new Set(renovables.map((r) => r.tipo).filter(Boolean))].map((t) => ({
+  tipo: t,
+  n: renovables.filter((r) => r.tipo === t).length,
+  mw: renovables.filter((r) => r.tipo === t).reduce((a, r) => a + (r.potencia_mw ?? 0), 0),
+}))
+
+const conPotencia = renovables.filter((r) => r.potencia_mw != null)
+const totalMw = conPotencia.reduce((a, r) => a + r.potencia_mw, 0)
+const almacenamiento = renovables.filter((r) => r.capacidad_mwh != null)
+
+const contrapartes = [...new Set(renovables.map((r) => r.contraparte_ppa).filter(Boolean))]
+  .map((c) => {
+    const lista = renovables.filter((r) => r.contraparte_ppa === c)
+    return {
+      nombre: c,
+      n: lista.length,
+      mw: lista.reduce((a, r) => a + (r.potencia_mw ?? 0), 0),
+      conDato: lista.filter((r) => r.potencia_mw != null).length,
+    }
+  })
+  .sort((a, b) => b.mw - a.mw)
+---
+
+<Base
+  titulo="Renovables y almacenamiento"
+  descripcion="Generación renovable y baterías con vínculo documentado a centros de datos en España: contratos de compra de energía, autoconsumo y proyectos en el mismo nudo."
+>
+  <div class="contenedor">
+    <h1>Renovables y almacenamiento</h1>
+    <p class="sumario">
+      Aquí solo entran los activos con un vínculo documentado a un centro de datos concreto: un
+      contrato de compra de energía firmado, generación en el propio emplazamiento, o conexión al
+      mismo nudo. No es un inventario de renovables en España.
+    </p>
+
+    <div class="nota">
+      <strong>Un PPA no es un cable.</strong> Un contrato de compra de energía es un acuerdo
+      financiero y de garantías de origen: no significa que ese centro de datos se alimente
+      físicamente de esa planta. La electricidad que consume viene de la red, mezclada con todo lo
+      demás. Estas cifras describen contratos, no flujos de electrones.
+    </div>
+
+    <dl class="cifras">
+      <div class="cifra">
+        <dt>Activos registrados</dt>
+        <dd>{renovables.length}<small>con vínculo documentado</small></dd>
+      </div>
+      <div class="cifra">
+        <dt>Potencia contratada</dt>
+        <dd>{numero(totalMw)} MW<small>en {conPotencia.length} de {renovables.length} activos; el resto no publica la cifra</small></dd>
+      </div>
+      <div class="cifra">
+        <dt>Almacenamiento</dt>
+        <dd>
+          {almacenamiento.length ? `${numero(almacenamiento.reduce((a, r) => a + r.capacidad_mwh, 0))} MWh` : '—'}
+          <small>{almacenamiento.length} {almacenamiento.length === 1 ? 'proyecto de baterías' : 'proyectos de baterías'}</small>
+        </dd>
+      </div>
+      <div class="cifra">
+        <dt>Contrapartes</dt>
+        <dd>{contrapartes.length}<small>operadores con contrato firmado</small></dd>
+      </div>
+    </dl>
+
+    <p class="pequeno silencio">
+      Los MW de generación y los MW de un centro de datos son magnitudes distintas y no se comparan
+      aquí: una planta de 200 MW no «alimenta» un centro de 200 MW, porque su producción es
+      intermitente y la del centro es continua.
+    </p>
+
+    <h2>Por contraparte</h2>
+    <div class="tabla-envoltorio">
+      <table>
+        <thead>
+          <tr><th>Contraparte</th><th class="num">Activos</th><th class="num">MW contratados</th><th class="num">Con cifra publicada</th></tr>
+        </thead>
+        <tbody>
+          {contrapartes.map((c) => (
+            <tr>
+              <td>{c.nombre}</td>
+              <td class="num">{c.n}</td>
+              <td class="num">{c.mw ? `${numero(c.mw)} MW` : <span class="silencio">—</span>}</td>
+              <td class="num pequeno silencio">{c.conDato}/{c.n}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Todos los activos</h2>
+    <div class="tabla-envoltorio">
+      <table>
+        <thead>
+          <tr>
+            <th>Activo</th>
+            <th>Tipo</th>
+            <th class="num">Potencia</th>
+            <th>Promotor</th>
+            <th>Vínculo</th>
+            <th>Estado</th>
+            <th>Ubicación</th>
+          </tr>
+        </thead>
+        <tbody>
+          {[...renovables]
+            .sort((a, b) => (b.potencia_mw ?? -1) - (a.potencia_mw ?? -1))
+            .map((r) => (
+              <tr>
+                <td>{r.nombre}</td>
+                <td class="pequeno">{r.tipo}</td>
+                <td class="num">
+                  {r.potencia_mw != null ? `${numero(r.potencia_mw, 1)} MW` : <span class="silencio">—</span>}
+                  {r.capacidad_mwh != null && <span class="pequeno silencio"><br />{numero(r.capacidad_mwh)} MWh</span>}
+                </td>
+                <td class="pequeno">{r.promotor ?? <span class="silencio">—</span>}</td>
+                <td class="pequeno">
+                  {VINCULO_ETIQUETA[r.tipo_vinculo] ?? r.tipo_vinculo}
+                  {r.contraparte_ppa && <span class="pequeno silencio"><br />{r.contraparte_ppa}</span>}
+                </td>
+                <td class="pequeno">{r.estado}</td>
+                <td class="pequeno">
+                  {r.municipio ?? (r.municipios ?? []).join(', ') ?? '—'}
+                  <span class="silencio"><br />{r.ccaa}</span>
+                </td>
+              </tr>
+            ))}
+        </tbody>
+      </table>
+    </div>
+
+    <hr />
+
+    <article class="prosa">
+      <Documento />
+    </article>
+
+    <p class="pequeno silencio" style="margin-bottom:3rem">
+      Estos activos pueden verse sobre el mapa activando la capa correspondiente en
+      <a href="/?capas=renovables">la vista cartográfica</a>. Casi ninguno publica coordenadas: se
+      sitúan en el centro de su municipio y se dibujan atenuados.
+    </p>
+  </div>
+</Base>

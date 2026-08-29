@@ -55,6 +55,8 @@ fecha_puesta_en_servicio: "2022-11"   # ISO parcial admitido: YYYY | YYYY-MM | Y
 potencia:
   - tipo: it                          # it | conexion_red | instalada_total | no_especificado
     valor_mw: 40
+    valor_mva: null                   # si la fuente da MVA: se registra, NO se convierte
+    acumulado: false                  # true si la cifra es el acumulado a ese hito
     ambito: fase                      # campus | edificio | fase
     referencia: "Fase 1"              # a qué se refiere exactamente
     estado_asociado: operativo        # estado de eso que se mide
@@ -122,7 +124,16 @@ fuentes:
 | `instalada_total` | Potencia eléctrica instalada del edificio (incluye clima, pérdidas). |
 | `no_especificado` | La fuente da «MW» sin decir de qué tipo. Se registra tal cual y **no** se compara con los anteriores. |
 
-Nunca se convierte entre tipos aplicando un PUE supuesto.
+Nunca se convierte entre tipos aplicando un PUE supuesto. Tampoco se convierte de
+MVA a MW: haría falta el factor de potencia, que no se publica. Si la fuente da
+MVA, se usa `valor_mva` y `valor_mw` queda a `null`.
+
+## Fases acumuladas frente a incrementales
+
+Muchas fuentes dan la capacidad **acumulada** a cada hito («10 MW en 2026, 25 MW a
+cierre de 2027, 45 MW en 2028»). Esas cifras no se suman entre sí: se marca cada
+registro con `acumulado: true` y la agregación toma la mayor. Sumarlas produciría
+un total inflado con aspecto de rigor, que es justo lo que este proyecto evita.
 
 ## Red eléctrica
 

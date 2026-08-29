@@ -2,17 +2,34 @@
 
 Generado el 2026-08-29 por `npm run validate`.
 
-- Emplazamientos cargados: **102**
+- Emplazamientos cargados: **160**
 - Nodos de red: **133**
 - Activos renovables/BESS: **22**
-- Errores: **0** · Avisos: **130**
+- Errores: **0** · Avisos: **206**
 
 ## Incidencias por fichero
+
+### `abanca-a-coruna-pocomaco.yaml`
+
+- aviso: sin ningún dato de potencia
 
 ### `acciona-ignis-segovia.yaml`
 
 - aviso: sin ningún dato de potencia
 - aviso: sin coordenadas: no aparecerá en el mapa
+
+### `acens-alcobendas.yaml`
+
+- aviso: sin ningún dato de potencia
+
+### `acs-alcala-de-henares-campus.yaml`
+
+- aviso: sin coordenadas: no aparecerá en el mapa
+
+### `adam-alcala-de-henares.yaml`
+
+- aviso: potencia[0] («Primera fase») no distingue el tipo de MW
+- aviso: potencia[1] («Ficha del directorio OCOLO») no distingue el tipo de MW
 
 ### `adam-barcelona-travessera.yaml`
 
@@ -29,7 +46,7 @@ Generado el 2026-08-29 por `npm run validate`.
 
 ### `adi-abanto-zierbena-data-center-euskadi.yaml`
 
-- aviso: sin ningún dato de potencia
+- aviso: potencia[0] («Capacidad del centro de datos activo en Abanto») no distingue el tipo de MW
 
 ### `afr-ix-barbate-medusa-zahara.yaml`
 
@@ -109,15 +126,32 @@ Generado el 2026-08-29 por `npm run validate`.
 
 - aviso: sin ningún dato de potencia
 
+### `bbva-tres-cantos.yaml`
+
+- aviso: sin ningún dato de potencia
+- aviso: sin coordenadas: no aparecerá en el mapa
+
 ### `box2bit-carinena-ebro.yaml`
 
 - aviso: sin ningún dato de potencia
+
+### `box2bit-epila-epilon.yaml`
+
+- aviso: posible duplicado de box2bit-carinena-ebro: comparten el nombre «Box2Bit (CDP Edge Solutions, S.L.U.)»
 
 ### `box2bit-malaga-el-viso.yaml`
 
 - aviso: sin ningún dato de potencia
 
 ### `bsc-barcelona-marenostrum.yaml`
+
+- aviso: sin ningún dato de potencia
+
+### `cartagena-data-green-escombreras.yaml`
+
+- aviso: sin ningún dato de potencia
+
+### `cesga-santiago-a-sionlla.yaml`
 
 - aviso: sin ningún dato de potencia
 
@@ -153,6 +187,15 @@ Generado el 2026-08-29 por `npm run validate`.
 - aviso: potencia[0] («Capacidad total planificada del edificio BCN1») no distingue el tipo de MW
 - aviso: potencia[1] («Potencia tras una segunda fase de ampliación») no distingue el tipo de MW
 
+### `digital-valley-picassent.yaml`
+
+- aviso: potencia[0] («Capacidad máxima del campus») no distingue el tipo de MW
+
+### `diversity-cloud-arganda-del-rey.yaml`
+
+- aviso: sin ningún dato de potencia
+- aviso: sin coordenadas: no aparecerá en el mapa
+
 ### `edgeconnex-sant-boi-bcn01.yaml`
 
 - aviso: potencia[0] («Capacidad total N+1 del edificio») no distingue el tipo de MW
@@ -185,9 +228,40 @@ Generado el 2026-08-29 por `npm run validate`.
 
 - aviso: sin ningún dato de potencia
 
+### `espacio-rack-pozuelo-de-alarcon.yaml`
+
+- aviso: sin ningún dato de potencia
+
+### `espanix-madrid-gran-via-hortaleza.yaml`
+
+- aviso: sin ningún dato de potencia
+- aviso: posible duplicado de espanix-madrid-mesena: mismo operador a 199 m
+
+### `espanix-madrid-mesena.yaml`
+
+- aviso: sin ningún dato de potencia
+
 ### `exa-cerdanyola-edge.yaml`
 
 - aviso: sin ningún dato de potencia
+
+### `exa-riba-roja-de-turia.yaml`
+
+- aviso: sin ningún dato de potencia
+
+### `forestalia-botorrita-dcm-dedalo.yaml`
+
+- aviso: posible duplicado de forestalia-alfamen-dcm-blue: comparten el nombre «Proyecto Búfalo»
+
+### `forestalia-magallon-dcm-data.yaml`
+
+- aviso: posible duplicado de forestalia-botorrita-dcm-dedalo: comparten el nombre «Proyecto Búfalo»
+
+### `fotones-murcia-espinardo-casiopeia.yaml`
+
+- aviso: potencia[0] («Capacidad total del campus») no distingue el tipo de MW
+- aviso: potencia[1] («Fase 1») no distingue el tipo de MW
+- aviso: potencia[2] («Fase 2 (ampliación)») no distingue el tipo de MW
 
 ### `frv-edison-monfarracinos-zamora.yaml`
 
@@ -219,6 +293,14 @@ Generado el 2026-08-29 por `npm run validate`.
 
 - aviso: sin ningún dato de potencia
 
+### `google-santander-pctcan-sol.yaml`
+
+- aviso: sin ningún dato de potencia
+
+### `grupo-aire-elche-oasix.yaml`
+
+- aviso: sin ningún dato de potencia
+
 ### `grupo-aire-malaga-pta-oasix.yaml`
 
 - aviso: sin ningún dato de potencia
@@ -228,6 +310,14 @@ Generado el 2026-08-29 por `npm run validate`.
 - aviso: sin ningún dato de potencia
 
 ### `hscale-cerdanyola-parc-alba.yaml`
+
+- aviso: sin ningún dato de potencia
+
+### `iaas-datacenter-madrid-maraton.yaml`
+
+- aviso: sin ningún dato de potencia
+
+### `ibercom-madrid-maria-tubau.yaml`
 
 - aviso: sin ningún dato de potencia
 
@@ -243,10 +333,22 @@ Generado el 2026-08-29 por `npm run validate`.
 
 - aviso: potencia[1] («Potencia que necesita el centro de proceso de datos a pleno desarrollo») no distingue el tipo de MW
 
+### `ingenostrum-curtis-galicia-green-data-center.yaml`
+
+- aviso: sin ningún dato de potencia
+
+### `ipcore-madrid-calle-marzo.yaml`
+
+- aviso: sin ningún dato de potencia
+
 ### `iron-mountain-san-fernando-de-henares-mad.yaml`
 
 - aviso: potencia[2] («Primera fase de MAD-1 en el momento de la inauguración») no distingue el tipo de MW
 - aviso: potencia[3] («Capacidad potencial del campus según la venta de Xdata Properties a Iron Mountain») no distingue el tipo de MW
+
+### `islalink-valencia-fsl.yaml`
+
+- aviso: sin ningún dato de potencia
 
 ### `itnow-cerdanyola-cd2.yaml`
 
@@ -263,6 +365,10 @@ Generado el 2026-08-29 por `npm run validate`.
 ### `junta-andalucia-sevilla-cpd-el-palenque.yaml`
 
 - aviso: sin ningún dato de potencia
+
+### `kumo-murcia-espinardo.yaml`
+
+- aviso: potencia[0] («Instalación de Espinardo (193 kW)») no distingue el tipo de MW
 
 ### `lumen-hospitalet-bcn1.yaml`
 
@@ -293,13 +399,37 @@ Generado el 2026-08-29 por `npm run validate`.
 
 - aviso: potencia[2] («Demanda energética total declarada en la autorización ambiental integrada») no distingue el tipo de MW
 
+### `merlin-edged-ribera-baja-arasur.yaml`
+
+- aviso: potencia[5] («Capacidad final del campus según el proyecto presentado en la primera piedra (2022)») no distingue el tipo de MW
+
 ### `meta-talavera-de-la-reina-torrehierro.yaml`
 
 - aviso: potencia[0] («Potencia instalada del campus según ficha divulgativa local») no distingue el tipo de MW
 
+### `microsoft-alcala-de-henares-campus.yaml`
+
+- aviso: sin ningún dato de potencia
+- aviso: sin coordenadas: no aparecerá en el mapa
+
+### `microsoft-algete.yaml`
+
+- aviso: sin ningún dato de potencia
+- aviso: sin coordenadas: no aparecerá en el mapa
+
 ### `microsoft-la-muela-centrovia.yaml`
 
 - aviso: potencia[1] («Objetivo de potencia por planta en segunda fase») no distingue el tipo de MW
+
+### `microsoft-meco.yaml`
+
+- aviso: sin ningún dato de potencia
+- aviso: sin coordenadas: no aparecerá en el mapa
+
+### `microsoft-san-sebastian-de-los-reyes.yaml`
+
+- aviso: sin ningún dato de potencia
+- aviso: sin coordenadas: no aparecerá en el mapa
 
 ### `microsoft-villamayor-de-gallego.yaml`
 
@@ -313,9 +443,26 @@ Generado el 2026-08-29 por `npm run validate`.
 
 - aviso: sin coordenadas: no aparecerá en el mapa
 
+### `nixval-paterna-fuente-del-jarro.yaml`
+
+- aviso: sin ningún dato de potencia
+
+### `nlighten-madrid-lezama.yaml`
+
+- aviso: potencia[0] («Capacidad del emplazamiento (site capacity end-state)») no distingue el tipo de MW
+- aviso: potencia[1] («Ficha del directorio OCOLO») no distingue el tipo de MW
+
 ### `nostrum-zamudio-moana-data.yaml`
 
 - aviso: potencia[0] («Capacidad total prevista de la instalación (tres fases de 10 MW)») no distingue el tipo de MW
+
+### `nunsys-paterna-parque-tecnologico.yaml`
+
+- aviso: sin ningún dato de potencia
+
+### `nxn-valencia-vara-de-quart-nx01.yaml`
+
+- aviso: potencia[0] («Potencia inicial del edificio Nx01») no distingue el tipo de MW
 
 ### `oxigen-sant-cugat.yaml`
 
@@ -326,6 +473,20 @@ Generado el 2026-08-29 por `npm run validate`.
 
 - aviso: potencia[1] («Fase 1 (DC01)») no distingue el tipo de MW
 - aviso: potencia[2] («Fase 2 (DC02)») no distingue el tipo de MW
+
+### `plexval-paterna-ciudad-de-sevilla.yaml`
+
+- aviso: sin ningún dato de potencia
+
+### `preval-monforte-del-cid-el-lobo.yaml`
+
+- aviso: potencia[0] («Capacidad total al completar las tres fases») no distingue el tipo de MW
+- aviso: potencia[1] («Fase 1») no distingue el tipo de MW
+- aviso: potencia[2] («Capacidad aproximada según DatacenterDynamics») no distingue el tipo de MW
+
+### `pure-dc-meco.yaml`
+
+- aviso: sin coordenadas: no aparecerá en el mapa
 
 ### `quetta-molins-de-rei.yaml`
 
@@ -343,9 +504,19 @@ Generado el 2026-08-29 por `npm run validate`.
 - aviso: potencia[1] («Capacidad eléctrica total asociada al antiguo complejo de Ercros») no distingue el tipo de MW
 - aviso: sin coordenadas: no aparecerá en el mapa
 
+### `s4u-salas-digital-valley-asturias.yaml`
+
+- aviso: potencia[0] («Capacidad total del campus») no distingue el tipo de MW
+- aviso: potencia[1] («Fase 1») no distingue el tipo de MW
+- aviso: potencia[2] («Fase 2 (potencia adicional)») no distingue el tipo de MW
+
 ### `sarenet-derio-parque-tecnologico.yaml`
 
 - aviso: potencia[1] («Capacidad máxima de escalado del edificio») no distingue el tipo de MW
+
+### `sekuens-aller-pozo-san-jorge.yaml`
+
+- aviso: potencia[0] («Potencia del centro de datos en la antigua instalación minera») no distingue el tipo de MW
 
 ### `serosense-alcarras.yaml`
 
@@ -358,6 +529,15 @@ Generado el 2026-08-29 por `npm run validate`.
 - aviso: potencia[0] («Potencia anunciada del centro de datos de IA») no distingue el tipo de MW
 
 ### `stackscale-talavera-de-la-reina.yaml`
+
+- aviso: sin ningún dato de potencia
+
+### `stoneshield-pielagos-altamira.yaml`
+
+- aviso: potencia[0] («Potencia prevista para 2028») no distingue el tipo de MW
+- aviso: potencia[1] («Potencia prevista para 2030») no distingue el tipo de MW
+
+### `sys4net-alcantarilla-magalia.yaml`
 
 - aviso: sin ningún dato de potencia
 
@@ -377,6 +557,10 @@ Generado el 2026-08-29 por `npm run validate`.
 
 - aviso: sin ningún dato de potencia
 
+### `telxius-sopelana-estacion-cables-submarinos.yaml`
+
+- aviso: sin ningún dato de potencia
+
 ### `templus-alcala-de-henares-mad01.yaml`
 
 - aviso: potencia[0] («Total power (ficha de Templus)») no distingue el tipo de MW
@@ -386,19 +570,70 @@ Generado el 2026-08-29 por `npm run validate`.
 ### `templus-barcelona-bcn02.yaml`
 
 - aviso: potencia[0] («Potencia del edificio adquirido a AtlasEdge») no distingue el tipo de MW
+- aviso: posible duplicado de templus-alcala-de-henares-mad01: comparten el nombre «Templus Data Centers»
 
 ### `templus-hospitalet-bcn01.yaml`
 
 - aviso: potencia[0] («Potencia previa a la ampliación de Templus») no distingue el tipo de MW
 - aviso: potencia[1] («Potencia tras la ampliación») no distingue el tipo de MW
+- aviso: posible duplicado de templus-barcelona-bcn02: comparten el nombre «Templus Data Centers»
+
+### `templus-madrid-mad02-manoteras.yaml`
+
+- aviso: potencia[0] («Total power (ficha de Templus)») no distingue el tipo de MW
+- aviso: potencia[1] («Ficha del directorio OCOLO para Av. de Manoteras 42B») no distingue el tipo de MW
+- aviso: posible duplicado de templus-hospitalet-bcn01: comparten el nombre «Templus Datacenters»
+
+### `templus-madrid-mad03-albasanz.yaml`
+
+- aviso: potencia[0] («Total power (ficha de Templus)») no distingue el tipo de MW
+- aviso: posible duplicado de templus-madrid-mad02-manoteras: comparten el nombre «Templus Datacenters»
 
 ### `templus-malaga-guadalhorce.yaml`
 
 - aviso: potencia[0] (««Potencia total» declarada por el operador en la ficha de MAL01») no distingue el tipo de MW
 - aviso: potencia[1] («Potencia de MAL01 en el listado de la red europea de Templus») no distingue el tipo de MW
 
+### `templus-paterna-parque-tecnologico.yaml`
+
+- aviso: potencia[0] («Potencia en operación antes de la ampliación») no distingue el tipo de MW
+- aviso: potencia[1] («Potencia objetivo tras la ampliación anunciada») no distingue el tipo de MW
+
 ### `templus-sevilla-pica.yaml`
 
 - aviso: potencia[0] (««Potencia total» tras la ampliación de 2025») no distingue el tipo de MW
 - aviso: potencia[1] («Potencia de SEV01 en el listado de la red europea de Templus») no distingue el tipo de MW
 - aviso: potencia[2] («Potencia previa a la adquisición por Templus») no distingue el tipo de MW
+
+### `tillion-villamayor-de-gallego.yaml`
+
+- aviso: potencia[0] («Capacidad de cada uno de los cuatro edificios de centro de datos») no distingue el tipo de MW
+- aviso: potencia[1] («Potencia eléctrica total del campus») no distingue el tipo de MW
+
+### `ungsc-quart-de-poblet-unictf.yaml`
+
+- aviso: sin ningún dato de potencia
+
+### `unican-ifca-santander-altamira.yaml`
+
+- aviso: sin ningún dato de potencia
+
+### `vantage-villanueva-de-gallego-el-olivar.yaml`
+
+- aviso: potencia[0] («Concesión de potencia asociada a la fase 1 según la tabla de inversión del proyecto») no distingue el tipo de MW
+
+### `vaultica-alcala-de-henares-mad01.yaml`
+
+- aviso: sin coordenadas: no aparecerá en el mapa
+
+### `vdpc-alicante-puerto-cls.yaml`
+
+- aviso: potencia[0] («Instalación CLS proyectada en el puerto de Alicante») no distingue el tipo de MW
+
+### `vdpc-sagunto-barracuda.yaml`
+
+- aviso: potencia[0] («Potencia eléctrica inicial del data center («10 MW pico»)») no distingue el tipo de MW
+
+### `walhalla-castellon-espaitec.yaml`
+
+- aviso: potencia[0] («Potencia del data center») no distingue el tipo de MW

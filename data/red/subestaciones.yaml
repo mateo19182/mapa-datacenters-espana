@@ -74,6 +74,7 @@ subestaciones:
     lon: -3.29667
     precision: aproximada
     osm_id: "way/170272148"
+    osm_nombre: "SE Anchuelo"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 0   # nudo ANCHUELO 400, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -97,6 +98,7 @@ subestaciones:
     lon: -3.42257
     precision: aproximada
     osm_id: "way/677413570"
+    osm_nombre: "Subestación Loeches 1"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 0   # nudo LOECHES 400, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -120,6 +122,7 @@ subestaciones:
     lon: -3.50792
     precision: aproximada
     osm_id: "way/1252105002"
+    osm_nombre: "SET San Fernando"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 0   # nudo SAN FERNANDO 400, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -143,6 +146,8 @@ subestaciones:
     lon: -3.48236
     precision: aproximada
     osm_id: "way/28343429"
+    osm_nombre: "SET Ardoz Nueva"
+    nota_geo: "El nombre del objeto de OpenStreetMap (SET Ardoz Nueva) no coincide literalmente con el del nudo de Red Eléctrica (ARDOZ). La correspondencia se ha aceptado por proximidad de nombre, tensión compatible y coincidencia de comunidad autónoma, pero no está confirmada por fuente oficial."
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: null   # nudo ARDOZ 220, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -166,6 +171,7 @@ subestaciones:
     lon: -3.47876
     precision: aproximada
     osm_id: "way/274593968"
+    osm_nombre: "Subestación de Daganzo"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: null   # nudo DAGANZO 220, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -189,6 +195,7 @@ subestaciones:
     lon: -3.31361
     precision: aproximada
     osm_id: "way/329277804"
+    osm_nombre: "Subestación de Meco"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: null   # nudo MECO 220, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -258,6 +265,7 @@ subestaciones:
     lon: -3.55197
     precision: aproximada
     osm_id: "way/1308518194"
+    osm_nombre: "Subestación Algete"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 0   # nudo ALGETE 220, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -281,6 +289,7 @@ subestaciones:
     lon: -3.72309
     precision: aproximada
     osm_id: "way/101953901"
+    osm_nombre: "Subestación de La Cereal"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 0   # nudo LA CEREAL 400, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -304,6 +313,7 @@ subestaciones:
     lon: -3.67192
     precision: aproximada
     osm_id: "way/24791388"
+    osm_nombre: "Subestación eléctrica de Fuencarral"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: null   # nudo FUENCARRAL 400, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -327,6 +337,7 @@ subestaciones:
     lon: -3.87508
     precision: aproximada
     osm_id: "way/27949649"
+    osm_nombre: "Subestación de Moraleja"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 0   # nudo MORALEJA 400, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -337,7 +348,7 @@ subestaciones:
     ultima_verificacion: "2026-08-29"
 
   - id: se-ss-reyes
-    nombre: "Ss.Reyes"
+    nombre: "San Sebastián de los Reyes (SS.Reyes)"
     nudos_ree: ["SS.REYES 400"]
     codigo_subestacion_ree: "50582"
     tensiones_kv: [400]
@@ -373,6 +384,7 @@ subestaciones:
     lon: -3.90544
     precision: aproximada
     osm_id: "way/28683005"
+    osm_nombre: "Subestación de Villaviciosa"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 0   # nudo VILLAVICIOSA 400, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -383,7 +395,7 @@ subestaciones:
     ultima_verificacion: "2026-08-29"
 
   - id: se-torrejon-de-velasco
-    nombre: "Torrejon De Velasco"
+    nombre: "Torrejón de Velasco"
     nudos_ree: ["TORREJON DE VELASCO 400"]
     codigo_subestacion_ree: "50766"
     tensiones_kv: [400]
@@ -419,6 +431,7 @@ subestaciones:
     lon: -3.44301
     precision: aproximada
     osm_id: "way/27936937"
+    osm_nombre: "Subestación de Morata"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 0   # nudo MORATA 400, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -429,7 +442,7 @@ subestaciones:
     ultima_verificacion: "2026-08-29"
 
   - id: se-arroyo-de-la-vega
-    nombre: "Arroyo De La Vega"
+    nombre: "Arroyo de la Vega"
     nudos_ree: ["ARROYO DE LA VEGA 220"]
     codigo_subestacion_ree: "50056"
     tensiones_kv: [220]
@@ -442,6 +455,7 @@ subestaciones:
     lon: -3.59677
     precision: aproximada
     osm_id: "way/28401434"
+    osm_nombre: "SET Arroyo de la Vega"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 0   # nudo ARROYO DE LA VEGA 220, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -465,6 +479,7 @@ subestaciones:
     lon: -3.65149
     precision: aproximada
     osm_id: "way/231951162"
+    osm_nombre: "ST Alcobendas"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 0   # nudo ALCOBENDAS 220, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -488,6 +503,7 @@ subestaciones:
     lon: -3.57507
     precision: aproximada
     osm_id: "way/27937443"
+    osm_nombre: "Subestación de Coslada"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: null   # nudo COSLADA 220, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -511,6 +527,7 @@ subestaciones:
     lon: -3.78325
     precision: aproximada
     osm_id: "way/28602711"
+    osm_nombre: "Subestación de La Fortuna"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: null   # nudo FORTUNA 220, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -557,6 +574,7 @@ subestaciones:
     lon: -3.72308
     precision: aproximada
     osm_id: "way/28683269"
+    osm_nombre: "SET Retamar"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: null   # nudo RETAMAR 220, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -567,7 +585,7 @@ subestaciones:
     ultima_verificacion: "2026-08-29"
 
   - id: se-fuentes-de-la-alcarria
-    nombre: "Fuentes De La Alcarria"
+    nombre: "Fuentes de la Alcarria"
     nudos_ree: ["FUENTES DE LA ALCARRIA 400"]
     codigo_subestacion_ree: "50234"
     tensiones_kv: [400]
@@ -580,6 +598,7 @@ subestaciones:
     lon: -2.98354
     precision: aproximada
     osm_id: "way/170272140"
+    osm_nombre: "Fuentes de la Alcarría"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 0   # nudo FUENTES DE LA ALCARRIA 400, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -603,6 +622,7 @@ subestaciones:
     lon: -2.62574
     precision: aproximada
     osm_id: "way/226363063"
+    osm_nombre: "Subestación de Trillo"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 0   # nudo TRILLO 400, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -636,7 +656,7 @@ subestaciones:
     ultima_verificacion: "2026-08-29"
 
   - id: se-jose-cabrera
-    nombre: "Jose Cabrera"
+    nombre: "José Cabrera"
     nudos_ree: ["JOSE CABRERA 220"]
     codigo_subestacion_ree: "50287"
     tensiones_kv: [220]
@@ -649,6 +669,7 @@ subestaciones:
     lon: -2.88582
     precision: aproximada
     osm_id: "way/145333039"
+    osm_nombre: "José Cabrera"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 0   # nudo JOSE CABRERA 220, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -695,6 +716,7 @@ subestaciones:
     lon: -3.85810
     precision: aproximada
     osm_id: "way/170671537"
+    osm_nombre: "Subestación Aceca"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 0   # nudo ACECA 220, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -741,6 +763,7 @@ subestaciones:
     lon: -4.26951
     precision: aproximada
     osm_id: "way/170372283"
+    osm_nombre: "Subestación de Torrijos"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: null   # nudo TORRIJOS 220, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -787,6 +810,7 @@ subestaciones:
     lon: -2.75646
     precision: aproximada
     osm_id: "way/1491091687"
+    osm_nombre: "SET Manchega"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 0   # nudo MANCHEGA 400, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -856,6 +880,7 @@ subestaciones:
     lon: -0.74180
     precision: aproximada
     osm_id: "way/143207685"
+    osm_nombre: "Subestación de Peñaflor"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 0   # nudo PEÑAFLOR 400, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -866,7 +891,7 @@ subestaciones:
     ultima_verificacion: "2026-08-29"
 
   - id: se-villanueva-de-gallego
-    nombre: "Villanueva De Gallego"
+    nombre: "Villanueva de Gállego"
     nudos_ree: ["VILLANUEVA DE GALLEGO 220"]
     codigo_subestacion_ree: "50652"
     tensiones_kv: [220]
@@ -879,6 +904,7 @@ subestaciones:
     lon: -0.84684
     precision: aproximada
     osm_id: "way/143207686"
+    osm_nombre: "Villanueva de Gallego"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 0   # nudo VILLANUEVA DE GALLEGO 220, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -889,7 +915,7 @@ subestaciones:
     ultima_verificacion: "2026-08-29"
 
   - id: se-entrerrios
-    nombre: "Entrerrios"
+    nombre: "Entrerríos"
     nudos_ree: ["ENTRERRIOS 220"]
     codigo_subestacion_ree: "50206"
     tensiones_kv: [220]
@@ -902,6 +928,7 @@ subestaciones:
     lon: -1.18677
     precision: aproximada
     osm_id: "way/172872714"
+    osm_nombre: "SET Entrerríos"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: null   # nudo ENTRERRIOS 220, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -925,6 +952,7 @@ subestaciones:
     lon: -0.67908
     precision: aproximada
     osm_id: "way/170267594"
+    osm_nombre: "Subestacion de El Espartal"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: null   # nudo ESPARTAL 220, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -971,6 +999,7 @@ subestaciones:
     lon: -0.99733
     precision: aproximada
     osm_id: "way/239807715"
+    osm_nombre: "SET Plaza"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: null   # nudo PLAZA 220, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -981,7 +1010,7 @@ subestaciones:
     ultima_verificacion: "2026-08-29"
 
   - id: se-plaza-ii-moncasi
-    nombre: "Plaza Ii (Moncasi)"
+    nombre: "Plaza II (Moncasi)"
     nudos_ree: ["PLAZA II (MONCASI) 220"]
     codigo_subestacion_ree: "51443"
     tensiones_kv: [220]
@@ -1004,7 +1033,7 @@ subestaciones:
     ultima_verificacion: "2026-08-29"
 
   - id: se-ave-zaragoza
-    nombre: "Ave Zaragoza"
+    nombre: "AVE Zaragoza"
     nudos_ree: ["AVE ZARAGOZA 220"]
     codigo_subestacion_ree: "50065"
     tensiones_kv: [220]
@@ -1017,6 +1046,7 @@ subestaciones:
     lon: -0.78765
     precision: aproximada
     osm_id: "way/1369161160"
+    osm_nombre: "CS AVE Zaragoza"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: null   # nudo AVE ZARAGOZA 220, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -1040,6 +1070,7 @@ subestaciones:
     lon: -0.84285
     precision: aproximada
     osm_id: "way/170162276"
+    osm_nombre: "SET Cartujos"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: null   # nudo CARTUJOS 220, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -1073,7 +1104,7 @@ subestaciones:
     ultima_verificacion: "2026-08-29"
 
   - id: se-escatron
-    nombre: "Escatron"
+    nombre: "Escatrón"
     nudos_ree: ["ESCATRON 400"]
     codigo_subestacion_ree: "50210"
     tensiones_kv: [400]
@@ -1109,6 +1140,7 @@ subestaciones:
     lon: -0.97666
     precision: aproximada
     osm_id: "way/169999915"
+    osm_nombre: "Subestación de Fuendetodos"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 0   # nudo FUENDETODOS 400, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -1119,7 +1151,7 @@ subestaciones:
     ultima_verificacion: "2026-08-29"
 
   - id: se-magallon
-    nombre: "Magallon"
+    nombre: "Magallón"
     nudos_ree: ["MAGALLON 400"]
     codigo_subestacion_ree: "50341"
     tensiones_kv: [400]
@@ -1132,6 +1164,7 @@ subestaciones:
     lon: -1.37848
     precision: aproximada
     osm_id: "way/49025600"
+    osm_nombre: "Subestación de Magallón"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 0   # nudo MAGALLON 400, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -1142,7 +1175,7 @@ subestaciones:
     ultima_verificacion: "2026-08-29"
 
   - id: se-aragon
-    nombre: "Aragon"
+    nombre: "Aragón"
     nudos_ree: ["ARAGON 400"]
     codigo_subestacion_ree: "50042"
     tensiones_kv: [400]
@@ -1155,6 +1188,7 @@ subestaciones:
     lon: -0.28047
     precision: aproximada
     osm_id: "way/127787669"
+    osm_nombre: "Subestación Eléctrica Aragón"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 0   # nudo ARAGON 400, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -1178,6 +1212,7 @@ subestaciones:
     lon: -0.84939
     precision: aproximada
     osm_id: "way/145823172"
+    osm_nombre: "Subestación de Mezquita"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 0   # nudo MEZQUITA 400, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -1188,7 +1223,7 @@ subestaciones:
     ultima_verificacion: "2026-08-29"
 
   - id: se-mudejar
-    nombre: "Mudejar"
+    nombre: "Mudéjar"
     nudos_ree: ["MUDEJAR 400"]
     codigo_subestacion_ree: "50395"
     tensiones_kv: [400]
@@ -1201,6 +1236,7 @@ subestaciones:
     lon: -0.38216
     precision: aproximada
     osm_id: "way/683693772"
+    osm_nombre: "Subestacion De Mudéjar"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 0   # nudo MUDEJAR 400, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -1224,6 +1260,8 @@ subestaciones:
     lon: -1.70571
     precision: aproximada
     osm_id: "way/170014037"
+    osm_nombre: "Terrer Vega"
+    nota_geo: "El nombre del objeto de OpenStreetMap (Terrer Vega) no coincide literalmente con el del nudo de Red Eléctrica (TERRER). La correspondencia se ha aceptado por proximidad de nombre, tensión compatible y coincidencia de comunidad autónoma, pero no está confirmada por fuente oficial."
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 0   # nudo TERRER 400, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -1234,7 +1272,7 @@ subestaciones:
     ultima_verificacion: "2026-08-29"
 
   - id: se-jalon
-    nombre: "Jalon"
+    nombre: "Jalón"
     nudos_ree: ["JALON 220"]
     codigo_subestacion_ree: "50283"
     tensiones_kv: [220]
@@ -1270,6 +1308,7 @@ subestaciones:
     lon: -0.57153
     precision: aproximada
     osm_id: "way/411107082"
+    osm_nombre: "Subestación eléctrica Esquedas 220"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: null   # nudo ESQUEDAS 220, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -1293,6 +1332,7 @@ subestaciones:
     lon: -1.13792
     precision: aproximada
     osm_id: "way/170140947"
+    osm_nombre: "SET Los Vientos"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 0   # nudo LOS VIENTOS 220, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -1316,6 +1356,7 @@ subestaciones:
     lon: -1.11586
     precision: aproximada
     osm_id: "way/1263430948"
+    osm_nombre: "Subestación Platea"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 0   # nudo PLATEA 400, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -1339,6 +1380,7 @@ subestaciones:
     lon: 2.13330
     precision: aproximada
     osm_id: "way/1023900476"
+    osm_nombre: "Subestació Zona Franca"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: null   # nudo ZONA FRANCA 220, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -1362,6 +1404,8 @@ subestaciones:
     lon: 1.98601
     precision: aproximada
     osm_id: "way/149962802"
+    osm_nombre: "Estació receptora de Castellbisbal"
+    nota_geo: "El nombre del objeto de OpenStreetMap (Estació receptora de Castellbisbal) no coincide literalmente con el del nudo de Red Eléctrica (CASTELLBISBAL). La correspondencia se ha aceptado por proximidad de nombre, tensión compatible y coincidencia de comunidad autónoma, pero no está confirmada por fuente oficial."
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: null   # nudo CASTELLBISBAL 220, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -1385,6 +1429,7 @@ subestaciones:
     lon: 1.89436
     precision: aproximada
     osm_id: "way/75619319"
+    osm_nombre: "Subestació de Abrera"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: null   # nudo ABRERA 220, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -1395,7 +1440,7 @@ subestaciones:
     ultima_verificacion: "2026-08-29"
 
   - id: se-rubi
-    nombre: "Rubi"
+    nombre: "Rubí"
     nudos_ree: ["RUBI 400"]
     codigo_subestacion_ree: "50508"
     tensiones_kv: [400]
@@ -1408,6 +1453,7 @@ subestaciones:
     lon: 2.00987
     precision: aproximada
     osm_id: "way/124121964"
+    osm_nombre: "Subestació de Rubí"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 0   # nudo RUBI 400, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -1418,7 +1464,7 @@ subestaciones:
     ultima_verificacion: "2026-08-29"
 
   - id: se-can-jardi
-    nombre: "Can Jardi"
+    nombre: "Can Jardí"
     nudos_ree: ["CAN JARDI 400"]
     codigo_subestacion_ree: "50119"
     tensiones_kv: [400]
@@ -1431,6 +1477,7 @@ subestaciones:
     lon: 2.02381
     precision: aproximada
     osm_id: "way/124121959"
+    osm_nombre: "Subestació elèctrica de Can Jardí"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 0   # nudo CAN JARDI 400, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -1454,6 +1501,7 @@ subestaciones:
     lon: 2.11178
     precision: aproximada
     osm_id: "way/104020696"
+    osm_nombre: "Subestació de Sentmenat"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 0   # nudo SENTMENAT 400, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -1477,6 +1525,7 @@ subestaciones:
     lon: 1.82973
     precision: aproximada
     osm_id: "way/75606778"
+    osm_nombre: "Subestació de Pierola"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 0   # nudo PIEROLA 400, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -1500,6 +1549,7 @@ subestaciones:
     lon: 2.28218
     precision: aproximada
     osm_id: "way/178294745"
+    osm_nombre: "Subestació de Vic"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 0   # nudo VIC 400, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -1510,7 +1560,7 @@ subestaciones:
     ultima_verificacion: "2026-08-29"
 
   - id: se-constanti
-    nombre: "Constanti"
+    nombre: "Constantí"
     nudos_ree: ["CONSTANTI 220"]
     codigo_subestacion_ree: "50171"
     tensiones_kv: [220]
@@ -1533,7 +1583,7 @@ subestaciones:
     ultima_verificacion: "2026-08-29"
 
   - id: se-francoli
-    nombre: "Francoli"
+    nombre: "Francolí"
     nudos_ree: ["FRANCOLI 220"]
     codigo_subestacion_ree: "52041"
     tensiones_kv: [220]
@@ -1569,6 +1619,8 @@ subestaciones:
     lon: 1.24854
     precision: aproximada
     osm_id: "way/506058990"
+    osm_nombre: "Estació receptora de Perafort"
+    nota_geo: "El nombre del objeto de OpenStreetMap (Estació receptora de Perafort) no coincide literalmente con el del nudo de Red Eléctrica (PERAFORT). La correspondencia se ha aceptado por proximidad de nombre, tensión compatible y coincidencia de comunidad autónoma, pero no está confirmada por fuente oficial."
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: null   # nudo PERAFORT 220, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -1602,7 +1654,7 @@ subestaciones:
     ultima_verificacion: "2026-08-29"
 
   - id: se-vandellos
-    nombre: "Vandellos"
+    nombre: "Vandellòs"
     nudos_ree: ["VANDELLOS 400"]
     codigo_subestacion_ree: "50636"
     tensiones_kv: [400]
@@ -1615,6 +1667,7 @@ subestaciones:
     lon: 0.87901
     precision: aproximada
     osm_id: "way/140011919"
+    osm_nombre: "Subestació de Vandellòs"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 0   # nudo VANDELLOS 400, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -1638,6 +1691,7 @@ subestaciones:
     lon: 1.90239
     precision: aproximada
     osm_id: "relation/16809528"
+    osm_nombre: "Subestació de Begues"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 0   # nudo BEGUES 400, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -1661,6 +1715,7 @@ subestaciones:
     lon: 1.71926
     precision: aproximada
     osm_id: "way/200253359"
+    osm_nombre: "Subestació Garraf"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: null   # nudo GARRAF 400, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -1740,7 +1795,7 @@ subestaciones:
     ultima_verificacion: "2026-08-29"
 
   - id: se-riera-de-caldes
-    nombre: "Riera De Caldes"
+    nombre: "Riera de Caldes"
     nudos_ree: ["RIERA DE CALDES 220"]
     codigo_subestacion_ree: "50501"
     tensiones_kv: [220]
@@ -1776,6 +1831,7 @@ subestaciones:
     lon: 2.47069
     precision: aproximada
     osm_id: "way/111584995"
+    osm_nombre: "Subestació de Sant Celoni"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: null   # nudo SANT CELONI 220, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -1799,6 +1855,7 @@ subestaciones:
     lon: 1.29141
     precision: aproximada
     osm_id: "way/169680270"
+    osm_nombre: "SET Puigpelat"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: null   # nudo PUIGPELAT 220, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -1845,6 +1902,7 @@ subestaciones:
     lon: -3.09396
     precision: aproximada
     osm_id: "way/105259481"
+    osm_nombre: "Subestación de Abanto"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 1   # nudo ABANTO 400, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 1   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -1868,6 +1926,8 @@ subestaciones:
     lon: -2.88060
     precision: aproximada
     osm_id: "way/196215046"
+    osm_nombre: "Subestación de Gatika"
+    nota_geo: "El nombre del objeto de OpenStreetMap (Subestación de Gatika) no coincide literalmente con el del nudo de Red Eléctrica (GATICA). La correspondencia se ha aceptado por proximidad de nombre, tensión compatible y coincidencia de comunidad autónoma, pero no está confirmada por fuente oficial."
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 192   # nudo GATICA 400, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 192   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -1891,6 +1951,7 @@ subestaciones:
     lon: -2.74929
     precision: aproximada
     osm_id: "way/1240967180"
+    osm_nombre: "Amorebieta"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 192   # nudo AMOREBIETA 400, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 192   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -1914,6 +1975,7 @@ subestaciones:
     lon: -3.05296
     precision: aproximada
     osm_id: "way/272118258"
+    osm_nombre: "ST Santurce"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 250   # nudo SANTURCE 400, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 250   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -1960,6 +2022,7 @@ subestaciones:
     lon: -2.74666
     precision: aproximada
     osm_id: "way/196522660"
+    osm_nombre: "Subestación de Jundiz"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 188   # nudo JUNDIZ 220, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 188   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -1983,6 +2046,7 @@ subestaciones:
     lon: -2.66616
     precision: aproximada
     osm_id: "way/145337070"
+    osm_nombre: "SE Gamarra"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: null   # nudo GAMARRA 220, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -2029,6 +2093,8 @@ subestaciones:
     lon: -2.71068
     precision: aproximada
     osm_id: "way/196522656"
+    osm_nombre: "Subestación de Mercedes"
+    nota_geo: "El nombre del objeto de OpenStreetMap (Subestación de Mercedes) no coincide literalmente con el del nudo de Red Eléctrica (MERCEDES BENZ). La correspondencia se ha aceptado por proximidad de nombre, tensión compatible y coincidencia de comunidad autónoma, pero no está confirmada por fuente oficial."
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: null   # nudo MERCEDES BENZ 220, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -2075,6 +2141,7 @@ subestaciones:
     lon: -2.25240
     precision: aproximada
     osm_id: "way/196207064"
+    osm_nombre: "Subestación Eléctrica de Azpeitia"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 494   # nudo AZPEITIA 400, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 494   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -2098,6 +2165,7 @@ subestaciones:
     lon: -1.96859
     precision: aproximada
     osm_id: "way/196207063"
+    osm_nombre: "Subestación Eléctrica de Hernani"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 483   # nudo HERNANI 400, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 483   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -2121,6 +2189,7 @@ subestaciones:
     lon: -2.27398
     precision: aproximada
     osm_id: "way/196202213"
+    osm_nombre: "Subestación de Itxaso"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 0   # nudo ITXASO 400, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -2131,7 +2200,7 @@ subestaciones:
     ultima_verificacion: "2026-08-29"
 
   - id: se-guenes
-    nombre: "Gueñes"
+    nombre: "Güeñes"
     nudos_ree: ["GUEÑES 400"]
     codigo_subestacion_ree: "50256"
     tensiones_kv: [400]
@@ -2144,6 +2213,7 @@ subestaciones:
     lon: -3.03033
     precision: aproximada
     osm_id: "way/202891403"
+    osm_nombre: "Subestación de Güeñes"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 0   # nudo GUEÑES 400, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -2167,6 +2237,7 @@ subestaciones:
     lon: -3.09103
     precision: aproximada
     osm_id: "way/223207745"
+    osm_nombre: "Subestación de Zierbena"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 1   # nudo ZIERBENA 400, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 1   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -2190,6 +2261,7 @@ subestaciones:
     lon: -3.10449
     precision: aproximada
     osm_id: "way/196382212"
+    osm_nombre: "Subestación de La Jara"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 223   # nudo LA JARA 220, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 223   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -2213,6 +2285,7 @@ subestaciones:
     lon: -3.01127
     precision: aproximada
     osm_id: "way/196371124"
+    osm_nombre: "Subestación Ayala"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 85   # nudo AYALA 220, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 85   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -2236,6 +2309,7 @@ subestaciones:
     lon: -3.03642
     precision: aproximada
     osm_id: "way/111584847"
+    osm_nombre: "Subestación de Ortuella"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 29   # nudo ORTUELLA 220, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 29   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -2259,6 +2333,7 @@ subestaciones:
     lon: -2.89496
     precision: aproximada
     osm_id: "way/205141906"
+    osm_nombre: "Subestación de Basauri"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 23   # nudo BASAURI 220, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 23   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -2282,6 +2357,8 @@ subestaciones:
     lon: -2.86402
     precision: aproximada
     osm_id: "way/702532047"
+    osm_nombre: "Zamudioko"
+    nota_geo: "El nombre del objeto de OpenStreetMap (Zamudioko) no coincide literalmente con el del nudo de Red Eléctrica (ZAMUDIO). La correspondencia se ha aceptado por proximidad de nombre, tensión compatible y coincidencia de comunidad autónoma, pero no está confirmada por fuente oficial."
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: null   # nudo ZAMUDIO 220, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -2305,6 +2382,8 @@ subestaciones:
     lon: -0.23542
     precision: aproximada
     osm_id: "way/156435509"
+    osm_nombre: "Converter HVDC de Morvedre"
+    nota_geo: "El nombre del objeto de OpenStreetMap (Converter HVDC de Morvedre) no coincide literalmente con el del nudo de Red Eléctrica (MORVEDRE). La correspondencia se ha aceptado por proximidad de nombre, tensión compatible y coincidencia de comunidad autónoma, pero no está confirmada por fuente oficial."
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: null   # nudo MORVEDRE 400, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -2351,6 +2430,8 @@ subestaciones:
     lon: -0.26774
     precision: aproximada
     osm_id: "way/77594046"
+    osm_nombre: "ST Sagunt (Sagunto)"
+    nota_geo: "El nombre del objeto de OpenStreetMap (ST Sagunt (Sagunto)) no coincide literalmente con el del nudo de Red Eléctrica (SAGUNTO). La correspondencia se ha aceptado por proximidad de nombre, tensión compatible y coincidencia de comunidad autónoma, pero no está confirmada por fuente oficial."
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: null   # nudo SAGUNTO 220, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -2361,7 +2442,7 @@ subestaciones:
     ultima_verificacion: "2026-08-29"
 
   - id: se-sagunto-gis
-    nombre: "Sagunto Gis"
+    nombre: "Sagunto GIS"
     nudos_ree: ["SAGUNTO GIS 220"]
     codigo_subestacion_ree: "50518"
     tensiones_kv: [220]
@@ -2420,6 +2501,7 @@ subestaciones:
     lon: -0.09653
     precision: aproximada
     osm_id: "way/34585227"
+    osm_nombre: "Subestación de la Plana"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 0   # nudo LA PLANA 400, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -2466,6 +2548,8 @@ subestaciones:
     lon: -0.45467
     precision: aproximada
     osm_id: "way/60351390"
+    osm_nombre: "Subestació elèctrica de Torrent"
+    nota_geo: "El nombre del objeto de OpenStreetMap (Subestació elèctrica de Torrent) no coincide literalmente con el del nudo de Red Eléctrica (TORRENTE). La correspondencia se ha aceptado por proximidad de nombre, tensión compatible y coincidencia de comunidad autónoma, pero no está confirmada por fuente oficial."
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: null   # nudo TORRENTE 400, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -2489,6 +2573,7 @@ subestaciones:
     lon: -0.56085
     precision: aproximada
     osm_id: "way/126987023"
+    osm_nombre: "Subestación de Catadau"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 0   # nudo CATADAU 400, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -2522,7 +2607,7 @@ subestaciones:
     ultima_verificacion: "2026-08-29"
 
   - id: se-eliana
-    nombre: "Eliana"
+    nombre: "La Eliana"
     nudos_ree: ["ELIANA 400"]
     codigo_subestacion_ree: "50204"
     tensiones_kv: [400]
@@ -2535,6 +2620,7 @@ subestaciones:
     lon: -0.51063
     precision: aproximada
     osm_id: "way/33771314"
+    osm_nombre: "Subestacion electrica La Eliana"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: null   # nudo ELIANA 400, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -2545,7 +2631,7 @@ subestaciones:
     ultima_verificacion: "2026-08-29"
 
   - id: se-muela
-    nombre: "Muela"
+    nombre: "La Muela"
     nudos_ree: ["MUELA 400"]
     codigo_subestacion_ree: "50396"
     tensiones_kv: [400]
@@ -2604,6 +2690,7 @@ subestaciones:
     lon: -0.45651
     precision: aproximada
     osm_id: "way/127528769"
+    osm_nombre: "Subestación de Segorbe"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: null   # nudo SEGORBE 220, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -2650,6 +2737,7 @@ subestaciones:
     lon: -5.84346
     precision: aproximada
     osm_id: "way/144787749"
+    osm_nombre: "Subestación de Don Rodrigo"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 259   # nudo DON RODRIGO 220, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 257   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -2673,6 +2761,7 @@ subestaciones:
     lon: -6.09743
     precision: aproximada
     osm_id: "way/170424447"
+    osm_nombre: "Subestación de Guillena"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 273   # nudo GUILLENA 400, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 273   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -2696,6 +2785,7 @@ subestaciones:
     lon: -5.95190
     precision: aproximada
     osm_id: "way/144799209"
+    osm_nombre: "Subestación de Quintos"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 0   # nudo QUINTOS 220, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -2706,7 +2796,7 @@ subestaciones:
     ultima_verificacion: "2026-08-29"
 
   - id: se-entrenucleos
-    nombre: "Entrenucleos"
+    nombre: "Entrenúcleos"
     nudos_ree: ["ENTRENUCLEOS 220"]
     codigo_subestacion_ree: "50729"
     tensiones_kv: [220]
@@ -2719,6 +2809,7 @@ subestaciones:
     lon: -5.94490
     precision: aproximada
     osm_id: "way/1316855580"
+    osm_nombre: "Subestación Entrenúcleos"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 0   # nudo ENTRENUCLEOS 220, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -2742,6 +2833,7 @@ subestaciones:
     lon: -6.03939
     precision: aproximada
     osm_id: "way/151490968"
+    osm_nombre: "Subestación de Santiponce"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: null   # nudo SANTIPONCE 220, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -2765,6 +2857,7 @@ subestaciones:
     lon: -5.85634
     precision: aproximada
     osm_id: "way/43797051"
+    osm_nombre: "Subestación Alcores"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: null   # nudo ALCORES 220, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -2788,6 +2881,7 @@ subestaciones:
     lon: -6.12003
     precision: aproximada
     osm_id: "way/97851756"
+    osm_nombre: "Subestación Cartuja"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: null   # nudo CARTUJA 220, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -2811,6 +2905,8 @@ subestaciones:
     lon: -6.88294
     precision: aproximada
     osm_id: "way/170424455"
+    osm_nombre: "Subestación de Palos de la Frontera"
+    nota_geo: "El nombre del objeto de OpenStreetMap (Subestación de Palos de la Frontera) no coincide literalmente con el del nudo de Red Eléctrica (PALOS). La correspondencia se ha aceptado por proximidad de nombre, tensión compatible y coincidencia de comunidad autónoma, pero no está confirmada por fuente oficial."
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: null   # nudo PALOS 400, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -2821,7 +2917,7 @@ subestaciones:
     ultima_verificacion: "2026-08-29"
 
   - id: se-cristobal-colon
-    nombre: "Cristobal Colon"
+    nombre: "Cristóbal Colón"
     nudos_ree: ["CRISTOBAL COLON 220"]
     codigo_subestacion_ree: "50178"
     tensiones_kv: [220]
@@ -2834,6 +2930,7 @@ subestaciones:
     lon: -6.94371
     precision: aproximada
     osm_id: "way/170433606"
+    osm_nombre: "Subestación Cristóbal Colón"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: null   # nudo CRISTOBAL COLON 220, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -2857,6 +2954,7 @@ subestaciones:
     lon: -6.92537
     precision: aproximada
     osm_id: "way/170433597"
+    osm_nombre: "Subestación de Onuba"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: null   # nudo ONUBA 220, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -2880,6 +2978,7 @@ subestaciones:
     lon: -5.42042
     precision: aproximada
     osm_id: "way/1262722031"
+    osm_nombre: "Subestación de Los Barrios"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: null   # nudo LOS BARRIOS 220, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -2890,7 +2989,7 @@ subestaciones:
     ultima_verificacion: "2026-08-29"
 
   - id: se-pinar-de-rey
-    nombre: "Pinar De Rey"
+    nombre: "Pinar del Rey"
     nudos_ree: ["PINAR DE REY 400"]
     codigo_subestacion_ree: "50444"
     tensiones_kv: [400]
@@ -2903,6 +3002,7 @@ subestaciones:
     lon: -5.41159
     precision: aproximada
     osm_id: "way/97199647"
+    osm_nombre: "Subestación de Pinar del Rey"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 0   # nudo PINAR DE REY 400, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -2926,6 +3026,7 @@ subestaciones:
     lon: -5.38830
     precision: aproximada
     osm_id: "way/1262722037"
+    osm_nombre: "Subestación de Algeciras"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 0   # nudo ALGECIRAS 220, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -2936,7 +3037,7 @@ subestaciones:
     ultima_verificacion: "2026-08-29"
 
   - id: se-cartama
-    nombre: "Cartama"
+    nombre: "Cártama"
     nudos_ree: ["CARTAMA 400"]
     codigo_subestacion_ree: "50133"
     tensiones_kv: [400]
@@ -2949,6 +3050,7 @@ subestaciones:
     lon: -4.60510
     precision: aproximada
     osm_id: "way/170968145"
+    osm_nombre: "Subestación de Cártama"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 488   # nudo CARTAMA 400, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 488   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -2959,7 +3061,7 @@ subestaciones:
     ultima_verificacion: "2026-08-29"
 
   - id: se-tajo-encantada
-    nombre: "Tajo Encantada"
+    nombre: "Tajo de la Encantada"
     nudos_ree: ["TAJO ENCANTADA 400"]
     codigo_subestacion_ree: "50591"
     tensiones_kv: [400]
@@ -2972,6 +3074,7 @@ subestaciones:
     lon: -4.74563
     precision: aproximada
     osm_id: "way/75902880"
+    osm_nombre: "Subestación Tajo de la Encantada"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 122   # nudo TAJO ENCANTADA 400, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 122   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -2995,6 +3098,7 @@ subestaciones:
     lon: -3.72609
     precision: aproximada
     osm_id: "way/170946426"
+    osm_nombre: "Subestación de Caparacena"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 683   # nudo CAPARACENA 400, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 236   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -3018,6 +3122,7 @@ subestaciones:
     lon: -3.69722
     precision: aproximada
     osm_id: "way/171071300"
+    osm_nombre: "Subestación de Atarfe"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: null   # nudo ATARFE 220, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -3028,7 +3133,7 @@ subestaciones:
     ultima_verificacion: "2026-08-29"
 
   - id: se-illora
-    nombre: "Illora"
+    nombre: "Íllora"
     nudos_ree: ["ILLORA 220"]
     codigo_subestacion_ree: "50277"
     tensiones_kv: [220]
@@ -3041,6 +3146,7 @@ subestaciones:
     lon: -3.88494
     precision: aproximada
     osm_id: "way/782365013"
+    osm_nombre: "Subestación de Íllora"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: null   # nudo ILLORA 220, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -3064,6 +3170,7 @@ subestaciones:
     lon: -1.90800
     precision: aproximada
     osm_id: "way/144909722"
+    osm_nombre: "Subestación Litoral"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 953   # nudo LITORAL 400, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 514   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -3087,6 +3194,7 @@ subestaciones:
     lon: -2.46596
     precision: aproximada
     osm_id: "way/46106589"
+    osm_nombre: "Subestación de Benahadux"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 55   # nudo BENAHADUX 220, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 55   # misma fecha, demanda con electrónica de potencia y soporte de huecos
@@ -3110,6 +3218,7 @@ subestaciones:
     lon: -2.31232
     precision: aproximada
     osm_id: "way/327268322"
+    osm_nombre: "Subestación de Tabernas"
     estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
     capacidad_acceso_demanda_mw: 1117   # nudo TABERNAS 400, "disponible para solicitudes, criterio general, demanda NO CEP"
     capacidad_acceso_demanda_cep_ch_mw: 124   # misma fecha, demanda con electrónica de potencia y soporte de huecos

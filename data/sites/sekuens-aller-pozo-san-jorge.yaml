@@ -29,6 +29,18 @@ estado_detalle: >-
   de las galerías subterráneas.
 estado_fuentes: [src-1]
 
+potencia:
+  - tipo: no_especificado
+    valor_mw: 0.4
+    ambito: edificio
+    referencia: "Potencia del centro de datos en la antigua instalación minera"
+    estado_asociado: en_construccion
+    fecha_dato: "2024-10-10"
+    fuentes: [src-2]
+    nota: >-
+      La fuente dice «una potencia aproximada de 0,4 megavatios», sin precisar si es
+      carga TI o potencia instalada.
+
 inversion_anunciada_eur: 3000000
 refrigeracion: "Se estudia el aprovechamiento del agua de las galerías mineras subterráneas."
 
@@ -38,10 +50,10 @@ enlaces_proyecto:
 incertidumbres:
   - campo: potencia
     descripcion: >-
-      La fuente oficial consultada no cuantifica la potencia. Resúmenes de prensa
-      citan «unos 0,4 MW», pero no se ha podido abrir la fuente primaria que lo
-      sostiene, por lo que el campo se omite.
-    fuentes: [src-1]
+      La nota oficial del Principado no cuantifica la potencia; el dato de 0,4 MW
+      procede de prensa regional que cita a la Consejería de Ciencia. No se precisa
+      el tipo de potencia.
+    fuentes: [src-1, src-2]
   - campo: estado
     descripcion: >-
       No se ha localizado confirmación de finalización de obras ni de puesta en
@@ -60,3 +72,11 @@ fuentes:
     fecha_publicacion: "2025-03-26"
     fecha_consulta: "2026-08-29"
     cita: "pasaremos de la economía del carbón a la economía del dato"
+  - id: src-2
+    url: "https://www.nortes.me/2024/10/10/la-transformacion-del-pozu-san-jorge-en-un-centro-de-datos-comenzara-en-2025/"
+    titulo: "La transformación del Pozu San Jorge en un centro de datos comenzará en 2025"
+    editor: "Nortes"
+    tipo: prensa_general
+    fecha_publicacion: "2024-10-10"
+    fecha_consulta: "2026-08-29"
+    cita: "una potencia aproximada de 0,4 megavatios"

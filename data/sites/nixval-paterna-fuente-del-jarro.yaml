@@ -12,8 +12,10 @@ ubicacion:
   provincia: "Valencia"
   ccaa: "Comunitat Valenciana"
   direccion: "Calle Villa de Madrid 44, Polígono Industrial Fuente del Jarro, 46988 Paterna"
-  precision: desconocida
-  fuentes: [src-1]
+  lat: 39.519555
+  lon: -0.46719
+  precision: exacta
+  fuentes: [src-1, src-pdb]
 
 estado: operativo
 estado_detalle: >-
@@ -29,10 +31,9 @@ incertidumbres:
     fuentes: [src-1, src-2]
   - campo: ubicacion
     descripcion: >-
-      La dirección corresponde a la sede social publicada por el operador; no se ha
-      verificado de forma independiente que la sala técnica esté en esa misma parcela, por
-      lo que no se asignan coordenadas.
-    fuentes: [src-1]
+      La dirección de la sede publicada por el operador coincide con la ficha de la
+      instalación «NIXVAL Datacenter» en PeeringDB, de donde proceden las coordenadas.
+    fuentes: [src-1, src-pdb]
 
 confianza: baja
 ultima_verificacion: "2026-08-29"
@@ -52,3 +53,10 @@ fuentes:
     tipo: otro
     fecha_consulta: "2026-08-29"
     cita: "Nixval | Paterna | Comunidad Valenciana | COLOCATION | Operativo"
+  - id: src-pdb
+    url: "https://www.peeringdb.com/api/fac?country=ES&limit=400"
+    titulo: "PeeringDB — Facilities API, España"
+    editor: "PeeringDB"
+    tipo: asociacion
+    fecha_consulta: "2026-08-29"
+    cita: "NIXVAL Datacenter | Calle Villa de Madrid, 44 | Paterna | 46988 | 39.519555 -0.46719 | NIXVAL (Falbox, S.L.)"

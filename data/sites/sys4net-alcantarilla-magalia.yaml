@@ -1,0 +1,58 @@
+id: sys4net-alcantarilla-magalia
+nombre: "SYS4NET Datacenter — Alcantarilla (P.E. Magalia)"
+alias:
+  - "Grupo Sys4net Alcantarilla"
+tipo: edificio
+operador: "Grupo Sys4net"
+propietario: "Grupo Sys4net, S.L."
+modelo: colocation
+
+ubicacion:
+  municipio: "Alcantarilla"
+  provincia: "Murcia"
+  ccaa: "Región de Murcia"
+  direccion: "Parque Empresarial Magalia, Polígono Industrial Oeste, 30820 Alcantarilla"
+  lat: 37.958679
+  lon: -1.194223
+  precision: exacta
+  fuentes: [src-1]
+
+estado: operativo
+estado_detalle: >-
+  Instalación registrada como facility activa en PeeringDB por Grupo Sys4net, S.L. en el
+  Parque Empresarial Magalia del polígono industrial Oeste de Alcantarilla. Es una de las
+  pocas instalaciones de interconexión documentadas en la Región de Murcia además de la de
+  Kumo Networks en Espinardo.
+estado_fuentes: [src-1]
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      No consta potencia, superficie ni número de racks. La instalación no figura en el
+      directorio del Observatorio Español de Data Centers, que solo recoge tres registros
+      para la Región de Murcia.
+    fuentes: [src-1, src-2]
+  - campo: estado
+    descripcion: >-
+      PeeringDB no distingue estado operativo; se asume operativo por figurar en el
+      directorio de instalaciones activas, sin confirmación independiente.
+    fuentes: [src-1]
+
+confianza: baja
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.peeringdb.com/api/fac?country=ES&limit=400"
+    titulo: "PeeringDB — Facilities API, España"
+    editor: "PeeringDB"
+    tipo: asociacion
+    fecha_consulta: "2026-08-29"
+    cita: "SYS4NET DATACENTER | P.E. Magalia P.I. Oeste | Alcantarilla | 30820 | 37.958679 -1.194223 | GRUPO SYS4NET, S.L."
+  - id: src-2
+    url: "https://observatorioedc.com/directorio/"
+    titulo: "Data Centers — Directorio, Observatorio Español de Data Centers"
+    editor: "Observatorio Español de Data Centers"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: "Región de Murcia (3)"

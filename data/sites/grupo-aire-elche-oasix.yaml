@@ -12,11 +12,11 @@ ubicacion:
   municipio: "Elx / Elche"
   provincia: "Alicante"
   ccaa: "Comunitat Valenciana"
-  direccion: "Calle Santiago Ramón y Cajal, 11, Parque Empresarial de Elche"
-  lat: 38.2915
-  lon: -0.6113
+  direccion: "Calle Santiago Ramón y Cajal 11, Elche Parque Empresarial, 03203 Elche"
+  lat: 38.291392
+  lon: -0.611276
   precision: exacta
-  fuentes: [src-1]
+  fuentes: [src-1, src-pdb]
 
 estado: operativo
 estado_detalle: >-
@@ -71,3 +71,10 @@ fuentes:
     tipo: otro
     fecha_consulta: "2026-08-29"
     cita: "Grupo Aire | Elche | Comunidad Valenciana | COLOCATION | Operativo"
+  - id: src-pdb
+    url: "https://www.peeringdb.com/api/fac?country=ES&limit=400"
+    titulo: "PeeringDB — Facilities API, España"
+    editor: "PeeringDB"
+    tipo: asociacion
+    fecha_consulta: "2026-08-29"
+    cita: "OASIX ALICANTE AIRENETWORKS | C/ SANTIAGO RAMÓN Y CAJAL Nº 11, ELCHE PARQUE EMPRESARIAL | Elche | 03203 | 38.291392 -0.611276 | Aire Networks del Mediterraneo S.L.U."

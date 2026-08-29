@@ -1,0 +1,75 @@
+id: telxius-sopelana-estacion-cables-submarinos
+nombre: "Estación de amarre de cables submarinos de Sopelana — Telxius"
+alias:
+  - "Sopelana Cable Landing Station"
+  - "Estación de Sopelana"
+tipo: edificio
+operador: "Telxius (Grupo Telefónica)"
+propietario: "Telxius Telecom"
+modelo: corporativo
+
+ubicacion:
+  municipio: "Sopelana"
+  provincia: "Bizkaia"
+  ccaa: "País Vasco"
+  lat: 43.3800
+  lon: -2.9900
+  precision: municipio
+  fuentes: [src-1]
+
+estado: operativo
+estado_detalle: >-
+  Estación de amarre de cables submarinos transatlánticos próxima a Bilbao. El
+  cable Grace Hopper de Google amarró aquí el 9 de septiembre de 2021; es el primer
+  cable financiado por Google que llega a España y une Estados Unidos, Reino Unido
+  y España con 16 pares de fibra. Desde Sopelana el tráfico se encamina al Derio
+  Communications Hub de Telxius. Es también el punto de amarre del cable Marea. No
+  es un centro de datos de colocación: es infraestructura de aterraje.
+estado_fuentes: [src-1, src-2, src-3]
+
+enlaces_proyecto: []
+
+incertidumbres:
+  - campo: potencia
+    descripcion: "No consta potencia eléctrica de la estación en ninguna fuente consultada. Campo omitido."
+    fuentes: [src-1, src-2]
+  - campo: tipo
+    descripcion: >-
+      Inclusión discutible en un inventario de CPD: es estación de aterraje de cable
+      submarino. Se incluye porque los proyectos de centros de datos de Álava y
+      Bizkaia justifican su ubicación por la baja latencia con Norteamérica que
+      proporcionan estos amarres.
+    fuentes: [src-2, src-3]
+  - campo: ubicacion
+    descripcion: >-
+      Telxius no publica dirección ni parcela de la estación. Coordenadas de municipio.
+    fuentes: [src-1]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://telxius.com/en/grace-hopper-lands-near-bilbao-thanks-to-telxius/"
+    titulo: "Grace Hopper lands near Bilbao thanks to Telxius"
+    editor: "Telxius"
+    tipo: empresa
+    fecha_publicacion: "2021-09-09"
+    fecha_consulta: "2026-08-29"
+    cita: "Google's Grace Hopper subsea cable has landed at our Sopelana station, near Bilbao"
+  - id: src-2
+    url: "https://telxius.com/en/telxius-to-land-the-grace-hopper-subsea-cable-at-derio/"
+    titulo: "Telxius to land the Grace Hopper Subsea Cable at its Derio Communications Hub in Bilbao"
+    editor: "Telxius"
+    tipo: empresa
+    fecha_publicacion: "2020-12-16"
+    fecha_consulta: "2026-08-29"
+    cita: "From there, this new system will connect to the resources and infrastructure offered by the Derio Communications Hub"
+  - id: src-3
+    url: "https://www.elespanol.com/invertia/disruptores/grandes-actores/tecnologicas/20260619/centro-datos-sarenet-derio-abre-puertas-mw-operativos-vista-puesta-grandes-integradores-tecnologicos/1003744291986_0.html"
+    titulo: "El centro de datos de Sarenet en Derio abre sus puertas con 3 MW operativos"
+    editor: "El Español — Invertia / Disruptores"
+    tipo: prensa_general
+    fecha_publicacion: "2026-06-19"
+    fecha_consulta: "2026-08-29"
+    cita: "cercano a cables submarinos transatlánticos (Marea de Microsoft/Meta y Grace Hopper de Google) en Sopelana"

@@ -12,11 +12,11 @@ ubicacion:
   municipio: "Murcia"
   provincia: "Murcia"
   ccaa: "Región de Murcia"
-  direccion: "Campus de Espinardo"
-  lat: 38.0202
-  lon: -1.1687
-  precision: aproximada
-  fuentes: [src-1]
+  direccion: "Calle Santiago Navarro 8, 30100 Murcia (Campus de Espinardo)"
+  lat: 38.024856
+  lon: -1.168926
+  precision: exacta
+  fuentes: [src-1, src-pdb]
 
 estado: operativo
 estado_detalle: >-
@@ -75,3 +75,10 @@ fuentes:
     tipo: otro
     fecha_consulta: "2026-08-29"
     cita: "Kumo networks S.A.U | Espinardo | Región de Murcia | COLOCATION | Tier IV | Operativo"
+  - id: src-pdb
+    url: "https://www.peeringdb.com/api/fac?country=ES&limit=400"
+    titulo: "PeeringDB — Facilities API, España"
+    editor: "PeeringDB"
+    tipo: asociacion
+    fecha_consulta: "2026-08-29"
+    cita: "KIO Murcia 1 (MUR1) | Calle Santiago Navarro 8 | Murcia | 30100 | 38.024856 -1.168926 | KIO"

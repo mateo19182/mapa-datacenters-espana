@@ -18,18 +18,21 @@ ubicacion:
   precision: exacta
   fuentes: [src-1, src-2]
 
-estado: operativo
-estado_detalle: "Dos instalaciones registradas por la Asociación ESpanix en Gran Vía de Hortaleza, adicionales a su centro de Calle Mesena 80."
+estado: desconocido
+estado_detalle: >-
+  Dos instalaciones registradas por la Asociación ESpanix en Gran Vía de Hortaleza, adicionales
+  a su centro de Calle Mesena 80. El registro no indica estado operativo y no se ha localizado
+  ninguna otra fuente, por lo que se deja como desconocido.
 estado_fuentes: [src-1, src-2]
 
 potencia: []
 
 fases:
   - nombre: "Cantabria Datacenter — Gran Vía de Hortaleza 1"
-    estado: operativo
+    estado: desconocido
     fuentes: [src-1]
   - nombre: "Magdalena Datacenter — Gran Vía de Hortaleza 3"
-    estado: operativo
+    estado: desconocido
     fuentes: [src-2]
 
 incertidumbres:

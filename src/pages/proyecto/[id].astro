@@ -92,7 +92,11 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
                   <dd>
                     {numero(r[t].valor_mw, 1)} MW
                     <small>
-                      {r[t].base === 'suma_de_fases' ? 'suma de fases documentadas' : 'cifra global publicada'}
+                      {{
+                        global: 'cifra global publicada',
+                        suma_de_fases: 'suma de fases documentadas',
+                        maximo_acumulado: 'mayor hito acumulado publicado',
+                      }[r[t].base]}
                       {r[t].discrepancia && ` · las fuentes discrepan (${numero(r[t].minimo_observado, 1)}–${numero(r[t].maximo_observado, 1)} MW)`}
                     </small>
                   </dd>

@@ -26,8 +26,12 @@ function agregarTipo(registros) {
   if (registros.length === 0) return null
 
   const globales = registros.filter((p) => ORDEN_AMBITO[p.ambito] === 0)
-  const usados = globales.length > 0 ? globales : registros
-  const base = globales.length > 0 ? 'global' : 'suma_de_fases'
+  const acumulados = registros.filter((p) => ORDEN_AMBITO[p.ambito] === 1 && p.acumulado)
+
+  // Prioridad: cifra global publicada > hito acumulado más alto > suma de fases.
+  const usados = globales.length > 0 ? globales : acumulados.length > 0 ? acumulados : registros
+  const base =
+    globales.length > 0 ? 'global' : acumulados.length > 0 ? 'maximo_acumulado' : 'suma_de_fases'
 
   const valores = usados.map((p) => p.valor_mw ?? p.valor_mw_max).filter((v) => v != null)
   if (valores.length === 0) return null
@@ -38,6 +42,8 @@ function agregarTipo(registros) {
     const ordenados = [...usados].sort(masReciente)
     valor = ordenados[0].valor_mw ?? ordenados[0].valor_mw_max
     discrepancia = new Set(valores).size > 1
+  } else if (base === 'maximo_acumulado') {
+    valor = Math.max(...valores)
   } else {
     valor = valores.reduce((a, b) => a + b, 0)
   }

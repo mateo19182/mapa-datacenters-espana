@@ -1,0 +1,55 @@
+id: islalink-valencia-fsl
+nombre: "IslaLink FSL — València (estación de aterraje del cable a Baleares)"
+alias:
+  - "IslaLink Data Center Valencia"
+  - "BalaLink Valencia"
+tipo: edificio
+operador: "IslaLink"
+propietario: "BalaLink S.A.U."
+modelo: colocation
+
+ubicacion:
+  municipio: "València"
+  provincia: "Valencia"
+  ccaa: "Comunitat Valenciana"
+  direccion: "Camino Molino de las Fuentes s/n, 46026 València"
+  lat: 39.440181
+  lon: -0.370117
+  precision: exacta
+  fuentes: [src-1]
+
+estado: operativo
+estado_detalle: >-
+  Instalación de IslaLink (sociedad BalaLink S.A.U.) en València, registrada como
+  facility activa en PeeringDB y como data center de colocation operativo en el directorio
+  del Observatorio Español de Data Centers. IslaLink opera el sistema de cable submarino
+  que enlaza la península con las Islas Baleares; el directorio recoge también sus
+  instalaciones de Madrid e Ibiza.
+estado_fuentes: [src-1, src-2]
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      No se ha localizado ninguna cifra de potencia, superficie ni número de racks. La
+      relación exacta entre esta instalación y el punto de aterraje del cable a Baleares no
+      está documentada en las fuentes consultadas.
+    fuentes: [src-1, src-2]
+
+confianza: baja
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.peeringdb.com/api/fac?country=ES&limit=400"
+    titulo: "PeeringDB — Facilities API, España"
+    editor: "PeeringDB"
+    tipo: asociacion
+    fecha_consulta: "2026-08-29"
+    cita: "IslaLink FSL | Camino Molino de las Fuentes S/N | Valencia | 46026 | 39.440181 -0.370117 | BalaLink S.A.U"
+  - id: src-2
+    url: "https://observatorioedc.com/directorio/"
+    titulo: "Data Centers — Directorio, Observatorio Español de Data Centers"
+    editor: "Observatorio Español de Data Centers"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: "IslaLink Data Center | Valencia | Comunidad Valenciana | COLOCATION | Operativo"

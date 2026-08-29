@@ -21,6 +21,31 @@ const listarYaml = (dir) =>
 
 const leerYaml = (ruta) => YAML.parse(readFileSync(ruta, 'utf8'))
 
+// Tabla de nombres canónicos de operador (data/operadores.yaml). La decisión de
+// qué dos nombres son la misma empresa es humana y vive en ese fichero.
+const RUTA_OPERADORES = join(RAIZ, 'data/operadores.yaml')
+const canonico = new Map()
+if (existsSync(RUTA_OPERADORES)) {
+  const tabla = leerYaml(RUTA_OPERADORES) ?? {}
+  for (const [nombre, variantes] of Object.entries(tabla)) {
+    canonico.set(nombre.toLowerCase(), nombre)
+    for (const v of variantes ?? []) canonico.set(String(v).toLowerCase(), nombre)
+  }
+}
+
+/** Unifica el nombre del operador conservando el original como alias. */
+function canonizarOperador(sitio) {
+  if (!sitio.operador) return sitio
+  const destino = canonico.get(sitio.operador.toLowerCase())
+  if (!destino || destino === sitio.operador) return sitio
+  const original = sitio.operador
+  return {
+    ...sitio,
+    operador: destino,
+    alias: sitio.alias.includes(original) ? sitio.alias : [...sitio.alias, original],
+  }
+}
+
 /** Carga data/sites/*.yaml. Devuelve sitios válidos y el parte de incidencias. */
 export function cargarSitios() {
   const sitios = []
@@ -52,7 +77,7 @@ export function cargarSitios() {
       }
       continue
     }
-    const sitio = res.data
+    const sitio = canonizarOperador(res.data)
     if (sitio.id !== fichero.replace(/\.ya?ml$/i, '')) {
       incidencias.push({ fichero, nivel: 'aviso', msg: `el id «${sitio.id}» no coincide con el nombre del fichero` })
     }
@@ -152,10 +177,11 @@ export function cargarListas(dir, etiqueta) {
       )
       if (clave) {
         lista = crudo[clave]
-        comunes = {
-          fuentes: crudo.fuentes,
-          ultima_verificacion: crudo.ultima_verificacion,
-        }
+        // Los escalares de cabecera (fechas, ámbito, notas) valen para todos
+        // los registros del fichero.
+        comunes = Object.fromEntries(
+          Object.entries(crudo).filter(([k, v]) => k !== clave && (!Array.isArray(v) || k === 'fuentes')),
+        )
       } else {
         lista = [crudo]
       }
@@ -173,13 +199,7 @@ export function cargarListas(dir, etiqueta) {
       if (!Array.isArray(fuentesItem) || fuentesItem.length === 0) {
         incidencias.push({ fichero, nivel: 'aviso', msg: `${etiqueta} «${it.id}» sin fuentes` })
       }
-      items.push({
-        ...it,
-        id,
-        fuentes: it.fuentes ?? comunes.fuentes,
-        ultima_verificacion: it.ultima_verificacion ?? comunes.ultima_verificacion,
-        _fichero: fichero,
-      })
+      items.push({ ...comunes, ...it, id, _fichero: fichero })
     }
   }
   const vistos = new Set()

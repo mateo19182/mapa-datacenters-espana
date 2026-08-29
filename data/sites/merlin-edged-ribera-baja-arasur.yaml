@@ -44,10 +44,10 @@ potencia:
     referencia: "'118 MW of critical capacity' del campus según la ficha comercial de Edged"
     estado_asociado: en_construccion
     fecha_dato: "2026-08-29"
-    fuentes: [src-3]
+    fuentes: [src-3, src-6]
     nota: >-
-      La ficha de Edged habla de 'critical capacity'; se interpreta como capacidad
-      TI comercializable de los tres edificios actuales, no del campus final.
+      La ficha de Edged habla de 'critical capacity'. Crónica Vasca (enero de 2026)
+      atribuye los 118 MW a la suma de las fases 1 y 2, no al campus final.
   - tipo: it
     valor_mw: 48
     ambito: edificio
@@ -66,6 +66,17 @@ potencia:
     referencia: "BIL03"
     fecha_dato: "2026-08-29"
     fuentes: [src-3]
+  - tipo: no_especificado
+    valor_mw: 100
+    ambito: campus
+    referencia: "Capacidad final del campus según el proyecto presentado en la primera piedra (2022)"
+    estado_asociado: anunciado
+    fecha_dato: "2022-07-11"
+    fuentes: [src-7]
+    nota: >-
+      Dato histórico, superado por el anuncio de 300 MW IT de diciembre de 2024. La
+      fuente de 2022 hablaba de un suministro inicial de 3 MW y de 22 MW al terminar
+      el primer edificio.
 
 fases:
   - nombre: "Fase 1 — edificio DC3 / BIL03"
@@ -99,8 +110,9 @@ incertidumbres:
       Conviven tres cifras: 300 MW IT como capacidad potencial del campus completo
       (MERLIN, 2024), 118 MW de 'critical capacity' en la ficha comercial de Edged
       para los tres edificios actuales, y '300 MW de capacidad repartidos en media
-      docena de edificios' en prensa de agosto de 2026. No se suman entre sí.
-    fuentes: [src-1, src-3, src-5]
+      docena de edificios' en prensa de agosto de 2026, además de los 100 MW del
+      proyecto original de 2022. No se suman entre sí.
+    fuentes: [src-1, src-3, src-5, src-6, src-7]
   - campo: inversion_anunciada_eur
     descripcion: >-
       Los 1.700 M€ citados por Crónica Vasca corresponden solo a los edificios 4 y 5,
@@ -154,3 +166,19 @@ fuentes:
     fecha_publicacion: "2026-08-17"
     fecha_consulta: "2026-08-29"
     cita: "Merlin acaba de iniciar la tramitación del permiso ambiental de estos dos nuevos edificios"
+  - id: src-6
+    url: "https://cronicavasca.elespanol.com/empresas/20260110/euskadi-desbancar-aragon-tercera-potencia-nacional-centros/1003742721662_0.html"
+    titulo: "Euskadi aspira a desbancar a Aragón como tercera potencia nacional en centros de datos"
+    editor: "Crónica Vasca (El Español)"
+    tipo: prensa_general
+    fecha_publicacion: "2026-01-10"
+    fecha_consulta: "2026-08-29"
+    cita: "una capacidad hasta 118MW totales"
+  - id: src-7
+    url: "https://nortexpres.com/datos-alava-100-megavatios/"
+    titulo: "Centro de datos en Álava con capacidad de 100 megavatios"
+    editor: "Norte Exprés"
+    tipo: prensa_general
+    fecha_publicacion: "2022-07-11"
+    fecha_consulta: "2026-08-29"
+    cita: "el de mayor capacidad de los cuatro proyectados por la compañía en España y similar al que construirá en Lisboa"

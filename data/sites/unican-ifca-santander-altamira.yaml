@@ -1,0 +1,64 @@
+id: unican-ifca-santander-altamira
+nombre: "Nodo Altamira de la RES — IFCA, Universidad de Cantabria (Santander)"
+alias:
+  - "Supercomputador Altamira"
+  - "Nodo RES Altamira"
+tipo: edificio
+operador: "Instituto de Física de Cantabria (IFCA, CSIC-UC)"
+propietario: "Universidad de Cantabria"
+modelo: corporativo
+
+ubicacion:
+  municipio: "Santander"
+  provincia: "Cantabria"
+  ccaa: "Cantabria"
+  direccion: "Instituto de Física de Cantabria, Edificio Juan Jordá, Avenida de los Castros s/n, 39005 Santander"
+  lat: 43.4700
+  lon: -3.8050
+  precision: aproximada
+  fuentes: [src-2]
+
+estado: operativo
+estado_detalle: >-
+  Nodo Altamira de la Red Española de Supercomputación (RES), alojado por la
+  Universidad de Cantabria en el IFCA. Es uno de los 14 nodos de la RES y presta
+  servicio exclusivamente de HPC. La infraestructura del IFCA incluye además varios
+  clústeres, un sistema de almacenamiento de más de 1 petabyte y un sistema de
+  archivo de capacidad equivalente. En febrero de 2025 recibió 760.000 euros para
+  la mejora de sus infraestructuras.
+estado_fuentes: [src-1, src-2]
+
+enlaces_proyecto:
+  - "https://www.res.es/es/sobre-la-res/nodos"
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      Ni la RES ni el IFCA publican potencia eléctrica ni carga TI de la sala.
+      Campo potencia omitido.
+    fuentes: [src-1, src-2]
+  - campo: nombre
+    descripcion: >-
+      No confundir con el «Campus Tecnológico de Datos Altamira» de Piélagos y
+      Villaescusa (ficha stoneshield-pielagos-altamira): son instalaciones distintas
+      que comparten nombre comercial.
+    fuentes: [src-1]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.res.es/es/sobre-la-res/nodos"
+    titulo: "Nodos — Red Española de Supercomputación"
+    editor: "Red Española de Supercomputación (RES)"
+    tipo: oficial
+    fecha_consulta: "2026-08-29"
+    cita: "Altamira - Universidad de Cantabria (UC)"
+  - id: src-2
+    url: "https://ifca.unican.es/en-us/research/advanced-computing-and-e-science"
+    titulo: "Advanced Computing and e-Science — Instituto de Física de Cantabria"
+    editor: "Instituto de Física de Cantabria (CSIC-UC)"
+    tipo: oficial
+    fecha_consulta: "2026-08-29"
+    cita: "a supercomputer, several clusters, an storage system with a capacity above 1 Petabyte, and an archiving system with an equivalent capacity"

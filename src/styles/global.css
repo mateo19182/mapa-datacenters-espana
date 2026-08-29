@@ -440,3 +440,75 @@ button:hover {
     font-size: 0.82rem;
   }
 }
+
+/* --- prosa de documento ---------------------------------------------------- */
+/* Para los informes largos que se publican tal cual (red eléctrica, renovables). */
+
+.prosa {
+  max-width: 44rem;
+}
+
+.prosa h1 {
+  font-size: 1.7rem;
+  margin-top: 0;
+}
+
+.prosa h2 {
+  margin-top: 2.5rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--borde);
+}
+
+.prosa h3 {
+  font-size: 1rem;
+  font-family: var(--sans);
+  font-weight: 600;
+  letter-spacing: 0;
+  margin-top: 1.8rem;
+}
+
+.prosa p,
+.prosa li {
+  font-size: 0.95rem;
+}
+
+.prosa li {
+  margin-bottom: 0.35em;
+}
+
+.prosa blockquote {
+  margin: 1.1rem 0;
+  padding: 0.1rem 0 0.1rem 1rem;
+  border-left: 3px solid var(--borde-fuerte);
+  color: var(--tinta-2);
+  font-size: 0.91rem;
+}
+
+.prosa blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+.prosa table {
+  display: block;
+  overflow-x: auto;
+  margin: 1.2rem 0;
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  font-size: 0.85rem;
+}
+
+.prosa hr {
+  margin: 2.5rem 0;
+}
+
+.prosa code {
+  font-size: 0.85em;
+}
+
+.prosa em {
+  color: var(--tinta-2);
+}
+
+.prosa > p:first-of-type + p em {
+  font-style: normal;
+}

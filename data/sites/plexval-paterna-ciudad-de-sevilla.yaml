@@ -1,0 +1,50 @@
+id: plexval-paterna-ciudad-de-sevilla
+nombre: "Plexval — Paterna (Fuente del Jarro)"
+alias:
+  - "Plexval Datacenter"
+tipo: edificio
+operador: "Plexval"
+propietario: "Axarnet Comunicaciones S.L."
+modelo: colocation
+
+ubicacion:
+  municipio: "Paterna"
+  provincia: "Valencia"
+  ccaa: "Comunitat Valenciana"
+  direccion: "Calle Ciudad de Sevilla 76, 46980 Paterna"
+  lat: 39.523258
+  lon: -0.466529
+  precision: exacta
+  fuentes: [src-1]
+
+estado: operativo
+estado_detalle: >-
+  Instalación de colocation registrada como facility activa en PeeringDB bajo la
+  organización Axarnet Comunicaciones S.L. y listada como operativa en el directorio del
+  Observatorio Español de Data Centers.
+estado_fuentes: [src-1, src-2]
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      No consta potencia, superficie ni número de racks en las fuentes consultadas.
+    fuentes: [src-1, src-2]
+
+confianza: baja
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.peeringdb.com/api/fac?country=ES&limit=400"
+    titulo: "PeeringDB — Facilities API, España"
+    editor: "PeeringDB"
+    tipo: asociacion
+    fecha_consulta: "2026-08-29"
+    cita: "Plexval Datacenter | C/ Ciudad de Sevilla 76 | Paterna | 46980 | 39.523258 -0.466529 | Axarnet Comunicaciones S.L."
+  - id: src-2
+    url: "https://observatorioedc.com/directorio/"
+    titulo: "Data Centers — Directorio, Observatorio Español de Data Centers"
+    editor: "Observatorio Español de Data Centers"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: "Plexval | Paterna | Comunidad Valenciana | COLOCATION | Operativo"

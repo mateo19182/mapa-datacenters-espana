@@ -24,8 +24,22 @@ estado_detalle: >-
   Primera piedra el 6 de noviembre de 2023 con presencia del Lehendakari. En
   noviembre de 2024 la prensa económica vasca situaba la entrada en funcionamiento
   en marzo de 2025. Es el primero de los dos centros del proyecto ADI; el segundo
-  se construye en Arrasate (ficha adi-arrasate-garaia).
-estado_fuentes: [src-1, src-2]
+  se construye en Arrasate (ficha adi-arrasate-garaia). En enero de 2026 la prensa
+  económica vasca lo describe como «centro de datos activo en Abanto con una
+  capacidad de 2MW».
+estado_fuentes: [src-1, src-2, src-4]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 2
+    ambito: edificio
+    referencia: "Capacidad del centro de datos activo en Abanto"
+    estado_asociado: operativo
+    fecha_dato: "2026-01-10"
+    fuentes: [src-4]
+    nota: >-
+      La fuente dice «un centro de datos activo en Abanto con una capacidad de 2MW»,
+      sin precisar si es carga TI, potencia instalada o potencia de conexión.
 
 inversion_anunciada_eur: 25000000
 
@@ -35,9 +49,10 @@ enlaces_proyecto:
 incertidumbres:
   - campo: potencia
     descripcion: >-
-      Ninguna de las fuentes abiertas y verificadas publica la potencia (ni TI, ni
-      instalada, ni de conexión) del edificio de Abanto-Zierbena. Campo potencia omitido.
-    fuentes: [src-1, src-2, src-3]
+      El único dato localizado es «2MW» de capacidad activa (Crónica Vasca, enero de
+      2026), sin tipo. Ni el Gobierno Vasco ni la sociedad publican carga TI ni
+      potencia de conexión.
+    fuentes: [src-1, src-4]
   - campo: estado
     descripcion: >-
       No se ha localizado nota oficial de inauguración ni de puesta en servicio. La
@@ -84,3 +99,11 @@ fuentes:
     fecha_publicacion: "2025-02-11"
     fecha_consulta: "2026-08-29"
     cita: "el primero en Zierbena realizó una inversión de 25 millones de euros"
+  - id: src-4
+    url: "https://cronicavasca.elespanol.com/empresas/20260110/euskadi-desbancar-aragon-tercera-potencia-nacional-centros/1003742721662_0.html"
+    titulo: "Euskadi aspira a desbancar a Aragón como tercera potencia nacional en centros de datos"
+    editor: "Crónica Vasca (El Español)"
+    tipo: prensa_general
+    fecha_publicacion: "2026-01-10"
+    fecha_consulta: "2026-08-29"
+    cita: "Cuenta con un centro de datos activo en Abanto con una capacidad de 2MW"

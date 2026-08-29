@@ -8,7 +8,7 @@
     "validate": "node scripts/validate.mjs",
     "db": "node scripts/build-db.mjs",
     "export": "node scripts/export.mjs",
-    "data": "npm run validate && npm run db && npm run export",
+    "data": "npm run validate && npm run reconcile && npm run db && npm run export",
     "dev": "npm run data && astro dev",
     "build": "npm run data && astro build",
     "preview": "astro preview",
@@ -17,7 +17,8 @@
     "propuestas": "node scripts/apply-proposals.mjs",
     "propuestas:aplicar": "node scripts/apply-proposals.mjs --aplicar",
     "validate:strict": "node scripts/validate.mjs --strict",
-    "geo": "node scripts/geocode-municipios.mjs"
+    "geo": "node scripts/geocode-municipios.mjs",
+    "reconcile": "node scripts/reconcile.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",

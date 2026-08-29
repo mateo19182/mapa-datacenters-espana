@@ -48,7 +48,7 @@ CREATE TABLE sitios (
 CREATE TABLE alias (sitio_id TEXT, alias TEXT);
 CREATE TABLE potencias (
   sitio_id TEXT, idx INTEGER, tipo TEXT, valor_mw REAL, valor_mw_max REAL, valor_mva REAL,
-  ambito TEXT, referencia TEXT, estado_asociado TEXT, fecha_dato TEXT, nota TEXT
+  acumulado INTEGER, ambito TEXT, referencia TEXT, estado_asociado TEXT, fecha_dato TEXT, nota TEXT
 );
 CREATE TABLE fases (
   sitio_id TEXT, idx INTEGER, nombre TEXT, estado TEXT,
@@ -83,7 +83,7 @@ const insSitio = db.prepare(`INSERT INTO sitios VALUES (
   @superficie_parcela_m2,@superficie_construida_m2,@inversion_anunciada_eur,@refrigeracion,
   @enlaces_proyecto,@confianza,@ultima_verificacion)`)
 const insAlias = db.prepare('INSERT INTO alias VALUES (?,?)')
-const insPot = db.prepare('INSERT INTO potencias VALUES (?,?,?,?,?,?,?,?,?,?,?)')
+const insPot = db.prepare('INSERT INTO potencias VALUES (?,?,?,?,?,?,?,?,?,?,?,?)')
 const insFase = db.prepare('INSERT INTO fases VALUES (?,?,?,?,?,?,?)')
 const insInc = db.prepare('INSERT INTO incertidumbres VALUES (?,?,?,?)')
 const insFuente = db.prepare('INSERT INTO fuentes VALUES (?,?,?,?,?,?,?,?,?)')
@@ -130,7 +130,7 @@ const cargar = db.transaction(() => {
 
     for (const a of s.alias) insAlias.run(s.id, a)
     for (const [i, p] of s.potencia.entries()) {
-      insPot.run(s.id, i, p.tipo, p.valor_mw, p.valor_mw_max ?? null, p.valor_mva ?? null, p.ambito, p.referencia, p.estado_asociado, p.fecha_dato, p.nota)
+      insPot.run(s.id, i, p.tipo, p.valor_mw, p.valor_mw_max ?? null, p.valor_mva ?? null, p.acumulado ? 1 : 0, p.ambito, p.referencia, p.estado_asociado, p.fecha_dato, p.nota)
       for (const f of p.fuentes) insResp.run(s.id, `potencia[${i}]`, f)
     }
     for (const [i, f] of s.fases.entries()) {

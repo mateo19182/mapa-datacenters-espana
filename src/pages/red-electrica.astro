@@ -1,0 +1,271 @@
+---
+import Base from '../layouts/Base.astro'
+import { Content as Documento } from '../contenido/red-electrica.md'
+import red from '../data/red.json'
+import capacidad from '../data/capacidad.json'
+import actuaciones from '../data/actuaciones.json'
+import sitios from '../data/sitios.json'
+import { numero, slug } from '../lib/etiquetas.js'
+
+// Un nudo se considera sin margen cuando el fichero de Red Eléctrica no publica
+// ningún valor disponible bajo ninguno de los tres criterios.
+const disponibleDe = (n) => {
+  const d = n.disponible_criterio_general_demanda_mw ?? {}
+  const valores = [d.cep_ch, d.cep_sh, d.no_cep].filter((v) => v != null)
+  return valores.length ? Math.max(...valores) : null
+}
+
+const nudos = capacidad.map((n) => ({ ...n, disponible: disponibleDe(n) }))
+const conMargen = nudos.filter((n) => n.disponible > 0)
+const sinMargen = nudos.filter((n) => n.disponible === 0 || n.disponible == null)
+
+const porCcaa = [...new Set(nudos.map((n) => n.ccaa).filter(Boolean))]
+  .map((c) => {
+    const lista = nudos.filter((n) => n.ccaa === c)
+    return {
+      ccaa: c,
+      total: lista.length,
+      conMargen: lista.filter((n) => n.disponible > 0).length,
+      disponible: lista.reduce((a, n) => a + (n.disponible ?? 0), 0),
+      solicitada: lista.reduce((a, n) => a + (n.solicitada_en_curso_demanda_rdt_mw ?? 0), 0),
+      otorgada: lista.reduce((a, n) => a + (n.otorgada_demanda_rdt_mw ?? 0), 0),
+    }
+  })
+  .sort((a, b) => b.solicitada - a.solicitada)
+
+// Emplazamientos que declaran subestación: la unión documentada entre las dos capas.
+const conConexion = sitios.filter((s) => s.conexion_electrica?.subestacion)
+
+const fechaDato = capacidad[0]?.fecha_dato ?? null
+---
+
+<Base
+  titulo="Red eléctrica"
+  descripcion="Cómo se reparte el acceso a la red eléctrica en España, qué nudos tienen margen para nueva demanda y cómo se relaciona con los centros de datos."
+>
+  <div class="contenedor">
+    <h1>Red eléctrica</h1>
+    <p class="sumario">
+      El cuello de botella de los centros de datos en España no es el suelo ni el capital: es el
+      permiso para enchufarse a la red. Esta sección reúne lo que se puede saber con fuentes
+      públicas sobre cómo se reparte ese derecho y dónde queda margen.
+    </p>
+
+    <div class="nota">
+      <strong>Demanda, no generación.</strong> Todas las cifras de capacidad de esta página se
+      refieren a la capacidad de acceso para <em>demanda</em> (consumo). La capacidad de acceso para
+      <em>generación</em> se calcula con criterios distintos, se publica en ficheros distintos y no
+      es comparable ni sumable con esta. Confundirlas es el error clásico en este terreno.
+    </div>
+
+    {nudos.length > 0 && (
+      <>
+        <dl class="cifras">
+          <div class="cifra">
+            <dt>Nudos registrados</dt>
+            <dd>{numero(nudos.length)}<small>de la red de transporte</small></dd>
+          </div>
+          <div class="cifra">
+            <dt>Con margen para demanda</dt>
+            <dd>{numero(conMargen.length)}<small>{Math.round((conMargen.length / nudos.length) * 100)} % del total</small></dd>
+          </div>
+          <div class="cifra">
+            <dt>Sin margen publicado</dt>
+            <dd>{numero(sinMargen.length)}<small>saturados o sin valor de referencia acordado</small></dd>
+          </div>
+          <div class="cifra">
+            <dt>Demanda en curso</dt>
+            <dd>{numero(nudos.reduce((a, n) => a + (n.solicitada_en_curso_demanda_rdt_mw ?? 0), 0))} MW<small>solicitudes en tramitación, no instalaciones</small></dd>
+          </div>
+        </dl>
+
+        <p class="pequeno silencio">
+          Datos de Red Eléctrica{fechaDato ? `, publicados el ${fechaDato}` : ''}. Esta cifra caduca
+          en meses: se republica periódicamente y el reparto cambia con cada resolución.
+        </p>
+
+        <h2>Reparto por comunidad autónoma</h2>
+        <div class="tabla-envoltorio">
+          <table>
+            <thead>
+              <tr>
+                <th>Comunidad</th>
+                <th class="num">Nudos</th>
+                <th class="num">Con margen</th>
+                <th class="num">Disponible</th>
+                <th class="num">Otorgada</th>
+                <th class="num">En curso</th>
+              </tr>
+            </thead>
+            <tbody>
+              {porCcaa.map((c) => (
+                <tr>
+                  <td>{c.ccaa}</td>
+                  <td class="num">{c.total}</td>
+                  <td class="num">{c.conMargen}</td>
+                  <td class="num">{numero(c.disponible)} MW</td>
+                  <td class="num">{numero(c.otorgada)} MW</td>
+                  <td class="num">{numero(c.solicitada)} MW</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p class="pequeno silencio">
+          «Otorgada» es potencia con permiso concedido; «en curso», solicitudes en tramitación. Ni
+          una ni otra son centros construidos, y una parte no llegará a serlo nunca.
+        </p>
+
+        <h2>Nudos con más margen para nueva demanda</h2>
+        <div class="controles">
+          <input id="busca-nudo" type="search" placeholder="Filtrar por nudo o comunidad…" autocomplete="off" />
+          <span id="contador-nudo" class="pequeno silencio"></span>
+        </div>
+        <div class="tabla-envoltorio tabla-alta">
+          <table id="tabla-nudos">
+            <thead>
+              <tr>
+                <th>Nudo</th>
+                <th>Comunidad</th>
+                <th class="num">kV</th>
+                <th class="num">Disponible</th>
+                <th class="num">Otorgada</th>
+                <th class="num">En curso</th>
+                <th>Limitación</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[...nudos]
+                .sort((a, b) => (b.disponible ?? -1) - (a.disponible ?? -1))
+                .map((n) => (
+                  <tr data-busca={`${n.nudo} ${n.ccaa ?? ''}`.toLowerCase()}>
+                    <td>{n.nudo}</td>
+                    <td class="pequeno">{n.ccaa ?? <span class="silencio">—</span>}</td>
+                    <td class="num">{n.tension_kv ?? '—'}</td>
+                    <td class="num">
+                      {n.disponible == null ? (
+                        <span class="silencio">no publicada</span>
+                      ) : n.disponible > 0 ? (
+                        <strong>{numero(n.disponible)} MW</strong>
+                      ) : (
+                        <span class="sin-margen">0 MW</span>
+                      )}
+                    </td>
+                    <td class="num">{numero(n.otorgada_demanda_rdt_mw) ?? '—'}</td>
+                    <td class="num">{numero(n.solicitada_en_curso_demanda_rdt_mw) ?? '—'}</td>
+                    <td class="pequeno silencio">{n.criterio_limitante_demanda ?? n.motivo_no_otorgable ?? '—'}</td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+        </div>
+      </>
+    )}
+
+    {actuaciones.length > 0 && (
+      <>
+        <h2>Actuaciones de red planificadas</h2>
+        <div class="tabla-envoltorio">
+          <table>
+            <thead>
+              <tr><th>Actuación</th><th>Tipo</th><th class="num">kV</th><th>Horizonte</th><th>Estado</th></tr>
+            </thead>
+            <tbody>
+              {actuaciones.map((a) => (
+                <tr>
+                  <td>{a.nombre ?? a.id}<span class="pequeno silencio"><br />{[a.municipios, a.ccaa].flat().filter(Boolean).join(', ')}</span></td>
+                  <td class="pequeno">{a.tipo ?? '—'}</td>
+                  <td class="num">{a.tension_kv ?? '—'}</td>
+                  <td class="pequeno">{a.horizonte ?? '—'}</td>
+                  <td class="pequeno">{a.estado_tramitacion ?? a.estado ?? '—'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </>
+    )}
+
+    {conConexion.length > 0 && (
+      <>
+        <h2>Emplazamientos con conexión documentada</h2>
+        <p class="pequeno silencio">
+          Los que declaran subestación de conexión en alguna fuente. Es una minoría: en la mayoría
+          de los proyectos, el punto de conexión no se hace público.
+        </p>
+        <div class="tabla-envoltorio">
+          <table>
+            <thead>
+              <tr><th>Emplazamiento</th><th>Subestación</th><th class="num">kV</th><th>Titular</th><th class="num">MW solicitados</th><th class="num">MW concedidos</th></tr>
+            </thead>
+            <tbody>
+              {conConexion.map((s) => (
+                <tr>
+                  <td><a href={`/proyecto/${s.id}`}>{s.nombre}</a></td>
+                  <td>{s.conexion_electrica.subestacion}</td>
+                  <td class="num">{s.conexion_electrica.tension_kv ?? '—'}</td>
+                  <td class="pequeno">{s.conexion_electrica.titular_red ?? <span class="silencio">—</span>}</td>
+                  <td class="num">{numero(s.conexion_electrica.mw_solicitados, 1) ?? <span class="silencio">—</span>}</td>
+                  <td class="num">{numero(s.conexion_electrica.mw_concedidos, 1) ?? <span class="silencio">—</span>}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </>
+    )}
+
+    <hr />
+
+    <article class="prosa">
+      <Documento />
+    </article>
+
+    <p class="pequeno silencio" style="margin-bottom:3rem">
+      Las {red.length} subestaciones registradas pueden verse sobre el mapa activando la capa
+      correspondiente en <a href="/?capas=lineas,subestaciones">la vista cartográfica</a>.
+    </p>
+  </div>
+</Base>
+
+<script>
+  const tabla = document.getElementById('tabla-nudos')
+  if (tabla) {
+    const filas = [...tabla.querySelectorAll('tbody tr')]
+    const busca = document.getElementById('busca-nudo')
+    const contador = document.getElementById('contador-nudo')
+    const actualizar = () => {
+      const v = filas.filter((f) => f.style.display !== 'none').length
+      contador.textContent = v === filas.length ? `${filas.length} nudos` : `${v} de ${filas.length}`
+    }
+    busca.addEventListener('input', () => {
+      const t = busca.value.trim().toLowerCase()
+      for (const f of filas) f.style.display = !t || f.dataset.busca.includes(t) ? '' : 'none'
+      actualizar()
+    })
+    actualizar()
+  }
+</script>
+
+<style>
+  .controles {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    margin: 1rem 0 0.9rem;
+  }
+
+  .controles input {
+    flex: 1;
+    max-width: 24rem;
+  }
+
+  .tabla-alta {
+    max-height: 32rem;
+    overflow-y: auto;
+  }
+
+  .sin-margen {
+    color: var(--cancelado);
+  }
+</style>

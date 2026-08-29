@@ -86,10 +86,11 @@ incertidumbres:
     fuentes: [src-1]
   - campo: estado
     descripcion: >-
-      A agosto de 2026 el proyecto no ha entrado en tramitación ambiental publicada
-      en el BOPA; el Ayuntamiento de Salas debe ampliar el polígono de Nonaya. Existe
-      debate político sobre transparencia y consumo de agua.
-    fuentes: [src-1]
+      A agosto de 2026 el proyecto debe completar su tramitación y obtener la
+      consideración de proyecto de interés estratégico regional. No se han
+      identificado públicamente el operador final, los clientes ni la estructura
+      financiera, ni se concreta el sistema de refrigeración ni el consumo de agua.
+    fuentes: [src-1, src-3]
 
 confianza: media
 ultima_verificacion: "2026-08-29"
@@ -111,3 +112,11 @@ fuentes:
     fecha_publicacion: "2026-08-04"
     fecha_consulta: "2026-08-29"
     cita: "ten data center modules and 120 MW of final computing capacity over 154,584 square meters"
+  - id: src-3
+    url: "https://www.nortes.me/2026/08/08/que-es-un-centro-de-datos-como-funciona-y-que-impactos-tiene/"
+    titulo: "¿Qué es un centro de datos, cómo funciona y qué impactos tiene?"
+    editor: "Nortes"
+    tipo: prensa_general
+    fecha_publicacion: "2026-08-08"
+    fecha_consulta: "2026-08-29"
+    cita: "La documentación difundida no concreta el sistema de refrigeración ni el consumo de agua"
