@@ -2,10 +2,10 @@
 
 Generado el 2026-08-29 por `npm run validate`.
 
-- Emplazamientos cargados: **163**
+- Emplazamientos cargados: **162**
 - Nodos de red: **133**
 - Activos renovables/BESS: **22**
-- Errores: **0** · Avisos: **200**
+- Errores: **0** · Avisos: **199**
 
 ## Incidencias por fichero
 
@@ -55,11 +55,6 @@ Generado el 2026-08-29 por `npm run validate`.
 ### `alme-almeria-aterraje-cables.yaml`
 
 - aviso: sin ningún dato de potencia
-
-### `aq-compute-cerdanyola-parc-alba.yaml`
-
-- aviso: potencia[0] («Capacidad total del campus») no distingue el tipo de MW
-- aviso: potencia[1] («Primer edificio») no distingue el tipo de MW
 
 ### `ark-barcelona-la-maquinista.yaml`
 
@@ -286,7 +281,8 @@ Generado el 2026-08-29 por `npm run validate`.
 
 ### `hscale-cerdanyola-parc-alba.yaml`
 
-- aviso: sin ningún dato de potencia
+- aviso: potencia[0] («Capacidad total del campus») no distingue el tipo de MW
+- aviso: potencia[1] («Primer edificio») no distingue el tipo de MW
 
 ### `iaas-datacenter-madrid-maraton.yaml`
 

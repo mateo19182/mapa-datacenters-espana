@@ -33,6 +33,21 @@ if (existsSync(RUTA_OPERADORES)) {
   }
 }
 
+// Igual que con los operadores, la forma canónica de cada comunidad autónoma
+// vive en un fichero editable a mano.
+const RUTA_COMUNIDADES = join(RAIZ, 'data/comunidades.yaml')
+const canonicoCcaa = new Map()
+if (existsSync(RUTA_COMUNIDADES)) {
+  const tabla = leerYaml(RUTA_COMUNIDADES) ?? {}
+  for (const [nombre, variantes] of Object.entries(tabla)) {
+    canonicoCcaa.set(nombre.toLowerCase(), nombre)
+    for (const v of variantes ?? []) canonicoCcaa.set(String(v).toLowerCase(), nombre)
+  }
+}
+
+export const normalizarCcaa = (valor) =>
+  valor == null ? null : (canonicoCcaa.get(String(valor).toLowerCase().trim()) ?? valor)
+
 /** Unifica el nombre del operador conservando el original como alias. */
 function canonizarOperador(sitio) {
   if (!sitio.operador) return sitio
@@ -78,6 +93,7 @@ export function cargarSitios() {
       continue
     }
     const sitio = canonizarOperador(res.data)
+    sitio.ubicacion.ccaa = normalizarCcaa(sitio.ubicacion.ccaa)
     if (sitio.id !== fichero.replace(/\.ya?ml$/i, '')) {
       incidencias.push({ fichero, nivel: 'aviso', msg: `el id «${sitio.id}» no coincide con el nombre del fichero` })
     }
@@ -199,7 +215,9 @@ export function cargarListas(dir, etiqueta) {
       if (!Array.isArray(fuentesItem) || fuentesItem.length === 0) {
         incidencias.push({ fichero, nivel: 'aviso', msg: `${etiqueta} «${it.id}» sin fuentes` })
       }
-      items.push({ ...comunes, ...it, id, _fichero: fichero })
+      const registro = { ...comunes, ...it, id, _fichero: fichero }
+      if (registro.ccaa) registro.ccaa = normalizarCcaa(registro.ccaa)
+      items.push(registro)
     }
   }
   const vistos = new Set()

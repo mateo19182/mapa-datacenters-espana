@@ -2,73 +2,120 @@ id: hscale-cerdanyola-parc-alba
 nombre: "hscale BCN1 — Parc de l'Alba (Cerdanyola del Vallès)"
 alias:
   - "hscale Barcelona BCN1"
+  - "AQ Compute AQ-BCN1"
+  - "AQ-BCN1"
+  - "BCN1"
 tipo: campus
 operador: "hscale"
-propietario: "hscale (empresa conjunta de Bain Capital y Aquila Group)"
+propietario: "hscale (empresa conjunta de Bain Capital y Aquila Group); anteriormente AQ Compute (Aquila Group)"
 modelo: mayorista
 
 ubicacion:
   municipio: "Cerdanyola del Vallès"
   provincia: "Barcelona"
   ccaa: "Cataluña"
-  direccion: "Carrer de Creu Casas i Sicart, Parc de l'Alba, Cerdanyola del Vallès"
+  direccion: "Carrer de Creu Casas i Sicart, Parc de l'Alba, entre Cerdanyola del Vallès y Sant Cugat del Vallès"
   lat: 41.485618
   lon: 2.1076426
   precision: aproximada
-  fuentes: [src-1, src-2]
+  fuentes: [src-baxtel, src-nominatim]
 
 estado: en_construccion
 estado_detalle: >-
-  Campus proyectado de cinco edificios de dos plantas más un edificio auxiliar,
-  sobre unas 10 acres en el Parc de l'Alba, entre Cerdanyola del Vallès y Sant
-  Cugat del Vallès. Baxtel lo clasifica como en construcción con año previsto
-  2026.
-estado_fuentes: [src-1]
+  Campus de edificios independientes en el Parc de l'Alba. ACCIÓ anunció el inicio de obras con
+  un primer edificio de 15 MW y 43.000 m², previsto para 2025. El directorio Baxtel describe el
+  campus ya bajo la marca hscale, con cinco edificios de dos plantas más uno auxiliar y año
+  previsto 2026. No se ha localizado confirmación pública de puesta en servicio.
+estado_fuentes: [src-accio, src-baxtel]
 
-potencia: []
+potencia:
+  - tipo: no_especificado
+    valor_mw: 60
+    ambito: campus
+    referencia: "Capacidad total del campus"
+    estado_asociado: en_construccion
+    fuentes: [src-accio]
+    nota: >-
+      ACCIÓ habla de «IT capacity of 60MW» para el campus terminado. Al proceder de una agencia
+      de promoción y no del operador, no se ha tipificado como carga TI.
+  - tipo: no_especificado
+    valor_mw: 15
+    ambito: fase
+    referencia: "Primer edificio"
+    estado_asociado: en_construccion
+    fuentes: [src-accio]
+
+fases:
+  - nombre: "Fase 1 (primer edificio)"
+    estado: en_construccion
+    superficie_m2: 43000
+    fuentes: [src-accio]
 
 refrigeracion: >-
-  Agua refrigerada con freecooling, infraestructura preparada para refrigeración
-  líquida, densidades de rack declaradas de 11 a 130 kW y PUE objetivo de 1,2.
+  Agua refrigerada con freecooling e infraestructura preparada para refrigeración líquida;
+  densidades de rack declaradas de 11 a 130 kW y PUE objetivo de 1,2. ACCIÓ añadía principios de
+  diseño Tier III y suministro 100 % renovable.
 
 incertidumbres:
+  - campo: identidad
+    descripcion: >-
+      Este emplazamiento aparecía en las fuentes como dos proyectos distintos, «AQ Compute
+      AQ-BCN1» y «hscale BCN1». Son el mismo activo: AQ Compute, del grupo Aquila, pasó a operar
+      como hscale tras la entrada de Bain Capital. Comparten emplazamiento, código de edificio y
+      linaje societario, de modo que se registran como una sola ficha para no duplicar capacidad.
+    fuentes: [src-accio, src-baxtel]
   - campo: potencia
     descripcion: >-
-      No hay ninguna cifra de MW publicada para este campus en la fuente
-      localizada. No se registra ningún valor.
-    fuentes: [src-1]
+      Los 60 MW y los 15 MW proceden de la agencia de promoción de la Generalitat, no del
+      operador, y no puede confirmarse si son carga TI o potencia de acceso. La ficha de Baxtel,
+      posterior y ya bajo la marca hscale, no publica ninguna cifra de MW.
+    fuentes: [src-accio, src-baxtel]
+  - campo: superficie
+    descripcion: >-
+      Los 43.000 m² se atribuyen al «primer edificio», lo que encaja mal con una fase de 15 MW;
+      podría referirse a la parcela y no a la superficie construida.
+    fuentes: [src-accio]
   - campo: estado
     descripcion: >-
-      Solo se ha localizado una fuente (directorio especializado). No hay nota de
-      prensa de la compañía ni expediente administrativo verificado. El estado
-      "en construcción" no está corroborado por una segunda fuente.
-    fuentes: [src-1]
+      Ninguna de las dos fuentes es del operador. ACCIÓ daba la fase 1 por terminada en 2025 y
+      Baxtel da el campus como en construcción con año previsto 2026. El estado real a 2026 no
+      está corroborado por una fuente primaria.
+    fuentes: [src-accio, src-baxtel]
   - campo: ubicacion
     descripcion: >-
-      Las coordenadas son el centroide del Parc de l'Alba, no la parcela concreta.
-    fuentes: [src-2]
+      Las coordenadas son el centroide del Parc de l'Alba según Nominatim, no la parcela concreta.
+    fuentes: [src-nominatim]
 
 confianza: baja
 ultima_verificacion: "2026-08-29"
 
 fuentes:
-  - id: src-1
+  - id: src-accio
+    url: "https://catalonia.com/w/aq-compute-has-started-the-construction-of-a-new-data-center-in-barcelona"
+    titulo: "AQ Compute has started the construction of a new data center in Barcelona"
+    editor: "ACCIÓ — Catalonia Trade & Investment (Generalitat de Catalunya)"
+    tipo: oficial
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      The campus will consist of independent buildings, the first of which will have a capacity of
+      15 MW and a total area of 43,000 square meters ... the campus will eventually have an IT
+      capacity of 60MW.
+  - id: src-baxtel
     url: "https://baxtel.com/data-center/hscale-barcelona"
     titulo: "hscale: Barcelona Data Center"
     editor: "Baxtel"
     tipo: prensa_especializada
     fecha_consulta: "2026-08-29"
     cita: >-
-      Address: Carrer de Creu Casas i Sicart, Parc de l'Alba, North Barcelona
-      (between Cerdanyola del Vallés and Sant Cugat del Vallés) ... Five
-      buildings with two floors each plus multipurpose ancillary building ...
-      Year Planned: 2026
-  - id: src-2
+      Address: Carrer de Creu Casas i Sicart, Parc de l'Alba, North Barcelona (between Cerdanyola
+      del Vallés and Sant Cugat del Vallés) ... Five buildings with two floors each plus
+      multipurpose ancillary building ... Year Planned: 2026
+  - id: src-nominatim
     url: "https://nominatim.openstreetmap.org/search?q=Parc+de+l%27Alba%2C+Cerdanyola+del+Vall%C3%A8s&format=json&limit=3"
     titulo: "Nominatim — geocodificación de Parc de l'Alba, Cerdanyola del Vallès"
     editor: "OpenStreetMap / Nominatim"
     tipo: otro
     fecha_consulta: "2026-08-29"
     cita: >-
-      Parc de l'Alba, Cerdanyola del Vallès, Vallès Occidental, Barcelona,
-      Catalunya, España — lat 41.4856180, lon 2.1076426
+      Parc de l'Alba, Cerdanyola del Vallès, Vallès Occidental, Barcelona, Catalunya, España —
+      lat 41.4856180, lon 2.1076426

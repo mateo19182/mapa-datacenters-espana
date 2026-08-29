@@ -1,0 +1,157 @@
+---
+import Base from '../layouts/Base.astro'
+import sitios from '../data/sitios.json'
+import { CAMPO_ETIQUETA, campoLegible, ESTADO_ETIQUETA, numero, slug } from '../lib/etiquetas.js'
+
+// Todo lo que las fuentes no aclaran o en lo que se contradicen, reunido.
+const entradas = sitios.flatMap((s) =>
+  s.incertidumbres.map((u) => ({
+    sitio: s,
+    campo: u.campo,
+    etiqueta: campoLegible(u.campo),
+    descripcion: u.descripcion,
+    fuentes: u.fuentes.map((id) => s.fuentes.find((f) => f.id === id)).filter(Boolean),
+  })),
+)
+
+const grupos = [...new Set(entradas.map((e) => e.etiqueta))]
+  .map((etiqueta) => ({
+    etiqueta,
+    ancla: slug(etiqueta),
+    entradas: entradas
+      .filter((e) => e.etiqueta === etiqueta)
+      .sort((a, b) => a.sitio.nombre.localeCompare(b.sitio.nombre, 'es')),
+  }))
+  .sort((a, b) => b.entradas.length - a.entradas.length)
+
+// Emplazamientos donde dos fuentes dan cifras distintas para la misma magnitud.
+const conDiscrepanciaNumerica = sitios.filter((s) =>
+  Object.values(s.resumen_potencia).some((r) => r?.discrepancia),
+)
+
+const afectados = new Set(entradas.map((e) => e.sitio.id)).size
+---
+
+<Base
+  titulo="Incertidumbres"
+  descripcion="Todas las contradicciones y lagunas documentadas del registro, agrupadas por el campo al que afectan."
+>
+  <div class="contenedor">
+    <h1>Incertidumbres</h1>
+    <p class="sumario">
+      {numero(entradas.length)} contradicciones y lagunas documentadas en {afectados} de los
+      {sitios.length} emplazamientos. No están resueltas: están registradas. Cuando dos fuentes
+      fiables dicen cosas distintas, elegir una en silencio produce un dato limpio y falso, así que
+      aquí se conservan ambas y se dice cuál es el choque.
+    </p>
+
+    <p class="pequeno">
+      Ir a: {grupos.map((g, i) => (
+        <>{i > 0 && ' · '}<a href={`#${g.ancla}`}>{g.etiqueta.toLowerCase()} ({g.entradas.length})</a></>
+      ))}
+    </p>
+
+    {conDiscrepanciaNumerica.length > 0 && (
+      <>
+        <h2>Cifras de potencia que no coinciden</h2>
+        <p class="pequeno silencio">
+          Emplazamientos con dos o más lecturas distintas para la misma magnitud y el mismo ámbito.
+          El registro muestra el rango completo en lugar de una cifra única.
+        </p>
+        <div class="tabla-envoltorio">
+          <table>
+            <thead>
+              <tr><th>Emplazamiento</th><th>Magnitud</th><th class="num">Rango observado</th><th class="num">Lecturas</th></tr>
+            </thead>
+            <tbody>
+              {conDiscrepanciaNumerica.flatMap((s) =>
+                Object.entries(s.resumen_potencia)
+                  .filter(([, r]) => r?.discrepancia)
+                  .map(([tipo, r]) => (
+                    <tr>
+                      <td><a href={`/proyecto/${s.id}`}>{s.nombre}</a></td>
+                      <td class="pequeno">{tipo}</td>
+                      <td class="num">{numero(r.minimo_observado, 1)} – {numero(r.maximo_observado, 1)} MW</td>
+                      <td class="num">{r.registros}</td>
+                    </tr>
+                  )),
+              )}
+            </tbody>
+          </table>
+        </div>
+      </>
+    )}
+
+    {grupos.map((g) => (
+      <section>
+        <h2 id={g.ancla}>{g.etiqueta} <span class="cuenta">{g.entradas.length}</span></h2>
+        <ul class="entradas">
+          {g.entradas.map((e) => (
+            <li>
+              <p class="cabecera-entrada">
+                <a href={`/proyecto/${e.sitio.id}`}>{e.sitio.nombre}</a>
+                <span class={`etiqueta estado-${e.sitio.estado}`}><span class="punto"></span>{ESTADO_ETIQUETA[e.sitio.estado]}</span>
+                {e.sitio.ubicacion.ccaa && (
+                  <span class="silencio pequeno">{e.sitio.ubicacion.ccaa}</span>
+                )}
+              </p>
+              <p class="descripcion">{e.descripcion}</p>
+              {e.fuentes.length > 0 && (
+                <p class="pequeno silencio">
+                  {e.fuentes.map((f, i) => (
+                    <>{i > 0 && ' · '}<a href={f.url} rel="noopener nofollow" target="_blank">{f.editor ?? f.titulo}</a></>
+                  ))}
+                </p>
+              )}
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+  </div>
+</Base>
+
+<style>
+  .entradas {
+    list-style: none;
+    padding: 0;
+    margin: 0.75rem 0 0;
+  }
+
+  .entradas li {
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--borde);
+    max-width: 52rem;
+  }
+
+  .cabecera-entrada {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0 0 0.3rem;
+    font-size: 0.92rem;
+  }
+
+  .descripcion {
+    margin: 0 0 0.25rem;
+    font-size: 0.92rem;
+    color: var(--tinta-2);
+  }
+
+  .cuenta {
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--tinta-3);
+    vertical-align: middle;
+    border: 1px solid var(--borde-fuerte);
+    border-radius: 999px;
+    padding: 0.05em 0.5em;
+    margin-left: 0.4rem;
+  }
+
+  section:last-of-type .entradas {
+    margin-bottom: 3rem;
+  }
+</style>

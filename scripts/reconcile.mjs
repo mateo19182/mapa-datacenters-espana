@@ -133,9 +133,17 @@ for (let i = 0; i < sitios.length; i++) {
     const db = distintivas(b)
     const comunes = [...da].filter((w) => db.has(w))
 
+    // Coordenadas exactamente iguales: es el mismo edificio, aunque el operador
+    // figure con otro nombre. Solo vale si ambas son exactas: varios proyectos
+    // de un mismo polígono comparten el punto de referencia del parque sin ser
+    // el mismo activo.
+    const mismasCoordenadas =
+      ambasExactas && a.ubicacion.lat === b.ubicacion.lat && a.ubicacion.lon === b.ubicacion.lon
+
     const sospechoso =
       mismoNombre ||
       aliasCruzado ||
+      mismasCoordenadas ||
       (mismoOperador && pegados) ||
       (mismoOperador && mismoMunicipio && comunes.length >= 2)
 
@@ -146,6 +154,7 @@ for (let i = 0; i < sitios.length; i++) {
       b: b.id,
       motivo: [
         mismoNombre ? 'nombre idéntico' : null,
+        mismasCoordenadas ? `coordenadas idénticas (${a.ubicacion.lat}, ${a.ubicacion.lon})` : null,
         aliasCruzado ? 'el nombre de uno figura como alias del otro' : null,
         mismoOperador ? `mismo operador (${a.operador})` : null,
         pegados ? `a ${Math.round(distanciaKm(a.ubicacion, b.ubicacion) * 1000)} m con coordenadas exactas` : null,

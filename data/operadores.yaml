@@ -24,3 +24,7 @@ AFR-IX telecom:
 
 Grupo Aire:
   - Grupo Aire (OASIX)
+
+# AQ Compute pasó a operar como hscale tras la entrada de Bain Capital.
+hscale:
+  - AQ Compute

@@ -208,7 +208,8 @@ hr {
 
 .nav {
   display: flex;
-  gap: 1.1rem;
+  align-items: center;
+  gap: 0.95rem;
   flex-wrap: wrap;
   font-size: 0.87rem;
   margin-left: auto;
@@ -222,6 +223,23 @@ hr {
 .nav a[aria-current='page'] {
   color: var(--tinta);
   text-decoration: underline;
+}
+
+.nav-critico {
+  color: var(--tinta-3);
+}
+
+.nav-separador {
+  width: 1px;
+  align-self: stretch;
+  background: var(--borde);
+  margin: 0 0.1rem;
+}
+
+@media (max-width: 900px) {
+  .nav-separador {
+    display: none;
+  }
 }
 
 .pie {

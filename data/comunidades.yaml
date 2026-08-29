@@ -1,0 +1,38 @@
+# Nombres canónicos de comunidad autónoma y sus variantes.
+#
+# Distintos investigadores y distintas fuentes oficiales usan denominaciones
+# diferentes para la misma comunidad («Comunitat Valenciana» y «Comunidad
+# Valenciana», «Navarra» y «Comunidad Foral de Navarra»). Sin unificarlas, los
+# cruces entre la capa de centros de datos y la capa eléctrica fallan en
+# silencio: una subestación deja de aparecer en la ficha de su región.
+#
+# Se elige la forma más usada en castellano; las oficiales completas quedan
+# como variantes.
+
+Andalucía: []
+Aragón: []
+Asturias:
+  - Principado de Asturias
+Cantabria: []
+Castilla y León:
+  - Castilla León
+Castilla-La Mancha:
+  - Castilla La Mancha
+Cataluña:
+  - Catalunya
+Comunidad de Madrid:
+  - Madrid
+Comunidad Valenciana:
+  - Comunitat Valenciana
+  - Valencia
+Extremadura: []
+Galicia: []
+La Rioja: []
+Navarra:
+  - Comunidad Foral de Navarra
+  - Nafarroa
+País Vasco:
+  - Euskadi
+  - Comunidad Autónoma del País Vasco
+Región de Murcia:
+  - Murcia

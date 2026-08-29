@@ -1,0 +1,196 @@
+---
+import Base from '../layouts/Base.astro'
+import { Content as Documento } from '../contenido/cobertura.md'
+import pendientes from '../data/pendientes.json'
+import resumen from '../data/resumen.json'
+import sitios from '../data/sitios.json'
+import { numero, slug } from '../lib/etiquetas.js'
+
+const proyectos = pendientes.proyectos ?? []
+const sinMunicipio = pendientes.sin_municipio ?? []
+
+const ORDEN = { alta: 0, media: 1, baja: 2 }
+const ordenados = [...proyectos].sort(
+  (a, b) => (ORDEN[a.prioridad] ?? 3) - (ORDEN[b.prioridad] ?? 3) || a.municipio.localeCompare(b.municipio, 'es'),
+)
+
+const regionesConFicha = new Set(sitios.map((s) => s.ubicacion.ccaa).filter(Boolean))
+
+// Cuántas fichas de cada comunidad citan al menos una fuente oficial: es la
+// mejor medida de si existe una vía documental primaria en ese territorio.
+const porRegion = [...regionesConFicha]
+  .map((ccaa) => {
+    const lista = sitios.filter((s) => s.ubicacion.ccaa === ccaa)
+    return {
+      ccaa,
+      total: lista.length,
+      oficial: lista.filter((s) => s.fuentes.some((f) => f.tipo === 'oficial')).length,
+      exactas: lista.filter((s) => s.ubicacion.precision === 'exacta').length,
+      tipada: lista.filter((s) => s.resumen_potencia.it || s.resumen_potencia.conexion_red).length,
+      conexion: lista.filter((s) => s.conexion_electrica).length,
+    }
+  })
+  .sort((a, b) => b.total - a.total)
+
+const pct = (n, total) => (total ? Math.round((n / total) * 100) : 0)
+---
+
+<Base
+  titulo="Cobertura"
+  descripcion="Qué cubre este registro, qué le falta, qué contradicciones quedan abiertas y qué no debe concluirse de él."
+>
+  <div class="contenedor">
+    <h1>Cobertura</h1>
+    <p class="sumario">
+      Un mapa que no dice lo que le falta induce a error. Esta sección mide la cobertura del
+      registro con cifras, enumera los proyectos que se sabe que faltan y explica qué deforma el
+      conjunto: sobre todo, que unas administraciones publican sus expedientes de forma consultable
+      y otras no.
+    </p>
+
+    <div class="nota">
+      <strong>La distorsión principal.</strong> El número de emplazamientos de una comunidad mide
+      tanto la actividad real como la accesibilidad de su boletín oficial. Que Aragón esté mejor
+      documentado que Cataluña no significa que tenga más centros de datos: significa que su
+      boletín permite consultar los expedientes y el catalán no.
+    </div>
+
+    <h2>Cobertura por comunidad</h2>
+    <div class="tabla-envoltorio">
+      <table>
+        <thead>
+          <tr>
+            <th>Comunidad</th>
+            <th class="num">Fichas</th>
+            <th class="num">Con fuente oficial</th>
+            <th class="num">Con MW tipificados</th>
+            <th class="num">Coordenadas exactas</th>
+            <th class="num">Con conexión eléctrica</th>
+          </tr>
+        </thead>
+        <tbody>
+          {porRegion.map((r) => (
+            <tr>
+              <td><a href={`/region/${slug(r.ccaa)}`}>{r.ccaa}</a></td>
+              <td class="num">{r.total}</td>
+              <td class="num">{r.oficial} <span class="silencio pequeno">({pct(r.oficial, r.total)} %)</span></td>
+              <td class="num">{r.tipada} <span class="silencio pequeno">({pct(r.tipada, r.total)} %)</span></td>
+              <td class="num">{r.exactas} <span class="silencio pequeno">({pct(r.exactas, r.total)} %)</span></td>
+              <td class="num">{r.conexion} <span class="silencio pequeno">({pct(r.conexion, r.total)} %)</span></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="pequeno silencio">
+      «Con MW tipificados» son las fichas que publican carga TI o potencia de conexión, no una
+      cifra de MW sin especificar. «Con conexión eléctrica» son las que identifican subestación o
+      potencia de acceso.
+    </p>
+
+    <h2>Lo que se sabe que falta</h2>
+    <p>
+      {numero(proyectos.length)} proyectos con promotor y municipio conocidos que todavía no tienen
+      ficha, más {sinMunicipio.length} pistas de las que ni siquiera consta el municipio. Aparecen
+      aquí, y no en el mapa, porque sus cifras no se han verificado en fuente primaria: son
+      trabajo pendiente, no datos del registro. Ninguno entra en ningún total.
+    </p>
+
+    <div class="tabla-envoltorio">
+      <table>
+        <thead>
+          <tr><th>Municipio</th><th>Comunidad</th><th>Compañía</th><th>Potencia citada</th><th>Prioridad</th></tr>
+        </thead>
+        <tbody>
+          {ordenados.map((p) => (
+            <tr>
+              <td>
+                {p.municipio}
+                <span class="pequeno silencio"><br />{p.provincia}</span>
+              </td>
+              <td class="pequeno">{p.ccaa}</td>
+              <td>
+                {p.compania}
+                {p.nota && <span class="pequeno silencio"><br />{p.nota}</span>}
+              </td>
+              <td class="pequeno">{p.potencia_citada ?? <span class="silencio">sin cifra</span>}</td>
+              <td><span class={`prioridad prioridad-${p.prioridad}`}>{p.prioridad}</span></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Pistas sin municipio</h3>
+    <p class="pequeno silencio">
+      El municipio es el dato mínimo que exige el esquema, así que estas no pueden registrarse
+      todavía. Son el guion de la siguiente revisión.
+    </p>
+    <ul class="pistas">
+      {sinMunicipio.map((t) => <li>{t}</li>)}
+    </ul>
+
+    <div class="cifras">
+      <div class="cifra">
+        <dt>Emplazamientos registrados</dt>
+        <dd>{numero(resumen.total_emplazamientos)}</dd>
+      </div>
+      <div class="cifra">
+        <dt>Con contradicciones documentadas</dt>
+        <dd>{resumen.emplazamientos_con_incertidumbres}<small>véase <a href="/incertidumbres">incertidumbres</a></small></dd>
+      </div>
+      <div class="cifra">
+        <dt>Pendientes de fichar</dt>
+        <dd>{proyectos.length}</dd>
+      </div>
+      <div class="cifra">
+        <dt>Sin ubicación publicada</dt>
+        <dd>{resumen.sin_region}</dd>
+      </div>
+    </div>
+
+    <hr />
+
+    <article class="prosa">
+      <Documento />
+    </article>
+  </div>
+</Base>
+
+<style>
+  .prioridad {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 0.1em 0.5em;
+    border-radius: 999px;
+    border: 1px solid currentColor;
+  }
+
+  .prioridad-alta {
+    color: var(--cancelado);
+  }
+
+  .prioridad-media {
+    color: var(--permisos);
+  }
+
+  .prioridad-baja {
+    color: var(--tinta-3);
+  }
+
+  .pistas {
+    font-size: 0.9rem;
+    color: var(--tinta-2);
+    max-width: 46rem;
+    padding-left: 1.1rem;
+  }
+
+  .pistas li {
+    margin-bottom: 0.35em;
+  }
+
+  .prosa {
+    padding-bottom: 3rem;
+  }
+</style>

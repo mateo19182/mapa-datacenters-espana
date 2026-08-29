@@ -2,6 +2,7 @@
 // Nada de esto se consulta en tiempo de ejecución: el sitio es estático.
 import { mkdirSync, writeFileSync, existsSync, readFileSync, copyFileSync } from 'node:fs'
 import { join } from 'node:path'
+import YAML from 'yaml'
 import Database from 'better-sqlite3'
 import { RAIZ } from './load.mjs'
 import { resumirPotencia, sumarCartera } from './potencia.mjs'
@@ -197,6 +198,11 @@ const regiones = [...porClave((s) => s.ubicacion.ccaa).entries()]
   }))
   .sort((a, b) => b.emplazamientos - a.emplazamientos || a.nombre.localeCompare(b.nombre, 'es'))
 
+// Cobertura pendiente: pistas conocidas que aún no son fichas. No es dataset.
+const pendientes = existsSync(join(RAIZ, 'data/pendientes.yaml'))
+  ? YAML.parse(readFileSync(join(RAIZ, 'data/pendientes.yaml'), 'utf8'))
+  : { proyectos: [], sin_municipio: [] }
+
 const red = q('SELECT datos FROM red_nodos').map((r) => JSON.parse(r.datos))
 const actuaciones = q('SELECT datos FROM red_actuaciones').map((r) => JSON.parse(r.datos))
 const capacidad = q('SELECT datos FROM red_capacidad').map((r) => JSON.parse(r.datos))
@@ -322,6 +328,8 @@ const resumen = {
   fuentes_distintas: todasLasFuentes.size,
   emplazamientos_con_incertidumbres: sitios.filter((s) => s.incertidumbres.length > 0).length,
   sin_region: sitios.filter((s) => !s.ubicacion.ccaa).length,
+  pendientes: (pendientes.proyectos ?? []).length,
+  pistas_sin_municipio: (pendientes.sin_municipio ?? []).length,
 }
 
 const escribir = (nombre, datos, publico = true) => {
@@ -339,6 +347,7 @@ escribir('capacidad.json', capacidad)
 escribir('renovables.json', renovables)
 escribir('fuentes.json', [...todasLasFuentes.values()].sort((a, b) => b.usos.length - a.usos.length))
 escribir('resumen.json', resumen)
+escribir('pendientes.json', pendientes)
 escribir('sitios.geojson', sitiosGeo)
 // Lista plana con TODOS los emplazamientos, también los que no tienen
 // coordenadas: si no, desaparecerían del buscador por un hueco de la fuente.
@@ -383,7 +392,7 @@ copyFileSync(join(RAIZ, 'build/datacenters.db'), join(PUBLICO, 'datacenters.db')
 // para que Astro los renderice como páginas. Se generan, no se editan a mano.
 const CONTENIDO = join(RAIZ, 'src/contenido')
 mkdirSync(CONTENIDO, { recursive: true })
-for (const doc of ['red-electrica', 'renovables']) {
+for (const doc of ['red-electrica', 'renovables', 'cobertura']) {
   const origen = join(RAIZ, `research/${doc}.md`)
   writeFileSync(
     join(CONTENIDO, `${doc}.md`),

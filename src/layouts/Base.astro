@@ -6,6 +6,7 @@ const { titulo, descripcion, anchoCompleto = false, sinPie = false } = Astro.pro
 const ruta = Astro.url.pathname.replace(/\/$/, '') || '/'
 const activo = (href) => (ruta === href || (href !== '/' && ruta.startsWith(href)) ? 'page' : undefined)
 
+// El registro y, aparte, su aparato crítico: cómo está hecho y qué no cubre.
 const enlaces = [
   ['/', 'Mapa'],
   ['/proyectos', 'Proyectos'],
@@ -13,6 +14,10 @@ const enlaces = [
   ['/regiones', 'Regiones'],
   ['/red-electrica', 'Red eléctrica'],
   ['/renovables', 'Renovables'],
+]
+const enlacesCriticos = [
+  ['/incertidumbres', 'Incertidumbres'],
+  ['/cobertura', 'Cobertura'],
   ['/fuentes', 'Fuentes'],
   ['/metodologia', 'Metodología'],
   ['/datos', 'Datos'],
@@ -38,6 +43,10 @@ const enlaces = [
         <a class="marca" href="/">Centros de datos en España <span>· registro documental</span></a>
         <nav class="nav">
           {enlaces.map(([href, texto]) => <a href={href} aria-current={activo(href)}>{texto}</a>)}
+          <span class="nav-separador" aria-hidden="true"></span>
+          {enlacesCriticos.map(([href, texto]) => (
+            <a class="nav-critico" href={href} aria-current={activo(href)}>{texto}</a>
+          ))}
         </nav>
       </div>
     </header>
