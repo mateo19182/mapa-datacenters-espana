@@ -1,0 +1,164 @@
+---
+import Base from '../layouts/Base.astro'
+import resumen from '../data/resumen.json'
+import validacion from '../data/validacion.json'
+import { numero } from '../lib/etiquetas.js'
+
+const descargas = [
+  ['/datos/sitios.json', 'sitios.json', 'Emplazamientos completos, con potencias, fases, incertidumbres y fuentes.'],
+  ['/datos/sitios.geojson', 'sitios.geojson', 'Puntos de los emplazamientos con las propiedades del mapa.'],
+  ['/datos/red.json', 'red.json', 'Subestaciones, nudos y actuaciones de red registradas.'],
+  ['/datos/red.geojson', 'red.geojson', 'Los mismos nudos en formato geoespacial.'],
+  ['/datos/lineas.geojson', 'lineas.geojson', 'Trazado de la red de 220/400 kV derivado de OpenStreetMap (ODbL).'],
+  ['/datos/renovables.json', 'renovables.json', 'Generación y almacenamiento con vínculo documentado a centros de datos.'],
+  ['/datos/companias.json', 'companias.json', 'Carteras agregadas por operador.'],
+  ['/datos/regiones.json', 'regiones.json', 'Carteras agregadas por comunidad autónoma.'],
+  ['/datos/fuentes.json', 'fuentes.json', 'Todas las referencias con los emplazamientos que documentan.'],
+  ['/datos/datacenters.db', 'datacenters.db', 'La base SQLite completa, con la procedencia a nivel de campo.'],
+]
+
+// El parte de validación viaja con los datos: los defectos conocidos son parte
+// del producto, no una nota interna.
+const parte = validacion.texto
+  .split('\n')
+  .filter((l) => l.startsWith('- ') || l.startsWith('### '))
+const errores = parte.filter((l) => l.includes('**ERROR**')).length
+const avisos = parte.filter((l) => l.includes('aviso:')).length
+---
+
+<Base
+  titulo="Datos"
+  descripcion="Descarga del conjunto de datos completo, estructura, licencia y proceso de actualización."
+>
+  <div class="contenedor-estrecho texto">
+    <h1>Datos</h1>
+    <p class="sumario">
+      Todo el conjunto está disponible en formatos abiertos. Lo que se ve en el mapa es exactamente
+      lo que hay en estos ficheros: no existe ninguna capa de datos privada.
+    </p>
+
+    <dl class="cifras">
+      <div class="cifra">
+        <dt>Emplazamientos</dt>
+        <dd>{numero(resumen.total_emplazamientos)}<small>{resumen.con_coordenadas} con coordenadas, {resumen.coordenadas_exactas} exactas</small></dd>
+      </div>
+      <div class="cifra">
+        <dt>Fuentes</dt>
+        <dd>{numero(resumen.fuentes_distintas)}<small>referencias distintas</small></dd>
+      </div>
+      <div class="cifra">
+        <dt>Nudos de red</dt>
+        <dd>{numero(resumen.nodos_red)}<small>subestaciones y actuaciones</small></dd>
+      </div>
+      <div class="cifra">
+        <dt>Renovables y BESS</dt>
+        <dd>{numero(resumen.activos_renovables)}<small>con vínculo documentado</small></dd>
+      </div>
+    </dl>
+
+    <h2>Descargas</h2>
+    <div class="tabla-envoltorio">
+      <table>
+        <thead><tr><th>Fichero</th><th>Contenido</th></tr></thead>
+        <tbody>
+          {descargas.map(([href, nombre, desc]) => (
+            <tr>
+              <td><a href={href} download class="mono">{nombre}</a></td>
+              <td class="pequeno">{desc}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Estructura</h2>
+    <p>
+      La fuente de verdad son ficheros YAML, uno por emplazamiento, pensados para leerse y revisarse
+      a mano. El proceso de construcción los valida contra un esquema, los carga en SQLite y exporta
+      los JSON y GeoJSON que consume el sitio. El fichero <code>.db</code> incluye una tabla
+      <code>respaldos</code> que registra qué fuente sostiene cada campo concreto de cada
+      emplazamiento: es la trazabilidad a nivel de dato, no solo de ficha.
+    </p>
+
+    <pre class="arbol"><code>{`data/
+  sites/<id>.yaml        un emplazamiento por fichero, con fases y fuentes
+  red/subestaciones.yaml nudos y subestaciones relevantes
+  red/actuaciones.yaml   ampliaciones y nuevos ejes planificados
+  red/capacidad.yaml     capacidad de acceso para demanda, fechada
+  red/lineas.geojson     trazado 220/400 kV cacheado desde OpenStreetMap
+  renovables/*.yaml      generación y BESS vinculados a centros concretos
+
+scripts/
+  validate.mjs   valida el esquema y la integridad de las referencias
+  build-db.mjs   vuelca a SQLite
+  export.mjs     genera los JSON y GeoJSON del sitio
+  check-updates.mjs  detecta cambios en las fuentes y propone revisiones`}</code></pre>
+
+    <h2>Control de calidad</h2>
+    <p>
+      Cada construcción genera un parte de validación. Comprueba el esquema, que toda referencia a
+      una fuente exista, que no haya identificadores repetidos, que las coordenadas caigan dentro de
+      España peninsular y que ningún emplazamiento se haya registrado dos veces con nombres
+      distintos. Los avisos que no bloquean —potencias sin tipificar, fichas sin coordenadas— quedan
+      a la vista porque describen los límites reales del conjunto.
+    </p>
+    <p class="pequeno">
+      Último parte: <strong>{errores}</strong> {errores === 1 ? 'error' : 'errores'} y
+      {' '}<strong>{avisos}</strong> {avisos === 1 ? 'aviso' : 'avisos'}.
+    </p>
+
+    <h2>Actualización</h2>
+    <p>
+      El conjunto no depende de ningún raspado en tiempo real. Un proceso programado revisa las
+      fuentes registradas, detecta cambios y prepara una propuesta de actualización que un humano
+      revisa antes de integrarla. Cuando lo nuevo contradice lo registrado, el conflicto se marca
+      explícitamente y no se sobrescribe nada hasta resolverlo.
+    </p>
+    <p>
+      El resultado es que los datos envejecen despacio y de forma visible: cada ficha muestra su
+      fecha de última verificación, de modo que se puede juzgar cuánto fiarse de ella.
+    </p>
+
+    <h2>Licencia y atribución</h2>
+    <p>
+      Los datos originales de este registro se publican bajo
+      <a href="https://creativecommons.org/licenses/by/4.0/deed.es" rel="noopener"> CC BY 4.0</a>: se
+      pueden reutilizar citando la procedencia. El trazado de la red eléctrica deriva de
+      OpenStreetMap y se rige por la
+      <a href="https://opendatacommons.org/licenses/odbl/" rel="noopener"> ODbL</a>. La cartografía
+      base es de OpenStreetMap y CARTO. Los textos citados en el campo de cita pertenecen a sus
+      editores y se reproducen como fragmento breve a efectos de verificación.
+    </p>
+  </div>
+</Base>
+
+<style>
+  .texto {
+    padding-bottom: 3rem;
+  }
+
+  .texto p {
+    max-width: 42rem;
+  }
+
+  .mono {
+    font-family: var(--mono);
+    font-size: 0.9em;
+  }
+
+  .arbol {
+    background: var(--papel-2);
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    padding: 0.9rem 1rem;
+    overflow-x: auto;
+    font-size: 0.8rem;
+    line-height: 1.55;
+  }
+
+  .arbol code {
+    background: none;
+    padding: 0;
+    font-size: inherit;
+  }
+</style>

@@ -1,0 +1,87 @@
+id: aws-el-burgo-de-ebro-bde
+nombre: "AWS Ampliación Región Aragón — El Burgo de Ebro (BDE)"
+alias:
+  - "BDE"
+  - "ZAZ082"
+tipo: campus
+operador: "Amazon Web Services"
+propietario: "Amazon Data Services Spain, S.L."
+modelo: hyperscale
+
+ubicacion:
+  municipio: "El Burgo de Ebro"
+  provincia: "Zaragoza"
+  ccaa: "Aragón"
+  direccion: "Polígono industrial El Espartal III"
+  lat: 41.544238
+  lon: -0.687832
+  precision: exacta
+  fuentes: [src-1]
+
+estado: permisos_concedidos
+estado_detalle: >-
+  Emplazamiento del PIGA "Expansión de la Región AWS en Aragón". Fue el único de los cinco
+  cuya aprobación definitiva quedó en suspenso el 4 de mayo de 2026 por faltar la
+  resolución ambiental. Notificada la resolución de INAGA de 21 de mayo de 2026 (DIA y
+  autorización ambiental integrada), el Gobierno de Aragón aprobó definitivamente el 10 de
+  junio de 2026 el proyecto de edificación y urbanización interior Fase 1 y la subestación
+  BDE1HV 220/20 kV.
+estado_fuentes: [src-1]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 750.66
+    ambito: campus
+    referencia: "Potencia térmica nominal total de las instalaciones de combustión por motores diésel (MWt)"
+    estado_asociado: permisos_concedidos
+    fecha_dato: "2026-05-21"
+    fuentes: [src-1]
+    nota: >-
+      Dato térmico (MWt) de grupos electrógenos de respaldo. No es carga TI ni potencia de
+      conexión a red.
+
+fases:
+  - nombre: "Fase 1"
+    estado: permisos_concedidos
+    fuentes: [src-1]
+    nota: >-
+      El proyecto ejecutivo de Fase 1 incluye edificios A, B y C de centro de datos, caseta
+      de seguridad, planta de tratamiento de agua y sala de bombas contraincendios.
+
+conexion_electrica:
+  subestacion: "SE BDE1HV 220/20 kV (propia de AWS), alimentada desde la SE El Espartal 220 kV de REE a través del centro de seccionamiento «Cierzo»"
+  tension_kv: 220
+  titular_red: "Red Eléctrica de España — SE El Espartal"
+  mw_solicitados: null
+  mw_concedidos: null
+  fuentes: [src-1]
+  nota: >-
+    La subestación BDE1HV 220/20 kV está formada por tres transformadores 220/20 kV de
+    50/65 MVA y un edificio de celdas de 30,8 x 11,2 m. La energía llega desde la SE El
+    Espartal (REE) por líneas subterráneas de alta tensión hasta el centro de seccionamiento
+    "Cierzo" 220 kV, propiedad de ADSS, donde está la aparamenta de medida. No consta
+    potencia de acceso concedida en MW.
+
+inversion_anunciada_eur: null
+enlaces_proyecto:
+  - "https://www.aragon.es/-/piga-aws-ampliacion"
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      No consta carga TI ni potencia de acceso a red. Solo potencia térmica de grupos
+      electrógenos.
+    fuentes: [src-1]
+
+confianza: alta
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1454107610505"
+    titulo: "ORDEN VFL/906/2026, de 12 de junio, por la que se da publicidad al Acuerdo de 10 de junio de 2026, del Gobierno de Aragón, por el que se aprueba definitivamente de forma parcial el Plan de Interés General de Aragón «Ampliación Región AWS Aragón»: Proyecto de edificación y urbanización interior El Burgo de Ebro (Fase 1) y subestación eléctrica"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2026-06-24"
+    fecha_consulta: "2026-08-29"
+    cita: "para el centro de almacenamiento de datos denominado BDE (ZAZ082), ubicado en el polígono industrial El Espartal III coordenadas de referencia UTM ETRS89, Huso 30, X: 692.855 e Y: 4.601.757, Z=180 msnm [...] con una potencia térmica nominal total de 750,66 MWt."

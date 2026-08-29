@@ -1,0 +1,136 @@
+id: saltburn-malaga-pta-extension
+nombre: "Centro de Datos en la Extensión del PTA de Málaga — Saltburn Holding"
+alias:
+  - "Proyecto de Centro de Datos en la Extensión del PTA de Málaga"
+  - "Data center de Málaga TechPark"
+  - "Meridian Data Centers Málaga"
+  - "Benbros Energy Málaga TechPark"
+tipo: campus
+operador: "Saltburn Holding, S.L."
+propietario: "Saltburn Holding, S.L."
+modelo: colocation
+
+ubicacion:
+  municipio: "Málaga"
+  provincia: "Málaga"
+  ccaa: "Andalucía"
+  direccion: "Parcela C del sector SUS CA-23 «Extensión del PTA», Campanillas, Málaga"
+  lat: 36.7386
+  lon: -4.5589
+  precision: aproximada
+  fuentes: [src-1, src-2, src-5]
+
+estado: en_tramitacion
+estado_detalle: >-
+  Declarado inversión empresarial de interés estratégico para Andalucía por Resolución de la
+  Comisión Delegada para Asuntos Económicos de 6 de mayo de 2026, publicada en BOJA nº 104 de 2026.
+  Integrado en la Unidad Aceleradora de Proyectos de la Junta. Sin licencia de obra acreditada a
+  la fecha de verificación; la prensa especializada sitúa el inicio de obras en 2027.
+estado_fuentes: [src-1, src-2, src-3, src-5, src-7]
+
+potencia:
+  - tipo: it
+    valor_mw: 100
+    ambito: campus
+    referencia: "Potencia IT del centro de datos proyectado"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2026-05-27"
+    fuentes: [src-1, src-2]
+    nota: "El BOJA dice literalmente «150 MW de consumo eléctrico y 100 MW de potencia IT»."
+  - tipo: conexion_red
+    valor_mw: 150
+    ambito: campus
+    referencia: "Consumo eléctrico previsto, suministrado desde el nudo SET Cártama de Red Eléctrica"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2026-05-27"
+    fuentes: [src-1, src-2, src-3, src-4]
+    nota: >-
+      La fuente oficial lo denomina «consumo eléctrico»; las fuentes de prensa lo vinculan al punto
+      de suministro en el nudo SET Cártama. No es una cifra de MW IT y no debe sumarse a ella.
+
+conexion_electrica:
+  subestacion: "SET Cártama"
+  titular_red: "Red Eléctrica de España"
+  fuentes: [src-3, src-4, src-6]
+
+superficie_parcela_m2: 71415
+superficie_construida_m2: 47629
+inversion_anunciada_eur: 1257183288
+enlaces_proyecto:
+  - "https://www.juntadeandalucia.es/boja/2026/104/37"
+
+incertidumbres:
+  - campo: superficie_parcela_m2
+    descripcion: >-
+      El BOJA da 71.415,79 m² de superficie ocupada y 47.629,40 m² edificables; las notas del
+      PTA redondean a «más de 70.000 m²» y «más de 47.000 m²». Se toma el dato del BOJA.
+    fuentes: [src-1, src-3]
+  - campo: estado
+    descripcion: >-
+      La declaración de interés estratégico acelera la tramitación pero no equivale a licencia
+      concedida. DCNN Magazine sitúa el inicio de obras en 2027; ninguna fuente consultada
+      acredita permisos de construcción otorgados.
+    fuentes: [src-1, src-5]
+  - campo: conexion_electrica
+    descripcion: >-
+      El suministro desde el nudo SET Cártama procede de prensa regional y de la nota del PTA;
+      no se ha localizado el expediente de acceso y conexión ni una resolución de Red Eléctrica.
+      DCNN Magazine señala la restricción de red como «critical dependency» del proyecto.
+    fuentes: [src-3, src-4, src-5]
+
+confianza: alta
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.juntadeandalucia.es/boja/2026/104/37"
+    titulo: "Orden de 27 de mayo de 2026, por la que se publica la Resolución de la Comisión Delegada para Asuntos Económicos, de 6 de mayo de 2026, por la que se declara inversión empresarial de interés estratégico para Andalucía el «Proyecto de Centro de Datos en la Extensión del PTA de Málaga», en Málaga"
+    editor: "Boletín Oficial de la Junta de Andalucía"
+    tipo: oficial
+    fecha_publicacion: "2026-05-27"
+    fecha_consulta: "2026-08-29"
+    cita: "implantación de un centro de datos Tier III/Tier III+ destinado a prestar servicios de almacenamiento de datos, procesamiento masivo de información, inteligencia artificial, cloud y conectividad crítica"
+  - id: src-2
+    url: "https://www.juntadeandalucia.es/organismos/consejo/sesion/detalle/661510.html"
+    titulo: "Declarado de interés estratégico para Andalucía el proyecto de un data center en Málaga — Acuerdos del Consejo de Gobierno"
+    editor: "Junta de Andalucía"
+    tipo: oficial
+    fecha_publicacion: "2026-05-12"
+    fecha_consulta: "2026-08-29"
+    cita: "Parcela C del sector SUS CA-23 'Extensión del PTA', en el término municipal de Málaga"
+  - id: src-3
+    url: "https://www.pta.es/noticias/junta-malaga-techpark-proyectos-data-center-imec/"
+    titulo: "La Junta destaca los acuerdos estratégicos de Málaga TechPark para atraer proyectos como el data center o imec"
+    editor: "Parque Tecnológico de Andalucía (Málaga TechPark)"
+    tipo: oficial
+    fecha_consulta: "2026-08-29"
+    cita: "Benbros Energy, a través de la sociedad Saltburn Holding/Meridian Data Centers"
+  - id: src-4
+    url: "https://www.elconciso.es/energia/benbros-energy-proyecta-malaga-centro-datos_0_2007048570.html"
+    titulo: "Así es el centro de datos de Benbros Energy que requerirá 1.257 millones de euros de inversión"
+    editor: "El Conciso"
+    tipo: prensa_general
+    fecha_consulta: "2026-08-29"
+    cita: "nudo SET Cártama de Red Eléctrica de España"
+  - id: src-5
+    url: "https://dcnnmagazine.com/build/projects/andalusia-greenlights-e1-26bn-campus-at-malaga-techpark/"
+    titulo: "Andalusia greenlights €1.26bn campus at Málaga TechPark"
+    editor: "Data Centre & Network News"
+    tipo: prensa_especializada
+    fecha_consulta: "2026-08-29"
+    cita: "Construction is scheduled to commence in 2027"
+  - id: src-6
+    url: "https://www.elconciso.es/empresas/malaga-sur-europa-centros-datos-energia_0_2007787884.html"
+    titulo: "Málaga es la tercera ciudad del sur de Europa con mayor potencial en centros de datos"
+    editor: "El Conciso"
+    tipo: prensa_general
+    fecha_publicacion: "2026-08-25"
+    fecha_consulta: "2026-08-29"
+    cita: "suministro a través del nudo SET Cártama de Red Eléctrica"
+  - id: src-7
+    url: "https://www.pta.es/noticias/junta-andalucia-interes-estrategico-data-center-malaga/"
+    titulo: "La Junta de Andalucía declara de interés estratégico para Andalucía el proyecto de un data center en Málaga"
+    editor: "Parque Tecnológico de Andalucía (Málaga TechPark)"
+    tipo: oficial
+    fecha_consulta: "2026-08-29"
+    cita: "más de medio millar de empleos entre la fase de construcción y explotación"

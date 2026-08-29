@@ -1,0 +1,110 @@
+id: templus-malaga-guadalhorce
+nombre: "Templus MAL01 — Málaga, Polígono Guadalhorce"
+alias:
+  - "MAL01"
+  - "Templus Málaga"
+tipo: edificio
+operador: "Templus"
+modelo: colocation
+
+ubicacion:
+  municipio: "Málaga"
+  provincia: "Málaga"
+  ccaa: "Andalucía"
+  direccion: "Calle Eduardo Queipo de Llano Caballero, Polígono Industrial Guadalhorce, Málaga"
+  lat: 36.6795
+  lon: -4.4886
+  precision: aproximada
+  fuentes: [src-3, src-5]
+
+estado: operativo
+estado_detalle: >-
+  Instalación construida en 2020 e incorporada a la red de Templus, que la inauguró en noviembre de
+  2024 como su primer emplazamiento en Andalucía. En 2024 se amplió con una nueva sala, CPD3, de
+  40 racks.
+estado_fuentes: [src-3, src-4]
+fecha_puesta_en_servicio: "2024-11"
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 2.8
+    ambito: edificio
+    referencia: "«Potencia total» declarada por el operador en la ficha de MAL01"
+    estado_asociado: operativo
+    fecha_dato: "2026-08-29"
+    fuentes: [src-1]
+    nota: "La ficha del operador dice «potencia total» sin precisar si es carga TI o potencia contratada."
+  - tipo: no_especificado
+    valor_mw: 2.6
+    ambito: edificio
+    referencia: "Potencia de MAL01 en el listado de la red europea de Templus"
+    estado_asociado: operativo
+    fecha_dato: "2026-08-29"
+    fuentes: [src-2]
+    nota: "Cifra discrepante respecto a la ficha individual del mismo operador."
+
+fases:
+  - nombre: "CPD3"
+    estado: operativo
+    fecha_puesta_en_servicio: "2024"
+    fuentes: [src-3]
+
+superficie_construida_m2: 2200
+inversion_anunciada_eur: 15000000
+refrigeracion: null
+enlaces_proyecto:
+  - "https://templus.com/data-centers/malaga-mal01/"
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      El propio operador publica dos cifras distintas: 2,8 MW en la ficha de MAL01 y 2,6 MW en la
+      tabla de su red europea. Ninguna especifica el tipo de potencia. Se registran ambas.
+    fuentes: [src-1, src-2]
+  - campo: inversion_anunciada_eur
+    descripcion: >-
+      Los 15 millones de euros que Baxtel atribuye a la ampliación de CPD3 no están confirmados por
+      fuente del operador ni por prensa española.
+    fuentes: [src-3]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://templus.com/data-centers/malaga-mal01/"
+    titulo: "Data Center en Málaga | Infraestructura Tier III — Templus"
+    editor: "Templus"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: "infraestructura de referencia en Málaga para colocation y conectividad"
+  - id: src-2
+    url: "https://templus.com/data-centers/"
+    titulo: "Data Centers en Europa | Red de Infraestructura | Templus"
+    editor: "Templus"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: "Málaga | MAL01 | 2.6 | 400"
+  - id: src-3
+    url: "https://baxtel.com/data-center/templus-malaga"
+    titulo: "Templus: Malaga Data Center"
+    editor: "Baxtel"
+    tipo: consultora
+    fecha_consulta: "2026-08-29"
+    cita: "This expansion, made possible by a €15 million investment, increased the total area of the Guadalhorce industrial estate facility to 2,200 sqm."
+  - id: src-4
+    url: "https://www.computing.es/noticias/templus-inaugura-un-centro-de-datos-en-sevilla/"
+    titulo: "Templus inaugura un centro de datos en Sevilla"
+    editor: "Computing"
+    tipo: prensa_especializada
+    fecha_publicacion: "2025-03-27"
+    fecha_consulta: "2026-08-29"
+    cita: "tras la inauguración del centro de Málaga en noviembre de 2024"
+  - id: src-5
+    url: "https://www.theolivepress.es/spain-news/2026/08/28/malaga-top-city-data-centres-spain/"
+    titulo: "Malaga ranked Spain's top city for building new data centres"
+    editor: "The Olive Press"
+    tipo: prensa_general
+    fecha_publicacion: "2026-08-28"
+    fecha_consulta: "2026-08-29"
+    cita: "Templus — Expansión en parque industrial Guadalhorce"

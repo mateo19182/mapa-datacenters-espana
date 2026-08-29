@@ -1,0 +1,66 @@
+id: telxius-estepona-estacion-cables-submarinos
+nombre: "Estación de amarre de cables submarinos de Estepona — Telxius"
+alias:
+  - "Estación de amarre de Estepona"
+tipo: edificio
+operador: "Telxius (Grupo Telefónica)"
+modelo: corporativo
+
+ubicacion:
+  municipio: "Estepona"
+  provincia: "Málaga"
+  ccaa: "Andalucía"
+  lat: 36.4270
+  lon: -5.1450
+  precision: municipio
+  fuentes: [src-1, src-2]
+
+estado: operativo
+estado_detalle: >-
+  Estación de amarre de cables submarinos supervisada de forma remota desde el Centro de Operaciones
+  de Red de Telxius en Conil. Es el punto de aterraje del enlace Estepona–Tetuán (113 km,
+  España–Marruecos, en servicio desde 1994) y uno de los dos aterrajes de la provincia de Málaga
+  junto con Manilva. No es un centro de datos de colocation.
+estado_fuentes: [src-1, src-2, src-3]
+
+enlaces_proyecto: []
+
+incertidumbres:
+  - campo: potencia
+    descripcion: "No consta potencia eléctrica. Campo omitido."
+    fuentes: [src-1, src-2, src-3]
+  - campo: ubicacion
+    descripcion: >-
+      Ninguna fuente publica dirección ni parcela de la estación. Coordenadas de municipio.
+    fuentes: [src-1, src-2]
+  - campo: tipo
+    descripcion: >-
+      Inclusión discutible en un inventario de centros de datos: es infraestructura de aterraje de
+      cable submarino. Se incluye por su papel de conexión directa con Marruecos.
+    fuentes: [src-1, src-2, src-3]
+
+confianza: baja
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.conildelafrontera.es/noticias/659-el-ayuntamiento-de-conil-apuesta-por-las-telecomunicaciones-internacionales-establecidasen-el-municipio"
+    titulo: "El Ayuntamiento de Conil apuesta por las telecomunicaciones internacionales establecidas en el municipio"
+    editor: "Ayuntamiento de Conil de la Frontera"
+    tipo: oficial
+    fecha_consulta: "2026-08-29"
+    cita: "estaciones de amarre en Estepona, Canarias, Palma de Mallorca, norte de África"
+  - id: src-2
+    url: "https://www.xatakamovil.com/conectividad/mapa-cables-submarinos-que-dan-internet-a-espana-hay-dos-protagonistas-andalucia-tremendo-nudo-canarias"
+    titulo: "En el mapa de los cables submarinos que dan internet a España hay dos claros protagonistas"
+    editor: "Xataka Móvil"
+    tipo: prensa_especializada
+    fecha_consulta: "2026-08-29"
+    cita: "apenas cuenta con dos cables (desde Estepona y desde Manilva)"
+  - id: src-3
+    url: "https://www.stackscale.com/es/blog/cables-submarinos-peninsula-iberica/"
+    titulo: "Cables submarinos en la Península Ibérica"
+    editor: "Stackscale"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: "Estepona-Tetouan | Spain, Morocco | 113 km | 1994"

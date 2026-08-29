@@ -1,0 +1,58 @@
+id: renta-corporacion-hospitalet
+nombre: "Renta Corporación — Carrer 42 (L'Hospitalet de Llobregat)"
+alias:
+  - "Renta Corporation Barcelona"
+tipo: edificio
+propietario: "Renta Corporación"
+modelo: desconocido
+
+ubicacion:
+  municipio: "L'Hospitalet de Llobregat"
+  provincia: "Barcelona"
+  ccaa: "Cataluña"
+  direccion: "Carrer 42, L'Hospitalet de Llobregat"
+  precision: aproximada
+  fuentes: [src-1]
+
+estado: anunciado
+estado_detalle: >-
+  Promoción inmobiliaria de Renta Corporación sobre suelo antes ocupado por las
+  plantas químicas de BASF y STAHL: un centro de datos de 10.000 m² y tres naves
+  industriales. Baxtel indica año previsto 2027.
+estado_fuentes: [src-1]
+
+potencia: []
+
+superficie_construida_m2: 10000
+superficie_parcela_m2: 16500
+inversion_anunciada_eur: 14000000
+
+incertidumbres:
+  - campo: operador
+    descripcion: >-
+      No consta operador de centro de datos: Renta Corporación es promotora
+      inmobiliaria. No se sabe si el centro se explotará o se venderá/alquilará.
+    fuentes: [src-1]
+  - campo: potencia
+    descripcion: "No se ha publicado ninguna cifra de potencia."
+    fuentes: [src-1]
+  - campo: estado
+    descripcion: >-
+      Fuente única (directorio especializado). Sin licencia ni expediente
+      verificado.
+    fuentes: [src-1]
+
+confianza: baja
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://baxtel.com/data-center/renta-corporation-barcelona"
+    titulo: "Renta Corporation: Barcelona Data Center"
+    editor: "Baxtel"
+    tipo: prensa_especializada
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      The company plans to invest €14 million to build a 10,000 sqm data center
+      and three industrial warehouses ... Hospitalet de Llobregat, Barcelona,
+      Spain (Carrer 42) ... Year Planned: 2027

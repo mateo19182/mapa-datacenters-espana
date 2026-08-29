@@ -1,0 +1,29 @@
+{
+  "name": "mapa-datacenters-espana",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Mapa documental de centros de datos en España peninsular y su relación con la red eléctrica",
+  "scripts": {
+    "validate": "node scripts/validate.mjs",
+    "db": "node scripts/build-db.mjs",
+    "export": "node scripts/export.mjs",
+    "data": "npm run validate && npm run db && npm run export",
+    "dev": "npm run data && astro dev",
+    "build": "npm run data && astro build",
+    "preview": "astro preview",
+    "grid:osm": "node scripts/fetch-osm-grid.mjs",
+    "refresh": "node scripts/check-updates.mjs",
+    "propuestas": "node scripts/apply-proposals.mjs",
+    "propuestas:aplicar": "node scripts/apply-proposals.mjs --aplicar",
+    "validate:strict": "node scripts/validate.mjs --strict"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.3",
+    "astro": "^7.2.9",
+    "better-sqlite3": "^13.0.3",
+    "maplibre-gl": "^6.6.0",
+    "yaml": "^2.9.0",
+    "zod": "^4.5.2"
+  }
+}

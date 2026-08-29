@@ -1,0 +1,142 @@
+id: equinix-alcobendas-campus
+nombre: "Equinix — Campus de Alcobendas (MD2, MD3x, MD5, MD6)"
+alias:
+  - "Equinix Madrid MD2"
+  - "Equinix Madrid MD3x"
+  - "Equinix Madrid MD5"
+  - "Equinix Madrid MD6"
+  - "Equinix campus de Alcobendas"
+tipo: campus
+operador: "Equinix"
+propietario: "Equinix"
+modelo: colocation
+
+ubicacion:
+  municipio: "Alcobendas"
+  provincia: "Madrid"
+  ccaa: "Comunidad de Madrid"
+  direccion: "Calle de la Pedriza 12 (MD3x, MD5, MD6) y Calle Valgrande 6 (MD2), 28108 Alcobendas"
+  lat: 40.533739
+  lon: -3.661545
+  precision: aproximada
+  fuentes: [src-1, src-2, src-3, src-7]
+
+estado: operativo
+estado_detalle: >-
+  MD2 y MD6 operativos; MD3x (primer xScale de Equinix en Madrid) operativo desde 2022;
+  MD5 inaugurado el 22 de mayo de 2026. Equinix presenta las instalaciones de la calle de la
+  Pedriza y la calle Valgrande como un único "campus de Alcobendas".
+estado_fuentes: [src-1, src-2, src-3, src-4]
+fecha_puesta_en_servicio: "2026-05"
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 4.8
+    ambito: edificio
+    referencia: "MD6"
+    estado_asociado: operativo
+    fecha_dato: "2026-08-29"
+    fuentes: [src-6]
+    nota: >-
+      Dato de un directorio comercial (OCOLO), no de Equinix. La ficha oficial de MD6 no
+      publica potencia. Se registra como no_especificado.
+
+fases:
+  - nombre: "MD2 — Calle Valgrande 6"
+    estado: operativo
+    superficie_m2: 5599
+    fuentes: [src-2]
+  - nombre: "MD3x — Calle de la Pedriza 12 (xScale)"
+    estado: operativo
+    fecha_puesta_en_servicio: "2022"
+    fuentes: [src-3, src-8]
+  - nombre: "MD5 — campus de Alcobendas"
+    estado: operativo
+    fecha_puesta_en_servicio: "2026-05"
+    superficie_m2: 4400
+    fuentes: [src-4]
+    # "más de 4.400 m² de espacio de colocation"
+  - nombre: "MD6 — Calle de la Pedriza 12"
+    estado: operativo
+    fuentes: [src-1]
+
+superficie_construida_m2: null
+inversion_anunciada_eur: 460000000
+refrigeracion: "Redundancia de refrigeración N+1; free cooling y contención pasillo frío/caliente en MD3x y MD6 (fichas técnicas Equinix)."
+enlaces_proyecto:
+  - "https://www.equinix.com/data-centers/europe-colocation/spain-colocation/madrid-data-centers"
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      Equinix no publica capacidad en MW de ninguna de las instalaciones del campus. El único
+      valor localizado (4,8 MW para MD6) procede de un directorio comercial y no indica si es
+      carga TI o potencia total.
+    fuentes: [src-1, src-6]
+  - campo: ubicacion
+    descripcion: >-
+      MD2 (Calle Valgrande 6) y MD3x/MD5/MD6 (Calle de la Pedriza 12) están en direcciones
+      distintas del polígono de Alcobendas. Equinix los agrupa comercialmente como un solo
+      "campus de Alcobendas", por lo que se registran en un único fichero; si se confirmara que
+      MD2 es un emplazamiento independiente habría que separarlo.
+    fuentes: [src-2, src-4]
+  - campo: fases
+    descripcion: >-
+      No se ha localizado documentación pública sobre la existencia o el destino de un MD3 o un
+      MD4 en Madrid. La página de centros de datos de Equinix Madrid solo lista MD1, MD2, MD6 y MD3x.
+    fuentes: [src-7]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.equinix.com/data-centers/europe-colocation/spain-colocation/madrid-data-centers/md6"
+    titulo: "Madrid MD6"
+    editor: "Equinix"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: "Address Calle Pedriza, 12 Alcobendas 28108 Madrid Spain"
+  - id: src-2
+    url: "https://www.equinix.com/data-centers/europe-colocation/spain-colocation/madrid-data-centers/md2"
+    titulo: "Madrid MD2"
+    editor: "Equinix"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: "Colocation Space 5,599 m 2 (60,267 ft 2 )"
+  - id: src-3
+    url: "https://www.equinix.com/data-centers/europe-colocation/spain-colocation/madrid-data-centers/md3x"
+    titulo: "Madrid MD3x"
+    editor: "Equinix"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: "MD3x is Equinix's first xScale data center in Madrid."
+  - id: src-4
+    url: "https://newsroom.equinix.com/2026-05-22-Equinix-refuerza-su-oferta-en-colocation-con-la-inauguracion-de-MD5-en-Alcobendas"
+    titulo: "Equinix refuerza su oferta en colocation con la inauguración de MD5 en Alcobendas"
+    editor: "Equinix"
+    tipo: empresa
+    fecha_publicacion: "2026-05-22"
+    fecha_consulta: "2026-08-29"
+    cita: "El nuevo centro cuenta con más de 4.400 m² de espacio de colocation... Equinix ha destinado 460 millones de euros al campus de Alcobendas."
+  - id: src-6
+    url: "https://www.ocolo.io/data-centers/spain/comunidad-de-madrid/"
+    titulo: "Comunidad de Madrid Data Centers"
+    editor: "OCOLO"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: "Madrid MD6 C. de la Pedriza, 12, 28108 Alcobendas, Madrid, Spain 4.80 MW • 15,780 sq ft"
+  - id: src-7
+    url: "https://www.equinix.com/data-centers/europe-colocation/spain-colocation/madrid-data-centers"
+    titulo: "Madrid Data Centers"
+    editor: "Equinix"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: "MD1 ... MD2 ... MD6 ... MD3x"
+  - id: src-8
+    url: "https://baxtel.com/data-center/equinix-md3x"
+    titulo: "Equinix MD3x Data Center"
+    editor: "Baxtel"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: "Equinix MD3x Calle de la Pedriza 12 ... Year Built: 2022"

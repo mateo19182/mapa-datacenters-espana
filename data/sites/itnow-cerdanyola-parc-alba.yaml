@@ -1,0 +1,83 @@
+id: itnow-cerdanyola-parc-alba
+nombre: "ITnow CD1 — Parc de l'Alba (Cerdanyola del Vallès)"
+alias:
+  - "ITnow CD1"
+  - "CPD de CaixaBank en el Parc de l'Alba"
+tipo: edificio
+operador: "ITnow"
+propietario: "ITnow (empresa conjunta de 'la Caixa' y Kyndryl)"
+cliente_ancla: "CaixaBank"
+modelo: corporativo
+
+ubicacion:
+  municipio: "Cerdanyola del Vallès"
+  provincia: "Barcelona"
+  ccaa: "Cataluña"
+  direccion: "Carrer de Creu Casas i Sicart, Parc de l'Alba, Cerdanyola del Vallès"
+  lat: 41.4901952
+  lon: 2.1076475
+  precision: aproximada
+  fuentes: [src-1, src-2]
+
+estado: operativo
+estado_detalle: >-
+  Centro de proceso de datos corporativo del grupo 'la Caixa'/CaixaBank operado
+  por ITnow, sociedad constituida en enero de 2012. Baxtel fecha la construcción
+  del edificio en 2011 y no registra crecimiento de potencia desde 2022.
+estado_fuentes: [src-1]
+fecha_puesta_en_servicio: "2011"
+
+potencia: []
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      La potencia no es pública; Baxtel la mantiene tras muro de pago. No se
+      registra ningún valor.
+    fuentes: [src-1]
+  - campo: operador
+    descripcion: >-
+      Baxtel lista además una instalación "Kyndryl: Barcelona" en el Parc de
+      l'Alba (parcela PC10601, códigos ESBARCRD / ES1). Dado que Kyndryl es
+      copropietaria de ITnow y ambas fichas se sitúan en el Parc de l'Alba, es
+      probable que se refieran al mismo emplazamiento. No se crea un registro
+      separado para evitar doble conteo.
+    fuentes: [src-1, src-3]
+  - campo: ubicacion
+    descripcion: >-
+      Coordenadas obtenidas por geocodificación de la calle, no del número.
+    fuentes: [src-2]
+
+confianza: baja
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://baxtel.com/data-center/itnow-cd1"
+    titulo: "ITnow: CD1"
+    editor: "Baxtel"
+    tipo: prensa_especializada
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      Operator: ITnow - a joint venture between 'la Caixa' and Kyndryl ...
+      Address/Municipality: Carrer de Creu Casas i Sicart, Barcelona, Spain ...
+      Year Built: 2011
+  - id: src-2
+    url: "https://nominatim.openstreetmap.org/search?q=Carrer+de+Creu+Casas+i+Sicart%2C+Cerdanyola+del+Vall%C3%A8s&format=json&limit=3"
+    titulo: "Nominatim — geocodificación de Carrer de Creu Casas i Sicart, Cerdanyola del Vallès"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      Carrer de Creu Casas i Sicart, Centre Direccional, Bellaterra, Cerdanyola
+      del Vallès, Vallès Occidental, Barcelona, Catalunya, 08193, España — lat
+      41.4901952, lon 2.1076475
+  - id: src-3
+    url: "https://baxtel.com/data-center/kyndryl-barcelona"
+    titulo: "Kyndryl: Barcelona Data Center"
+    editor: "Baxtel"
+    tipo: prensa_especializada
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      Address/Municipality: Parc de l'Alba (plot PC10601), Cerdanyola del Valles,
+      Barcelona, Spain ... Site codes: ESBARCRD / ES1

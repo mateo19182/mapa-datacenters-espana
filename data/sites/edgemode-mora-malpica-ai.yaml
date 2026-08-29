@@ -1,0 +1,104 @@
+id: edgemode-mora-malpica-ai
+nombre: "Malpica AI 300MW — Mora (Toledo)"
+alias:
+  - "Data Center Malpica AI 300MW"
+tipo: campus
+operador: "EdgeMode"
+propietario: null
+modelo: hyperscale
+
+ubicacion:
+  municipio: "Mora"
+  provincia: "Toledo"
+  ccaa: "Castilla-La Mancha"
+  lat: 39.683223
+  lon: -3.7727849
+  precision: municipio
+  fuentes: [src-enclm, src-osm]
+
+estado: anunciado
+estado_detalle: >-
+  Anunciado en junio de 2026 mediante un memorándum de entendimiento y
+  colaboración entre el consorcio promotor y el Ayuntamiento de Mora. En junio
+  de 2026 el Gobierno regional declaró apoyar el proyecto sin conocer aún el
+  expediente. No consta trámite ambiental ni urbanístico iniciado.
+estado_fuentes: [src-enclm, src-idealista]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 300
+    ambito: campus
+    referencia: "Potencia del proyecto según el nombre y la presentación"
+    estado_asociado: anunciado
+    fecha_dato: "2026-06"
+    fuentes: [src-idealista, src-enclm]
+    nota: >-
+      Las fuentes hablan de "300 MW de potencia" sin distinguir carga TI de
+      potencia instalada. La generación se describe como 30 módulos de 10 MW
+      alimentados con gas natural, de forma autónoma de la red eléctrica.
+
+fases: []
+
+conexion_electrica:
+  subestacion: null
+  titular_red: null
+  nota: >-
+    El proyecto se plantea sin conexión a la red eléctrica principal: "30 módulos
+    de 10 Mw alimentados mediante gas natural, de forma autónoma de la Red
+    Eléctrica".
+  fuentes: [src-enclm]
+
+superficie_parcela_m2: 1000000
+inversion_anunciada_eur: 3000000000
+refrigeracion: "Según los promotores, no precisa de una fuente de agua."
+
+incertidumbres:
+  - campo: estado
+    descripcion: >-
+      El único acto documentado es un memorándum de entendimiento con el
+      Ayuntamiento y la financiación está "en marcha". No hay expediente
+      ambiental, urbanístico ni de acceso a red conocido, y la Junta declaró en
+      junio de 2026 no conocer el proyecto.
+    fuentes: [src-enclm, src-idealista]
+  - campo: superficie_parcela_m2
+    descripcion: >-
+      La fuente dice "cerca a las 100 hectáreas"; se registra 1.000.000 m2 como
+      cifra aproximada declarada, no medida.
+    fuentes: [src-idealista]
+  - campo: potencia
+    descripcion: >-
+      El empleo previsto se cita de forma incoherente entre fuentes: "hasta 900
+      empleos permanentes", "entre 500 y 900 empleos permanentes" y "cerca de
+      1.000 puestos". Esto rebaja la fiabilidad general de las cifras del
+      anuncio, incluidos los 300 MW.
+    fuentes: [src-idealista, src-enclm]
+
+confianza: baja
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-idealista
+    url: "https://www.idealista.com/news/inmobiliario/activos-alternativos/2026/06/11/901439-el-municipio-de-mora-toledo-acogera-un-data-center-tras-una-inversion"
+    titulo: "Mora (Toledo) acogerá un centro de datos con una inversión de 3.000 millones"
+    editor: "idealista/news"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-06-11"
+    fecha_consulta: "2026-08-29"
+    cita: "300 MW de potencia"
+  - id: src-enclm
+    url: "https://www.encastillalamancha.es/economia-cat/mora-toledo-acogera-un-anuncia-un-data-center-con-una-inversion-de-3-000-millones-y-la-creacion-de-1-000-empleos/"
+    titulo: "Mora (Toledo) acogerá un 'Data Center' con una inversión de 3.000 millones y la creación de 1.000 empleos"
+    editor: "En Castilla-La Mancha"
+    tipo: prensa_general
+    fecha_publicacion: "2026-06"
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      30 módulos de 10 Mw alimentados mediante gas natural, de forma autónoma de
+      la Red Eléctrica.
+  - id: src-osm
+    url: "https://nominatim.openstreetmap.org/search?q=Mora%2C+Toledo&format=json&limit=1"
+    titulo: "Nominatim — Mora, Toledo"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: "Mora, Toledo, Castilla-La Mancha, 45400, España — lat 39.6832230, lon -3.7727849"

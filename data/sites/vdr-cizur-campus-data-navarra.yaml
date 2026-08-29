@@ -1,0 +1,88 @@
+id: vdr-cizur-campus-data-navarra
+nombre: "Campus Data Navarra — Gazólaz (Cendea de Cizur)"
+alias:
+  - "Campus Data Navarra"
+tipo: campus
+operador: null
+propietario: "Grupo VDR"
+modelo: mayorista
+
+ubicacion:
+  municipio: "Cizur"
+  provincia: "Navarra"
+  ccaa: "Navarra"
+  direccion: "Polígono industrial de Gazólaz, Cendea de Cizur, a siete kilómetros de Pamplona"
+  lat: 42.7916465
+  lon: -1.7175431
+  precision: aproximada
+  fuentes: [src-sener, src-osm]
+
+estado: anunciado
+estado_detalle: >-
+  Proyecto promovido por Grupo VDR con diseño técnico liderado por Quark (Grupo
+  Sener). Desarrollo previsto entre 2027 y 2029. No se ha localizado a agosto de
+  2026 la resolución de aprobación del planeamiento.
+estado_fuentes: [src-sener]
+
+potencia:
+  - tipo: instalada_total
+    valor_mw: 300
+    ambito: campus
+    referencia: "Capacidad instalada del campus"
+    estado_asociado: anunciado
+    fecha_dato: "2026"
+    fuentes: [src-sener]
+    nota: >-
+      La nota de Sener dice "300 MW installed capacity"; no se precisa el reparto
+      entre carga TI y resto.
+
+fases:
+  - nombre: "Desarrollo por fases 2027-2029"
+    estado: anunciado
+    fecha_puesta_en_servicio: "2027"
+    fuentes: [src-sener]
+
+inversion_anunciada_eur: 3300000000
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      Fuentes secundarias describen un reparto de una primera fase de 50 MW y
+      tres edificios adicionales de 100 MW cada uno (total 350 MW), que no cuadra
+      con los 300 MW de capacidad instalada de la nota del diseñador técnico. No
+      se ha podido resolver.
+    fuentes: [src-sener]
+  - campo: conexion_electrica
+    descripcion: >-
+      Se cita el acceso a una subestación de 220 kV en Orkoien como ventaja del
+      emplazamiento, pero no se ha podido verificar en fuente primaria ni consta
+      potencia de acceso solicitada o concedida.
+    fuentes: [src-sener]
+  - campo: estado
+    descripcion: >-
+      La aprobación del planeamiento se esperaba entre finales de 2025 y
+      principios de 2026; no se ha localizado la resolución.
+    fuentes: [src-sener]
+
+confianza: baja
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-sener
+    url: "https://www.group.sener/en/noticias/quark-to-lead-technical-design-of-campus-data-navarra/"
+    titulo: "Quark to lead technical design of Campus Data Navarra"
+    editor: "Grupo Sener"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      Gazólaz industrial estate, Cendea de Cizur, seven kilometres from Pamplona
+      [...] 300 MW installed capacity [...] €3.3 billion estimated.
+  - id: src-osm
+    url: "https://nominatim.openstreetmap.org/search?q=Gaz%C3%B3laz%2C+Navarra&format=json&limit=1"
+    titulo: "Nominatim — Gazólaz, Cizur, Navarra"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      Gazólaz, Cizur, Iruñerria, Navarra, Navarra / Nafarroa, España — lat
+      42.7916465, lon -1.7175431

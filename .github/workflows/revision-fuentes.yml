@@ -1,0 +1,63 @@
+name: Revisión periódica de fuentes
+
+on:
+  schedule:
+    # Lunes a las 05:20 UTC. Semanal basta: estos proyectos se mueven en meses.
+    - cron: '20 5 * * 1'
+  workflow_dispatch:
+    inputs:
+      dias:
+        description: 'Días tras los cuales una ficha se considera pendiente de revisar'
+        default: '180'
+
+jobs:
+  revisar:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+
+      # Nunca modifica datos: solo recalcula huellas y arma la cola de revisión.
+      - name: Comprobar las fuentes registradas
+        id: revision
+        continue-on-error: true
+        run: node scripts/check-updates.mjs --dias "${{ inputs.dias || 180 }}"
+
+      # Las propuestas pendientes se integran solo si no hay ningún conflicto.
+      - name: Integrar propuestas sin conflicto
+        id: propuestas
+        continue-on-error: true
+        run: node scripts/apply-proposals.mjs --aplicar
+
+      - name: Revalidar tras la integración
+        run: npm run validate
+
+      - name: Abrir propuesta de actualización
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: revision/fuentes
+          title: 'Revisión de fuentes — ${{ github.run_id }}'
+          commit-message: 'Actualizar huellas de fuentes y cola de revisión'
+          labels: datos, revisión
+          body: |
+            Revisión automática de las fuentes registradas.
+
+            **No se ha sobrescrito ningún dato existente.** Las adiciones sin conflicto
+            se han aplicado; los conflictos quedan listados para decidirlos a mano.
+
+            - `research/informe-actualizacion.md` — fuentes cambiadas, enlaces rotos y fichas caducadas
+            - `research/informe-propuestas.md` — adiciones aplicadas y conflictos pendientes
+            - `research/informe-validacion.md` — estado del esquema tras los cambios
+
+            Antes de fusionar: revisar los conflictos, editar los YAML afectados y actualizar
+            su `ultima_verificacion`.
+          add-paths: |
+            data/**
+            research/**

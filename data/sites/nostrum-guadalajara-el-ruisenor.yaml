@@ -1,0 +1,127 @@
+id: nostrum-guadalajara-el-ruisenor
+nombre: "Nostrum Data Centers GUA1 — Guadalajara (P.I. El Ruiseñor)"
+alias:
+  - "GUA1"
+  - "Guadalajara DC"
+tipo: edificio
+operador: "Nostrum Data Centers"
+propietario: "Ingenostrum, S.L. (Nostrum Group)"
+modelo: mayorista
+
+ubicacion:
+  municipio: "Guadalajara"
+  provincia: "Guadalajara"
+  ccaa: "Castilla-La Mancha"
+  direccion: "Polígono Industrial El Ruiseñor"
+  lat: 40.6326979
+  lon: -3.1646067
+  precision: municipio
+  fuentes: [src-ayto, src-osm]
+
+estado: anunciado
+estado_detalle: >-
+  Presentado el 25 de febrero de 2026 por Nostrum Data Centers junto al
+  Ayuntamiento de Guadalajara. Suelo adquirido (2 hectáreas) y potencia
+  eléctrica ya concedida. Fase de diseño durante 2026, inicio de obras previsto
+  para finales de 2026 y entrada en operación en 2028.
+estado_fuentes: [src-ayto]
+
+potencia:
+  - tipo: conexion_red
+    valor_mw: 40
+    ambito: edificio
+    referencia: "Potencia eléctrica concedida (MWe)"
+    estado_asociado: anunciado
+    fecha_dato: "2026-02-25"
+    fuentes: [src-ayto]
+    nota: >-
+      La nota municipal dice "40 MWe de potencia eléctrica ya concedida"; se
+      interpreta como potencia de acceso concedida en el punto de conexión.
+  - tipo: it
+    valor_mw: 29
+    ambito: edificio
+    referencia: "Capacidad IT en salas de nueva generación"
+    estado_asociado: anunciado
+    fecha_dato: "2026-02-25"
+    fuentes: [src-ayto]
+    nota: "La fuente dice \"capacidad IT de hasta 29 MW en salas de nueva generación\"."
+
+fases:
+  - nombre: "Fase de diseño"
+    estado: anunciado
+    fecha_puesta_en_servicio: "2026"
+    fuentes: [src-ayto]
+  - nombre: "Construcción y puesta en operación"
+    estado: anunciado
+    fecha_puesta_en_servicio: "2028"
+    nota: >-
+      Inicio de obras previsto para finales de 2026. Cuatro salas de nueva
+      generación preparadas para computación de inteligencia artificial.
+    fuentes: [src-ayto, src-dcm]
+
+superficie_parcela_m2: 20000
+inversion_anunciada_eur: 1000000000
+refrigeracion: >-
+  Tecnologías de refrigeración sin consumo de agua mediante circuitos cerrados,
+  según la nota municipal. La prensa sectorial añade catalogación TIER III, PUE
+  declarado de 1,1 y fotovoltaica de autoconsumo.
+
+incertidumbres:
+  - campo: operador
+    descripcion: >-
+      El 7 de mayo de 2026 IREN Limited anunció un acuerdo para adquirir
+      Ingenostrum, S.L. (Nostrum Group), operación sujeta a condiciones de
+      cierre. Si se completa, el titular último del proyecto cambiaría.
+    fuentes: [src-iren]
+  - campo: inversion_anunciada_eur
+    descripcion: >-
+      Los 1.000 millones citados corresponden a "una inversión global superior a
+      1.000 millones de euros a lo largo de sus distintas fases", no al primer
+      edificio de 40 MWe.
+    fuentes: [src-ayto]
+  - campo: ubicacion
+    descripcion: >-
+      No se ha localizado el polígono El Ruiseñor en OpenStreetMap; las
+      coordenadas son las del municipio de Guadalajara.
+    fuentes: [src-osm]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-ayto
+    url: "https://www.guadalajara.es/es/noticia/nostrum-data-centers-creara-en-guadalajara-un-nuevo-centro-de-datos-de-40-mwe-que-reforzara-la-posicion-de-la-ciudad-como-nodo-digital-estrategic.html"
+    titulo: "Nostrum Data Centers creará en Guadalajara un nuevo centro de datos de 40 MWe que reforzará la posición de la ciudad como nodo digital estratégico"
+    editor: "Ayuntamiento de Guadalajara"
+    tipo: oficial
+    fecha_publicacion: "2026-02-25"
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      40 MWe de potencia eléctrica ya concedida, 2 hectáreas de suelo industrial
+      adquirido y capacidad IT de hasta 29 MW en salas de nueva generación.
+  - id: src-iren
+    url: "https://iren.com/resources/news/nostrum-announcement"
+    titulo: "IREN to acquire Nostrum Group"
+    editor: "IREN Limited"
+    tipo: empresa
+    fecha_publicacion: "2026-05-07"
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      approximately 490MW of secured, grid-connected power in Spain, together
+      with an additional development pipeline.
+  - id: src-osm
+    url: "https://nominatim.openstreetmap.org/search?city=Guadalajara&country=Espa%C3%B1a&format=json&limit=2"
+    titulo: "Nominatim — Guadalajara, Castilla-La Mancha"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: "Guadalajara, Castilla-La Mancha, España — lat 40.6326979, lon -3.1646067"
+  - id: src-dcm
+    url: "https://www.datacentermarket.es/datacenter-infrastructure/nostrum-prepara-un-nuevo-data-center-de-40-mw-en-guadalajara/"
+    titulo: "Nostrum prepara un nuevo data center de 40 MW en Guadalajara"
+    editor: "Data Center Market"
+    tipo: prensa_especializada
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      Cuatro salas de nueva generación preparadas para necesidades de computación
+      de la inteligencia artificial [...] Catalogación TIER III.

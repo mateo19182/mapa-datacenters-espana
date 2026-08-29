@@ -1,0 +1,96 @@
+id: merlin-edged-valdecaballeros
+nombre: "MERLIN-Edged Valdecaballeros — terrenos de la central nuclear inacabada"
+alias:
+  - "Campus de centros de datos de IA de Valdecaballeros"
+tipo: campus
+operador: "MERLIN Edged"
+propietario: "MERLIN Properties SOCIMI / Edged Energy"
+modelo: mayorista
+
+ubicacion:
+  municipio: "Valdecaballeros"
+  provincia: "Badajoz"
+  ccaa: "Extremadura"
+  direccion: "Terrenos de la central nuclear de Valdecaballeros, que nunca entró en servicio"
+  lat: 39.242741
+  lon: -5.1897862
+  precision: municipio
+  fuentes: [src-merlin, src-osm]
+
+estado: anunciado
+estado_detalle: >-
+  Protocolo firmado con la Junta de Extremadura el 14 de enero de 2025. La
+  propia compañía indica que el suelo requiere tramitación urbanística local y
+  autonómica y obras previas de conectividad viaria y fibra, por lo que el
+  campus se promocionará internacionalmente en una etapa posterior a la de
+  Navalmoral.
+estado_fuentes: [src-merlin]
+
+potencia:
+  - tipo: it
+    valor_mw: 1000
+    ambito: campus
+    referencia: "Capacidad TI del campus a pleno desarrollo (10 edificios de 100 MW TI)"
+    estado_asociado: anunciado
+    fecha_dato: "2025-01-14"
+    fuentes: [src-merlin]
+    nota: >-
+      La nota de la compañía habla de "1GW de capacidad IT en cada emplazamiento"
+      y de "10 edificios con 100MW de capacidad IT cada uno".
+
+fases:
+  - nombre: "Campus completo (10 edificios de 100 MW TI)"
+    estado: anunciado
+    nota: "Requiere obras previas de infraestructura viaria y de fibra."
+    fuentes: [src-merlin]
+
+conexion_electrica:
+  subestacion: "SE Valdecaballeros 400 kV"
+  tension_kv: 400
+  titular_red: "Redeia"
+  nota: >-
+    La compañía sitúa el campus en los terrenos de la central nuclear nunca
+    puesta en servicio, junto a la subestación Valdecaballeros 400 kV de Redeia.
+    No consta potencia de acceso solicitada ni concedida.
+  fuentes: [src-merlin]
+
+refrigeracion: >-
+  Sistema modular de Edged Energy sin consumo de agua, con densidades de hasta
+  70 kW por rack y PUE declarado de 1,15.
+
+incertidumbres:
+  - campo: inversion_anunciada_eur
+    descripcion: >-
+      La cifra de unos 20.000 millones de euros en diez años y 4.000 empleos
+      cualificados que recoge la prensa corresponde conjuntamente a los dos
+      campus extremeños (Navalmoral y Valdecaballeros); no se puede repartir
+      entre ellos, por lo que no se registra inversión para este emplazamiento.
+    fuentes: [src-merlin]
+  - campo: estado
+    descripcion: >-
+      No consta expediente urbanístico ni ambiental iniciado a agosto de 2026.
+      La única fuente firme es la nota de la propia compañía de enero de 2025.
+    fuentes: [src-merlin]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-merlin
+    url: "https://ir.merlinproperties.com/en/new-opportunity-in-data-centers/"
+    titulo: "New Data Center opportunity"
+    editor: "MERLIN Properties SOCIMI"
+    tipo: empresa
+    fecha_publicacion: "2025-01-14"
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      10 edificios con 100MW de capacidad IT cada uno [...] subestación
+      Valdecaballeros 400kv (Redeia) [...] Decommissioned Nuclear Power Plant
+      grounds.
+  - id: src-osm
+    url: "https://nominatim.openstreetmap.org/search?q=Valdecaballeros%2C+Badajoz&format=json&limit=1"
+    titulo: "Nominatim — Valdecaballeros, Badajoz"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: "Valdecaballeros, Badajoz, Extremadura, 06689, España — lat 39.2427410, lon -5.1897862"

@@ -1,0 +1,115 @@
+id: aws-villanueva-de-gallego-vdg1
+nombre: "AWS Ampliación Región Aragón — Villanueva de Gállego 1 (VDG1)"
+alias:
+  - "VDG1"
+  - "ZAZ080"
+tipo: campus
+operador: "Amazon Web Services"
+propietario: "Amazon Data Services Spain, S.L."
+modelo: hyperscale
+
+ubicacion:
+  municipio: "Villanueva de Gállego"
+  provincia: "Zaragoza"
+  ccaa: "Aragón"
+  direccion: "Parque Industrial Aeronáutico de Villanueva de Gállego (Polígono de Industrias Tecnológicas de la Información, PITI)"
+  lat: 41.788728
+  lon: -0.842135
+  precision: exacta
+  fuentes: [src-1]
+
+estado: permisos_concedidos
+estado_detalle: >-
+  Emplazamiento del Plan de Interés General de Aragón "Expansión de la Región AWS en
+  Aragón" (aprobación inicial 4 de diciembre de 2024). INAGA formuló la declaración de
+  impacto ambiental y otorgó la autorización ambiental integrada el 29 de abril de 2026.
+  El Gobierno de Aragón aprobó definitivamente el 4 de mayo de 2026 el proyecto de
+  edificación y urbanización interior de la parcela (Fase 1) y la subestación VDG1HV
+  132/20 kV. Las obras debían iniciarse en un plazo máximo de nueve meses desde esa
+  aprobación definitiva parcial.
+estado_fuentes: [src-1, src-2]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 327
+    ambito: campus
+    referencia: "Potencia térmica nominal total de las instalaciones de combustión por motores diésel (MWt)"
+    estado_asociado: permisos_concedidos
+    fecha_dato: "2026-04-29"
+    fuentes: [src-1]
+    nota: >-
+      Dato térmico (MWt) de los grupos electrógenos de respaldo declarado en la AAI. No es
+      carga TI ni potencia de conexión a red y no debe compararse con ellas.
+
+fases:
+  - nombre: "Fase 1 (totalidad del campus proyectado)"
+    estado: permisos_concedidos
+    superficie_m2: 34207
+    fuentes: [src-1]
+    nota: >-
+      La Fase 1 ejecuta la totalidad de los edificios propuestos: 1 edificio de centro de
+      datos de tipología A y 1 de tipología B, más caseta de seguridad, planta de
+      tratamiento de agua, almacenamiento y bombeo contraincendios y caseta eléctrica FV.
+      Ocupación sobre rasante 26 % (34.207,54 m²); edificabilidad 42.185,78 m².
+      62 trabajadores previstos.
+
+conexion_electrica:
+  subestacion: "SE VDG1HV 132/20 kV (propia de AWS), alimentada desde la SE Villanueva de Gállego 132 kV"
+  tension_kv: 132
+  titular_red: "Endesa (E-Distribución) — SE Villanueva de Gállego 132 kV"
+  mw_solicitados: null
+  mw_concedidos: null
+  fuentes: [src-1]
+  nota: >-
+    La subestación VDG1HV está formada por tres transformadores 132/20 kV de 50/65 MVA,
+    un edificio de celdas GIS 132 kV y un edificio de celdas 20 kV. Se alimenta mediante
+    una línea doble desde la SE Villanueva de Gállego 132 kV, propiedad de Endesa, cuya
+    autorización administrativa previa y de construcción ("LSAT 132 kV SET Villanueva -
+    SET parcela VdG1") se otorgó por Resolución de 27 de enero de 2026 de la Directora
+    General de Energía y Minas. Presupuesto de ejecución material de la subestación:
+    17.403.013,85 €. No consta potencia de acceso concedida en MW.
+
+superficie_construida_m2: 42185
+inversion_anunciada_eur: null
+refrigeracion: >-
+  Instalación fotovoltaica de autoconsumo sobre la parcela y tanque de tormentas bajo los
+  paneles con volumen útil mínimo de 3.204 m³ exigido por la resolución ambiental.
+enlaces_proyecto:
+  - "https://www.aragon.es/-/piga-aws-ampliacion"
+  - "https://www.aragon.es/-/expansion-aws-aragon"
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      No consta en ninguna fuente oficial consultada la carga TI (MW IT) ni la potencia de
+      acceso a red concedida para este emplazamiento. El único valor publicado es la
+      potencia térmica de los grupos electrógenos.
+    fuentes: [src-1]
+  - campo: ubicacion
+    descripcion: >-
+      La AAI sitúa VDG1 en el "Parque Industrial Aeronáutico", mientras que el análisis
+      urbanístico del mismo acuerdo aplica las normas del Plan Parcial del Polígono de
+      Industrias Tecnológicas de la Información (PITI). Ambas denominaciones aparecen en
+      el mismo documento.
+    fuentes: [src-1]
+
+confianza: alta
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1446464010404"
+    titulo: "ORDEN VFL/654/2026, de 5 de mayo, por la que se da publicidad al acuerdo de 4 de mayo de 2026 del Gobierno de Aragón, por el que se aprueba definitivamente de forma parcial el Plan de Interés General de Aragón «Ampliación Región AWS Aragón»: Proyectos de edificación y urbanización interior fase 1 y proyectos de subestaciones eléctricas"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2026-05-07"
+    fecha_consulta: "2026-08-29"
+    cita: "Otorgar la autorización ambiental integrada a Amazon Data Services Spain, SL [...] para el centro de almacenamiento de datos denominado VDG1 (ZAZ080) [...] coordenadas de referencia UTM ETRS89, Huso 30, X=679.304, Y=4.628.570, Z=292 [...] con una potencia térmica nominal total de 327 MWt."
+  - id: src-2
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1366240321010"
+    titulo: "ORDEN FOM/1517/2024, de 4 de diciembre, por la que se aprueba inicialmente el Plan de Interés General «Expansión de la Región AWS en Aragón» promovido por la mercantil Amazon Data Services Spain, SL"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2024-12-13"
+    fecha_consulta: "2026-08-29"
+    cita: "se aprueba inicialmente el Plan de Interés General \"Expansión de la Región AWS en Aragón\" promovido por la mercantil Amazon Data Services Spain, SL"

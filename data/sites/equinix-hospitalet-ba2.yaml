@@ -1,0 +1,80 @@
+id: equinix-hospitalet-ba2
+nombre: "Equinix BA2 — Carretera del Mig (L'Hospitalet de Llobregat)"
+alias:
+  - "Equinix BA2 Barcelona IBX"
+tipo: edificio
+operador: "Equinix"
+propietario: "Equinix"
+modelo: colocation
+
+ubicacion:
+  municipio: "L'Hospitalet de Llobregat"
+  provincia: "Barcelona"
+  ccaa: "Cataluña"
+  direccion: "Carretera del Mig 219, 08907 L'Hospitalet de Llobregat"
+  lat: 41.351324
+  lon: 2.09898
+  precision: exacta
+  fuentes: [src-1]
+
+estado: operativo
+estado_detalle: >-
+  Segundo IBX de Equinix en el área de Barcelona. Inaugurado el 19 de septiembre
+  de 2024 con presencia del conseller d'Empresa i Treball de la Generalitat.
+estado_fuentes: [src-2]
+fecha_puesta_en_servicio: "2024-09"
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 3.41
+    ambito: edificio
+    referencia: "Capacidad del IBX BA2"
+    estado_asociado: operativo
+    fecha_dato: "2024-09-19"
+    fuentes: [src-2]
+    nota: >-
+      La fuente oficial de ACCIÓ dice "a capacity of 3.41 MW" sin precisar si es
+      carga TI. Prensa especializada cita "3.4MW across 27,150 sq ft".
+
+superficie_construida_m2: 2500
+inversion_anunciada_eur: 52000000
+refrigeracion: "Energía 100% renovable; diseño orientado a certificación LEED."
+
+incertidumbres:
+  - campo: ubicacion
+    descripcion: >-
+      Equinix y ACCIÓ describen BA2 como "situado junto al BA1 existente,
+      formando un campus", pero las coordenadas publicadas por PeeringDB sitúan
+      BA1 (Carrer de l'Acer 30-32, Barcelona) y BA2 (Carretera del Mig 219,
+      08907) a unos 3,2 km de distancia y en municipios distintos. Se registran
+      como dos emplazamientos separados. PeeringDB anota la ciudad como
+      "Barcelona" pese al código postal 08907, que corresponde a L'Hospitalet de
+      Llobregat.
+    fuentes: [src-1, src-2]
+  - campo: potencia
+    descripcion: >-
+      La inversión de 52 M€ que cita ACCIÓ es descrita en otras fuentes como
+      inversión total de Equinix en Barcelona (BA1 + BA2), no solo BA2.
+    fuentes: [src-2]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.peeringdb.com/api/fac?name__contains=Barcelona"
+    titulo: "PeeringDB — Facilities API, consulta 'Barcelona'"
+    editor: "PeeringDB"
+    tipo: asociacion
+    fecha_consulta: "2026-08-29"
+    cita: "Equinix BA2 - Barcelona | Carretera del Mig 219 | Barcelona | 8907 | 41.351324 | 2.09898"
+  - id: src-2
+    url: "https://catalonia.com/w/equinix-opened-a-new-ba2-data-center-investing-a-total-of-52-million-euros-in-barcelona"
+    titulo: "Equinix opens a new data center in Barcelona, investing a total of €52 million"
+    editor: "ACCIÓ — Catalonia Trade & Investment (Generalitat de Catalunya)"
+    tipo: oficial
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      The building spans 2,500 square meters with a capacity of 3.41 MW. Equinix
+      invested €52 million to construct the new data center, which opened in
+      September 2024.

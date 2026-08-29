@@ -1,0 +1,49 @@
+id: exa-cerdanyola-edge
+nombre: "EXA Edge DC Barcelona — Cerdanyola del Vallès"
+alias:
+  - "EXA Edge DC Barcelona"
+tipo: edificio
+operador: "EXA Infrastructure"
+modelo: edge
+
+ubicacion:
+  municipio: "Cerdanyola del Vallès"
+  provincia: "Barcelona"
+  ccaa: "Cataluña"
+  direccion: "Carrer Bosc Tancat 1, 08290 Cerdanyola del Vallès"
+  lat: 41.500726
+  lon: 2.13558
+  precision: exacta
+  fuentes: [src-1]
+
+estado: operativo
+estado_detalle: >-
+  Instalación registrada por EXA Infrastructure en el directorio de PeeringDB
+  como punto de presencia/edge en el Vallès Occidental.
+estado_fuentes: [src-1]
+
+potencia: []
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      No se ha localizado ninguna cifra de potencia, superficie ni fecha de
+      puesta en servicio. El único registro localizado es la ficha de PeeringDB.
+    fuentes: [src-1]
+  - campo: estado
+    descripcion: >-
+      PeeringDB no distingue estado operativo; se asume operativo por figurar en
+      el directorio de instalaciones activas, sin confirmación independiente.
+    fuentes: [src-1]
+
+confianza: baja
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.peeringdb.com/api/fac?country=ES&limit=300"
+    titulo: "PeeringDB — Facilities API, España"
+    editor: "PeeringDB"
+    tipo: asociacion
+    fecha_consulta: "2026-08-29"
+    cita: "EXA Edge DC Barcelona | Carrer Bosc Tancat 1 | Cerdanyola del Vallès | 8290 | 41.500726 | 2.13558"

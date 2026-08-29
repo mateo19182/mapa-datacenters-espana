@@ -1,0 +1,69 @@
+id: afr-ix-barbate-medusa-zahara
+nombre: "Punto de aterraje Medusa — Zahara de los Atunes (Barbate)"
+alias:
+  - "Medusa Zahara landing point"
+  - "Aterraje de Atlanterra"
+tipo: edificio
+operador: "AFR-IX telecom (Medusa Submarine Cable System)"
+modelo: corporativo
+
+ubicacion:
+  municipio: "Barbate"
+  provincia: "Cádiz"
+  ccaa: "Andalucía"
+  direccion: "Zahara de los Atunes, Barbate"
+  lat: 36.1370
+  lon: -5.8470
+  precision: aproximada
+  fuentes: [src-1, src-2]
+
+estado: desconocido
+estado_detalle: >-
+  Zahara figura como punto de aterraje español del sistema de cable submarino Medusa, junto a
+  Manilva y Barcelona. El operador informa de que el despliegue de los aterrajes pendientes continúa
+  a lo largo de 2026, pero no publica el estado concreto de la estación de Zahara. Es un punto de
+  aterraje de cable submarino, no un centro de datos de colocation.
+estado_fuentes: [src-1]
+
+enlaces_proyecto:
+  - "https://medusascs.com/"
+
+incertidumbres:
+  - campo: estado
+    descripcion: >-
+      No hay fuente que confirme si la estación de aterraje de Zahara está construida, en obras o
+      solo prevista. Se deja como desconocido.
+    fuentes: [src-1]
+  - campo: potencia
+    descripcion: "No consta potencia eléctrica. Campo omitido."
+    fuentes: [src-1]
+  - campo: ubicacion
+    descripcion: >-
+      Medusa cita el aterraje como «Zahara»; prensa regional y Xataka Móvil lo asocian a Zahara de
+      los Atunes, núcleo del término municipal de Barbate. Algunas fuentes lo llaman «Atlanterra».
+      No hay dirección ni parcela publicadas.
+    fuentes: [src-1, src-2]
+  - campo: tipo
+    descripcion: >-
+      Inclusión discutible en un inventario de centros de datos: es un punto de aterraje de cable
+      submarino. Se incluye por su papel en la conectividad Europa–África.
+    fuentes: [src-1, src-2]
+
+confianza: baja
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://medusascs.com/"
+    titulo: "Medusa Submarine Cable System — Mediterranean Subsea Infrastructure Operator"
+    editor: "AFR-IX telecom / Medusa Submarine Cable System"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: "Lisbon · Zahara · Manilva · Tetouan · Nador · Barcelona · Algiers · Collo · Marseille · Bizerte · Mazara · Malta · Misrata · Benghazi · Athens"
+  - id: src-2
+    url: "https://www.xatakamovil.com/conectividad/mapa-cables-submarinos-que-dan-internet-a-espana-hay-dos-protagonistas-andalucia-tremendo-nudo-canarias"
+    titulo: "En el mapa de los cables submarinos que dan internet a España hay dos claros protagonistas"
+    editor: "Xataka Móvil"
+    tipo: prensa_especializada
+    fecha_consulta: "2026-08-29"
+    cita: "Cádiz es la gran anfitriona, con enlaces desde Rota, Conil de la Frontera, Chipiona, Tarifa, Zahara de los Atunes y La Línea de la Concepción."

@@ -1,0 +1,54 @@
+id: mediterra-montmelo
+nombre: "Mediterra DataCenters — Montmeló"
+alias:
+  - "Mediterra Barcelona"
+tipo: edificio
+operador: "Mediterra DataCenters"
+propietario: "Mediterra DataCenters (respaldada por DWS Infrastructure)"
+modelo: mayorista
+
+ubicacion:
+  municipio: "Montmeló"
+  provincia: "Barcelona"
+  ccaa: "Cataluña"
+  precision: municipio
+  fuentes: [src-1]
+
+estado: en_construccion
+estado_detalle: >-
+  Instalación de 9.700 m² con diseño modular orientado a cargas de IA y HPC de
+  alta densidad. Baxtel indica puesta en servicio en el segundo semestre de 2027.
+estado_fuentes: [src-1]
+
+potencia: []
+
+superficie_construida_m2: 9700
+refrigeracion: >-
+  Refrigeración líquida con circuito cerrado de bajo consumo de agua, energía
+  renovable, grupos de respaldo con HVO100 y sistema de exportación de calor
+  residual a servicios públicos locales.
+
+incertidumbres:
+  - campo: potencia
+    descripcion: "No se ha localizado ninguna cifra de potencia para este proyecto."
+    fuentes: [src-1]
+  - campo: estado
+    descripcion: >-
+      Fuente única (directorio especializado). No se ha localizado licencia
+      urbanística, expediente ambiental ni nota de prensa de la compañía.
+    fuentes: [src-1]
+
+confianza: baja
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://baxtel.com/data-center/mediterra-barcelona"
+    titulo: "Mediterra: Barcelona Data Center"
+    editor: "Baxtel"
+    tipo: prensa_especializada
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      Address/Municipality: Montmeló, Barcelona, Spain ... Size: 9,700 square
+      meters ... Status: Under Construction ... Commissioning: Second half of
+      2027

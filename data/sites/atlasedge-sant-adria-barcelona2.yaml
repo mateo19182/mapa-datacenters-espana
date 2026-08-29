@@ -1,0 +1,77 @@
+id: atlasedge-sant-adria-barcelona2
+nombre: "AtlasEdge Barcelona 2 — Carrer de Ramon Viñas (Sant Adrià de Besòs)"
+alias:
+  - "AtlasEdge Barcelona 2"
+tipo: edificio
+operador: "AtlasEdge Data Centres"
+propietario: "AtlasEdge Data Centres"
+modelo: colocation
+
+ubicacion:
+  municipio: "Sant Adrià de Besòs"
+  provincia: "Barcelona"
+  ccaa: "Cataluña"
+  direccion: "Carrer de Ramon Viñas, Sant Adrià de Besòs"
+  precision: aproximada
+  fuentes: [src-1]
+
+estado: en_construccion
+estado_detalle: >-
+  Segunda instalación de AtlasEdge en el área de Barcelona, sobre una parcela de
+  18.000 m² a unos 6 km de su centro anterior (el de Carrer de l'Acer, vendido a
+  Templus en diciembre de 2025). El suministro eléctrico está "asegurado y
+  previsto para 2027". Está en la misma calle que la Barcelona Cable Landing
+  Station.
+estado_fuentes: [src-1]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 10
+    ambito: edificio
+    referencia: "Capacidad indicada en el directorio"
+    estado_asociado: en_construccion
+    fuentes: [src-1]
+    nota: >-
+      El listado de mercado de Baxtel muestra 10 MW para esta instalación; la
+      ficha detallada mantiene el dato tras muro de pago y no precisa tipo.
+
+superficie_parcela_m2: 18000
+
+incertidumbres:
+  - campo: ubicacion
+    descripcion: >-
+      Baxtel indica "Carrer de Ramon Viñas, Barcelona"; esa calle está en Sant
+      Adrià de Besòs (CP 08930) según PeeringDB. Se corrige el municipio y se
+      deja constancia.
+    fuentes: [src-1, src-2]
+  - campo: potencia
+    descripcion: >-
+      No hay fuente primaria de la compañía que confirme los 10 MW ni su tipo.
+    fuentes: [src-1]
+  - campo: estado
+    descripcion: >-
+      Fuente única. Tampoco está claro si el proyecto sigue en manos de AtlasEdge
+      tras la venta de su cartera europea a Templus en diciembre de 2025.
+    fuentes: [src-1]
+
+confianza: baja
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://baxtel.com/data-center/atlasedge-barcelona-2"
+    titulo: "AtlasEdge: Barcelona 2 Data Center"
+    editor: "Baxtel"
+    tipo: prensa_especializada
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      Address/Municipality: Carrer de Ramon Viñas, Barcelona, Spain ... 18,000
+      square meters ... Power supply is secured and scheduled for delivery in
+      2027
+  - id: src-2
+    url: "https://www.peeringdb.com/api/fac?country=ES&limit=300"
+    titulo: "PeeringDB — Facilities API, España"
+    editor: "PeeringDB"
+    tipo: asociacion
+    fecha_consulta: "2026-08-29"
+    cita: "Barcelona Cable Landing Station | Carrer de Ramon Viñas 4 | Sant Adrià de Besòs | 08930"

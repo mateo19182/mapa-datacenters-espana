@@ -1,0 +1,238 @@
+id: meta-talavera-de-la-reina-torrehierro
+nombre: "Meta Data Center Campus — Talavera de la Reina (Torrehierro Fase 2)"
+alias:
+  - "Meta Data Center Campus"
+  - "Centro de datos de Meta en Talavera"
+  - "Zarza Networks (Torrehierro Fase 2)"
+tipo: campus
+operador: "Meta Platforms"
+propietario: "Zarza Networks, S.L."
+cliente_ancla: "Meta Platforms"
+modelo: hyperscale
+
+ubicacion:
+  municipio: "Talavera de la Reina"
+  provincia: "Toledo"
+  ccaa: "Castilla-La Mancha"
+  direccion: "Ámbito Torrehierro Fase 2, polígono industrial de Torrehierro"
+  lat: 39.9584244
+  lon: -4.933666
+  precision: aproximada
+  fuentes: [src-psi, src-osm]
+
+estado: permisos_concedidos
+estado_detalle: >-
+  Proyecto de Singular Interés aprobado definitivamente el 22 de octubre de 2024,
+  con declaración de impacto ambiental de 22 de marzo de 2024. El 21 de agosto de
+  2026 el DOCM publicó la aprobación definitiva de la reparcelación urbanística y
+  el 26 de agosto de 2026 la Junta otorgó la autorización definitiva, de modo que
+  Meta ya puede presentar los proyectos constructivos y pedir licencia de obra al
+  Ayuntamiento. Las obras no han comenzado a 29 de agosto de 2026.
+estado_fuentes: [src-psi, src-eldiario-2026, src-elespanol-repar]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 248
+    ambito: campus
+    referencia: "Potencia instalada del campus según ficha divulgativa local"
+    estado_asociado: permisos_concedidos
+    fecha_dato: "2026"
+    fuentes: [src-talaveravalley]
+    nota: >-
+      La ficha dice "Potencia instalada: 248 MW" sin precisar si es carga TI,
+      potencia de conexión o potencia instalada del conjunto. No se ha localizado
+      ninguna fuente oficial ni de la compañía que confirme esta cifra.
+
+fases:
+  - nombre: "Declaración de Interés Regional (DIR)"
+    estado: permisos_concedidos
+    fecha_puesta_en_servicio: "2022-06-20"
+    nota: "Hito administrativo, no puesta en servicio."
+    fuentes: [src-psi]
+  - nombre: "Aprobación inicial del PSI e información pública"
+    estado: permisos_concedidos
+    fecha_puesta_en_servicio: "2023-03-31"
+    nota: "Hito administrativo, no puesta en servicio."
+    fuentes: [src-psi]
+  - nombre: "Declaración de Impacto Ambiental"
+    estado: permisos_concedidos
+    fecha_puesta_en_servicio: "2024-03-22"
+    nota: "Publicada en el DOCM; hito administrativo."
+    fuentes: [src-psi, src-dia]
+  - nombre: "Aprobación definitiva del PSI"
+    estado: permisos_concedidos
+    fecha_puesta_en_servicio: "2024-10-22"
+    nota: "Hito administrativo."
+    fuentes: [src-psi]
+  - nombre: "Reparcelación urbanística definitiva"
+    estado: permisos_concedidos
+    fecha_puesta_en_servicio: "2026-08"
+    nota: >-
+      Publicada en el DOCM el 21 de agosto de 2026; autorización definitiva de la
+      Junta el 26 de agosto de 2026. Zarza Networks debía constituir una garantía
+      de 1.089.554 euros en diez días.
+    fuentes: [src-elespanol-repar, src-eldiario-2026]
+  - nombre: "Construcción por fases del campus"
+    estado: anunciado
+    nota: >-
+      La nota de la DIA habla de unas obras de diez años que darían comienzo en
+      los doce meses siguientes a la conclusión de los procesos administrativos.
+      Una ficha divulgativa local sitúa el inicio en 2027 y la plena capacidad en
+      2036.
+    fuentes: [src-dia, src-talaveravalley]
+
+conexion_electrica:
+  subestacion: "SE Calera y Chozas 220 kV"
+  tension_kv: 220
+  titular_red: "Red Eléctrica (Redeia)"
+  nota: >-
+    El informe ambiental prevé una doble línea eléctrica de alta tensión que
+    unirá el ámbito con la subestación proyectada en Calera y Chozas. La
+    subestación de 220 kV de Redeia era "ya una realidad" en julio de 2025 y se
+    presenta como esencial tanto para el centro de datos de Meta como para la
+    futura línea de alta velocidad. No consta la potencia de acceso solicitada
+    ni concedida.
+  fuentes: [src-cmm, src-lovetalavera]
+
+superficie_parcela_m2: 1910000
+inversion_anunciada_eur: 750000000
+refrigeracion: >-
+  Sistema de refrigeración por aire seco. Las cifras de consumo de agua se han
+  revisado a la baja varias veces: de 2,2-2,9 hm3/año iniciales a 504.500 m3/año
+  en el informe ambiental y a 0,2 hm3/año (unos 200 millones de litros) en la
+  documentación de 2026, con abastecimiento desde el Tajo por la red municipal.
+enlaces_proyecto:
+  - "https://urbanismo.castillalamancha.es/planeamiento/planeamiento-territorial/proyectos-de-singular-interes/meta-data-center-campus"
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      No existe cifra de potencia en fuentes oficiales ni de la compañía. La
+      única cifra localizada, 248 MW de "potencia instalada", procede de una
+      ficha divulgativa de una asociación empresarial local y no distingue el
+      tipo de MW.
+    fuentes: [src-talaveravalley]
+  - campo: refrigeracion
+    descripcion: >-
+      Las cifras de consumo de agua difieren radicalmente entre versiones del
+      proyecto: 4.800 millones de litros al año en una ficha divulgativa; entre
+      2,2 y 2,9 millones de metros cúbicos anuales como consumo "inicialmente
+      previsto" según el informe ambiental; 504.500 m3/año en ese mismo informe;
+      y 0,2 hectómetros cúbicos anuales (unos 200 millones de litros) en la
+      documentación de 2026. Se conservan todas.
+    fuentes: [src-talaveravalley, src-cmm, src-elespanol-ruido, src-xataka]
+  - campo: inversion_anunciada_eur
+    descripcion: >-
+      La Junta cifró la inversión en 750 millones de euros (685 millones para la
+      construcción del centro de datos). El informe ambiental recogido por CMM
+      habla de "más de mil millones de euros" y la prensa de agosto de 2026 dice
+      que puede superar los 1.000 millones según el desarrollo definitivo.
+    fuentes: [src-dia, src-cmm, src-eldiario-2026]
+  - campo: ubicacion
+    descripcion: >-
+      Las fuentes describen el emplazamiento de forma incoherente: una ficha
+      local lo sitúa "a 12 kilómetros al oeste del núcleo urbano" y la prensa de
+      agosto de 2026 lo sitúa "a 400 metros del núcleo urbano de Gamonal". Las
+      coordenadas usadas son el centroide del polígono industrial de Torrehierro
+      en OpenStreetMap, no la parcela concreta.
+    fuentes: [src-talaveravalley, src-elespanol-ruido, src-osm]
+  - campo: superficie_parcela_m2
+    descripcion: >-
+      Conviven dos superficies: un ámbito global de 191 hectáreas y unas 102
+      hectáreas para el núcleo principal de centros de datos, más un parque
+      fluvial público de entre 50 y 60 hectáreas. Se registra el ámbito global.
+    fuentes: [src-dia, src-eldiario-2026, src-elespanol-repar]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-psi
+    url: "https://urbanismo.castillalamancha.es/planeamiento/planeamiento-territorial/proyectos-de-singular-interes/meta-data-center-campus"
+    titulo: "Meta Data Center Campus — Proyectos de Singular Interés"
+    editor: "Consejería de Fomento, Junta de Comunidades de Castilla-La Mancha"
+    tipo: oficial
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      el desarrollo de un Centro de Datos (Data Center Campus) dentro de un suelo
+      urbano no consolidado (SUNC) de uso industrial en el ámbito Torrehierro
+      Fase 2, ubicado en Talavera de la Reina (Toledo).
+  - id: src-dia
+    url: "https://www.castillalamancha.es/actualidad/notasdeprensa/el-gobierno-de-castilla-la-mancha-publica-la-declaracion-de-impacto-ambiental-del-centro-de-datos"
+    titulo: "El Gobierno de Castilla-La Mancha publica la declaración de impacto ambiental del centro de datos que Meta proyecta en Talavera de la Reina"
+    editor: "Gobierno de Castilla-La Mancha"
+    tipo: oficial
+    fecha_publicacion: "2024-03-22"
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      Sistema de refrigeración de aire seco que consumirá poco o nada de agua,
+      utilizando un 100 por cien de energías renovables.
+  - id: src-cmm
+    url: "https://www.cmmedia.es/noticias/castilla-la-mancha/toledo/informe-ambiental-meta-instalarse-talavera.html"
+    titulo: "El informe ambiental del centro de datos Meta en Talavera contempla el uso de 504.500 m3 de agua al año"
+    editor: "Castilla-La Mancha Media"
+    tipo: prensa_general
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      doble línea eléctrica de alta tensión que unirá el ámbito con la
+      subestación proyectada en Calera y Chozas.
+  - id: src-elespanol-repar
+    url: "https://www.elespanol.com/eldigitalcastillalamancha/economia/empresas/20260821/meta-suelo-ordenado-levantar-campus-datos-talavera-reina-nuevo-avance-obras/1003744359131_0.html"
+    titulo: "Meta ya tiene el suelo ordenado para levantar su campus de datos en Talavera de la Reina: nuevo avance hacia las obras"
+    editor: "El Digital de Castilla-La Mancha (El Español)"
+    tipo: prensa_general
+    fecha_publicacion: "2026-08-21"
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      La promotora del proyecto, Zarza Networks SL, sociedad propiedad de Meta,
+      dispone ahora de un plazo de diez días para acreditar ante Fomento la
+      constitución de una garantía de 1.089.554 euros.
+  - id: src-eldiario-2026
+    url: "https://www.eldiario.es/castilla-la-mancha/provincias/toledo/meta-visto-bueno-gobierno-page-comenzar-tramitar-obras-centro-datos-talavera_1_13466839.html"
+    titulo: "Meta ya tiene el visto bueno del Gobierno de Page para comenzar a tramitar las obras de su centro de datos en Talavera"
+    editor: "elDiario.es Castilla-La Mancha"
+    tipo: prensa_general
+    fecha_publicacion: "2026-08-26"
+    fecha_consulta: "2026-08-29"
+    cita: "autorización definitiva de la reparcelación urbanística"
+  - id: src-elespanol-ruido
+    url: "https://www.elespanol.com/eldigitalcastillalamancha/economia/empresas/20260825/meta-garantiza-centro-datos-talavera-reina-no-causara-molestias-acusticas-visuales-vecinos/1003744362724_0.html"
+    titulo: "Meta garantiza que su centro de datos en Talavera de la Reina no causará «molestias acústicas o visuales» a los vecinos"
+    editor: "El Digital de Castilla-La Mancha (El Español)"
+    tipo: prensa_general
+    fecha_publicacion: "2026-08-25"
+    fecha_consulta: "2026-08-29"
+    cita: "paneles de aislamiento de alta densidad para minimizar el impacto acústico"
+  - id: src-xataka
+    url: "https://www.xataka.com/magnet/meta-esta-a-punto-levantar-talavera-gigante-tecnologico-1-000-millones-usando-agua-tajo"
+    titulo: "Meta está a punto de levantar en Talavera un gigante tecnológico de 1.000 millones, usando agua del Tajo"
+    editor: "Xataka"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-08-26"
+    fecha_consulta: "2026-08-29"
+    cita: "0,2 hectómetros cúbicos anuales"
+  - id: src-talaveravalley
+    url: "https://www.talaveravalley.es/el-data-center-de-meta-en-talavera-de-la-reina/"
+    titulo: "Meta Data Center Talavera: todo lo que debes saber (2026)"
+    editor: "Talavera Valley"
+    tipo: asociacion
+    fecha_consulta: "2026-08-29"
+    cita: "Potencia instalada: 248 MW — Consumo hídrico: ~4.800 millones de litros anuales"
+  - id: src-osm
+    url: "https://nominatim.openstreetmap.org/search?q=Pol%C3%ADgono+Industrial+Torrehierro%2C+Talavera+de+la+Reina&format=json&limit=2"
+    titulo: "Nominatim — Polígono Industrial Torrehierro, Talavera de la Reina"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      Polígono Industrial Torrehierro, Talavera de la Reina, Toledo,
+      Castilla-La Mancha, España — lat 39.9584244, lon -4.9336660
+  - id: src-lovetalavera
+    url: "https://www.lovetalavera.com/la-subestacion-de-calera-impulsa-la-llegada-de-meta-y-la-alta-velocidad-a-talavera/"
+    titulo: "La subestación de Calera impulsa la llegada de Meta y la alta velocidad a Talavera"
+    editor: "Love Talavera"
+    tipo: prensa_general
+    fecha_publicacion: "2025-07"
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      esencial para la conexión del centro de datos de Meta en Talavera

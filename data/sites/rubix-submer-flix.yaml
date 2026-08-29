@@ -1,0 +1,120 @@
+id: rubix-submer-flix
+nombre: "Rubix Data Centers (Submer) — Flix, antigua planta de Ercros"
+alias:
+  - "Submer Flix"
+  - "Factoria d'IA de Flix"
+tipo: campus
+operador: "Rubix Data Centers"
+propietario: "Submer Group"
+modelo: hyperscale
+
+ubicacion:
+  municipio: "Flix"
+  provincia: "Tarragona"
+  ccaa: "Cataluña"
+  direccion: "Terrenos de la antigua planta química de Ercros, junto al Ebro, Flix (Ribera d'Ebre)"
+  precision: municipio
+  fuentes: [src-1, src-2]
+
+estado: anunciado
+estado_detalle: >-
+  Anunciado el 11 de julio de 2026 por el president de la Generalitat, Salvador
+  Illa, dentro del grupo de trabajo de reindustrialización de la comarca tras el
+  cierre de la actividad química de Ercros y en el contexto de la transición
+  nuclear (Ascó y Vandellòs). Submer prevé poner en marcha el centro a partir de
+  2027 y desplegarlo en dos fases.
+estado_fuentes: [src-1, src-2]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 20
+    ambito: fase
+    referencia: "Potencia disponible de forma inmediata procedente de la infraestructura de Ercros"
+    estado_asociado: anunciado
+    fecha_dato: "2026-07-11"
+    fuentes: [src-2]
+    nota: >-
+      La fuente dice "Més de 20 MW estaran disponibles de manera immediata";
+      además menciona "s'hi sumaran 20 MW més" adquiridos a una empresa del
+      sector tecnológico. No se suman aquí porque la fuente no da un total.
+  - tipo: no_especificado
+    valor_mw: 70
+    ambito: campus
+    referencia: "Capacidad eléctrica total asociada al antiguo complejo de Ercros"
+    estado_asociado: anunciado
+    fecha_dato: "2026-07-11"
+    fuentes: [src-2]
+    nota: >-
+      La fuente atribuye ~70 MW al complejo industrial de Ercros, no al centro de
+      datos en sí.
+
+fases:
+  - nombre: "Fase 1"
+    estado: anunciado
+    fuentes: [src-1, src-2]
+  - nombre: "Fase 2"
+    estado: anunciado
+    fuentes: [src-1]
+
+superficie_parcela_m2: 13000
+inversion_anunciada_eur: 1000000000
+refrigeracion: >-
+  Tecnología de refrigeración de alta eficiencia energética que, según la
+  compañía, permitirá operar sin consumo de agua.
+
+incertidumbres:
+  - campo: inversion_anunciada_eur
+    descripcion: >-
+      El Ayuntamiento de Flix y Ara cifran la inversión en "más de 1.000 millones
+      de euros"; Crónica Global la cifra en 1.500 millones. Se registra la cifra
+      menor y se documenta la discrepancia.
+    fuentes: [src-1, src-2]
+  - campo: potencia
+    descripcion: >-
+      Circulan cifras de 50 MW para la fase 1 y de 85-90 MW de capacidad
+      eléctrica instalada que no se han podido confirmar en las fuentes abiertas
+      consultadas. Solo se registran los valores citados literalmente por Crónica
+      Global.
+    fuentes: [src-2]
+  - campo: fecha_puesta_en_servicio
+    descripcion: >-
+      Ara habla de estar operativo "a finales de 2027"; el Ayuntamiento de Flix
+      habla de la fase 1 en dos años desde julio de 2026.
+    fuentes: [src-1, src-3]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.flix.cat/2026/07/11/submer-group-invertira-mes-de-1-000-milions-deuros-en-un-centre-de-dades-dia-a-la-planta-dercros-a-flix/"
+    titulo: "Submer Group invertirà més de 1.000 milions d'euros en un centre de dades d'IA a la planta d'Ercros a Flix"
+    editor: "Ajuntament de Flix"
+    tipo: oficial
+    fecha_publicacion: "2026-07-11"
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      entre 105 i 150 llocs de treball permanents un cop acabada ... consum zero
+      d'aigua durant les operacions
+  - id: src-2
+    url: "https://www.cronicaglobal.cat/negocis/20260711/submer-flix-tarragona-centre-dades-inversio-milions/1003742778866_0.html"
+    titulo: "Submer tria Flix (Tarragona) per al seu centre de dades d'IA amb una inversió de 1.500 milions"
+    editor: "Crónica Global"
+    tipo: prensa_general
+    fecha_publicacion: "2026-07-11"
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      El projecte s'aixecarà sobre una parcel·la de gairebé 13.000 metres
+      quadrats ... Més de 20 MW estaran disponibles de manera immediata ...
+      s'hi sumaran 20 MW més
+  - id: src-3
+    url: "https://en.ara.cat/economy/submer-will-invest-more-than-1-000-million-in-new-data-center-in-flix_1_5795996.html"
+    titulo: "Submer will invest more than 1,000 million in a new data center in Flix"
+    editor: "Ara"
+    tipo: prensa_general
+    fecha_publicacion: "2026-07-11"
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      expected to be operational by the end of 2027 ... full deployment will be
+      carried out in two phases ... Rubix Data Centers, Submer's subsidiary
+      dedicated to the development of data centers for AI

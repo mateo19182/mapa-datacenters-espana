@@ -1,0 +1,134 @@
+id: alto-infrastructure-escuzar-sp01
+nombre: "Campus SP01 — Alto Infrastructure, Escúzar (Granada)"
+alias:
+  - "Sierra DC Escúzar"
+  - "SP01"
+  - "Campus de IA de CITAI Escúzar"
+tipo: campus
+operador: "Alto Infrastructure"
+propietario: "Alto Infrastructure"
+modelo: mayorista
+
+ubicacion:
+  municipio: "Escúzar"
+  provincia: "Granada"
+  ccaa: "Andalucía"
+  direccion: "Ciudad Industrial, Tecnológica y de la Innovación (CITAI), Escúzar"
+  lat: 37.0642
+  lon: -3.7481
+  precision: municipio
+  fuentes: [src-1, src-2]
+
+estado: en_construccion
+estado_detalle: >-
+  Primera piedra colocada en junio de 2026 en el parque tecnológico CITAI de Escúzar. La empresa,
+  antes denominada Sierra DC, se renombró Alto Infrastructure. El campus se desarrolla en ocho fases
+  independientes hasta 2029.
+estado_fuentes: [src-2, src-3]
+fecha_puesta_en_servicio: "2027"
+
+potencia:
+  - tipo: it
+    valor_mw: 70
+    ambito: campus
+    referencia: "Capacidad IT máxima del campus al completar las ocho fases"
+    estado_asociado: en_construccion
+    fecha_dato: "2026-06-29"
+    fuentes: [src-2, src-3]
+    nota: "«70 MW de potencia IT» al máximo de capacidad."
+  - tipo: conexion_red
+    valor_mw: 100
+    ambito: campus
+    referencia: "Potencia redundante requerida por la instalación completa"
+    estado_asociado: en_construccion
+    fecha_dato: "2026-07-24"
+    fuentes: [src-1]
+    nota: "La fuente habla de «hasta 100 MW» de potencia redundante para la instalación completa."
+  - tipo: it
+    valor_mw: 10
+    ambito: fase
+    referencia: "Fase 1 — entrada en operación comercial"
+    estado_asociado: en_construccion
+    fecha_dato: "2026-07-01"
+    fuentes: [src-3]
+  - tipo: it
+    valor_mw: 25
+    ambito: fase
+    referencia: "Capacidad acumulada prevista a cierre de 2027"
+    estado_asociado: en_construccion
+    fecha_dato: "2026-07-01"
+    fuentes: [src-3]
+  - tipo: it
+    valor_mw: 45
+    ambito: fase
+    referencia: "Capacidad acumulada prevista en 2028"
+    estado_asociado: en_construccion
+    fecha_dato: "2026-07-01"
+    fuentes: [src-3]
+
+fases:
+  - nombre: "Fase 1"
+    estado: en_construccion
+    fecha_puesta_en_servicio: "2027-06"
+    fuentes: [src-1, src-3]
+  - nombre: "Desarrollo completo (ocho fases)"
+    estado: en_construccion
+    fecha_puesta_en_servicio: "2029"
+    fuentes: [src-2, src-3]
+
+conexion_electrica:
+  subestacion: "SE Escúzar 132/66/20 kV (ampliación) y nueva subestación 220/132 kV"
+  tension_kv: 220
+  titular_red: "Red Eléctrica de España / Cuerva (distribución)"
+  fuentes: [src-1]
+
+superficie_parcela_m2: 100000
+inversion_anunciada_eur: 3000000000
+refrigeracion: >-
+  Circuito cerrado con consumo de agua «prácticamente cero»; refrigeración híbrida por aire
+  preparada para líquido, según el operador.
+enlaces_proyecto:
+  - "https://altoinfrastructure.com/"
+
+incertidumbres:
+  - campo: inversion_anunciada_eur
+    descripcion: >-
+      Las fuentes distinguen «inversión inducida total de hasta 3.000 millones de euros» del coste
+      de la infraestructura de centro de datos, cifrado en «aproximadamente 700 millones».
+      Se registra la cifra mayor como inversión anunciada, pero no son magnitudes equivalentes.
+    fuentes: [src-1, src-2]
+  - campo: conexion_electrica
+    descripcion: >-
+      Smart Grids Info describe la ampliación de la SE Escúzar 132/66/20 kV más una nueva
+      subestación 220/132 kV conectada a Red Eléctrica. Revista Cloud, en cambio, resume la
+      conexión eléctrica como «130 kV con subestación propia». No se ha localizado el expediente
+      de acceso y conexión que resuelva la discrepancia.
+    fuentes: [src-1, src-3]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.smartgridsinfo.es/2026/07/24/cuerva-alto-infrastructure-colaboran-hacer-posible-mayor-centro-datos-ia-andalucia-sp01"
+    titulo: "Cuerva y Alto Infrastructure colaboran para hacer posible el mayor centro de datos de IA de Andalucía, SP01"
+    editor: "Smart Grids Info"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-07-24"
+    fecha_consulta: "2026-08-29"
+    cita: "hasta 100 MW"
+  - id: src-2
+    url: "https://www.datacentermarket.es/datacenter-infrastructure/alto-infrastructure-arranca-en-granada-la-construccion-de-su-data-center/"
+    titulo: "Alto Infrastructure arranca en Granada la construcción de su data center"
+    editor: "Data Center Market"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-06-29"
+    fecha_consulta: "2026-08-29"
+    cita: "70 MW de potencia IT"
+  - id: src-3
+    url: "https://revistacloud.com/sierra-dc-se-convierte-en-alto-infrastructure-y-pone-granada-en-el-mapa-europeo-de-la-ia"
+    titulo: "Sierra DC se convierte en Alto Infrastructure y pone Granada en el mapa europeo de la IA"
+    editor: "Revista Cloud"
+    tipo: prensa_especializada
+    fecha_consulta: "2026-08-29"
+    cita: "Hybrid, air and prepared for liquid"

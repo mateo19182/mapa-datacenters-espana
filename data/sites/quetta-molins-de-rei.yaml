@@ -1,0 +1,66 @@
+id: quetta-molins-de-rei
+nombre: "Quetta Data Centers — Molins de Rei"
+alias:
+  - "Quetta DC Molins de Rei"
+tipo: edificio
+operador: "Quetta Data Centers"
+propietario: "Quetta Data Centers (Azora)"
+modelo: edge
+
+ubicacion:
+  municipio: "Molins de Rei"
+  provincia: "Barcelona"
+  ccaa: "Cataluña"
+  precision: municipio
+  fuentes: [src-1]
+
+estado: en_construccion
+estado_detalle: >-
+  Primer proyecto de Quetta en Barcelona, anunciado en diciembre de 2025 junto
+  con la ampliación de su centro de Tres Cantos (Madrid). Forma parte de un plan
+  de seis centros edge en España y Portugal.
+estado_fuentes: [src-1]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 30
+    ambito: campus
+    referencia: "Capacidad conjunta de Quetta tras Molins de Rei y la ampliación de Madrid"
+    estado_asociado: en_construccion
+    fuentes: [src-1]
+    nota: >-
+      La fuente corporativa solo publica el agregado: "a total capacity to 30 MW,
+      50% of its overall target of 60 MW". No da una cifra separada para Molins
+      de Rei. No se registra ninguna cifra individual para evitar deducirla por
+      resta.
+
+refrigeracion: >-
+  Refrigeración líquida directa en circuito cerrado (DLC), consumo nulo de agua
+  (WUE 0) y PUE declarado inferior a 1,15.
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      Prensa especializada atribuye 10 MW al centro de Molins de Rei, pero la
+      nota de la gestora (Azora) solo publica la cifra agregada de 30 MW para
+      Madrid + Barcelona. No se registra la cifra individual por no estar
+      confirmada en fuente primaria abierta.
+    fuentes: [src-1]
+  - campo: ubicacion
+    descripcion: "No se ha localizado dirección postal ni parcela concreta en Molins de Rei."
+    fuentes: [src-1]
+
+confianza: baja
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.azora.com/en/blog/quetta-data-centers-starts-construction-of-its-madrid-data-center-doubling-its-capacity-to-20-mw-and-boosts-its-expansion-with-a-new-project-in-barcelona/"
+    titulo: "Quetta Data Centers starts construction of its Madrid data center, doubling its capacity to 20 MW, and boosts its expansion with a new project in Barcelona"
+    editor: "Azora"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      located in Molins de Rei ... a total capacity to 30 MW, 50% of its overall
+      target of 60 MW ... closed-loop liquid cooling (DLC), no water consumption
+      (WUE 0), and a power usage effectiveness (PUE) of less than 1.15.

@@ -1,0 +1,121 @@
+id: merlin-barcelona-zona-franca
+nombre: "MERLIN Edged Barcelona — Parc Logístic de la Zona Franca"
+alias:
+  - "Data Center Barcelona (MERLIN Properties)"
+  - "MERLIN Edged BCN-01"
+  - "CoreWeave Barcelona"
+tipo: edificio
+operador: "MERLIN Edged"
+propietario: "MERLIN Properties SOCIMI"
+cliente_ancla: "CoreWeave"
+modelo: mayorista
+
+ubicacion:
+  municipio: "Barcelona"
+  provincia: "Barcelona"
+  ccaa: "Cataluña"
+  direccion: "Calle 25, nº6, Parc Logístic de la Zona Franca, 08040 Barcelona"
+  lat: 41.3412624
+  lon: 2.1287874
+  precision: aproximada
+  fuentes: [src-1, src-4]
+
+estado: operativo
+estado_detalle: >-
+  Inaugurado el 13 de mayo de 2025 por el alcalde de Barcelona. Alberga el
+  clúster de IA de CoreWeave con 10.224 GPU NVIDIA H200. La propiedad anunció
+  ampliación con un supercomputador Blackwell en 2026.
+estado_fuentes: [src-2, src-3]
+fecha_puesta_en_servicio: "2025-05"
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 15
+    ambito: edificio
+    referencia: "Potencia del centro de datos en el momento de la inauguración"
+    estado_asociado: operativo
+    fecha_dato: "2025-05-13"
+    fuentes: [src-2]
+    nota: >-
+      La nota de MERLIN dice literalmente "una potencia de 15 MW" sin precisar si
+      es carga TI. Una nota de prensa de la propia compañía recogida por prensa
+      generalista la califica como "15 MW IT".
+  - tipo: instalada_total
+    valor_mw: 22
+    ambito: edificio
+    referencia: "Capacidad eléctrica total del edificio"
+    estado_asociado: operativo
+    fecha_dato: "2025-05-13"
+    fuentes: [src-3]
+    nota: "La fuente dice 'capacidad eléctrica total de 22 megavatios'."
+
+fases:
+  - nombre: "Puesta en servicio inicial (CoreWeave H200)"
+    estado: operativo
+    fecha_puesta_en_servicio: "2025-05"
+    fuentes: [src-2]
+  - nombre: "Ampliación con supercomputador Blackwell"
+    estado: anunciado
+    fuentes: [src-2]
+
+inversion_anunciada_eur: 198000000
+refrigeracion: >-
+  Consumo nulo de agua según la propiedad; PUE declarado de 1,15 frente a la
+  media europea de 1,46.
+enlaces_proyecto:
+  - "https://www.merlinproperties.com/activos/data-center-barcelona/"
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      Coexisten tres cifras en fuentes de la propia compañía y prensa: 15 MW
+      (potencia del centro a la inauguración), 22 MW (capacidad eléctrica total)
+      y 24 MW (cifra que circuló en la fase de anuncio del proyecto). No se han
+      podido reconciliar ni se sabe con certeza cuáles son MW TI.
+    fuentes: [src-2, src-3]
+  - campo: cliente_ancla
+    descripcion: >-
+      Según prensa económica CoreWeave tenía arrendado el 68% de la capacidad
+      total en el momento de la inauguración; no consta quién ocupa el resto.
+    fuentes: [src-3]
+
+confianza: alta
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.merlinproperties.com/activos/data-center-barcelona/"
+    titulo: "Data Center Barcelona"
+    editor: "MERLIN Properties SOCIMI"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: "Calle 25, nº6, Parc Logístic de la Zona Franca, 08040 Barcelona, España"
+  - id: src-2
+    url: "https://www.merlinproperties.com/prensa/el-alcalde-de-barcelona-inaugura-el-data-center-que-aloja-el-hiperescalar-lider-en-ia-de-coreweave/"
+    titulo: "El Alcalde de Barcelona inaugura el Data Center que aloja el hiperescalar líder en IA de CoreWeave"
+    editor: "MERLIN Properties SOCIMI"
+    tipo: empresa
+    fecha_publicacion: "2025-05-13"
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      El centro de datos ubicado en la Zona Franca de Barcelona cuenta con una
+      potencia de 15 MW y albergará 10.224 GPU NVIDIA H200 Tensor Core con
+      conectividad InfiniBand.
+  - id: src-3
+    url: "https://metropoliabierta.elespanol.com/vivir-en-barcelona/20250513/barcelona-inaugura-un-centro-de-datos-pionero-con-supercomputacion-para-reforzar-su-posicion-en-europa/1003742657180_0.html"
+    titulo: "Barcelona inaugura un centro de datos pionero con supercomputación para 'reforzar su posición' en Europa"
+    editor: "Metrópoli Abierta (El Español)"
+    tipo: prensa_general
+    fecha_publicacion: "2025-05-13"
+    fecha_consulta: "2026-08-29"
+    cita: "Con una capacidad eléctrica total de 22 megavatios"
+  - id: src-4
+    url: "https://nominatim.openstreetmap.org/search?q=Carrer+25%2C+6%2C+Parc+Logistic+Zona+Franca%2C+Barcelona&format=json&limit=3"
+    titulo: "Nominatim — geocodificación de Carrer Número 25, Parc Logístic Zona Franca, Barcelona"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      Carrer Número 25, Parc Logístic Zona Franca, la Marina del Prat Vermell,
+      Sants-Montjuïc, Barcelona, Barcelonès, Barcelona, Catalunya, 08040, España
+      — lat 41.3412624, lon 2.1287874

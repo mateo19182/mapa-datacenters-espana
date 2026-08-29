@@ -1,0 +1,101 @@
+id: ingenostrum-badajoz-nostrum-evergreen
+nombre: "Nostrum Evergreen — Badajoz (Plataforma Logística del Suroeste Europeo)"
+alias:
+  - "Data Riocaya Badajoz"
+tipo: campus
+operador: "Nostrum Data Centers"
+propietario: "Data Riocaya, S.L.U. (Nostrum Group)"
+modelo: mayorista
+
+ubicacion:
+  municipio: "Badajoz"
+  provincia: "Badajoz"
+  ccaa: "Extremadura"
+  direccion: "Cinco parcelas de la Plataforma Logística del Suroeste Europeo"
+  lat: 38.9101139
+  lon: -7.0048802
+  precision: aproximada
+  fuentes: [src-dcm, src-osm]
+
+estado: anunciado
+estado_detalle: >-
+  Proyecto presentado con respaldo de la Junta de Extremadura y del Ayuntamiento
+  de Badajoz y declarado PREMIA (Proyecto Empresarial de Interés Autonómico) a
+  propuesta de Data Riocaya, S.L.U. Ejecución prevista en varias fases a partir
+  de 2026.
+estado_fuentes: [src-dcm]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 300
+    ambito: campus
+    referencia: "Capacidad prevista del campus"
+    estado_asociado: anunciado
+    fecha_dato: "2026"
+    fuentes: [src-dcm]
+    nota: "La fuente da \"300MW\" sin distinguir carga TI de potencia de conexión."
+
+fases:
+  - nombre: "Ejecución por fases desde 2026"
+    estado: anunciado
+    fecha_puesta_en_servicio: "2026"
+    fuentes: [src-dcm]
+
+inversion_anunciada_eur: 1913000000
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      Un recopilatorio secundario atribuye al proyecto "500 MW escalables en
+      fases", frente a los 300 MW de la fuente sectorial. Se conservan ambas
+      cifras sin elegir entre ellas.
+    fuentes: [src-dcm, src-rankia]
+  - campo: operador
+    descripcion: >-
+      El 7 de mayo de 2026 IREN Limited anunció un acuerdo para adquirir
+      Ingenostrum, S.L. (Nostrum Group), pendiente de condiciones de cierre.
+    fuentes: [src-iren]
+  - campo: superficie_parcela_m2
+    descripcion: >-
+      Se cita que el centro ocupará "algo más de 22 hectáreas" en cinco parcelas
+      de la plataforma logística, dato que no se ha podido contrastar con el
+      expediente.
+    fuentes: [src-dcm]
+
+confianza: baja
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-dcm
+    url: "https://www.datacentermarket.es/datacenter-infrastructure/ingenostrum-presenta-un-nuevo-data-center-en-extremadura-ubicado-en-badajoz/"
+    titulo: "Ingenostrum presenta un nuevo data center en Extremadura, ubicado en Badajoz"
+    editor: "Data Center Market"
+    tipo: prensa_especializada
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      Badajoz, junto a nuestro campus en Cáceres, tiene el potencial para
+      convertirse en un nodo esencial de la infraestructura digital europea.
+  - id: src-rankia
+    url: "https://www.rankia.com/blog/bolsa-al-dia/7317729-centros-datos-espana-boom-66-900-millones-euros"
+    titulo: "Centros de datos en España: el Boom de 66.900 millones de euros"
+    editor: "Rankia"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: "500 MW escalables en fases"
+  - id: src-iren
+    url: "https://iren.com/resources/news/nostrum-announcement"
+    titulo: "IREN to acquire Nostrum Group"
+    editor: "IREN Limited"
+    tipo: empresa
+    fecha_publicacion: "2026-05-07"
+    fecha_consulta: "2026-08-29"
+    cita: "IREN Limited has entered into an agreement to acquire Ingenostrum, S.L. (Nostrum Group)"
+  - id: src-osm
+    url: "https://nominatim.openstreetmap.org/search?q=Plataforma+Log%C3%ADstica+del+Suroeste+Europeo%2C+Badajoz&format=json&limit=1"
+    titulo: "Nominatim — Plataforma Logística del Suroeste Europeo, Badajoz"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      Plataforma Logística del Suroeste Europeo, El Nevero, Badajoz, Extremadura,
+      España — lat 38.9101139, lon -7.0048802

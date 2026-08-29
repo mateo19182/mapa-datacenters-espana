@@ -1,0 +1,56 @@
+id: t-systems-cerdanyola
+nombre: "T-Systems — Cerdanyola del Vallès (Camí Ral)"
+alias:
+  - "T Systems: Cerdanyola"
+tipo: edificio
+operador: "T-Systems Iberia (Deutsche Telekom)"
+modelo: corporativo
+
+ubicacion:
+  municipio: "Cerdanyola del Vallès"
+  provincia: "Barcelona"
+  ccaa: "Cataluña"
+  direccion: "Camí Ral, Centre Direccional (Parc de l'Alba), Cerdanyola del Vallès"
+  lat: 41.4834774
+  lon: 2.1087645
+  precision: aproximada
+  fuentes: [src-1, src-2]
+
+estado: operativo
+estado_detalle: "Instalación registrada por Baxtel como plenamente operativa."
+estado_fuentes: [src-1]
+
+potencia: []
+
+incertidumbres:
+  - campo: potencia
+    descripcion: "Sin datos públicos de potencia, superficie ni fecha de puesta en servicio."
+    fuentes: [src-1]
+  - campo: ubicacion
+    descripcion: >-
+      Coordenadas obtenidas por geocodificación del vial Camí Ral en el Centre
+      Direccional de Cerdanyola, no del número concreto.
+    fuentes: [src-2]
+
+confianza: baja
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://baxtel.com/data-center/t-systems-cerdanyola"
+    titulo: "T Systems: Cerdanyola Data Center"
+    editor: "Baxtel"
+    tipo: prensa_especializada
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      Operator: T-Systems International GmbH ... Location: Cerdanyola del
+      Vallès, Barcelona, Spain (Camí Ral) ... Fully operational facility
+  - id: src-2
+    url: "https://nominatim.openstreetmap.org/search?q=Cam%C3%AD+Ral%2C+Cerdanyola+del+Vall%C3%A8s&format=json&limit=3"
+    titulo: "Nominatim — geocodificación de Camí Ral, Cerdanyola del Vallès"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      Camí Ral, Centre Direccional, Cerdanyola del Vallès, Vallès Occidental,
+      Barcelona, Catalunya, 08193, España — lat 41.4834774, lon 2.1087645

@@ -1,0 +1,200 @@
+---
+import Base from '../layouts/Base.astro'
+import fuentes from '../data/fuentes.json'
+import sitios from '../data/sitios.json'
+import { FUENTE_ETIQUETA, fechaLegible, numero } from '../lib/etiquetas.js'
+
+const nombreDe = new Map(sitios.map((s) => [s.id, s.nombre]))
+
+const dominio = (url) => {
+  try {
+    return new URL(url).hostname.replace(/^www\./, '')
+  } catch {
+    return '—'
+  }
+}
+
+const porTipo = Object.keys(FUENTE_ETIQUETA)
+  .map((t) => ({ tipo: t, n: fuentes.filter((f) => f.tipo === t).length }))
+  .filter((x) => x.n > 0)
+  .sort((a, b) => b.n - a.n)
+
+const porDominio = [...fuentes.reduce((m, f) => {
+  const d = dominio(f.url)
+  m.set(d, (m.get(d) ?? 0) + 1)
+  return m
+}, new Map())]
+  .map(([d, n]) => ({ dominio: d, n }))
+  .sort((a, b) => b.n - a.n)
+
+const total = fuentes.length
+---
+
+<Base
+  titulo="Fuentes"
+  descripcion="Todas las fuentes utilizadas en el registro, con su tipo, editor y los emplazamientos que documentan."
+>
+  <div class="contenedor">
+    <h1>Fuentes</h1>
+    <p class="sumario">
+      {numero(total)} referencias distintas sostienen este registro. Cada una aparece citada en la
+      ficha de los emplazamientos que documenta. Cuando dos fuentes se contradicen, ambas quedan
+      registradas y la discrepancia se hace visible en la ficha en lugar de resolverse en silencio.
+    </p>
+
+    <div class="columnas">
+      <section>
+        <h2>Por tipo de fuente</h2>
+        <ul class="barras">
+          {porTipo.map((t) => (
+            <li>
+              <span class="etiqueta-barra">{FUENTE_ETIQUETA[t.tipo]}</span>
+              <span class="pista"><span class="segmento" style={`flex:${t.n}`}></span><span style={`flex:${porTipo[0].n - t.n}`}></span></span>
+              <span class="num-barra">{t.n}</span>
+            </li>
+          ))}
+        </ul>
+        <p class="pequeno silencio">
+          La proporción de fuentes oficiales y de compañía frente a prensa es el mejor indicador de
+          solidez del conjunto.
+        </p>
+      </section>
+
+      <section>
+        <h2>Editores más citados</h2>
+        <ul class="barras">
+          {porDominio.slice(0, 14).map((d) => (
+            <li>
+              <span class="etiqueta-barra mono">{d.dominio}</span>
+              <span class="pista"><span class="segmento" style={`flex:${d.n}`}></span><span style={`flex:${porDominio[0].n - d.n}`}></span></span>
+              <span class="num-barra">{d.n}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </div>
+
+    <h2>Listado completo</h2>
+    <div class="controles">
+      <input id="busca" type="search" placeholder="Filtrar por título, editor o dominio…" autocomplete="off" />
+      <span id="contador" class="pequeno silencio"></span>
+    </div>
+
+    <div class="tabla-envoltorio">
+      <table id="tabla">
+        <thead>
+          <tr>
+            <th>Referencia</th>
+            <th>Tipo</th>
+            <th>Publicado</th>
+            <th>Documenta</th>
+          </tr>
+        </thead>
+        <tbody>
+          {fuentes.map((f) => (
+            <tr data-busca={`${f.titulo} ${f.editor ?? ''} ${dominio(f.url)}`.toLowerCase()}>
+              <td>
+                <a href={f.url} rel="noopener nofollow" target="_blank">{f.titulo}</a>
+                <span class="pequeno silencio"><br />{f.editor ? `${f.editor} · ` : ''}<span class="mono">{dominio(f.url)}</span></span>
+              </td>
+              <td class="pequeno">{FUENTE_ETIQUETA[f.tipo]}</td>
+              <td class="pequeno">{fechaLegible(f.fecha_publicacion) ?? <span class="silencio">sin fecha</span>}</td>
+              <td class="pequeno">
+                {f.usos.map((id, i) => (
+                  <>{i > 0 && ' · '}<a href={`/proyecto/${id}`}>{nombreDe.get(id) ?? id}</a></>
+                ))}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</Base>
+
+<script>
+  const filas = [...document.querySelectorAll('#tabla tbody tr')]
+  const busca = document.getElementById('busca')
+  const contador = document.getElementById('contador')
+  const actualizar = () => {
+    const v = filas.filter((f) => f.style.display !== 'none').length
+    contador.textContent = v === filas.length ? `${filas.length} fuentes` : `${v} de ${filas.length}`
+  }
+  busca.addEventListener('input', () => {
+    const t = busca.value.trim().toLowerCase()
+    for (const f of filas) f.style.display = !t || f.dataset.busca.includes(t) ? '' : 'none'
+    actualizar()
+  })
+  actualizar()
+</script>
+
+<style>
+  .columnas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+    gap: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .barras {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0.75rem;
+    font-size: 0.87rem;
+  }
+
+  .barras li {
+    display: grid;
+    grid-template-columns: 11rem 1fr 2.2rem;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.2rem 0;
+  }
+
+  .etiqueta-barra {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .mono {
+    font-family: var(--mono);
+    font-size: 0.92em;
+  }
+
+  .pista {
+    display: flex;
+    gap: 1px;
+    height: 0.55rem;
+    background: var(--papel-2);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .segmento {
+    background: var(--acento);
+    min-width: 2px;
+  }
+
+  .num-barra {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    color: var(--tinta-3);
+  }
+
+  .controles {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    margin: 1rem 0 0.9rem;
+  }
+
+  .controles input {
+    flex: 1;
+    max-width: 26rem;
+  }
+
+  #tabla {
+    margin-bottom: 3rem;
+  }
+</style>

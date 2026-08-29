@@ -1,0 +1,49 @@
+id: ppa-amazon-frv-espana
+nombre: "PPA Amazon — cinco plantas fotovoltaicas de FRV en España"
+tipo: fotovoltaica
+potencia_mw: null
+tipo_potencia: no_especificado
+capacidad_mwh: null
+energia_anual_gwh: 1500
+energia_anual_nota: "La fuente habla de «más de 1,5 teravatios-hora (TWh) de energía limpia al año»; es energía, no potencia."
+promotor: "FRV (Fotowatio Renewable Ventures)"
+contraparte_ppa: "Amazon"
+tipo_vinculo: ppa
+municipio: null
+provincia: null
+ccaa: null
+lat: null
+lon: null
+precision: desconocida
+estado: en_construccion
+estado_detalle: "En septiembre de 2023 una planta estaba operativa y cuatro tenían finalización prevista en 2024. Los nombres y ubicaciones de las cinco plantas no son públicos en la fuente."
+fecha_firma: "2023-09"
+adicionalidad: no_consta
+clusters_relacionados: []
+cpds_relacionados: []
+incertidumbres:
+  - campo: municipio
+    descripcion: "La nota no identifica ninguna de las cinco plantas por nombre ni ubicación."
+    fuentes: [src-1]
+  - campo: contrato
+    descripcion: "Reportajes posteriores (2026) describen una cláusula por la que, cuando el precio horario cae a cero o es negativo, la cobertura del PPA desaparece y FRV sigue entregando energía sin ingreso. Afecta al valor económico del contrato, no a su existencia."
+    fuentes: [src-2]
+confianza: media
+ultima_verificacion: "2026-08-29"
+fuentes:
+  - id: src-1
+    url: "https://elperiodicodelaenergia.com/frv-suministrara-energia-a-amazon-de-cinco-plantas-fotovoltaicas-en-espana/"
+    titulo: "FRV suministrará energía a Amazon de cinco plantas fotovoltaicas en España"
+    editor: "El Periódico de la Energía"
+    tipo: prensa_especializada
+    fecha_publicacion: "2023-09-18"
+    fecha_consulta: "2026-08-29"
+    cita: "cinco proyectos solares en España [...] más de 1,5 teravatios-hora (TWh) de energía limpia al año"
+  - id: src-2
+    url: "https://www.merca2.es/2026/06/19/renovable-precio-cero-espana-amazon-2401403/"
+    titulo: "800 horas de luz gratis a Amazon destapan el dolor del sector renovable en España"
+    editor: "Merca2"
+    tipo: prensa_general
+    fecha_publicacion: "2026-06-19"
+    fecha_consulta: "2026-08-29"
+    cita: "cuando el precio horario de la electricidad cae a cero o entra en negativo, la cobertura del PPA desaparece y FRV sigue entregando la energía, pero sin ningún ingreso"

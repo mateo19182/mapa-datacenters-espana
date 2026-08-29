@@ -1,0 +1,74 @@
+---
+import '../styles/global.css'
+import resumen from '../data/resumen.json'
+
+const { titulo, descripcion, anchoCompleto = false, sinPie = false } = Astro.props
+const ruta = Astro.url.pathname.replace(/\/$/, '') || '/'
+const activo = (href) => (ruta === href || (href !== '/' && ruta.startsWith(href)) ? 'page' : undefined)
+
+const enlaces = [
+  ['/', 'Mapa'],
+  ['/proyectos', 'Proyectos'],
+  ['/companias', 'Compañías'],
+  ['/regiones', 'Regiones'],
+  ['/red-electrica', 'Red eléctrica'],
+  ['/fuentes', 'Fuentes'],
+  ['/metodologia', 'Metodología'],
+  ['/datos', 'Datos'],
+]
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{titulo ? `${titulo} · Centros de datos en España` : 'Centros de datos en España'}</title>
+    <meta name="description" content={descripcion ?? 'Registro documental de centros de datos en España peninsular y su relación con la red eléctrica de transporte.'} />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content={titulo ?? 'Centros de datos en España'} />
+    <meta property="og:description" content={descripcion ?? 'Registro documental de centros de datos en España peninsular y su relación con la red eléctrica.'} />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <header class="cabecera">
+      <div class:list={['cabecera-fila', anchoCompleto && 'ancho-completo']}>
+        <a class="marca" href="/">Centros de datos en España <span>· registro documental</span></a>
+        <nav class="nav">
+          {enlaces.map(([href, texto]) => <a href={href} aria-current={activo(href)}>{texto}</a>)}
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    {!sinPie && (
+      <footer class="pie">
+        <div class="contenedor">
+          <p>
+            Registro documental de centros de datos en España peninsular y su relación con la
+            infraestructura eléctrica de transporte. Cada dato lleva su fuente; los huecos y las
+            contradicciones se muestran en lugar de rellenarse.
+          </p>
+          <p>
+            Última generación del conjunto de datos: {resumen.generado}. {resumen.total_emplazamientos} emplazamientos
+            registrados a partir de {resumen.fuentes_distintas} fuentes distintas.
+            Véase la <a href="/metodologia">metodología</a> y los <a href="/datos">datos abiertos</a>.
+          </p>
+          <p>
+            Cartografía base © <a href="https://www.openstreetmap.org/copyright" rel="noopener">colaboradores de OpenStreetMap</a> y ©
+            <a href="https://carto.com/attributions" rel="noopener">CARTO</a>. Trazado de la red de transporte derivado de
+            OpenStreetMap (ODbL); no es cartografía oficial de Red Eléctrica.
+          </p>
+          <p>
+            Este sitio no ofrece análisis de inversión, valoración de activos ni recomendación
+            alguna. Es un registro de hechos publicados con su procedencia.
+          </p>
+        </div>
+      </footer>
+    )}
+  </body>
+</html>

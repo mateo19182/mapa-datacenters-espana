@@ -1,0 +1,68 @@
+id: acciona-ignis-segovia
+nombre: "Centro de datos de Acciona e IGNIS en la provincia de Segovia"
+alias:
+  - "Ignis Data Epta (Segovia)"
+tipo: edificio
+operador: null
+propietario: "Ignis Data Epta, S.L. (Acciona 50% / IGNIS 50%)"
+modelo: desconocido
+
+ubicacion:
+  municipio: null
+  provincia: "Segovia"
+  ccaa: "Castilla y León"
+  lat: null
+  lon: null
+  precision: desconocida
+  fuentes: [src-pvmag, src-cloud]
+
+estado: anunciado
+estado_detalle: >-
+  Anunciado en agosto de 2026 al formalizar Acciona la compra del 50% de Ignis
+  Data Epta. El centro de datos irá acompañado de una planta fotovoltaica
+  adyacente destinada a cubrir su consumo eléctrico. No se ha hecho público el
+  municipio, la potencia ni el calendario.
+estado_fuentes: [src-pvmag, src-cloud]
+
+potencia: []
+
+fases: []
+
+incertidumbres:
+  - campo: ubicacion
+    descripcion: >-
+      Las fuentes solo dicen "la provincia de Segovia"; no se concreta municipio
+      ni emplazamiento, por lo que el registro no lleva coordenadas.
+    fuentes: [src-cloud]
+  - campo: potencia
+    descripcion: >-
+      No se ha comunicado la potencia del complejo. Los 2 GW que cita la prensa
+      corresponden a la ambición global de Acciona en centros de datos, no a
+      este emplazamiento, y no deben atribuirse a Segovia.
+    fuentes: [src-pvmag, src-cloud]
+
+confianza: baja
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-pvmag
+    url: "https://www.pv-magazine.es/2026/08/11/acciona-construira-dos-nuevas-baterias-en-espana-y-tambien-un-centro-de-datos-con-solar/"
+    titulo: "Acciona construirá dos nuevas baterías en España y también un centro de datos con solar"
+    editor: "pv magazine España"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-08-11"
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      una planta fotovoltaica adyacente destinada a cubrir su consumo eléctrico
+      con energía renovable.
+  - id: src-cloud
+    url: "https://revistacloud.com/acciona-e-ignis-proyectan-un-centro-de-datos-con-planta-solar-en-segovia"
+    titulo: "Acciona e IGNIS proyectan un centro de datos con planta solar en Segovia"
+    editor: "Revista Cloud"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-08"
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      La información disponible no concreta todavía el municipio ni el
+      emplazamiento definitivo. [...] No se ha comunicado oficialmente la
+      potencia IT del futuro complejo.

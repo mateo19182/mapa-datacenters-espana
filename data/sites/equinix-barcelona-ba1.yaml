@@ -1,0 +1,73 @@
+id: equinix-barcelona-ba1
+nombre: "Equinix BA1 — Barcelona (Carrer de l'Acer)"
+alias:
+  - "Itconic Barcelona 1"
+  - "Equinix Barcelona BA1 IBX"
+tipo: edificio
+operador: "Equinix"
+propietario: "Equinix"
+modelo: colocation
+
+ubicacion:
+  municipio: "Barcelona"
+  provincia: "Barcelona"
+  ccaa: "Cataluña"
+  direccion: "Carrer de l'Acer 30-32, 08038 Barcelona (Zona Franca)"
+  lat: 41.351557
+  lon: 2.137457
+  precision: exacta
+  fuentes: [src-1]
+
+estado: operativo
+estado_detalle: >-
+  Centro heredado por Equinix con la compra de Itconic en 2017; anteriormente
+  identificado como "Itconic Barcelona 1". Sigue en servicio y forma ecosistema
+  con BA2.
+estado_fuentes: [src-2]
+
+potencia: []
+
+superficie_construida_m2: 1500
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      Equinix no publica la potencia de BA1. Baxtel oculta la cifra tras muro de
+      pago. No se registra ningún valor.
+    fuentes: [src-2]
+  - campo: superficie_construida_m2
+    descripcion: >-
+      La cifra de ~1.500 m² procede de prensa especializada citando "more than
+      16,000 sq ft of colocation space"; es superficie de colocation, no
+      superficie construida total.
+    fuentes: [src-3]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.peeringdb.com/api/fac?name__contains=Barcelona"
+    titulo: "PeeringDB — Facilities API, consulta 'Barcelona'"
+    editor: "PeeringDB"
+    tipo: asociacion
+    fecha_consulta: "2026-08-29"
+    cita: "Equinix BA1 - Barcelona | Carrer de l'Acer 30-32 | Barcelona | 08038 | 41.351557 | 2.137457"
+  - id: src-2
+    url: "https://baxtel.com/data-center/equinix-barcelona-ba1"
+    titulo: "Equinix Barcelona BA1 Data Center"
+    editor: "Baxtel"
+    tipo: prensa_especializada
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      acquired by Equinix in 2017 when they purchased Itconic (previously known
+      as "Itconic Barcelona 1")
+  - id: src-3
+    url: "https://catalonia.com/w/equinix-opened-a-new-ba2-data-center-investing-a-total-of-52-million-euros-in-barcelona"
+    titulo: "Equinix opens a new data center in Barcelona, investing a total of €52 million"
+    editor: "ACCIÓ — Catalonia Trade & Investment (Generalitat de Catalunya)"
+    tipo: oficial
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      The BA2 facility is situated next to Equinix's existing BA1 site in
+      Barcelona, forming a campus and a dense digital ecosystem.

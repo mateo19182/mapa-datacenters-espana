@@ -1,0 +1,60 @@
+id: lumen-hospitalet-bcn1
+nombre: "Lumen BCN1 — Carrer de José Agustín Goytisolo (L'Hospitalet de Llobregat)"
+alias:
+  - "Lumen BCN1"
+  - "CenturyLink Barcelona"
+tipo: edificio
+operador: "Lumen Technologies"
+modelo: colocation
+
+ubicacion:
+  municipio: "L'Hospitalet de Llobregat"
+  provincia: "Barcelona"
+  ccaa: "Cataluña"
+  direccion: "Carrer de José Agustín Goytisolo, Granvia Sud, L'Hospitalet de Llobregat"
+  lat: 41.3516502
+  lon: 2.1249623
+  precision: aproximada
+  fuentes: [src-1, src-2]
+
+estado: operativo
+estado_detalle: "Instalación registrada por Baxtel como plenamente operativa."
+estado_fuentes: [src-1]
+
+potencia: []
+
+incertidumbres:
+  - campo: ubicacion
+    descripcion: >-
+      Baxtel indica "Carrer de José Agustín Goytisolo, Barcelona"; la
+      geocodificación sitúa esa calle en L'Hospitalet de Llobregat (CP 08908) —
+      existe otra homónima en Sant Joan Despí. Sin número, la precisión es de
+      calle.
+    fuentes: [src-1, src-2]
+  - campo: potencia
+    descripcion: "Sin datos públicos de potencia ni superficie."
+    fuentes: [src-1]
+
+confianza: baja
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://baxtel.com/data-center/lumen-bcn1"
+    titulo: "Lumen BCN1 Data Center"
+    editor: "Baxtel"
+    tipo: prensa_especializada
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      Operator: Lumen Technologies ... Address/Municipality: Carrer de José
+      Agustín Goytisolo, Barcelona, Spain ... Fully operational facility
+  - id: src-2
+    url: "https://nominatim.openstreetmap.org/search?q=Carrer+de+Jos%C3%A9+Agust%C3%ADn+Goytisolo%2C+Barcelona&format=json&limit=3"
+    titulo: "Nominatim — geocodificación de Carrer de José Agustín Goytisolo"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      Carrer de José Agustín Goytisolo, Granvia Sud, Districte III, l'Hospitalet
+      de Llobregat, Barcelonès, Barcelona, Catalunya, 08908, España — lat
+      41.3516502, lon 2.1249623

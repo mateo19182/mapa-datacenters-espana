@@ -1,0 +1,80 @@
+id: edgeconnex-sant-boi-bcn01
+nombre: "EdgeConneX EDCBCN01 — Carretera de la Santa Creu de Calafell"
+alias:
+  - "EdgeConneX Barcelona"
+  - "EDCBCN01"
+tipo: edificio
+operador: "EdgeConneX"
+propietario: "EdgeConneX"
+modelo: colocation
+
+ubicacion:
+  municipio: "Sant Boi de Llobregat"
+  provincia: "Barcelona"
+  ccaa: "Cataluña"
+  direccion: "Carretera de la Santa Creu de Calafell 99"
+  lat: 41.324942
+  lon: 2.032896
+  precision: exacta
+  fuentes: [src-1]
+
+estado: operativo
+estado_detalle: >-
+  Primer centro de EdgeConneX en España, en el eje del Baix Llobregat cerca del
+  aeropuerto y contiguo a una subestación eléctrica según la propia compañía.
+estado_fuentes: [src-2]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 8.4
+    ambito: edificio
+    referencia: "Capacidad total N+1 del edificio"
+    estado_asociado: operativo
+    fuentes: [src-2]
+    nota: "La compañía dice literalmente '8.4 MW N+1 total capacity'."
+
+superficie_construida_m2: 3000
+
+conexion_electrica:
+  fuentes: [src-2]
+
+incertidumbres:
+  - campo: ubicacion
+    descripcion: >-
+      PeeringDB sitúa la instalación en Sant Boi de Llobregat (CP 08830);
+      directorios como Inflect y notas de prensa la sitúan en Viladecans (CP
+      08840). La Carretera de la Santa Creu de Calafell (C-245) atraviesa ambos
+      municipios. Se toma la asignación de PeeringDB, que es la que aporta
+      coordenadas.
+    fuentes: [src-1]
+  - campo: superficie_construida_m2
+    descripcion: >-
+      EdgeConneX publica "Total space: 3000 m2"; una empresa de ingeniería que
+      participó en la obra habla de una instalación de 7.600 m². No se ha
+      resuelto si se refieren a superficies distintas (sala técnica vs parcela).
+    fuentes: [src-2]
+  - campo: potencia
+    descripcion: >-
+      Directorios terceros citan cifras de 2 MW y 3,4 MW para esta instalación,
+      frente a los 8,4 MW que publica la compañía. No se ha localizado la fuente
+      primaria de las cifras menores.
+    fuentes: [src-2]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.peeringdb.com/api/fac?name__contains=Barcelona"
+    titulo: "PeeringDB — Facilities API, consulta 'Barcelona'"
+    editor: "PeeringDB"
+    tipo: asociacion
+    fecha_consulta: "2026-08-29"
+    cita: "EdgeConneX Barcelona (EDCBCN01) | Careterra Santa Creu de Calafell 99 | Sant Boi de Llobregat | 08830 | 41.324942 | 2.032896"
+  - id: src-2
+    url: "https://www.edgeconnex.com/locations/emea/barcelona/"
+    titulo: "Barcelona Data Center | EdgeConneX"
+    editor: "EdgeConneX"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: "8.4 MW N+1 total capacity ... Total space: 3000 m2"

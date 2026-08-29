@@ -1,0 +1,55 @@
+id: adam-cerdanyola-ptv
+nombre: "Adam PTV — Parc Tecnològic del Vallès (Cerdanyola del Vallès)"
+alias:
+  - "Adam - PTV"
+  - "Adam BCN2"
+tipo: edificio
+operador: "Adam"
+propietario: "Adam"
+modelo: colocation
+
+ubicacion:
+  municipio: "Cerdanyola del Vallès"
+  provincia: "Barcelona"
+  ccaa: "Cataluña"
+  direccion: "Carrer dels Artesans 7, Parc Tecnològic del Vallès, 08290 Cerdanyola del Vallès"
+  lat: 41.484761
+  lon: 2.127266
+  precision: exacta
+  fuentes: [src-1]
+
+estado: operativo
+estado_detalle: >-
+  Principal centro de Adam en el Vallès. Certificaciones declaradas ISO 27001,
+  ISO 9001, ISO 22301 y ENS nivel medio.
+estado_fuentes: [src-2]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 4
+    ambito: edificio
+    referencia: "Potencia del centro PTV"
+    estado_asociado: operativo
+    fuentes: [src-2]
+    nota: "La compañía publica 'Power: 4 MW' sin especificar tipo."
+
+superficie_construida_m2: 3000
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.peeringdb.com/api/fac?country=ES&limit=300"
+    titulo: "PeeringDB — Facilities API, España"
+    editor: "PeeringDB"
+    tipo: asociacion
+    fecha_consulta: "2026-08-29"
+    cita: "Adam - PTV | C/ Artesans 7, Parc Tecnològic del Vallès | Cerdanyola del Vallès | 08290 | 41.484761 | 2.127266"
+  - id: src-2
+    url: "https://adam.es/en/data-centers/barcelona-data-centers/"
+    titulo: "Data Center in Barcelona 24/7"
+    editor: "Adam"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: "Parc Tecnològic del Vallès (PTV) — C/ Artesans 7, 08290 Cerdanyola del Vallès — 3.000 m² — 4 MW — Tier III"

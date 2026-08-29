@@ -1,0 +1,54 @@
+id: ppa-amazon-iberdrola-ciudad-rodrigo
+nombre: "PPA Amazon — planta fotovoltaica de Ciudad Rodrigo (Iberdrola)"
+alias:
+  - "Ciudad Rodrigo FV"
+tipo: fotovoltaica
+potencia_mw: 212
+tipo_potencia: contratada_ppa
+# La cifra de 212 MW es la capacidad que Amazon compra. Las fuentes consultadas
+# no permiten fijar sin contradicción la potencia total de la planta.
+potencia_planta_mw: null
+capacidad_mwh: null
+promotor: "Iberdrola"
+contraparte_ppa: "Amazon"
+tipo_vinculo: ppa
+municipio: "Ciudad Rodrigo"
+provincia: "Salamanca"
+ccaa: "Castilla y León"
+lat: null
+lon: null
+precision: municipio
+estado: en_construccion
+estado_detalle: "En febrero de 2025 las fuentes la describen como en construcción, con finalización prevista en 2025. No se ha verificado la puesta en servicio."
+fecha_firma: "2025-02-03"
+adicionalidad: nueva_construccion
+adicionalidad_fuentes: [src-1, src-2]
+inversion_anunciada_eur: 200000000
+clusters_relacionados: []
+cpds_relacionados: []
+incertidumbres:
+  - campo: potencia_planta_mw
+    descripcion: "pv magazine titula «planta fotovoltaica de 212 MW» mientras que Data Center Market presenta los 212 MW como la capacidad comprada por Amazon dentro de una planta mayor. No se ha verificado en fuente primaria accesible la potencia total instalada."
+    fuentes: [src-1, src-2]
+  - campo: cpds_relacionados
+    descripcion: "El PPA es corporativo de Amazon; ninguna de las fuentes lo asigna a un centro de datos concreto de AWS en España."
+    fuentes: [src-1, src-2]
+confianza: media
+ultima_verificacion: "2026-08-29"
+fuentes:
+  - id: src-1
+    url: "https://www.datacentermarket.es/sostenibilidad/iberdrola-y-amazon-amplian-su-alianza-en-renovables-y-nube/"
+    titulo: "Iberdrola y Amazon amplían su alianza en renovables y nube"
+    editor: "Data Center Market"
+    tipo: prensa_especializada
+    fecha_publicacion: "2025-02-03"
+    fecha_consulta: "2026-08-29"
+    cita: "Amazon comprará 212 MW de capacidad en la planta solar fotovoltaica de Ciudad Rodrigo, en Salamanca."
+  - id: src-2
+    url: "https://www.pv-magazine.es/2025/02/27/iberdrola-construye-una-planta-fotovoltaica-de-212-mw-para-amazon-e-hibridara-con-eolica-la-megabateria-del-tamega/"
+    titulo: "Iberdrola construye una planta fotovoltaica de 212 MW para Amazon, e hibridará con eólica la megabatería del Támega"
+    editor: "pv magazine España"
+    tipo: prensa_especializada
+    fecha_publicacion: "2025-02-27"
+    fecha_consulta: "2026-08-29"
+    cita: "Cuando esté terminada, en 2025 [...] inversión cercana a los 200 millones de euros."

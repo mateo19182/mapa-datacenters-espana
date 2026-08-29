@@ -1,0 +1,170 @@
+// Carga los YAML del repositorio, los normaliza y los valida.
+// Es el único punto por el que los datos entran en la tubería.
+import { readdirSync, readFileSync, existsSync } from 'node:fs'
+import { join, basename } from 'node:path'
+import { fileURLToPath } from 'node:url'
+import YAML from 'yaml'
+import { zSitio, normalizarSitio, revisarCoherencia } from './schema.mjs'
+
+export const RAIZ = fileURLToPath(new URL('..', import.meta.url))
+export const DIR_SITIOS = join(RAIZ, 'data/sites')
+export const DIR_RED = join(RAIZ, 'data/red')
+export const DIR_RENOVABLES = join(RAIZ, 'data/renovables')
+
+const listarYaml = (dir) =>
+  existsSync(dir)
+    ? readdirSync(dir)
+        .filter((f) => /\.ya?ml$/i.test(f))
+        .sort()
+        .map((f) => join(dir, f))
+    : []
+
+const leerYaml = (ruta) => YAML.parse(readFileSync(ruta, 'utf8'))
+
+/** Carga data/sites/*.yaml. Devuelve sitios válidos y el parte de incidencias. */
+export function cargarSitios() {
+  const sitios = []
+  const incidencias = []
+
+  for (const ruta of listarYaml(DIR_SITIOS)) {
+    const fichero = basename(ruta)
+    let crudo
+    try {
+      crudo = leerYaml(ruta)
+    } catch (e) {
+      incidencias.push({ fichero, nivel: 'error', msg: `YAML ilegible: ${e.message}` })
+      continue
+    }
+    if (!crudo || typeof crudo !== 'object') {
+      incidencias.push({ fichero, nivel: 'error', msg: 'el fichero está vacío o no es un mapa YAML' })
+      continue
+    }
+    if (Array.isArray(crudo)) {
+      incidencias.push({ fichero, nivel: 'error', msg: 'un fichero = un emplazamiento; aquí hay una lista' })
+      continue
+    }
+
+    const normalizado = normalizarSitio(crudo)
+    const res = zSitio.safeParse(normalizado)
+    if (!res.success) {
+      for (const e of res.error.issues) {
+        incidencias.push({ fichero, nivel: 'error', msg: `${e.path.join('.') || '(raíz)'}: ${e.message}` })
+      }
+      continue
+    }
+    const sitio = res.data
+    if (sitio.id !== fichero.replace(/\.ya?ml$/i, '')) {
+      incidencias.push({ fichero, nivel: 'aviso', msg: `el id «${sitio.id}» no coincide con el nombre del fichero` })
+    }
+    for (const p of revisarCoherencia(sitio)) incidencias.push({ fichero, ...p })
+    sitios.push(sitio)
+  }
+
+  // Duplicados e identidades solapadas entre ficheros.
+  const porId = new Map()
+  for (const s of sitios) {
+    if (porId.has(s.id)) incidencias.push({ fichero: `${s.id}.yaml`, nivel: 'error', msg: 'id repetido en dos ficheros' })
+    porId.set(s.id, s)
+  }
+  for (const dup of detectarPosiblesDuplicados(sitios)) {
+    incidencias.push({ fichero: dup.a, nivel: 'aviso', msg: `posible duplicado de ${dup.b}: ${dup.motivo}` })
+  }
+
+  return { sitios, incidencias }
+}
+
+const clave = (s) =>
+  String(s)
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]/g, '')
+
+/** Heurística de doble conteo: mismo nombre/alias, o mismo operador a <500 m. */
+export function detectarPosiblesDuplicados(sitios) {
+  const hallazgos = []
+  const nombres = new Map()
+  for (const s of sitios) {
+    for (const n of [s.nombre, ...s.alias]) {
+      const k = clave(n)
+      if (!k) continue
+      if (nombres.has(k) && nombres.get(k) !== s.id) {
+        hallazgos.push({ a: `${s.id}.yaml`, b: nombres.get(k), motivo: `comparten el nombre «${n}»` })
+      }
+      nombres.set(k, s.id)
+    }
+  }
+  for (let i = 0; i < sitios.length; i++) {
+    for (let j = i + 1; j < sitios.length; j++) {
+      const a = sitios[i]
+      const b = sitios[j]
+      if (!a.ubicacion.lat || !b.ubicacion.lat) continue
+      if (clave(a.operador ?? '') !== clave(b.operador ?? '')) continue
+      const d = distanciaKm(a.ubicacion, b.ubicacion)
+      if (d < 0.5) {
+        hallazgos.push({ a: `${a.id}.yaml`, b: b.id, motivo: `mismo operador a ${Math.round(d * 1000)} m` })
+      }
+    }
+  }
+  return hallazgos
+}
+
+export function distanciaKm(a, b) {
+  const R = 6371
+  const rad = (x) => (x * Math.PI) / 180
+  const dLat = rad(b.lat - a.lat)
+  const dLon = rad(b.lon - a.lon)
+  const h =
+    Math.sin(dLat / 2) ** 2 + Math.cos(rad(a.lat)) * Math.cos(rad(b.lat)) * Math.sin(dLon / 2) ** 2
+  return 2 * R * Math.asin(Math.sqrt(h))
+}
+
+/** Ficheros de red y renovables: listas de objetos, validación ligera. */
+export function cargarListas(dir, etiqueta) {
+  const items = []
+  const incidencias = []
+  for (const ruta of listarYaml(dir)) {
+    const fichero = basename(ruta)
+    let crudo
+    try {
+      crudo = leerYaml(ruta)
+    } catch (e) {
+      incidencias.push({ fichero, nivel: 'error', msg: `YAML ilegible: ${e.message}` })
+      continue
+    }
+    const lista = Array.isArray(crudo) ? crudo : crudo == null ? [] : [crudo]
+    for (const [i, it] of lista.entries()) {
+      if (!it || typeof it !== 'object') continue
+      if (!it.id) {
+        incidencias.push({ fichero, nivel: 'error', msg: `${etiqueta}[${i}] sin id` })
+        continue
+      }
+      if (!Array.isArray(it.fuentes) || it.fuentes.length === 0) {
+        incidencias.push({ fichero, nivel: 'aviso', msg: `${etiqueta} «${it.id}» sin fuentes` })
+      }
+      items.push({ ...it, _fichero: fichero })
+    }
+  }
+  const vistos = new Set()
+  for (const it of items) {
+    if (vistos.has(it.id)) incidencias.push({ fichero: it._fichero, nivel: 'error', msg: `id repetido: ${it.id}` })
+    vistos.add(it.id)
+  }
+  return { items, incidencias }
+}
+
+export function cargarTodo() {
+  const sitios = cargarSitios()
+  const red = cargarListas(DIR_RED, 'nodo de red')
+  const renovables = cargarListas(DIR_RENOVABLES, 'activo renovable')
+  return {
+    sitios: sitios.sitios,
+    red: red.items,
+    renovables: renovables.items,
+    incidencias: [
+      ...sitios.incidencias,
+      ...red.incidencias.map((i) => ({ ...i, fichero: `red/${i.fichero}` })),
+      ...renovables.incidencias.map((i) => ({ ...i, fichero: `renovables/${i.fichero}` })),
+    ],
+  }
+}

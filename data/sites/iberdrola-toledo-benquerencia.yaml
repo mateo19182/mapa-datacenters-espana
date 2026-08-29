@@ -1,0 +1,93 @@
+id: iberdrola-toledo-benquerencia
+nombre: "CPD de Iberdrola en Toledo — antiguos terrenos de Standard Eléctrica"
+alias:
+  - "Centro de procesamiento de datos de Iberdrola en Toledo"
+tipo: edificio
+operador: "Iberdrola"
+propietario: "Iberdrola"
+modelo: desconocido
+
+ubicacion:
+  municipio: "Toledo"
+  provincia: "Toledo"
+  ccaa: "Castilla-La Mancha"
+  direccion: "Calle Río Jarama, polígono industrial Santa María de Benquerencia (antigua Standard Eléctrica)"
+  lat: 39.8788319
+  lon: -3.9314502
+  precision: aproximada
+  fuentes: [src-elespanol, src-osm]
+
+estado: anunciado
+estado_detalle: >-
+  Iberdrola mantiene el plan de un centro de procesamiento de datos en el
+  polígono industrial de Toledo pese al rechazo del MITECO a la fotovoltaica FV
+  Aceca (347,51 MW, 531 hectáreas) que debía dar soporte energético a la
+  operación. Según El Español, a 19 de agosto de 2026 "el plan sigue plenamente
+  vigente" y la compañía busca reubicar los paneles.
+estado_fuentes: [src-elespanol]
+
+potencia: []
+
+fases: []
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      No consta ninguna cifra de potencia para el CPD de Toledo capital. Los 144
+      MW de capacidad y 230 MW de conexión asegurada que circulan en prensa
+      corresponden al proyecto "Madrid Sur" de la joint venture Echelon
+      Iberdrola Digital Infra, no a este emplazamiento.
+    fuentes: [src-elespanol, src-elespanol-jv]
+  - campo: ubicacion
+    descripcion: >-
+      Un blog financiero sitúa uno de los dos centros de la joint venture
+      Echelon Iberdrola Digital Infra en "Aceca (Madrid)", cuando la central de
+      Aceca está en Villaseca de la Sagra (Toledo). No se ha podido confirmar si
+      "Madrid Sur" y el CPD de Toledo capital son el mismo proyecto, proyectos
+      distintos o si alguno se ubica en Villaseca de la Sagra.
+    fuentes: [src-rankia, src-elespanol, src-elespanol-jv]
+  - campo: estado
+    descripcion: >-
+      No se ha localizado expediente urbanístico, ambiental ni de acceso a red
+      para este emplazamiento. La única fuente es una información periodística.
+    fuentes: [src-elespanol]
+
+confianza: baja
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-elespanol
+    url: "https://www.elespanol.com/eldigitalcastillalamancha/economia/empresas/20260819/veto-gobierno-macroplanta-aceca-no-frena-iberdrola-proyecta-gran-centro-datos-toledo/1003744357801_0.html"
+    titulo: "El veto del Gobierno a la macroplanta de Aceca no frena a Iberdrola, que proyecta un gran centro de datos en Toledo"
+    editor: "El Digital de Castilla-La Mancha (El Español)"
+    tipo: prensa_general
+    fecha_publicacion: "2026-08-19"
+    fecha_consulta: "2026-08-29"
+    cita: "el plan sigue plenamente vigente"
+  - id: src-elespanol-jv
+    url: "https://www.elespanol.com/invertia/empresas/energia/20251126/nace-echelon-iberdrola-digital-infra-invertir-millones-euros-centros-datos-espana/1003744030247_0.html"
+    titulo: "Nace Echelon Iberdrola Digital Infra para invertir más de 2.000 millones de euros en centros de datos en España"
+    editor: "Invertia (El Español)"
+    tipo: prensa_general
+    fecha_publicacion: "2025-11-26"
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      un complejo de 160.000 m2 que dispondrá de 144 MW para procesamiento de
+      datos [...] ya tiene asegurada una conexión eléctrica de 230 MW.
+  - id: src-rankia
+    url: "https://www.rankia.com/blog/bolsa-al-dia/7317729-centros-datos-espana-boom-66-900-millones-euros"
+    titulo: "Centros de datos en España: el Boom de 66.900 millones de euros"
+    editor: "Rankia"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: "Aceca (Madrid, 144 MW iniciales) y Velilla (Palencia)"
+  - id: src-osm
+    url: "https://nominatim.openstreetmap.org/search?q=Calle+R%C3%ADo+Jarama%2C+Toledo&format=json&limit=1"
+    titulo: "Nominatim — Calle Río Jarama, Polígono Industrial Santa María de Benquerencia, Toledo"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      Calle Río Jarama, Polígono Industrial Santa María de Benquerencia, Santa
+      María de Benquerencia, Toledo, Castilla-La Mancha, 45007, España — lat
+      39.8788319, lon -3.9314502

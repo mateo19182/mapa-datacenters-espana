@@ -1,0 +1,70 @@
+id: jcyl-valladolid-hospital-militar
+nombre: "CPD corporativo de la Junta de Castilla y León — Valladolid (antiguo Hospital Militar)"
+alias:
+  - "Centro de Proceso de Datos de la Junta de Castilla y León"
+tipo: edificio
+operador: "Junta de Castilla y León"
+propietario: "Junta de Castilla y León"
+modelo: corporativo
+
+ubicacion:
+  municipio: "Valladolid"
+  provincia: "Valladolid"
+  ccaa: "Castilla y León"
+  direccion: "Recinto del antiguo Hospital Militar, Paseo de Zorrilla"
+  lat: 41.6444613
+  lon: -4.7342196
+  precision: aproximada
+  fuentes: [src-dcm, src-osm]
+
+estado: operativo
+estado_detalle: >-
+  CPD corporativo de la administración autonómica en un inmueble de dos plantas
+  y unos 750 metros cuadrados en el recinto del antiguo Hospital Militar de
+  Valladolid. El proyecto, de 9,93 millones de euros, preveía siete meses de
+  obra y entrada en operación en julio de 2015. Consolida las infraestructuras
+  TIC de la Junta.
+estado_fuentes: [src-dcm]
+
+potencia: []
+
+fases: []
+
+superficie_construida_m2: 750
+inversion_anunciada_eur: 9930000
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      No consta la potencia eléctrica ni la carga TI del centro en las fuentes
+      consultadas.
+    fuentes: [src-dcm]
+  - campo: estado
+    descripcion: >-
+      La fuente consultada describe el proyecto y su calendario previsto (julio
+      de 2015); no se ha localizado una fuente reciente que documente la
+      situación y capacidad actuales del CPD.
+    fuentes: [src-dcm]
+
+confianza: baja
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-dcm
+    url: "https://www.datacentermarket.es/proyectos/castilla-y-leon-invertira-99-millones-en-un-nuevo-cpd/"
+    titulo: "Castilla y León invertirá 9,9 millones en un nuevo CPD"
+    editor: "Data Center Market"
+    tipo: prensa_especializada
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      El centro ocupará un inmueble de dos plantas y en torno a 750 metros
+      cuadrados en el recinto del antiguo Hospital Militar de Valladolid.
+  - id: src-osm
+    url: "https://nominatim.openstreetmap.org/search?q=Antiguo+Hospital+Militar%2C+Valladolid&format=json&limit=2"
+    titulo: "Nominatim — antiguo Hospital Militar, Paseo de Zorrilla, Valladolid"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      Paseo Zorrilla 1 antiguo Hospital Militar, Paseo de Zorrilla, Campo Grande,
+      Valladolid, Castilla y León, 47007, España — lat 41.6444613, lon -4.7342196

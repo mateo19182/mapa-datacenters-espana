@@ -1,0 +1,115 @@
+id: dc-mudarra-torrelobaton-valladolid
+nombre: "DC Mudarra — Torrelobatón (Valladolid)"
+alias:
+  - "Macrocentro de datos de Torrelobatón"
+  - "Proyecto de centro de datos de Vapat en Valladolid"
+tipo: campus
+operador: "DC Mudarra"
+propietario: "Grupo Vapat"
+modelo: desconocido
+
+ubicacion:
+  municipio: "Torrelobatón"
+  provincia: "Valladolid"
+  ccaa: "Castilla y León"
+  lat: 41.6490374
+  lon: -5.0250798
+  precision: municipio
+  fuentes: [src-bebeez, src-osm]
+
+estado: en_tramitacion
+estado_detalle: >-
+  Proyecto en fase temprana de tramitación: sometido a evaluación de impacto
+  ambiental, con información pública abierta desde finales de julio de 2026 y
+  plazo de alegaciones hasta el 2 de septiembre de 2026. Vapat constituyó las
+  sociedades promotoras en febrero de 2026.
+estado_fuentes: [src-bebeez, src-ti]
+
+potencia:
+  - tipo: it
+    valor_mw: 160
+    ambito: campus
+    referencia: "Potencia informática neta del campus a pleno desarrollo"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2026-08"
+    fuentes: [src-bebeez, src-ti]
+    nota: >-
+      Las fuentes hablan de "up to 160MW of IT capacity" y de "una potencia
+      informática (IT) neta de 160 megavatios", repartida en dos edificios con
+      ocho salas de 10 MW cada uno.
+
+fases:
+  - nombre: "Dos edificios de ocho salas TI de 10 MW cada una"
+    estado: en_tramitacion
+    nota: >-
+      El proyecto se estructura en dos edificios; el consumo de agua declarado,
+      5.996 m3/año, se refiere a "las dos fases previstas".
+    fuentes: [src-bebeez, src-ti]
+
+conexion_electrica:
+  subestacion: "SE La Mudarra"
+  titular_red: null
+  nota: >-
+    El emplazamiento se sitúa junto a los parques eólicos San Lorenzo de Vapat y
+    cerca de la subestación eléctrica de La Mudarra, descrita como punto
+    estratégico de la red de la zona. No consta la potencia de acceso solicitada
+    ni concedida.
+  fuentes: [src-bebeez]
+
+refrigeracion: >-
+  Circuitos sellados y sistema de vertido cero según la promotora; consumo
+  directo declarado de 5.996 metros cúbicos de agua al año para las dos fases
+  previstas.
+
+incertidumbres:
+  - campo: superficie_parcela_m2
+    descripcion: >-
+      Las fuentes discrepan sobre la superficie: DCD (recogido por BeBeez) habla
+      de hasta 250 hectáreas y la prensa económica española de 117,83 hectáreas.
+      No se registra ninguna de las dos como dato firme.
+    fuentes: [src-bebeez]
+  - campo: potencia
+    descripcion: >-
+      Junto a los 160 MW de potencia TI neta, el expediente declara una potencia
+      térmica total de 786,82 MW correspondiente a 96 grupos electrógenos de
+      emergencia. Son magnitudes distintas y no comparables entre sí.
+    fuentes: [src-ti]
+  - campo: inversion_anunciada_eur
+    descripcion: >-
+      La inversión se cita como una horquilla de 1.600 a 2.000 millones de
+      euros; no se registra cifra única.
+    fuentes: [src-bebeez]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-bebeez
+    url: "https://bebeez.eu/2026/08/21/vapat-enters-the-data-center-market-with-a-160mw-project-in-valladolid/"
+    titulo: "Vapat enters the data center market with a 160MW project in Valladolid"
+    editor: "BeBeez International"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-08-21"
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      up to 160MW of IT capacity [...] two data center buildings, each with eight
+      IT rooms [...] near the La Mudarra electrical substation, a strategic point
+      in the area's power grid.
+  - id: src-ti
+    url: "https://www.tercerainformacion.es/articulo/actualidad/06/08/2026/iu-valladolid-muestra-preocupacion-por-el-impacto-ambiental-y-el-consumo-de-recursos-hidricos-del-macrocentro-de-datos-proyectado-en-torrelobaton/"
+    titulo: "IU Valladolid muestra preocupación por el impacto ambiental y el consumo de recursos hídricos del macrocentro de datos proyectado en Torrelobatón"
+    editor: "Tercera Información"
+    tipo: prensa_general
+    fecha_publicacion: "2026-08-06"
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      una potencia informática (IT) neta de 160 megavatios [...] parque de 96
+      grupos electrógenos de emergencia [...] consumo directo de 5.996 metros
+      cúbicos de agua al año para las dos fases previstas.
+  - id: src-osm
+    url: "https://nominatim.openstreetmap.org/search?q=Torrelobat%C3%B3n%2C+Valladolid&format=json&limit=1"
+    titulo: "Nominatim — Torrelobatón, Valladolid"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: "Torrelobatón, Valladolid, Castilla y León, 47134, España — lat 41.6490374, lon -5.0250798"

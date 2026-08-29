@@ -1,0 +1,92 @@
+---
+import { FUENTE_ETIQUETA, fechaLegible } from '../lib/etiquetas.js'
+
+// Referencia de una fuente, con su cita literal cuando existe.
+const { fuente, numero } = Astro.props
+const host = (() => {
+  try {
+    return new URL(fuente.url).hostname.replace(/^www\./, '')
+  } catch {
+    return null
+  }
+})()
+---
+
+<li class="fuente" id={`fuente-${fuente.id}`}>
+  <span class="indice">{numero}</span>
+  <div>
+    <a href={fuente.url} rel="noopener nofollow" target="_blank">{fuente.titulo}</a>
+    <p class="meta">
+      <span class={`tipo tipo-${fuente.tipo}`}>{FUENTE_ETIQUETA[fuente.tipo] ?? fuente.tipo}</span>
+      {fuente.editor && <> · {fuente.editor}</>}
+      {fuente.fecha_publicacion && <> · publicado el {fechaLegible(fuente.fecha_publicacion)}</>}
+      {host && <> · <span class="dominio">{host}</span></>}
+      {fuente.fecha_consulta && <> · consultado el {fechaLegible(fuente.fecha_consulta)}</>}
+    </p>
+    {fuente.cita && <blockquote>{fuente.cita}</blockquote>}
+  </div>
+</li>
+
+<style>
+  .fuente {
+    display: flex;
+    gap: 0.7rem;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--borde);
+    font-size: 0.88rem;
+  }
+
+  .fuente:last-child {
+    border-bottom: 0;
+  }
+
+  .fuente:target {
+    background: var(--acento-suave);
+    border-radius: var(--radio);
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .indice {
+    flex: none;
+    width: 1.6rem;
+    text-align: right;
+    color: var(--tinta-3);
+    font-variant-numeric: tabular-nums;
+    font-size: 0.8rem;
+    padding-top: 0.1rem;
+  }
+
+  .meta {
+    margin: 0.15rem 0 0;
+    font-size: 0.78rem;
+    color: var(--tinta-3);
+  }
+
+  .tipo {
+    font-weight: 600;
+  }
+
+  .tipo-oficial {
+    color: var(--op);
+  }
+
+  .tipo-empresa,
+  .tipo-asociacion {
+    color: var(--acento);
+  }
+
+  .dominio {
+    font-family: var(--mono);
+    font-size: 0.94em;
+  }
+
+  blockquote {
+    margin: 0.4rem 0 0;
+    padding-left: 0.7rem;
+    border-left: 2px solid var(--borde-fuerte);
+    color: var(--tinta-2);
+    font-size: 0.87rem;
+    line-height: 1.5;
+  }
+</style>

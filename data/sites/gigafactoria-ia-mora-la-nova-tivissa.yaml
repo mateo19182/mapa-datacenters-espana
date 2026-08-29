@@ -1,0 +1,93 @@
+id: gigafactoria-ia-mora-la-nova-tivissa
+nombre: "Gigafactoria de IA — polígono El Molló (Móra la Nova y Tivissa)"
+alias:
+  - "Gigafactoria d'Intel·ligència Artificial de Móra la Nova"
+  - "AI Gigafactory InvestAI Ribera d'Ebre"
+tipo: campus
+modelo: hyperscale
+
+ubicacion:
+  municipio: "Móra la Nova"
+  provincia: "Tarragona"
+  ccaa: "Cataluña"
+  direccion: "Sector de actividad El Molló, términos municipales de Móra la Nova y Tivissa (Ribera d'Ebre)"
+  precision: municipio
+  fuentes: [src-1]
+
+estado: en_tramitacion
+estado_detalle: >-
+  Candidatura al programa europeo InvestAI presentada por el Gobierno de España
+  con sede jurídica en Móra la Nova. La Generalitat ratificó un acuerdo para la
+  adquisición de 20 MW de potencia adicional para el sector. Si la candidatura
+  prospera, las obras empezarían en 2027 y la puesta en marcha se sitúa a finales
+  de 2028. Hay oposición pública organizada (Ecologistes en Acció, CGT) por
+  consumo energético e hídrico.
+estado_fuentes: [src-1]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 55
+    ambito: campus
+    referencia: "Capacidad inicial de la instalación"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2026"
+    fuentes: [src-1]
+    nota: >-
+      La fuente dice "amb una capacitat inicial de 55 megawatts, ampliable fins
+      als 125 megawatts". No precisa si son MW TI o de conexión.
+  - tipo: no_especificado
+    valor_mw: 125
+    ambito: campus
+    referencia: "Capacidad máxima ampliable"
+    estado_asociado: anunciado
+    fecha_dato: "2026"
+    fuentes: [src-1]
+
+conexion_electrica:
+  subestacion: "Subestación eléctrica dels Aubals"
+  fuentes: [src-1]
+
+superficie_parcela_m2: 40000
+inversion_anunciada_eur: 719000000
+refrigeracion: >-
+  Sistema de refrigeración por aire en circuito cerrado con consumo de agua
+  próximo a cero, según la información del proyecto.
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      Canal 21 Ebre cita una capacidad inicial de 55 MW; notas del Govern
+      recogidas por otras cabeceras hablan de que el despliegue inicial requiere
+      54 MW frente a los 34 MW disponibles en el sector, lo que motivó la compra
+      de 20 MW adicionales. Las cifras 54 y 55 no se han podido reconciliar.
+    fuentes: [src-1]
+  - campo: operador
+    descripcion: >-
+      No consta operador privado adjudicado; el proyecto es una candidatura
+      pública al programa InvestAI de la Comisión Europea.
+    fuentes: [src-1]
+  - campo: inversion_anunciada_eur
+    descripcion: >-
+      Los 719 millones de euros se describen como inversión del Estado para
+      impulsar el proyecto, no como coste total de la instalación.
+    fuentes: [src-1]
+  - campo: superficie_parcela_m2
+    descripcion: >-
+      La fuente habla de "unes quatre hectàrees del polígon del Molló"; se
+      registra como 40.000 m² con esa imprecisión.
+    fuentes: [src-1]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.canal21ebre.com/gigafactoria-ia-mora-nova-2028/"
+    titulo: "La gigafactoria de Móra la Nova podria estar en funcionament a finals de 2028"
+    editor: "Canal 21 Ebre"
+    tipo: prensa_general
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      les instal·lacions ocuparien unes quatre hectàrees del polígon del Molló i
+      estarien connectades a la subestació elèctrica dels Aubals, amb una
+      capacitat inicial de 55 megawatts, ampliable fins als 125 megawatts.

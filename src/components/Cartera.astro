@@ -1,0 +1,32 @@
+---
+import { POTENCIA_ETIQUETA, POTENCIA_DESCRIPCION, numero } from '../lib/etiquetas.js'
+
+// Resumen de potencia de un conjunto de emplazamientos. Cada tipo se muestra por
+// separado y siempre acompañado de su cobertura: cuántos emplazamientos aportan
+// realmente ese dato. Un total sin cobertura engaña.
+const { cartera, titulo } = Astro.props
+const tipos = ['it', 'conexion_red', 'no_especificado', 'instalada_total'].filter(
+  (t) => cartera.potencia[t].sitios_con_dato > 0,
+)
+---
+
+{titulo && <h3>{titulo}</h3>}
+
+{tipos.length === 0 ? (
+  <p class="silencio pequeno">Ningún emplazamiento de este conjunto publica cifras de potencia.</p>
+) : (
+  <dl class="cifras">
+    {tipos.map((t) => (
+      <div class="cifra">
+        <dt title={POTENCIA_DESCRIPCION[t]}>{POTENCIA_ETIQUETA[t]}</dt>
+        <dd>
+          {numero(cartera.potencia[t].total_mw)} MW
+          <small>
+            de {cartera.potencia[t].sitios_con_dato} de {cartera.emplazamientos} emplazamientos
+            ({cartera.potencia[t].cobertura} % de cobertura)
+          </small>
+        </dd>
+      </div>
+    ))}
+  </dl>
+)}

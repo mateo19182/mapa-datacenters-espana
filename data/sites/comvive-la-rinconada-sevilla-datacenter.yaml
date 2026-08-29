@@ -1,0 +1,90 @@
+id: comvive-la-rinconada-sevilla-datacenter
+nombre: "Sevilla Datacenter — Comvive, San José de la Rinconada"
+alias:
+  - "Sevilla Datacenter"
+  - "CPD de Comvive"
+tipo: edificio
+operador: "Comvive Servidores, S.L.U."
+propietario: "Comvive Servidores, S.L.U."
+modelo: colocation
+
+ubicacion:
+  municipio: "La Rinconada"
+  provincia: "Sevilla"
+  ccaa: "Andalucía"
+  direccion: "Calle Nicolás Copérnico 18, 41300 San José de la Rinconada"
+  lat: 37.4877
+  lon: -5.9760
+  precision: aproximada
+  fuentes: [src-1]
+
+estado: operativo
+estado_detalle: >-
+  Centro de datos neutro operado por Comvive. Ampliación anunciada que triplica la capacidad de
+  racks y eleva la potencia disponible a 1 MW, con inversión propia superior a un millón de euros.
+  El operador lo presenta como el mayor CPD privado de Andalucía.
+estado_fuentes: [src-1, src-2, src-3]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 1
+    ambito: edificio
+    referencia: "Potencia disponible tras la ampliación"
+    estado_asociado: operativo
+    fecha_dato: "2026-08-29"
+    fuentes: [src-2]
+    nota: >-
+      La fuente habla de «potencia disponible» de 1 MW sin precisar si se refiere a carga TI o a
+      potencia contratada en el punto de suministro.
+
+inversion_anunciada_eur: 1000000
+refrigeracion: >-
+  Free-cooling y confinamiento de pasillo frío/caliente. Instalación fotovoltaica en cubierta que
+  cubre en torno al 15% del consumo; el resto de la energía contratada es de origen renovable.
+enlaces_proyecto:
+  - "https://sevilladatacenter.com/"
+
+incertidumbres:
+  - campo: inversion_anunciada_eur
+    descripcion: >-
+      La fuente dice «más de un millón de euros» financiado con recursos propios. Se registra el
+      millón como suelo, no como cifra cerrada.
+    fuentes: [src-2]
+  - campo: fecha_puesta_en_servicio
+    descripcion: >-
+      No se ha podido verificar en fuente abierta el año de puesta en servicio del edificio ni de
+      la marca Sevilla Datacenter. Campo omitido.
+    fuentes: [src-1, src-3]
+  - campo: estado
+    descripcion: >-
+      La afirmación de ser «el mayor centro de datos de Andalucía» o «el CPD privado más grande de
+      Andalucía» procede del propio operador y de prensa económica regional que lo recoge; con
+      1 MW queda muy por debajo de los proyectos de Escúzar, Málaga o Huelva, y del propio CPD de
+      la Junta. Es una afirmación comercial, no un dato comparado.
+    fuentes: [src-1, src-3]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.comvive.es/blog/nace-sevilla-datacenter-el-mayor-centro-de-datos-de-andalucia/"
+    titulo: "Nace Sevilla Datacenter, el mayor centro de datos de Andalucía"
+    editor: "Comvive"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: "La energía que contratamos es 100% de fuentes renovables"
+  - id: src-2
+    url: "https://andaluciaeconomica.com/comvive-triplica-la-capacidad-de-su-data-center-con-una-inversion-100-andaluza-y-sostenible/"
+    titulo: "Comvive triplica la capacidad de su data center con una inversión 100% andaluza y sostenible"
+    editor: "Revista Andalucía Económica"
+    tipo: prensa_general
+    fecha_consulta: "2026-08-29"
+    cita: "con esfuerzo, con visión a largo plazo y con la convicción de que el crecimiento sostenible es posible"
+  - id: src-3
+    url: "https://mercados21.es/empresas/sevilla-datacenter-se-consolida-como-el-centro-de-datos-mas-importante-de-andalucia/"
+    titulo: "Sevilla Datacenter se consolida como «el centro de datos más importante de Andalucía»"
+    editor: "Mercados21"
+    tipo: prensa_general
+    fecha_consulta: "2026-08-29"
+    cita: "el CPD privado más grande de Andalucía"

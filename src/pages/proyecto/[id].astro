@@ -1,0 +1,457 @@
+---
+import Base from '../../layouts/Base.astro'
+import Fuente from '../../components/Fuente.astro'
+import sitios from '../../data/sitios.json'
+import renovables from '../../data/renovables.json'
+import {
+  ESTADO_ETIQUETA,
+  POTENCIA_ETIQUETA,
+  POTENCIA_DESCRIPCION,
+  PRECISION_ETIQUETA,
+  CONFIANZA_ETIQUETA,
+  CONFIANZA_DESCRIPCION,
+  MODELO_ETIQUETA,
+  fechaLegible,
+  numero,
+  euros,
+  superficie,
+  slug,
+} from '../../lib/etiquetas.js'
+
+export function getStaticPaths() {
+  return sitios.map((s) => ({ params: { id: s.id }, props: { sitio: s } }))
+}
+
+const { sitio: s } = Astro.props
+
+// Índice de fuentes: cada dato del cuerpo apunta a su número de referencia.
+const indice = new Map(s.fuentes.map((f, i) => [f.id, i + 1]))
+const refs = (ids) =>
+  (ids ?? [])
+    .map((id) => indice.get(id))
+    .filter(Boolean)
+    .sort((a, b) => a - b)
+
+const r = s.resumen_potencia
+const tiposConDato = ['it', 'conexion_red', 'instalada_total', 'no_especificado'].filter((t) => r[t])
+
+const vinculados = renovables.filter(
+  (a) => (a.cpds_relacionados ?? []).includes(s.id) || a.contraparte_ppa === s.operador,
+)
+
+const mapaEstatico = s.ubicacion.lat != null
+const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacion.ccaa]
+  .filter(Boolean)
+  .filter((v, i, a) => a.indexOf(v) === i)
+  .join(', ')
+---
+
+<Base
+  titulo={s.nombre}
+  descripcion={`${s.nombre}: ${ESTADO_ETIQUETA[s.estado]}${ubicacionTexto ? ` en ${ubicacionTexto}` : ''}. Ficha documental con fuentes.`}
+>
+  <div class="contenedor">
+    <p class="migas">
+      <a href="/proyectos">Proyectos</a>
+      {s.operador && <> · <a href={`/compania/${slug(s.operador)}`}>{s.operador}</a></>}
+      {s.ubicacion.ccaa && <> · <a href={`/region/${slug(s.ubicacion.ccaa)}`}>{s.ubicacion.ccaa}</a></>}
+    </p>
+
+    <header class="ficha-cabecera">
+      <div>
+        <span class={`etiqueta estado-${s.estado}`}><span class="punto"></span>{ESTADO_ETIQUETA[s.estado]}</span>
+        <span class={`etiqueta confianza-${s.confianza}`} title={CONFIANZA_DESCRIPCION[s.confianza]}>
+          {CONFIANZA_ETIQUETA[s.confianza]}
+        </span>
+        <h1>{s.nombre}</h1>
+        {s.alias.length > 0 && (
+          <p class="silencio pequeno">También citado como: {s.alias.join(' · ')}</p>
+        )}
+        {s.estado_detalle && (
+          <p class="sumario">
+            {s.estado_detalle}
+            {refs(s.estado_fuentes).length > 0 && (
+              <sup>{refs(s.estado_fuentes).map((n, i) => <>{i > 0 && ','}<a href={`#fuente-${s.fuentes[n - 1].id}`}>{n}</a></>)}</sup>
+            )}
+          </p>
+        )}
+      </div>
+    </header>
+
+    <div class="dos-columnas">
+      <div>
+        <h2>Potencia</h2>
+        {tiposConDato.length === 0 ? (
+          <p class="silencio">No consta ninguna cifra de potencia publicada para este emplazamiento.</p>
+        ) : (
+          <>
+            <dl class="cifras">
+              {tiposConDato.map((t) => (
+                <div class="cifra">
+                  <dt title={POTENCIA_DESCRIPCION[t]}>{POTENCIA_ETIQUETA[t]}</dt>
+                  <dd>
+                    {numero(r[t].valor_mw, 1)} MW
+                    <small>
+                      {r[t].base === 'suma_de_fases' ? 'suma de fases documentadas' : 'cifra global publicada'}
+                      {r[t].discrepancia && ` · las fuentes discrepan (${numero(r[t].minimo_observado, 1)}–${numero(r[t].maximo_observado, 1)} MW)`}
+                    </small>
+                  </dd>
+                </div>
+              ))}
+            </dl>
+
+            <div class="tabla-envoltorio">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Tipo</th>
+                    <th class="num">MW</th>
+                    <th>Ámbito</th>
+                    <th>Referencia</th>
+                    <th>Fecha del dato</th>
+                    <th>Fuente</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {s.potencia.map((p) => (
+                    <tr>
+                      <td title={POTENCIA_DESCRIPCION[p.tipo]}>{POTENCIA_ETIQUETA[p.tipo]}</td>
+                      <td class="num">
+                        {numero(p.valor_mw, 1)}
+                        {p.valor_mw_max && `–${numero(p.valor_mw_max, 1)}`}
+                      </td>
+                      <td>{p.ambito}</td>
+                      <td>
+                        {p.referencia ?? <span class="silencio">—</span>}
+                        {p.nota && <span class="pequeno silencio"><br />{p.nota}</span>}
+                      </td>
+                      <td>{fechaLegible(p.fecha_dato) ?? <span class="silencio">sin fechar</span>}</td>
+                      <td class="num">
+                        {refs(p.fuentes).map((n, i) => (
+                          <>{i > 0 && ', '}<a href={`#fuente-${s.fuentes[n - 1].id}`}>{n}</a></>
+                        ))}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            {r.no_especificado && (
+              <p class="nota pequeno">
+                <strong>Cifras sin tipificar.</strong> Alguna fuente da MW sin aclarar si se refiere a
+                carga TI, a la potencia de conexión o a la potencia instalada. Esas cifras se muestran
+                aparte y no se suman con las demás ni se convierten aplicando ningún PUE supuesto.
+              </p>
+            )}
+          </>
+        )}
+
+        {s.fases.length > 0 && (
+          <>
+            <h2>Fases</h2>
+            <div class="tabla-envoltorio">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Fase</th>
+                    <th>Estado</th>
+                    <th>Puesta en servicio</th>
+                    <th class="num">Superficie</th>
+                    <th>Fuente</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {s.fases.map((f) => (
+                    <tr>
+                      <td>
+                        {f.nombre}
+                        {f.nota && <span class="pequeno silencio"><br />{f.nota}</span>}
+                      </td>
+                      <td>
+                        {f.estado ? (
+                          <span class={`etiqueta estado-${f.estado}`}><span class="punto"></span>{ESTADO_ETIQUETA[f.estado]}</span>
+                        ) : (
+                          <span class="silencio">—</span>
+                        )}
+                      </td>
+                      <td>{fechaLegible(f.fecha_puesta_en_servicio) ?? <span class="silencio">—</span>}</td>
+                      <td class="num">{superficie(f.superficie_m2) ?? <span class="silencio">—</span>}</td>
+                      <td class="num">
+                        {refs(f.fuentes).map((n, i) => (
+                          <>{i > 0 && ', '}<a href={`#fuente-${s.fuentes[n - 1].id}`}>{n}</a></>
+                        ))}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </>
+        )}
+
+        {s.incertidumbres.length > 0 && (
+          <>
+            <h2>Incertidumbres y contradicciones</h2>
+            <p class="pequeno silencio">
+              Lo que las fuentes no aclaran o en lo que se contradicen. Se documenta en lugar de
+              resolverse por criterio propio.
+            </p>
+            <ul class="incertidumbres">
+              {s.incertidumbres.map((u) => (
+                <li>
+                  <strong>{u.campo}</strong>
+                  <span>
+                    {u.descripcion}
+                    {refs(u.fuentes).length > 0 && (
+                      <sup>{refs(u.fuentes).map((n, i) => <>{i > 0 && ','}<a href={`#fuente-${s.fuentes[n - 1].id}`}>{n}</a></>)}</sup>
+                    )}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+
+        {vinculados.length > 0 && (
+          <>
+            <h2>Generación y almacenamiento vinculados</h2>
+            <p class="pequeno silencio">
+              Un PPA es un contrato de compra de energía: no implica que este centro se alimente
+              físicamente de esa planta.
+            </p>
+            <div class="tabla-envoltorio">
+              <table>
+                <thead>
+                  <tr><th>Activo</th><th>Tipo</th><th class="num">MW</th><th>Vínculo</th><th>Estado</th></tr>
+                </thead>
+                <tbody>
+                  {vinculados.map((a) => (
+                    <tr>
+                      <td>{a.nombre}</td>
+                      <td>{a.tipo}</td>
+                      <td class="num">{numero(a.potencia_mw, 1) ?? '—'}</td>
+                      <td>{a.tipo_vinculo}</td>
+                      <td>{a.estado}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </>
+        )}
+
+        <h2 id="fuentes">Fuentes</h2>
+        <ol class="fuentes">
+          {s.fuentes.map((f, i) => <Fuente fuente={f} numero={i + 1} />)}
+        </ol>
+      </div>
+
+      <aside class="lateral">
+        <div class="tarjeta">
+          <h3 class="titulo-lateral">Identificación</h3>
+          <dl class="pares">
+            <dt>Operador</dt>
+            <dd>{s.operador ? <a href={`/compania/${slug(s.operador)}`}>{s.operador}</a> : <span class="silencio">sin determinar</span>}</dd>
+            {s.propietario && s.propietario !== s.operador && (<><dt>Propietario</dt><dd>{s.propietario}</dd></>)}
+            {s.cliente_ancla && (<><dt>Cliente ancla</dt><dd>{s.cliente_ancla}</dd></>)}
+            <dt>Modelo</dt>
+            <dd>{MODELO_ETIQUETA[s.modelo]}</dd>
+            <dt>Tipo de registro</dt>
+            <dd>{s.tipo === 'campus' ? 'Campus (varios edificios)' : 'Edificio'}</dd>
+          </dl>
+        </div>
+
+        <div class="tarjeta">
+          <h3 class="titulo-lateral">Ubicación</h3>
+          <dl class="pares">
+            {s.ubicacion.direccion && (<><dt>Dirección</dt><dd>{s.ubicacion.direccion}</dd></>)}
+            <dt>Municipio</dt>
+            <dd>{s.ubicacion.municipio ?? <span class="silencio">sin determinar</span>}</dd>
+            <dt>Provincia</dt>
+            <dd>{s.ubicacion.provincia ?? <span class="silencio">—</span>}</dd>
+            <dt>Comunidad</dt>
+            <dd>{s.ubicacion.ccaa ? <a href={`/region/${slug(s.ubicacion.ccaa)}`}>{s.ubicacion.ccaa}</a> : '—'}</dd>
+            <dt>Coordenadas</dt>
+            <dd>
+              {mapaEstatico ? (
+                <>
+                  <span class="mono">{s.ubicacion.lat.toFixed(5)}, {s.ubicacion.lon.toFixed(5)}</span>
+                  <br />
+                  <span class="pequeno silencio">{PRECISION_ETIQUETA[s.ubicacion.precision]}</span>
+                  <br />
+                  <a class="pequeno" href={`/?q=${encodeURIComponent(s.nombre)}`}>Ver en el mapa →</a>
+                </>
+              ) : (
+                <span class="silencio">no publicadas</span>
+              )}
+            </dd>
+          </dl>
+        </div>
+
+        {s.conexion_electrica && (
+          <div class="tarjeta">
+            <h3 class="titulo-lateral">Conexión eléctrica</h3>
+            <dl class="pares">
+              {s.conexion_electrica.subestacion && (<><dt>Subestación</dt><dd>{s.conexion_electrica.subestacion}</dd></>)}
+              {s.conexion_electrica.tension_kv && (<><dt>Tensión</dt><dd>{numero(s.conexion_electrica.tension_kv)} kV</dd></>)}
+              {s.conexion_electrica.titular_red && (<><dt>Titular de red</dt><dd>{s.conexion_electrica.titular_red}</dd></>)}
+              {s.conexion_electrica.mw_solicitados != null && (<><dt>MW solicitados</dt><dd>{numero(s.conexion_electrica.mw_solicitados, 1)} MW</dd></>)}
+              {s.conexion_electrica.mw_concedidos != null && (<><dt>MW concedidos</dt><dd>{numero(s.conexion_electrica.mw_concedidos, 1)} MW</dd></>)}
+            </dl>
+            <p class="pequeno silencio">
+              Una solicitud de acceso no es un centro construido. Véase <a href="/red-electrica">la nota sobre la red</a>.
+            </p>
+          </div>
+        )}
+
+        {(s.superficie_parcela_m2 || s.superficie_construida_m2 || s.inversion_anunciada_eur || s.refrigeracion || s.fecha_puesta_en_servicio) && (
+          <div class="tarjeta">
+            <h3 class="titulo-lateral">Otros datos</h3>
+            <dl class="pares">
+              {s.fecha_puesta_en_servicio && (<><dt>Puesta en servicio</dt><dd>{fechaLegible(s.fecha_puesta_en_servicio)}</dd></>)}
+              {s.superficie_parcela_m2 && (<><dt>Parcela</dt><dd>{superficie(s.superficie_parcela_m2)}</dd></>)}
+              {s.superficie_construida_m2 && (<><dt>Construido</dt><dd>{superficie(s.superficie_construida_m2)}</dd></>)}
+              {s.inversion_anunciada_eur && (<><dt>Inversión anunciada</dt><dd>{euros(s.inversion_anunciada_eur)}<br /><span class="pequeno silencio">cifra anunciada públicamente, no verificada</span></dd></>)}
+              {s.refrigeracion && (<><dt>Refrigeración</dt><dd>{s.refrigeracion}</dd></>)}
+            </dl>
+          </div>
+        )}
+
+        <div class="tarjeta">
+          <h3 class="titulo-lateral">Trazabilidad</h3>
+          <dl class="pares">
+            <dt>Última verificación</dt>
+            <dd>{fechaLegible(s.ultima_verificacion)}</dd>
+            <dt>Fuentes</dt>
+            <dd>{s.fuentes.length}</dd>
+            <dt>Confianza</dt>
+            <dd>
+              <span class={`confianza-${s.confianza}`}>{CONFIANZA_ETIQUETA[s.confianza]}</span>
+              <br />
+              <span class="pequeno silencio">{CONFIANZA_DESCRIPCION[s.confianza]}</span>
+            </dd>
+            <dt>Identificador</dt>
+            <dd class="mono pequeno">{s.id}</dd>
+          </dl>
+          {s.enlaces_proyecto.length > 0 && (
+            <p class="pequeno">
+              {s.enlaces_proyecto.map((u) => <><a href={u} rel="noopener nofollow">Enlace del proyecto</a><br /></>)}
+            </p>
+          )}
+        </div>
+      </aside>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .ficha-cabecera {
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--borde);
+    margin-bottom: 1.75rem;
+  }
+
+  .ficha-cabecera h1 {
+    margin: 0.5rem 0 0.25rem;
+  }
+
+  .ficha-cabecera .etiqueta + .etiqueta {
+    margin-left: 0.4rem;
+  }
+
+  .dos-columnas {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 19rem;
+    gap: 2.5rem;
+    align-items: start;
+    padding-bottom: 3rem;
+  }
+
+  .lateral {
+    display: grid;
+    gap: 1rem;
+    position: sticky;
+    top: 4rem;
+  }
+
+  .titulo-lateral {
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--tinta-3);
+    margin: 0 0 0.6rem;
+  }
+
+  .pares {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.35rem 0.8rem;
+    margin: 0;
+    font-size: 0.87rem;
+  }
+
+  .pares dt {
+    color: var(--tinta-3);
+  }
+
+  .pares dd {
+    margin: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .mono {
+    font-family: var(--mono);
+    font-size: 0.9em;
+  }
+
+  .fuentes {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-top: 1px solid var(--borde);
+  }
+
+  .incertidumbres {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .incertidumbres li {
+    display: grid;
+    grid-template-columns: 8rem 1fr;
+    gap: 0.8rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--borde);
+    font-size: 0.9rem;
+  }
+
+  .incertidumbres strong {
+    color: var(--aviso);
+    font-weight: 600;
+    font-size: 0.82rem;
+  }
+
+  sup a {
+    font-size: 0.7em;
+    padding: 0 0.1em;
+  }
+
+  @media (max-width: 860px) {
+    .dos-columnas {
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+    }
+
+    .lateral {
+      position: static;
+      order: -1;
+    }
+
+    .incertidumbres li {
+      grid-template-columns: 1fr;
+      gap: 0.15rem;
+    }
+  }
+</style>

@@ -1,0 +1,62 @@
+id: gtr-cerdanyola-parc-alba
+nombre: "Global Technical Realty Barcelona — Parc de l'Alba (Cerdanyola del Vallès)"
+alias:
+  - "GTR Barcelona"
+tipo: edificio
+operador: "Global Technical Realty"
+propietario: "Global Technical Realty (respaldada por KKR)"
+modelo: mayorista
+
+ubicacion:
+  municipio: "Cerdanyola del Vallès"
+  provincia: "Barcelona"
+  ccaa: "Cataluña"
+  direccion: "Parc de l'Alba, Cerdanyola del Vallès"
+  lat: 41.485618
+  lon: 2.1076426
+  precision: aproximada
+  fuentes: [src-1, src-2]
+
+estado: anunciado
+estado_detalle: >-
+  Primera entrada de Global Technical Realty en España. Parcela de 15.000 m² en
+  el Parc de l'Alba, en fase de planificación y sin calendario de desarrollo
+  publicado. Baxtel indica año previsto 2027.
+estado_fuentes: [src-1]
+
+potencia: []
+
+superficie_parcela_m2: 15000
+
+incertidumbres:
+  - campo: potencia
+    descripcion: "La potencia no ha sido anunciada según la fuente."
+    fuentes: [src-1]
+  - campo: estado
+    descripcion: >-
+      Fuente única (directorio especializado). No se ha localizado nota de prensa
+      de la compañía, licencia urbanística ni expediente ambiental.
+    fuentes: [src-1]
+
+confianza: baja
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://baxtel.com/data-center/gtr-barcelona"
+    titulo: "GTR: Barcelona Data Center"
+    editor: "Baxtel"
+    tipo: prensa_especializada
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      Address/Municipality: Parc de l'Alba, Cerdanyola del Vallès, Barcelona,
+      Spain ... 15,000 sqm plot ... Status: Planned ... Year Planned: 2027
+  - id: src-2
+    url: "https://nominatim.openstreetmap.org/search?q=Parc+de+l%27Alba%2C+Cerdanyola+del+Vall%C3%A8s&format=json&limit=3"
+    titulo: "Nominatim — geocodificación de Parc de l'Alba, Cerdanyola del Vallès"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      Parc de l'Alba, Cerdanyola del Vallès, Vallès Occidental, Barcelona,
+      Catalunya, España — lat 41.4856180, lon 2.1076426

@@ -1,0 +1,156 @@
+id: merlin-edged-ribera-baja-arasur
+nombre: "MERLIN Edged — Bilbao-Arasur Data Center Campus (Rivabellosa)"
+alias:
+  - "Bilbao-Arasur Data Center Campus"
+  - "Edged Bilbao-Arasur"
+  - "BIL01 / BIL02 / BIL03"
+  - "Centro de datos de Arasur"
+tipo: campus
+operador: "MERLIN Edged (MERLIN Properties / Edged Energy)"
+propietario: "MERLIN Properties SOCIMI"
+modelo: hyperscale
+
+ubicacion:
+  municipio: "Ribera Baja/Erribera Beitia"
+  provincia: "Álava"
+  ccaa: "País Vasco"
+  direccion: "Supermanzana 6, Plataforma Logística Arasur, Avenida Ribera Baja s/n, 01213 Rivabellosa"
+  lat: 42.7268
+  lon: -2.9175
+  precision: aproximada
+  fuentes: [src-2, src-3]
+
+estado: parcialmente_operativo
+estado_detalle: >-
+  Primer edificio (DC3 / BIL03) inaugurado el 3 de diciembre de 2024. El campus
+  se compone de tres edificios de centro de datos y uno administrativo. En agosto
+  de 2026 el operador inició la tramitación del permiso ambiental de un cuarto y
+  un quinto edificio, con entrada en operación prevista para 2030 y 2031.
+estado_fuentes: [src-1, src-2, src-4, src-5]
+fecha_puesta_en_servicio: "2024-12"
+
+potencia:
+  - tipo: it
+    valor_mw: 300
+    ambito: campus
+    referencia: "Capacidad potencial del campus una vez completado"
+    estado_asociado: anunciado
+    fecha_dato: "2024-12-03"
+    fuentes: [src-1, src-4]
+    nota: "La nota de prensa de MERLIN dice literalmente '300 MW IT'."
+  - tipo: it
+    valor_mw: 118
+    ambito: campus
+    referencia: "'118 MW of critical capacity' del campus según la ficha comercial de Edged"
+    estado_asociado: en_construccion
+    fecha_dato: "2026-08-29"
+    fuentes: [src-3]
+    nota: >-
+      La ficha de Edged habla de 'critical capacity'; se interpreta como capacidad
+      TI comercializable de los tres edificios actuales, no del campus final.
+  - tipo: it
+    valor_mw: 48
+    ambito: edificio
+    referencia: "BIL01 (build-to-suit)"
+    fecha_dato: "2026-08-29"
+    fuentes: [src-3]
+  - tipo: it
+    valor_mw: 48
+    ambito: edificio
+    referencia: "BIL02 (build-to-suit)"
+    fecha_dato: "2026-08-29"
+    fuentes: [src-3]
+  - tipo: it
+    valor_mw: 22
+    ambito: edificio
+    referencia: "BIL03"
+    fecha_dato: "2026-08-29"
+    fuentes: [src-3]
+
+fases:
+  - nombre: "Fase 1 — edificio DC3 / BIL03"
+    estado: operativo
+    fecha_puesta_en_servicio: "2024-12"
+    superficie_m2: 24000
+    fuentes: [src-1, src-4]
+  - nombre: "Fase 2 — dos edificios adicionales (BIL01 y BIL02)"
+    estado: en_construccion
+    fuentes: [src-1, src-5]
+  - nombre: "Fase 3 — tres edificios más"
+    estado: anunciado
+    fuentes: [src-1]
+  - nombre: "Edificios 4 y 5 (orientados a IA)"
+    estado: en_tramitacion
+    fecha_puesta_en_servicio: "2030"
+    fuentes: [src-5]
+
+superficie_parcela_m2: 150000
+inversion_anunciada_eur: 1700000000
+refrigeracion: >-
+  Sistema sin consumo de agua ('Advanced Waterless Cooling System', WUE
+  0,00 l/kWh según Edged); PUE garantizado de 1,15.
+enlaces_proyecto:
+  - "https://www.merlinproperties.com/activos/data-center-bilbao-arasur/"
+  - "https://www.edged.es/bilbao-arasur"
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      Conviven tres cifras: 300 MW IT como capacidad potencial del campus completo
+      (MERLIN, 2024), 118 MW de 'critical capacity' en la ficha comercial de Edged
+      para los tres edificios actuales, y '300 MW de capacidad repartidos en media
+      docena de edificios' en prensa de agosto de 2026. No se suman entre sí.
+    fuentes: [src-1, src-3, src-5]
+  - campo: inversion_anunciada_eur
+    descripcion: >-
+      Los 1.700 M€ citados por Crónica Vasca corresponden solo a los edificios 4 y 5,
+      no al conjunto del campus.
+    fuentes: [src-5]
+  - campo: estado
+    descripcion: >-
+      La prensa de agosto de 2026 indica que MERLIN descarta destinar el campus a una
+      de las gigafactorías europeas de IA, opción que se había planteado en enero de 2026.
+    fuentes: [src-5]
+
+confianza: alta
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.merlinproperties.com/en/press/merlin-properties-inaugura-el-primer-edificio-del-bilbao-arasur-data-center-campus/"
+    titulo: "MERLIN Properties inaugura el primer edificio del Bilbao-Arasur Data Center Campus"
+    editor: "MERLIN Properties SOCIMI"
+    tipo: empresa
+    fecha_publicacion: "2024-12-03"
+    fecha_consulta: "2026-08-29"
+    cita: "300 MW IT, la mayor proyectada hasta ahora por la Compañía"
+  - id: src-2
+    url: "https://www.merlinproperties.com/activos/data-center-bilbao-arasur/"
+    titulo: "Data Center Campus Bilbao Arasur"
+    editor: "MERLIN Properties SOCIMI"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: "Supermanzana 6, Plataforma Logística Arasur Avenida Ribera Baja S/N, 01213 Rivabellosa, Álava, España"
+  - id: src-3
+    url: "https://www.edged.es/bilbao-arasur"
+    titulo: "Edged Spain | Bilbao-Arasur"
+    editor: "Edged Energy"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: "118 MW of critical capacity at the Arasur industrial/logistics hub South of Bilbao"
+  - id: src-4
+    url: "https://www.krean.com/en/news/inauguration-first-merlin-edged-data-centre-arasur-araba"
+    titulo: "Inauguration of the first MERLIN-EDGED Data Centre in Arasur, Araba."
+    editor: "KREAN"
+    tipo: empresa
+    fecha_publicacion: "2024-12-10"
+    fecha_consulta: "2026-08-29"
+    cita: "plot of land of more than 150,000 m2 in the Arasur Logistics Platform (Rivabellosa, Araba)"
+  - id: src-5
+    url: "https://cronicavasca.elespanol.com/empresas/20260817/merlin-creara-empleos-nuevos-centros-datos-arasur/1003742781961_0.html"
+    titulo: "Merlin creará casi 500 empleos en sus dos nuevos centros de datos de Arasur"
+    editor: "Crónica Vasca (El Español)"
+    tipo: prensa_general
+    fecha_publicacion: "2026-08-17"
+    fecha_consulta: "2026-08-29"
+    cita: "Merlin acaba de iniciar la tramitación del permiso ambiental de estos dos nuevos edificios"

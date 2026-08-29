@@ -1,0 +1,104 @@
+id: templus-sevilla-pica
+nombre: "Templus SEV01 — Sevilla, Parque Empresarial PICA"
+alias:
+  - "SEV01"
+  - "Templus Sevilla"
+  - "Espacio Rack Sevilla"
+tipo: edificio
+operador: "Templus"
+modelo: colocation
+
+ubicacion:
+  municipio: "Sevilla"
+  provincia: "Sevilla"
+  ccaa: "Andalucía"
+  direccion: "Parque Empresarial PICA (Carretera Amarilla), dentro de la SE-30, Sevilla"
+  lat: 37.4046
+  lon: -5.9418
+  precision: aproximada
+  fuentes: [src-1, src-3]
+
+estado: operativo
+estado_detalle: >-
+  Instalación construida en 2001, renovada por completo en 2021 y adaptada a Tier III. Operada
+  anteriormente por Espacio Rack; adquirida por Templus, que la reabrió oficialmente el 27 de marzo
+  de 2025 tras duplicar su potencia. Segundo emplazamiento de Templus en Andalucía.
+estado_fuentes: [src-3, src-4]
+fecha_puesta_en_servicio: "2025-03-27"
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 1
+    ambito: edificio
+    referencia: "«Potencia total» tras la ampliación de 2025"
+    estado_asociado: operativo
+    fecha_dato: "2025-03-27"
+    fuentes: [src-1, src-3, src-4]
+    nota: "Las fuentes hablan de duplicar de 0,5 MW a 1 MW sin precisar el tipo de potencia."
+  - tipo: no_especificado
+    valor_mw: 0.8
+    ambito: edificio
+    referencia: "Potencia de SEV01 en el listado de la red europea de Templus"
+    estado_asociado: operativo
+    fecha_dato: "2026-08-29"
+    fuentes: [src-2]
+    nota: "Cifra discrepante respecto a la ficha individual del mismo operador y a la prensa."
+  - tipo: no_especificado
+    valor_mw: 0.5
+    ambito: edificio
+    referencia: "Potencia previa a la adquisición por Templus"
+    estado_asociado: operativo
+    fecha_dato: "2025-03-27"
+    fuentes: [src-4]
+
+superficie_construida_m2: 370
+refrigeracion: null
+enlaces_proyecto:
+  - "https://templus.com/data-centers/sevilla-sev01/"
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      La ficha del operador y la prensa dan 1 MW; la tabla de la red europea del mismo operador da
+      0,8 MW. Ninguna especifica el tipo de potencia. Se registran ambas.
+    fuentes: [src-1, src-2, src-3, src-4]
+  - campo: superficie_construida_m2
+    descripcion: >-
+      Los 370 m² corresponden a superficie TI según el operador, no a superficie construida total
+      del edificio, que no consta.
+    fuentes: [src-1, src-2]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://templus.com/data-centers/sevilla-sev01/"
+    titulo: "Data Center en Sevilla | Infraestructura Tier III — Templus"
+    editor: "Templus"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: "Infraestructura completamente renovada y adaptada a Tier III"
+  - id: src-2
+    url: "https://templus.com/data-centers/"
+    titulo: "Data Centers en Europa | Red de Infraestructura | Templus"
+    editor: "Templus"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: "Sevilla | SEV01 | 0.8 | 370"
+  - id: src-3
+    url: "https://www.computing.es/noticias/templus-inaugura-un-centro-de-datos-en-sevilla/"
+    titulo: "Templus inaugura un centro de datos en Sevilla"
+    editor: "Computing"
+    tipo: prensa_especializada
+    fecha_publicacion: "2025-03-27"
+    fecha_consulta: "2026-08-29"
+    cita: "renovada por completo en 2021, adecuándolo a certificación Tier III, la más alta que se concede a un data center en eficiencia y gestión"
+  - id: src-4
+    url: "https://www.datacentermarket.es/datacenter-infrastructure/templus-inaugura-su-data-center-de-sevilla/"
+    titulo: "Templus inaugura su data center de Sevilla"
+    editor: "Data Center Market"
+    tipo: prensa_especializada
+    fecha_publicacion: "2025-03-27"
+    fecha_consulta: "2026-08-29"
+    cita: "Hoy mismo, 27 de marzo, abrimos de manera oficial nuestras puertas"

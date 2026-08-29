@@ -1,0 +1,84 @@
+id: telxius-conil-estacion-cables-submarinos
+nombre: "Estación de cables submarinos de Conil — Telxius / Telefónica"
+alias:
+  - "CONIL CS"
+  - "El búnker de Conil"
+  - "Estación de amarre de Conil"
+tipo: edificio
+operador: "Telxius (Grupo Telefónica)"
+propietario: "Telefónica"
+modelo: corporativo
+
+ubicacion:
+  municipio: "Conil de la Frontera"
+  provincia: "Cádiz"
+  ccaa: "Andalucía"
+  direccion: "Paraje de Los Burreño, entre las playas de El Roqueo y Fuente del Gallo, Conil de la Frontera"
+  lat: 36.2770
+  lon: -6.0890
+  precision: municipio
+  fuentes: [src-1, src-2]
+
+estado: operativo
+estado_detalle: >-
+  Estación de amarre de cables submarinos alojada en un búnker de hormigón armado de la guerra fría
+  construido en los años sesenta y enterrado a unos 15 metros. Opera como estación de aterraje desde
+  los años setenta («CONIL CS») y alberga además un Centro de Operaciones de Red de Telxius desde el
+  que se supervisan las estaciones de amarre de Estepona, Canarias, Palma de Mallorca, norte de
+  África y los servicios de Telxius en América. NO es un centro de datos de colocation: es una
+  estación de aterraje con sala técnica y NOC.
+estado_fuentes: [src-1, src-2]
+
+conexion_electrica:
+  fuentes: []
+
+enlaces_proyecto: []
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      No consta potencia eléctrica de la instalación en ninguna fuente abierta consultada.
+      Campo potencia omitido.
+    fuentes: [src-1, src-2]
+  - campo: ubicacion
+    descripcion: >-
+      Las fuentes sitúan la estación cerca del paraje de Los Burreño y de las playas de El Roqueo y
+      Fuente del Gallo, pero no publican dirección ni parcela. Coordenadas de municipio.
+    fuentes: [src-2]
+  - campo: operador
+    descripcion: >-
+      El blog de Canal Sur atribuye la instalación a Telefónica; el Ayuntamiento de Conil describe
+      el Centro de Operaciones de Red como de Telxius, filial de Telefónica. Se registran ambos.
+    fuentes: [src-1, src-2]
+  - campo: tipo
+    descripcion: >-
+      Inclusión discutible en un inventario de centros de datos: es infraestructura de aterraje y
+      supervisión de cable submarino, no un CPD comercial. Se incluye por su papel de puerta de
+      entrada de tráfico hacia África y América.
+    fuentes: [src-1, src-2, src-3]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "http://blogs.canalsur.es/documentacionyarchivo/el-bunker-secreto-de-conil-visitas-a-la-estacion-de-cables-submarinos/"
+    titulo: "De búnker a estación de cables submarinos de Cónil"
+    editor: "Canal Sur — Archivo y Documentación"
+    tipo: prensa_general
+    fecha_consulta: "2026-08-29"
+    cita: "Pencan-8 que enlaza Conil de la Frontera y la isla de Tenerife"
+  - id: src-2
+    url: "https://www.conildelafrontera.es/noticias/659-el-ayuntamiento-de-conil-apuesta-por-las-telecomunicaciones-internacionales-establecidasen-el-municipio"
+    titulo: "El Ayuntamiento de Conil apuesta por las telecomunicaciones internacionales establecidas en el municipio"
+    editor: "Ayuntamiento de Conil de la Frontera"
+    tipo: oficial
+    fecha_consulta: "2026-08-29"
+    cita: "la totalidad de los servicios de Telxius en el continente americano, tales como Virginia Beach, Puerto San José, Lima"
+  - id: src-3
+    url: "https://www.xatakamovil.com/conectividad/mapa-cables-submarinos-que-dan-internet-a-espana-hay-dos-protagonistas-andalucia-tremendo-nudo-canarias"
+    titulo: "En el mapa de los cables submarinos que dan internet a España hay dos claros protagonistas"
+    editor: "Xataka Móvil"
+    tipo: prensa_especializada
+    fecha_consulta: "2026-08-29"
+    cita: "Cádiz es la gran anfitriona, con enlaces desde Rota, Conil de la Frontera, Chipiona, Tarifa, Zahara de los Atunes y La Línea de la Concepción."

@@ -1,0 +1,78 @@
+id: grupo-aire-malaga-pta-oasix
+nombre: "OASIX Málaga — Grupo Aire, Málaga TechPark"
+alias:
+  - "CPD de Grupo Aire en Málaga"
+  - "Aire Networks Málaga"
+  - "OASIX Málaga"
+tipo: edificio
+operador: "Grupo Aire (OASIX)"
+modelo: colocation
+
+ubicacion:
+  municipio: "Málaga"
+  provincia: "Málaga"
+  ccaa: "Andalucía"
+  direccion: "Málaga TechPark (Parque Tecnológico de Andalucía), Campanillas, Málaga"
+  lat: 36.7386
+  lon: -4.5589
+  precision: aproximada
+  fuentes: [src-1, src-2]
+
+estado: operativo
+estado_detalle: >-
+  Primer centro de proceso de datos de Grupo Aire en Málaga, inaugurado en mayo de 2022 en el
+  Málaga TechPark con una inversión de 2,5 millones de euros. Se suma a los CPD del grupo en
+  Talavera de la Reina y Elche.
+estado_fuentes: [src-1, src-2, src-3]
+fecha_puesta_en_servicio: "2022-05"
+
+fases:
+  - nombre: "Instalación inicial"
+    estado: operativo
+    fecha_puesta_en_servicio: "2022"
+    superficie_m2: 400
+    fuentes: [src-3]
+
+superficie_construida_m2: 400
+inversion_anunciada_eur: 2500000
+enlaces_proyecto: []
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      Ninguna fuente consultada, incluidas las notas del propio grupo y del parque tecnológico,
+      publica potencia eléctrica ni carga TI. Baxtel da más de 400 m² y más de 74 racks pero
+      oculta la potencia. Campo potencia omitido.
+    fuentes: [src-1, src-2, src-3]
+  - campo: ubicacion
+    descripcion: >-
+      Las fuentes solo sitúan el CPD «en Málaga TechPark», sin dirección de parcela. Las
+      coordenadas corresponden al recinto del parque.
+    fuentes: [src-1, src-2]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.pta.es/en/noticias/grupo-aire-invests-25-million-euros-in-its-new-dpc-in-malaga/"
+    titulo: "Grupo Aire invests 2.5 million euros in its new DPC in Malaga"
+    editor: "Parque Tecnológico de Andalucía (Málaga TechPark)"
+    tipo: oficial
+    fecha_consulta: "2026-08-29"
+    cita: "alrededor de 350 jobs en los próximos años"
+  - id: src-2
+    url: "https://www.vidaeconomica.com/2022/05/grupo-aire-en-malaga-data-center/"
+    titulo: "Así es el nuevo centro de datos en Málaga del Grupo Aire"
+    editor: "Vida Económica"
+    tipo: prensa_general
+    fecha_publicacion: "2022-05-02"
+    fecha_consulta: "2026-08-29"
+    cita: "Este CPD se convierte en un centro neurálgico tanto para los servicios cloud de próxima generación como para la conectividad a nivel nacional"
+  - id: src-3
+    url: "https://baxtel.com/data-center/grupo-aire-oasix-malaga"
+    titulo: "Grupo Aire OASIX: Malaga Data Center"
+    editor: "Baxtel"
+    tipo: consultora
+    fecha_consulta: "2026-08-29"
+    cita: "Spans over 400 m² and houses more than 74 racks"

@@ -1,0 +1,96 @@
+id: templus-hospitalet-bcn01
+nombre: "Templus BCN01 — L'Hospitalet de Llobregat (ex Cellnex)"
+alias:
+  - "Templus DC Barcelona BCN01"
+  - "Cellnex Barcelona"
+tipo: edificio
+operador: "Templus Data Centers"
+propietario: "Templus Data Centers"
+modelo: colocation
+
+ubicacion:
+  municipio: "L'Hospitalet de Llobregat"
+  provincia: "Barcelona"
+  ccaa: "Cataluña"
+  direccion: "Carrer de Pablo Iglesias 56, 08908 L'Hospitalet de Llobregat"
+  lat: 41.34862
+  lon: 2.129779
+  precision: exacta
+  fuentes: [src-1]
+
+estado: operativo
+estado_detalle: >-
+  Comprado por Templus a Cellnex en febrero de 2025 y ampliado de 1,7 a 6 MW.
+  Desde el 28 de mayo de 2026 se comercializa junto al edificio BCN02 (a unos
+  500-750 m) como un único campus de 10 MW.
+estado_fuentes: [src-2]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 1.7
+    ambito: edificio
+    referencia: "Potencia previa a la ampliación de Templus"
+    estado_asociado: operativo
+    fecha_dato: "2025-02"
+    fuentes: [src-2]
+  - tipo: no_especificado
+    valor_mw: 6
+    ambito: edificio
+    referencia: "Potencia tras la ampliación"
+    estado_asociado: operativo
+    fecha_dato: "2026-05-28"
+    fuentes: [src-2]
+    nota: >-
+      La fuente dice "cuya potencia se ha ampliado de 1,7 a 6 MW" sin precisar
+      tipo de potencia.
+
+refrigeracion: >-
+  Templus declara estándar Tier III, energía 100% renovable y refrigeración
+  líquida para cargas de alta densidad en el campus.
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      La fuente atribuye 6 MW al "centro comprado a Cellnex" y 4 MW al "adquirido
+      a AtlasEdge", pero no nombra los edificios BCN01/BCN02. La asignación aquí
+      se apoya en que el activo de AtlasEdge en Barcelona es el antiguo "Colt
+      Barcelona / Barcelona Steel" de Carrer de l'Acer, que corresponde a BCN02.
+    fuentes: [src-2, src-3]
+  - campo: ubicacion
+    descripcion: >-
+      Data Center Market sitúa los dos edificios del campus en L'Hospitalet de
+      Llobregat; DCD y otras cabeceras lo sitúan en la Zona Franca de Barcelona.
+      PeeringDB da BCN01 en L'Hospitalet (08908) y BCN02 en Barcelona (08038).
+    fuentes: [src-1, src-2]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.peeringdb.com/api/fac?name__contains=Barcelona"
+    titulo: "PeeringDB — Facilities API, consulta 'Barcelona'"
+    editor: "PeeringDB"
+    tipo: asociacion
+    fecha_consulta: "2026-08-29"
+    cita: "Templus DC Barcelona BCN01 | c/ Pablo iglesias, 56 | L'Hospitalet de Llobregat | 08908 | 41.34862 | 2.129779"
+  - id: src-2
+    url: "https://www.datacentermarket.es/datacenter-infrastructure/templus-impulsa-su-presencia-en-cataluna-con-un-campus-de-10-mw-en-barcelona/"
+    titulo: "Templus impulsa su presencia en Cataluña con un campus de 10 MW en Barcelona"
+    editor: "Data Center Market"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-05-28"
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      el centro comprado a Cellnex en febrero de 2025, cuya potencia se ha
+      ampliado de 1,7 a 6 MW, y el adquirido a AtlasEdge en diciembre, que
+      alcanza ya los 4 MW.
+  - id: src-3
+    url: "https://baxtel.com/data-center/atlasedge-barcelona"
+    titulo: "AtlasEdge Barcelona Data Center"
+    editor: "Baxtel"
+    tipo: prensa_especializada
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      Former Names: Colt Barcelona; Barcelona Steel. Address: Carrer de l'Acer,
+      Zona Franca district, Barcelona, Spain.

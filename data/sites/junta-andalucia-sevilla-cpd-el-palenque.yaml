@@ -1,0 +1,94 @@
+id: junta-andalucia-sevilla-cpd-el-palenque
+nombre: "Centro de Proceso de Datos 'El Palenque' — Junta de Andalucía, Isla de la Cartuja"
+alias:
+  - "CPD El Palenque"
+  - "CPD de la Junta de Andalucía en La Cartuja"
+tipo: edificio
+operador: "Agencia Digital de Andalucía (ADA) / Sandetel"
+propietario: "Junta de Andalucía"
+modelo: corporativo
+
+ubicacion:
+  municipio: "Sevilla"
+  provincia: "Sevilla"
+  ccaa: "Andalucía"
+  direccion: "Solar del antiguo Palenque, Isla de la Cartuja (PCT Cartuja / Sevilla TechPark), Sevilla"
+  lat: 37.4083
+  lon: -6.0057
+  precision: aproximada
+  fuentes: [src-1, src-2]
+
+estado: en_construccion
+estado_detalle: >-
+  Obra licitada por la Agencia Digital de Andalucía y Sandetel en el DOUE; construcción iniciada en
+  el segundo semestre de 2024 sobre el solar del antiguo Palenque de la Isla de la Cartuja, con
+  finalización prevista en el primer semestre de 2026. No se ha localizado confirmación pública de
+  la puesta en servicio a fecha de verificación.
+estado_fuentes: [src-1, src-2, src-3]
+
+fases:
+  - nombre: "Módulo CPD"
+    estado: en_construccion
+    superficie_m2: 1900
+    fuentes: [src-1, src-3]
+  - nombre: "Módulo de Operaciones"
+    estado: en_construccion
+    fuentes: [src-1, src-3]
+
+superficie_parcela_m2: 5150
+superficie_construida_m2: 6240
+inversion_anunciada_eur: 34100000
+refrigeracion: >-
+  Refrigeración por gas mediante expansión directa, en lugar del sistema tradicional basado en agua.
+  Autoconsumo con plataforma fotovoltaica de más de 20.000 m².
+enlaces_proyecto: []
+
+incertidumbres:
+  - campo: inversion_anunciada_eur
+    descripcion: >-
+      La Junta y Data Center Market cifran el presupuesto en 34,1 millones de euros cofinanciados
+      con fondos Next Generation; la nota de Sevilla TechPark habla de 35 millones. Se registra
+      la cifra oficial de 34,1 millones.
+    fuentes: [src-1, src-2, src-3]
+  - campo: superficie_construida_m2
+    descripcion: >-
+      Sevilla TechPark da 5.150 m² de superficie con 6.240 m² de edificabilidad. La nota de la Junta
+      y Data Center Market desglosan 1.900 m² de sala de equipos más 2.084 m² de infraestructura en
+      el módulo CPD, más un módulo de operaciones de tres plantas para unos 140 puestos. Las cifras
+      no son directamente conciliables.
+    fuentes: [src-1, src-2, src-3]
+  - campo: potencia
+    descripcion: >-
+      Ninguna fuente consultada publica potencia eléctrica ni carga TI del CPD. Campo omitido.
+    fuentes: [src-1, src-2, src-3]
+  - campo: estado
+    descripcion: >-
+      La finalización estaba prevista para el primer semestre de 2026 pero no se ha encontrado
+      nota de inauguración ni de puesta en servicio. Se mantiene en_construccion.
+    fuentes: [src-1, src-2]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.juntadeandalucia.es/presidencia/portavoz/gobiernoaldia/191703/CentrodeProcesodeDatos/CPD/licitacion/obra/nube/icloud/Palenque/IsladelaCartuja/Sevilla/ConsejeriadelaPresidencia/Interior/DialogoSocialySimplificacionAdministrativa"
+    titulo: "La Junta licita la obra del Centro de Proceso de Datos, que arranca en el segundo semestre del año"
+    editor: "Junta de Andalucía — Portavoz del Gobierno Andaluz"
+    tipo: oficial
+    fecha_consulta: "2026-08-29"
+    cita: "Sistema de refrigeración por gas, mediante expansión directa, en lugar de refrigeración basada en el uso de agua"
+  - id: src-2
+    url: "https://sevillatechpark.es/en/arrancan-las-obras-del-nuevo-cerebro-tecnologico-de-la-junta-el-centro-de-proceso-de-datos-cpd-el-palenque/"
+    titulo: "Arrancan las obras del nuevo 'cerebro' tecnológico de la Junta, el Centro de Proceso de Datos (CPD) 'El Palenque'"
+    editor: "Sevilla TechPark (PCT Cartuja)"
+    tipo: oficial
+    fecha_consulta: "2026-08-29"
+    cita: "sistema de autoconsumo fotovoltaico de más de 20.000 metros cuadrados, que permitirá cubrir al menos el 50% de su demanda energética con fuentes renovables"
+  - id: src-3
+    url: "https://www.datacentermarket.es/news/la-junta-de-andalucia-albergara-un-nuevo-cpd-en-la-cartuja-de-sevilla/"
+    titulo: "La Junta de Andalucía albergará un nuevo CPD en La Cartuja de Sevilla"
+    editor: "Data Center Market"
+    tipo: prensa_especializada
+    fecha_consulta: "2026-08-29"
+    cita: "1.900 m² para equipos + 2.084 m² infraestructura"

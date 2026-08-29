@@ -1,0 +1,56 @@
+id: equinix-madrid-md1
+nombre: "Equinix Madrid MD1"
+alias:
+  - "Equinix MD1 - Madrid"
+  - "Itconic Madrid"
+tipo: edificio
+operador: "Equinix"
+propietario: "Equinix"
+modelo: colocation
+
+ubicacion:
+  municipio: "Madrid"
+  provincia: "Madrid"
+  ccaa: "Comunidad de Madrid"
+  direccion: "Calle Isabel Colbrand 6-8, 1ª planta, 28050 Madrid (distrito de Fuencarral-El Pardo)"
+  lat: 40.513497
+  lon: -3.671891
+  precision: exacta
+  fuentes: [src-1, src-2]
+
+estado: operativo
+estado_detalle: "IBX en servicio; Equinix entró en España en 2017 con la compra de Itconic."
+estado_fuentes: [src-1]
+
+potencia: []
+
+superficie_construida_m2: 1736
+refrigeracion: "Redundancia de refrigeración N+1 (ficha técnica Equinix)."
+enlaces_proyecto:
+  - "https://www.equinix.com/data-centers/europe-colocation/spain-colocation/madrid-data-centers/md1"
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      Equinix no publica capacidad eléctrica de MD1 (la ficha solo indica densidad mínima de
+      armario de 2 kVA y redundancia N+1). No se ha localizado una cifra de MW trazable.
+    fuentes: [src-1]
+
+confianza: alta
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.equinix.com/data-centers/europe-colocation/spain-colocation/madrid-data-centers/md1"
+    titulo: "Madrid MD1"
+    editor: "Equinix"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: "Address Calle Isabel Colbrand, 6-8 1st floor 28050 Madrid Spain ... Colocation Space 1,736 m 2 (18,686 ft 2 )"
+  - id: src-2
+    url: "https://www.peeringdb.com/fac/179"
+    titulo: "Equinix MD1 - Madrid"
+    editor: "PeeringDB"
+    tipo: asociacion
+    fecha_consulta: "2026-08-29"
+    cita: "Equinix MD1 - Madrid | Calle Isabel Colbrand 6-8 | 28050 Madrid"

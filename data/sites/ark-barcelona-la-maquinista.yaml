@@ -1,0 +1,57 @@
+id: ark-barcelona-la-maquinista
+nombre: "Ark Data Centres Barcelona — La Maquinista (Sant Andreu)"
+alias:
+  - "Ark DC Barcelona"
+tipo: edificio
+operador: "Ark Data Centres"
+propietario: "Ark Data Centres"
+modelo: mayorista
+
+ubicacion:
+  municipio: "Barcelona"
+  provincia: "Barcelona"
+  ccaa: "Cataluña"
+  direccion: "Carrer de Valentí Iglesias, zona industrial de La Maquinista, distrito de Sant Andreu, Barcelona"
+  precision: aproximada
+  fuentes: [src-1]
+
+estado: anunciado
+estado_detalle: >-
+  Entrada de Ark Data Centres en el mercado español. Suelo industrial en Sant
+  Andreu obtenido con apoyo de Catalonia Trade & Investment (ACCIÓ) y el
+  Ajuntament de Barcelona. Baxtel indica año previsto 2029.
+estado_fuentes: [src-1]
+
+potencia: []
+
+superficie_parcela_m2: 30000
+
+incertidumbres:
+  - campo: potencia
+    descripcion: "No se ha publicado ninguna cifra de potencia."
+    fuentes: [src-1]
+  - campo: estado
+    descripcion: >-
+      Fuente única (directorio especializado). No se ha localizado el expediente
+      urbanístico municipal ni una nota de prensa oficial que lo confirme.
+    fuentes: [src-1]
+  - campo: ubicacion
+    descripcion: >-
+      No se han obtenido coordenadas de fuente; la localización se conoce solo a
+      nivel de calle y polígono.
+    fuentes: [src-1]
+
+confianza: baja
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://baxtel.com/data-center/ark-dc-barcelona"
+    titulo: "Ark DC: Barcelona"
+    editor: "Baxtel"
+    tipo: prensa_especializada
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      developing a new data center in the La Maquinista industrial area of
+      Barcelona, marking its entry into the Spanish market ... Approximately
+      30,000 square meters ... Year planned for 2029

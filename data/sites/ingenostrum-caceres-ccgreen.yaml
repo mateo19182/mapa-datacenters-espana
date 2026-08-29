@@ -1,0 +1,142 @@
+id: ingenostrum-caceres-ccgreen
+nombre: "Campus Data Center CC Green — Cáceres (ecopolígono Las Capellanías)"
+alias:
+  - "CCGreen"
+  - "Ecopolígono CCGreen"
+tipo: campus
+operador: "Ingenostrum"
+propietario: "Ingenostrum, S.L. (Nostrum Group)"
+modelo: mayorista
+
+ubicacion:
+  municipio: "Cáceres"
+  provincia: "Cáceres"
+  ccaa: "Extremadura"
+  direccion: "Polígono industrial Las Capellanías / ampliación Capellanías II"
+  lat: 39.4862979
+  lon: -6.419025
+  precision: aproximada
+  fuentes: [src-regiondigital, src-osm]
+
+estado: en_tramitacion
+estado_detalle: >-
+  Declarado Proyecto Empresarial de Interés Autonómico (PREMIA) por el Consejo de
+  Gobierno de Extremadura en agosto de 2024 y con visto bueno ambiental de la
+  Dirección General de Sostenibilidad en octubre de 2024. El proyecto pasa a
+  integrarse en la ampliación Capellanías II, cuya urbanización se preveía
+  completar a mediados de 2026, con operación del centro de datos en torno a
+  2028. A esa fecha tenía adjudicados 34 MW frente a los 300 MW que necesita.
+estado_fuentes: [src-regiondigital]
+
+potencia:
+  - tipo: it
+    valor_mw: 70
+    ambito: fase
+    referencia: "Primera fase del Campus Data Center CCGreen"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2023"
+    fuentes: [src-ti]
+    nota: "La fuente dice literalmente \"un centro de datos de 70 MW IT\"."
+  - tipo: no_especificado
+    valor_mw: 300
+    ambito: campus
+    referencia: "Potencia que necesita el centro de proceso de datos a pleno desarrollo"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2026"
+    fuentes: [src-regiondigital]
+    nota: >-
+      La fuente dice "este centro de procesamiento de datos necesita unos 300 MW"
+      sin precisar el tipo.
+  - tipo: conexion_red
+    valor_mw: 34
+    ambito: campus
+    referencia: "Potencia adjudicada"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2026"
+    fuentes: [src-regiondigital]
+    nota: "La fuente dice \"tienen adjudicados 34 megavatios (MW)\"."
+
+fases:
+  - nombre: "Fase 1 — 70 MW IT"
+    estado: en_tramitacion
+    nota: "Prevista inicialmente entre 2023 y 2025 según la memoria del proyecto."
+    fuentes: [src-ti]
+  - nombre: "Fase 2 — 40 MW"
+    estado: anunciado
+    fecha_puesta_en_servicio: "2027"
+    fuentes: [src-ti]
+  - nombre: "Fase posterior — 40 MW"
+    estado: anunciado
+    fecha_puesta_en_servicio: "2028"
+    fuentes: [src-ti]
+
+superficie_parcela_m2: 2000000
+
+incertidumbres:
+  - campo: inversion_anunciada_eur
+    descripcion: >-
+      Las cifras publicadas discrepan: 850 millones de euros en presentaciones
+      iniciales, 1.300 millones "a lo largo de varias fases, que se desarrollarán
+      desde 2023 hasta 2030" y unos 1.000 millones en 2026. No se registra ninguna
+      como dato firme.
+    fuentes: [src-ti, src-regiondigital]
+  - campo: potencia
+    descripcion: >-
+      Coexisten 70 MW IT (primera fase), 300 MW de necesidad total sin tipificar
+      y 34 MW efectivamente adjudicados. El desfase entre lo adjudicado y lo
+      necesario es el principal riesgo del proyecto.
+    fuentes: [src-ti, src-regiondigital]
+  - campo: superficie_parcela_m2
+    descripcion: >-
+      La superficie del ecopolígono se cita entre 200 y 300 hectáreas según la
+      fuente y el año; se registra la cifra de 200 hectáreas de la memoria más
+      reciente consultada.
+    fuentes: [src-ti]
+  - campo: operador
+    descripcion: >-
+      El 7 de mayo de 2026 IREN Limited anunció un acuerdo para adquirir
+      Ingenostrum, S.L. (Nostrum Group), pendiente de condiciones de cierre.
+    fuentes: [src-iren]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-ti
+    url: "https://www.tecnicaindustrial.es/ecopoligono-ccgreen-caceres-acogera-el-primer-campus-data-center-neutro-en-carbono/"
+    titulo: "Ecopolígono CCGreen: Cáceres acogerá el primer Campus Data Center neutro en carbono"
+    editor: "Técnica Industrial"
+    tipo: prensa_especializada
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      Campus Data Center CCGreen, un centro de datos de 70 MW IT [...] parque
+      fotovoltaico de 520 MW (de los cuales 120 MW serán para autoconsumo).
+  - id: src-regiondigital
+    url: "https://www.regiondigital.com/noticias/caceres-y-provincia/414582-el-centro-de-datos-cc-green-sera-el-motor-de-la-ampliacion-de-capellanias-ii-en-caceres.html"
+    titulo: "El centro de datos CC Green será el «motor» de la ampliación de Capellanías II en Cáceres"
+    editor: "Región Digital"
+    tipo: prensa_general
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      De momento, tienen adjudicados 34 megavatios (MW) pero este centro de
+      procesamiento de datos necesita unos 300 MW.
+  - id: src-iren
+    url: "https://iren.com/resources/news/nostrum-announcement"
+    titulo: "IREN to acquire Nostrum Group"
+    editor: "IREN Limited"
+    tipo: empresa
+    fecha_publicacion: "2026-05-07"
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      IREN Limited has entered into an agreement to acquire Ingenostrum, S.L.
+      (Nostrum Group) [...] approximately 490MW of secured, grid-connected power
+      in Spain.
+  - id: src-osm
+    url: "https://nominatim.openstreetmap.org/search?q=Pol%C3%ADgono+Industrial+Las+Capellan%C3%ADas%2C+C%C3%A1ceres&format=json&limit=1"
+    titulo: "Nominatim — Polígono Industrial Las Capellanías, Cáceres"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      Polígono Industrial Las Capellanías, Industrial Las Capellanías, Cáceres,
+      Extremadura, España — lat 39.4862979, lon -6.4190250

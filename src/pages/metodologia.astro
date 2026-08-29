@@ -1,0 +1,268 @@
+---
+import Base from '../layouts/Base.astro'
+import resumen from '../data/resumen.json'
+import sitios from '../data/sitios.json'
+import {
+  ESTADO_ETIQUETA,
+  ORDEN_ESTADOS,
+  POTENCIA_ETIQUETA,
+  POTENCIA_DESCRIPCION,
+  PRECISION_ETIQUETA,
+  CONFIANZA_ETIQUETA,
+  CONFIANZA_DESCRIPCION,
+  numero,
+} from '../lib/etiquetas.js'
+
+const precisiones = ['exacta', 'aproximada', 'municipio', 'desconocida'].map((p) => ({
+  clave: p,
+  n: sitios.filter((s) => s.ubicacion.precision === p).length,
+}))
+
+const conPotencia = (tipo) => sitios.filter((s) => s.resumen_potencia[tipo]).length
+---
+
+<Base
+  titulo="Metodología"
+  descripcion="Cómo se construye este registro: reglas de datos, tipos de potencia, estados, niveles de confianza y limitaciones conocidas."
+>
+  <div class="contenedor-estrecho texto">
+    <h1>Metodología</h1>
+    <p class="sumario">
+      Este registro documenta centros de datos en España peninsular y su relación con la red
+      eléctrica de transporte. Su criterio no es la exhaustividad ni la actualidad inmediata, sino
+      que cada dato pueda rastrearse hasta una fuente concreta y que lo desconocido se vea como
+      desconocido.
+    </p>
+
+    <h2>Las cinco reglas</h2>
+    <ol class="reglas">
+      <li>
+        <strong>Nada sin fuente.</strong> Toda cifra de potencia, estado, coordenada o fecha lleva
+        asociada al menos una referencia con URL, editor y, cuando ha sido posible, la cita literal
+        que la sostiene. La ficha de cada proyecto enumera esas referencias y enlaza cada dato con
+        su número.
+      </li>
+      <li>
+        <strong>No se rellenan huecos.</strong> Cuando una magnitud no consta, el campo queda vacío
+        y así se muestra. No se estima por analogía con proyectos parecidos, no se interpola y no se
+        deduce del tamaño de la parcela ni de la inversión anunciada.
+      </li>
+      <li>
+        <strong>No se mezclan tipos de potencia.</strong> Los MW IT, los MW de conexión a red y la
+        potencia instalada son magnitudes distintas. No se suman entre sí y no se convierte de una a
+        otra aplicando un PUE supuesto.
+      </li>
+      <li>
+        <strong>Las contradicciones se conservan.</strong> Cuando dos fuentes fiables dan cifras
+        distintas, se registran ambas y la discrepancia aparece señalada en la ficha. Elegir una en
+        silencio produciría un dato limpio y falso.
+      </li>
+      <li>
+        <strong>Un emplazamiento, un registro.</strong> Los campus con varios edificios son una sola
+        entrada con sus fases dentro. Los renombrados por adquisición
+        (Interxion a Digital Realty, Itconic a Equinix, y otros) se reconcilian mediante alias, no
+        duplicando entradas.
+      </li>
+    </ol>
+
+    <h2>Tipos de potencia</h2>
+    <p>
+      Es la distinción más importante del conjunto y la que más se maltrata en la cobertura
+      periodística. Una nota que anuncia «un centro de datos de 200 MW» rara vez aclara a qué se
+      refiere, y la diferencia entre una lectura y otra es de casi el doble.
+    </p>
+    <dl class="glosario">
+      {['it', 'conexion_red', 'instalada_total', 'no_especificado'].map((t) => (
+        <>
+          <dt>{POTENCIA_ETIQUETA[t]}</dt>
+          <dd>
+            {POTENCIA_DESCRIPCION[t]}
+            <span class="dato-glosario">{conPotencia(t)} de {sitios.length} emplazamientos publican esta magnitud</span>
+          </dd>
+        </>
+      ))}
+    </dl>
+    <p>
+      Los totales que aparecen en las vistas por compañía y por región suman solo los
+      emplazamientos que publican esa magnitud concreta, e indican siempre cuántos son. Un total sin
+      su cobertura invita a comparar carteras que no son comparables.
+    </p>
+
+    <h2>Ámbito: campus, edificio y fase</h2>
+    <p>
+      Una cifra de potencia puede referirse a un campus entero, a un edificio o a una fase concreta.
+      El registro guarda ese ámbito junto al valor. Al agregar, si existe una cifra publicada para el
+      conjunto, esa manda y no se le suman las fases, porque el dato global ya las incluye. Solo
+      cuando no hay cifra de conjunto se suman las fases entre sí. Es la regla que evita contar dos
+      veces la misma potencia.
+    </p>
+
+    <h2>Estados</h2>
+    <p>
+      Un proyecto anunciado y uno en construcción no son lo mismo, y confundirlos infla las cifras
+      de capacidad futura. Se usan diez estados:
+    </p>
+    <ul class="estados">
+      {ORDEN_ESTADOS.map((e) => (
+        <li>
+          <span class={`etiqueta estado-${e}`}><span class="punto"></span>{ESTADO_ETIQUETA[e]}</span>
+          <span class="silencio pequeno">{sitios.filter((s) => s.estado === e).length}</span>
+        </li>
+      ))}
+    </ul>
+    <p>
+      Cada ficha añade además un detalle en prosa del estado, porque un proyecto puede tener una
+      fase operativa, otra en obras y una tercera solo anunciada al mismo tiempo.
+    </p>
+
+    <h2>Coordenadas</h2>
+    <p>
+      La precisión de la ubicación se declara explícitamente. Cuando solo se conoce el municipio, el
+      punto se sitúa en su centro y así queda marcado: el mapa no debe sugerir una parcela concreta
+      que las fuentes no acreditan.
+    </p>
+    <div class="tabla-envoltorio">
+      <table>
+        <thead><tr><th>Precisión</th><th>Significado</th><th class="num">Emplazamientos</th></tr></thead>
+        <tbody>
+          {precisiones.map((p) => (
+            <tr>
+              <td>{p.clave}</td>
+              <td>{PRECISION_ETIQUETA[p.clave]}</td>
+              <td class="num">{p.n}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Confianza</h2>
+    <p>
+      Cada ficha lleva un nivel de confianza que resume la calidad del respaldo documental. No mide
+      la importancia del proyecto, sino cuánto habría que fiarse de lo que aquí se afirma.
+    </p>
+    <dl class="glosario">
+      {['alta', 'media', 'baja'].map((c) => (
+        <>
+          <dt class={`confianza-${c}`}>{CONFIANZA_ETIQUETA[c]}</dt>
+          <dd>
+            {CONFIANZA_DESCRIPCION[c]}
+            <span class="dato-glosario">{resumen.por_confianza[c]} emplazamientos</span>
+          </dd>
+        </>
+      ))}
+    </dl>
+
+    <h2>La capa eléctrica</h2>
+    <p>
+      El trazado de la red de 220 y 400 kV procede de OpenStreetMap (licencia ODbL), descargado y
+      cacheado en el repositorio. Es de completitud variable y no sustituye a la cartografía oficial
+      de Red Eléctrica; sirve para situar los emplazamientos respecto a los ejes de transporte, no
+      para análisis de red.
+    </p>
+    <p>
+      Las subestaciones y nudos, las actuaciones de red planificadas y la capacidad de acceso para
+      demanda se registran a mano desde fuentes oficiales, con su fecha. La capacidad de acceso
+      caduca en meses: sin fecha, esa cifra no significa nada. Los detalles están en la
+      <a href="/red-electrica">sección de red eléctrica</a>.
+    </p>
+
+    <h2>Lo que este registro no es</h2>
+    <ul>
+      <li>
+        <strong>No es un censo completo.</strong> Recoge lo documentado públicamente. Los CPD
+        corporativos pequeños y las salas técnicas de operadores quedan casi todos fuera.
+      </li>
+      <li>
+        <strong>No es una previsión.</strong> Los proyectos anunciados se registran como anunciados.
+        Una solicitud de acceso a la red no es un centro de datos, y una parte de lo anunciado no se
+        construirá nunca.
+      </li>
+      <li>
+        <strong>No es análisis de mercado ni de inversión.</strong> No hay valoraciones, ni
+        estimaciones de rentabilidad, ni recomendaciones. Las cifras de inversión que aparecen son
+        las anunciadas públicamente, citadas como declaración y no como hecho verificado.
+      </li>
+      <li>
+        <strong>No mide consumo real.</strong> La potencia contratada o instalada no es la energía
+        consumida. Salvo que una fuente publique consumo, ese dato no aparece.
+      </li>
+    </ul>
+
+    <h2>Actualización</h2>
+    <p>
+      El conjunto vive en ficheros YAML legibles, uno por emplazamiento, dentro de un repositorio
+      público. Un proceso programado revisa periódicamente las fuentes en busca de cambios, valida
+      el resultado y abre una propuesta de modificación para revisión humana. Ningún dato existente
+      se sobrescribe automáticamente: cuando la información nueva contradice la registrada, el
+      conflicto se marca y se resuelve a mano. Los detalles del proceso están en
+      <a href="/datos">la sección de datos</a>.
+    </p>
+    <p class="pequeno silencio">
+      Última generación del conjunto: {resumen.generado}. {numero(resumen.total_emplazamientos)} emplazamientos,
+      {' '}{numero(resumen.fuentes_distintas)} fuentes, {resumen.emplazamientos_con_incertidumbres} fichas con
+      incertidumbres documentadas.
+    </p>
+  </div>
+</Base>
+
+<style>
+  .texto {
+    padding-bottom: 3rem;
+  }
+
+  .texto p,
+  .texto li {
+    max-width: 42rem;
+  }
+
+  .reglas {
+    padding-left: 1.2rem;
+  }
+
+  .reglas li {
+    margin-bottom: 0.8rem;
+  }
+
+  .glosario {
+    margin: 1rem 0 1.5rem;
+  }
+
+  .glosario dt {
+    font-weight: 600;
+    font-size: 0.92rem;
+    margin-top: 0.9rem;
+  }
+
+  .glosario dd {
+    margin: 0.15rem 0 0;
+    color: var(--tinta-2);
+    font-size: 0.93rem;
+    max-width: 42rem;
+  }
+
+  .dato-glosario {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--tinta-3);
+    margin-top: 0.2rem;
+  }
+
+  .estados {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    gap: 0.35rem 1rem;
+    margin: 1rem 0 1.5rem;
+  }
+
+  .estados li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    border-bottom: 1px solid var(--borde);
+    padding-bottom: 0.25rem;
+  }
+</style>

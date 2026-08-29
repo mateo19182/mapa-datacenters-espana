@@ -1,0 +1,233 @@
+---
+import Base from '../../layouts/Base.astro'
+import Cartera from '../../components/Cartera.astro'
+import regiones from '../../data/regiones.json'
+import sitios from '../../data/sitios.json'
+import red from '../../data/red.json'
+import renovables from '../../data/renovables.json'
+import { ESTADO_ETIQUETA, ORDEN_ESTADOS, numero, slug as aSlug } from '../../lib/etiquetas.js'
+
+export function getStaticPaths() {
+  return regiones.map((r) => ({ params: { slug: r.slug }, props: { region: r } }))
+}
+
+const { region: r } = Astro.props
+const propios = sitios
+  .filter((s) => r.sitios.includes(s.id))
+  .sort((a, b) => ORDEN_ESTADOS.indexOf(a.estado) - ORDEN_ESTADOS.indexOf(b.estado))
+
+const nodos = red.filter((n) => n.ccaa === r.nombre)
+const activos = renovables.filter((a) => a.ccaa === r.nombre)
+
+const porProvincia = [...new Set(propios.map((s) => s.ubicacion.provincia).filter(Boolean))]
+  .map((p) => ({ nombre: p, sitios: propios.filter((s) => s.ubicacion.provincia === p) }))
+  .sort((a, b) => b.sitios.length - a.sitios.length)
+
+const porOperador = [...new Set(propios.map((s) => s.operador).filter(Boolean))]
+  .map((o) => ({ nombre: o, n: propios.filter((s) => s.operador === o).length }))
+  .sort((a, b) => b.n - a.n)
+
+const centro = (() => {
+  const conCoord = propios.filter((s) => s.ubicacion.lat != null)
+  if (!conCoord.length) return null
+  const lat = conCoord.reduce((a, s) => a + s.ubicacion.lat, 0) / conCoord.length
+  const lon = conCoord.reduce((a, s) => a + s.ubicacion.lon, 0) / conCoord.length
+  return { lat, lon }
+})()
+---
+
+<Base
+  titulo={r.nombre}
+  descripcion={`Centros de datos registrados en ${r.nombre}: emplazamientos, potencia declarada e infraestructura eléctrica asociada.`}
+>
+  <div class="contenedor">
+    <p class="migas"><a href="/regiones">Regiones</a></p>
+    <h1>{r.nombre}</h1>
+    <p class="sumario">
+      {r.emplazamientos} {r.emplazamientos === 1 ? 'emplazamiento registrado' : 'emplazamientos registrados'},
+      de {porOperador.length} {porOperador.length === 1 ? 'operador' : 'operadores'} distintos, repartidos
+      por {porProvincia.length} {porProvincia.length === 1 ? 'provincia' : 'provincias'}.
+    </p>
+
+    <Cartera cartera={r} />
+
+    <div class="columnas">
+      <section>
+        <h2>Por provincia</h2>
+        <ul class="barras">
+          {porProvincia.map((p) => (
+            <li>
+              <span class="etiqueta-barra">{p.nombre}</span>
+              <span class="pista">
+                {ORDEN_ESTADOS.filter((e) => p.sitios.some((s) => s.estado === e)).map((e) => (
+                  <span
+                    class={`segmento estado-${e}`}
+                    style={`flex:${p.sitios.filter((s) => s.estado === e).length}`}
+                    title={`${p.sitios.filter((s) => s.estado === e).length} ${ESTADO_ETIQUETA[e]}`}
+                  ></span>
+                ))}
+              </span>
+              <span class="num-barra">{p.sitios.length}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section>
+        <h2>Por operador</h2>
+        <ul class="barras">
+          {porOperador.slice(0, 12).map((o) => (
+            <li>
+              <span class="etiqueta-barra"><a href={`/compania/${aSlug(o.nombre)}`}>{o.nombre}</a></span>
+              <span class="pista">
+                <span class="segmento estado-operativo" style={`flex:${o.n}`}></span>
+                <span style={`flex:${Math.max(porOperador[0].n - o.n, 0)}`}></span>
+              </span>
+              <span class="num-barra">{o.n}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </div>
+
+    <h2>Emplazamientos</h2>
+    <div class="tabla-envoltorio">
+      <table>
+        <thead>
+          <tr>
+            <th>Emplazamiento</th>
+            <th>Operador</th>
+            <th>Municipio</th>
+            <th>Estado</th>
+            <th class="num">MW IT</th>
+            <th class="num">MW conexión</th>
+            <th class="num">MW s/tipo</th>
+          </tr>
+        </thead>
+        <tbody>
+          {propios.map((s) => (
+            <tr>
+              <td><a href={`/proyecto/${s.id}`}>{s.nombre}</a></td>
+              <td>{s.operador ? <a href={`/compania/${aSlug(s.operador)}`}>{s.operador}</a> : <span class="silencio">—</span>}</td>
+              <td>{s.ubicacion.municipio ?? <span class="silencio">—</span>}</td>
+              <td><span class={`etiqueta estado-${s.estado}`}><span class="punto"></span>{ESTADO_ETIQUETA[s.estado]}</span></td>
+              <td class="num">{numero(s.resumen_potencia.it?.valor_mw, 1) ?? <span class="silencio">—</span>}</td>
+              <td class="num">{numero(s.resumen_potencia.conexion_red?.valor_mw, 1) ?? <span class="silencio">—</span>}</td>
+              <td class="num">{numero(s.resumen_potencia.no_especificado?.valor_mw, 1) ?? <span class="silencio">—</span>}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    {nodos.length > 0 && (
+      <>
+        <h2>Infraestructura eléctrica registrada</h2>
+        <div class="tabla-envoltorio">
+          <table>
+            <thead>
+              <tr><th>Nudo o subestación</th><th>Tensión</th><th>Titular</th><th>Estado</th><th class="num">Capacidad demanda</th></tr>
+            </thead>
+            <tbody>
+              {nodos.map((n) => (
+                <tr>
+                  <td>{n.nombre ?? n.id}<span class="pequeno silencio"><br />{n.municipio}</span></td>
+                  <td>{Array.isArray(n.tensiones_kv) ? n.tensiones_kv.join(' / ') : (n.tension_kv ?? '—')} kV</td>
+                  <td>{n.titular ?? <span class="silencio">—</span>}</td>
+                  <td>{n.estado ?? <span class="silencio">—</span>}</td>
+                  <td class="num">
+                    {n.capacidad_acceso_demanda_mw != null
+                      ? `${numero(n.capacidad_acceso_demanda_mw)} MW`
+                      : <span class="silencio">no publicada</span>}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p class="pequeno silencio">
+          La capacidad de acceso para demanda que publica Red Eléctrica caduca deprisa; véase la
+          fecha del dato en <a href="/red-electrica">la sección de red eléctrica</a>.
+        </p>
+      </>
+    )}
+
+    {activos.length > 0 && (
+      <>
+        <h2>Generación y almacenamiento vinculados</h2>
+        <div class="tabla-envoltorio">
+          <table>
+            <thead>
+              <tr><th>Activo</th><th>Tipo</th><th class="num">MW</th><th>Promotor</th><th>Vínculo</th><th>Estado</th></tr>
+            </thead>
+            <tbody>
+              {activos.map((a) => (
+                <tr>
+                  <td>{a.nombre}<span class="pequeno silencio"><br />{a.municipio}</span></td>
+                  <td>{a.tipo}</td>
+                  <td class="num">{numero(a.potencia_mw, 1) ?? '—'}</td>
+                  <td>{a.promotor ?? <span class="silencio">—</span>}</td>
+                  <td>{a.tipo_vinculo}{a.contraparte_ppa && <span class="pequeno silencio"><br />{a.contraparte_ppa}</span>}</td>
+                  <td>{a.estado}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </>
+    )}
+
+    <p class="pequeno" style="margin:2rem 0 3rem">
+      <a href={`/?r=${encodeURIComponent(r.nombre)}`}>Ver {r.nombre} en el mapa →</a>
+    </p>
+  </div>
+</Base>
+
+<style>
+  .columnas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+    gap: 2rem;
+  }
+
+  .barras {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0;
+    font-size: 0.87rem;
+  }
+
+  .barras li {
+    display: grid;
+    grid-template-columns: 9rem 1fr 2rem;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.22rem 0;
+  }
+
+  .etiqueta-barra {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .pista {
+    display: flex;
+    gap: 1px;
+    height: 0.55rem;
+    background: var(--papel-2);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .segmento {
+    background: currentColor;
+    min-width: 2px;
+  }
+
+  .num-barra {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    color: var(--tinta-3);
+  }
+</style>

@@ -1,0 +1,57 @@
+id: box2bit-malaga-el-viso
+nombre: "Box2bit Málaga — Polígono Industrial El Viso"
+alias:
+  - "Box2bit Malaga Data Center"
+tipo: edificio
+operador: "Box2bit"
+propietario: "Box2bit"
+modelo: colocation
+
+ubicacion:
+  municipio: "Málaga"
+  provincia: "Málaga"
+  ccaa: "Andalucía"
+  direccion: "Calle Canadá, Polígono Industrial El Viso, Málaga"
+  lat: 36.6957
+  lon: -4.4538
+  precision: aproximada
+  fuentes: [src-1]
+
+estado: en_construccion
+estado_detalle: >-
+  Edificio de tres a cuatro plantas en el polígono El Viso de Málaga, con finalización prevista en
+  2027. El proyecto incluye placas solares y una subestación en la propia parcela.
+estado_fuentes: [src-1]
+
+superficie_construida_m2: 15000
+inversion_anunciada_eur: 279000000
+enlaces_proyecto: []
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      No consta potencia eléctrica ni carga TI en la fuente. Solo se publica superficie total
+      (15.000 m²) y superficie TI (aproximadamente 12.770 m²). Campo potencia omitido.
+    fuentes: [src-1]
+  - campo: estado
+    descripcion: >-
+      Un único directorio secundario (Baxtel) sostiene el estado «en construcción». No se ha
+      localizado licencia municipal, expediente urbanístico ni nota de prensa del Ayuntamiento de
+      Málaga o del promotor que lo confirme. El estado podría ser anterior (permisos concedidos).
+    fuentes: [src-1]
+  - campo: conexion_electrica
+    descripcion: >-
+      La fuente menciona una subestación en parcela pero no da tensión, titular ni MW de conexión.
+    fuentes: [src-1]
+
+confianza: baja
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://baxtel.com/data-center/box2bit-malaga"
+    titulo: "Box2bit: Malaga Data Center"
+    editor: "Baxtel"
+    tipo: consultora
+    fecha_consulta: "2026-08-29"
+    cita: "The facility will include solar panels and an on-site substation for power management."

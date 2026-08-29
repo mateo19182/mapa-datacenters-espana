@@ -1,0 +1,442 @@
+/* Registro documental: tipografía de lectura, paleta apagada, sin lenguaje
+   de mercado. Todo el color se reserva para codificar estado en el mapa. */
+
+:root {
+  --papel: #fbfaf8;
+  --papel-2: #f3f1ec;
+  --papel-3: #e8e5de;
+  --tinta: #1b1b19;
+  --tinta-2: #4a4a45;
+  --tinta-3: #77746c;
+  --borde: #ddd9d0;
+  --borde-fuerte: #c4bfb3;
+  --acento: #2f4858;
+  --acento-suave: #e6ecef;
+  --aviso: #8a5a12;
+  --aviso-fondo: #fdf5e6;
+
+  --op: #1b7f5f;
+  --parcial: #4da58b;
+  --construccion: #c1702a;
+  --permisos: #b9922a;
+  --tramitacion: #7a6fa8;
+  --anunciado: #5c83ad;
+  --paralizado: #8a8a84;
+  --cancelado: #a8423f;
+  --desconocido: #a3a099;
+
+  --sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, 'Times New Roman', serif;
+  --mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+
+  --ancho: 72rem;
+  --radio: 3px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-tema='claro']) {
+    --papel: #15171a;
+    --papel-2: #1c1f23;
+    --papel-3: #24282d;
+    --tinta: #e7e5e0;
+    --tinta-2: #b3b0a9;
+    --tinta-3: #86837c;
+    --borde: #2e3339;
+    --borde-fuerte: #454b52;
+    --acento: #8fb3c7;
+    --acento-suave: #1e262c;
+    --aviso: #d9ac5e;
+    --aviso-fondo: #2a2317;
+
+    --op: #3fa583;
+    --parcial: #62bda3;
+    --construccion: #dc9450;
+    --permisos: #d4b256;
+    --tramitacion: #9d92c9;
+    --anunciado: #7ea6cd;
+    --paralizado: #9b9b95;
+    --cancelado: #cd6b68;
+    --desconocido: #7f7c75;
+  }
+}
+
+:root[data-tema='oscuro'] {
+  --papel: #15171a;
+  --papel-2: #1c1f23;
+  --papel-3: #24282d;
+  --tinta: #e7e5e0;
+  --tinta-2: #b3b0a9;
+  --tinta-3: #86837c;
+  --borde: #2e3339;
+  --borde-fuerte: #454b52;
+  --acento: #8fb3c7;
+  --acento-suave: #1e262c;
+  --aviso: #d9ac5e;
+  --aviso-fondo: #2a2317;
+
+  --op: #3fa583;
+  --parcial: #62bda3;
+  --construccion: #dc9450;
+  --permisos: #d4b256;
+  --tramitacion: #9d92c9;
+  --anunciado: #7ea6cd;
+  --paralizado: #9b9b95;
+  --cancelado: #cd6b68;
+  --desconocido: #7f7c75;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--serif);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.5em;
+}
+
+h1 {
+  font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.3rem);
+}
+h2 {
+  font-size: 1.35rem;
+  margin-top: 2rem;
+}
+h3 {
+  font-size: 1.08rem;
+  margin-top: 1.5rem;
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+a {
+  color: var(--acento);
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+}
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+code,
+kbd {
+  font-family: var(--mono);
+  font-size: 0.86em;
+  background: var(--papel-2);
+  padding: 0.1em 0.35em;
+  border-radius: var(--radio);
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--borde);
+  margin: 2rem 0;
+}
+
+/* --- estructura ---------------------------------------------------------- */
+
+.contenedor {
+  max-width: var(--ancho);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.contenedor-estrecho {
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.cabecera {
+  border-bottom: 1px solid var(--borde);
+  background: var(--papel);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.cabecera-fila {
+  display: flex;
+  align-items: baseline;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  padding: 0.7rem 1.25rem;
+  max-width: var(--ancho);
+  margin: 0 auto;
+}
+
+.cabecera-fila.ancho-completo {
+  max-width: none;
+}
+
+.marca {
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--tinta);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.marca span {
+  color: var(--tinta-3);
+  font-weight: 400;
+}
+
+.nav {
+  display: flex;
+  gap: 1.1rem;
+  flex-wrap: wrap;
+  font-size: 0.87rem;
+  margin-left: auto;
+}
+
+.nav a {
+  color: var(--tinta-2);
+  text-decoration: none;
+}
+.nav a:hover,
+.nav a[aria-current='page'] {
+  color: var(--tinta);
+  text-decoration: underline;
+}
+
+.pie {
+  border-top: 1px solid var(--borde);
+  margin-top: 4rem;
+  padding: 2rem 0 3rem;
+  font-size: 0.85rem;
+  color: var(--tinta-3);
+}
+
+.pie p {
+  margin-bottom: 0.6em;
+}
+
+/* --- piezas -------------------------------------------------------------- */
+
+.sumario {
+  color: var(--tinta-2);
+  font-size: 1.02rem;
+  max-width: 46rem;
+}
+
+.etiqueta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  padding: 0.15em 0.55em;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+  white-space: nowrap;
+}
+
+.punto {
+  width: 0.55em;
+  height: 0.55em;
+  border-radius: 50%;
+  background: currentColor;
+  flex: none;
+}
+
+.estado-operativo { color: var(--op); }
+.estado-parcialmente_operativo,
+.estado-ampliacion_en_construccion { color: var(--parcial); }
+.estado-en_construccion { color: var(--construccion); }
+.estado-permisos_concedidos { color: var(--permisos); }
+.estado-en_tramitacion { color: var(--tramitacion); }
+.estado-anunciado { color: var(--anunciado); }
+.estado-paralizado { color: var(--paralizado); }
+.estado-cancelado { color: var(--cancelado); }
+.estado-desconocido { color: var(--desconocido); }
+
+.confianza-alta { color: var(--op); }
+.confianza-media { color: var(--permisos); }
+.confianza-baja { color: var(--cancelado); }
+
+.tarjeta {
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  background: var(--papel);
+  padding: 1rem 1.1rem;
+}
+
+.rejilla {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+}
+
+.cifras {
+  display: grid;
+  gap: 1px;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  background: var(--borde);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  overflow: hidden;
+  margin: 1.5rem 0;
+}
+
+.cifra {
+  background: var(--papel);
+  padding: 0.8rem 0.9rem;
+}
+
+.cifra dt {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--tinta-3);
+  margin-bottom: 0.15rem;
+}
+
+.cifra dd {
+  margin: 0;
+  font-size: 1.35rem;
+  font-family: var(--serif);
+  font-variant-numeric: tabular-nums;
+}
+
+.cifra dd small {
+  font-size: 0.72rem;
+  font-family: var(--sans);
+  color: var(--tinta-3);
+  display: block;
+  line-height: 1.4;
+  margin-top: 0.15rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.tabla-envoltorio {
+  overflow-x: auto;
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+}
+
+th,
+td {
+  text-align: left;
+  padding: 0.5rem 0.7rem;
+  border-bottom: 1px solid var(--borde);
+  vertical-align: top;
+}
+
+th {
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--tinta-3);
+  font-weight: 600;
+  background: var(--papel-2);
+  position: sticky;
+  top: 0;
+}
+
+tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+tbody tr:hover {
+  background: var(--papel-2);
+}
+
+.num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.nota {
+  background: var(--aviso-fondo);
+  border-left: 3px solid var(--aviso);
+  padding: 0.7rem 0.9rem;
+  font-size: 0.88rem;
+  border-radius: 0 var(--radio) var(--radio) 0;
+  margin: 1.25rem 0;
+}
+
+.nota strong {
+  color: var(--aviso);
+}
+
+.silencio {
+  color: var(--tinta-3);
+}
+
+.pequeno {
+  font-size: 0.83rem;
+}
+
+.migas {
+  font-size: 0.82rem;
+  color: var(--tinta-3);
+  margin: 1.25rem 0 0.5rem;
+}
+
+.migas a {
+  color: var(--tinta-3);
+}
+
+button,
+select,
+input[type='search'],
+input[type='text'] {
+  font: inherit;
+  font-size: 0.87rem;
+  color: var(--tinta);
+  background: var(--papel);
+  border: 1px solid var(--borde-fuerte);
+  border-radius: var(--radio);
+  padding: 0.35rem 0.5rem;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--papel-2);
+}
+
+:focus-visible {
+  outline: 2px solid var(--acento);
+  outline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+  .nav {
+    gap: 0.85rem;
+    font-size: 0.82rem;
+  }
+}

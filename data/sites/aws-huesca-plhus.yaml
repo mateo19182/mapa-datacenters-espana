@@ -1,0 +1,85 @@
+id: aws-huesca-plhus
+nombre: "AWS Región Aragón — Huesca PLHUS (centro existente)"
+alias:
+  - "Amazon Data Services Spain — Plataforma Logística de Huesca"
+tipo: campus
+operador: "Amazon Web Services"
+propietario: "Amazon Data Services Spain, S.L."
+modelo: hyperscale
+
+ubicacion:
+  municipio: "Huesca"
+  provincia: "Huesca"
+  ccaa: "Aragón"
+  direccion: "Ronda de Valdabra, 23, Plataforma Logístico-Industrial de Huesca (PLHUS). La AAI de 2020 lo sitúa en C/ Lienas."
+  lat: 42.10389
+  lon: -0.452046
+  precision: exacta
+  fuentes: [src-1, src-2]
+
+estado: operativo
+estado_detalle: >-
+  Tercero de los centros del primer Proyecto de Interés General de Aragón de Amazon
+  (AAI de 27 de julio de 2020). En 2025 se tramitó ante INAGA una evaluación de impacto
+  ambiental simplificada por modificación del centro de datos.
+estado_fuentes: [src-1, src-2, src-3]
+fecha_puesta_en_servicio: "2022-11"
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 110.4
+    ambito: campus
+    referencia: "Potencia eléctrica total instalada de los 46 grupos electrógenos diésel de respaldo"
+    estado_asociado: operativo
+    fecha_dato: "2020-07-27"
+    fuentes: [src-1]
+    nota: >-
+      Potencia instalada de los generadores de reserva (46 x 2,4 MWe; 294,4 MWt), no carga
+      TI ni potencia de conexión a red.
+
+fases:
+  - nombre: "Edificio A"
+    estado: operativo
+    fuentes: [src-1]
+  - nombre: "Edificio B"
+    estado: operativo
+    fuentes: [src-1]
+
+enlaces_proyecto:
+  - "https://www.aragon.es/-/proyecto-de-interes-general-de-aragon-sobre-la-implantacion-de-centros-de-datos-en-la-comunidad-autonoma-de-aragon-a-propuesta-de-amazon-data-services-spain"
+
+incertidumbres:
+  - campo: ubicacion
+    descripcion: >-
+      La AAI de 2020 da como dirección "Plataforma Logística de Huesca C/ Lienas"; el
+      anuncio de INAGA de 2025 da "Ronda de Valdabra, 23 (PLHUS)". Se conservan ambas.
+    fuentes: [src-1, src-2]
+
+confianza: alta
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1125625724545"
+    titulo: "RESOLUCIÓN de 27 de julio de 2020, del Instituto Aragonés de Gestión Ambiental [...] centro de almacenamiento de datos a ubicar en La Plataforma Logística de Huesca Sur (PLHUS), en el término municipal de Huesca (INAGA 500301/02/2019/12452)"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2020-08-07"
+    fecha_consulta: "2026-08-29"
+    cita: "ubicado en la Plataforma Logística de Huesca C/ Lienas coordenadas UTM ETRS89, Huso 30, X=710679, Y=4664453, Z=446"
+  - id: src-2
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1385126660909"
+    titulo: "ANUNCIO del Instituto Aragonés de Gestión Ambiental [...] modificación de centro de datos [...] ubicado en Ronda de Valdabra, 23 (Plataforma Logística Huesca Sur -PLHUS-) (INAGA 500301/01/2025/00120)"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2025-03-25"
+    fecha_consulta: "2026-08-29"
+    cita: "proyecto de modificación de centro de datos, ubicado en Ronda de Valdabra, 23 (Plataforma Logística Huesca Sur -PLHUS-), del término municipal de Huesca"
+  - id: src-3
+    url: "https://aws.amazon.com/blogs/aws/now-open-aws-region-in-spain"
+    titulo: "Now Open — AWS Region in Spain"
+    editor: "Amazon Web Services"
+    tipo: empresa
+    fecha_publicacion: "2022-11-15"
+    fecha_consulta: "2026-08-29"
+    cita: "The AWS Europe (Spain) Region has three Availability Zones (AZ) that you can use to reliably spread your applications across multiple data centers."

@@ -1,0 +1,67 @@
+id: gobierno-rioja-albelda-de-iregua
+nombre: "Centro de datos para IA en español — Albelda de Iregua"
+alias:
+  - "Centro de datos de La Rioja para la inteligencia artificial en español"
+tipo: edificio
+operador: null
+propietario: "Gobierno de La Rioja (Fundación Riojana para la Transformación)"
+modelo: corporativo
+
+ubicacion:
+  municipio: "Albelda de Iregua"
+  provincia: "La Rioja"
+  ccaa: "La Rioja"
+  direccion: "Parcela cedida de 13.000 m²; 5.000 m² destinados al centro"
+  lat: 42.3560509
+  lon: -2.4736796
+  precision: municipio
+  fuentes: [src-eldiario, src-osm]
+
+estado: en_tramitacion
+estado_detalle: >-
+  Anunciado el 2 de abril de 2025 por el Gobierno de La Rioja. Financiado con
+  14,5 millones de euros de fondos europeos MRR-Next Generation. La licitación se
+  preveía para finales del primer semestre de 2025 y la ejecución para junio de
+  2026. No se ha localizado confirmación de la puesta en servicio.
+estado_fuentes: [src-eldiario]
+
+potencia: []
+
+fases: []
+
+superficie_construida_m2: 5000
+superficie_parcela_m2: 13000
+inversion_anunciada_eur: 14500000
+
+incertidumbres:
+  - campo: potencia
+    descripcion: "No consta ninguna cifra de potencia eléctrica ni de carga TI."
+    fuentes: [src-eldiario]
+  - campo: estado
+    descripcion: >-
+      La previsión era tener el centro ejecutado en junio de 2026. No se ha
+      localizado ninguna fuente que confirme o desmienta ese hito, por lo que el
+      estado a agosto de 2026 no está verificado.
+    fuentes: [src-eldiario]
+
+confianza: baja
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-eldiario
+    url: "https://www.eldiario.es/la-rioja/rioja-sera-referente-inteligencia-artificial-asociada-espanol-centro-datos-albelda-iregua_1_12185543.html"
+    titulo: "La Rioja será referente en la inteligencia artificial asociada al español con un centro de datos en Albelda de Iregua"
+    editor: "elDiario.es La Rioja"
+    tipo: prensa_general
+    fecha_publicacion: "2025-04-02"
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      14,5 millones de euros, financiado por Fondos Europeos MMR–Next Generation
+      [...] 5.000 metros cuadrados para la construcción del centro.
+  - id: src-osm
+    url: "https://nominatim.openstreetmap.org/search?q=Albelda+de+Iregua%2C+La+Rioja&format=json&limit=1"
+    titulo: "Nominatim — Albelda de Iregua, La Rioja"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: "Albelda de Iregua, La Rioja, 26120, España — lat 42.3560509, lon -2.4736796"

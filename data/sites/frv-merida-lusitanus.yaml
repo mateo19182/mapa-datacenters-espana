@@ -1,0 +1,75 @@
+id: frv-merida-lusitanus
+nombre: "Lusitanus — Mérida (ExpacioMérida)"
+alias:
+  - "Proyecto Lusitanus"
+tipo: campus
+operador: null
+propietario: "Fotowatio Renewable Ventures (FRV)"
+modelo: desconocido
+
+ubicacion:
+  municipio: "Mérida"
+  provincia: "Badajoz"
+  ccaa: "Extremadura"
+  direccion: "ExpacioMérida (240.000 m² reservados)"
+  lat: 38.8349
+  lon: -6.3596361
+  precision: aproximada
+  fuentes: [src-cope, src-osm]
+
+estado: anunciado
+estado_detalle: >-
+  Anunciado el 13 de febrero de 2026 por la Junta de Extremadura y FRV. Se ha
+  formalizado el contrato de reserva de suelo en ExpacioMérida (240.000 m²). No
+  consta trámite ambiental ni de acceso a red iniciado a agosto de 2026.
+estado_fuentes: [src-cope]
+
+potencia: []
+
+fases:
+  - nombre: "Fase 1 — infraestructura digital"
+    estado: anunciado
+    nota: "2.100 millones de euros de los 2.800 millones totales anunciados."
+    fuentes: [src-cope]
+  - nombre: "Infraestructura energética sostenible asociada"
+    estado: anunciado
+    nota: "700 millones de euros."
+    fuentes: [src-cope]
+
+superficie_parcela_m2: 240000
+inversion_anunciada_eur: 2800000000
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      No se ha publicado ninguna cifra de potencia (ni TI, ni de conexión, ni
+      instalada) para el proyecto Lusitanus.
+    fuentes: [src-cope]
+  - campo: estado
+    descripcion: >-
+      El único hito documentado es la reserva de suelo. No consta calendario de
+      construcción ni expediente ambiental.
+    fuentes: [src-cope]
+
+confianza: baja
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-cope
+    url: "https://www.cope.es/emisoras/extremadura/noticias/extremadura-impulsa-lusitanus-centro-datos-ia-inversion-2-800-millones-20260213_3307782.html"
+    titulo: "Extremadura impulsa 'Lusitanus', el centro de datos para IA con una inversión de 2.800 millones"
+    editor: "COPE Extremadura"
+    tipo: prensa_general
+    fecha_publicacion: "2026-02-13"
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      uno de los mayores proyectos industriales y más avanzados tecnológicamente
+      que existen actualmente en cartera tanto en Extremadura como en España y
+      Europa.
+  - id: src-osm
+    url: "https://nominatim.openstreetmap.org/search?q=Expacio+M%C3%A9rida&format=json&limit=2"
+    titulo: "Nominatim — Expacio Mérida, Mérida"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: "Expacio Mérida, Mérida, Badajoz, Extremadura, España — lat 38.8349000, lon -6.3596361"

@@ -1,0 +1,52 @@
+id: ppa-microsoft-iberdrola-iglesias-el-escudo
+nombre: "PPA Microsoft — parques eólicos Iglesias (Burgos) y El Escudo (Cantabria)"
+tipo: eolica
+tipo_detalle: "Dos parques eólicos bajo dos PPA a largo plazo. Las fuentes dan la potencia conjunta, no el reparto por parque."
+potencia_mw: 150
+tipo_potencia: contratada_ppa
+capacidad_mwh: null
+promotor: "Iberdrola"
+contraparte_ppa: "Microsoft"
+tipo_vinculo: ppa
+duracion_anios: null
+municipio: null
+municipios: ["Iglesias", "no consta (parque El Escudo)"]
+provincia: null
+provincias: ["Burgos", "Cantabria"]
+ccaa: null
+ccaas: ["Castilla y León", "Cantabria"]
+lat: null
+lon: null
+precision: municipio
+estado: anunciado
+estado_detalle: "Anunciados el 16-17 de diciembre de 2025 como los primeros PPA de Microsoft e Iberdrola en Europa."
+fecha_firma: "2025-12-16"
+adicionalidad: no_consta
+clusters_relacionados: [madrid, aragon]
+cpds_relacionados: []
+incertidumbres:
+  - campo: potencia_mw
+    descripcion: "Los 150 MW son la potencia contratada conjunta de los dos parques; ninguna fuente consultada la reparte entre Iglesias y El Escudo."
+    fuentes: [src-1, src-2]
+  - campo: cpds_relacionados
+    descripcion: "Las fuentes vinculan el acuerdo al objetivo de Microsoft de operar con 100 % renovable en Europa, no a un CPD concreto. En la misma alianza se cita explorar «el uso del calor de los centros de datos en Zaragoza»."
+    fuentes: [src-1]
+confianza: alta
+ultima_verificacion: "2026-08-29"
+fuentes:
+  - id: src-1
+    url: "https://www.energias-renovables.com/eolica/iberdrola-y-microsoft-firman-dos-ppa-a-20251217"
+    titulo: "Iberdrola y Microsoft firman dos PPA a largo plazo por 150 MW en España"
+    editor: "Energías Renovables"
+    tipo: prensa_especializada
+    fecha_publicacion: "2025-12-17"
+    fecha_consulta: "2026-08-29"
+    cita: "Los dos nuevos PPA en España, que suman 150 MW de potencia contratada, incluyen la compra de electricidad del parque eólico Iglesias (Burgos) y del parque El Escudo (Cantabria)."
+  - id: src-2
+    url: "https://www.pv-magazine.es/2025/12/16/anuncios-de-empresas-opdenergy-sonnedix-acciona-energia-iberdrola-y-microsoft/"
+    titulo: "Anuncios de empresas: Opdenergy, Sonnedix, Acciona Energía, Iberdrola y Microsoft"
+    editor: "pv magazine España"
+    tipo: prensa_especializada
+    fecha_publicacion: "2025-12-16"
+    fecha_consulta: "2026-08-29"
+    cita: "dos PPA a largo plazo, los primeros que ambas compañías firman en Europa"

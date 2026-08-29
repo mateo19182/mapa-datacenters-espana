@@ -1,0 +1,112 @@
+id: aws-huesca-walqa-wqa
+nombre: "AWS Ampliación Región Aragón — Huesca Walqa (WQA)"
+alias:
+  - "WQA"
+  - "ZAZ081"
+  - "ZAZ111"
+tipo: campus
+operador: "Amazon Web Services"
+propietario: "Amazon Data Services Spain, S.L."
+modelo: hyperscale
+
+ubicacion:
+  municipio: "Huesca"
+  provincia: "Huesca"
+  ccaa: "Aragón"
+  direccion: "Polígono industrial Parque Tecnológico Walqa"
+  lat: 42.113664
+  lon: -0.453433
+  precision: exacta
+  fuentes: [src-1]
+
+estado: permisos_concedidos
+estado_detalle: >-
+  Emplazamiento del PIGA "Expansión de la Región AWS en Aragón". DIA y autorización
+  ambiental integrada de INAGA de 28 de abril de 2026. Aprobación definitiva del proyecto
+  de edificación y urbanización interior Fase 1 y de la subestación WQA1HV 132/20 kV el 4
+  de mayo de 2026; la subestación WQA2HV 220/20 kV se aprobó el 10 de junio de 2026. No
+  podrán otorgarse licencias de inicio de actividad ni primera ocupación mientras no estén
+  en servicio las medidas de reordenación de accesos exigidas por el Ministerio de
+  Transportes.
+estado_fuentes: [src-1, src-2]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 342.08
+    ambito: campus
+    referencia: "Potencia térmica nominal total de las instalaciones de combustión por motores diésel (MWt)"
+    estado_asociado: permisos_concedidos
+    fecha_dato: "2026-04-28"
+    fuentes: [src-1]
+    nota: >-
+      Dato térmico (MWt) de grupos electrógenos de respaldo. No es carga TI ni potencia de
+      conexión a red.
+
+fases:
+  - nombre: "Fase 1"
+    estado: permisos_concedidos
+    superficie_m2: 55667
+    fuentes: [src-1]
+    nota: >-
+      Fase 1: 2 edificios de centro de datos de tipología A y 1 de tipología B, planta de
+      tratamiento de agua, almacenamiento y bombeo contraincendios, 2 casetas eléctricas FV
+      y control de accesos. Ocupación sobre rasante 11,5 % (55.667,06 m²); edificabilidad
+      70.449,11 m². 93 trabajadores previstos.
+  - nombre: "Campus completo"
+    estado: permisos_concedidos
+    fuentes: [src-1]
+    nota: >-
+      Total campus: 4 edificios de tipología A, 1 de tipología B, 2 edificios de archivo de
+      datos y 1 edificio administrativo.
+
+conexion_electrica:
+  subestacion: "SE WQA1HV 132/20 kV y SE WQA2HV 220/20 kV (propias de AWS), alimentadas desde la SE Esquedas 132 kV"
+  tension_kv: 132
+  titular_red: "Endesa (E-Distribución) — SE Esquedas 132 kV"
+  mw_solicitados: null
+  mw_concedidos: null
+  fuentes: [src-1, src-2]
+  nota: >-
+    WQA1HV está formada por tres transformadores 132/20 kV de 50/65 MVA, dos reactores de
+    derivación 132 kV y 30 MVAr, un edificio de celdas GIS 132 kV y un edificio de celdas
+    20 kV. Se alimenta mediante línea doble desde la SE Esquedas 132 kV (Endesa); la línea
+    "LSAT 132 kV SET Esquedas - SET centro de datos WQA" obtuvo autorización administrativa
+    previa y de construcción por Resolución de 24 de febrero de 2026 y discurre por Huesca,
+    Almudévar, Lupiñén-Ortilla, Chimillas y La Sotonera. Presupuesto de ejecución material
+    de la subestación: 22.094.974,35 €. No consta potencia de acceso concedida en MW.
+
+superficie_construida_m2: 70449
+inversion_anunciada_eur: null
+refrigeracion: >-
+  Dos balsas de agua reciclada de proceso y de escorrentías superficiales para refrigeración
+  en verano, con dos tanques de tormentas bajo ellas y planta fotovoltaica sobre su superficie.
+enlaces_proyecto:
+  - "https://www.aragon.es/-/piga-aws-ampliacion"
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      No consta carga TI ni potencia de acceso a red publicada. Solo hay potencia térmica
+      de grupos electrógenos.
+    fuentes: [src-1]
+
+confianza: alta
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1446464010404"
+    titulo: "ORDEN VFL/654/2026, de 5 de mayo, por la que se da publicidad al acuerdo de 4 de mayo de 2026 del Gobierno de Aragón [...] Plan de Interés General de Aragón «Ampliación Región AWS Aragón»"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2026-05-07"
+    fecha_consulta: "2026-08-29"
+    cita: "para el centro de almacenamiento de datos denominado WQA (ZAZ081/ZAZ111), ubicado en el Parque Tecnológico Walqa coordenadas de referencia UTM ETRS89, Huso 30, X: 710.532 e Y: 4.665.535, Z=460 msnm [...] con una potencia térmica nominal total de 342,08 MWt."
+  - id: src-2
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1454107610505"
+    titulo: "ORDEN VFL/906/2026, de 12 de junio [...] aprobación definitiva parcial del Plan de Interés General de Aragón «Ampliación Región AWS Aragón»"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2026-06-24"
+    fecha_consulta: "2026-08-29"
+    cita: "Tomo IV. Huesca. Tomo IV.5 Proyecto subestación WQA2HV 220/20 kV."

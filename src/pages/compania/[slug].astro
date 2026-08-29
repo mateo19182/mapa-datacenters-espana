@@ -1,0 +1,136 @@
+---
+import Base from '../../layouts/Base.astro'
+import Cartera from '../../components/Cartera.astro'
+import companias from '../../data/companias.json'
+import sitios from '../../data/sitios.json'
+import { ESTADO_ETIQUETA, ORDEN_ESTADOS, numero, fechaLegible, slug as aSlug } from '../../lib/etiquetas.js'
+
+export function getStaticPaths() {
+  return companias.map((c) => ({ params: { slug: c.slug }, props: { compania: c } }))
+}
+
+const { compania: c } = Astro.props
+const propios = sitios
+  .filter((s) => c.sitios.includes(s.id))
+  .sort((a, b) => ORDEN_ESTADOS.indexOf(a.estado) - ORDEN_ESTADOS.indexOf(b.estado))
+
+// Emplazamientos de otros operadores en los que esta compañía consta como
+// propietario o cliente ancla: relaciones que la vista por operador no captura.
+const relacionados = sitios.filter(
+  (s) => !c.sitios.includes(s.id) && (s.propietario === c.nombre || s.cliente_ancla === c.nombre),
+)
+
+const fuentesTotales = new Set(propios.flatMap((s) => s.fuentes.map((f) => f.url))).size
+const conIncertidumbre = propios.filter((s) => s.incertidumbres.length > 0)
+const ultima = propios.map((s) => s.ultima_verificacion).sort().at(-1)
+---
+
+<Base
+  titulo={c.nombre}
+  descripcion={`Emplazamientos de ${c.nombre} registrados en España peninsular, con estado, potencia y fuentes.`}
+>
+  <div class="contenedor">
+    <p class="migas"><a href="/companias">Compañías</a></p>
+    <h1>{c.nombre}</h1>
+    <p class="sumario">
+      {c.emplazamientos} {c.emplazamientos === 1 ? 'emplazamiento registrado' : 'emplazamientos registrados'} en
+      {c.ccaas.length === 1 ? ' ' : ' '}{c.ccaas.join(', ')}. Documentados con {fuentesTotales} fuentes
+      distintas; última verificación el {fechaLegible(ultima)}.
+    </p>
+
+    <Cartera cartera={c} />
+
+    <p class="nota pequeno">
+      <strong>Sobre estas sumas.</strong> Solo agregan los emplazamientos que publican cada magnitud,
+      y MW IT, MW de conexión y MW sin tipificar nunca se mezclan. No son la capacidad total de la
+      compañía en España: son la parte documentada públicamente y verificable.
+    </p>
+
+    <h2>Emplazamientos</h2>
+    <div class="tabla-envoltorio">
+      <table>
+        <thead>
+          <tr>
+            <th>Emplazamiento</th>
+            <th>Ubicación</th>
+            <th>Estado</th>
+            <th class="num">MW IT</th>
+            <th class="num">MW conexión</th>
+            <th class="num">MW s/tipo</th>
+            <th>Fases</th>
+          </tr>
+        </thead>
+        <tbody>
+          {propios.map((s) => (
+            <tr>
+              <td><a href={`/proyecto/${s.id}`}>{s.nombre}</a></td>
+              <td>
+                {s.ubicacion.municipio}
+                <span class="pequeno silencio"><br /><a href={`/region/${aSlug(s.ubicacion.ccaa)}`}>{s.ubicacion.ccaa}</a></span>
+              </td>
+              <td><span class={`etiqueta estado-${s.estado}`}><span class="punto"></span>{ESTADO_ETIQUETA[s.estado]}</span></td>
+              <td class="num">{numero(s.resumen_potencia.it?.valor_mw, 1) ?? <span class="silencio">—</span>}</td>
+              <td class="num">{numero(s.resumen_potencia.conexion_red?.valor_mw, 1) ?? <span class="silencio">—</span>}</td>
+              <td class="num">{numero(s.resumen_potencia.no_especificado?.valor_mw, 1) ?? <span class="silencio">—</span>}</td>
+              <td class="num">{s.fases.length || <span class="silencio">—</span>}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    {relacionados.length > 0 && (
+      <>
+        <h2>Otros emplazamientos vinculados</h2>
+        <p class="pequeno silencio">
+          Operados por terceros, pero con {c.nombre} como propietario o cliente ancla según las fuentes.
+        </p>
+        <ul class="lista-simple">
+          {relacionados.map((s) => (
+            <li>
+              <a href={`/proyecto/${s.id}`}>{s.nombre}</a>
+              <span class="silencio pequeno">
+                — operado por {s.operador}
+                {s.cliente_ancla === c.nombre ? ' · cliente ancla' : ' · propietario'}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </>
+    )}
+
+    {conIncertidumbre.length > 0 && (
+      <>
+        <h2>Incertidumbres abiertas</h2>
+        <ul class="lista-simple">
+          {conIncertidumbre.map((s) =>
+            s.incertidumbres.map((u) => (
+              <li>
+                <a href={`/proyecto/${s.id}#fuentes`}>{s.nombre}</a>
+                <span class="silencio"> — {u.descripcion}</span>
+              </li>
+            )),
+          )}
+        </ul>
+      </>
+    )}
+
+    <p class="pequeno" style="margin:2rem 0 3rem">
+      <a href={`/?o=${encodeURIComponent(c.nombre)}`}>Ver los emplazamientos de {c.nombre} en el mapa →</a>
+    </p>
+  </div>
+</Base>
+
+<style>
+  .lista-simple {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 1rem;
+    font-size: 0.9rem;
+  }
+
+  .lista-simple li {
+    padding: 0.4rem 0;
+    border-bottom: 1px solid var(--borde);
+  }
+</style>

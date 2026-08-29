@@ -1,0 +1,171 @@
+id: merlin-edged-navalmoral-de-la-mata
+nombre: "MERLIN-Edged Navalmoral de la Mata — Expacio Navalmoral"
+alias:
+  - "Campus de centros de datos de IA de Navalmoral"
+  - "Merlin Edge Navalmoral"
+tipo: campus
+operador: "MERLIN Edged"
+propietario: "MERLIN Properties SOCIMI / Edged Energy"
+modelo: mayorista
+
+ubicacion:
+  municipio: "Navalmoral de la Mata"
+  provincia: "Cáceres"
+  ccaa: "Extremadura"
+  direccion: "Parque Industrial Norte de Extremadura (Expacio Navalmoral), acceso desde la A-5"
+  lat: 39.9130138
+  lon: -5.5173522
+  precision: aproximada
+  fuentes: [src-cope, src-osm]
+
+estado: en_tramitacion
+estado_detalle: >-
+  Protocolo con la Junta de Extremadura firmado el 14 de enero de 2025.
+  Información pública de la autorización ambiental integrada abierta el 22 de
+  mayo de 2026. Declarado Proyecto Empresarial de Interés Autonómico (PREMIA) el
+  12 de mayo de 2026. En agosto de 2026 la promotora esperaba las licencias para
+  septiembre y anunciaba el inicio de obras de la primera fase en otoño de 2026.
+estado_fuentes: [src-merlin, src-cope, src-eldiario-premia, src-brains]
+
+potencia:
+  - tipo: it
+    valor_mw: 1000
+    ambito: campus
+    referencia: "Capacidad TI del campus a pleno desarrollo (8-10 edificios de 100 MW TI)"
+    estado_asociado: anunciado
+    fecha_dato: "2025-01-14"
+    fuentes: [src-merlin]
+    nota: >-
+      La nota de la compañía habla de "1GW de capacidad IT en cada emplazamiento"
+      y de "8 y 10 edificios con 100MW de capacidad IT cada uno".
+  - tipo: it
+    valor_mw: 20
+    ambito: fase
+    referencia: "Primera fase equipada"
+    estado_asociado: anunciado
+    fecha_dato: "2026-08"
+    fuentes: [src-brains]
+    nota: >-
+      "20 megavatios (MW) de capacidad destinada a tecnología de la información
+      (TI)", en un edificio preparado para alcanzar los 100 MW.
+  - tipo: no_especificado
+    valor_mw: 288
+    ambito: campus
+    referencia: "Demanda energética total declarada en la autorización ambiental integrada"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2026-05-22"
+    fuentes: [src-cope]
+    nota: >-
+      El anuncio de información pública cita 288 MW de demanda total y 192 MW de
+      demanda crítica funcionando 8.760 horas al año, sin calificarlos como TI ni
+      como potencia de acceso.
+  - tipo: conexion_red
+    valor_mw: 29
+    ambito: campus
+    referencia: "Potencia eléctrica ya asegurada"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2026-08"
+    fuentes: [src-brains]
+    nota: "La fuente dice que la compañía tiene asegurados \"29 MW de potencia eléctrica\"."
+
+fases:
+  - nombre: "Fase 1 — primer edificio (20 MW TI equipados, preparado para 100 MW)"
+    estado: anunciado
+    nota: >-
+      Inversión inicial de unos 400 millones de euros; inicio de obras previsto
+      para otoño de 2026 tras la licencia.
+    fuentes: [src-brains]
+  - nombre: "Campus completo (8-10 edificios de 100 MW TI)"
+    estado: anunciado
+    fuentes: [src-merlin]
+
+conexion_electrica:
+  subestacion: "SE Arañuelo 400 kV"
+  tension_kv: 400
+  titular_red: "Redeia"
+  mw_concedidos: 29
+  nota: >-
+    La compañía sitúa el campus junto a la subestación Arañuelo 400 kV de Redeia
+    y menciona fibra oscura desde Lisboa. A agosto de 2026 solo consta asegurada
+    una potencia de 29 MW.
+  fuentes: [src-merlin, src-brains]
+
+superficie_parcela_m2: 206753
+inversion_anunciada_eur: 1600000000
+refrigeracion: >-
+  Sistema modular de Edged Energy sin consumo de agua, con densidades de hasta
+  70 kW por rack y PUE declarado de 1,15.
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      Conviven cifras heterogéneas y no sumables: 1 GW de capacidad TI del campus
+      (compañía, enero 2025), 288 MW de demanda total y 192 MW de demanda crítica
+      (expediente ambiental, mayo 2026), 200 MW de primer tramo y 1,2 GW de
+      ampliación posterior según prensa, y solo 29 MW de potencia eléctrica
+      efectivamente asegurada en agosto de 2026.
+    fuentes: [src-merlin, src-cope, src-brains]
+  - campo: inversion_anunciada_eur
+    descripcion: >-
+      La información pública de la AAI cita 1.600 millones de euros, cifra que
+      coincide con la declaración PREMIA; la prensa habla además de 400 millones
+      para la primera fase y de 2.000 millones para los dos primeros edificios.
+    fuentes: [src-cope, src-eldiario-premia, src-brains]
+  - campo: conexion_electrica
+    descripcion: >-
+      En junio de 2026 la Junta de Extremadura situó públicamente en Red
+      Eléctrica el escollo para el suministro del campus. No se ha podido abrir
+      la fuente original de esa información.
+    fuentes: [src-brains]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-merlin
+    url: "https://ir.merlinproperties.com/en/new-opportunity-in-data-centers/"
+    titulo: "New Data Center opportunity"
+    editor: "MERLIN Properties SOCIMI"
+    tipo: empresa
+    fecha_publicacion: "2025-01-14"
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      8 y 10 edificios con 100MW de capacidad IT cada uno [...] subestación
+      Arañuelo 400kv (Redeia).
+  - id: src-cope
+    url: "https://www.cope.es/emisoras/extremadura/noticias/sale-informacion-publica-centro-datos-merlin-navalmoral-mata-20260522_3369660.html"
+    titulo: "Sale a información pública el centro de datos de Merlin en Navalmoral de la Mata"
+    editor: "COPE Extremadura"
+    tipo: prensa_general
+    fecha_publicacion: "2026-05-22"
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      parcela de suelo urbano de 206.753 m² [...] 192 MW de demanda crítica [...]
+      8.760 horas del año.
+  - id: src-eldiario-premia
+    url: "https://www.eldiario.es/extremadura/economia/junta-otorga-prioridad-autonomica-centro-datos-navalmoral-ampliacion-matadero-fregenal_1_13215547.html"
+    titulo: "La Junta otorga prioridad autonómica al centro de datos de Navalmoral y a la ampliación del matadero de Fregenal"
+    editor: "elDiario.es Extremadura"
+    tipo: prensa_general
+    fecha_publicacion: "2026-05-12"
+    fecha_consulta: "2026-08-29"
+    cita: "1.600 millones de euros"
+  - id: src-brains
+    url: "https://brainsre.news/merlin-iniciar-otono-extremadura-obras-centro-datos/"
+    titulo: "Merlin prevé iniciar este otoño en Extremadura las obras de su mayor centro de datos"
+    editor: "Brains Real Estate News"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-08"
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      20 megavatios (MW) de capacidad destinada a tecnología de la información
+      (TI) [...] 29 MW de potencia eléctrica.
+  - id: src-osm
+    url: "https://nominatim.openstreetmap.org/search?q=Expacio+Navalmoral&format=json&limit=1"
+    titulo: "Nominatim — Expacio Navalmoral, Navalmoral de la Mata"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      Expacio Navalmoral, Navalmoral de la Mata, Cáceres, Extremadura, España —
+      lat 39.9130138, lon -5.5173522

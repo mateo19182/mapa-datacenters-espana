@@ -1,0 +1,109 @@
+id: aws-villanueva-de-gallego-vdg0
+nombre: "AWS Región Aragón — Villanueva de Gállego (centro existente)"
+alias:
+  - "VDG"
+  - "Amazon Data Services Spain — Villanueva de Gállego"
+  - "Centro de datos existente VDG"
+tipo: campus
+operador: "Amazon Web Services"
+propietario: "Amazon Data Services Spain, S.L."
+modelo: hyperscale
+
+ubicacion:
+  municipio: "Villanueva de Gállego"
+  provincia: "Zaragoza"
+  ccaa: "Aragón"
+  direccion: "Carretera A-1102 a Castejón de Valdejasa, km 2, polígono Aeronáutico, nave 2 (Parque Industrial Aeronáutico)"
+  lat: 41.796047
+  lon: -0.845777
+  precision: exacta
+  fuentes: [src-1, src-4]
+
+estado: operativo
+estado_detalle: >-
+  Uno de los tres centros de datos del primer Proyecto de Interés General de Aragón de
+  Amazon (Villanueva de Gállego, Huesca y El Burgo de Ebro), aprobado definitivamente el
+  30 de julio de 2020. La Región AWS Europe (Spain) / eu-south-2 abrió el 15 de noviembre
+  de 2022. En 2025 la sociedad tramitó ante INAGA una modificación del centro de datos
+  (evaluación de impacto ambiental simplificada). Documentos del Gobierno de Aragón de 2025
+  lo citan como "el centro de datos existente VDG", diferenciándolo de los nuevos VDG1 y VDG2.
+estado_fuentes: [src-1, src-2, src-4]
+fecha_puesta_en_servicio: "2022-11"
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 110.4
+    ambito: campus
+    referencia: "Potencia eléctrica total instalada de los 46 grupos electrógenos diésel de respaldo"
+    estado_asociado: operativo
+    fecha_dato: "2020-07-27"
+    fuentes: [src-1]
+    nota: >-
+      La resolución no da carga TI ni potencia de conexión a red. El dato es la potencia
+      eléctrica instalada del conjunto de generadores de reserva (46 x 2,4 MWe), no la
+      capacidad TI del centro. No comparar con MW IT.
+
+fases:
+  - nombre: "Edificio A"
+    estado: operativo
+    fuentes: [src-1]
+  - nombre: "Edificio B"
+    estado: operativo
+    fuentes: [src-1]
+
+superficie_parcela_m2: null
+inversion_anunciada_eur: null
+refrigeracion: "La AAI de 2020 fija una demanda media diaria máxima de agua de 405 m³ en los meses de verano."
+enlaces_proyecto:
+  - "https://www.aragon.es/-/proyecto-de-interes-general-de-aragon-sobre-la-implantacion-de-centros-de-datos-en-la-comunidad-autonoma-de-aragon-a-propuesta-de-amazon-data-services-spain"
+
+incertidumbres:
+  - campo: ubicacion
+    descripcion: >-
+      El nuevo centro AWS VDG1 (expediente INAGA 2024/12129) se sitúa también en el
+      "Parque Industrial Aeronáutico de Villanueva de Gállego", a unos 900 m de este
+      emplazamiento, y con coordenadas distintas. Son instalaciones y expedientes
+      ambientales separados, pero el riesgo de confusión entre ambos es alto.
+    fuentes: [src-1, src-3]
+  - campo: fecha_puesta_en_servicio
+    descripcion: >-
+      La fecha 2022-11 corresponde a la apertura de la Región AWS Europe (Spain), no a una
+      fecha de puesta en servicio publicada para este edificio concreto.
+    fuentes: [src-2]
+
+confianza: alta
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1125849664141"
+    titulo: "RESOLUCIÓN de 27 de julio de 2020, del Instituto Aragonés de Gestión Ambiental, por la que se formula declaración de impacto ambiental y se otorga autorización ambiental integrada del proyecto de centro de almacenamiento de datos a ubicar en el término municipal de Villanueva de Gállego (Zaragoza), promovida por Amazon Data Services Spain, S.L. (INAGA 500301/02/2019/12453)"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2020-08-10"
+    fecha_consulta: "2026-08-29"
+    cita: "Otorgar la autorización ambiental integrada a Amazon Data Services Spain, S. L. [...] ubicado en el Parque Industrial Aeronáutico de Villanueva de Gállego coordenadas UTM ETRS89, Huso 30, X=678981, Y=4629375, Z=292"
+  - id: src-2
+    url: "https://aws.amazon.com/blogs/aws/now-open-aws-region-in-spain"
+    titulo: "Now Open — AWS Region in Spain"
+    editor: "Amazon Web Services"
+    tipo: empresa
+    fecha_publicacion: "2022-11-15"
+    fecha_consulta: "2026-08-29"
+    cita: "The AWS Europe (Spain) Region has three Availability Zones (AZ) that you can use to reliably spread your applications across multiple data centers."
+  - id: src-3
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1446464010404"
+    titulo: "ORDEN VFL/654/2026, de 5 de mayo, por la que se da publicidad al acuerdo de 4 de mayo de 2026 del Gobierno de Aragón, por el que se aprueba definitivamente de forma parcial el Plan de Interés General de Aragón «Ampliación Región AWS Aragón»"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2026-05-07"
+    fecha_consulta: "2026-08-29"
+    cita: "Otorgar la autorización ambiental integrada a Amazon Data Services Spain, SL [...] para el centro de almacenamiento de datos denominado VDG1 (ZAZ080), ubicado en el Parque Industrial Aeronáutico de Villanueva de Gállego coordenadas de referencia UTM ETRS89, Huso 30, X=679.304, Y=4.628.570"
+  - id: src-4
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1385128680909"
+    titulo: "ANUNCIO del Instituto Aragonés de Gestión Ambiental [...] evaluación de impacto ambiental simplificada para proyecto de modificación de centro de datos, promovido por Amazon Data Services Spain, SL, ubicado en carretera A-1102 a Castejón de Valdejasa, km 2, polígono Aeronáutico, nave 2 Amazon (INAGA 500301/01/2025/00122)"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2025-03-25"
+    fecha_consulta: "2026-08-29"
+    cita: "proyecto de modificación de centro de datos, ubicado en carretera A-1102 a Castejón de Valdejasa, km 2, polígono Aeronáutico, nave 2 Amazon, en el término municipal de Villanueva de Gállego (Zaragoza)"

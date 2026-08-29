@@ -1,0 +1,102 @@
+id: templus-barcelona-bcn02
+nombre: "Templus BCN02 — Carrer de l'Acer (Zona Franca, Barcelona)"
+alias:
+  - "Templus DC Barcelona BCN02"
+  - "AtlasEdge Barcelona"
+  - "Colt Barcelona Data Centre"
+  - "Barcelona Steel"
+tipo: edificio
+operador: "Templus Data Centers"
+propietario: "Templus Data Centers"
+modelo: colocation
+
+ubicacion:
+  municipio: "Barcelona"
+  provincia: "Barcelona"
+  ccaa: "Cataluña"
+  direccion: "Carrer de l'Acer 5-9, 08038 Barcelona (Zona Franca)"
+  lat: 41.349513
+  lon: 2.13885
+  precision: exacta
+  fuentes: [src-1]
+
+estado: operativo
+estado_detalle: >-
+  Edificio en servicio desde 2001 como "Barcelona Steel" (salas Acero 1 y Acero
+  2), explotado por Colt Data Centre Services y después por AtlasEdge. En
+  diciembre de 2025 AtlasEdge vendió nueve centros europeos a Templus, incluido
+  este. Desde mayo de 2026 se comercializa junto a BCN01 como campus de 10 MW.
+estado_fuentes: [src-2, src-3]
+fecha_puesta_en_servicio: "2001"
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 4
+    ambito: edificio
+    referencia: "Potencia del edificio adquirido a AtlasEdge"
+    estado_asociado: operativo
+    fecha_dato: "2026-05-28"
+    fuentes: [src-3]
+    nota: >-
+      La fuente dice "el adquirido a AtlasEdge en diciembre, que alcanza ya los
+      4 MW" sin precisar tipo de potencia.
+
+superficie_construida_m2: 2160
+
+refrigeracion: >-
+  La ficha técnica de Colt (2019) describía densidades de 1.000 W/m² en la sala
+  Acero 1 y 1.500 W/m² en Acero 2, UPS N+N y generadores N+1 por sala.
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      La ficha técnica de Colt de 2019 anunciaba "Powered by 6MVA" / "Total power
+      provision of 6MVA". Es potencia aparente (MVA), no MW, y no se convierte.
+      Además es un dato de 2019 anterior a los cambios de propiedad.
+    fuentes: [src-2, src-4]
+  - campo: operador
+    descripcion: >-
+      Baxtel todavía lista el activo como AtlasEdge; la venta a Templus se cerró
+      en diciembre de 2025 y el campus se presentó en mayo de 2026.
+    fuentes: [src-2, src-3]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.peeringdb.com/api/fac?name__contains=Barcelona"
+    titulo: "PeeringDB — Facilities API, consulta 'Barcelona'"
+    editor: "PeeringDB"
+    tipo: asociacion
+    fecha_consulta: "2026-08-29"
+    cita: "Templus DC Barcelona BCN02 | Acero 5-9 | Barcelona | 08038 | 41.349513 | 2.13885"
+  - id: src-2
+    url: "https://baxtel.com/data-center/atlasedge-barcelona"
+    titulo: "AtlasEdge Barcelona Data Center"
+    editor: "Baxtel"
+    tipo: prensa_especializada
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      Former Names: Colt Barcelona; Barcelona Steel ... 2,160 sqm of total built
+      space ... In December 2025, AtlasEdge sold nine data centers across Europe
+      to Spanish operator Templus, including this Barcelona facility.
+  - id: src-3
+    url: "https://www.datacentermarket.es/datacenter-infrastructure/templus-impulsa-su-presencia-en-cataluna-con-un-campus-de-10-mw-en-barcelona/"
+    titulo: "Templus impulsa su presencia en Cataluña con un campus de 10 MW en Barcelona"
+    editor: "Data Center Market"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-05-28"
+    fecha_consulta: "2026-08-29"
+    cita: "Ambos centros de datos están situados a apenas 500 metros de distancia"
+  - id: src-4
+    url: "https://www.coltdatacentres.net/de-DE/our-locations/data-centre-locations-europe/-/media/Files/europe-data-sheets/colt-barcelona-datasheet-en.pdf"
+    titulo: "Colt Barcelona Data Centre — Location Data Sheet"
+    editor: "Colt Technology Services"
+    tipo: empresa
+    fecha_publicacion: "2019-01-08"
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      Colt Barcelona Data Centre offers over 2,160sqm of secure and flexible
+      space. ... Powered by 6MVA ... Range of power densities: Acero 1 Hall -
+      1000 W/sqm, Acero 2 Hall - 1,500 W/sqm

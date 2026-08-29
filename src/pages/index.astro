@@ -1,0 +1,419 @@
+---
+import Base from '../layouts/Base.astro'
+import sitios from '../data/sitios.json'
+import resumen from '../data/resumen.json'
+import { ESTADO_ETIQUETA, ORDEN_ESTADOS, MODELO_ETIQUETA, numero } from '../lib/etiquetas.js'
+
+const ccaas = [...new Set(sitios.map((s) => s.ubicacion.ccaa).filter(Boolean))].sort((a, b) =>
+  a.localeCompare(b, 'es'),
+)
+const operadores = [...new Set(sitios.map((s) => s.operador).filter(Boolean))].sort((a, b) =>
+  a.localeCompare(b, 'es'),
+)
+const estadosPresentes = ORDEN_ESTADOS.filter((e) => sitios.some((s) => s.estado === e))
+const modelosPresentes = Object.keys(MODELO_ETIQUETA).filter((m) => sitios.some((s) => s.modelo === m))
+---
+
+<Base
+  titulo="Mapa"
+  descripcion="Mapa de centros de datos operativos y proyectados en España peninsular, con la red de transporte de 220 y 400 kV superpuesta."
+  anchoCompleto
+  sinPie
+>
+  <div class="disposicion">
+    <aside id="panel-filtros" class="panel">
+      <div class="panel-cabecera">
+        <div>
+          <p id="recuento" class="recuento">{numero(sitios.length)} emplazamientos</p>
+          <p id="suma" class="pequeno"></p>
+        </div>
+        <button id="limpiar-filtros" type="button">Limpiar</button>
+      </div>
+
+      <div class="grupo">
+        <label class="etiqueta-campo" for="filtro-texto">Buscar</label>
+        <input
+          id="filtro-texto"
+          type="search"
+          placeholder="Proyecto, operador, municipio…"
+          autocomplete="off"
+        />
+      </div>
+
+      <div class="grupo">
+        <label class="etiqueta-campo" for="filtro-metrica">Magnitud representada</label>
+        <select id="filtro-metrica">
+          <option value="mw_it">MW IT (carga TI)</option>
+          <option value="mw_conexion">MW de conexión a red</option>
+          <option value="mw_sin_tipo">MW sin tipificar</option>
+        </select>
+        <p class="ayuda">
+          El tamaño de cada círculo representa esta magnitud. Los emplazamientos que no la publican
+          se dibujan huecos: no se rellena un dato que no existe.
+        </p>
+      </div>
+
+      <div class="grupo">
+        <label class="etiqueta-campo" for="filtro-minimo">
+          Mínimo de <span id="etiqueta-minimo-metrica">MW IT</span>
+          <span id="valor-minimo" class="silencio">sin mínimo</span>
+        </label>
+        <input id="filtro-minimo" type="range" min="0" max="200" step="5" value="0" />
+        <label class="casilla pequeno">
+          <input id="filtro-solo-con-metrica" type="checkbox" />
+          Solo los que publican esta magnitud
+        </label>
+      </div>
+
+      <fieldset class="grupo">
+        <legend class="etiqueta-campo">Estado</legend>
+        {estadosPresentes.map((e) => (
+          <label class={`casilla estado-${e}`}>
+            <input type="checkbox" data-estado={e} />
+            <span class="punto"></span>
+            <span class="casilla-texto">{ESTADO_ETIQUETA[e]}</span>
+            <span class="silencio pequeno">{sitios.filter((s) => s.estado === e).length}</span>
+          </label>
+        ))}
+      </fieldset>
+
+      <div class="grupo">
+        <label class="etiqueta-campo" for="filtro-ccaa">Comunidad autónoma</label>
+        <select id="filtro-ccaa" data-filtro="ccaa">
+          <option value="">Todas</option>
+          {ccaas.map((c) => <option value={c}>{c}</option>)}
+        </select>
+      </div>
+
+      <div class="grupo">
+        <label class="etiqueta-campo" for="filtro-operador">Operador</label>
+        <select id="filtro-operador" data-filtro="operador">
+          <option value="">Todos</option>
+          {operadores.map((o) => <option value={o}>{o}</option>)}
+        </select>
+      </div>
+
+      <div class="grupo">
+        <label class="etiqueta-campo" for="filtro-modelo">Modelo</label>
+        <select id="filtro-modelo" data-filtro="modelo">
+          <option value="">Todos</option>
+          {modelosPresentes.map((m) => <option value={m}>{MODELO_ETIQUETA[m]}</option>)}
+        </select>
+      </div>
+
+      <div class="grupo">
+        <label class="etiqueta-campo" for="filtro-confianza">Confianza del registro</label>
+        <select id="filtro-confianza" data-filtro="confianza">
+          <option value="">Cualquiera</option>
+          <option value="alta">Alta</option>
+          <option value="media">Media</option>
+          <option value="baja">Baja</option>
+        </select>
+      </div>
+
+      <fieldset class="grupo">
+        <legend class="etiqueta-campo">Capas eléctricas</legend>
+        <label class="casilla">
+          <input type="checkbox" data-capa="lineas" />
+          <span class="casilla-texto">Red de transporte 220/400 kV</span>
+        </label>
+        <label class="casilla">
+          <input type="checkbox" data-capa="subestaciones" />
+          <span class="casilla-texto">Subestaciones y nudos ({resumen.nodos_red})</span>
+        </label>
+        <label class="casilla">
+          <input type="checkbox" data-capa="renovables" />
+          <span class="casilla-texto">Renovables y BESS vinculados ({resumen.activos_renovables})</span>
+        </label>
+        <p class="ayuda">
+          Trazado derivado de OpenStreetMap, de completitud variable. No sustituye a la cartografía
+          oficial de Red Eléctrica.
+        </p>
+      </fieldset>
+
+      <ol id="lista-resultados" class="lista"></ol>
+    </aside>
+
+    <div class="zona-mapa">
+      <button id="alternar-panel" type="button" aria-expanded="false">Filtros</button>
+      <div id="mapa"></div>
+      <aside id="panel-detalle" class="detalle-flotante" hidden></aside>
+      <div class="leyenda">
+        {ORDEN_ESTADOS.filter((e) => sitios.some((s) => s.estado === e)).map((e) => (
+          <span class={`leyenda-item estado-${e}`}><span class="punto"></span>{ESTADO_ETIQUETA[e]}</span>
+        ))}
+      </div>
+    </div>
+  </div>
+</Base>
+
+<script>
+  import { iniciarMapa } from '../scripts/mapa.js'
+  iniciarMapa()
+</script>
+
+<style>
+  .disposicion {
+    display: grid;
+    grid-template-columns: 22rem 1fr;
+    height: calc(100vh - 3.1rem);
+    min-height: 34rem;
+  }
+
+  .panel {
+    border-right: 1px solid var(--borde);
+    overflow-y: auto;
+    padding: 0 0 2rem;
+    background: var(--papel);
+  }
+
+  .panel-cabecera {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.9rem 1rem;
+    border-bottom: 1px solid var(--borde);
+    position: sticky;
+    top: 0;
+    background: var(--papel);
+    z-index: 2;
+  }
+
+  .recuento {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    margin: 0;
+  }
+
+  .panel-cabecera p + p {
+    margin: 0.15rem 0 0;
+  }
+
+  .grupo {
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid var(--borde);
+    margin: 0;
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+  }
+
+  fieldset.grupo {
+    border-style: solid none;
+  }
+
+  .etiqueta-campo {
+    display: block;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--tinta-3);
+    margin-bottom: 0.4rem;
+    padding: 0;
+  }
+
+  .grupo > select,
+  .grupo > input[type='search'],
+  .grupo > input[type='range'] {
+    width: 100%;
+  }
+
+  .ayuda {
+    font-size: 0.78rem;
+    color: var(--tinta-3);
+    margin: 0.45rem 0 0;
+    line-height: 1.45;
+  }
+
+  .casilla {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.18rem 0;
+    font-size: 0.87rem;
+    cursor: pointer;
+  }
+
+  .casilla-texto {
+    flex: 1;
+    color: var(--tinta);
+  }
+
+  .lista {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .lista :global(.fila-sitio) {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: 0;
+    border-bottom: 1px solid var(--borde);
+    border-radius: 0;
+    padding: 0.55rem 1rem;
+  }
+
+  .lista :global(.fila-punto) {
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 50%;
+    flex: none;
+  }
+
+  .lista :global(.fila-texto) {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.35;
+  }
+
+  .lista :global(.fila-texto strong) {
+    font-weight: 500;
+    font-size: 0.88rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .lista :global(.fila-mw) {
+    font-variant-numeric: tabular-nums;
+    font-size: 0.9rem;
+    color: var(--tinta-2);
+    white-space: nowrap;
+  }
+
+  .lista :global(.fila-mw small) {
+    color: var(--tinta-3);
+    font-size: 0.72rem;
+  }
+
+  .zona-mapa {
+    position: relative;
+  }
+
+  #mapa {
+    position: absolute;
+    inset: 0;
+  }
+
+  #alternar-panel {
+    display: none;
+  }
+
+  .leyenda {
+    position: absolute;
+    left: 0.75rem;
+    bottom: 2.1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.15rem 0.7rem;
+    max-width: 26rem;
+    padding: 0.5rem 0.7rem;
+    background: color-mix(in srgb, var(--papel) 92%, transparent);
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    font-size: 0.75rem;
+    backdrop-filter: blur(3px);
+  }
+
+  .leyenda-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .detalle-flotante {
+    position: absolute;
+    top: 0.75rem;
+    right: 3.4rem;
+    width: min(22rem, calc(100% - 5rem));
+    max-height: calc(100% - 4rem);
+    overflow-y: auto;
+    background: var(--papel);
+    border: 1px solid var(--borde-fuerte);
+    border-radius: var(--radio);
+    padding: 1rem 1.1rem 1.1rem;
+    box-shadow: 0 6px 24px rgb(0 0 0 / 0.13);
+  }
+
+  .detalle-flotante :global(h2) {
+    font-size: 1.1rem;
+    margin: 0.5rem 0 0.75rem;
+  }
+
+  .detalle-flotante :global(.cerrar) {
+    float: right;
+    border: 0;
+    background: none;
+    font-size: 1.3rem;
+    line-height: 1;
+    padding: 0 0.2rem;
+    color: var(--tinta-3);
+  }
+
+  .detalle-flotante :global(.detalle) {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.25rem 0.8rem;
+    margin: 0 0 0.9rem;
+    font-size: 0.87rem;
+  }
+
+  .detalle-flotante :global(.detalle dt) {
+    color: var(--tinta-3);
+  }
+
+  .detalle-flotante :global(.detalle dd) {
+    margin: 0;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .detalle-flotante :global(.boton-ficha) {
+    display: inline-block;
+    font-size: 0.87rem;
+  }
+
+  @media (max-width: 900px) {
+    .disposicion {
+      grid-template-columns: 1fr;
+      height: calc(100vh - 3.1rem);
+    }
+
+    .panel {
+      position: absolute;
+      z-index: 20;
+      inset: 3.1rem 0 auto 0;
+      max-height: 70vh;
+      border-right: 0;
+      border-bottom: 1px solid var(--borde-fuerte);
+      transform: translateY(-100%);
+      transition: transform 0.2s ease;
+      box-shadow: 0 8px 20px rgb(0 0 0 / 0.15);
+    }
+
+    .panel.abierto {
+      transform: none;
+    }
+
+    #alternar-panel {
+      display: block;
+      position: absolute;
+      z-index: 21;
+      top: 0.6rem;
+      left: 0.6rem;
+      background: var(--papel);
+      border: 1px solid var(--borde-fuerte);
+    }
+
+    .leyenda {
+      display: none;
+    }
+  }
+</style>

@@ -1,0 +1,89 @@
+id: edgemode-cordoba-green-dc
+nombre: "Green DC Córdoba — EdgeMode"
+alias:
+  - "EdgeMode Green DC Córdoba"
+tipo: campus
+operador: "EdgeMode"
+propietario: "Sociedad conjunta EdgeMode (75%) — Blackberry AIF (25%)"
+modelo: mayorista
+
+ubicacion:
+  municipio: "Córdoba"
+  provincia: "Córdoba"
+  ccaa: "Andalucía"
+  lat: 37.8882
+  lon: -4.7794
+  precision: municipio
+  fuentes: [src-1, src-2, src-3]
+
+estado: en_tramitacion
+estado_detalle: >-
+  Uno de los cinco campus del porfolio español que EdgeMode adquirió a Blackberry AIF (junto a
+  Torrecampo, Malpica, Cáceres y Vianos). Baxtel indica conexión a red asegurada y licencia
+  provisional de construcción obtenida, con estatus ready-to-build previsto para 2026 y desarrollo
+  del emplazamiento a partir de 2028 con ampliaciones hasta 2030. Cada campus del porfolio se
+  proyecta con unos 60 MW de fotovoltaica dedicada y 240 MWh de almacenamiento en baterías, que son
+  activos de generación y no potencia del centro de datos.
+estado_fuentes: [src-1, src-2]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 300
+    ambito: campus
+    referencia: "Capacidad atribuida al campus de Córdoba dentro del porfolio de 1,5 GW"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2026-01-01"
+    fuentes: [src-3]
+    nota: >-
+      El Conciso dice «Córdoba y Torrecampo, dotadas con 300 MW cada una» sin especificar si son
+      MW IT o de conexión. GlobeNewswire y pv-tech hablan de 1,5 GW combinados en cinco campus.
+
+conexion_electrica:
+  fuentes: [src-1]
+
+enlaces_proyecto: []
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      Los 300 MW por emplazamiento salen de dividir el objetivo agregado de 1,5 GW entre cinco
+      campus. No hay fuente que publique una potencia contratada o concedida específica para
+      Córdoba, ni el tipo de MW.
+    fuentes: [src-2, src-3]
+  - campo: ubicacion
+    descripcion: >-
+      Ninguna fuente da parcela, polígono ni dirección; solo «Córdoba». Coordenadas de municipio.
+    fuentes: [src-1, src-2, src-3]
+  - campo: estado
+    descripcion: >-
+      pv-tech sitúa el ready-to-build del porfolio en el primer trimestre de 2026; Baxtel lo sitúa
+      en el segundo trimestre de 2026 para Córdoba. La afirmación de «conexión a red asegurada» y
+      «licencia provisional de construcción» procede solo de Baxtel y no está respaldada por
+      documento administrativo localizado.
+    fuentes: [src-1, src-2]
+
+confianza: baja
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://baxtel.com/data-center/edgemode-green-dc-cordoba"
+    titulo: "EdgeMode: Green DC Córdoba Data Center"
+    editor: "Baxtel"
+    tipo: consultora
+    fecha_consulta: "2026-08-29"
+    cita: "a PUE of <1.02 and recapture over 95% of deployed energy for reuse"
+  - id: src-2
+    url: "https://www.pv-tech.org/edgemode-build-300mw-1-2gwh-solar-plus-storage-portfolio-spanish-data-centres/"
+    titulo: "EdgeMode to build 300MW/1.2GWh solar-plus-storage portfolio for Spanish data centres"
+    editor: "PV Tech"
+    tipo: prensa_especializada
+    fecha_consulta: "2026-08-29"
+    cita: "The projects are expected to reach ready-to-build status in Q1 2026, with commercial operations commencing in phases beginning in 2027."
+  - id: src-3
+    url: "https://www.elconciso.es/empresas/data-centers-andalucia-edgemode-goenergy-sierradc_0_2006448488.html"
+    titulo: "Andalucía se cae del mapa de 'data centers', con EdgeMode, Sierra DC o Go Energy como únicos actores"
+    editor: "El Conciso"
+    tipo: prensa_general
+    fecha_consulta: "2026-08-29"
+    cita: "Córdoba y Torrecampo, dotadas con 300 MW cada una"

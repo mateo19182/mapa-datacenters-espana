@@ -1,0 +1,86 @@
+id: barcelona-cls-sant-adria
+nombre: "Barcelona Cable Landing Station — Sant Adrià de Besòs"
+alias:
+  - "Barcelona CLS"
+  - "BCLS"
+tipo: edificio
+operador: "AFR-IX telecom"
+propietario: "AFR-IX telecom"
+modelo: corporativo
+
+ubicacion:
+  municipio: "Sant Adrià de Besòs"
+  provincia: "Barcelona"
+  ccaa: "Cataluña"
+  direccion: "Carrer de Ramon Viñas 4, 08930 Sant Adrià de Besòs (entorno de las Tres Xemeneies)"
+  lat: 41.427287
+  lon: 2.230662
+  precision: exacta
+  fuentes: [src-1]
+
+estado: operativo
+estado_detalle: >-
+  Estación de amarre de cables submarinos operada por AFR-IX telecom en régimen
+  de operador independiente que alquila la infraestructura a operadores. Diseñada
+  para alojar hasta ocho cables submarinos. Es la pieza a la que se conectan los
+  centros de datos de Sant Adrià y la Zona Franca.
+estado_fuentes: [src-2, src-3]
+
+potencia: []
+
+superficie_construida_m2: null
+inversion_anunciada_eur: 8000000
+
+incertidumbres:
+  - campo: inversion_anunciada_eur
+    descripcion: >-
+      The New Barcelona Post cifra la inversión en 8 millones de euros ("2
+      millones más de lo previsto por el rediseño"); 22@Network Barcelona la
+      cifra en 10 millones. Se registran ambas.
+    fuentes: [src-2, src-3]
+  - campo: potencia
+    descripcion: >-
+      No se ha localizado ninguna cifra de potencia eléctrica del edificio.
+      Baxtel la mantiene tras muro de pago.
+    fuentes: [src-4]
+  - campo: superficie_construida_m2
+    descripcion: >-
+      Baxtel indica una sala de colocation de 400 m² en la primera planta; otras
+      fuentes hablan de 380 m² de superficie de acogida. No es la superficie
+      total del edificio.
+    fuentes: [src-4]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.peeringdb.com/api/fac?country=ES&limit=300"
+    titulo: "PeeringDB — Facilities API, España"
+    editor: "PeeringDB"
+    tipo: asociacion
+    fecha_consulta: "2026-08-29"
+    cita: "Barcelona Cable Landing Station | Carrer de Ramon Viñas 4 | Sant Adrià de Besòs | 08930 | 41.427287 | 2.230662"
+  - id: src-2
+    url: "https://www.thenewbarcelonapost.com/estacion-de-cables-submarinos-de-barcelona-sant-adria-entrara-en-funcionamiento-a-finales-de-2022/"
+    titulo: "La estación de cables submarinos de Barcelona entrará en funcionamiento a finales de año"
+    editor: "The New Barcelona Post"
+    tipo: prensa_general
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      un gestor independiente que otorga la concesión de uso a operadores del
+      sistema de telecomunicaciones en régimen de alquiler
+  - id: src-3
+    url: "https://www.22network.net/noticias/barcelona-cable-landing-station-ready-for-first-submarine-fiber-optic-cables/?lang=es"
+    titulo: "Barcelona Cable Landing Station ready for first submarine fiber optic cables"
+    editor: "22@Network Barcelona"
+    tipo: asociacion
+    fecha_consulta: "2026-08-29"
+    cita: "The CLS can host up to eight different submarine fiber optic cables."
+  - id: src-4
+    url: "https://baxtel.com/data-center/barcelona-cls"
+    titulo: "Barcelona CLS Data Center"
+    editor: "Baxtel"
+    tipo: prensa_especializada
+    fecha_consulta: "2026-08-29"
+    cita: "400m2 space ... 8 colocation rooms for subsea systems"

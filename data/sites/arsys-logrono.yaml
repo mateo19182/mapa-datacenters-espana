@@ -1,0 +1,85 @@
+id: arsys-logrono
+nombre: "Centro de Datos de Arsys — Logroño"
+alias:
+  - "Data Center de Arsys en La Rioja"
+tipo: edificio
+operador: "Arsys"
+propietario: "Arsys Internet, S.L.U."
+modelo: colocation
+
+ubicacion:
+  municipio: "Logroño"
+  provincia: "La Rioja"
+  ccaa: "La Rioja"
+  lat: 42.4661196
+  lon: -2.4396676
+  precision: municipio
+  fuentes: [src-aslan, src-osm]
+
+estado: operativo
+estado_detalle: >-
+  Centro de datos propio de Arsys en Logroño, en explotación y ampliado por
+  fases mediante salas técnicas de 250 m². En abril de 2019 entró en servicio la
+  segunda sala, duplicando la capacidad. El diseño contempla cuatro salas
+  técnicas y unos 20.000 servidores físicos a plena capacidad. Aloja la nube
+  privada del Gobierno de La Rioja.
+estado_fuentes: [src-aslan]
+
+potencia: []
+
+fases:
+  - nombre: "Segunda sala técnica (250 m²)"
+    estado: operativo
+    fecha_puesta_en_servicio: "2019-04"
+    superficie_m2: 250
+    fuentes: [src-aslan]
+  - nombre: "Tercera y cuarta salas técnicas"
+    estado: anunciado
+    nota: >-
+      Con las cuatro salas operativas la capacidad se situaría en 20.000
+      servidores físicos.
+    fuentes: [src-aslan]
+
+refrigeracion: "PUE objetivo declarado de 1,25, con monitorización asistida por IA."
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      Arsys publica superficie técnica, número de racks y servidores, pero no la
+      potencia eléctrica del centro en ninguna de las fuentes consultadas.
+    fuentes: [src-aslan]
+  - campo: ubicacion
+    descripcion: >-
+      No se ha localizado la dirección exacta; las coordenadas corresponden al
+      municipio de Logroño.
+    fuentes: [src-osm]
+  - campo: estado
+    descripcion: >-
+      La información técnica más detallada localizada es de 2019. Fuentes
+      posteriores confirman que el centro sigue operativo y que se puso en
+      producción una tercera sala, pero sin datos técnicos verificados.
+    fuentes: [src-aslan]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-aslan
+    url: "https://aslan.es/arsys-amplia-su-centro-de-datos-en-la-rioja/"
+    titulo: "ARSYS amplía su Centro de Datos en La Rioja"
+    editor: "Asociación @aslan"
+    tipo: asociacion
+    fecha_publicacion: "2019-04-12"
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      segunda sala técnica de 250 m2 que duplica la capacidad máxima actual del
+      Centro de Datos [...] Con las cuatro salas técnicas operativas, la
+      capacidad del Centro de Datos de Arsys se situaría en 20.000 servidores
+      físicos.
+  - id: src-osm
+    url: "https://nominatim.openstreetmap.org/search?q=Logro%C3%B1o%2C+La+Rioja&format=json&limit=1"
+    titulo: "Nominatim — Logroño, La Rioja"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: "Logroño, La Rioja, España — lat 42.4661196, lon -2.4396676"

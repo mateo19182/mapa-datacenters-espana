@@ -1,0 +1,83 @@
+id: frv-edison-monfarracinos-zamora
+nombre: "Data Center Hiperescalar IA Zamora — Monfarracinos (polígono Zamora Norte)"
+alias:
+  - "Megacentro de datos de Monfarracinos"
+  - "Data Center Hiperescalar IA Zamora"
+tipo: campus
+operador: null
+propietario: "FRV-X Renewable, S.L.U. y Edison Next Spain, S.L.U."
+modelo: hyperscale
+
+ubicacion:
+  municipio: "Monfarracinos"
+  provincia: "Zamora"
+  ccaa: "Castilla y León"
+  direccion: "Polígono Zamora Norte"
+  lat: 41.5526221
+  lon: -5.7064267
+  precision: municipio
+  fuentes: [src-elespanol, src-osm]
+
+estado: en_tramitacion
+estado_detalle: >-
+  En información pública durante agosto de 2026, con plazo de alegaciones hasta
+  el 16 de septiembre de 2026. El proyecto ha generado oposición vecinal y
+  política; el PSOE reclamó transparencia el 25 de agosto de 2026.
+estado_fuentes: [src-elespanol]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 1160
+    ambito: campus
+    referencia: "Potencia térmica de la central de generación asociada (1,16 GWt)"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2026-08"
+    fuentes: [src-elespanol]
+    nota: >-
+      Es potencia TÉRMICA de la planta de generación asociada (24 motores de gas
+      natural y 25 motores diésel), no potencia eléctrica ni carga TI. No debe
+      compararse con los MW de otros emplazamientos.
+
+fases: []
+
+refrigeracion: >-
+  Consumo declarado de 6.281,65 metros cúbicos de agua potable y 11.911,6 de no
+  potable.
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      No consta la carga TI ni la potencia eléctrica del centro de datos. La
+      única magnitud publicada es la potencia térmica de la central asociada
+      (1,16 GWt), que no es equiparable.
+    fuentes: [src-elespanol]
+  - campo: operador
+    descripcion: >-
+      Las promotoras del expediente son FRV-X Renewable, S.L.U. y Edison Next
+      Spain, S.L.U.; no consta quién explotaría el centro de datos.
+    fuentes: [src-elespanol]
+  - campo: inversion_anunciada_eur
+    descripcion: "La inversión se describe como \"varios millones de euros\", sin cifra exacta anunciada."
+    fuentes: [src-elespanol]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-elespanol
+    url: "https://www.elespanol.com/castilla-y-leon/region/zamora/20260829/dilema-monfarracinos-megacentro-datos-empleo-inversion-ruidos-irreversible-impacto-ambiental/1003744364453_0.html"
+    titulo: "El dilema de Monfarracinos por el megacentro de datos: empleo e inversión o ruidos y el «irreversible» impacto ambiental"
+    editor: "El Español Castilla y León"
+    tipo: prensa_general
+    fecha_publicacion: "2026-08-29"
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      24 motores de gas natural, 24 chimeneas de 30 metros de altura y 25 motores
+      diésel [...] 6.281,65 metros cúbicos potables y 11.911,6 de no potable.
+  - id: src-osm
+    url: "https://nominatim.openstreetmap.org/search?q=Monfarracinos%2C+Zamora&format=json&limit=2"
+    titulo: "Nominatim — Monfarracinos, Zamora"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: "Monfarracinos, Zamora, Castilla y León, España — lat 41.5526221, lon -5.7064267"

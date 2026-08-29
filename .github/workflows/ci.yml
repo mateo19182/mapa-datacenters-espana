@@ -1,0 +1,35 @@
+name: Validación y construcción
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  construir:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+
+      # El esquema es la primera línea de defensa: un error bloquea la fusión.
+      - name: Validar el conjunto de datos
+        run: npm run validate:strict
+
+      - name: Construir el sitio
+        run: npm run build
+
+      - name: Publicar el parte de validación
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: parte-de-validacion
+          path: research/informe-validacion.md
+
+      - name: Resumen
+        if: always()
+        run: cat research/informe-validacion.md >> "$GITHUB_STEP_SUMMARY"

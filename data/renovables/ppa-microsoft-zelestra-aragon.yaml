@@ -1,0 +1,40 @@
+id: ppa-microsoft-zelestra-aragon
+nombre: "PPA Microsoft — plantas solares Escatrón II y Fuendetodos II (Zelestra)"
+tipo: fotovoltaica
+tipo_detalle: "Dos plantas solares. La fuente da la capacidad conjunta, no el reparto."
+potencia_mw: 95.7
+tipo_potencia: nominal
+capacidad_mwh: null
+promotor: "Zelestra"
+contraparte_ppa: "Microsoft"
+tipo_vinculo: ppa
+duracion_anios: null
+municipio: null
+municipios: ["Escatrón", "Fuendetodos"]
+provincia: "Zaragoza"
+ccaa: "Aragón"
+lat: null
+lon: null
+precision: municipio
+estado: en_construccion
+estado_detalle: "En noviembre de 2025 las dos plantas estaban «actualmente en construcción»."
+fecha_firma: "2025-11-24"
+adicionalidad: nueva_construccion
+adicionalidad_fuentes: [src-1]
+clusters_relacionados: [aragon]
+cpds_relacionados: []
+incertidumbres:
+  - campo: potencia_mw
+    descripcion: "95,7 MW es la capacidad conjunta de Escatrón II y Fuendetodos II; la fuente no la desglosa por planta."
+    fuentes: [src-1]
+confianza: media
+ultima_verificacion: "2026-08-29"
+fuentes:
+  - id: src-1
+    url: "https://elperiodicodelaenergia.com/zelestra-cierra-un-ppa-con-microsoft-para-suministrar-energia-de-dos-plantas-solares-en-aragon-para-sus-centros-de-datos/"
+    titulo: "Zelestra cierra un PPA con Microsoft para suministrar energía de dos plantas solares en Aragón para sus centros de datos"
+    editor: "El Periódico de la Energía"
+    tipo: prensa_especializada
+    fecha_publicacion: "2025-11-24"
+    fecha_consulta: "2026-08-29"
+    cita: "Microsoft adquirirá la energía limpia generada por los proyectos solares Escatrón II y Fuendetodos II de Zelestra en Zaragoza, Aragón, que se encuentran actualmente en construcción. Los proyectos tendrán una capacidad total de 95,7 MW."

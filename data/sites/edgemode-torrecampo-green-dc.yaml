@@ -1,0 +1,74 @@
+id: edgemode-torrecampo-green-dc
+nombre: "Green DC Torrecampo — EdgeMode"
+alias:
+  - "EdgeMode Torrecampo"
+tipo: campus
+operador: "EdgeMode"
+propietario: "Sociedad conjunta EdgeMode (75%) — Blackberry AIF (25%)"
+modelo: mayorista
+
+ubicacion:
+  municipio: "Torrecampo"
+  provincia: "Córdoba"
+  ccaa: "Andalucía"
+  lat: 38.4525
+  lon: -4.6878
+  precision: municipio
+  fuentes: [src-1, src-2]
+
+estado: anunciado
+estado_detalle: >-
+  Segundo emplazamiento andaluz del porfolio español de cinco campus que EdgeMode adquirió a
+  Blackberry AIF. pv-tech sitúa el ready-to-build del conjunto en el primer trimestre de 2026 y el
+  arranque comercial escalonado desde 2027. Cada campus se proyecta con unos 60 MW de fotovoltaica
+  dedicada y 240 MWh de baterías, que son activos de generación, no potencia del centro de datos.
+estado_fuentes: [src-1, src-2]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 300
+    ambito: campus
+    referencia: "Capacidad atribuida al campus de Torrecampo dentro del porfolio de 1,5 GW"
+    estado_asociado: anunciado
+    fecha_dato: "2026-01-01"
+    fuentes: [src-2]
+    nota: >-
+      El Conciso dice «Córdoba y Torrecampo, dotadas con 300 MW cada una» sin especificar el tipo
+      de MW.
+
+enlaces_proyecto: []
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      Cifra derivada del reparto del objetivo agregado de 1,5 GW entre cinco campus. Sin fuente
+      específica para Torrecampo ni tipo de MW.
+    fuentes: [src-1, src-2]
+  - campo: ubicacion
+    descripcion: >-
+      Sin parcela, polígono ni dirección. Coordenadas de municipio.
+    fuentes: [src-1, src-2]
+  - campo: estado
+    descripcion: >-
+      A diferencia de Córdoba, no se ha localizado ficha de proyecto ni referencia a licencias o
+      conexión a red para Torrecampo. Solo consta como uno de los cinco emplazamientos del porfolio.
+    fuentes: [src-1, src-2]
+
+confianza: baja
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.pv-tech.org/edgemode-build-300mw-1-2gwh-solar-plus-storage-portfolio-spanish-data-centres/"
+    titulo: "EdgeMode to build 300MW/1.2GWh solar-plus-storage portfolio for Spanish data centres"
+    editor: "PV Tech"
+    tipo: prensa_especializada
+    fecha_consulta: "2026-08-29"
+    cita: "EdgeMode has acquired a portfolio of five Spanish data centre campuses located in Cáceres, Córdoba, Malpica, Torrecampo, and Vianos."
+  - id: src-2
+    url: "https://www.elconciso.es/empresas/data-centers-andalucia-edgemode-goenergy-sierradc_0_2006448488.html"
+    titulo: "Andalucía se cae del mapa de 'data centers', con EdgeMode, Sierra DC o Go Energy como únicos actores"
+    editor: "El Conciso"
+    tipo: prensa_general
+    fecha_consulta: "2026-08-29"
+    cita: "Córdoba y Torrecampo, dotadas con 300 MW cada una"

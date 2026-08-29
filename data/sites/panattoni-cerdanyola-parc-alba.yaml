@@ -1,0 +1,124 @@
+id: panattoni-cerdanyola-parc-alba
+nombre: "Panattoni Barcelona Data Center Campus — Parc de l'Alba (Cerdanyola del Vallès)"
+alias:
+  - "Panattoni Barcelona DC01"
+  - "Panattoni Barcelona DC02"
+  - "Panattoni Barcelona Campus"
+tipo: campus
+operador: "Panattoni"
+propietario: "Panattoni"
+modelo: mayorista
+
+ubicacion:
+  municipio: "Cerdanyola del Vallès"
+  provincia: "Barcelona"
+  ccaa: "Cataluña"
+  direccion: "Parc de l'Alba, Camí Ral, Cerdanyola del Vallès"
+  lat: 41.485618
+  lon: 2.1076426
+  precision: aproximada
+  fuentes: [src-1, src-2, src-alba]
+
+estado: en_construccion
+estado_detalle: >-
+  Panattoni compró la parcela al Consorci del Parc de l'Alba y obtuvo la licencia
+  de obra para la primera fase de 42 MW. Las obras de conexión eléctrica se
+  ejecutaron entre enero y junio de 2025; la fase 1 se anuncia para finales de
+  2026 con un plazo de obra de 14 meses. La segunda fase (DC02) figura en
+  directorios como planificada para 2028.
+estado_fuentes: [src-1, src-2]
+
+potencia:
+  - tipo: instalada_total
+    valor_mw: 88
+    ambito: campus
+    referencia: "Potencia total instalada del campus (fases 1 y 2)"
+    estado_asociado: en_construccion
+    fecha_dato: "2025"
+    fuentes: [src-1]
+    nota: "La fuente dice literalmente '88 MW de potencia total instalada'."
+  - tipo: no_especificado
+    valor_mw: 42
+    ambito: fase
+    referencia: "Fase 1 (DC01)"
+    estado_asociado: en_construccion
+    fecha_dato: "2025"
+    fuentes: [src-1]
+  - tipo: no_especificado
+    valor_mw: 46
+    ambito: fase
+    referencia: "Fase 2 (DC02)"
+    estado_asociado: anunciado
+    fecha_dato: "2025"
+    fuentes: [src-1]
+
+fases:
+  - nombre: "Fase 1 (DC01)"
+    estado: en_construccion
+    fecha_puesta_en_servicio: "2026"
+    superficie_m2: 21292
+    fuentes: [src-1, src-2]
+  - nombre: "Fase 2 (DC02)"
+    estado: anunciado
+    superficie_m2: 28877
+    fuentes: [src-1, src-2]
+
+conexion_electrica:
+  titular_red: null
+  fuentes: [src-1]
+
+superficie_parcela_m2: 50169
+inversion_anunciada_eur: 300000000
+
+incertidumbres:
+  - campo: ubicacion
+    descripcion: >-
+      Las coordenadas son el centroide del Parc de l'Alba según Nominatim, no la
+      parcela concreta del proyecto. Precisión aproximada.
+    fuentes: [src-alba]
+  - campo: potencia
+    descripcion: >-
+      La fuente da 88 MW como "potencia total instalada" del campus y desglosa 42
+      MW + 46 MW por fases, pero no indica cuánta de esa potencia es carga TI ni
+      cuál es la potencia de acceso concedida en el punto de conexión.
+    fuentes: [src-1]
+  - campo: conexion_electrica
+    descripcion: >-
+      El proyecto incluye "la construcción de una subestación eléctrica propia en
+      la parcela", pero no se ha localizado la autorización administrativa ni la
+      tensión ni el titular de la red de conexión.
+    fuentes: [src-1]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://observatorioinmobiliario.es/noticias/logistica/panattoni-invierte-300-millones-en-la-primera-fase-de-su-centro-de-datos-en-barcelona/"
+    titulo: "Panattoni invierte 300 millones en la primera fase de su centro de datos en Barcelona"
+    editor: "Observatorio Inmobiliario"
+    tipo: prensa_especializada
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      ubicado en el Parc de l'Alba de Cerdanyola del Vallès, tras obtener la
+      licencia de obra para desarrollar un campus tecnológico de 50.169 m2 y 88
+      MW de potencia total instalada.
+  - id: src-2
+    url: "https://baxtel.com/data-center/panattoni-barcelona-campus"
+    titulo: "Panattoni: Barcelona Campus Data Center"
+    editor: "Baxtel"
+    tipo: prensa_especializada
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      Address: Camí Ral, Cerdanyola del Vallès, Barcelona, Spain (Parc de
+      l'Alba) ... Initial phase: 21,292 sq meters ... Full campus: Up to 50,169
+      sq meters ... Status: Under Construction
+  - id: src-alba
+    url: "https://nominatim.openstreetmap.org/search?q=Parc+de+l%27Alba%2C+Cerdanyola+del+Vall%C3%A8s&format=json&limit=3"
+    titulo: "Nominatim — geocodificación de Parc de l'Alba, Cerdanyola del Vallès"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      Parc de l'Alba, Cerdanyola del Vallès, Vallès Occidental, Barcelona,
+      Catalunya, España — lat 41.4856180, lon 2.1076426

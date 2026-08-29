@@ -1,0 +1,39 @@
+id: cartera-microsoft-espana
+nombre: "Cartera de contratos renovables de Microsoft en España (agregado corporativo)"
+tipo: hibrida
+potencia_mw: 1496
+tipo_potencia: nominal
+potencia_nota: "MW de NUEVA capacidad solar y eólica ligada a 16 acuerdos corporativos de compra de energía y otros contratos a largo plazo en España. De ellos, más de 522 MW ya operativos. No son MW de centros de datos."
+potencia_operativa_mw: 522
+capacidad_mwh: null
+promotor: "varios (Zelestra, Iberdrola, Repsol y otros)"
+contraparte_ppa: "Microsoft"
+tipo_vinculo: ppa
+municipio: null
+provincia: null
+ccaa: null
+lat: null
+lon: null
+precision: desconocida
+estado: parcialmente_operativo
+fecha_firma: null
+adicionalidad: nueva_construccion
+adicionalidad_fuentes: [src-1]
+adicionalidad_nota: "Es el único agregado localizado que declara explícitamente que la capacidad contratada es nueva."
+clusters_relacionados: [madrid, aragon]
+cpds_relacionados: []
+incertidumbres:
+  - campo: potencia_mw
+    descripcion: "Cifra agregada de febrero de 2026 sin desglose por contrato ni por planta."
+    fuentes: [src-1]
+confianza: media
+ultima_verificacion: "2026-08-29"
+fuentes:
+  - id: src-1
+    url: "https://www.datacentermarket.es/sostenibilidad/microsoft-alcanza-un-hito-climatico-global-y-convierte-su-ambicion-verde-en-ventaja-estrategica/"
+    titulo: "Microsoft compensa con energías renovables toda su electricidad"
+    editor: "Data Center Market"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-02-20"
+    fecha_consulta: "2026-08-29"
+    cita: "16 acuerdos corporativos de compra de energía y otros contratos a largo plazo [...] vinculados a 1.496 MW de nueva capacidad solar y eólica, de los cuales más de 522 MW ya están operativos"

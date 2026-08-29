@@ -1,0 +1,60 @@
+id: csuc-barcelona-campus-nord
+nombre: "CSUC — Centre de Processament de Dades del Campus Nord (Barcelona)"
+alias:
+  - "CSUC Campus Nord"
+  - "CPD Edifici Annexus"
+tipo: edificio
+operador: "Consorci de Serveis Universitaris de Catalunya (CSUC)"
+propietario: "Consorci de Serveis Universitaris de Catalunya (CSUC)"
+modelo: corporativo
+
+ubicacion:
+  municipio: "Barcelona"
+  provincia: "Barcelona"
+  ccaa: "Cataluña"
+  direccion: "Gran Capità 2-4 (Edifici Nexus), Campus Nord UPC, 08034 Barcelona"
+  lat: 41.387314
+  lon: 2.111883
+  precision: exacta
+  fuentes: [src-1]
+
+estado: operativo
+estado_detalle: >-
+  Centro de proceso de datos del consorcio público que presta servicios de
+  supercomputación, red (Anella Científica) y alojamiento a las universidades y
+  centros de investigación catalanes. El CSUC identifica su CPD en el Edifici
+  Annexus del Campus Nord, distinto de su sede social en Gran Capità 2.
+estado_fuentes: [src-1, src-2]
+
+potencia: []
+
+incertidumbres:
+  - campo: potencia
+    descripcion: "No se publica potencia eléctrica ni superficie del CPD."
+    fuentes: [src-2]
+  - campo: ubicacion
+    descripcion: >-
+      PeeringDB registra la instalación en "Gran Capita, 2 - 4 (Edifici Nexus)";
+      la web del CSUC menciona el "Centre de Processament de Dades (Edifici
+      Annexus)" como instalación distinta de la sede. Ambos edificios están en el
+      Campus Nord de la UPC.
+    fuentes: [src-1, src-2]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.peeringdb.com/api/fac?city=Barcelona"
+    titulo: "PeeringDB — Facilities API, ciudad Barcelona"
+    editor: "PeeringDB"
+    tipo: asociacion
+    fecha_consulta: "2026-08-29"
+    cita: "CSUC Campus Nord | Gran Capita, 2 - 4 (Edifici Nexus) | Barcelona | E-08034 | 41.387314 | 2.111883"
+  - id: src-2
+    url: "https://www.csuc.cat/en/supercomputing"
+    titulo: "Supercomputing — CSUC"
+    editor: "Consorci de Serveis Universitaris de Catalunya"
+    tipo: oficial
+    fecha_consulta: "2026-08-29"
+    cita: "Centre de Processament de Dades (Edifici Annexus)"

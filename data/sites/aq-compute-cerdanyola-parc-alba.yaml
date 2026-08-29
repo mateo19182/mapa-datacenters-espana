@@ -1,0 +1,96 @@
+id: aq-compute-cerdanyola-parc-alba
+nombre: "AQ Compute AQ-BCN1 — Parc de l'Alba (Cerdanyola del Vallès)"
+alias:
+  - "AQ-BCN1"
+tipo: campus
+operador: "AQ Compute"
+propietario: "AQ Compute (Aquila Group)"
+modelo: mayorista
+
+ubicacion:
+  municipio: "Cerdanyola del Vallès"
+  provincia: "Barcelona"
+  ccaa: "Cataluña"
+  direccion: "Parc de l'Alba, Cerdanyola del Vallès"
+  lat: 41.485618
+  lon: 2.1076426
+  precision: aproximada
+  fuentes: [src-1, src-alba]
+
+estado: en_construccion
+estado_detalle: >-
+  Campus de edificios independientes anunciado por ACCIÓ (Generalitat) con inicio
+  de obras y una primera fase de 15 MW cuya finalización se preveía en 2025. No
+  se ha localizado confirmación pública de la puesta en servicio a fecha de
+  verificación.
+estado_fuentes: [src-1]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 60
+    ambito: campus
+    referencia: "Capacidad total del campus"
+    estado_asociado: en_construccion
+    fuentes: [src-1]
+    nota: >-
+      ACCIÓ habla de "60 MW" para el campus. Prensa especializada lo describe
+      como "IT capacity of 60MW"; no se ha podido confirmar en fuente primaria
+      que sean MW TI.
+  - tipo: no_especificado
+    valor_mw: 15
+    ambito: fase
+    referencia: "Primer edificio"
+    estado_asociado: en_construccion
+    fuentes: [src-1]
+
+fases:
+  - nombre: "Fase 1 (primer edificio)"
+    estado: en_construccion
+    superficie_m2: 43000
+    fuentes: [src-1]
+
+refrigeracion: >-
+  Sistemas de refrigeración aptos para racks de alta densidad; energía 100%
+  renovable; principios de diseño Tier III según ACCIÓ.
+
+incertidumbres:
+  - campo: ubicacion
+    descripcion: >-
+      Las coordenadas son el centroide del Parc de l'Alba según Nominatim, no la
+      parcela concreta del proyecto. Precisión aproximada.
+    fuentes: [src-alba]
+  - campo: estado
+    descripcion: >-
+      La única fuente localizada da la fase 1 como terminada en 2025, pero no se
+      ha encontrado ninguna confirmación de puesta en servicio posterior. El
+      estado real a 2026 no está verificado.
+    fuentes: [src-1]
+  - campo: potencia
+    descripcion: >-
+      Los 43.000 m² se atribuyen al "primer edificio" en la fuente de ACCIÓ, lo
+      que no encaja bien con una fase de 15 MW; podría referirse a la parcela.
+    fuentes: [src-1]
+
+confianza: baja
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://catalonia.com/w/aq-compute-has-started-the-construction-of-a-new-data-center-in-barcelona"
+    titulo: "AQ Compute has started the construction of a new data center in Barcelona"
+    editor: "ACCIÓ — Catalonia Trade & Investment (Generalitat de Catalunya)"
+    tipo: oficial
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      The campus will consist of independent buildings, the first of which will
+      have a capacity of 15 MW and a total area of 43,000 square meters ... the
+      campus will eventually have an IT capacity of 60MW.
+  - id: src-alba
+    url: "https://nominatim.openstreetmap.org/search?q=Parc+de+l%27Alba%2C+Cerdanyola+del+Vall%C3%A8s&format=json&limit=3"
+    titulo: "Nominatim — geocodificación de Parc de l'Alba, Cerdanyola del Vallès"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      Parc de l'Alba, Cerdanyola del Vallès, Vallès Occidental, Barcelona,
+      Catalunya, España — lat 41.4856180, lon 2.1076426

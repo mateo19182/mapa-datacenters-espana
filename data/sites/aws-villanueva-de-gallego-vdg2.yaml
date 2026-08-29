@@ -1,0 +1,108 @@
+id: aws-villanueva-de-gallego-vdg2
+nombre: "AWS Ampliación Región Aragón — Villanueva de Gállego 2 (VDG2)"
+alias:
+  - "VDG2"
+  - "ZAZ100"
+tipo: campus
+operador: "Amazon Web Services"
+propietario: "Amazon Data Services Spain, S.L."
+modelo: hyperscale
+
+ubicacion:
+  municipio: "Villanueva de Gállego"
+  provincia: "Zaragoza"
+  ccaa: "Aragón"
+  direccion: "Sector desarrollado sobre las reparcelaciones «Opera» y PITI, junto al aeródromo de Villanueva de Gállego"
+  lat: 41.794212
+  lon: -0.848775
+  precision: exacta
+  fuentes: [src-1]
+
+estado: permisos_concedidos
+estado_detalle: >-
+  Emplazamiento mayor del PIGA "Expansión de la Región AWS en Aragón". DIA y autorización
+  ambiental integrada de INAGA de 29 de abril de 2026. El Gobierno de Aragón aprobó
+  definitivamente el proyecto de edificación y urbanización interior Fase 1 el 4 de mayo
+  de 2026, y el 10 de junio de 2026 el edificio B (tipología A) de la Fase 1 junto con la
+  subestación VDG2HV 220/20 kV.
+estado_fuentes: [src-1, src-2]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 1169.46
+    ambito: campus
+    referencia: "Potencia térmica nominal total de las instalaciones de combustión por motores diésel (MWt)"
+    estado_asociado: permisos_concedidos
+    fecha_dato: "2026-04-29"
+    fuentes: [src-1]
+    nota: >-
+      Dato térmico (MWt) de los grupos electrógenos de respaldo declarado en la AAI. No es
+      carga TI ni potencia de conexión a red.
+
+fases:
+  - nombre: "Fase 1"
+    estado: permisos_concedidos
+    superficie_m2: 25436
+    fuentes: [src-1]
+    nota: >-
+      Fase 1: 1 edificio de centro de datos de tipología A (de los 5 previstos), planta de
+      tratamiento de agua, almacenamiento y bombeo contraincendios, 2 casetas eléctricas
+      FV, edificio administrativo y control de accesos. Ocupación sobre rasante 3,7 %
+      (25.436,53 m²); edificabilidad 30.701,29 m². 123 trabajadores previstos.
+  - nombre: "Campus completo"
+    estado: permisos_concedidos
+    fuentes: [src-1]
+    nota: >-
+      Total campus proyectado: 5 edificios de centro de datos de tipología A, 1 de
+      tipología B y 2 edificios de archivo de datos, más edificio administrativo y edificio
+      de logística.
+
+conexion_electrica:
+  subestacion: "SE VDG2HV 220/20 kV (propia de AWS)"
+  tension_kv: 220
+  titular_red: null
+  mw_solicitados: null
+  mw_concedidos: null
+  fuentes: [src-2]
+  nota: >-
+    El proyecto de la subestación VDG2HV 220/20 kV fue aprobado definitivamente por Acuerdo
+    del Gobierno de Aragón de 10 de junio de 2026. En el ámbito de Villanueva de Gállego el
+    PIGA incluye además líneas de 132 kV entre la SE Villanueva de Gállego y la parcela
+    VDG1 y hacia Villanueva de Gállego Oeste (VDG1E). No consta potencia de acceso en MW.
+
+superficie_construida_m2: 30701
+inversion_anunciada_eur: null
+refrigeracion: >-
+  Dos balsas de agua reciclada de proceso y aguas superficiales destinadas a la
+  refrigeración del centro de datos durante los meses de verano, con tanques de tormentas
+  bajo ellas e instalación fotovoltaica sobre su superficie.
+enlaces_proyecto:
+  - "https://www.aragon.es/-/piga-aws-ampliacion"
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      No consta carga TI ni potencia de acceso a red publicada para VDG2. El valor de
+      1.169,46 MWt es únicamente potencia térmica de grupos electrógenos.
+    fuentes: [src-1]
+
+confianza: alta
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1446464010404"
+    titulo: "ORDEN VFL/654/2026, de 5 de mayo, por la que se da publicidad al acuerdo de 4 de mayo de 2026 del Gobierno de Aragón, por el que se aprueba definitivamente de forma parcial el Plan de Interés General de Aragón «Ampliación Región AWS Aragón»"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2026-05-07"
+    fecha_consulta: "2026-08-29"
+    cita: "para el centro de almacenamiento de datos denominado VDG2 (ZAZ100), ubicado en término municipal de Villanueva de Gállego coordenadas de referencia UTM ETRS89, Huso 30, X=678.737, Y=4.629.165 [...] con una potencia térmica nominal total de 1.169,46 MWt."
+  - id: src-2
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1454107610505"
+    titulo: "ORDEN VFL/906/2026, de 12 de junio, por la que se da publicidad al Acuerdo de 10 de junio de 2026, del Gobierno de Aragón, por el que se aprueba definitivamente de forma parcial el Plan de Interés General de Aragón «Ampliación Región AWS Aragón»"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2026-06-24"
+    fecha_consulta: "2026-08-29"
+    cita: "Tomo III. Villanueva de Gállego 2. Tomo III.4. Edificio B (Tipología A). Proyecto de edificación y urbanización interior de la parcela Fase 1. Tomo III.5. Proyecto subestación VDG2HV 220/20 kV."

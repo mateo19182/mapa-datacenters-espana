@@ -1,0 +1,99 @@
+id: aws-zaragoza-la-cartuja-car
+nombre: "AWS Ampliación Región Aragón — Zaragoza La Cartuja (CAR)"
+alias:
+  - "CAR"
+  - "Zaragoza-La Cartuja"
+tipo: campus
+operador: "Amazon Web Services"
+propietario: "Amazon Data Services Spain, S.L."
+modelo: hyperscale
+
+ubicacion:
+  municipio: "Zaragoza"
+  provincia: "Zaragoza"
+  ccaa: "Aragón"
+  direccion: "Paraje «Acampo del Marqués», entorno de La Cartuja Baja"
+  lat: 41.65
+  lon: -0.883333
+  precision: municipio
+  fuentes: [src-1, src-3]
+
+estado: en_tramitacion
+estado_detalle: >-
+  Quinto emplazamiento del PIGA "Expansión de la Región AWS en Aragón". Su proyecto de
+  urbanización y el convenio interadministrativo se aprobaron definitivamente el 22 de
+  agosto de 2025 y las infraestructuras de agua el 12 de noviembre de 2025, pero a fecha
+  de 4 de mayo de 2026 el promotor todavía no había presentado a aprobación definitiva el
+  proyecto de edificación y urbanización interior de la parcela. El proyecto de líneas de
+  132 kV entre la SE Montetorrero y la parcela CAR quedó excluido de la aprobación
+  definitiva de noviembre de 2025 por no estar completo el trazado.
+estado_fuentes: [src-1, src-2]
+
+potencia: []
+
+fases:
+  - nombre: "Urbanización del ámbito"
+    estado: permisos_concedidos
+    fuentes: [src-2]
+    nota: "Proyecto de urbanización ejecutivo público y privado aprobado el 22 de agosto de 2025."
+
+conexion_electrica:
+  subestacion: "SE Montetorrero (líneas de 132 kV hasta la parcela CAR)"
+  tension_kv: 132
+  titular_red: null
+  mw_solicitados: null
+  mw_concedidos: null
+  fuentes: [src-2]
+  nota: >-
+    El proyecto de redes de alta tensión de líneas de 132 kV entre la subestación de
+    Montetorrero y la parcela CAR no pudo aprobarse definitivamente en noviembre de 2025
+    "debido a que no está completo todo el trazado de la línea (falta de definición técnica
+    del mismo)". INAGA formuló el 3 de octubre de 2025 la DIA del proyecto de redes de alta
+    tensión y centro de medida asociado para dotar de suministro energético al centro CAR.
+
+inversion_anunciada_eur: null
+enlaces_proyecto:
+  - "https://www.aragon.es/-/piga-aws-ampliacion"
+
+incertidumbres:
+  - campo: ubicacion
+    descripcion: >-
+      Las fuentes oficiales sitúan el emplazamiento en el paraje "Acampo del Marqués" del
+      término municipal de Zaragoza (referido como "Zaragoza-La Cartuja"), pero no publican
+      coordenadas. Las coordenadas registradas son el centroide municipal de Zaragoza y no
+      corresponden al emplazamiento real.
+    fuentes: [src-2, src-3]
+  - campo: potencia
+    descripcion: >-
+      No se ha localizado ninguna cifra de potencia (TI, conexión a red o instalada) para
+      CAR. Su autorización ambiental integrada (expediente INAGA 500301/02/2024/12133) no
+      constaba resuelta a la fecha de verificación.
+    fuentes: [src-1]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1446464010404"
+    titulo: "ORDEN VFL/654/2026, de 5 de mayo [...] aprobación definitiva parcial del Plan de Interés General de Aragón «Ampliación Región AWS Aragón»"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2026-05-07"
+    fecha_consulta: "2026-08-29"
+    cita: "hay que resaltar no se ha presentado a aprobación definitiva el Proyecto de Edificación y Urbanización Interior de la parcela del centro de datos de Zaragoza-La Cartuja."
+  - id: src-2
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1422339100707"
+    titulo: "ORDEN FOM/1560/2025, de 18 de noviembre, por la que se da publicidad al Acuerdo de 12 de noviembre de 2025, del Gobierno de Aragón [...] «Ampliación Región AWS Aragón»"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2025-11-24"
+    fecha_consulta: "2026-08-29"
+    cita: "Declaración de Impacto Ambiental del proyecto de construcción de redes de alta tensión y centro de medida asociado para dotar de suministro energético a un nuevo centro de datos designado como CAR, ubicado en el paraje \"Acampo del Marqués\", en el término municipal de Zaragoza"
+  - id: src-3
+    url: "https://query.wikidata.org/sparql"
+    titulo: "Wikidata Query Service — coordenadas del municipio de Zaragoza (Q10305, propiedad P625)"
+    editor: "Wikidata"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: "Zaragoza 41.65 -0.88333333333333"

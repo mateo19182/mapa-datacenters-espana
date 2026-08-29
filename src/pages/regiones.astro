@@ -1,0 +1,105 @@
+---
+import Base from '../layouts/Base.astro'
+import regiones from '../data/regiones.json'
+import { ESTADO_ETIQUETA, ORDEN_ESTADOS, numero } from '../lib/etiquetas.js'
+---
+
+<Base
+  titulo="Regiones"
+  descripcion="Distribución territorial de los centros de datos registrados en España peninsular, por comunidad autónoma."
+>
+  <div class="contenedor">
+    <h1>Regiones</h1>
+    <p class="sumario">
+      Reparto por comunidad autónoma de los emplazamientos registrados. El reparto refleja tanto la
+      concentración real de la actividad como el desigual acceso a fuentes públicas: donde el boletín
+      autonómico publica las autorizaciones eléctricas, la cobertura es mucho mejor.
+    </p>
+
+    <div class="rejilla">
+      {regiones.map((r) => (
+        <article class="tarjeta region">
+          <h2><a href={`/region/${r.slug}`}>{r.nombre}</a></h2>
+          <p class="cifra-grande">
+            {r.emplazamientos}
+            <small>{r.emplazamientos === 1 ? 'emplazamiento' : 'emplazamientos'}</small>
+          </p>
+          <span class="barra">
+            {ORDEN_ESTADOS.filter((e) => r.por_estado[e]).map((e) => (
+              <span
+                class={`segmento estado-${e}`}
+                style={`flex:${r.por_estado[e]}`}
+                title={`${r.por_estado[e]} ${ESTADO_ETIQUETA[e]}`}
+              ></span>
+            ))}
+          </span>
+          <dl class="mini">
+            <dt>MW IT sumados</dt>
+            <dd>
+              {r.potencia.it.sitios_con_dato
+                ? <>{numero(r.potencia.it.total_mw)} MW <span class="silencio pequeno">({r.potencia.it.cobertura} % cobertura)</span></>
+                : <span class="silencio">sin datos publicados</span>}
+            </dd>
+            <dt>Operadores</dt>
+            <dd>{r.operadores.length}</dd>
+          </dl>
+        </article>
+      ))}
+    </div>
+  </div>
+</Base>
+
+<style>
+  .rejilla {
+    margin: 1.75rem 0 3rem;
+  }
+
+  .region h2 {
+    font-size: 1.1rem;
+    margin: 0 0 0.35rem;
+  }
+
+  .cifra-grande {
+    font-family: var(--serif);
+    font-size: 2rem;
+    line-height: 1;
+    margin: 0 0 0.6rem;
+  }
+
+  .cifra-grande small {
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    color: var(--tinta-3);
+    margin-left: 0.4rem;
+  }
+
+  .barra {
+    display: flex;
+    gap: 1px;
+    height: 0.5rem;
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 0.8rem;
+  }
+
+  .segmento {
+    background: currentColor;
+    min-width: 2px;
+  }
+
+  .mini {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.2rem 0.7rem;
+    margin: 0;
+    font-size: 0.85rem;
+  }
+
+  .mini dt {
+    color: var(--tinta-3);
+  }
+
+  .mini dd {
+    margin: 0;
+  }
+</style>

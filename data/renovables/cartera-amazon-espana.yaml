@@ -1,0 +1,74 @@
+id: cartera-amazon-espana
+nombre: "Cartera renovable de Amazon en España (agregado corporativo)"
+tipo: hibrida
+tipo_detalle: "68 parques solares y eólicos a gran escala más 32 instalaciones fotovoltaicas sobre edificios propios (dato de marzo de 2026)."
+potencia_mw: 3800
+tipo_potencia: instalada_total
+potencia_nota: "Cifra agregada de la cartera contratada o promovida por Amazon en España. NO es potencia de centros de datos y no debe sumarse con MW de CPD."
+capacidad_mwh: null
+promotor: "varios (Iberdrola, FRV, Grenergy, Elawan, X-Elio, Repsol, Acciona y otros)"
+contraparte_ppa: "Amazon"
+tipo_vinculo: ppa
+municipio: null
+provincia: null
+ccaa: null
+lat: null
+lon: null
+precision: desconocida
+estado: parcialmente_operativo
+estado_detalle: "Cartera mixta: proyectos operativos, en construcción y anunciados."
+fecha_firma: null
+adicionalidad: no_consta
+adicionalidad_nota: "Amazon presenta la cartera como inversión en proyectos nuevos, pero no publica el desglose planta a planta ni distingue compra de generación existente."
+clusters_relacionados: [aragon]
+cpds_relacionados: []
+incertidumbres:
+  - campo: potencia_mw
+    descripcion: "La cifra agregada crece en cada nota de prensa (2,3 GW en octubre de 2023; ~3 GW en mayo de 2024; 3,7 GW en febrero de 2025; 3,8 GW en marzo de 2026) y Amazon no publica el listado de plantas con nombre, municipio y MW."
+    fuentes: [src-1, src-2, src-3, src-4]
+  - campo: cpds_relacionados
+    descripcion: "La cartera es corporativa de Amazon en España (incluye logística), no está asignada contractualmente a los centros de datos de AWS en Aragón."
+    fuentes: [src-1, src-5]
+confianza: media
+ultima_verificacion: "2026-08-29"
+fuentes:
+  - id: src-1
+    url: "https://www.aboutamazon.es/noticias/sostenibilidad/amazon-alcanza-100-proyectos-energia-renovable-espana"
+    titulo: "Amazon alcanza 100 proyectos de energía renovable en España y se consolida como el mayor comprador corporativo de energía libre de carbono"
+    editor: "Amazon España"
+    tipo: empresa
+    fecha_publicacion: "2026-03-25"
+    fecha_consulta: "2026-08-29"
+    cita: "Alcanzar 100 proyectos de energía renovable en España es un hito significativo que consolida a nuestro país como hogar del segundo mayor número de inversiones"
+  - id: src-2
+    url: "https://www.aboutamazon.es/noticias/sostenibilidad/amazon-anuncia-17-nuevos-proyectos-de-energia-renovable-en-espana"
+    titulo: "Amazon anuncia 17 nuevos proyectos de energía renovable en España"
+    editor: "Amazon España"
+    tipo: empresa
+    fecha_publicacion: "2025-02-27"
+    fecha_consulta: "2026-08-29"
+    cita: "94 solar and wind projects providing over 3.7 GW"
+  - id: src-3
+    url: "https://www.aboutamazon.es/noticias/sostenibilidad/amazon-supera-los-2-3-gw-de-capacidad-renovable-en-espana-con-24-nuevos-proyectos"
+    titulo: "Amazon supera los 2,3 GW de capacidad renovable en España con 24 nuevos proyectos"
+    editor: "Amazon España"
+    tipo: empresa
+    fecha_publicacion: "2023-10-23"
+    fecha_consulta: "2026-08-29"
+    cita: "24 nuevos proyectos de energías renovables en España, consistentes en 19 instalaciones off-site y cinco techos solares"
+  - id: src-4
+    url: "https://www.pv-magazine.es/2026/03/26/anuncios-de-ppas-amazon-axpo-zelestra/"
+    titulo: "Anuncios de PPAs: Amazon, Axpo, Zelestra"
+    editor: "pv magazine España"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-03-26"
+    fecha_consulta: "2026-08-29"
+    cita: "En conjunto, esta cartera supera los 3,8 GW de potencia instalada. [...] 68 proyectos a gran escala —tanto eólicos como fotovoltaicos— y 32 instalaciones fotovoltaicas en sus edificios."
+  - id: src-5
+    url: "https://www.aboutamazon.es/noticias/aws/compromiso-largo-plazo-aws-aragon-espana"
+    titulo: "Conoce el compromiso a largo plazo de AWS con Aragón (España)"
+    editor: "Amazon Web Services"
+    tipo: empresa
+    fecha_publicacion: null
+    fecha_consulta: "2026-08-29"
+    cita: "estamos invirtiendo en 100 proyectos solares y eólicos en toda España, incluyendo 17 proyectos en Aragón"

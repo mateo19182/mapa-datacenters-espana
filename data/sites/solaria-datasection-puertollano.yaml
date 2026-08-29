@@ -1,0 +1,80 @@
+id: solaria-datasection-puertollano
+nombre: "Centro de datos de IA de Solaria y Data Section — Puertollano"
+alias:
+  - "Data center de IA de Puertollano"
+tipo: edificio
+operador: "Data Section"
+propietario: "Solaria Energía y Medio Ambiente"
+modelo: hyperscale
+
+ubicacion:
+  municipio: "Puertollano"
+  provincia: "Ciudad Real"
+  ccaa: "Castilla-La Mancha"
+  direccion: "Antiguas salas blancas de fabricación de células fotovoltaicas de Solaria"
+  lat: 38.6852161
+  lon: -4.1111749
+  precision: municipio
+  fuentes: [src-eldiario, src-osm]
+
+estado: anunciado
+estado_detalle: >-
+  Acuerdo entre Solaria y la japonesa Data Section anunciado en septiembre de
+  2024 para reutilizar las antiguas salas blancas de Solaria en Puertollano. No
+  se ha localizado documentación posterior que confirme el inicio de obras ni la
+  puesta en servicio.
+estado_fuentes: [src-eldiario]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 40
+    ambito: edificio
+    referencia: "Potencia anunciada del centro de datos de IA"
+    estado_asociado: anunciado
+    fecha_dato: "2024-09"
+    fuentes: [src-eldiario]
+    nota: >-
+      La declaración citada dice "más de 40 megavatios de potencia" sin precisar
+      si es carga TI o potencia de conexión.
+
+fases: []
+
+superficie_construida_m2: 100000
+inversion_anunciada_eur: 500000000
+
+incertidumbres:
+  - campo: estado
+    descripcion: >-
+      No se ha encontrado información posterior a 2024 que acredite avance del
+      proyecto. El estado real a 2026 es desconocido.
+    fuentes: [src-eldiario]
+  - campo: potencia
+    descripcion: >-
+      El acuerdo original recogido por prensa económica preveía un suministro de
+      hasta 200 MW y una primera fase de 40 MW; la declaración pública citada
+      habla de "más de 40 megavatios". Solo se registra la cifra de la fuente
+      efectivamente consultada.
+    fuentes: [src-eldiario]
+
+confianza: baja
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-eldiario
+    url: "https://www.eldiario.es/castilla-la-mancha/social/data-center-inteligencia-artificial-puertollano-preve-100-empleos-inversion-500-millones_1_11659102.html"
+    titulo: "El 'data center' de inteligencia artificial de Puertollano prevé 100 empleos y una inversión de 500 millones"
+    editor: "elDiario.es Castilla-La Mancha"
+    tipo: prensa_general
+    fecha_publicacion: "2024-09"
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      Ahora instalaremos el mayor centro de datos de inteligencia artificial de
+      Europa, con más de 40 megavatios de potencia, que permitirá crear más de
+      100 empleos con una inversión de 500 millones de euros.
+  - id: src-osm
+    url: "https://nominatim.openstreetmap.org/search?q=Puertollano%2C+Ciudad+Real&format=json&limit=1"
+    titulo: "Nominatim — Puertollano, Ciudad Real"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: "Puertollano, Ciudad Real, Castilla-La Mancha, 13500, España — lat 38.6852161, lon -4.1111749"

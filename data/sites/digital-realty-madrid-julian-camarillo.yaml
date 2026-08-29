@@ -1,0 +1,201 @@
+id: digital-realty-madrid-julian-camarillo
+nombre: "Digital Realty — Campus de Madrid (Julián Camarillo): MAD1, MAD2, MAD3, MAD4 y MAD5"
+alias:
+  - "Interxion Madrid"
+  - "Digital Realty Madrid campus"
+  - "MADbit / Distrito Tecnológico Julián Camarillo"
+tipo: campus
+operador: "Digital Realty"
+propietario: "Digital Realty"
+modelo: colocation
+
+ubicacion:
+  municipio: "Madrid"
+  provincia: "Madrid"
+  ccaa: "Comunidad de Madrid"
+  direccion: "Calle Albasanz 71 (MAD1), Calle Albasanz 73 (MAD2), Calle Emilio Muñoz 49 (MAD3) y Calle de Alfonso Gómez 4 (MAD4), 28037 Madrid (polígono de Julián Camarillo, distrito de San Blas-Canillejas)"
+  lat: 40.439323
+  lon: -3.621211
+  precision: aproximada
+  fuentes: [src-1, src-2, src-3, src-4, src-5, src-9]
+
+estado: operativo
+estado_detalle: >-
+  Cuatro centros operativos (MAD1-MAD4) en el polígono de Julián Camarillo. MAD4 en servicio
+  desde 2023. Un quinto centro, MAD5, cuenta con suelo adquirido en el mismo entorno pero sin
+  fecha de apertura fijada.
+estado_fuentes: [src-5, src-6, src-7]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 32
+    ambito: edificio
+    referencia: "MAD4"
+    estado_asociado: operativo
+    fecha_dato: "2023"
+    fuentes: [src-6]
+    nota: >-
+      Declaración del director general de Digital Realty España, Robert Assink: "un centro de
+      32 MW, como este MAD4, operativo desde 2023". La fuente no precisa si es carga TI.
+  - tipo: no_especificado
+    valor_mw: 30
+    ambito: edificio
+    referencia: "MAD4"
+    estado_asociado: operativo
+    fecha_dato: "2026-08-29"
+    fuentes: [src-8]
+    nota: "Directorio comercial OCOLO. Contradice el dato de 32 MW de la propia compañía."
+  - tipo: no_especificado
+    valor_mw: 3
+    ambito: edificio
+    referencia: "MAD1"
+    estado_asociado: operativo
+    fecha_dato: "2026-08-29"
+    fuentes: [src-8]
+  - tipo: no_especificado
+    valor_mw: 2.4
+    ambito: edificio
+    referencia: "MAD2"
+    estado_asociado: operativo
+    fecha_dato: "2026-08-29"
+    fuentes: [src-8]
+  - tipo: no_especificado
+    valor_mw: 5
+    ambito: edificio
+    referencia: "MAD3"
+    estado_asociado: operativo
+    fecha_dato: "2026-08-29"
+    fuentes: [src-8]
+  - tipo: no_especificado
+    valor_mw: 24
+    ambito: fase
+    referencia: "MAD5 (proyecto) — rango 20-24 MW"
+    estado_asociado: anunciado
+    fecha_dato: "2025"
+    fuentes: [src-6]
+    nota: "\"tendrá una potencia de entre 20 y 24 MW\". Se registra el extremo superior del rango."
+  - tipo: no_especificado
+    valor_mw: 40
+    ambito: fase
+    referencia: "MAD5 (proyecto) — rango 20-40 MW"
+    estado_asociado: anunciado
+    fecha_dato: "2025"
+    fuentes: [src-7]
+    nota: "Cifra distinta publicada por Brainsre citando a Idealista. Se conserva junto a la anterior."
+
+fases:
+  - nombre: "MAD1 — Calle Albasanz 71"
+    estado: operativo
+    superficie_m2: 8250
+    fuentes: [src-1]
+  - nombre: "MAD2 — Calle Albasanz 73"
+    estado: operativo
+    superficie_m2: 3550
+    fuentes: [src-2]
+  - nombre: "MAD3 — Calle Emilio Muñoz 49"
+    estado: operativo
+    superficie_m2: 8750
+    fuentes: [src-3]
+  - nombre: "MAD4 — Calle de Alfonso Gómez 4"
+    estado: operativo
+    fecha_puesta_en_servicio: "2023"
+    superficie_m2: 21200
+    fuentes: [src-4, src-6]
+  - nombre: "MAD5 — polígono de Julián Camarillo (suelo adquirido)"
+    estado: anunciado
+    fuentes: [src-6, src-7]
+
+superficie_construida_m2: 41700
+inversion_anunciada_eur: 300000000
+refrigeracion: "Refrigeración 2N+1 en los cuatro edificios del campus (ficha de Digital Realty)."
+enlaces_proyecto:
+  - "https://www.digitalrealty.com/data-centers/emea/madrid"
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      MAD4: la compañía habla de 32 MW y el directorio OCOLO de 30 MW. MAD5: EjePrime, citando al
+      director general de Digital Realty España, da 20-24 MW; Brainsre, citando a Idealista, da
+      20-40 MW. Ninguna fuente aclara si son MW TI o de conexión.
+    fuentes: [src-6, src-7, src-8]
+  - campo: superficie_construida_m2
+    descripcion: >-
+      La suma de superficies por edificio de las fichas oficiales (8.250 + 3.550 + 8.750 + 21.200
+      = 41.750 m²) coincide aproximadamente con los 41,7k m² de colocation que declara la página
+      de campus, pero el director general cita "35.000 metros cuadrados" solo para MAD4, frente a
+      los 21.200 m² de la ficha del edificio.
+    fuentes: [src-5, src-4, src-6]
+  - campo: ubicacion
+    descripcion: >-
+      Los cuatro edificios están en calles distintas del mismo polígono (Albasanz, Emilio Muñoz,
+      Alfonso Gómez), separados por unos cientos de metros. Se registran como un único campus
+      porque Digital Realty los comercializa como "our Madrid data center campus".
+    fuentes: [src-5]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.digitalrealty.com/data-centers/emea/madrid/mad1"
+    titulo: "MAD1 Data Center | Calle Albasanz 71 | Digital Realty"
+    editor: "Digital Realty"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: "Calle Albasanz 71 Madrid, 28037, Spain ... Total building size : 89,000 ft² (8,250 m²)"
+  - id: src-2
+    url: "https://www.digitalrealty.com/data-centers/emea/madrid/mad2"
+    titulo: "MAD2 Data Center | Calle Albasanz 73 | Digital Realty"
+    editor: "Digital Realty"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: "Calle Albasanz 73 Madrid, 28037, Spain ... Total building size : 38,000 ft² (3,550 m²)"
+  - id: src-3
+    url: "https://www.digitalrealty.com/data-centers/emea/madrid/mad3"
+    titulo: "MAD3 Data Center | Calle Emilio Muñoz 49 | Digital Realty"
+    editor: "Digital Realty"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: "Calle Emilio Muñoz 49, Madrid, 28037, Spain ... Total building size : 94,000 ft² (8,750 m²)"
+  - id: src-4
+    url: "https://www.digitalrealty.com/data-centers/emea/madrid/mad4"
+    titulo: "MAD4 Data Center | Calle de Alfonso Gómez 4 | Digital Realty"
+    editor: "Digital Realty"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: "Calle de Alfonso Gómez 4, Madrid, 28037, Spain ... Total building size : 228,000 ft² (21,200 m²)"
+  - id: src-5
+    url: "https://www.digitalrealty.com/data-centers/emea/madrid"
+    titulo: "Madrid Data Center & Colocation, Spain | Digital Realty"
+    editor: "Digital Realty"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: "449k ft² Total colocation space of 41.7k m²."
+  - id: src-6
+    url: "https://www.ejeprime.com/industrial/digital-realty-invertira-500-millones-en-dos-nuevos-data-center-en-madrid-y-barcelona"
+    titulo: "Digital Realty invertirá 500 millones en dos nuevos 'data centers' en Madrid y Barcelona"
+    editor: "EjePrime"
+    tipo: prensa_general
+    fecha_consulta: "2026-08-29"
+    cita: "se denominará MAD5, y tendrá una potencia de entre 20 y 24 MW, lo que puede llegar a alcanzar una inversión de entre 260 y 312 millones de euros"
+  - id: src-7
+    url: "https://brainsre.news/digital-realty-adquiere-suelo-madrid-data-center/"
+    titulo: "Digital Realty adquiere un suelo en Madrid para construir un data center"
+    editor: "Brainsre News"
+    tipo: prensa_general
+    fecha_consulta: "2026-08-29"
+    cita: "ha adquirido un suelo en el polígono de Julián Camarillo de Madrid para construir un data center. Este nuevo centro tendrá una capacidad de 20-40 megavatios (MW), según informa Idealista."
+  - id: src-8
+    url: "https://www.ocolo.io/data-centers/spain/comunidad-de-madrid/"
+    titulo: "Comunidad de Madrid Data Centers"
+    editor: "OCOLO"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: "Madrid MAD4 C. de Alfonso Gómez, 4 ... 30.00 MW • 380,000 sq ft"
+  - id: src-9
+    url: "https://www.peeringdb.com/fac/130"
+    titulo: "Digital Realty Madrid MAD1-2"
+    editor: "PeeringDB"
+    tipo: asociacion
+    fecha_consulta: "2026-08-29"
+    cita: "Digital Realty Madrid MAD1-2 | C/ Albasanz 71 | 28037 Madrid"

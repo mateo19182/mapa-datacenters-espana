@@ -1,0 +1,68 @@
+id: stackscale-talavera-de-la-reina
+nombre: "Centro de datos Toledo de Stackscale — Talavera de la Reina"
+alias:
+  - "Data center Toledo (Stackscale)"
+  - "CPD de Grupo Aire en Talavera de la Reina"
+tipo: edificio
+operador: "Stackscale (Grupo Aire)"
+propietario: "Grupo Aire"
+modelo: colocation
+
+ubicacion:
+  municipio: "Talavera de la Reina"
+  provincia: "Toledo"
+  ccaa: "Castilla-La Mancha"
+  lat: 39.9522413
+  lon: -4.8901772
+  precision: municipio
+  fuentes: [src-stackscale, src-osm]
+
+estado: operativo
+estado_detalle: >-
+  Centro de datos de colocation en Talavera de la Reina comercializado por
+  Stackscale (Grupo Aire), presentado como instalación carrier neutral con doble
+  SAI N+1 y red de N*400 Gbps. Certificaciones ISO 9001, 14001, 22301, 27001,
+  27017 y 27018.
+estado_fuentes: [src-stackscale]
+
+potencia: []
+
+fases: []
+
+superficie_construida_m2: 800
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      La ficha comercial no publica potencia eléctrica, carga TI ni número de
+      racks.
+    fuentes: [src-stackscale]
+  - campo: ubicacion
+    descripcion: >-
+      La ficha solo indica "Talavera de la Reina, Toledo"; no consta dirección.
+      Las coordenadas son las del casco urbano de Talavera de la Reina.
+    fuentes: [src-stackscale, src-osm]
+  - campo: fecha_puesta_en_servicio
+    descripcion: "No consta el año de entrada en servicio."
+    fuentes: [src-stackscale]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-stackscale
+    url: "https://www.stackscale.com/es/centros-de-datos/toledo/"
+    titulo: "Centro de datos en Toledo, España | Instalaciones neutrales"
+    editor: "Stackscale (Grupo Aire)"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      Talavera de la Reina, Toledo [...] Con unos 800 m2 [...] Doble SAI N+1, A+B
+      trifásicos.
+  - id: src-osm
+    url: "https://nominatim.openstreetmap.org/search?q=Talavera+de+la+Reina%2C+Toledo&format=json&limit=1"
+    titulo: "Nominatim — Talavera de la Reina, Toledo"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: "Talavera de la Reina, Toledo, Castilla-La Mancha, España — lat 39.9522413, lon -4.8901772"

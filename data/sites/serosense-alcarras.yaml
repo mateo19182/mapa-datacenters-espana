@@ -1,0 +1,85 @@
+id: serosense-alcarras
+nombre: "Serosense — Data Center de Alcarràs (Lleida)"
+alias:
+  - "Primer data center de Lleida"
+tipo: edificio
+operador: "Eléctrica Serosense"
+propietario: "Eléctrica Serosense (grupo Visalia)"
+modelo: desconocido
+
+ubicacion:
+  municipio: "Alcarràs"
+  provincia: "Lleida"
+  ccaa: "Cataluña"
+  direccion: "Terrenos junto a la N-II, dentro de la zona regable del Canal de Pinyana, a unos 8 km de Lleida"
+  precision: municipio
+  fuentes: [src-1, src-2]
+
+estado: en_tramitacion
+estado_detalle: >-
+  Serosense adquirió los terrenos en marzo de 2026. El suelo está clasificado
+  como SUDI y requiere un plan parcial de delimitación, un proyecto de
+  urbanización, el proyecto de reparcelación y una modificación del POUM antes de
+  poder construir. El Ayuntamiento de Alcarràs se ha manifestado a favor.
+estado_fuentes: [src-1, src-2]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 10
+    ambito: edificio
+    referencia: "Potencia inicial estimada"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2026-03"
+    fuentes: [src-2]
+    nota: "La fuente habla de 'capacitat inicial de 10 MW' sin precisar tipo."
+  - tipo: no_especificado
+    valor_mw: 30
+    ambito: edificio
+    referencia: "Potencia máxima ampliable"
+    estado_asociado: anunciado
+    fecha_dato: "2026-03"
+    fuentes: [src-2]
+
+superficie_construida_m2: 12000
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      La nota de la propia empresa no publica cifras de potencia ni superficie;
+      los 12.000 m² y los 10-30 MW proceden de prensa. Ninguna fuente indica si
+      son MW TI o de conexión.
+    fuentes: [src-1, src-2]
+  - campo: fecha_puesta_en_servicio
+    descripcion: >-
+      No hay calendario público. La propia empresa describe la iniciativa como
+      "en fase inicial".
+    fuentes: [src-1]
+  - campo: refrigeracion
+    descripcion: >-
+      La ubicación en la zona regable del Canal de Pinyana se ha señalado en
+      prensa como recurso de refrigeración, pero la empresa no ha publicado el
+      sistema previsto ni consumos de agua.
+    fuentes: [src-1]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.serosense.com/actualitat/serosense-adquireix-terrenys-a-alcarras-per-a-la-implantacio-del-primer-data-center-de-lleida/"
+    titulo: "Serosense adquireix terrenys a Alcarràs per a la implantació del primer Data Center de Lleida"
+    editor: "Eléctrica Serosense"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      situats dins la zona regable del Canal de Pinyana ... un pla parcial de
+      delimitació, un projecte d'urbanització i el projecte de reparcel·lació
+  - id: src-2
+    url: "https://www.elnacional.cat/oneconomia/ca/empreses/lleidatana-serosense-entra-negoci-centres-dades-compra-terrenys-alcarras_1613730_102.html"
+    titulo: "La lleidatana Serosense entra al negoci dels centres de dades amb la compra d'uns terrenys a Alcarràs"
+    editor: "ON Economia (El Nacional)"
+    tipo: prensa_general
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      12.000 metres quadrats ... capacitat inicial de 10 MW, ampliable fins a 30
+      MW ... SUDI (Sòl Urbà Delimitat Industrial)

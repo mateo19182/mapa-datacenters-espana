@@ -1,0 +1,74 @@
+id: hscale-cerdanyola-parc-alba
+nombre: "hscale BCN1 — Parc de l'Alba (Cerdanyola del Vallès)"
+alias:
+  - "hscale Barcelona BCN1"
+tipo: campus
+operador: "hscale"
+propietario: "hscale (empresa conjunta de Bain Capital y Aquila Group)"
+modelo: mayorista
+
+ubicacion:
+  municipio: "Cerdanyola del Vallès"
+  provincia: "Barcelona"
+  ccaa: "Cataluña"
+  direccion: "Carrer de Creu Casas i Sicart, Parc de l'Alba, Cerdanyola del Vallès"
+  lat: 41.485618
+  lon: 2.1076426
+  precision: aproximada
+  fuentes: [src-1, src-2]
+
+estado: en_construccion
+estado_detalle: >-
+  Campus proyectado de cinco edificios de dos plantas más un edificio auxiliar,
+  sobre unas 10 acres en el Parc de l'Alba, entre Cerdanyola del Vallès y Sant
+  Cugat del Vallès. Baxtel lo clasifica como en construcción con año previsto
+  2026.
+estado_fuentes: [src-1]
+
+potencia: []
+
+refrigeracion: >-
+  Agua refrigerada con freecooling, infraestructura preparada para refrigeración
+  líquida, densidades de rack declaradas de 11 a 130 kW y PUE objetivo de 1,2.
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      No hay ninguna cifra de MW publicada para este campus en la fuente
+      localizada. No se registra ningún valor.
+    fuentes: [src-1]
+  - campo: estado
+    descripcion: >-
+      Solo se ha localizado una fuente (directorio especializado). No hay nota de
+      prensa de la compañía ni expediente administrativo verificado. El estado
+      "en construcción" no está corroborado por una segunda fuente.
+    fuentes: [src-1]
+  - campo: ubicacion
+    descripcion: >-
+      Las coordenadas son el centroide del Parc de l'Alba, no la parcela concreta.
+    fuentes: [src-2]
+
+confianza: baja
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://baxtel.com/data-center/hscale-barcelona"
+    titulo: "hscale: Barcelona Data Center"
+    editor: "Baxtel"
+    tipo: prensa_especializada
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      Address: Carrer de Creu Casas i Sicart, Parc de l'Alba, North Barcelona
+      (between Cerdanyola del Vallés and Sant Cugat del Vallés) ... Five
+      buildings with two floors each plus multipurpose ancillary building ...
+      Year Planned: 2026
+  - id: src-2
+    url: "https://nominatim.openstreetmap.org/search?q=Parc+de+l%27Alba%2C+Cerdanyola+del+Vall%C3%A8s&format=json&limit=3"
+    titulo: "Nominatim — geocodificación de Parc de l'Alba, Cerdanyola del Vallès"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      Parc de l'Alba, Cerdanyola del Vallès, Vallès Occidental, Barcelona,
+      Catalunya, España — lat 41.4856180, lon 2.1076426

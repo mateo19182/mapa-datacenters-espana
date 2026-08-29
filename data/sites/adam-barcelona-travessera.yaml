@@ -1,0 +1,53 @@
+id: adam-barcelona-travessera
+nombre: "Adam Barcelona Center — Travessera de Gràcia"
+alias:
+  - "Adam - BCN"
+  - "Adam BCN1"
+tipo: edificio
+operador: "Adam"
+propietario: "Adam"
+modelo: colocation
+
+ubicacion:
+  municipio: "Barcelona"
+  provincia: "Barcelona"
+  ccaa: "Cataluña"
+  direccion: "Travessera de Gràcia 342, 08025 Barcelona"
+  lat: 41.408865
+  lon: 2.170067
+  precision: exacta
+  fuentes: [src-1]
+
+estado: operativo
+estado_detalle: "Centro urbano de colocation de Adam en Barcelona ciudad, con SLA declarado del 99,98%."
+estado_fuentes: [src-2]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 1.5
+    ambito: edificio
+    referencia: "Potencia del centro Barcelona Center"
+    estado_asociado: operativo
+    fuentes: [src-2]
+    nota: "La compañía publica 'Power: 1.5 MW' sin especificar tipo."
+
+superficie_construida_m2: 600
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.peeringdb.com/api/fac?country=ES&limit=300"
+    titulo: "PeeringDB — Facilities API, España"
+    editor: "PeeringDB"
+    tipo: asociacion
+    fecha_consulta: "2026-08-29"
+    cita: "Adam - BCN | Travessera de Gràcia 342 | Barcelona | 08025 | 41.408865 | 2.170067"
+  - id: src-2
+    url: "https://adam.es/en/data-centers/barcelona-data-centers/"
+    titulo: "Data Center in Barcelona 24/7"
+    editor: "Adam"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: "Barcelona Center — Travessera de Gràcia 342, 08025 Barcelona — 600 m² — 1.5 MW — Tier III"

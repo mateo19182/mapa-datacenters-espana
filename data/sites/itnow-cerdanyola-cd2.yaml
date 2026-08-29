@@ -1,0 +1,64 @@
+id: itnow-cerdanyola-cd2
+nombre: "ITnow CD2 — Cerdanyola del Vallès (Camí Ral)"
+alias:
+  - "ITNow CD2"
+tipo: edificio
+operador: "ITnow"
+propietario: "ITnow (empresa conjunta de 'la Caixa' y Kyndryl)"
+cliente_ancla: "CaixaBank"
+modelo: corporativo
+
+ubicacion:
+  municipio: "Cerdanyola del Vallès"
+  provincia: "Barcelona"
+  ccaa: "Cataluña"
+  direccion: "Camí Ral, Centre Direccional (Parc de l'Alba), Cerdanyola del Vallès"
+  lat: 41.4834774
+  lon: 2.1087645
+  precision: aproximada
+  fuentes: [src-1, src-2]
+
+estado: operativo
+estado_detalle: >-
+  Segundo centro de proceso de datos de ITnow, sociedad constituida en enero de
+  2012 y rebautizada como ITnow en mayo del mismo año, que presta servicios de
+  infraestructura a CaixaBank y otras sociedades del grupo 'la Caixa'.
+estado_fuentes: [src-1]
+
+potencia: []
+
+incertidumbres:
+  - campo: potencia
+    descripcion: "Sin datos públicos de potencia ni superficie."
+    fuentes: [src-1]
+  - campo: ubicacion
+    descripcion: >-
+      Baxtel indica "Camí Ral, Barcelona" sin municipio; la calle corresponde al
+      Centre Direccional de Cerdanyola del Vallès. Coordenadas de vial, no de
+      número. La ficha de T-Systems Cerdanyola apunta a la misma calle, sin que
+      se haya podido descartar que se trate de edificios contiguos distintos.
+    fuentes: [src-1, src-2]
+
+confianza: baja
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://baxtel.com/data-center/itnow-cd2"
+    titulo: "ITNow CD2"
+    editor: "Baxtel"
+    tipo: prensa_especializada
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      Operator: ITnow (joint venture between 'la Caixa' and Kyndryl) ...
+      Address/Municipality: Camí Ral, Barcelona, Spain ... Fully operational
+      facility
+  - id: src-2
+    url: "https://nominatim.openstreetmap.org/search?q=Cam%C3%AD+Ral%2C+Cerdanyola+del+Vall%C3%A8s&format=json&limit=3"
+    titulo: "Nominatim — geocodificación de Camí Ral, Cerdanyola del Vallès"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      Camí Ral, Centre Direccional, Cerdanyola del Vallès, Vallès Occidental,
+      Barcelona, Catalunya, 08193, España — lat 41.4834774, lon 2.1087645

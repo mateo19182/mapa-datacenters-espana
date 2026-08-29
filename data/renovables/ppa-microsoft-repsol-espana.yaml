@@ -1,0 +1,53 @@
+id: ppa-microsoft-repsol-espana
+nombre: "VPPA Microsoft — cartera Repsol en España (230 MW)"
+tipo: hibrida
+tipo_detalle: "Tres parques eólicos y tres plantas solares de Repsol en España."
+potencia_mw: 230
+tipo_potencia: nominal
+potencia_nota: "Capacidad instalada total de los seis activos asociados a los VPPA de 2024. Con los acuerdos previos de 2021 el conjunto Repsol-Microsoft alcanza 320 MW."
+capacidad_mwh: null
+promotor: "Repsol"
+contraparte_ppa: "Microsoft"
+tipo_vinculo: ppa
+tipo_contrato: vppa
+duracion_anios: 12
+municipio: null
+provincia: null
+ccaa: null
+lat: null
+lon: null
+precision: desconocida
+estado: anunciado
+estado_detalle: "Firmado el 11 de junio de 2024; los seis activos debían estar operativos en diciembre de 2025. No se ha verificado la puesta en servicio."
+fecha_firma: "2024-06-11"
+adicionalidad: nueva_construccion
+adicionalidad_fuentes: [src-1]
+adicionalidad_nota: "La nota de Repsol indica que los activos «estarán operativos en diciembre de 2025», es decir, capacidad aún no en servicio al firmar."
+clusters_relacionados: [madrid]
+cpds_relacionados: []
+incertidumbres:
+  - campo: municipio
+    descripcion: "Repsol no identifica ninguno de los seis activos por nombre ni ubicación."
+    fuentes: [src-1, src-2]
+  - campo: cpds_relacionados
+    descripcion: "El comunicado no menciona centros de datos: habla de suministro renovable a Microsoft en España. Microsoft opera la región cloud Spain Central en la Comunidad de Madrid y proyectos en Aragón."
+    fuentes: [src-1]
+confianza: alta
+ultima_verificacion: "2026-08-29"
+fuentes:
+  - id: src-1
+    url: "https://www.repsol.com/content/dam/repsol-corporate/es/sala-de-prensa/documentos-notas-de-prensa/2024/np11062024-repsol-firma-acuerdo-venta-energia-renovable-largo-plazo-microsoft.pdf"
+    titulo: "Repsol firma un acuerdo de venta de energía renovable a largo plazo con Microsoft"
+    editor: "Repsol"
+    tipo: empresa
+    fecha_publicacion: "2024-06-11"
+    fecha_consulta: "2026-08-29"
+    cita: "Las compañías han firmado seis acuerdos virtuales de compraventa de energía (VPPA) a 12 años, asociados a tres parques eólicos y tres plantas solares de Repsol en España con una capacidad instalada total de 230 MW y que estarán operativos en diciembre de 2025."
+  - id: src-2
+    url: "https://www.repsol.com/en/press-room/press-releases/2024/repsol-signs-long-term-renewable-power-purchase-agreement-with-microsoft/index.cshtml"
+    titulo: "Repsol signs a long-term renewable power purchase agreement with Microsoft"
+    editor: "Repsol"
+    tipo: empresa
+    fecha_publicacion: "2024-06-11"
+    fecha_consulta: "2026-08-29"
+    cita: "seis acuerdos virtuales de compra de energía (VPPA) de 12 años [...] 320MW de capacidad instalada"

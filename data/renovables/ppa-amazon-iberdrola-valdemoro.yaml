@@ -1,0 +1,37 @@
+id: ppa-amazon-iberdrola-valdemoro
+nombre: "PPA Amazon — parque eólico de Valdemoro (Iberdrola)"
+tipo: eolica
+potencia_mw: 45
+tipo_potencia: contratada_ppa
+potencia_planta_mw: null
+capacidad_mwh: null
+promotor: "Iberdrola"
+contraparte_ppa: "Amazon"
+tipo_vinculo: ppa
+municipio: "Valdemoro"
+provincia: "Burgos"
+ccaa: "Castilla y León"
+lat: null
+lon: null
+precision: municipio
+estado: anunciado
+estado_detalle: "Anunciado el 3 de febrero de 2025 dentro de la ampliación de la alianza Iberdrola-Amazon. Las fuentes consultadas no confirman su puesta en servicio."
+fecha_firma: "2025-02-03"
+adicionalidad: no_consta
+clusters_relacionados: []
+cpds_relacionados: []
+incertidumbres:
+  - campo: cpds_relacionados
+    descripcion: "PPA corporativo de Amazon. Ninguna fuente consultada lo vincula a un centro de datos concreto."
+    fuentes: [src-1]
+confianza: media
+ultima_verificacion: "2026-08-29"
+fuentes:
+  - id: src-1
+    url: "https://www.datacentermarket.es/sostenibilidad/iberdrola-y-amazon-amplian-su-alianza-en-renovables-y-nube/"
+    titulo: "Iberdrola y Amazon amplían su alianza en renovables y nube"
+    editor: "Data Center Market"
+    tipo: prensa_especializada
+    fecha_publicacion: "2025-02-03"
+    fecha_consulta: "2026-08-29"
+    cita: "se comprará la producción de 45 MW del parque eólico de Valdemoro, en la provincia de Burgos"

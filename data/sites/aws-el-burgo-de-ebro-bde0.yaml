@@ -1,0 +1,120 @@
+id: aws-el-burgo-de-ebro-bde0
+nombre: "AWS Región Aragón — El Burgo de Ebro (centro existente)"
+alias:
+  - "BDE0"
+  - "Amazon Data Services Spain — El Espartal II"
+tipo: campus
+operador: "Amazon Web Services"
+propietario: "Amazon Data Services Spain, S.L."
+modelo: hyperscale
+
+ubicacion:
+  municipio: "El Burgo de Ebro"
+  provincia: "Zaragoza"
+  ccaa: "Aragón"
+  direccion: "Polígono industrial El Espartal II, calle A, parcelas 4-1 a 4-4 (la AAI de 2020 lo sitúa en C/ Sector I9)"
+  lat: 41.535835
+  lon: -0.684715
+  precision: exacta
+  fuentes: [src-1, src-3]
+
+estado: operativo
+estado_detalle: >-
+  Uno de los tres centros del primer Proyecto de Interés General de Aragón de Amazon,
+  con AAI de 27 de julio de 2020. INAGA modificó puntualmente esa AAI el 28 de octubre
+  de 2025. En 2025 se tramitó además una evaluación de impacto ambiental simplificada por
+  modificación del centro de datos. La documentación del Gobierno de Aragón de 2025 lo
+  denomina "el centro de datos existente BDE0", frente al nuevo BDE del PIGA de ampliación.
+estado_fuentes: [src-1, src-2, src-3, src-4]
+fecha_puesta_en_servicio: "2022-11"
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 110.4
+    ambito: campus
+    referencia: "Potencia eléctrica total instalada de los 46 grupos electrógenos diésel de respaldo"
+    estado_asociado: operativo
+    fecha_dato: "2020-07-27"
+    fuentes: [src-1]
+    nota: >-
+      Potencia instalada de los generadores de reserva (46 x 2,4 MWe), no carga TI ni
+      potencia de conexión a red.
+  - tipo: no_especificado
+    valor_mw: 107.5
+    ambito: campus
+    referencia: "Potencia eléctrica total generada por los grupos electrógenos tras la modificación puntual de la AAI"
+    estado_asociado: operativo
+    fecha_dato: "2025-10-28"
+    fuentes: [src-2]
+    nota: >-
+      Valor revisado en la modificación de 2025 (potencia térmica total aproximada
+      291,1 MWt). Sustituye al recuento de 2020 para esta instalación; se conservan ambos.
+
+fases:
+  - nombre: "Edificio A"
+    estado: operativo
+    fuentes: [src-1, src-2]
+  - nombre: "Edificio B"
+    estado: operativo
+    fuentes: [src-1, src-2]
+
+inversion_anunciada_eur: null
+enlaces_proyecto:
+  - "https://www.aragon.es/-/proyecto-de-interes-general-de-aragon-sobre-la-implantacion-de-centros-de-datos-en-la-comunidad-autonoma-de-aragon-a-propuesta-de-amazon-data-services-spain"
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      La AAI de 2020 declara 110,4 MWe / 294,4 MWt de grupos electrógenos; la modificación
+      puntual de 28 de octubre de 2025 declara 107,5 MWe / 291,1 MWt. Se registran ambos.
+    fuentes: [src-1, src-2]
+  - campo: ubicacion
+    descripcion: >-
+      El nuevo centro BDE del PIGA de ampliación se ubica en el polígono El Espartal III,
+      a unos 1,1 km de este, y es un emplazamiento distinto con AAI propia.
+    fuentes: [src-5]
+
+confianza: alta
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1126018963636"
+    titulo: "RESOLUCIÓN de 27 de julio de 2020, del Instituto Aragonés de Gestión Ambiental, por la que se formula declaración de impacto ambiental y se otorga autorización ambiental integrada del proyecto de centro de almacenamiento de datos a ubicar en el polígono industrial El Espartal II en el término municipal de El Burgo de Ebro (Zaragoza) (INAGA 500301/02/2019/12454)"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2020-08-11"
+    fecha_consulta: "2026-08-29"
+    cita: "ubicado en la C/ Sector I9 del polígono Industrial El Espartal II coordenadas UTM ETRS89, Huso 30, X=693140 Y=4600831, Z=180,5"
+  - id: src-2
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1422099880808"
+    titulo: "RESOLUCIÓN de 28 de octubre de 2025, del Instituto Aragonés de Gestión Ambiental, por la que se modifica puntualmente la Resolución de 27 de julio de 2020 [...] centro de almacenamiento de datos [...] El Espartal II"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2025-11-21"
+    fecha_consulta: "2026-08-29"
+    cita: "de manera que la potencia eléctrica total generada es de 107,5 MWe y la potencia térmica total aproximada de 291,1MWt"
+  - id: src-3
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1385130701010"
+    titulo: "ANUNCIO del Instituto Aragonés de Gestión Ambiental [...] modificación de centro de datos [...] polígono industrial «El Espartal II», calle A, parcelas número 4-1 a 4-4 (INAGA 500301/01/2025/00121)"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2025-03-25"
+    fecha_consulta: "2026-08-29"
+    cita: "ubicado en polígono industrial \"El Espartal II\", calle A, parcelas número 4-1 a 4-4, del término municipal de El Burgo de Ebro (Zaragoza)"
+  - id: src-4
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1422339100707"
+    titulo: "ORDEN FOM/1560/2025, de 18 de noviembre, por la que se da publicidad al Acuerdo de 12 de noviembre de 2025, del Gobierno de Aragón, por el que se aprueba definitivamente de forma parcial el Plan de Interés General de Aragón «Ampliación Región AWS Aragón»"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2025-11-24"
+    fecha_consulta: "2026-08-29"
+    cita: "el Proyecto de interconexión con fibra óptica de los nuevos centros de datos BDE y CAR y el centro de datos existente BDE0"
+  - id: src-5
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1454107610505"
+    titulo: "ORDEN VFL/906/2026, de 12 de junio, por la que se da publicidad al Acuerdo de 10 de junio de 2026 [...] Proyecto de edificación y urbanización interior El Burgo de Ebro (Fase 1) y subestación eléctrica"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2026-06-24"
+    fecha_consulta: "2026-08-29"
+    cita: "para el centro de almacenamiento de datos denominado BDE (ZAZ082), ubicado en el polígono industrial El Espartal III coordenadas de referencia UTM ETRS89, Huso 30, X: 692.855 e Y: 4.601.757, Z=180 msnm"

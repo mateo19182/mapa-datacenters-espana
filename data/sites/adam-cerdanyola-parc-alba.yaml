@@ -1,0 +1,108 @@
+id: adam-cerdanyola-parc-alba
+nombre: "Adam Parc de l'Alba — Cerdanyola del Vallès"
+alias:
+  - "Adam BCN3"
+  - "Adam: Cerdanyola 2"
+tipo: edificio
+operador: "Adam"
+propietario: "Adam"
+modelo: colocation
+
+ubicacion:
+  municipio: "Cerdanyola del Vallès"
+  provincia: "Barcelona"
+  ccaa: "Cataluña"
+  direccion: "Parc de l'Alba (entorno del Sincrotró ALBA), Cerdanyola del Vallès"
+  lat: 41.485618
+  lon: 2.1076426
+  precision: aproximada
+  fuentes: [src-1, src-alba]
+
+estado: en_construccion
+estado_detalle: >-
+  Cuarto centro de datos del grupo Adam (tercero en Cataluña). Primera piedra
+  colocada en octubre de 2025. La compañía prevé entrada en servicio en 2027 con
+  una primera fase de cuatro salas.
+estado_fuentes: [src-1, src-2]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 8
+    ambito: edificio
+    referencia: "Potencia instalada prevista del edificio completo"
+    estado_asociado: en_construccion
+    fecha_dato: "2025-10"
+    fuentes: [src-2]
+    nota: "La fuente habla de '8 MW de potencia instalada' con certificación Tier III."
+  - tipo: no_especificado
+    valor_mw: 4
+    ambito: fase
+    referencia: "Primera fase, cuatro salas"
+    estado_asociado: en_construccion
+    fecha_dato: "2025-10"
+    fuentes: [src-2]
+
+fases:
+  - nombre: "Fase 1 (4 salas)"
+    estado: en_construccion
+    fecha_puesta_en_servicio: "2027"
+    fuentes: [src-2]
+
+superficie_construida_m2: 7500
+refrigeracion: >-
+  Paneles fotovoltaicos en cubierta, sistemas de refrigeración de alta eficiencia
+  y suministro eléctrico 100% renovable, según la compañía.
+
+incertidumbres:
+  - campo: ubicacion
+    descripcion: >-
+      Las coordenadas son el centroide del Parc de l'Alba según Nominatim, no la
+      parcela concreta del proyecto. Precisión aproximada.
+    fuentes: [src-alba]
+  - campo: potencia
+    descripcion: >-
+      La web de Adam indica 5 MW para la fase 1 mientras que la prensa
+      especializada habla de 4 MW en la primera fase. Se registran ambos
+      contextos; se toma 4 MW de la prensa y se deja constancia del 5 MW de la
+      ficha web. Ninguna fuente precisa si son MW TI o potencia instalada.
+    fuentes: [src-1, src-2]
+  - campo: ubicacion
+    descripcion: >-
+      Baxtel sitúa este proyecto en Carrer dels Artesans (Parc Tecnològic del
+      Vallès), junto al centro PTV existente, mientras que la compañía y la
+      prensa lo sitúan en el Parc de l'Alba. No se ha localizado dirección
+      postal exacta ni coordenadas de fuente.
+    fuentes: [src-1, src-2]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://adam.es/en/data-centers/barcelona-data-centers/"
+    titulo: "Data Center in Barcelona 24/7"
+    editor: "Adam"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      Parc de l'Alba Cerdanyola del Vallès (Under Construction) — Parc de l'Alba
+      Sincrotrón — 7.500 m² — 5 MW (Phase 1) — Tier III — 8 neutral rooms in
+      Phase 1
+  - id: src-2
+    url: "https://www.datacentermarket.es/datacenter-infrastructure/adam-inicia-la-construccion-de-su-cuarto-centro-de-datos-en-cerdanyola-del-valles/"
+    titulo: "Adam inicia la construcción de su cuarto centro de datos en Cerdanyola del Vallès"
+    editor: "Data Center Market"
+    tipo: prensa_especializada
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      7.500 metros cuadrados ... 8 MW de potencia instalada ... Tier III, que
+      garantiza alta fiabilidad y redundancia
+  - id: src-alba
+    url: "https://nominatim.openstreetmap.org/search?q=Parc+de+l%27Alba%2C+Cerdanyola+del+Vall%C3%A8s&format=json&limit=3"
+    titulo: "Nominatim — geocodificación de Parc de l'Alba, Cerdanyola del Vallès"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      Parc de l'Alba, Cerdanyola del Vallès, Vallès Occidental, Barcelona,
+      Catalunya, España — lat 41.4856180, lon 2.1076426

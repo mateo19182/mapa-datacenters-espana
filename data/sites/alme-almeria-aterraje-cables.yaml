@@ -1,0 +1,67 @@
+id: alme-almeria-aterraje-cables
+nombre: "Aterraje de cables submarinos de Almería (ALME / enlaces con Melilla)"
+alias:
+  - "ALME Almería"
+  - "Aterraje de Almería capital"
+tipo: edificio
+operador: null
+modelo: corporativo
+
+ubicacion:
+  municipio: "Almería"
+  provincia: "Almería"
+  ccaa: "Andalucía"
+  lat: 36.8340
+  lon: -2.4637
+  precision: municipio
+  fuentes: [src-1, src-2]
+
+estado: operativo
+estado_detalle: >-
+  Punto de aterraje del cable ALME (Almería–Melilla, 198 km), en servicio desde 1990 y descrito como
+  el cable submarino más antiguo de España. Xataka Móvil sitúa los enlaces almerienses con Melilla
+  en Roquetas de Mar y en Almería capital. Es infraestructura de aterraje, no un centro de datos.
+estado_fuentes: [src-1, src-2]
+fecha_puesta_en_servicio: "1990"
+
+enlaces_proyecto: []
+
+incertidumbres:
+  - campo: operador
+    descripcion: >-
+      Ninguna fuente consultada identifica al titular de la estación de aterraje de Almería.
+      Campo dejado en null en lugar de suponer Telefónica/Telxius.
+    fuentes: [src-1, src-2]
+  - campo: ubicacion
+    descripcion: >-
+      Xataka Móvil menciona dos posiciones almerienses (Roquetas de Mar y Almería capital) sin
+      distinguir cuál corresponde a qué cable. Se registra Almería capital. Sin dirección ni parcela.
+    fuentes: [src-2]
+  - campo: potencia
+    descripcion: "No consta potencia eléctrica. Campo omitido."
+    fuentes: [src-1, src-2]
+  - campo: tipo
+    descripcion: >-
+      Inclusión discutible en un inventario de centros de datos: es infraestructura de aterraje de
+      cable submarino. Se incluye por ser la única puerta de entrada documentada de la provincia de
+      Almería hacia el norte de África.
+    fuentes: [src-1, src-2]
+
+confianza: baja
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.stackscale.com/es/blog/cables-submarinos-peninsula-iberica/"
+    titulo: "Cables submarinos en la Península Ibérica"
+    editor: "Stackscale"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: "ALME (Almería-Melilla) | Iberian Peninsula, Melilla | 198 km | 1990"
+  - id: src-2
+    url: "https://www.xatakamovil.com/conectividad/mapa-cables-submarinos-que-dan-internet-a-espana-hay-dos-protagonistas-andalucia-tremendo-nudo-canarias"
+    titulo: "En el mapa de los cables submarinos que dan internet a España hay dos claros protagonistas"
+    editor: "Xataka Móvil"
+    tipo: prensa_especializada
+    fecha_consulta: "2026-08-29"
+    cita: "la posición de Roquetas de Mar y Almería capital para enlazar con Melilla"

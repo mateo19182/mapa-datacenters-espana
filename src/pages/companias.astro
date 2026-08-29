@@ -1,0 +1,89 @@
+---
+import Base from '../layouts/Base.astro'
+import companias from '../data/companias.json'
+import { ESTADO_ETIQUETA, ORDEN_ESTADOS, numero } from '../lib/etiquetas.js'
+---
+
+<Base
+  titulo="Compañías"
+  descripcion="Operadores de centros de datos con presencia registrada en España peninsular, con su cartera de emplazamientos por estado."
+>
+  <div class="contenedor">
+    <h1>Compañías</h1>
+    <p class="sumario">
+      {numero(companias.length)} operadores con al menos un emplazamiento registrado. La columna de
+      MW IT solo suma los emplazamientos que publican esa magnitud; la cobertura indica cuántos son.
+      Comparar dos compañías por esa cifra sin mirar la cobertura lleva a conclusiones falsas.
+    </p>
+
+    <div class="tabla-envoltorio">
+      <table>
+        <thead>
+          <tr>
+            <th>Compañía</th>
+            <th class="num">Emplazamientos</th>
+            <th>Reparto por estado</th>
+            <th class="num">MW IT sumados</th>
+            <th class="num">Cobertura</th>
+            <th>Comunidades</th>
+          </tr>
+        </thead>
+        <tbody>
+          {companias.map((c) => (
+            <tr>
+              <td><a href={`/compania/${c.slug}`}>{c.nombre}</a></td>
+              <td class="num">{c.emplazamientos}</td>
+              <td>
+                <span class="barra">
+                  {ORDEN_ESTADOS.filter((e) => c.por_estado[e]).map((e) => (
+                    <span
+                      class={`segmento estado-${e}`}
+                      style={`flex:${c.por_estado[e]}`}
+                      title={`${c.por_estado[e]} ${ESTADO_ETIQUETA[e]}`}
+                    ></span>
+                  ))}
+                </span>
+              </td>
+              <td class="num">
+                {c.potencia.it.sitios_con_dato ? `${numero(c.potencia.it.total_mw)} MW` : <span class="silencio">—</span>}
+              </td>
+              <td class="num pequeno silencio">
+                {c.potencia.it.sitios_con_dato}/{c.emplazamientos}
+              </td>
+              <td class="pequeno">{c.ccaas.join(', ')}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="leyenda-estados">
+      {ORDEN_ESTADOS.filter((e) => companias.some((c) => c.por_estado[e])).map((e) => (
+        <span class={`etiqueta estado-${e}`}><span class="punto"></span>{ESTADO_ETIQUETA[e]}</span>
+      ))}
+    </div>
+  </div>
+</Base>
+
+<style>
+  .barra {
+    display: flex;
+    gap: 1px;
+    width: 8rem;
+    height: 0.65rem;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .segmento {
+    background: currentColor;
+    min-width: 2px;
+  }
+
+  .leyenda-estados {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 1.25rem 0 3rem;
+  }
+</style>
