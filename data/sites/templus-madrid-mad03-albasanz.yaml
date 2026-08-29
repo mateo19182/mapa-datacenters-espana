@@ -1,0 +1,59 @@
+id: templus-madrid-mad03-albasanz
+nombre: "Templus Madrid MAD03 — Calle Albasanz"
+alias:
+  - "Templus DC Madrid MAD03"
+tipo: edificio
+operador: "Templus Datacenters"
+propietario: "Templus Datacenters"
+modelo: colocation
+
+ubicacion:
+  municipio: "Madrid"
+  provincia: "Madrid"
+  ccaa: "Comunidad de Madrid"
+  direccion: "Calle Albasanz 65, 28037 Madrid (polígono de Julián Camarillo, distrito de San Blas-Canillejas)"
+  lat: 40.438822
+  lon: -3.623048
+  precision: exacta
+  fuentes: [src-2]
+
+estado: operativo
+estado_detalle: "Centro carrier-neutral de proximidad en el polígono de Julián Camarillo."
+estado_fuentes: [src-1]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 1.5
+    ambito: edificio
+    referencia: "Total power (ficha de Templus)"
+    estado_asociado: operativo
+    fecha_dato: "2026-08-29"
+    fuentes: [src-1]
+
+superficie_construida_m2: 1000
+enlaces_proyecto:
+  - "https://templus.com/data-centers/madrid-mad03/"
+
+incertidumbres:
+  - campo: potencia
+    descripcion: "Templus no indica si los 1,5 MW son carga TI o potencia total instalada."
+    fuentes: [src-1]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://templus.com/data-centers/madrid-mad03/"
+    titulo: "Data Center en Madrid | Infraestructura Tier III - Templus (MAD03)"
+    editor: "Templus"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: "Densidad por rack 4 kW – 15 kW Superficie IT 1.000 m² Total power 1,5 MW ... Nivel Tier III Ready"
+  - id: src-2
+    url: "https://www.peeringdb.com/fac/14020"
+    titulo: "Templus DC Madrid MAD03"
+    editor: "PeeringDB"
+    tipo: asociacion
+    fecha_consulta: "2026-08-29"
+    cita: "Templus DC Madrid MAD03 | C/ Albasanz 65 | 28037 Madrid"

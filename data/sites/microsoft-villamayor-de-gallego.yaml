@@ -1,0 +1,129 @@
+id: microsoft-villamayor-de-gallego
+nombre: "Microsoft Región Aragón — Campus Villamayor de Gállego"
+alias:
+  - "Campus de Centros de Datos Microsoft Villamayor de Gállego"
+  - "PIGA Región MSFT — ámbito Villamayor de Gállego"
+tipo: campus
+operador: "Microsoft"
+propietario: "Microsoft 7724 Spain, S.L.U."
+modelo: hyperscale
+
+ubicacion:
+  municipio: "Villamayor de Gállego"
+  provincia: "Zaragoza"
+  ccaa: "Aragón"
+  direccion: "Nuevo sector urbanístico delimitado sobre el Área 84/2 de Suelo Urbanizable No Delimitado, entre el núcleo urbano y el polígono industrial Malpica"
+  lat: 41.685556
+  lon: -0.773889
+  precision: municipio
+  fuentes: [src-1, src-4]
+
+estado: en_tramitacion
+estado_detalle: >-
+  Declarado inversión de interés autonómico con interés general de Aragón el 3 de julio de
+  2024, con modificación de la delimitación del ámbito aprobada el 14 de mayo de 2025 y una
+  redelimitación posterior publicada el 10 de marzo de 2026. Integrado en el PIGA
+  "Implantación de la Región Microsoft en Aragón", aprobado inicialmente el 14 de noviembre
+  de 2025 y modificado el 24 de julio de 2026 para incorporar el estudio de impacto
+  ambiental.
+estado_fuentes: [src-1, src-2]
+
+potencia:
+  - tipo: conexion_red
+    valor_mw: 50
+    ambito: campus
+    referencia: "Potencia de acceso a red asegurada para la primera fase"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2025-11-19"
+    fuentes: [src-3]
+    nota: "Dato de prensa; no confirmado por fuente oficial."
+  - tipo: no_especificado
+    valor_mw: 300
+    ambito: campus
+    referencia: "Objetivo de potencia por planta en segunda fase"
+    estado_asociado: anunciado
+    fecha_dato: "2025-11-19"
+    fuentes: [src-3]
+    nota: "Dato de prensa, sin precisar tipo de potencia."
+
+fases:
+  - nombre: "Fase 1"
+    estado: en_tramitacion
+    fuentes: [src-3]
+
+conexion_electrica:
+  subestacion: "Subestación propia en el campus (132 kV, previsto paso a 220 kV en segunda fase); dos conexiones a la subestación de Malpica"
+  tension_kv: 132
+  titular_red: null
+  mw_solicitados: null
+  mw_concedidos: null
+  fuentes: [src-1, src-5]
+  nota: >-
+    El PIGA prevé la conexión de infraestructura eléctrica exterior de alta tensión
+    subterránea con dos líneas de 4.370 m y 4.442 m que discurren por los términos
+    municipales de Villamayor de Gállego y La Puebla de Alfindén.
+
+superficie_parcela_m2: 806700
+inversion_anunciada_eur: 1733577386
+refrigeracion: null
+enlaces_proyecto:
+  - "https://www.aragon.es/-/piga-microsoft"
+
+incertidumbres:
+  - campo: superficie_parcela_m2
+    descripcion: >-
+      El PIGA distingue tres cifras: 74,16 ha del nuevo sector, 54,89 ha de parcela neta de
+      uso productivo del campus y 80,67 ha del subámbito Sector-SG. Se registra la mayor
+      (80,67 ha) como ámbito ordenado.
+    fuentes: [src-1]
+  - campo: inversion_anunciada_eur
+    descripcion: >-
+      Suma de los dos conceptos que el PIGA desglosa para Villamayor de Gállego
+      (1.700.093.540,63 € de obras en el campus y 33.483.845,89 € de urbanización).
+    fuentes: [src-1]
+  - campo: potencia
+    descripcion: "Ninguna fuente oficial publica potencia por campus; 50 MW y 300 MW proceden de prensa."
+    fuentes: [src-1, src-3]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1421303980707"
+    titulo: "ORDEN FOM/1520/2025, de 14 de noviembre, por el que se aprueba inicialmente el Plan de Interés General «Implantación de la Región Microsoft en Aragón»"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2025-11-18"
+    fecha_consulta: "2026-08-29"
+    cita: "se delimita un nuevo Sector de planeamiento urbanístico con una superficie total de unas 74,16 ha [...] el Campus ocupará una única parcela de uso productivo con una superficie neta de 54,89 ha [...] ordenará una superficie total de 80,67 ha."
+  - id: src-2
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1343967440606"
+    titulo: "ORDEN EEI/785/2024, de 11 de julio, por la que se da publicidad al Acuerdo de 3 de julio de 2024, del Gobierno de Aragón, por el que se declara como inversión de interés autonómico con interés general de Aragón el Proyecto «Campus de Centros de Datos Microsoft» en el término municipal de Villamayor de Gállego"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2024-07-22"
+    fecha_consulta: "2026-08-29"
+    cita: "se declara como inversión de interés autonómico con interés general de Aragón el Proyecto \"Campus de Centros de Datos Microsoft\" en el término municipal de Villamayor de Gállego (Zaragoza)"
+  - id: src-3
+    url: "https://www.eldiario.es/aragon/sociedad/microsoft-avanza-red-centros-datos-zaragoza-proyecta-mayores-regiones-europa_1_12768636.html"
+    titulo: "Microsoft avanza con su red de centros de datos en Zaragoza, donde proyecta una de sus mayores regiones en Europa"
+    editor: "elDiario.es Aragón"
+    tipo: prensa_general
+    fecha_consulta: "2026-08-29"
+    cita: "Cada centro de datos contará asimismo con dos conexiones a las subestaciones de Plaza (La Muela), Malpica (Villamayor) y Torrero-Valdeconsejo (Zaragoza)."
+  - id: src-4
+    url: "https://query.wikidata.org/sparql"
+    titulo: "Wikidata Query Service — coordenadas del municipio de Villamayor de Gállego (propiedad P625)"
+    editor: "Wikidata"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: "Villamayor de Gállego 41.685555555556 -0.77388888888889"
+  - id: src-5
+    url: "https://www.elespanol.com/aragon/economia/20251119/centros-datos-microsoft-aragon-consumiran-energia-toda-comunidad/1003744019227_0.html"
+    titulo: "Los centros de datos de Microsoft en Aragón consumirán más energía que toda la Comunidad"
+    editor: "El Español — Aragón"
+    tipo: prensa_general
+    fecha_publicacion: "2025-11-19"
+    fecha_consulta: "2026-08-29"
+    cita: "el centro de Villamayor de Gállego se extenderá por 81 hectáreas, en una parcela situada entre el núcleo de la población y el polígono industrial Malpica. Microsoft estima que necesitará una demanda de consumo eléctrico máximo anual estimada en aproximadamente 3.777 GWh al año."

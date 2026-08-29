@@ -1,0 +1,69 @@
+id: microsoft-alcala-de-henares-campus
+nombre: "Campus de Centros de Datos de Microsoft — Alcalá de Henares"
+alias:
+  - "Microsoft 7724 Spain, S.L.U. — Sector 26 Las Matillas"
+tipo: campus
+operador: "Microsoft"
+propietario: "Microsoft 7724 Spain, S.L.U."
+modelo: hyperscale
+
+ubicacion:
+  municipio: "Alcalá de Henares"
+  provincia: "Madrid"
+  ccaa: "Comunidad de Madrid"
+  direccion: "Sector 26, Polígono Industrial Las Matillas, Avenida de Madrid nº 15, Alcalá de Henares"
+  lat: null
+  lon: null
+  precision: aproximada
+  fuentes: [src-1]
+
+estado: en_tramitacion
+estado_detalle: >-
+  La Junta de Gobierno Local del Ayuntamiento de Alcalá de Henares aprobó inicialmente el 5 de
+  septiembre de 2025 el Plan Especial de Ordenación del solar del Sector 26 (Polígono Industrial
+  Las Matillas), promovido por Microsoft 7724 Spain, S.L.U. Tras la información pública procede
+  la aprobación definitiva antes de iniciar los trámites de ejecución.
+estado_fuentes: [src-1]
+
+potencia: []
+
+superficie_parcela_m2: null
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      No consta ninguna cifra oficial de potencia. Un reportaje de prensa generalista de 2026
+      atribuye al campus una horquilla estimada de 30-50 MW, pero se trata de una estimación
+      periodística y no se registra como dato.
+    fuentes: [src-2]
+  - campo: superficie_parcela_m2
+    descripcion: >-
+      El mismo reportaje cita una parcela de 98.700 m² y un consumo anual de agua estimado de
+      hasta 1.937 m³/año en el diseño en desarrollo; el anuncio municipal no aporta superficies.
+    fuentes: [src-1, src-2]
+  - campo: estado
+    descripcion: >-
+      A fecha de verificación no se ha localizado publicación de la aprobación definitiva del
+      Plan Especial ni licencia de obra.
+    fuentes: [src-1]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.ayto-alcaladehenares.es/aprobado-inicialmente-el-plan-especial-para-la-construccion-del-campus-de-microsoft-en-alcala-de-henares/"
+    titulo: "Aprobado inicialmente el Plan Especial para la construcción del Campus de Microsoft en Alcalá de Henares"
+    editor: "Ayuntamiento de Alcalá de Henares"
+    tipo: oficial
+    fecha_publicacion: "2025-09-05"
+    fecha_consulta: "2026-08-29"
+    cita: "La Junta de Gobierno Local ha aprobado inicialmente el Plan Especial de Ordenación del solar situado en el Sector 26, Polígono Industrial Las Matillas (Avda. de Madrid, nº 15), promovido por la mercantil MICROSOFT 7724 SPAIN, S.L.U."
+  - id: src-2
+    url: "https://www.lamarea.com/2026/08/03/alcala-henares-colonizacion/"
+    titulo: "Alcalá de Henares, epicentro de la nueva 'colonización' de los centros de datos"
+    editor: "La Marea"
+    tipo: prensa_general
+    fecha_publicacion: "2026-08-03"
+    fecha_consulta: "2026-08-29"
+    cita: "con el diseño actualmente en desarrollo se estima un consumo de agua anual de hasta 1.937 metros cúbicos al año"

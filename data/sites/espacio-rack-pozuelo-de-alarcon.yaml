@@ -1,0 +1,49 @@
+id: espacio-rack-pozuelo-de-alarcon
+nombre: "Espacio Rack / Cloud Builders — CPD de Pozuelo de Alarcón"
+alias:
+  - "Espacio Rack"
+  - "Cloud Builders Pozuelo de Alarcón"
+tipo: edificio
+operador: "Espacio Rack (Cloud Builders, S.A.)"
+propietario: "Cloud Builders, S.A."
+modelo: colocation
+
+ubicacion:
+  municipio: "Pozuelo de Alarcón"
+  provincia: "Madrid"
+  ccaa: "Comunidad de Madrid"
+  direccion: "Calle Ana Mariscal 5, 28223 Pozuelo de Alarcón"
+  lat: 40.395981
+  lon: -3.795879
+  precision: exacta
+  fuentes: [src-1, src-2]
+
+estado: operativo
+estado_detalle: "CPD propio con racks privados; certificaciones ISO 27001, ISO 9001 y Esquema Nacional de Seguridad."
+estado_fuentes: [src-1]
+
+potencia: []
+
+incertidumbres:
+  - campo: potencia
+    descripcion: "El operador no publica potencia ni superficie del CPD."
+    fuentes: [src-1]
+
+confianza: baja
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.espaciorack.com/"
+    titulo: "Espacio Rack — Housing y Cloud"
+    editor: "Espacio Rack"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: "Puedes realizar una visita cuando lo prefieras a nuestro CPD ... c/ Ana Mariscal, 5"
+  - id: src-2
+    url: "https://www.peeringdb.com/fac/4192"
+    titulo: "Espacio Rack"
+    editor: "PeeringDB"
+    tipo: asociacion
+    fecha_consulta: "2026-08-29"
+    cita: "Espacio Rack | Ana Mariscal 5 | 28223 Pozuelo de Alarcón"

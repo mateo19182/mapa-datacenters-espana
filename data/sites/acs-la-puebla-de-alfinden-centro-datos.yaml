@@ -1,0 +1,148 @@
+id: acs-la-puebla-de-alfinden-centro-datos
+nombre: "ACS DC Infra — Centro de Datos La Puebla de Alfindén"
+alias:
+  - "Centro de Datos La Puebla de Alfindén"
+  - "ACS DC Infra La Puebla"
+tipo: campus
+operador: "ACS Digital Infrastructure Development, S.L. (Grupo ACS)"
+propietario: "ACS DC Infra La Puebla, S.L."
+modelo: colocation
+cliente_ancla: null
+
+ubicacion:
+  municipio: "La Puebla de Alfindén"
+  provincia: "Zaragoza"
+  ccaa: "Aragón"
+  direccion: "Suelo urbanizable delimitado de uso industrial en el término municipal de La Puebla de Alfindén"
+  lat: 41.631587
+  lon: -0.750884
+  precision: municipio
+  fuentes: [src-1, src-3]
+
+estado: en_tramitacion
+estado_detalle: >-
+  Declarado inversión de interés autonómico con interés general de Aragón el 27 de junio de
+  2025. El Plan de Interés General de Aragón "Instalación de un centro de datos en el
+  término municipal de La Puebla de Alfindén" se aprobó inicialmente por Orden
+  FOM/1698/2025, de 1 de diciembre, y se modificó por Orden VFL/1184/2026, de 31 de julio,
+  para incorporar nuevos proyectos eléctricos sometidos a información pública en agosto de
+  2026. El punto de acceso y conexión a la red de transporte fue otorgado por Red Eléctrica
+  de España en la SET "Peñaflor 400 kV" el 5 de septiembre de 2024.
+estado_fuentes: [src-1, src-2, src-4]
+
+potencia:
+  - tipo: conexion_red
+    valor_mw: 150
+    ambito: campus
+    referencia: "Potencia eléctrica máxima del acceso concedido por REE en la SET Peñaflor 400 kV"
+    estado_asociado: permisos_concedidos
+    fecha_dato: "2024-09-05"
+    fuentes: [src-1]
+    nota: >-
+      "cuenta con permiso de acceso asegurado y conexión otorgado por Red Eléctrica de
+      España en la SET «Peñaflor 400 kV», otorgada el 5 de septiembre de 2024".
+  - tipo: it
+    valor_mw: 100
+    ambito: campus
+    referencia: "Potencia TI de los dos edificios de la primera fase (Data Hall de 40 MW IT + Data Hall de 60 MW IT)"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2025-12-09"
+    fuentes: [src-1]
+    nota: >-
+      La memoria describe "2 Centros de Datos (1 edificio Data Hall de 40 MW IT con cuatro
+      módulos de 10 MW y otro edificio con Data Hall de 60 MW IT con seis módulos de 10 MW)"
+      y añade que los 150 MW de acceso "suponen 100 MW de potencia IT aproximadamente".
+  - tipo: conexion_red
+    valor_mw: 150
+    ambito: campus
+    referencia: "Ampliación del punto de acceso solicitada a REE para una posible segunda fase"
+    estado_asociado: anunciado
+    fecha_dato: "2025-12-09"
+    fuentes: [src-1]
+    nota: >-
+      "se ha solicitado una ampliación del punto de acceso ya concedido en la subestación
+      Peñaflor 400 de 150MW adicionales (100MW IT), la cual se encuentra pendiente de
+      respuesta por parte de REE". No sumar con la potencia ya concedida sin advertirlo.
+
+fases:
+  - nombre: "Fase 1"
+    estado: en_tramitacion
+    superficie_m2: 112700
+    fuentes: [src-1]
+    nota: >-
+      Dos edificios de centro de datos (40 MW IT y 60 MW IT), urbanización exterior,
+      subestación SET CD Campus, paneles fotovoltaicos, caseta de control de accesos,
+      edificio de bombas y tanques de agua contra incendios. Superficie 11,27 ha.
+  - nombre: "Fase 2 (reserva)"
+    estado: anunciado
+    fuentes: [src-1]
+    nota: "La parcela reserva espacio para una posible segunda fase, pendiente de ampliación del acceso."
+
+conexion_electrica:
+  subestacion: "SET CD Campus 220/30 kV (en la parcela) y SET REMOTA 400/220 kV junto a la SET Peñaflor, en suelo no urbanizable de Villamayor de Gállego"
+  tension_kv: 400
+  titular_red: "Red Eléctrica de España — SET Peñaflor 400 kV"
+  mw_solicitados: 150
+  mw_concedidos: 150
+  fuentes: [src-1]
+  nota: >-
+    Línea eléctrica subterránea de 13,451 km desde la SET Peñaflor hasta la parcela y línea
+    subterránea de 456,09 m entre la SET Peñaflor 400 kV y la nueva subestación remota. Los
+    mw_solicitados registrados son los ya concedidos; la ampliación de 150 MW adicionales
+    seguía pendiente de respuesta de REE.
+
+superficie_parcela_m2: 255505
+inversion_anunciada_eur: 1090106216
+refrigeracion: >-
+  La memoria indica que el diseño "es de última generación y no requiere consumo de agua"
+  para refrigeración.
+enlaces_proyecto:
+  - "https://www.aragon.es/-/piga-acs-dc-la-puebla"
+
+incertidumbres:
+  - campo: inversion_anunciada_eur
+    descripcion: >-
+      La memoria da 916.055.643,94 € de presupuesto de ejecución material y
+      1.090.106.216,28 € de presupuesto de ejecución por contrata. Se registra el segundo.
+    fuentes: [src-1]
+  - campo: ubicacion
+    descripcion: >-
+      Las coordenadas registradas son el centroide municipal de La Puebla de Alfindén
+      (Wikidata). La subestación remota se sitúa en el término municipal de Villamayor de
+      Gállego, fuera de este emplazamiento.
+    fuentes: [src-1, src-3]
+
+confianza: alta
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.aragon.es/documents/d/guest/tomo-i-memoria-1"
+    titulo: "PIGA «Instalación de un centro de datos en el término municipal de La Puebla de Alfindén». Tomo I. Memoria (ACS DC Infra La Puebla, S.L.)"
+    editor: "Gobierno de Aragón"
+    tipo: oficial
+    fecha_consulta: "2026-08-29"
+    cita: "El proyecto CENTRO DE DATOS LA PUEBLA DE ALFINDÉN pretende desarrollar la implantación de un centro de datos de 150MW de potencia eléctrica total en La Puebla de Alfindén [...] Para ello se cuenta con un punto de acceso y conexión de 150MW de potencia a 400kV."
+  - id: src-2
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1425305720606"
+    titulo: "ORDEN FOM/1698/2025, de 1 de diciembre, por la que se aprueba inicialmente el Plan de Interés General de Aragón «Instalación de un centro de datos en el término municipal de La Puebla de Alfindén» promovido por la mercantil ACS DC Infra La Puebla, SL"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2025-12-09"
+    fecha_consulta: "2026-08-29"
+    cita: "se aprueba inicialmente el Plan de Interés General de Aragón \"Instalación de un centro de datos en el término municipal de La Puebla de Alfindén\" promovido por la mercantil ACS DC Infra La Puebla, SL"
+  - id: src-3
+    url: "https://query.wikidata.org/sparql"
+    titulo: "Wikidata Query Service — coordenadas del municipio de La Puebla de Alfindén (propiedad P625)"
+    editor: "Wikidata"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: "La Puebla de Alfindén 41.631587 -0.7508841"
+  - id: src-4
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1404788860606"
+    titulo: "ORDEN PEJ/865/2025, de 10 de julio, por la que se da publicidad al Acuerdo de 27 de junio de 2025, del Gobierno de Aragón, por el que se declara como inversión de interés autonómico con interés general de Aragón el proyecto de instalación de un centro de datos en el término municipal de La Puebla de Alfindén (Zaragoza), promovido por «ACS DC Infra La Puebla, SL»"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2025-07-23"
+    fecha_consulta: "2026-08-29"
+    cita: "se declara como inversión de interés autonómico con interés general de Aragón el proyecto de instalación de un centro de datos en el término municipal de La Puebla de Alfindén (Zaragoza)"

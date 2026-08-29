@@ -1,0 +1,105 @@
+id: data4-alcobendas-mad01
+nombre: "DATA4 Madrid MAD01 — Alcobendas"
+alias:
+  - "DATA4 Madrid-Alcobendas"
+  - "DATA4 MAD1"
+tipo: campus
+operador: "DATA4"
+propietario: "DATA4"
+modelo: colocation
+
+ubicacion:
+  municipio: "Alcobendas"
+  provincia: "Madrid"
+  ccaa: "Comunidad de Madrid"
+  direccion: "Avenida de la Industria 15, 28108 Alcobendas"
+  lat: 40.535051
+  lon: -3.647835
+  precision: exacta
+  fuentes: [src-1, src-2]
+
+estado: operativo
+estado_detalle: >-
+  Campus lanzado en 2020, en crecimiento; en 2023 DATA4 declaraba estar construyendo un nuevo
+  edificio y orientaba MAD01 al colocation empresarial frente al perfil hiperescalar de MAD02.
+estado_fuentes: [src-1, src-3]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 50
+    ambito: campus
+    referencia: "MAD01 (capacidad del campus)"
+    estado_asociado: desconocido
+    fecha_dato: "2026-08-29"
+    fuentes: [src-1]
+    nota: "La ficha de DATA4 indica '50 MW' para MAD01 sin especificar si es carga TI o potencia total."
+  - tipo: conexion_red
+    valor_mw: 20
+    ambito: campus
+    referencia: "Acometida principal desde la subestación de Sanchinarro"
+    estado_asociado: operativo
+    fecha_dato: "2026-08-29"
+    fuentes: [src-1]
+  - tipo: conexion_red
+    valor_mw: 10
+    ambito: campus
+    referencia: "Línea de respaldo desde la subestación de Alcobendas"
+    estado_asociado: operativo
+    fecha_dato: "2026-08-29"
+    fuentes: [src-1]
+  - tipo: conexion_red
+    valor_mw: 10
+    ambito: campus
+    referencia: "Línea de respaldo desde la subestación de Arroyo de la Vega"
+    estado_asociado: operativo
+    fecha_dato: "2026-08-29"
+    fuentes: [src-1]
+
+conexion_electrica:
+  subestacion: "Sanchinarro (acometida principal); Alcobendas y Arroyo de la Vega (respaldo)"
+  fuentes: [src-1]
+
+superficie_parcela_m2: 40000
+enlaces_proyecto:
+  - "https://www.data4group.com/es/centros-de-datos-en-espana-2/"
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      DATA4 anuncia "Importantes reservas eléctricas (100 MW)" para España y 50 MW para MAD01,
+      pero simultáneamente describe una acometida de 20 MW más dos respaldos de 10 MW. No queda
+      claro si los 50 MW son capacidad contratada, potencia TI o reserva futura.
+    fuentes: [src-1]
+  - campo: fases
+    descripcion: >-
+      Prensa especializada indicó en 2023 que el campus de Alcobendas albergaría seis edificios
+      sobre ocho hectáreas; la ficha actual de DATA4 declara 4 hectáreas para MAD01. No se ha
+      podido reconciliar.
+    fuentes: [src-1, src-3]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.data4group.com/es/centros-de-datos-en-espana-2/"
+    titulo: "Centros de datos en Madrid España Colocación y alojamiento de centros de datos | DATA4"
+    editor: "DATA4"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: "MAD01 : Avenida de la Industria, 15 - 28108 Alcobendas, España ... MAD01 50 MW 4 Hectáreas ... Acometida Eléctrica de 20 MW desde la subestación de Sanchinarro, -> respaldo de dos líneas de 10 MW desde las estaciones de Alcobendas y Arroyo Vega."
+  - id: src-2
+    url: "https://www.peeringdb.com/fac/10645"
+    titulo: "DATA4 Madrid-Alcobendas - MAD1"
+    editor: "PeeringDB"
+    tipo: asociacion
+    fecha_consulta: "2026-08-29"
+    cita: "DATA4 Madrid-Alcobendas - MAD1 | Av. de la Industria, 15 | 28108 Alcobendas"
+  - id: src-3
+    url: "https://www.datacentermarket.es/mercado/data4-invierte-530-millones-en-un-campus-data-center-de-80-mw-de-potencia/"
+    titulo: "DATA4 invierte 530 millones en un campus data center de 80 MW de potencia"
+    editor: "Data Center Market"
+    tipo: prensa_especializada
+    fecha_publicacion: "2023-04-26"
+    fecha_consulta: "2026-08-29"
+    cita: "el actual de Alcobendas, que sigue en fase de crecimiento y construcción de un nuevo edificio- está más pensado para el colocation de empresas"

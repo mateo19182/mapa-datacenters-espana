@@ -1,0 +1,47 @@
+id: ppa-apto-ignis-fuenlabrada
+nombre: "PPA Apto — planta fotovoltaica de 94 MW de IGNIS para el campus de Fuenlabrada"
+tipo: fotovoltaica
+potencia_mw: 94
+tipo_potencia: nominal
+capacidad_mwh: null
+energia_anual_gwh: 171
+promotor: "IGNIS"
+contraparte_ppa: "Apto"
+tipo_vinculo: ppa
+municipio: null
+provincia: null
+ccaa: null
+lat: null
+lon: null
+precision: desconocida
+estado: anunciado
+fecha_firma: "2026-07"
+adicionalidad: no_consta
+clusters_relacionados: [madrid]
+cpds_relacionados: []
+cpd_declarado: "Campus de centros de datos de Apto en Fuenlabrada (Madrid), 82 MW de capacidad de acceso y conexión, 195.000 m2."
+cpd_demanda_mw: 82
+cpd_demanda_nota: "82 MW son capacidad de acceso y conexión del campus; no se suman con los 94 MW de generación."
+incertidumbres:
+  - campo: municipio
+    descripcion: "No se publica dónde se ubica la planta fotovoltaica de 94 MW; el campus está en Fuenlabrada, la planta no necesariamente."
+    fuentes: [src-1, src-2]
+confianza: media
+ultima_verificacion: "2026-08-29"
+fuentes:
+  - id: src-1
+    url: "https://www.pv-magazine.es/2026/07/16/ignis-firma-un-ppa-fotovoltaico-para-un-campus-de-centros-de-datos-de-82-mw-en-fuenlabrada/"
+    titulo: "Ignis firma un PPA fotovoltaico para un campus de centros de datos de 82 MW en Fuenlabrada"
+    editor: "pv magazine España"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-07-16"
+    fecha_consulta: "2026-08-29"
+    cita: "Ignis suministrará 82 MW de capacidad de acceso y un PPA vinculado a una planta fotovoltaica de 94 MW para abastecer el nuevo campus de centros de datos de Apto en Fuenlabrada"
+  - id: src-2
+    url: "https://www.datacentermarket.es/datacenter-infrastructure/ignis-y-apto-impulsan-un-campus-de-data-centers-en-madrid-renovables-y-acceso-propio-a-la-red/"
+    titulo: "IGNIS y Apto impulsan un campus de data centers en Madrid renovables y acceso propio a la red"
+    editor: "Data Center Market"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-07-13"
+    fecha_consulta: "2026-08-29"
+    cita: "aproximadamente 171 GWh de electricidad renovable al año [...] IGNIS será responsable de asegurar el acceso y la conexión a la red eléctrica del complejo"

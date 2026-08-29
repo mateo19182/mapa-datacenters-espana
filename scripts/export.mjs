@@ -14,6 +14,19 @@ const PUBLICO = join(RAIZ, 'public/datos')
 mkdirSync(SALIDA, { recursive: true })
 mkdirSync(PUBLICO, { recursive: true })
 
+// Centroides municipales cacheados: sirven para situar en el mapa lo que solo
+// se conoce a nivel de municipio, siempre marcado como derivado.
+const centroides = existsSync(join(RAIZ, 'data/geo/municipios.json'))
+  ? JSON.parse(readFileSync(join(RAIZ, 'data/geo/municipios.json'), 'utf8'))
+  : {}
+const centroideDe = (municipio, provincia) => {
+  if (!municipio) return null
+  const c =
+    centroides[`${municipio}|${provincia ?? ''}`.toLowerCase()] ??
+    Object.values(centroides).find((v) => v.municipio === municipio && v.lat != null)
+  return c?.lat != null ? c : null
+}
+
 const db = new Database(join(RAIZ, 'build/datacenters.db'), { readonly: true })
 const q = (sql, ...a) => db.prepare(sql).all(...a)
 
@@ -38,6 +51,7 @@ const sitios = q('SELECT * FROM sitios ORDER BY nombre').map((s) => {
     tipo: p.tipo,
     valor_mw: p.valor_mw,
     valor_mw_max: p.valor_mw_max,
+    valor_mva: p.valor_mva,
     ambito: p.ambito,
     referencia: p.referencia,
     estado_asociado: p.estado_asociado,
@@ -173,6 +187,8 @@ const regiones = [...porClave((s) => s.ubicacion.ccaa).entries()]
   .sort((a, b) => b.emplazamientos - a.emplazamientos || a.nombre.localeCompare(b.nombre, 'es'))
 
 const red = q('SELECT datos FROM red_nodos').map((r) => JSON.parse(r.datos))
+const actuaciones = q('SELECT datos FROM red_actuaciones').map((r) => JSON.parse(r.datos))
+const capacidad = q('SELECT datos FROM red_capacidad').map((r) => JSON.parse(r.datos))
 const renovables = q('SELECT datos FROM renovables').map((r) => JSON.parse(r.datos))
 
 const geojson = (items, propiedades) => ({
@@ -186,6 +202,18 @@ const geojson = (items, propiedades) => ({
     })),
 })
 
+let derivadas = 0
+for (const s of sitios) {
+  if (s.ubicacion.lat != null) continue
+  const c = centroideDe(s.ubicacion.municipio, s.ubicacion.provincia)
+  if (!c) continue
+  s.ubicacion.lat = c.lat
+  s.ubicacion.lon = c.lon
+  s.ubicacion.precision = 'municipio'
+  s.ubicacion.coordenada_derivada = true
+  derivadas++
+}
+
 const sitiosGeo = geojson(
   sitios.map((s) => ({ ...s, lat: s.ubicacion.lat, lon: s.ubicacion.lon })),
   (s) => ({
@@ -198,6 +226,7 @@ const sitiosGeo = geojson(
     modelo: s.modelo,
     confianza: s.confianza,
     precision: s.ubicacion.precision,
+    coordenada_derivada: s.ubicacion.coordenada_derivada ?? false,
     mw_it: s.resumen_potencia.it?.valor_mw ?? null,
     mw_conexion: s.resumen_potencia.conexion_red?.valor_mw ?? null,
     mw_sin_tipo: s.resumen_potencia.no_especificado?.valor_mw ?? null,
@@ -218,6 +247,18 @@ const redGeo = geojson(
   }),
 )
 
+// A los activos renovables casi nunca se les publica coordenada; se sitúan en el
+// centro de su municipio y se declara como tal.
+for (const r of renovables) {
+  if (r.lat != null) continue
+  const c = centroideDe(r.municipio ?? r.municipios?.[0], r.provincia)
+  if (!c) continue
+  r.lat = c.lat
+  r.lon = c.lon
+  r.precision = 'municipio'
+  r.coordenada_derivada = true
+}
+
 const renovablesGeo = geojson(renovables, (r) => ({
   id: r.id,
   nombre: r.nombre ?? r.id,
@@ -228,6 +269,7 @@ const renovablesGeo = geojson(renovables, (r) => ({
   contraparte_ppa: r.contraparte_ppa ?? null,
   tipo_vinculo: r.tipo_vinculo ?? null,
   estado: r.estado ?? null,
+  coordenada_derivada: r.coordenada_derivada ?? false,
 }))
 
 const todasLasFuentes = new Map()
@@ -244,6 +286,7 @@ const resumen = {
   total_emplazamientos: sitios.length,
   con_coordenadas: sitios.filter((s) => s.ubicacion.lat != null).length,
   coordenadas_exactas: sitios.filter((s) => s.ubicacion.precision === 'exacta').length,
+  coordenadas_derivadas: sitios.filter((s) => s.ubicacion.coordenada_derivada).length,
   por_confianza: Object.fromEntries(
     ['alta', 'media', 'baja'].map((c) => [c, sitios.filter((s) => s.confianza === c).length]),
   ),
@@ -262,6 +305,8 @@ const resumen = {
   companias: companias.length,
   regiones: regiones.length,
   nodos_red: red.length,
+  actuaciones_red: actuaciones.length,
+  nudos_con_capacidad: capacidad.length,
   activos_renovables: renovables.length,
   fuentes_distintas: todasLasFuentes.size,
   emplazamientos_con_incertidumbres: sitios.filter((s) => s.incertidumbres.length > 0).length,
@@ -277,10 +322,35 @@ escribir('sitios.json', sitios)
 escribir('companias.json', companias)
 escribir('regiones.json', regiones)
 escribir('red.json', red)
+escribir('actuaciones.json', actuaciones)
+escribir('capacidad.json', capacidad)
 escribir('renovables.json', renovables)
 escribir('fuentes.json', [...todasLasFuentes.values()].sort((a, b) => b.usos.length - a.usos.length))
 escribir('resumen.json', resumen)
 escribir('sitios.geojson', sitiosGeo)
+// Lista plana con TODOS los emplazamientos, también los que no tienen
+// coordenadas: si no, desaparecerían del buscador por un hueco de la fuente.
+escribir(
+  'sitios-lista.json',
+  sitios.map((s) => ({
+    id: s.id,
+    nombre: s.nombre,
+    operador: s.operador,
+    estado: s.estado,
+    ccaa: s.ubicacion.ccaa,
+    municipio: s.ubicacion.municipio,
+    modelo: s.modelo,
+    confianza: s.confianza,
+    precision: s.ubicacion.precision,
+    coordenada_derivada: s.ubicacion.coordenada_derivada ?? false,
+    lat: s.ubicacion.lat,
+    lon: s.ubicacion.lon,
+    alias: s.alias,
+    mw_it: s.resumen_potencia.it?.valor_mw ?? null,
+    mw_conexion: s.resumen_potencia.conexion_red?.valor_mw ?? null,
+    mw_sin_tipo: s.resumen_potencia.no_especificado?.valor_mw ?? null,
+  })),
+)
 // Índice de alias para que el buscador del mapa encuentre los nombres antiguos.
 escribir('alias.json', Object.fromEntries(sitios.filter((s) => s.alias.length).map((s) => [s.id, s.alias])))
 escribir('red.geojson', redGeo)

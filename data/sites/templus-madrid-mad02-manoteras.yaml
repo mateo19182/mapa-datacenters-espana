@@ -1,0 +1,88 @@
+id: templus-madrid-mad02-manoteras
+nombre: "Templus Madrid MAD02 — Avenida de Manoteras"
+alias:
+  - "Templus DC Madrid MAD02"
+  - "AtlasEdge Madrid"
+  - "Madrid MAD001"
+tipo: edificio
+operador: "Templus Datacenters"
+propietario: "Templus Datacenters"
+modelo: colocation
+
+ubicacion:
+  municipio: "Madrid"
+  provincia: "Madrid"
+  ccaa: "Comunidad de Madrid"
+  direccion: "Avenida de Manoteras 42, 28050 Madrid (distrito de Hortaleza)"
+  lat: 40.48699
+  lon: -3.664977
+  precision: exacta
+  fuentes: [src-2, src-4]
+
+estado: operativo
+estado_detalle: >-
+  Centro de proximidad carrier-neutral. Templus tomó el control operativo en mayo de 2026 de los
+  nueve centros comprados a AtlasEdge en diciembre de 2025, entre ellos el de Madrid.
+estado_fuentes: [src-1, src-3]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 3.2
+    ambito: edificio
+    referencia: "Total power (ficha de Templus)"
+    estado_asociado: operativo
+    fecha_dato: "2026-08-29"
+    fuentes: [src-1]
+  - tipo: no_especificado
+    valor_mw: 3
+    ambito: edificio
+    referencia: "Ficha del directorio OCOLO para Av. de Manoteras 42B"
+    estado_asociado: operativo
+    fecha_dato: "2026-08-29"
+    fuentes: [src-4]
+
+superficie_construida_m2: 1800
+enlaces_proyecto:
+  - "https://templus.com/data-centers/madrid-mad02/"
+
+incertidumbres:
+  - campo: operador
+    descripcion: >-
+      La nota sobre la compra a AtlasEdge menciona un único centro "Madrid" entre los nueve
+      adquiridos, pero Templus opera dos instalaciones en la ciudad de Madrid (MAD02 en Manoteras
+      y MAD03 en Albasanz). No se ha podido determinar cuál de las dos procede de AtlasEdge.
+    fuentes: [src-3]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://templus.com/data-centers/madrid-mad02/"
+    titulo: "Data Center en Madrid | Infraestructura Tier III - Templus (MAD02)"
+    editor: "Templus"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: "Densidad por rack 4 kW – 15 kW Superficie IT 1.800 m² Total power 3,2 MW ... Nivel Tier III Ready"
+  - id: src-2
+    url: "https://www.peeringdb.com/fac/4085"
+    titulo: "Templus DC Madrid MAD02"
+    editor: "PeeringDB"
+    tipo: asociacion
+    fecha_consulta: "2026-08-29"
+    cita: "Templus DC Madrid MAD02 | Avenida de Manoteras, 42 | 28050 Madrid"
+  - id: src-3
+    url: "https://www.datacentermarket.es/datacenter-infrastructure/templus-asume-el-control-operativo-de-los-nueve-centros-de-datos-de-atlasedge/"
+    titulo: "Templus asume el control operativo de los nueve centros de datos de AtlasEdge"
+    editor: "Data Center Market"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-05-04"
+    fecha_consulta: "2026-08-29"
+    cita: "las instalaciones de Ámsterdam, Barcelona, Copenhague, Leeds, Londres, Madrid, Milán, París y Zúrich se acaban de integrar en la plataforma de Templus"
+  - id: src-4
+    url: "https://www.ocolo.io/data-centers/spain/comunidad-de-madrid/madrid/"
+    titulo: "Data Centers in Madrid, Comunidad de Madrid"
+    editor: "OCOLO"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: "Madrid (MAD001) Av. de Manoteras, 42B, Hortaleza, 28050 Madrid, Spain 3.00 MW"

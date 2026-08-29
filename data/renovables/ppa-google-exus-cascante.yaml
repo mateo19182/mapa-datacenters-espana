@@ -1,0 +1,40 @@
+id: ppa-google-exus-cascante
+nombre: "PPA Google — parque eólico de Cascante (Exus Renewables)"
+tipo: eolica
+potencia_mw: 35
+tipo_potencia: contratada_ppa
+potencia_planta_mw: 51
+capacidad_mwh: null
+promotor: "Exus Renewables"
+contraparte_ppa: "Google"
+tipo_vinculo: ppa
+duracion_anios: 10
+municipio: "Cascante"
+provincia: "Navarra"
+ccaa: "Comunidad Foral de Navarra"
+lat: null
+lon: null
+precision: municipio
+estado: operativo
+estado_detalle: "Parque adquirido por Exus al Grupo Enhol en 2024; el PPA con Google se anunció en marzo de 2025 sobre un activo ya existente."
+fecha_firma: "2025-03-20"
+adicionalidad: generacion_existente
+adicionalidad_fuentes: [src-1]
+adicionalidad_nota: "El PPA se firma sobre un parque en operación, no sobre nueva construcción; no aporta adicionalidad."
+clusters_relacionados: [madrid]
+cpds_relacionados: []
+incertidumbres:
+  - campo: cpds_relacionados
+    descripcion: "La nota de Exus enmarca el acuerdo en los objetivos de sostenibilidad de Google y en su propia transición a proveedor de energía limpia para centros de datos en Europa, pero no lo asigna a ningún CPD de Google en España."
+    fuentes: [src-1]
+confianza: alta
+ultima_verificacion: "2026-08-29"
+fuentes:
+  - id: src-1
+    url: "https://exusrenewables.com/news/exus-renewables-announces-long-term-power-purchase-agreement-ppa-with-google-for-spanish-wind-farm"
+    titulo: "Exus Renewables announces long-term Power Purchase Agreement (PPA) with Google for Spanish wind farm"
+    editor: "Exus Renewables"
+    tipo: empresa
+    fecha_publicacion: "2025-03-20"
+    fecha_consulta: "2026-08-29"
+    cita: "The agreement not only supports Google's wider sustainability ambitions but also marks a significant milestone in Exus' transition to a leading Energy Solutions Provider of clean energy to data centres across Europe."

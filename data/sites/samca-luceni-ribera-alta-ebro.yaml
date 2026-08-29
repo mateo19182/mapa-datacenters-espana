@@ -1,0 +1,147 @@
+id: samca-luceni-ribera-alta-ebro
+nombre: "SAMCA — Campus de Datos «Ribera Alta del Ebro» / Green IT Aragón (Luceni)"
+alias:
+  - "Green IT Aragón"
+  - "Campus de Datos Ribera Alta del Ebro"
+  - "DC Atalaya del Ebro / DC Ribera Alta del Ebro / DC Ribera Alta del Ebro II"
+tipo: campus
+operador: "Data Center Ribera Alta del Ebro, S.L. (Grupo SAMCA)"
+propietario: "Sociedad Anónima Minera Catalano-Aragonesa (SAMCA), Data Center Ribera Alta del Ebro, S.L. y Molinos del Ebro, S.A."
+modelo: mayorista
+
+ubicacion:
+  municipio: "Luceni"
+  provincia: "Zaragoza"
+  ccaa: "Aragón"
+  direccion: "Sector urbanístico en el término municipal de Luceni, en el eje del corredor del Ebro, a unos 40 km de Zaragoza"
+  lat: 41.828587
+  lon: -1.23922
+  precision: municipio
+  fuentes: [src-1, src-3]
+
+estado: en_tramitacion
+estado_detalle: >-
+  Declarado inversión de interés autonómico y de interés general de Aragón el 28 de abril de
+  2025, con redelimitación del ámbito acordada el 10 de diciembre de 2025. El PIGA «Green
+  It Aragón» se aprobó inicialmente por Orden FOM/1846/2025, de 23 de diciembre, y se
+  sometió a información pública junto con su documentación ambiental. El ámbito abarca los
+  términos municipales de Luceni, Pedrola, Plasencia de Jalón y Rueda de Jalón; el campus
+  se sitúa en Luceni y el resto corresponde a las infraestructuras energéticas y de
+  comunicaciones.
+estado_fuentes: [src-1, src-2]
+
+potencia:
+  - tipo: it
+    valor_mw: 72
+    ambito: edificio
+    referencia: "Demanda de potencia IT de cada uno de los tres centros de datos"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2025-11-21"
+    fuentes: [src-1]
+    nota: >-
+      "Cada uno de ellos se proyecta para una demanda de potencia IT de 72 MW". Son tres
+      edificios: DC "Atalaya del Ebro", DC "Ribera Alta del Ebro" y DC "Ribera Alta del
+      Ebro II".
+  - tipo: conexion_red
+    valor_mw: 300
+    ambito: campus
+    referencia: "Potencia activa máxima absorbida de la Red de Transporte por los tres edificios"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2025-11-21"
+    fuentes: [src-1]
+    nota: >-
+      "siendo la potencia activa máxima que será absorbida de la Red de Transporte por los
+      tres edificios, de 300 MW, al tener en consideración la potencia IT indicada, el valor
+      de diseño del Peak PUE y los coeficientes de simultaneidad".
+  - tipo: instalada_total
+    valor_mw: 125.5
+    ambito: edificio
+    referencia: "Potencia eléctrica instalada de la planta de turbinas de gas de emergencia asociada a cada edificio"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2025-11-21"
+    fuentes: [src-1]
+    nota: >-
+      "una potencia eléctrica instalada del orden de 125,5 MWe por edificio" en tres plantas
+      de generación de emergencia con 27 turbinas de gas en total (9 por centro de datos, en
+      configuración N+1). Es generación de respaldo, no carga TI.
+
+fases:
+  - nombre: "DC «Ribera Alta del Ebro»"
+    estado: en_tramitacion
+    fuentes: [src-1]
+  - nombre: "DC «Ribera Alta del Ebro II»"
+    estado: en_tramitacion
+    fuentes: [src-1]
+  - nombre: "DC «Atalaya del Ebro»"
+    estado: en_tramitacion
+    fuentes: [src-1]
+
+conexion_electrica:
+  subestacion: "Nueva SE «Ribera Alta del Ebro», conectada por tres líneas subterráneas de 220 kV a las SE «Jalón PRE», «Bayo» y «Camporroyo» (esta última de nueva construcción)"
+  tension_kv: 220
+  titular_red: null
+  mw_solicitados: null
+  mw_concedidos: null
+  fuentes: [src-1, src-4]
+  nota: >-
+    El PIGA incluye la ampliación de tres subestaciones transformadoras ("Cantales", "Jalón
+    PRE" y "Bayo"), la construcción de la nueva subestación "Camporroyo", tres líneas
+    subterráneas de 220 kV y cinco líneas de fibra óptica, además de actuaciones en la red
+    de E-Distribución (variante de la línea aérea de 15 kV "PEDROLA_2" y de la línea de
+    45 kV "Borja - Renfe Luceni"). En 2026 se sometieron a información pública las
+    autorizaciones administrativas de estas subestaciones, solicitadas por Molinos del Ebro,
+    S.A.
+
+superficie_parcela_m2: 682929
+inversion_anunciada_eur: 2001800000
+refrigeracion: null
+enlaces_proyecto:
+  - "https://www.aragon.es/-/piga-green-it"
+
+incertidumbres:
+  - campo: superficie_parcela_m2
+    descripcion: >-
+      La superficie total del ámbito del PIGA es de 4.087.850 m², de los que 682.929 m²
+      corresponden al sector urbanístico del campus y 3.404.921 m² a las infraestructuras
+      energéticas, logísticas y de comunicaciones. Se registra la del sector del campus.
+    fuentes: [src-1]
+  - campo: ubicacion
+    descripcion: >-
+      Las coordenadas registradas son el centroide municipal de Luceni (Wikidata); el
+      ámbito del PIGA se extiende además a Pedrola, Plasencia de Jalón y Rueda de Jalón.
+    fuentes: [src-1, src-3]
+
+confianza: alta
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.aragon.es/documents/d/guest/vol_i_a_memoria_piga"
+    titulo: "Plan de Interés General de Aragón «Green It Aragón». Volumen I — Memoria PIGA"
+    editor: "Gobierno de Aragón"
+    tipo: oficial
+    fecha_consulta: "2026-08-29"
+    cita: "Cada uno de ellos se proyecta para una demanda de potencia IT de 72 MW, siendo la potencia activa máxima que será absorbida de la Red de Transporte por los tres edificios, de 300 MW"
+  - id: src-2
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1428682970505"
+    titulo: "ORDEN FOM/1846/2025, de 23 de diciembre, por la que se aprueba inicialmente el Plan de Interés General de Aragón «Green It Aragón» en los términos municipales de Luceni, Pedrola, Plasencia de Jalón y Rueda de Jalón (Zaragoza)"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2025-12-30"
+    fecha_consulta: "2026-08-29"
+    cita: "se aprueba inicialmente el Plan de Interés General de Aragón \"Green It Aragón\" en los términos municipales de Luceni, Pedrola, Plasencia de Jalón y Rueda de Jalón (Zaragoza)"
+  - id: src-3
+    url: "https://query.wikidata.org/sparql"
+    titulo: "Wikidata Query Service — coordenadas del municipio de Luceni (propiedad P625)"
+    editor: "Wikidata"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: "Luceni 41.8285871 -1.2392195"
+  - id: src-4
+    url: "https://www.aragon.es/-/piga-green-it"
+    titulo: "Plan de Interés General de Aragón «Green It Aragón»"
+    editor: "Gobierno de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2026-08-27"
+    fecha_consulta: "2026-08-29"
+    cita: "Proyecto de Subestación Transformadora \"Ribera Alta del Ebro\" (RADE) [...] Proyecto de Línea Subterránea Alta Tensión 220KV de Subestación \"Jalón PRE\" a Subestación \"Ribera Alta del Ebro\""

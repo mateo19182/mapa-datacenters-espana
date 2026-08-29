@@ -1,0 +1,94 @@
+id: data4-san-agustin-del-guadalix-mad02
+nombre: "DATA4 Madrid MAD02 — San Agustín del Guadalix"
+alias:
+  - "DATA4 MAD02"
+  - "DATA4 Guadalix"
+tipo: campus
+operador: "DATA4"
+propietario: "DATA4"
+modelo: hyperscale
+
+ubicacion:
+  municipio: "San Agustín del Guadalix"
+  provincia: "Madrid"
+  ccaa: "Comunidad de Madrid"
+  lat: null
+  lon: null
+  precision: municipio
+  fuentes: [src-1, src-2]
+
+estado: en_construccion
+estado_detalle: >-
+  Campus de cuatro edificios anunciado en abril de 2023, con primera piedra el 16 de mayo de 2023
+  y finalización prevista en 2029. Orientado a clientes hiperescalares.
+estado_fuentes: [src-2]
+
+potencia:
+  - tipo: instalada_total
+    valor_mw: 80
+    ambito: campus
+    referencia: "Potencia total del campus MAD02 al completarse"
+    estado_asociado: en_construccion
+    fecha_dato: "2023-04-26"
+    fuentes: [src-2]
+    nota: "\"80 MW de potencia total -unos 48 MW de potencia IT-\"."
+  - tipo: it
+    valor_mw: 48
+    ambito: campus
+    referencia: "Potencia TI del campus MAD02 al completarse"
+    estado_asociado: en_construccion
+    fecha_dato: "2023-04-26"
+    fuentes: [src-2]
+  - tipo: no_especificado
+    valor_mw: 50
+    ambito: campus
+    referencia: "MAD02 según la ficha actual de DATA4"
+    estado_asociado: en_construccion
+    fecha_dato: "2026-08-29"
+    fuentes: [src-1]
+    nota: "La ficha corporativa vigente indica 50 MW y 6,7 hectáreas, cifra distinta de la anunciada en 2023."
+
+fases:
+  - nombre: "Cuatro edificios con 16.000 m² de espacio IT"
+    estado: en_construccion
+    superficie_m2: 16000
+    fuentes: [src-2]
+
+superficie_parcela_m2: 67000
+inversion_anunciada_eur: 530000000
+enlaces_proyecto:
+  - "https://www.data4group.com/es/centros-de-datos-en-espana-2/"
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      Contradicción abierta: el anuncio de 2023 habla de 80 MW totales / 48 MW IT para MAD02 y de
+      130 MW de DATA4 en la Comunidad de Madrid al completar los dos campus; la ficha corporativa
+      de 2026 declara 50 MW para MAD02 y 100 MW para España. No se ha localizado una explicación
+      oficial del cambio.
+    fuentes: [src-1, src-2]
+  - campo: ubicacion
+    descripcion: >-
+      No se ha localizado la dirección exacta ni la parcela del campus. La geolocalización queda
+      a nivel de municipio.
+    fuentes: [src-1]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.data4group.com/es/centros-de-datos-en-espana-2/"
+    titulo: "Centros de datos en Madrid España Colocación y alojamiento de centros de datos | DATA4"
+    editor: "DATA4"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: "MAD02: San Agustín del Guadalix - 28750 Madrid, España ... MAD02 50 MW 6,7 Hectáreas"
+  - id: src-2
+    url: "https://www.datacentermarket.es/mercado/data4-invierte-530-millones-en-un-campus-data-center-de-80-mw-de-potencia/"
+    titulo: "DATA4 invierte 530 millones en un campus data center de 80 MW de potencia"
+    editor: "Data Center Market"
+    tipo: prensa_especializada
+    fecha_publicacion: "2023-04-26"
+    fecha_consulta: "2026-08-29"
+    cita: "un gran campus al que llaman MAD02, conformado por cuatro edificios de 16.000 metros cuadrados de espacio IT, que supondrán, de cara a 2029 ... 80 MW de potencia total -unos 48 MW de potencia IT- en una inversión de 530 millones de euros"

@@ -1,0 +1,140 @@
+id: microsoft-la-muela-centrovia
+nombre: "Microsoft Región Aragón — Campus La Muela (Centrovía)"
+alias:
+  - "Nuevo Campus de Centros de Datos Microsoft La Muela"
+  - "PIGA Región MSFT — ámbito La Muela"
+tipo: campus
+operador: "Microsoft"
+propietario: "Microsoft 7724 Spain, S.L.U."
+modelo: hyperscale
+
+ubicacion:
+  municipio: "La Muela"
+  provincia: "Zaragoza"
+  ccaa: "Aragón"
+  direccion: "Sector urbanizable Fase 5 del polígono Centrovía (SUZ PCV-F5), PGOU de La Muela"
+  lat: 41.580833
+  lon: -1.116111
+  precision: municipio
+  fuentes: [src-1, src-4]
+
+estado: en_tramitacion
+estado_detalle: >-
+  Declarado inversión de interés autonómico con interés general de Aragón el 20 de
+  diciembre de 2023. El Plan de Interés General de Aragón "Implantación de la Región
+  Microsoft en Aragón" se aprobó inicialmente por Orden FOM/1520/2025, de 14 de noviembre,
+  y se modificó por Orden VFL/1111/2026, de 24 de julio, para incorporar el estudio de
+  impacto ambiental de los proyectos de urbanización, sometido a nueva información pública.
+  El expediente se remitió a INAGA el 24 de febrero de 2026.
+estado_fuentes: [src-1, src-2]
+
+potencia:
+  - tipo: conexion_red
+    valor_mw: 50
+    ambito: campus
+    referencia: "Potencia de acceso a red asegurada para la primera fase"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2025-11-19"
+    fuentes: [src-3]
+    nota: >-
+      Dato de prensa: "Microsoft solo dispone de la energía autorizada para esa primera
+      fase, con 50 MW en cada ubicación". No confirmado por fuente oficial.
+  - tipo: no_especificado
+    valor_mw: 300
+    ambito: campus
+    referencia: "Objetivo de potencia por planta en segunda fase"
+    estado_asociado: anunciado
+    fecha_dato: "2025-11-19"
+    fuentes: [src-3]
+    nota: >-
+      La prensa indica que "el resto, hasta 300 MW por planta, está previsto para una
+      segunda fase" y que la compañía ha solicitado al Ministerio conexión para otros
+      300 MW. No se precisa si es carga TI o potencia de acceso.
+
+fases:
+  - nombre: "Fase 1"
+    estado: en_tramitacion
+    fuentes: [src-3]
+    nota: "La prensa sitúa el inicio de obras en 2026 y la puesta en marcha de la primera fase en 2030."
+
+conexion_electrica:
+  subestacion: "Subestación propia en el campus (132 kV, previsto paso a 220 kV en segunda fase); dos conexiones a la subestación de Plaza"
+  tension_kv: 132
+  titular_red: null
+  mw_solicitados: null
+  mw_concedidos: null
+  fuentes: [src-1, src-5]
+  nota: >-
+    El PIGA prevé una conexión de infraestructura eléctrica exterior de alta tensión
+    subterránea con dos líneas de 8.420 m y 8.355 m que discurren por los términos
+    municipales de La Muela y Zaragoza. Según la prensa, cada campus tendrá subestación
+    propia a 132 kV, con actualización a 220 kV en una segunda fase que requerirá modificar
+    el PIGA, y dos conexiones a la subestación de Plaza.
+
+superficie_parcela_m2: 1461200
+inversion_anunciada_eur: 2179843352
+refrigeracion: null
+enlaces_proyecto:
+  - "https://www.aragon.es/-/piga-microsoft"
+  - "https://www.aragon.es/-/microsoft-eia"
+
+incertidumbres:
+  - campo: inversion_anunciada_eur
+    descripcion: >-
+      La cifra registrada es la suma de los dos conceptos que el PIGA desglosa para La Muela
+      (2.129.170.173,12 € de obras en el campus y 50.673.179,56 € de urbanización e
+      infraestructuras exteriores). La prensa cita 2.179 millones para La Muela.
+    fuentes: [src-1]
+  - campo: potencia
+    descripcion: >-
+      Ninguna fuente oficial consultada publica potencia eléctrica por campus. Los 50 MW y
+      los 300 MW proceden únicamente de prensa.
+    fuentes: [src-1, src-3, src-5]
+  - campo: ubicacion
+    descripcion: >-
+      Las coordenadas registradas son el centroide municipal de La Muela (Wikidata), no la
+      posición del sector Centrovía Fase 5.
+    fuentes: [src-4]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1421303980707"
+    titulo: "ORDEN FOM/1520/2025, de 14 de noviembre, por el que se aprueba inicialmente el Plan de Interés General «Implantación de la Región Microsoft en Aragón» promovido por la mercantil Microsoft 7724 Spain, SLU"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2025-11-18"
+    fecha_consulta: "2026-08-29"
+    cita: "Situado en el término municipal de La Muela. Coincide con el actual sector urbanístico de suelo Urbanizable Fase 5 del polígono Centrovía del Plan General de Ordenación Urbana de La Muela (SUZ PCV-F5) de, aproximadamente, 146,12 ha."
+  - id: src-2
+    url: "https://www.aragon.es/-/microsoft-eia"
+    titulo: "Modificación de la aprobación inicial, a objeto de incluir el Estudio de Impacto Ambiental de cada uno de los emplazamientos del Plan de Interés General «Implantación de la Región Microsoft en Aragón»"
+    editor: "Gobierno de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2026-08-27"
+    fecha_consulta: "2026-08-29"
+    cita: "ORDEN VFL/1111/2026 de 24 de julio, por la que se modifica la Orden de 14 de noviembre de 2025 por la que se aprobó inicialmente el Plan de Interés General \"Implantación de la Región Microsoft en Aragón\""
+  - id: src-3
+    url: "https://www.eldiario.es/aragon/sociedad/microsoft-avanza-red-centros-datos-zaragoza-proyecta-mayores-regiones-europa_1_12768636.html"
+    titulo: "Microsoft avanza con su red de centros de datos en Zaragoza, donde proyecta una de sus mayores regiones en Europa"
+    editor: "elDiario.es Aragón"
+    tipo: prensa_general
+    fecha_consulta: "2026-08-29"
+    cita: "Por ahora, la multinacional estadounidense tiene asegurados 50 megavatios de 'enchufe' para cada instalación; el resto, hasta 300 MW por planta, está previsto para una segunda fase."
+  - id: src-4
+    url: "https://query.wikidata.org/sparql"
+    titulo: "Wikidata Query Service — coordenadas del municipio de La Muela (propiedad P625)"
+    editor: "Wikidata"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: "La Muela 41.580833333333 -1.1161111111111"
+  - id: src-5
+    url: "https://www.elespanol.com/aragon/economia/20251119/centros-datos-microsoft-aragon-consumiran-energia-toda-comunidad/1003744019227_0.html"
+    titulo: "Los centros de datos de Microsoft en Aragón consumirán más energía que toda la Comunidad"
+    editor: "El Español — Aragón"
+    tipo: prensa_general
+    fecha_publicacion: "2025-11-19"
+    fecha_consulta: "2026-08-29"
+    cita: "El centro más importante será el de La Muela, a 23 kilómetros de Zaragoza, con 146 hectáreas, la mitad de toda la infraestructura, y se ha previsto un consumo eléctrico máximo anual de unos 3.700 GWh/año."

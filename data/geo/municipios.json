@@ -1,0 +1,261 @@
+{
+ "alcalá de henares|madrid": {
+  "municipio": "Alcalá de Henares",
+  "provincia": "Madrid",
+  "lat": 40.48195,
+  "lon": -3.36398,
+  "tipo_osm": "administrative",
+  "nombre_osm": "Alcalá de Henares, Comunidad de Madrid, España",
+  "consultado": "2026-08-29"
+ },
+ "barcelona|barcelona": {
+  "municipio": "Barcelona",
+  "provincia": "Barcelona",
+  "lat": 41.38258,
+  "lon": 2.17707,
+  "tipo_osm": "administrative",
+  "nombre_osm": "Barcelona, Barcelonés, Barcelona, Cataluña, España",
+  "consultado": "2026-08-29"
+ },
+ "sant adrià de besòs|barcelona": {
+  "municipio": "Sant Adrià de Besòs",
+  "provincia": "Barcelona",
+  "lat": 41.43048,
+  "lon": 2.21828,
+  "tipo_osm": "administrative",
+  "nombre_osm": "Sant Adrià de Besòs, Barcelonés, Barcelona, Cataluña, 08930, España",
+  "consultado": "2026-08-29"
+ },
+ "huesca|huesca": {
+  "municipio": "Huesca",
+  "provincia": "Huesca",
+  "lat": 42.13825,
+  "lon": -0.40809,
+  "tipo_osm": "administrative",
+  "nombre_osm": "Huesca, Hoya de Huesca, Huesca, Aragón, España",
+  "consultado": "2026-08-29"
+ },
+ "tres cantos|madrid": {
+  "municipio": "Tres Cantos",
+  "provincia": "Madrid",
+  "lat": 40.39952,
+  "lon": -3.54148,
+  "tipo_osm": "locality",
+  "nombre_osm": "Tres Cantos, El Cañaveral, Vicálvaro, Madrid, Comunidad de Madrid, 28052, España",
+  "consultado": "2026-08-29"
+ },
+ "san agustín del guadalix|madrid": {
+  "municipio": "San Agustín del Guadalix",
+  "provincia": "Madrid",
+  "lat": 40.6794,
+  "lon": -3.616,
+  "tipo_osm": "administrative",
+  "nombre_osm": "San Agustín de Guadalix, Comunidad de Madrid, España",
+  "consultado": "2026-08-29"
+ },
+ "móra la nova|tarragona": {
+  "municipio": "Móra la Nova",
+  "provincia": "Tarragona",
+  "lat": 41.09332,
+  "lon": 0.6681,
+  "tipo_osm": "administrative",
+  "nombre_osm": "Móra la Nova, Ribera de Ebro, Tarragona, Cataluña, 43770, España",
+  "consultado": "2026-08-29"
+ },
+ "montmeló|barcelona": {
+  "municipio": "Montmeló",
+  "provincia": "Barcelona",
+  "lat": 41.55152,
+  "lon": 2.24808,
+  "tipo_osm": "administrative",
+  "nombre_osm": "Montmeló, Vallés Oriental, Barcelona, Cataluña, 08160, España",
+  "consultado": "2026-08-29"
+ },
+ "getafe|madrid": {
+  "municipio": "Getafe",
+  "provincia": "Madrid",
+  "lat": 40.30706,
+  "lon": -3.73318,
+  "tipo_osm": "administrative",
+  "nombre_osm": "Getafe, Comunidad de Madrid, España",
+  "consultado": "2026-08-29"
+ },
+ "algete|madrid": {
+  "municipio": "Algete",
+  "provincia": "Madrid",
+  "lat": 40.59613,
+  "lon": -3.49745,
+  "tipo_osm": "administrative",
+  "nombre_osm": "Algete, Comunidad de Madrid, España",
+  "consultado": "2026-08-29"
+ },
+ "meco|madrid": {
+  "municipio": "Meco",
+  "provincia": "Madrid",
+  "lat": 40.55375,
+  "lon": -3.32816,
+  "tipo_osm": "administrative",
+  "nombre_osm": "Meco, Comunidad de Madrid, 28880, España",
+  "consultado": "2026-08-29"
+ },
+ "san sebastián de los reyes|madrid": {
+  "municipio": "San Sebastián de los Reyes",
+  "provincia": "Madrid",
+  "lat": 40.54737,
+  "lon": -3.62606,
+  "tipo_osm": "administrative",
+  "nombre_osm": "San Sebastián de los Reyes, Comunidad de Madrid, España",
+  "consultado": "2026-08-29"
+ },
+ "madrid|madrid": {
+  "municipio": "Madrid",
+  "provincia": "Madrid",
+  "lat": 40.42373,
+  "lon": -3.6899,
+  "tipo_osm": "library",
+  "nombre_osm": "Biblioteca Nacional de España, 20-22, Paseo de Recoletos, Recoletos, Salamanca, Madrid, Comunidad de Madrid, 28071, España",
+  "consultado": "2026-08-29"
+ },
+ "paterna|valencia": {
+  "municipio": "Paterna",
+  "provincia": "Valencia",
+  "lat": 39.52594,
+  "lon": -0.4733,
+  "tipo_osm": "administrative",
+  "nombre_osm": "Paterna, L'Horta Nord, Valencia, Comunidad Valenciana, España",
+  "consultado": "2026-08-29"
+ },
+ "sant cugat del vallès|barcelona": {
+  "municipio": "Sant Cugat del Vallès",
+  "provincia": "Barcelona",
+  "lat": 41.47079,
+  "lon": 2.08488,
+  "tipo_osm": "administrative",
+  "nombre_osm": "Sant Cugat del Vallès, Vallés Occidental, Barcelona, Cataluña, España",
+  "consultado": "2026-08-29"
+ },
+ "molins de rei|barcelona": {
+  "municipio": "Molins de Rei",
+  "provincia": "Barcelona",
+  "lat": 41.41381,
+  "lon": 2.01596,
+  "tipo_osm": "administrative",
+  "nombre_osm": "Molins de Rei, Bajo Llobregat, Barcelona, Cataluña, 08750, España",
+  "consultado": "2026-08-29"
+ },
+ "l'hospitalet de llobregat|barcelona": {
+  "municipio": "L'Hospitalet de Llobregat",
+  "provincia": "Barcelona",
+  "lat": 41.35951,
+  "lon": 2.09963,
+  "tipo_osm": "administrative",
+  "nombre_osm": "l'Hospitalet de Llobregat, Barcelonés, Barcelona, Cataluña, España",
+  "consultado": "2026-08-29"
+ },
+ "flix|tarragona": {
+  "municipio": "Flix",
+  "provincia": "Tarragona",
+  "lat": 41.23404,
+  "lon": 0.55609,
+  "tipo_osm": "administrative",
+  "nombre_osm": "Flix, Ribera de Ebro, Tarragona, Cataluña, 43750, España",
+  "consultado": "2026-08-29"
+ },
+ "alcarràs|lleida": {
+  "municipio": "Alcarràs",
+  "provincia": "Lleida",
+  "lat": 41.56326,
+  "lon": 0.52404,
+  "tipo_osm": "administrative",
+  "nombre_osm": "Alcarràs, Segriá, Lérida, Cataluña, España",
+  "consultado": "2026-08-29"
+ },
+ "cáceres|cáceres": {
+  "municipio": "Cáceres",
+  "provincia": "Cáceres",
+  "lat": 39.47452,
+  "lon": -6.37168,
+  "tipo_osm": "administrative",
+  "nombre_osm": "Cáceres, Extremadura, España",
+  "consultado": "2026-08-29"
+ },
+ "talavera de la reina|toledo": {
+  "municipio": "Talavera de la Reina",
+  "provincia": "Toledo",
+  "lat": 39.95224,
+  "lon": -4.89018,
+  "tipo_osm": "administrative",
+  "nombre_osm": "Talavera de la Reina, Toledo, Castilla-La Mancha, España",
+  "consultado": "2026-08-29"
+ },
+ "ciudad rodrigo|salamanca": {
+  "municipio": "Ciudad Rodrigo",
+  "provincia": "Salamanca",
+  "lat": 40.59749,
+  "lon": -6.53372,
+  "tipo_osm": "administrative",
+  "nombre_osm": "Ciudad Rodrigo, Salamanca, Castilla y León, España",
+  "consultado": "2026-08-29"
+ },
+ "valdemoro|burgos": {
+  "municipio": "Valdemoro",
+  "provincia": "Burgos",
+  "lat": 42.73548,
+  "lon": -3.30454,
+  "tipo_osm": "peak",
+  "nombre_osm": "Valdemoro, Frías, Burgos, Castilla y León, 09211, España",
+  "consultado": "2026-08-29"
+ },
+ "abades|segovia": {
+  "municipio": "Abades",
+  "provincia": "Segovia",
+  "lat": 40.91485,
+  "lon": -4.26904,
+  "tipo_osm": "administrative",
+  "nombre_osm": "Abades, Segovia, Castilla y León, 40141, España",
+  "consultado": "2026-08-29"
+ },
+ "cascante|navarra": {
+  "municipio": "Cascante",
+  "provincia": "Navarra",
+  "lat": 42.01176,
+  "lon": -1.70676,
+  "tipo_osm": "administrative",
+  "nombre_osm": "Cascante, Ribera, Navarra, 31520, España",
+  "consultado": "2026-08-29"
+ },
+ "iglesias|": {
+  "municipio": "Iglesias",
+  "provincia": null,
+  "lat": 42.29758,
+  "lon": -3.98918,
+  "tipo_osm": "administrative",
+  "nombre_osm": "Iglesias, Burgos, Castilla y León, España",
+  "consultado": "2026-08-29"
+ },
+ "no consta (parque el escudo)|": {
+  "municipio": "no consta (parque El Escudo)",
+  "provincia": null,
+  "lat": null,
+  "lon": null,
+  "sin_resultado": true
+ },
+ "escatrón|zaragoza": {
+  "municipio": "Escatrón",
+  "provincia": "Zaragoza",
+  "lat": 41.28707,
+  "lon": -0.32495,
+  "tipo_osm": "administrative",
+  "nombre_osm": "Escatrón, Ribera Baja del Ebro, Zaragoza, Aragón, 50790, España",
+  "consultado": "2026-08-29"
+ },
+ "fuendetodos|zaragoza": {
+  "municipio": "Fuendetodos",
+  "provincia": "Zaragoza",
+  "lat": 41.34135,
+  "lon": -0.95946,
+  "tipo_osm": "administrative",
+  "nombre_osm": "Fuendetodos, Campo de Belchite, Zaragoza, Aragón, 50142, España",
+  "consultado": "2026-08-29"
+ }
+}

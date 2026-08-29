@@ -1,0 +1,88 @@
+id: cyrusone-alcobendas-mad1
+nombre: "CyrusOne Madrid MAD1 — Alcobendas"
+alias:
+  - "CyrusOne Madrid 1"
+  - "CyrusOne MAD1 Valdelacasa"
+tipo: edificio
+operador: "CyrusOne"
+propietario: "CyrusOne"
+modelo: mayorista
+
+ubicacion:
+  municipio: "Alcobendas"
+  provincia: "Madrid"
+  ccaa: "Comunidad de Madrid"
+  direccion: "Parcela 5A, Valdelacasa, Alcobendas (Madrid)"
+  lat: 40.53576
+  lon: -3.659225
+  precision: aproximada
+  fuentes: [src-1, src-2]
+
+estado: operativo
+estado_detalle: "Instalación de nueva planta descrita por CyrusOne como 'brand-new'; edificio de dos plantas con dos salas de datos de 9 MW cada una."
+estado_fuentes: [src-1]
+
+potencia:
+  - tipo: it
+    valor_mw: 18
+    ambito: edificio
+    referencia: "Capacidad TI total del edificio"
+    estado_asociado: operativo
+    fecha_dato: "2026-08-29"
+    fuentes: [src-1]
+    nota: "\"delivers 18 MW of IT capacity\" / \"18 MW Total IT Capacity\"."
+  - tipo: it
+    valor_mw: 9
+    ambito: fase
+    referencia: "Cada sala de datos"
+    estado_asociado: operativo
+    fecha_dato: "2026-08-29"
+    fuentes: [src-1]
+  - tipo: instalada_total
+    valor_mw: null
+    valor_mva: 34
+    ambito: edificio
+    referencia: "Suministro dual redundante de 34 MVA"
+    estado_asociado: operativo
+    fecha_dato: "2026-08-29"
+    fuentes: [src-1]
+    nota: "La fuente da 34 MVA (activo/activo dual redundante), no MW. No se convierte."
+
+superficie_construida_m2: 6000
+refrigeracion: "Refrigeración por circuito cerrado de agua (closed-loop water cooling); objetivo de PUE y WUE bajos."
+enlaces_proyecto:
+  - "https://www.cyrusone.com/data-centers/emea/madrid-spain"
+
+incertidumbres:
+  - campo: ubicacion
+    descripcion: >-
+      CyrusOne indica "Plot 5A, Valdelacasa, Alcobendas"; el directorio OCOLO da "P.º de
+      Alcobendas, 5A, 28109 Alcobendas" y PeeringDB "Calle de El Nevero". No hay dirección
+      postal unívoca verificada.
+    fuentes: [src-1, src-2, src-3]
+
+confianza: alta
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.cyrusone.com/data-centers/emea/madrid-spain"
+    titulo: "Madrid, Spain: MAD1"
+    editor: "CyrusOne"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: "Plot 5A, Valdelacasa, Alcobendas, Madrid, Spain ... delivers 18 MW of IT capacity to 6,000 sq. m. of advanced technical space within a two-story building ... Dedicated electrical plant to each 9 MW data hall ... Active/Active dual redundant power supplies of 34 MVA"
+  - id: src-2
+    url: "https://www.peeringdb.com/fac/13204"
+    titulo: "CyrusOne Madrid 1"
+    editor: "PeeringDB"
+    tipo: asociacion
+    fecha_consulta: "2026-08-29"
+    cita: "CyrusOne Madrid 1 | Calle de EL Nevero | Madrid"
+  - id: src-3
+    url: "https://www.ocolo.io/data-centers/spain/comunidad-de-madrid/"
+    titulo: "Comunidad de Madrid Data Centers"
+    editor: "OCOLO"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: "MAD1 Alcobendas P.º de Alcobendas, 5A, 28109 Alcobendas, Madrid, Spain 18.00 MW • 64,584 sq ft"

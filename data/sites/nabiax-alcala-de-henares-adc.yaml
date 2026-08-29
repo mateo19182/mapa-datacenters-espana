@@ -1,0 +1,130 @@
+id: nabiax-alcala-de-henares-adc
+nombre: "Nabiax Alcalá Data Center (ADC1, ADC2, ADC3)"
+alias:
+  - "Alcalá Data Center"
+  - "CDG Telefónica Alcalá de Henares"
+  - "TecnoAlcalá (Telefónica)"
+tipo: campus
+operador: "Nabiax"
+propietario: "Nabiax (grupo Aermont Capital)"
+modelo: colocation
+
+ubicacion:
+  municipio: "Alcalá de Henares"
+  provincia: "Madrid"
+  ccaa: "Comunidad de Madrid"
+  direccion: "Avenida Punto Com 23, Parque Tecnológico TecnoAlcalá, 28805 Alcalá de Henares"
+  lat: 40.519524
+  lon: -3.341208
+  precision: exacta
+  fuentes: [src-3]
+
+estado: ampliacion_en_construccion
+estado_detalle: >-
+  Dos edificios en servicio (ADC1 desde 2013, con certificación Tier IV de Uptime Institute;
+  ADC2 desde 2021, diseñado y construido bajo estándar Tier III). En mayo de 2024 Nabiax anunció
+  7,5 MW IT adicionales contratados por hiperescalares en este campus y un tercer edificio (ADC3)
+  para llevar el conjunto a más de 100 MW IT.
+estado_fuentes: [src-1, src-2]
+fecha_puesta_en_servicio: "2013"
+
+potencia:
+  - tipo: it
+    valor_mw: 22.3
+    ambito: campus
+    referencia: "Capacidad TI entregada por las dos primeras fases"
+    estado_asociado: operativo
+    fecha_dato: "2026-08-29"
+    fuentes: [src-1]
+    nota: "\"it delivers 22,3 MW IT Power, scalable to 100 MW in the medium term\"."
+  - tipo: it
+    valor_mw: 100
+    ambito: campus
+    referencia: "Objetivo de capacidad TI a medio plazo"
+    estado_asociado: anunciado
+    fecha_dato: "2024-05-07"
+    fuentes: [src-1, src-2]
+  - tipo: instalada_total
+    valor_mw: 135
+    ambito: campus
+    referencia: "Potencia total asociada a los 100 MW IT objetivo"
+    estado_asociado: anunciado
+    fecha_dato: "2024-05-07"
+    fuentes: [src-2]
+    nota: "\"este campus de centros de datos alcanzará los 100 MW de potencia IT (135 MW totales)\"."
+  - tipo: it
+    valor_mw: 7.5
+    ambito: fase
+    referencia: "Nueva capacidad contratada en Alcalá con hiperescalares (2024)"
+    estado_asociado: en_construccion
+    fecha_dato: "2024-05-07"
+    fuentes: [src-2]
+
+fases:
+  - nombre: "ADC1"
+    estado: operativo
+    fecha_puesta_en_servicio: "2013"
+    superficie_m2: 4800
+    fuentes: [src-1]
+  - nombre: "ADC2"
+    estado: operativo
+    fecha_puesta_en_servicio: "2021"
+    superficie_m2: 6000
+    fuentes: [src-1]
+  - nombre: "ADC3"
+    estado: anunciado
+    fuentes: [src-2]
+
+superficie_construida_m2: 10800
+refrigeracion: "ADC1: chillers 2N y UTA N+2. ADC2: chiller N y UTA N+1. Campus alimentado al 100% con energías renovables."
+enlaces_proyecto:
+  - "https://nabiax.com/en/our-data-centers/spain/alcala-data-center/"
+
+incertidumbres:
+  - campo: superficie_construida_m2
+    descripcion: >-
+      La ficha de Nabiax da 4.800 m² (ADC1) + 6.000 m² (ADC2) y "over 10,000 m² of IT space",
+      mientras que la nota de 2024 afirma que al completar la segunda fase el campus tendrá
+      22.000 m² dedicados a salas IT. Las dos cifras no son conciliables sin más información.
+    fuentes: [src-1, src-2]
+  - campo: potencia
+    descripcion: >-
+      Un reportaje de prensa generalista de 2026 atribuye 50 MW a la instalación de Nabiax en
+      TecnoAlcalá, cifra que no coincide con los 22,3 MW IT que publica la compañía ni con los
+      100 MW objetivo.
+    fuentes: [src-1, src-4]
+
+confianza: alta
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://nabiax.com/en/our-data-centers/spain/alcala-data-center/"
+    titulo: "Alcalá Data Center | Centro de Datos en Madrid"
+    editor: "Nabiax"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: "Having its two first phases built, it delivers 22,3 MW IT Power, scalable to 100 MW in the medium term ... ADC1 Start of operations: 2013 IT Rooms: 7 Surface: 4.800 m2 ... The first phase is Tier IV certified by Uptime Institute"
+  - id: src-2
+    url: "https://www.datacentermarket.es/news/nabiax-habilitara-10-mw-nuevos-para-dos-hiperescalares/"
+    titulo: "Nabiax habilitará 10 MW nuevos para dos hiperescalares"
+    editor: "Data Center Market"
+    tipo: prensa_especializada
+    fecha_publicacion: "2024-05-07"
+    fecha_consulta: "2026-08-29"
+    cita: "La nueva capacidad se desarrolla en los campus de data center ubicados en Alcalá de Henares (7,5 MW) y Julián Camarillo (2,5 MW) ... este campus de centros de datos alcanzará los 100 MW de potencia IT (135 MW totales)"
+  - id: src-3
+    url: "https://www.peeringdb.com/fac/7069"
+    titulo: "TecnoAlcalá"
+    editor: "PeeringDB"
+    tipo: asociacion
+    fecha_consulta: "2026-08-29"
+    cita: "TecnoAlcalá | Telefonica de España | Avenida Punto Com 23 | 28805 Alcalá de Henares"
+  - id: src-4
+    url: "https://www.lamarea.com/2026/08/03/alcala-henares-colonizacion/"
+    titulo: "Alcalá de Henares, epicentro de la nueva 'colonización' de los centros de datos"
+    editor: "La Marea"
+    tipo: prensa_general
+    fecha_publicacion: "2026-08-03"
+    fecha_consulta: "2026-08-29"
+    cita: "una instalación de 50 MW implicaría un consumo de energía de entre 490-530 gigavatios hora (GWh), y de agua entre 78.840 y 175.200 metros cúbicos al año"

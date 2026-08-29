@@ -1,0 +1,77 @@
+id: kumo-murcia-espinardo
+nombre: "Kumo Networks — Murcia (Campus de Espinardo)"
+alias:
+  - "KIO Networks Murcia"
+  - "Data center de El Corte Inglés en Espinardo"
+tipo: edificio
+operador: "Kumo Networks"
+propietario: "El Corte Inglés"
+modelo: colocation
+
+ubicacion:
+  municipio: "Murcia"
+  provincia: "Murcia"
+  ccaa: "Región de Murcia"
+  direccion: "Campus de Espinardo"
+  lat: 38.0202
+  lon: -1.1687
+  precision: aproximada
+  fuentes: [src-1]
+
+estado: operativo
+estado_detalle: >-
+  Único centro de datos comercial en operación en la Región de Murcia según las fuentes
+  consultadas. Propiedad de KIO Networks España hasta noviembre de 2024, cuando El Corte
+  Inglés completó la compra del 100 % de la filial; la sociedad pasó a denominarse Kumo
+  Networks. Certificación Tier IV según el directorio del Observatorio Español de Data
+  Centers.
+estado_fuentes: [src-1, src-2, src-3]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 0.193
+    ambito: edificio
+    referencia: "Instalación de Espinardo (193 kW)"
+    estado_asociado: operativo
+    fecha_dato: "2024-11-27"
+    fuentes: [src-1]
+    nota: "«Con 172 m2 construidos y 193 Kw»; la fuente no especifica el tipo de potencia."
+
+superficie_construida_m2: 172
+refrigeracion: null
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      El dato de 193 kW es de noviembre de 2024. En mayo de 2026 Murcia Plaza recogía que
+      Spain DC atribuía 1 MW de potencia IT al conjunto de la Región de Murcia, cifra no
+      conciliada con los 193 kW de esta instalación.
+    fuentes: [src-1, src-2]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://murciaplaza.com/murciaplaza/el-corte-ingles-completa-la-compra-de-kio-espana-y-toma-el-control-de-su-centro-de-datos-en-murcia"
+    titulo: "El Corte Inglés completa la compra de KIO España y toma el control de su centro de datos en Murcia"
+    editor: "Murcia Plaza"
+    tipo: prensa_general
+    fecha_publicacion: "2024-11-27"
+    fecha_consulta: "2026-08-29"
+    cita: "KIO tan solo mantiene operativo un centro de datos en España, que está ubicado en el Campus de Espinardo, en Murcia. Con 172 m2 construidos y 193 Kw, cuenta con una sala de cómputo con pedestales antisísmicos en un ambiente controlado y con refuerzo estructural."
+  - id: src-2
+    url: "https://murciaplaza.com/murciaplaza/empresas-murcia/la-inversion-de-66900-millones-de-euros-en-centros-de-datos-pasa-de-largo-por-la-region-de-murcia"
+    titulo: "La inversión de 66.900 millones de euros en centros de datos pasa de largo por la Región de Murcia"
+    editor: "Murcia Plaza"
+    tipo: prensa_general
+    fecha_publicacion: "2026-05-27"
+    fecha_consulta: "2026-08-29"
+    cita: "la Región de Murcia cuenta con la presencia de Kumo Networks, antes conocida como Kio, en el Campus de Espinardo. Esta compañía se encuentra controlada al 100% por El Corte Inglés tras la adquisición anunciada en 2024."
+  - id: src-3
+    url: "https://observatorioedc.com/directorio/"
+    titulo: "Data Centers — Directorio, Observatorio Español de Data Centers"
+    editor: "Observatorio Español de Data Centers"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: "Kumo networks S.A.U | Espinardo | Región de Murcia | COLOCATION | Tier IV | Operativo"

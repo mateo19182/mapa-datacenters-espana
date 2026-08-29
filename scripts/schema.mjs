@@ -154,6 +154,9 @@ const zPotencia = z.object({
   tipo: z.enum(TIPOS_POTENCIA),
   valor_mw: z.number().positive().nullable(),
   valor_mw_max: z.number().positive().nullable().optional(),
+  // Algunas fuentes dan MVA (potencia aparente). No se convierte a MW: haría
+  // falta el factor de potencia, que no se publica. Se registra tal cual.
+  valor_mva: z.number().positive().nullable().optional(),
   ambito: z.enum(AMBITOS),
   referencia: z.string().nullable().optional(),
   estado_asociado: z.enum(ESTADOS).nullable().optional(),
@@ -233,6 +236,8 @@ export const zSitio = z.object({
 export function normalizarSitio(crudo) {
   const d = { ...crudo }
 
+  // Que no conste el operador es un hecho legítimo, no un error de forma.
+  d.operador = d.operador ?? null
   d.alias = arr(d.alias).map(String)
   d.enlaces_proyecto = arr(d.enlaces_proyecto).map(String)
   d.estado_fuentes = arr(d.estado_fuentes).map(String)
@@ -264,6 +269,7 @@ export function normalizarSitio(crudo) {
     tipo: mapear(p.tipo, SINONIMOS_POTENCIA, TIPOS_POTENCIA, 'no_especificado'),
     valor_mw: numero(p.valor_mw),
     valor_mw_max: numero(p.valor_mw_max),
+    valor_mva: numero(p.valor_mva),
     ambito: AMBITOS.includes(slug(p.ambito)) ? slug(p.ambito) : 'campus',
     referencia: p.referencia ?? null,
     estado_asociado: p.estado_asociado
@@ -353,8 +359,8 @@ export function revisarCoherencia(sitio) {
     problemas.push({ nivel: 'aviso', msg: 'sin ningún dato de potencia' })
   }
   for (const [i, p] of sitio.potencia.entries()) {
-    if (p.valor_mw == null && p.valor_mw_max == null) {
-      problemas.push({ nivel: 'error', msg: `potencia[${i}] no tiene ningún valor en MW` })
+    if (p.valor_mw == null && p.valor_mw_max == null && p.valor_mva == null) {
+      problemas.push({ nivel: 'error', msg: `potencia[${i}] no tiene ningún valor de potencia` })
     }
     if (p.tipo === 'no_especificado') {
       problemas.push({ nivel: 'aviso', msg: `potencia[${i}] («${p.referencia ?? 'sin referencia'}») no distingue el tipo de MW` })

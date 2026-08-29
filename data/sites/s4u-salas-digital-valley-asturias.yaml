@@ -1,0 +1,113 @@
+id: s4u-salas-digital-valley-asturias
+nombre: "Digital Valley Asturias — Salas (polígono de Nonaya Este)"
+alias:
+  - "Digital Valley Asturias"
+  - "Campus tecnológico de Salas"
+tipo: campus
+operador: "Sales For You Consulting, S.L. (S4U)"
+propietario: "Sales For You Consulting, S.L. (S4U)"
+modelo: hyperscale
+
+ubicacion:
+  municipio: "Salas"
+  provincia: "Asturias"
+  ccaa: "Asturias"
+  direccion: "Polígono industrial de Nonaya Este, Salas"
+  lat: 43.4090
+  lon: -6.2560
+  precision: municipio
+  fuentes: [src-1, src-2]
+
+estado: anunciado
+estado_detalle: >-
+  Anunciado por el Gobierno del Principado de Asturias el 3 de agosto de 2026.
+  Campus de diez módulos de centro de datos para procesamiento, almacenamiento y
+  gestión de datos e IA. Incluye subestación eléctrica propia e instalación
+  fotovoltaica. Tramitación administrativa prevista para 2026-2027, urbanización
+  entre el segundo semestre de 2027 y el primero de 2028, y construcción de
+  infraestructuras del tercer trimestre de 2027 al cuarto de 2030.
+estado_fuentes: [src-1]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 120
+    ambito: campus
+    referencia: "Capacidad total del campus"
+    estado_asociado: anunciado
+    fecha_dato: "2026-08-03"
+    fuentes: [src-1, src-2]
+    nota: >-
+      La nota oficial habla de «120 megavatios totales»; DCD lo describe como
+      «final computing capacity». No se precisa si es carga TI o potencia de conexión.
+  - tipo: no_especificado
+    valor_mw: 24
+    ambito: fase
+    referencia: "Fase 1"
+    estado_asociado: anunciado
+    fecha_dato: "2026-08-03"
+    fuentes: [src-1]
+  - tipo: no_especificado
+    valor_mw: 96
+    ambito: fase
+    referencia: "Fase 2 (potencia adicional)"
+    estado_asociado: anunciado
+    fecha_dato: "2026-08-03"
+    fuentes: [src-1]
+
+fases:
+  - nombre: "Fase 1 (24 MW, 240 M€)"
+    estado: anunciado
+    fuentes: [src-1]
+  - nombre: "Fase 2 (96 MW adicionales, 960 M€)"
+    estado: anunciado
+    fecha_puesta_en_servicio: "2030"
+    fuentes: [src-1]
+
+conexion_electrica:
+  fuentes: [src-1]
+
+superficie_parcela_m2: 154584
+superficie_construida_m2: 46865
+inversion_anunciada_eur: 1226300000
+
+enlaces_proyecto:
+  - "https://actualidad.asturias.es/-/digital-valley38"
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      No se especifica si los 120 MW son carga TI, potencia de conexión o potencia
+      instalada. Se registran como no especificado.
+    fuentes: [src-1]
+  - campo: conexion_electrica
+    descripcion: >-
+      El proyecto incluye una subestación eléctrica propia, pero no consta su tensión,
+      titular de red ni el punto de conexión.
+    fuentes: [src-1]
+  - campo: estado
+    descripcion: >-
+      A agosto de 2026 el proyecto no ha entrado en tramitación ambiental publicada
+      en el BOPA; el Ayuntamiento de Salas debe ampliar el polígono de Nonaya. Existe
+      debate político sobre transparencia y consumo de agua.
+    fuentes: [src-1]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://actualidad.asturias.es/-/digital-valley38"
+    titulo: "El Gobierno del Principado logra atraer una inversión de 1.226 millones para desarrollar en Salas un gran campus tecnológico dedicado a la gestión del dato"
+    editor: "Gobierno del Principado de Asturias"
+    tipo: oficial
+    fecha_publicacion: "2026-08-03"
+    fecha_consulta: "2026-08-29"
+    cita: "120 megavatios totales (24 MW en fase 1 + 96 MW en fase 2)"
+  - id: src-2
+    url: "https://www.datacenterdynamics.com/en/news/the-digital-valley-asturias-project-for-a-data-center-in-salas/"
+    titulo: "Asturias government targets data center project in Salas, Spain"
+    editor: "DataCenterDynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-08-04"
+    fecha_consulta: "2026-08-29"
+    cita: "ten data center modules and 120 MW of final computing capacity over 154,584 square meters"

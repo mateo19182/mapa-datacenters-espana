@@ -63,10 +63,6 @@ fases:
     superficie_m2: 28877
     fuentes: [src-1, src-2]
 
-conexion_electrica:
-  titular_red: null
-  fuentes: [src-1]
-
 superficie_parcela_m2: 50169
 inversion_anunciada_eur: 300000000
 

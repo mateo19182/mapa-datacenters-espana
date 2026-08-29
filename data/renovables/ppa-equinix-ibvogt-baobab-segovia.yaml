@@ -1,0 +1,46 @@
+id: ppa-equinix-ibvogt-baobab-segovia
+nombre: "PPA Equinix — planta solar Baobab (clúster de Segovia, ib vogt)"
+tipo: fotovoltaica
+potencia_mw: 95.1
+tipo_potencia: pico
+potencia_nota: "95,1 MWp según pv magazine. Forma parte de un PPA que, según Data Center Market, suma 517 MWp en cuatro instalaciones solares en España."
+capacidad_mwh: null
+promotor: "ib vogt"
+contraparte_ppa: "Equinix"
+tipo_vinculo: ppa
+municipio: "Abades"
+provincia: "Segovia"
+ccaa: "Castilla y León"
+lat: null
+lon: null
+precision: municipio
+estado: operativo
+estado_detalle: "Clúster de Segovia inaugurado el 12 de junio de 2025."
+fecha_firma: null
+adicionalidad: nueva_construccion
+adicionalidad_fuentes: [src-1, src-2]
+clusters_relacionados: [madrid]
+cpds_relacionados: []
+incertidumbres:
+  - campo: contraparte_ppa
+    descripcion: "Data Center Market titula la planta Baobab (Abades, Segovia) como parte del PPA con Equinix. pv magazine, en cambio, dice que las plantas del clúster están respaldadas por PPA «con empresas entre las que se encuentran Thermo Fisher Scientific, Corning Incorporated y Equinix», sin asignar Baobab a Equinix en concreto."
+    fuentes: [src-1, src-2]
+confianza: baja
+ultima_verificacion: "2026-08-29"
+fuentes:
+  - id: src-1
+    url: "https://www.datacentermarket.es/sostenibilidad/equinix-impulsa-energia-renovable-en-segovia-con-baobab-solar/"
+    titulo: "Equinix impulsa energía renovable en Segovia con Baobab Solar"
+    editor: "Data Center Market"
+    tipo: prensa_especializada
+    fecha_publicacion: "2025-06-13"
+    fecha_consulta: "2026-08-29"
+    cita: "Baobab Solar ubicada en Abades, Segovia [...] un PPA que suma un total de 517 MWp en cuatro instalaciones solares en España"
+  - id: src-2
+    url: "https://www.pv-magazine.es/2025/06/13/proyectos-ib-vogt-prosolia-zelestra/"
+    titulo: "Proyectos: Ib Vogt, Prosolia, Zelestra"
+    editor: "pv magazine España"
+    tipo: prensa_especializada
+    fecha_publicacion: "2025-06-13"
+    fecha_consulta: "2026-08-29"
+    cita: "planta solar Baobab (95,1 MWp) [...] Cada una de ellas está respaldada por acuerdos de compra de energía a largo plazo (PPA) con empresas entre las que se encuentran Thermo Fisher Scientific, Corning Incorporated y Equinix"

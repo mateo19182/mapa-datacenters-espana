@@ -1,0 +1,143 @@
+id: tillion-villamayor-de-gallego
+nombre: "Tillion Aragón — Campus de centros de datos (Villamayor de Gállego)"
+alias:
+  - "Proyecto Tillion Aragón"
+  - "Maquina Solar (denominación anterior de la promotora)"
+tipo: campus
+operador: "Tillion Aragón, S.L. (Grupo Azora)"
+propietario: "Tillion Aragón, S.L."
+modelo: mayorista
+
+ubicacion:
+  municipio: "Villamayor de Gállego"
+  provincia: "Zaragoza"
+  ccaa: "Aragón"
+  direccion: "Sector delimitado por la carretera A-129 y el Camino de la Carbonera"
+  lat: 41.685556
+  lon: -0.773889
+  precision: municipio
+  fuentes: [src-1, src-3]
+
+estado: en_tramitacion
+estado_detalle: >-
+  Declarado inversión de interés autonómico con interés general de Aragón el 13 de marzo de
+  2025 (entonces promovido por Maquina Solar, S.L., hoy Tillion Aragón, S.L.). La promotora
+  presentó la documentación del PIGA el 21 de febrero de 2026 y el Plan se aprobó
+  inicialmente por Orden de 24 de junio, sometiéndose a información y participación pública
+  junto con su documentación ambiental. INAGA tramitó en febrero de 2026 las consultas
+  previas para el documento de alcance del estudio ambiental estratégico.
+estado_fuentes: [src-1, src-2, src-4]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 75
+    ambito: edificio
+    referencia: "Capacidad de cada uno de los cuatro edificios de centro de datos"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2026-02-21"
+    fuentes: [src-1]
+    nota: >-
+      "Cada edificio tendrá una capacidad de 75 MW". La memoria no precisa si se refiere a
+      carga TI o a potencia eléctrica total.
+  - tipo: no_especificado
+    valor_mw: 300
+    ambito: campus
+    referencia: "Potencia eléctrica total del campus"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2026-02-21"
+    fuentes: [src-1]
+    nota: >-
+      "Potencia eléctrica total del campus: 300 MW". El mismo documento habla de "una
+      demanda total de 300 MW".
+  - tipo: conexion_red
+    valor_mw: 150
+    ambito: campus
+    referencia: "Potencia de suministro ya asegurada"
+    estado_asociado: permisos_concedidos
+    fecha_dato: "2026-02-21"
+    fuentes: [src-1]
+    nota: >-
+      "el proyecto prevé una demanda total de 300 MW, de los cuales ya se encuentran
+      asegurados 150 MW, con ampliación solicitada hasta completar el total".
+
+fases:
+  - nombre: "Etapa 1"
+    estado: en_tramitacion
+    superficie_m2: 520000
+    fuentes: [src-1]
+    nota: "Aproximadamente 52 ha; edificios DC-1 y DC-2."
+  - nombre: "Etapa 2"
+    estado: anunciado
+    superficie_m2: 280000
+    fuentes: [src-1]
+    nota: "Aproximadamente 28 ha; edificios DC-3 y DC-4."
+
+conexion_electrica:
+  subestacion: "SET CPD Tillion 400/66/20 kV en el propio campus, alimentada desde la SE Peñaflor 400 kV"
+  tension_kv: 400
+  titular_red: "Red Eléctrica de España — SE Peñaflor 400 kV"
+  mw_solicitados: 300
+  mw_concedidos: 150
+  fuentes: [src-1, src-2]
+  nota: >-
+    "El suministro se realizará en alta tensión (400 kV) desde la Subestación de Peñaflor,
+    conectando con una subestación propia situada dentro del ámbito del campus". El PIGA
+    incluye además cuatro líneas subterráneas de alta tensión de 66 kV y cuatro
+    subestaciones 66/11 kV, una por edificio.
+
+superficie_parcela_m2: 799073
+superficie_construida_m2: 300000
+inversion_anunciada_eur: null
+refrigeracion: null
+enlaces_proyecto:
+  - "https://www.aragon.es/-/piga-tillion-aragon"
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      La memoria del PIGA usa "capacidad" y "potencia eléctrica total" sin distinguir carga
+      TI de potencia de conexión, por lo que los 75 MW por edificio y los 300 MW del campus
+      se registran como no especificados. Solo los 150 MW asegurados pueden clasificarse con
+      seguridad como potencia de acceso a la red.
+    fuentes: [src-1]
+  - campo: ubicacion
+    descripcion: >-
+      Las coordenadas registradas son el centroide municipal de Villamayor de Gállego
+      (Wikidata). En el mismo municipio se proyecta también el campus de Microsoft y las
+      estaciones de medida de AWS y de ACS, todos ellos emplazamientos distintos.
+    fuentes: [src-3]
+
+confianza: alta
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.aragon.es/documents/d/guest/til_1_01_memoria-piga_rev05_00"
+    titulo: "Plan de Interés General de Aragón «Tillion Aragón». Tomo 1, Documento 1: Memoria PIGA"
+    editor: "Gobierno de Aragón"
+    tipo: oficial
+    fecha_consulta: "2026-08-29"
+    cita: "Cada edificio tendrá una capacidad de 75 MW, resultando en una potencia total de 300 MW. En relación con el suministro eléctrico, el proyecto prevé una demanda total de 300 MW, de los cuales ya se encuentran asegurados 150 MW"
+  - id: src-2
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1456133040707"
+    titulo: "ORDEN VFL/988/2025, de 24 de junio, por la que se aprueba inicialmente el Plan de Interés General de Aragón «Tillion Aragón» promovido por la mercantil Tillion Aragón, SL"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2026-07-07"
+    fecha_consulta: "2026-08-29"
+    cita: "se aprueba inicialmente el Plan de Interés General de Aragón \"Tillion Aragón\" promovido por la mercantil Tillion Aragón, SL"
+  - id: src-3
+    url: "https://query.wikidata.org/sparql"
+    titulo: "Wikidata Query Service — coordenadas del municipio de Villamayor de Gállego (propiedad P625)"
+    editor: "Wikidata"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: "Villamayor de Gállego 41.685555555556 -0.77388888888889"
+  - id: src-4
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1436132300707"
+    titulo: "ANUNCIO del Instituto Aragonés de Gestión Ambiental [...] consultas previas para la elaboración del documento de alcance del estudio ambiental estratégico del Plan de Interés General de Aragón, para la implantación del campus de centro de datos «Tillion Aragón», en el término municipal de Villamayor de Gállego"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2026-02-17"
+    fecha_consulta: "2026-08-29"
+    cita: "para la implantación del campus de centro de datos \"Tillion Aragón\", en el término municipal de Villamayor de Gállego"

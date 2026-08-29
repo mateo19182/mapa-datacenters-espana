@@ -1,0 +1,63 @@
+id: espanix-madrid-gran-via-hortaleza
+nombre: "ESpanix — Nodos Cantabria y Magdalena (Gran Vía de Hortaleza, Madrid)"
+alias:
+  - "Cantabria Datacenter"
+  - "Magdalena Datacenter"
+tipo: campus
+operador: "Asociación ESpanix"
+propietario: "Desconocido"
+modelo: colocation
+
+ubicacion:
+  municipio: "Madrid"
+  provincia: "Madrid"
+  ccaa: "Comunidad de Madrid"
+  direccion: "Gran Vía de Hortaleza 1 (Cantabria) y Gran Vía de Hortaleza 3 (Magdalena), 28033 Madrid"
+  lat: 40.464784
+  lon: -3.659262
+  precision: exacta
+  fuentes: [src-1, src-2]
+
+estado: operativo
+estado_detalle: "Dos instalaciones registradas por la Asociación ESpanix en Gran Vía de Hortaleza, adicionales a su centro de Calle Mesena 80."
+estado_fuentes: [src-1, src-2]
+
+potencia: []
+
+fases:
+  - nombre: "Cantabria Datacenter — Gran Vía de Hortaleza 1"
+    estado: operativo
+    fuentes: [src-1]
+  - nombre: "Magdalena Datacenter — Gran Vía de Hortaleza 3"
+    estado: operativo
+    fuentes: [src-2]
+
+incertidumbres:
+  - campo: propietario
+    descripcion: >-
+      Las instalaciones están registradas a nombre de la Asociación ESpanix en PeeringDB, pero no
+      se ha podido determinar quién es el propietario del inmueble ni si se trata de centrales de
+      un operador de telecomunicaciones que aloja nodos del punto neutro.
+    fuentes: [src-1, src-2]
+  - campo: potencia
+    descripcion: "Sin datos de potencia ni superficie."
+    fuentes: [src-1, src-2]
+
+confianza: baja
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.peeringdb.com/fac/15527"
+    titulo: "Cantabria Datacenter"
+    editor: "PeeringDB"
+    tipo: asociacion
+    fecha_consulta: "2026-08-29"
+    cita: "Cantabria Datacenter | Asociación ESpanix | Gran Via de Hortaleza 1 | 28033 Madrid"
+  - id: src-2
+    url: "https://www.peeringdb.com/fac/15526"
+    titulo: "Magdalena Datacenter"
+    editor: "PeeringDB"
+    tipo: asociacion
+    fecha_consulta: "2026-08-29"
+    cita: "Magdalena Datacenter | Asociación ESpanix | Gran Via de Hortaleza 3 | 28033 Madrid"

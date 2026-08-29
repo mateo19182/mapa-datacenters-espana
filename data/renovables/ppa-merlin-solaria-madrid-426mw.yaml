@@ -1,0 +1,55 @@
+id: ppa-merlin-solaria-madrid-426mw
+nombre: "PPA Merlin Properties — 426 MW solares de Solaria (Comunidad de Madrid)"
+tipo: fotovoltaica
+potencia_mw: 426
+tipo_potencia: contratada_ppa
+capacidad_mwh: null
+promotor: "Solaria"
+contraparte_ppa: "Merlin Properties"
+tipo_vinculo: ppa
+duracion_anios: 40
+municipio: null
+provincia: "Madrid"
+ccaa: "Comunidad de Madrid"
+lat: null
+lon: null
+precision: ccaa
+estado: anunciado
+estado_detalle: "Segundo acuerdo Solaria-Merlin, anunciado el 26 de febrero de 2026. Componente solar a 40 años; el componente de baterías se registra aparte (bess-merlin-solaria-madrid-600mwh)."
+fecha_firma: "2026-02-26"
+adicionalidad: no_consta
+clusters_relacionados: [madrid]
+cpds_relacionados: []
+cpd_demanda_mw: 213
+cpd_demanda_nota: "213 MW es la potencia de acceso y conexión del centro de datos; no es generación y no se suma con los 426 MW."
+incertidumbres:
+  - campo: municipio
+    descripcion: "Ni Solaria ni la prensa localizan el centro de datos más allá de «Comunidad de Madrid». En febrero de 2025 Solaria obtuvo 213 MW de acceso para un CPD que sitúa en «Madrid Sur»."
+    fuentes: [src-1, src-3]
+confianza: alta
+ultima_verificacion: "2026-08-29"
+fuentes:
+  - id: src-1
+    url: "https://solariaenergia.com/solaria-alcanza-un-nuevo-acuerdo-con-merlin-para-un-segundo-centro-de-datos-213mw-alimentado-por-un-ppa-hibrido/"
+    titulo: "Solaria alcanza un nuevo acuerdo con Merlin para un segundo centro de datos (213MW) alimentado por un PPA híbrido"
+    editor: "Solaria"
+    tipo: empresa
+    fecha_publicacion: "2026-02-26"
+    fecha_consulta: "2026-08-29"
+    cita: "un contrato de compraventa de energía (PPA) a 40 años por 426 MW de generación fotovoltaica [...] el acceso y conexión de 213 MW de potencia"
+  - id: src-2
+    url: "https://www.datacentermarket.es/sostenibilidad/solaria-y-merlin-sellan-una-alianza-para-un-segundo-data-center-con-ppa-hibrido/"
+    titulo: "Solaria y Merlin sellan una alianza para un segundo data center con PPA híbrido"
+    editor: "Data Center Market"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-03-06"
+    fecha_consulta: "2026-08-29"
+    cita: "213 MW [...] 426 MW [...] 600 MWh [...] 40 years"
+  - id: src-3
+    url: "https://solariaenergia.com/solaria-obtiene-213-mw-para-conectar-centros-de-datos-en-la-comunidad-de-madrid/"
+    titulo: "Solaria obtiene 213 MW para conectar centros de datos en la Comunidad de Madrid"
+    editor: "Solaria"
+    tipo: empresa
+    fecha_publicacion: "2025-02-13"
+    fecha_consulta: "2026-08-29"
+    cita: "213 MW de demanda para el suministro de un centro de procesamiento de datos (CPD) [...] Madrid Sur"

@@ -1,0 +1,70 @@
+id: ntt-las-rozas-mad1
+nombre: "NTT Madrid 1 Data Center (MAD1) — Las Rozas de Madrid"
+alias:
+  - "NTT GDC Madrid 1"
+  - "e-shelter Madrid"
+tipo: edificio
+operador: "NTT DATA Global Data Centers"
+propietario: "NTT"
+modelo: colocation
+
+ubicacion:
+  municipio: "Las Rozas de Madrid"
+  provincia: "Madrid"
+  ccaa: "Comunidad de Madrid"
+  direccion: "Calle Aquisgrán 2, 28232 Las Rozas de Madrid"
+  lat: 40.499827
+  lon: -3.890363
+  precision: exacta
+  fuentes: [src-1, src-2]
+
+estado: operativo
+estado_detalle: "Primer centro de datos de NTT en Madrid, con doble acometida a 20 kV desde dos subestaciones."
+estado_fuentes: [src-1]
+
+potencia:
+  - tipo: it
+    valor_mw: 6.9
+    ambito: edificio
+    referencia: "Carga TI crítica máxima"
+    estado_asociado: operativo
+    fecha_dato: "2026-08-29"
+    fuentes: [src-1]
+    nota: "\"6.9MW of critical IT load\"."
+
+conexion_electrica:
+  subestacion: "Dos subestaciones (no identificadas por NTT)"
+  tension_kv: 20
+  fuentes: [src-1]
+
+superficie_construida_m2: 3400
+refrigeracion: "Sistemas de refrigeración altamente redundantes; UPS 2N y generadores N+1."
+enlaces_proyecto:
+  - "https://datacenter.hello.global.ntt/en/location/madrid/madrid-1-data-center"
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      La ficha de PeeringDB describe "3,600 m² of IT space with a maximum capacity of 6 MW upon
+      completion", frente a los 3.400 m² y 6,9 MW IT de la web de NTT. Se prioriza la web del
+      operador y se deja constancia de la diferencia.
+    fuentes: [src-1, src-2]
+
+confianza: alta
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://datacenter.hello.global.ntt/en/location/madrid/madrid-1-data-center"
+    titulo: "Madrid 1 Data Center"
+    editor: "NTT Global Data Centers"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: "With 3,400m2 of data center server space and a maximum of 6.9MW IT load ... Calle Aquisgrán, 2, Las Rozas de Madrid, Spain ... 6.9MW of critical IT load, two separate UPS systems (A- and B-supply) with 2N redundancy and dual-power supply at 20kV level from two substations."
+  - id: src-2
+    url: "https://www.peeringdb.com/fac/11297"
+    titulo: "NTT Madrid 1 Data Center (MAD1)"
+    editor: "PeeringDB"
+    tipo: asociacion
+    fecha_consulta: "2026-08-29"
+    cita: "NTT Madrid 1 Data Center (MAD1) | Calle Aquisgran 2 | 28232 Las Rozas de Madrid"

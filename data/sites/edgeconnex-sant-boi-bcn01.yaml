@@ -35,9 +35,6 @@ potencia:
 
 superficie_construida_m2: 3000
 
-conexion_electrica:
-  fuentes: [src-2]
-
 incertidumbres:
   - campo: ubicacion
     descripcion: >-

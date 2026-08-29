@@ -1,0 +1,98 @@
+id: global-switch-madrid-yecora
+nombre: "Global Switch Madrid (Madrid 1 y Madrid 2)"
+alias:
+  - "Global Switch Madrid 1"
+  - "Global Switch Madrid 2"
+tipo: campus
+operador: "Global Switch"
+propietario: "Global Switch"
+modelo: colocation
+
+ubicacion:
+  municipio: "Madrid"
+  provincia: "Madrid"
+  ccaa: "Comunidad de Madrid"
+  direccion: "Calle Yécora 4, 28022 Madrid (distrito de San Blas-Canillejas)"
+  lat: 40.447968
+  lon: -3.574684
+  precision: exacta
+  fuentes: [src-1, src-2]
+
+estado: operativo
+estado_detalle: "Dos instalaciones en la misma dirección; Global Switch declara además 'advanced expansion plans' para el campus de Madrid."
+estado_fuentes: [src-1]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 14
+    ambito: edificio
+    referencia: "Madrid 1"
+    estado_asociado: operativo
+    fecha_dato: "2026-08-29"
+    fuentes: [src-1]
+  - tipo: no_especificado
+    valor_mw: 56
+    ambito: edificio
+    referencia: "Madrid 2"
+    estado_asociado: operativo
+    fecha_dato: "2026-08-29"
+    fuentes: [src-1]
+  - tipo: no_especificado
+    valor_mw: 18
+    ambito: campus
+    referencia: "Instalación de Madrid según directorio comercial"
+    estado_asociado: operativo
+    fecha_dato: "2026-08-29"
+    fuentes: [src-3]
+    nota: "Contradice la suma de las cifras publicadas por el propio operador."
+
+fases:
+  - nombre: "Madrid 1"
+    estado: operativo
+    fuentes: [src-1]
+  - nombre: "Madrid 2"
+    estado: operativo
+    fuentes: [src-1]
+
+refrigeracion: "Global Switch destaca 'low water consumption rates' y ofrece refrigeración líquida en su cartera."
+enlaces_proyecto:
+  - "https://www.globalswitch.com/data-centres/madrid/"
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      Global Switch publica 14 MW (Madrid 1) y 56 MW (Madrid 2), 70 MW en conjunto, sin decir si
+      es potencia TI o total. El directorio OCOLO atribuye 18 MW al conjunto. Contradicción sin
+      resolver.
+    fuentes: [src-1, src-3]
+  - campo: estado
+    descripcion: >-
+      No se ha localizado fuente que aclare si los 56 MW de Madrid 2 están plenamente construidos
+      y energizados o si corresponden a la capacidad de diseño del edificio.
+    fuentes: [src-1]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.globalswitch.com/data-centres/madrid/"
+    titulo: "Madrid - Global Switch"
+    editor: "Global Switch"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: "Madrid 1 14MW Calle Yécora 4 28022 Madrid Spain / Madrid 2 56MW Calle Yécora 4 28022 Madrid Spain"
+  - id: src-2
+    url: "https://www.peeringdb.com/fac/4882"
+    titulo: "Global Switch Madrid"
+    editor: "PeeringDB"
+    tipo: asociacion
+    fecha_consulta: "2026-08-29"
+    cita: "Global Switch Madrid | Calle Yecora, 4 | Madrid"
+  - id: src-3
+    url: "https://www.ocolo.io/data-centers/spain/comunidad-de-madrid/"
+    titulo: "Comunidad de Madrid Data Centers"
+    editor: "OCOLO"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: "Madrid C. de Yécora, 4, San Blas-Canillejas, 28022 Madrid, Spain 18.00 MW"

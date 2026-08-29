@@ -1,0 +1,125 @@
+id: stoneshield-pielagos-altamira
+nombre: "Campus Tecnológico de Datos Altamira — Piélagos y Villaescusa"
+alias:
+  - "Proyecto Altamira"
+  - "Altamira Data Center Technology Campus"
+  - "XDC Properties Altamira"
+tipo: campus
+operador: "XDC Properties (Stoneshield Capital)"
+propietario: "Stoneshield Capital"
+modelo: hyperscale
+
+ubicacion:
+  municipio: "Piélagos"
+  provincia: "Cantabria"
+  ccaa: "Cantabria"
+  direccion: "Terrenos entre los términos municipales de Piélagos y Villaescusa"
+  lat: 43.3600
+  lon: -3.9100
+  precision: municipio
+  fuentes: [src-1, src-3]
+
+estado: en_tramitacion
+estado_detalle: >-
+  Anunciado en febrero de 2025 por el Gobierno de Cantabria y Stoneshield Capital.
+  Declarado Proyecto Empresarial Estratégico por el Consejo de Gobierno de Cantabria
+  el 19 de junio de 2025, el primero en obtener esa figura. La primera fase de
+  terrenos se vendió a la promotora en mayo de 2025. El desarrollo se articula
+  mediante Proyectos Singulares de Interés Regional (PSIR) en tres fases; el inicio
+  de obras de la fase 1 estaba previsto para enero de 2026 y la plena operación
+  para 2032. A agosto de 2026 el debate público en Cantabria gira en torno al acceso
+  a la red eléctrica, aún no concedido por el Ministerio.
+estado_fuentes: [src-1, src-2, src-3]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 100
+    ambito: campus
+    referencia: "Potencia prevista para 2028"
+    estado_asociado: anunciado
+    fecha_dato: "2025-02-26"
+    fuentes: [src-1, src-3]
+    nota: "Las fuentes dicen «100 megavatios en 2028» sin precisar tipo de potencia."
+  - tipo: no_especificado
+    valor_mw: 500
+    ambito: campus
+    referencia: "Potencia prevista para 2030"
+    estado_asociado: anunciado
+    fecha_dato: "2025-02-26"
+    fuentes: [src-1, src-3]
+    nota: "Las fuentes dicen «500 en 2030» sin precisar tipo de potencia."
+
+fases:
+  - nombre: "Fase 1"
+    estado: en_tramitacion
+    fecha_puesta_en_servicio: "2028"
+    fuentes: [src-1, src-3]
+  - nombre: "Fase 2"
+    estado: anunciado
+    fuentes: [src-1, src-3]
+  - nombre: "Fase 3"
+    estado: anunciado
+    fuentes: [src-1, src-3]
+
+conexion_electrica:
+  subestacion: "SE Penagos"
+  tension_kv: 220
+  fuentes: [src-3]
+
+superficie_parcela_m2: 637000
+inversion_anunciada_eur: 3600000000
+
+enlaces_proyecto: []
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      Ninguna fuente precisa si los 100/500 MW son carga TI, potencia de conexión o
+      potencia instalada. No se comparan con MW IT de otros emplazamientos.
+    fuentes: [src-1, src-3]
+  - campo: superficie_parcela_m2
+    descripcion: >-
+      Data Center Market da dos cifras en la misma pieza: «637.000 metros cuadrados»
+      y «636.432 metros cuadrados». Invest in Cantabria dice «637,000 square meters».
+    fuentes: [src-1, src-3]
+  - campo: conexion_electrica
+    descripcion: >-
+      Data Center Market cita la subestación de Penagos (220.000 voltios) como punto
+      de conexión, pero en noviembre de 2025 la propia Consejería reclamaba al
+      Ministerio acceso a la red, lo que indica que la capacidad no estaba concedida.
+    fuentes: [src-3]
+  - campo: otros
+    descripcion: >-
+      Data Center Market afirma que el campus se conecta al «cable submarino MAREA que
+      conecta Santander con Carolina del Sur». Marea amarra en Sopelana (Bizkaia); el
+      cable que une Santander con Myrtle Beach (Carolina del Sur) es Anjana. Se
+      considera un error de la fuente y no se registra como dato.
+    fuentes: [src-3]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://investincantabria.com/en/cantabria-will-have-a-data-center-technology-campus-with-more-than-3600-million-euros/"
+    titulo: "Cantabria will have a Data Center Technology Campus with more than 3,600 million euros"
+    editor: "Invest in Cantabria (SODERCAN — Gobierno de Cantabria)"
+    tipo: oficial
+    fecha_consulta: "2026-08-29"
+    cita: "100 megawatts en 2028 y 500 en 2030"
+  - id: src-2
+    url: "https://www.cantabriaeconomica.com/empresas/cantabria-declara-el-centro-de-datos-altamira-como-primer-proyecto-empresarial-estrategico/"
+    titulo: "Cantabria declara el centro de datos 'Altamira' como primer Proyecto Empresarial Estratégico"
+    editor: "Cantabria Económica"
+    tipo: prensa_general
+    fecha_publicacion: "2025-06-19"
+    fecha_consulta: "2026-08-29"
+    cita: "primera iniciativa empresarial en obtener esta declaración"
+  - id: src-3
+    url: "https://www.datacentermarket.es/datacenter-infrastructure/cantabria-tambien-tendra-su-centro-de-datos/"
+    titulo: "Cantabria también tendrá su centro de datos"
+    editor: "Data Center Market"
+    tipo: prensa_especializada
+    fecha_publicacion: "2025-02-26"
+    fecha_consulta: "2026-08-29"
+    cita: "Impulsado a través de XDC Properties, filial de Stoneshield"

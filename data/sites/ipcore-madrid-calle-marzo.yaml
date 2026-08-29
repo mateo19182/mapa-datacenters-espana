@@ -1,0 +1,47 @@
+id: ipcore-madrid-calle-marzo
+nombre: "IPCore Datacenter Madrid — Calle Marzo"
+alias:
+  - "IPCore Datacenter Madrid"
+tipo: edificio
+operador: "IPCore Datacenter SL"
+propietario: "IPCore Datacenter SL"
+modelo: colocation
+
+ubicacion:
+  municipio: "Madrid"
+  provincia: "Madrid"
+  ccaa: "Comunidad de Madrid"
+  direccion: "Calle Marzo 16, 28022 Madrid (distrito de San Blas-Canillejas)"
+  lat: 40.44598
+  lon: -3.570053
+  precision: exacta
+  fuentes: [src-1]
+
+estado: desconocido
+estado_detalle: "Instalación registrada en PeeringDB. No se ha localizado web operativa del operador ni confirmación independiente del estado."
+estado_fuentes: [src-1]
+
+potencia: []
+
+incertidumbres:
+  - campo: estado
+    descripcion: >-
+      Única fuente localizada: el registro de PeeringDB. El dominio del operador no responde y
+      no se ha encontrado ninguna otra referencia verificable, por lo que no puede confirmarse
+      que la instalación siga activa.
+    fuentes: [src-1]
+  - campo: potencia
+    descripcion: "Sin datos de potencia ni superficie."
+    fuentes: [src-1]
+
+confianza: baja
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.peeringdb.com/fac/1533"
+    titulo: "IPCore Datacenter Madrid"
+    editor: "PeeringDB"
+    tipo: asociacion
+    fecha_consulta: "2026-08-29"
+    cita: "IPCore Datacenter Madrid | Calle Marzo 16 | 28022 Madrid"

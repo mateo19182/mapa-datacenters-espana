@@ -1,0 +1,92 @@
+id: nostrum-zamudio-moana-data
+nombre: "Moana Data (Grupo Nostrum) — CPD del Parque Tecnológico de Zamudio"
+alias:
+  - "Moana Data Zamudio"
+  - "Nostrum Data Centers Zamudio"
+tipo: edificio
+operador: "Moana Data, S.L. (Grupo Nostrum)"
+propietario: "Moana Data, S.L."
+modelo: mayorista
+
+ubicacion:
+  municipio: "Zamudio"
+  provincia: "Bizkaia"
+  ccaa: "País Vasco"
+  direccion: "Polígono 1001, parcela 20011, subparcela 01, dentro de la parcela SZI-3B del Sector Aresti, Zamudio (Parque Tecnológico)"
+  lat: 43.2860
+  lon: -2.8650
+  precision: aproximada
+  fuentes: [src-1]
+
+estado: permisos_concedidos
+estado_detalle: >-
+  El Gobierno Vasco otorgó la autorización ambiental integrada y la declaración de
+  impacto ambiental el 22 de mayo de 2026 (publicadas en el BOPV). El promotor prevé
+  iniciar obras en 2026 y poner en servicio la primera fase hacia abril de 2028.
+estado_fuentes: [src-1, src-2]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 30
+    ambito: campus
+    referencia: "Capacidad total prevista de la instalación (tres fases de 10 MW)"
+    estado_asociado: permisos_concedidos
+    fecha_dato: "2026-06-03"
+    fuentes: [src-1, src-2]
+    nota: >-
+      El Correo la describe como «potencia eléctrica de 30 MW» y Crónica Vasca como
+      «30 MW de capacidad»; un titular posterior habla de «capacidad TI». Al no ser
+      unívoco, se registra como no especificado.
+
+fases:
+  - nombre: "Fase 1 (10 MW)"
+    estado: permisos_concedidos
+    fecha_puesta_en_servicio: "2028-04"
+    fuentes: [src-1, src-2]
+  - nombre: "Fase 2 (10 MW)"
+    estado: anunciado
+    fuentes: [src-1, src-2]
+  - nombre: "Fase 3 (10 MW)"
+    estado: anunciado
+    fuentes: [src-1, src-2]
+
+superficie_parcela_m2: 20000
+
+enlaces_proyecto: []
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      Fuentes distintas describen los 30 MW como «potencia eléctrica» (El Correo, vía
+      resumen) y como «capacidad TI» (titular de Crónica Vasca de enero de 2026). No se
+      ha localizado el expediente del BOPV para dirimirlo.
+    fuentes: [src-1, src-2]
+  - campo: superficie_parcela_m2
+    descripcion: "La fuente dice «ocupará unas dos hectáreas»; se registra el equivalente aproximado."
+    fuentes: [src-1]
+  - campo: operador
+    descripcion: >-
+      Moana Data, S.L. es la sociedad vehículo; el grupo promotor es la sevillana
+      Nostrum (Nostrum Data Centers), que anunció seis proyectos en España.
+    fuentes: [src-1, src-2]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://revistacloud.com/zamudio-suma-un-nuevo-centro-de-datos-de-30-mw-para-competir-en-la-economia-de-la-ia"
+    titulo: "Zamudio suma un nuevo centro de datos de 30 MW para competir en la economía de la IA"
+    editor: "Revista Cloud"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-06-03"
+    fecha_consulta: "2026-08-29"
+    cita: "Polígono 1001, Parcela 20011, Subparcela 01, dentro de la parcela SZI-3B del Sector Aresti, en el término municipal de Zamudio"
+  - id: src-2
+    url: "https://cronicavasca.elespanol.com/empresas/20251118/sevillana-nostrum-proyecta-centro-bizkaia-mw-capacidad/1003742708080_0.html"
+    titulo: "La sevillana Nostrum proyecta el mayor centro de datos de Bizkaia con 30 MW de capacidad"
+    editor: "Crónica Vasca (El Español)"
+    tipo: prensa_general
+    fecha_publicacion: "2025-11-18"
+    fecha_consulta: "2026-08-29"
+    cita: "dividirá en tres fases de 10 MW para alcanzar a pleno rendimiento los 30 MW"

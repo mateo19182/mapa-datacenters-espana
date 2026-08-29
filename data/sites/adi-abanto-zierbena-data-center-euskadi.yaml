@@ -1,0 +1,86 @@
+id: adi-abanto-zierbena-data-center-euskadi
+nombre: "ADI Data Center Euskadi — Abanto-Zierbena"
+alias:
+  - "Atlantic Data Infrastructure (ADI)"
+  - "Data Center Euskadi (DCE)"
+  - "ADI Abanto"
+tipo: edificio
+operador: "Atlantic Data Infrastructure (ADI Data Center Euskadi)"
+propietario: "Atlantic Data Infrastructure, S.A."
+modelo: colocation
+
+ubicacion:
+  municipio: "Abanto y Ciérvana-Abanto Zierbena"
+  provincia: "Bizkaia"
+  ccaa: "País Vasco"
+  direccion: "Campus Ezkerraldea-Meatzaldea del Parque Científico y Tecnológico de Bizkaia (entorno del Energy Intelligence Center), Abanto-Zierbena"
+  lat: 43.3130
+  lon: -3.0770
+  precision: aproximada
+  fuentes: [src-1, src-2]
+
+estado: operativo
+estado_detalle: >-
+  Primera piedra el 6 de noviembre de 2023 con presencia del Lehendakari. En
+  noviembre de 2024 la prensa económica vasca situaba la entrada en funcionamiento
+  en marzo de 2025. Es el primero de los dos centros del proyecto ADI; el segundo
+  se construye en Arrasate (ficha adi-arrasate-garaia).
+estado_fuentes: [src-1, src-2]
+
+inversion_anunciada_eur: 25000000
+
+enlaces_proyecto:
+  - "https://www.euskadi.eus/gobierno-vasco/-/noticia/2023/el-lehendakari-asiste-colocacion-primera-piedra-adi-data-center-gran-centro-datos-zona-atlantica/"
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      Ninguna de las fuentes abiertas y verificadas publica la potencia (ni TI, ni
+      instalada, ni de conexión) del edificio de Abanto-Zierbena. Campo potencia omitido.
+    fuentes: [src-1, src-2, src-3]
+  - campo: estado
+    descripcion: >-
+      No se ha localizado nota oficial de inauguración ni de puesta en servicio. La
+      última fecha documentada es la previsión de marzo de 2025.
+    fuentes: [src-2]
+  - campo: propietario
+    descripcion: >-
+      Accionariado cambiante: constituida por Euskaltel, Dominion Global, Teknei y
+      Gobierno Vasco (15%), con entrada posterior anunciada de Kutxabank e Iberdrola
+      y apertura a las diputaciones forales.
+    fuentes: [src-2]
+  - campo: inversion_anunciada_eur
+    descripcion: >-
+      Los 25 M€ corresponden al primer centro (Abanto-Zierbena) según Crónica Vasca.
+      Ese mismo grupo de fuentes menciona 4,5 M€ de subvenciones públicas vascas
+      (Gauzatu e Indartu) que no se suman a la inversión privada.
+    fuentes: [src-2, src-3]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.euskadi.eus/gobierno-vasco/-/noticia/2023/el-lehendakari-asiste-colocacion-primera-piedra-adi-data-center-gran-centro-datos-zona-atlantica/"
+    titulo: "El Lehendakari asiste a la colocación de la primera piedra de ADI, el gran centro de datos para la zona atlántica"
+    editor: "Gobierno Vasco / Eusko Jaurlaritza"
+    tipo: oficial
+    fecha_publicacion: "2023-11-06"
+    fecha_consulta: "2026-08-29"
+    cita: "Campus Ezkerraldea-Meatzaldea del Parque Científico y Tecnológico de Bizkaia"
+  - id: src-2
+    url: "https://cronicavasca.elespanol.com/empresas/20241122/el-de-adi-abanto-zierbena-en-servicio/902409810_0.html"
+    titulo: "El centro de datos ADI de Abanto Zierbena entrará en servicio en marzo de 2025"
+    editor: "Crónica Vasca (El Español)"
+    tipo: prensa_general
+    fecha_publicacion: "2024-11-22"
+    fecha_consulta: "2026-08-29"
+    cita: "entrará en funcionamiento en marzo del año que viene"
+  - id: src-3
+    url: "https://cronicavasca.elespanol.com/empresas/20250211/adi-tendra-listo-segundo-center-arrasate-finales/923157723_0.html"
+    titulo: "ADI tendrá listo su segundo 'data center' en Arrasate para finales de 2026"
+    editor: "Crónica Vasca (El Español)"
+    tipo: prensa_general
+    fecha_publicacion: "2025-02-11"
+    fecha_consulta: "2026-08-29"
+    cita: "el primero en Zierbena realizó una inversión de 25 millones de euros"

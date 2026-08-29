@@ -1,0 +1,55 @@
+id: microsoft-meco
+nombre: "Microsoft — Centro de datos de Meco (región Spain Central)"
+alias:
+  - "Microsoft Azure Spain Central — Meco"
+tipo: campus
+operador: "Microsoft"
+propietario: "Microsoft"
+modelo: hyperscale
+
+ubicacion:
+  municipio: "Meco"
+  provincia: "Madrid"
+  ccaa: "Comunidad de Madrid"
+  lat: null
+  lon: null
+  precision: municipio
+  fuentes: [src-1]
+
+estado: en_construccion
+estado_detalle: >-
+  Microsoft declaró en la apertura de su región cloud Spain Central (Comunidad de Madrid) que
+  avanzaba en la construcción de centros de datos adicionales en Algete, Meco y San Sebastián de
+  los Reyes, que se inaugurarían "próximamente". La región Spain Central está formada por tres
+  zonas de disponibilidad con energía, refrigeración y redes independientes.
+estado_fuentes: [src-1]
+
+potencia: []
+
+refrigeracion: "Microsoft indica refrigeración evaporativa directa para los centros de datos de la región, con uso de agua en torno al 15% del tiempo de operación."
+
+incertidumbres:
+  - campo: potencia
+    descripcion: "Microsoft no publica potencia ni superficie de sus emplazamientos en la Comunidad de Madrid."
+    fuentes: [src-1]
+  - campo: estado
+    descripcion: >-
+      La única fuente localizada es la nota de apertura de la región (2024), que sitúa estos tres
+      emplazamientos en construcción. No se ha encontrado confirmación pública posterior de su
+      puesta en servicio, ni expedientes municipales accesibles.
+    fuentes: [src-1]
+  - campo: ubicacion
+    descripcion: "No consta dirección ni parcela; la geolocalización queda a nivel de municipio."
+    fuentes: [src-1]
+
+confianza: baja
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://news.microsoft.com/source/emea/features/microsoft-abre-su-primera-region-cloud-en-espana-para-acelerar-el-desarrollo-de-la-economia-de-la-ia/?lang=es"
+    titulo: "Microsoft abre su primera región cloud en España para acelerar el desarrollo de la Economía de la IA"
+    editor: "Microsoft"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: "Microsoft avanza en la construcción de centros de datos adicionales ubicados en Algete, Meco y San Sebastián de los Reyes, que se inaugurarán próximamente."

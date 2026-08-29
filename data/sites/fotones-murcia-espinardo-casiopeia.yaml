@@ -1,0 +1,122 @@
+id: fotones-murcia-espinardo-casiopeia
+nombre: "Casiopeia — Grupo Fotones, Murcia (entorno del Campus de Espinardo)"
+alias:
+  - "Casiopea"
+  - "Campus de datos de Grupo Fotones en Espinardo"
+tipo: campus
+operador: "Grupo Fotones"
+propietario: "Grupo Fotones"
+modelo: hyperscale
+
+ubicacion:
+  municipio: "Murcia"
+  provincia: "Murcia"
+  ccaa: "Región de Murcia"
+  direccion: "Entorno del Campus universitario de Espinardo"
+  lat: 38.0202
+  lon: -1.1687
+  precision: municipio
+  fuentes: [src-1, src-2]
+
+estado: anunciado
+estado_detalle: >-
+  Proyecto anunciado en junio de 2026. Iberdrola ha concedido el acceso a la red para la
+  primera fase; la segunda está en tramitación (el promotor esperaba resolución a finales
+  de 2026 o principios de 2027). El emplazamiento concreto no está cerrado: se barajan el
+  centro comercial Myrtea (>20.000 m²) y una parcela de Inurban (70.000 m²). Inicio de
+  construcción previsto para finales de 2027 y finalización en 2028.
+estado_fuentes: [src-1, src-2]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 140
+    ambito: campus
+    referencia: "Capacidad total del campus"
+    estado_asociado: anunciado
+    fecha_dato: "2026-06-03"
+    fuentes: [src-1, src-2, src-3]
+    nota: "«un campus de hasta 140 MW de capacidad»; las fuentes no precisan el tipo de potencia."
+  - tipo: no_especificado
+    valor_mw: 78
+    ambito: fase
+    referencia: "Fase 1"
+    estado_asociado: anunciado
+    fecha_dato: "2026-06-03"
+    fuentes: [src-1, src-2]
+  - tipo: no_especificado
+    valor_mw: 62
+    ambito: fase
+    referencia: "Fase 2 (ampliación)"
+    estado_asociado: anunciado
+    fecha_dato: "2026-06-03"
+    fuentes: [src-1, src-2]
+
+fases:
+  - nombre: "Fase 1"
+    estado: anunciado
+    fuentes: [src-1, src-2]
+  - nombre: "Fase 2"
+    estado: anunciado
+    fuentes: [src-1, src-2]
+
+conexion_electrica:
+  subestacion: "Subestación propia a construir por el promotor"
+  titular_red: "Iberdrola"
+  fuentes: [src-1, src-2]
+
+inversion_anunciada_eur: 1150000000
+
+incertidumbres:
+  - campo: conexion_electrica
+    descripcion: >-
+      El coste de la subestación asociada se cifra en 15 millones de euros por
+      DatacenterDynamics y en 20 millones por Murcia Plaza. Ambas coinciden en más de
+      5 millones en garantías para la reserva de capacidad.
+    fuentes: [src-1, src-2]
+  - campo: ubicacion
+    descripcion: >-
+      A junio de 2026 no había emplazamiento cerrado: dos opciones alternativas en el
+      entorno de Espinardo. Coordenadas a nivel de municipio.
+    fuentes: [src-2]
+  - campo: potencia
+    descripcion: >-
+      Los 140 MW se citan como «capacidad» sin distinguir carga TI de potencia de acceso.
+      Como contexto, la Región de Murcia tenía 1 MW de potencia IT instalada al cierre de
+      2025 según Spain DC.
+    fuentes: [src-1, src-4]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.datacenterdynamics.com/es/noticias/grupo-fotones-impulsa-un-campus-de-datos-de-1150-millones-en-murcia/"
+    titulo: "Grupo Fotones impulsa un campus de datos de 1.150 millones en Murcia"
+    editor: "DatacenterDynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-06-03"
+    fecha_consulta: "2026-08-29"
+    cita: "El proyecto se desarrollará en dos fases. La primera contempla 78 MW de potencia, mientras que una segunda ampliación añadiría otros 62 MW hasta alcanzar los 140 MW totales. [...] La compañía ya ha obtenido de Iberdrola el acceso a la red para la primera fase del proyecto"
+  - id: src-2
+    url: "https://murciaplaza.com/murciaplaza/empresas-murcia/murcia-acogera-su-primer-macroproyecto-tecnologico-fotones-impulsa-un-centro-de-datos-en-espinardo-que-costara-1150-millones-de-euros"
+    titulo: "Murcia acogerá otro macroproyecto tecnológico: Fotones impulsa un centro de datos en Espinardo que costará 1.150 millones de euros"
+    editor: "Murcia Plaza"
+    tipo: prensa_general
+    fecha_publicacion: "2026-06-03"
+    fecha_consulta: "2026-08-29"
+    cita: "En un primer momento contará con 78 MW de potencia, tras lo que luego sumará otros 62 MW adicionales, con lo que llegará a los 140 MW en total"
+  - id: src-3
+    url: "https://observatorioedc.com/directorio/"
+    titulo: "Data Centers — Directorio, Observatorio Español de Data Centers"
+    editor: "Observatorio Español de Data Centers"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: "Grupo Fotones | Casiopeia | Espinardo | Región de Murcia | 140.0 MW | HIPERSCALER | Planificación"
+  - id: src-4
+    url: "https://murciaplaza.com/murciaplaza/empresas-murcia/la-inversion-de-66900-millones-de-euros-en-centros-de-datos-pasa-de-largo-por-la-region-de-murcia"
+    titulo: "La inversión de 66.900 millones de euros en centros de datos pasa de largo por la Región de Murcia"
+    editor: "Murcia Plaza"
+    tipo: prensa_general
+    fecha_publicacion: "2026-05-27"
+    fecha_consulta: "2026-08-29"
+    cita: "Así lo indican los datos del último informe elaborado por SpainDC, la Asociación Española de Data Centers, que otorga 1 MW de potencia IT a la Comunidad murciana al cierre del 2025"

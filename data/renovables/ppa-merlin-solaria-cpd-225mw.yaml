@@ -1,0 +1,47 @@
+id: ppa-merlin-solaria-cpd-225mw
+nombre: "PPA Merlin Properties — 445 MW solares de Solaria (primer acuerdo)"
+tipo: fotovoltaica
+potencia_mw: 445
+tipo_potencia: contratada_ppa
+capacidad_mwh: null
+promotor: "Solaria"
+contraparte_ppa: "Merlin Properties"
+tipo_vinculo: ppa
+duracion_anios: 15
+municipio: null
+provincia: null
+ccaa: null
+lat: null
+lon: null
+precision: desconocida
+estado: anunciado
+estado_detalle: "Anunciado el 17-18 de noviembre de 2025 junto al suministro de 225 MW y la garantía de acceso a red para el centro de datos."
+fecha_firma: "2025-11-17"
+adicionalidad: no_consta
+clusters_relacionados: []
+cpds_relacionados: []
+cpd_demanda_mw: 225
+cpd_demanda_nota: "225 MW es demanda del centro de datos (potencia de acceso), magnitud distinta de los 445 MW de generación contratada. No sumar."
+incertidumbres:
+  - campo: ccaa
+    descripcion: "La nota de Solaria no localiza el centro de datos. En febrero de 2025 Solaria había obtenido 225 MW de acceso para un CPD en el País Vasco, pero ninguna fuente consultada confirma que sea el mismo activo."
+    fuentes: [src-1, src-2]
+confianza: media
+ultima_verificacion: "2026-08-29"
+fuentes:
+  - id: src-1
+    url: "https://solariaenergia.com/solaria-dispara-beneficio-un-148-y-preve-superar-su-guia-de-ebitda-tras-un-fuerte-crecimiento-operativo-en-2025-2/"
+    titulo: "Solaria lanza un plan de transformación a escala europea: triplicará su capacidad, duplicará su EBITDA y acelerará sus actividades en hidrógeno, almacenamiento y centros de datos"
+    editor: "Solaria"
+    tipo: empresa
+    fecha_publicacion: "2025-11-18"
+    fecha_consulta: "2026-08-29"
+    cita: "un PPA de 15 años con Merlin por 445 MW de energía solar [...] el suministro de 225 MW de energía, garantizando el acceso a la red"
+  - id: src-2
+    url: "https://solariaenergia.com/solaria-obtiene-225-mw-para-conectar-centros-de-datos-en-el-pais-vasco/"
+    titulo: "Solaria obtiene 225 MW para conectar centros de datos en el País Vasco"
+    editor: "Solaria"
+    tipo: empresa
+    fecha_publicacion: "2025-02-25"
+    fecha_consulta: "2026-08-29"
+    cita: "225 MW de demanda para el suministro de un centro de procesamiento de datos (CPD)"

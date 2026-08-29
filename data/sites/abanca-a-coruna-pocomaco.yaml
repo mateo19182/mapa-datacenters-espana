@@ -1,0 +1,60 @@
+id: abanca-a-coruna-pocomaco
+nombre: "ABANCA — centro de proceso de datos de Pocomaco (A Coruña)"
+alias:
+  - "CPD principal de ABANCA"
+tipo: edificio
+operador: "ABANCA"
+propietario: "ABANCA"
+modelo: corporativo
+
+ubicacion:
+  municipio: "A Coruña"
+  provincia: "A Coruña"
+  ccaa: "Galicia"
+  direccion: "Polígono de POCOMACO, A Coruña"
+  lat: 43.3430
+  lon: -8.4120
+  precision: aproximada
+  fuentes: [src-1]
+
+estado: operativo
+estado_detalle: >-
+  Edificio que aloja el principal centro de proceso de datos de ABANCA. En abril de
+  2026 el banco completó una transformación integral del inmueble (1.600 m²) en algo
+  más de seis meses, elevando su capacidad un 20% hasta 140 puestos de trabajo. La
+  reforma documentada afecta a las áreas de trabajo del edificio, no a las salas técnicas.
+estado_fuentes: [src-1]
+
+superficie_construida_m2: 1600
+
+enlaces_proyecto: []
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      ABANCA no publica potencia, superficie de sala técnica ni número de racks del
+      CPD. Campo potencia omitido.
+    fuentes: [src-1]
+  - campo: superficie_construida_m2
+    descripcion: >-
+      Los 1.600 m² son la superficie objeto de la reforma, no necesariamente la
+      superficie total del edificio ni la del CPD.
+    fuentes: [src-1]
+  - campo: tipo
+    descripcion: >-
+      Es un CPD corporativo bancario, no una instalación comercializada. Se incluye
+      por ser la principal infraestructura de datos privada documentada en A Coruña.
+    fuentes: [src-1]
+
+confianza: baja
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://comunicacion.abanca.com/es/noticias/abanca-transforma-el-edificio-de-su-principal-centro-de-datos-en-un-espacio-mas-funcional-eficiente-y-sostenible/"
+    titulo: "ABANCA transforma el edificio de su principal centro de datos en un espacio más funcional, eficiente y sostenible"
+    editor: "ABANCA"
+    tipo: empresa
+    fecha_publicacion: "2026-04-30"
+    fecha_consulta: "2026-08-29"
+    cita: "en el polígono de POCOMACO (A Coruña)"

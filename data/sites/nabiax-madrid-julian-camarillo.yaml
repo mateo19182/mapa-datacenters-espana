@@ -1,0 +1,91 @@
+id: nabiax-madrid-julian-camarillo
+nombre: "Nabiax Julián Camarillo Data Center"
+alias:
+  - "Julián Camarillo Campus (Nabiax)"
+  - "CPD Telefónica Julián Camarillo"
+tipo: campus
+operador: "Nabiax"
+propietario: "Nabiax (grupo Aermont Capital)"
+modelo: colocation
+
+ubicacion:
+  municipio: "Madrid"
+  provincia: "Madrid"
+  ccaa: "Comunidad de Madrid"
+  direccion: "Polígono de Julián Camarillo, 28037 Madrid (distrito de San Blas-Canillejas)"
+  lat: null
+  lon: null
+  precision: aproximada
+  fuentes: [src-1]
+
+estado: ampliacion_en_construccion
+estado_detalle: >-
+  Tres módulos en servicio con arranques escalonados entre 1995 y 2011. Adquirido a Telefónica
+  en 2019. En mayo de 2024 Nabiax contrató 2,5 MW IT adicionales en este campus con
+  hiperescalares.
+estado_fuentes: [src-1, src-2]
+fecha_puesta_en_servicio: "1995"
+
+potencia:
+  - tipo: it
+    valor_mw: 10
+    ambito: campus
+    referencia: "Capacidad TI actual de los tres módulos"
+    estado_asociado: operativo
+    fecha_dato: "2026-08-29"
+    fuentes: [src-1]
+    nota: "\"All 3 modules supply 10 MW of IT Power, scalable to 15 MW\"."
+  - tipo: it
+    valor_mw: 15
+    ambito: campus
+    referencia: "Capacidad TI máxima"
+    estado_asociado: anunciado
+    fecha_dato: "2026-08-29"
+    fuentes: [src-1]
+  - tipo: it
+    valor_mw: 2.5
+    ambito: fase
+    referencia: "Capacidad contratada con hiperescalares en 2024"
+    estado_asociado: en_construccion
+    fecha_dato: "2024-05-07"
+    fuentes: [src-2]
+
+fases:
+  - nombre: "Módulos 1, 2 y 3"
+    estado: operativo
+    fecha_puesta_en_servicio: "1995"
+    superficie_m2: 10000
+    fuentes: [src-1]
+
+superficie_construida_m2: 10000
+refrigeracion: "Chiller N+1 y CRAH N+1; 100% energía renovable."
+enlaces_proyecto:
+  - "https://nabiax.com/en/our-data-centers/spain/julian-camarillo/"
+
+incertidumbres:
+  - campo: ubicacion
+    descripcion: >-
+      Nabiax no publica la dirección postal del centro; la única dirección disponible en su web
+      (Calle Julián Camarillo 29) corresponde a sus oficinas. La geolocalización queda a nivel de
+      polígono.
+    fuentes: [src-1]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://nabiax.com/en/our-data-centers/spain/julian-camarillo/"
+    titulo: "Julián Camarillo"
+    editor: "Nabiax"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: "All 3 modules supply 10 MW of IT Power, scalable to 15 MW ... Start of operations 1995 - 2011 IT Rooms 29 Surface 10.000 sqm"
+  - id: src-2
+    url: "https://www.datacentermarket.es/news/nabiax-habilitara-10-mw-nuevos-para-dos-hiperescalares/"
+    titulo: "Nabiax habilitará 10 MW nuevos para dos hiperescalares"
+    editor: "Data Center Market"
+    tipo: prensa_especializada
+    fecha_publicacion: "2024-05-07"
+    fecha_consulta: "2026-08-29"
+    cita: "La nueva capacidad se desarrolla en los campus de data center ubicados en Alcalá de Henares (7,5 MW) y Julián Camarillo (2,5 MW)"

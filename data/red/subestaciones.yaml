@@ -1,0 +1,3120 @@
+# Subestaciones de 400/220 kV relevantes para los clusters de centros de datos
+# ---------------------------------------------------------------------------
+# Alcance: nudos de la RED DE TRANSPORTE peninsular que aparecen en el fichero
+# de capacidad de acceso de DEMANDA publicado por Red Eléctrica (gestor de la red
+# de transporte, GRT). No es un inventario completo de subestaciones de España.
+#
+# Un registro = un emplazamiento físico. Los "nudos" de Red Eléctrica se
+# identifican por nombre + tensión (p. ej. "ANCHUELO 400" y "ANCHUELO 220" son
+# dos nudos del mismo emplazamiento). Las capacidades de acceso se publican POR
+# NUDO, no por subestación: el detalle está en data/red/capacidad.yaml.
+#
+# ATENCIÓN — distinción crítica: todos los datos de capacidad de este directorio
+# se refieren a capacidad de acceso para DEMANDA (consumo). La capacidad de
+# acceso para GENERACIÓN es un dato distinto y no se recoge aquí.
+#
+# Coordenadas: proceden de OpenStreetMap (ODbL). Se han validado exigiendo que
+# la comunidad autónoma obtenida por geocodificación inversa coincida con la que
+# Red Eléctrica asigna al nudo. Precisión declarada "aproximada": es el centroide
+# del recinto mapeado en OSM, no un levantamiento topográfico. Cuando no se ha
+# podido validar una correspondencia, lat/lon van a null y precision: desconocida.
+#
+# "titular" recoge la etiqueta operator de OSM cuando existe; es indicativa y NO
+# es fuente oficial de titularidad. "gestor_red" sí es firme: todos estos nudos
+# son nudos de la red de transporte gestionada por Red Eléctrica.
+
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-ree-capacidad
+    url: "https://www.ree.es/es/clientes/consumidor/acceso-conexion/conoce-la-capacidad-de-acceso"
+    titulo: "Conoce la capacidad de acceso"
+    editor: "Red Eléctrica de España"
+    tipo: oficial
+    fecha_publicacion: "2026-08-03"
+    fecha_consulta: "2026-08-29"
+    cita: "Capacidad de acceso de demanda en los nudos de la red de transporte. Fecha de publicación: 3 de agosto 2026."
+  - id: src-ree-csv
+    url: "https://www.ree.es/sites/default/files/12_CLIENTES/Documentos/2026_08_03_GRT_demanda.csv"
+    titulo: "2026_08_03_GRT_demanda.csv — capacidad de acceso de demanda en la red de transporte"
+    editor: "Red Eléctrica de España"
+    tipo: oficial
+    fecha_publicacion: "2026-08-03"
+    fecha_consulta: "2026-08-29"
+    cita: "Nombre y tensión del nudo; Código de subestación; Comunidad Autónoma; ... CAPACIDAD DE ACCESO DISPONIBLE PARA SOLICITUDES CRITERIO GENERAL"
+  - id: src-osm
+    url: "https://www.openstreetmap.org/copyright"
+    titulo: "OpenStreetMap — power=substation (consulta Overpass, España)"
+    editor: "OpenStreetMap contributors"
+    tipo: otro
+    fecha_publicacion: null
+    fecha_consulta: "2026-08-29"
+    cita: "Geometría y etiquetas name/operator/voltage de las subestaciones. Licencia ODbL."
+  - id: src-nominatim
+    url: "https://nominatim.openstreetmap.org/"
+    titulo: "Nominatim — geocodificación inversa"
+    editor: "OpenStreetMap Foundation"
+    tipo: otro
+    fecha_publicacion: null
+    fecha_consulta: "2026-08-29"
+    cita: "Municipio, provincia (vía código postal) y comunidad autónoma de cada coordenada."
+
+subestaciones:
+  - id: se-anchuelo
+    nombre: "Anchuelo"
+    nudos_ree: ["ANCHUELO 400", "ANCHUELO 220"]
+    codigo_subestacion_ree: "50035"
+    tensiones_kv: [400, 220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Anchuelo"
+    provincia: "Madrid"
+    ccaa: "Comunidad de Madrid"
+    lat: 40.46468
+    lon: -3.29667
+    precision: aproximada
+    osm_id: "way/170272148"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo ANCHUELO 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [madrid, corredor-henares]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-loeches
+    nombre: "Loeches"
+    nudos_ree: ["LOECHES 400"]
+    codigo_subestacion_ree: "50323"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Loeches"
+    provincia: "Madrid"
+    ccaa: "Comunidad de Madrid"
+    lat: 40.38777
+    lon: -3.42257
+    precision: aproximada
+    osm_id: "way/677413570"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo LOECHES 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [madrid, corredor-henares]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-san-fernando
+    nombre: "San Fernando"
+    nudos_ree: ["SAN FERNANDO 400"]
+    codigo_subestacion_ree: "50756"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "San Fernando de Henares"
+    provincia: "Madrid"
+    ccaa: "Comunidad de Madrid"
+    lat: 40.44398
+    lon: -3.50792
+    precision: aproximada
+    osm_id: "way/1252105002"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo SAN FERNANDO 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [madrid, corredor-henares]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-ardoz
+    nombre: "Ardoz"
+    nudos_ree: ["ARDOZ 220"]
+    codigo_subestacion_ree: "50047"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Torrejón de Ardoz"
+    provincia: "Madrid"
+    ccaa: "Comunidad de Madrid"
+    lat: 40.44227
+    lon: -3.48236
+    precision: aproximada
+    osm_id: "way/28343429"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: null   # nudo ARDOZ 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [madrid, corredor-henares]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-daganzo
+    nombre: "Daganzo"
+    nudos_ree: ["DAGANZO 220"]
+    codigo_subestacion_ree: "50180"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Daganzo de Arriba"
+    provincia: "Madrid"
+    ccaa: "Comunidad de Madrid"
+    lat: 40.55371
+    lon: -3.47876
+    precision: aproximada
+    osm_id: "way/274593968"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: null   # nudo DAGANZO 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [madrid, corredor-henares]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-meco
+    nombre: "Meco"
+    nudos_ree: ["MECO 220"]
+    codigo_subestacion_ree: "50360"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España;Iberdrola"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Meco"
+    provincia: "Madrid"
+    ccaa: "Comunidad de Madrid"
+    lat: 40.54114
+    lon: -3.31361
+    precision: aproximada
+    osm_id: "way/329277804"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: null   # nudo MECO 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [madrid, corredor-henares]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-nueva-meco
+    nombre: "Nueva Meco"
+    nudos_ree: ["NUEVA MECO 220"]
+    codigo_subestacion_ree: "51426"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: null
+    provincia: null
+    ccaa: "Comunidad de Madrid"
+    lat: null
+    lon: null
+    precision: desconocida
+    osm_id: null
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: null   # nudo NUEVA MECO 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [madrid]
+    fuentes: [src-ree-csv, src-ree-capacidad]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-complutum
+    nombre: "Complutum"
+    nudos_ree: ["COMPLUTUM 220"]
+    codigo_subestacion_ree: "50703"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: null
+    provincia: null
+    ccaa: "Comunidad de Madrid"
+    lat: null
+    lon: null
+    precision: desconocida
+    osm_id: null
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo COMPLUTUM 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [madrid]
+    fuentes: [src-ree-csv, src-ree-capacidad]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-algete
+    nombre: "Algete"
+    nudos_ree: ["ALGETE 220"]
+    codigo_subestacion_ree: "50023"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Algete"
+    provincia: null
+    ccaa: "Comunidad de Madrid"
+    lat: 40.59287
+    lon: -3.55197
+    precision: aproximada
+    osm_id: "way/1308518194"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo ALGETE 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [madrid, corredor-henares]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-la-cereal
+    nombre: "La Cereal"
+    nudos_ree: ["LA CEREAL 400"]
+    codigo_subestacion_ree: "50291"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Tres Cantos"
+    provincia: "Madrid"
+    ccaa: "Comunidad de Madrid"
+    lat: 40.60058
+    lon: -3.72309
+    precision: aproximada
+    osm_id: "way/101953901"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo LA CEREAL 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [madrid]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-fuencarral
+    nombre: "Fuencarral"
+    nudos_ree: ["FUENCARRAL 400"]
+    codigo_subestacion_ree: "50230"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Iberdrola"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Madrid"
+    provincia: null
+    ccaa: "Comunidad de Madrid"
+    lat: 40.51955
+    lon: -3.67192
+    precision: aproximada
+    osm_id: "way/24791388"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: null   # nudo FUENCARRAL 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [madrid]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-moraleja
+    nombre: "Moraleja"
+    nudos_ree: ["MORALEJA 400"]
+    codigo_subestacion_ree: "50386"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Moraleja de Enmedio"
+    provincia: "Madrid"
+    ccaa: "Comunidad de Madrid"
+    lat: 40.25996
+    lon: -3.87508
+    precision: aproximada
+    osm_id: "way/27949649"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo MORALEJA 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [madrid]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-ss-reyes
+    nombre: "Ss.Reyes"
+    nudos_ree: ["SS.REYES 400"]
+    codigo_subestacion_ree: "50582"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: null
+    provincia: null
+    ccaa: "Comunidad de Madrid"
+    lat: null
+    lon: null
+    precision: desconocida
+    osm_id: null
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo SS.REYES 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [madrid]
+    fuentes: [src-ree-csv, src-ree-capacidad]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-villaviciosa
+    nombre: "Villaviciosa"
+    nudos_ree: ["VILLAVICIOSA 400"]
+    codigo_subestacion_ree: "50660"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España;UFD"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Villaviciosa de Odón"
+    provincia: "Madrid"
+    ccaa: "Comunidad de Madrid"
+    lat: 40.34701
+    lon: -3.90544
+    precision: aproximada
+    osm_id: "way/28683005"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo VILLAVICIOSA 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [madrid]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-torrejon-de-velasco
+    nombre: "Torrejon De Velasco"
+    nudos_ree: ["TORREJON DE VELASCO 400"]
+    codigo_subestacion_ree: "50766"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: null
+    provincia: null
+    ccaa: "Comunidad de Madrid"
+    lat: null
+    lon: null
+    precision: desconocida
+    osm_id: null
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo TORREJON DE VELASCO 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [madrid]
+    fuentes: [src-ree-csv, src-ree-capacidad]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-morata
+    nombre: "Morata"
+    nudos_ree: ["MORATA 400"]
+    codigo_subestacion_ree: "50388"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Morata de Tajuña"
+    provincia: "Madrid"
+    ccaa: "Comunidad de Madrid"
+    lat: 40.25598
+    lon: -3.44301
+    precision: aproximada
+    osm_id: "way/27936937"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo MORATA 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [madrid]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-arroyo-de-la-vega
+    nombre: "Arroyo De La Vega"
+    nudos_ree: ["ARROYO DE LA VEGA 220"]
+    codigo_subestacion_ree: "50056"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Alcobendas"
+    provincia: null
+    ccaa: "Comunidad de Madrid"
+    lat: 40.53605
+    lon: -3.59677
+    precision: aproximada
+    osm_id: "way/28401434"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo ARROYO DE LA VEGA 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [madrid]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-alcobendas
+    nombre: "Alcobendas"
+    nudos_ree: ["ALCOBENDAS 220"]
+    codigo_subestacion_ree: "50015"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Alcobendas"
+    provincia: null
+    ccaa: "Comunidad de Madrid"
+    lat: 40.54824
+    lon: -3.65149
+    precision: aproximada
+    osm_id: "way/231951162"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo ALCOBENDAS 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [madrid]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-coslada
+    nombre: "Coslada"
+    nudos_ree: ["COSLADA 220"]
+    codigo_subestacion_ree: "50175"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Coslada"
+    provincia: null
+    ccaa: "Comunidad de Madrid"
+    lat: 40.42230
+    lon: -3.57507
+    precision: aproximada
+    osm_id: "way/27937443"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: null   # nudo COSLADA 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [madrid, corredor-henares]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-fortuna
+    nombre: "Fortuna"
+    nudos_ree: ["FORTUNA 220"]
+    codigo_subestacion_ree: "50227"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Leganés"
+    provincia: null
+    ccaa: "Comunidad de Madrid"
+    lat: 40.34680
+    lon: -3.78325
+    precision: aproximada
+    osm_id: "way/28602711"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: null   # nudo FORTUNA 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [madrid]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-prado-santo-domingo
+    nombre: "Prado Santo Domingo"
+    nudos_ree: ["PRADO SANTO DOMINGO 220"]
+    codigo_subestacion_ree: "50474"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: null
+    provincia: null
+    ccaa: "Comunidad de Madrid"
+    lat: null
+    lon: null
+    precision: desconocida
+    osm_id: null
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: null   # nudo PRADO SANTO DOMINGO 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [madrid]
+    fuentes: [src-ree-csv, src-ree-capacidad]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-retamar
+    nombre: "Retamar"
+    nudos_ree: ["RETAMAR 220"]
+    codigo_subestacion_ree: "50497"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Madrid"
+    provincia: null
+    ccaa: "Comunidad de Madrid"
+    lat: 40.33485
+    lon: -3.72308
+    precision: aproximada
+    osm_id: "way/28683269"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: null   # nudo RETAMAR 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [madrid]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-fuentes-de-la-alcarria
+    nombre: "Fuentes De La Alcarria"
+    nudos_ree: ["FUENTES DE LA ALCARRIA 400"]
+    codigo_subestacion_ree: "50234"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Brihuega"
+    provincia: "Guadalajara"
+    ccaa: "Castilla-La Mancha"
+    lat: 40.74813
+    lon: -2.98354
+    precision: aproximada
+    osm_id: "way/170272140"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo FUENTES DE LA ALCARRIA 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [guadalajara-toledo, corredor-henares]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-trillo
+    nombre: "Trillo"
+    nudos_ree: ["TRILLO 400"]
+    codigo_subestacion_ree: "50613"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Trillo"
+    provincia: "Guadalajara"
+    ccaa: "Castilla-La Mancha"
+    lat: 40.70328
+    lon: -2.62574
+    precision: aproximada
+    osm_id: "way/226363063"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo TRILLO 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [guadalajara-toledo, corredor-henares]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-bolarque
+    nombre: "Bolarque"
+    nudos_ree: ["BOLARQUE 220"]
+    codigo_subestacion_ree: "50098"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: null
+    provincia: null
+    ccaa: "Castilla-La Mancha"
+    lat: null
+    lon: null
+    precision: desconocida
+    osm_id: null
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo BOLARQUE 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [castilla-la-mancha]
+    fuentes: [src-ree-csv, src-ree-capacidad]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-jose-cabrera
+    nombre: "Jose Cabrera"
+    nudos_ree: ["JOSE CABRERA 220"]
+    codigo_subestacion_ree: "50287"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Almonacid de Zorita"
+    provincia: "Guadalajara"
+    ccaa: "Castilla-La Mancha"
+    lat: 40.34944
+    lon: -2.88582
+    precision: aproximada
+    osm_id: "way/145333039"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo JOSE CABRERA 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [guadalajara-toledo, corredor-henares]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-la-sagra
+    nombre: "La Sagra"
+    nudos_ree: ["LA SAGRA 400"]
+    codigo_subestacion_ree: "52094"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: null
+    provincia: null
+    ccaa: "Castilla-La Mancha"
+    lat: null
+    lon: null
+    precision: desconocida
+    osm_id: null
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo LA SAGRA 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [castilla-la-mancha]
+    fuentes: [src-ree-csv, src-ree-capacidad]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-aceca
+    nombre: "Aceca"
+    nudos_ree: ["ACECA 220"]
+    codigo_subestacion_ree: "50003"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Villaseca de la Sagra"
+    provincia: null
+    ccaa: "Castilla-La Mancha"
+    lat: 39.94206
+    lon: -3.85810
+    precision: aproximada
+    osm_id: "way/170671537"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo ACECA 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [castilla-la-mancha]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-anover
+    nombre: "Añover"
+    nudos_ree: ["AÑOVER 220"]
+    codigo_subestacion_ree: "50040"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: null
+    provincia: null
+    ccaa: "Castilla-La Mancha"
+    lat: null
+    lon: null
+    precision: desconocida
+    osm_id: null
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo AÑOVER 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [castilla-la-mancha]
+    fuentes: [src-ree-csv, src-ree-capacidad]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-torrijos
+    nombre: "Torrijos"
+    nudos_ree: ["TORRIJOS 220"]
+    codigo_subestacion_ree: "50608"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Torrijos"
+    provincia: "Toledo"
+    ccaa: "Castilla-La Mancha"
+    lat: 39.99957
+    lon: -4.26951
+    precision: aproximada
+    osm_id: "way/170372283"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: null   # nudo TORRIJOS 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [guadalajara-toledo]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-camarena
+    nombre: "Camarena"
+    nudos_ree: ["CAMARENA 400"]
+    codigo_subestacion_ree: "51439"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: null
+    provincia: null
+    ccaa: "Castilla-La Mancha"
+    lat: null
+    lon: null
+    precision: desconocida
+    osm_id: null
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo CAMARENA 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [castilla-la-mancha]
+    fuentes: [src-ree-csv, src-ree-capacidad]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-manchega
+    nombre: "Manchega"
+    nudos_ree: ["MANCHEGA 400"]
+    codigo_subestacion_ree: "52077"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Villarrobledo"
+    provincia: "Albacete"
+    ccaa: "Castilla-La Mancha"
+    lat: 39.23044
+    lon: -2.75646
+    precision: aproximada
+    osm_id: "way/1491091687"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo MANCHEGA 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [castilla-la-mancha]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-el-emperador
+    nombre: "El Emperador"
+    nudos_ree: ["EL EMPERADOR 220"]
+    codigo_subestacion_ree: "50193"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: null
+    provincia: null
+    ccaa: "Castilla-La Mancha"
+    lat: null
+    lon: null
+    precision: desconocida
+    osm_id: null
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 213   # nudo EL EMPERADOR 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 207   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [castilla-la-mancha]
+    fuentes: [src-ree-csv, src-ree-capacidad]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-mora
+    nombre: "Mora"
+    nudos_ree: ["MORA 220"]
+    codigo_subestacion_ree: "50385"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: null
+    provincia: null
+    ccaa: "Castilla-La Mancha"
+    lat: null
+    lon: null
+    precision: desconocida
+    osm_id: null
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 275   # nudo MORA 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 268   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [castilla-la-mancha]
+    fuentes: [src-ree-csv, src-ree-capacidad]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-penaflor
+    nombre: "Peñaflor"
+    nudos_ree: ["PEÑAFLOR 400", "PEÑAFLOR 220"]
+    codigo_subestacion_ree: "50436"
+    tensiones_kv: [400, 220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Villamayor de Gállego"
+    provincia: "Zaragoza"
+    ccaa: "Aragón"
+    lat: 41.72173
+    lon: -0.74180
+    precision: aproximada
+    osm_id: "way/143207685"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo PEÑAFLOR 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [aragon]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-villanueva-de-gallego
+    nombre: "Villanueva De Gallego"
+    nudos_ree: ["VILLANUEVA DE GALLEGO 220"]
+    codigo_subestacion_ree: "50652"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Villanueva de Gállego"
+    provincia: "Zaragoza"
+    ccaa: "Aragón"
+    lat: 41.74218
+    lon: -0.84684
+    precision: aproximada
+    osm_id: "way/143207686"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo VILLANUEVA DE GALLEGO 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [aragon]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-entrerrios
+    nombre: "Entrerrios"
+    nudos_ree: ["ENTRERRIOS 220"]
+    codigo_subestacion_ree: "50206"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "REE;Endesa"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Pedrola"
+    provincia: "Zaragoza"
+    ccaa: "Aragón"
+    lat: 41.74861
+    lon: -1.18677
+    precision: aproximada
+    osm_id: "way/172872714"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: null   # nudo ENTRERRIOS 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [aragon]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-espartal
+    nombre: "Espartal"
+    nudos_ree: ["ESPARTAL 220"]
+    codigo_subestacion_ree: "50213"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "El Burgo de Ebro"
+    provincia: "Zaragoza"
+    ccaa: "Aragón"
+    lat: 41.54337
+    lon: -0.67908
+    precision: aproximada
+    osm_id: "way/170267594"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: null   # nudo ESPARTAL 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [aragon]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-montetorrero
+    nombre: "Montetorrero"
+    nudos_ree: ["MONTETORRERO 220"]
+    codigo_subestacion_ree: "50382"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: null
+    provincia: null
+    ccaa: "Aragón"
+    lat: null
+    lon: null
+    precision: desconocida
+    osm_id: null
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: null   # nudo MONTETORRERO 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [aragon]
+    fuentes: [src-ree-csv, src-ree-capacidad]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-plaza
+    nombre: "Plaza"
+    nudos_ree: ["PLAZA 220"]
+    codigo_subestacion_ree: "50449"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Endesa/REE"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Zaragoza"
+    provincia: "Zaragoza"
+    ccaa: "Aragón"
+    lat: 41.63009
+    lon: -0.99733
+    precision: aproximada
+    osm_id: "way/239807715"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: null   # nudo PLAZA 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [aragon]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-plaza-ii-moncasi
+    nombre: "Plaza Ii (Moncasi)"
+    nudos_ree: ["PLAZA II (MONCASI) 220"]
+    codigo_subestacion_ree: "51443"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: null
+    provincia: null
+    ccaa: "Aragón"
+    lat: null
+    lon: null
+    precision: desconocida
+    osm_id: null
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: null   # nudo PLAZA II (MONCASI) 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [aragon]
+    fuentes: [src-ree-csv, src-ree-capacidad]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-ave-zaragoza
+    nombre: "Ave Zaragoza"
+    nudos_ree: ["AVE ZARAGOZA 220"]
+    codigo_subestacion_ree: "50065"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Zaragoza"
+    provincia: "Zaragoza"
+    ccaa: "Aragón"
+    lat: 41.56971
+    lon: -0.78765
+    precision: aproximada
+    osm_id: "way/1369161160"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: null   # nudo AVE ZARAGOZA 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [aragon]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-cartujos
+    nombre: "Cartujos"
+    nudos_ree: ["CARTUJOS 220"]
+    codigo_subestacion_ree: "50136"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Zaragoza"
+    provincia: "Zaragoza"
+    ccaa: "Aragón"
+    lat: 41.58993
+    lon: -0.84285
+    precision: aproximada
+    osm_id: "way/170162276"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: null   # nudo CARTUJOS 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [aragon]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-calatorao
+    nombre: "Calatorao"
+    nudos_ree: ["CALATORAO 220"]
+    codigo_subestacion_ree: "51427"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: null
+    provincia: null
+    ccaa: "Aragón"
+    lat: null
+    lon: null
+    precision: desconocida
+    osm_id: null
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo CALATORAO 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [aragon]
+    fuentes: [src-ree-csv, src-ree-capacidad]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-escatron
+    nombre: "Escatron"
+    nudos_ree: ["ESCATRON 400"]
+    codigo_subestacion_ree: "50210"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: null
+    provincia: null
+    ccaa: "Aragón"
+    lat: null
+    lon: null
+    precision: desconocida
+    osm_id: null
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo ESCATRON 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [aragon]
+    fuentes: [src-ree-csv, src-ree-capacidad]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-fuendetodos
+    nombre: "Fuendetodos"
+    nudos_ree: ["FUENDETODOS 400"]
+    codigo_subestacion_ree: "50231"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Fuendetodos"
+    provincia: "Zaragoza"
+    ccaa: "Aragón"
+    lat: 41.33679
+    lon: -0.97666
+    precision: aproximada
+    osm_id: "way/169999915"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo FUENDETODOS 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [aragon]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-magallon
+    nombre: "Magallon"
+    nudos_ree: ["MAGALLON 400"]
+    codigo_subestacion_ree: "50341"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Magallón"
+    provincia: "Zaragoza"
+    ccaa: "Aragón"
+    lat: 41.84684
+    lon: -1.37848
+    precision: aproximada
+    osm_id: "way/49025600"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo MAGALLON 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [aragon]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-aragon
+    nombre: "Aragon"
+    nudos_ree: ["ARAGON 400"]
+    codigo_subestacion_ree: "50042"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Castelnou"
+    provincia: null
+    ccaa: "Aragón"
+    lat: 41.21730
+    lon: -0.28047
+    precision: aproximada
+    osm_id: "way/127787669"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo ARAGON 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [aragon]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-mezquita
+    nombre: "Mezquita"
+    nudos_ree: ["MEZQUITA 400"]
+    codigo_subestacion_ree: "50371"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Mezquita de Jarque"
+    provincia: null
+    ccaa: "Aragón"
+    lat: 40.72417
+    lon: -0.84939
+    precision: aproximada
+    osm_id: "way/145823172"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo MEZQUITA 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [aragon]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-mudejar
+    nombre: "Mudejar"
+    nudos_ree: ["MUDEJAR 400"]
+    codigo_subestacion_ree: "50395"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Andorra"
+    provincia: "Teruel"
+    ccaa: "Aragón"
+    lat: 41.02291
+    lon: -0.38216
+    precision: aproximada
+    osm_id: "way/683693772"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo MUDEJAR 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [aragon]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-terrer
+    nombre: "Terrer"
+    nudos_ree: ["TERRER 400"]
+    codigo_subestacion_ree: "50598"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Terrer"
+    provincia: "Comunidad de Calatayud"
+    ccaa: "Aragón"
+    lat: 41.32095
+    lon: -1.70571
+    precision: aproximada
+    osm_id: "way/170014037"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo TERRER 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [aragon]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-jalon
+    nombre: "Jalon"
+    nudos_ree: ["JALON 220"]
+    codigo_subestacion_ree: "50283"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: null
+    provincia: null
+    ccaa: "Aragón"
+    lat: null
+    lon: null
+    precision: desconocida
+    osm_id: null
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo JALON 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [aragon]
+    fuentes: [src-ree-csv, src-ree-capacidad]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-esquedas
+    nombre: "Esquedas"
+    nudos_ree: ["ESQUEDAS 220"]
+    codigo_subestacion_ree: "50214"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "La Sotonera"
+    provincia: "Hoya de Huesca / Plana de Uesca"
+    ccaa: "Aragón"
+    lat: 42.21554
+    lon: -0.57153
+    precision: aproximada
+    osm_id: "way/411107082"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: null   # nudo ESQUEDAS 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [aragon]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-los-vientos
+    nombre: "Los Vientos"
+    nudos_ree: ["LOS VIENTOS 220"]
+    codigo_subestacion_ree: "50333"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Muel"
+    provincia: "Zaragoza"
+    ccaa: "Aragón"
+    lat: 41.49300
+    lon: -1.13792
+    precision: aproximada
+    osm_id: "way/170140947"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo LOS VIENTOS 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [aragon]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-platea
+    nombre: "Platea"
+    nudos_ree: ["PLATEA 400"]
+    codigo_subestacion_ree: "51355"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Teruel"
+    provincia: "Comunidad de Teruel"
+    ccaa: "Aragón"
+    lat: 40.44332
+    lon: -1.11586
+    precision: aproximada
+    osm_id: "way/1263430948"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo PLATEA 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [aragon]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-zona-franca
+    nombre: "Zona Franca"
+    nudos_ree: ["ZONA FRANCA 220"]
+    codigo_subestacion_ree: "50469"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Barcelona"
+    provincia: "Barcelonès"
+    ccaa: "Cataluña"
+    lat: 41.32311
+    lon: 2.13330
+    precision: aproximada
+    osm_id: "way/1023900476"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: null   # nudo ZONA FRANCA 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [cataluna]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-castellbisbal
+    nombre: "Castellbisbal"
+    nudos_ree: ["CASTELLBISBAL 220"]
+    codigo_subestacion_ree: "50143"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Castellbisbal"
+    provincia: "Barcelona"
+    ccaa: "Cataluña"
+    lat: 41.44558
+    lon: 1.98601
+    precision: aproximada
+    osm_id: "way/149962802"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: null   # nudo CASTELLBISBAL 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [cataluna]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-abrera
+    nombre: "Abrera"
+    nudos_ree: ["ABRERA 220"]
+    codigo_subestacion_ree: "50002"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Abrera"
+    provincia: "Barcelona"
+    ccaa: "Cataluña"
+    lat: 41.50770
+    lon: 1.89436
+    precision: aproximada
+    osm_id: "way/75619319"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: null   # nudo ABRERA 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [cataluna]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-rubi
+    nombre: "Rubi"
+    nudos_ree: ["RUBI 400"]
+    codigo_subestacion_ree: "50508"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Rubí"
+    provincia: "Barcelona"
+    ccaa: "Cataluña"
+    lat: 41.47325
+    lon: 2.00987
+    precision: aproximada
+    osm_id: "way/124121964"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo RUBI 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [cataluna]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-can-jardi
+    nombre: "Can Jardi"
+    nudos_ree: ["CAN JARDI 400"]
+    codigo_subestacion_ree: "50119"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Rubí"
+    provincia: "Barcelona"
+    ccaa: "Cataluña"
+    lat: 41.47481
+    lon: 2.02381
+    precision: aproximada
+    osm_id: "way/124121959"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo CAN JARDI 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [cataluna]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-sentmenat
+    nombre: "Sentmenat"
+    nudos_ree: ["SENTMENAT 400"]
+    codigo_subestacion_ree: "50568"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Sentmenat"
+    provincia: "Barcelona"
+    ccaa: "Cataluña"
+    lat: 41.61948
+    lon: 2.11178
+    precision: aproximada
+    osm_id: "way/104020696"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo SENTMENAT 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [cataluna]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-pierola
+    nombre: "Pierola"
+    nudos_ree: ["PIEROLA 400"]
+    codigo_subestacion_ree: "50442"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "els Hostalets de Pierola"
+    provincia: "Barcelona"
+    ccaa: "Cataluña"
+    lat: 41.52347
+    lon: 1.82973
+    precision: aproximada
+    osm_id: "way/75606778"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo PIEROLA 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [cataluna]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-vic
+    nombre: "Vic"
+    nudos_ree: ["VIC 400"]
+    codigo_subestacion_ree: "50643"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España, S.A."   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Vic"
+    provincia: "Osona"
+    ccaa: "Cataluña"
+    lat: 41.95704
+    lon: 2.28218
+    precision: aproximada
+    osm_id: "way/178294745"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo VIC 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [cataluna]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-constanti
+    nombre: "Constanti"
+    nudos_ree: ["CONSTANTI 220"]
+    codigo_subestacion_ree: "50171"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: null
+    provincia: null
+    ccaa: "Cataluña"
+    lat: null
+    lon: null
+    precision: desconocida
+    osm_id: null
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: null   # nudo CONSTANTI 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [cataluna]
+    fuentes: [src-ree-csv, src-ree-capacidad]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-francoli
+    nombre: "Francoli"
+    nudos_ree: ["FRANCOLI 220"]
+    codigo_subestacion_ree: "52041"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: null
+    provincia: null
+    ccaa: "Cataluña"
+    lat: null
+    lon: null
+    precision: desconocida
+    osm_id: null
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: null   # nudo FRANCOLI 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [cataluna]
+    fuentes: [src-ree-csv, src-ree-capacidad]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-perafort
+    nombre: "Perafort"
+    nudos_ree: ["PERAFORT 220"]
+    codigo_subestacion_ree: "50439"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Perafort"
+    provincia: "Tarragona"
+    ccaa: "Cataluña"
+    lat: 41.19451
+    lon: 1.24854
+    precision: aproximada
+    osm_id: "way/506058990"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: null   # nudo PERAFORT 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [cataluna]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-la-secuita
+    nombre: "La Secuita"
+    nudos_ree: ["LA SECUITA 400"]
+    codigo_subestacion_ree: "51336"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: null
+    provincia: null
+    ccaa: "Cataluña"
+    lat: null
+    lon: null
+    precision: desconocida
+    osm_id: null
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo LA SECUITA 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [cataluna]
+    fuentes: [src-ree-csv, src-ree-capacidad]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-vandellos
+    nombre: "Vandellos"
+    nudos_ree: ["VANDELLOS 400"]
+    codigo_subestacion_ree: "50636"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Vandellòs i l'Hospitalet de l'Infant"
+    provincia: "Tarragona"
+    ccaa: "Cataluña"
+    lat: 40.97631
+    lon: 0.87901
+    precision: aproximada
+    osm_id: "way/140011919"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo VANDELLOS 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [cataluna]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-begues
+    nombre: "Begues"
+    nudos_ree: ["BEGUES 400"]
+    codigo_subestacion_ree: "50079"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Vallirana"
+    provincia: "Barcelona"
+    ccaa: "Cataluña"
+    lat: 41.35544
+    lon: 1.90239
+    precision: aproximada
+    osm_id: "relation/16809528"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo BEGUES 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [cataluna]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-garraf
+    nombre: "Garraf"
+    nudos_ree: ["GARRAF 400"]
+    codigo_subestacion_ree: "50240"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Vilanova i la Geltrú"
+    provincia: "Barcelona"
+    ccaa: "Cataluña"
+    lat: 41.25505
+    lon: 1.71926
+    precision: aproximada
+    osm_id: "way/200253359"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: null   # nudo GARRAF 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [cataluna]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-mas-figueres
+    nombre: "Mas Figueres"
+    nudos_ree: ["MAS FIGUERES 220"]
+    codigo_subestacion_ree: "50354"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: null
+    provincia: null
+    ccaa: "Cataluña"
+    lat: null
+    lon: null
+    precision: desconocida
+    osm_id: null
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo MAS FIGUERES 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [cataluna]
+    fuentes: [src-ree-csv, src-ree-capacidad]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-la-roca
+    nombre: "La Roca"
+    nudos_ree: ["LA ROCA 220"]
+    codigo_subestacion_ree: "50305"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: null
+    provincia: null
+    ccaa: "Cataluña"
+    lat: null
+    lon: null
+    precision: desconocida
+    osm_id: null
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 46   # nudo LA ROCA 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 46   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [cataluna]
+    fuentes: [src-ree-csv, src-ree-capacidad]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-franqueses
+    nombre: "Franqueses"
+    nudos_ree: ["FRANQUESES 220"]
+    codigo_subestacion_ree: "50228"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: null
+    provincia: null
+    ccaa: "Cataluña"
+    lat: null
+    lon: null
+    precision: desconocida
+    osm_id: null
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 46   # nudo FRANQUESES 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 46   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [cataluna]
+    fuentes: [src-ree-csv, src-ree-capacidad]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-riera-de-caldes
+    nombre: "Riera De Caldes"
+    nudos_ree: ["RIERA DE CALDES 220"]
+    codigo_subestacion_ree: "50501"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: null
+    provincia: null
+    ccaa: "Cataluña"
+    lat: null
+    lon: null
+    precision: desconocida
+    osm_id: null
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: null   # nudo RIERA DE CALDES 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [cataluna]
+    fuentes: [src-ree-csv, src-ree-capacidad]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-sant-celoni
+    nombre: "Sant Celoni"
+    nudos_ree: ["SANT CELONI 220"]
+    codigo_subestacion_ree: "50543"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Sant Celoni"
+    provincia: "Barcelona"
+    ccaa: "Cataluña"
+    lat: 41.70665
+    lon: 2.47069
+    precision: aproximada
+    osm_id: "way/111584995"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: null   # nudo SANT CELONI 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [cataluna]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-puigpelat
+    nombre: "Puigpelat"
+    nudos_ree: ["PUIGPELAT 220"]
+    codigo_subestacion_ree: "50487"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Puigpelat"
+    provincia: "Tarragona"
+    ccaa: "Cataluña"
+    lat: 41.28340
+    lon: 1.29141
+    precision: aproximada
+    osm_id: "way/169680270"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: null   # nudo PUIGPELAT 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [cataluna]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-arrigorriaga
+    nombre: "Arrigorriaga"
+    nudos_ree: ["ARRIGORRIAGA 400"]
+    codigo_subestacion_ree: "51448"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: null
+    provincia: null
+    ccaa: "País Vasco"
+    lat: null
+    lon: null
+    precision: desconocida
+    osm_id: null
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo ARRIGORRIAGA 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [pais-vasco]
+    fuentes: [src-ree-csv, src-ree-capacidad]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-abanto
+    nombre: "Abanto"
+    nudos_ree: ["ABANTO 400"]
+    codigo_subestacion_ree: "50001"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Abanto y Ciérvana-Abanto Zierbena"
+    provincia: "Bizkaia"
+    ccaa: "País Vasco"
+    lat: 43.32681
+    lon: -3.09396
+    precision: aproximada
+    osm_id: "way/105259481"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 1   # nudo ABANTO 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 1   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [pais-vasco]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-gatica
+    nombre: "Gatica"
+    nudos_ree: ["GATICA 400"]
+    codigo_subestacion_ree: "50241"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Gatika"
+    provincia: "Bizkaia"
+    ccaa: "País Vasco"
+    lat: 43.34961
+    lon: -2.88060
+    precision: aproximada
+    osm_id: "way/196215046"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 192   # nudo GATICA 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 192   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [pais-vasco]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-amorebieta
+    nombre: "Amorebieta"
+    nudos_ree: ["AMOREBIETA 400"]
+    codigo_subestacion_ree: "50034"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Amorebieta-Etxano"
+    provincia: "Bizkaia"
+    ccaa: "País Vasco"
+    lat: 43.23596
+    lon: -2.74929
+    precision: aproximada
+    osm_id: "way/1240967180"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 192   # nudo AMOREBIETA 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 192   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [pais-vasco]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-santurce
+    nombre: "Santurce"
+    nudos_ree: ["SANTURCE 400"]
+    codigo_subestacion_ree: "50563"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Santurtzi"
+    provincia: "Bizkaia"
+    ccaa: "País Vasco"
+    lat: 43.33829
+    lon: -3.05296
+    precision: aproximada
+    osm_id: "way/272118258"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 250   # nudo SANTURCE 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 250   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [pais-vasco]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-vitoria
+    nombre: "Vitoria"
+    nudos_ree: ["VITORIA 400"]
+    codigo_subestacion_ree: "50462"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: null
+    provincia: null
+    ccaa: "País Vasco"
+    lat: null
+    lon: null
+    precision: desconocida
+    osm_id: null
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 677   # nudo VITORIA 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 569   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [pais-vasco]
+    fuentes: [src-ree-csv, src-ree-capacidad]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-jundiz
+    nombre: "Jundiz"
+    nudos_ree: ["JUNDIZ 220"]
+    codigo_subestacion_ree: "50289"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Vitoria-Gasteiz"
+    provincia: "Araba / Álava"
+    ccaa: "País Vasco"
+    lat: 42.83621
+    lon: -2.74666
+    precision: aproximada
+    osm_id: "way/196522660"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 188   # nudo JUNDIZ 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 188   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [pais-vasco]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-gamarra
+    nombre: "Gamarra"
+    nudos_ree: ["GAMARRA 220"]
+    codigo_subestacion_ree: "50237"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Iberdrola"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Vitoria-Gasteiz"
+    provincia: "Araba / Álava"
+    ccaa: "País Vasco"
+    lat: 42.86905
+    lon: -2.66616
+    precision: aproximada
+    osm_id: "way/145337070"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: null   # nudo GAMARRA 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [pais-vasco]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-ali
+    nombre: "Ali"
+    nudos_ree: ["ALI 220"]
+    codigo_subestacion_ree: "50025"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: null
+    provincia: null
+    ccaa: "País Vasco"
+    lat: null
+    lon: null
+    precision: desconocida
+    osm_id: null
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: null   # nudo ALI 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [pais-vasco]
+    fuentes: [src-ree-csv, src-ree-capacidad]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-mercedes-benz
+    nombre: "Mercedes Benz"
+    nudos_ree: ["MERCEDES BENZ 220"]
+    codigo_subestacion_ree: "50368"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Vitoria-Gasteiz"
+    provincia: "Araba / Álava"
+    ccaa: "País Vasco"
+    lat: 42.85135
+    lon: -2.71068
+    precision: aproximada
+    osm_id: "way/196522656"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: null   # nudo MERCEDES BENZ 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [pais-vasco]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-barrundia
+    nombre: "Barrundia"
+    nudos_ree: ["BARRUNDIA 220"]
+    codigo_subestacion_ree: "51418"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: null
+    provincia: null
+    ccaa: "País Vasco"
+    lat: null
+    lon: null
+    precision: desconocida
+    osm_id: null
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 142   # nudo BARRUNDIA 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 110   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [pais-vasco]
+    fuentes: [src-ree-csv, src-ree-capacidad]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-azpeitia
+    nombre: "Azpeitia"
+    nudos_ree: ["AZPEITIA 400"]
+    codigo_subestacion_ree: "50068"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Azpeitia"
+    provincia: "Gipuzkoa"
+    ccaa: "País Vasco"
+    lat: 43.21265
+    lon: -2.25240
+    precision: aproximada
+    osm_id: "way/196207064"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 494   # nudo AZPEITIA 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 494   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [pais-vasco]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-hernani
+    nombre: "Hernani"
+    nudos_ree: ["HERNANI 400"]
+    codigo_subestacion_ree: "50264"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Hernani"
+    provincia: "Gipuzkoa"
+    ccaa: "País Vasco"
+    lat: 43.25982
+    lon: -1.96859
+    precision: aproximada
+    osm_id: "way/196207063"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 483   # nudo HERNANI 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 483   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [pais-vasco]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-itxaso
+    nombre: "Itxaso"
+    nudos_ree: ["ITXASO 400"]
+    codigo_subestacion_ree: "50281"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: null
+    provincia: "Gipuzkoa"
+    ccaa: "País Vasco"
+    lat: 43.06146
+    lon: -2.27398
+    precision: aproximada
+    osm_id: "way/196202213"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo ITXASO 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [pais-vasco]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-guenes
+    nombre: "Gueñes"
+    nudos_ree: ["GUEÑES 400"]
+    codigo_subestacion_ree: "50256"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Güeñes"
+    provincia: "Bizkaia"
+    ccaa: "País Vasco"
+    lat: 43.21886
+    lon: -3.03033
+    precision: aproximada
+    osm_id: "way/202891403"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo GUEÑES 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [pais-vasco]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-zierbena
+    nombre: "Zierbena"
+    nudos_ree: ["ZIERBENA 400"]
+    codigo_subestacion_ree: "50468"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Zierbena"
+    provincia: "Bizkaia"
+    ccaa: "País Vasco"
+    lat: 43.35874
+    lon: -3.09103
+    precision: aproximada
+    osm_id: "way/223207745"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 1   # nudo ZIERBENA 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 1   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [pais-vasco]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-la-jara
+    nombre: "La Jara"
+    nudos_ree: ["LA JARA 220"]
+    codigo_subestacion_ree: "50296"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Güeñes"
+    provincia: "Bizkaia"
+    ccaa: "País Vasco"
+    lat: 43.20378
+    lon: -3.10449
+    precision: aproximada
+    osm_id: "way/196382212"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 223   # nudo LA JARA 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 223   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [pais-vasco]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-ayala
+    nombre: "Ayala"
+    nudos_ree: ["AYALA 220"]
+    codigo_subestacion_ree: "50066"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Iberdrola"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Aiarako kuadrilla"
+    provincia: "Araba / Álava"
+    ccaa: "País Vasco"
+    lat: 43.08418
+    lon: -3.01127
+    precision: aproximada
+    osm_id: "way/196371124"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 85   # nudo AYALA 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 85   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [pais-vasco]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-ortuella
+    nombre: "Ortuella"
+    nudos_ree: ["ORTUELLA 220"]
+    codigo_subestacion_ree: "50419"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Iberdrola"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Ortuella"
+    provincia: "Bizkaia"
+    ccaa: "País Vasco"
+    lat: 43.31396
+    lon: -3.03642
+    precision: aproximada
+    osm_id: "way/111584847"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 29   # nudo ORTUELLA 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 29   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [pais-vasco]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-basauri
+    nombre: "Basauri"
+    nudos_ree: ["BASAURI 220"]
+    codigo_subestacion_ree: "50077"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Basauri"
+    provincia: "Bizkaia"
+    ccaa: "País Vasco"
+    lat: 43.22079
+    lon: -2.89496
+    precision: aproximada
+    osm_id: "way/205141906"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 23   # nudo BASAURI 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 23   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [pais-vasco]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-zamudio
+    nombre: "Zamudio"
+    nudos_ree: ["ZAMUDIO 220"]
+    codigo_subestacion_ree: "50466"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Iberdrola"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Zamudio"
+    provincia: "Bizkaia"
+    ccaa: "País Vasco"
+    lat: 43.30126
+    lon: -2.86402
+    precision: aproximada
+    osm_id: "way/702532047"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: null   # nudo ZAMUDIO 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [pais-vasco]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-morvedre
+    nombre: "Morvedre"
+    nudos_ree: ["MORVEDRE 400"]
+    codigo_subestacion_ree: "50390"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Sagunt / Sagunto"
+    provincia: null
+    ccaa: "Comunidad Valenciana"
+    lat: 39.64110
+    lon: -0.23542
+    precision: aproximada
+    osm_id: "way/156435509"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: null   # nudo MORVEDRE 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [valencia-sagunto]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-saguntum
+    nombre: "Saguntum"
+    nudos_ree: ["SAGUNTUM 400", "SAGUNTUM 220"]
+    codigo_subestacion_ree: "51432"
+    tensiones_kv: [400, 220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: null
+    provincia: null
+    ccaa: "Comunidad Valenciana"
+    lat: null
+    lon: null
+    precision: desconocida
+    osm_id: null
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: null   # nudo SAGUNTUM 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [valencia-sagunto]
+    fuentes: [src-ree-csv, src-ree-capacidad]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-sagunto
+    nombre: "Sagunto"
+    nudos_ree: ["SAGUNTO 220"]
+    codigo_subestacion_ree: "50517"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Sagunt / Sagunto"
+    provincia: null
+    ccaa: "Comunidad Valenciana"
+    lat: 39.67225
+    lon: -0.26774
+    precision: aproximada
+    osm_id: "way/77594046"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: null   # nudo SAGUNTO 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [valencia-sagunto]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-sagunto-gis
+    nombre: "Sagunto Gis"
+    nudos_ree: ["SAGUNTO GIS 220"]
+    codigo_subestacion_ree: "50518"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: null
+    provincia: null
+    ccaa: "Comunidad Valenciana"
+    lat: null
+    lon: null
+    precision: desconocida
+    osm_id: null
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: null   # nudo SAGUNTO GIS 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [valencia-sagunto]
+    fuentes: [src-ree-csv, src-ree-capacidad]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-morvedre-b
+    nombre: "Morvedre B"
+    nudos_ree: ["MORVEDRE B 220"]
+    codigo_subestacion_ree: "50390"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: null
+    provincia: null
+    ccaa: "Comunidad Valenciana"
+    lat: null
+    lon: null
+    precision: desconocida
+    osm_id: null
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: null   # nudo MORVEDRE B 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [valencia-sagunto]
+    fuentes: [src-ree-csv, src-ree-capacidad]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-la-plana
+    nombre: "La Plana"
+    nudos_ree: ["LA PLANA 400"]
+    codigo_subestacion_ree: "50303"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Almassora"
+    provincia: "Castellón"
+    ccaa: "Comunidad Valenciana"
+    lat: 39.96679
+    lon: -0.09653
+    precision: aproximada
+    osm_id: "way/34585227"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo LA PLANA 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [valencia-sagunto]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-el-serrallo
+    nombre: "El Serrallo"
+    nudos_ree: ["EL SERRALLO 220"]
+    codigo_subestacion_ree: "50727"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: null
+    provincia: null
+    ccaa: "Comunidad Valenciana"
+    lat: null
+    lon: null
+    precision: desconocida
+    osm_id: null
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: null   # nudo EL SERRALLO 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [valencia-sagunto]
+    fuentes: [src-ree-csv, src-ree-capacidad]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-torrente
+    nombre: "Torrente"
+    nudos_ree: ["TORRENTE 400"]
+    codigo_subestacion_ree: "50606"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España;Iberdrola"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Torrent"
+    provincia: "l'Horta Sud"
+    ccaa: "Comunidad Valenciana"
+    lat: 39.42355
+    lon: -0.45467
+    precision: aproximada
+    osm_id: "way/60351390"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: null   # nudo TORRENTE 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [valencia-sagunto]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-catadau
+    nombre: "Catadau"
+    nudos_ree: ["CATADAU 400"]
+    codigo_subestacion_ree: "50146"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Catadau"
+    provincia: "Valencia"
+    ccaa: "Comunidad Valenciana"
+    lat: 39.25024
+    lon: -0.56085
+    precision: aproximada
+    osm_id: "way/126987023"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo CATADAU 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [valencia-sagunto]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-godelleta
+    nombre: "Godelleta"
+    nudos_ree: ["GODELLETA 400"]
+    codigo_subestacion_ree: "50732"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: null
+    provincia: null
+    ccaa: "Comunidad Valenciana"
+    lat: null
+    lon: null
+    precision: desconocida
+    osm_id: null
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo GODELLETA 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [valencia-sagunto]
+    fuentes: [src-ree-csv, src-ree-capacidad]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-eliana
+    nombre: "Eliana"
+    nudos_ree: ["ELIANA 400"]
+    codigo_subestacion_ree: "50204"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España;Iberdrola"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "l'Eliana"
+    provincia: null
+    ccaa: "Comunidad Valenciana"
+    lat: 39.55458
+    lon: -0.51063
+    precision: aproximada
+    osm_id: "way/33771314"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: null   # nudo ELIANA 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [valencia-sagunto]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-muela
+    nombre: "Muela"
+    nudos_ree: ["MUELA 400"]
+    codigo_subestacion_ree: "50396"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: null
+    provincia: null
+    ccaa: "Comunidad Valenciana"
+    lat: null
+    lon: null
+    precision: desconocida
+    osm_id: null
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo MUELA 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [valencia-sagunto]
+    fuentes: [src-ree-csv, src-ree-capacidad]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-fadrell
+    nombre: "Fadrell"
+    nudos_ree: ["FADRELL 400"]
+    codigo_subestacion_ree: "51408"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: null
+    provincia: null
+    ccaa: "Comunidad Valenciana"
+    lat: null
+    lon: null
+    precision: desconocida
+    osm_id: null
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo FADRELL 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [valencia-sagunto]
+    fuentes: [src-ree-csv, src-ree-capacidad]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-segorbe
+    nombre: "Segorbe"
+    nudos_ree: ["SEGORBE 220"]
+    codigo_subestacion_ree: "50566"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Segorbe"
+    provincia: "Castellón"
+    ccaa: "Comunidad Valenciana"
+    lat: 39.82744
+    lon: -0.45651
+    precision: aproximada
+    osm_id: "way/127528769"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: null   # nudo SEGORBE 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [valencia-sagunto]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-carmona
+    nombre: "Carmona"
+    nudos_ree: ["CARMONA 400", "CARMONA 220"]
+    codigo_subestacion_ree: "50128"
+    tensiones_kv: [400, 220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: null
+    provincia: null
+    ccaa: "Andalucía"
+    lat: null
+    lon: null
+    precision: desconocida
+    osm_id: null
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 812   # nudo CARMONA 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 809   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [andalucia]
+    fuentes: [src-ree-csv, src-ree-capacidad]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-don-rodrigo
+    nombre: "Don Rodrigo"
+    nudos_ree: ["DON RODRIGO 220"]
+    codigo_subestacion_ree: "50182"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Alcalá de Guadaíra"
+    provincia: "Sevilla"
+    ccaa: "Andalucía"
+    lat: 37.24519
+    lon: -5.84346
+    precision: aproximada
+    osm_id: "way/144787749"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 259   # nudo DON RODRIGO 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 257   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [andalucia]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-guillena
+    nombre: "Guillena"
+    nudos_ree: ["GUILLENA 400"]
+    codigo_subestacion_ree: "50259"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Guillena"
+    provincia: "Sevilla"
+    ccaa: "Andalucía"
+    lat: 37.63635
+    lon: -6.09743
+    precision: aproximada
+    osm_id: "way/170424447"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 273   # nudo GUILLENA 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 273   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [andalucia]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-quintos
+    nombre: "Quintos"
+    nudos_ree: ["QUINTOS 220"]
+    codigo_subestacion_ree: "50493"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Sevilla"
+    provincia: "Sevilla"
+    ccaa: "Andalucía"
+    lat: 37.35016
+    lon: -5.95190
+    precision: aproximada
+    osm_id: "way/144799209"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo QUINTOS 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [andalucia]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-entrenucleos
+    nombre: "Entrenucleos"
+    nudos_ree: ["ENTRENUCLEOS 220"]
+    codigo_subestacion_ree: "50729"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Dos Hermanas"
+    provincia: "Sevilla"
+    ccaa: "Andalucía"
+    lat: 37.31462
+    lon: -5.94490
+    precision: aproximada
+    osm_id: "way/1316855580"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo ENTRENUCLEOS 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [andalucia]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-santiponce
+    nombre: "Santiponce"
+    nudos_ree: ["SANTIPONCE 220"]
+    codigo_subestacion_ree: "50561"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Valencina de la Concepción"
+    provincia: "Sevilla"
+    ccaa: "Andalucía"
+    lat: 37.42537
+    lon: -6.03939
+    precision: aproximada
+    osm_id: "way/151490968"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: null   # nudo SANTIPONCE 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [andalucia]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-alcores
+    nombre: "Alcores"
+    nudos_ree: ["ALCORES 220"]
+    codigo_subestacion_ree: "50017"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Alcalá de Guadaíra"
+    provincia: "Sevilla"
+    ccaa: "Andalucía"
+    lat: 37.38639
+    lon: -5.85634
+    precision: aproximada
+    osm_id: "way/43797051"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: null   # nudo ALCORES 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [andalucia]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-cartuja
+    nombre: "Cartuja"
+    nudos_ree: ["CARTUJA 220"]
+    codigo_subestacion_ree: "50135"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Jerez de la Frontera"
+    provincia: "Campiña de Jerez"
+    ccaa: "Andalucía"
+    lat: 36.61837
+    lon: -6.12003
+    precision: aproximada
+    osm_id: "way/97851756"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: null   # nudo CARTUJA 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [andalucia]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-palos
+    nombre: "Palos"
+    nudos_ree: ["PALOS 400", "PALOS 220"]
+    codigo_subestacion_ree: "50425"
+    tensiones_kv: [400, 220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Palos de la Frontera"
+    provincia: "Huelva"
+    ccaa: "Andalucía"
+    lat: 37.18473
+    lon: -6.88294
+    precision: aproximada
+    osm_id: "way/170424455"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: null   # nudo PALOS 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [andalucia]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-cristobal-colon
+    nombre: "Cristobal Colon"
+    nudos_ree: ["CRISTOBAL COLON 220"]
+    codigo_subestacion_ree: "50178"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Huelva"
+    provincia: "Huelva"
+    ccaa: "Andalucía"
+    lat: 37.21692
+    lon: -6.94371
+    precision: aproximada
+    osm_id: "way/170433606"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: null   # nudo CRISTOBAL COLON 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [andalucia]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-onuba
+    nombre: "Onuba"
+    nudos_ree: ["ONUBA 220"]
+    codigo_subestacion_ree: "50415"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Huelva"
+    provincia: "Huelva"
+    ccaa: "Andalucía"
+    lat: 37.29983
+    lon: -6.92537
+    precision: aproximada
+    osm_id: "way/170433597"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: null   # nudo ONUBA 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [andalucia]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-los-barrios
+    nombre: "Los Barrios"
+    nudos_ree: ["LOS BARRIOS 220"]
+    codigo_subestacion_ree: "50328"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Los Barrios"
+    provincia: "Campo de Gibraltar"
+    ccaa: "Andalucía"
+    lat: 36.18464
+    lon: -5.42042
+    precision: aproximada
+    osm_id: "way/1262722031"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: null   # nudo LOS BARRIOS 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [andalucia]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-pinar-de-rey
+    nombre: "Pinar De Rey"
+    nudos_ree: ["PINAR DE REY 400"]
+    codigo_subestacion_ree: "50444"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "San Roque"
+    provincia: "Campo de Gibraltar"
+    ccaa: "Andalucía"
+    lat: 36.24847
+    lon: -5.41159
+    precision: aproximada
+    osm_id: "way/97199647"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo PINAR DE REY 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [andalucia]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-algeciras
+    nombre: "Algeciras"
+    nudos_ree: ["ALGECIRAS 220"]
+    codigo_subestacion_ree: "50022"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "San Roque"
+    provincia: "Campo de Gibraltar"
+    ccaa: "Andalucía"
+    lat: 36.18336
+    lon: -5.38830
+    precision: aproximada
+    osm_id: "way/1262722037"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 0   # nudo ALGECIRAS 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 0   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [andalucia]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-cartama
+    nombre: "Cartama"
+    nudos_ree: ["CARTAMA 400"]
+    codigo_subestacion_ree: "50133"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Cártama"
+    provincia: "Valle del Guadalhorce"
+    ccaa: "Andalucía"
+    lat: 36.75092
+    lon: -4.60510
+    precision: aproximada
+    osm_id: "way/170968145"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 488   # nudo CARTAMA 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 488   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [andalucia]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-tajo-encantada
+    nombre: "Tajo Encantada"
+    nudos_ree: ["TAJO ENCANTADA 400"]
+    codigo_subestacion_ree: "50591"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Álora"
+    provincia: "Valle del Guadalhorce"
+    ccaa: "Andalucía"
+    lat: 36.89503
+    lon: -4.74563
+    precision: aproximada
+    osm_id: "way/75902880"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 122   # nudo TAJO ENCANTADA 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 122   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [andalucia]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-caparacena
+    nombre: "Caparacena"
+    nudos_ree: ["CAPARACENA 400"]
+    codigo_subestacion_ree: "50126"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Atarfe"
+    provincia: "Granada"
+    ccaa: "Andalucía"
+    lat: 37.26798
+    lon: -3.72609
+    precision: aproximada
+    osm_id: "way/170946426"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 683   # nudo CAPARACENA 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 236   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [andalucia]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-atarfe
+    nombre: "Atarfe"
+    nudos_ree: ["ATARFE 220"]
+    codigo_subestacion_ree: "50063"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Atarfe"
+    provincia: "Granada"
+    ccaa: "Andalucía"
+    lat: 37.22512
+    lon: -3.69722
+    precision: aproximada
+    osm_id: "way/171071300"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: null   # nudo ATARFE 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [andalucia]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-illora
+    nombre: "Illora"
+    nudos_ree: ["ILLORA 220"]
+    codigo_subestacion_ree: "50277"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Íllora"
+    provincia: "Comarca de Loja"
+    ccaa: "Andalucía"
+    lat: 37.24039
+    lon: -3.88494
+    precision: aproximada
+    osm_id: "way/782365013"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: null   # nudo ILLORA 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: null   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [andalucia]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-litoral
+    nombre: "Litoral"
+    nudos_ree: ["LITORAL 400"]
+    codigo_subestacion_ree: "50318"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Carboneras"
+    provincia: "Almería"
+    ccaa: "Andalucía"
+    lat: 36.97825
+    lon: -1.90800
+    precision: aproximada
+    osm_id: "way/144909722"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 953   # nudo LITORAL 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 514   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [andalucia]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-benahadux
+    nombre: "Benahadux"
+    nudos_ree: ["BENAHADUX 220"]
+    codigo_subestacion_ree: "50084"
+    tensiones_kv: [220]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: "Red Eléctrica de España"   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Benahadux"
+    provincia: "Almería"
+    ccaa: "Andalucía"
+    lat: 36.90875
+    lon: -2.46596
+    precision: aproximada
+    osm_id: "way/46106589"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 55   # nudo BENAHADUX 220, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 55   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [andalucia]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"
+
+  - id: se-tabernas
+    nombre: "Tabernas"
+    nudos_ree: ["TABERNAS 400"]
+    codigo_subestacion_ree: "50585"
+    tensiones_kv: [400]
+    gestor_red: "Red Eléctrica"   # gestor de la red de transporte (nudo presente en el fichero GRT de REE)
+    titular: null   # etiqueta operator de OSM; indicativa, no oficial
+    municipio: "Tabernas"
+    provincia: "Almería"
+    ccaa: "Andalucía"
+    lat: 37.07097
+    lon: -2.31232
+    precision: aproximada
+    osm_id: "way/327268322"
+    estado: existente   # el nudo figura en el fichero de capacidad de la red en explotación
+    capacidad_acceso_demanda_mw: 1117   # nudo TABERNAS 400, "disponible para solicitudes, criterio general, demanda NO CEP"
+    capacidad_acceso_demanda_cep_ch_mw: 124   # misma fecha, demanda con electrónica de potencia y soporte de huecos
+    fecha_dato_capacidad: "2026-08-03"
+    capacidad_nota: "La capacidad se publica por nudo (nombre + tensión). Ver data/red/capacidad.yaml para todos los nudos de esta subestación y para las magnitudes otorgada/solicitada. Es capacidad de DEMANDA, no de generación."
+    clusters_relacionados: [andalucia]
+    fuentes: [src-ree-csv, src-ree-capacidad, src-osm, src-nominatim]
+    ultima_verificacion: "2026-08-29"

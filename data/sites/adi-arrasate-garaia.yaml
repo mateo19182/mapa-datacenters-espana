@@ -1,0 +1,89 @@
+id: adi-arrasate-garaia
+nombre: "ADI Data Center Euskadi — Parque Tecnológico Garaia (Arrasate-Mondragón)"
+alias:
+  - "Segundo data center de ADI"
+  - "CPD PTGaraia"
+tipo: edificio
+operador: "Atlantic Data Infrastructure (ADI Data Center Euskadi)"
+modelo: colocation
+
+ubicacion:
+  municipio: "Arrasate/Mondragón"
+  provincia: "Gipuzkoa"
+  ccaa: "País Vasco"
+  direccion: "Parque Tecnológico Garaia, Arrasate-Mondragón"
+  lat: 43.0580
+  lon: -2.4940
+  precision: aproximada
+  fuentes: [src-1]
+
+estado: en_construccion
+estado_detalle: >-
+  Segundo centro de ADI. Proyecto adjudicado a KREAN en febrero de 2025. La prensa
+  vasca situó la finalización a finales de 2026 y, en abril de 2026, el arranque de
+  obras con disponibilidad prevista en 2027. Las salas se equiparán por fases según
+  comercialización.
+estado_fuentes: [src-1, src-2]
+
+potencia:
+  - tipo: it
+    valor_mw: 3
+    ambito: edificio
+    referencia: "Capacidad máxima del edificio en equipos IT, repartida en dos salas"
+    estado_asociado: en_construccion
+    fecha_dato: "2025-02-07"
+    fuentes: [src-1]
+    nota: "La fuente dice literalmente «hasta 3MW en equipos IT»."
+
+fases:
+  - nombre: "Sala 1"
+    estado: en_construccion
+    fuentes: [src-1]
+  - nombre: "Sala 2"
+    estado: anunciado
+    fuentes: [src-1]
+
+superficie_construida_m2: 5000
+
+enlaces_proyecto:
+  - "https://www.ptgaraia.eus/es/adi-data-center-euskadi-adjudica-a-krean-el-proyecto-del-nuevo-edificio-de-centro-de-procesamiento-de-datos-en-ptgaraia/"
+
+incertidumbres:
+  - campo: superficie_construida_m2
+    descripcion: "La fuente dice «más de 5.000 m² de superficie construida»; se registra el umbral."
+    fuentes: [src-1]
+  - campo: fecha_puesta_en_servicio
+    descripcion: >-
+      Febrero de 2025: «estará todo listo para finales del próximo año» (finales de
+      2026). Titulares de abril de 2026 recogidos en agregadores hablan de 2027, pero
+      no se ha podido abrir esa pieza para verificarlo.
+    fuentes: [src-2, src-3]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.ptgaraia.eus/es/adi-data-center-euskadi-adjudica-a-krean-el-proyecto-del-nuevo-edificio-de-centro-de-procesamiento-de-datos-en-ptgaraia/"
+    titulo: "ADI Data Center Euskadi adjudica a KREAN el proyecto del nuevo edificio de centro de procesamiento de datos en PTGaraia"
+    editor: "Parque Tecnológico Garaia"
+    tipo: oficial
+    fecha_publicacion: "2025-02-07"
+    fecha_consulta: "2026-08-29"
+    cita: "podrá llegar a albergar hasta 3MW en equipos IT repartidos en dos salas"
+  - id: src-2
+    url: "https://cronicavasca.elespanol.com/empresas/20250211/adi-tendra-listo-segundo-center-arrasate-finales/923157723_0.html"
+    titulo: "ADI tendrá listo su segundo 'data center' en Arrasate para finales de 2026"
+    editor: "Crónica Vasca (El Español)"
+    tipo: prensa_general
+    fecha_publicacion: "2025-02-11"
+    fecha_consulta: "2026-08-29"
+    cita: "ADI tendrá listo su segundo 'data center' en Arrasate para finales de 2026"
+  - id: src-3
+    url: "https://www.krean.com/en/news/adi-data-center-euskadi-awards-krean-project-new-data-centre-building-gipuzkoa"
+    titulo: "ADI Data Center Euskadi awards KREAN the project for the new data centre building in Gipuzkoa"
+    editor: "KREAN"
+    tipo: empresa
+    fecha_publicacion: "2025-02-06"
+    fecha_consulta: "2026-08-29"
+    cita: "up to 3MW of IT equipment in two rooms"

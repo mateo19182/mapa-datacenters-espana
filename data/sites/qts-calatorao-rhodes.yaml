@@ -1,0 +1,144 @@
+id: qts-calatorao-rhodes
+nombre: "QTS/Blackstone — Campus data center «Proyecto Rhodes» (Calatorao)"
+alias:
+  - "Proyecto Rhodes"
+  - "Campus Data Center SUI-4 Calatorao"
+  - "QTS Calatorao"
+tipo: campus
+operador: "QTS Data Centers"
+propietario: "Calanza Inmuebles, S.L. (participada por fondos gestionados por Blackstone)"
+modelo: hyperscale
+
+ubicacion:
+  municipio: "Calatorao"
+  provincia: "Zaragoza"
+  ccaa: "Aragón"
+  direccion: "Sector de suelo urbanizable industrial SUI-4 «Campus Data Center», margen derecha de la autovía A-2 entre los pk 281,00 y 284,50"
+  lat: 41.522175
+  lon: -1.346577
+  precision: municipio
+  fuentes: [src-1, src-4]
+
+estado: en_tramitacion
+estado_detalle: >-
+  Declarado inversión de interés autonómico con interés general de Aragón el 14 de octubre
+  de 2024; redelimitación del ámbito el 27 de junio de 2025 y de nuevo el 29 de julio de
+  2026. El PIGA "Proyecto Rhodes" se aprobó inicialmente por Orden FOM/1039/2025, de 19 de
+  agosto. INAGA inició en diciembre de 2025 el trámite de información pública del estudio
+  de impacto ambiental y del proyecto básico de autorización ambiental integrada
+  (expediente INAGA 500301/02/2025/08352) y el 23 de julio de 2026 resolvió no someter el
+  PIGA a evaluación ambiental estratégica ordinaria, emitiendo informe ambiental
+  estratégico y el informe de impacto ambiental del proyecto de urbanización.
+estado_fuentes: [src-1, src-2, src-3, src-5]
+
+potencia:
+  - tipo: conexion_red
+    valor_mw: 650
+    ambito: campus
+    referencia: "Capacidad de la nueva subestación Rhodes alimentada con cuatro líneas subterráneas desde la SE Calatorao 220 kV (REE)"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2025-08-25"
+    fuentes: [src-1]
+    nota: >-
+      La fuente oficial dice literalmente "proporcionando hasta 650 MW de capacidad",
+      referido a la subestación de conexión, no a la carga TI.
+
+fases:
+  - nombre: "Fase 1"
+    estado: en_tramitacion
+    fuentes: [src-1]
+    nota: >-
+      Urbanización completa del sector SUI-4 y ejecución del proyecto en parte de la parcela
+      ILT 1. Inicio previsto en el segundo trimestre de 2026 y conclusión a finales de 2035.
+      Obras interiores presupuestadas en 5.319.782.645 €.
+  - nombre: "Fase 2"
+    estado: anunciado
+    fuentes: [src-1]
+    nota: >-
+      No forma parte del PIGA. Ampliación en el resto de la parcela ILT 1 y en la parcela
+      IL 1, donde también podrían implantarse usos logísticos. Plazo estimado de 7 años.
+
+conexion_electrica:
+  subestacion: "SE Rhodes (nueva), alimentada desde la SE Calatorao 220 kV de Red Eléctrica de España mediante cuatro líneas subterráneas"
+  tension_kv: 220
+  titular_red: "Red Eléctrica de España — SE Calatorao 220 kV"
+  mw_solicitados: null
+  mw_concedidos: null
+  fuentes: [src-1]
+  nota: >-
+    Además de la línea aéreo-subterránea de 220 kV entre la SE Calatorao 220 kV (REE) y la
+    SE Rhodes, con centro de medida junto a la subestación, el PIGA incluye una línea
+    subterránea de 15 kV desde la SE La Almunia hasta el ámbito urbanizado (excluida la
+    demanda del centro de datos), que discurre por La Almunia de Doña Godina, Alfamén y
+    Calatorao.
+
+superficie_parcela_m2: 2234088
+inversion_anunciada_eur: 11805195141
+refrigeracion: null
+enlaces_proyecto:
+  - "https://www.aragon.es/-/proyecto-rhodes"
+  - "https://www.aragon.es/-/rhodes-proy-reparcelacion"
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      La única cifra de potencia con fuente verificada es la capacidad de la subestación
+      Rhodes (hasta 650 MW). No consta carga TI del campus. Circula además en prensa
+      especializada una cifra de 300 MW para la subestación de red, que no ha podido
+      contrastarse porque la publicación bloquea el acceso automatizado.
+    fuentes: [src-1]
+  - campo: inversion_anunciada_eur
+    descripcion: >-
+      El mismo documento del PIGA afirma en texto que "la inversión total del PIGA asciende
+      a 11.728 millones de euros" y en la tabla económica que la inversión total (fases 1 y
+      2) es de 11.805.195.141 €. Se registra la cifra de la tabla.
+    fuentes: [src-1]
+  - campo: ubicacion
+    descripcion: >-
+      Las coordenadas registradas son el centroide municipal de Calatorao (Wikidata); el
+      sector SUI-4 está al sur de la A-2, entre los pk 281 y 284,5.
+    fuentes: [src-4]
+
+confianza: alta
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1408861960606"
+    titulo: "ORDEN FOM/1039/2025, de 19 de agosto, por la que se aprueba inicialmente el Plan de Interés General de Aragón «Proyecto Rhodes» promovido por la mercantil Calanza Inmuebles, SL"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2025-08-25"
+    fecha_consulta: "2026-08-29"
+    cita: "Subestación Rhodes: Se proyecta una nueva subestación eléctrica que abastecerá al campus y se alimentará con cuatro líneas subterráneas desde la SE Calatorao 220 kV (REE), proporcionando hasta 650 MW de capacidad."
+  - id: src-2
+    url: "https://www.calatorao.es/wp-content/uploads/2025/08/boa-11082025-proyecto-rhodes-Calatorao.pdf"
+    titulo: "ORDEN PEJ/962/2025, de 28 de julio de 2025, por la que se da publicidad al Acuerdo de 27 de junio de 2025, del Gobierno de Aragón, por el que se acuerda la redelimitación del ámbito del Plan de interés general de Aragón «Rhodes», en el término municipal de Calatorao (Zaragoza)"
+    editor: "Ayuntamiento de Calatorao / Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2025-08-11"
+    fecha_consulta: "2026-08-29"
+    cita: "el Proyecto Rhodes se localiza en el término municipal de Calatorao, correspondiéndose con el sector de suelo urbanizable industrial SUI-4, un ámbito de actuación de aproximadamente 224 ha"
+  - id: src-3
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1429136690606"
+    titulo: "ANUNCIO del Instituto Aragonés de Gestión Ambiental [...] información al público del estudio de impacto ambiental y el proyecto básico de Autorización Ambiental Integrada del «Proyecto Rhodes» (INAGA 500301/02/2025/08352)"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2025-12-31"
+    fecha_consulta: "2026-08-29"
+    cita: "La sociedad Calanza Inmuebles SL, ha solicitado la autorización ambiental integrada del proyecto de centro de datos, ubicado en el término municipal de Calatorao (Zaragoza)."
+  - id: src-4
+    url: "https://query.wikidata.org/sparql"
+    titulo: "Wikidata Query Service — coordenadas del municipio de Calatorao (propiedad P625)"
+    editor: "Wikidata"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: "Calatorao 41.5221751 -1.3465769"
+  - id: src-5
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1460897480505"
+    titulo: "ANUNCIO del Instituto Aragonés de Gestión Ambiental, por el que se da publicidad a la Resolución de 23 de julio de 2026 [...] informe ambiental estratégico del Plan de Interés General de Aragón «Proyecto Rhodes»"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2026-08-05"
+    fecha_consulta: "2026-08-29"
+    cita: "Plan de Interés General de Aragón \"Proyecto Rhodes\", de construcción de un campus Centro de Datos en el término municipal de Calatorao (Zaragoza)."

@@ -1,0 +1,47 @@
+id: ppa-equinix-ignis-espana
+nombre: "PPA Equinix — cinco plantas fotovoltaicas de Ignis en España (225 MW)"
+tipo: fotovoltaica
+potencia_mw: 225
+tipo_potencia: nominal
+capacidad_mwh: null
+promotor: "IGNIS"
+contraparte_ppa: "Equinix"
+tipo_vinculo: ppa
+municipio: null
+provincia: null
+ccaa: null
+lat: null
+lon: null
+precision: desconocida
+estado: anunciado
+estado_detalle: "Cinco PPA firmados en febrero de 2023, con los proyectos previstos operativos en 2025. No se ha verificado la puesta en servicio."
+fecha_firma: "2023-02-28"
+adicionalidad: nueva_construccion
+adicionalidad_fuentes: [src-1, src-2]
+adicionalidad_nota: "Los proyectos estaban por construir en el momento de la firma (previstos operativos en 2025)."
+clusters_relacionados: [madrid, barcelona]
+cpds_relacionados: []
+cpds_declarados: "Data centers IBX de Equinix en Madrid, Barcelona y Sevilla (según la fuente)."
+incertidumbres:
+  - campo: municipio
+    descripcion: "Las fuentes solo dicen «distintas regiones de España que cuentan con un valor medio de radiación solar más alto»; no identifican las cinco plantas."
+    fuentes: [src-1, src-2]
+confianza: media
+ultima_verificacion: "2026-08-29"
+fuentes:
+  - id: src-1
+    url: "https://www.pv-magazine.es/2023/02/28/la-multinacional-de-centros-de-datos-equinix-firma-con-ignis-cinco-ppas-en-espana-por-225-mw/"
+    titulo: "La multinacional de centros de datos Equinix firma con Ignis cinco PPAs en España por 225 MW"
+    editor: "pv magazine España"
+    tipo: prensa_especializada
+    fecha_publicacion: "2023-02-28"
+    fecha_consulta: "2026-08-29"
+    cita: "cinco PPAs [...] 225 MW [...] operativos en 2025 [...] Madrid, Barcelona y Sevilla"
+  - id: src-2
+    url: "https://www.datacentermarket.es/sostenibilidad/equinix-confirma-su-apuesta-por-la-energia-renovable-en-espana/"
+    titulo: "Equinix confirma su apuesta por la energía renovable en España"
+    editor: "Data Center Market"
+    tipo: prensa_especializada
+    fecha_publicacion: null
+    fecha_consulta: "2026-08-29"
+    cita: "cinco nuevos acuerdos de compra de energía (PPA) en España con una capacidad total de 225 megavatios (MW) [...] los data centers IBX de Equinix ubicados en Madrid, Barcelona y Sevilla"

@@ -1,0 +1,119 @@
+id: vantage-villanueva-de-gallego-el-olivar
+nombre: "Vantage Data Centers — Campus Data Center Villanueva de Gállego («El Olivar»)"
+alias:
+  - "Centro de datos del Campus Villanueva de Gállego"
+  - "Sector S15 El Olivar"
+tipo: campus
+operador: "Vantage Data Centers EMEA (F2 Dino Properties Sàrl)"
+propietario: "Desarrollos Ecoindustriales La Cartuja, S.L. (promotora del PIGA) y F2 Dino Properties Sàrl (promotora del proyecto)"
+modelo: hyperscale
+
+ubicacion:
+  municipio: "Villanueva de Gállego"
+  provincia: "Zaragoza"
+  ccaa: "Aragón"
+  direccion: "Sector urbanizable delimitado S15 «El Olivar» del PGOU, al este de la autovía A-23 y al sur del casco urbano, a la altura de la Cartuja del Aula Dei (margen derecha del Gállego)"
+  lat: 41.768264
+  lon: -0.826416
+  precision: municipio
+  fuentes: [src-1, src-3]
+
+estado: en_tramitacion
+estado_detalle: >-
+  Declarado inversión de interés autonómico con interés general de Aragón por Acuerdo del
+  Gobierno de Aragón de 10 de septiembre de 2025, con "Desarrollos Ecoindustriales La
+  Cartuja SL" como promotora del Plan de Interés General y "F2 Dino Properties Sàrl"
+  (Grupo Vantage Data Centers EMEA) como promotora del Proyecto de Interés General y futura
+  operadora. En marzo de 2026 INAGA tramitaba las consultas previas para el documento de
+  alcance del estudio ambiental estratégico del PIGA.
+estado_fuentes: [src-1, src-4]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 90
+    ambito: fase
+    referencia: "Concesión de potencia asociada a la fase 1 según la tabla de inversión del proyecto"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2025-09-10"
+    fuentes: [src-1]
+    nota: >-
+      La tabla de fases del acuerdo indica como fuente de alimentación de la fase 1
+      "Concesión de 90 MW"; las fases 3, 4 y 5 figuran "En proceso". No se precisa si son
+      MW de carga TI o de acceso a red.
+
+fases:
+  - nombre: "Fase 1"
+    estado: en_tramitacion
+    fuentes: [src-1]
+    nota: >-
+      Urbanización de todo el sector (a cargo de Desarrollos Ecoindustriales La Cartuja),
+      construcción del edificio 1 y de la subestación (a cargo de Vantage). Años 1-2.
+      Inversión en urbanización estimada en 13.600.000 €.
+  - nombre: "Fases 2 a 5"
+    estado: anunciado
+    fuentes: [src-1]
+    nota: "Construcción del resto de edificios del centro de datos y de la subestación, años 2 a 10."
+
+conexion_electrica:
+  subestacion: "Subestación propia dentro del campus (construcción incluida en la fase 1)"
+  titular_red: null
+  mw_solicitados: null
+  mw_concedidos: null
+  fuentes: [src-1]
+  nota: >-
+    El acuerdo no identifica el nudo de conexión ni la tensión; solo indica que la fase 1
+    cuenta con una "Concesión de 90 MW" y que el resto de fases están "En proceso".
+
+superficie_parcela_m2: 476891
+inversion_anunciada_eur: 3200000000
+refrigeracion: null
+enlaces_proyecto: []
+
+incertidumbres:
+  - campo: inversion_anunciada_eur
+    descripcion: >-
+      La tabla de inversión publicada en el BOA suma 3.200 M€ en su fila de totales, pero
+      los importes por fase que la componen (500 + 5000 + 500 + 500 + 1200 M€) suman
+      7.700 M€. Se registra el total publicado (3.200 M€) y se advierte de la
+      inconsistencia interna de la fuente.
+    fuentes: [src-1]
+  - campo: superficie_parcela_m2
+    descripcion: >-
+      El acuerdo da tres cifras: "una superficie de unos 521.000 m²", "la superficie del
+      ámbito de actuación urbanística es de 476.891 m²" y una superficie real del sector S15
+      según levantamiento topográfico de 478.463 m² frente a los 416.785 m² del PGOU. Se
+      registra el ámbito de actuación urbanística.
+    fuentes: [src-1]
+  - campo: ubicacion
+    descripcion: >-
+      Las coordenadas registradas son el centroide municipal de Villanueva de Gállego
+      (Wikidata). En el mismo municipio hay tres emplazamientos de AWS distintos de este.
+    fuentes: [src-3]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1413456710909"
+    titulo: "ORDEN PEJ/1264/2025, de 18 de septiembre, por la que se da publicidad al Acuerdo de 10 de septiembre de 2025, del Gobierno de Aragón, por el que se declara como inversión de interés autonómico con interés general de Aragón el proyecto «Centro de datos del Campus Villanueva de Gállego», promovido por «Desarrollos Ecoindustriales La Cartuja SL» y «F2 Dino Properties Sàrl»"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2025-10-01"
+    fecha_consulta: "2026-08-29"
+    cita: "El proyecto se desarrollará en una superficie de unos 521.000 m², la superficie del ámbito de actuación urbanística es de 476.891 m²), al sur de la localidad de Villanueva de Gállego, a la altura de la Cartuja del Aula Dei"
+  - id: src-3
+    url: "https://query.wikidata.org/sparql"
+    titulo: "Wikidata Query Service — coordenadas del municipio de Villanueva de Gállego (propiedad P625)"
+    editor: "Wikidata"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: "Villanueva de Gállego 41.7682637 -0.826416"
+  - id: src-4
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1440101010808"
+    titulo: "ANUNCIO del Instituto Aragonés de Gestión Ambiental [...] consultas previas para la elaboración del documento de alcance del estudio ambiental estratégico del Plan de Interés General de Aragón, el proyecto del Campus Data Center Villanueva de Gállego"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2026-03-17"
+    fecha_consulta: "2026-08-29"
+    cita: "el proyecto del Campus Data Center Villanueva de Gállego"

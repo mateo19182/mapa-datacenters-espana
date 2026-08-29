@@ -1,0 +1,85 @@
+id: templus-alcala-de-henares-mad01
+nombre: "Templus Madrid MAD01 — Alcalá de Henares"
+alias:
+  - "Templus Alcalá de Henares"
+  - "Templus MAD01"
+tipo: edificio
+operador: "Templus Datacenters"
+propietario: "Templus Datacenters"
+modelo: colocation
+
+ubicacion:
+  municipio: "Alcalá de Henares"
+  provincia: "Madrid"
+  ccaa: "Comunidad de Madrid"
+  lat: null
+  lon: null
+  precision: municipio
+  fuentes: [src-2]
+
+estado: ampliacion_en_construccion
+estado_detalle: >-
+  Instalación de 16.000 m² con dos CPD simétricos, operativa desde 2024. En septiembre de 2025
+  Templus declaró 10 MW en servicio y el objetivo de duplicar hasta 20 MW a medio plazo.
+estado_fuentes: [src-2]
+fecha_puesta_en_servicio: "2024"
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 20
+    ambito: edificio
+    referencia: "Total power (ficha de Templus)"
+    estado_asociado: desconocido
+    fecha_dato: "2026-08-29"
+    fuentes: [src-1]
+  - tipo: no_especificado
+    valor_mw: 10
+    ambito: edificio
+    referencia: "Potencia en servicio en septiembre de 2025"
+    estado_asociado: operativo
+    fecha_dato: "2025-09-18"
+    fuentes: [src-2]
+
+fases:
+  - nombre: "Dos CPD simétricos"
+    estado: operativo
+    superficie_m2: 16000
+    fuentes: [src-2]
+
+superficie_construida_m2: 16000
+refrigeracion: "PUE declarado de 1,3; estación solar fotovoltaica propia; objetivo de cero emisiones netas."
+enlaces_proyecto:
+  - "https://templus.com/data-centers/madrid-mad01/"
+
+incertidumbres:
+  - campo: ubicacion
+    descripcion: >-
+      Templus no publica la dirección postal de MAD01 en su web ni figura en PeeringDB. Solo
+      consta el municipio (Alcalá de Henares).
+    fuentes: [src-1, src-2]
+  - campo: potencia
+    descripcion: >-
+      La ficha de Templus etiqueta los 20 MW como "Total power" pero la nota de prensa habla de
+      "20 MW de potencia" como objetivo a medio plazo partiendo de 10 MW. No se aclara si son
+      MW TI o totales.
+    fuentes: [src-1, src-2]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://templus.com/data-centers/madrid-mad01/"
+    titulo: "Data Center en Madrid | Infraestructura Tier III - Templus (MAD01)"
+    editor: "Templus"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: "Densidad por rack 4 kW – 120 kW Superficie IT 2.600 m² Total power 20 MW ... Nivel Tier III certificado ... Planta fotovoltaica Propia"
+  - id: src-2
+    url: "https://www.datacentermarket.es/datacenter-infrastructure/templus-duplicara-hasta-los-20-mw-su-data-center-de-alcala-de-henares/"
+    titulo: "Templus duplicará hasta los 20 MW su data center de Alcalá de Henares"
+    editor: "Data Center Market"
+    tipo: prensa_especializada
+    fecha_publicacion: "2025-09-18"
+    fecha_consulta: "2026-08-29"
+    cita: "El centro, de 16.000 metros cuadrados de superficie, acoge dos CPD simétricos con el objetivo de alcanzar a medio plazo los 20 MW de potencia, pasando de los 10 MW actuales."

@@ -47,7 +47,7 @@ CREATE TABLE sitios (
 );
 CREATE TABLE alias (sitio_id TEXT, alias TEXT);
 CREATE TABLE potencias (
-  sitio_id TEXT, idx INTEGER, tipo TEXT, valor_mw REAL, valor_mw_max REAL,
+  sitio_id TEXT, idx INTEGER, tipo TEXT, valor_mw REAL, valor_mw_max REAL, valor_mva REAL,
   ambito TEXT, referencia TEXT, estado_asociado TEXT, fecha_dato TEXT, nota TEXT
 );
 CREATE TABLE fases (
@@ -62,6 +62,8 @@ CREATE TABLE fuentes (
 -- Procedencia a nivel de campo: qué fuente respalda exactamente qué dato.
 CREATE TABLE respaldos (sitio_id TEXT, campo TEXT, fuente_id TEXT);
 CREATE TABLE red_nodos (id TEXT PRIMARY KEY, datos TEXT);
+CREATE TABLE red_actuaciones (id TEXT PRIMARY KEY, datos TEXT);
+CREATE TABLE red_capacidad (id TEXT PRIMARY KEY, subestacion_id TEXT, datos TEXT);
 CREATE TABLE renovables (id TEXT PRIMARY KEY, datos TEXT);
 
 CREATE INDEX idx_sitios_ccaa ON sitios(ccaa);
@@ -72,7 +74,7 @@ CREATE INDEX idx_fuentes_sitio ON fuentes(sitio_id);
 CREATE INDEX idx_respaldos_sitio ON respaldos(sitio_id);
 `)
 
-const { sitios, red, renovables, incidencias } = cargarTodo()
+const { sitios, red, actuaciones, capacidad, renovables, incidencias } = cargarTodo()
 
 const insSitio = db.prepare(`INSERT INTO sitios VALUES (
   @id,@nombre,@tipo,@operador,@propietario,@cliente_ancla,@modelo,@municipio,@provincia,@ccaa,
@@ -81,13 +83,15 @@ const insSitio = db.prepare(`INSERT INTO sitios VALUES (
   @superficie_parcela_m2,@superficie_construida_m2,@inversion_anunciada_eur,@refrigeracion,
   @enlaces_proyecto,@confianza,@ultima_verificacion)`)
 const insAlias = db.prepare('INSERT INTO alias VALUES (?,?)')
-const insPot = db.prepare('INSERT INTO potencias VALUES (?,?,?,?,?,?,?,?,?,?)')
+const insPot = db.prepare('INSERT INTO potencias VALUES (?,?,?,?,?,?,?,?,?,?,?)')
 const insFase = db.prepare('INSERT INTO fases VALUES (?,?,?,?,?,?,?)')
 const insInc = db.prepare('INSERT INTO incertidumbres VALUES (?,?,?,?)')
 const insFuente = db.prepare('INSERT INTO fuentes VALUES (?,?,?,?,?,?,?,?,?)')
 const insResp = db.prepare('INSERT INTO respaldos VALUES (?,?,?)')
 const insRed = db.prepare('INSERT INTO red_nodos VALUES (?,?)')
 const insRen = db.prepare('INSERT INTO renovables VALUES (?,?)')
+const insAct = db.prepare('INSERT INTO red_actuaciones VALUES (?,?)')
+const insCap = db.prepare('INSERT INTO red_capacidad VALUES (?,?,?)')
 
 const cargar = db.transaction(() => {
   for (const s of sitios) {
@@ -126,7 +130,7 @@ const cargar = db.transaction(() => {
 
     for (const a of s.alias) insAlias.run(s.id, a)
     for (const [i, p] of s.potencia.entries()) {
-      insPot.run(s.id, i, p.tipo, p.valor_mw, p.valor_mw_max ?? null, p.ambito, p.referencia, p.estado_asociado, p.fecha_dato, p.nota)
+      insPot.run(s.id, i, p.tipo, p.valor_mw, p.valor_mw_max ?? null, p.valor_mva ?? null, p.ambito, p.referencia, p.estado_asociado, p.fecha_dato, p.nota)
       for (const f of p.fuentes) insResp.run(s.id, `potencia[${i}]`, f)
     }
     for (const [i, f] of s.fases.entries()) {
@@ -145,10 +149,12 @@ const cargar = db.transaction(() => {
     for (const src of s.conexion_electrica?.fuentes ?? []) insResp.run(s.id, 'conexion_electrica', src)
   }
   for (const n of red) insRed.run(n.id, JSON.stringify(n))
+  for (const a of actuaciones) insAct.run(a.id, JSON.stringify(a))
+  for (const c of capacidad) insCap.run(c.id, c.subestacion_id ?? null, JSON.stringify(c))
   for (const r of renovables) insRen.run(r.id, JSON.stringify(r))
 })
 cargar()
 
 const errores = incidencias.filter((i) => i.nivel === 'error').length
-console.log(`SQLite escrito en build/datacenters.db — ${sitios.length} emplazamientos, ${red.length} nodos de red, ${renovables.length} renovables (${errores} ficheros con errores quedaron fuera)`)
+console.log(`SQLite escrito en build/datacenters.db — ${sitios.length} emplazamientos, ${red.length} subestaciones, ${actuaciones.length} actuaciones, ${capacidad.length} nudos con capacidad, ${renovables.length} renovables (${errores} ficheros con errores quedaron fuera)`)
 db.close()

@@ -42,6 +42,16 @@ potencia:
     estado_asociado: anunciado
     fecha_dato: "2026"
     fuentes: [src-1]
+  - tipo: no_especificado
+    valor_mw: 150
+    ambito: campus
+    referencia: "Potencia atribuida al proyecto por CGT y Ecologistes en Acció"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2026-07"
+    fuentes: [src-2]
+    nota: >-
+      Cifra procedente de organizaciones opositoras, no de la promotora. Se
+      registra por discrepar de las cifras de 55/125 MW.
 
 conexion_electrica:
   subestacion: "Subestación eléctrica dels Aubals"
@@ -56,16 +66,34 @@ refrigeracion: >-
 incertidumbres:
   - campo: potencia
     descripcion: >-
-      Canal 21 Ebre cita una capacidad inicial de 55 MW; notas del Govern
-      recogidas por otras cabeceras hablan de que el despliegue inicial requiere
-      54 MW frente a los 34 MW disponibles en el sector, lo que motivó la compra
-      de 20 MW adicionales. Las cifras 54 y 55 no se han podido reconciliar.
-    fuentes: [src-1]
+      Canal 21 Ebre cita una capacidad inicial de 55 MW ampliable a 125 MW; notas
+      del Govern recogidas por otras cabeceras hablan de que el despliegue
+      inicial requiere 54 MW frente a los 34 MW disponibles en el sector, lo que
+      motivó la compra de 20 MW adicionales; CGT y Ecologistes en Acció hablan de
+      150 MW. Las tres cifras no se han podido reconciliar.
+    fuentes: [src-1, src-2]
+  - campo: inversion_anunciada_eur
+    descripcion: >-
+      Coexisten cifras muy distintas: 719 millones de euros de aportación
+      estatal, "más de 4.000 millones" público-privados según La Directa y 5.000
+      millones según CGT. No se suman ni se promedian.
+    fuentes: [src-1, src-2, src-3]
+  - campo: refrigeracion
+    descripcion: >-
+      La documentación del proyecto habla de refrigeración por aire en circuito
+      cerrado con consumo casi nulo; La Directa cita en cambio un consumo
+      estimado de 1,3 hm³ anuales y advierte del vertido de agua caliente al
+      Ebro. Contradicción sin resolver.
+    fuentes: [src-1, src-3]
   - campo: operador
     descripcion: >-
-      No consta operador privado adjudicado; el proyecto es una candidatura
-      pública al programa InvestAI de la Comisión Europea.
-    fuentes: [src-1]
+      No consta operador único adjudicado. La candidatura la lidera Telefónica
+      junto con la SETT (Sociedad Española para la Transformación Tecnológica),
+      ACS, MasOrange, Nvidia, Submer y Multiverse Computing según El Crític y La
+      Directa; CGT describe un reparto accionarial de 48% Estado, 1% Generalitat
+      y 51% privado (Banco Santander, Telefónica, ACS). Ambas descripciones no
+      coinciden.
+    fuentes: [src-2, src-3, src-4]
   - campo: inversion_anunciada_eur
     descripcion: >-
       Los 719 millones de euros se describen como inversión del Estado para
@@ -91,3 +119,26 @@ fuentes:
       les instal·lacions ocuparien unes quatre hectàrees del polígon del Molló i
       estarien connectades a la subestació elèctrica dels Aubals, amb una
       capacitat inicial de 55 megawatts, ampliable fins als 125 megawatts.
+  - id: src-2
+    url: "https://cgtcatalunya.cat/la-gigafactoria-i-els-centres-de-dades-per-ia-no-aportaran-prosperitat-a-mora-la-nova-i-la-ribera-debre-sino-que-faran-inviable-el-seu-desenvolupament-economic/"
+    titulo: "La gigafactoria i els centres de dades per IA no aportaran prosperitat a Móra la Nova i la Ribera d'Ebre"
+    editor: "CGT Catalunya / Ecologistes en Acció"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      un pla de desenvolupament industrial que generi ocupació estable i de
+      qualitat al territori
+  - id: src-3
+    url: "https://directa.cat/gigafactoria-dia-mora-la-nova-consumira-lelectricitat-180-000-llars/"
+    titulo: "La gigafactoria d'IA de Móra la Nova consumirà l'electricitat de 180.000 llars"
+    editor: "La Directa"
+    tipo: prensa_general
+    fecha_consulta: "2026-08-29"
+    cita: "la gigafactoria consumirà el mateix que 180.000 llars"
+  - id: src-4
+    url: "https://www.elcritic.cat/reportatges/oportunitat-o-sacrifici-mora-la-nova-busca-convertir-se-en-epicentre-europeu-de-la-intel-ligencia-artificial-263108"
+    titulo: "Oportunitat o sacrifici? Móra la Nova pot convertir-se en l'epicentre europeu de la intel·ligència artificial"
+    editor: "El Crític"
+    tipo: prensa_general
+    fecha_consulta: "2026-08-29"
+    cita: "un pressupost publicoprivat d'uns 20.000 milions d'euros"

@@ -1,0 +1,53 @@
+id: bbva-tres-cantos
+nombre: "CPD de BBVA en Tres Cantos"
+alias:
+  - "Centro de Proceso de Datos BBVA Tres Cantos"
+tipo: edificio
+operador: "BBVA"
+propietario: "BBVA"
+modelo: corporativo
+
+ubicacion:
+  municipio: "Tres Cantos"
+  provincia: "Madrid"
+  ccaa: "Comunidad de Madrid"
+  lat: null
+  lon: null
+  precision: municipio
+  fuentes: [src-1]
+
+estado: operativo
+estado_detalle: >-
+  Primer CPD de la nueva red de BBVA en Madrid, operativo desde 2011. Certificado Tier IV del
+  Uptime Institute en construcción y en diseño, y Tier IV Gold en sostenibilidad operativa
+  (2014), primera entidad bancaria europea en obtenerlo.
+estado_fuentes: [src-1]
+fecha_puesta_en_servicio: "2011"
+
+potencia: []
+
+incertidumbres:
+  - campo: potencia
+    descripcion: "No consta ninguna cifra pública de potencia ni superficie del CPD."
+    fuentes: [src-1]
+  - campo: estado
+    descripcion: >-
+      La fuente disponible es de 2014. No se ha localizado información posterior que confirme el
+      estado actual del centro ni la renovación de la certificación.
+    fuentes: [src-1]
+  - campo: ubicacion
+    descripcion: "No consta dirección concreta; la geolocalización queda a nivel de municipio."
+    fuentes: [src-1]
+
+confianza: baja
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.datacentermarket.es/proyectos/bbva-primer-banco-en-europa-con-un-cpd-tier-iv-gold-en-sostenibilidad-operativa/"
+    titulo: "BBVA, primer banco en Europa con un CPD Tier IV Gold en sostenibilidad operativa"
+    editor: "Data Center Market"
+    tipo: prensa_especializada
+    fecha_publicacion: "2014-11-04"
+    fecha_consulta: "2026-08-29"
+    cita: "El centro de proceso de datos (CPD) de BBVA en Tres Cantos (Madrid) ha conseguido la certificación 'Tier IV Gold' del Uptime Institute ... Ya está operativo el primer CPD de Madrid (2011)"

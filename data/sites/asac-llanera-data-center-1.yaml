@@ -1,0 +1,83 @@
+id: asac-llanera-data-center-1
+nombre: "ASAC Comunicaciones — Data Center 1 (Parque Tecnológico de Asturias, Llanera)"
+alias:
+  - "ASAC 1"
+  - "CPD de ASAC en Llanera"
+tipo: edificio
+operador: "ASAC Comunicaciones"
+propietario: "ASAC Comunicaciones"
+modelo: colocation
+
+ubicacion:
+  municipio: "Llanera"
+  provincia: "Asturias"
+  ccaa: "Asturias"
+  direccion: "Parque Tecnológico de Asturias, Llanera"
+  lat: 43.4270
+  lon: -5.8340
+  precision: aproximada
+  fuentes: [src-1]
+
+estado: operativo
+estado_detalle: >-
+  Centro de datos propio de ASAC en el Parque Tecnológico de Asturias, con
+  certificación oficial Tier III del Uptime Institute. En 2025 se inauguró una
+  ampliación que duplica su capacidad de cómputo y almacenamiento y eleva su
+  eficiencia energética un 18%. Está organizado en dos «cubos» de 50 armarios rack
+  cada uno.
+estado_fuentes: [src-1]
+
+potencia:
+  - tipo: instalada_total
+    valor_mw: 1
+    ambito: edificio
+    referencia: "Centro de transformación propio de 1 MVA"
+    estado_asociado: operativo
+    fecha_dato: "2025-05"
+    fuentes: [src-1]
+    nota: >-
+      La fuente da «1MVA» (potencia aparente del centro de transformación), no MW de
+      carga TI. Se registra como potencia instalada por ser lo más próximo, con la
+      salvedad de que MVA y MW no son equivalentes.
+
+fases:
+  - nombre: "Data Center 1 — instalación original"
+    estado: operativo
+    fuentes: [src-1]
+  - nombre: "Ampliación (segundo cubo)"
+    estado: operativo
+    fuentes: [src-1]
+
+inversion_anunciada_eur: 7400000
+
+enlaces_proyecto:
+  - "https://www.asacti.es/actualidad/asac-inaugura-la-obra-de-ampliacion-de-su-data-center-1/"
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      El único dato eléctrico publicado es «1MVA» del centro de transformación. No es
+      MW IT ni potencia de conexión concedida; no se convierte.
+    fuentes: [src-1]
+  - campo: inversion_anunciada_eur
+    descripcion: >-
+      7,4 M€ es la inversión acumulada en el Data Center 1 desde su inicio; 4,3 M€
+      corresponden solo a la ampliación inaugurada.
+    fuentes: [src-1]
+  - campo: fecha_puesta_en_servicio
+    descripcion: >-
+      No se ha verificado con fuente primaria la fecha de la inauguración original
+      (la prensa la sitúa en 2015). Campo omitido.
+    fuentes: [src-1]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.asacti.es/actualidad/asac-inaugura-la-obra-de-ampliacion-de-su-data-center-1/"
+    titulo: "ASAC inaugura la obra de ampliación de su Data Center 1"
+    editor: "ASAC Comunicaciones"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: "certificación oficial TIER III por Uptime Institute"

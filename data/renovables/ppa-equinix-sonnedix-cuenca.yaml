@@ -1,0 +1,42 @@
+id: ppa-equinix-sonnedix-cuenca
+nombre: "PPA Equinix — tres plantas fotovoltaicas de Sonnedix en Cuenca (150 MWp)"
+tipo: fotovoltaica
+potencia_mw: 150
+tipo_potencia: pico
+potencia_nota: "La fuente da 150 MWp (potencia pico), no MW nominales."
+capacidad_mwh: null
+promotor: "Sonnedix"
+contraparte_ppa: "Equinix"
+tipo_vinculo: ppa
+duracion_anios: 10
+municipio: null
+provincia: "Cuenca"
+ccaa: "Castilla-La Mancha"
+lat: null
+lon: null
+precision: provincia
+estado: anunciado
+estado_detalle: "Firmado en mayo de 2023 con entrada en operación prevista a finales de 2024. No se ha verificado la puesta en servicio."
+fecha_firma: "2023-05-04"
+adicionalidad: nueva_construccion
+adicionalidad_fuentes: [src-1]
+clusters_relacionados: [madrid, barcelona]
+cpds_relacionados: []
+incertidumbres:
+  - campo: municipio
+    descripcion: "Se citan «tres plantas solares fotovoltaicas» en Cuenca sin nombre ni municipio."
+    fuentes: [src-1]
+  - campo: cpds_relacionados
+    descripcion: "La fuente identifica al comprador como Equinix pero no dice a qué centros de datos se asigna la energía."
+    fuentes: [src-1]
+confianza: media
+ultima_verificacion: "2026-08-29"
+fuentes:
+  - id: src-1
+    url: "https://www.pv-magazine.es/2023/05/04/sonnedix-firma-un-ppa-en-espana-por-150-mwp-el-mayor-que-anuncia-en-europa/"
+    titulo: "Sonnedix firma un PPA en España por 150 MWp, el mayor que anuncia en Europa"
+    editor: "pv magazine España"
+    tipo: prensa_especializada
+    fecha_publicacion: "2023-05-04"
+    fecha_consulta: "2026-08-29"
+    cita: "Equinix, una empresa de infraestructuras digitales que opera más de 240 centros de datos en 32 países [...] tres plantas solares fotovoltaicas [...] Cuenca (Castilla-La Mancha) [...] 10 años"

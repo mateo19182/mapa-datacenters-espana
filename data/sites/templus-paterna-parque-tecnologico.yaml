@@ -1,0 +1,91 @@
+id: templus-paterna-parque-tecnologico
+nombre: "Templus — Paterna (Parc Tecnològic de València)"
+alias:
+  - "OASIX Valencia"
+  - "Data center de Grupo Aire en Paterna"
+tipo: edificio
+operador: "Templus"
+propietario: "Templus"
+modelo: colocation
+
+ubicacion:
+  municipio: "Paterna"
+  provincia: "Valencia"
+  ccaa: "Comunitat Valenciana"
+  direccion: "Parque Tecnológico de Paterna"
+  lat: 39.5492
+  lon: -0.4626
+  precision: aproximada
+  fuentes: [src-1]
+
+estado: ampliacion_en_construccion
+estado_detalle: >-
+  Centro operativo adquirido por Templus al Grupo Aire en enero de 2026 dentro de un lote
+  de tres activos (Madrid, Valencia y Lisboa). En mayo de 2026 Templus anunció una
+  ampliación progresiva de 1 MW y 400 m² de salas IT hasta 4 MW y más de 1.600 m², con
+  objetivo de certificación Tier III.
+estado_fuentes: [src-1, src-2]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 1
+    ambito: edificio
+    referencia: "Potencia en operación antes de la ampliación"
+    estado_asociado: operativo
+    fecha_dato: "2026-05-13"
+    fuentes: [src-1]
+  - tipo: no_especificado
+    valor_mw: 4
+    ambito: edificio
+    referencia: "Potencia objetivo tras la ampliación anunciada"
+    estado_asociado: ampliacion_en_construccion
+    fecha_dato: "2026-05-13"
+    fuentes: [src-1, src-3]
+
+fases:
+  - nombre: "Instalación original (ex Grupo Aire)"
+    estado: operativo
+    superficie_m2: 400
+    fuentes: [src-1]
+  - nombre: "Ampliación anunciada 2026"
+    estado: ampliacion_en_construccion
+    superficie_m2: 1600
+    fuentes: [src-1]
+
+refrigeracion: "Circuito de agua cerrado; energía 100 % renovable y planta fotovoltaica propia para autoconsumo."
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      elEconomista habla de «potencia» sin distinguir carga TI de potencia contratada. La
+      operación de compra se comunicó como «6,5 MW» añadidos por los tres centros del lote
+      (Madrid, Valencia y Lisboa), cifra que no puede desglosarse por emplazamiento.
+    fuentes: [src-1, src-2]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.eleconomista.es/tecnologia/noticias/13918140/05/26/templus-multiplicara-por-cuatro-la-capacidad-del-data-center-que-compro-a-grupo-aire-en-valencia.html"
+    titulo: "Templus multiplicará por cuatro la capacidad del data center que compró a Grupo Aire en Valencia"
+    editor: "elEconomista"
+    tipo: prensa_general
+    fecha_publicacion: "2026-05-13"
+    fecha_consulta: "2026-08-29"
+    cita: "El centro, ubicado en el Parque Tecnológico de Paterna, pasará de una potencia actual de 1 MW y 400 m² de salas IT a más de 1.600 m² y un incremento progresivo de potencia hasta alcanzar los 4MW."
+  - id: src-2
+    url: "https://www.redestelecom.es/operadoras/templus-se-queda-con-cpd-de-aire-en-lisboa-madrid-y-valencia/"
+    titulo: "Templus se queda con CPD de Aire en Lisboa, Madrid y Valencia"
+    editor: "Redes & Telecom"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-01-12"
+    fecha_consulta: "2026-08-29"
+    cita: "Gracias a esta transacción, Templus añade 6,5 MW a su potencia instalada, que superará los 60MW a lo largo de 2026"
+  - id: src-3
+    url: "https://observatorioedc.com/directorio/"
+    titulo: "Data Centers — Directorio, Observatorio Español de Data Centers"
+    editor: "Observatorio Español de Data Centers"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: "Templus | Paterna | Comunidad Valenciana | 4 MW | COLOCATION | Operativo"

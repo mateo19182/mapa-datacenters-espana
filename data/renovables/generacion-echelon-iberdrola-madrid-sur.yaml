@@ -1,0 +1,39 @@
+id: generacion-echelon-iberdrola-madrid-sur
+nombre: "Planta fotovoltaica del centro de datos Madrid Sur (Iberdrola-Echelon)"
+tipo: fotovoltaica
+potencia_mw: null
+tipo_potencia: no_especificado
+capacidad_mwh: null
+promotor: "Iberdrola y Echelon Data Centres (joint venture)"
+contraparte_ppa: null
+tipo_vinculo: declarado_para_cpd
+municipio: null
+provincia: "Madrid"
+ccaa: "Comunidad de Madrid"
+lat: null
+lon: null
+precision: ccaa
+estado: anunciado
+estado_detalle: "Alianza anunciada en julio de 2025 y cerrada en noviembre de 2025. Primer proyecto «Madrid Sur»: 144 MW de procesamiento y 230 MW de conexión eléctrica, con demanda estimada de 1 TWh."
+fecha_firma: "2025-11-26"
+adicionalidad: no_consta
+clusters_relacionados: [madrid]
+cpds_relacionados: []
+cpd_it_mw: 144
+cpd_conexion_mw: 230
+cpd_nota: "144 MW de procesamiento y 230 MW de conexión son magnitudes de demanda del CPD, no de generación."
+incertidumbres:
+  - campo: potencia_mw
+    descripcion: "La fuente dice que Madrid Sur «contará con una planta solar fotovoltaica y energía renovable adicional» sin publicar MW ni ubicación de la planta."
+    fuentes: [src-1]
+confianza: media
+ultima_verificacion: "2026-08-29"
+fuentes:
+  - id: src-1
+    url: "https://www.pv-magazine.es/2025/11/26/iberdrola-se-alia-con-echelon-para-invertir-mas-de-2-000-millones-en-centros-de-datos-en-espana/"
+    titulo: "Iberdrola se alía con Echelon para invertir más de 2.000 millones en centros de datos en España"
+    editor: "pv magazine España"
+    tipo: prensa_especializada
+    fecha_publicacion: "2025-11-26"
+    fecha_consulta: "2026-08-29"
+    cita: "contará con una planta solar fotovoltaica y energía renovable adicional [...] 144 MW para procesamiento de datos [...] 230 MW [...] más de 700 MW en conexiones eléctricas"

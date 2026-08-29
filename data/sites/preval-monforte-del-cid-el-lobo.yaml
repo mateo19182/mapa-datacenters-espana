@@ -1,0 +1,126 @@
+id: preval-monforte-del-cid-el-lobo
+nombre: "Data Center El Lobo — Monforte del Cid (Parque Empresarial Las Norias)"
+alias:
+  - "El Lobo"
+  - "Data center de Valfortec en Monforte del Cid"
+tipo: edificio
+operador: "Preval Renewable 2"
+propietario: "Preval Renewable 2"
+modelo: colocation
+
+ubicacion:
+  municipio: "Monforte del Cid"
+  provincia: "Alicante"
+  ccaa: "Comunitat Valenciana"
+  direccion: "Parque Empresarial Las Norias, junto a la autovía A-31"
+  lat: 38.3885
+  lon: -0.7209
+  precision: aproximada
+  fuentes: [src-1, src-2]
+
+estado: en_tramitacion
+estado_detalle: >-
+  Preval Renewable 2 (sociedad participada por Valfortec) ha solicitado que la instalación
+  se tramite como Proyecto de Interés Autonómico (PIA); la solicitud está admitida a
+  trámite por la Generalitat Valenciana. A julio de 2026 el proyecto se encontraba en fase
+  de exposición pública. Orientado a edge computing / Edge AI.
+estado_fuentes: [src-1, src-2]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 30
+    ambito: edificio
+    referencia: "Capacidad total al completar las tres fases"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2026-07-03"
+    fuentes: [src-1, src-3]
+    nota: "«una capacidad total de 30 MW en varias fases»; no se especifica si es carga TI o potencia de conexión."
+  - tipo: no_especificado
+    valor_mw: 10
+    ambito: fase
+    referencia: "Fase 1"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2026-07-03"
+    fuentes: [src-1, src-2]
+  - tipo: no_especificado
+    valor_mw: 60
+    ambito: edificio
+    referencia: "Capacidad aproximada según DatacenterDynamics"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2026-07-07"
+    fuentes: [src-4]
+    nota: >-
+      Valor discrepante con las fuentes primarias sobre la memoria del proyecto. Se
+      registra sin fusionar con los anteriores.
+
+fases:
+  - nombre: "Fase 1"
+    estado: en_tramitacion
+    fuentes: [src-1]
+  - nombre: "Fases 2 y 3"
+    estado: en_tramitacion
+    fuentes: [src-1]
+
+superficie_parcela_m2: 12557
+inversion_anunciada_eur: 302000000
+refrigeracion: >-
+  Refrigeración por aire de alta eficiencia; objetivo declarado de PUE inferior a 1,2 y
+  criterios de reducción del consumo de agua.
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      Tres cifras en circulación en una misma semana: 30 MW totales en tres fases con 10 MW
+      en la primera (elEconomista, 03/07/2026, y diario Información, 04/07/2026, ambos sobre
+      la memoria del proyecto); «capacidad inicial de 10 MW ampliable» (Castellón Plaza,
+      06/07/2026); y «una capacidad aproximada de 60 MW» (DatacenterDynamics, 07/07/2026).
+      No se ha localizado el expediente administrativo para dirimirlo.
+    fuentes: [src-1, src-2, src-3, src-4]
+  - campo: inversion_anunciada_eur
+    descripcion: >-
+      elEconomista e Información cifran la inversión en 302 millones de euros (182 M€ en la
+      fase 1 más 120 M€ en las fases 2 y 3); Castellón Plaza habla de «entre 350 y 500
+      millones de euros» citando la memoria del proyecto.
+    fuentes: [src-1, src-2, src-3]
+  - campo: conexion_electrica
+    descripcion: >-
+      Castellón Plaza menciona la «proximidad a la subestación eléctrica de Petrer» como
+      factor de localización, pero no consta el punto de conexión solicitado ni concedido.
+    fuentes: [src-2]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.eleconomista.es/tecnologia/noticias/13994814/07/26/la-fiebre-de-los-data-center-aterriza-en-alicante-valfortec-tramita-una-inversion-de-300-millones.html"
+    titulo: "La fiebre de los data center aterriza en Alicante: Valfortec participa en una inversión de 300 millones"
+    editor: "elEconomista"
+    tipo: prensa_general
+    fecha_publicacion: "2026-07-03"
+    fecha_consulta: "2026-08-29"
+    cita: "La empresa castellonense participa en Preval Renewable 2, sociedad que ha iniciado los trámites para levantar un data center en que se contempla un inversión de hasta 302 millones de euros y que se ubicará en Monforte del Cid [...] Los planes pasan por crear una instalación que alcance una capacidad total de 30 MW en varias fases"
+  - id: src-2
+    url: "https://castellonplaza.com/castellonplaza/empresas2/la-castellonense-valfortec-proyecta-un-centro-de-datos-en-monforte-del-cid-con-una-inversion-de-hasta-500-millones"
+    titulo: "La castellonense Valfortec proyecta un centro de datos en Monforte del Cid con una inversión de hasta 500 millones"
+    editor: "Castellón Plaza"
+    tipo: prensa_general
+    fecha_publicacion: "2026-07-06"
+    fecha_consulta: "2026-08-29"
+    cita: "el Data Center El Lobo ha sido concebido como una infraestructura modular y escalable, con una capacidad inicial de 10 MW ampliable en función de la evolución del mercado. [...] La memoria estima una inversión total comprendida entre 350 y 500 millones de euros"
+  - id: src-3
+    url: "https://www.informacion.es/economia/2026/07/04/fiebre-centros-datos-llega-alicante-132104596.html"
+    titulo: "La fiebre por los centros de datos llega a Alicante con una inversión de 300 millones en Monforte"
+    editor: "Información"
+    tipo: prensa_general
+    fecha_publicacion: "2026-07-04"
+    fecha_consulta: "2026-08-29"
+    cita: "La firma que dirige Fidel Roig ha previsto una inversión de 302 millones de euros para construir un centro de datos de última generación sobre una parcela de 12.557 metros cuadrados en el polígono de Las Norias, junto a la autovía A-31. Una instalación que se construirá en tres fases, hasta completar una capacidad de 30 megavatios"
+  - id: src-4
+    url: "https://www.datacenterdynamics.com/es/noticias/valfortec-proyecta-un-campus-de-centros-de-datos-de-300-millones-de-euros-en-alicante/"
+    titulo: "Valfortec proyecta un campus de centros de datos de 300 millones de euros en Alicante"
+    editor: "DatacenterDynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-07-07"
+    fecha_consulta: "2026-08-29"
+    cita: "La infraestructura prevé alcanzar una capacidad aproximada de 60 MW, situándose entre los proyectos de mayor tamaño anunciados hasta la fecha en la Comunidad Valenciana."

@@ -1,0 +1,104 @@
+id: aws-la-puebla-de-hijar-la-llanada
+nombre: "AWS Consolidación Región Aragón — La Puebla de Híjar y Azaila"
+alias:
+  - "Campus AWS Teruel"
+  - "Sector La Llanaza"
+  - "La Llanada / Los Bolares"
+tipo: campus
+operador: "Amazon Web Services"
+propietario: "Amazon Data Services Spain, S.L."
+modelo: hyperscale
+
+ubicacion:
+  municipio: "La Puebla de Híjar"
+  provincia: "Teruel"
+  ccaa: "Aragón"
+  direccion: "Zonas «La Llanada» y «Los Bolares», entre la N-232 y el trazado previsto de la autovía A-68, a 2,3 km al noroeste del casco urbano; una parte menor en el término municipal de Azaila"
+  lat: 41.213239
+  lon: -0.445625
+  precision: municipio
+  fuentes: [src-1, src-3]
+
+estado: anunciado
+estado_detalle: >-
+  Campus del "Plan para la consolidación de la Región AWS en Aragón", declarado inversión
+  de interés autonómico con interés general de Aragón el 25 de marzo de 2026. Es el primer
+  centro de datos de esta escala proyectado en la provincia de Teruel. La Dirección General
+  de Energía y Minas informó favorablemente la fase 1, condicionando la fase 2 a la
+  existencia de capacidad eléctrica. Se propone delimitar un nuevo sector de suelo
+  urbanizable no delimitado denominado "La Llanaza".
+estado_fuentes: [src-1]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 100
+    ambito: campus
+    referencia: "Potencia eléctrica garantizada según la prensa para el emplazamiento de La Puebla de Híjar"
+    estado_asociado: anunciado
+    fecha_dato: "2026-04-25"
+    fuentes: [src-2]
+    nota: >-
+      Dato de prensa, no confirmado por fuente oficial. La fuente escribe "la compañía tiene
+      garantizados 100 megavatios de potencia eléctrica" sin precisar si es carga TI o
+      potencia de acceso a red.
+
+fases:
+  - nombre: "Fase 1"
+    estado: anunciado
+    fuentes: [src-1]
+  - nombre: "Fase 2"
+    estado: anunciado
+    fuentes: [src-1]
+    nota: "Condicionada a la existencia de capacidad eléctrica según el informe de la DG de Energía y Minas."
+
+superficie_parcela_m2: 3285900
+inversion_anunciada_eur: null
+enlaces_proyecto: []
+
+incertidumbres:
+  - campo: superficie_parcela_m2
+    descripcion: >-
+      El Acuerdo de 25 de marzo de 2026 da una superficie total de 328,59 ha y a la vez
+      317,7 ha en La Puebla de Híjar más 19,9 ha en Azaila (suma 337,6 ha). Además, la
+      prensa (Hoy Aragón, 25/04/2026) habla de una opción de compra sobre 70 ha en el
+      entorno del polígono Venta del Barro. Las cifras no son conciliables con la
+      información disponible.
+    fuentes: [src-1, src-2]
+  - campo: ubicacion
+    descripcion: >-
+      El ámbito afecta a dos términos municipales (La Puebla de Híjar y Azaila). Las
+      coordenadas registradas son el centroide municipal de La Puebla de Híjar.
+    fuentes: [src-1, src-3]
+  - campo: potencia
+    descripcion: >-
+      Los 100 MW proceden solo de prensa; ninguna fuente oficial publica potencia para este
+      emplazamiento.
+    fuentes: [src-1, src-2]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1442795570404"
+    titulo: "ORDEN PEJ/523/2026, de 7 de abril, por la que se da publicidad al Acuerdo de 25 de marzo de 2026, del Gobierno de Aragón [...] «Plan para la consolidación de la Región AWS en Aragón»"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2026-04-09"
+    fecha_consulta: "2026-08-29"
+    cita: "En La Puebla de Híjar y Azaila el área seleccionada tiene una superficie total de 328,59 ha y se encuentra ubicada en la provincia de Teruel, en el municipio de La Puebla de Híjar (317,7 ha) y, una pequeña parte, en el de Azaila (19,9 ha)."
+  - id: src-2
+    url: "https://www.hoyaragon.es/articulo/noticias-aragon/centro-datos-amazon-teruel-inteligencia-artificial/20260425114638128866.html"
+    titulo: "El gigantesco centro de datos que Amazon construye en Teruel para liderar la inteligencia artificial en Europa"
+    editor: "Hoy Aragón"
+    tipo: prensa_general
+    fecha_publicacion: "2026-04-25"
+    fecha_consulta: "2026-08-29"
+    cita: "AWS ha asegurado ya una opción de compra sobre 70 hectáreas de suelo en el entorno del polígono Venta del Barro, junto a la N-232, a las afueras de La Puebla de Híjar. Para ese emplazamiento, la compañía tiene garantizados 100 megavatios de potencia eléctrica"
+  - id: src-3
+    url: "https://query.wikidata.org/sparql"
+    titulo: "Wikidata Query Service — coordenadas del municipio de La Puebla de Híjar (propiedad P625)"
+    editor: "Wikidata"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: "La Puebla de Híjar 41.2132393 -0.4456249"

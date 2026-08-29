@@ -1,0 +1,85 @@
+id: acs-alcala-de-henares-campus
+nombre: "Alcalá Data Center Campus — ACS Digital & Energy"
+alias:
+  - "ACS Alcalá Data Center Campus"
+  - "Iridium / Arcano Alcalá de Henares"
+tipo: campus
+operador: "ACS Digital & Energy"
+propietario: "Grupo ACS (a través de Iridium) y Arcano Partners"
+modelo: mayorista
+
+ubicacion:
+  municipio: "Alcalá de Henares"
+  provincia: "Madrid"
+  ccaa: "Comunidad de Madrid"
+  direccion: "Corredor del Henares, Alcalá de Henares (parcela de 67.160 m²)"
+  lat: null
+  lon: null
+  precision: municipio
+  fuentes: [src-1, src-2]
+
+estado: en_construccion
+estado_detalle: >-
+  Suelo adquirido en noviembre de 2023 por Grupo ACS a través de Iridium y Arcano, con 6,7
+  hectáreas y 50 MW de suministro eléctrico garantizado. Dragados figura como constructor del
+  campus, concebido para superar los 100 MW IT con desarrollo por fases.
+estado_fuentes: [src-1, src-2]
+
+potencia:
+  - tipo: it
+    valor_mw: 100
+    ambito: campus
+    referencia: "Capacidad total objetivo del campus"
+    estado_asociado: anunciado
+    fecha_dato: "2026-08-29"
+    fuentes: [src-2]
+    nota: "\"concebido para alcanzar una capacidad total superior a 100 MW IT\"."
+  - tipo: conexion_red
+    valor_mw: 50
+    ambito: campus
+    referencia: "Suministro eléctrico garantizado en la parcela adquirida"
+    estado_asociado: permisos_concedidos
+    fecha_dato: "2023-11-15"
+    fuentes: [src-1]
+    nota: "\"6,7 hectares of land and 50MW of guaranteed energy supply\"."
+
+superficie_parcela_m2: 67160
+inversion_anunciada_eur: null
+
+incertidumbres:
+  - campo: estado
+    descripcion: >-
+      ACS anunció en 2023 que el centro entraría en operación en 2025 y que el proyecto se
+      desarrollaría a lo largo de cinco años. No se ha localizado confirmación pública de la
+      puesta en servicio ni del grado de avance a 2026.
+    fuentes: [src-1, src-2]
+  - campo: potencia
+    descripcion: >-
+      Coexisten dos magnitudes de naturaleza distinta y no comparables: 50 MW de suministro
+      garantizado en la compra del suelo y más de 100 MW IT como capacidad objetivo del campus.
+    fuentes: [src-1, src-2]
+  - campo: ubicacion
+    descripcion: >-
+      No se ha localizado la dirección ni el polígono concreto de la parcela. Dragados menciona
+      su integración en un "complejo de campus MAD1" sin más detalle.
+    fuentes: [src-2]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://pressroom.grupoacs.com/en/news/acs-group-investor-and-operator-of-a-data-center-in-madrid"
+    titulo: "ACS Group, investor and operator of a data center in Madrid"
+    editor: "Grupo ACS"
+    tipo: empresa
+    fecha_publicacion: "2023-11-15"
+    fecha_consulta: "2026-08-29"
+    cita: "The ACS Group ... has agreed through Iridium and Arcano to purchase a parcel of land in Alcalá de Henares (Madrid) ready for the construction of a new data center with 6,7 hectares of land and 50MW of guaranteed energy supply. The project will be developed over the next 5 years and the data center is expected to start operations in 2025."
+  - id: src-2
+    url: "https://www.dragados.com/nuestra-experiencia/nuestros-proyectos/alcala-data-center-campus"
+    titulo: "Alcalá Data Center Campus para ACS Digital y Energía"
+    editor: "Dragados (Grupo ACS)"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: "concebido para alcanzar una capacidad total superior a 100 MW IT ... parcela de 67.160 m2"

@@ -1,0 +1,81 @@
+id: walhalla-castellon-espaitec
+nombre: "Walhalla Cloud — Castelló de la Plana (Espaitec, UJI)"
+alias:
+  - "Walhalla Data Center"
+tipo: edificio
+operador: "Walhalla Cloud"
+propietario: "Walhalla Cloud"
+modelo: colocation
+
+ubicacion:
+  municipio: "Castelló de la Plana / Castellón de la Plana"
+  provincia: "Castellón"
+  ccaa: "Comunitat Valenciana"
+  direccion: "Parque científico, tecnológico y empresarial Espaitec, Universitat Jaume I"
+  lat: 39.9943
+  lon: -0.0714
+  precision: aproximada
+  fuentes: [src-1]
+
+estado: operativo
+estado_detalle: >-
+  Data center certificado Tier IV por el Uptime Institute, en servicio desde
+  aproximadamente 2011. En 2022 se activó una sala adicional de 300 kW (ampliable a
+  600 kW). En julio de 2023 la ocupación declarada era del 60 %.
+estado_fuentes: [src-1, src-2]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 2
+    ambito: edificio
+    referencia: "Potencia del data center"
+    estado_asociado: operativo
+    fecha_dato: "2023-07-17"
+    fuentes: [src-1, src-3]
+    nota: "DCD: «Este data center cuenta con hasta 2MW de potencia», sin especificar tipo."
+
+fases:
+  - nombre: "Sala adicional activada en 2022"
+    estado: operativo
+    fecha_puesta_en_servicio: "2022"
+    fuentes: [src-1]
+
+refrigeracion: >-
+  PUE declarado 1,15; free-cooling durante unas 6.000 h al año; encapsulamiento del aire
+  caliente dentro del propio rack, sin suelo técnico.
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      Los 2 MW proceden de un reportaje de julio de 2023; no se ha localizado dato
+      posterior ni desglose entre carga TI y potencia contratada. La sala añadida en 2022
+      se describe como «de 300kW (que podría llegar a los 600kW)», sin aclarar si está
+      incluida en los 2 MW.
+    fuentes: [src-1]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.datacenterdynamics.com/es/features/visitando-el-data-center-tier-iv-de-walhalla-en-castellon-cual-es-su-crecimiento-presente-y-futuro/"
+    titulo: "Visitando el data center Tier IV de Walhalla en Castellón: ¿Cuál es su crecimiento presente y futuro?"
+    editor: "DatacenterDynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2023-07-17"
+    fecha_consulta: "2026-08-29"
+    cita: "Este centro de datos está ubicado concretamente en el parque científico, tecnológico y empresarial (Espaitec) de la Universidad Jaume I de Castellón. [...] ampliando su data center con una nueva sala de 300kW (que podría llegar a los 600kW). Este data center cuenta con hasta 2MW de potencia."
+  - id: src-2
+    url: "https://www.walhallacloud.com/data-center"
+    titulo: "Data Center | Walhalla Cloud"
+    editor: "Walhalla Cloud"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: "Bienvenido al único proveedor de cloud español que te ofrece un centro de datos Tier IV. [...] Alta eficiencia energética: PUE 1.15"
+  - id: src-3
+    url: "https://observatorioedc.com/directorio/"
+    titulo: "Data Centers — Directorio, Observatorio Español de Data Centers"
+    editor: "Observatorio Español de Data Centers"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: "Walhalla Cloud | WALHALLA | Castellón de la Plana | Comunidad Valenciana | COLOCATION | Tier IV | Operativo"

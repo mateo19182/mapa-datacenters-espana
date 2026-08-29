@@ -1,0 +1,112 @@
+id: merlin-botorrita-zaragoza-wind
+nombre: "MERLIN Properties — Campus de Centros de Datos «Zaragoza-WIND» (Botorrita)"
+alias:
+  - "Zaragoza-WIND"
+tipo: campus
+operador: "MERLIN Properties SOCIMI, S.A."
+propietario: "MERLIN Properties SOCIMI, S.A."
+modelo: mayorista
+
+ubicacion:
+  municipio: "Botorrita"
+  provincia: "Zaragoza"
+  ccaa: "Aragón"
+  direccion: "Polígono industrial San Antonio (sector industrial 2) y parcelas agrarias colindantes, a ambos lados de la carretera A-2101"
+  lat: 41.506728
+  lon: -1.030107
+  precision: municipio
+  fuentes: [src-1, src-2]
+
+estado: anunciado
+estado_detalle: >-
+  Declarado inversión de interés autonómico con interés general de Aragón por Acuerdo del
+  Gobierno de Aragón de 22 de julio de 2026, a solicitud presentada el 15 de junio de 2026.
+  El desarrollo está previsto en una sola fase, que se definirá mediante un Plan de Interés
+  General de Aragón todavía no tramitado a la fecha de verificación. MERLIN encuadra el
+  proyecto de Zaragoza dentro de una tercera fase de su cartera de centros de datos, de
+  412 MW.
+estado_fuentes: [src-1]
+
+potencia:
+  - tipo: it
+    valor_mw: 144
+    ambito: edificio
+    referencia: "Potencia total del edificio de centro de datos proyectado"
+    estado_asociado: anunciado
+    fecha_dato: "2026-07-22"
+    fuentes: [src-1]
+    nota: >-
+      "Implantación de un edificio destinado al alojamiento, procesamiento y gestión de
+      datos, que contará con una potencia total de 144 MW IT."
+
+fases:
+  - nombre: "Fase única"
+    estado: anunciado
+    superficie_m2: 156301
+    fuentes: [src-1]
+    nota: >-
+      Un edificio de centro de datos de 156.301 m² construidos y 41.868 m² de ocupación en
+      planta, en dos niveles con seis data halls por planta, más un edificio de oficinas de
+      5.481 m² en tres plantas.
+
+conexion_electrica:
+  subestacion: "Dos subestaciones eléctricas propias de transformación 220/132 kV, más la subestación integrada en el propio edificio"
+  tension_kv: 220
+  titular_red: null
+  mw_solicitados: null
+  mw_concedidos: null
+  fuentes: [src-1]
+  nota: >-
+    "Se proyecta la construcción de dos subestaciones eléctricas para transformar la
+    electricidad de 220 kV a 132 kV, desde las que se conducirá el suministro hasta la
+    subestación integrada en el propio edificio de centro de datos mediante canalización
+    enterrada". Las subestaciones se ubicarán en el suelo no urbanizable genérico al otro
+    lado de la carretera A-2101. No consta el nudo de conexión ni la potencia de acceso.
+
+superficie_parcela_m2: 288000
+superficie_construida_m2: 156301
+inversion_anunciada_eur: null
+refrigeracion: null
+enlaces_proyecto: []
+
+incertidumbres:
+  - campo: operador
+    descripcion: >-
+      En el mismo término municipal de Botorrita, el Gobierno de Aragón declaró en noviembre
+      de 2025 el centro de datos "DCM Dédalo" del proyecto "Búfalo" (Grupo Forestalia),
+      conectado al nudo María 220 kV. Las fuentes consultadas no permiten determinar si
+      ambos proyectos comparten emplazamiento, punto de conexión o titularidad, ni si uno
+      sustituye al otro.
+    fuentes: [src-1, src-3]
+  - campo: ubicacion
+    descripcion: >-
+      Las coordenadas registradas son el centroide municipal de Botorrita (Wikidata).
+    fuentes: [src-2]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1462255950606"
+    titulo: "ORDEN ECE/1195/2026, de 27 de julio, por la que se da publicidad al Acuerdo de 22 de julio de 2026, del Gobierno de Aragón, por el que se declara como inversión de interés autonómico con interés general de Aragón el proyecto «Campus de Centros de Datos Zaragoza-WIND», promovido por Merlin Properties Socimi, SA, en Botorrita (Zaragoza)"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2026-08-14"
+    fecha_consulta: "2026-08-29"
+    cita: "Implantación de un edificio destinado al alojamiento, procesamiento y gestión de datos, que contará con una potencia total de 144 MW IT. La superficie construida del edificio será de 156.301 m², con una ocupación en planta de 41.868 m²."
+  - id: src-2
+    url: "https://query.wikidata.org/sparql"
+    titulo: "Wikidata Query Service — coordenadas del municipio de Botorrita (propiedad P625)"
+    editor: "Wikidata"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: "Botorrita 41.5067282 -1.0301073"
+  - id: src-3
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1424067523636"
+    titulo: "ORDEN PEJ/1656/2025, de 25 de noviembre, por la que se da publicidad al Acuerdo de 12 de noviembre de 2025, del Gobierno de Aragón, por el que se declara como inversión de interés autonómico, así como proyecto prioritario con generación renovable asociada, el proyecto «Búfalo»"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2025-12-02"
+    fecha_consulta: "2026-08-29"
+    cita: "\"DCM Dédalo\", ubicado en Botorrita (Zaragoza)."

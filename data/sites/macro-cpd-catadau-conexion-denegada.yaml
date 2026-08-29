@@ -1,0 +1,75 @@
+id: macro-cpd-catadau-conexion-denegada
+nombre: "Macro centro de datos en Catadau (conexión denegada)"
+alias:
+  - "Data center del nudo de Catadau"
+tipo: campus
+operador: null
+modelo: desconocido
+
+ubicacion:
+  municipio: "Catadau"
+  provincia: "Valencia"
+  ccaa: "Comunitat Valenciana"
+  lat: 39.2748
+  lon: -0.5711
+  precision: municipio
+  fuentes: [src-1]
+
+estado: cancelado
+estado_detalle: >-
+  Proyecto de gran escala que buscaba conectarse al nudo de Catadau con una petición de
+  25 MW. Red Eléctrica denegó la solicitud por saturación de la red —una de seis negativas
+  en dos meses según Valencia Plaza—. A mayo de 2026 el promotor buscaba emplazamiento
+  alternativo en la provincia de Valencia; se citan como candidatos los nudos de Sagunto,
+  L'Eliana y Betxí. Se registra como cancelado en este emplazamiento.
+estado_fuentes: [src-1]
+
+potencia:
+  - tipo: conexion_red
+    valor_mw: 25
+    ambito: campus
+    referencia: "Potencia solicitada en el nudo de Catadau (denegada)"
+    estado_asociado: cancelado
+    fecha_dato: "2026-05-05"
+    fuentes: [src-1]
+
+conexion_electrica:
+  subestacion: "Nudo de Catadau"
+  tension_kv: 400
+  titular_red: "Red Eléctrica"
+  mw_solicitados: 25
+  mw_concedidos: 0
+  fuentes: [src-1]
+
+superficie_parcela_m2: null
+
+incertidumbres:
+  - campo: operador
+    descripcion: >-
+      Valencia Plaza no identifica al promotor del proyecto; la información sobre la
+      superficie buscada procede del Ayuntamiento de Catadau.
+    fuentes: [src-1]
+  - campo: superficie_parcela_m2
+    descripcion: >-
+      La fuente indica «un espacio de entre 50 y 80.000 metros cuadrados», rango que no se
+      convierte en un valor único.
+    fuentes: [src-1]
+  - campo: inversion_anunciada_eur
+    descripcion: >-
+      La cifra de «más de 250 millones de euros» que aparece en la fuente es una estimación
+      periodística a partir del coste medio por megavatio, no una inversión anunciada por
+      el promotor. No se registra en el campo de inversión.
+    fuentes: [src-1]
+
+confianza: baja
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://valenciaplaza.com/valenciaplaza/empresas1/un-macro-centro-de-datos-busca-espacio-en-valencia-tras-tumbarle-red-electrica-la-conexion-en-catadau"
+    titulo: "Un macro centro de datos busca espacio en Valencia tras tumbarle Red Eléctrica la conexión en Catadau"
+    editor: "Valencia Plaza"
+    tipo: prensa_general
+    fecha_publicacion: "2026-05-05"
+    fecha_consulta: "2026-08-29"
+    cita: "Un gran centro de datos rastrea suelo y conexión eléctrica en la provincia de Valencia tras tumbar Red Eléctrica su solicitud de conectarse al nudo de Catadau con una petición de potencia de 25 megavatios. La negativa a este proyecto es una de las seis que el operador ha rechazado en tan sólo dos meses por la elevada saturación de la red"

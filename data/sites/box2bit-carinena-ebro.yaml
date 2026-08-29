@@ -1,0 +1,100 @@
+id: box2bit-carinena-ebro
+nombre: "Box2Bit — Campus de centros de procesamiento de datos «Ebro» (Cariñena)"
+alias:
+  - "Campus Ebro"
+  - "B2B Axis East 3 — Cariñena"
+tipo: campus
+operador: "Box2Bit (CDP Edge Solutions, S.L.U.)"
+propietario: "B2B Axis East 3, S.L.U."
+modelo: mayorista
+
+ubicacion:
+  municipio: "Cariñena"
+  provincia: "Zaragoza"
+  ccaa: "Aragón"
+  direccion: "Polígono industrial «Entreviñas»"
+  lat: 41.337364
+  lon: -1.224906
+  precision: municipio
+  fuentes: [src-1, src-3]
+
+estado: paralizado
+estado_detalle: >-
+  Declarado inversión de interés autonómico con interés general de Aragón el 29 de octubre
+  de 2024. El proyecto quedó sin conexión eléctrica al excluirse Cariñena de la
+  planificación de inversiones en red del Ministerio para la Transición Ecológica, y la
+  promotora trasladó el campus a Épila. Por Acuerdo de 22 de abril de 2026 el Gobierno de
+  Aragón modificó la delimitación del ámbito para excluir cuatro parcelas, adquiridas por
+  otra industria local. Según la prensa, la promotora "todavía no renuncia a la tramitación
+  del centro de datos" y mantiene la vigencia del acuerdo de octubre de 2024.
+estado_fuentes: [src-1, src-2, src-4]
+
+potencia: []
+
+fases:
+  - nombre: "Fase 1"
+    estado: paralizado
+    fuentes: [src-1]
+    nota: "Edificios 1 y 2, controles de acceso 1 y 2 y sus infraestructuras eléctricas."
+  - nombre: "Fase 2"
+    estado: paralizado
+    fuentes: [src-1]
+    nota: "Edificio 3 y parte del 4, controles de acceso 3 y 4 y sus infraestructuras eléctricas."
+  - nombre: "Fase 3"
+    estado: paralizado
+    fuentes: [src-1]
+    nota: "Resto del edificio 4 y edificio 5, control de acceso 5 y la infraestructura eléctrica del edificio 5."
+
+superficie_parcela_m2: 280000
+superficie_construida_m2: 245000
+inversion_anunciada_eur: 3400000000
+enlaces_proyecto: []
+
+incertidumbres:
+  - campo: estado
+    descripcion: >-
+      La declaración de interés autonómico sigue formalmente vigente y la promotora no ha
+      renunciado a la tramitación, pero el proyecto no se ejecutará como estaba previsto por
+      falta de acceso a la red eléctrica y la promotora ha trasladado el campus a Épila.
+    fuentes: [src-2, src-4]
+  - campo: potencia
+    descripcion: >-
+      La declaración de 2024 no publica ninguna cifra de potencia eléctrica para el campus
+      de Cariñena.
+    fuentes: [src-1]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1363605680606"
+    titulo: "ORDEN PEJ/1429/2024, de 21 de noviembre, por la que se da publicidad al Acuerdo de 29 de octubre de 2024, del Gobierno de Aragón, por el que se declara como inversión de interés autonómico con interés general de Aragón el proyecto «Campus de centros de procesamiento de datos \"Ebro\"», en el término municipal de Cariñena (Zaragoza), promovido por B2B Axis East 3 SLU"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2024-11-29"
+    fecha_consulta: "2026-08-29"
+    cita: "en su fase final estará conformado por cinco edificios principales, donde se ubicarán las salas de almacenamiento de datos, con una superficie total de 245.000 m² [...] el proyecto se ubica en 28 hectáreas de suelo urbano consolidado de uso industrial"
+  - id: src-2
+    url: "https://www.elespanol.com/aragon/actualidad/zaragoza/20260512/box2bit-libera-parcelas-fallido-centro-datos-carinena-ampliacion-industria/1003744242872_0.html"
+    titulo: "Box2Bit libera 4 parcelas de su fallido centro de datos en Cariñena para la ampliación de otra industria"
+    editor: "El Español — Aragón"
+    tipo: prensa_general
+    fecha_publicacion: "2026-05-12"
+    fecha_consulta: "2026-08-29"
+    cita: "finalmente no se llevará a cabo como estaba previsto al quedarse fuera esta localidad del plan de inversiones del Ministerio para la Transición Ecológica para los próximos cinco años"
+  - id: src-3
+    url: "https://query.wikidata.org/sparql"
+    titulo: "Wikidata Query Service — coordenadas del municipio de Cariñena (propiedad P625)"
+    editor: "Wikidata"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: "Cariñena 41.3373638 -1.2249058"
+  - id: src-4
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1447159090404"
+    titulo: "ORDEN PEJ/673/2026, de 27 de abril, por la que se da publicidad al Acuerdo de 22 de abril de 2026, del Gobierno de Aragón, por el que se modifica la delimitación del ámbito de la declaración de inversión de interés autonómico y de interés general de Aragón del proyecto de inversión denominado Campus de centros de procesamiento de datos «Ebro» en el término municipal de Cariñena (Zaragoza)"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2026-05-12"
+    fecha_consulta: "2026-08-29"
+    cita: "se modifica la delimitación del ámbito de la declaración de inversión de interés autonómico y de interés general de Aragón del proyecto de inversión denominado Campus de centros de procesamiento de datos \"Ebro\" en el término municipal de Cariñena (Zaragoza)"

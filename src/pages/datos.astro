@@ -7,6 +7,9 @@ import { numero } from '../lib/etiquetas.js'
 const descargas = [
   ['/datos/sitios.json', 'sitios.json', 'Emplazamientos completos, con potencias, fases, incertidumbres y fuentes.'],
   ['/datos/sitios.geojson', 'sitios.geojson', 'Puntos de los emplazamientos con las propiedades del mapa.'],
+  ['/datos/sitios-lista.json', 'sitios-lista.json', 'Inventario plano, incluidos los emplazamientos sin coordenadas.'],
+  ['/datos/capacidad.json', 'capacidad.json', 'Capacidad de acceso para demanda por nudo de la red de transporte.'],
+  ['/datos/actuaciones.json', 'actuaciones.json', 'Actuaciones de red planificadas.'],
   ['/datos/red.json', 'red.json', 'Subestaciones, nudos y actuaciones de red registradas.'],
   ['/datos/red.geojson', 'red.geojson', 'Los mismos nudos en formato geoespacial.'],
   ['/datos/lineas.geojson', 'lineas.geojson', 'Trazado de la red de 220/400 kV derivado de OpenStreetMap (ODbL).'],
@@ -40,7 +43,7 @@ const avisos = parte.filter((l) => l.includes('aviso:')).length
     <dl class="cifras">
       <div class="cifra">
         <dt>Emplazamientos</dt>
-        <dd>{numero(resumen.total_emplazamientos)}<small>{resumen.con_coordenadas} con coordenadas, {resumen.coordenadas_exactas} exactas</small></dd>
+        <dd>{numero(resumen.total_emplazamientos)}<small>{resumen.coordenadas_exactas} con coordenadas exactas · {resumen.coordenadas_derivadas} situados en el centro de su municipio</small></dd>
       </div>
       <div class="cifra">
         <dt>Fuentes</dt>
@@ -87,12 +90,16 @@ const avisos = parte.filter((l) => l.includes('aviso:')).length
   red/capacidad.yaml     capacidad de acceso para demanda, fechada
   red/lineas.geojson     trazado 220/400 kV cacheado desde OpenStreetMap
   renovables/*.yaml      generación y BESS vinculados a centros concretos
+  geo/municipios.json    centroides municipales cacheados (OpenStreetMap)
 
 scripts/
   validate.mjs   valida el esquema y la integridad de las referencias
   build-db.mjs   vuelca a SQLite
   export.mjs     genera los JSON y GeoJSON del sitio
-  check-updates.mjs  detecta cambios en las fuentes y propone revisiones`}</code></pre>
+  check-updates.mjs      detecta cambios en las fuentes y arma la cola de revisión
+  apply-proposals.mjs    integra propuestas y separa los conflictos
+  geocode-municipios.mjs cachea centroides municipales
+  fetch-osm-grid.mjs     cachea el trazado de la red de transporte`}</code></pre>
 
     <h2>Control de calidad</h2>
     <p>

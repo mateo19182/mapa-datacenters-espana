@@ -1,0 +1,50 @@
+id: generacion-meta-talavera
+nombre: "Planta solar fotovoltaica del campus de datos de Meta en Talavera de la Reina"
+tipo: fotovoltaica
+potencia_mw: null
+tipo_potencia: no_especificado
+capacidad_mwh: null
+promotor: "Zarza Networks S.L. (promotora del PSI de Meta)"
+contraparte_ppa: null
+tipo_vinculo: autoconsumo
+tipo_vinculo_nota: "Planta de nueva construcción incluida en el propio Proyecto de Singular Interés del centro de datos, situada al norte de los edificios."
+municipio: "Talavera de la Reina"
+provincia: "Toledo"
+ccaa: "Castilla-La Mancha"
+lat: null
+lon: null
+precision: municipio
+estado: en_tramitacion
+estado_detalle: "PSI aprobado por el Consejo de Gobierno de Castilla-La Mancha el 14 de octubre de 2024; reparcelación aprobada definitivamente en agosto de 2026. Obras del campus previstas desde 2027 con plan a 10 años."
+fecha_firma: null
+adicionalidad: nueva_construccion
+adicionalidad_fuentes: [src-1, src-2]
+clusters_relacionados: []
+cpds_relacionados: [meta-talavera-de-la-reina-torrehierro]
+cpds_relacionados_nota: "La planta solar forma parte del mismo Proyecto de Singular Interés que el campus de datos."
+incertidumbres:
+  - campo: potencia_mw
+    descripcion: "Ninguna de las fuentes consultadas publica los MW de la planta solar ni la potencia eléctrica del centro de datos."
+    fuentes: [src-1, src-2]
+  - campo: promotor
+    descripcion: "El PSI indica que la planta será gestionada por el promotor pero «podrá ser ejecutada por un tercero»."
+    fuentes: [src-2]
+confianza: media
+ultima_verificacion: "2026-08-29"
+fuentes:
+  - id: src-1
+    url: "https://www.elespanol.com/eldigitalcastillalamancha/economia/20241022/centro-datos-meta-talavera-alimentara-traves-gran-parque-solar-nueva-construccion/895410584_0.html"
+    titulo: "El centro de datos de META en Talavera se alimentará a través de un gran parque solar de nueva construcción"
+    editor: "El Digital de Castilla-La Mancha (El Español)"
+    tipo: prensa_general
+    fecha_publicacion: "2024-10-22"
+    fecha_consulta: "2026-08-29"
+    cita: "el centro de datos de Meta en Talavera se alimentará mediante una planta fotovoltaica de nueva construcción [...] el parque solar será clave para garantizar la sostenibilidad energética del centro"
+  - id: src-2
+    url: "https://toledodiario.es/publican-la-aprobacion-del-proyecto-de-singular-interes-de-meta-cuya-construccion-se-extendera-durante-una-decada/"
+    titulo: "Publican la aprobación del Proyecto de Singular Interés de Meta, cuya construcción se extenderá durante una década"
+    editor: "Toledodiario"
+    tipo: prensa_general
+    fecha_publicacion: "2024-10-22"
+    fecha_consulta: "2026-08-29"
+    cita: "la construcción de la planta solar fotovoltaica al norte de los Data Center"

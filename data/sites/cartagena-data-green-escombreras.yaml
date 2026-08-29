@@ -1,0 +1,69 @@
+id: cartagena-data-green-escombreras
+nombre: "Cartagena Data Green — Valle de Escombreras"
+alias:
+  - "Hub Cartagena Data Green"
+tipo: campus
+operador: "Cartagena Data Green"
+modelo: colocation
+
+ubicacion:
+  municipio: "Cartagena"
+  provincia: "Murcia"
+  ccaa: "Región de Murcia"
+  direccion: "Valle de Escombreras, junto a la planta de regasificación de Enagás"
+  lat: 37.5805
+  lon: -0.9232
+  precision: aproximada
+  fuentes: [src-1, src-2]
+
+estado: anunciado
+estado_detalle: >-
+  Proyecto en fase de planificación. El consorcio promotor sitúa el inicio de obras civiles
+  y de la conexión térmica con la planta de regasificación en el último trimestre de 2026,
+  con 18 meses de construcción, pruebas a mediados de 2028 y puesta en marcha comercial en
+  el primer semestre de 2029, condicionado a la concesión de suelo y a las auditorías
+  ambientales.
+estado_fuentes: [src-1, src-2]
+fecha_puesta_en_servicio: "2029"
+
+fases:
+  - nombre: "Fase 1"
+    estado: anunciado
+    fuentes: [src-1]
+
+refrigeracion: >-
+  Aprovechamiento del frío residual de la planta de regasificación de GNL de Enagás en
+  Escombreras mediante intercambio térmico, con requisito de vertido térmico cero al medio
+  marino. Se plantea hidrógeno verde como energía de respaldo en lugar de grupos diésel.
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      Ninguna fuente consultada publica potencia (ni MW IT ni de conexión), superficie ni
+      inversión del proyecto.
+    fuentes: [src-1, src-2]
+  - campo: operador
+    descripcion: >-
+      Las fuentes hablan de un «consorcio promotor» y de «fondos de inversión especializados»
+      sin nombrar a las sociedades participantes.
+    fuentes: [src-1]
+
+confianza: baja
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.datacenterdynamics.com/es/noticias/cartagena-se-postula-como-nuevo-hub-digital-con-un-centro-de-datos-refrigerado-con-gas-natural-licuado/"
+    titulo: "Cartagena se postula como nuevo hub digital con un centro de datos refrigerado con gas natural licuado"
+    editor: "DatacenterDynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-02-06"
+    fecha_consulta: "2026-08-29"
+    cita: "El hub Cartagena Data Green proyecta levantar en el Valle de Escombreras, Murcia, uno de los primeros centros de datos de Europa enfriados con gas natural licuado, GLN [...] El proyecto se apoya en la planta de regasificación de Enagás en Escombreras, cuyo excedente de frío se utilizará para refrigerar servidores de alto rendimiento"
+  - id: src-2
+    url: "https://observatorioedc.com/directorio/"
+    titulo: "Data Centers — Directorio, Observatorio Español de Data Centers"
+    editor: "Observatorio Español de Data Centers"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: "Cartagena Data Green | Valle de Escombreras | Cartagena | Región de Murcia | COLOCATION | Planificación"

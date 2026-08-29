@@ -1,0 +1,62 @@
+id: sekuens-aller-pozo-san-jorge
+nombre: "Centro de datos del pozo San Jorge — Caborana (Aller)"
+alias:
+  - "Pozu San Jorge"
+  - "Centro de computación de la mina San Jorge"
+  - "Nube asturiana"
+tipo: edificio
+operador: "Sekuens (Agencia de Ciencia, Competitividad Empresarial e Innovación del Principado de Asturias)"
+propietario: "Principado de Asturias"
+modelo: corporativo
+
+ubicacion:
+  municipio: "Aller"
+  provincia: "Asturias"
+  ccaa: "Asturias"
+  direccion: "Antiguo pozo minero San Jorge, Caborana (Aller)"
+  lat: 43.1960
+  lon: -5.6800
+  precision: municipio
+  fuentes: [src-1]
+
+estado: en_construccion
+estado_detalle: >-
+  Reconversión de los edificios del antiguo pozo minero San Jorge en un centro de
+  datos que debe ser la base de la «nube asturiana». Financiado con 3 millones de
+  euros del Fondo de Transición Justa. Las obras de reforma estaban previstas para
+  2025 y la instalación de las primeras máquinas para 2026. El Principado plantea
+  replicar el modelo en otros 16 pozos inactivos y estudia refrigeración con agua
+  de las galerías subterráneas.
+estado_fuentes: [src-1]
+
+inversion_anunciada_eur: 3000000
+refrigeracion: "Se estudia el aprovechamiento del agua de las galerías mineras subterráneas."
+
+enlaces_proyecto:
+  - "https://actualidad.asturias.es/-/ciencia-conf%C3%ADa-en-que-el-centro-de-datos-del-principado-en-el-pozo-san-jorge-atraiga-empresas-del-sector-a-la-comunidad"
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      La fuente oficial consultada no cuantifica la potencia. Resúmenes de prensa
+      citan «unos 0,4 MW», pero no se ha podido abrir la fuente primaria que lo
+      sostiene, por lo que el campo se omite.
+    fuentes: [src-1]
+  - campo: estado
+    descripcion: >-
+      No se ha localizado confirmación de finalización de obras ni de puesta en
+      servicio a agosto de 2026.
+    fuentes: [src-1]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://actualidad.asturias.es/-/ciencia-conf%C3%ADa-en-que-el-centro-de-datos-del-principado-en-el-pozo-san-jorge-atraiga-empresas-del-sector-a-la-comunidad"
+    titulo: "Ciencia confía en que el centro de datos del Principado en el pozo San Jorge atraiga empresas del sector a la comunidad"
+    editor: "Gobierno del Principado de Asturias"
+    tipo: oficial
+    fecha_publicacion: "2025-03-26"
+    fecha_consulta: "2026-08-29"
+    cita: "pasaremos de la economía del carbón a la economía del dato"

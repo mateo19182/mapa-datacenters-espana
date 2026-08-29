@@ -1,0 +1,161 @@
+id: iron-mountain-san-fernando-de-henares-mad
+nombre: "Iron Mountain Data Centers — Campus de San Fernando de Henares (MAD-1 a MAD-8)"
+alias:
+  - "Iron Mountain MAD-1"
+  - "Xdata Properties"
+  - "Campus del Parque de San Fernando"
+tipo: campus
+operador: "Iron Mountain Data Centers"
+propietario: "Iron Mountain"
+modelo: colocation
+
+ubicacion:
+  municipio: "San Fernando de Henares"
+  provincia: "Madrid"
+  ccaa: "Comunidad de Madrid"
+  direccion: "Calle del Mar Egeo 4, 28830 San Fernando de Henares (Parque de San Fernando)"
+  lat: 40.457935
+  lon: -3.498711
+  precision: exacta
+  fuentes: [src-3]
+
+estado: parcialmente_operativo
+estado_detalle: >-
+  MAD-1 (4.000 m²) inaugurado el 25 de marzo de 2025, con entrada en operación de la primera fase
+  en julio de 2025. Restantes edificios en desarrollo: MAD-2 y MAD-3 previstos para 2027, MAD-4 y
+  MAD-5 para 2029 y MAD-6/7/8 para 2030 según la ficha corporativa; la compañía declaró en 2025
+  haber adelantado a 2027 la entrega del resto del campus. Permisos de potencia asegurados para
+  los 79 MW completos.
+estado_fuentes: [src-1, src-2, src-4]
+fecha_puesta_en_servicio: "2025-07"
+
+potencia:
+  - tipo: it
+    valor_mw: 79
+    ambito: campus
+    referencia: "Capacidad TI aprobada y planificada del campus completo"
+    estado_asociado: en_construccion
+    fecha_dato: "2026-08-29"
+    fuentes: [src-1]
+    nota: "\"79 MW of approved IT capacity\" / \"79 MW total IT capacity (approved & planned)\"."
+  - tipo: it
+    valor_mw: 3
+    ambito: fase
+    referencia: "MAD-1, capacidad actual"
+    estado_asociado: operativo
+    fecha_dato: "2026-08-29"
+    fuentes: [src-1]
+    nota: "\"phased expansion capabilities from 3 MW to 79 MW of IT load\"."
+  - tipo: no_especificado
+    valor_mw: 2
+    ambito: fase
+    referencia: "Primera fase de MAD-1 en el momento de la inauguración"
+    estado_asociado: operativo
+    fecha_dato: "2025-03-26"
+    fuentes: [src-2]
+    nota: "Prensa especializada: \"la primera fase contará con 2 MW y comenzará a operar el próximo mes de julio\". Contradice los 3 MW de la ficha corporativa."
+  - tipo: no_especificado
+    valor_mw: 130
+    ambito: campus
+    referencia: "Capacidad potencial del campus según la venta de Xdata Properties a Iron Mountain"
+    estado_asociado: anunciado
+    fecha_dato: "2022-11-04"
+    fuentes: [src-4]
+    nota: "\"aspira a superar los 130 MW de potencia en su campus de San Fernando de Henares\" (2022). No coincide con los 79 MW que Iron Mountain publica hoy."
+
+fases:
+  - nombre: "MAD-1"
+    estado: operativo
+    fecha_puesta_en_servicio: "2025-07"
+    superficie_m2: 4000
+    fuentes: [src-1, src-2]
+  - nombre: "MAD-2"
+    estado: en_construccion
+    fuentes: [src-1]
+  - nombre: "MAD-3"
+    estado: en_construccion
+    fuentes: [src-1]
+  - nombre: "MAD-4"
+    estado: anunciado
+    fuentes: [src-1]
+  - nombre: "MAD-5"
+    estado: anunciado
+    fuentes: [src-1]
+  - nombre: "MAD-6, MAD-7 y MAD-8"
+    estado: anunciado
+    fuentes: [src-1]
+
+conexion_electrica:
+  subestacion: "Dos subestaciones propias previstas dentro del campus"
+  fuentes: [src-1]
+
+superficie_parcela_m2: 60000
+inversion_anunciada_eur: 1100000000
+refrigeracion: "PUE declarado de 1,4 en el momento de la inauguración, con mejora prevista al entrar nueva capacidad."
+enlaces_proyecto:
+  - "https://www.ironmountain.com/data-centers/locations/emea/madrid"
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      Los MW por edificio publicados por Iron Mountain (MAD-2 a MAD-5 con 10 MW cada uno y
+      MAD-6/7/8 con "36 MW each") suman muy por encima de los 79 MW declarados para el campus.
+      Lo más probable es que los 36 MW sean el conjunto de los tres últimos edificios, pero la
+      fuente dice "each" y no se corrige aquí.
+    fuentes: [src-1]
+  - campo: potencia
+    descripcion: >-
+      La ficha corporativa habla de 3 MW operativos en MAD-1 y la prensa especializada de una
+      primera fase de 2 MW. Además, la operación de compra en 2022 hablaba de más de 130 MW
+      potenciales frente a los 79 MW actuales.
+    fuentes: [src-1, src-2, src-4]
+  - campo: estado
+    descripcion: >-
+      La ficha corporativa fecha MAD-2/MAD-3 en 2027 y el resto en 2029-2030, mientras que un
+      artículo de opinión del director general de Iron Mountain para EMEA (julio de 2025) afirma
+      que los dos siguientes edificios entran en servicio en 2026 y el resto del campus se
+      adelanta de 2029 a 2027.
+    fuentes: [src-1, src-5]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.ironmountain.com/data-centers/locations/emea/madrid"
+    titulo: "Madrid Data Center | Iron Mountain Data Centers"
+    editor: "Iron Mountain"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: "79 MW of approved IT capacity ... Our 60.000-square-meter San Fernando de Henares campus ... MAD-1, our initial 4.000-square-meter facility ... two on-campus substations planned"
+  - id: src-2
+    url: "https://www.datacentermarket.es/datacenter-infrastructure/iron-mountain-inaugura-su-data-center-de-madrid/"
+    titulo: "Iron Mountain inaugura su data center de Madrid"
+    editor: "Data Center Market"
+    tipo: prensa_especializada
+    fecha_publicacion: "2025-03-26"
+    fecha_consulta: "2026-08-29"
+    cita: "Con una inversión de 1.100 millones de euros ... Inicialmente, la primera fase contará con 2 MW y comenzará a operar el próximo mes de julio, pero la idea es llegar a culminar los 79 mw de potencia en 2028 ... el PUE actual es de 1,4"
+  - id: src-3
+    url: "https://www.peeringdb.com/fac/13560"
+    titulo: "Iron Mountain Data Center - Madrid (MAD-1)"
+    editor: "PeeringDB"
+    tipo: asociacion
+    fecha_consulta: "2026-08-29"
+    cita: "Calle del Mar Egeo 4, San Fernando de Henares, Madrid, 28830, Spain"
+  - id: src-4
+    url: "https://brainsre.news/stoneshield-vende-su-filial-de-centros-de-datos-a-la-americana-iron-mountain-que-aterriza-en-espana/"
+    titulo: "Stoneshield vende su filial de centros de datos a la americana Iron Mountain, que aterriza en España"
+    editor: "Brainsre News"
+    tipo: prensa_general
+    fecha_publicacion: "2022-11-04"
+    fecha_consulta: "2026-08-29"
+    cita: "Xdata Properties es el operador de centros de datos de colocación con mayor capacidad potencial en la península ibérica, y aspira a superar los 130 MW de potencia en su campus de San Fernando de Henares."
+  - id: src-5
+    url: "https://www.datacentermarket.es/datacenter-infrastructure/impulsando-los-centros-de-datos-en-madrid/"
+    titulo: "Impulsando los centros de datos en Madrid"
+    editor: "Data Center Market"
+    tipo: prensa_especializada
+    fecha_publicacion: "2025-07-02"
+    fecha_consulta: "2026-08-29"
+    cita: "Los dos próximos edificios del campus, más enfocados en la hiperescala, están programados para entrar en servicio en 2026, y la fecha de entrega prevista para el resto del campus, originalmente prevista para 2029, se ha adelantado a 2027."

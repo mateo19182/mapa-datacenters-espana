@@ -1,0 +1,53 @@
+id: acens-alcobendas
+nombre: "acens Technologies — Data Center de Alcobendas"
+alias:
+  - "acens Technologies (Telefónica)"
+tipo: edificio
+operador: "acens Technologies"
+propietario: "acens Technologies (grupo Telefónica)"
+modelo: colocation
+
+ubicacion:
+  municipio: "Alcobendas"
+  provincia: "Madrid"
+  ccaa: "Comunidad de Madrid"
+  direccion: "Calle San Rafael 14, 28108 Alcobendas"
+  lat: 40.526407
+  lon: -3.66113
+  precision: exacta
+  fuentes: [src-2]
+
+estado: operativo
+estado_detalle: "acens declara 6.000 m² de data centers propios repartidos entre Barcelona y Madrid."
+estado_fuentes: [src-1, src-2]
+
+potencia: []
+
+incertidumbres:
+  - campo: superficie_construida_m2
+    descripcion: >-
+      acens publica 6.000 m² agregados para Barcelona y Madrid; no desglosa la superficie del
+      centro de Alcobendas.
+    fuentes: [src-1]
+  - campo: potencia
+    descripcion: "No consta ninguna cifra pública de potencia."
+    fuentes: [src-1, src-2]
+
+confianza: baja
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.acens.com/"
+    titulo: "acens — Cloud, Hosting y Data Center"
+    editor: "acens Technologies"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: "acens cuenta con 6.000 m2 de Data Centers propios en Barcelona y Madrid."
+  - id: src-2
+    url: "https://www.peeringdb.com/fac/5748"
+    titulo: "Acens Technologies"
+    editor: "PeeringDB"
+    tipo: asociacion
+    fecha_consulta: "2026-08-29"
+    cita: "Acens Technologies | C/ San Rafael, 14 | 28108 Alcobendas"

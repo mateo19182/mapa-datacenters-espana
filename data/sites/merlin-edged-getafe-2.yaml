@@ -1,0 +1,79 @@
+id: merlin-edged-getafe-2
+nombre: "MERLIN Edged Madrid-Getafe 2"
+alias:
+  - "Edged Madrid-Getafe 2"
+tipo: edificio
+operador: "MERLIN Edged"
+propietario: "MERLIN Properties SOCIMI"
+modelo: mayorista
+
+ubicacion:
+  municipio: "Getafe"
+  provincia: "Madrid"
+  ccaa: "Comunidad de Madrid"
+  direccion: "Calle Fundidores 2, Polígono Industrial Los Ángeles, 28906 Getafe"
+  lat: null
+  lon: null
+  precision: aproximada
+  fuentes: [src-1]
+
+estado: operativo
+estado_detalle: >-
+  Segundo edificio de MERLIN Edged en el Polígono Los Ángeles de Getafe, de dos alturas y cuatro
+  muelles de carga. Edged lo marca como "Now Open" con espacio disponible.
+estado_fuentes: [src-1]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 48
+    ambito: edificio
+    referencia: "Critical Load Capacity (encabezado de la ficha)"
+    estado_asociado: operativo
+    fecha_dato: "2026-08-29"
+    fuentes: [src-1]
+  - tipo: no_especificado
+    valor_mw: 20
+    ambito: edificio
+    referencia: "Critical Load Capacity (segundo bloque de la misma ficha)"
+    estado_asociado: operativo
+    fecha_dato: "2026-08-29"
+    fuentes: [src-1]
+    nota: "La misma página de Edged muestra dos cifras distintas para el mismo edificio."
+
+refrigeracion: "Sistema ThermalWorks sin consumo de agua (WUE 0,00 l/kWh); PUE de diseño de cartera 1,15."
+enlaces_proyecto:
+  - "https://www.edged.es/madrid-getafe-2"
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      La ficha de Edged para Madrid-Getafe 2 muestra "48 MW Critical Load Capacity" en el
+      encabezado y "20 MW Critical Load Capacity" en el bloque inferior. Se conservan ambos
+      valores sin elegir.
+    fuentes: [src-1]
+  - campo: estado
+    descripcion: >-
+      La nota de prensa de MERLIN de enero de 2025 solo menciona MAD 01 en Getafe (20 MW
+      ampliables a 27 MW) y no recoge un segundo edificio, por lo que no se puede datar la
+      puesta en servicio de Getafe 2 ni confirmar su capacidad energizada.
+    fuentes: [src-1, src-2]
+
+confianza: baja
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.edged.es/madrid-getafe-2"
+    titulo: "Edged Madrid-Getafe 2"
+    editor: "Edged (MERLIN Edged)"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: "48 MW Critical Load Capacity ... Now Open ... Calle Fundidores, nº 2 Polígono Industrial, Los Ángeles, 28906 Getafe, Spain ... This building is two stories with four loading dock bays"
+  - id: src-2
+    url: "https://ir.merlinproperties.com/en/new-opportunity-in-data-centers/"
+    titulo: "New Data Center opportunity"
+    editor: "MERLIN Properties"
+    tipo: empresa
+    fecha_publicacion: "2025-01-14"
+    fecha_consulta: "2026-08-29"
+    cita: "with operations in Madrid-Getafe (MAD 01 with 20MW in operation, expandable to 27MW)"

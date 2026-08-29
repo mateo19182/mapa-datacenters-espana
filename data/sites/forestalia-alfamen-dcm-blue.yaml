@@ -1,0 +1,118 @@
+id: forestalia-alfamen-dcm-blue
+nombre: "Forestalia — Centro de datos «DCM Blue» (Alfamén), proyecto Búfalo"
+alias:
+  - "DCM Blue"
+  - "Proyecto Búfalo"
+tipo: campus
+operador: "Grupo Forestalia"
+propietario: "Blue Holdco Renovables, S.L."
+modelo: desconocido
+
+ubicacion:
+  municipio: "Alfamén"
+  provincia: "Zaragoza"
+  ccaa: "Aragón"
+  direccion: "Emplazamiento próximo a la subestación «Los Vientos 220 kV» de Red Eléctrica de España"
+  lat: 41.438364
+  lon: -1.243173
+  precision: municipio
+  fuentes: [src-1, src-2]
+
+estado: anunciado
+estado_detalle: >-
+  Uno de los tres centros de datos del proyecto "Búfalo", declarado por el Gobierno de
+  Aragón el 12 de noviembre de 2025 como inversión de interés autonómico y como proyecto
+  prioritario con generación renovable asociada al amparo de la Ley 5/2024 de fomento de
+  comunidades energéticas y autoconsumo industrial en Aragón. El suministro procede de la
+  red de transporte en la posición de «Los Vientos 220 kV», asociado a instalaciones de generación
+  renovable del grupo que cambian su régimen de acceso a autoconsumo con excedentes. La
+  fase 1 está prevista para el primer semestre de 2028.
+estado_fuentes: [src-1]
+
+potencia:
+  - tipo: conexion_red
+    valor_mw: 146.5
+    ambito: campus
+    referencia: "Potencia para el suministro de energía desde la red de transporte concedida por REE en el nudo Los Vientos 220 kV"
+    estado_asociado: anunciado
+    fecha_dato: "2025-11-12"
+    fuentes: [src-1]
+    nota: >-
+      El acuerdo describe la suma de las tres potencias (70 + 81 + 146,5 = 297,5 MW) como
+      "demanda IT suministrada por la red de transporte", pero se trata de la potencia
+      concedida por REE en el punto de conexión.
+  - tipo: it
+    valor_mw: 450
+    ambito: campus
+    referencia: "Consumo eléctrico final previsto con escalabilidad"
+    estado_asociado: anunciado
+    fecha_dato: "2025-11-12"
+    fuentes: [src-1]
+    nota: >-
+      "se plantea una situación final de consumo eléctrico para los tres centros de datos
+      con una escalabilidad hasta 450 MW IT para el \"DCM Blue\"". Requiere sobredimensionar
+      la generación renovable asociada.
+
+fases:
+  - nombre: "Fase 1"
+    estado: anunciado
+    fecha_puesta_en_servicio: "2028"
+    fuentes: [src-1]
+    nota: >-
+      Urbanización y construcción del centro de datos, con demanda garantizada por la red de
+      transporte y 146.5 MW de generación renovable eólica y fotovoltaica asociada en
+      régimen de autoconsumo con excedentes.
+  - nombre: "Fase 2"
+    estado: anunciado
+    fecha_puesta_en_servicio: "2029"
+    fuentes: [src-1]
+    nota: "Ampliación de la generación renovable asociada e integración de almacenamiento."
+
+conexion_electrica:
+  subestacion: "SE Los Vientos 220 kV (Red Eléctrica de España)"
+  tension_kv: 220
+  titular_red: "Red Eléctrica de España"
+  mw_solicitados: null
+  mw_concedidos: 146.5
+  fuentes: [src-1]
+  nota: >-
+    La instalación de generación renovable asociada tiene 293.00 MW de acceso y conexión en
+    REE y 279.24 MW instalados. Conforme al artículo 6.9 del Real Decreto 1183/2020, el
+    centro de datos puede obtener hasta el 50 % de la capacidad de acceso de la instalación
+    de generación a la que se asocia, por lo que no puede conectarse sin ella.
+
+inversion_anunciada_eur: null
+enlaces_proyecto: []
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      El acuerdo mezcla la potencia concedida en el punto de conexión con la expresión
+      "demanda IT", y a la vez fija un objetivo final de 450 MW IT muy superior. Se
+      registran ambos valores sin sumarlos.
+    fuentes: [src-1]
+  - campo: ubicacion
+    descripcion: >-
+      No se publican coordenadas ni referencias catastrales; solo la proximidad al nudo
+      «Los Vientos 220 kV». Las coordenadas registradas son el centroide municipal (Wikidata).
+    fuentes: [src-1, src-2]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1424067523636"
+    titulo: "ORDEN PEJ/1656/2025, de 25 de noviembre, por la que se da publicidad al Acuerdo de 12 de noviembre de 2025, del Gobierno de Aragón, por el que se declara como inversión de interés autonómico, así como proyecto prioritario con generación renovable asociada, el proyecto «Búfalo», de integración de tres centros de datos («DCM Data», «DCM Dédalo» y «DCM Blue») ubicados en los municipios de Magallón, Botorrita y Alfamén (Zaragoza)"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2025-12-02"
+    fecha_consulta: "2026-08-29"
+    cita: "posibilitando que la potencia para el suministro de energía de la red de transporte, concedida por REE, sea de 70 MW para \"DCM Data\", 81 MW para \"DCM Dédalo\" y 146,5 MW para \"DCM Blue\"; en total 297,5 MW de demanda IT suministrada por la red de transporte."
+  - id: src-2
+    url: "https://query.wikidata.org/sparql"
+    titulo: "Wikidata Query Service — coordenadas del municipio de Alfamén (propiedad P625)"
+    editor: "Wikidata"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: "Alfamén 41.438364 -1.243173"

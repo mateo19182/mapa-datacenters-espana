@@ -1,0 +1,73 @@
+id: grupo-aire-elche-oasix
+nombre: "Grupo Aire (OASIX) — Elche, Parc Empresarial"
+alias:
+  - "Data center de Alicante de Grupo Aire"
+  - "OASIX Alicante"
+tipo: edificio
+operador: "Grupo Aire"
+propietario: "Grupo Aire"
+modelo: colocation
+
+ubicacion:
+  municipio: "Elx / Elche"
+  provincia: "Alicante"
+  ccaa: "Comunitat Valenciana"
+  direccion: "Calle Santiago Ramón y Cajal, 11, Parque Empresarial de Elche"
+  lat: 38.2915
+  lon: -0.6113
+  precision: exacta
+  fuentes: [src-1]
+
+estado: operativo
+estado_detalle: >-
+  En funcionamiento desde 2016. Comercializado por el operador como «centro de datos de
+  Alicante» pese a estar en término municipal de Elche, junto a las oficinas centrales del
+  grupo. No entró en la venta de tres CPD a Templus de enero de 2026: Grupo Aire mantiene
+  este centro como propio.
+estado_fuentes: [src-1, src-2]
+fecha_puesta_en_servicio: "2016"
+
+fases:
+  - nombre: "Instalación única"
+    estado: operativo
+    fecha_puesta_en_servicio: "2016"
+    superficie_m2: 500
+    fuentes: [src-1]
+
+superficie_construida_m2: 500
+refrigeracion: >-
+  Proyecto propio de placas solares con orientación este-oeste para autoconsumo.
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      El operador no publica potencia eléctrica; solo 500 m² y más de 55 racks. El
+      directorio del Observatorio Español de Data Centers tampoco asigna MW.
+    fuentes: [src-1, src-3]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://airetech.es/data-center/"
+    titulo: "Centro de datos en Alicante, España | Aire"
+    editor: "Grupo Aire"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: "Nuestro centro de datos de Alicante es un datacenter neutro situado en la calle Santiago Ramón y Cajal, 11, en el Parque Empresarial de Elche, Alicante, junto al edificio de las oficinas centrales de Grupo Aire. Está en funcionamiento desde el año 2016 y cuenta con un total de 500 metros cuadrados y más de 55 racks."
+  - id: src-2
+    url: "https://www.redestelecom.es/operadoras/templus-se-queda-con-cpd-de-aire-en-lisboa-madrid-y-valencia/"
+    titulo: "Templus se queda con CPD de Aire en Lisboa, Madrid y Valencia"
+    editor: "Redes & Telecom"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-01-12"
+    fecha_consulta: "2026-08-29"
+    cita: "manteniendo la atención y gestión de sus clientes con total normalidad, tanto en sus centros de datos propios (Alicante, Talavera de la Reina y Canarias) como ahora en la red completa de Templus"
+  - id: src-3
+    url: "https://observatorioedc.com/directorio/"
+    titulo: "Data Centers — Directorio, Observatorio Español de Data Centers"
+    editor: "Observatorio Español de Data Centers"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: "Grupo Aire | Elche | Comunidad Valenciana | COLOCATION | Operativo"

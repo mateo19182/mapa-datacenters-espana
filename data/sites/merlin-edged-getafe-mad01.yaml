@@ -1,0 +1,118 @@
+id: merlin-edged-getafe-mad01
+nombre: "MERLIN Edged Madrid-Getafe 1 (MAD 01)"
+alias:
+  - "Merlin Properties Getafe data center"
+  - "Edged Madrid-Getafe 1"
+  - "MERLIN Edged MAD01"
+tipo: edificio
+operador: "MERLIN Edged"
+propietario: "MERLIN Properties SOCIMI"
+cliente_ancla: "Meta (según prensa especializada; no confirmado por MERLIN)"
+modelo: mayorista
+
+ubicacion:
+  municipio: "Getafe"
+  provincia: "Madrid"
+  ccaa: "Comunidad de Madrid"
+  direccion: "Calle Fundidores 40, Polígono Industrial Los Ángeles, 28906 Getafe"
+  lat: 40.310814
+  lon: -3.692923
+  precision: exacta
+  fuentes: [src-1, src-2, src-4]
+
+estado: operativo
+estado_detalle: >-
+  Edificio de nueva planta de tres alturas con dos muelles de carga. Edged lo marca como
+  "Now Open". MERLIN declaró 20 MW en operación ampliables a 27 MW en enero de 2025.
+estado_fuentes: [src-1, src-3]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 20
+    ambito: edificio
+    referencia: "Critical Load Capacity"
+    estado_asociado: operativo
+    fecha_dato: "2026-08-29"
+    fuentes: [src-1]
+    nota: "Edged lo denomina \"Critical Load Capacity\", sin equipararlo explícitamente a carga TI."
+  - tipo: no_especificado
+    valor_mw: 20
+    ambito: edificio
+    referencia: "Capacidad en operación (MERLIN, enero 2025)"
+    estado_asociado: operativo
+    fecha_dato: "2025-01-14"
+    fuentes: [src-3]
+  - tipo: no_especificado
+    valor_mw: 27
+    ambito: edificio
+    referencia: "Capacidad ampliable"
+    estado_asociado: anunciado
+    fecha_dato: "2025-01-14"
+    fuentes: [src-3]
+
+refrigeracion: "Sistema ThermalWorks sin consumo de agua (WUE 0,00 l/kWh); PUE de diseño de cartera 1,15; glicol con chillers en cubierta; 500 kW por pasillo caliente."
+enlaces_proyecto:
+  - "https://www.edged.es/madrid-getafe"
+  - "https://www.merlinproperties.com/en/assets/data-center-madrid-getafe/"
+
+incertidumbres:
+  - campo: cliente_ancla
+    descripcion: >-
+      La prensa especializada inmobiliaria atribuye a Meta la condición de cliente principal de
+      los tres centros españoles de MERLIN (Madrid, Barcelona y Álava). MERLIN no ha confirmado
+      públicamente la identidad del inquilino; en 2022 declinó revelarla.
+    fuentes: [src-5, src-6]
+  - campo: potencia
+    descripcion: >-
+      Ni Edged ni MERLIN precisan si los 20 MW son carga TI o potencia total, por lo que se
+      registran como no_especificado.
+    fuentes: [src-1, src-3]
+
+confianza: alta
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.edged.es/madrid-getafe"
+    titulo: "Edged Spain | Madrid-Getafe"
+    editor: "Edged (MERLIN Edged)"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: "20 MW Critical Load Capacity ... Now Open ... Calle Fundidores nº 40 Polígono Industrial, Los Ángeles 28906; Getafe ... Water Usage Effectiveness (WUE) 0.00 liters/kWh of cooling"
+  - id: src-2
+    url: "https://www.merlinproperties.com/en/assets/data-center-madrid-getafe/"
+    titulo: "Madrid-Getafe Data Center"
+    editor: "MERLIN Properties"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: "Calle Fundidores nº40 Polígono Industrial Los Ángeles 28906 Getafe, Madrid, Spain"
+  - id: src-3
+    url: "https://ir.merlinproperties.com/en/new-opportunity-in-data-centers/"
+    titulo: "New Data Center opportunity"
+    editor: "MERLIN Properties"
+    tipo: empresa
+    fecha_publicacion: "2025-01-14"
+    fecha_consulta: "2026-08-29"
+    cita: "MERLIN-Edged has facilities in Spain and Portugal, with operations in Madrid-Getafe (MAD 01 with 20MW in operation, expandable to 27MW)"
+  - id: src-4
+    url: "https://www.peeringdb.com/fac/15254"
+    titulo: "MERLIN Edged MAD01 - Madrid-Getafe"
+    editor: "PeeringDB"
+    tipo: asociacion
+    fecha_consulta: "2026-08-29"
+    cita: "MERLIN Edged MAD01 - Madrid-Getafe | Fundidores 40 | 28906 Getafe"
+  - id: src-5
+    url: "https://www.iberian.property/news/logistics/merlin-properties-leases-its-data-centres-in-spain-to-meta/"
+    titulo: "Merlin Properties leases its data centres in Spain to Meta"
+    editor: "Iberian Property"
+    tipo: prensa_especializada
+    fecha_consulta: "2026-08-29"
+    cita: "Meta, the parent company of Facebook, Instagram and WhatsApp, has become the main client for the company's three new data centres."
+  - id: src-6
+    url: "https://brainsre.news/merlin-prealquila-primer-data-center/"
+    titulo: "Merlin prealquila el primer data center que cuenta con licencia"
+    editor: "Brainsre News"
+    tipo: prensa_general
+    fecha_publicacion: "2022-05-04"
+    fecha_consulta: "2026-08-29"
+    cita: "Por seguridad y confidencialidad, la cotizada ha declinado revelar en nuevo inquilino ... En Madrid, en concreto en Getafe, Merlin promoverá uno de 20mW."

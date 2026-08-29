@@ -1,0 +1,59 @@
+id: google-santander-pctcan-sol
+nombre: "Google — estación de entronque del cable Sol en el PCTCAN (Santander)"
+alias:
+  - "Centro de transmisión de datos de Google en el PCTCAN"
+  - "Estación de amarre del cable Sol"
+tipo: edificio
+operador: "Google"
+propietario: "Google"
+modelo: corporativo
+
+ubicacion:
+  municipio: "Santander"
+  provincia: "Cantabria"
+  ccaa: "Cantabria"
+  direccion: "Parcela del Parque Científico y Tecnológico de Cantabria (PCTCAN), Santander"
+  lat: 43.4720
+  lon: -3.8080
+  precision: aproximada
+  fuentes: [src-1]
+
+estado: anunciado
+estado_detalle: >-
+  Google adquirió en mayo de 2026 a la Sociedad Gestora del PCTCAN una parcela de
+  5.907,72 m² para construir una estación de entronque o centro de transmisión de
+  datos vinculado al cable submarino de fibra óptica Sol, que conectará Cantabria
+  con Estados Unidos (Florida), Bermudas y Azores. No es un centro de datos de
+  colocación: es infraestructura de aterraje y transmisión.
+estado_fuentes: [src-1]
+
+superficie_parcela_m2: 5907
+
+enlaces_proyecto: []
+
+incertidumbres:
+  - campo: potencia
+    descripcion: "No consta potencia eléctrica en ninguna fuente consultada. Campo omitido."
+    fuentes: [src-1]
+  - campo: tipo
+    descripcion: >-
+      Inclusión discutible en un inventario de CPD: es una estación de entronque de
+      cable submarino, no un centro de proceso de datos. Se incluye por su relevancia
+      para la conectividad del norte peninsular y su vínculo con el proyecto Altamira.
+    fuentes: [src-1]
+  - campo: superficie_parcela_m2
+    descripcion: "La fuente da 5.907,72 m²; se redondea a la unidad."
+    fuentes: [src-1]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.cantabriaeconomica.com/empresas/google-instalara-un-centro-de-transmision-para-su-cable-submarino-en-una-parcela-del-pctcan/"
+    titulo: "Google instalará un centro de transmisión para su cable submarino en una parcela del PCTCAN"
+    editor: "Cantabria Económica"
+    tipo: prensa_general
+    fecha_publicacion: "2026-05-06"
+    fecha_consulta: "2026-08-29"
+    cita: "5.907,72 metros cuadrados"

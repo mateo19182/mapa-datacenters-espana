@@ -1,0 +1,77 @@
+id: pure-dc-meco
+nombre: "Pure DC — Centro de datos de Meco"
+alias:
+  - "Pure DC Madrid"
+  - "Solar de ActivumSG / ASG Iberia en Meco"
+tipo: campus
+operador: "Pure DC"
+propietario: "Pure DC"
+modelo: mayorista
+
+ubicacion:
+  municipio: "Meco"
+  provincia: "Madrid"
+  ccaa: "Comunidad de Madrid"
+  direccion: "Corredor Madrid-Barcelona (A-2), Meco"
+  lat: null
+  lon: null
+  precision: municipio
+  fuentes: [src-1, src-2]
+
+estado: anunciado
+estado_detalle: >-
+  Suelo adquirido en julio de 2024 por Pure DC a ActivumSG Fund VI por 11 millones de euros.
+  Será el primer centro de datos de Pure DC en España. Tech-Stone continúa a cargo de la
+  ejecución del proyecto.
+estado_fuentes: [src-1, src-2]
+
+potencia:
+  - tipo: conexion_red
+    valor_mw: 25
+    ambito: campus
+    referencia: "Contrato de potencia eléctrica firmado en 2022 para la conexión desde una subestación cercana"
+    estado_asociado: permisos_concedidos
+    fecha_dato: "2024-07-29"
+    fuentes: [src-1, src-2]
+    nota: "\"un contrato de 25 MW de potencia eléctrica para la conexión de cables de alimentación desde una subestación eléctrica cercana\"; alimentación dual obtenida en 2023."
+
+conexion_electrica:
+  subestacion: "Subestación cercana no identificada; sistema dual feed obtenido en 2023"
+  mw_concedidos: 25
+  fuentes: [src-1, src-2]
+
+superficie_parcela_m2: 17650
+inversion_anunciada_eur: null
+
+incertidumbres:
+  - campo: superficie_parcela_m2
+    descripcion: >-
+      Brainsre cifra la parcela en unos 17.650 m² y Data Center Market en "alrededor de 18.000 m²".
+      Se registra la cifra más precisa y se deja constancia de la otra.
+    fuentes: [src-1, src-2]
+  - campo: estado
+    descripcion: >-
+      No se ha localizado licencia municipal, expediente urbanístico ni fecha objetivo de puesta
+      en servicio. Tampoco consta capacidad TI proyectada.
+    fuentes: [src-1, src-2]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://brainsre.news/pure-dc-compra-activumsg-suelo-17650-m2-meco-madrid/"
+    titulo: "El desarrollador de data centers Pure DC compra a ActivumSG un suelo de 17.650 m2 en Meco, Madrid, por 11 millones"
+    editor: "Brainsre News"
+    tipo: prensa_general
+    fecha_publicacion: "2024-07-29"
+    fecha_consulta: "2026-08-29"
+    cita: "Pure DC ... ha comprado a ActivumSG Fund VI un suelo de alrededor de 17.650 metros cuadrados en Meco, en la Comunidad de Madrid, por 11 millones de euros."
+  - id: src-2
+    url: "https://www.datacentermarket.es/news/asg-iberia-vende-a-pure-dc-un-solar-en-madrid-para-un-data-center/"
+    titulo: "ASG Iberia vende a Pure DC un solar en Madrid para un data center"
+    editor: "Data Center Market"
+    tipo: prensa_especializada
+    fecha_publicacion: "2024-07-29"
+    fecha_consulta: "2026-08-29"
+    cita: "ASG Iberia consiguió asegurar en 2022 un contrato de 25 MW de potencia eléctrica para la conexión de cables de alimentación desde una subestación eléctrica cercana y obtuvo el sistema dual feed en 2023."

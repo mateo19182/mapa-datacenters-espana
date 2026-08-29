@@ -1,0 +1,78 @@
+id: nlighten-madrid-lezama
+nombre: "nLighten Madrid (MAD1) — Calle Lezama"
+alias:
+  - "nLighten Madrid MAD1"
+  - "Madrid MA1"
+tipo: edificio
+operador: "nLighten"
+propietario: "nLighten"
+modelo: edge
+
+ubicacion:
+  municipio: "Madrid"
+  provincia: "Madrid"
+  ccaa: "Comunidad de Madrid"
+  direccion: "Calle Lezama 4, 28034 Madrid (distrito de Fuencarral-El Pardo)"
+  lat: 40.49048
+  lon: -3.691058
+  precision: exacta
+  fuentes: [src-2]
+
+estado: operativo
+estado_detalle: "Centro de datos edge en el norte de Madrid, próximo a la M-607."
+estado_fuentes: [src-1]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 1.5
+    ambito: edificio
+    referencia: "Capacidad del emplazamiento (site capacity end-state)"
+    estado_asociado: operativo
+    fecha_dato: "2026-08-29"
+    fuentes: [src-1]
+    nota: "\"1,500 kW of power\" / \"Site capacity end-state – 1,500 kW\"."
+  - tipo: no_especificado
+    valor_mw: 2
+    ambito: edificio
+    referencia: "Ficha del directorio OCOLO"
+    estado_asociado: operativo
+    fecha_dato: "2026-08-29"
+    fuentes: [src-3]
+
+superficie_construida_m2: 3300
+refrigeracion: "PUE de diseño 1,29; densidad estándar 2-7 kW por armario (hasta 15 kW) y alta densidad bajo petición."
+enlaces_proyecto:
+  - "https://www.nlighten.com/en/edge-location/madrid/"
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      nLighten publica 1.500 kW como capacidad final del emplazamiento; el directorio OCOLO
+      atribuye 2,00 MW. No se especifica si es carga TI o total.
+    fuentes: [src-1, src-3]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.nlighten.com/en/edge-location/madrid/"
+    titulo: "Madrid Data Center & Colocation Services | nLighten"
+    editor: "nLighten"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: "The nLighten edge data center in Madrid is a high availability and secure facility with 3,300 m² of dedicated colocation space and 1,500 kW of power ... Design Power Usage Effectiveness (PUE) – 1.29 ... Tier III design target"
+  - id: src-2
+    url: "https://www.peeringdb.com/fac/3082"
+    titulo: "nLighten Madrid MAD1"
+    editor: "PeeringDB"
+    tipo: asociacion
+    fecha_consulta: "2026-08-29"
+    cita: "nLighten Madrid MAD1 | c/ Lezama, 4 | 28034 Madrid"
+  - id: src-3
+    url: "https://www.ocolo.io/data-centers/spain/comunidad-de-madrid/madrid/"
+    titulo: "Data Centers in Madrid, Comunidad de Madrid"
+    editor: "OCOLO"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: "Madrid MA1 C. de Lezama, 4, Fuencarral-El Pardo, 28034 Madrid, Spain 2.00 MW • 48,437 sq ft"

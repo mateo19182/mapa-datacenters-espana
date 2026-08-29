@@ -56,7 +56,7 @@ const modelosPresentes = Object.keys(MODELO_ETIQUETA).filter((m) => sitios.some(
       <div class="grupo">
         <label class="etiqueta-campo" for="filtro-minimo">
           Mínimo de <span id="etiqueta-minimo-metrica">MW IT</span>
-          <span id="valor-minimo" class="silencio">sin mínimo</span>
+          <span class="silencio"> — <span id="valor-minimo">sin mínimo</span></span>
         </label>
         <input id="filtro-minimo" type="range" min="0" max="200" step="5" value="0" />
         <label class="casilla pequeno">
@@ -130,6 +130,11 @@ const modelosPresentes = Object.keys(MODELO_ETIQUETA).filter((m) => sitios.some(
           oficial de Red Eléctrica.
         </p>
       </fieldset>
+
+      <p class="ayuda pie-panel">
+        Los círculos atenuados están situados en el centro de su municipio porque la fuente no
+        publica la parcela. Véase la <a href="/metodologia">metodología</a>.
+      </p>
 
       <ol id="lista-resultados" class="lista"></ol>
     </aside>
@@ -217,6 +222,12 @@ const modelosPresentes = Object.keys(MODELO_ETIQUETA).filter((m) => sitios.some(
   .grupo > input[type='search'],
   .grupo > input[type='range'] {
     width: 100%;
+  }
+
+  .pie-panel {
+    padding: 0.85rem 1rem 0;
+    border-bottom: 1px solid var(--borde);
+    padding-bottom: 0.85rem;
   }
 
   .ayuda {
@@ -378,6 +389,22 @@ const modelosPresentes = Object.keys(MODELO_ETIQUETA).filter((m) => sitios.some(
   .detalle-flotante :global(.boton-ficha) {
     display: inline-block;
     font-size: 0.87rem;
+  }
+
+  .detalle-flotante :global(.tabla-mini) {
+    overflow-x: auto;
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    margin: 0.5rem 0;
+  }
+
+  .detalle-flotante :global(.tabla-mini table) {
+    font-size: 0.78rem;
+  }
+
+  .detalle-flotante :global(.tabla-mini th),
+  .detalle-flotante :global(.tabla-mini td) {
+    padding: 0.3rem 0.45rem;
   }
 
   @media (max-width: 900px) {

@@ -1,0 +1,95 @@
+id: ingenostrum-curtis-galicia-green-data-center
+nombre: "Galicia Green Data Center — Curtis-Teixeiro"
+alias:
+  - "CPD de Curtis"
+  - "Galicia Green Data Center, S.L."
+tipo: edificio
+operador: "Galicia Green Data Center, S.L."
+propietario: "Galicia Green Data Center, S.L."
+modelo: mayorista
+
+ubicacion:
+  municipio: "Curtis"
+  provincia: "A Coruña"
+  ccaa: "Galicia"
+  direccion: "Parcelas B5, B6, B8 y B9 del parque empresarial de Curtis-Teixeiro"
+  lat: 43.1300
+  lon: -8.0400
+  precision: aproximada
+  fuentes: [src-1]
+
+estado: permisos_concedidos
+estado_detalle: >-
+  Declarado Proyecto Industrial Estratéxico (PIE) por Acuerdo del Consello de la
+  Xunta de 9 de septiembre de 2024. Sometido a información pública mediante anuncio
+  de 17 de enero de 2025 de la Secretaría General de Industria y Desarrollo
+  Energético. El Consello de la Xunta aprobó el proyecto industrial estratégico el
+  26 de enero de 2026 (resolución publicada en el DOG de 16 de febrero de 2026). Es
+  el primer gran centro de proceso de datos de Galicia.
+estado_fuentes: [src-1, src-2]
+
+fases:
+  - nombre: "Sala IT 1"
+    estado: permisos_concedidos
+    fuentes: [src-1]
+  - nombre: "Sala IT 2"
+    estado: permisos_concedidos
+    fuentes: [src-1]
+  - nombre: "Sala IT 3"
+    estado: permisos_concedidos
+    fuentes: [src-1]
+
+conexion_electrica:
+  subestacion: "SET Sidegasa (conexión principal) y SET anexa al propio centro de datos"
+  tension_kv: 66
+  fuentes: [src-1]
+  # Suministro secundario de 15 kV en la SET Sidegasa (ver estado_detalle y fuentes)
+
+inversion_anunciada_eur: 50800000
+
+enlaces_proyecto:
+  - "https://www.xunta.gal/dog/Publicados/2025/20250123/AnuncioG0763-200125-0002_es.html"
+  - "https://www.xunta.gal/dog/Publicados/2026/20260216/AnuncioG0763-060226-0025_es.html"
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      El anuncio del DOG describe el edificio con tres salas IT pero no publica la
+      potencia. Fuentes secundarias hablan de 15 MW IT en tres fases de 5 MW IT, pero
+      no se ha podido abrir ninguna de ellas para verificarlo, por lo que el campo
+      potencia se omite.
+    fuentes: [src-1]
+  - campo: propietario
+    descripcion: >-
+      El proyecto nació impulsado por Ingenostrum en el marco de la alianza
+      público-privada Impulsa Galicia. En mayo de 2026 la prensa gallega informó de
+      la compra de Ingenostrum por el grupo australiano IREN; no se ha podido abrir
+      una fuente primaria que lo confirme, por lo que no se registra el cambio.
+    fuentes: [src-1]
+  - campo: fecha_puesta_en_servicio
+    descripcion: >-
+      El anuncio de la Xunta no fija fecha; el plazo «comenzará a contar desde el
+      momento en el que se disponga de todos los permisos necesarios». Titulares de
+      enero de 2026 hablan de retraso del encendido a finales de 2027.
+    fuentes: [src-2]
+
+confianza: alta
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.xunta.gal/dog/Publicados/2025/20250123/AnuncioG0763-200125-0002_es.html"
+    titulo: "ANUNCIO de 17 de enero de 2025, de la Secretaría General de Industria y Desarrollo Energético, por el que se somete a información pública el proyecto de un centro de procesamiento de datos y sus infraestructuras asociadas en Curtis (A Coruña)"
+    editor: "Diario Oficial de Galicia (Xunta de Galicia)"
+    tipo: oficial
+    fecha_publicacion: "2025-01-23"
+    fecha_consulta: "2026-08-29"
+    cita: "una conexión principal con una línea eléctrica subterránea de 66 kV que conectará la SET Sidegasa con la SET anexa al Data Center"
+  - id: src-2
+    url: "https://www.xunta.gal/dog/Publicados/2026/20260216/AnuncioG0763-060226-0025_es.html"
+    titulo: "RESOLUCIÓN de 6 de febrero de 2026 por la que se hace público el Acuerdo del Consello de la Xunta de Galicia, de 26 de enero de 2026, por el que se aprueba el proyecto industrial estratégico de un centro de procesamiento de datos"
+    editor: "Diario Oficial de Galicia (Xunta de Galicia)"
+    tipo: oficial
+    fecha_publicacion: "2026-02-16"
+    fecha_consulta: "2026-08-29"
+    cita: "el proyecto industrial estratégico de un centro de procesamiento de datos promovido por Galicia Green Data Center, S.L."

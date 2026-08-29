@@ -1,0 +1,73 @@
+id: vaultica-alcala-de-henares-mad01
+nombre: "Vaultica Madrid MAD01 — Alcalá de Henares (Los Salobrales)"
+alias:
+  - "Vaultica Spain MAD01"
+tipo: campus
+operador: "Vaultica Data Centers"
+propietario: "Vaultica Data Centers"
+modelo: colocation
+
+ubicacion:
+  municipio: "Alcalá de Henares"
+  provincia: "Madrid"
+  ccaa: "Comunidad de Madrid"
+  direccion: "Polígono industrial Los Salobrales, Alcalá de Henares"
+  lat: null
+  lon: null
+  precision: aproximada
+  fuentes: [src-1, src-2]
+
+estado: anunciado
+estado_detalle: >-
+  Anunciado el 28 de abril de 2026 como primer emplazamiento de Vaultica en España. El campus se
+  integrará en un complejo industrial existente en el polígono Los Salobrales, a unos 25 km de
+  Madrid.
+estado_fuentes: [src-1, src-2]
+
+potencia:
+  - tipo: it
+    valor_mw: 12
+    ambito: campus
+    referencia: "Capacidad de TI instalada de diseño"
+    estado_asociado: anunciado
+    fecha_dato: "2026-04-28"
+    fuentes: [src-1, src-2]
+    nota: "\"Installed IT capacity up to 12 MW\" / \"hasta 12 MW de capacidad de TI instalada (MWit)\"."
+
+conexion_electrica:
+  subestacion: "Dos subestaciones eléctricas independientes (no identificadas)"
+  fuentes: [src-1, src-2]
+  # "two grid connections, fed by two independent electrical substations"
+
+enlaces_proyecto:
+  - "https://www.vaultica.com/spain/"
+
+incertidumbres:
+  - campo: estado
+    descripcion: >-
+      No se ha localizado documentación urbanística ni licencia municipal asociada al proyecto,
+      ni fecha prevista de puesta en servicio.
+    fuentes: [src-1, src-2]
+  - campo: ubicacion
+    descripcion: "No se ha publicado la dirección concreta dentro del polígono Los Salobrales."
+    fuentes: [src-2]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.vaultica.com/spain/"
+    titulo: "Spain - Vaultica | Data Centres"
+    editor: "Vaultica"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: "Installed IT capacity up to 12 MW ... Power supply design: two grid connections, fed by two independent electrical substations"
+  - id: src-2
+    url: "https://www.datacentermarket.es/datacenter-infrastructure/vaultica-abrira-un-data-center-en-alcala-de-henares-madrid/"
+    titulo: "Vaultica abrirá un data center en Alcalá de Henares, Madrid"
+    editor: "Data Center Market"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-04-28"
+    fecha_consulta: "2026-08-29"
+    cita: "El centro estará ubicado en el municipio de Alcalá de Henares, dentro del polígono industrial 'Los Salobrales', a unos 25 km de la capital ... El proyecto está diseñado para albergar hasta 12 MW de capacidad de TI instalada (MWit), suministrada a través de dos conexiones a la red alimentadas por dos subestaciones eléctricas independientes."

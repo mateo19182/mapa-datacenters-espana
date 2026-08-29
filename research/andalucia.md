@@ -15,7 +15,7 @@ realmente.
 
 ## 1. Emplazamientos creados
 
-14 ficheros en `data/sites/`.
+15 ficheros en `data/sites/`.
 
 | id | emplazamiento | municipio (prov.) | operador | estado | potencia registrada | confianza |
 |---|---|---|---|---|---|---|
@@ -84,7 +84,7 @@ del encargo. Cádiz aparece solo por aterrajes: ninguno de los nueve proyectos q
 Endesa reconoce en la provincia (Jerez, Algeciras, El Puerto, Puerto Real, Los
 Barrios, Bornos) tiene promotor público conocido.
 
-**Potencia ausente en 6 de 14 fichas.** Box2bit, OASIX Málaga, CPD El Palenque y
+**Potencia ausente en 7 de 15 fichas.** Box2bit, OASIX Málaga, CPD El Palenque y
 las cuatro estaciones de aterraje no tienen ningún dato de potencia publicado. En
 el caso del CPD de la Junta llama la atención: hay superficies, presupuesto,
 refrigeración y fotovoltaica en las notas oficiales, pero ni un MW.
@@ -206,18 +206,18 @@ primeros llevan además coincidencia entre varias fuentes independientes.
 **Media** para el colocation operativo. Están las dos instalaciones de Templus,
 OASIX Málaga y Comvive. Es plausible que falten pequeños CPD de operador local y de
 banca/administración: los directorios sectoriales sugieren siete instalaciones en
-Málaga frente a las cuatro fichas creadas para esa provincia.
+Málaga capital frente a las cuatro fichas creadas para el municipio (Saltburn, Box2bit, Templus MAL01 y OASIX).
 
 **Baja** para la mitad oriental y occidental del territorio. Jaén sin ninguna
 ficha; Almería solo con un aterraje; Cádiz solo con aterrajes; Huelva con un único
 proyecto. Y **baja** también en el eje documental que más importa a este mapa: la
-relación con la red eléctrica. Solo 2 de 14 fichas tienen punto de conexión
+relación con la red eléctrica. Solo 2 de 15 fichas tienen punto de conexión
 identificado, y ninguna tiene MW solicitados o concedidos.
 
 Estimación gruesa: se ha cubierto **la práctica totalidad de lo que tiene promotor
 público identificado** en Andalucía a esta fecha, pero eso es una fracción pequeña
 de la actividad real. Endesa habla de 305 solicitudes de acceso y 5.133 MW en 75
-municipios; aquí hay 14 emplazamientos. La diferencia no es un fallo de la
+municipios; aquí hay 15 emplazamientos. La diferencia no es un fallo de la
 búsqueda: es que la mayoría de esas solicitudes son anónimas, especulativas o
 ambas, y el propio artículo de El Conciso las describe como ruido que bloquea
 capacidad en nudos críticos. Documentarlas exigiría trabajo de expediente

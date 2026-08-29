@@ -1,0 +1,60 @@
+id: espanix-madrid-mesena
+nombre: "ESpanix Datacenter — Calle Mesena, Madrid"
+alias:
+  - "Espanix Datacenter"
+  - "Punto neutro ESpanix Madrid"
+tipo: edificio
+operador: "Asociación ESpanix"
+propietario: "Asociación ESpanix"
+modelo: colocation
+
+ubicacion:
+  municipio: "Madrid"
+  provincia: "Madrid"
+  ccaa: "Comunidad de Madrid"
+  direccion: "Calle Mesena 80, 28033 Madrid (distrito de Hortaleza)"
+  lat: 40.466022
+  lon: -3.660963
+  precision: exacta
+  fuentes: [src-1, src-2]
+
+estado: operativo
+estado_detalle: >-
+  Sede del principal punto neutro de interconexión IP del sur de Europa. ESpanix registra además
+  otros dos nodos en Madrid (Gran Vía de Hortaleza 1 y 3).
+estado_fuentes: [src-1, src-2]
+
+potencia: []
+
+enlaces_proyecto:
+  - "https://www.espanix.net/en/"
+
+incertidumbres:
+  - campo: potencia
+    descripcion: "ESpanix no publica potencia ni superficie de su centro de datos."
+    fuentes: [src-1]
+  - campo: tipo
+    descripcion: >-
+      ESpanix registra en PeeringDB tres instalaciones en Madrid (Mesena 80, Gran Vía de
+      Hortaleza 1 y Gran Vía de Hortaleza 3). Solo se ficha la de Mesena, que es la que su web
+      describe como "ESpanix Datacenter"; las otras dos no se han podido caracterizar.
+    fuentes: [src-2]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.espanix.net/en/"
+    titulo: "ESpanix — Connectivity Node / Datacenter"
+    editor: "Asociación ESpanix"
+    tipo: asociacion
+    fecha_consulta: "2026-08-29"
+    cita: "The main IP interconnection node in southern Europe. Over 25 years carrying Internet traffic across the Iberian Peninsula. Calle Mesena, 80 28033 Madrid"
+  - id: src-2
+    url: "https://www.peeringdb.com/fac/121"
+    titulo: "Espanix Datacenter"
+    editor: "PeeringDB"
+    tipo: asociacion
+    fecha_consulta: "2026-08-29"
+    cita: "Espanix Datacenter | Mesena 80 | 28033 Madrid"

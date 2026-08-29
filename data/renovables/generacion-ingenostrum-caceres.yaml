@@ -1,0 +1,45 @@
+id: generacion-ingenostrum-caceres
+nombre: "Generación fotovoltaica del campus de centros de datos de Ingenostrum en Cáceres (520 MW)"
+tipo: fotovoltaica
+potencia_mw: 520
+tipo_potencia: no_especificado
+potencia_desglose:
+  - valor_mw: 120
+    referencia: "planta de autoconsumo del centro de datos"
+  - valor_mw: 400
+    referencia: "generación adicional"
+capacidad_mwh: null
+promotor: "Ingenostrum"
+contraparte_ppa: null
+tipo_vinculo: declarado_para_cpd
+municipio: "Cáceres"
+provincia: "Cáceres"
+ccaa: "Extremadura"
+lat: null
+lon: null
+precision: municipio
+estado: anunciado
+estado_detalle: "Proyecto presentado en mayo de 2022: siete edificios de centro de datos, 70 MW IT, inversión de 1.300 millones de euros entre 2023 y 2030. No se ha verificado avance posterior."
+fecha_firma: null
+adicionalidad: nueva_construccion
+adicionalidad_fuentes: [src-1]
+clusters_relacionados: []
+cpds_relacionados: [ingenostrum-caceres-ccgreen]
+cpds_relacionados_nota: "La generación forma parte del mismo proyecto de campus de Ingenostrum en Cáceres."
+cpd_it_mw: 70
+cpd_it_nota: "70 MW IT del campus. Magnitud distinta de los 520 MW fotovoltaicos: no se suman ni se comparan."
+incertidumbres:
+  - campo: estado
+    descripcion: "El dato es de 2022 y anunciaba inicio de obras en octubre de 2023. No se ha localizado confirmación posterior de ejecución."
+    fuentes: [src-1]
+confianza: baja
+ultima_verificacion: "2026-08-29"
+fuentes:
+  - id: src-1
+    url: "https://www.pv-magazine.es/2022/05/26/el-nuevo-centro-de-datos-de-caceres-sera-abastecido-por-520-mw-fotovoltaicos/"
+    titulo: "El nuevo centro de datos de Cáceres será abastecido por 520 MW fotovoltaicos"
+    editor: "pv magazine España"
+    tipo: prensa_especializada
+    fecha_publicacion: "2022-05-26"
+    fecha_consulta: "2026-08-29"
+    cita: "70 MW IT [...] 120 MW (autoconsumo del centro) [...] 400 MW [...] 400 millones en generación renovable y almacenamiento"

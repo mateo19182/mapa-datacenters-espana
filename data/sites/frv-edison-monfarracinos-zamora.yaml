@@ -59,6 +59,15 @@ incertidumbres:
   - campo: inversion_anunciada_eur
     descripcion: "La inversión se describe como \"varios millones de euros\", sin cifra exacta anunciada."
     fuentes: [src-elespanol]
+  - campo: refrigeracion
+    descripcion: >-
+      Las cifras de agua no cuadran entre sí. Las declaradas en el expediente y
+      recogidas por El Español son 6.281,65 m3 potables y 11.911,6 m3 no potables
+      (sin indicar periodo). La prensa local de Zamora publicó el 20 de agosto de
+      2026 un consumo de 1,36 millones de litros al día, equivalente a unos
+      496.000 m3 al año, cifra que no se ha podido verificar por no ser accesible
+      la fuente. Se deja abierta.
+    fuentes: [src-elespanol]
 
 confianza: media
 ultima_verificacion: "2026-08-29"

@@ -119,7 +119,14 @@ const conPotencia = (tipo) => sitios.filter((s) => s.resumen_potencia[tipo]).len
     <p>
       La precisión de la ubicación se declara explícitamente. Cuando solo se conoce el municipio, el
       punto se sitúa en su centro y así queda marcado: el mapa no debe sugerir una parcela concreta
-      que las fuentes no acreditan.
+      que las fuentes no acreditan. Esos puntos se dibujan atenuados, y su ficha lo dice.
+    </p>
+    <p>
+      Los centroides municipales proceden de OpenStreetMap mediante una consulta cacheada en el
+      repositorio, no de una llamada en vivo. {resumen.coordenadas_derivadas} de los
+      {resumen.total_emplazamientos} emplazamientos se sitúan así. La coordenada derivada nunca se
+      escribe en el fichero del emplazamiento: se calcula al construir el sitio, de modo que el dato
+      original sigue diciendo lo único cierto, que es el municipio.
     </p>
     <div class="tabla-envoltorio">
       <table>

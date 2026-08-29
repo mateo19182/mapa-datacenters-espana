@@ -1,0 +1,49 @@
+id: bess-merlin-solaria-madrid-600mwh
+nombre: "BESS contratado por Merlin Properties a Solaria (Comunidad de Madrid)"
+tipo: bess
+potencia_mw: null
+tipo_potencia: almacenamiento_mwh
+capacidad_mwh: 600
+capacidad_nota: "600 MWh es ENERGÍA almacenable. Las fuentes no publican la potencia (MW) del sistema de baterías."
+promotor: "Solaria"
+contraparte_ppa: "Merlin Properties"
+tipo_vinculo: ppa
+duracion_anios: 10
+municipio: null
+provincia: "Madrid"
+ccaa: "Comunidad de Madrid"
+lat: null
+lon: null
+precision: ccaa
+estado: anunciado
+estado_detalle: "Componente de almacenamiento del PPA híbrido anunciado el 26 de febrero de 2026. Presentado como el primer PPA híbrido de solar y baterías firmado en el mercado español para un cliente del sector digital."
+fecha_firma: "2026-02-26"
+clusters_relacionados: [madrid]
+cpds_relacionados: []
+ppa_hermano: ppa-merlin-solaria-madrid-426mw
+incertidumbres:
+  - campo: potencia_mw
+    descripcion: "Ninguna fuente publica los MW del BESS, solo los MWh. No se estima."
+    fuentes: [src-1, src-2]
+  - campo: municipio
+    descripcion: "No se localiza el emplazamiento de las baterías; podría no coincidir con el del centro de datos."
+    fuentes: [src-1]
+confianza: alta
+ultima_verificacion: "2026-08-29"
+fuentes:
+  - id: src-1
+    url: "https://solariaenergia.com/solaria-alcanza-un-nuevo-acuerdo-con-merlin-para-un-segundo-centro-de-datos-213mw-alimentado-por-un-ppa-hibrido/"
+    titulo: "Solaria alcanza un nuevo acuerdo con Merlin para un segundo centro de datos (213MW) alimentado por un PPA híbrido"
+    editor: "Solaria"
+    tipo: empresa
+    fecha_publicacion: "2026-02-26"
+    fecha_consulta: "2026-08-29"
+    cita: "un contrato adicional a 10 años para 600 MWh de almacenamiento energético mediante sistemas de baterías (BESS)"
+  - id: src-2
+    url: "https://www.pv-magazine.es/2026/03/17/anuncios-de-almacenamiento-bnz-solaria-grenergy/"
+    titulo: "Anuncios de almacenamiento: BNZ, Solaria, Grenergy"
+    editor: "pv magazine España"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-03-17"
+    fecha_consulta: "2026-08-29"
+    cita: "600 MWh de almacenamiento energético mediante sistemas de baterías a 10 años"

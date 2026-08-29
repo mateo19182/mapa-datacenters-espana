@@ -1,0 +1,46 @@
+id: oxigen-sant-cugat
+nombre: "Oxigen Data Center — Sant Cugat del Vallès"
+tipo: edificio
+operador: "Oxigen Data Center"
+modelo: colocation
+
+ubicacion:
+  municipio: "Sant Cugat del Vallès"
+  provincia: "Barcelona"
+  ccaa: "Cataluña"
+  precision: municipio
+  fuentes: [src-1]
+
+estado: operativo
+estado_detalle: >-
+  Operador catalán de centros de datos citado por Ara en abril de 2026 al hilo
+  del mapa de polos de la Generalitat, con edificio en Sant Cugat del Vallès. No
+  se han localizado la dirección, la potencia ni la superficie.
+estado_fuentes: [src-1]
+
+potencia: []
+
+incertidumbres:
+  - campo: ubicacion
+    descripcion: >-
+      La única referencia localizada es el pie de foto de una pieza enlazada de
+      Ara ("El edificio donde se encuentra Oxigen Data Center en Sant Cugat del
+      Vallès"). No hay dirección postal ni coordenadas. La instalación no figura
+      en PeeringDB ni en los directorios consultados.
+    fuentes: [src-1]
+  - campo: potencia
+    descripcion: "Sin ningún dato de potencia, superficie ni fecha."
+    fuentes: [src-1]
+
+confianza: baja
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://en.ara.cat/economy/the-government-establishes-seven-poles-for-installing-data-centers-in-catalonia_1_5707348.html"
+    titulo: "The Government establishes seven poles to install data centers in Catalonia"
+    editor: "Ara"
+    tipo: prensa_general
+    fecha_publicacion: "2026-04-14"
+    fecha_consulta: "2026-08-29"
+    cita: "El edificio donde se encuentra Oxigen Data Center en Sant Cugat del Vallès"

@@ -1,0 +1,59 @@
+id: aws-huesca-plhus-sur
+nombre: "AWS Consolidación Región Aragón — Huesca (ampliación junto a PLHUS)"
+alias:
+  - "Campus AWS Huesca (consolidación)"
+tipo: campus
+operador: "Amazon Web Services"
+propietario: "Amazon Data Services Spain, S.L."
+modelo: hyperscale
+
+ubicacion:
+  municipio: "Huesca"
+  provincia: "Huesca"
+  ccaa: "Aragón"
+  direccion: "Ámbito adyacente por el sur a la Plataforma Logístico-Industrial de Huesca (PLHUS), a unos 7,8 km al suroeste del centro de Huesca"
+  precision: desconocida
+  fuentes: [src-1]
+
+estado: anunciado
+estado_detalle: >-
+  Tercer campus del "Plan para la consolidación de la Región AWS en Aragón", declarado
+  inversión de interés autonómico con interés general de Aragón el 25 de marzo de 2026. El
+  ámbito tiene 46,93 ha y afecta a tres parcelas catastrales privadas y una zona de viario
+  público: una parcela de suelo urbano industrial y otra de viario en PLHUS (parcela A) y
+  otra de usos agropecuarios en suelo rural (parcela B). El acuerdo indica que la
+  instalación "está funcionalmente vinculada a la recientemente aprobada junto a Walqa".
+  La Dirección General de Energía y Minas informó favorablemente este emplazamiento.
+estado_fuentes: [src-1]
+
+potencia: []
+
+fases: []
+
+superficie_parcela_m2: 469300
+inversion_anunciada_eur: null
+enlaces_proyecto: []
+
+incertidumbres:
+  - campo: ubicacion
+    descripcion: >-
+      No se publican coordenadas ni referencias catastrales. Solo consta la descripción
+      "adyacente por el sur con la PLHUS" y "aproximadamente a 7,8 km al suroeste del centro
+      de la ciudad de Huesca". No se registran coordenadas para no inventar posición.
+    fuentes: [src-1]
+  - campo: potencia
+    descripcion: "El Acuerdo no publica potencia para este emplazamiento."
+    fuentes: [src-1]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1442795570404"
+    titulo: "ORDEN PEJ/523/2026, de 7 de abril, por la que se da publicidad al Acuerdo de 25 de marzo de 2026, del Gobierno de Aragón [...] «Plan para la consolidación de la Región AWS en Aragón»"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2026-04-09"
+    fecha_consulta: "2026-08-29"
+    cita: "En Huesca la delimitación del ámbito tiene una extensión de 46,93 ha y afecta a 3 parcelas catastrales de propiedad privada y una zona de viario de dominio público. [...] El área planificada se encuentra aproximadamente a 7,8 km al suroeste del centro de la ciudad de Huesca y adyacente por el sur con la PLHUS."

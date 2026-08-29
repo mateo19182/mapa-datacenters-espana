@@ -1,0 +1,90 @@
+id: aws-san-mateo-de-gallego-el-boyal
+nombre: "AWS Consolidación Región Aragón — San Mateo de Gállego «El Boyal»"
+alias:
+  - "Campus AWS San Mateo de Gállego"
+  - "Sector El Boyal"
+tipo: campus
+operador: "Amazon Web Services"
+propietario: "Amazon Data Services Spain, S.L."
+modelo: hyperscale
+
+ubicacion:
+  municipio: "San Mateo de Gállego"
+  provincia: "Zaragoza"
+  ccaa: "Aragón"
+  direccion: "Nuevo sector urbanístico «El Boyal», coincidente en parte con el sector urbanizable «El Saboyal», a 1,2 km al sureste del casco urbano"
+  lat: 41.831366
+  lon: -0.766154
+  precision: municipio
+  fuentes: [src-1, src-2]
+
+estado: anunciado
+estado_detalle: >-
+  Uno de los tres campus del "Plan para la consolidación de la Región AWS en Aragón",
+  declarado inversión de interés autonómico con interés general de Aragón por Acuerdo del
+  Gobierno de Aragón de 25 de marzo de 2026. El plan se materializará mediante un Plan de
+  Interés General de Aragón todavía no aprobado inicialmente a la fecha de verificación.
+  La Dirección General de Energía y Minas informó favorablemente la fase 1 de San Mateo de
+  Gállego, condicionando la fase 2 a la existencia de capacidad eléctrica.
+estado_fuentes: [src-1]
+
+potencia: []
+
+fases:
+  - nombre: "Fase 1"
+    estado: anunciado
+    fuentes: [src-1]
+    nota: >-
+      Informe favorable de la Dirección General de Energía y Minas de 6 de marzo de 2026
+      para la fase 1; la fase 2 queda condicionada a la existencia de capacidad eléctrica.
+  - nombre: "Fase 2"
+    estado: anunciado
+    fuentes: [src-1]
+
+conexion_electrica:
+  subestacion: "SE Peñaflor (dos estaciones de medida en el término municipal de Villamayor de Gállego)"
+  titular_red: null
+  mw_solicitados: null
+  mw_concedidos: null
+  fuentes: [src-1]
+  nota: >-
+    "Se proyectan dos estaciones de medida conectadas a la SET Peñaflor para dar servicio a
+    la actuación en San Mateo de Gállego, que se localizan en el término municipal
+    Villamayor de Gállego": una ocupa 4,9 ha y la otra 6,4 ha. No consta tensión ni potencia
+    de acceso.
+
+superficie_parcela_m2: 2941300
+inversion_anunciada_eur: null
+enlaces_proyecto: []
+
+incertidumbres:
+  - campo: ubicacion
+    descripcion: >-
+      Las coordenadas registradas son el centroide municipal de San Mateo de Gállego
+      (Wikidata); el ámbito real se sitúa a 1,2 km al sureste del casco urbano.
+    fuentes: [src-2]
+  - campo: potencia
+    descripcion: >-
+      El Acuerdo no publica ninguna cifra de potencia por emplazamiento. Solo consta un
+      informe favorable condicionado de la Dirección General de Energía y Minas.
+    fuentes: [src-1]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1442795570404"
+    titulo: "ORDEN PEJ/523/2026, de 7 de abril, por la que se da publicidad al Acuerdo de 25 de marzo de 2026, del Gobierno de Aragón, por el que se declara como inversión de interés autonómico con interés general de Aragón del «Plan para la consolidación de la Región AWS en Aragón», promovido por Amazon Data Services Spain SL, para la implantación de tres campus de centros de datos en los municipios de Huesca, La Puebla de Híjar y Azaila (Teruel) y San Mateo de Gállego (Zaragoza)"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2026-04-09"
+    fecha_consulta: "2026-08-29"
+    cita: "En San Mateo de Gállego el área de implantación abarca una superficie de 294,13 ha y se encuentra aproximadamente a 1,2 km al sureste del centro del municipio"
+  - id: src-2
+    url: "https://query.wikidata.org/sparql"
+    titulo: "Wikidata Query Service — coordenadas del municipio de San Mateo de Gállego (propiedad P625)"
+    editor: "Wikidata"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: "San Mateo de Gállego 41.8313659 -0.7661536"

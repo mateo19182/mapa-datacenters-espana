@@ -1,0 +1,87 @@
+id: adam-alcala-de-henares
+nombre: "Adam Data Center Alcalá de Henares"
+alias:
+  - "Adam - MAD"
+  - "Adam Madrid TecnoAlcalá"
+tipo: edificio
+operador: "Adam"
+propietario: "Adam"
+modelo: colocation
+
+ubicacion:
+  municipio: "Alcalá de Henares"
+  provincia: "Madrid"
+  ccaa: "Comunidad de Madrid"
+  direccion: "Calle Punto Mobi 1, Parque Tecnológico TecnoAlcalá, 28805 Alcalá de Henares"
+  lat: 40.514618
+  lon: -3.338656
+  precision: exacta
+  fuentes: [src-1, src-2]
+
+estado: operativo
+estado_detalle: "Primera fase en servicio con configuración eléctrica 2N y diseño Tier III."
+estado_fuentes: [src-1]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 2
+    ambito: fase
+    referencia: "Primera fase"
+    estado_asociado: operativo
+    fecha_dato: "2026-08-29"
+    fuentes: [src-1]
+    nota: "\"Potencia eléctrica 1ª fase: 2 MW en configuración 2N\"."
+  - tipo: no_especificado
+    valor_mw: 4
+    ambito: edificio
+    referencia: "Ficha del directorio OCOLO"
+    estado_asociado: operativo
+    fecha_dato: "2026-08-29"
+    fuentes: [src-3]
+    nota: "Cifra distinta de la publicada por el propio operador para la primera fase."
+
+refrigeracion: "Free cooling directo, con PUE cercano a 1,3 según el operador."
+enlaces_proyecto:
+  - "https://adam.es/data-centers/madrid-alcala/"
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      Adam publica 2 MW para la primera fase; el directorio OCOLO atribuye 4 MW a la instalación
+      y un reportaje de prensa generalista habla de 2 MW y 3.500 m². No hay una cifra total
+      confirmada por el operador.
+    fuentes: [src-1, src-3, src-4]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://adam.es/data-centers/madrid-alcala/"
+    titulo: "Data Center Alcalá de Henares - Adam"
+    editor: "Adam"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: "Potencia eléctrica 1ª fase: 2 MW en configuración 2N. Compliance: Tier III. ... Free Cooling directo que reduce al máximo el consumo, con PUE cercano al 1.3. ... C/ Punto Mobi, 1 Parque Tecnológico TecnoAlcalá – 28805 Alcalá de Henares – Madrid."
+  - id: src-2
+    url: "https://www.peeringdb.com/fac/14234"
+    titulo: "Adam - MAD"
+    editor: "PeeringDB"
+    tipo: asociacion
+    fecha_consulta: "2026-08-29"
+    cita: "Adam - MAD | C/ Punto Mobi, 1 | 28805 Alcalá de Henares"
+  - id: src-3
+    url: "https://www.ocolo.io/data-centers/spain/comunidad-de-madrid/alcala-de-henares/"
+    titulo: "Data Centers in Alcalá de Henares, Comunidad de Madrid"
+    editor: "OCOLO"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: "Madrid C. Punto Mobi, 1, 28805 Alcalá de Henares, Madrid, Spain 4.00 MW"
+  - id: src-4
+    url: "https://www.lamarea.com/2026/08/03/alcala-henares-colonizacion/"
+    titulo: "Alcalá de Henares, epicentro de la nueva 'colonización' de los centros de datos"
+    editor: "La Marea"
+    tipo: prensa_general
+    fecha_publicacion: "2026-08-03"
+    fecha_consulta: "2026-08-29"
+    cita: "Adam | Alcalá | 2 MW | Operational | 3,500 m² facility"

@@ -1,4 +1,6 @@
-// MapLibre 6 no expone default export: solo importaciones con nombre.
+// MapLibre 5: lleva su worker incorporado en el propio bundle. La rama 6 lo
+// emite como fichero aparte que el empaquetado estático no llega a publicar,
+// y el mapa se queda en blanco en producción.
 // `Map` se renombra para no pisar el Map nativo que usa este módulo.
 import { Map as MapaGL, NavigationControl, AttributionControl, ScaleControl } from 'maplibre-gl'
 import 'maplibre-gl/dist/maplibre-gl.css'
@@ -68,7 +70,11 @@ const estado = {
 
 let mapa
 let sitios = { type: 'FeatureCollection', features: [] }
+let inventario = []
 const cargadas = new Set()
+// Registro completo de subestaciones y renovables, para las fichas emergentes.
+const detalleRed = new Map()
+const detalleRenovables = new Map()
 
 // --- expresiones de estilo ---------------------------------------------------
 
@@ -118,10 +124,9 @@ function pintarLista() {
   const cont = $('#lista-resultados')
   if (!cont) return
 
-  const visibles = sitios.features
-    .filter((f) => coincideTexto(f.properties, indiceAlias))
-    .filter((f) => {
-      const p = f.properties
+  const visibles = inventario
+    .filter((p) => coincideTexto(p, indiceAlias))
+    .filter((p) => {
       if (estado.estados.size && !estado.estados.has(p.estado)) return false
       if (estado.ccaa && p.ccaa !== estado.ccaa) return false
       if (estado.operador && p.operador !== estado.operador) return false
@@ -131,15 +136,21 @@ function pintarLista() {
       if (estado.minimo > 0 && !(p[estado.metrica] >= estado.minimo)) return false
       return true
     })
-    .sort((a, b) => (b.properties[estado.metrica] ?? -1) - (a.properties[estado.metrica] ?? -1))
+    .sort((a, b) => (b[estado.metrica] ?? -1) - (a[estado.metrica] ?? -1))
 
-  $('#recuento').textContent =
-    visibles.length === sitios.features.length
+  const sinCoordenadas = visibles.filter((p) => p.lat == null).length
+
+  // Se dice cuántos hay y cuántos no pueden dibujarse: el mapa no es el censo.
+  $('#recuento').innerHTML =
+    (visibles.length === inventario.length
       ? `${visibles.length} emplazamientos`
-      : `${visibles.length} de ${sitios.features.length} emplazamientos`
+      : `${visibles.length} de ${inventario.length} emplazamientos`) +
+    (sinCoordenadas
+      ? ` <span class="silencio pequeno">· ${sinCoordenadas} sin coordenadas, fuera del mapa</span>`
+      : '')
 
-  const conMetrica = visibles.filter((f) => f.properties[estado.metrica] != null)
-  const suma = conMetrica.reduce((a, f) => a + f.properties[estado.metrica], 0)
+  const conMetrica = visibles.filter((p) => p[estado.metrica] != null)
+  const suma = conMetrica.reduce((a, p) => a + p[estado.metrica], 0)
   $('#suma').innerHTML = conMetrica.length
     ? `Suma de ${METRICAS[estado.metrica]}: <strong>${suma.toLocaleString('es-ES', { maximumFractionDigits: 0 })} MW</strong>
        <span class="silencio">· en ${conMetrica.length} de ${visibles.length} emplazamientos; el resto no publica esta magnitud</span>`
@@ -147,15 +158,14 @@ function pintarLista() {
 
   cont.innerHTML = visibles
     .slice(0, 300)
-    .map((f) => {
-      const p = f.properties
+    .map((p) => {
       const v = p[estado.metrica]
       return `<li>
-        <button class="fila-sitio" data-id="${p.id}" data-lon="${f.geometry.coordinates[0]}" data-lat="${f.geometry.coordinates[1]}">
+        <button class="fila-sitio" data-id="${p.id}" data-lon="${p.lon ?? ''}" data-lat="${p.lat ?? ''}">
           <span class="fila-punto" style="background:${COLOR_ESTADO[p.estado] ?? COLOR_ESTADO.desconocido}"></span>
           <span class="fila-texto">
             <strong>${p.nombre}</strong>
-            <span class="silencio pequeno">${[p.operador, p.municipio].filter(Boolean).join(' · ')}</span>
+            <span class="silencio pequeno">${[p.operador, p.municipio, p.lat == null ? 'sin ubicar' : null].filter(Boolean).join(' · ')}</span>
           </span>
           <span class="fila-mw">${v != null ? `${v.toLocaleString('es-ES')}<small> MW</small>` : '<span class="silencio">—</span>'}</span>
         </button>
@@ -172,7 +182,9 @@ function pintarLista() {
 
   $$('.fila-sitio', cont).forEach((b) =>
     b.addEventListener('click', () => {
-      mapa.flyTo({ center: [Number(b.dataset.lon), Number(b.dataset.lat)], zoom: 12, duration: 800 })
+      if (b.dataset.lat) {
+        mapa.flyTo({ center: [Number(b.dataset.lon), Number(b.dataset.lat)], zoom: 12, duration: 800 })
+      }
       abrirFicha(b.dataset.id)
     }),
   )
@@ -191,10 +203,8 @@ function aplicar() {
 }
 
 function abrirFicha(id) {
-  const f = sitios.features.find((x) => x.properties.id === id)
-  if (!f) return
-  const p = f.properties
-  const panel = $('#panel-detalle')
+  const p = inventario.find((x) => x.id === id)
+  if (!p) return
   const filas = [
     ['Operador', p.operador],
     ['Ubicación', [p.municipio, p.ccaa].filter(Boolean).join(', ')],
@@ -203,18 +213,21 @@ function abrirFicha(id) {
     ['MW sin tipificar', p.mw_sin_tipo != null ? `${p.mw_sin_tipo.toLocaleString('es-ES')} MW` : null],
   ].filter(([, v]) => v)
 
-  panel.innerHTML = `
-    <button class="cerrar" aria-label="Cerrar">×</button>
+  panelHtml(`
     <span class="etiqueta estado-${p.estado}"><span class="punto"></span>${ETIQUETA_ESTADO[p.estado] ?? p.estado}</span>
     <h2>${p.nombre}</h2>
     <dl class="detalle">
       ${filas.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('')}
     </dl>
-    ${p.precision !== 'exacta' ? `<p class="pequeno silencio">Ubicación con precisión «${p.precision}».</p>` : ''}
+    ${
+      p.coordenada_derivada
+        ? '<p class="pequeno silencio">Situado en el centro de su municipio: la fuente no publica la parcela.</p>'
+        : p.precision !== 'exacta'
+          ? `<p class="pequeno silencio">Ubicación con precisión «${p.precision}».</p>`
+          : ''
+    }
     <a class="boton-ficha" href="/proyecto/${p.id}">Ver ficha completa con fuentes →</a>
-  `
-  panel.hidden = false
-  $('.cerrar', panel).addEventListener('click', () => (panel.hidden = true))
+  `)
 }
 
 // --- estado en la URL --------------------------------------------------------
@@ -275,7 +288,11 @@ async function cargarCapa(nombre) {
   }
 
   if (nombre === 'subestaciones') {
-    const datos = await (await fetch('/datos/red.geojson')).json()
+    const [datos, completo] = await Promise.all([
+      fetch('/datos/red.geojson').then((r) => r.json()),
+      fetch('/datos/red.json').then((r) => r.json()),
+    ])
+    for (const n of completo) detalleRed.set(n.id, n)
     mapa.addSource('subestaciones', { type: 'geojson', data: datos })
     mapa.addLayer(
       {
@@ -300,10 +317,17 @@ async function cargarCapa(nombre) {
       },
       'sitios-borde',
     )
+    mapa.on('click', 'subestaciones-simbolo', (e) => abrirSubestacion(e.features[0].properties.id))
+    mapa.on('mouseenter', 'subestaciones-simbolo', () => (mapa.getCanvas().style.cursor = 'pointer'))
+    mapa.on('mouseleave', 'subestaciones-simbolo', () => (mapa.getCanvas().style.cursor = ''))
   }
 
   if (nombre === 'renovables') {
-    const datos = await (await fetch('/datos/renovables.geojson')).json()
+    const [datos, completo] = await Promise.all([
+      fetch('/datos/renovables.geojson').then((r) => r.json()),
+      fetch('/datos/renovables.json').then((r) => r.json()),
+    ])
+    for (const a of completo) detalleRenovables.set(a.id, a)
     mapa.addSource('renovables', { type: 'geojson', data: datos })
     mapa.addLayer({
       id: 'renovables-circulo',
@@ -312,12 +336,82 @@ async function cargarCapa(nombre) {
       paint: {
         'circle-color': ['match', ['get', 'tipo'], 'bess', '#7a6fa8', 'eolica', '#4f8fa8', '#c9a227'],
         'circle-radius': ['interpolate', ['linear'], ['zoom'], 5, 2.5, 11, 7],
-        'circle-opacity': 0.7,
+        'circle-opacity': ['case', ['==', ['get', 'coordenada_derivada'], true], 0.45, 0.7],
         'circle-stroke-width': 0.8,
         'circle-stroke-color': oscuro() ? '#15171a' : '#fbfaf8',
       },
     })
+    mapa.on('click', 'renovables-circulo', (e) => abrirRenovable(e.features[0].properties.id))
+    mapa.on('mouseenter', 'renovables-circulo', () => (mapa.getCanvas().style.cursor = 'pointer'))
+    mapa.on('mouseleave', 'renovables-circulo', () => (mapa.getCanvas().style.cursor = ''))
   }
+}
+
+const panelHtml = (contenido) => {
+  const panel = $('#panel-detalle')
+  panel.innerHTML = `<button class="cerrar" aria-label="Cerrar">×</button>${contenido}`
+  panel.hidden = false
+  $('.cerrar', panel).addEventListener('click', () => (panel.hidden = true))
+}
+
+const mw = (v) => (v == null ? null : `${Number(v).toLocaleString('es-ES', { maximumFractionDigits: 1 })} MW`)
+
+function abrirSubestacion(id) {
+  const n = detalleRed.get(id)
+  if (!n) return
+  const nudos = n.nudos ?? []
+  // La capacidad disponible se publica con tres criterios distintos; se muestran
+  // los tres en lugar de elegir uno.
+  const filaNudo = (u) => {
+    const d = u.disponible_criterio_general_demanda_mw ?? {}
+    const valores = [d.cep_ch, d.cep_sh, d.no_cep].filter((v) => v != null)
+    return `<tr>
+      <td>${u.nudo}</td>
+      <td class="num">${mw(u.otorgada_demanda_rdt_mw) ?? '—'}</td>
+      <td class="num">${mw(u.solicitada_en_curso_demanda_rdt_mw) ?? '—'}</td>
+      <td class="num">${valores.length ? valores.map((v) => mw(v)).join(' / ') : '<span class="silencio">no publicada</span>'}</td>
+    </tr>`
+  }
+
+  panelHtml(`
+    <span class="etiqueta">Subestación</span>
+    <h2>${n.nombre ?? n.id}</h2>
+    <dl class="detalle">
+      <dt>Tensiones</dt><dd>${Array.isArray(n.tensiones_kv) ? n.tensiones_kv.join(' / ') : (n.tension_kv ?? '—')} kV</dd>
+      <dt>Titular</dt><dd>${n.titular ?? '—'}</dd>
+      <dt>Ubicación</dt><dd>${[n.municipio, n.ccaa].filter(Boolean).join(', ') || '—'}</dd>
+      <dt>Estado</dt><dd>${n.estado ?? '—'}</dd>
+    </dl>
+    ${
+      nudos.length
+        ? `<p class="pequeno silencio">Capacidad de acceso para <strong>demanda</strong> (no generación), según Red Eléctrica.</p>
+           <div class="tabla-mini"><table>
+             <thead><tr><th>Nudo</th><th class="num">Otorgada</th><th class="num">En curso</th><th class="num">Disponible</th></tr></thead>
+             <tbody>${nudos.map(filaNudo).join('')}</tbody>
+           </table></div>
+           <p class="pequeno silencio">«Disponible» se publica con tres criterios (con hueco, sin hueco y sin condicionar); se muestran los tres separados por barras.</p>`
+        : '<p class="pequeno silencio">Sin datos de capacidad de acceso registrados para esta subestación.</p>'
+    }
+  `)
+}
+
+function abrirRenovable(id) {
+  const a = detalleRenovables.get(id)
+  if (!a) return
+  panelHtml(`
+    <span class="etiqueta">${a.tipo ?? 'Activo energético'}</span>
+    <h2>${a.nombre ?? a.id}</h2>
+    <dl class="detalle">
+      <dt>Potencia</dt><dd>${mw(a.potencia_mw) ?? '—'}</dd>
+      ${a.capacidad_mwh ? `<dt>Almacenamiento</dt><dd>${a.capacidad_mwh.toLocaleString('es-ES')} MWh</dd>` : ''}
+      <dt>Promotor</dt><dd>${a.promotor ?? '—'}</dd>
+      ${a.contraparte_ppa ? `<dt>Contraparte</dt><dd>${a.contraparte_ppa}</dd>` : ''}
+      <dt>Vínculo</dt><dd>${a.tipo_vinculo ?? '—'}</dd>
+      <dt>Estado</dt><dd>${a.estado ?? '—'}</dd>
+      <dt>Ubicación</dt><dd>${[a.municipio, a.ccaa].filter(Boolean).join(', ') || '—'}</dd>
+    </dl>
+    <p class="pequeno silencio">Un PPA es un contrato de compra de energía: no implica suministro físico desde esta planta.</p>
+  `)
 }
 
 function alternarCapa(nombre, activa) {
@@ -379,21 +473,23 @@ export async function iniciarMapa(opciones = {}) {
   mapa.addControl(
     new AttributionControl({
       compact: true,
-      customAttribution: '© OpenStreetMap · © CARTO · red de transporte derivada de OSM (ODbL)',
+      customAttribution: 'red de transporte derivada de OpenStreetMap (ODbL)',
     }),
     'bottom-right',
   )
   mapa.addControl(new ScaleControl({ unit: 'metric' }), 'bottom-left')
 
-  const [geo, indice] = await Promise.all([
+  const [geo, lista] = await Promise.all([
     fetch('/datos/sitios.geojson').then((r) => r.json()),
-    fetch('/datos/alias.json').then((r) => r.json()).catch(() => ({})),
+    fetch('/datos/sitios-lista.json').then((r) => r.json()),
   ])
   sitios = geo
-  for (const [id, alias] of Object.entries(indice)) indiceAlias.set(id, alias.join(' '))
+  inventario = lista
+  for (const s of lista) if (s.alias?.length) indiceAlias.set(s.id, s.alias.join(' '))
 
   await new Promise((r) => mapa.on('load', r))
 
+  castellanizarRotulos()
   mapa.addImage('cuadro-subestacion', iconoSubestacion())
   mapa.addSource('sitios', { type: 'geojson', data: sitios })
 
@@ -406,7 +502,7 @@ export async function iniciarMapa(opciones = {}) {
       'circle-color': 'transparent',
       'circle-stroke-width': 1,
       'circle-stroke-color': colorPorEstado,
-      'circle-stroke-opacity': 0.9,
+      'circle-stroke-opacity': ['case', ['==', ['get', 'coordenada_derivada'], true], 0.45, 0.9],
     },
   })
   mapa.addLayer({
@@ -417,8 +513,16 @@ export async function iniciarMapa(opciones = {}) {
       'circle-radius': radioPorMetrica(estado.metrica),
       'circle-color': colorPorEstado,
       // Los emplazamientos sin la métrica elegida se dibujan huecos: no se
-      // rellena visualmente un dato que no existe.
-      'circle-opacity': ['case', ['==', ['get', estado.metrica], null], 0.12, 0.55],
+      // rellena visualmente un dato que no existe. Los situados en el centro de
+      // su municipio se atenúan para que no se lean como una parcela concreta.
+      'circle-opacity': [
+        'case',
+        ['==', ['get', estado.metrica], null],
+        0.1,
+        ['==', ['get', 'coordenada_derivada'], true],
+        0.28,
+        0.55,
+      ],
     },
   })
   mapa.addLayer({
@@ -447,6 +551,25 @@ export async function iniciarMapa(opciones = {}) {
   conectarControles()
   for (const [nombre, activa] of Object.entries(estado.capas)) if (activa) alternarCapa(nombre, true)
   aplicar()
+}
+
+/** El estilo base rotula en inglés o en el idioma local; se prefiere el español. */
+function castellanizarRotulos() {
+  for (const capa of mapa.getStyle().layers ?? []) {
+    if (capa.type !== 'symbol') continue
+    const campo = capa.layout?.['text-field']
+    if (!campo) continue
+    try {
+      mapa.setLayoutProperty(capa.id, 'text-field', [
+        'coalesce',
+        ['get', 'name:es'],
+        ['get', 'name_es'],
+        ['get', 'name'],
+      ])
+    } catch {
+      // Alguna capa puede no admitir la expresión; se deja como venga.
+    }
+  }
 }
 
 function conectarControles() {

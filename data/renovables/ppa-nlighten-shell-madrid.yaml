@@ -1,0 +1,37 @@
+id: ppa-nlighten-shell-madrid
+nombre: "PPA nLighten — cartera solar y eólica de Shell España (centro de datos edge de Madrid)"
+tipo: hibrida
+tipo_detalle: "Cartera solar y eólica de Shell en España, con prioridad a la generación solar."
+potencia_mw: null
+tipo_potencia: no_especificado
+capacidad_mwh: null
+promotor: "Shell España"
+contraparte_ppa: "nLighten"
+tipo_vinculo: ppa
+municipio: null
+provincia: "Madrid"
+ccaa: "Comunidad de Madrid"
+lat: null
+lon: null
+precision: ccaa
+estado: anunciado
+fecha_firma: "2025-07"
+adicionalidad: no_consta
+clusters_relacionados: [madrid]
+cpds_relacionados: []
+cpds_declarados: "Centro de datos edge de nLighten en Madrid."
+incertidumbres:
+  - campo: potencia_mw
+    descripcion: "No se publican MW ni plantas concretas; solo que el suministro procede de la cartera solar y eólica de Shell en España."
+    fuentes: [src-1]
+confianza: baja
+ultima_verificacion: "2026-08-29"
+fuentes:
+  - id: src-1
+    url: "https://www.datacentermarket.es/sostenibilidad/nlighten-y-shell-espana-impulsan-la-integracion-de-las-renovables-en-los-data-centers/"
+    titulo: "nLighten y Shell España impulsan la integración de las renovables en los data centers"
+    editor: "Data Center Market"
+    tipo: prensa_especializada
+    fecha_publicacion: "2025-07-18"
+    fecha_consulta: "2026-08-29"
+    cita: "acuerdo de compra de energía (PPA) y un acuerdo de suministro con Shell España [...] cartera solar y eólica de Shell en España, dando prioridad a la generación solar"

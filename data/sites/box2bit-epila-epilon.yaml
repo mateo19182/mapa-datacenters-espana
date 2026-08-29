@@ -1,0 +1,125 @@
+id: box2bit-epila-epilon
+nombre: "Box2Bit — Campus de centros de procesamiento de datos «Proyecto EPILON» (Épila)"
+alias:
+  - "Proyecto EPILON"
+  - "B2B Axis East 3 — Épila"
+tipo: campus
+operador: "Box2Bit (CDP Edge Solutions, S.L.U.)"
+propietario: "B2B Axis East 3, S.L.U."
+modelo: mayorista
+
+ubicacion:
+  municipio: "Épila"
+  provincia: "Zaragoza"
+  ccaa: "Aragón"
+  direccion: "Ámbito denominado «Venta Romera»"
+  lat: 41.5985
+  lon: -1.279617
+  precision: municipio
+  fuentes: [src-1, src-3]
+
+estado: anunciado
+estado_detalle: >-
+  Declarado inversión de interés autonómico con interés general de Aragón por Acuerdo del
+  Gobierno de Aragón de 28 de enero de 2026, a solicitud presentada el 11 de diciembre de
+  2025. El proyecto sustituye al campus que la misma promotora tramitaba en Cariñena, que
+  quedó sin conexión eléctrica. A la fecha de verificación no consta aprobación inicial del
+  Plan de Interés General de Aragón correspondiente.
+estado_fuentes: [src-1, src-2]
+
+potencia:
+  - tipo: conexion_red
+    valor_mw: 150
+    ambito: fase
+    referencia: "Suministro energético de la primera fase"
+    estado_asociado: anunciado
+    fecha_dato: "2026-01-28"
+    fuentes: [src-1]
+    nota: >-
+      La fuente dice "El proyecto incluirá infraestructuras eléctricas necesarias para
+      asegurar un suministro energético, que durante la primera fase será de 150 MW".
+  - tipo: conexion_red
+    valor_mw: 520
+    ambito: campus
+    referencia: "Suministro energético del campus completo tras las fases posteriores"
+    estado_asociado: anunciado
+    fecha_dato: "2026-01-28"
+    fuentes: [src-1]
+    nota: >-
+      "en las fases posteriores alcanzaría hasta 520 MW"; las fases 2 y 3 asumen la
+      obtención de 370 MW adicionales.
+
+fases:
+  - nombre: "Fase 1"
+    estado: anunciado
+    superficie_m2: 330000
+    fuentes: [src-1]
+    nota: >-
+      Urbanización, edificio 1 (37.100 m² construidos, 8 módulos en 2 plantas), edificio 2
+      (29.000 m², 8 módulos en 2 plantas), edificio de control de accesos 1,
+      infraestructuras eléctricas comunes y fibra. Inversión 1.125 millones de euros.
+  - nombre: "Fases 2 y 3"
+    estado: anunciado
+    fuentes: [src-1]
+    nota: >-
+      Edificios 3 a 7 y hasta 2 edificios adicionales de control de accesos, asumiendo la
+      obtención de 370 MW adicionales. Inversión 2.775 millones de euros.
+
+conexion_electrica:
+  subestacion: "SE EPILON 220/30 kV, alimentada desde la SE Calatorao 220 kV de REE"
+  tension_kv: 220
+  titular_red: "Red Eléctrica de España — SE Calatorao 220 kV"
+  mw_solicitados: null
+  mw_concedidos: 150
+  fuentes: [src-1]
+  nota: >-
+    Línea aéreo-subterránea de 220 kV entre la SE Calatorao 220 kV (REE) y la SE EPILON
+    220/30 kV, con posición de consumo exclusiva y posición adicional de redundancia en la
+    SE Calatorao y centro de medida. El proyecto ha solicitado una posición de conexión
+    adicional en la red de transporte.
+
+superficie_parcela_m2: 330000
+inversion_anunciada_eur: 3900000000
+refrigeracion: null
+enlaces_proyecto: []
+
+incertidumbres:
+  - campo: superficie_parcela_m2
+    descripcion: >-
+      El Acuerdo indica "aproximadamente 33 ha en su primera fase y pudiendo alcanzar hasta
+      aproximadamente 100 ha en caso de completar las fases posteriores". Se registra la
+      superficie de la primera fase.
+    fuentes: [src-1]
+  - campo: ubicacion
+    descripcion: >-
+      Las coordenadas registradas son el centroide municipal de Épila (Wikidata); el ámbito
+      "Venta Romera" no tiene coordenadas publicadas.
+    fuentes: [src-3]
+
+confianza: alta
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1434356510505"
+    titulo: "ORDEN PEJ/160/2026, de 30 de enero, por la que se da publicidad al Acuerdo de 28 de enero de 2026, del Gobierno de Aragón, por el que se declara como inversión de interés autonómico con interés general de Aragón el proyecto «Campus de centros de procesamiento de datos - proyecto Epilon», en el término municipal de Épila (Zaragoza), promovido por B2B Axis East 3 SLU"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2026-02-06"
+    fecha_consulta: "2026-08-29"
+    cita: "se localiza en el término municipal de Épila (Zaragoza), en el ámbito denominado \"Venta Romera\", ocupando una superficie de aproximadamente 33 ha en su primera fase y pudiendo alcanzar hasta aproximadamente 100 ha en caso de completar las fases posteriores"
+  - id: src-2
+    url: "https://www.elespanol.com/aragon/actualidad/zaragoza/20260512/box2bit-libera-parcelas-fallido-centro-datos-carinena-ampliacion-industria/1003744242872_0.html"
+    titulo: "Box2Bit libera 4 parcelas de su fallido centro de datos en Cariñena para la ampliación de otra industria"
+    editor: "El Español — Aragón"
+    tipo: prensa_general
+    fecha_publicacion: "2026-05-12"
+    fecha_consulta: "2026-08-29"
+    cita: "la empresa ya inició el procedimiento para ubicar otro centro de datos en la localidad de Épila, donde sí dispondría de la conexión a la red eléctrica necesaria"
+  - id: src-3
+    url: "https://query.wikidata.org/sparql"
+    titulo: "Wikidata Query Service — coordenadas del municipio de Épila (propiedad P625)"
+    editor: "Wikidata"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: "Épila 41.5984995 -1.2796166"

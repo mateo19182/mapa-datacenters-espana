@@ -1,0 +1,47 @@
+id: diversity-cloud-arganda-del-rey
+nombre: "Diversity Cloud MAD1 — Arganda del Rey"
+alias:
+  - "ON DIVERSITY CLOUD MAD1"
+tipo: edificio
+operador: "ON Diversity Cloud"
+propietario: "Desconocido"
+modelo: colocation
+
+ubicacion:
+  municipio: "Arganda del Rey"
+  provincia: "Madrid"
+  ccaa: "Comunidad de Madrid"
+  lat: null
+  lon: null
+  precision: municipio
+  fuentes: [src-1]
+
+estado: desconocido
+estado_detalle: "Instalación registrada en PeeringDB con dirección no divulgada ('Not Disclosed') y sin coordenadas."
+estado_fuentes: [src-1]
+
+potencia: []
+
+incertidumbres:
+  - campo: ubicacion
+    descripcion: >-
+      El propio registro indica dirección "Not Disclosed" y no aporta coordenadas. Solo consta
+      el municipio y el código postal 28500.
+    fuentes: [src-1]
+  - campo: estado
+    descripcion: >-
+      Única fuente localizada. No se ha encontrado web del operador ni ninguna otra referencia
+      que confirme la existencia física ni el estado del centro.
+    fuentes: [src-1]
+
+confianza: baja
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.peeringdb.com/fac/15721"
+    titulo: "DIVERSITY CLOUD MAD1"
+    editor: "PeeringDB"
+    tipo: asociacion
+    fecha_consulta: "2026-08-29"
+    cita: "DIVERSITY CLOUD MAD1 | ON DIVERSITY CLOUD | Arganda del Rey | Not Disclosed | 28500"

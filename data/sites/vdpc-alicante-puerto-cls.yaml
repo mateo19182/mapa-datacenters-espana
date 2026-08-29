@@ -1,0 +1,69 @@
+id: vdpc-alicante-puerto-cls
+nombre: "Estación de amarre de cables submarinos del puerto de Alicante (proyecto abandonado)"
+alias:
+  - "CLS Puerto de Alicante"
+  - "Barracuda Alicante"
+tipo: edificio
+operador: "Valencia Digital Port Connect"
+modelo: colocation
+
+ubicacion:
+  municipio: "Alacant / Alicante"
+  provincia: "Alicante"
+  ccaa: "Comunitat Valenciana"
+  direccion: "Puerto de Alicante"
+  lat: 38.3283
+  lon: -0.4947
+  precision: aproximada
+  fuentes: [src-1]
+
+estado: cancelado
+estado_detalle: >-
+  En abril de 2023 el puerto de Alicante aprobó su primera estación de aterraje de cables
+  submarinos (CLS), a construir por Valencia Digital Port Connect para el cable Barracuda,
+  con un data center asociado de 96 bastidores. En mayo de 2025 el promotor anunció que el
+  cable Barracuda no aterrizaría ni en Alicante ni en Valencia, sino en Sagunto. No consta
+  ninguna actuación posterior sobre este emplazamiento.
+estado_fuentes: [src-1, src-2]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 1.5
+    ambito: edificio
+    referencia: "Instalación CLS proyectada en el puerto de Alicante"
+    estado_asociado: cancelado
+    fecha_dato: "2023-04-10"
+    fuentes: [src-1]
+    nota: "DCD describe «La instalación de 2.500 metros cuadrados y 1,5 MW»; no especifica tipo."
+
+superficie_construida_m2: 2500
+inversion_anunciada_eur: 10000000
+
+incertidumbres:
+  - campo: estado
+    descripcion: >-
+      Ninguna fuente declara formalmente cancelado el expediente portuario; la conclusión
+      se apoya en que elEconomista (29/05/2025) afirma que el cable «no se conectará desde
+      Alicante [...] ni desde Valencia» y que el promotor eligió Sagunto.
+    fuentes: [src-1, src-2]
+
+confianza: baja
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.datacenterdynamics.com/es/noticias/el-puerto-de-alicante-contar%C3%A1-con-una-nueva-estaci%C3%B3n-de-amarre-de-cables-submarinos/"
+    titulo: "El puerto de Alicante contará con una nueva estación de amarre de cables submarinos"
+    editor: "DatacenterDynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2023-04-10"
+    fecha_consulta: "2026-08-29"
+    cita: "La instalación de 2.500 metros cuadrados y 1,5 MW tendrá capacidad para hasta cuatro cables submarinos y albergará un centro de datos con 96 bastidores junto con una sala de reuniones. El proyecto tiene un presupuesto de construcción inicial de más de 10 millones de euros."
+  - id: src-2
+    url: "https://www.eleconomista.es/telecomunicaciones/noticias/13388719/05/25/ni-alicante-ni-valencia-el-cable-submarino-barracuda-y-su-data-center-aterrizan-en-sagunto-con-sus-100-millones.html"
+    titulo: "Ni Alicante ni Valencia: el cable submarino Barracuda y su data center aterrizan en Sagunto con sus 100 millones"
+    editor: "elEconomista"
+    tipo: prensa_general
+    fecha_publicacion: "2025-05-29"
+    fecha_consulta: "2026-08-29"
+    cita: "El proyecto de cable submarino Barracuda que conectará la costa mediterránea española con las grandes autopistas de datos internacionales no se conectará desde Alicante, como se anunció hace varios años, ni desde Valencia."

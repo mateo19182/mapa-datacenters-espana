@@ -1,0 +1,54 @@
+id: nixval-paterna-fuente-del-jarro
+nombre: "Nixval — Paterna (Fuente del Jarro)"
+alias:
+  - "NIXVAL Data Center"
+tipo: edificio
+operador: "Nixval"
+propietario: "Nixval"
+modelo: colocation
+
+ubicacion:
+  municipio: "Paterna"
+  provincia: "Valencia"
+  ccaa: "Comunitat Valenciana"
+  direccion: "Calle Villa de Madrid 44, Polígono Industrial Fuente del Jarro, 46988 Paterna"
+  precision: desconocida
+  fuentes: [src-1]
+
+estado: operativo
+estado_detalle: >-
+  Operador de colocation neutral con sede y centro de proceso de datos en el polígono
+  Fuente del Jarro (Paterna). Certificación de conformidad con el ENS en categoría Alta.
+estado_fuentes: [src-1, src-2]
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      Ni la web del operador ni el directorio del Observatorio Español de Data Centers
+      publican potencia, superficie ni número de racks de la instalación.
+    fuentes: [src-1, src-2]
+  - campo: ubicacion
+    descripcion: >-
+      La dirección corresponde a la sede social publicada por el operador; no se ha
+      verificado de forma independiente que la sala técnica esté en esa misma parcela, por
+      lo que no se asignan coordenadas.
+    fuentes: [src-1]
+
+confianza: baja
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.nixval.com/"
+    titulo: "NIXVAL — Operador de infraestructuras de centro de proceso de datos"
+    editor: "Nixval"
+    tipo: empresa
+    fecha_consulta: "2026-08-29"
+    cita: "NIXVAL es el principal operador de infraestructuras de centro de proceso de datos del levante español. [...] Calle Villa de Madrid 44, Polígono Industrial Fuente del Jarro, 46988 Paterna, Spain"
+  - id: src-2
+    url: "https://observatorioedc.com/directorio/"
+    titulo: "Data Centers — Directorio, Observatorio Español de Data Centers"
+    editor: "Observatorio Español de Data Centers"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: "Nixval | Paterna | Comunidad Valenciana | COLOCATION | Operativo"

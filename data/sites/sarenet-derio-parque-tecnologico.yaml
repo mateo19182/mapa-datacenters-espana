@@ -1,0 +1,91 @@
+id: sarenet-derio-parque-tecnologico
+nombre: "Sarenet — Data Center de Derio"
+alias:
+  - "Nuevo Data Center de Sarenet en el Hub de Comunicaciones de Derio"
+  - "Noveno centro de datos de Sarenet"
+tipo: edificio
+operador: "Sarenet, S.A."
+propietario: "Sarenet, S.A."
+modelo: colocation
+
+ubicacion:
+  municipio: "Derio"
+  provincia: "Bizkaia"
+  ccaa: "País Vasco"
+  direccion: "Parque Tecnológico de Euskadi, campus de Zamudio/Derio"
+  lat: 43.2930
+  lon: -2.8760
+  precision: aproximada
+  fuentes: [src-1]
+
+estado: operativo
+estado_detalle: >-
+  Inaugurado el 19 de junio de 2026 tras una inversión de 20 millones de euros y
+  unos tres años y medio de obra sobre una nave adquirida por la compañía. Arranca
+  con 3 MW operativos y 340 racks, con capacidad de escalado en fases sucesivas.
+  Es la nueva sede corporativa de Sarenet además de centro de datos.
+estado_fuentes: [src-1]
+fecha_puesta_en_servicio: "2026-06-19"
+
+potencia:
+  - tipo: instalada_total
+    valor_mw: 3
+    ambito: edificio
+    referencia: "Potencia operativa inicial en la inauguración"
+    estado_asociado: operativo
+    fecha_dato: "2026-06-19"
+    fuentes: [src-1]
+    nota: >-
+      La fuente habla de «potencia operativa inicial de 3 MW»; otro titular la
+      describe como «3 MW de potencia instalada». No se ha localizado desglose de carga TI.
+  - tipo: no_especificado
+    valor_mw: 8
+    ambito: edificio
+    referencia: "Capacidad máxima de escalado del edificio"
+    estado_asociado: anunciado
+    fecha_dato: "2026-06-19"
+    fuentes: [src-1]
+    nota: "La fuente dice «casi 8 MW en fases sucesivas», sin precisar tipo."
+
+fases:
+  - nombre: "Fase inicial (340 racks, 3 MW)"
+    estado: operativo
+    fecha_puesta_en_servicio: "2026-06"
+    fuentes: [src-1]
+  - nombre: "Fases 3 y 4 (refrigeración por agua)"
+    estado: anunciado
+    fuentes: [src-1]
+
+inversion_anunciada_eur: 20000000
+refrigeracion: >-
+  Free cooling aprovechando el aire exterior combinado con unidades CRAC; las fases
+  3 y 4 incorporarán enfriadoras por agua. PUE estimado de 1,3.
+
+enlaces_proyecto: []
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      Las fuentes mezclan «potencia operativa», «potencia instalada» y capacidad de
+      escalado sin distinguir carga TI. No se convierte entre tipos.
+    fuentes: [src-1]
+  - campo: ubicacion
+    descripcion: >-
+      Las fuentes sitúan el edificio en Derio, dentro del Parque Tecnológico de
+      Euskadi, y lo asocian al «Hub de Comunicaciones de Derio» de Telxius, pero es
+      un inmueble independiente (nave adquirida y reformada por Sarenet). No se
+      publica dirección ni parcela.
+    fuentes: [src-1]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.elespanol.com/invertia/disruptores/grandes-actores/tecnologicas/20260619/centro-datos-sarenet-derio-abre-puertas-mw-operativos-vista-puesta-grandes-integradores-tecnologicos/1003744291986_0.html"
+    titulo: "El centro de datos de Sarenet en Derio abre sus puertas con 3 MW operativos"
+    editor: "El Español — Invertia / Disruptores"
+    tipo: prensa_general
+    fecha_publicacion: "2026-06-19"
+    fecha_consulta: "2026-08-29"
+    cita: "una potencia operativa inicial de 3 MW, con capacidad de escalado hasta casi 8 MW"

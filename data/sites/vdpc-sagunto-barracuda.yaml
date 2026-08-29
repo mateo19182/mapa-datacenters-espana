@@ -1,0 +1,94 @@
+id: vdpc-sagunto-barracuda
+nombre: "Estación de aterraje Barracuda y data center — Sagunto"
+alias:
+  - "Proyecto Barracuda Sagunto"
+  - "CLS Sagunto VDPC"
+tipo: edificio
+operador: "Valencia Digital Port Connect"
+propietario: "Valencia Digital Port Connect"
+modelo: colocation
+
+ubicacion:
+  municipio: "Sagunt / Sagunto"
+  provincia: "Valencia"
+  ccaa: "Comunitat Valenciana"
+  lat: 39.6793
+  lon: -0.2786
+  precision: municipio
+  fuentes: [src-1, src-2]
+
+estado: anunciado
+estado_detalle: >-
+  Emplazamiento anunciado el 29/05/2025: Sagunto acogerá la estación de aterraje del cable
+  submarino Barracuda y un data center multipropósito. Plazo de ejecución de tres años e
+  inicio de operaciones previsto para principios de 2028. En enero de 2026 el promotor
+  cerró el acuerdo con Sparkle para el aterraje en Génova. Sustituye al emplazamiento
+  previo del puerto de Alicante.
+estado_fuentes: [src-1, src-2, src-3]
+fecha_puesta_en_servicio: "2028"
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 10
+    ambito: edificio
+    referencia: "Potencia eléctrica inicial del data center («10 MW pico»)"
+    estado_asociado: anunciado
+    fecha_dato: "2025-05-29"
+    fuentes: [src-1, src-2]
+    nota: >-
+      Las fuentes dicen literalmente «una potencia eléctrica de 10 MW pico», sin precisar
+      si se refiere a carga TI o a potencia de conexión.
+
+fases:
+  - nombre: "Estación de aterraje de cables (CLS)"
+    estado: anunciado
+    superficie_m2: 4600
+    fuentes: [src-1, src-2]
+  - nombre: "Data center multipropósito"
+    estado: anunciado
+    fuentes: [src-1, src-2]
+
+inversion_anunciada_eur: 100000000
+refrigeracion: null
+enlaces_proyecto: []
+
+incertidumbres:
+  - campo: ubicacion
+    descripcion: >-
+      Las fuentes sitúan la instalación en el término municipal de Sagunto pero no publican
+      dirección, parcela ni polígono concretos.
+    fuentes: [src-1, src-2]
+  - campo: potencia
+    descripcion: >-
+      «10 MW pico» es una expresión ambigua; no se ha localizado ni el permiso de acceso y
+      conexión ni el desglose entre carga TI y potencia contratada.
+    fuentes: [src-1, src-2]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.redestelecom.es/infraestructuras/sagunto-albergara-la-estacion-de-aterrizaje-del-cable-submarino-barracuda/"
+    titulo: "Sagunto albergará la estación de aterrizaje del cable submarino Barracuda"
+    editor: "Redes & Telecom"
+    tipo: prensa_especializada
+    fecha_publicacion: "2025-05-29"
+    fecha_consulta: "2026-08-29"
+    cita: "La estación de aterrizaje del cable submarino se ubicará en una instalación con una superficie disponible de 4.600 metros cuadrados y tendrá capacidad para albergar hasta cuatro sistemas de cables submarinos."
+  - id: src-2
+    url: "https://www.eleconomista.es/telecomunicaciones/noticias/13388719/05/25/ni-alicante-ni-valencia-el-cable-submarino-barracuda-y-su-data-center-aterrizan-en-sagunto-con-sus-100-millones.html"
+    titulo: "Ni Alicante ni Valencia: el cable submarino Barracuda y su data center aterrizan en Sagunto con sus 100 millones"
+    editor: "elEconomista"
+    tipo: prensa_general
+    fecha_publicacion: "2025-05-29"
+    fecha_consulta: "2026-08-29"
+    cita: "Inicialmente, contará con una potencia eléctrica de 10 MW pico, lo que lo convierte en uno de los mayores previstos hasta ahora en la provincia de Valencia. Contará con cuatro salas de computación con capacidad para más de 400 racks e incluirá una planta de energía solar fotovoltaica para autoconsumo de 250 kWp instalada en la cubierta."
+  - id: src-3
+    url: "https://www.datacenterdynamics.com/es/noticias/valencia-digital-port-connect-ubicar%C3%A1-en-sagunto-la-estaci%C3%B3n-de-aterrizaje-del-cable-submarino-barracuda/"
+    titulo: "Valencia Digital Port Connect ubicará en Sagunto la estación de aterrizaje del cable submarino Barracuda"
+    editor: "DatacenterDynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2025-05-30"
+    fecha_consulta: "2026-08-29"
+    cita: "Con una inversión estimada de 100 millones de euros, el proyecto contempla un plazo de ejecución de tres años, con el inicio de operaciones previsto para principios de 2028."

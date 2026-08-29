@@ -1,0 +1,46 @@
+id: iaas-datacenter-madrid-maraton
+nombre: "IaaS Datacenter Madrid — Calle Maratón"
+alias:
+  - "Civicos Networking - IAAS (Madrid)"
+tipo: edificio
+operador: "IaaS Datacenter Madrid"
+propietario: "Desconocido"
+modelo: colocation
+
+ubicacion:
+  municipio: "Madrid"
+  provincia: "Madrid"
+  ccaa: "Comunidad de Madrid"
+  direccion: "Calle Maratón 12, 28037 Madrid (polígono de Julián Camarillo, distrito de San Blas-Canillejas)"
+  lat: 40.439748
+  lon: -3.624212
+  precision: exacta
+  fuentes: [src-1]
+
+estado: operativo
+estado_detalle: "Instalación registrada en PeeringDB, con presencia también de Civicos Networking en la misma dirección."
+estado_fuentes: [src-1]
+
+potencia: []
+
+incertidumbres:
+  - campo: operador
+    descripcion: >-
+      PeeringDB registra dos entradas en la misma dirección ("IaaS Datacenter Madrid" y
+      "Civicos Networking - IAAS (MADRID)"), sin que quede claro quién explota el inmueble.
+    fuentes: [src-1]
+  - campo: potencia
+    descripcion: "Sin datos de potencia ni superficie."
+    fuentes: [src-1]
+
+confianza: baja
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.peeringdb.com/fac/13938"
+    titulo: "IaaS Datacenter Madrid"
+    editor: "PeeringDB"
+    tipo: asociacion
+    fecha_consulta: "2026-08-29"
+    cita: "IaaS Datacenter Madrid | Maraton 12 | 28037 Madrid"

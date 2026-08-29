@@ -1,0 +1,129 @@
+id: digital-valley-picassent
+nombre: "Digital Valley Comunitat Valenciana — Picassent"
+alias:
+  - "Digital Valley Picassent"
+  - "Valle de los data centers del Mediterráneo"
+tipo: campus
+operador: "Digital Valley Comunitat Valenciana"
+propietario: "Digital Valley Comunitat Valenciana"
+modelo: desconocido
+
+ubicacion:
+  municipio: "Picassent"
+  provincia: "Valencia"
+  ccaa: "Comunitat Valenciana"
+  lat: 39.3635
+  lon: -0.4612
+  precision: municipio
+  fuentes: [src-1]
+
+estado: en_tramitacion
+estado_detalle: >-
+  Acuerdo de intenciones firmado con la Generalitat Valenciana y el Ayuntamiento de
+  Picassent el 28/01/2025. A febrero de 2026 el proyecto seguía pendiente del permiso de
+  acceso y conexión: el MITECO no había concedido la potencia solicitada y el promotor
+  había presentado alegaciones. El plan de urbanización de las parcelas se definirá en la
+  fase siguiente. Puesta en servicio prevista por el promotor para 2028.
+estado_fuentes: [src-1, src-2]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 200
+    ambito: campus
+    referencia: "Capacidad máxima del campus"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2025-01-28"
+    fuentes: [src-1, src-2, src-3, src-4]
+    nota: >-
+      Las fuentes hablan de «instalar una capacidad de 200 MW» / «capacidad máxima de
+      200 MW» sin especificar si es carga TI o potencia de conexión.
+  - tipo: conexion_red
+    valor_mw: 150
+    ambito: fase
+    referencia: "Primera fase — potencia solicitada al Gobierno (MITECO)"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2026-02-03"
+    fuentes: [src-2]
+    nota: >-
+      Las Provincias: «La primera fase del mismo requiere algo más de 150 MW de potencia
+      [...] Al menos esa es la cantidad solicitada al Gobierno». Es potencia de acceso
+      solicitada, no concedida.
+
+fases:
+  - nombre: "Fase 1"
+    estado: en_tramitacion
+    fuentes: [src-2]
+
+conexion_electrica:
+  mw_solicitados: 150
+  mw_concedidos: null
+  fuentes: [src-2]
+
+superficie_parcela_m2: 773000
+inversion_anunciada_eur: 2200000000
+refrigeracion: >-
+  Circuito cerrado de climatización; el promotor prevé recuperar el calor residual para
+  alimentar el centro penitenciario de Picassent.
+
+incertidumbres:
+  - campo: inversion_anunciada_eur
+    descripcion: >-
+      Levante-EMV y datacentermarket.es citan «más de 2.200 millones» (cifra del anuncio
+      oficial de enero de 2025); Las Provincias titula «2.300 millones» en un despiece de
+      febrero de 2026. Se registra la cifra del anuncio original.
+    fuentes: [src-1, src-2, src-3]
+  - campo: potencia
+    descripcion: >-
+      Los 200 MW se anuncian sin tipo. No consta desglose entre carga TI y potencia de
+      conexión, ni cuánta potencia ha sido finalmente otorgada. El promotor declara que
+      arrancará con potencia inferior si el MITECO no concede los ~150 MW solicitados.
+    fuentes: [src-1, src-2]
+  - campo: superficie
+    descripcion: >-
+      77,3 ha totales, de las que 37 ha se destinan a data centers (29 ha edificables) y
+      11,2 ha son dotacionales. No se ha localizado la superficie construida de los CPD.
+    fuentes: [src-1, src-5]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.levante-emv.com/economia/2025/01/28/centro-datos-picassent-consell-anuncia-complejo-centros-datos-113786298.html"
+    titulo: "El Consell anuncia un complejo de centros de datos en Picassent con una inversión de 2.200 millones"
+    editor: "Levante-EMV"
+    tipo: prensa_general
+    fecha_publicacion: "2025-01-28"
+    fecha_consulta: "2026-08-29"
+    cita: "En materia energética, la actuación contempla instalar una capacidad de 200 MW para lo que se va a desarrollar una planta fotovoltaica y una central de generación de hidrógeno verde, entre otras medidas."
+  - id: src-2
+    url: "https://www.lasprovincias.es/economia/megacentro-datos-picassent-acceso-potencia-exigida-tras-20260203193335-nt.html"
+    titulo: "El megacentro de datos de Picassent, sin acceso a la potencia exigida tras un primer año de excesiva burocracia"
+    editor: "Las Provincias"
+    tipo: prensa_general
+    fecha_publicacion: "2026-02-03"
+    fecha_consulta: "2026-08-29"
+    cita: "Los centros de datos, con una capacidad máxima de 200 MW, son la base de una megaconstrucción [...] La primera fase del mismo requiere algo más de 150 MW de potencia, lo equivalente a la energía suficiente para alimentar unos 70.000 hogares. Al menos esa es la cantidad solicitada al Gobierno."
+  - id: src-3
+    url: "https://www.datacentermarket.es/sostenibilidad/digital-valley-la-apuesta-de-la-comunidad-valenciana-por-los-data-centers/"
+    titulo: "Digital Valley: la apuesta valenciana por los data centers"
+    editor: "Data Center Market"
+    tipo: prensa_especializada
+    fecha_consulta: "2026-08-29"
+    cita: "El proyecto contempla instalar una capacidad de 200 megavatios (MW) de capacidad, lo que lo posicionaría como el segundo centro de datos más grande de España"
+  - id: src-4
+    url: "https://www.datacenterdynamics.com/es/noticias/digital-valley-reabre-el-debate-sobre-sostenibilidad-de-los-data-centers-en-valencia/"
+    titulo: "Digital Valley reabre el debate sobre sostenibilidad de los data centers en Valencia"
+    editor: "DatacenterDynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-04-20"
+    fecha_consulta: "2026-08-29"
+    cita: "El proyecto, presentado en 2025 como una inversión de más de 2.200 millones de euros [...] contempla la construcción de un campus tecnológico sobre una superficie de 77 hectáreas, de las cuales cerca de la mitad se destinarán directamente a instalaciones de data center."
+  - id: src-5
+    url: "https://www.elsaltodiario.com/valencia/organizaciones-sociales-ecologistas-denuncian-impactos-del-futuro-data-center-picassent"
+    titulo: "Organizaciones sociales y ecologistas denuncian los impactos del futuro data center de Picassent"
+    editor: "El Salto"
+    tipo: prensa_general
+    fecha_publicacion: "2026-04-20"
+    fecha_consulta: "2026-08-29"
+    cita: "Digital Valley Comunitat Valenciana se ubicará, según el proyecto, sobre una superficie de 77,3 hectáreas en el término municipal de Picassent. En la actuación están previstos espacios de data centers para la gestión y almacenamiento de datos que ocuparán 37 hectáreas, de las que 29 serán edificables"

@@ -1,0 +1,859 @@
+# Actuaciones de red de transporte relevantes para los clusters de centros de datos
+# ================================================================================
+# Qué es esto: obras de la red de transporte (nuevas subestaciones, ampliaciones,
+# nuevas líneas y ejes de 400/220 kV) que afectan a las zonas donde se concentran
+# los proyectos de CPD. Se recogen tal y como aparecen en los instrumentos de
+# planificación vinculante y en la propuesta en tramitación.
+#
+# CUÁL ES EL DOCUMENTO VIGENTE A 29-08-2026
+# -----------------------------------------
+# Vigente y vinculante para Red Eléctrica: la "Planificación de la Red de
+# Transporte de Energía Eléctrica. Horizonte 2026" (periodo 2021-2026), aprobada
+# por Acuerdo de Consejo de Ministros de 22 de marzo de 2022, con TRES
+# modificaciones de aspectos puntuales (MAPs) ya aprobadas:
+#   - MAP 1: abril de 2024   (+489 M€) — incluye el capítulo MAP_CONSUM de nuevos
+#            consumidores conectados a la red de transporte.
+#   - MAP 2: julio de 2025   (+750 M€) — compensación de reactiva y control de
+#            tensión tras el cero del 28 de abril de 2025.
+#   - MAP 3: julio de 2026   (+615 M€) — 51 actuaciones de resiliencia
+#            (e-STATCOM, reactancias, MCSR). Acuerdo de Consejo de Ministros de
+#            28 de julio de 2026, publicado por Resolución de 3 de agosto de 2026.
+#   Inversión total de la planificación H2026 tras la tercera MAP: 8.818 M€.
+#
+# NO vigente todavía: la "Planificación de la Red de Transporte 2025-2030"
+# (horizonte 2030). Su Propuesta se sometió a audiencia e información pública del
+# 10 de octubre al 16 de diciembre de 2025. A 29-08-2026 el proceso está en la
+# FASE 4 (Estudios) de las seis fases del procedimiento: Red Eléctrica analiza las
+# alegaciones y elabora la Propuesta de Desarrollo de la Red de Transporte. No hay
+# aprobación por Consejo de Ministros y, por tanto, sus actuaciones NO son
+# vinculantes ni ejecutables. Cualquier cifra de la propuesta es indicativa.
+#
+# Vocabulario de los anexos de Red Eléctrica:
+#   E/S ......... entrada-salida (se abre una línea existente para entrar en una
+#                 subestación nueva o ampliada).
+#   DC / cto .... doble circuito / circuito.
+#   Motiv. ...... motivación de la actuación en el anexo:
+#                 Consum. = nuevo consumidor conectado a la red de transporte;
+#                 RdT = necesidad de la propia red de transporte;
+#                 ApD = apoyo a la red de distribución;
+#                 EjeFerr. = eje ferroviario.
+#   Prev. ....... año previsto de puesta en servicio (">2026" = fuera del horizonte
+#                 de la planificación vigente).
+#
+# ADVERTENCIA SOBRE LA MOTIVACIÓN: los anexos de planificación NO nombran empresas
+# ni tipos de instalación concretos. Donde abajo se dice que una actuación está
+# motivada por "nuevos consumidores", es literalmente lo que dice el documento; no
+# implica que el consumidor sea un centro de datos. Solo se afirma vínculo con CPD
+# cuando la fuente lo dice.
+
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-plan2126
+    url: "https://www.planificacionelectrica.es/sites/default/files/2026-08/planificacion-doc-completo-map26-jul26.pdf"
+    titulo: "Plan de desarrollo de la Red de Transporte de Energía Eléctrica. Período 2021-2026 (documento completo consolidado tras las MAPs de julio de 2026)"
+    editor: "Red Eléctrica de España / MITECO"
+    tipo: oficial
+    fecha_publicacion: "2026-08"
+    fecha_consulta: "2026-08-29"
+    cita: "Las siguientes actuaciones [...] permiten atender nuevos suministros [...] cuya alimentación por motivos técnicos únicamente puede realizarse desde la red de transporte."
+  - id: src-plan2126-motivacion
+    url: "https://www.planificacionelectrica.es/sites/default/files/2026-08/planificacion-doc-completo-map26-jul26.pdf"
+    titulo: "Anexo II: Nuevas actuaciones — Actuación MAP_CONSUM, 'Nuevos consumidores conectados a la red de transporte (MAP 2024)'"
+    editor: "Red Eléctrica de España / MITECO"
+    tipo: oficial
+    fecha_publicacion: "2026-08"
+    fecha_consulta: "2026-08-29"
+    cita: "Las necesidades asociadas a la transición energética y la electrificación y la digitalización de la economía están dando pie a la aparición de nuevos proyectos industriales de gran envergadura, de carácter estratégico [...] Muchos de ellos se caracterizan por conllevar unos consumos de electricidad significativos, razón por la cual se requiere su abastecimiento directamente desde la red de transporte eléctrica."
+  - id: src-planificacion-vigente-web
+    url: "https://www.planificacionelectrica.es/planificacion-vigente"
+    titulo: "Planificación vigente 2021-2026"
+    editor: "Red Eléctrica de España"
+    tipo: oficial
+    fecha_publicacion: null
+    fecha_consulta: "2026-08-29"
+    cita: "En marzo de 2022, el Consejo de ministros aprobó la Planificación vigente con horizonte 2026 y vinculante para Red Eléctrica. Tras las modificaciones aprobadas en abril de 2024 y julio de 2025, el Consejo de ministros ha aprobado las terceras MAPs en julio de 2026."
+  - id: src-proceso-2025-30
+    url: "https://www.planificacionelectrica.es/proceso-2025-30"
+    titulo: "Proceso 2025-30 — fases de la planificación"
+    editor: "Red Eléctrica de España"
+    tipo: oficial
+    fecha_publicacion: null
+    fecha_consulta: "2026-08-29"
+    cita: "Estado de fase: actual 4. Estudios. Tras la fase de alegaciones [...] Red Eléctrica, en su calidad de Operador del Sistema, analiza las alegaciones, realiza los estudios técnicos pertinentes y elabora la Propuesta de Desarrollo de la Red de Transporte."
+  - id: src-maps3-miteco
+    url: "https://www.miteco.gob.es/content/dam/miteco/es/energia/files-1/infraestructuras/MAPs_3_H2026_Web%20MITERD%20Vfinal.pdf"
+    titulo: "Tercera Modificación de Aspectos Puntuales del Plan de Desarrollo de la Red de Transporte de Energía Eléctrica 2021-2026"
+    editor: "MITECO"
+    tipo: oficial
+    fecha_publicacion: "2026-07-28"
+    fecha_consulta: "2026-08-29"
+    cita: "La Modificación recoge 51 actuaciones [...] Ligada a una inversión de 615 millones de euros, aportará un ahorro de unos 450 millones anuales. [...] Tras esta tercera modificación, la inversión total correspondiente a la Planificación con horizonte 2026 asciende a 8.818 millones."
+  - id: src-maps3-boe
+    url: "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-17368"
+    titulo: "Resolución de 3 de agosto de 2026, de la Secretaría de Estado de Energía, por la que se publica el Acuerdo de Consejo de Ministros de 28 de julio de 2026, por el que se aprueba la tercera modificación de aspectos puntuales del Plan de desarrollo de la Red de Transporte de Energía Eléctrica 2021-2026"
+    editor: "BOE"
+    tipo: oficial
+    fecha_publicacion: "2026-08-08"
+    fecha_consulta: "2026-08-29"
+    cita: "Tercera modificación de aspectos puntuales del Plan de desarrollo de la Red de Transporte de Energía Eléctrica 2021-2026."
+  - id: src-h2030-sumario
+    url: "https://www.miteco.gob.es/content/dam/miteco/es/energia/files-1/es-ES/Participacion/Documents/anexos/aeip-planificacion-h2030/0_Planficacion_Sumario_ejecutivo.pdf"
+    titulo: "Propuesta inicial de desarrollo de la red de transporte de energía eléctrica. Sumario ejecutivo (horizonte 2030)"
+    editor: "MITECO / Red Eléctrica de España"
+    tipo: oficial
+    fecha_publicacion: "2025-09"
+    fecha_consulta: "2026-08-29"
+    cita: "En este escenario se han incorporado aproximadamente un 25% de las propuestas de demanda recibidas tanto en la red de transporte como en la red de distribución."
+  - id: src-h2030-boe
+    url: "https://www.boe.es/diario_boe/txt.php?id=BOE-B-2025-36444"
+    titulo: "Anuncio de la DGPEM por el que se somete a trámite de audiencia [...] la propuesta de planificación de la red de transporte de energía eléctrica para el horizonte 2030 y su estudio ambiental estratégico"
+    editor: "BOE"
+    tipo: oficial
+    fecha_publicacion: "2025-10-09"
+    fecha_consulta: "2026-08-29"
+    cita: "El plazo de consulta pública comenzará a partir del día siguiente al de publicación de este anuncio y se extenderá hasta el 16 de diciembre de 2025."
+  - id: src-moncloa-h2030
+    url: "https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/transicion-ecologica/paginas/2025/120925-aagesen-planificacion-electrica-2030.aspx"
+    titulo: "Sara Aagesen anuncia las líneas generales de la Propuesta de planificación eléctrica a 2030"
+    editor: "La Moncloa"
+    tipo: oficial
+    fecha_publicacion: "2025-09-12"
+    fecha_consulta: "2026-08-29"
+    cita: "Líneas generales de la Propuesta de planificación de la red de transporte de electricidad con horizonte 2030."
+  - id: src-orden-ted1375
+    url: "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2023-26158"
+    titulo: "Orden TED/1375/2023, de 21 de diciembre, por la que se inicia el procedimiento para efectuar propuestas de desarrollo de la red de transporte de energía eléctrica con horizonte 2030"
+    editor: "BOE"
+    tipo: oficial
+    fecha_publicacion: "2023-12-23"
+    fecha_consulta: "2026-08-29"
+    cita: "La garantía de suministro de energía eléctrica [...] a aquellos potenciales clientes que presenten proyectos firmes y maduros en el horizonte de planificación establecido."
+  - id: src-rd640-2026
+    url: "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-16661"
+    titulo: "Real Decreto 640/2026, de 29 de julio, por el que se regulan los planes de inversión de las redes de transporte y distribución de energía eléctrica"
+    editor: "BOE"
+    tipo: oficial
+    fecha_publicacion: "2026-07-31"
+    fecha_consulta: "2026-08-29"
+    cita: "Real Decreto por el que se regulan los planes de inversión de las redes de transporte y distribución de energía eléctrica."
+
+# ---------------------------------------------------------------------------
+# 1. INSTRUMENTOS DE PLANIFICACIÓN (registros de nivel plan)
+# ---------------------------------------------------------------------------
+actuaciones:
+
+  - id: plan-h2026-vigente
+    nombre: "Planificación de la Red de Transporte de Energía Eléctrica. Horizonte 2026 (periodo 2021-2026)"
+    tipo: plan
+    tension_kv: null
+    municipios: null
+    ccaa: [nacional]
+    horizonte: "2026"
+    estado_tramitacion: aprobado
+    estado_detalle: "Aprobada por Acuerdo de Consejo de Ministros de 22 de marzo de 2022. Vinculante para Red Eléctrica. Modificada por MAPs en abril de 2024, julio de 2025 y julio de 2026."
+    motivacion: "Instrumento vinculante que fija las actuaciones de la red de transporte del periodo. Es la única planificación en vigor a 29-08-2026."
+    inversion_eur: 8818000000
+    inversion_nota: "Inversión total de la planificación H2026 tras la tercera MAP (8.818 M€), según la nota de la tercera MAP."
+    clusters_relacionados: [nacional]
+    fuentes: [src-planificacion-vigente-web, src-maps3-miteco]
+    ultima_verificacion: "2026-08-29"
+
+  - id: map-abril-2024-consum
+    nombre: "MAP de abril de 2024 — capítulo MAP_CONSUM, nuevos consumidores conectados a la red de transporte"
+    tipo: paquete_actuaciones
+    tension_kv: [400, 220, 66]
+    municipios: null
+    ccaa: [Andalucía, "Comunidad Valenciana", Aragón, Cataluña, "País Vasco", Cantabria, "Castilla-La Mancha", "Castilla y León", Extremadura, Galicia, "Principado de Asturias", "Comunidad de Madrid", "Illes Balears"]
+    horizonte: "2026 y >2026"
+    estado_tramitacion: aprobado
+    estado_detalle: "Primera modificación de aspectos puntuales de la planificación H2026, aprobada en abril de 2024 (+489 M€ en total, de los cuales 342,9 M€ corresponden al capítulo de nuevas demandas)."
+    motivacion: "Atender nuevos suministros que, por motivos técnicos, solo pueden alimentarse desde la red de transporte. El documento vincula expresamente estas actuaciones a 'la transición energética y la electrificación y la digitalización de la economía'."
+    inversion_eur: 342900000
+    inversion_nota: "342,9 M€ es el sobrecoste del bloque 'Nuevas demandas' dentro de los +489 M€ de la MAP de abril de 2024."
+    unidades_fisicas: "6 posiciones de 66 kV, 94 de 220 kV y 82 de 400 kV; 90 km de línea aérea de 220 kV y 208 km de 400 kV; 6 km de cable de 220 kV y 47 km de 400 kV; 6.000 MVA de transformación a 220 kV; 474 km de cambio de conductor en 220 kV y 29 km en 400 kV."
+    clusters_relacionados: [aragon, cataluna, valencia-sagunto, pais-vasco, andalucia, madrid, guadalajara-toledo]
+    fuentes: [src-plan2126, src-plan2126-motivacion]
+    ultima_verificacion: "2026-08-29"
+
+  - id: map-julio-2025
+    nombre: "MAP de julio de 2025 — refuerzo del control de tensión y de la estabilidad"
+    tipo: paquete_actuaciones
+    tension_kv: [400, 220, 132, 66]
+    municipios: null
+    ccaa: [nacional]
+    horizonte: "2026"
+    estado_tramitacion: aprobado
+    estado_detalle: "Aprobada el 8 de julio de 2025 en respuesta al cero eléctrico del 28 de abril de 2025. +750 M€."
+    motivacion: "Control de tensión, compensación de reactiva y reposición del servicio. 10 reactancias (833 Mvar), 11 compensadores síncronos (2.135 Mvar), FACTS serie en Pierola 400 kV y relés de maniobra controlada. No está motivada por nueva demanda."
+    inversion_eur: 750000000
+    clusters_relacionados: [madrid, aragon, cataluna, valencia-sagunto]
+    fuentes: [src-plan2126]
+    ultima_verificacion: "2026-08-29"
+
+  - id: map-julio-2026
+    nombre: "Tercera MAP (julio de 2026) — resiliencia y control de tensión"
+    tipo: paquete_actuaciones
+    tension_kv: [400, 220, 132, 66]
+    municipios: null
+    ccaa: [nacional]
+    horizonte: "2026"
+    estado_tramitacion: aprobado
+    estado_detalle: "Acuerdo de Consejo de Ministros de 28 de julio de 2026, publicado por Resolución de 3 de agosto de 2026 (BOE núm. 193 de 2026). 51 actuaciones: 4 e-STATCOM, 20 reactancias nuevas, 8 reactancias MCSR y 4 renovaciones totales de reactancia."
+    motivacion: "Sustituir el uso de ciclos combinados para control de tensión y amortiguación de oscilaciones. El grueso se concentra en Castilla y León, Andalucía y Extremadura, seguidas de Castilla-La Mancha y la Comunidad Valenciana. No está motivada por nueva demanda."
+    inversion_eur: 615000000
+    clusters_relacionados: [madrid, aragon, cataluna, valencia-sagunto, andalucia, pais-vasco]
+    fuentes: [src-maps3-miteco, src-maps3-boe]
+    ultima_verificacion: "2026-08-29"
+
+  - id: propuesta-h2030
+    nombre: "Propuesta de Planificación de la Red de Transporte 2025-2030 (horizonte 2030)"
+    tipo: plan
+    tension_kv: [400, 220]
+    municipios: null
+    ccaa: [nacional]
+    horizonte: "2030"
+    estado_tramitacion: en_tramitacion
+    estado_detalle: "Procedimiento iniciado por la Orden TED/1375/2023. Propuesta inicial presentada el 12 de septiembre de 2025 y sometida a audiencia e información pública (también ambiental) desde el 10 de octubre hasta el 16 de diciembre de 2025 (BOE-B-2025-36444). A 29-08-2026 el proceso está en la fase 4 de 6 (Estudios): Red Eléctrica analiza las alegaciones y elabora la Propuesta de Desarrollo. NO aprobada; NO vinculante."
+    motivacion: >-
+      La demanda es el principal motor de la propuesta. Según la nota de La Moncloa
+      de 12-09-2025, la propuesta destina 13.590 M€ hasta 2030 para incorporar 27,7 GW
+      de nueva capacidad en la red de transporte y 5,3 GW en distribución, con un reparto
+      funcional que asigna 13,1 GW a hidrógeno verde, 9 GW a industria, 3,8 GW a CENTROS
+      DE DATOS, 1,8 GW a vivienda, 1,2 GW a puertos y 560 MW a ferrocarril, a través de
+      422 ampliaciones de conexión. El sumario ejecutivo añade que solo se ha incorporado
+      al escenario "aproximadamente un 25% de las propuestas de demanda recibidas".
+    inversion_eur: 13590000000
+    inversion_nota: "13.590 M€ es la cifra de la Propuesta (no aprobada). La planificación vigente H2026 asciende a 8.818 M€ tras la tercera MAP."
+    cpd_explicito: true
+    clusters_relacionados: [nacional, madrid, aragon, cataluna, valencia-sagunto, pais-vasco, andalucia, guadalajara-toledo]
+    incertidumbres:
+      - campo: actuaciones_detalladas
+        descripcion: "El listado individualizado de actuaciones de la Propuesta H2030 no se ha podido localizar en formato público accesible: solo se ha localizado el sumario ejecutivo. Las cifras funcionales (3,8 GW para centros de datos) proceden de la nota de prensa de La Moncloa y de la cobertura de la audiencia pública, no de un anexo tabulado consultado directamente."
+        fuentes: [src-moncloa-h2030, src-h2030-sumario]
+    fuentes: [src-h2030-sumario, src-h2030-boe, src-moncloa-h2030, src-orden-ted1375, src-proceso-2025-30]
+    ultima_verificacion: "2026-08-29"
+
+  - id: rd-640-2026-planes-inversion
+    nombre: "Real Decreto 640/2026, de 29 de julio, de planes de inversión de las redes de transporte y distribución"
+    tipo: norma_habilitante
+    tension_kv: null
+    municipios: null
+    ccaa: [nacional]
+    horizonte: "2027-2030"
+    estado_tramitacion: aprobado
+    estado_detalle: "Aprobado por el Consejo de Ministros el 28 de julio de 2026 y publicado en el BOE el 31 de julio de 2026."
+    motivacion: "Habilita inversión adicional en redes hasta 2030 por 17.900 M€ (10.200 M€ en distribución: 1.020 M€ en 2027, 2.550 en 2028, 3.060 en 2029 y 3.570 en 2030; y 7.700 M€ adicionales en transporte), según la referencia del Consejo de Ministros de 28 de julio de 2026. No es una planificación de actuaciones concretas: regula los planes de inversión."
+    inversion_eur: 17900000000
+    clusters_relacionados: [nacional]
+    fuentes: [src-rd640-2026]
+    ultima_verificacion: "2026-08-29"
+
+# ---------------------------------------------------------------------------
+# 2. ACTUACIONES CONCRETAS EN ZONAS DE CPD
+#    Todas proceden del Anexo II del plan consolidado (fuente src-plan2126) salvo
+#    indicación distinta. "motivacion_documento" reproduce la etiqueta Motiv. del anexo.
+# ---------------------------------------------------------------------------
+
+  # ---------- ARAGÓN (Zaragoza / corredor del Ebro) ----------
+  - id: act-ar-ave-zaragoza-220-ampl
+    nombre: "Ampliación de la SE AVE Zaragoza 220 kV (2 posiciones)"
+    tipo: ampliacion_subestacion
+    tension_kv: [220]
+    municipios: ["Zaragoza"]
+    provincia: "Zaragoza"
+    ccaa: "Aragón"
+    horizonte: "2026"
+    estado_tramitacion: planificada_vigente
+    motivacion_documento: "Consum. (nuevo consumidor conectado a la red de transporte)"
+    motivacion: "Atender nuevos suministros en la zona noreste que solo pueden alimentarse desde la red de transporte."
+    inversion_eur: null
+    clusters_relacionados: [aragon]
+    fuentes: [src-plan2126, src-plan2126-motivacion]
+    ultima_verificacion: "2026-08-29"
+
+  - id: act-ar-esquedas-220-ampl
+    nombre: "Ampliación de la SE Esquedas 220 kV (2 posiciones) y repotenciación L/Esquedas-Sabiñánigo 220 kV cto 1 (43 km)"
+    tipo: ampliacion_subestacion
+    tension_kv: [220]
+    municipios: ["La Sotonera"]
+    provincia: "Huesca"
+    ccaa: "Aragón"
+    horizonte: "2026"
+    estado_tramitacion: planificada_vigente
+    motivacion_documento: "Consum. (ampliación) / RdT (repotenciación)"
+    motivacion: "Nuevos suministros en la zona noreste."
+    inversion_eur: null
+    clusters_relacionados: [aragon]
+    fuentes: [src-plan2126, src-plan2126-motivacion]
+    ultima_verificacion: "2026-08-29"
+
+  - id: act-ar-montetorrero-220-ampl
+    nombre: "Ampliación de la SE Montetorrero 220 kV (2 posiciones)"
+    tipo: ampliacion_subestacion
+    tension_kv: [220]
+    municipios: null
+    provincia: "Zaragoza"
+    ccaa: "Aragón"
+    horizonte: "2026"
+    estado_tramitacion: planificada_vigente
+    motivacion_documento: "Consum."
+    motivacion: "Nuevos suministros en la zona noreste. El nudo MONTETORRERO 220 registra 700 MW de capacidad de demanda solicitada en curso y pendiente de resolver (REE, 03-08-2026) y está señalado como nudo de concurso."
+    inversion_eur: null
+    clusters_relacionados: [aragon]
+    fuentes: [src-plan2126, src-plan2126-motivacion]
+    ultima_verificacion: "2026-08-29"
+
+  - id: act-ar-penaflor-ampl
+    nombre: "Ampliación de la SE Peñaflor 220 kV (4 pos. Consum. + 1 RdT) y 400 kV (2 pos.), y tercer transformador 400/220 kV de 600 MVA (TF3)"
+    tipo: ampliacion_subestacion
+    tension_kv: [400, 220]
+    municipios: ["Villamayor de Gállego"]
+    provincia: "Zaragoza"
+    ccaa: "Aragón"
+    horizonte: "2026"
+    estado_tramitacion: planificada_vigente
+    motivacion_documento: "Consum. (posiciones de 220 kV) / RdT (resto)"
+    motivacion: "Nuevos suministros en la zona noreste. El nudo PEÑAFLOR 400 tiene 300 MW de acceso de demanda ya otorgado y PEÑAFLOR 220 registra 850 MW solicitados en curso (REE, 03-08-2026); es nudo de concurso."
+    inversion_eur: null
+    clusters_relacionados: [aragon]
+    fuentes: [src-plan2126, src-plan2126-motivacion]
+    ultima_verificacion: "2026-08-29"
+
+  - id: act-ar-plaza2-220-ampl
+    nombre: "Ampliación de la SE Plaza II 220 kV (2 posiciones)"
+    tipo: ampliacion_subestacion
+    tension_kv: [220]
+    municipios: null
+    provincia: "Zaragoza"
+    ccaa: "Aragón"
+    horizonte: "2026"
+    estado_tramitacion: planificada_vigente
+    motivacion_documento: "Consum."
+    motivacion: "Nuevos suministros en la zona noreste. El nudo PLAZA II (MONCASI) 220 registra 450 MW solicitados en curso (REE, 03-08-2026) y es nudo de concurso. La MAP de abril de 2024 incluye además un bombeo en Plaza II 220 kV (26,5 M€)."
+    inversion_eur: null
+    clusters_relacionados: [aragon]
+    fuentes: [src-plan2126, src-plan2126-motivacion]
+    ultima_verificacion: "2026-08-29"
+
+  - id: act-ar-villanueva-gallego-220-ampl
+    nombre: "Ampliación de la SE Villanueva de Gállego 220 kV (2 posiciones) y renovación de componentes en posiciones existentes"
+    tipo: ampliacion_subestacion
+    tension_kv: [220]
+    municipios: ["Villanueva de Gállego"]
+    provincia: "Zaragoza"
+    ccaa: "Aragón"
+    horizonte: "2026"
+    estado_tramitacion: planificada_vigente
+    motivacion_documento: "Consum."
+    motivacion: "Nuevos suministros en la zona noreste. El nudo VILLANUEVA DE GALLEGO 220 registra 550 MW de demanda solicitada en curso (REE, 03-08-2026) y es nudo de concurso."
+    inversion_eur: null
+    clusters_relacionados: [aragon]
+    fuentes: [src-plan2126, src-plan2126-motivacion]
+    ultima_verificacion: "2026-08-29"
+
+  - id: act-ar-refuerzo-ejes-220-zaragoza
+    nombre: "Refuerzo de los ejes de 220 kV de Zaragoza: cambio de conductor a alta temperatura del DC Escatrón-Villanueva de Gállego (144 km) y del DC Gurrea de Gállego-Villanueva de Gállego (67 km), y variante en DC de los circuitos Escatrón-Villanueva (2 km)"
+    tipo: refuerzo_linea
+    tension_kv: [220]
+    municipios: null
+    provincia: "Zaragoza / Huesca / Teruel"
+    ccaa: "Aragón"
+    horizonte: "2026"
+    estado_tramitacion: planificada_vigente
+    motivacion_documento: "RdT"
+    motivacion: "Refuerzos de red asociados al bloque de nuevos consumidores del noreste."
+    inversion_eur: null
+    clusters_relacionados: [aragon]
+    fuentes: [src-plan2126]
+    ultima_verificacion: "2026-08-29"
+
+  - id: act-ar-magallon-penalba-trafos
+    nombre: "Tercer transformador 400/220 kV en Magallón (TF3, 600 MVA), segundo transformador 400/220 kV en Peñalba (TF2, 600 MVA) y ampliaciones asociadas"
+    tipo: transformador
+    tension_kv: [400, 220]
+    municipios: ["Magallón"]
+    provincia: "Zaragoza"
+    ccaa: "Aragón"
+    horizonte: "2026"
+    estado_tramitacion: planificada_vigente
+    motivacion_documento: "RdT"
+    motivacion: "Refuerzo de transformación asociado al bloque de nuevos consumidores del noreste."
+    inversion_eur: null
+    clusters_relacionados: [aragon]
+    fuentes: [src-plan2126]
+    ultima_verificacion: "2026-08-29"
+
+  - id: act-ar-maps3-aragon-gurrea
+    nombre: "MCSR de 250 MVAr en SE Aragón 400 kV y reactancia de 100 MVAr en SE Gurrea 220 kV"
+    tipo: compensacion_reactiva
+    tension_kv: [400, 220]
+    municipios: ["Castelnou"]
+    provincia: "Teruel / Huesca"
+    ccaa: "Aragón"
+    horizonte: "2026"
+    estado_tramitacion: aprobado
+    motivacion_documento: "Control de tensión"
+    motivacion: "Tercera MAP (julio de 2026). No motivada por nueva demanda."
+    inversion_eur: null
+    clusters_relacionados: [aragon]
+    fuentes: [src-maps3-miteco, src-maps3-boe]
+    ultima_verificacion: "2026-08-29"
+
+  # ---------- COMUNIDAD VALENCIANA (Sagunto / Castellón) ----------
+  - id: act-cv-saguntum-nueva-se
+    nombre: "Nueva SE Saguntum 400/220 kV, DC Gaussa-Saguntum 400 kV, transformador 400/220 kV de 600 MVA y reconfiguración de la red de Sagunto"
+    tipo: nueva_subestacion
+    tension_kv: [400, 220]
+    municipios: null
+    provincia: "Valencia"
+    ccaa: "Comunidad Valenciana"
+    horizonte: "2026"
+    estado_tramitacion: planificada_vigente
+    motivacion_documento: "Consum. (4 posiciones de 220 kV) / RdT (resto)"
+    motivacion: >-
+      Actuación central del bloque "zona este" de la MAP de abril de 2024 (62,1 M€ de
+      sobrecoste asociados a "Nueva demanda en Sagunto 220/400 kV"). Incluye cambio de
+      topología de los DC Saguntum-Morvedre 220 kV y Saguntum-Eliana/Sagunto 220 kV,
+      bypass de las líneas La Eliana-Gaussa y Gaussa-Morvedre 400 kV y ampliación de
+      la SE Saguntum 220 kV (4 pos. Consum. + 6 RdT + 1 ApD) y 400 kV (5 pos. RdT).
+    inversion_eur: 62100000
+    inversion_nota: "62,1 M€ es el sobrecoste imputado en la MAP de abril de 2024 a la partida 'Nueva demanda en Sagunto 220/400 kV'."
+    clusters_relacionados: [valencia-sagunto]
+    fuentes: [src-plan2126, src-plan2126-motivacion]
+    ultima_verificacion: "2026-08-29"
+
+  - id: act-cv-el-serrallo-220-ampl
+    nombre: "Ampliación de la SE El Serrallo 220 kV (2 posiciones) y transformador 400/220 kV de 600 MVA en Castellón C.T. (TF1)"
+    tipo: ampliacion_subestacion
+    tension_kv: [400, 220]
+    municipios: null
+    provincia: "Castellón"
+    ccaa: "Comunidad Valenciana"
+    horizonte: "2026"
+    estado_tramitacion: planificada_vigente
+    motivacion_documento: "Consum. (ampliación de 2026) / RdT (transformador)"
+    motivacion: "Nuevos suministros en la zona este (9,4 M€ imputados a 'Nueva demanda en El Serrallo 220 kV' en la MAP de abril de 2024). El nudo EL SERRALLO 220 registra 558 MW de demanda solicitada en curso (REE, 03-08-2026) y es nudo de concurso."
+    inversion_eur: 9400000
+    clusters_relacionados: [valencia-sagunto]
+    fuentes: [src-plan2126, src-plan2126-motivacion]
+    ultima_verificacion: "2026-08-29"
+
+  - id: act-cv-eliana-godelleta-morvedre
+    nombre: "Nuevas líneas DC La Eliana-Godelleta 400 kV y DC La Eliana-Morvedre 220 kV, cambio de conductor La Eliana-Godelleta 400 kV (28 km) y renovación parcial La Eliana-Morvedre 220 kV cto 1 (25 km)"
+    tipo: nueva_linea
+    tension_kv: [400, 220]
+    municipios: ["l'Eliana"]
+    provincia: "Valencia"
+    ccaa: "Comunidad Valenciana"
+    horizonte: "2026"
+    estado_tramitacion: planificada_vigente
+    motivacion_documento: "RdT"
+    motivacion: "Refuerzos del eje La Eliana-Sagunto asociados al bloque de nuevos consumidores de la zona este."
+    inversion_eur: null
+    clusters_relacionados: [valencia-sagunto]
+    fuentes: [src-plan2126]
+    ultima_verificacion: "2026-08-29"
+
+  - id: act-cv-maps3-ayora-morella
+    nombre: "Reactancias de 150 MVAr en SE Ayora 400 kV y SE Morella 400 kV"
+    tipo: compensacion_reactiva
+    tension_kv: [400]
+    municipios: null
+    provincia: "Valencia / Castellón"
+    ccaa: "Comunidad Valenciana"
+    horizonte: "2026"
+    estado_tramitacion: aprobado
+    motivacion_documento: "Control de tensión"
+    motivacion: "Tercera MAP (julio de 2026). No motivada por nueva demanda."
+    inversion_eur: null
+    clusters_relacionados: [valencia-sagunto]
+    fuentes: [src-maps3-miteco, src-maps3-boe]
+    ultima_verificacion: "2026-08-29"
+
+  # ---------- CATALUÑA ----------
+  - id: act-cat-farners-nueva-se
+    nombre: "Nueva SE Farners 400/220 kV con E/S de la línea Vic-Bescanó 400 kV, dos transformadores 400/220 kV de 600 MVA, nueva SE Riudarenes 220 kV y DC Farners-Riudarenes 220 kV (15 km)"
+    tipo: nueva_subestacion
+    tension_kv: [400, 220]
+    municipios: null
+    provincia: "Girona"
+    ccaa: "Cataluña"
+    horizonte: "2026"
+    estado_tramitacion: planificada_vigente
+    motivacion_documento: "RdT (Farners) / RdT, EjeFerr. y ApD (Riudarenes)"
+    motivacion: "Bloque de nuevos suministros de la zona noreste. La MAP de abril de 2024 imputa 24,3 M€ a 'Nueva demanda en Riudarenes 220 kV'."
+    inversion_eur: 24300000
+    inversion_nota: "24,3 M€ corresponden a la partida 'Nueva demanda en Riudarenes 220 kV'; no cubre la totalidad del conjunto Farners-Riudarenes."
+    clusters_relacionados: [cataluna]
+    fuentes: [src-plan2126, src-plan2126-motivacion]
+    ultima_verificacion: "2026-08-29"
+
+  - id: act-cat-verneda-nueva-se
+    nombre: "Nueva SE Verneda 220 kV (edificio) como E/S de la línea La Sagrera-Badalona 220 kV cto 3, y ampliación (3 pos. RdT + 2 ApD)"
+    tipo: nueva_subestacion
+    tension_kv: [220]
+    municipios: ["Barcelona"]
+    provincia: "Barcelona"
+    ccaa: "Cataluña"
+    horizonte: "2026"
+    estado_tramitacion: planificada_vigente
+    motivacion_documento: "RdT / ApD"
+    motivacion: "Nuevos suministros en Barcelona (10,0 M€ imputados a 'Nueva demanda en Verneda 220 kV'). Requiere la renovación previa de la línea Badalona-Sagrera."
+    inversion_eur: 10000000
+    clusters_relacionados: [cataluna]
+    fuentes: [src-plan2126, src-plan2126-motivacion]
+    ultima_verificacion: "2026-08-29"
+
+  - id: act-cat-secuita-perafort-constanti
+    nombre: "Ampliación SE La Secuita 220 y 400 kV, segundo transformador 400/220 kV (TF2, 600 MVA) y cambio de conductor a alta temperatura de los ejes La Secuita-Constantí 220 kV (14 km), La Secuita-Perafort 220 kV (9 km) y Perafort-Francolí 220 kV (3 km)"
+    tipo: refuerzo_linea
+    tension_kv: [400, 220]
+    municipios: ["La Secuita", "Perafort", "Constantí"]
+    provincia: "Tarragona"
+    ccaa: "Cataluña"
+    horizonte: "2026"
+    estado_tramitacion: planificada_vigente
+    motivacion_documento: "RdT"
+    motivacion: "Refuerzo del área de Tarragona dentro del bloque de nuevos suministros de la zona noreste. El nudo FRANCOLI 220 fue uno de los ocho nudos convocados a concurso de capacidad de acceso de demanda en 2025."
+    inversion_eur: null
+    clusters_relacionados: [cataluna]
+    fuentes: [src-plan2126]
+    ultima_verificacion: "2026-08-29"
+
+  - id: act-cat-vandellos-400-ampl
+    nombre: "Ampliación de la SE Vandellós 400 kV (1 posición)"
+    tipo: ampliacion_subestacion
+    tension_kv: [400]
+    municipios: ["Vandellòs i l'Hospitalet de l'Infant"]
+    provincia: "Tarragona"
+    ccaa: "Cataluña"
+    horizonte: "2026"
+    estado_tramitacion: planificada_vigente
+    motivacion_documento: "Consum."
+    motivacion: "Nuevo consumidor conectado a la red de transporte. VANDELLOS 400 registra 125 MW de demanda solicitada en curso (REE, 03-08-2026) y es nudo de concurso."
+    inversion_eur: null
+    clusters_relacionados: [cataluna]
+    fuentes: [src-plan2126, src-plan2126-motivacion]
+    ultima_verificacion: "2026-08-29"
+
+  - id: act-cat-pierola-facts
+    nombre: "FACTS serie en SE Pierola 400 kV y renovación de la reactancia de Pierola 400 kV"
+    tipo: compensacion_reactiva
+    tension_kv: [400]
+    municipios: ["els Hostalets de Pierola"]
+    provincia: "Barcelona"
+    ccaa: "Cataluña"
+    horizonte: "2026"
+    estado_tramitacion: aprobado
+    motivacion_documento: "Control de tensión / amortiguación de oscilaciones"
+    motivacion: "Incluido en la MAP de julio de 2025 (adelantado desde el horizonte posterior a 2026) y completado con una posición adicional en la tercera MAP de julio de 2026. No motivado por nueva demanda."
+    inversion_eur: 41300000
+    inversion_nota: "41,3 M€ es el sobrecoste del FACTS serie de Pierola en la MAP de julio de 2025."
+    clusters_relacionados: [cataluna]
+    fuentes: [src-plan2126, src-maps3-miteco]
+    ultima_verificacion: "2026-08-29"
+
+  - id: act-cat-reactancias-map2025
+    nombre: "Nuevas reactancias en SE Castellbisbal 220 kV y SE Sant Fost 220 kV"
+    tipo: compensacion_reactiva
+    tension_kv: [220]
+    municipios: ["Castellbisbal", "Sant Fost de Campsentelles"]
+    provincia: "Barcelona"
+    ccaa: "Cataluña"
+    horizonte: "2026"
+    estado_tramitacion: aprobado
+    motivacion_documento: "Control de tensión"
+    motivacion: "MAP de julio de 2025 (2,4 M€ cada una). No motivadas por nueva demanda."
+    inversion_eur: null
+    clusters_relacionados: [cataluna]
+    fuentes: [src-plan2126]
+    ultima_verificacion: "2026-08-29"
+
+  # ---------- COMUNIDAD DE MADRID Y CORREDOR DEL HENARES ----------
+  - id: act-md-algete-220-ampl
+    nombre: "Ampliación de la SE Algete 220 kV (2 posiciones blindadas)"
+    tipo: ampliacion_subestacion
+    tension_kv: [220]
+    municipios: ["Algete"]
+    provincia: "Madrid"
+    ccaa: "Comunidad de Madrid"
+    horizonte: "2024"
+    estado_tramitacion: planificada_vigente
+    motivacion_documento: "Consum."
+    motivacion: "Único nudo madrileño con ampliación motivada por 'nuevo consumidor' en la MAP de abril de 2024 ('Nueva demanda en Algete 220 kV', sobrecoste 0,0 M€). ALGETE 220 registra 465 MW de demanda solicitada en curso (REE, 03-08-2026) y es nudo de concurso."
+    inversion_eur: null
+    clusters_relacionados: [madrid, corredor-henares]
+    fuentes: [src-plan2126, src-plan2126-motivacion]
+    ultima_verificacion: "2026-08-29"
+
+  - id: act-md-reactancias-map2025
+    nombre: "Nuevas reactancias en SE Nueva Meco 220 kV y SE Torrejón de Velasco 400 kV"
+    tipo: compensacion_reactiva
+    tension_kv: [400, 220]
+    municipios: ["Meco", "Torrejón de Velasco"]
+    provincia: "Madrid"
+    ccaa: "Comunidad de Madrid"
+    horizonte: "2026"
+    estado_tramitacion: aprobado
+    motivacion_documento: "Control de tensión"
+    motivacion: "MAP de julio de 2025. La de Torrejón de Velasco 400 kV (3,7 M€) se adelantó del horizonte posterior a 2026. No motivadas por nueva demanda."
+    inversion_eur: null
+    clusters_relacionados: [madrid, corredor-henares]
+    fuentes: [src-plan2126]
+    ultima_verificacion: "2026-08-29"
+
+  - id: act-md-maps3-madrid
+    nombre: "Renovación de la reactancia de Loeches 400 kV (150 MVAr), reactancia en Villaviciosa 400 kV (150 MVAr) y MCSR de 250 MVAr en San Sebastián de los Reyes 400 kV"
+    tipo: compensacion_reactiva
+    tension_kv: [400]
+    municipios: ["Loeches", "Villaviciosa de Odón"]
+    provincia: "Madrid"
+    ccaa: "Comunidad de Madrid"
+    horizonte: "2026"
+    estado_tramitacion: aprobado
+    motivacion_documento: "Control de tensión"
+    motivacion: "Tercera MAP (julio de 2026). No motivada por nueva demanda."
+    inversion_eur: null
+    clusters_relacionados: [madrid, corredor-henares]
+    fuentes: [src-maps3-miteco, src-maps3-boe]
+    ultima_verificacion: "2026-08-29"
+
+  - id: act-md-posteriores-2026
+    nombre: "Actuaciones madrileñas con puesta en servicio posterior a 2026 (POS51-POS57)"
+    tipo: paquete_actuaciones
+    tension_kv: [220]
+    municipios: null
+    provincia: "Madrid"
+    ccaa: "Comunidad de Madrid"
+    horizonte: ">2026"
+    estado_tramitacion: planificada_posterior_horizonte
+    motivacion_documento: "Seguridad de suministro (POS51-POS55) / Apoyo a la red de distribución (POS56-POS57)"
+    motivacion: >-
+      Conjunto de actuaciones de 220 kV en la Comunidad de Madrid con puesta en servicio
+      prevista más allá de 2026: doble circuito Cisneros-Complutum 220 kV (POS51);
+      línea/cable Aena-Campo de las Naciones 220 kV (POS52); nuevo cable Begoña-Fuente
+      Hito 220 kV (POS53); bypass operable en Parque Ingenieros 220 kV (POS54);
+      incremento de capacidad con cambio de conductor en la línea Coslada-Villaverde
+      220 kV (POS55); nueva SE Cristo de Rivas 220 kV con E/S de la línea
+      Loeches-Vallecas 220 kV cto 1 (POS56); y ampliación de la SE de Morata 220 kV
+      (POS57).
+    inversion_eur: null
+    clusters_relacionados: [madrid, corredor-henares]
+    fuentes: [src-plan2126]
+    ultima_verificacion: "2026-08-29"
+
+  # ---------- CASTILLA-LA MANCHA (Guadalajara / Toledo / Ciudad Real) ----------
+  - id: act-clm-la-sagra-400-220
+    nombre: "Actuación La Sagra 400/220 kV (actualización en la MAP de abril de 2024)"
+    tipo: nueva_subestacion
+    tension_kv: [400, 220]
+    municipios: null
+    provincia: "Toledo"
+    ccaa: "Castilla-La Mancha"
+    horizonte: "2026"
+    estado_tramitacion: planificada_vigente
+    motivacion_documento: "Transición energética"
+    motivacion: "La MAP de abril de 2024 actualiza la actuación La Sagra 400/220 kV con un ajuste de coste de −8,7 M€. Los nudos LA SAGRA 400 y LA SAGRA 220 figuran ya en el fichero de capacidad de REE con capacidad disponible para demanda nula."
+    inversion_eur: null
+    clusters_relacionados: [guadalajara-toledo]
+    fuentes: [src-plan2126]
+    ultima_verificacion: "2026-08-29"
+
+  - id: act-clm-calera-chozas-220
+    nombre: "Nueva E/S en Calera y Chozas 220 kV de la línea Ébora-Almaraz E.T. 220 kV cto 1 y ampliación de la SE (2 posiciones)"
+    tipo: nueva_linea
+    tension_kv: [220]
+    municipios: ["Calera y Chozas"]
+    provincia: "Toledo"
+    ccaa: "Castilla-La Mancha"
+    horizonte: "2024"
+    estado_tramitacion: planificada_vigente
+    motivacion_documento: "RdT"
+    motivacion: "Refuerzo de la red para garantizar los consumos ('Nueva demanda en Calera y Chozas 220 kV', 2,7 M€ en la MAP de abril de 2024). CALERA Y CHOZAS 220 tiene 270 MW de acceso de demanda otorgado (REE, 03-08-2026)."
+    inversion_eur: 2700000
+    clusters_relacionados: [guadalajara-toledo]
+    fuentes: [src-plan2126, src-plan2126-motivacion]
+    ultima_verificacion: "2026-08-29"
+
+  - id: act-clm-brazatortas-400-ampl
+    nombre: "Ampliación de la SE Brazatortas 400 kV (1 posición RdT + 1 posición Consum.)"
+    tipo: ampliacion_subestacion
+    tension_kv: [400]
+    municipios: null
+    provincia: "Ciudad Real"
+    ccaa: "Castilla-La Mancha"
+    horizonte: "2026"
+    estado_tramitacion: planificada_vigente
+    motivacion_documento: "Consum. / RdT"
+    motivacion: >-
+      'Nueva demanda en Brazatortas 400 kV' (1,1 M€ en la MAP de abril de 2024).
+      Brazatortas 400 fue uno de los ocho nudos del primer concurso de capacidad de
+      acceso de demanda (Resolución de 11-07-2025) con 1.217 MW convocados; se adjudicaron
+      500 MW a Hydnum Steel (Resolución de 24-02-2026). La solicitud de CPD4GREEN, SAU
+      en ese nudo fue excluida. El nudo mantiene 1.800 MW de demanda solicitada en curso
+      y pendiente de resolver (REE, 03-08-2026).
+    inversion_eur: 1100000
+    clusters_relacionados: [castilla-la-mancha]
+    fuentes: [src-plan2126, src-plan2126-motivacion]
+    ultima_verificacion: "2026-08-29"
+
+  # ---------- PAÍS VASCO ----------
+  - id: act-pv-arrigorriaga-400-nueva-se
+    nombre: "Nueva SE Arrigorriaga 400 kV como E/S de la línea Itxaso-Güeñes 400 kV cto 1, y ampliación (4 pos. RdT + 2 pos. Consum.)"
+    tipo: nueva_subestacion
+    tension_kv: [400]
+    municipios: ["Arrigorriaga"]
+    provincia: "Bizkaia"
+    ccaa: "País Vasco"
+    horizonte: "2026"
+    estado_tramitacion: planificada_vigente
+    motivacion_documento: "RdT y Consum."
+    motivacion: >-
+      'Nuevas demandas en Arrigorriaga' (6,5 M€ en la MAP de abril de 2024). ARRIGORRIAGA
+      400 fue uno de los ocho nudos del primer concurso de capacidad de acceso de demanda
+      (993 MW convocados en la Resolución de 11-07-2025); el concurso quedó sin
+      adjudicatarios en ese nudo. A 03-08-2026 tiene 125 MW otorgados y 370 MW solicitados
+      en curso, y sigue marcado como nudo de concurso.
+    inversion_eur: 6500000
+    clusters_relacionados: [pais-vasco]
+    fuentes: [src-plan2126, src-plan2126-motivacion]
+    ultima_verificacion: "2026-08-29"
+
+  - id: act-pv-mercedes-benz-220
+    nombre: "Adecuación a procedimientos de operación y ampliación de la SE Mercedes Benz 220 kV (3 pos. RdT + 3 pos. Consum.), renovación total del parque y cables internos"
+    tipo: ampliacion_subestacion
+    tension_kv: [220]
+    municipios: ["Vitoria-Gasteiz"]
+    provincia: "Álava"
+    ccaa: "País Vasco"
+    horizonte: "2025"
+    estado_tramitacion: planificada_vigente
+    motivacion_documento: "Consum. / RdT"
+    motivacion: "Bloque 'Nuevas demandas en Álava' (10,4 M€ en la MAP de abril de 2024). MERCEDES BENZ 220 fue uno de los ocho nudos convocados a concurso de capacidad de demanda en 2025 (387 MW)."
+    inversion_eur: null
+    clusters_relacionados: [pais-vasco]
+    fuentes: [src-plan2126, src-plan2126-motivacion]
+    ultima_verificacion: "2026-08-29"
+
+  - id: act-pv-gamarra-santurce
+    nombre: "Renovación total de posición en SE Gamarra 220 kV y cambio de titularidad de posición en SE Santurce 220 kV con cable de conexión"
+    tipo: ampliacion_subestacion
+    tension_kv: [220]
+    municipios: ["Vitoria-Gasteiz", "Santurtzi"]
+    provincia: "Álava / Bizkaia"
+    ccaa: "País Vasco"
+    horizonte: "2026"
+    estado_tramitacion: planificada_vigente
+    motivacion_documento: "Consum. (Gamarra) / ApD (Santurce)"
+    motivacion: "Bloques 'Nuevas demandas en Álava' y 'Nueva demanda en Santurce 220 kV' de la MAP de abril de 2024."
+    inversion_eur: null
+    clusters_relacionados: [pais-vasco]
+    fuentes: [src-plan2126, src-plan2126-motivacion]
+    ultima_verificacion: "2026-08-29"
+
+  - id: act-pv-posteriores-2026
+    nombre: "Actuaciones vascas con puesta en servicio posterior a 2026 (POS64-POS67)"
+    tipo: paquete_actuaciones
+    tension_kv: [400, 220]
+    municipios: null
+    provincia: null
+    ccaa: "País Vasco"
+    horizonte: ">2026"
+    estado_tramitacion: planificada_posterior_horizonte
+    motivacion_documento: "Seguridad de suministro / apoyo a la red de distribución / interconexiones internacionales"
+    motivacion: >-
+      Nueva línea Tierra Estella-Laguardia 220 kV (POS64); nueva línea-cable Arkale-Irún
+      220 kV cto 2 (POS65); ampliación de la SE de Jundiz 220 kV, motivada por apoyo a la
+      red de distribución (POS66); y transformador ATP-2 400/220 kV de 600 MVA en la SE de
+      Gatica (POS67).
+    inversion_eur: null
+    clusters_relacionados: [pais-vasco]
+    fuentes: [src-plan2126]
+    ultima_verificacion: "2026-08-29"
+
+  - id: act-pv-maps3-vitoria
+    nombre: "Renovación total de la reactancia de Vitoria 400 kV (150 MVAr)"
+    tipo: compensacion_reactiva
+    tension_kv: [400]
+    municipios: null
+    provincia: "Álava"
+    ccaa: "País Vasco"
+    horizonte: "2026"
+    estado_tramitacion: aprobado
+    motivacion_documento: "Control de tensión"
+    motivacion: "Tercera MAP (julio de 2026). No motivada por nueva demanda."
+    inversion_eur: null
+    clusters_relacionados: [pais-vasco]
+    fuentes: [src-maps3-miteco, src-maps3-boe]
+    ultima_verificacion: "2026-08-29"
+
+  # ---------- ANDALUCÍA ----------
+  - id: act-an-algeciras-barrios
+    nombre: "Ampliación de las SE Algeciras 220 kV y Los Barrios 220 kV, cambio de configuración a GIS doble barra en Los Barrios y adecuación a procedimientos de operación"
+    tipo: ampliacion_subestacion
+    tension_kv: [220]
+    municipios: ["San Roque", "Los Barrios"]
+    provincia: "Cádiz"
+    ccaa: "Andalucía"
+    horizonte: "2026"
+    estado_tramitacion: planificada_vigente
+    motivacion_documento: "Consum. / RdT / ApD"
+    motivacion: "'Nuevas demandas en zona Algeciras' (7,9 M€ en la MAP de abril de 2024). ALGECIRAS 220 y LOS BARRIOS 220 son nudos de concurso, con 765 y 1.122 MW respectivamente de demanda solicitada en curso (REE, 03-08-2026)."
+    inversion_eur: 7900000
+    clusters_relacionados: [andalucia]
+    fuentes: [src-plan2126, src-plan2126-motivacion]
+    ultima_verificacion: "2026-08-29"
+
+  - id: act-an-huelva-colon-palos
+    nombre: "Ampliación de las SE Cristóbal Colón 220 kV y Palos de la Frontera 220 kV y repotenciación de la línea Colón-Torrearenillas 220 kV cto 2"
+    tipo: ampliacion_subestacion
+    tension_kv: [220]
+    municipios: ["Huelva", "Palos de la Frontera"]
+    provincia: "Huelva"
+    ccaa: "Andalucía"
+    horizonte: "2026"
+    estado_tramitacion: planificada_vigente
+    motivacion_documento: "Consum. / RdT"
+    motivacion: >-
+      'Nuevas demandas en zona Huelva' (0,1 M€ en la MAP de abril de 2024). Ambos nudos
+      entraron en el primer concurso de capacidad de acceso de demanda: Cristóbal Colón 220
+      (503 MW convocados) y Palos 220 (277 MW), con capacidad zonal compartida de 276 MW
+      entre Cristóbal Colón, Palos y Torrearenillas. Se adjudicaron 18,7 MW a Atlantic
+      Copper y 257,3 MW a Moeve (Resolución de 24-02-2026).
+    inversion_eur: null
+    clusters_relacionados: [andalucia]
+    fuentes: [src-plan2126, src-plan2126-motivacion]
+    ultima_verificacion: "2026-08-29"
+
+  - id: act-an-parrales-villarrasa-freson
+    nombre: "Nuevas SE Parrales 400 kV, Villarrasa 400 kV y Fresón 400 kV con sus entradas-salidas en los ejes Guillena-Puebla de Guzmán 400 kV y Guillena-Palos de la Frontera 400 kV"
+    tipo: nueva_subestacion
+    tension_kv: [400]
+    municipios: null
+    provincia: "Huelva / Sevilla"
+    ccaa: "Andalucía"
+    horizonte: ">2026"
+    estado_tramitacion: planificada_posterior_horizonte
+    motivacion_documento: "RdT y Consum."
+    motivacion: "Tres nuevas subestaciones de 400 kV en el eje Guillena-Huelva incorporadas por la MAP de abril de 2024 en el capítulo de nuevos consumidores, con puesta en servicio prevista más allá de 2026."
+    inversion_eur: null
+    clusters_relacionados: [andalucia]
+    fuentes: [src-plan2126, src-plan2126-motivacion]
+    ultima_verificacion: "2026-08-29"
+
+  - id: act-an-maps3-andalucia
+    nombre: "e-STATCOM de 150 MVAr en SE Carmona 400 kV, MCSR de 250 MVAr en SE Baza 400 kV, reactancias de 150 MVAr en Guillena y Puebla de Guzmán 400 kV y renovación de la reactancia de Pinar del Rey 400 kV"
+    tipo: compensacion_reactiva
+    tension_kv: [400]
+    municipios: ["Guillena", "San Roque"]
+    provincia: "Sevilla / Granada / Huelva / Cádiz"
+    ccaa: "Andalucía"
+    horizonte: "2026"
+    estado_tramitacion: aprobado
+    motivacion_documento: "Control de tensión"
+    motivacion: "Tercera MAP (julio de 2026). No motivada por nueva demanda."
+    inversion_eur: null
+    clusters_relacionados: [andalucia]
+    fuentes: [src-maps3-miteco, src-maps3-boe]
+    ultima_verificacion: "2026-08-29"

@@ -1,0 +1,42 @@
+id: ppa-data4-totalenergies-espana
+nombre: "PPA Data4 — 30 MW eólicos y solares de TotalEnergies en España"
+tipo: hibrida
+tipo_detalle: "Parques eólicos y plantas solares de TotalEnergies en España."
+potencia_mw: 30
+tipo_potencia: nominal
+capacidad_mwh: null
+energia_total_gwh: 610
+energia_nota: "610 GWh es el volumen total de energía a lo largo de los 10 años del contrato."
+promotor: "TotalEnergies"
+contraparte_ppa: "Data4"
+tipo_vinculo: ppa
+duracion_anios: 10
+municipio: null
+provincia: null
+ccaa: null
+lat: null
+lon: null
+precision: desconocida
+estado: en_construccion
+estado_detalle: "En noviembre de 2025 las plantas estaban «a punto de empezar a producir»; el suministro arranca en enero de 2026."
+fecha_firma: "2025-11-04"
+adicionalidad: nueva_construccion
+adicionalidad_fuentes: [src-1]
+clusters_relacionados: [madrid]
+cpds_relacionados: []
+cpds_declarados: "Instalaciones de Data4 en España (la fuente no identifica cuáles)."
+incertidumbres:
+  - campo: municipio
+    descripcion: "No se identifican las plantas eólicas y solares ni su ubicación."
+    fuentes: [src-1]
+confianza: media
+ultima_verificacion: "2026-08-29"
+fuentes:
+  - id: src-1
+    url: "https://www.energetica-india.net/news/totalenergies-to-supply-power-to-data4-from-30-mw-wind-and-solar-plants-in-spain"
+    titulo: "TotalEnergies to Supply Power to Data4 from 30 MW Wind and Solar Plants in Spain"
+    editor: "Energetica India Magazine"
+    tipo: prensa_especializada
+    fecha_publicacion: "2025-11-06"
+    fecha_consulta: "2026-08-29"
+    cita: "30 MW, which are about to start production [...] 10 years [...] 610 GWh"

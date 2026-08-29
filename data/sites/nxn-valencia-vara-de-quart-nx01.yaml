@@ -1,0 +1,99 @@
+id: nxn-valencia-vara-de-quart-nx01
+nombre: "NxN Data Centers Nx01 — València (Vara de Quart)"
+alias:
+  - "Nx01 Valencia"
+  - "NXN-VLC1"
+  - "Data center de Nethits en Vara de Quart"
+tipo: edificio
+operador: "NxN Data Centers"
+propietario: "NxN Data Centers"
+modelo: colocation
+
+ubicacion:
+  municipio: "València"
+  provincia: "Valencia"
+  ccaa: "Comunitat Valenciana"
+  direccion: "Polígono industrial de Vara de Quart, parcela entre las calles Tres Forques y Llanterners"
+  lat: 39.4621
+  lon: -0.4087
+  precision: aproximada
+  fuentes: [src-1]
+
+estado: en_construccion
+estado_detalle: >-
+  Licencia municipal de obras y actividad concedida el 28/02/2025 por el Ayuntamiento de
+  València. Primera piedra colocada el 02/02/2026 y obras iniciadas en abril de 2026.
+  Apertura anunciada para marzo de 2027 (Levante-EMV) o primer semestre de 2027 (Economía 3).
+estado_fuentes: [src-1, src-2, src-3]
+fecha_puesta_en_servicio: "2027-03"
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 5
+    ambito: edificio
+    referencia: "Potencia inicial del edificio Nx01"
+    estado_asociado: en_construccion
+    fecha_dato: "2026-04-30"
+    fuentes: [src-2, src-3, src-4]
+    nota: >-
+      Las fuentes hablan de «5 MW de potencia» / «potencia inicial de 5 megavatios» sin
+      precisar si es carga TI o potencia de conexión.
+
+fases:
+  - nombre: "Nx01 (fase única anunciada)"
+    estado: en_construccion
+    fecha_puesta_en_servicio: "2027-03"
+    superficie_m2: 6500
+    fuentes: [src-1, src-2, src-3]
+
+superficie_construida_m2: 6500
+inversion_anunciada_eur: 60000000
+refrigeracion: "Consumo de agua cero según los promotores; energía 100 % renovable."
+
+incertidumbres:
+  - campo: fecha_puesta_en_servicio
+    descripcion: >-
+      Levante-EMV (02/02/2026) fija la apertura en marzo de 2027; Economía 3 (30/04/2026)
+      la sitúa en el primer semestre de 2027 sin concretar mes.
+    fuentes: [src-2, src-3]
+  - campo: potencia
+    descripcion: >-
+      Ninguna fuente consultada distingue si los 5 MW son carga TI o potencia de conexión
+      a red. No se ha localizado el expediente de acceso y conexión.
+    fuentes: [src-2, src-3, src-4]
+
+confianza: media
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.levante-emv.com/valencia/2025/02/28/licencia-primer-gran-centro-datos-114787139.html"
+    titulo: "Licencia para el primer gran centro de datos de Valencia que se ubicará en Vara de Quart"
+    editor: "Levante-EMV"
+    tipo: prensa_general
+    fecha_publicacion: "2025-02-28"
+    fecha_consulta: "2026-08-29"
+    cita: "El centro de datos informáticos, al que este viernes se ha dado licencia de obras y actividad, tendrá 6.500 metros cuadrados de superficie total y ocupará una parcela situada entre Tres Forques y Llanterners, donde ya se han iniciado los derribos de la industria existente."
+  - id: src-2
+    url: "https://www.levante-emv.com/economia/2026/02/02/primer-centro-datos-valencia-abrira-vara-de-quart-nxn-126353394.html"
+    titulo: "El primer centro de datos de València abrirá en marzo de 2027 y busca más de 100 trabajadores"
+    editor: "Levante-EMV"
+    tipo: prensa_general
+    fecha_publicacion: "2026-02-02"
+    fecha_consulta: "2026-08-29"
+    cita: "El primer centro de datos de València [...] tendrá una superficie de 6.500 metros cuadrados y 5 MW de potencia procedente al 100 % de energías renovables."
+  - id: src-3
+    url: "https://economia3.com/valencia-inicia-construccion-primer-centro-datos/"
+    titulo: "València inicia la construcción de su primer centro de datos por 60 millones"
+    editor: "Economía 3"
+    tipo: prensa_general
+    fecha_publicacion: "2026-04-30"
+    fecha_consulta: "2026-08-29"
+    cita: "El centro contará con una superficie aproximada de 6.500 metros cuadrados y una potencia inicial de 5 megavatios. Su apertura está prevista para el primer semestre de 2027."
+  - id: src-4
+    url: "https://observatorioedc.com/directorio/"
+    titulo: "Data Centers — Directorio, Observatorio Español de Data Centers"
+    editor: "Observatorio Español de Data Centers"
+    tipo: otro
+    fecha_consulta: "2026-08-29"
+    cita: "NxN Datacenters – Valencia NX01 | NX01 | Valencia | Comunidad Valenciana | 5 MW | COLOCATION | En construcción"

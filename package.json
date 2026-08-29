@@ -16,13 +16,14 @@
     "refresh": "node scripts/check-updates.mjs",
     "propuestas": "node scripts/apply-proposals.mjs",
     "propuestas:aplicar": "node scripts/apply-proposals.mjs --aplicar",
-    "validate:strict": "node scripts/validate.mjs --strict"
+    "validate:strict": "node scripts/validate.mjs --strict",
+    "geo": "node scripts/geocode-municipios.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
     "astro": "^7.2.9",
     "better-sqlite3": "^13.0.3",
-    "maplibre-gl": "^6.6.0",
+    "maplibre-gl": "^5.24.0",
     "yaml": "^2.9.0",
     "zod": "^4.5.2"
   }

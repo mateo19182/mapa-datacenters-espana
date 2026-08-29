@@ -1,0 +1,78 @@
+id: cesga-santiago-a-sionlla
+nombre: "CESGA — nuevo centro de datos de A Sionlla (Santiago de Compostela)"
+alias:
+  - "Nueva sede del Cesga"
+  - "Centro de Supercomputación de Galicia — A Sionlla"
+tipo: edificio
+operador: "Centro de Supercomputación de Galicia (CESGA)"
+propietario: "Xunta de Galicia / CSIC (consorcio CESGA)"
+modelo: corporativo
+
+ubicacion:
+  municipio: "Santiago de Compostela"
+  provincia: "A Coruña"
+  ccaa: "Galicia"
+  direccion: "Polígono de A Sionlla, Santiago de Compostela"
+  lat: 42.9300
+  lon: -8.5000
+  precision: aproximada
+  fuentes: [src-1]
+
+estado: en_construccion
+estado_detalle: >-
+  Primer «proyecto estratégico de investigación pública» declarado por la Xunta.
+  Obras iniciadas en octubre de 2025 con previsión de finalizar en verano de 2026.
+  Albergará el supercomputador FinisTerrae IV, un sistema de almacenamiento y un
+  ordenador cuántico de 54 cúbits de la finlandesa IQM suministrado por Telefónica.
+  Fsas Technologies (Fujitsu) es el adjudicatario del equipamiento. En octubre de
+  2025 se anunció que el CESGA acogerá además una fábrica europea de IA orientada
+  a salud.
+estado_fuentes: [src-1, src-2]
+
+fases:
+  - nombre: "Edificio y equipamiento (FinisTerrae IV + cuántico)"
+    estado: en_construccion
+    fecha_puesta_en_servicio: "2026"
+    superficie_m2: 2700
+    fuentes: [src-1]
+
+superficie_parcela_m2: 9100
+superficie_construida_m2: 2700
+inversion_anunciada_eur: 56000000
+
+enlaces_proyecto:
+  - "https://www.xunta.gal/es/notas-de-prensa/-/nova/015782/construccion-del-nuevo-cesga-sera-primero-proyecto-estrategico-investigacion"
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      Fuentes secundarias atribuyen al edificio «potencias IT de hasta 3,2 MW», pero
+      la nota de prensa oficial de la Xunta no lo recoge y no se ha podido abrir esa
+      fuente. Campo potencia omitido.
+    fuentes: [src-1, src-2]
+  - campo: inversion_anunciada_eur
+    descripcion: >-
+      Los 56 M€ son la inversión total; 13 M€ corresponden a la obra del edificio y
+      34 M€ al equipamiento licitado. No se suman a otras cifras.
+    fuentes: [src-1, src-2]
+
+confianza: alta
+ultima_verificacion: "2026-08-29"
+
+fuentes:
+  - id: src-1
+    url: "https://www.xunta.gal/es/notas-de-prensa/-/nova/015782/construccion-del-nuevo-cesga-sera-primero-proyecto-estrategico-investigacion"
+    titulo: "La construcción del nuevo Cesga será el primer proyecto estratégico de investigación pública de Galicia"
+    editor: "Xunta de Galicia"
+    tipo: oficial
+    fecha_publicacion: "2025-08-12"
+    fecha_consulta: "2026-08-29"
+    cita: "Con una inversión total de 56 M€, las obras de construcción del edificio -por un importe de 13 M€"
+  - id: src-2
+    url: "https://www.elcorreogallego.es/santiago/2026/03/03/supercomputador-cesga-xunta-multiplica-capacidad-127503141.html"
+    titulo: "El Cesga multiplica por 13 su capacidad con el Finisterrae IV, un supercomputador de más de 25 millones de euros"
+    editor: "El Correo Gallego"
+    tipo: prensa_general
+    fecha_publicacion: "2026-03-03"
+    fecha_consulta: "2026-08-29"
+    cita: "ordenador cuántico de 54 cúbits de la finlandesa IQM proveído por Telefónica"

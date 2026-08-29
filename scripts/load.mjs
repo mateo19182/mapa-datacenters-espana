@@ -132,17 +132,54 @@ export function cargarListas(dir, etiqueta) {
       incidencias.push({ fichero, nivel: 'error', msg: `YAML ilegible: ${e.message}` })
       continue
     }
-    const lista = Array.isArray(crudo) ? crudo : crudo == null ? [] : [crudo]
+    // Admite tres formas: lista suelta, objeto único, u objeto envoltorio con
+    // metadatos comunes (`fuentes`, `ultima_verificacion`) y la lista dentro.
+    let lista
+    let comunes = {}
+    if (Array.isArray(crudo)) {
+      lista = crudo
+    } else if (crudo == null) {
+      lista = []
+    } else {
+      // Un objeto con `id` propio es un registro suelto, no un envoltorio: sus
+      // listas internas (incertidumbres, alias…) son campos suyos.
+      const clave = crudo.id ? null : Object.keys(crudo).find(
+        (k) =>
+          k !== 'fuentes' &&
+          Array.isArray(crudo[k]) &&
+          crudo[k].length > 0 &&
+          crudo[k].every((v) => v && typeof v === 'object' && !Array.isArray(v)),
+      )
+      if (clave) {
+        lista = crudo[clave]
+        comunes = {
+          fuentes: crudo.fuentes,
+          ultima_verificacion: crudo.ultima_verificacion,
+        }
+      } else {
+        lista = [crudo]
+      }
+    }
     for (const [i, it] of lista.entries()) {
       if (!it || typeof it !== 'object') continue
-      if (!it.id) {
-        incidencias.push({ fichero, nivel: 'error', msg: `${etiqueta}[${i}] sin id` })
+      // El identificador puede venir con otro nombre según la entidad
+      // (un nudo de red se identifica por su nombre y tensión, no por un id).
+      const id = it.id ?? (it.nudo ? clave(`${it.nudo}`) : it.nombre ? clave(it.nombre) : null)
+      if (!id) {
+        incidencias.push({ fichero, nivel: 'error', msg: `${etiqueta}[${i}] sin identificador` })
         continue
       }
-      if (!Array.isArray(it.fuentes) || it.fuentes.length === 0) {
+      const fuentesItem = it.fuentes ?? comunes.fuentes
+      if (!Array.isArray(fuentesItem) || fuentesItem.length === 0) {
         incidencias.push({ fichero, nivel: 'aviso', msg: `${etiqueta} «${it.id}» sin fuentes` })
       }
-      items.push({ ...it, _fichero: fichero })
+      items.push({
+        ...it,
+        id,
+        fuentes: it.fuentes ?? comunes.fuentes,
+        ultima_verificacion: it.ultima_verificacion ?? comunes.ultima_verificacion,
+        _fichero: fichero,
+      })
     }
   }
   const vistos = new Set()
@@ -153,13 +190,39 @@ export function cargarListas(dir, etiqueta) {
   return { items, incidencias }
 }
 
+const soloDe = (items, patron) => items.filter((i) => patron.test(i._fichero))
+
 export function cargarTodo() {
   const sitios = cargarSitios()
   const red = cargarListas(DIR_RED, 'nodo de red')
   const renovables = cargarListas(DIR_RENOVABLES, 'activo renovable')
+
+  // En data/red conviven tres entidades distintas: los emplazamientos físicos
+  // (subestaciones), las actuaciones planificadas y los datos de capacidad de
+  // acceso por nudo. Solo las primeras se dibujan en el mapa.
+  const subestaciones = soloDe(red.items, /subestacion/i)
+  const actuaciones = soloDe(red.items, /actuacion/i)
+  const capacidad = soloDe(red.items, /capacidad/i)
+
+  // La capacidad se publica por nudo; se adjunta a su subestación para poder
+  // consultarla desde el mapa sin mezclar los dos registros.
+  const porSubestacion = new Map()
+  for (const c of capacidad) {
+    const ref = c.subestacion_id
+    if (!ref) continue
+    if (!porSubestacion.has(ref)) porSubestacion.set(ref, [])
+    porSubestacion.get(ref).push(c)
+  }
+  for (const se of subestaciones) {
+    const nudos = porSubestacion.get(se.id) ?? []
+    if (nudos.length) se.nudos = nudos
+  }
+
   return {
     sitios: sitios.sitios,
-    red: red.items,
+    red: subestaciones,
+    actuaciones,
+    capacidad,
     renovables: renovables.items,
     incidencias: [
       ...sitios.incidencias,
