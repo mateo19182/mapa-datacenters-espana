@@ -72,7 +72,7 @@ const conPotencia = (tipo) => sitios.filter((s) => s.resumen_potencia[tipo]).len
       refiere, y la diferencia entre una lectura y otra es de casi el doble.
     </p>
     <dl class="glosario">
-      {['it', 'conexion_red', 'instalada_total', 'no_especificado'].map((t) => (
+      {['it', 'conexion_red', 'instalada_total', 'no_especificado', 'termica_respaldo', 'generacion_asociada'].map((t) => (
         <>
           <dt>{POTENCIA_ETIQUETA[t]}</dt>
           <dd>
@@ -86,6 +86,14 @@ const conPotencia = (tipo) => sitios.filter((s) => s.resumen_potencia[tipo]).len
       Los totales que aparecen en las vistas por compañía y por región suman solo los
       emplazamientos que publican esa magnitud concreta, e indican siempre cuántos son. Un total sin
       su cobertura invita a comparar carteras que no son comparables.
+    </p>
+    <p>
+      Las dos últimas magnitudes de la lista no describen el centro de datos y quedan fuera de
+      todos los totales. Aparecen porque en muchos expedientes ambientales son la única cifra
+      publicada: varios campus de hiperescala en España no han hecho pública ni su carga TI ni su
+      potencia de acceso, y lo único numérico que consta es la potencia de sus grupos electrógenos
+      de emergencia. Tomarla por la capacidad del centro exageraría su tamaño en un orden de
+      magnitud.
     </p>
 
     <h2>Ámbito: campus, edificio y fase</h2>

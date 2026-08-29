@@ -30,14 +30,24 @@ export const POTENCIA_ETIQUETA = {
   it: 'MW IT',
   conexion_red: 'MW de conexión',
   instalada_total: 'MW instalados',
+  termica_respaldo: 'MW de grupos de respaldo',
+  generacion_asociada: 'MW de generación asociada',
   no_especificado: 'MW sin tipificar',
 }
+
+// Las magnitudes que describen la capacidad del centro, en el orden en que se
+// muestran. Las otras dos existen, pero no se agregan ni se comparan.
+export const TIPOS_CAPACIDAD = ['it', 'conexion_red', 'instalada_total', 'no_especificado']
 
 export const POTENCIA_DESCRIPCION = {
   it: 'Carga TI: la potencia que consumen los servidores. Es la magnitud que permite comparar centros de datos entre sí.',
   conexion_red:
     'Potencia solicitada o concedida en el punto de conexión con la red eléctrica. Siempre mayor que la carga TI e incluye refrigeración y pérdidas.',
   instalada_total: 'Potencia eléctrica instalada del edificio, incluidos climatización y servicios auxiliares.',
+  termica_respaldo:
+    'Potencia de los grupos electrógenos de respaldo, tal como se declara en las autorizaciones ambientales. Mide la capacidad de los motores diésel de emergencia, no la del centro de datos, y en los expedientes suele expresarse como potencia térmica. No se agrega con ninguna otra magnitud.',
+  generacion_asociada:
+    'Potencia de una central de generación vinculada al emplazamiento. Es capacidad de producir electricidad, no de consumirla: no describe el tamaño del centro de datos.',
   no_especificado:
     'La fuente da una cifra en MW sin aclarar a qué corresponde. No es comparable con las anteriores y no se suma con ellas.',
 }

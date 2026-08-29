@@ -31,7 +31,7 @@ estado_fuentes: [src-1, src-2, src-4]
 fecha_puesta_en_servicio: "2022-11"
 
 potencia:
-  - tipo: no_especificado
+  - tipo: termica_respaldo
     valor_mw: 110.4
     ambito: campus
     referencia: "Potencia eléctrica total instalada de los 46 grupos electrógenos diésel de respaldo"

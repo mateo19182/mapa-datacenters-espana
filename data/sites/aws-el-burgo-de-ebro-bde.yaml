@@ -29,7 +29,7 @@ estado_detalle: >-
 estado_fuentes: [src-1]
 
 potencia:
-  - tipo: no_especificado
+  - tipo: termica_respaldo
     valor_mw: 750.66
     ambito: campus
     referencia: "Potencia térmica nominal total de las instalaciones de combustión por motores diésel (MWt)"

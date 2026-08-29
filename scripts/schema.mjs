@@ -22,7 +22,20 @@ export const ESTADOS_EN_SERVICIO = new Set([
   'ampliacion_en_construccion',
 ])
 
-export const TIPOS_POTENCIA = ['it', 'conexion_red', 'instalada_total', 'no_especificado']
+export const TIPOS_POTENCIA = [
+  'it',
+  'conexion_red',
+  'instalada_total',
+  // Magnitudes que aparecen en los expedientes ambientales y que NO son
+  // capacidad del centro de datos. Se registran porque son el único dato
+  // numérico publicado de muchos proyectos, pero jamás entran en un agregado.
+  'termica_respaldo',
+  'generacion_asociada',
+  'no_especificado',
+]
+
+// Tipos que sí describen la capacidad del centro de datos.
+export const TIPOS_CAPACIDAD = ['it', 'conexion_red', 'instalada_total', 'no_especificado']
 export const AMBITOS = ['campus', 'edificio', 'fase']
 export const PRECISIONES = ['exacta', 'aproximada', 'municipio', 'desconocida']
 export const CONFIANZAS = ['alta', 'media', 'baja']
@@ -66,6 +79,11 @@ const SINONIMOS_ESTADO = {
 }
 
 const SINONIMOS_POTENCIA = {
+  termica: 'termica_respaldo',
+  mwt: 'termica_respaldo',
+  grupos_electrogenos: 'termica_respaldo',
+  respaldo: 'termica_respaldo',
+  generacion: 'generacion_asociada',
   'it_load': 'it',
   'carga_it': 'it',
   'ti': 'it',

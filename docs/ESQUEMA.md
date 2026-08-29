@@ -123,6 +123,14 @@ fuentes:
 | `conexion_red` | Potencia de acceso solicitada o concedida en el punto de conexión. Siempre mayor que la TI. |
 | `instalada_total` | Potencia eléctrica instalada del edificio (incluye clima, pérdidas). |
 | `no_especificado` | La fuente da «MW» sin decir de qué tipo. Se registra tal cual y **no** se compara con los anteriores. |
+| `termica_respaldo` | Potencia de los grupos electrógenos de emergencia, tal como la declaran las autorizaciones ambientales (a menudo en MW térmicos). **No es capacidad del centro de datos.** |
+| `generacion_asociada` | Potencia de una central de generación vinculada al emplazamiento. Es capacidad de producir, no de consumir. |
+
+Los dos últimos existen porque en muchos expedientes son la **única** cifra
+publicada, y omitirlos perdería información real. Pero no entran en ningún
+agregado: no se suman a nada, no se comparan con nada y no dimensionan el punto
+en el mapa. Confundir la potencia de los grupos diésel de respaldo con la
+capacidad del centro es un error de un orden de magnitud.
 
 Nunca se convierte entre tipos aplicando un PUE supuesto. Tampoco se convierte de
 MVA a MW: haría falta el factor de potencia, que no se publica. Si la fuente da

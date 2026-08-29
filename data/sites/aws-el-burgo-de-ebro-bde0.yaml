@@ -29,7 +29,7 @@ estado_fuentes: [src-1, src-2, src-3, src-4]
 fecha_puesta_en_servicio: "2022-11"
 
 potencia:
-  - tipo: no_especificado
+  - tipo: termica_respaldo
     valor_mw: 110.4
     ambito: campus
     referencia: "Potencia eléctrica total instalada de los 46 grupos electrógenos diésel de respaldo"
@@ -39,7 +39,7 @@ potencia:
     nota: >-
       Potencia instalada de los generadores de reserva (46 x 2,4 MWe), no carga TI ni
       potencia de conexión a red.
-  - tipo: no_especificado
+  - tipo: termica_respaldo
     valor_mw: 107.5
     ambito: campus
     referencia: "Potencia eléctrica total generada por los grupos electrógenos tras la modificación puntual de la AAI"

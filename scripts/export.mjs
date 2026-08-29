@@ -5,7 +5,7 @@ import { join } from 'node:path'
 import Database from 'better-sqlite3'
 import { RAIZ } from './load.mjs'
 import { resumirPotencia, sumarCartera } from './potencia.mjs'
-import { ESTADOS } from './schema.mjs'
+import { ESTADOS, TIPOS_CAPACIDAD } from './schema.mjs'
 
 // src/data alimenta las páginas en tiempo de build; public/datos se sirve tal
 // cual al navegador (mapa) y es además la descarga de datos abiertos.
@@ -171,12 +171,9 @@ const carteraDe = (lista) => ({
   por_estado: Object.fromEntries(
     ESTADOS.map((e) => [e, lista.filter((s) => s.estado === e).length]).filter(([, n]) => n > 0),
   ),
-  potencia: {
-    it: sumarCartera(lista, 'it'),
-    conexion_red: sumarCartera(lista, 'conexion_red'),
-    instalada_total: sumarCartera(lista, 'instalada_total'),
-    no_especificado: sumarCartera(lista, 'no_especificado'),
-  },
+  // Solo se agregan las magnitudes que describen la capacidad del centro: los
+  // grupos de respaldo y la generación asociada quedan fuera de todo total.
+  potencia: Object.fromEntries(TIPOS_CAPACIDAD.map((t) => [t, sumarCartera(lista, t)])),
 })
 
 const companias = [...porClave((s) => s.operador).entries()]

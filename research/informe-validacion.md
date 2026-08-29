@@ -5,7 +5,7 @@ Generado el 2026-08-29 por `npm run validate`.
 - Emplazamientos cargados: **163**
 - Nodos de red: **133**
 - Activos renovables/BESS: **22**
-- Errores: **0** · Avisos: **209**
+- Errores: **0** · Avisos: **200**
 
 ## Incidencias por fichero
 
@@ -75,27 +75,10 @@ Generado el 2026-08-29 por `npm run validate`.
 - aviso: potencia[0] («Capacidad indicada en el directorio») no distingue el tipo de MW
 - aviso: sin coordenadas: no aparecerá en el mapa
 
-### `aws-el-burgo-de-ebro-bde.yaml`
-
-- aviso: potencia[0] («Potencia térmica nominal total de las instalaciones de combustión por motores diésel (MWt)») no distingue el tipo de MW
-
-### `aws-el-burgo-de-ebro-bde0.yaml`
-
-- aviso: potencia[0] («Potencia eléctrica total instalada de los 46 grupos electrógenos diésel de respaldo») no distingue el tipo de MW
-- aviso: potencia[1] («Potencia eléctrica total generada por los grupos electrógenos tras la modificación puntual de la AAI») no distingue el tipo de MW
-
 ### `aws-huesca-plhus-sur.yaml`
 
 - aviso: sin ningún dato de potencia
 - aviso: sin coordenadas: no aparecerá en el mapa
-
-### `aws-huesca-plhus.yaml`
-
-- aviso: potencia[0] («Potencia eléctrica total instalada de los 46 grupos electrógenos diésel de respaldo») no distingue el tipo de MW
-
-### `aws-huesca-walqa-wqa.yaml`
-
-- aviso: potencia[0] («Potencia térmica nominal total de las instalaciones de combustión por motores diésel (MWt)») no distingue el tipo de MW
 
 ### `aws-la-puebla-de-hijar-la-llanada.yaml`
 
@@ -107,16 +90,7 @@ Generado el 2026-08-29 por `npm run validate`.
 
 ### `aws-villanueva-de-gallego-vdg0.yaml`
 
-- aviso: potencia[0] («Potencia eléctrica total instalada de los 46 grupos electrógenos diésel de respaldo») no distingue el tipo de MW
 - aviso: posible duplicado de aws-villanueva-de-gallego-vdg2: mismo operador a 322 m
-
-### `aws-villanueva-de-gallego-vdg1.yaml`
-
-- aviso: potencia[0] («Potencia térmica nominal total de las instalaciones de combustión por motores diésel (MWt)») no distingue el tipo de MW
-
-### `aws-villanueva-de-gallego-vdg2.yaml`
-
-- aviso: potencia[0] («Potencia térmica nominal total de las instalaciones de combustión por motores diésel (MWt)») no distingue el tipo de MW
 
 ### `aws-zaragoza-la-cartuja-car.yaml`
 
@@ -267,10 +241,6 @@ Generado el 2026-08-29 por `npm run validate`.
 - aviso: potencia[0] («Capacidad total del campus») no distingue el tipo de MW
 - aviso: potencia[1] («Fase 1») no distingue el tipo de MW
 - aviso: potencia[2] («Fase 2 (ampliación)») no distingue el tipo de MW
-
-### `frv-edison-monfarracinos-zamora.yaml`
-
-- aviso: potencia[0] («Potencia térmica de la central de generación asociada (1,16 GWt)») no distingue el tipo de MW
 
 ### `frv-merida-lusitanus.yaml`
 

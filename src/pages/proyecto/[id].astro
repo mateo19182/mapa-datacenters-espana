@@ -34,7 +34,14 @@ const refs = (ids) =>
     .sort((a, b) => a - b)
 
 const r = s.resumen_potencia
-const tiposConDato = ['it', 'conexion_red', 'instalada_total', 'no_especificado'].filter((t) => r[t])
+const tiposConDato = [
+  'it',
+  'conexion_red',
+  'instalada_total',
+  'no_especificado',
+  'termica_respaldo',
+  'generacion_asociada',
+].filter((t) => r[t])
 
 const vinculados = renovables.filter(
   (a) => (a.cpds_relacionados ?? []).includes(s.id) || a.contraparte_ppa === s.operador,

@@ -12,6 +12,10 @@
 //     se toma el más reciente por `fecha_dato` y se marca `discrepancia: true`
 //     conservando el rango observado.
 //  4. `no_especificado` no se compara ni se mezcla con nada: solo se muestra.
+//  5. `termica_respaldo` y `generacion_asociada` no son capacidad del centro de
+//     datos. Se registran y se muestran, pero no entran en ninguna suma.
+
+import { TIPOS_POTENCIA } from './schema.mjs'
 
 const ORDEN_AMBITO = { campus: 0, edificio: 0, fase: 1 }
 
@@ -59,16 +63,11 @@ function agregarTipo(registros) {
   }
 }
 
-/** Devuelve {it, conexion_red, instalada_total, no_especificado} — cada uno o null. */
+/** Un resumen por cada tipo de potencia presente; null donde no hay dato. */
 export function resumirPotencia(potencias) {
-  const porTipo = { it: [], conexion_red: [], instalada_total: [], no_especificado: [] }
+  const porTipo = Object.fromEntries(TIPOS_POTENCIA.map((t) => [t, []]))
   for (const p of potencias) (porTipo[p.tipo] ?? porTipo.no_especificado).push(p)
-  return {
-    it: agregarTipo(porTipo.it),
-    conexion_red: agregarTipo(porTipo.conexion_red),
-    instalada_total: agregarTipo(porTipo.instalada_total),
-    no_especificado: agregarTipo(porTipo.no_especificado),
-  }
+  return Object.fromEntries(TIPOS_POTENCIA.map((t) => [t, agregarTipo(porTipo[t])]))
 }
 
 /**
