@@ -1,5 +1,7 @@
 # Centros de datos en España — registro documental
 
+**https://datacenters.m19182.dev**
+
 Mapa público de los centros de datos de España peninsular y su relación con la
 infraestructura eléctrica de transporte. Cada dato lleva su fuente; los huecos y
 las contradicciones se muestran en lugar de rellenarse.
@@ -110,14 +112,20 @@ fusionar.
 
 ## Despliegue
 
-Sitio estático en `dist/`, pensado para Cloudflare Pages.
+Sitio estático en `dist/`, publicado en Cloudflare Pages sobre el proyecto
+`mapa-datacenters-espana` y servido en **datacenters.m19182.dev**.
 
-Con el conector de Git de Cloudflare Pages: comando de construcción
-`npm run build`, directorio de salida `dist`, Node 22.
+Cada push a `main` dispara `.github/workflows/despliegue.yml`, que valida el
+conjunto de datos con `--strict`, construye el sitio y lo sube. Si la validación
+falla, no se publica nada. Los secretos `CLOUDFLARE_API_TOKEN` y
+`CLOUDFLARE_ACCOUNT_ID` están configurados en el repositorio.
 
-Como alternativa, `.github/workflows/despliegue.yml` construye y publica desde
-GitHub Actions con la misma validación que el resto del flujo; necesita los
-secretos `CLOUDFLARE_API_TOKEN` y `CLOUDFLARE_ACCOUNT_ID`.
+Para publicar a mano:
+
+```bash
+npm run build
+npx wrangler pages deploy dist --project-name=mapa-datacenters-espana
+```
 
 ## Informes
 

@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap'
 // Sitio completamente estático: se despliega en Cloudflare Pages sin runtime.
 export default defineConfig({
   output: 'static',
-  site: 'https://mapa-datacenters-espana.pages.dev',
+  site: 'https://datacenters.m19182.dev',
   trailingSlash: 'ignore',
   integrations: [sitemap()],
   build: { format: 'directory' },
