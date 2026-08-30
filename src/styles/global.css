@@ -543,3 +543,12 @@ main {
   display: flex;
   flex-direction: column;
 }
+
+/* Vista de mapa: alto exacto de la ventana. Sin esto el contenedor crece con la
+   lista de resultados, la página entera scrollea y el panel de detalle, que se
+   posiciona respecto al mapa, acaba fuera de la pantalla. */
+body.pantalla-completa {
+  height: 100dvh;
+  min-height: 0;
+  overflow: hidden;
+}

@@ -2,7 +2,10 @@
 import '../styles/global.css'
 import resumen from '../data/resumen.json'
 
-const { titulo, descripcion, anchoCompleto = false, sinPie = false } = Astro.props
+// `pantallaCompleta` es para la vista de mapa: ocupa exactamente la ventana y
+// el scroll ocurre dentro del panel, no en la página.
+const { titulo, descripcion, anchoCompleto = false, sinPie = false, pantallaCompleta = false } =
+  Astro.props
 const ruta = Astro.url.pathname.replace(/\/$/, '') || '/'
 const activo = (href) => (ruta === href || (href !== '/' && ruta.startsWith(href)) ? 'page' : undefined)
 
@@ -37,7 +40,7 @@ const enlacesCriticos = [
     <meta property="og:type" content="website" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   </head>
-  <body>
+  <body class:list={[pantallaCompleta && 'pantalla-completa']}>
     <header class="cabecera">
       <div class:list={['cabecera-fila', anchoCompleto && 'ancho-completo']}>
         <a class="marca" href="/">Centros de datos en España <span>· registro documental</span></a>
