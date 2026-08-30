@@ -177,6 +177,7 @@ hr {
 
 .cabecera {
   flex: none;
+  min-width: 0;
   border-bottom: 1px solid var(--borde);
   background: var(--papel);
   position: sticky;
@@ -189,13 +190,9 @@ hr {
   align-items: baseline;
   gap: 1.25rem;
   flex-wrap: wrap;
-  padding: 0.7rem 1.25rem;
-  max-width: var(--ancho);
-  margin: 0 auto;
-}
-
-.cabecera-fila.ancho-completo {
-  max-width: none;
+  /* De ancho completo: con once secciones, ceñirla a la columna de texto la
+     partía en dos líneas en las páginas de contenido y en una sola en el mapa. */
+  padding: 0.7rem 1.5rem;
 }
 
 .marca {
@@ -320,7 +317,7 @@ hr {
 .cifras {
   display: grid;
   gap: 1px;
-  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(9rem, 100%), 1fr));
   background: var(--borde);
   border: 1px solid var(--borde);
   border-radius: var(--radio);
@@ -367,6 +364,16 @@ table {
   overflow-x: auto;
   border: 1px solid var(--borde);
   border-radius: var(--radio);
+  /* Sombra en los bordes solo cuando queda contenido por desplazar: avisa de
+     que la tabla sigue a los lados sin añadir ningún elemento. */
+  background:
+    linear-gradient(to right, var(--papel) 30%, transparent),
+    linear-gradient(to left, var(--papel) 30%, transparent) 100% 0,
+    radial-gradient(farthest-side at 0 50%, rgb(0 0 0 / 0.16), transparent),
+    radial-gradient(farthest-side at 100% 50%, rgb(0 0 0 / 0.16), transparent) 100% 0;
+  background-repeat: no-repeat;
+  background-size: 2.5rem 100%, 2.5rem 100%, 0.75rem 100%, 0.75rem 100%;
+  background-attachment: local, local, scroll, scroll;
 }
 
 th,
@@ -458,10 +465,76 @@ button:hover {
   outline-offset: 2px;
 }
 
-@media (max-width: 640px) {
-  .nav {
-    gap: 0.85rem;
-    font-size: 0.82rem;
+/* --- menú plegable en pantallas estrechas --------------------------------- */
+
+.boton-menu {
+  display: none;
+  margin-left: auto;
+  font-size: 0.83rem;
+  padding: 0.25rem 0.6rem;
+}
+
+@media (max-width: 860px) {
+  .cabecera-fila {
+    padding: 0.55rem 1rem;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  .marca {
+    font-size: 0.92rem;
+    white-space: normal;
+  }
+
+  .marca span {
+    display: none;
+  }
+
+  .boton-menu {
+    display: block;
+  }
+
+  /* Solo se oculta si el botón existe, es decir, si el script se ha ejecutado:
+     sin JS el menú se queda visible y el sitio sigue siendo navegable. */
+  body.con-menu-plegable .nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 60;
+    margin: 0;
+    padding: 0.5rem 1rem 0.9rem;
+    background: var(--papel);
+    border-bottom: 1px solid var(--borde-fuerte);
+    box-shadow: 0 8px 20px rgb(0 0 0 / 0.12);
+    max-height: 70dvh;
+    overflow-y: auto;
+  }
+
+  body.con-menu-plegable .nav.abierto {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.1rem 1rem;
+  }
+
+  .nav a {
+    padding: 0.45rem 0;
+    font-size: 0.9rem;
+  }
+
+  .nav-separador {
+    display: none;
+  }
+
+  .nav-critico {
+    color: var(--tinta-2);
+  }
+}
+
+@media (max-width: 380px) {
+  .marca {
+    font-size: 0.86rem;
   }
 }
 
@@ -527,6 +600,11 @@ button:hover {
 
 .prosa code {
   font-size: 0.85em;
+  overflow-wrap: anywhere;
+}
+
+.prosa pre {
+  overflow-x: auto;
 }
 
 .prosa em {
@@ -539,16 +617,107 @@ button:hover {
 
 main {
   flex: 1 1 auto;
+  /* `min-width: 0` es imprescindible: como elemento flexible tendría
+     `min-width: auto` y no podría encogerse por debajo del ancho de su
+     contenido, de modo que una tabla ancha estiraría toda la página. */
   min-height: 0;
-  display: flex;
-  flex-direction: column;
+  min-width: 0;
 }
 
 /* Vista de mapa: alto exacto de la ventana. Sin esto el contenedor crece con la
    lista de resultados, la página entera scrollea y el panel de detalle, que se
-   posiciona respecto al mapa, acaba fuera de la pantalla. */
+   posiciona respecto al mapa, acaba fuera de la pantalla.
+   El `main` flexible se limita a esta vista: en las páginas de texto convertiría
+   cada contenedor en elemento flexible, con el mismo problema de `min-width`. */
 body.pantalla-completa {
   height: 100dvh;
   min-height: 0;
   overflow: hidden;
+}
+
+body.pantalla-completa main {
+  display: flex;
+  flex-direction: column;
+}
+
+body.pantalla-completa main > * {
+  min-width: 0;
+}
+
+/* --- tablas de datos en pantallas estrechas -------------------------------- */
+/* Una tabla de nueve columnas no se lee en 390 px por mucho que se desplace.
+   Las marcadas como `tabla-fichas` se apilan: cada fila pasa a ser una ficha y
+   cada celda lleva delante el nombre de su columna. */
+
+@media (max-width: 760px) {
+  .tabla-envoltorio:has(.tabla-fichas) {
+    border: 0;
+    border-radius: 0;
+    overflow-x: visible;
+    background: none;
+  }
+
+  .tabla-fichas,
+  .tabla-fichas tbody,
+  .tabla-fichas tr,
+  .tabla-fichas td {
+    display: block;
+    width: auto;
+  }
+
+  .tabla-fichas thead {
+    display: none;
+  }
+
+  .tabla-fichas tr {
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    padding: 0.6rem 0.8rem;
+    margin-bottom: 0.6rem;
+    background: var(--papel);
+  }
+
+  .tabla-fichas tr:hover {
+    background: var(--papel);
+  }
+
+  .tabla-fichas td {
+    border: 0;
+    padding: 0.18rem 0;
+    text-align: left;
+  }
+
+  /* La primera celda hace de título de la ficha. */
+  .tabla-fichas td:first-child {
+    font-size: 1rem;
+    padding-bottom: 0.4rem;
+  }
+
+  /* La etiqueta va en un canalón a la izquierda, posicionada. Con rejilla o
+     flex, una celda con varios hijos («18» y «(53 %)») los repartía en filas
+     distintas; así el contenido conserva su flujo normal. */
+  .tabla-fichas td[data-etiqueta]:not(:first-child) {
+    position: relative;
+    padding-left: 8.5rem;
+    min-height: 1.5em;
+  }
+
+  .tabla-fichas td[data-etiqueta]:not(:first-child)::before {
+    content: attr(data-etiqueta);
+    position: absolute;
+    left: 0;
+    top: 0.3em;
+    width: 8rem;
+    font-size: 0.72rem;
+    line-height: 1.3;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--tinta-3);
+  }
+
+  /* Una celda vacía en una ficha es ruido: se oculta. Necesita al menos la
+     misma especificidad que la regla que la convierte en rejilla. */
+  .tabla-fichas td[data-etiqueta][data-vacia='si'] {
+    display: none;
+  }
 }

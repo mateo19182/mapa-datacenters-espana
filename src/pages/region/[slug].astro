@@ -92,7 +92,7 @@ const centro = (() => {
 
     <h2>Emplazamientos</h2>
     <div class="tabla-envoltorio">
-      <table>
+      <table class="tabla-fichas">
         <thead>
           <tr>
             <th>Emplazamiento</th>
@@ -108,12 +108,12 @@ const centro = (() => {
           {propios.map((s) => (
             <tr>
               <td><a href={`/proyecto/${s.id}`}>{s.nombre}</a></td>
-              <td>{s.operador ? <a href={`/compania/${aSlug(s.operador)}`}>{s.operador}</a> : <span class="silencio">—</span>}</td>
-              <td>{s.ubicacion.municipio ?? <span class="silencio">—</span>}</td>
-              <td><span class={`etiqueta estado-${s.estado}`}><span class="punto"></span>{ESTADO_ETIQUETA[s.estado]}</span></td>
-              <td class="num">{numero(s.resumen_potencia.it?.valor_mw, 1) ?? <span class="silencio">—</span>}</td>
-              <td class="num">{numero(s.resumen_potencia.conexion_red?.valor_mw, 1) ?? <span class="silencio">—</span>}</td>
-              <td class="num">{numero(s.resumen_potencia.no_especificado?.valor_mw, 1) ?? <span class="silencio">—</span>}</td>
+              <td data-etiqueta="Operador">{s.operador ? <a href={`/compania/${aSlug(s.operador)}`}>{s.operador}</a> : <span class="silencio">—</span>}</td>
+              <td data-etiqueta="Municipio">{s.ubicacion.municipio ?? <span class="silencio">sin determinar</span>}</td>
+              <td data-etiqueta="Estado"><span class={`etiqueta estado-${s.estado}`}><span class="punto"></span>{ESTADO_ETIQUETA[s.estado]}</span></td>
+              <td class="num" data-etiqueta="MW IT" data-vacia={s.resumen_potencia.it ? 'no' : 'si'}>{numero(s.resumen_potencia.it?.valor_mw, 1) ?? '—'}</td>
+              <td class="num" data-etiqueta="MW conexión" data-vacia={s.resumen_potencia.conexion_red ? 'no' : 'si'}>{numero(s.resumen_potencia.conexion_red?.valor_mw, 1) ?? '—'}</td>
+              <td class="num" data-etiqueta="MW sin tipificar" data-vacia={s.resumen_potencia.no_especificado ? 'no' : 'si'}>{numero(s.resumen_potencia.no_especificado?.valor_mw, 1) ?? '—'}</td>
             </tr>
           ))}
         </tbody>
@@ -124,7 +124,7 @@ const centro = (() => {
       <>
         <h2>Infraestructura eléctrica registrada</h2>
         <div class="tabla-envoltorio">
-          <table>
+          <table class="tabla-fichas">
             <thead>
               <tr><th>Nudo o subestación</th><th>Tensión</th><th>Titular</th><th>Estado</th><th class="num">Capacidad demanda</th></tr>
             </thead>
@@ -132,10 +132,10 @@ const centro = (() => {
               {nodos.map((n) => (
                 <tr>
                   <td>{n.nombre ?? n.id}<span class="pequeno silencio"><br />{n.municipio}</span></td>
-                  <td>{Array.isArray(n.tensiones_kv) ? n.tensiones_kv.join(' / ') : (n.tension_kv ?? '—')} kV</td>
-                  <td>{n.titular ?? <span class="silencio">—</span>}</td>
-                  <td>{n.estado ?? <span class="silencio">—</span>}</td>
-                  <td class="num">
+                  <td data-etiqueta="Tensión">{Array.isArray(n.tensiones_kv) ? n.tensiones_kv.join(' / ') : (n.tension_kv ?? '—')} kV</td>
+                  <td data-etiqueta="Titular">{n.titular ?? <span class="silencio">—</span>}</td>
+                  <td data-etiqueta="Estado">{n.estado ?? <span class="silencio">—</span>}</td>
+                  <td class="num" data-etiqueta="Capacidad demanda">
                     {n.capacidad_acceso_demanda_mw != null
                       ? `${numero(n.capacidad_acceso_demanda_mw)} MW`
                       : <span class="silencio">no publicada</span>}
@@ -156,7 +156,7 @@ const centro = (() => {
       <>
         <h2>Generación y almacenamiento vinculados</h2>
         <div class="tabla-envoltorio">
-          <table>
+          <table class="tabla-fichas">
             <thead>
               <tr><th>Activo</th><th>Tipo</th><th class="num">MW</th><th>Promotor</th><th>Vínculo</th><th>Estado</th></tr>
             </thead>
@@ -164,11 +164,11 @@ const centro = (() => {
               {activos.map((a) => (
                 <tr>
                   <td>{a.nombre}<span class="pequeno silencio"><br />{a.municipio}</span></td>
-                  <td>{a.tipo}</td>
-                  <td class="num">{numero(a.potencia_mw, 1) ?? '—'}</td>
-                  <td>{a.promotor ?? <span class="silencio">—</span>}</td>
-                  <td>{a.tipo_vinculo}{a.contraparte_ppa && <span class="pequeno silencio"><br />{a.contraparte_ppa}</span>}</td>
-                  <td>{a.estado}</td>
+                  <td data-etiqueta="Tipo">{a.tipo}</td>
+                  <td class="num" data-etiqueta="Potencia">{numero(a.potencia_mw, 1) ?? '—'}</td>
+                  <td data-etiqueta="Promotor">{a.promotor ?? <span class="silencio">—</span>}</td>
+                  <td data-etiqueta="Vínculo">{a.tipo_vinculo}{a.contraparte_ppa && <span class="pequeno silencio"><br />{a.contraparte_ppa}</span>}</td>
+                  <td data-etiqueta="Estado">{a.estado}</td>
                 </tr>
               ))}
             </tbody>

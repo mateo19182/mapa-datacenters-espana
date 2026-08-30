@@ -17,7 +17,7 @@ import { ESTADO_ETIQUETA, ORDEN_ESTADOS, numero } from '../lib/etiquetas.js'
     </p>
 
     <div class="tabla-envoltorio">
-      <table>
+      <table class="tabla-fichas">
         <thead>
           <tr>
             <th>Compañía</th>
@@ -32,8 +32,8 @@ import { ESTADO_ETIQUETA, ORDEN_ESTADOS, numero } from '../lib/etiquetas.js'
           {companias.map((c) => (
             <tr>
               <td><a href={`/compania/${c.slug}`}>{c.nombre}</a></td>
-              <td class="num">{c.emplazamientos}</td>
-              <td>
+              <td class="num" data-etiqueta="Emplazamientos">{c.emplazamientos}</td>
+              <td data-etiqueta="Por estado">
                 <span class="barra">
                   {ORDEN_ESTADOS.filter((e) => c.por_estado[e]).map((e) => (
                     <span
@@ -44,13 +44,13 @@ import { ESTADO_ETIQUETA, ORDEN_ESTADOS, numero } from '../lib/etiquetas.js'
                   ))}
                 </span>
               </td>
-              <td class="num">
+              <td class="num" data-etiqueta="MW IT sumados">
                 {c.potencia.it.sitios_con_dato ? `${numero(c.potencia.it.total_mw)} MW` : <span class="silencio">—</span>}
               </td>
-              <td class="num pequeno silencio">
+              <td class="num pequeno silencio" data-etiqueta="Cobertura">
                 {c.potencia.it.sitios_con_dato}/{c.emplazamientos}
               </td>
-              <td class="pequeno">{c.ccaas.join(', ')}</td>
+              <td class="pequeno" data-etiqueta="Comunidades">{c.ccaas.join(', ')}</td>
             </tr>
           ))}
         </tbody>

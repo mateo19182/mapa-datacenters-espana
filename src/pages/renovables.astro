@@ -76,7 +76,7 @@ const contrapartes = [...new Set(renovables.map((r) => r.contraparte_ppa).filter
 
     <h2>Por contraparte</h2>
     <div class="tabla-envoltorio">
-      <table>
+      <table class="tabla-fichas">
         <thead>
           <tr><th>Contraparte</th><th class="num">Activos</th><th class="num">MW contratados</th><th class="num">Con cifra publicada</th></tr>
         </thead>
@@ -84,9 +84,9 @@ const contrapartes = [...new Set(renovables.map((r) => r.contraparte_ppa).filter
           {contrapartes.map((c) => (
             <tr>
               <td>{c.nombre}</td>
-              <td class="num">{c.n}</td>
-              <td class="num">{c.mw ? `${numero(c.mw)} MW` : <span class="silencio">—</span>}</td>
-              <td class="num pequeno silencio">{c.conDato}/{c.n}</td>
+              <td class="num" data-etiqueta="Activos">{c.n}</td>
+              <td class="num" data-etiqueta="MW contratados">{c.mw ? `${numero(c.mw)} MW` : <span class="silencio">—</span>}</td>
+              <td class="num pequeno silencio" data-etiqueta="Con cifra">{c.conDato}/{c.n}</td>
             </tr>
           ))}
         </tbody>
@@ -95,7 +95,7 @@ const contrapartes = [...new Set(renovables.map((r) => r.contraparte_ppa).filter
 
     <h2>Todos los activos</h2>
     <div class="tabla-envoltorio">
-      <table>
+      <table class="tabla-fichas">
         <thead>
           <tr>
             <th>Activo</th>
@@ -113,18 +113,18 @@ const contrapartes = [...new Set(renovables.map((r) => r.contraparte_ppa).filter
             .map((r) => (
               <tr>
                 <td>{r.nombre}</td>
-                <td class="pequeno">{r.tipo}</td>
-                <td class="num">
+                <td class="pequeno" data-etiqueta="Tipo">{r.tipo}</td>
+                <td class="num" data-etiqueta="Potencia">
                   {r.potencia_mw != null ? `${numero(r.potencia_mw, 1)} MW` : <span class="silencio">—</span>}
                   {r.capacidad_mwh != null && <span class="pequeno silencio"><br />{numero(r.capacidad_mwh)} MWh</span>}
                 </td>
-                <td class="pequeno">{r.promotor ?? <span class="silencio">—</span>}</td>
-                <td class="pequeno">
+                <td class="pequeno" data-etiqueta="Promotor">{r.promotor ?? <span class="silencio">—</span>}</td>
+                <td class="pequeno" data-etiqueta="Vínculo">
                   {VINCULO_ETIQUETA[r.tipo_vinculo] ?? r.tipo_vinculo}
                   {r.contraparte_ppa && <span class="pequeno silencio"><br />{r.contraparte_ppa}</span>}
                 </td>
-                <td class="pequeno">{r.estado}</td>
-                <td class="pequeno">
+                <td class="pequeno" data-etiqueta="Estado">{r.estado}</td>
+                <td class="pequeno" data-etiqueta="Ubicación">
                   {r.municipio ?? (r.municipios ?? []).join(', ') ?? '—'}
                   <span class="silencio"><br />{r.ccaa}</span>
                 </td>

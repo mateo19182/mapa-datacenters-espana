@@ -57,7 +57,7 @@ const pct = (n, total) => (total ? Math.round((n / total) * 100) : 0)
 
     <h2>Cobertura por comunidad</h2>
     <div class="tabla-envoltorio">
-      <table>
+      <table class="tabla-fichas">
         <thead>
           <tr>
             <th>Comunidad</th>
@@ -72,11 +72,11 @@ const pct = (n, total) => (total ? Math.round((n / total) * 100) : 0)
           {porRegion.map((r) => (
             <tr>
               <td><a href={`/region/${slug(r.ccaa)}`}>{r.ccaa}</a></td>
-              <td class="num">{r.total}</td>
-              <td class="num">{r.oficial} <span class="silencio pequeno">({pct(r.oficial, r.total)} %)</span></td>
-              <td class="num">{r.tipada} <span class="silencio pequeno">({pct(r.tipada, r.total)} %)</span></td>
-              <td class="num">{r.exactas} <span class="silencio pequeno">({pct(r.exactas, r.total)} %)</span></td>
-              <td class="num">{r.conexion} <span class="silencio pequeno">({pct(r.conexion, r.total)} %)</span></td>
+              <td class="num" data-etiqueta="Fichas">{r.total}</td>
+              <td class="num" data-etiqueta="Fuente oficial">{r.oficial} <span class="silencio pequeno">({pct(r.oficial, r.total)} %)</span></td>
+              <td class="num" data-etiqueta="MW tipificados">{r.tipada} <span class="silencio pequeno">({pct(r.tipada, r.total)} %)</span></td>
+              <td class="num" data-etiqueta="Coord. exactas">{r.exactas} <span class="silencio pequeno">({pct(r.exactas, r.total)} %)</span></td>
+              <td class="num" data-etiqueta="Con conexión">{r.conexion} <span class="silencio pequeno">({pct(r.conexion, r.total)} %)</span></td>
             </tr>
           ))}
         </tbody>
@@ -97,7 +97,7 @@ const pct = (n, total) => (total ? Math.round((n / total) * 100) : 0)
     </p>
 
     <div class="tabla-envoltorio">
-      <table>
+      <table class="tabla-fichas">
         <thead>
           <tr><th>Municipio</th><th>Comunidad</th><th>Compañía</th><th>Potencia citada</th><th>Prioridad</th></tr>
         </thead>
@@ -108,13 +108,13 @@ const pct = (n, total) => (total ? Math.round((n / total) * 100) : 0)
                 {p.municipio}
                 <span class="pequeno silencio"><br />{p.provincia}</span>
               </td>
-              <td class="pequeno">{p.ccaa}</td>
-              <td>
+              <td class="pequeno" data-etiqueta="Comunidad">{p.ccaa}</td>
+              <td data-etiqueta="Compañía">
                 {p.compania}
                 {p.nota && <span class="pequeno silencio"><br />{p.nota}</span>}
               </td>
-              <td class="pequeno">{p.potencia_citada ?? <span class="silencio">sin cifra</span>}</td>
-              <td><span class={`prioridad prioridad-${p.prioridad}`}>{p.prioridad}</span></td>
+              <td class="pequeno" data-etiqueta="Potencia citada">{p.potencia_citada ?? <span class="silencio">sin cifra</span>}</td>
+              <td data-etiqueta="Prioridad"><span class={`prioridad prioridad-${p.prioridad}`}>{p.prioridad}</span></td>
             </tr>
           ))}
         </tbody>

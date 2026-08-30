@@ -38,7 +38,7 @@ const ordenados = [...sitios].sort((a, b) => {
     </div>
 
     <div class="tabla-envoltorio">
-      <table id="tabla">
+      <table id="tabla" class="tabla-fichas">
         <thead>
           <tr>
             <th data-orden="nombre">Emplazamiento</th>
@@ -75,15 +75,25 @@ const ordenados = [...sitios].sort((a, b) => {
                   <span class="marca-incert" title={`${s.incertidumbres.length} incertidumbre(s) documentada(s)`}>!</span>
                 )}
               </td>
-              <td>{s.operador ? <a href={`/compania/${slug(s.operador)}`}>{s.operador}</a> : <span class="silencio">—</span>}</td>
-              <td>
-                {s.ubicacion.municipio ?? <span class="silencio">—</span>}
-                <span class="pequeno silencio"><br />{s.ubicacion.ccaa}</span>
+              <td data-etiqueta="Operador">{s.operador ? <a href={`/compania/${slug(s.operador)}`}>{s.operador}</a> : <span class="silencio">—</span>}</td>
+              <td data-etiqueta="Ubicación">
+                <span>
+                  {s.ubicacion.municipio ?? <span class="silencio">sin determinar</span>}
+                  <span class="pequeno silencio"><br />{s.ubicacion.ccaa}</span>
+                </span>
               </td>
-              <td><span class={`etiqueta estado-${s.estado}`}><span class="punto"></span>{ESTADO_ETIQUETA[s.estado]}</span></td>
-              <td class="num">{numero(s.resumen_potencia.it?.valor_mw, 1) ?? <span class="silencio">—</span>}</td>
-              <td class="num">{numero(s.resumen_potencia.conexion_red?.valor_mw, 1) ?? <span class="silencio">—</span>}</td>
-              <td class="num">
+              <td data-etiqueta="Estado"><span class={`etiqueta estado-${s.estado}`}><span class="punto"></span>{ESTADO_ETIQUETA[s.estado]}</span></td>
+              <td class="num" data-etiqueta="MW IT" data-vacia={s.resumen_potencia.it ? 'no' : 'si'}>
+                {numero(s.resumen_potencia.it?.valor_mw, 1) ?? <span class="silencio">—</span>}
+              </td>
+              <td class="num" data-etiqueta="MW conexión" data-vacia={s.resumen_potencia.conexion_red ? 'no' : 'si'}>
+                {numero(s.resumen_potencia.conexion_red?.valor_mw, 1) ?? <span class="silencio">—</span>}
+              </td>
+              <td
+                class="num"
+                data-etiqueta="MW sin tipificar"
+                data-vacia={s.resumen_potencia.no_especificado || s.resumen_potencia.termica_respaldo || s.resumen_potencia.generacion_asociada ? 'no' : 'si'}
+              >
                 {numero(s.resumen_potencia.no_especificado?.valor_mw, 1) ?? <span class="silencio">—</span>}
                 {!s.resumen_potencia.it &&
                   !s.resumen_potencia.conexion_red &&
@@ -95,8 +105,8 @@ const ordenados = [...sitios].sort((a, b) => {
                     >gen</span>
                   )}
               </td>
-              <td><span class={`confianza-${s.confianza}`}>{CONFIANZA_ETIQUETA[s.confianza].replace('Confianza ', '')}</span></td>
-              <td class="pequeno silencio">{fechaLegible(s.ultima_verificacion)}</td>
+              <td data-etiqueta="Confianza"><span class={`confianza-${s.confianza}`}>{CONFIANZA_ETIQUETA[s.confianza].replace('Confianza ', '')}</span></td>
+              <td class="pequeno silencio" data-etiqueta="Verificado">{fechaLegible(s.ultima_verificacion)}</td>
             </tr>
           ))}
         </tbody>
@@ -150,13 +160,22 @@ const ordenados = [...sitios].sort((a, b) => {
   .controles {
     display: flex;
     align-items: center;
-    gap: 0.9rem;
+    flex-wrap: wrap;
+    gap: 0.5rem 0.9rem;
     margin: 1.5rem 0 0.9rem;
   }
 
   .controles input {
-    flex: 1;
+    flex: 1 1 14rem;
+    min-width: 0;
     max-width: 26rem;
+  }
+
+  /* Apilada como ficha, la tabla no tiene cabeceras que ordenar. */
+  @media (max-width: 760px) {
+    th[data-orden] {
+      cursor: default;
+    }
   }
 
   th[data-orden] {

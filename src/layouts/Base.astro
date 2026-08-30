@@ -4,8 +4,7 @@ import resumen from '../data/resumen.json'
 
 // `pantallaCompleta` es para la vista de mapa: ocupa exactamente la ventana y
 // el scroll ocurre dentro del panel, no en la página.
-const { titulo, descripcion, anchoCompleto = false, sinPie = false, pantallaCompleta = false } =
-  Astro.props
+const { titulo, descripcion, sinPie = false, pantallaCompleta = false } = Astro.props
 const ruta = Astro.url.pathname.replace(/\/$/, '') || '/'
 const activo = (href) => (ruta === href || (href !== '/' && ruta.startsWith(href)) ? 'page' : undefined)
 
@@ -42,9 +41,12 @@ const enlacesCriticos = [
   </head>
   <body class:list={[pantallaCompleta && 'pantalla-completa']}>
     <header class="cabecera">
-      <div class:list={['cabecera-fila', anchoCompleto && 'ancho-completo']}>
+      <div class="cabecera-fila">
         <a class="marca" href="/">Centros de datos en España <span>· registro documental</span></a>
-        <nav class="nav">
+        <button id="abrir-menu" class="boton-menu" type="button" aria-expanded="false" aria-controls="menu">
+          Secciones
+        </button>
+        <nav id="menu" class="nav">
           {enlaces.map(([href, texto]) => <a href={href} aria-current={activo(href)}>{texto}</a>)}
           <span class="nav-separador" aria-hidden="true"></span>
           {enlacesCriticos.map(([href, texto]) => (
@@ -57,6 +59,25 @@ const enlacesCriticos = [
     <main>
       <slot />
     </main>
+
+    <script>
+      // El menú se pliega en pantallas estrechas. Sin JS la navegación sigue
+      // siendo visible, porque el CSS solo la oculta cuando hay botón.
+      const boton = document.getElementById('abrir-menu')
+      const menu = document.getElementById('menu')
+      document.body.classList.add('con-menu-plegable')
+      boton?.addEventListener('click', () => {
+        const abierto = menu.classList.toggle('abierto')
+        boton.setAttribute('aria-expanded', String(abierto))
+      })
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && menu?.classList.contains('abierto')) {
+          menu.classList.remove('abierto')
+          boton.setAttribute('aria-expanded', 'false')
+          boton.focus()
+        }
+      })
+    </script>
 
     {!sinPie && (
       <footer class="pie">

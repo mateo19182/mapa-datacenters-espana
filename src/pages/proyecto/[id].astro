@@ -115,7 +115,7 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
             </dl>
 
             <div class="tabla-envoltorio">
-              <table>
+              <table class="tabla-fichas">
                 <thead>
                   <tr>
                     <th>Tipo</th>
@@ -130,18 +130,18 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
                   {s.potencia.map((p) => (
                     <tr>
                       <td title={POTENCIA_DESCRIPCION[p.tipo]}>{POTENCIA_ETIQUETA[p.tipo]}</td>
-                      <td class="num">
-                        {numero(p.valor_mw, 1)}
+                      <td class="num" data-etiqueta="MW">
+                        {numero(p.valor_mw, 1) ?? (p.valor_mva ? `${numero(p.valor_mva, 1)} MVA` : '—')}
                         {p.valor_mw_max && `–${numero(p.valor_mw_max, 1)}`}
                       </td>
-                      <td>{p.ambito}</td>
-                      <td>
+                      <td data-etiqueta="Ámbito">{p.ambito}</td>
+                      <td data-etiqueta="Referencia">
                         {p.edificio && <><strong class="unidad">{p.edificio}</strong><br /></>}
                         {p.referencia ?? <span class="silencio">—</span>}
                         {p.nota && <span class="pequeno silencio"><br />{p.nota}</span>}
                       </td>
-                      <td>{fechaLegible(p.fecha_dato) ?? <span class="silencio">sin fechar</span>}</td>
-                      <td class="num">
+                      <td data-etiqueta="Fecha del dato">{fechaLegible(p.fecha_dato) ?? <span class="silencio">sin fechar</span>}</td>
+                      <td class="num" data-etiqueta="Fuente">
                         {refs(p.fuentes).map((n, i) => (
                           <>{i > 0 && ', '}<a href={`#fuente-${s.fuentes[n - 1].id}`}>{n}</a></>
                         ))}
@@ -165,7 +165,7 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
           <>
             <h2>Fases</h2>
             <div class="tabla-envoltorio">
-              <table>
+              <table class="tabla-fichas">
                 <thead>
                   <tr>
                     <th>Fase</th>
@@ -182,16 +182,16 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
                         {f.nombre}
                         {f.nota && <span class="pequeno silencio"><br />{f.nota}</span>}
                       </td>
-                      <td>
+                      <td data-etiqueta="Estado">
                         {f.estado ? (
                           <span class={`etiqueta estado-${f.estado}`}><span class="punto"></span>{ESTADO_ETIQUETA[f.estado]}</span>
                         ) : (
                           <span class="silencio">—</span>
                         )}
                       </td>
-                      <td>{fechaLegible(f.fecha_puesta_en_servicio) ?? <span class="silencio">—</span>}</td>
-                      <td class="num">{superficie(f.superficie_m2) ?? <span class="silencio">—</span>}</td>
-                      <td class="num">
+                      <td data-etiqueta="Puesta en servicio" data-vacia={f.fecha_puesta_en_servicio ? 'no' : 'si'}>{fechaLegible(f.fecha_puesta_en_servicio) ?? '—'}</td>
+                      <td class="num" data-etiqueta="Superficie" data-vacia={f.superficie_m2 ? 'no' : 'si'}>{superficie(f.superficie_m2) ?? '—'}</td>
+                      <td class="num" data-etiqueta="Fuente">
                         {refs(f.fuentes).map((n, i) => (
                           <>{i > 0 && ', '}<a href={`#fuente-${s.fuentes[n - 1].id}`}>{n}</a></>
                         ))}
@@ -235,7 +235,7 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
               físicamente de esa planta.
             </p>
             <div class="tabla-envoltorio">
-              <table>
+              <table class="tabla-fichas">
                 <thead>
                   <tr><th>Activo</th><th>Tipo</th><th class="num">MW</th><th>Vínculo</th><th>Estado</th></tr>
                 </thead>
@@ -243,10 +243,10 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
                   {vinculados.map((a) => (
                     <tr>
                       <td>{a.nombre}</td>
-                      <td>{a.tipo}</td>
-                      <td class="num">{numero(a.potencia_mw, 1) ?? '—'}</td>
-                      <td>{a.tipo_vinculo}</td>
-                      <td>{a.estado}</td>
+                      <td data-etiqueta="Tipo">{a.tipo}</td>
+                      <td class="num" data-etiqueta="Potencia">{numero(a.potencia_mw, 1) ?? '—'}</td>
+                      <td data-etiqueta="Vínculo">{a.tipo_vinculo}</td>
+                      <td data-etiqueta="Estado">{a.estado}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -462,7 +462,9 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
 
   @media (max-width: 860px) {
     .dos-columnas {
-      grid-template-columns: 1fr;
+      /* `1fr` a secas conserva `min-width: auto` y el contenido ancho estira
+         la columna; `minmax(0, 1fr)` le permite encogerse. */
+      grid-template-columns: minmax(0, 1fr);
       gap: 1.75rem;
     }
 
@@ -474,6 +476,26 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
     .incertidumbres li {
       grid-template-columns: 1fr;
       gap: 0.15rem;
+    }
+  }
+
+  /* En pantallas estrechas la etiqueta va encima: con dos columnas, textos
+     largos como el de refrigeración quedaban en una columna de 20 caracteres. */
+  @media (max-width: 560px) {
+    .pares {
+      grid-template-columns: 1fr;
+      gap: 0.1rem;
+    }
+
+    .pares dt {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 0.5rem;
+    }
+
+    .pares dt:first-of-type {
+      margin-top: 0;
     }
   }
 </style>

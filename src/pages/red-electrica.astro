@@ -5,7 +5,7 @@ import red from '../data/red.json'
 import capacidad from '../data/capacidad.json'
 import actuaciones from '../data/actuaciones.json'
 import sitios from '../data/sitios.json'
-import { numero, slug } from '../lib/etiquetas.js'
+import { fechaLegible, numero, slug } from '../lib/etiquetas.js'
 
 // Un nudo se considera sin margen cuando el fichero de Red Eléctrica no publica
 // ningún valor disponible bajo ninguno de los tres criterios.
@@ -95,13 +95,13 @@ const explicarLimitante = (codigo) =>
         </dl>
 
         <p class="pequeno silencio">
-          Datos de Red Eléctrica{fechaDato ? `, publicados el ${fechaDato}` : ''}, de publicación
+          Datos de Red Eléctrica{fechaDato ? `, publicados el ${fechaLegible(fechaDato)}` : ''}, de publicación
           mensual. Estas cifras caducan en meses: el reparto cambia con cada resolución de acceso.
         </p>
 
         <h2>Reparto por comunidad autónoma</h2>
         <div class="tabla-envoltorio">
-          <table>
+          <table class="tabla-fichas">
             <thead>
               <tr>
                 <th>Comunidad</th>
@@ -116,11 +116,11 @@ const explicarLimitante = (codigo) =>
               {porCcaa.map((c) => (
                 <tr>
                   <td>{c.ccaa}</td>
-                  <td class="num">{c.total}</td>
-                  <td class="num">{c.conMargen}</td>
-                  <td class="num">{numero(c.disponible)} MW</td>
-                  <td class="num">{numero(c.otorgada)} MW</td>
-                  <td class="num">{numero(c.solicitada)} MW</td>
+                  <td class="num" data-etiqueta="Nudos">{c.total}</td>
+                  <td class="num" data-etiqueta="Con margen">{c.conMargen}</td>
+                  <td class="num" data-etiqueta="Disponible">{numero(c.disponible)} MW</td>
+                  <td class="num" data-etiqueta="Otorgada">{numero(c.otorgada)} MW</td>
+                  <td class="num" data-etiqueta="En curso">{numero(c.solicitada)} MW</td>
                 </tr>
               ))}
             </tbody>
@@ -137,7 +137,7 @@ const explicarLimitante = (codigo) =>
           <span id="contador-nudo" class="pequeno silencio"></span>
         </div>
         <div class="tabla-envoltorio tabla-alta">
-          <table id="tabla-nudos">
+          <table id="tabla-nudos" class="tabla-fichas">
             <thead>
               <tr>
                 <th>Nudo</th>
@@ -155,9 +155,9 @@ const explicarLimitante = (codigo) =>
                 .map((n) => (
                   <tr data-busca={`${n.nudo} ${n.ccaa ?? ''}`.toLowerCase()}>
                     <td>{n.nudo}</td>
-                    <td class="pequeno">{n.ccaa ?? <span class="silencio">—</span>}</td>
-                    <td class="num">{n.tension_kv ?? '—'}</td>
-                    <td class="num">
+                    <td class="pequeno" data-etiqueta="Comunidad">{n.ccaa ?? <span class="silencio">—</span>}</td>
+                    <td class="num" data-etiqueta="Tensión (kV)">{n.tension_kv ?? '—'}</td>
+                    <td class="num" data-etiqueta="Disponible">
                       {n.disponible == null ? (
                         <span class="silencio">no publicada</span>
                       ) : n.disponible > 0 ? (
@@ -166,9 +166,9 @@ const explicarLimitante = (codigo) =>
                         <span class="sin-margen">0 MW</span>
                       )}
                     </td>
-                    <td class="num">{numero(n.otorgada_demanda_rdt_mw) ?? '—'}</td>
-                    <td class="num">{numero(n.solicitada_en_curso_demanda_rdt_mw) ?? '—'}</td>
-                    <td class="pequeno silencio" title={n.criterio_limitante_demanda ?? ''}>
+                    <td class="num" data-etiqueta="Otorgada">{numero(n.otorgada_demanda_rdt_mw) ?? '—'}</td>
+                    <td class="num" data-etiqueta="En curso">{numero(n.solicitada_en_curso_demanda_rdt_mw) ?? '—'}</td>
+                    <td class="pequeno silencio" data-etiqueta="Limitación" title={n.criterio_limitante_demanda ?? ''}>
                       {explicarLimitante(n.criterio_limitante_demanda) ?? n.motivo_no_otorgable ?? '—'}
                     </td>
                   </tr>
@@ -183,7 +183,7 @@ const explicarLimitante = (codigo) =>
       <>
         <h2>Actuaciones de red planificadas</h2>
         <div class="tabla-envoltorio">
-          <table>
+          <table class="tabla-fichas">
             <thead>
               <tr><th>Actuación</th><th>Tipo</th><th class="num">kV</th><th>Horizonte</th><th>Estado</th></tr>
             </thead>
@@ -191,10 +191,10 @@ const explicarLimitante = (codigo) =>
               {actuaciones.map((a) => (
                 <tr>
                   <td>{a.nombre ?? a.id}<span class="pequeno silencio"><br />{[a.municipios, a.ccaa].flat().filter(Boolean).join(', ')}</span></td>
-                  <td class="pequeno">{a.tipo ?? '—'}</td>
-                  <td class="num">{a.tension_kv ?? '—'}</td>
-                  <td class="pequeno">{a.horizonte ?? '—'}</td>
-                  <td class="pequeno">{a.estado_tramitacion ?? a.estado ?? '—'}</td>
+                  <td class="pequeno" data-etiqueta="Tipo">{a.tipo ?? '—'}</td>
+                  <td class="num" data-etiqueta="Tensión (kV)">{a.tension_kv ?? '—'}</td>
+                  <td class="pequeno" data-etiqueta="Horizonte">{a.horizonte ?? '—'}</td>
+                  <td class="pequeno" data-etiqueta="Estado">{a.estado_tramitacion ?? a.estado ?? '—'}</td>
                 </tr>
               ))}
             </tbody>
@@ -211,7 +211,7 @@ const explicarLimitante = (codigo) =>
           de los proyectos, el punto de conexión no se hace público.
         </p>
         <div class="tabla-envoltorio">
-          <table>
+          <table class="tabla-fichas">
             <thead>
               <tr><th>Emplazamiento</th><th>Subestación</th><th class="num">kV</th><th>Titular</th><th class="num">MW solicitados</th><th class="num">MW concedidos</th></tr>
             </thead>
@@ -219,11 +219,11 @@ const explicarLimitante = (codigo) =>
               {conConexion.map((s) => (
                 <tr>
                   <td><a href={`/proyecto/${s.id}`}>{s.nombre}</a></td>
-                  <td>{s.conexion_electrica.subestacion}</td>
-                  <td class="num">{s.conexion_electrica.tension_kv ?? '—'}</td>
-                  <td class="pequeno">{s.conexion_electrica.titular_red ?? <span class="silencio">—</span>}</td>
-                  <td class="num">{numero(s.conexion_electrica.mw_solicitados, 1) ?? <span class="silencio">—</span>}</td>
-                  <td class="num">{numero(s.conexion_electrica.mw_concedidos, 1) ?? <span class="silencio">—</span>}</td>
+                  <td data-etiqueta="Subestación">{s.conexion_electrica.subestacion}</td>
+                  <td class="num" data-etiqueta="Tensión (kV)">{s.conexion_electrica.tension_kv ?? '—'}</td>
+                  <td class="pequeno" data-etiqueta="Titular">{s.conexion_electrica.titular_red ?? <span class="silencio">—</span>}</td>
+                  <td class="num" data-etiqueta="MW solicitados" data-vacia={s.conexion_electrica.mw_solicitados != null ? 'no' : 'si'}>{numero(s.conexion_electrica.mw_solicitados, 1) ?? '—'}</td>
+                  <td class="num" data-etiqueta="MW concedidos" data-vacia={s.conexion_electrica.mw_concedidos != null ? 'no' : 'si'}>{numero(s.conexion_electrica.mw_concedidos, 1) ?? '—'}</td>
                 </tr>
               ))}
             </tbody>

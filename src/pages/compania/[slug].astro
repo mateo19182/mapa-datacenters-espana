@@ -48,7 +48,7 @@ const ultima = propios.map((s) => s.ultima_verificacion).sort().at(-1)
 
     <h2>Emplazamientos</h2>
     <div class="tabla-envoltorio">
-      <table>
+      <table class="tabla-fichas">
         <thead>
           <tr>
             <th>Emplazamiento</th>
@@ -64,15 +64,17 @@ const ultima = propios.map((s) => s.ultima_verificacion).sort().at(-1)
           {propios.map((s) => (
             <tr>
               <td><a href={`/proyecto/${s.id}`}>{s.nombre}</a></td>
-              <td>
-                {s.ubicacion.municipio}
-                <span class="pequeno silencio"><br /><a href={`/region/${aSlug(s.ubicacion.ccaa)}`}>{s.ubicacion.ccaa}</a></span>
+              <td data-etiqueta="Ubicación">
+                <span>
+                  {s.ubicacion.municipio}
+                  <span class="pequeno silencio"><br /><a href={`/region/${aSlug(s.ubicacion.ccaa)}`}>{s.ubicacion.ccaa}</a></span>
+                </span>
               </td>
-              <td><span class={`etiqueta estado-${s.estado}`}><span class="punto"></span>{ESTADO_ETIQUETA[s.estado]}</span></td>
-              <td class="num">{numero(s.resumen_potencia.it?.valor_mw, 1) ?? <span class="silencio">—</span>}</td>
-              <td class="num">{numero(s.resumen_potencia.conexion_red?.valor_mw, 1) ?? <span class="silencio">—</span>}</td>
-              <td class="num">{numero(s.resumen_potencia.no_especificado?.valor_mw, 1) ?? <span class="silencio">—</span>}</td>
-              <td class="num">{s.fases.length || <span class="silencio">—</span>}</td>
+              <td data-etiqueta="Estado"><span class={`etiqueta estado-${s.estado}`}><span class="punto"></span>{ESTADO_ETIQUETA[s.estado]}</span></td>
+              <td class="num" data-etiqueta="MW IT" data-vacia={s.resumen_potencia.it ? 'no' : 'si'}>{numero(s.resumen_potencia.it?.valor_mw, 1) ?? '—'}</td>
+              <td class="num" data-etiqueta="MW conexión" data-vacia={s.resumen_potencia.conexion_red ? 'no' : 'si'}>{numero(s.resumen_potencia.conexion_red?.valor_mw, 1) ?? '—'}</td>
+              <td class="num" data-etiqueta="MW sin tipificar" data-vacia={s.resumen_potencia.no_especificado ? 'no' : 'si'}>{numero(s.resumen_potencia.no_especificado?.valor_mw, 1) ?? '—'}</td>
+              <td class="num" data-etiqueta="Fases" data-vacia={s.fases.length ? 'no' : 'si'}>{s.fases.length || '—'}</td>
             </tr>
           ))}
         </tbody>

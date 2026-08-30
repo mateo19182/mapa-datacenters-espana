@@ -92,7 +92,7 @@ const comprobadas = fuentes.filter((f) => f.enlace).length
     </div>
 
     <div class="tabla-envoltorio">
-      <table id="tabla">
+      <table id="tabla" class="tabla-fichas">
         <thead>
           <tr>
             <th>Referencia</th>
@@ -108,13 +108,13 @@ const comprobadas = fuentes.filter((f) => f.enlace).length
                 <a href={f.url} rel="noopener nofollow" target="_blank">{f.titulo}</a>
                 <span class="pequeno silencio"><br />{f.editor ? `${f.editor} · ` : ''}<span class="mono">{dominio(f.url)}</span></span>
               </td>
-              <td class="pequeno">
+              <td class="pequeno" data-etiqueta="Tipo">
                 {FUENTE_ETIQUETA[f.tipo]}
                 {f.enlace?.clase === 'rota' && <span class="marca-enlace rota" title={`Enlace roto (${f.enlace.motivo})`}>enlace roto</span>}
                 {f.enlace?.clase === 'bloqueada' && <span class="marca-enlace bloqueada" title={`Rechaza al comprobador automático (${f.enlace.motivo}); se abre en un navegador`}>antibot</span>}
               </td>
-              <td class="pequeno">{fechaLegible(f.fecha_publicacion) ?? <span class="silencio">sin fecha</span>}</td>
-              <td class="pequeno">
+              <td class="pequeno" data-etiqueta="Publicado">{fechaLegible(f.fecha_publicacion) ?? <span class="silencio">sin fecha</span>}</td>
+              <td class="pequeno" data-etiqueta="Documenta">
                 {f.usos.map((id, i) => (
                   <>{i > 0 && ' · '}<a href={`/proyecto/${id}`}>{nombreDe.get(id) ?? id}</a></>
                 ))}

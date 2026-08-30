@@ -59,7 +59,7 @@ const afectados = new Set(entradas.map((e) => e.sitio.id)).size
           El registro muestra el rango completo en lugar de una cifra única.
         </p>
         <div class="tabla-envoltorio">
-          <table>
+          <table class="tabla-fichas">
             <thead>
               <tr><th>Emplazamiento</th><th>Magnitud</th><th class="num">Rango observado</th><th class="num">Lecturas</th></tr>
             </thead>
@@ -70,9 +70,9 @@ const afectados = new Set(entradas.map((e) => e.sitio.id)).size
                   .map(([tipo, r]) => (
                     <tr>
                       <td><a href={`/proyecto/${s.id}`}>{s.nombre}</a></td>
-                      <td class="pequeno">{tipo}</td>
-                      <td class="num">{numero(r.minimo_observado, 1)} – {numero(r.maximo_observado, 1)} MW</td>
-                      <td class="num">{r.registros}</td>
+                      <td class="pequeno" data-etiqueta="Magnitud">{tipo}</td>
+                      <td class="num" data-etiqueta="Rango observado">{numero(r.minimo_observado, 1)} – {numero(r.maximo_observado, 1)} MW</td>
+                      <td class="num" data-etiqueta="Lecturas">{r.registros}</td>
                     </tr>
                   )),
               )}
