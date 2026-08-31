@@ -6,19 +6,17 @@ Este documento acompaña a `data/renovables/*.yaml`. Solo entra aquí un activo 
 una fuente lo liga por escrito a un centro de datos o a un operador de centros de
 datos. No es un inventario de renovables en España.
 
-## Qué he encontrado y qué no
+## Qué activos se pueden situar
 
-La parte fácil fue el titular: hay muchos megavatios contratados. La difícil fue
-saber dónde están. De los 22 registros del dataset, solo seis nombran la planta
-concreta, ocho plantas en total: Ciudad Rodrigo, Valdemoro, Iglesias, El Escudo,
-Escatrón II, Fuendetodos II, Cascante y Baobab. El resto son carteras sin
-desglosar. Amazon anuncia 100 proyectos y 3,8 GW en España sin publicar una sola
-lista con nombre, municipio y MW. Repsol firma seis VPPA con Microsoft y no dice
-cuáles son los seis activos. Equinix firma cinco PPA con IGNIS y los sitúa en
-"distintas regiones de España".
-
-Para un mapa es un problema serio, y se dice en vez de disimularlo con un punto
-en el centroide de la provincia.
+Megavatios contratados hay muchos; lo que falta es saber dónde están. De los 22
+registros, solo seis nombran la planta concreta, ocho plantas en total: Ciudad
+Rodrigo, Valdemoro, Iglesias, El Escudo, Escatrón II, Fuendetodos II, Cascante y
+Baobab. El resto son carteras sin desglosar. Amazon anuncia 100 proyectos y 3,8
+GW en España sin publicar una lista con nombre, municipio y MW. Repsol firma seis
+VPPA con Microsoft y no dice cuáles son los seis activos. Equinix firma cinco PPA
+con IGNIS y los sitúa en "distintas regiones de España". Para un mapa es un
+problema serio, y se registra como tal en vez de disimularlo con un punto en el
+centroide de la provincia.
 
 ## Tabla resumen de PPA y generación ligada a CPD en España
 
@@ -57,7 +55,7 @@ publicado:
 
 ## Adicionalidad: cuánta potencia es nueva
 
-Solo cuento como adicional lo que la fuente dice. Donde no lo dice, el campo
+Solo cuenta como adicional lo que la fuente dice. Donde no lo dice, el campo
 `adicionalidad` va a `no_consta` y no se estima.
 
 Declaran nueva construcción:
@@ -90,9 +88,9 @@ No consta:
   Merlin, el PPA de IGNIS con Apto, los dos eólicos de Iberdrola para Microsoft
   y el acuerdo de nLighten con Shell.
 
-Dicho de otro modo, de los grandes compradores solo Microsoft publica una cifra
-de adicionalidad verificable a escala de país. Amazon, con una cartera cinco
-veces mayor sobre el papel, no.
+De los grandes compradores, solo Microsoft publica una cifra de adicionalidad
+verificable a escala de país. Amazon, con una cartera cinco veces mayor sobre el
+papel, no.
 
 ## El BESS y por qué aparece junto a los CPD
 
@@ -102,9 +100,9 @@ años en la Comunidad de Madrid, junto al PPA solar de 426 MW a 40 años. Solari
 lo vende como el primer PPA híbrido de solar y baterías firmado en España para un
 cliente del sector digital.
 
-Ojo con las unidades. 600 MWh es energía almacenable. Ninguna fuente publica los
-MW de ese BESS, así que el campo va a `null`. Mezclar MWh de batería con MW de
-planta o de CPD produce sumas sin sentido.
+600 MWh es energía almacenable, no potencia. Ninguna fuente publica los MW de ese
+BESS, así que el campo va a `null`. Mezclar MWh de batería con MW de planta o de
+CPD produce sumas sin sentido.
 
 Aparecen juntos por una razón física. Un centro de datos consume plano las 24
 horas y la fotovoltaica produce en campana. Sin almacenamiento, un PPA solar
@@ -186,7 +184,7 @@ está, el dataset debería empezar a distinguir tres cosas que hoy se mezclan:
 contrato financiero, entrega física y coincidencia horaria. Y previsiblemente
 veremos aparecer mucho más almacenamiento pegado a los campus.
 
-## Casos que he mirado y he dejado fuera
+## Casos descartados
 
 - Comunidad energética del CPI La Cabañeta, El Burgo de Ebro (Zaragoza), 17,64
   kWp financiados por Amazon dentro del programa Escuela Solar
@@ -205,15 +203,15 @@ veremos aparecer mucho más almacenamiento pegado a los campus.
   Ninguna fuente liga esos MWh a un CPD concreto, así que solo entran los 600 MWh
   del contrato con Merlin.
 - CoreWeave, que según Data Center Dynamics firmó en junio de 2025 un PPA solar y
-  eólico "a gran escala" en España. No he conseguido leer la fuente original ni
-  encontrar la noticia en un medio accesible, y sin verla no la registro.
+  eólico "a gran escala" en España. La fuente original no es accesible ni la
+  noticia aparece en un medio abierto, así que no se registra.
 - Digital Realty, que en mayo de 2024 habría firmado cinco PPA en Francia y
-  España con Bruc y wpd. Mismo problema: no he podido abrir ninguna fuente
-  primaria ni el artículo de El Periódico de la Energía que lo recoge.
+  España con Bruc y wpd. Mismo problema: no hay fuente primaria accesible, ni el
+  artículo de El Periódico de la Energía que lo recoge.
 - Samca, con tres centros de datos en Luceni (Zaragoza) y generación renovable
   propia, incluidas dos plantas solares con baterías por 60 millones. Es
-  exactamente el tipo de caso que busca este dataset. Lo único que he podido leer
-  en una fuente accesible es que el PIGA de Luceni prevé "llegar a 300 MW de
+  el tipo de caso que busca este registro. Lo único legible en fuente accesible es
+  que el PIGA de Luceni prevé "llegar a 300 MW de
   potencia, con un consumo potencial de 2.600 GWh"
   ([AraInfo, 2026-02-11](https://arainfo.org/el-ano-de-los-pigas-las-macrocorporaciones-se-aduenan-de-aragon/)),
   y ese texto no describe la generación asociada. Heraldo, El
@@ -230,15 +228,15 @@ Lo que no es público, ordenado por lo que más daña al mapa.
    MW entre los dos acuerdos) se anuncian sin nombre de planta ni municipio. Son
    más de 5 GW anunciados que no se pueden situar en un mapa.
 2. **Coordenadas.** Ningún fichero lleva `lat`/`lon`. Donde conozco el municipio
-   he puesto `precision: municipio` y he dejado las coordenadas a `null` en vez de
-   inventar un centroide. Geocodificar contra una fuente oficial de municipios es
-   trabajo pendiente, y debe hacerse con procedencia propia.
+   el campo va a `precision: municipio` y las coordenadas a `null`, en vez de
+   inventar un centroide. Geocodificar contra una fuente oficial de municipios
+   queda pendiente, y debe hacerse con procedencia propia.
 3. **Asignación a CPD concreto.** Casi ningún PPA de hyperscaler se asigna a un
    emplazamiento. `cpds_relacionados` solo está relleno en los tres casos de
    generación en el propio proyecto: Meta en Talavera, Acciona e IGNIS en Segovia
    e Ingenostrum en Cáceres. En los dieciocho contratos de compraventa va vacío a
    propósito. Cruzarlos por operador contra `data/sites/` sería una
-   atribución nuestra, no de la fuente.
+   atribución propia, no de la fuente.
 4. **Precios y duración.** El precio nunca se publica. La duración solo consta en
    siete de los dieciocho contratos.
 5. **Potencia de las baterías.** Los 600 MWh de Merlin y Solaria no llevan MW
@@ -256,7 +254,7 @@ Lo que no es público, ordenado por lo que más daña al mapa.
    a llamar.
 9. **Verificación de puesta en servicio.** De los activos con fecha prevista
    (Ignis-Equinix 2025, Sonnedix 2024, Repsol-Microsoft diciembre de 2025,
-   Ciudad Rodrigo 2025) no he confirmado ninguno operativo. Los estados están
+   Ciudad Rodrigo 2025) ninguno se ha confirmado operativo. Los estados están
    registrados como los describía la fuente en su fecha, no como están hoy.
 
 ## Sesgo de las fuentes

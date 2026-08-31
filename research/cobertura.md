@@ -5,16 +5,13 @@ fecha: 163 fichas en `data/sites/`, 133 subestaciones y 548 nudos con capacidad 
 `data/red/`, 41 actuaciones de red, 22 activos renovables y diez dossieres de
 investigación en `research/`.
 
-Quien firma esto no participó en la investigación. El objetivo no es evaluar el trabajo de
-los diez investigadores, sino responder a una pregunta concreta: **si alguien publica este
-mapa mañana, ¿qué está mirando y qué no?**
-
-Todas las cifras de este documento salen de contar sobre `src/data/*.json`. Donde hay una
+Auditoría independiente del resultado, no del trabajo de investigación: qué cubre este mapa
+y qué no cubre. Todas las cifras salen de contar sobre `src/data/*.json`; donde hay una
 estimación, se dice.
 
 ---
 
-## 1. La respuesta corta
+## 1. Resumen
 
 El mapa cubre bien **quién promueve centros de datos en España y dónde**, siempre que el
 proyecto sea grande y tenga prensa. Cubre mal **cuánta potencia hay**, y cubre muy mal
@@ -61,9 +58,9 @@ lectura del resultado.
 | Sin comunidad asignada | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 |
 | **Total** | **163** | **67** | **2** | **4** | **19** | **7** | **23** | **31** | **1** | **3** | **6** |
 
-Baleares, Canarias, Ceuta y Melilla no tienen ninguna ficha. El encargo era peninsular, así
-que es una ausencia por diseño, pero conviene decirlo en cualquier publicación: el mapa no
-cubre los aterrajes de cable canarios ni el nodo de Baleares.
+Baleares, Canarias, Ceuta y Melilla no tienen ninguna ficha. Es una ausencia por diseño,
+porque el encargo era peninsular, pero deja fuera los aterrajes de cable canarios y el nodo
+de Baleares.
 
 La ficha sin comunidad es `echelon-iberdrola-madrid-sur`, que además no tiene municipio ni
 coordenadas. Es un caso real de proyecto anunciado cuya ubicación nadie ha publicado, no un
@@ -97,13 +94,13 @@ De esos 11.055 MW sin tipificar, **3.967 MW son potencia térmica** (los MWt de 
 electrógenos diésel que declaran las autorizaciones ambientales de AWS en Aragón y la
 central asociada a Monfarracinos) y otros 221 MW son potencia eléctrica de generadores de
 respaldo. Es decir, **el 38% del bloque de MW sin tipificar no es carga informática ni
-demanda de red, es calor de motores diésel**. Los investigadores hicieron bien en no
-convertirlo, pero cualquier visualización que sume la columna `no_especificado` producirá
-una cifra sin sentido físico. Esta es, con diferencia, la trampa más peligrosa del dataset.
+demanda de red, es calor de motores diésel**. No convertirlo es lo correcto, pero cualquier
+visualización que sume la columna `no_especificado` producirá una cifra sin sentido
+físico. Esta es, con diferencia, la trampa más peligrosa del dataset.
 
-Un contraste que conviene tener presente: de las 73 fichas operativas o parcialmente
-operativas, solo **8** publican MW IT y **33** no publican ninguna potencia. El mapa no está
-en condiciones de decir cuánta capacidad hay en servicio en España.
+De las 73 fichas operativas o parcialmente operativas, solo **8** publican MW IT y **33** no
+publican ninguna potencia. El mapa no está en condiciones de decir cuánta capacidad hay en
+servicio en España.
 
 ### 2.3 Precisión de la ubicación
 
@@ -205,12 +202,11 @@ Y el desglose de esas 81 fuentes oficiales por origen:
 veces), el DOG (2) y el BOJA (1).** No hay ni una sola cita del BOCM, DOGC, DOGV, BORM,
 BOPV, DOCM, BOCYL, DOE, BON, BOR ni BOPA.
 
-Los investigadores explicaron por qué, y las explicaciones son técnicas y coincidentes:
-DOGV y BORM publican buscadores JavaScript sin endpoint navegable; `govern.cat` devuelve 403
-a cualquier petición; BOPV, BOPA y BOC solo aceptan búsquedas POST, que la herramienta de
-lectura no ejecuta; el BOCM y el DOCM no se pudieron consultar por buscador. El BOA, en
-cambio, expone un endpoint `BRSCGI` que devuelve JSON. Aragón no salió mejor por mérito de
-sus investigadores. Salió mejor porque su boletín tiene API.
+Las razones son técnicas: DOGV y BORM publican buscadores JavaScript sin endpoint
+navegable; `govern.cat` devuelve 403 a cualquier petición; BOPV, BOPA y BOC solo aceptan
+búsquedas POST; el BOCM y el DOCM no se pudieron consultar por buscador. El BOA, en cambio,
+expone un endpoint `BRSCGI` que devuelve JSON. Aragón no está mejor cubierto por mérito de
+la investigación, sino porque su boletín tiene API.
 
 ### 2.6 Conexión eléctrica
 
@@ -250,8 +246,8 @@ Hay también una incoherencia de nomenclatura que rompe cualquier agrupación au
 capas: las fichas usan `Comunitat Valenciana` y la capa de red usa `Comunidad Valenciana`;
 las fichas usan `Navarra` y la capa de renovables usa `Comunidad Foral de Navarra`.
 
-**Capa renovable.** 22 activos. **Ninguno tiene coordenadas**, por decisión explícita del
-investigador, que prefirió dejar `null` a inventar centroides. Nueve de los 22 no tienen ni
+**Capa renovable.** 22 activos. **Ninguno tiene coordenadas**, por decisión explícita de
+registro: `null` antes que centroides inventados. Nueve de los 22 no tienen ni
 comunidad autónoma, porque la fuente anuncia un PPA sin decir dónde están las plantas. Solo
 4 de 22 tienen `cpds_relacionados` poblado. La capa, hoy, no se puede dibujar ni cruzar.
 
@@ -402,8 +398,8 @@ mayor relación entre esfuerzo y consecuencia de toda la lista.
 Las autorizaciones ambientales integradas de INAGA son la mejor fuente documental del
 dataset entero, con coordenadas UTM y expediente. Y **ninguna publica MW IT**. Lo que
 publican es la potencia térmica nominal de los grupos electrógenos diésel de respaldo: 327,
-342, 750 y 1.169 MWt. Los investigadores los registraron como `no_especificado` con nota
-explícita, que era lo correcto. El resultado es que Aragón, la comunidad mejor documentada
+342, 750 y 1.169 MWt. Se registraron como `no_especificado` con nota explícita, que es lo
+correcto. El resultado es que Aragón, la comunidad mejor documentada
 del mapa, es también la que aporta el mayor bloque de MW que no significan nada para el
 lector. Ninguna cifra pública permite hoy decir cuánta carga informática tiene AWS en
 España.
@@ -479,7 +475,7 @@ salió de abrir URL directamente, de los feeds RSS de Google News, de los buscad
 de Data Center Market y pv magazine, de la API de PeeringDB y de proxies de extracción de
 texto para las páginas tras Cloudflare.
 
-El sesgo que eso deja no es aleatorio, y conviene enunciarlo con precisión.
+El sesgo que eso deja no es aleatorio.
 
 **El mapa mide la accesibilidad automatizada de las fuentes tanto como mide la realidad
 industrial.** Un proyecto entra en el dataset si, y solo si, existe al menos un documento
@@ -533,8 +529,8 @@ Con la misma claridad, y por orden de gravedad del error:
 5. **Que la ausencia de proyectos paralizados signifique que no los hay.** En Cataluña no se
    localizó ninguno pese a buscarlos expresamente, y hay oposición organizada documentada en
    Ribera d'Ebre y en Lleida. En todo el dataset hay 1 paralizado y 3 cancelados, y los tres
-   cancelados son valencianos, precisamente porque el investigador de Levante encontró el
-   rastro documental del rechazo de conexión de Catadau y del concurso fallido de los Docks.
+   cancelados son valencianos, precisamente porque en Levante apareció el rastro documental
+   del rechazo de conexión de Catadau y del concurso fallido de los Docks.
    La escasez de proyectos caídos es un artefacto de qué se publica, no una propiedad del
    sector.
 
@@ -582,7 +578,7 @@ opaco. El problema no es lo que falta. El problema sería publicarlo sin decir q
 
 6. **Extender la capa eléctrica a las siete comunidades que faltan**, o marcar explícitamente
    en la interfaz que allí no hay datos de red. Veinte fichas están sobre un mapa eléctrico en
-   blanco, y ahora mismo nada distingue "no hay capacidad" de "no hemos cargado el dato".
+   blanco, y ahora mismo nada distingue "no hay capacidad" de "el dato no está cargado".
 
 7. **Unificar los nombres de comunidad entre capas** (`Comunitat Valenciana` frente a
    `Comunidad Valenciana`, `Navarra` frente a `Comunidad Foral de Navarra`). Es una hora de
@@ -594,8 +590,8 @@ opaco. El problema no es lo que falta. El problema sería publicarlo sin decir q
 
 9. **Perseguir el pipeline de Madrid.** CBRE cifraba en agosto de 2025 en 554 MW los
    proyectos en tramitación en la Comunidad, y Colliers en 628 MW a cinco años. Las 34 fichas
-   madrileñas no explican ese volumen, y el propio investigador estima cubrir menos del 40%
-   de lo anunciado. Dos listados públicos sin explotar: los 17 proyectos de Especial Interés
+   madrileñas no explican ese volumen: la cobertura estimada no llega al 40% de lo
+   anunciado. Dos listados públicos sin explotar: los 17 proyectos de Especial Interés
    del Acelerador de Inversiones de la Comunidad de Madrid (11 de ellos son CPD) y los 26
    proyectos estratégicos de la Generalitat.
 
