@@ -39,10 +39,9 @@ const afectados = new Set(entradas.map((e) => e.sitio.id)).size
   <div class="contenedor">
     <h1>Incertidumbres</h1>
     <p class="sumario">
-      {numero(entradas.length)} contradicciones y lagunas documentadas en {afectados} de los
-      {sitios.length} emplazamientos. No están resueltas: están registradas. Cuando dos fuentes
-      fiables dicen cosas distintas, elegir una en silencio produce un dato limpio y falso, así que
-      aquí se conservan ambas y se dice cuál es el choque.
+      {numero(entradas.length)} contradicciones y lagunas en {afectados} de los {sitios.length}
+      emplazamientos. Ninguna está resuelta. Todas están registradas, con las dos versiones y el
+      punto exacto del choque.
     </p>
 
     <p class="pequeno">
@@ -55,8 +54,8 @@ const afectados = new Set(entradas.map((e) => e.sitio.id)).size
       <>
         <h2>Cifras de potencia que no coinciden</h2>
         <p class="pequeno silencio">
-          Emplazamientos con dos o más lecturas distintas para la misma magnitud y el mismo ámbito.
-          El registro muestra el rango completo en lugar de una cifra única.
+          Dos o más lecturas distintas de la misma magnitud y el mismo ámbito. Se muestra el rango,
+          no una cifra única.
         </p>
         <div class="tabla-envoltorio">
           <table class="tabla-fichas">

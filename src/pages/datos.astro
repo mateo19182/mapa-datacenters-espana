@@ -36,8 +36,8 @@ const avisos = parte.filter((l) => l.includes('aviso:')).length
   <div class="contenedor-estrecho texto">
     <h1>Datos</h1>
     <p class="sumario">
-      Todo el conjunto está disponible en formatos abiertos. Lo que se ve en el mapa es exactamente
-      lo que hay en estos ficheros: no existe ninguna capa de datos privada.
+      Todo el conjunto está en formatos abiertos. Lo que se ve en el mapa es exactamente lo que hay
+      en estos ficheros. No hay ninguna capa de datos privada.
     </p>
 
     <dl class="cifras">
@@ -76,11 +76,11 @@ const avisos = parte.filter((l) => l.includes('aviso:')).length
 
     <h2>Estructura</h2>
     <p>
-      La fuente de verdad son ficheros YAML, uno por emplazamiento, pensados para leerse y revisarse
-      a mano. El proceso de construcción los valida contra un esquema, los carga en SQLite y exporta
-      los JSON y GeoJSON que consume el sitio. El fichero <code>.db</code> incluye una tabla
-      <code>respaldos</code> que registra qué fuente sostiene cada campo concreto de cada
-      emplazamiento: es la trazabilidad a nivel de dato, no solo de ficha.
+      La fuente de verdad son ficheros YAML, uno por emplazamiento, pensados para revisarse a mano.
+      La construcción los valida contra un esquema, los carga en SQLite y exporta los JSON y GeoJSON
+      que consume el sitio. El <code>.db</code> incluye una tabla <code>respaldos</code> con qué
+      fuente sostiene cada campo de cada emplazamiento, es decir, trazabilidad por dato y no solo
+      por ficha.
     </p>
 
     <pre class="arbol"><code>{`data/
@@ -91,26 +91,28 @@ const avisos = parte.filter((l) => l.includes('aviso:')).length
   red/lineas.geojson     trazado 220/400 kV cacheado desde OpenStreetMap
   renovables/*.yaml      generación y BESS vinculados a centros concretos
   geo/municipios.json    centroides municipales cacheados (OpenStreetMap)
+  geo/contorno.geojson   contorno de costa para el mapa sin fondo (Natural Earth)
+  huellas.json           huella del contenido de cada fuente, para detectar cambios
+  propuestas/*.yaml      cambios propuestos, pendientes de integrar
 
 scripts/
-  validate.mjs   valida el esquema y la integridad de las referencias
-  build-db.mjs   vuelca a SQLite
-  export.mjs     genera los JSON y GeoJSON del sitio
+  validate.mjs           valida el esquema y la integridad de las referencias
+  reconcile.mjs          busca variantes de nombre, duplicados e incoherencias
+  build-db.mjs           vuelca a SQLite
+  export.mjs             genera los JSON y GeoJSON del sitio
   check-updates.mjs      detecta cambios en las fuentes y arma la cola de revisión
   apply-proposals.mjs    integra propuestas y separa los conflictos
   geocode-municipios.mjs cachea centroides municipales
-  fetch-osm-grid.mjs     cachea el trazado de la red de transporte`}</code></pre>
+  fetch-osm-grid.mjs     cachea el trazado de la red de transporte
+  fetch-contorno.mjs     cachea el contorno de costa de reserva`}</code></pre>
 
     <h2>Control de calidad</h2>
     <p>
       Cada construcción genera un parte de validación. Comprueba el esquema, que toda referencia a
-      una fuente exista, que no haya identificadores repetidos, que las coordenadas caigan dentro de
-      España peninsular, que ningún emplazamiento se haya registrado dos veces con nombres distintos
-      y que cada cifra de potencia aparezca de verdad en la cita de alguna de sus fuentes.
-    </p>
-    <p>
-      Los defectos que esa comprobación encuentra no se esconden: son parte de lo que hay que saber
-      sobre el conjunto antes de usarlo.
+      una fuente exista, que no haya identificadores repetidos, que las coordenadas caigan en España
+      peninsular, que ningún emplazamiento esté registrado dos veces con nombres distintos y que
+      cada cifra de potencia aparezca de verdad en la cita de alguna de sus fuentes. Lo que
+      encuentra se publica aquí.
     </p>
 
     {resumen.calidad && (
@@ -141,12 +143,11 @@ scripts/
     )}
 
     <div class="nota">
-      <strong>El defecto conocido más importante.</strong> En una parte de los registros, la fuente
-      citada respalda el dato pero el fragmento transcrito en el campo de cita no incluye la cifra.
-      El dato suele estar en la página; lo que falla es que un tercero pueda comprobarlo sin
-      rehacer la investigación, que es justamente lo que este registro promete. Corregirlo consiste
-      en sustituir esas citas por el fragmento que sí contiene el número, y está en la lista de
-      trabajo pendiente.
+      <strong>El defecto conocido más importante.</strong> En una parte de los registros la fuente
+      respalda el dato, pero el fragmento transcrito en el campo de cita no incluye la cifra. El
+      número suele estar en la página. Lo que falla es poder comprobarlo sin rehacer la
+      investigación, que es lo que este registro promete. Está pendiente sustituir esas citas por el
+      fragmento que sí contiene el número.
     </div>
 
     <p class="pequeno">
@@ -154,27 +155,55 @@ scripts/
       {' '}<strong>{avisos}</strong> {avisos === 1 ? 'aviso' : 'avisos'}.
     </p>
 
-    <h2>Actualización</h2>
+    <h2 id="actualizacion">Actualización</h2>
     <p>
-      El conjunto no depende de ningún raspado en tiempo real. Un proceso programado revisa las
-      fuentes registradas, detecta cambios y prepara una propuesta de actualización que un humano
-      revisa antes de integrarla. Cuando lo nuevo contradice lo registrado, el conflicto se marca
-      explícitamente y no se sobrescribe nada hasta resolverlo.
+      Nada se raspa en tiempo real. Cada lunes, un flujo de GitHub Actions da estos cuatro pasos,
+      que también se pueden lanzar a mano.
+    </p>
+    <ol class="pasos">
+      <li>
+        <strong>Releer las fuentes.</strong> <code>check-updates.mjs</code> descarga todas las URL
+        registradas, de cuatro en cuatro, y compara una huella de su texto con la guardada en
+        <code>data/huellas.json</code>. Separa el enlace muerto del bloqueado, porque un 403 de un
+        muro anti-robots no significa que la fuente haya desaparecido. Marca además las fichas con
+        más de 180 días sin comprobar. El resultado es una cola de revisión, no un cambio de datos.
+      </li>
+      <li>
+        <strong>Sellar lo verificado.</strong> Cuando todas las fuentes de una ficha se releen sin
+        cambios, el proceso actualiza su <code>ultima_verificacion</code>. Es la única escritura
+        automática que existe y no toca ningún dato, solo certifica el día de la comprobación.
+      </li>
+      <li>
+        <strong>Integrar propuestas.</strong> Una propuesta es un YAML parcial en{' '}
+        <code>data/propuestas/</code> con los campos que cambian. Un campo que no existía se añade;
+        uno idéntico se ignora; uno con otro valor es un <strong>conflicto y no se sobrescribe
+        nunca</strong>. Los conflictos se listan para decidirlos a mano, que casi siempre significa
+        conservar ambas versiones y documentar la discrepancia.
+      </li>
+      <li>
+        <strong>Abrir una propuesta de cambio.</strong> El flujo revalida el esquema y abre un pull
+        request con los tres partes: fuentes cambiadas, propuestas aplicadas y conflictos, y estado
+        de la validación. Se fusiona a mano. Al fusionar, el sitio se reconstruye y se publica.
+      </li>
+    </ol>
+    <p>
+      Falta el paso más difícil de automatizar, que es redactar las propuestas. Detectar que una
+      fuente cambió es mecánico; leer el cambio y decidir qué cifra registrar, no. Hoy eso lo hace
+      una persona sobre la cola de revisión.
     </p>
     <p>
-      El resultado es que los datos envejecen despacio y de forma visible: cada ficha muestra su
-      fecha de última verificación, de modo que se puede juzgar cuánto fiarse de ella.
+      El efecto es que los datos envejecen despacio y a la vista. Cada ficha muestra su fecha de
+      última verificación.
     </p>
 
     <h2>Licencia y atribución</h2>
     <p>
-      Los datos originales de este registro se publican bajo
-      <a href="https://creativecommons.org/licenses/by/4.0/deed.es" rel="noopener"> CC BY 4.0</a>: se
-      pueden reutilizar citando la procedencia. El trazado de la red eléctrica deriva de
-      OpenStreetMap y se rige por la
-      <a href="https://opendatacommons.org/licenses/odbl/" rel="noopener"> ODbL</a>. La cartografía
-      base es de OpenStreetMap y CARTO. Los textos citados en el campo de cita pertenecen a sus
-      editores y se reproducen como fragmento breve a efectos de verificación.
+      Los datos originales se publican bajo
+      <a href="https://creativecommons.org/licenses/by/4.0/deed.es" rel="noopener"> CC BY 4.0</a>,
+      reutilizables citando la procedencia. El trazado de la red deriva de OpenStreetMap y se rige
+      por la <a href="https://opendatacommons.org/licenses/odbl/" rel="noopener"> ODbL</a>. La
+      cartografía base es de OpenStreetMap y CARTO. Las citas pertenecen a sus editores y se
+      reproducen como fragmento breve para poder verificar el dato.
     </p>
   </div>
 </Base>
@@ -186,6 +215,15 @@ scripts/
 
   .texto p {
     max-width: 42rem;
+  }
+
+  .pasos {
+    max-width: 42rem;
+    padding-left: 1.2rem;
+  }
+
+  .pasos li {
+    margin-bottom: 0.7rem;
   }
 
   .mono {

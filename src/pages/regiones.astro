@@ -12,9 +12,9 @@ import { ESTADO_ETIQUETA, ORDEN_ESTADOS, numero } from '../lib/etiquetas.js'
   <div class="contenedor">
     <h1>Regiones</h1>
     <p class="sumario">
-      Reparto por comunidad autónoma de los emplazamientos registrados. El reparto refleja tanto la
-      concentración real de la actividad como el desigual acceso a fuentes públicas: donde el boletín
-      autonómico publica las autorizaciones eléctricas, la cobertura es mucho mejor.
+      Reparto por comunidad autónoma. Refleja la concentración real de la actividad y también el
+      desigual acceso a fuentes públicas. Donde el boletín autonómico publica las autorizaciones
+      eléctricas, la cobertura es mucho mejor.
     </p>
 
     <div class="rejilla">
@@ -52,8 +52,7 @@ import { ESTADO_ETIQUETA, ORDEN_ESTADOS, numero } from '../lib/etiquetas.js'
       <>
         <h2>Sin región asignada</h2>
         <p class="pequeno silencio">
-          Proyectos cuyas fuentes no publican el municipio. Se registran igualmente, porque
-          omitirlos crearía un hueco mayor que el que describen.
+          Proyectos cuyas fuentes no publican el municipio. Se registran igualmente.
         </p>
         <ul class="sin-region">
           {sitios
@@ -61,7 +60,7 @@ import { ESTADO_ETIQUETA, ORDEN_ESTADOS, numero } from '../lib/etiquetas.js'
             .map((s) => (
               <li>
                 <a href={`/proyecto/${s.id}`}>{s.nombre}</a>
-                <span class="silencio pequeno"> — {s.operador ?? 'operador sin determinar'}</span>
+                <span class="silencio pequeno"> · {s.operador ?? 'operador sin determinar'}</span>
               </li>
             ))}
         </ul>

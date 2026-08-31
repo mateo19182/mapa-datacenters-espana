@@ -40,16 +40,16 @@ export const POTENCIA_ETIQUETA = {
 export const TIPOS_CAPACIDAD = ['it', 'conexion_red', 'instalada_total', 'no_especificado']
 
 export const POTENCIA_DESCRIPCION = {
-  it: 'Carga TI: la potencia que consumen los servidores. Es la magnitud que permite comparar centros de datos entre sí.',
+  it: 'La potencia que consumen los servidores. Es la única magnitud que permite comparar centros entre sí.',
   conexion_red:
-    'Potencia solicitada o concedida en el punto de conexión con la red eléctrica. Siempre mayor que la carga TI e incluye refrigeración y pérdidas.',
+    'Potencia solicitada o concedida en el punto de conexión con la red. Siempre mayor que la carga TI, porque incluye refrigeración y pérdidas.',
   instalada_total: 'Potencia eléctrica instalada del edificio, incluidos climatización y servicios auxiliares.',
   termica_respaldo:
-    'Potencia de los grupos electrógenos de respaldo, tal como se declara en las autorizaciones ambientales. Mide la capacidad de los motores diésel de emergencia, no la del centro de datos, y en los expedientes suele expresarse como potencia térmica. No se agrega con ninguna otra magnitud.',
+    'Potencia de los grupos electrógenos de emergencia, según las autorizaciones ambientales, a menudo expresada como potencia térmica. Mide los motores diésel, no el centro de datos. No se agrega con nada.',
   generacion_asociada:
-    'Potencia de una central de generación vinculada al emplazamiento. Es capacidad de producir electricidad, no de consumirla: no describe el tamaño del centro de datos.',
+    'Potencia de una central de generación vinculada al emplazamiento. Es capacidad de producir electricidad, no de consumirla, y no describe el tamaño del centro.',
   no_especificado:
-    'La fuente da una cifra en MW sin aclarar a qué corresponde. No es comparable con las anteriores y no se suma con ellas.',
+    'La fuente da una cifra en MW sin aclarar a qué corresponde. No se compara ni se suma con las anteriores.',
 }
 
 export const PRECISION_ETIQUETA = {

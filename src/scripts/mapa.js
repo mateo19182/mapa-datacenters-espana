@@ -494,11 +494,11 @@ function iconoSubestacion() {
 
 // --- arranque tolerante a fallos ---------------------------------------------
 
-// El estilo base vive en un CDN ajeno. Cuando no se puede cargar —bloqueador de
-// contenidos, filtrado de red corporativo, caída del proveedor— el mapa se
-// queda negro y, antes de este cambio, se llevaba consigo el resto de la vista:
-// el `load` no llegaba nunca, así que ni los datos ni los filtros se montaban.
-// Ahora se cae a un estilo servido desde este mismo dominio.
+// El estilo base vive en un CDN ajeno. Cuando no se puede cargar, por un
+// bloqueador de contenidos o un filtro de red, el mapa se queda negro y, antes
+// de este cambio, se llevaba consigo el resto de la vista: el `load` no llegaba
+// nunca, así que ni los datos ni los filtros se montaban. Ahora se cae a un
+// estilo servido desde este mismo dominio.
 const ESTILO_RESERVA = () => ({
   version: 8,
   sources: {
@@ -567,8 +567,8 @@ function avisarEnMapa({ titulo, texto, accion }) {
  * carga, y esperarlo sin límite deja la vista a medio montar.
  *
  * Se consulta `isStyleLoaded()` en vez de esperar un evento: `load` solo se
- * emite en la primera carga —en un segundo intento no llegaría nunca— y
- * `styledata` se adelanta a que el estilo esté realmente listo.
+ * emite en la primera carga, así que en un segundo intento no llegaría nunca,
+ * y `styledata` se adelanta a que el estilo esté listo de verdad.
  */
 function esperarEstilo(limite = 9000) {
   return new Promise((resolver) => {
@@ -627,7 +627,7 @@ async function montarVista(opciones = {}) {
     avisarEnMapa({
       titulo: 'Este navegador no puede dibujar el mapa',
       texto:
-        'El mapa necesita WebGL, que aquí está desactivado o no disponible. El buscador y los filtros del panel siguen funcionando, y el registro completo está en <a href="/proyectos">la lista de proyectos</a>.',
+        'El mapa necesita WebGL, desactivado o no disponible aquí. El buscador y los filtros del panel siguen funcionando; el registro completo está en <a href="/proyectos">la lista de proyectos</a>.',
     })
     conectarControles()
     aplicar()
@@ -663,7 +663,7 @@ async function montarVista(opciones = {}) {
     avisarEnMapa({
       titulo: 'Sin mapa base',
       texto:
-        'No se ha podido cargar la cartografía de fondo (CARTO). Suele ser un bloqueador de contenidos o un filtro de red. Los emplazamientos y las capas eléctricas se dibujan igual, sobre un contorno de costa mínimo.',
+        'No carga la cartografía de fondo (CARTO), casi siempre por un bloqueador de contenidos o un filtro de red. Los datos se dibujan igual, sobre un contorno de costa mínimo.',
       accion: { texto: 'Reintentar', hacer: reintentarMapaBase },
     })
   }

@@ -40,9 +40,8 @@ const comprobadas = fuentes.filter((f) => f.enlace).length
   <div class="contenedor">
     <h1>Fuentes</h1>
     <p class="sumario">
-      {numero(total)} referencias distintas sostienen este registro. Cada una aparece citada en la
-      ficha de los emplazamientos que documenta. Cuando dos fuentes se contradicen, ambas quedan
-      registradas y la discrepancia se hace visible en la ficha en lugar de resolverse en silencio.
+      {numero(total)} referencias distintas sostienen este registro, cada una citada en la ficha de
+      los emplazamientos que documenta.
     </p>
 
     {comprobadas > 0 && (
@@ -66,8 +65,8 @@ const comprobadas = fuentes.filter((f) => f.enlace).length
           ))}
         </ul>
         <p class="pequeno silencio">
-          La proporción de fuentes oficiales y de compañía frente a prensa es el mejor indicador de
-          solidez del conjunto.
+          Cuánto pesan las fuentes oficiales y de compañía frente a la prensa es el mejor indicador
+          de solidez del conjunto.
         </p>
       </section>
 

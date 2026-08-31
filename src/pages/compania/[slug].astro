@@ -41,9 +41,9 @@ const ultima = propios.map((s) => s.ultima_verificacion).sort().at(-1)
     <Cartera cartera={c} />
 
     <p class="nota pequeno">
-      <strong>Sobre estas sumas.</strong> Solo agregan los emplazamientos que publican cada magnitud,
-      y MW IT, MW de conexión y MW sin tipificar nunca se mezclan. No son la capacidad total de la
-      compañía en España: son la parte documentada públicamente y verificable.
+      <strong>Sobre estas sumas.</strong> Solo agregan los emplazamientos que publican cada
+      magnitud, y nunca mezclan MW IT, de conexión y sin tipificar. No son la capacidad total de la
+      compañía en España, sino su parte documentada.
     </p>
 
     <h2>Emplazamientos</h2>
@@ -85,14 +85,14 @@ const ultima = propios.map((s) => s.ultima_verificacion).sort().at(-1)
       <>
         <h2>Otros emplazamientos vinculados</h2>
         <p class="pequeno silencio">
-          Operados por terceros, pero con {c.nombre} como propietario o cliente ancla según las fuentes.
+          Operados por terceros, con {c.nombre} como propietario o cliente ancla según las fuentes.
         </p>
         <ul class="lista-simple">
           {relacionados.map((s) => (
             <li>
               <a href={`/proyecto/${s.id}`}>{s.nombre}</a>
               <span class="silencio pequeno">
-                — operado por {s.operador}
+                · operado por {s.operador}
                 {s.cliente_ancla === c.nombre ? ' · cliente ancla' : ' · propietario'}
               </span>
             </li>
@@ -109,7 +109,7 @@ const ultima = propios.map((s) => s.ultima_verificacion).sort().at(-1)
             s.incertidumbres.map((u) => (
               <li>
                 <a href={`/proyecto/${s.id}#fuentes`}>{s.nombre}</a>
-                <span class="silencio"> — {u.descripcion}</span>
+                <span class="silencio"> · {u.descripcion}</span>
               </li>
             )),
           )}

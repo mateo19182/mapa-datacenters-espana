@@ -61,16 +61,16 @@ const explicarLimitante = (codigo) =>
   <div class="contenedor">
     <h1>Red eléctrica</h1>
     <p class="sumario">
-      El cuello de botella de los centros de datos en España no es el suelo ni el capital: es el
-      permiso para enchufarse a la red. Esta sección reúne lo que se puede saber con fuentes
-      públicas sobre cómo se reparte ese derecho y dónde queda margen.
+      El cuello de botella de los centros de datos en España no es el suelo ni el capital, es el
+      permiso para enchufarse a la red. Aquí está lo que se puede saber con fuentes públicas sobre
+      cómo se reparte ese derecho y dónde queda margen.
     </p>
 
     <div class="nota">
-      <strong>Demanda, no generación.</strong> Todas las cifras de capacidad de esta página se
-      refieren a la capacidad de acceso para <em>demanda</em> (consumo). La capacidad de acceso
-      para <em>generación</em> se calcula con criterios distintos, se publica en ficheros distintos
-      y no es comparable ni sumable con esta. Confundirlas es el error clásico en este terreno.
+      <strong>Demanda, no generación.</strong> Todas las cifras de capacidad de esta página son de
+      acceso para <em>demanda</em> (consumo). La de <em>generación</em> se calcula con otros
+      criterios, se publica aparte y no es comparable ni sumable con esta. Confundirlas es el error
+      clásico.
     </div>
 
     {nudos.length > 0 && (
@@ -128,7 +128,7 @@ const explicarLimitante = (codigo) =>
         </div>
         <p class="pequeno silencio">
           «Otorgada» es potencia con permiso concedido; «en curso», solicitudes en tramitación. Ni
-          una ni otra son centros construidos, y una parte no llegará a serlo nunca.
+          una ni otra son centros construidos.
         </p>
 
         <h2>Nudos con más margen para nueva demanda</h2>
@@ -207,8 +207,8 @@ const explicarLimitante = (codigo) =>
       <>
         <h2>Emplazamientos con conexión documentada</h2>
         <p class="pequeno silencio">
-          Los que declaran subestación de conexión en alguna fuente. Es una minoría: en la mayoría
-          de los proyectos, el punto de conexión no se hace público.
+          Los que declaran subestación de conexión en alguna fuente. Son una minoría, porque el
+          punto de conexión casi nunca se hace público.
         </p>
         <div class="tabla-envoltorio">
           <table class="tabla-fichas">
@@ -239,8 +239,8 @@ const explicarLimitante = (codigo) =>
     </article>
 
     <p class="pequeno silencio" style="margin-bottom:3rem">
-      Las {red.length} subestaciones registradas pueden verse sobre el mapa activando la capa
-      correspondiente en <a href="/?capas=lineas,subestaciones">la vista cartográfica</a>.
+      Las {red.length} subestaciones registradas se pueden ver
+      <a href="/?capas=lineas,subestaciones">sobre el mapa</a>.
     </p>
   </div>
 </Base>

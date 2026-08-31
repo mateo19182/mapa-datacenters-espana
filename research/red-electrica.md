@@ -3,14 +3,9 @@
 *Última verificación: 29 de agosto de 2026. Todas las cifras llevan fecha porque casi
 todas caducan.*
 
-Este documento explica cómo se reparte hoy en España el derecho a enchufarse a la red
-eléctrica, por qué ese reparto se ha convertido en el cuello de botella de los centros
-de datos, y qué se sabe —y qué no— con fuentes públicas.
-
-Una advertencia que atraviesa todo el texto: **capacidad de acceso para DEMANDA y
-capacidad de acceso para GENERACIÓN son dos cosas distintas**, se calculan con criterios
-distintos, se publican en ficheros distintos y no se pueden comparar ni sumar. Aquí solo
-se habla de demanda (consumo). Confundirlas es el error clásico en este terreno.
+Cómo se reparte hoy en España el derecho a enchufarse a la red eléctrica, por qué ese
+reparto se ha vuelto el cuello de botella de los centros de datos, y qué se sabe con
+fuentes públicas. Todas las cifras son de capacidad de acceso para demanda.
 
 ---
 
@@ -23,7 +18,7 @@ vez pero significan cosas diferentes:
 
 - **Permiso de acceso**: dice que *el sistema eléctrico puede suministrar* esa potencia
   en ese punto. Es una cuestión de capacidad del conjunto de la red.
-- **Permiso de conexión**: dice que *físicamente se puede enganchar* ahí — que hay
+- **Permiso de conexión**: dice que *físicamente se puede enganchar* ahí, que hay
   posición libre en la subestación, que el diseño es viable, y con qué obras.
 
 El marco general es el [Real Decreto 1183/2020, de 29 de diciembre](https://www.boe.es/buscar/act.php?id=BOE-A-2020-17278),
@@ -287,13 +282,13 @@ Advertencias imprescindibles sobre esta tabla:
 El fichero de REE indica el criterio limitante de cada nudo, y esto importa porque
 determina si la limitación es estructural o disolvible:
 
-- **`WSCR_Nudo`** — potencia de cortocircuito insuficiente. Solo aplica a consumos con
+- **`WSCR_Nudo`**. Potencia de cortocircuito insuficiente. Solo aplica a consumos con
   **electrónica de potencia** en la interfaz (en la nomenclatura de REE, «CEP»), que es
   precisamente el caso de un centro de datos con rectificadores y SAI. Un nudo puede
   tener mucha capacidad para un consumo convencional y muy poca para un CPD.
-- **`Est_Dem_Nudo` / `Est_Dem_Zona`** — criterio estático: la red no aguanta los flujos.
+- **`Est_Dem_Nudo` / `Est_Dem_Zona`**. Criterio estático: la red no aguanta los flujos.
   Se resuelve con obra.
-- **`Din1_Zona` / `Din2_Zona`** — criterio dinámico (estabilidad). Es el que REE señala
+- **`Din1_Zona` / `Din2_Zona`**. Criterio dinámico, de estabilidad. Es el que REE señala
   como más susceptible de relajarse:
 
 > «The results of the studies conducted, particularly those related to the dynamic
@@ -418,7 +413,7 @@ Con dos zonas de capacidad compartida: Cristóbal Colón / Palos / Torrearenilla
 (276 MW conjuntos) y Brazatortas 400 / 220 (1.217 MW).
 
 **Garantías para participar** (anexo VII): 25 €/kW solicitado por el compromiso de fecha
-de inicio del consumo y otros 25 €/kW por el compromiso de emisiones evitadas —
+de inicio del consumo y otros 25 €/kW por el compromiso de emisiones evitadas,
 adicionales e independientes de las del procedimiento ordinario de acceso.
 
 **Criterios de puntuación**: emisiones de CO₂ evitadas, fecha de inicio del consumo y
@@ -437,8 +432,8 @@ volumen de inversión (con inversión unitaria en €/MW).
 
 **Lo relevante para este proyecto: ninguna de las solicitudes cuyo nombre societario las
 identifica como promotoras de centros de datos llegó a ser valorada.** El anexo II relaciona
-como excluidas —por las causas a, b y c del anexo V.D de la convocatoria, referidas a
-defectos de documentación y de garantías— las solicitudes de **CPD4GREEN, S.A.U.** en
+como excluidas, por las causas a, b y c del anexo V.D de la convocatoria, referidas a
+defectos de documentación y de garantías, las solicitudes de **CPD4GREEN, S.A.U.** en
 Brazatortas 400, **Benbros DC, S.L.** en Francolí 220, **ACS DC Infra, S.L.U.** en Nuevo Vigo
 220 e **Iberdrola Clientes, S.A.** en Palos 220 (esta última, de actividad no identificable
 por el nombre). Los cinco adjudicatarios son proyectos de acero verde, energía, automoción,
@@ -555,8 +550,8 @@ CPD concreto sin una fuente que lo diga.
 | Qué | Dónde |
 |---|---|
 | Capacidad de acceso de demanda, red de transporte, por nudo (CSV/XLSX/PDF, mensual) | <https://www.ree.es/es/clientes/consumidor/acceso-conexion/conoce-la-capacidad-de-acceso> |
-| Mapa interactivo CNMC — **demanda** (transporte + distribución, mensual) | <https://experience.arcgis.com/experience/c7dc433cb2e44d53a908a8a467523f5a> |
-| Mapa interactivo CNMC — generación (**no confundir**) | <https://experience.arcgis.com/experience/0dac803d644f41519fdd11da11ef10ae> |
+| Mapa interactivo CNMC, **demanda** (transporte + distribución, mensual) | <https://experience.arcgis.com/experience/c7dc433cb2e44d53a908a8a467523f5a> |
+| Mapa interactivo CNMC, generación (**no confundir**) | <https://experience.arcgis.com/experience/0dac803d644f41519fdd11da11ef10ae> |
 | Página de la CNMC que aloja ambos mapas | <https://www.cnmc.es/sectores-que-regulamos/energia/supervision-del-mercado-electrico/informe-acceso-y-conexion-redes> |
 | Planificación de la red de transporte (vigente y proceso 2025-30) | <https://www.planificacionelectrica.es/> |
 | Normativa | BOE: RD 1183/2020, Circular 1/2024, RDL 7/2026, resoluciones de concursos |

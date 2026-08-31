@@ -49,15 +49,14 @@ const modelosPresentes = Object.keys(MODELO_ETIQUETA).filter((m) => sitios.some(
           <option value="mw_sin_tipo">MW sin tipificar</option>
         </select>
         <p class="ayuda">
-          El tamaño de cada círculo representa esta magnitud. Los emplazamientos que no la publican
-          se dibujan huecos: no se rellena un dato que no existe.
+          El círculo crece con la magnitud. Los emplazamientos que no la publican salen huecos.
         </p>
       </div>
 
       <div class="grupo">
         <label class="etiqueta-campo" for="filtro-minimo">
           Mínimo de <span id="etiqueta-minimo-metrica">MW IT</span>
-          <span class="silencio"> — <span id="valor-minimo">sin mínimo</span></span>
+          <span class="silencio"> · <span id="valor-minimo">sin mínimo</span></span>
         </label>
         <input id="filtro-minimo" type="range" min="0" max="200" step="5" value="0" />
         <label class="casilla pequeno">
@@ -127,14 +126,13 @@ const modelosPresentes = Object.keys(MODELO_ETIQUETA).filter((m) => sitios.some(
           <span class="casilla-texto">Renovables y BESS vinculados ({resumen.activos_renovables})</span>
         </label>
         <p class="ayuda">
-          Trazado derivado de OpenStreetMap, de completitud variable. No sustituye a la cartografía
-          oficial de Red Eléctrica.
+          Trazado de OpenStreetMap, de completitud variable. No es cartografía oficial.
         </p>
       </fieldset>
 
       <p class="ayuda pie-panel">
-        Los círculos atenuados están situados en el centro de su municipio porque la fuente no
-        publica la parcela. Véase la <a href="/metodologia">metodología</a>.
+        Los círculos atenuados se sitúan en el centro del municipio porque la fuente no publica la
+        parcela. <a href="/metodologia">Metodología</a>.
       </p>
 
       <ol id="lista-resultados" class="lista"></ol>

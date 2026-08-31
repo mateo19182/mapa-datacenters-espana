@@ -153,9 +153,9 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
             </div>
             {r.no_especificado && (
               <p class="nota pequeno">
-                <strong>Cifras sin tipificar.</strong> Alguna fuente da MW sin aclarar si se refiere a
-                carga TI, a la potencia de conexión o a la potencia instalada. Esas cifras se muestran
-                aparte y no se suman con las demás ni se convierten aplicando ningún PUE supuesto.
+                <strong>Cifras sin tipificar.</strong> Alguna fuente da MW sin aclarar si son carga
+                TI, potencia de conexión o potencia instalada. Se muestran aparte y no se suman con
+                las demás.
               </p>
             )}
           </>
@@ -208,8 +208,7 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
           <>
             <h2>Incertidumbres y contradicciones</h2>
             <p class="pequeno silencio">
-              Lo que las fuentes no aclaran o en lo que se contradicen. Se documenta en lugar de
-              resolverse por criterio propio.
+              Lo que las fuentes no aclaran o en lo que se contradicen.
             </p>
             <ul class="incertidumbres">
               {s.incertidumbres.map((u) => (
@@ -231,7 +230,7 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
           <>
             <h2>Generación y almacenamiento vinculados</h2>
             <p class="pequeno silencio">
-              Un PPA es un contrato de compra de energía: no implica que este centro se alimente
+              Un PPA es un contrato de compra de energía. No implica que este centro se alimente
               físicamente de esa planta.
             </p>
             <div class="tabla-envoltorio">
@@ -314,7 +313,7 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
               {s.conexion_electrica.mw_concedidos != null && (<><dt>MW concedidos</dt><dd>{numero(s.conexion_electrica.mw_concedidos, 1)} MW</dd></>)}
             </dl>
             <p class="pequeno silencio">
-              Una solicitud de acceso no es un centro construido. Véase <a href="/red-electrica">la nota sobre la red</a>.
+              Una solicitud de acceso no es un centro construido. Véase <a href="/red-electrica">red eléctrica</a>.
             </p>
           </div>
         )}
