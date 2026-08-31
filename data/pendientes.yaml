@@ -20,38 +20,6 @@ fecha: "2026-08-31"
 origen: "Auditoría de cobertura (research/cobertura.md, sección 3) y barrido documental del 31 de agosto de 2026"
 
 proyectos:
-  # --- riesgo de duplicar un emplazamiento ya fichado ------------------------
-  - municipio: Palma del Río
-    provincia: Córdoba
-    ccaa: Andalucía
-    compania: EdgeMode (preacuerdo de venta a Pure Data Centres Group)
-    potencia_citada: 300 MW
-    prioridad: alta
-    nota: >-
-      No se ficha por duda razonable de duplicado. Expansión y DCD sitúan «Palma del Río»
-      entre los cuatro suelos del preacuerdo, pero el documento primario —el Form 8-K que
-      EdgeMode presentó a la SEC el 1 de julio de 2026— dice solo «Cordoba, Palma, Vianos and
-      Caceres». En el Registro Mercantil constan cinco sociedades vehículo constituidas el
-      09/10/2025 con socio único Blackberry AIF: DC Estate Córdoba, Torrecampo, Cáceres,
-      Vianos y Malpica. No existe ninguna «DC Estate Palma», y la única que no aparece en la
-      operación es justo Torrecampo, que sí tiene ficha. O hay un solar más sin sociedad
-      inscrita, o «Palma» es el nombre interno del activo que el Registro llama Torrecampo.
-      En Palma del Río no hay rastro de expediente urbanístico ni ambiental.
-  - municipio: Sant Joan Despí
-    provincia: Barcelona
-    ccaa: Cataluña
-    compania: AtlasEdge (BCN002)
-    potencia_citada: 10 MW
-    prioridad: alta
-    nota: >-
-      No se ficha por riesgo de duplicar `atlasedge-sant-adria-barcelona2`. La nota de la
-      propia AtlasEdge describe un único segundo centro en Barcelona, de 10 MW en 2027
-      ampliables a 24 MW, «a 6 km del centro existente» y cerca de la Barcelona Cable Landing
-      Station, que está en Sant Adrià de Besòs. Pero Inflect lo sitúa en el 08970 (Sant Joan
-      Despí) y OCOLO en Carrer de les Planes, y los 6 km encajan mejor con Sant Joan Despí
-      que con Sant Adrià. O son el mismo activo mal geolocalizado por los directorios, o son
-      dos. Decidirlo exige una fuente que hoy no existe.
-
   # --- la fuente se contradice o no basta -----------------------------------
   - municipio: Granada
     provincia: Granada

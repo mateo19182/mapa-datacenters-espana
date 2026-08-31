@@ -1,41 +1,48 @@
 id: atlasedge-sant-adria-barcelona2
-nombre: "AtlasEdge Barcelona 2 — Carrer de Ramon Viñas (Sant Adrià de Besòs)"
+nombre: "AtlasEdge Barcelona 2 (BCN002) — Carrer de la Indústria 2B, Sant Joan Despí"
 alias:
   - "AtlasEdge Barcelona 2"
+  - "AtlasEdge BCN002"
+  - "BCN002"
 tipo: edificio
 operador: "AtlasEdge Data Centres"
 propietario: "AtlasEdge Data Centres"
 modelo: colocation
 
 ubicacion:
-  municipio: "Sant Adrià de Besòs"
+  municipio: "Sant Joan Despí"
   provincia: "Barcelona"
   ccaa: "Cataluña"
-  direccion: "Carrer de Ramon Viñas, Sant Adrià de Besòs"
-  precision: aproximada
-  fuentes: [src-1]
+  direccion: "Carrer de la Indústria 2B, 08970 Sant Joan Despí (polígono de la Fontsanta). Referencia catastral 2199401DF2729G."
+  lat: 41.365902
+  lon: 2.068521
+  precision: exacta
+  fuentes: [src-4, src-6, src-7]
 
-estado: en_construccion
+estado: anunciado
 estado_detalle: >-
   Segunda instalación de AtlasEdge en el área de Barcelona, sobre una parcela de
   18.000 m² a unos 6 km de su centro anterior (el de Carrer de l'Acer, vendido a
-  Templus en diciembre de 2025). El suministro eléctrico está "asegurado y
-  previsto para 2027". Está en la misma calle que la Barcelona Cable Landing
-  Station. La adquisición del suelo la anunció la propia AtlasEdge el 18 de julio
-  de 2024, con la potencia inicial ya asegurada.
-estado_fuentes: [src-1, src-3]
+  Templus). El suministro eléctrico está "asegurado y previsto para 2027". La
+  adquisición del suelo la anunció la propia AtlasEdge el 18 de julio de 2024,
+  con la potencia inicial ya asegurada. La compañía publica la dirección exacta
+  en su web —Carrer de la Indústria 2B, 08970 Sant Joan Despí— y clasifica el
+  proyecto como «Planned»: la parcela sigue figurando en el Catastro como suelo
+  sin edificar.
+estado_fuentes: [src-3, src-4, src-5, src-6]
 
 potencia:
   - tipo: no_especificado
     valor_mw: 10
     ambito: edificio
-    referencia: "Capacidad indicada en el directorio"
-    estado_asociado: en_construccion
-    fuentes: [src-1, src-3]
+    referencia: "Capacidad que la compañía prevé entregar en 2027"
+    estado_asociado: anunciado
+    fecha_dato: "2024-07-18"
+    fuentes: [src-3, src-1]
     nota: >-
-      El listado de mercado de Baxtel muestra 10 MW para esta instalación; la
-      nota de la propia AtlasEdge lo confirma —"the new facility will deliver
-      10MW by 2027"— sin precisar si es carga TI o potencia de acceso.
+      La nota de la propia AtlasEdge dice "the new facility will deliver 10MW by
+      2027", sin precisar si es carga TI o potencia de acceso. El listado de
+      mercado de Baxtel repite la misma cifra.
   - tipo: no_especificado
     valor_mw: 24
     ambito: edificio
@@ -49,13 +56,38 @@ potencia:
 
 superficie_parcela_m2: 18000
 
+enlaces_proyecto:
+  - "https://atlasedge.com/data-centres/barcelona/"
+
 incertidumbres:
   - campo: ubicacion
     descripcion: >-
-      Baxtel indica "Carrer de Ramon Viñas, Barcelona"; esa calle está en Sant
-      Adrià de Besòs (CP 08930) según PeeringDB. Se corrige el municipio y se
-      deja constancia.
-    fuentes: [src-1, src-2]
+      Resuelta la contradicción entre directorios. Baxtel situaba este proyecto
+      en "Carrer de Ramon Viñas, Barcelona" —calle de Sant Adrià de Besòs donde
+      está la Barcelona Cable Landing Station—, mientras que Inflect y OCOLO lo
+      situaban en Sant Joan Despí. Manda la propia AtlasEdge, que en su ficha de
+      Barcelona publica "BCN002 (Planned) — Carrer de la Industria, 2B, 08970
+      Sant Joan Despi". El Catastro confirma que esa dirección corresponde a una
+      única parcela sin edificar de 17.896 m² (referencia 2199401DF2729G), cifra
+      que encaja con los "18.000 metros cuadrados" de la nota de prensa. La
+      distancia en línea recta entre esa parcela (41,3659 / 2,0685) y el centro
+      anterior de Carrer de l'Acer (parcela catastral 8079203DF2787G, 41,3494 /
+      2,1394) es de 6,2 km: los "6 km" que declara la nota. Hasta Carrer de
+      Ramon Viñas, en Sant Adrià, habría 11,5 km. Se corrigen el municipio, la
+      dirección y las coordenadas. El `id` conserva la forma antigua
+      («sant-adria») porque el esquema prohíbe renombrar identificadores.
+    fuentes: [src-1, src-3, src-4, src-6, src-7, src-8]
+  - campo: ubicacion
+    descripcion: >-
+      La nota de AtlasEdge dice que la parcela está "strategically located close
+      to the Barcelona Cable Landing Station", pero la BCLS está en Carrer de
+      Ramon Viñas 4, Sant Adrià de Besòs (41,4273 / 2,2307), a unos 15 km de la
+      parcela de Sant Joan Despí. La frase parece una referencia comercial al
+      área metropolitana, no una indicación de proximidad física; fue
+      probablemente el origen de la geolocalización errónea de Baxtel. No se ha
+      localizado ninguna otra estación de amarre en el entorno de Sant Joan
+      Despí que explique la frase.
+    fuentes: [src-2, src-3, src-4]
   - campo: potencia
     descripcion: >-
       La nota de la propia AtlasEdge confirma los 10 MW para 2027 y un techo de
@@ -64,12 +96,22 @@ incertidumbres:
     fuentes: [src-1, src-3]
   - campo: estado
     descripcion: >-
-      No está claro si el proyecto sigue en manos de AtlasEdge tras la venta de
-      nueve centros europeos a Templus en diciembre de 2025. La propia AtlasEdge
-      describe esa operación como una venta de activos seleccionados «para
-      centrarse en emplazamientos escalables y de alto crecimiento», categoría en
-      la que encajaría este proyecto, pero ninguna fuente lo dice expresamente.
-    fuentes: [src-1, src-3]
+      El proyecto sigue en manos de AtlasEdge tras la venta de nueve centros
+      europeos a Templus, completada el 5 de mayo de 2026: la página de
+      localizaciones de AtlasEdge, consultada el 31 de agosto de 2026, ya no
+      lista ningún centro suyo en operación en Barcelona —el de Carrer de
+      l'Acer, BCN001, pasó a Templus— y mantiene BCN002 como su único
+      emplazamiento de Barcelona, en el apartado «Planned». La nota de cierre de
+      la venta sigue citando Barcelona entre los mercados en los que la compañía
+      concentra su inversión. Lo que no consta es un calendario de obra ni
+      licencia municipal de Sant Joan Despí.
+    fuentes: [src-4, src-5, src-9]
+  - campo: superficie_parcela_m2
+    descripcion: >-
+      La nota de prensa habla de una parcela de 18.000 m²; el Catastro da 17.896
+      m² para la parcela 2199401DF2729G. Se conserva la cifra de la compañía y
+      se deja constancia de la medición catastral.
+    fuentes: [src-3, src-7]
 
 confianza: media
 ultima_verificacion: "2026-08-31"
@@ -104,3 +146,70 @@ fuentes:
       2027, with the potential to increase this to 24MW. The 18,000 square-metre
       plot is 6km from the company's existing Barcelona data centre and is
       strategically located close to the Barcelona Cable Landing Station.
+  - id: src-4
+    url: "https://atlasedge.com/data-centres/barcelona/"
+    titulo: "Pioneering Edge Computing with Our Barcelona Data Center"
+    editor: "AtlasEdge Data Centres"
+    tipo: empresa
+    fecha_publicacion: null
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      BCN002 (Planned) — Carrer de la Industria, 2B, 08970 Sant Joan Despi,
+      Barcelona, Spain. Information coming soon
+  - id: src-5
+    url: "https://atlasedge.com/data-centres"
+    titulo: "Our locations — AtlasEdge data centres"
+    editor: "AtlasEdge Data Centres"
+    tipo: empresa
+    fecha_publicacion: null
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      In operation: Berlin BER001, Brussels BRU001, Düsseldorf DUS001, Hamburg
+      HAM001 HAM002, Leverkusen LEV001, Lisbon LIS001, Manchester MAN001,
+      Stuttgart STR001, Vienna VIE001. Under construction: Leverkusen LEV002.
+      Planned: Barcelona BCN002, Lisbon LIS002 LIS003, Vienna VIE002 VIE003.
+  - id: src-6
+    url: "https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCallejero.asmx/Consulta_DNPRC?Provincia=BARCELONA&Municipio=SANT%20JOAN%20DESPI&RC=2199401DF2729G"
+    titulo: "Consulta de datos catastrales — parcela 2199401DF2729G"
+    editor: "Dirección General del Catastro"
+    tipo: oficial
+    fecha_publicacion: null
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      CL INDUSTRIA 2(A) Suelo 08970 SANT JOAN DESPI (BARCELONA) ... luso: Obras
+      de urbanización y jardineria, suelos sin edificar ... sfc: 0
+  - id: src-7
+    url: "http://ovc.catastro.meh.es/INSPIRE/wfsCP.aspx?service=wfs&version=2.0.0&request=getfeature&STOREDQUERIE_ID=GetParcel&refcat=2199401DF2729G&srsname=EPSG::4326"
+    titulo: "INSPIRE Cadastral Parcels WFS — parcela 2199401DF2729G"
+    editor: "Dirección General del Catastro"
+    tipo: oficial
+    fecha_publicacion: null
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      <cp:areaValue uom="m2">17896</cp:areaValue> ...
+      <cp:nationalCadastralReference>2199401DF2729G</cp:nationalCadastralReference>
+      ... <gml:pos>41.365902 2.068521</gml:pos>. Consulta equivalente para la
+      parcela del centro anterior de Carrer de l'Acer 5 (refcat 8079203DF2787G):
+      <gml:pos>41.349417 2.139413</gml:pos>
+  - id: src-8
+    url: "https://inflect.com/building/2b-carrer-de-la-industria-barcelona/atlasedge/datacenter/bcn002"
+    titulo: "AtlasEdge BCN002"
+    editor: "Inflect"
+    tipo: consultora
+    fecha_publicacion: null
+    fecha_consulta: "2026-08-31"
+    cita: "AtlasEdge BCN002 — 2B Carrer de la Industria, Barcelona 08970 ESP — Data Center Operated by AtlasEdge"
+  - id: src-9
+    url: "https://atlasedge.com/atlasedge-completes-sale-of-selected-data-centre-sites-accelerating-focus-on-scalable-high-growth-markets/"
+    titulo: "AtlasEdge completes sale of selected data centre sites, accelerating focus on scalable, high-growth markets"
+    editor: "AtlasEdge Data Centres"
+    tipo: empresa
+    fecha_publicacion: "2026-05-05"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      London, UK – Tuesday, May 5, 2026. AtlasEdge ... today announced the
+      completion of the sale of nine selected sites to Templus. The sites are in
+      Madrid, Barcelona, Milan, Zurich, Paris, Amsterdam, London, Leeds and
+      Copenhagen. ... we're focusing on the next wave of markets including
+      Barcelona, Berlin, Brussels, Düsseldorf, Hamburg, Leverkusen, Lisbon,
+      Manchester, Stuttgart and Vienna.

@@ -25,9 +25,11 @@ estado_detalle: >-
   provisional de construcción obtenida, con estatus ready-to-build previsto para 2026 y desarrollo
   del emplazamiento a partir de 2028 con ampliaciones hasta 2030. En julio de 2026 EdgeMode firmó un
   acuerdo no vinculante (term sheet, con 60 días de exclusividad) para vender a Pure Data Centres
-  Group —participada por Oaktree, del grupo Brookfield— sus derechos sobre los suelos de Córdoba,
-  Palma del Río, Vianos y Cáceres; Pure DC prevé desarrollar finalmente solo dos de los cuatro,
-  previsiblemente Cáceres y Vianos. A 30 de agosto de 2026 el proyecto no estaba en obras y le
+  Group —participada por Oaktree, del grupo Brookfield— sus derechos sobre los suelos que el
+  documento presentado a la SEC llama Córdoba, «Palma», Vianos y Cáceres; Pure DC prevé desarrollar
+  finalmente solo dos de los cuatro, previsiblemente Cáceres y Vianos. «Palma» no es Palma del Río,
+  aunque así lo glosaran Expansión y DCD: es el emplazamiento de Torrecampo, ficha
+  `edgemode-torrecampo-green-dc`. A 30 de agosto de 2026 el proyecto no estaba en obras y le
   faltaban permisos y punto de conexión. Cada campus del porfolio se
   proyecta con unos 60 MW de fotovoltaica dedicada y 240 MWh de almacenamiento en baterías, que son
   activos de generación y no potencia del centro de datos.
@@ -81,14 +83,15 @@ incertidumbres:
       Tres lecturas incompatibles y ninguna tipificada: 300 MW por emplazamiento (reparto del
       objetivo agregado de 1,5 GW entre cinco campus, repetido por prensa hasta agosto de 2026),
       120 MW para Córdoba en la descripción del porfolio IberData Hub, y una capacidad combinada de
-      1,5 GW atribuida solo a Córdoba y Palma del Río en el anuncio de la venta a Pure DC. No hay
+      1,5 GW atribuida conjuntamente a Córdoba y «Palma» —esto es, Torrecampo— en el term sheet de
+      la venta a Pure DC. No hay
       fuente que publique una potencia contratada o concedida específica para Córdoba.
     fuentes: [src-2, src-3, src-4, src-6]
   - campo: propietario
     descripcion: >-
       En julio de 2026 EdgeMode firmó un term sheet no vinculante para vender a Pure Data Centres
-      Group (Oaktree / Brookfield) su participación en los suelos de Córdoba, Palma del Río, Vianos y
-      Cáceres. No es un cambio de nombre de EdgeMode: son dos compañías distintas y la operación
+      Group (Oaktree / Brookfield) su participación en los suelos de Córdoba, «Palma» (Torrecampo),
+      Vianos y Cáceres. No es un cambio de nombre de EdgeMode: son dos compañías distintas y la operación
       estaba pendiente de acuerdo vinculante y de que los proyectos obtuvieran autorizaciones,
       permisos energéticos y un contrato de arrendamiento con un hiperescalar. Pure DC pagaría
       1,5 millones de euros por emplazamiento seleccionado, otros 1,5 millones al alcanzar

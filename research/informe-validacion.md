@@ -5,7 +5,7 @@ Generado el 2026-08-31 por `npm run validate`.
 - Emplazamientos cargados: **191**
 - Nodos de red: **133**
 - Activos renovables/BESS: **22**
-- Errores: **0** · Avisos: **259**
+- Errores: **0** · Avisos: **258**
 
 ## Incidencias por fichero
 
@@ -84,9 +84,8 @@ Generado el 2026-08-31 por `npm run validate`.
 
 ### `atlasedge-sant-adria-barcelona2.yaml`
 
-- aviso: potencia[0] («Capacidad indicada en el directorio») no distingue el tipo de MW
+- aviso: potencia[0] («Capacidad que la compañía prevé entregar en 2027») no distingue el tipo de MW
 - aviso: potencia[1] («Capacidad máxima a la que la compañía prevé poder ampliar») no distingue el tipo de MW
-- aviso: sin coordenadas: no aparecerá en el mapa
 
 ### `avaio-algete-scorpio.yaml`
 
@@ -235,7 +234,7 @@ Generado el 2026-08-31 por `npm run validate`.
 
 ### `edgemode-torrecampo-green-dc.yaml`
 
-- aviso: potencia[0] («Capacidad atribuida al campus de Torrecampo dentro del porfolio de 1,5 GW») no distingue el tipo de MW
+- aviso: potencia[0] («Capacidad atribuida al emplazamiento de Torrecampo») no distingue el tipo de MW
 
 ### `edgnex-madrid-vicalvaro.yaml`
 

@@ -35,12 +35,14 @@ potencia:
     ambito: edificio
     referencia: "Potencia IT máxima para la que está preparado el nuevo edificio"
     estado_asociado: en_construccion
-    fecha_dato: "2026-08-31"
+    fecha_dato: null
     fuentes: [src-3]
     nota: >-
       Dominion, autora del proyecto y constructora del edificio junto a Copasa, dice
       que «el nuevo centro está preparado para operar con potencias IT de hasta 3,2
-      MW». Ni la Xunta ni el CESGA publican la cifra.
+      MW». Ni la Xunta ni el CESGA publican la cifra. La página de Dominion no lleva
+      fecha, así que no consta desde cuándo es cierta: `fecha_dato` queda vacío en
+      lugar de repetir la fecha de consulta, que no es lo que ese campo mide.
 
 fases:
   - nombre: "Edificio y equipamiento (FinisTerrae IV + cuántico)"

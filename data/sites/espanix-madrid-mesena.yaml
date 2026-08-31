@@ -22,9 +22,13 @@ estado: operativo
 estado_detalle: >-
   Sede del principal punto neutro de interconexión IP del sur de Europa. El edificio es el
   antiguo CPD de Banesto, en funcionamiento sin interrupción desde 1988 y remodelado después.
-  Tiene doble acceso, desde la calle Mesena y desde la Gran Vía de Hortaleza. ESpanix registra
-  además otros dos nodos en Madrid con dirección en Gran Vía de Hortaleza 1 y 3.
-estado_fuentes: [src-1, src-2, src-3, src-4]
+  Tiene doble acceso, desde la calle Mesena y desde la Gran Vía de Hortaleza. El inmueble forma
+  parte del Campus Acciona Mesena, el antiguo complejo de Banesto y después del Banco Santander:
+  104.000 m² con tres edificios —Magdalena, Cantabria y Pedreña— entre la calle Mesena y la Gran
+  Vía de Hortaleza. ESpanix registra en PeeringDB otros dos nodos con dirección en Gran Vía de
+  Hortaleza 1 y 3, agrupados por la propia PeeringDB en el mismo campus que este (véase
+  `incertidumbres`).
+estado_fuentes: [src-1, src-2, src-3, src-4, src-5, src-6]
 fecha_puesta_en_servicio: "1988"
 
 potencia:
@@ -66,14 +70,25 @@ incertidumbres:
     fuentes: [src-3]
   - campo: tipo
     descripcion: >-
-      ESpanix registra en PeeringDB tres instalaciones en Madrid (Mesena 80, Gran Vía de
-      Hortaleza 1 y Gran Vía de Hortaleza 3) y aquí solo se ficha la de Mesena. La ficha técnica
-      de ESpanix describe su centro de Mesena 80 con «doble acceso desde la Calle Mesena y desde
-      la Gran Vía de Hortaleza», lo que abre la posibilidad de que los tres registros de
-      PeeringDB sean accesos del mismo edificio y no tres emplazamientos. No hay fuente que lo
-      confirme ni que lo descarte, y los dos ficheros se mantienen separados hasta poder
-      resolverlo.
-    fuentes: [src-2, src-3]
+      Duplicado con `espanix-madrid-gran-via-hortaleza`: la documentación reunida el 31 de agosto
+      de 2026 indica que se trata del mismo emplazamiento y que los dos ficheros deberían ser uno.
+      Cuatro pruebas concurrentes: (1) la propia PeeringDB agrupa sus tres registros —fac/121
+      «Espanix Datacenter» en Mesena 80, fac/15526 «Magdalena Datacenter» en Gran Vía de Hortaleza
+      3 y fac/15527 «Cantabria Datacenter» en Gran Vía de Hortaleza 1— dentro de un único objeto
+      de campus, el campus/93 «Acciona Campus», propiedad de la Asociación ESpanix; (2) «Magdalena»
+      y «Cantabria» no son instalaciones independientes sino dos de los tres edificios del Campus
+      Acciona Mesena —Magdalena, Cantabria y Pedreña—, el antiguo complejo de Banesto y luego del
+      Banco Santander, de 104.000 m²; (3) ESpanix explica que «el campus tiene dos entradas por dos
+      calles que lindan con el recinto y cuenta con un túnel de 400 m que acerca las fibras al
+      centro de datos», que es exactamente el «doble acceso desde la Calle Mesena y desde la Gran
+      Vía de Hortaleza» de su ficha técnica; (4) la página de acceso de ESpanix, que enumera todos
+      los centros donde se puede conectar con su nodo, lista un solo centro propio, «ESpanix
+      Datacenter, C/Mesena 80», y ninguno en Gran Vía de Hortaleza. El Catastro lo respalda: Mesena
+      80, Gran Vía de Hortaleza 1 y Gran Vía de Hortaleza 3 son parcelas contiguas de la misma
+      manzana catastral 42000 y de la misma unidad de planeamiento APE 16.01 (parcelas III, IV y V).
+      No se fusionan ni se borran ficheros por decisión propia: la fusión queda propuesta y
+      pendiente de decisión humana.
+    fuentes: [src-2, src-3, src-4, src-5, src-6, src-7, src-8]
 
 confianza: media
 ultima_verificacion: "2026-08-31"
@@ -108,4 +123,60 @@ fuentes:
     tipo: asociacion
     fecha_publicacion: "2025-06-01"
     fecha_consulta: "2026-08-31"
-    cita: "ESpanix, el nodo neutro de referencia nacional, nació el 13 de mayo de 1997, pero el centro de datos donde se constituyó es de unos años antes, 1988 para ser exactos. Desde su construcción el centro ha estado funcionando sin interrupciones"
+    cita: >-
+      ESpanix, el nodo neutro de referencia nacional, nació el 13 de mayo de 1997, pero el centro
+      de datos donde se constituyó es de unos años antes, 1988 para ser exactos. Desde su
+      construcción el centro ha estado funcionando sin interrupciones ... El edificio que lo
+      contiene es parte de un campus que en aquel entonces pertenecía al Banco Español de Crédito
+      ... Desde el punto de vista de la conexión en fibra, el campus tiene dos entradas por dos
+      calles que lindan con el recinto y cuenta con un túnel de 400m que acerca las fibras al
+      centro de datos.
+  - id: src-5
+    url: "https://www.peeringdb.com/api/campus/93"
+    titulo: "PeeringDB — Campus 93, Acciona Campus (Asociación ESpanix)"
+    editor: "PeeringDB"
+    tipo: asociacion
+    fecha_publicacion: null
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      campus name: Acciona Campus | org: Asociación ESpanix | fac_set: 121 Espanix Datacenter
+      (Mesena 80, 40.466022 -3.660963), 15526 Magdalena Datacenter (Gran Via de Hortaleza 3,
+      40.467654 -3.658841), 15527 Cantabria Datacenter (Gran Via de Hortaleza 1, 40.464784
+      -3.659262)
+  - id: src-6
+    url: "https://www.impais.com/proyectos/campus-acciona-mesena-madrid"
+    titulo: "Campus Acciona Mesena Madrid"
+    editor: "Impais"
+    tipo: otro
+    fecha_publicacion: null
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      este nuevo Campus Acciona Mesena Madrid, proyecto que recupera una edificación singular
+      (antigua sede de Banesto y, después, del Banco Santander) ... El conjunto, con más de 104.000
+      metros cuadrados, reúne todas las centrales de sus empresas en tres edificios —Magdalena,
+      Cantabria y Pedreña—, cada uno de ellos adaptado a distintas necesidades de uso.
+  - id: src-7
+    url: "https://www.espanix.net/es/conectividad/acceso/"
+    titulo: "Acceso — Presencia de ESpanix"
+    editor: "Asociación ESpanix"
+    tipo: asociacion
+    fecha_publicacion: "2026-05-11"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      ESpanix está presente en los mejores y más reputados datacenters de España. En todos ellos es
+      posible acceder a nuestro nodo. | ESpanix Datacenter | C/Mesena 80 | Madrid | ... | Digital
+      Realty | C/Albasanz 71 | Madrid | ... | Equinix | Av.Valgrande 6 | Alcobendas | ... | Atlas
+      Edge | Av.Manoteras 42 | Madrid | ... | Data4 | Av.Industria 15 | Alcobendas | ... | Afr-IX
+      Telecom | C/Ramón Viñas 4 | Sant Adrià de Besòs |
+  - id: src-8
+    url: "https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCallejero.asmx/Consulta_DNPRC?Provincia=MADRID&Municipio=MADRID&RC=4200079VK4840A"
+    titulo: "Consulta de datos catastrales — parcelas del complejo Mesena / Gran Vía de Hortaleza"
+    editor: "Dirección General del Catastro"
+    tipo: oficial
+    fecha_publicacion: null
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      CL MESENA 80(E) PARC III APE 16.01 28033 MADRID (4200068VK4840A, Oficinas) ... AV GRAN VIA DE
+      HORTALEZA 3 PARC IV APE16.01 28033 MADRID (4200079VK4840A, Oficinas) ... AV GRAN VIA DE
+      HORTALEZA 3(B) PARC V APE16.01 28033 MADRID (4200080VK4840A, Oficinas) ... AV GRAN VIA DE
+      HORTALEZA 1 Suelo 28033 MADRID (4200081VK4749G)

@@ -3,45 +3,56 @@ nombre: "Green DC Torrecampo — EdgeMode"
 alias:
   - "EdgeMode Torrecampo"
   - "DC Estate Torrecampo"
+  - "Palma (denominación del emplazamiento en el term sheet de Pure Data Centres Group)"
+  - "Palma del Río (topónimo que le atribuye la prensa; las parcelas están en Torrecampo)"
 tipo: campus
 operador: "EdgeMode"
-propietario: "Sociedad conjunta EdgeMode (75%) — Blackberry AIF (25%)"
+propietario: "DC Estate Torrecampo, S.L., filial de DC Estate Solutions Cayman Limited (EdgeMode 50,1 % — Blackberry AIF 49,9 %). El suelo es de particulares y está arrendado."
 modelo: mayorista
 
 ubicacion:
   municipio: "Torrecampo"
   provincia: "Córdoba"
   ccaa: "Andalucía"
-  direccion: "Fincas rústicas de los polígonos 3, 4 y 5 de Torrecampo (entre ellas las parcelas 27 y 42 del polígono 5)"
-  lat: 38.4525
-  lon: -4.6878
-  precision: municipio
-  fuentes: [src-1, src-2, src-3]
+  direccion: >-
+    Nueve fincas rústicas de los polígonos 3, 4 y 5 de Torrecampo, en los parajes Dehesa Vieja,
+    Navarodes, Tierra Abajo, Dehesilla de Cascarr y Laguna de Cobos, unos 4 km al norte del casco
+    urbano. Referencias catastrales 14062A003000230000DF, 14062A004000080000DJ,
+    14062A005000140000DD, 14062A005000160000DI, 14062A005000190000DS, 14062A005000270000DA,
+    14062A005000390000DM, 14062A005000420000DM y 14062A005000430000DO.
+  lat: 38.494901
+  lon: -4.687446
+  precision: aproximada
+  fuentes: [src-3, src-7]
 
 estado: anunciado
 estado_detalle: >-
-  Segundo emplazamiento andaluz del porfolio español de cinco campus que EdgeMode adquirió a
-  Blackberry AIF. pv-tech sitúa el ready-to-build del conjunto en el primer trimestre de 2026 y el
-  arranque comercial escalonado desde 2027. El suelo se controla mediante un contrato de
-  arrendamiento firmado el 3 de marzo de 2025 entre los propietarios y NGE Spain Solia Renewables,
-  S.L., que describe el proyecto como «un centro de datos de tipo IV y una planta solar
-  fotovoltaica» y condiciona su continuidad a obtener el punto de suministro y un informe de
-  compatibilidad urbanística favorable. Torrecampo no figura entre los cuatro emplazamientos que
-  EdgeMode acordó vender a Pure Data Centres Group en julio de 2026, donde aparece en su lugar Palma
-  del Río. A 30 de agosto de 2026 seguía sin obras, sin permisos y sin punto de conexión.
-estado_fuentes: [src-1, src-2, src-3, src-4, src-5]
+  Segundo emplazamiento andaluz del porfolio español que EdgeMode adquirió a Blackberry AIF.
+  pv-tech sitúa el ready-to-build del conjunto en el primer trimestre de 2026 y el arranque
+  comercial escalonado desde 2027. El suelo se controla mediante un contrato de arrendamiento
+  firmado el 3 de marzo de 2025 entre los propietarios y NGE Spain Solia Renewables, S.L., que
+  describe el proyecto como «un centro de datos de tipo IV y una planta solar fotovoltaica» y
+  condiciona su continuidad a obtener el punto de suministro y un informe de compatibilidad
+  urbanística favorable. El arrendamiento se cedió a Blackberry AIF el 25 de marzo de 2025 y de
+  esta a DC Estate Torrecampo, S.L. el 10 de octubre de 2025. El emplazamiento sí figura entre los
+  cuatro que EdgeMode preacordó vender a Pure Data Centres Group el 1 de julio de 2026, pero con el
+  nombre «Palma»; ver incertidumbres. A 30 de agosto de 2026 seguía sin obras, sin permisos y sin
+  punto de conexión.
+estado_fuentes: [src-1, src-2, src-3, src-4, src-5, src-7, src-10]
 
 potencia:
   - tipo: no_especificado
     valor_mw: 300
     ambito: campus
-    referencia: "Capacidad atribuida al campus de Torrecampo dentro del porfolio de 1,5 GW"
+    referencia: "Capacidad atribuida al emplazamiento de Torrecampo"
     estado_asociado: anunciado
-    fecha_dato: "2026-08-30"
-    fuentes: [src-2, src-5]
+    fecha_dato: "2026-08-14"
+    fuentes: [src-10, src-2, src-5]
     nota: >-
-      El Conciso dice «Córdoba y Torrecampo, dotadas con 300 MW cada una» sin especificar el tipo
-      de MW; Economía Digital repite la cifra el 30 de agosto de 2026.
+      El propio EdgeMode nombra la sociedad vehículo «DC Estate Torrecampo SL 300 MW» en sus cuentas
+      trimestrales ante la SEC, sin decir de qué tipo de MW habla. El Conciso y Economía Digital
+      repiten la misma cifra. El term sheet de Pure Data Centres, en cambio, atribuye 1,5 GW
+      conjuntos a Córdoba y «Palma», cifra que no encaja con los 300 MW por sociedad.
   - tipo: generacion_asociada
     valor_mw: 360
     ambito: campus
@@ -53,43 +64,61 @@ potencia:
       «Up to 360MW of fuel cell capacity could be deployed at each of the five sites». Es capacidad
       de generación con gas natural, no capacidad del centro de datos, y no entra en ningún agregado.
 
+superficie_parcela_m2: 1194335
+
 enlaces_proyecto: []
 
 incertidumbres:
+  - campo: nombre
+    descripcion: >-
+      Expansión y Data Center Dynamics sitúan «Palma del Río (Córdoba)» entre los cuatro suelos que
+      EdgeMode preacordó vender a Pure Data Centres Group. Ese topónimo no consta en ningún
+      documento primario: el Form 8-K de 1 de julio de 2026, el term sheet y la carta de
+      exclusividad dicen solo «Palma», y una búsqueda a texto completo en EDGAR devuelve cero
+      resultados para «Palma del Rio» en todo el archivo. En Palma del Río tampoco hay expediente
+      urbanístico ni ambiental de centro de datos: el BOJA solo registra allí plantas fotovoltaicas
+      y la ampliación de la subestación de 132/66 kV. Los cinco arrendamientos españoles de EdgeMode
+      están íntegramente identificados por referencia catastral y ninguna parcela cae en Palma del
+      Río: Córdoba capital, Cáceres y Casar de Cáceres, Vianos y Alcaraz, Mora y Villamuelas, y
+      Torrecampo. De las cinco sociedades vehículo, Malpica (Mora, Toledo) estaba bajo exclusividad
+      de 60 días con otro comprador —Spark AI Foundry— desde el 24 de junio de 2026, una semana
+      antes del term sheet de Pure. Descartadas Córdoba, Vianos, Cáceres y Malpica, el cuarto suelo
+      del preacuerdo solo puede ser Torrecampo. La identificación es por eliminación: no se ha
+      localizado ningún documento que diga literalmente que «Palma» es Torrecampo. Por eso el
+      emplazamiento no se desdobla en dos fichas, que contarían dos veces los mismos 300 MW, y
+      «Palma» y «Palma del Río» quedan registrados como alias.
+    fuentes: [src-7, src-8, src-9, src-10, src-11, src-12]
   - campo: potencia
     descripcion: >-
-      Cifra derivada del reparto del objetivo agregado de 1,5 GW entre cinco campus. Sin fuente
-      específica para Torrecampo ni tipo de MW. El contrato de arrendamiento del suelo, que es la
-      única fuente primaria localizada, no cifra la potencia del centro ni de la planta fotovoltaica
-      («de una capacidad determinada»).
-    fuentes: [src-1, src-2, src-3]
+      No hay una cifra de potencia medida ni un tipo declarado. El nombre de la sociedad vehículo
+      («DC Estate Torrecampo SL 300 MW») es lo más parecido a una fuente primaria, y no dice si son
+      MW de carga TI, de conexión o instalados. El contrato de arrendamiento no cifra la potencia
+      del centro ni de la planta fotovoltaica («de una capacidad determinada»). El term sheet de
+      Pure DC habla de 1,5 GW combinados para Córdoba y «Palma», y una segunda adenda a la empresa
+      conjunta, de 23 de marzo de 2026, elevó la capacidad del conjunto español a 4.350 MW: las
+      cifras del promotor se revisan al alza sin explicar el reparto.
+    fuentes: [src-3, src-8, src-10]
   - campo: ubicacion
     descripcion: >-
-      El contrato de arrendamiento identifica nueve fincas rústicas en los polígonos 3, 4 y 5 del
-      término municipal de Torrecampo, dos de ellas —parcelas 27 y 42 del polígono 5— pendientes de
-      regularizar a nombre de los propietarios. La transcripción del documento está degradada por el
-      reconocimiento óptico y no permite reproducir con seguridad las referencias catastrales ni la
-      superficie total arrendada. Sin dirección postal ni parcela publicada por la promotora;
-      coordenadas de municipio.
-    fuentes: [src-1, src-2, src-3]
+      La transcripción del contrato de arrendamiento publicada en EDGAR está degradada por el
+      reconocimiento óptico y algunas referencias catastrales aparecen corrompidas (por ejemplo
+      «14O62A00500019£XXI0DS»). Las nueve se han reconstruido y comprobado una a una contra el
+      servicio de consulta del Catastro, que las sitúa todas en el término de Torrecampo (Córdoba).
+      La superficie arrendada de 119,4335 ha del encabezado de la tabla coincide con la suma de las
+      nueve parcelas. Las coordenadas son el centroide de esas parcelas ponderado por superficie, no
+      la ubicación del edificio, que no consta. Dos de las fincas —parcelas 27 y 42 del polígono
+      5— seguían pendientes de inscribir a nombre de los propietarios en la fecha del contrato.
+    fuentes: [src-3, src-12]
   - campo: estado
     descripcion: >-
-      A diferencia de Córdoba, no se ha localizado ficha de proyecto ni referencia a licencias o
-      conexión a red para Torrecampo. El contrato de arrendamiento de marzo de 2025 se firma con el
-      punto de suministro y el informe de compatibilidad urbanística aún por solicitar, y prevé la
-      resolución automática si no se obtienen en plazo. Torrecampo desaparece además de las dos
-      listas más recientes del porfolio: la del suministro asegurado de 1,5 GW (diciembre de 2025) y
-      la de la venta a Pure DC (julio de 2026), en la que figura Palma del Río. Sigue apareciendo, en
-      cambio, en la prensa económica andaluza de agosto de 2026.
-    fuentes: [src-3, src-4, src-5, src-6]
-  - campo: operador
-    descripcion: >-
-      El arrendatario del suelo es NGE Spain Solia Renewables, S.L., sociedad con domicilio en
-      Sevilla, no EdgeMode ni Blackberry AIF. El contrato permite la cesión de la posición
-      contractual a terceros. No se ha localizado documento que acredite esa cesión.
-    fuentes: [src-3]
+      No se ha localizado ficha de proyecto, licencia ni solicitud de acceso a red para Torrecampo.
+      El contrato de arrendamiento de marzo de 2025 se firma con el punto de suministro y el informe
+      de compatibilidad urbanística aún por solicitar, y prevé la resolución automática si no se
+      obtienen en plazo. Torrecampo tampoco aparece en la lista del suministro asegurado de 1,5 GW
+      que EdgeMode difundió en diciembre de 2025, donde figuran Córdoba, Vianos, Alcaraz y Toledo.
+    fuentes: [src-3, src-6]
 
-confianza: baja
+confianza: media
 ultima_verificacion: "2026-08-31"
 
 fuentes:
@@ -115,14 +144,19 @@ fuentes:
     fecha_publicacion: "2025-03-03"
     fecha_consulta: "2026-08-31"
     cita: >-
-      The DEVELOPER expresses its interest in the economic exploitation of the Properties through the
-      construction and installation therein of the elements necessary to develop a business project
-      consisting of the operation of a Type IV data center and a photovoltaic solar power plant of a
-      determined capacity [...] THE PROPERTY undertakes to carry out, at its own expense, all the
-      necessary legal procedures to regularize and register in its name the properties located in
-      polygon 5, plots 27 and 42 of Torrecampo in the Land Registry and Cadastre [...] The rent will
-      be €100/year for 24 months from the date of obtaining the supply point and the favorable urban
-      compatibility report.
+      In Torrecampo, on March 3, 2025 [...] That the properties are registered in the name of the
+      Owner in the Pozoblanco Property Registry (except for two of them, as indicated below), free of
+      liens and encumbrances, with the following cadastral references: 119.433 5 [...] Registered
+      property / Cadastral Reference / Leased Area (Ha) / Total Cadastral Area (Ha) / Parcel /
+      Polygon [...] 14062A003000230000DF 21.4744 [...] 14062A004000080000DJ 2.5338 [...]
+      14062A005000140000DD 15.5535 [...] 19.3719 [...] 56.8807 [...] 14062A005000270000DA 0.7517
+      [...] 0.5323 [...] 0.6699 [...] 1.6653 [...] THE PROPERTY undertakes to carry out, at its own
+      expense, all the necessary legal procedures to regularize and register in its name the
+      properties located in polygon 5, plots 27 and 42 of Torrecampo in the Land Registry and
+      Cadastre [...] The DEVELOPER expresses its interest in the economic exploitation of the
+      Properties through the construction and installation therein of the elements necessary to
+      develop a business project consisting of the operation of a Type IV data center and a
+      photovoltaic solar power plant of a determined capacity.
   - id: src-4
     url: "https://www.datacenterdynamics.com/en/news/edgemode-looks-to-sell-multiple-data-center-development-sites-in-spain/"
     titulo: "EdgeMode looks to sell multiple data center development sites in Spain"
@@ -157,3 +191,76 @@ fuentes:
     cita: >-
       Through its IberData Hub portfolio, the company aims to develop a 120MW data center in Córdoba,
       Andalusia; 100MW facilities in Vianos and Alcaraz, Albacete; and a 100MW facility in Toledo.
+  - id: src-7
+    url: "https://www.sec.gov/Archives/edgar/data/1652958/000168316826005308/edgemode_8k.htm"
+    titulo: "EdgeMode Inc — Form 8-K de 6 de julio de 2026 (hecho de 1 de julio de 2026), Item 8.01"
+    editor: "EdgeMode, Inc. (SEC EDGAR)"
+    tipo: empresa
+    fecha_publicacion: "2026-07-06"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      On July 1, 2026, Edgemode, Inc. (the “Company”) entered into a non-binding term sheet (the
+      “Term Sheet”) with a third-party purchaser (the “Purchaser”) regarding the sale of the
+      Company’s interest in certain land sites controlled via leaseholds in Cordoba, Palma, Vianos
+      and Caceres, Spain (the “Acquisition”).
+  - id: src-8
+    url: "https://www.sec.gov/Archives/edgar/data/1652958/000168316826005308/edgemode_ex1001.htm"
+    titulo: "Term Sheet by and between Edgemode, Inc. and Pure Data Centres Group Limited dated July 1, 2026 (exhibit 10.1)"
+    editor: "EdgeMode, Inc. (SEC EDGAR)"
+    tipo: empresa
+    fecha_publicacion: "2026-07-06"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Edgemode controls seven plots of land in various locations in Spain via leasehold interest
+      (each ~35 years). During the Exclusivity Period (as outlined below), Pure (in collaboration
+      with Edgemode) will down-select one or more of the plots to be targeted for development. This
+      is to be based on deliverability, leasing prospects and deal economics. The expectation is that
+      the sites referred to as Cordoba and Palma, with a combined power capacity of 1.5GW, will be
+      down-selected.
+  - id: src-9
+    url: "https://www.sec.gov/Archives/edgar/data/1652958/000168316826005308/edgemode_ex1002.htm"
+    titulo: "Exclusivity Letter by and between Edgemode, Inc. and Pure Data Centres Group Limited dated July 1, 2026 (exhibit 10.2)"
+    editor: "EdgeMode, Inc. (SEC EDGAR)"
+    tipo: empresa
+    fecha_publicacion: "2026-07-06"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Pure DC shall be granted exclusivity for a period of sixty (60) days (the “Exclusivity
+      Period”) in relation to the Proposed Transaction and the sites, controlled by Edgemode, known
+      as Cordoba, Palma, Vianos and Caceres.
+  - id: src-10
+    url: "https://www.sec.gov/Archives/edgar/data/1652958/000168316826006473/edgemode_i10q-063026.htm"
+    titulo: "EdgeMode Inc — Form 10-Q del trimestre cerrado el 30 de junio de 2026"
+    editor: "EdgeMode, Inc. (SEC EDGAR)"
+    tipo: empresa
+    fecha_publicacion: "2026-08-14"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      DC Estate Solutions has acquired five property leases, which were previously assigned to and
+      held by BAIF, consisting of 100 hectares of land each located in the Spain cities of Malpica,
+      Caceres, Vianos, Cordoba and Torrecampo (the “Spain Leases”). [...] Pursuant to the SPV SPA, DC
+      Estate Solutions acquired the equity interests of five special purpose vehicles (the “SPVs”):
+      (i) DC Estate Córdoba SL 300MW, (ii) DC Estate Cáceres SL 300 MW, (iii) DC Estate Vianos SL 300
+      MW, (iv) DC Estate Malpica SL 300 MW and (v) DC Estate Torrecampo SL 300 MW. [...] Pursuant to
+      the JVA, DC Estate Solutions shall be owned 50.1 % by the Company and 49.9 % by BAIF.
+  - id: src-11
+    url: "https://www.sec.gov/Archives/edgar/data/1652958/000168316826005143/edgemode_8k.htm"
+    titulo: "EdgeMode Inc — Form 8-K de 29 de junio de 2026, oferta no vinculante sobre DC Estate Malpica"
+    editor: "EdgeMode, Inc. (SEC EDGAR)"
+    tipo: empresa
+    fecha_publicacion: "2026-06-29"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      On June 24, 2026, Edgemode, Inc. (the “Company”) entered into a non-binding offer (the “Offer”)
+      with a third-party purchaser (the “Purchaser”) pursuant to which the Purchaser would acquire
+      100% of the interests in the Company’s special purpose vehicle, DC Estate Malpica, S.L. (the
+      “Acquisition”). DC Estate Malpica, S.L. owns an in-development data center project located in
+      Mora, Spain. [...] In connection with the Offer, the Company has agreed to negotiate
+      exclusively with the Purchaser for a period of 60 days.
+  - id: src-12
+    url: "http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCallejero.asmx/Consulta_DNPRC?Provincia=&Municipio=&RC=14062A005000190000DS"
+    titulo: "Consulta de datos catastrales no protegidos de la referencia 14062A005000190000DS"
+    editor: "Dirección General del Catastro (Ministerio de Hacienda)"
+    tipo: oficial
+    fecha_consulta: "2026-08-31"
+    cita: "Polígono 5 Parcela 19 DEHESILLA DE CASCARR. TORRECAMPO (CÓRDOBA)"

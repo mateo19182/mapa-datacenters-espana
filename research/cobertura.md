@@ -232,12 +232,24 @@ trazado administrativamente del centro peninsular, con nueve hitos fechados desd
 nadie sabe cuánta agua va a consumir. Los 248 MW que circulan salen de una ficha
 divulgativa de una asociación empresarial.
 
-**EdgeMode en Córdoba: ¿Torrecampo o Palma del Río?** La ficha
-`edgemode-torrecampo-green-dc` tiene 300 MW derivados de repartir un objetivo agregado de
-1,5 GW entre cinco campus, sin parcela y sin fuente específica. Esos cinco campus son
-Cáceres, Vianos, Córdoba, Palma del Río y Mora, y Torrecampo no está entre ellos. O
-Torrecampo y Palma del Río son el mismo activo bajo dos topónimos cordobeses, o hay un
-sexto emplazamiento.
+**EdgeMode en Córdoba: era Torrecampo.** *Resuelto el 31 de agosto de 2026.* La ficha
+`edgemode-torrecampo-green-dc` tenía 300 MW repartidos de un agregado de 1,5 GW entre cinco
+campus —Cáceres, Vianos, Córdoba, Palma del Río y Mora— entre los que Torrecampo no
+figuraba. No hay sexto emplazamiento: **«Palma» es como el comprador designa a Torrecampo**.
+El *term sheet* de Pure Data Centres Group habla de «Cordoba, Palma, Vianos and Caceres», y
+la palabra «Palma» aparece en solo tres documentos de todo el archivo de EdgeMode en la SEC,
+los tres del mismo paquete de julio de 2026. El 10-Q de agosto de 2026, posterior al
+preacuerdo, sigue enumerando cinco arrendamientos «in the Spain cities of Malpica, Caceres,
+Vianos, Cordoba and Torrecampo», sin ninguna Palma. Descartadas Córdoba, Vianos y Cáceres, y
+estando Malpica bajo exclusividad con otro comprador, el cuarto suelo solo puede ser
+Torrecampo. Los 300 MW pasan a apoyarse en el nombre de la sociedad vehículo en el 10-Q, y
+la parcela queda fijada: nueve fincas y 119,4 hectáreas, con sus referencias catastrales
+verificadas una a una. La identificación es por eliminación, porque ningún documento dice
+literalmente «Palma = Torrecampo»; lo cerraría el contrato de compraventa vinculante.
+
+De paso queda claro que **«Malpica» tampoco es un municipio**, sino el nombre de la finca:
+las parcelas están en Mora y Villamuelas (Toledo), que es donde ya las sitúa la ficha
+`edgemode-mora-malpica-ai`.
 
 **Echelon-Iberdrola: uno, dos o tres proyectos.** La ficha `echelon-iberdrola-madrid-sur`
 existe sin municipio, sin provincia y sin comunidad. La nota legible habla de «Madrid Sur»
