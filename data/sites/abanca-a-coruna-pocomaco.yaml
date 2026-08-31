@@ -21,9 +21,13 @@ estado: operativo
 estado_detalle: >-
   Edificio que aloja el principal centro de proceso de datos de ABANCA. En abril de
   2026 el banco completó una transformación integral del inmueble (1.600 m²) en algo
-  más de seis meses, elevando su capacidad un 20% hasta 140 puestos de trabajo. La
-  reforma documentada afecta a las áreas de trabajo del edificio, no a las salas técnicas.
-estado_fuentes: [src-1]
+  más de seis meses y sin interrumpir el servicio, elevando su capacidad un 20% hasta
+  140 puestos de trabajo destinados a Operaciones TI y Ciberseguridad. La reforma
+  documentada afecta a las áreas de trabajo del edificio, no a las salas técnicas. El
+  CPD da servicio a más de 250.000 dispositivos en España, Portugal y otros nueve
+  países, y ABANCA opera un segundo CPD en su sede de A Coruña que funciona en
+  paralelo y replica cada operación.
+estado_fuentes: [src-1, src-2, src-3]
 
 superficie_construida_m2: 1600
 
@@ -33,8 +37,15 @@ incertidumbres:
   - campo: potencia
     descripcion: >-
       ABANCA no publica potencia, superficie de sala técnica ni número de racks del
-      CPD. Campo potencia omitido.
-    fuentes: [src-1]
+      CPD, ni en su nota de prensa ni en la cobertura especializada de la reforma de
+      2026. Campo potencia omitido.
+    fuentes: [src-1, src-2]
+  - campo: tipo
+    descripcion: >-
+      Los 140 puestos de trabajo son capacidad de plazas de oficina en el edificio
+      tras la reforma, no una cifra de empleo del centro de datos. Por eso no se
+      registran en el campo empleo.
+    fuentes: [src-1, src-2]
   - campo: superficie_construida_m2
     descripcion: >-
       Los 1.600 m² son la superficie objeto de la reforma, no necesariamente la
@@ -58,3 +69,29 @@ fuentes:
     fecha_publicacion: "2026-04-30"
     fecha_consulta: "2026-08-29"
     cita: "en el polígono de POCOMACO (A Coruña)"
+  - id: src-2
+    url: "https://www.datacenterdynamics.com/es/noticias/abanca-moderniza-su-centro-de-datos-en-a-coru%C3%B1a-con-un-enfoque-m%C3%A1s-eficiente-y-sostenible/"
+    titulo: "ABANCA moderniza su centro de datos en A Coruña con un enfoque más eficiente y sostenible"
+    editor: "DataCenterDynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-05-06"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El centro de datos de A Coruña actúa como el núcleo tecnológico de ABANCA, conectado a un
+      ecosistema de más de 250.000 dispositivos distribuidos en varios países [...] la entidad
+      opera un segundo CPD en la ciudad que funciona en paralelo, garantizando la redundancia de
+      los sistemas [...] La intervención ha afectado a una superficie de 1.600 metros cuadrados
+      [...] La reforma ha permitido incrementar la capacidad del edificio en un 20%, hasta alcanzar
+      los 140 puestos de trabajo
+  - id: src-3
+    url: "https://www.laopinioncoruna.es/economia/2026/04/30/abanca-corazon-tecnologico-pocomaco-centrodedatos-129725239.html"
+    titulo: "Abanca refuerza su corazón tecnológico ubicado en Pocomaco con más capacidad y eficiencia para afrontar su crecimiento"
+    editor: "La Opinión A Coruña"
+    tipo: prensa_general
+    fecha_publicacion: "2026-04-30"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Desde este nodo se articula una red que conecta más de 250.000 dispositivos de medio centenar
+      de tipologías distribuidos en España, Portugal y otros nueve países [...] la existencia de un
+      segundo CPD en la sede de la entidad en A Coruña, que opera en paralelo al de Pocomaco. Cada
+      dato, cada operación, se replica en ambos centros

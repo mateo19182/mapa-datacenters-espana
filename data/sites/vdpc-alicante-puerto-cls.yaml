@@ -21,10 +21,12 @@ estado: cancelado
 estado_detalle: >-
   En abril de 2023 el puerto de Alicante aprobó su primera estación de aterraje de cables
   submarinos (CLS), a construir por Valencia Digital Port Connect para el cable Barracuda,
-  con un data center asociado de 96 bastidores. En mayo de 2025 el promotor anunció que el
-  cable Barracuda no aterrizaría ni en Alicante ni en Valencia, sino en Sagunto. No consta
-  ninguna actuación posterior sobre este emplazamiento.
-estado_fuentes: [src-1, src-2]
+  con un data center asociado de 96 bastidores. El abandono del emplazamiento se anunció en
+  dos pasos: el 03/02/2025 el promotor comunicó que el cable, renombrado Barracuda y
+  financiado por Teset Capital, uniría Valencia con Génova en lugar de Alicante con
+  Marsella, y el 29/05/2025 fijó Sagunto como punto de aterraje. No consta ninguna
+  actuación posterior sobre este emplazamiento ni resolución del expediente portuario.
+estado_fuentes: [src-1, src-2, src-3]
 
 potencia:
   - tipo: no_especificado
@@ -39,16 +41,33 @@ potencia:
 superficie_construida_m2: 2500
 inversion_anunciada_eur: 10000000
 
+empleo:
+  - tipo: construccion
+    valor: 200
+    referencia: "Empleos en la fase inicial de construcción del proyecto Alicante CLS (no ejecutado)"
+    fecha_dato: "2025-02-05"
+    fuentes: [src-3]
+    nota: "Cifra de un proyecto abandonado; se conserva como registro de lo que se prometió."
+  - tipo: directo
+    valor: 25
+    referencia: "Plantilla estable prevista para el Alicante CLS (no ejecutado)"
+    fecha_dato: "2025-02-05"
+    fuentes: [src-3]
+    nota: null
+
 incertidumbres:
   - campo: estado
     descripcion: >-
-      Ninguna fuente declara formalmente cancelado el expediente portuario; la conclusión
-      se apoya en que elEconomista (29/05/2025) afirma que el cable «no se conectará desde
-      Alicante [...] ni desde Valencia» y que el promotor eligió Sagunto.
-    fuentes: [src-1, src-2]
+      Ninguna fuente declara formalmente cancelado el expediente portuario de la Autoridad
+      Portuaria de Alicante; la conclusión se apoya en que elEconomista (29/05/2025) afirma
+      que el cable «no se conectará desde Alicante [...] ni desde Valencia», en que el
+      diario Información (05/02/2025) da la operación por perdida para la ciudad, y en que
+      el BOE de 01/04/2026 recoge la solicitud de concesión de VDPC en el puerto de Sagunto
+      y ninguna en el de Alicante.
+    fuentes: [src-1, src-2, src-3]
 
 confianza: baja
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -67,3 +86,11 @@ fuentes:
     fecha_publicacion: "2025-05-29"
     fecha_consulta: "2026-08-29"
     cita: "El proyecto de cable submarino Barracuda que conectará la costa mediterránea española con las grandes autopistas de datos internacionales no se conectará desde Alicante, como se anunció hace varios años, ni desde Valencia."
+  - id: src-3
+    url: "https://www.informacion.es/economia/2025/02/05/alicante-pierde-tren-cableado-submarino-114023295.html"
+    titulo: "Alicante pierde el tren del cableado submarino frente a un estratégico proyecto Valencia-Génova"
+    editor: "Información"
+    tipo: prensa_general
+    fecha_publicacion: "2025-02-05"
+    fecha_consulta: "2026-08-31"
+    cita: "El anuncio supone que Alicante pierde una oportunidad tecnológica y de empleo, pues la propuesta que se barajó en primera instancia, y a la que se le denominó Alicante CLS, incluía un \"Data Center\" en el puerto alicantino, lo que suponía 200 empleos en la fase inicial de construcción y una posterior plantilla estable de 25 personas."

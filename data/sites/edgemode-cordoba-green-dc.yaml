@@ -2,6 +2,8 @@ id: edgemode-cordoba-green-dc
 nombre: "Green DC Córdoba — EdgeMode"
 alias:
   - "EdgeMode Green DC Córdoba"
+  - "DC Estate Córdoba"
+  - "IberData Hub Córdoba"
 tipo: campus
 operador: "EdgeMode"
 propietario: "Sociedad conjunta EdgeMode (75%) — Blackberry AIF (25%)"
@@ -21,10 +23,15 @@ estado_detalle: >-
   Uno de los cinco campus del porfolio español que EdgeMode adquirió a Blackberry AIF (junto a
   Torrecampo, Malpica, Cáceres y Vianos). Baxtel indica conexión a red asegurada y licencia
   provisional de construcción obtenida, con estatus ready-to-build previsto para 2026 y desarrollo
-  del emplazamiento a partir de 2028 con ampliaciones hasta 2030. Cada campus del porfolio se
+  del emplazamiento a partir de 2028 con ampliaciones hasta 2030. En julio de 2026 EdgeMode firmó un
+  acuerdo no vinculante (term sheet, con 60 días de exclusividad) para vender a Pure Data Centres
+  Group —participada por Oaktree, del grupo Brookfield— sus derechos sobre los suelos de Córdoba,
+  Palma del Río, Vianos y Cáceres; Pure DC prevé desarrollar finalmente solo dos de los cuatro,
+  previsiblemente Cáceres y Vianos. A 30 de agosto de 2026 el proyecto no estaba en obras y le
+  faltaban permisos y punto de conexión. Cada campus del porfolio se
   proyecta con unos 60 MW de fotovoltaica dedicada y 240 MWh de almacenamiento en baterías, que son
   activos de generación y no potencia del centro de datos.
-estado_fuentes: [src-1, src-2]
+estado_fuentes: [src-1, src-2, src-6, src-7]
 
 potencia:
   - tipo: no_especificado
@@ -32,11 +39,36 @@ potencia:
     ambito: campus
     referencia: "Capacidad atribuida al campus de Córdoba dentro del porfolio de 1,5 GW"
     estado_asociado: en_tramitacion
-    fecha_dato: "2026-01-01"
-    fuentes: [src-3]
+    fecha_dato: "2026-08-30"
+    fuentes: [src-3, src-7, src-5]
     nota: >-
       El Conciso dice «Córdoba y Torrecampo, dotadas con 300 MW cada una» sin especificar si son
-      MW IT o de conexión. GlobeNewswire y pv-tech hablan de 1,5 GW combinados en cinco campus.
+      MW IT o de conexión. Data Center Dynamics repite en julio de 2026 que «cada uno de los
+      proyectos está diseñado para alcanzar 300 MW de capacidad» y Economía Digital lo mantiene a
+      30 de agosto de 2026.
+  - tipo: no_especificado
+    valor_mw: 120
+    ambito: campus
+    referencia: "Capacidad del centro de Córdoba en el porfolio IberData Hub de Blackberry AIF"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2025-12-23"
+    fuentes: [src-4]
+    nota: >-
+      Data Center Dynamics, al informar de que EdgeMode y BAIF habían asegurado el suministro de
+      1,5 GW, describe el porfolio como «a 120MW data center in Córdoba, Andalusia; 100MW facilities
+      in Vianos and Alcaraz, Albacete; and a 100MW facility in Toledo». Es la cifra más baja
+      publicada para este emplazamiento y no coincide con el reparto de 300 MW por campus.
+  - tipo: generacion_asociada
+    valor_mw: 360
+    ambito: campus
+    referencia: "Pilas de combustible de óxido sólido desplegables en cada uno de los cinco emplazamientos"
+    estado_asociado: anunciado
+    fecha_dato: "2026-07-14"
+    fuentes: [src-6]
+    nota: >-
+      «Up to 360MW of fuel cell capacity could be deployed at each of the five sites», con gas
+      natural como combustible primario y en sustitución de la conexión a red. Es capacidad de
+      generación, no capacidad del centro de datos, y no entra en ningún agregado.
 
 conexion_electrica:
   fuentes: [src-1]
@@ -46,10 +78,24 @@ enlaces_proyecto: []
 incertidumbres:
   - campo: potencia
     descripcion: >-
-      Los 300 MW por emplazamiento salen de dividir el objetivo agregado de 1,5 GW entre cinco
-      campus. No hay fuente que publique una potencia contratada o concedida específica para
-      Córdoba, ni el tipo de MW.
-    fuentes: [src-2, src-3]
+      Tres lecturas incompatibles y ninguna tipificada: 300 MW por emplazamiento (reparto del
+      objetivo agregado de 1,5 GW entre cinco campus, repetido por prensa hasta agosto de 2026),
+      120 MW para Córdoba en la descripción del porfolio IberData Hub, y una capacidad combinada de
+      1,5 GW atribuida solo a Córdoba y Palma del Río en el anuncio de la venta a Pure DC. No hay
+      fuente que publique una potencia contratada o concedida específica para Córdoba.
+    fuentes: [src-2, src-3, src-4, src-6]
+  - campo: propietario
+    descripcion: >-
+      En julio de 2026 EdgeMode firmó un term sheet no vinculante para vender a Pure Data Centres
+      Group (Oaktree / Brookfield) su participación en los suelos de Córdoba, Palma del Río, Vianos y
+      Cáceres. No es un cambio de nombre de EdgeMode: son dos compañías distintas y la operación
+      estaba pendiente de acuerdo vinculante y de que los proyectos obtuvieran autorizaciones,
+      permisos energéticos y un contrato de arrendamiento con un hiperescalar. Pure DC pagaría
+      1,5 millones de euros por emplazamiento seleccionado, otros 1,5 millones al alcanzar
+      ready-to-build y 325.000 euros por megavatio de capacidad IT arrendada, y prevé desarrollar
+      solo dos de los cuatro. Se mantiene EdgeMode como operador y propietario hasta que conste el
+      cierre.
+    fuentes: [src-6, src-8]
   - campo: ubicacion
     descripcion: >-
       Ninguna fuente da parcela, polígono ni dirección; solo «Córdoba». Coordenadas de municipio.
@@ -58,12 +104,14 @@ incertidumbres:
     descripcion: >-
       pv-tech sitúa el ready-to-build del porfolio en el primer trimestre de 2026; Baxtel lo sitúa
       en el segundo trimestre de 2026 para Córdoba. La afirmación de «conexión a red asegurada» y
-      «licencia provisional de construcción» procede solo de Baxtel y no está respaldada por
-      documento administrativo localizado.
-    fuentes: [src-1, src-2]
+      «licencia provisional de construcción» procede solo de Baxtel y choca con Economía Digital,
+      que el 30 de agosto de 2026 escribe que EdgeMode «dispone de sociedades y acuerdos de alquiler
+      sobre los terrenos, pero todavía necesita permisos y puntos de conexión» y que ninguno de sus
+      dos centros cordobeses está en obras.
+    fuentes: [src-1, src-2, src-7]
 
 confianza: baja
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -87,3 +135,63 @@ fuentes:
     tipo: prensa_general
     fecha_consulta: "2026-08-29"
     cita: "Córdoba y Torrecampo, dotadas con 300 MW cada una"
+  - id: src-4
+    url: "https://www.datacenterdynamics.com/en/news/edgemode-secures-power-supply-for-15gw-spanish-data-center-platform/"
+    titulo: "EdgeMode secures power supply for 1.5GW Spanish data center platform"
+    editor: "Data Center Dynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2025-12-23"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Through its IberData Hub portfolio, the company aims to develop a 120MW data center in Córdoba,
+      Andalusia; 100MW facilities in Vianos and Alcaraz, Albacete; and a 100MW facility in Toledo.
+  - id: src-5
+    url: "https://www.datacenterdynamics.com/es/noticias/oaktree-refuerza-su-apuesta-por-espa%C3%B1a-con-la-compra-de-cuatro-proyectos-de-centros-de-datos/"
+    titulo: "Oaktree refuerza su apuesta por España con la compra de cuatro proyectos de centros de datos"
+    editor: "Data Center Dynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-07-13"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Los emplazamientos se encuentran en Cáceres, Vianos (Albacete), Córdoba y Palma del Río
+      (Córdoba). Cada uno de los proyectos está diseñado para alcanzar 300 MW de capacidad, aunque
+      Pure DC prevé finalmente desarrollar únicamente dos de ellos, previsiblemente los situados en
+      Cáceres y Vianos.
+  - id: src-6
+    url: "https://www.datacenterdynamics.com/en/news/edgemode-looks-to-sell-multiple-data-center-development-sites-in-spain/"
+    titulo: "EdgeMode looks to sell multiple data center development sites in Spain"
+    editor: "Data Center Dynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-07-14"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      EdgeMode this month announced it has entered into a non-binding term sheet with Pure Data
+      Centres Group to sell the former's interest in land sites controlled via leaseholds in Cordoba,
+      Palma del Río (Córdoba), Vianos (Albacete), and Cáceres, Spain [...] Pure will pay €1.5 million
+      ($1.7m) per selected site, plus a further €1.5m once each site reaches Ready-to-Build status,
+      plus €325,000 ($372,000) per megawatt of leased IT capacity [...] The Cordoba and Palma sites
+      alone could reportedly total a combined power capacity of 1.5GW at full build-out [...] up to
+      360MW of fuel cell capacity could be deployed at each of the five sites under the joint venture
+      with AIF, for a total of 1.8GW in total capacity across those projects.
+  - id: src-7
+    url: "https://www.economiadigital.es/andalucia/empresas/meridian-edge-mode-elmya-asi-futuros-centros-datos-andaluces-afectados-normativa-gobierno.html"
+    titulo: "Meridian, Edge Mode o Elmya: así son los futuros centros de datos andaluces afectados por la normativa del Gobierno"
+    editor: "Economía Digital"
+    tipo: prensa_general
+    fecha_publicacion: "2026-08-30"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Edge Mode trabaja en 2 proyectos de 300 MW cada uno en Córdoba capital y Torrecampo, municipio
+      de la misma provincia. La empresa dispone de sociedades y acuerdos de alquiler sobre los
+      terrenos, pero todavía necesita permisos y puntos de conexión. Ninguno de los 2 centros está
+      actualmente en obras.
+  - id: src-8
+    url: "https://www.sec.gov/Archives/edgar/data/1652958/000168316826005308/edgemode_ex1002.htm"
+    titulo: "EdgeMode Inc — Exclusivity Letter with Pure Data Centres Group Limited (exhibit 10.02)"
+    editor: "EdgeMode, Inc. (SEC EDGAR)"
+    tipo: empresa
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      This exclusivity letter (“Exclusivity Letter”) sets forth our understanding and agreement
+      regarding the exclusive negotiations between Pure Data Centres Group Limited (“Pure DC”) and
+      EdgeMode Inc (“Edgemode”).

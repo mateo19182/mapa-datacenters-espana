@@ -23,22 +23,35 @@ estado_detalle: >-
   Centro de proceso de datos del consorcio público que presta servicios de
   supercomputación, red (Anella Científica) y alojamiento a las universidades y
   centros de investigación catalanes. El CSUC identifica su CPD en el Edifici
-  Annexus del Campus Nord, distinto de su sede social en Gran Capità 2.
-estado_fuentes: [src-1, src-2]
+  Annexus del Campus Nord, distinto de su sede social en Gran Capità 2. En 2023
+  el consorcio renovó y amplió el CPD porque las instalaciones habían llegado al
+  límite de su capacidad física, y sustituyó los sistemas eléctrico y de
+  climatización, dentro de un proyecto financiado con 12,73 millones de euros de
+  fondos REACT-EU.
+estado_fuentes: [src-1, src-2, src-3]
 
 potencia: []
 
 incertidumbres:
   - campo: potencia
-    descripcion: "No se publica potencia eléctrica ni superficie del CPD."
-    fuentes: [src-2]
+    descripcion: >-
+      No se publica potencia eléctrica ni superficie del CPD. La nota sobre la
+      renovación de 2023 confirma que se cambiaron los sistemas eléctrico y de
+      climatización, pero no da ninguna magnitud; el Pla General d'Activitats
+      2025 dedica una ficha al CPD sin publicar cifras de potencia. La única
+      partida económica localizada, «Allotjament CPD extern 60.000 €», se refiere
+      a alojamiento en un centro de terceros, no a esta instalación.
+    fuentes: [src-2, src-3, src-4]
   - campo: ubicacion
     descripcion: >-
       PeeringDB registra la instalación en "Gran Capita, 2 - 4 (Edifici Nexus)";
       la web del CSUC menciona el "Centre de Processament de Dades (Edifici
       Annexus)" como instalación distinta de la sede. Ambos edificios están en el
-      Campus Nord de la UPC.
-    fuentes: [src-1, src-2]
+      Campus Nord de la UPC. El pie de página del web del CSUC da como dirección
+      de Barcelona «Gran Capità, 2 (Edifici LEIA UPC)», un tercer nombre de
+      edificio. Los tres están en el Campus Nord y no se ha podido determinar en
+      cuál se aloja físicamente el CPD.
+    fuentes: [src-1, src-2, src-3]
 
 confianza: media
 ultima_verificacion: "2026-08-31"
@@ -58,3 +71,26 @@ fuentes:
     tipo: oficial
     fecha_consulta: "2026-08-29"
     cita: "Centre de Processament de Dades (Edifici Annexus)"
+  - id: src-3
+    url: "https://www.csuc.cat/ca/noticia/el-csuc-desplega-nous-serveis-en-el-marc-del-projecte-react-eu"
+    titulo: "El CSUC desplega nous serveis en el marc del projecte REACT-EU"
+    editor: "Consorci de Serveis Universitaris de Catalunya"
+    tipo: oficial
+    fecha_publicacion: "2023-12-21"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Tot plegat ha fet necessària una renovació i ampliació del Centre de
+      Processament de Dades (CPD) del CSUC, atès que les instal·lacions havien
+      arribat al límit de la seva capacitat física ... s'han canviat els sistemes
+      elèctric i de climatització, ara molt més eficients i sostenibles ... un
+      ajut europeu de 12,73 M€ procedents del fons REACT-EU
+  - id: src-4
+    url: "https://www.csuc.cat/sites/default/files/2025-01/PGA%202025.pdf"
+    titulo: "Pla General d'Activitats 2025"
+    editor: "Consorci de Serveis Universitaris de Catalunya"
+    tipo: oficial
+    fecha_publicacion: "2025-01-01"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Infraestructura al núvol i CPD 22 Centre de Processament de Dades (CPD) 23
+      ... Allotjament CPD extern 60.000 €

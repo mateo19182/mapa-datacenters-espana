@@ -1,0 +1,132 @@
+id: dc-estate-caceres
+nombre: "DC Estate Cáceres — campus de centro de datos de EdgeMode en Cáceres"
+alias:
+  - "EdgeMode DC Cáceres"
+  - "Pure DC Cáceres"
+tipo: campus
+operador: null
+propietario: "DC Estate Cáceres, S.L. (socio único Blackberry AIF, S.L.; sociedad conjunta con EdgeMode)"
+cliente_ancla: null
+modelo: mayorista
+
+ubicacion:
+  municipio: "Cáceres"
+  provincia: "Cáceres"
+  ccaa: "Extremadura"
+  direccion: null
+  lat: 39.4745175
+  lon: -6.3716761
+  precision: municipio
+  fuentes: [src-1, src-2, src-osm]
+
+estado: anunciado
+estado_detalle: >-
+  Uno de los emplazamientos españoles que EdgeMode controla mediante derechos de arrendamiento
+  a largo plazo a través de la sociedad conjunta con Blackberry AIF. El 1 de julio de 2026
+  EdgeMode firmó con Pure Data Centres Group (Oaktree, grupo Brookfield) un term sheet no
+  vinculante para venderle su participación en los emplazamientos de Córdoba, Palma, Vianos y
+  Cáceres, con 60 días de exclusividad y condicionado a obtener permisos, autorizaciones
+  energéticas y un contrato de arrendamiento de capacidad con un hiperescalador. Expansión
+  señala que Pure DC prevé desarrollar solo dos de los cuatro, previsiblemente Cáceres y
+  Vianos. No consta expediente urbanístico ni ambiental abierto en Cáceres para este proyecto.
+estado_fuentes: [src-1, src-2, src-3]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 300
+    ambito: campus
+    referencia: "Potencia prevista para cada uno de los cuatro emplazamientos del acuerdo con Pure DC"
+    estado_asociado: anunciado
+    fecha_dato: "2026-07-13"
+    fuentes: [src-1]
+    nota: >-
+      Expansión dice «que cada instalación tenga 300 megavatios (MW) de potencia» sin precisar
+      si son MW IT o de conexión. El propio term sheet valora la operación «based on a 300MW
+      data centre».
+
+superficie_parcela_m2: 1000000
+inversion_anunciada_eur: null
+enlaces_proyecto: []
+
+incertidumbres:
+  - campo: ubicacion
+    descripcion: >-
+      Solo consta el municipio. No hay dirección, parcela ni referencia catastral publicadas, ni
+      expediente administrativo localizable. Las coordenadas son el centroide municipal.
+    fuentes: [src-1, src-2]
+  - campo: operador
+    descripcion: >-
+      Es un proyecto distinto del Campus Data Center CC Green que Nostrum Group (antes
+      Ingenostrum) promueve en el mismo municipio, en el ecopolígono Las Capellanías (ficha
+      «ingenostrum-caceres-ccgreen»). Comparten municipio y nada más: distinto promotor,
+      distinto suelo y distinta tramitación.
+    fuentes: [src-1]
+  - campo: estado
+    descripcion: >-
+      Todo el respaldo documental es societario y financiero —una sociedad instrumental inscrita
+      en el Registro Mercantil y un preacuerdo de compraventa no vinculante— sin ningún trámite
+      administrativo abierto en Extremadura. La ficha registra un proyecto anunciado, no una
+      obra en marcha.
+    fuentes: [src-1, src-2, src-4]
+  - campo: superficie_parcela_m2
+    descripcion: >-
+      La superficie de 100 hectáreas procede de Baxtel, un directorio sectorial, no de una
+      fuente primaria ni de un expediente.
+    fuentes: [src-3]
+
+confianza: baja
+ultima_verificacion: "2026-08-31"
+
+fuentes:
+  - id: src-1
+    url: "https://www.expansion.com/empresas/2026/07/13/6a538798e5fdea2b078b456e.html"
+    titulo: "Brookfield atiza la batalla de los grandes fondos por los centros de datos en España"
+    editor: "Expansión"
+    tipo: prensa_general
+    fecha_publicacion: "2026-07-13"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Oaktree adquirirá sociedades que tramitan la ubicación de centros en Cáceres, Vianos
+      (Albacete), Córdoba y Palma del Río (también en Córdoba), cuando tengan los permisos y
+      estén preparadas para iniciar los trabajos de construcción. El plan contempla que cada
+      instalación tenga 300 megavatios (MW) de potencia, pero la intención de Pure DC es
+      descartar dos de las localizaciones (probablemente las de Córdoba y Palma).
+  - id: src-2
+    url: "https://www.sec.gov/Archives/edgar/data/1652958/000168316826005308/edgemode_8k.htm"
+    titulo: "Edgemode, Inc. Form 8-K (7 de julio de 2026)"
+    editor: "Edgemode, Inc. / U.S. Securities and Exchange Commission"
+    tipo: empresa
+    fecha_publicacion: "2026-07-06"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      On July 1, 2026, Edgemode, Inc. (the "Company") entered into a non-binding term sheet (the
+      "Term Sheet") with a third-party purchaser (the "Purchaser") regarding the sale of the
+      Company's interest in certain land sites controlled via leaseholds in Cordoba, Palma,
+      Vianos and Caceres, Spain (the "Acquisition").
+  - id: src-3
+    url: "https://baxtel.com/data-center/edgemode-dc-caceres"
+    titulo: "EdgeMode: DC Cáceres Data Center"
+    editor: "Baxtel"
+    tipo: consultora
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      DC Estate Cáceres is a planned AI-ready data center campus spanning a 100-hectare site in
+      Cáceres, Extremadura, developed under the EdgeMode–BAIF joint venture.
+  - id: src-4
+    url: "https://www.empresia.es/empresa/dc-estate-caceres/evento/25907733/"
+    titulo: "DECLARACIÓN DE UNIPERSONALIDAD en DC ESTATE CACERES SL — BORME-A-2025-215-41"
+    editor: "Empresia (a partir del Boletín Oficial del Registro Mercantil)"
+    tipo: otro
+    fecha_publicacion: "2025-11-11"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Publicación en el Boletín Oficial del Registro Mercantil del día 11 de noviembre del 2025
+      del anuncio de declaración de unipersonalidad en la empresa DC ESTATE CACERES SL, inscrito
+      en el Registro Mercantil el día 03 de noviembre del 2025.
+  - id: src-osm
+    url: "https://nominatim.openstreetmap.org/search?q=C%C3%A1ceres%2C+Extremadura&format=json&limit=1"
+    titulo: "Nominatim — Cáceres, Extremadura"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-08-31"
+    cita: "Cáceres, Extremadura, España — lat 39.4745175, lon -6.3716761"

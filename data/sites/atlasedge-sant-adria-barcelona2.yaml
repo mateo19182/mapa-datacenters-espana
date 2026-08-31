@@ -21,8 +21,9 @@ estado_detalle: >-
   18.000 m² a unos 6 km de su centro anterior (el de Carrer de l'Acer, vendido a
   Templus en diciembre de 2025). El suministro eléctrico está "asegurado y
   previsto para 2027". Está en la misma calle que la Barcelona Cable Landing
-  Station.
-estado_fuentes: [src-1]
+  Station. La adquisición del suelo la anunció la propia AtlasEdge el 18 de julio
+  de 2024, con la potencia inicial ya asegurada.
+estado_fuentes: [src-1, src-3]
 
 potencia:
   - tipo: no_especificado
@@ -30,10 +31,21 @@ potencia:
     ambito: edificio
     referencia: "Capacidad indicada en el directorio"
     estado_asociado: en_construccion
-    fuentes: [src-1]
+    fuentes: [src-1, src-3]
     nota: >-
       El listado de mercado de Baxtel muestra 10 MW para esta instalación; la
-      ficha detallada mantiene el dato tras muro de pago y no precisa tipo.
+      nota de la propia AtlasEdge lo confirma —"the new facility will deliver
+      10MW by 2027"— sin precisar si es carga TI o potencia de acceso.
+  - tipo: no_especificado
+    valor_mw: 24
+    ambito: edificio
+    referencia: "Capacidad máxima a la que la compañía prevé poder ampliar"
+    estado_asociado: anunciado
+    fecha_dato: "2024-07-18"
+    fuentes: [src-3]
+    nota: >-
+      La nota dice "with the potential to increase this to 24MW". Es un techo
+      declarado, no capacidad contratada.
 
 superficie_parcela_m2: 18000
 
@@ -46,16 +58,21 @@ incertidumbres:
     fuentes: [src-1, src-2]
   - campo: potencia
     descripcion: >-
-      No hay fuente primaria de la compañía que confirme los 10 MW ni su tipo.
-    fuentes: [src-1]
+      La nota de la propia AtlasEdge confirma los 10 MW para 2027 y un techo de
+      24 MW, pero no tipifica ninguna de las dos cifras ni concreta la potencia
+      de acceso ya asegurada.
+    fuentes: [src-1, src-3]
   - campo: estado
     descripcion: >-
-      Fuente única. Tampoco está claro si el proyecto sigue en manos de AtlasEdge
-      tras la venta de su cartera europea a Templus en diciembre de 2025.
-    fuentes: [src-1]
+      No está claro si el proyecto sigue en manos de AtlasEdge tras la venta de
+      nueve centros europeos a Templus en diciembre de 2025. La propia AtlasEdge
+      describe esa operación como una venta de activos seleccionados «para
+      centrarse en emplazamientos escalables y de alto crecimiento», categoría en
+      la que encajaría este proyecto, pero ninguna fuente lo dice expresamente.
+    fuentes: [src-1, src-3]
 
-confianza: baja
-ultima_verificacion: "2026-08-29"
+confianza: media
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -75,3 +92,15 @@ fuentes:
     tipo: asociacion
     fecha_consulta: "2026-08-29"
     cita: "Barcelona Cable Landing Station | Carrer de Ramon Viñas 4 | Sant Adrià de Besòs | 08930"
+  - id: src-3
+    url: "https://atlasedge.com/atlasedge-to-build-second-barcelona-data-centre/"
+    titulo: "AtlasEdge to Build Second Barcelona Data Centre"
+    editor: "AtlasEdge Data Centres"
+    tipo: empresa
+    fecha_publicacion: "2024-07-18"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      With initial power already secured, the new facility will deliver 10MW by
+      2027, with the potential to increase this to 24MW. The 18,000 square-metre
+      plot is 6km from the company's existing Barcelona data centre and is
+      strategically located close to the Barcelona Cable Landing Station.

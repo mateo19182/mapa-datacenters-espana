@@ -35,7 +35,7 @@ potencia:
     referencia: "Potencia de acceso a red asegurada para la primera fase"
     estado_asociado: en_tramitacion
     fecha_dato: "2025-11-19"
-    fuentes: [src-3]
+    fuentes: [src-3, src-8]
     nota: "Dato de prensa; no confirmado por fuente oficial."
   - tipo: no_especificado
     valor_mw: 300
@@ -43,7 +43,7 @@ potencia:
     referencia: "Objetivo de potencia por planta en segunda fase"
     estado_asociado: anunciado
     fecha_dato: "2025-11-19"
-    fuentes: [src-3]
+    fuentes: [src-3, src-8]
     nota: "Dato de prensa, sin precisar tipo de potencia."
 
 fases:
@@ -65,7 +65,48 @@ conexion_electrica:
 
 superficie_parcela_m2: 806700
 inversion_anunciada_eur: 1733577386
-refrigeracion: null
+refrigeracion: >-
+  Refrigeración líquida recirculada en circuito cerrado, sin torres de evaporación.
+
+agua:
+  circuito: cerrado
+  sistema: >-
+    Refrigeración líquida recirculada en circuito cerrado que enfría directamente los chips.
+    Según la compañía, no depende de torres de evaporación ni de aportes continuos de agua:
+    "una vez que el sistema se llena durante la construcción, el agua circula de manera
+    continua entre los servidores y los equipos de refrigeración sin necesidad de suministro
+    adicional". El agua de lluvia de las cubiertas se recoge para usos no potables.
+  origen: null
+  nota: >-
+    La documentación del PIGA cifra en 3.975 m³/año la demanda industrial a plena capacidad a partir del segundo año de operación y en 27.717 m³ el llenado inicial del circuito el primer año, pero lo hace para los TRES campus de Microsoft en Aragón conjuntamente. No se registra consumo por emplazamiento porque repartir esa cifra exigiría una clave de reparto que no consta. El Acuerdo de declaración de interés autonómico recoge además el compromiso corporativo de "Impacto positivo en Agua (Water positive)" para 2030.
+  fuentes: [src-6, src-7]
+
+energia:
+  - consumo_gwh_ano: 3777
+    referencia: "Consumo eléctrico máximo anual previsto para el campus de Villamayor de Gállego"
+    fecha_dato: "2025-11-19"
+    fuentes: [src-5]
+    nota: >-
+      Cifra de la documentación del PIGA conocida a través de prensa. Es un máximo, no una
+      previsión central. Sumada a las de La Muela (3.700 GWh/año) y Zaragoza (3.100 GWh/año),
+      la misma fuente da más de 10.500 GWh/año para los tres campus.
+
+empleo:
+  - tipo: construccion
+    valor: 2000
+    referencia: "Extremo superior de la horquilla de trabajadores necesarios para completar el desarrollo del campus (entre 1.000 y 2.000, con una media anual aproximada de 300-400)"
+    fecha_dato: "2024-07-22"
+    fuentes: [src-7]
+    nota: >-
+      La memoria da una horquilla de 1.000 a 2.000 trabajadores; se registra el extremo
+      superior y se advierte del rango en lugar de promediarlo. La media anual estimada es de
+      300 a 400 empleos.
+  - tipo: directo
+    valor: 300
+    referencia: "Empleos fijos previstos en la fase operativa del campus"
+    fecha_dato: "2024-07-22"
+    fuentes: [src-7]
+    nota: "La memoria dice «hasta 300», es decir, un techo, no una previsión central."
 enlaces_proyecto:
   - "https://www.aragon.es/-/piga-microsoft"
 
@@ -86,7 +127,7 @@ incertidumbres:
     fuentes: [src-1, src-3]
 
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -127,3 +168,26 @@ fuentes:
     fecha_publicacion: "2025-11-19"
     fecha_consulta: "2026-08-29"
     cita: "el centro de Villamayor de Gállego se extenderá por 81 hectáreas, en una parcela situada entre el núcleo de la población y el polígono industrial Malpica. Microsoft estima que necesitará una demanda de consumo eléctrico máximo anual estimada en aproximadamente 3.777 GWh al año."
+  - id: src-6
+    url: "https://www.elperiodicodearagon.com/aragon/2025/11/14/microsoft-asegura-centros-datos-aragon-123735748.html"
+    titulo: "La 'nube' de Microsoft apenas tiene sed: el consumo de sus centros de datos equivaldrá al de 90 personas"
+    editor: "El Periódico de Aragón"
+    tipo: prensa_general
+    fecha_publicacion: "2025-11-14"
+    fecha_consulta: "2026-08-31"
+    cita: "La compañía asegura que sus tres campus de infraestructuras tecnológicas, que se levantarán en La Muela, Villamayor de Gállego y Zaragoza, funcionarán con un sistema de refrigeración líquida en circuito cerrado [...] La demanda industrial de sus instalaciones a plena capacidad a partir del segundo año de operación será de 3.975 metros cúbicos [...] El único momento en el que se requiere una cantidad significativa de agua es el inicial. En concreto, 27.717 m³ el primer año, destinados exclusivamente al llenado del circuito cerrado, según la información facilitada desde la empresa."
+  - id: src-7
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1343967440606"
+    titulo: "ORDEN EEI/785/2024, de 11 de julio [...] «Campus de Centros de Datos Microsoft» en el término municipal de Villamayor de Gállego (Zaragoza) — empleo"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2024-07-22"
+    fecha_consulta: "2026-08-31"
+    cita: "Durante la fase de construcción, además de los futuros empleos directos creados, se estiman unas necesidades de contratación de entre 1.000 y 2.000 trabajadores (una media anual aproximada de 300-400 empleos) para completar el desarrollo del Campus en su totalidad. [...] Una vez concluida la fase de construcción, se espera poder generar hasta 300 empleos fijos en la fase operativa del Campus."
+  - id: src-8
+    url: "https://www.eldiario.es/aragon/sociedad/microsoft-avanza-red-centros-datos-zaragoza-proyecta-mayores-regiones-europa_1_12768636.html"
+    titulo: "Microsoft avanza con su red de centros de datos en Zaragoza, donde proyecta una de sus mayores regiones en Europa — potencia asegurada por instalación"
+    editor: "elDiario.es Aragón"
+    tipo: prensa_general
+    fecha_consulta: "2026-08-31"
+    cita: "Por ahora, la multinacional estadounidense tiene asegurados 50 megavatios de 'enchufe' para cada instalación; el resto, hasta 300 MW por planta, está previsto para una segunda fase."

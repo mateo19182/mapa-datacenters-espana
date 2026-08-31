@@ -30,17 +30,31 @@ potencia:
     referencia: "Potencia inicial estimada"
     estado_asociado: en_tramitacion
     fecha_dato: "2026-03"
-    fuentes: [src-2]
-    nota: "La fuente habla de 'capacitat inicial de 10 MW' sin precisar tipo."
+    fuentes: [src-2, src-3]
+    nota: >-
+      La fuente habla de 'capacitat inicial de 10 MW' sin precisar tipo. Data
+      Center Dynamics repite "una potencia inicial estimada en 10 MW, ampliable
+      hasta los 30 MW", también sin tipificar.
   - tipo: no_especificado
     valor_mw: 30
     ambito: edificio
     referencia: "Potencia máxima ampliable"
     estado_asociado: anunciado
     fecha_dato: "2026-03"
-    fuentes: [src-2]
+    fuentes: [src-2, src-3]
 
 superficie_construida_m2: 12000
+
+empleo:
+  - tipo: directo
+    valor: 80
+    referencia: "Estimación para la instalación en funcionamiento"
+    fecha_dato: "2026-03"
+    fuentes: [src-3, src-4]
+    nota: >-
+      La cifra es condicional en la fuente especializada: «podría generar en
+      torno a 80 empleos directos, dependiendo del grado de automatización y de
+      las necesidades operativas finales».
 
 incertidumbres:
   - campo: potencia
@@ -58,11 +72,14 @@ incertidumbres:
     descripcion: >-
       La ubicación en la zona regable del Canal de Pinyana se ha señalado en
       prensa como recurso de refrigeración, pero la empresa no ha publicado el
-      sistema previsto ni consumos de agua.
-    fuentes: [src-1]
+      sistema previsto ni consumos de agua. Data Center Dynamics lo formula como
+      una ventaja del emplazamiento («facilita el acceso a recursos hídricos
+      necesarios para la refrigeración»), no como un sistema declarado por la
+      promotora. Por eso no se abre bloque `agua`.
+    fuentes: [src-1, src-3]
 
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -83,3 +100,26 @@ fuentes:
     cita: >-
       12.000 metres quadrats ... capacitat inicial de 10 MW, ampliable fins a 30
       MW ... SUDI (Sòl Urbà Delimitat Industrial)
+  - id: src-3
+    url: "https://www.datacenterdynamics.com/es/noticias/serosense-impulsa-en-alcarr%C3%A0s-el-primer-data-center-de-lleida/"
+    titulo: "Serosense impulsa en Alcarràs el primer data center de Lleida"
+    editor: "Data Center Dynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-03-24"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El desarrollo contempla una instalación de aproximadamente 12.000 metros
+      cuadrados, con una potencia inicial estimada en 10 MW, ampliable hasta los
+      30 MW en función de la evolución del proyecto. Además, la infraestructura
+      podría generar en torno a 80 empleos directos, dependiendo del grado de
+      automatización y de las necesidades operativas finales.
+  - id: src-4
+    url: "https://www.segre.com/ca/comarques/260319/alcarrs-allotjar-el-primer-centre-de-dades-de-lleida-de-12000-m-i-amb-80-llocs-de-treball_1148024.html"
+    titulo: "Alcarràs allotjarà el primer centre de dades de Lleida, de 12.000 m² i amb 80 llocs de treball"
+    editor: "Segre"
+    tipo: prensa_general
+    fecha_publicacion: "2026-03-19"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Alcarràs allotjarà el primer centre de dades de Lleida, de 12.000 m² i amb
+      80 llocs de treball

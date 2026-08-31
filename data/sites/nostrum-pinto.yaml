@@ -1,0 +1,75 @@
+id: nostrum-pinto
+nombre: "Nostrum Data Centers — Pinto"
+alias:
+  - "Nostrum Pinto"
+tipo: edificio
+operador: "Nostrum Data Centers"
+propietario: "Nostrum Group"
+modelo: desconocido
+
+ubicacion:
+  municipio: "Pinto"
+  provincia: "Madrid"
+  ccaa: "Comunidad de Madrid"
+  lat: null
+  lon: null
+  precision: municipio
+  fuentes: [src-1, src-2]
+
+estado: anunciado
+estado_detalle: >-
+  Pinto es uno de los seis emplazamientos de la cartera española que Nostrum Data Centers, división
+  de infraestructura digital de Nostrum Group, encargó comercializar a JLL en enero de 2026. La
+  consultora declara que los seis activos tienen potencia eléctrica y suelo asegurados y prevé que
+  estén operativos a lo largo de 2027. No consta ningún trámite urbanístico ni ambiental
+  identificable para el emplazamiento de Pinto.
+estado_fuentes: [src-1, src-2]
+
+potencia: []
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      La única cifra publicada es la de la cartera: 500 MW de capacidad TI en los seis
+      emplazamientos, con otros 300 MW para futuras ampliaciones. No hay reparto por
+      emplazamiento, y dividirlo o restarlo de los ya fichados sería inventar la cifra de Pinto.
+    fuentes: [src-1, src-2]
+  - campo: ubicacion
+    descripcion: >-
+      No consta dirección, polígono ni parcela: las fuentes solo nombran el municipio dentro de
+      una lista de seis ubicaciones.
+    fuentes: [src-1, src-2]
+  - campo: estado
+    descripcion: >-
+      Que «la potencia eléctrica y el suelo estén asegurados» es una afirmación de la consultora
+      que asesora la operación; no se ha localizado ningún permiso ni contrato de acceso público
+      que la respalde para Pinto.
+    fuentes: [src-1]
+
+confianza: baja
+ultima_verificacion: "2026-08-31"
+
+fuentes:
+  - id: src-1
+    url: "https://www.jll.com/es-es/newsroom/jll-asesorara-a-nostrum-data-centers"
+    titulo: "JLL asesorará a Nostrum Data Centers en el desarrollo de seis centros de datos en España con una potencia combinada de 800 MW"
+    editor: "JLL"
+    tipo: consultora
+    fecha_publicacion: "2026-01-27"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Asesoramos a Nostrum Data Centers, un promotor líder de centros de datos de alto rendimiento
+      sostenibles, en el desarrollo de seis activos en España en ubicaciones estratégicas:
+      Badajoz, Cáceres, Guadalajara, Pinto, Zamudio y Galicia ... Todos los activos cuentan con
+      potencia eléctrica y suelo asegurados y suman 500 MW de capacidad TI segura y sostenible,
+      con otros 300 MW disponibles para futuras ampliaciones de capacidad.
+  - id: src-2
+    url: "https://www.datacenterdynamics.com/es/noticias/jll-y-nostrum-data-centers-impulsan-seis-nuevos-campus-de-datos-de-hasta-800-mw-en-espa%C3%B1a/"
+    titulo: "JLL y Nostrum Data Centers impulsan seis nuevos campus de datos de hasta 800 MW en España"
+    editor: "DatacenterDynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-01-20"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      JLL asesorará a Nostrum Data Centers en el desarrollo de seis centros de datos en España con
+      una potencia combinada que puede alcanzar los 800 MW

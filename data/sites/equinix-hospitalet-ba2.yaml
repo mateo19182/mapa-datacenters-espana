@@ -38,7 +38,12 @@ potencia:
 
 superficie_construida_m2: 2500
 inversion_anunciada_eur: 52000000
-refrigeracion: "Energía 100% renovable; diseño orientado a certificación LEED."
+refrigeracion: >-
+  Energía 100% renovable; diseño orientado a certificación LEED. El edificio se
+  organiza en un bloque técnico de tres plantas con un data hall de unos 1.000 m²
+  por planta, cada uno con sistemas propios de energía y climatización, y usa
+  confinamiento de pasillo caliente. Redundancia 2N en alimentación y N+1 en
+  refrigeración según la ficha del IBX.
 
 incertidumbres:
   - campo: ubicacion
@@ -54,8 +59,17 @@ incertidumbres:
   - campo: potencia
     descripcion: >-
       La inversión de 52 M€ que cita ACCIÓ es descrita en otras fuentes como
-      inversión total de Equinix en Barcelona (BA1 + BA2), no solo BA2.
-    fuentes: [src-2]
+      inversión total de Equinix en Barcelona (BA1 + BA2), no solo BA2. El
+      Periódico cifró la inversión en «56 millones de dólares (más de 50 millones
+      de euros)». Ninguna fuente tipifica los 3,41 MW.
+    fuentes: [src-2, src-4]
+  - campo: superficie_construida_m2
+    descripcion: >-
+      ACCIÓ y El Periódico dan 2.500 m²; la ficha del IBX publica «27,147 Square
+      feet (ft²)» y el relato de la visita describe tres data halls de unos 1.000
+      m² cada uno. Las tres lecturas no se reconcilian y no se convierten
+      unidades.
+    fuentes: [src-2, src-3, src-4]
 
 confianza: media
 ultima_verificacion: "2026-08-31"
@@ -78,3 +92,26 @@ fuentes:
       The building spans 2,500 square meters with a capacity of 3.41 MW. Equinix
       invested €52 million to construct the new data center, which opened in
       September 2024.
+  - id: src-3
+    url: "https://www.techshowmadrid.es/noticias/como-funciona-un-centro-de-datos-por-dentro-visita-al-ba2-de-equinix-en-barcelona"
+    titulo: "Cómo funciona un centro de datos por dentro: visita al BA2 de Equinix en Barcelona"
+    editor: "Tech Show Madrid / Data Centre World"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-04-23"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El edificio se divide en dos grandes áreas: una zona de front office ... y
+      un bloque técnico de tres plantas dedicado íntegramente al centro de datos.
+      Cada planta alberga un data hall de aproximadamente 1.000 metros cuadrados,
+      con sistemas propios de energía y climatización ... En el BA2 se utiliza un
+      sistema de pasillo caliente encapsulado
+  - id: src-4
+    url: "https://www.equinix.com/data-centers/europe-colocation/spain-colocation/barcelona-data-centers/ba2"
+    titulo: "Barcelona BA2"
+    editor: "Equinix"
+    tipo: empresa
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Tech specs ... 27,147 Square feet (ft²) 2N Power redundancy N+1 Cooling
+      redundancy 99.9999%+ Global Guaranteed Uptime ... Carretera del Mig 219,
+      L'Hospitalet de Llobregat

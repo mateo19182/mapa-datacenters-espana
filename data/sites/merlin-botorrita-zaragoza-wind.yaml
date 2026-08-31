@@ -39,6 +39,18 @@ potencia:
       "Implantación de un edificio destinado al alojamiento, procesamiento y gestión de
       datos, que contará con una potencia total de 144 MW IT."
 
+  - tipo: conexion_red
+    valor_mw: 227.4
+    ambito: campus
+    referencia: "Potencia total de demanda garantizada: 81 MW en la SET María 220 kV más 146,4 MW en la SET Los Vientos 220 kV"
+    estado_asociado: permisos_concedidos
+    fecha_dato: "2026-07-22"
+    fuentes: [src-4]
+    nota: >-
+      Son dos permisos de demanda distintos y los embarrados de ambas subestaciones no
+      pueden interconectarse aguas abajo. No se suma con los 144 MW IT del edificio: son
+      magnitudes distintas.
+
 fases:
   - nombre: "Fase única"
     estado: anunciado
@@ -50,12 +62,12 @@ fases:
       5.481 m² en tres plantas.
 
 conexion_electrica:
-  subestacion: "Dos subestaciones eléctricas propias de transformación 220/132 kV, más la subestación integrada en el propio edificio"
+  subestacion: "Dos subestaciones eléctricas propias de transformación 220/132 kV, más la subestación integrada en el propio edificio; suministro desde las SET María 220 kV y Los Vientos 220 kV"
   tension_kv: 220
-  titular_red: null
+  titular_red: "Red Eléctrica de España — SET María 220 kV y SET Los Vientos 220 kV"
   mw_solicitados: null
-  mw_concedidos: null
-  fuentes: [src-1]
+  mw_concedidos: 227.4
+  fuentes: [src-1, src-4]
   nota: >-
     "Se proyecta la construcción de dos subestaciones eléctricas para transformar la
     electricidad de 220 kV a 132 kV, desde las que se conducirá el suministro hasta la
@@ -65,19 +77,82 @@ conexion_electrica:
 
 superficie_parcela_m2: 288000
 superficie_construida_m2: 156301
-inversion_anunciada_eur: null
-refrigeracion: null
+inversion_anunciada_eur: 1224800000
+refrigeracion: >-
+  Refrigeración de circuito cerrado sin consumo de agua, con free cooling cuando las
+  condiciones exteriores lo permiten y refrigerantes de bajo GWP. PUE declarado de 1,15.
+
+agua:
+  circuito: sin_agua
+  sistema: >-
+    Climatización de circuito cerrado que, según el Acuerdo, prescinde del consumo de agua,
+    con free cooling cuando las condiciones exteriores lo permiten y refrigerantes de bajo
+    potencial de calentamiento global.
+  origen: null
+  nota: >-
+    El Acuerdo no cuantifica ningún consumo de agua para refrigeración; la urbanización sí
+    incluye red de abastecimiento de agua para el edificio, la caseta de acceso y la red de
+    protección contra incendios. El promotor declara un PUE de 1,15; no consta WUE.
+  fuentes: [src-4]
+
+empleo:
+  - tipo: construccion
+    valor: 5040
+    referencia: "Puestos de trabajo durante la fase de construcción (1.109 directos, 2.722 indirectos y 1.209 inducidos)"
+    fecha_dato: "2026-07-22"
+    fuentes: [src-5]
+    nota: null
+  - tipo: total
+    valor: 520
+    referencia: "Puestos de trabajo en la fase de explotación (196 directos, 216 indirectos y 108 inducidos)"
+    fecha_dato: "2026-07-22"
+    fuentes: [src-5]
+    nota: null
+  - tipo: directo
+    valor: 196
+    referencia: "Empleo directo en la fase de explotación"
+    fecha_dato: "2026-07-22"
+    fuentes: [src-5]
+    nota: "Subconjunto de los 520 de explotación; no se suma con ellos."
 enlaces_proyecto: []
 
 incertidumbres:
   - campo: operador
     descripcion: >-
-      En el mismo término municipal de Botorrita, el Gobierno de Aragón declaró en noviembre
-      de 2025 el centro de datos "DCM Dédalo" del proyecto "Búfalo" (Grupo Forestalia),
-      conectado al nudo María 220 kV. Las fuentes consultadas no permiten determinar si
-      ambos proyectos comparten emplazamiento, punto de conexión o titularidad, ni si uno
-      sustituye al otro.
-    fuentes: [src-1, src-3]
+      Los 227,4 MW de este campus son los permisos de acceso y conexión que el Acuerdo de 12
+      de noviembre de 2025 había atribuido a los centros "DCM Dédalo" (81 MW en María 220 kV)
+      y "DCM Blue" (146,5 MW en Los Vientos 220 kV) del proyecto "Búfalo" de Forestalia:
+      MERLIN los compró a finales de febrero de 2026 y ha refundido los dos en un único
+      campus en Botorrita. Ni el Acuerdo de 22 de julio de 2026 ni ninguna otra disposición
+      posterior del BOA mencionan a Forestalia, "Búfalo", "DCM Dédalo" o "DCM Blue", ni
+      publican la transmisión de titularidad de los permisos: la operación consta por el
+      relato coincidente de la prensa económica aragonesa y por las declaraciones del propio
+      consejero delegado de MERLIN, Ismael Clemente, en la presentación oficial del proyecto
+      junto al presidente de Aragón. Consecuencia para este conjunto de datos: estos 227,4 MW
+      y los 227,5 MW que siguen figurando en las fichas de "DCM Dédalo" y "DCM Blue" son la
+      misma capacidad de red y no deben sumarse.
+    fuentes: [src-4, src-6, src-7, src-8, src-9, src-10]
+  - campo: potencia
+    descripcion: >-
+      No consta ningún acto administrativo que documente el cambio de titularidad de los
+      permisos de acceso. Ni el BOA ni la CNMV publican la transmisión: MERLIN no ha
+      comunicado la compra como hecho relevante y su Capital Markets Day de 10 de marzo de
+      2026, cuatro días antes de que la operación se conociera por la prensa, ya incorporaba
+      un "Zaragoza campus" de 150 MW IT (ZGZ-WIND 01 y 02) con el suministro eléctrico
+      marcado como "Granted", pero sin nombrar el origen de esa capacidad. Para cerrar el
+      punto haría falta la resolución de cambio de titular del permiso de acceso y conexión
+      de Red Eléctrica en los nudos María 220 kV y Los Vientos 220 kV, o la escritura de la
+      compraventa de las sociedades "Dédalo Holdco Renovables, S.L." y "Blue Holdco
+      Renovables, S.L.".
+    fuentes: [src-4, src-6, src-11]
+  - campo: conexion_electrica
+    descripcion: >-
+      El Acuerdo de 22 de julio de 2026 escribe 146,4 MW para el permiso de demanda de Los
+      Vientos 220 kV, mientras que el Acuerdo de 12 de noviembre de 2025 del proyecto
+      "Búfalo" escribe 146,5 MW para el mismo nudo. Al tratarse del mismo permiso, la
+      diferencia de 0,1 MW es una discrepancia entre las dos resoluciones, no dos permisos
+      distintos. Se conservan ambas cifras en sus respectivas fichas.
+    fuentes: [src-3, src-4]
   - campo: ubicacion
     descripcion: >-
       Las coordenadas registradas son el centroide municipal de Botorrita (Wikidata).
@@ -110,3 +185,67 @@ fuentes:
     fecha_publicacion: "2025-12-02"
     fecha_consulta: "2026-08-29"
     cita: "\"DCM Dédalo\", ubicado en Botorrita (Zaragoza)."
+  - id: src-4
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1462255950606"
+    titulo: "ORDEN ECE/1195/2026, de 27 de julio [...] «Campus de Centros de Datos Zaragoza-WIND», promovido por Merlin Properties Socimi, SA, en Botorrita (Zaragoza) — inversión, demanda garantizada y refrigeración"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2026-08-14"
+    fecha_consulta: "2026-08-31"
+    cita: "la inversión estimada asciende a 1.224,8 millones de euros, correspondiente a una capacidad total de 144 MW IT. [...] el promotor de la iniciativa dispone de energía garantizada para su puesta en marcha, con una potencia total de demanda garantizada de 227,4 MW, mediante un permiso de demanda de 81 MW asociado a la subestación María 220 kV y otro de 146,4 MW asociado a la subestación Los Vientos 220 kV. [...] Merlin ha declarado un PUE de 1,15, sustancialmente inferior a la media europea de 1,46 y global de 1,54 [...] mientras que la tecnología de refrigeración de circuito cerrado empleada prescinde del consumo de agua"
+  - id: src-5
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1462255950606"
+    titulo: "ORDEN ECE/1195/2026, de 27 de julio [...] «Campus de Centros de Datos Zaragoza-WIND» — información socio laboral"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2026-08-14"
+    fecha_consulta: "2026-08-31"
+    cita: "la información socio laboral reflejada en la memoria concluye con una estimación sobre la generación de empleo de 5.040 puestos de trabajo durante la fase de construcción (1.109 directos, 2.722 indirectos y 1.209 inducidos), mientras que durante la fase de explotación se crearán 520 puestos de trabajo (196 directos, 216 indirectos y 108 inducidos)."
+  - id: src-6
+    url: "https://www.elperiodicodearagon.com/aragon/2026/03/14/merlin-levantara-gran-centro-datos-127939373.html"
+    titulo: "Merlin se queda con dos tercios del macroproyecto de centros de datos de Forestalia en medio del terremoto judicial y levantará su campus en Muel"
+    editor: "El Periódico de Aragón"
+    tipo: prensa_general
+    fecha_publicacion: "2026-03-14"
+    fecha_consulta: "2026-08-31"
+    cita: "Merlin ha asumido 227 megavatios (MW) de acceso y conexión a la red eléctrica, de los 300 MW con los que contaba inicialmente el proyecto. Esta capacidad corresponde a dos de los tres nudos eléctricos sobre los que se articulaba la iniciativa: Los Vientos, ubicado en el término municipal de Muel, y María, en María de Huerva. De esta forma, la inmobiliaria liderada por Ismael Clemente se queda con dos de los tres centros de datos que Forestalia pretendía desarrollar dentro de este proyecto, mientras que el tercero —vinculado al nudo de Magallón— queda por ahora fuera de la operación."
+  - id: src-7
+    url: "https://www.heraldo.es/noticias/aragon/2026/03/14/forestalia-vende-el-66-de-su-macroproyecto-de-centros-de-datos-en-plena-investigacion-1902135.html"
+    titulo: "Forestalia vende el 66 % de su macroproyecto de centros de datos en plena investigación"
+    editor: "Heraldo de Aragón"
+    tipo: prensa_general
+    fecha_publicacion: "2026-03-14"
+    fecha_consulta: "2026-08-31"
+    cita: "Merlin compra los derechos de conexión eléctrica de dos de las tres instalaciones previstas para levantar su complejo en Muel. El acuerdo incluye que el grupo aragonés suministrará energía verde. [...] El grupo empresarial aragonés Forestalia ha vendido a Merlin Properties el 66% de su macroproyecto de centros de datos en plena investigación judicial. El acuerdo se cerró a finales de febrero, tras meses de negociación"
+  - id: src-8
+    url: "https://www.elperiodicodearagon.com/aragon/2026/07/23/merlin-negocia-forestalia-promotores-impulsar-132711147.html"
+    titulo: "Merlin negocia con Forestalia y otros promotores para impulsar nuevos centros de datos en Aragón"
+    editor: "El Periódico de Aragón"
+    tipo: prensa_general
+    fecha_publicacion: "2026-07-23"
+    fecha_consulta: "2026-08-31"
+    cita: "Clemente confirmó además que Forestalia continuará desempeñando un papel clave en el proyecto de Botorrita pese a haber vendido a Merlin los derechos de acceso y conexión correspondientes a dos de las tres subestaciones previstas inicialmente en el proyecto Búfalo. La compañía aragonesa seguirá suministrando la electricidad renovable que consumirá el centro de datos mediante los parques eólicos y fotovoltaicos vinculados al desarrollo."
+  - id: src-9
+    url: "https://www.merlinproperties.com/prensa/merlin-aragon-proyecto-autoconsumo-renovable-data-centers/"
+    titulo: "MERLIN desarrollará en Aragón el mayor proyecto de autoconsumo renovable para data centers del mundo"
+    editor: "MERLIN Properties SOCIMI, S.A."
+    tipo: empresa
+    fecha_publicacion: "2026-07-22"
+    fecha_consulta: "2026-08-31"
+    cita: "El proyecto se desarrollará sobre una superficie de 28,8 hectáreas en el municipio de Botorrita, asociado a las subestaciones de Vientos (Muel) y María (María de Huerva)."
+  - id: src-10
+    url: "https://www.eldiario.es/aragon/economia/forestalia-merlin-socimi-espanola-impulsara-botorrita-centro-datos-adquirido-promotora-renovables_1_13399203.html"
+    titulo: "De Forestalia a Merlin: la socimi española impulsará en Botorrita un centro de datos adquirido a la promotora de renovables"
+    editor: "elDiario.es"
+    tipo: prensa_general
+    fecha_publicacion: "2026-07-22"
+    fecha_consulta: "2026-08-31"
+    cita: "Clemente ha recordado que Forestalia presentó en su momento el denominado Búfalo, con tres subestaciones, dos de las cuales han quedado afectas a este proyecto. La DIGA que tenía para la generación de renovable \"sigue en vigor y ellos se ocuparán de la generación eléctrica renovable\", ha aclarado."
+  - id: src-11
+    url: "https://ir.merlinproperties.com/wp-content/uploads/2026/03/CMD-2026-CNMV-1.pdf"
+    titulo: "Capital Markets Day 2026 «From Mega to Giga» — presentación remitida a la CNMV"
+    editor: "MERLIN Properties SOCIMI, S.A."
+    tipo: empresa
+    fecha_publicacion: "2026-03-10"
+    fecha_consulta: "2026-08-31"
+    cita: "ZARAGOZA CAMPUS (150 MW) [...] Zaragoza IT Capacity (MW) RFS date Power Sourcing ZGZ-WIND 01 80 4Q29 Granted ZGZ-WIND 02 70 2H31 Granted"

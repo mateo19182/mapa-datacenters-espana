@@ -4,6 +4,7 @@ alias:
   - "CPD de Grupo Aire en Málaga"
   - "Aire Networks Málaga"
   - "OASIX Málaga"
+  - "Málaga Grupo Aire 002"
 tipo: edificio
 operador: "Grupo Aire (OASIX)"
 modelo: colocation
@@ -12,19 +13,32 @@ ubicacion:
   municipio: "Málaga"
   provincia: "Málaga"
   ccaa: "Andalucía"
-  direccion: "Málaga TechPark (Parque Tecnológico de Andalucía), Campanillas, Málaga"
+  direccion: "Calle Rosalind Franklin, Málaga TechPark (Parque Tecnológico de Andalucía), Campanillas, Málaga"
   lat: 36.7386
   lon: -4.5589
   precision: aproximada
-  fuentes: [src-1, src-2]
+  fuentes: [src-1, src-2, src-4]
 
 estado: operativo
 estado_detalle: >-
-  Primer centro de proceso de datos de Grupo Aire en Málaga, inaugurado en mayo de 2022 en el
+  Primer centro de proceso de datos de Grupo Aire en Málaga, inaugurado en 2022 en el
   Málaga TechPark con una inversión de 2,5 millones de euros. Se suma a los CPD del grupo en
-  Talavera de la Reina y Elche.
-estado_fuentes: [src-1, src-2, src-3]
+  Talavera de la Reina y Elche. Ocupa 400 m² con más de 74 racks y opera con energía de origen
+  renovable.
+estado_fuentes: [src-1, src-2, src-3, src-4]
 fecha_puesta_en_servicio: "2022-05"
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 1.2
+    ambito: edificio
+    referencia: "Capacidad en servicio según el directorio DC Atlas"
+    estado_asociado: operativo
+    fecha_dato: "2026-08-31"
+    fuentes: [src-5]
+    nota: >-
+      «1.2 MW of live capacity». Es un directorio de terceros: ni el operador ni el parque
+      tecnológico publican potencia, y la fuente no distingue carga TI de potencia contratada.
 
 fases:
   - nombre: "Instalación inicial"
@@ -40,15 +54,22 @@ enlaces_proyecto: []
 incertidumbres:
   - campo: potencia
     descripcion: >-
-      Ninguna fuente consultada, incluidas las notas del propio grupo y del parque tecnológico,
-      publica potencia eléctrica ni carga TI. Baxtel da más de 400 m² y más de 74 racks pero
-      oculta la potencia. Campo potencia omitido.
-    fuentes: [src-1, src-2, src-3]
+      Ninguna fuente primaria publica potencia eléctrica ni carga TI: las notas del propio grupo y
+      del parque tecnológico no la citan y Baxtel la oculta tras un muro de pago. El único valor
+      localizado, 1,2 MW, procede del directorio DC Atlas, que tampoco tipifica la magnitud ni cita
+      su origen.
+    fuentes: [src-1, src-2, src-3, src-5]
+  - campo: fecha_puesta_en_servicio
+    descripcion: >-
+      La nota del parque tecnológico está fechada el 29 de abril de 2022 y el propio operador escribe
+      que «Aire inauguró en abril de 2022 su Centro de datos Málaga»; la prensa económica lo dató el
+      2 de mayo de 2022 y de ahí procede el valor registrado. Discrepancia de un mes sin resolver.
+    fuentes: [src-1, src-2, src-4]
   - campo: ubicacion
     descripcion: >-
-      Las fuentes solo sitúan el CPD «en Málaga TechPark», sin dirección de parcela. Las
-      coordenadas corresponden al recinto del parque.
-    fuentes: [src-1, src-2]
+      El propio operador sitúa el CPD en la calle Rosalind Franklin del Málaga TechPark; no publica
+      número ni parcela. Las coordenadas corresponden al recinto del parque.
+    fuentes: [src-1, src-4]
 
 confianza: media
 ultima_verificacion: "2026-08-31"
@@ -76,3 +97,22 @@ fuentes:
     tipo: consultora
     fecha_consulta: "2026-08-29"
     cita: "Spans over 400 m² and houses more than 74 racks"
+  - id: src-4
+    url: "https://airetech.es/celebramos-el-dia-del-data-center-en-oasix/"
+    titulo: "¡Celebramos el día del data center en AireCloud!"
+    editor: "Aire (Grupo Aire)"
+    tipo: empresa
+    fecha_publicacion: "2024-03-21"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Nuestro data center en Málaga se encuentra en la calle Rosalind Franklin, dentro del Málaga
+      TechPark. Inaugurado en 2022, ocupa 400 metros cuadrados y cuenta con más de 74 racks.
+  - id: src-5
+    url: "https://dcatlas.io/en/explore/facilities/grupo-aire-oasix-malaga-data-center-m-laga"
+    titulo: "Málaga Grupo Aire 002 — 1.2 MW live"
+    editor: "DC Atlas"
+    tipo: consultora
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Málaga Grupo Aire 002 is a colocation data centre operated by Grupo Aire in Málaga, Spain, in
+      the Malaga market. The site is operational, with 1.2 MW of live capacity.

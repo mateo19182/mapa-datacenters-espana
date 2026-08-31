@@ -11,11 +11,11 @@ ubicacion:
   municipio: "Riba-roja de Túria"
   provincia: "Valencia"
   ccaa: "Comunitat Valenciana"
-  direccion: "Ribarroja de Turia, 46190"
+  direccion: "Polígono Industrial El Oliveral, Fase 11, Parcela 7, 46190 Riba-roja de Túria"
   lat: 39.473433
   lon: -0.536672
   precision: aproximada
-  fuentes: [src-1, src-pdb]
+  fuentes: [src-1, src-pdb, src-2]
 
 estado: operativo
 estado_detalle: >-
@@ -34,12 +34,15 @@ incertidumbres:
   - campo: ubicacion
     descripcion: >-
       PeeringDB registra la instalación como «EXA Edge DC Valencia» con dirección
-      «Ribarroja de Turia, 46190» y coordenadas, pero sin calle ni número; precisión
-      aproximada.
-    fuentes: [src-1, src-pdb]
+      «Ribarroja de Turia, 46190» y coordenadas, pero sin calle ni número. Los directorios
+      comerciales Data Center Map y Colo Map sí concretan «Polígono Industrial El Oliveral,
+      Fase 11, Parcela 7»; un tercer directorio (Data Center Platform) da «Fase 2, Parcela
+      7» y código postal 46394. No hay confirmación del operador, así que la precisión sigue
+      siendo aproximada.
+    fuentes: [src-1, src-pdb, src-2]
 
 confianza: baja
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -56,3 +59,10 @@ fuentes:
     tipo: asociacion
     fecha_consulta: "2026-08-29"
     cita: "EXA Edge DC Valencia | Ribarroja de Turia | Valencia | 46190 | 39.473433 -0.536672 | EXA Infrastructure"
+  - id: src-2
+    url: "https://www.datacentermap.com/spain/valencia/"
+    titulo: "Valencia Data Centers"
+    editor: "Data Center Map"
+    tipo: otro
+    fecha_consulta: "2026-08-31"
+    cita: "EXA Edge DC Valencia. EXA Infrastructure. Poligono Industrial El Oliveral , Fase 11, Parcela Plot 7. 46190 Ribarroja del Turia. Spain"

@@ -21,8 +21,11 @@ estado: anunciado
 estado_detalle: >-
   Anunciado el 13 de febrero de 2026 por la Junta de Extremadura y FRV. Se ha
   formalizado el contrato de reserva de suelo en ExpacioMérida (240.000 m²). No
-  consta trámite ambiental ni de acceso a red iniciado a agosto de 2026.
-estado_fuentes: [src-cope]
+  consta trámite ambiental ni de acceso a red iniciado a 31 de agosto de 2026: la Junta lo cuenta
+  entre los cinco grandes proyectos de la región, pero solo Badajoz y Navalmoral han pasado por el
+  DOE. Es el tercer gran proyecto previsto en ExpacioMérida, junto a una planta de materiales para
+  cátodos de baterías y la implantación de Jinhong Gas.
+estado_fuentes: [src-cope, src-juntaex, src-dcd-extremadura]
 
 potencia: []
 
@@ -30,29 +33,64 @@ fases:
   - nombre: "Fase 1 — infraestructura digital"
     estado: anunciado
     nota: "2.100 millones de euros de los 2.800 millones totales anunciados."
-    fuentes: [src-cope]
+    fuentes: [src-cope, src-juntaex]
   - nombre: "Infraestructura energética sostenible asociada"
     estado: anunciado
     nota: "700 millones de euros."
-    fuentes: [src-cope]
+    fuentes: [src-cope, src-juntaex]
 
 superficie_parcela_m2: 240000
 inversion_anunciada_eur: 2800000000
+
+agua:
+  circuito: desconocido
+  sistema: null
+  origen: null
+  nota: >-
+    La Junta de Extremadura recoge que el diseño «minimizará el consumo de agua», según la empresa.
+    No se publica ni el sistema de refrigeración ni cifra alguna de consumo.
+  fuentes: [src-juntaex]
+
+empleo:
+  - tipo: construccion
+    valor: 2000
+    referencia: "Fase de construcción (la fuente da una horquilla de entre 1.700 y 2.000 empleos)"
+    fecha_dato: "2026-02-13"
+    fuentes: [src-juntaex]
+    nota: "La nota oficial dice «entre 1.700 y 2.000 empleos durante la fase de construcción»."
+  - tipo: directo
+    valor: 120
+    referencia: "Fase de operación"
+    fecha_dato: "2026-02-13"
+    fuentes: [src-juntaex]
+    nota: >-
+      La nota oficial dice «más de 120 puestos de trabajo directos, estables y altamente
+      cualificados en la fase de operación»: 120 es un suelo, no una cifra cerrada.
 
 incertidumbres:
   - campo: potencia
     descripcion: >-
       No se ha publicado ninguna cifra de potencia (ni TI, ni de conexión, ni
-      instalada) para el proyecto Lusitanus.
-    fuentes: [src-cope]
+      instalada) para el proyecto Lusitanus. Ni la nota oficial de la Junta, ni FRV, ni la prensa
+      regional o especializada dan megavatios. Un directorio comercial de pago (dcpulse.com) titula
+      el proyecto como «1GW AI data center» y lo declara «under construction» desde marzo de 2026,
+      sin publicar la fuente y con datos de contexto erróneos; no se registra.
+    fuentes: [src-cope, src-juntaex]
   - campo: estado
     descripcion: >-
       El único hito documentado es la reserva de suelo. No consta calendario de
       construcción ni expediente ambiental.
-    fuentes: [src-cope]
+    fuentes: [src-cope, src-juntaex]
+  - campo: generacion_asociada
+    descripcion: >-
+      FRV opera junto a Mérida el clúster fotovoltaico San Serván 400 (tres plantas, 150 MWdc), pero
+      ninguna fuente documenta un vínculo contractual entre esas plantas y Lusitanus, más allá de que
+      «más del 80% del consumo eléctrico provendrá de autogeneración renovable». No se registra como
+      generación asociada.
+    fuentes: [src-juntaex, src-pex-perfil]
 
 confianza: baja
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-cope
@@ -66,6 +104,44 @@ fuentes:
       uno de los mayores proyectos industriales y más avanzados tecnológicamente
       que existen actualmente en cartera tanto en Extremadura como en España y
       Europa.
+  - id: src-juntaex
+    url: "https://www.juntaex.es/w/guardiola-lusitanus-expaciomerida"
+    titulo: "Extremadura acogerá 'Lusitanus', el primer Centro de Procesamiento de Datos de FRV en Extremadura orientado a Inteligencia Artificial"
+    editor: "Junta de Extremadura"
+    tipo: oficial
+    fecha_publicacion: "2026-02-13"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      ocupará una superficie de 240.000 metros cuadrados para el que ya se ha formalizado el contrato
+      de reserva de suelo [...] una inversión de 2.100 millones de euros en infraestructura digital
+      durante su primera fase, a los que se añadirían 700 millones de euros en infraestructura
+      energética asociada [...] más de un 80 por ciento de su consumo eléctrico provendrá de
+      autogeneración renovable, con un diseño que, según la empresa, minimizará el consumo de agua
+      [...] con entre 1.700 y 2.000 empleos durante la fase de construcción y más de 120 puestos de
+      trabajo directos, estables y altamente cualificados en la fase de operación.
+  - id: src-pex-perfil
+    url: "https://www.elperiodicoextremadura.com/merida/2026/02/22/lusitanus-gigante-solar-mira-ia-merida-soberania-digital-127056258.html"
+    titulo: "ExpacioMérida acogerá el centro de datos “Lusitanus” con 2.800 millones de euros"
+    editor: "El Periódico Extremadura"
+    tipo: prensa_general
+    fecha_publicacion: "2026-02-22"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      FRV ya cuenta con un activo fotovoltaico de referencia en la zona: San Serván 400, un clúster
+      de tres plantas (150 MWdc en total) que, según la propia compañía, produce en torno a 300 GWh
+      al año
+  - id: src-dcd-extremadura
+    url: "https://www.datacenterdynamics.com/es/noticias/extremadura-acelera-sus-grandes-proyectos-de-centros-de-datos/"
+    titulo: "Extremadura acelera sus grandes proyectos de centros de datos"
+    editor: "Data Center Dynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-08-28"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      la región suma cinco grandes proyectos de centros de datos vinculados al cloud y la
+      inteligencia artificial, con inversiones que superan los 25.000 millones de euros, según datos
+      regionales. Entre ellos figuran Nostrum Evergreen, CCGreen, Lusitanus y los dos campus de
+      Merlin.
   - id: src-osm
     url: "https://nominatim.openstreetmap.org/search?q=Expacio+M%C3%A9rida&format=json&limit=2"
     titulo: "Nominatim — Expacio Mérida, Mérida"

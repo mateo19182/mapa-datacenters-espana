@@ -2,6 +2,7 @@ id: bbva-tres-cantos
 nombre: "CPD de BBVA en Tres Cantos"
 alias:
   - "Centro de Proceso de Datos BBVA Tres Cantos"
+  - "Complejo Tecnológico Tres Cantos — CPD II"
 tipo: edificio
 operador: "BBVA"
 propietario: "BBVA"
@@ -18,28 +19,62 @@ ubicacion:
 
 estado: operativo
 estado_detalle: >-
-  Primer CPD de la nueva red de BBVA en Madrid, operativo desde 2011. Certificado Tier IV del
-  Uptime Institute en construcción y en diseño, y Tier IV Gold en sostenibilidad operativa
-  (2014), primera entidad bancaria europea en obtenerlo.
-estado_fuentes: [src-1]
+  CPD de 20.000 m² construido anexo a un centro anterior de BBVA en el mismo complejo de Tres
+  Cantos; el Uptime Institute lo registra como «Complejo Tecnologico Tres Cantos - CPD II». BBVA
+  anunció el arranque de sus operaciones el 6 de marzo de 2012 y lo presentó como el primer CPD
+  de Europa y el cuarto del mundo con doble certificación Tier IV en diseño y construcción. En
+  2014 obtuvo además el Tier IV Gold de sostenibilidad operativa, y lo renovó en abril de 2025
+  con la puntuación más alta que ha recibido el complejo. La certificación se revisa cada tres
+  años mediante auditoría.
+estado_fuentes: [src-1, src-2, src-3, src-4]
 fecha_puesta_en_servicio: "2011"
 
-potencia: []
+potencia:
+  - tipo: generacion_asociada
+    valor_mw: 0.46
+    ambito: edificio
+    referencia: "Planta solar fotovoltaica on site para autoconsumo del CPD"
+    estado_asociado: operativo
+    fecha_dato: "2025-04-23"
+    fuentes: [src-3]
+    nota: >-
+      «una planta solar fotovoltaica 'on site' con la que se generan hasta 460 KW destinados
+      exclusivamente para autoconsumo en el CPD». Es capacidad de generar, no de consumir, y no
+      entra en ningún agregado de capacidad del centro.
+
+superficie_construida_m2: 20000
+refrigeracion: >-
+  Más de treinta medidas de ahorro energético implantadas en los últimos años, entre ellas el
+  cerramiento de pasillos fríos en los armarios, que BBVA cifra en más de 800 MWh de ahorro en su
+  primer año, y la optimización de las consignas de funcionamiento.
 
 incertidumbres:
   - campo: potencia
-    descripcion: "No consta ninguna cifra pública de potencia ni superficie del CPD."
-    fuentes: [src-1]
-  - campo: estado
     descripcion: >-
-      La fuente disponible es de 2014. No se ha localizado información posterior que confirme el
-      estado actual del centro ni la renovación de la certificación.
-    fuentes: [src-1]
+      BBVA no publica ninguna cifra de potencia eléctrica del CPD: los únicos datos energéticos
+      que da son el ahorro obtenido con el cerramiento de pasillos fríos y la potencia de la
+      planta fotovoltaica de autoconsumo.
+    fuentes: [src-1, src-3]
+  - campo: fecha_puesta_en_servicio
+    descripcion: >-
+      La prensa especializada data el arranque del CPD en 2011, mientras que BBVA anunció el
+      «arranque de las operaciones» el 6 de marzo de 2012 y una crónica de la inauguración
+      precisa que el centro no operaba entonces al 100%, algo previsto para 2014 tras el trasvase
+      de la infraestructura anterior. Se conserva la fecha registrada y se deja constancia de las
+      otras dos lecturas.
+    fuentes: [src-1, src-2, src-4]
+  - campo: tipo
+    descripcion: >-
+      El CPD se construyó anexo a otro centro de datos que BBVA ya tenía en Tres Cantos, y el
+      Uptime Institute lo identifica como «CPD II» del mismo complejo tecnológico. La ficha
+      describe únicamente el edificio nuevo; el anterior no se ha podido caracterizar ni se sabe
+      si sigue en servicio.
+    fuentes: [src-2, src-4, src-5]
   - campo: ubicacion
     descripcion: "No consta dirección concreta; la geolocalización queda a nivel de municipio."
     fuentes: [src-1]
 
-confianza: baja
+confianza: media
 ultima_verificacion: "2026-08-31"
 
 fuentes:
@@ -51,3 +86,34 @@ fuentes:
     fecha_publicacion: "2014-11-04"
     fecha_consulta: "2026-08-29"
     cita: "El centro de proceso de datos (CPD) de BBVA en Tres Cantos (Madrid) ha conseguido la certificación 'Tier IV Gold' del Uptime Institute ... Ya está operativo el primer CPD de Madrid (2011)"
+  - id: src-2
+    url: "https://www.bbva.com/es/bbva-inaugura-uno-de-los-centros-de-proceso-de-datos-mas-avanzados-del-mundo/"
+    titulo: "BBVA inaugura uno de los centros de proceso de datos más avanzados del mundo"
+    editor: "BBVA"
+    tipo: empresa
+    fecha_publicacion: "2012-03-06"
+    fecha_consulta: "2026-08-31"
+    cita: "BBVA anuncia el arranque de las operaciones de su nuevo centro de proceso de datos de Tres Cantos (Madrid), en el que se aloja toda la infraestructura tecnológica desde la que el Grupo da soporte a sus operaciones en Europa ... El CPD de BBVA en Tres Cantos es el primero en Europa y el cuarto en el mundo que recibe esta doble certificación ... el banco se planteó la necesidad de construir un nuevo CPD en Tres Cantos, anexo a las instalaciones del centro anterior ... El nuevo CPD de BBVA, que tiene 20.000 metros cuadrados, duplica e incluso puede triplicar la densidad de máquinas que se podían alojar hasta ahora en el antiguo centro. Prueba de ello es que el nuevo CPD aloja equipos con hasta 10.000 procesadores de alta gama, frente a los 4.800 del antiguo centro."
+  - id: src-3
+    url: "https://www.bbva.com/es/sostenibilidad/el-centro-de-datos-de-bbva-renueva-la-certificacion-tier-iv-gold-de-sostenibilidad-operativa/"
+    titulo: "El Centro de Datos de BBVA renueva la certificación Tier IV Gold de sostenibilidad operativa"
+    editor: "BBVA"
+    tipo: empresa
+    fecha_publicacion: "2025-04-23"
+    fecha_consulta: "2026-08-31"
+    cita: "BBVA ha renovado la certificación Tier IV Gold para su Centro de Procesamiento de Datos (CPD) de Tres Cantos (Madrid) ... La certificación es renovada cada tres años a través de una profunda auditoría ... En los últimos años se ha llevado a cabo la implantación de más de 30 medidas de ahorro energético. Entre ellas destaca el cerramiento de los 'pasillos fríos' en los 'racks' o cabinas para minimizar el volumen de aire que se refrigera. Esta actuación ha reportado unos ahorros energéticos de más de 800 MWh en su primer año de implementación ... el banco ha instalado una planta solar fotovoltaica 'on site' con la que se generan hasta 460 KW destinados exclusivamente para autoconsumo en el CPD ... el banco ha obtenido la puntuación más alta hasta la fecha para el Complejo BBVA Tres Cantos."
+  - id: src-4
+    url: "https://www.silicon.es/bbva-inaugura-el-primer-datacenter-europeo-con-certificacion-tier-iv-20460"
+    titulo: "BBVA inaugura el primer datacenter europeo con certificación Tier IV"
+    editor: "Silicon"
+    tipo: prensa_especializada
+    fecha_publicacion: "2012-03-07"
+    fecha_consulta: "2026-08-31"
+    cita: "El grupo BBVA acaba de inaugurar oficialmente las instalaciones de su nuevo Centro de Proceso de Datos, situado en Tres Cantos, Madrid, colindante al que ya tenía operando en España ... Por el momento no está operando al 100%, algo que ocurrirá en 2014 tras el paulatino trasvase de la actual infraestructura"
+  - id: src-5
+    url: "https://es.uptimeinstitute.com/component/tierachievement/datacenter/complejo-tecnologico-tres-cantos--cpd-ii/244?Itemid="
+    titulo: "Detalles del cliente — BBVA, Complejo Tecnologico Tres Cantos - CPD II"
+    editor: "Uptime Institute"
+    tipo: asociacion
+    fecha_consulta: "2026-08-31"
+    cita: "DETALLES DEL CLIENTE BBVA ... DETALLES DEL PROYECTO Complejo Tecnologico Tres Cantos - CPD II Ubicación: Madrid, España"

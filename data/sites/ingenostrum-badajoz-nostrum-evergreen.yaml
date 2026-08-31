@@ -2,6 +2,8 @@ id: ingenostrum-badajoz-nostrum-evergreen
 nombre: "Nostrum Evergreen — Badajoz (Plataforma Logística del Suroeste Europeo)"
 alias:
   - "Data Riocaya Badajoz"
+  - "DC Badajoz"
+  - "BAZ01"
 tipo: campus
 operador: "Nostrum Data Centers"
 propietario: "Data Riocaya, S.L.U. (Nostrum Group)"
@@ -17,13 +19,17 @@ ubicacion:
   precision: aproximada
   fuentes: [src-dcm, src-osm]
 
-estado: anunciado
+estado: en_tramitacion
 estado_detalle: >-
-  Proyecto presentado con respaldo de la Junta de Extremadura y del Ayuntamiento
-  de Badajoz y declarado PREMIA (Proyecto Empresarial de Interés Autonómico) a
-  propuesta de Data Riocaya, S.L.U. Ejecución prevista en varias fases a partir
-  de 2026.
-estado_fuentes: [src-dcm]
+  Declarado Proyecto Empresarial de Interés Autonómico (PREMIA) por acuerdo del Consejo de
+  Gobierno de 11 de noviembre de 2025, publicado en el DOE el 17 de noviembre. El 25 de mayo de
+  2026 el DOE sometió a información pública la solicitud de autorización ambiental integrada y el
+  estudio de impacto ambiental (expediente AAI25/024, anuncio de 19 de mayo de 2026). El 28 de
+  agosto de 2026 la consejera de Industria afirmó que la instalación ya cuenta con la autorización
+  de la Junta para la línea eléctrica de 220 kV y que la autorización ambiental fue favorable,
+  quedando pendiente el permiso estatal para la línea de 400 kV; la empresa espera empezar a
+  construir en octubre de 2026. La declaración PREMIA sitúa el fin de la construcción en 2031.
+estado_fuentes: [src-dcm, src-premia, src-eldiario-aai, src-doe-sumario, src-hoy]
 
 potencia:
   - tipo: no_especificado
@@ -32,8 +38,49 @@ potencia:
     referencia: "Capacidad prevista del campus"
     estado_asociado: anunciado
     fecha_dato: "2026"
-    fuentes: [src-dcm]
-    nota: "La fuente da \"300MW\" sin distinguir carga TI de potencia de conexión."
+    fuentes: [src-dcm, src-dcd-extremadura]
+    nota: >-
+      Data Center Market da "300MW" y Data Center Dynamics «una capacidad de hasta 300 MW», ninguna
+      de las dos distinguiendo carga TI de potencia de conexión.
+  - tipo: conexion_red
+    valor_mw: 300
+    ambito: campus
+    referencia: "Capacidad de acceso conectada a la red para la que se diseña el centro"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2025-11-17"
+    fuentes: [src-premia]
+    nota: >-
+      La nota oficial de la Junta de Extremadura sobre la declaración PREMIA es la única fuente que
+      tipifica los 300 MW: los describe como «capacidad de acceso conectada a la red».
+  - tipo: no_especificado
+    valor_mw: 170
+    ambito: campus
+    referencia: "Demanda energética total declarada en la autorización ambiental integrada"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2026-05-25"
+    fuentes: [src-eldiario-aai]
+    nota: >-
+      El expediente sometido a información pública cita 170 MW de demanda total y 110 MW de demanda
+      crítica, con funcionamiento de 8.760 horas al año. No es la misma magnitud que la capacidad de
+      acceso de 300 MW de la declaración PREMIA.
+  - tipo: no_especificado
+    valor_mw: 500
+    ambito: campus
+    referencia: "Capacidad máxima a la que aspira el proyecto"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2026-08-28"
+    fuentes: [src-hoy, src-dcd-extremadura]
+    nota: >-
+      La consejera de Industria y Data Center Dynamics coinciden en que el proyecto arrancaría con
+      150 MW y podría alcanzar 500 MW. Ninguna de las dos fuentes precisa el tipo de MW.
+  - tipo: no_especificado
+    valor_mw: 150
+    ambito: fase
+    referencia: "Potencia con la que arrancaría el centro"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2026-08-28"
+    fuentes: [src-hoy]
+    nota: "La consejera dice que «la idea es que arranque con 150 MW, pero alcance los 500 MW»."
 
 fases:
   - nombre: "Ejecución por fases desde 2026"
@@ -41,15 +88,43 @@ fases:
     fecha_puesta_en_servicio: "2026"
     fuentes: [src-dcm]
 
+conexion_electrica:
+  subestacion: "Subestación 220/30 kV adyacente y subestación de enlace 400/220 kV"
+  tension_kv: 220
+  nota: >-
+    La declaración PREMIA describe una subestación 220/30 kV adyacente al centro, una subestación de
+    enlace 400/220 kV —excluido el campo de 400 kV, de competencia estatal— y las líneas de alta
+    tensión necesarias. En agosto de 2026 la Junta de Extremadura había autorizado la línea de
+    220 kV; la de 400 kV seguía en tramitación ante la Administración General del Estado.
+  fuentes: [src-premia, src-hoy]
+
+superficie_parcela_m2: 222735
 inversion_anunciada_eur: 1913000000
+
+empleo:
+  - tipo: no_especificado
+    valor: 330
+    referencia: "Puestos de trabajo previstos en la declaración PREMIA"
+    fecha_dato: "2025-11-17"
+    fuentes: [src-premia]
+    nota: "La nota oficial no distingue entre empleo directo e indirecto."
+  - tipo: construccion
+    valor: 2000
+    referencia: "Empleos durante la construcción"
+    fecha_dato: "2026-05-26"
+    fuentes: [src-cronica]
+    nota: "La fuente dice «unos 2.000 empleos durante su construcción»."
 
 incertidumbres:
   - campo: potencia
     descripcion: >-
-      Un recopilatorio secundario atribuye al proyecto "500 MW escalables en
-      fases", frente a los 300 MW de la fuente sectorial. Se conservan ambas
-      cifras sin elegir entre ellas.
-    fuentes: [src-dcm, src-rankia]
+      Conviven cuatro cifras que no son la misma magnitud y no se suman: 300 MW de capacidad de
+      acceso a red (declaración PREMIA, noviembre de 2025), 170 MW de demanda energética total y
+      110 MW de demanda crítica (autorización ambiental integrada, mayo de 2026), y 150 MW de
+      arranque con horizonte de 500 MW (declaraciones de la consejera de Industria, agosto de 2026).
+      Un recopilatorio secundario anterior atribuía al proyecto «500 MW escalables en fases».
+      Solo la fuente oficial tipifica su cifra.
+    fuentes: [src-premia, src-eldiario-aai, src-hoy, src-rankia]
   - campo: operador
     descripcion: >-
       El 7 de mayo de 2026 IREN Limited anunció un acuerdo para adquirir
@@ -57,13 +132,20 @@ incertidumbres:
     fuentes: [src-iren]
   - campo: superficie_parcela_m2
     descripcion: >-
-      Se cita que el centro ocupará "algo más de 22 hectáreas" en cinco parcelas
-      de la plataforma logística, dato que no se ha podido contrastar con el
-      expediente.
-    fuentes: [src-dcm]
+      La declaración PREMIA recogida por prensa cifra la ocupación en 222.735 m² en la Plataforma
+      Logística del Suroeste Europeo; la fuente sectorial habla de «algo más de 22 hectáreas» en
+      cinco parcelas. Las dos cifras son compatibles pero proceden de fuentes distintas y no se ha
+      consultado el expediente.
+    fuentes: [src-dcm, src-hibridos]
+  - campo: agua
+    descripcion: >-
+      No se ha localizado ninguna cifra de consumo de agua del proyecto. La consejera de Industria
+      afirmó en agosto de 2026 que «las confederaciones hidrográficas han dado su visto bueno a los
+      proyectos», sin publicar volúmenes. Campo agua omitido.
+    fuentes: [src-hoy]
 
-confianza: baja
-ultima_verificacion: "2026-08-29"
+confianza: media
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-dcm
@@ -75,6 +157,84 @@ fuentes:
     cita: >-
       Badajoz, junto a nuestro campus en Cáceres, tiene el potencial para
       convertirse en un nodo esencial de la infraestructura digital europea.
+  - id: src-premia
+    url: "https://www.juntaex.es/w/20251117-el-doe-publica-la-calificacion-como-premia-al-proyecto-de-centro-de-computacion-de-datos-e-inteligencia-artificial-en-badajoz"
+    titulo: "El DOE publica la calificación como PREMIA al proyecto de centro de computación de datos e inteligencia artificial en Badajoz"
+    editor: "Junta de Extremadura"
+    tipo: oficial
+    fecha_publicacion: "2025-11-17"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      La empresa prevé inversiones por valor de 1.913 millones de euros y la creación 330 puestos de
+      trabajo. Se espera que la construcción esté terminada en 2031. [...] diseñado para alcanzar una
+      capacidad de acceso conectada a la red de hasta 300 MW eléctricos [...] el proyecto contempla
+      una subestación eléctrica 220/30 kV adyacente, una subestación eléctrica de enlace 400/220 kV
+      (excluyendo el campo de tensión de 400 kV, de competencia estatal)
+  - id: src-eldiario-aai
+    url: "https://www.eldiario.es/extremadura/economia/macrocentro-datos-badajoz-sale-informacion-publica-invertiran-1-900-millones-demandara-170-wm-energia-total_1_13247317.html"
+    titulo: "El macrocentro de datos de Badajoz sale a información pública: invertirán 1.900 millones y demandará 170 WM de energía total"
+    editor: "elDiario.es Extremadura"
+    tipo: prensa_general
+    fecha_publicacion: "2026-05-25"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      La demanda de energía crítica de la instalaciones de 110 MW y la total de 170 MW y tendrá un
+      funcionamiento anual de 8.760 horas.
+  - id: src-doe-sumario
+    url: "https://doe.juntaex.es/ultimosdoe/mostrardoe.php?fecha=20260525&t=o"
+    titulo: "Diario Oficial de Extremadura, número 98, de 25 de mayo de 2026 — Sumario"
+    editor: "Junta de Extremadura"
+    tipo: oficial
+    fecha_publicacion: "2026-05-25"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Anuncio de 19 de mayo de 2026 por el que se someten a información pública la solicitud de
+      autorización ambiental integrada y el estudio de impacto ambiental del proyecto de un centro de
+      procesamiento de datos, promovido por Data Riocaya, SL, a ubicar en el término municipal de
+      Badajoz. Expte.: AAI25/024.
+  - id: src-hoy
+    url: "https://www.hoy.es/extremadura/centros-datos-nostrum-badajoz-merlin-navalmoral-ultiman-20260828133327-nt.html"
+    titulo: "Los centros de datos de Nostrum en Badajoz y de Merlin en Navalmoral ultiman sus permisos"
+    editor: "Hoy"
+    tipo: prensa_general
+    fecha_publicacion: "2026-08-28"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      La instalación que Nostrum Group espera empezar a construir en octubre en Badajoz ya tiene la
+      autorización de la Junta de Extremadura para la línea de tensión eléctrica de 220 kv [...]
+      todavía tiene pendiente el permiso para la línea eléctrica de 400 kv [...] En el caso del
+      proyecto Evergreen de Nostrum para Badajoz la idea es que arranque con 150 MW, pero alcance los
+      500 MW.
+  - id: src-dcd-extremadura
+    url: "https://www.datacenterdynamics.com/es/noticias/extremadura-acelera-sus-grandes-proyectos-de-centros-de-datos/"
+    titulo: "Extremadura acelera sus grandes proyectos de centros de datos"
+    editor: "Data Center Dynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-08-28"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      La instalación, promovida por Data Riocaya, contempla una inversión cercana a 2.000 millones de
+      euros y una capacidad de hasta 300 MW, con posibilidad de alcanzar 500 MW.
+  - id: src-cronica
+    url: "https://www.lacronicabadajoz.com/badajoz/2026/05/26/badajoz-acelera-mayor-salto-tecnologico-130686672.html"
+    titulo: "Badajoz acelera su mayor salto tecnológico: el DOE saca a exposición pública el macrocentro de datos"
+    editor: "La Crónica de Badajoz"
+    tipo: prensa_general
+    fecha_publicacion: "2026-05-26"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      la gigantesca infraestructura preparada para inteligencia artificial que prevé 170 MW de
+      demanda energética y unos 2.000 empleos durante su construcción
+  - id: src-hibridos
+    url: "https://www.hibridosyelectricos.com/energia/330-nuevos-empleos-1913000000-inversion-esta-ciudad-albergara-mayores-centros-datos-ia-espana_83557_102.html"
+    titulo: "Badajoz tendrá uno de los mayores centros de datos e inteligencia artificial de España"
+    editor: "Híbridos y Eléctricos"
+    tipo: prensa_especializada
+    fecha_publicacion: "2025-11-19"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      la iniciativa de la empresa Data Riocaya S.L.U., que prevé una inversión de 1.913 millones de
+      euros, la creación de 330 empleos y la ocupación de 222.735 metros cuadrados en la Plataforma
   - id: src-rankia
     url: "https://www.rankia.com/blog/bolsa-al-dia/7317729-centros-datos-espana-boom-66-900-millones-euros"
     titulo: "Centros de datos en España: el Boom de 66.900 millones de euros"

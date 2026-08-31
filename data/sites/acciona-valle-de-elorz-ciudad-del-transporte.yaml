@@ -1,0 +1,102 @@
+id: acciona-valle-de-elorz-ciudad-del-transporte
+nombre: "Acciona — centro de datos planteado en la Ciudad del Transporte (Valle de Elorz)"
+alias:
+  - "Data center de la Ciudad del Transporte de Pamplona"
+tipo: edificio
+operador: null
+propietario: null
+cliente_ancla: null
+modelo: desconocido
+
+ubicacion:
+  municipio: "Valle de Elorz"
+  provincia: "Navarra"
+  ccaa: "Comunidad Foral de Navarra"
+  direccion: "Parcela municipal en la Ciudad del Transporte de Pamplona, entre las naves de logística y las plantas de residuos"
+  lat: 42.7315535
+  lon: -1.5876645
+  precision: municipio
+  fuentes: [src-1, src-2, src-osm]
+
+estado: paralizado
+estado_detalle: >-
+  En noviembre de 2025 Diario de Navarra reveló que Acciona planteaba un centro de datos en una
+  parcela de propiedad municipal de la Ciudad del Transporte de Pamplona, en el término del
+  Valle de Elorz. La cesión temporal de esa parcela, de más de 13.000 m², la había acordado
+  directamente el entonces alcalde en octubre y noviembre de 2025, primero a nombre de Acciona
+  y después a otro nombre. En diciembre de 2025 el Ayuntamiento se desdijo de la cesión, y en
+  junio de 2026 el Tribunal Administrativo de Navarra la cuestionó. El proyecto se registra
+  como paralizado: sin suelo asegurado, sin expediente urbanístico ni ambiental y sin cifras
+  técnicas publicadas.
+estado_fuentes: [src-1, src-2, src-3]
+
+potencia: []
+
+superficie_parcela_m2: 13000
+inversion_anunciada_eur: null
+enlaces_proyecto: []
+
+incertidumbres:
+  - campo: estado
+    descripcion: >-
+      Los tres artículos que sostienen esta ficha están tras muro de pago y solo han podido
+      leerse título, subtítulo y primer párrafo. De ahí se desprende que la cesión fue revocada y
+      luego cuestionada por el TAN, pero no si Acciona mantiene el proyecto en otra parcela.
+    fuentes: [src-1, src-2, src-3]
+  - campo: potencia
+    descripcion: "No hay ninguna cifra de potencia, superficie construida ni inversión publicada."
+    fuentes: [src-1]
+  - campo: operador
+    descripcion: >-
+      Acciona aparece como solicitante de la cesión del suelo. No consta que vaya a operar la
+      instalación ni quién sería el cliente.
+    fuentes: [src-1, src-3]
+  - campo: superficie_parcela_m2
+    descripcion: >-
+      Los 13.000 m² son la superficie de la parcela municipal objeto de la cesión revocada, no
+      necesariamente la del proyecto.
+    fuentes: [src-2]
+
+confianza: baja
+ultima_verificacion: "2026-08-31"
+
+fuentes:
+  - id: src-1
+    url: "https://www.diariodenavarra.es/noticias/navarra/pamplona-comarca/2025/11/14/acciona-plantea-proyecto-centro-datos-comarca-800060-16.html"
+    titulo: "Acciona plantea otro proyecto de centro de datos en la comarca"
+    editor: "Diario de Navarra"
+    tipo: prensa_general
+    fecha_publicacion: "2025-11-14"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Un data center, en español centro de datos, podría completar los nuevos usos de la Ciudad
+      del Transporte de Pamplona, en término municipal del Valle de Elorz. Una parcela de
+      propiedad municipal, ubicada en la zona casi libre de actividad entre las naves de logística
+      y transporte y las plantas de residuos.
+  - id: src-2
+    url: "https://www.diariodenavarra.es/noticias/navarra/pamplona-comarca/2025/12/11/valle-elorz-desdice-cesion-acciona-centro-datos-803080-16.html"
+    titulo: "Valle de Elorz se desdice de la cesión a Acciona para el centro de datos"
+    editor: "Diario de Navarra"
+    tipo: prensa_general
+    fecha_publicacion: "2025-12-11"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      La cesión temporal a Acciona de una parcela del Ayuntamiento del Valle de Elorz de más de
+      13.000 metros cuadrados ubicada en la Ciudad del Transporte.
+  - id: src-3
+    url: "https://www.diariodenavarra.es/noticias/navarra/pamplona-comarca/2026/06/03/cuestiona-cesion-terreno-valle-elorz-acciona-823122-16.html"
+    titulo: "El TAN cuestiona una cesión de terreno del Valle de Elorz a Acciona"
+    editor: "Diario de Navarra"
+    tipo: prensa_general
+    fecha_publicacion: "2026-06-03"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      La cesión directa que el entonces alcalde del Valle de Elorz, Luis Maya (Aldatu), realizó en
+      octubre y noviembre del año pasado a nombre primero de Acciona y después.
+  - id: src-osm
+    url: "https://nominatim.openstreetmap.org/search?q=Valle+de+Elorz%2C+Navarra&format=json&limit=1"
+    titulo: "Nominatim — Valle de Elorz, Navarra"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-08-31"
+    cita: "Valle de Elorz / Elortzibar, Iruñerria, Navarra, Navarra / Nafarroa, España — lat 42.7315535, lon -1.5876645"

@@ -17,13 +17,35 @@ ubicacion:
   precision: exacta
   fuentes: [src-1]
 
-estado: desconocido
+estado: operativo
 estado_detalle: >-
-  Instalación registrada en PeeringDB, con presencia también de Civicos Networking en la misma
-  dirección. Sin otra fuente que confirme el estado actual.
-estado_fuentes: [src-1]
+  Centro de datos carrier-neutral de capital español, en un edificio exento de la calle Maratón
+  completamente reestructurado y ampliado entre 2021 y 2023 con alturas entre forjados de cinco
+  metros. En abril de 2023 la compañía describía 2.000 m², tres salas de servidores y 200
+  armarios. La ingeniería corrió a cargo de AEON Ingeniería y la climatización de Cliatec.
+estado_fuentes: [src-1, src-2, src-3]
+fecha_puesta_en_servicio: "2023"
 
-potencia: []
+potencia:
+  - tipo: no_especificado
+    valor_mw: 1.2
+    ambito: edificio
+    referencia: "Potencia declarada por el operador al abrir el edificio"
+    estado_asociado: operativo
+    fecha_dato: "2023-04-11"
+    fuentes: [src-2, src-3, src-4]
+    nota: >-
+      «En términos de potencia, cuentan con 1,2MW». El operador no dice si es carga TI o potencia
+      total del edificio. Un directorio sectorial repite la misma cifra como capacidad en
+      servicio y le atribuye un potencial estimado de 10 MW a pleno desarrollo, estimación que no
+      se registra.
+
+superficie_construida_m2: 2000
+refrigeracion: >-
+  Free cooling directo e indirecto. El calor residual se reutiliza para climatizar las oficinas y
+  la compañía prevé destinarlo a district heating al crecer la carga. El edificio tiene paneles
+  fotovoltaicos que la compañía cifra en 40.000 W y una generación esperada de unos 600.000 kWh
+  al año.
 
 incertidumbres:
   - campo: operador
@@ -32,11 +54,20 @@ incertidumbres:
       "Civicos Networking - IAAS (MADRID)"), sin que quede claro quién explota el inmueble.
     fuentes: [src-1]
   - campo: potencia
-    descripcion: "Sin datos de potencia ni superficie."
-    fuentes: [src-1]
+    descripcion: >-
+      La única cifra publicada, 1,2 MW, es de abril de 2023 y no está tipificada. No se ha
+      localizado ninguna actualización posterior del operador.
+    fuentes: [src-2, src-3]
+  - campo: estado
+    descripcion: >-
+      En la verificación anterior la ficha quedó como desconocida por falta de fuentes. El
+      reportaje de DatacenterDynamics de 2023 y la web del propio operador describen la
+      instalación en servicio, así que el estado pasa a operativo; aun así, la información más
+      reciente localizada es de 2023 y no se ha confirmado la situación actual.
+    fuentes: [src-1, src-2, src-3]
 
 confianza: baja
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -46,3 +77,25 @@ fuentes:
     tipo: asociacion
     fecha_consulta: "2026-08-29"
     cita: "IaaS Datacenter Madrid | Maraton 12 | 28037 Madrid"
+  - id: src-2
+    url: "https://www.datacenterdynamics.com/es/features/pr%C3%B3xima-parada-nueva-construcci%C3%B3n-de-iaas-datacenter-madrid/"
+    titulo: "Próxima parada: nueva construcción de IaaS Datacenter Madrid"
+    editor: "DatacenterDynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2023-04-11"
+    fecha_consulta: "2026-08-31"
+    cita: "la Calle Maratón, número 12, donde se ubica el nuevo data center de IaaS Datacenter Madrid ... El edificio dispone de 2.000 metros cuadrados, 3 salas de servidores y 200 racks. En términos de potencia, cuentan con 1,2MW ... \"Nos ayudará a reducir la huella de carbono del edificio gracias a los 40.000w de potencia que aportará. Esperamos generar unos 600.000KWh anuales de energía renovable\" ... AEON Ingeniería se ha encargado de realizar los trabajos de ingeniería, mientras que Cliatec ha sido responsable de la climatización ... En lo que respecta a la refrigeración de la instalación, emplean free cooling directo e indirecto."
+  - id: src-3
+    url: "https://iaas.es/instalaciones"
+    titulo: "Conoce las instalaciones | IaaS datacenter"
+    editor: "IaaS Datacenter Madrid"
+    tipo: empresa
+    fecha_consulta: "2026-08-31"
+    cita: "Nuestras instalaciones, ubicadas en el corazón del distrito tecnológico de la ciudad, se encuentran en la calle Maratón. El edificio fue completamente restructurado y ampliado entre los años 2021 y 2023 para alojar un centro de datos de última generación ... espacios diáfanos, con alturas entre forjados de cinco metros ... El edificio es exento, es decir independiente, por lo que no tiene paredes medianeras compartidas con otras edificaciones."
+  - id: src-4
+    url: "https://dcatlas.io/en/explore/facilities/iaas-datacenter-hispaweb-network-madrid"
+    titulo: "Madrid Iaas 001 — 1.2 MW live"
+    editor: "DC Atlas"
+    tipo: consultora
+    fecha_consulta: "2026-08-31"
+    cita: "Madrid Iaas 001 is a colocation data centre operated by Iaas Datacenter in Madrid, Spain. The site is operational, with 1.2 MW of live capacity. Total potential at full buildout is an estimated 10 MW."

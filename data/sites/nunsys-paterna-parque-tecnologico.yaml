@@ -2,6 +2,7 @@ id: nunsys-paterna-parque-tecnologico
 nombre: "Nunsys Cloud — Paterna (Parc Tecnològic de València)"
 alias:
   - "CPD de Nunsys Group en Paterna"
+  - "Antiguo CPD de Tissat"
 tipo: edificio
 operador: "Nunsys Cloud (Nunsys Group)"
 propietario: "Nunsys Group"
@@ -20,9 +21,13 @@ ubicacion:
 estado: operativo
 estado_detalle: >-
   Inaugurado el 07/07/2026 tras siete meses de renovación de la instalación existente.
-  Certificación Tier III y ENS categoría Alta. El plan de la compañía prevé inyecciones
-  económicas adicionales durante los cinco años siguientes.
-estado_fuentes: [src-1, src-2]
+  Certificación Tier III y ENS categoría Alta. No es una construcción nueva: se trata de la
+  ampliación del CPD que Nunsys adquirió en 2018 y que en su día perteneció a Tissat,
+  empresa creada por la Generalitat, Iberdrola y Telefónica y vendida después a Wahala. El
+  plan de la compañía prevé inyecciones económicas adicionales durante los cinco años
+  siguientes; el centro presta servicio a 1.500 clientes y factura cerca de 3 millones de
+  euros anuales, con el objetivo de llegar a 10 millones en un lustro.
+estado_fuentes: [src-1, src-2, src-3]
 fecha_puesta_en_servicio: "2026-07"
 
 fases:
@@ -35,15 +40,35 @@ fases:
 superficie_construida_m2: 450
 inversion_anunciada_eur: 10000000
 
+empleo:
+  - tipo: directo
+    valor: 120
+    referencia: "Personas dedicadas al centro de datos dentro de la filial Nunsys Cloud"
+    fecha_dato: "2026-07-07"
+    fuentes: [src-3]
+    nota: >-
+      Expansión lo presenta como plantilla ya existente («La filial emplea actualmente a
+      unas 500 personas, de las que 120 se dedican al centro de datos»); Las Provincias
+      titula el mismo día que la compañía «prevé crear 120 empleos». Se registra la lectura
+      de plantilla actual y se anota la divergencia.
+
 incertidumbres:
   - campo: potencia
     descripcion: >-
       Ninguna de las fuentes consultadas publica potencia eléctrica (ni MW IT ni de
-      conexión). Solo constan 450 m², 150 racks y capacidad para 5.000 servidores.
-    fuentes: [src-1, src-2]
+      conexión). Solo constan 450 m², 150 racks y capacidad para 5.000 servidores. La
+      cobertura de la inauguración de julio de 2026 —Expansión, DatacenterDynamics, Europa
+      Press, Las Provincias, Valencia Plaza— repite los mismos tres datos sin añadir MW.
+    fuentes: [src-1, src-2, src-3, src-4]
+  - campo: empleo
+    descripcion: >-
+      Dos lecturas del mismo dato el mismo día: Expansión atribuye 120 personas ya
+      dedicadas al centro de datos y Las Provincias titula que la compañía «prevé crear 120
+      empleos». Ninguna fuente desglosa cuánto es plantilla nueva.
+    fuentes: [src-2, src-3]
 
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -62,3 +87,19 @@ fuentes:
     fecha_publicacion: "2026-07-07"
     fecha_consulta: "2026-08-29"
     cita: "La valenciana Nunsys Group ha inaugurado este martes su nuevo centro de datos, integrado dentro de su sede ubicada en el Parque Tecnológico de Paterna [...] La compañía ha realizado una inversión de 10 millones"
+  - id: src-3
+    url: "https://www.expansion.com/valencia/2026/07/07/6a4cdc1c468aeb4f3b8b4581.html"
+    titulo: "Nunsys destina 10 millones a ampliar el CPD que adquirió a Tissat"
+    editor: "Expansión"
+    tipo: prensa_general
+    fecha_publicacion: "2026-07-07"
+    fecha_consulta: "2026-08-31"
+    cita: "Se trada de la infraestructura que la compañía había adquirido en 2018. En su día pertenecía a Tissat, empresa creada por la Generalitat, Iberdrola y Telefónica, que posteriormente se vendió a Wahala y la firma valenciana incorporó hace ocho años. [...] La filial emplea actualmente a unas 500 personas, de las que 120 se dedican al centro de datos, ha explicado el fundador y máximo directivo de Nunsys, Paco Gavilán."
+  - id: src-4
+    url: "https://www.datacenterdynamics.com/es/noticias/nunsys-cloud-inaugura-un-nuevo-centro-de-datos-en-paterna-tras-invertir-10-millones-de-euros/"
+    titulo: "Nunsys Cloud inaugura un nuevo centro de datos en Paterna tras invertir 10 millones de euros"
+    editor: "DatacenterDynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-07-08"
+    fecha_consulta: "2026-08-31"
+    cita: "El nuevo centro de datos ha sido completamente renovado durante un proceso de siete meses y dispone de 450 metros cuadrados, 150 racks y capacidad para alojar hasta 5.000 servidores [...] Actualmente, el centro de datos presta servicio a 1.500 clientes y genera una facturación anual cercana a los 3 millones de euros."

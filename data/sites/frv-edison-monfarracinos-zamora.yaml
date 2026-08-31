@@ -21,36 +21,107 @@ ubicacion:
 estado: en_tramitacion
 estado_detalle: >-
   En información pública durante agosto de 2026, con plazo de alegaciones hasta
-  el 16 de septiembre de 2026. El proyecto ha generado oposición vecinal y
-  política; el PSOE reclamó transparencia el 25 de agosto de 2026.
-estado_fuentes: [src-elespanol]
+  el 16 de septiembre de 2026, en el procedimiento de Autorización Ambiental
+  Integrada ante la Consejería de Agricultura, Ganadería, Medio Rural y Política
+  Ambiental de la Junta de Castilla y León. El proyecto ha generado oposición
+  vecinal y política: Ecologistas Zamora presentó alegaciones pidiendo la
+  denegación de la autorización el 23 de agosto de 2026 y el PSOE reclamó
+  transparencia el 25 de agosto. La vicepresidenta segunda de la Junta declaró el
+  29 de agosto de 2026 que la llegada del proyecto aún no está confirmada. El
+  polígono Zamora Norte que lo acogería es una promoción pública de la Junta con
+  18 millones de euros de inversión.
+estado_fuentes: [src-elespanol, src-zamoranews, src-laopinion, src-ecologistas]
 
 potencia:
+  - tipo: it
+    valor_mw: 200
+    ambito: campus
+    referencia: "Potencia prevista del centro de datos según el expediente"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2026-08-08"
+    fuentes: [src-zamoranews]
+    nota: >-
+      La cifra procede del análisis del expediente de Autorización Ambiental
+      Integrada realizado por Ecologistas Zamora y recogido por la prensa local,
+      que la enuncia como "potencia prevista es de 200 MW IT". No la han publicado
+      ni las promotoras ni la administración, y no se ha podido leer directamente
+      en el expediente.
   - tipo: generacion_asociada
     valor_mw: 1160
     ambito: campus
     referencia: "Potencia térmica de la central de generación asociada (1,16 GWt)"
     estado_asociado: en_tramitacion
     fecha_dato: "2026-08"
-    fuentes: [src-elespanol]
+    fuentes: [src-elespanol, src-zamoranews]
     nota: >-
-      Es potencia TÉRMICA de la planta de generación asociada (24 motores de gas
-      natural y 25 motores diésel), no potencia eléctrica ni carga TI. No debe
-      compararse con los MW de otros emplazamientos.
+      Es potencia TÉRMICA de la planta de generación asociada, alimentada con gas
+      natural, no potencia eléctrica ni carga TI. No debe compararse con los MW de
+      otros emplazamientos ni con los 200 MW IT del propio centro. Según el
+      análisis del expediente, la combustión aportaría unos 664 GWh anuales de
+      electricidad al centro de datos, consumiendo 141,5 millones de metros
+      cúbicos de gas natural al año en 8.760 horas de funcionamiento.
 
 fases: []
 
+conexion_electrica:
+  subestacion: null
+  tension_kv: null
+  titular_red: null
+  mw_solicitados: null
+  mw_concedidos: null
+  nota: >-
+    El proyecto se plantea con generación propia de gas natural en el
+    emplazamiento, con gasoducto de alta presión, almacenamiento de gasóleo,
+    planta fotovoltaica y un sistema de baterías de litio de 4.817 MWh de
+    capacidad. No consta punto de conexión a la red de transporte ni potencia de
+    acceso solicitada o concedida.
+  fuentes: [src-zamoranews]
+
 refrigeracion: >-
-  Consumo declarado de 6.281,65 metros cúbicos de agua potable y 11.911,6 de no
-  potable.
+  Refrigeración mayoritariamente por ventilación accionada eléctricamente, según
+  el análisis del expediente, con consumo de agua adicional declarado.
+
+agua:
+  circuito: desconocido
+  sistema: >-
+    Según el análisis del expediente hecho por Ecologistas Zamora, buena parte de
+    la refrigeración se realizaría mediante sistemas de ventilación accionados
+    eléctricamente, pero el proyecto contempla igualmente consumo de agua.
+  origen: "Acuíferos de la zona; la Confederación Hidrográfica del Duero ha advertido de que el proyecto puede llevar al límite sus reservas"
+  consumo_m3_ano: null
+  consumo_m3_dia: null
+  wue_l_kwh: null
+  nota: >-
+    No se registra ninguna cifra porque las publicadas no son conciliables ni
+    llevan periodo declarado. Las del expediente recogidas por El Español son
+    6.281,65 metros cúbicos de agua potable y 11.911,6 de no potable, sin indicar
+    si son diarios, mensuales o anuales. La formación Zamora Decide cifró el 20 de
+    agosto de 2026 el consumo en 1,36 millones de litros diarios, equivalente al
+    de una población de 50.000 habitantes, cerca de los 60.000 de la capital
+    zamorana. No se convierte de litros al día a metros cúbicos al año.
+  fuentes: [src-elespanol, src-laopinion]
+
+inversion_anunciada_eur: null
 
 incertidumbres:
   - campo: potencia
     descripcion: >-
-      No consta la carga TI ni la potencia eléctrica del centro de datos. La
-      única magnitud publicada es la potencia térmica de la central asociada
-      (1,16 GWt), que no es equiparable.
-    fuentes: [src-elespanol]
+      Los 200 MW IT proceden de un análisis del expediente hecho por una
+      organización ecologista opuesta al proyecto y difundido por la prensa local;
+      ni las promotoras ni la Junta han publicado la carga TI. Se registra porque
+      es la única cifra de capacidad publicada y porque su origen es la lectura de
+      un expediente administrativo, pero no está confirmada por la fuente
+      primaria. La otra magnitud publicada, 1,16 GWt, es potencia térmica de la
+      central asociada y no es equiparable.
+    fuentes: [src-zamoranews, src-elespanol]
+  - campo: potencia
+    descripcion: >-
+      Las fuentes discrepan sobre el parque de motores. El Español habla de 24
+      motores de gas natural y 25 motores diésel; Ecologistas Zamora, tras analizar
+      el expediente, describe 29 motores de combustión, de los que 24 funcionarían
+      con gas natural y otros cinco con diésel. Ambas coinciden en 24 chimeneas de
+      30 metros. No se ha podido resolver.
+    fuentes: [src-elespanol, src-zamoranews]
   - campo: operador
     descripcion: >-
       Las promotoras del expediente son FRV-X Renewable, S.L.U. y Edison Next
@@ -59,18 +130,25 @@ incertidumbres:
   - campo: inversion_anunciada_eur
     descripcion: "La inversión se describe como \"varios millones de euros\", sin cifra exacta anunciada."
     fuentes: [src-elespanol]
-  - campo: refrigeracion
+  - campo: agua
     descripcion: >-
-      Las cifras de agua no cuadran entre sí. Las declaradas en el expediente y
-      recogidas por El Español son 6.281,65 m3 potables y 11.911,6 m3 no potables
-      (sin indicar periodo). La prensa local de Zamora publicó el 20 de agosto de
-      2026 un consumo de 1,36 millones de litros al día, equivalente a unos
-      496.000 m3 al año, cifra que no se ha podido verificar por no ser accesible
-      la fuente. Se deja abierta.
-    fuentes: [src-elespanol]
+      Las cifras de agua no cuadran entre sí y ninguna es directamente comparable.
+      Las declaradas en el expediente y recogidas por El Español son 6.281,65 m3
+      potables y 11.911,6 m3 no potables, sin indicar periodo. La prensa local
+      publicó el 20 de agosto de 2026, citando a Zamora Decide, un consumo de 1,36
+      millones de litros al día. Si ese caudal fuese anual, quedaría dos órdenes
+      de magnitud por encima de las cifras del expediente, así que o se refieren a
+      cosas distintas o alguna es errónea. Se deja abierta y no se registra
+      ninguna en el campo numérico.
+    fuentes: [src-elespanol, src-laopinion]
+  - campo: empleo
+    descripcion: >-
+      La prensa local habla de "cientos de empleos directos" y las promotoras no
+      han publicado ninguna cifra. No se registra empleo.
+    fuentes: [src-laopinion-empleo]
 
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-elespanol
@@ -83,6 +161,60 @@ fuentes:
     cita: >-
       24 motores de gas natural, 24 chimeneas de 30 metros de altura y 25 motores
       diésel [...] 6.281,65 metros cúbicos potables y 11.911,6 de no potable.
+  - id: src-zamoranews
+    url: "https://www.zamoranews.com/articulo/47-comarcas/mas-300000-toneladas-co%E2%82%82-ano-alerta-ecologistas-data-center-monfarracinos/20260808111831407347.html"
+    titulo: "Más de 300.000 toneladas de CO₂ al año: la alerta de Ecologistas por el «Data Center» de Monfarracinos"
+    editor: "Zamora News"
+    tipo: prensa_general
+    fecha_publicacion: "2026-08-08"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      el proyecto contempla el consumo de 141,5 millones de metros cúbicos de gas
+      natural al año para alimentar una central térmica de 1,16 GWt. [...] La
+      combustión del gas aportaría directamente alrededor de 664 GWh anuales de
+      electricidad al centro de datos, cuya potencia prevista es de 200 MW IT.
+      [...] el expediente contempla 29 motores de combustión, de los que 24
+      funcionarían con gas natural y otros cinco con diésel. Además, el proyecto
+      incluye 24 chimeneas de 30 metros de altura. [...] la presencia conjunta de
+      una central de combustión de gas, un gasoducto de alta presión,
+      almacenamiento de gasóleo, una planta fotovoltaica y un sistema de baterías
+      de litio con una capacidad de 4.817 MWh.
+  - id: src-laopinion
+    url: "https://www.laopiniondezamora.es/zamora/2026/08/20/centro-datos-proyectado-zamora-norte-133508111.html"
+    titulo: "El centro de datos proyectado en Zamora Norte consumirá casi tanta agua como toda la población de la capital: preocupación vecinal por el megaproyecto"
+    editor: "La Opinión de Zamora"
+    tipo: prensa_general
+    fecha_publicacion: "2026-08-20"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      la cifra de consumo de agua de ese centro de datos, según ha denunciado
+      Manuel Fuentes, ascenderá a 1,36 millones de litros diarios. Eso representa
+      el consumo de una población equivalente a 50.000 habitantes [...] la
+      Confederación Hidrográfica del Duero también ha alertado de que esa
+      iniciativa puede llevar al límite las reservas de agua de los acuíferos de la
+      zona
+  - id: src-laopinion-empleo
+    url: "https://www.laopiniondezamora.es/zamora/2026/08/26/rechazar-centro-datos-creara-cientos-133649396.html"
+    titulo: "¿Por qué rechazar un centro de datos que creará cientos de empleos?"
+    editor: "La Opinión de Zamora"
+    tipo: prensa_general
+    fecha_publicacion: "2026-08-26"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      se configura como un polo de desarrollo económico y poblacional de la
+      provincia, con la inversión multimillonaria y los cientos de empleos directos
+      asociados a esas instalaciones.
+  - id: src-ecologistas
+    url: "https://www.ecologistaszamora.org/ez/alegaciones/alegaciones-contra-el-data-center-de-monfarracinos/"
+    titulo: "Alegaciones contra el Data Center de Monfarracinos"
+    editor: "Ecologistas Zamora"
+    tipo: asociacion
+    fecha_publicacion: "2026-08-23"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Descargar alegaciones centro de datos monfarracinos-def [...] DIrigir las
+      alegaciones a: A07028987 – Secretaría General de la Consejería de
+      Agricultura, Ganadería, Medio Rural y Política Ambiental
   - id: src-osm
     url: "https://nominatim.openstreetmap.org/search?q=Monfarracinos%2C+Zamora&format=json&limit=2"
     titulo: "Nominatim — Monfarracinos, Zamora"

@@ -6,7 +6,7 @@ alias:
   - "Data center de Nethits en Vara de Quart"
 tipo: edificio
 operador: "NxN Data Centers"
-propietario: "NxN Data Centers"
+propietario: "NxN Data Centers (participada mayoritariamente por InfraRed Capital Partners desde diciembre de 2025; Nethits Telecom Group y Adequita Capital, minoritarios)"
 modelo: colocation
 
 ubicacion:
@@ -24,7 +24,10 @@ estado_detalle: >-
   Licencia municipal de obras y actividad concedida el 28/02/2025 por el Ayuntamiento de
   València. Primera piedra colocada el 02/02/2026 y obras iniciadas en abril de 2026.
   Apertura anunciada para marzo de 2027 (Levante-EMV) o primer semestre de 2027 (Economía 3).
-estado_fuentes: [src-1, src-2, src-3]
+  El 16/12/2025 el gestor de infraestructuras InfraRed Capital Partners adquirió la mayoría
+  accionarial de NxN, plataforma constituida en 2023 como sociedad conjunta de Nethits
+  Telecom Group y Adequita Capital.
+estado_fuentes: [src-1, src-2, src-3, src-7]
 fecha_puesta_en_servicio: "2027-03"
 
 potencia:
@@ -38,6 +41,27 @@ potencia:
     nota: >-
       Las fuentes hablan de «5 MW de potencia» / «potencia inicial de 5 megavatios» sin
       precisar si es carga TI o potencia de conexión.
+  - tipo: it
+    valor_mw: 5
+    ambito: edificio
+    referencia: "Potencia TI del edificio Nx01"
+    estado_asociado: en_construccion
+    fecha_dato: "2026-02-02"
+    fuentes: [src-5]
+    nota: >-
+      DatacenterDynamics es la única fuente que tipifica los 5 MW: «abarcará 6.500 metros
+      cuadrados y 5 MW de potencia IT».
+  - tipo: conexion_red
+    valor_mw: 6
+    ambito: edificio
+    referencia: "Permisos de acceso y conexión a la red"
+    estado_asociado: en_construccion
+    fecha_dato: "2025-03-03"
+    fuentes: [src-6]
+    nota: >-
+      Data Center Market: «Cuenta con permisos de acceso y conexión a la red por hasta 6MW
+      de energía». Es potencia de acceso, no carga TI: no se suma a los 5 MW ni los
+      sustituye.
 
 fases:
   - nombre: "Nx01 (fase única anunciada)"
@@ -48,7 +72,35 @@ fases:
 
 superficie_construida_m2: 6500
 inversion_anunciada_eur: 60000000
-refrigeracion: "Consumo de agua cero según los promotores; energía 100 % renovable."
+refrigeracion: >-
+  Consumo de agua cero según los promotores; energía 100 % renovable. Diseño híbrido
+  preparado para refrigeración estándar, líquida e inmersión, y certificación BREEAM
+  Excellent declarada.
+
+agua:
+  circuito: sin_agua
+  sistema: >-
+    Diseño híbrido de refrigeración (estándar, líquida e inmersión) con consumo de agua
+    declarado nulo por el promotor.
+  origen: null
+  nota: >-
+    «Consumo de agua cero» / «consumo de agua nulo» es una afirmación del promotor recogida
+    por dos medios especializados; no hay auditoría ni cifra de WUE que la respalde.
+  fuentes: [src-5, src-6]
+
+empleo:
+  - tipo: directo
+    valor: 100
+    referencia: "Empleos directos previstos en desarrollo y explotación"
+    fecha_dato: "2026-02-02"
+    fuentes: [src-5, src-6]
+    nota: null
+  - tipo: indirecto
+    valor: 500
+    referencia: "Empleos indirectos e inducidos previstos"
+    fecha_dato: "2026-02-02"
+    fuentes: [src-5, src-6]
+    nota: "DCD: «cerca de 500 indirectos e inducidos»."
 
 incertidumbres:
   - campo: fecha_puesta_en_servicio
@@ -58,12 +110,15 @@ incertidumbres:
     fuentes: [src-2, src-3]
   - campo: potencia
     descripcion: >-
-      Ninguna fuente consultada distingue si los 5 MW son carga TI o potencia de conexión
-      a red. No se ha localizado el expediente de acceso y conexión.
-    fuentes: [src-2, src-3, src-4]
+      Las fuentes generalistas dan «5 MW» sin tipo. DatacenterDynamics (02/02/2026) los
+      llama «5 MW de potencia IT» y Data Center Market (03/03/2025) y El Confidencial hablan
+      de «6MW de potencia» y de «permisos de acceso y conexión a la red por hasta 6MW». Se
+      registran las tres lecturas por separado: 5 MW sin tipo, 5 MW IT y 6 MW de acceso. No
+      se ha localizado el expediente de acceso y conexión que fije los MW concedidos.
+    fuentes: [src-2, src-3, src-4, src-5, src-6]
 
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -97,3 +152,27 @@ fuentes:
     tipo: otro
     fecha_consulta: "2026-08-29"
     cita: "NxN Datacenters – Valencia NX01 | NX01 | Valencia | Comunidad Valenciana | 5 MW | COLOCATION | En construcción"
+  - id: src-5
+    url: "https://www.datacenterdynamics.com/es/noticias/primera-piedra-de-nxn-en-vara-de-quart-infraestructura-verde-para-ia-y-supercomputaci%C3%B3n-en-espa%C3%B1a/"
+    titulo: "Primera piedra de NxN en Vara de Quart: Infraestructura verde para IA y supercomputación en España"
+    editor: "DatacenterDynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-02-02"
+    fecha_consulta: "2026-08-31"
+    cita: "El proyecto cuenta con una inversión de 60 millones de euros y abarcará 6.500 metros cuadrados y 5 MW de potencia IT. [...] La iniciativa impulsará significativamente la economía local de la Comunidad Valenciana al crear hasta 100 empleos directos y cerca de 500 indirectos e inducidos [...] con certificación BREEAM Excellent en construcción sostenible, consumo de agua cero y uso exclusivo de energía 100% renovable."
+  - id: src-6
+    url: "https://www.datacentermarket.es/datacenter-infrastructure/nxn-data-centers-inicia-la-construccion-de-su-primer-centro-de-datos-en-valencia/"
+    titulo: "NxN Data Centers inicia la construcción de su primer centro de datos en Valencia"
+    editor: "Data Center Market"
+    tipo: prensa_especializada
+    fecha_publicacion: "2025-03-03"
+    fecha_consulta: "2026-08-31"
+    cita: "Cuenta con permisos de acceso y conexión a la red por hasta 6MW de energía en una superficie total de 6.500 metros cuadrados [...] Con 6.500 metros cuadrados de superficie total, 6MW de potencia y una inversión de en torno a 60 millones de euros [...] Se estima que el proyecto generará más de 100 empleos directos y cerca de 500 indirectos durante los periodos de desarrollo y una vez este operativo. [...] asegurando así un consumo de agua nulo"
+  - id: src-7
+    url: "https://www.ircp.com/news/infrared-capital-partners-invests-in-spanish-data-centre-platform/"
+    titulo: "InfraRed Capital Partners invests in Spanish data centre platform"
+    editor: "InfraRed Capital Partners"
+    tipo: empresa
+    fecha_publicacion: "2025-12-16"
+    fecha_consulta: "2026-08-31"
+    cita: "InfraRed Capital Partners (\"InfraRed\"), a leading international infrastructure asset manager, is pleased to announce its majority investment in NxN Data Centers (\"NxN\"). NxN is a next-generation data centre platform based in Spain and formed in 2023, as a joint venture between Nethits Telecom Group (\"Nethits\") and asset manager Adequita Capital (\"Adequita\")."

@@ -21,8 +21,11 @@ estado_detalle: >-
   adquisición de 20 MW de potencia adicional para el sector. Si la candidatura
   prospera, las obras empezarían en 2027 y la puesta en marcha se sitúa a finales
   de 2028. Hay oposición pública organizada (Ecologistes en Acció, CGT) por
-  consumo energético e hídrico.
-estado_fuentes: [src-1]
+  consumo energético e hídrico. El Govern aprobó una declaración de apoyo
+  institucional el 25 de junio de 2025 y reconoció el proyecto como proyecto
+  estratégico de inversión mediante el Acuerdo GOV/141/2026. El suelo es
+  propiedad del Institut Català del Sòl.
+estado_fuentes: [src-1, src-5, src-6]
 
 potencia:
   - tipo: no_especificado
@@ -52,10 +55,48 @@ potencia:
     nota: >-
       Cifra procedente de organizaciones opositoras, no de la promotora. Se
       registra por discrepar de las cifras de 55/125 MW.
+  - tipo: conexion_red
+    valor_mw: 54
+    ambito: campus
+    referencia: "Potencia eléctrica que requiere la implantación inicial según los estudios técnicos del Incasòl"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2026-07-21"
+    fuentes: [src-5]
+    nota: >-
+      La fuente dice "la implantación inicial de la infraestructura requiere una
+      potencia eléctrica de 54 MW". Es potencia de acceso necesaria, no carga TI.
+  - tipo: conexion_red
+    valor_mw: 34
+    ambito: campus
+    referencia: "Potencia disponible en el sector El Molló antes de la compra adicional"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2026-07-21"
+    fuentes: [src-5]
+    nota: >-
+      Es la potencia de que disponía el polígono, no la contratada por el
+      proyecto: "actualmente el sector solo dispone de 34 MW".
+  - tipo: conexion_red
+    valor_mw: 20
+    ambito: campus
+    referencia: "Potencia adicional adquirida por el Incasòl a Cetenis SL"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2026-07-21"
+    fuentes: [src-5]
+    nota: >-
+      Acuerdo del consejo de administración del Incasòl ratificado por el Govern
+      el 21 de julio de 2026. No se suma a los 34 MW: la propia fuente explica
+      que ambas cifras se agregan para cubrir los 54 MW requeridos.
 
 conexion_electrica:
   subestacion: "Subestación eléctrica dels Aubals"
-  fuentes: [src-1]
+  mw_solicitados: 54
+  nota: >-
+    Los estudios técnicos del Incasòl cifran en 54 MW la potencia que necesita la
+    implantación inicial. El sector El Molló disponía de 34 MW y el Incasòl
+    adquirió 20 MW más a la empresa Cetenis SL, operación ratificada por el
+    Govern el 21 de julio de 2026. No consta el titular de la red ni la tensión
+    del punto de conexión.
+  fuentes: [src-1, src-5]
 
 superficie_parcela_m2: 40000
 inversion_anunciada_eur: 719000000
@@ -70,14 +111,21 @@ incertidumbres:
       del Govern recogidas por otras cabeceras hablan de que el despliegue
       inicial requiere 54 MW frente a los 34 MW disponibles en el sector, lo que
       motivó la compra de 20 MW adicionales; CGT y Ecologistes en Acció hablan de
-      150 MW. Las tres cifras no se han podido reconciliar.
-    fuentes: [src-1, src-2]
+      150 MW. Las tres cifras no se han podido reconciliar. Los 54 MW quedan
+      ahora documentados como potencia de acceso necesaria en los estudios
+      técnicos del Incasòl, magnitud distinta de los 55 MW de «capacidad
+      inicial» que cita Canal 21 Ebre, sin que ninguna fuente aclare si
+      coinciden.
+    fuentes: [src-1, src-2, src-5]
   - campo: inversion_anunciada_eur
     descripcion: >-
       Coexisten cifras muy distintas: 719 millones de euros de aportación
       estatal, "más de 4.000 millones" público-privados según La Directa y 5.000
-      millones según CGT. No se suman ni se promedian.
-    fuentes: [src-1, src-2, src-3]
+      millones según CGT. El Govern habló en junio de 2025 de «una inversió
+      prevista d'entre 3.000 i 5.000 milions d'euros» y el Diari de Tarragona, en
+      julio de 2026, de una inversión que «podría alcanzar los 5.000 millones».
+      No se suman ni se promedian.
+    fuentes: [src-1, src-2, src-3, src-5, src-6]
   - campo: refrigeracion
     descripcion: >-
       La documentación del proyecto habla de refrigeración por aire en circuito
@@ -106,7 +154,7 @@ incertidumbres:
     fuentes: [src-1]
 
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -126,8 +174,9 @@ fuentes:
     tipo: otro
     fecha_consulta: "2026-08-29"
     cita: >-
-      un pla de desenvolupament industrial que generi ocupació estable i de
-      qualitat al territori
+      La gigafactoria contindrà uns 100.000 processadors de càlcul per a IA, el
+      que suposa una potència d'uns 150 MW i implicarà multiplicar per 10 del
+      consum elèctric de la Ribera d'Ebre.
   - id: src-3
     url: "https://directa.cat/gigafactoria-dia-mora-la-nova-consumira-lelectricitat-180-000-llars/"
     titulo: "La gigafactoria d'IA de Móra la Nova consumirà l'electricitat de 180.000 llars"
@@ -142,3 +191,33 @@ fuentes:
     tipo: prensa_general
     fecha_consulta: "2026-08-29"
     cita: "un pressupost publicoprivat d'uns 20.000 milions d'euros"
+  - id: src-5
+    url: "https://www.diaridetarragona.com/economia/266313/govern-ratifica-adquisicion-20-mw-reforzar-gigafactoria-ia-mora-nova.html"
+    titulo: "El Govern ratifica la adquisición de 20 MW más para reforzar la gigafactoría de IA de Móra la Nova"
+    editor: "Diari de Tarragona"
+    tipo: prensa_general
+    fecha_publicacion: "2026-07-21"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El Govern de la Generalitat ha ratificado el acuerdo del Consejo de
+      Administración del Institut Català del Sòl (Incasòl) para la adquisición de
+      20 MW a la empresa tortosina Cetenis SL ... Según los estudios técnicos
+      elaborados por el Incasòl, la implantación inicial de la infraestructura
+      requiere una potencia eléctrica de 54 MW, mientras que actualmente el
+      sector solo dispone de 34 MW ... El proyecto fue reconocido por el Govern
+      como proyecto estratégico de inversión para Catalunya mediante el Acuerdo
+      GOV/141/2026
+  - id: src-6
+    url: "https://govern.cat/gov/acords-govern/15021/govern-confia-que-europa-trii-projecte-gigafactoria-ia-mora-nova-es-projecte-solvent"
+    titulo: "El Govern confia que Europa triï el projecte de gigafactoria d'IA a Móra la Nova perquè «és un projecte solvent»"
+    editor: "Generalitat de Catalunya — Acords de Govern"
+    tipo: oficial
+    fecha_publicacion: "2025-06-25"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El Govern ha aprovat aquest dimecres una declaració de suport institucional
+      a la proposta presentada per un consorci publicoprivat per a la creació
+      d'una gigafactoria d'intel·ligència artificial (IA) a Móra la Nova (Ribera
+      d'Ebre). El projecte ... proposa situar la instal·lació en un solar
+      propietat de l'Institut Català del Sòl (Incasòl) ... amb una inversió
+      prevista d'entre 3.000 i 5.000 milions d'euros

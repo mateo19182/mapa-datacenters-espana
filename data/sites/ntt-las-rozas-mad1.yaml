@@ -28,17 +28,53 @@ potencia:
     ambito: edificio
     referencia: "Carga TI crítica máxima"
     estado_asociado: operativo
-    fecha_dato: "2026-08-29"
-    fuentes: [src-1]
-    nota: "\"6.9MW of critical IT load\"."
+    fecha_dato: "2026-08-31"
+    fuentes: [src-1, src-3]
+    nota: >-
+      "6.9MW of critical IT load"; la hoja de datos en español lo repite como «Potencia de TI:
+      6,9 MW».
+  - tipo: conexion_red
+    valor_mw: null
+    valor_mva: 10
+    ambito: edificio
+    referencia: "Potencia aportada por las dos subestaciones externas redundantes"
+    estado_asociado: operativo
+    fecha_dato: "2024"
+    fuentes: [src-3]
+    nota: >-
+      La hoja de datos da 10 MVA, potencia aparente, no MW: no se convierte porque haría falta el
+      factor de potencia, que no se publica.
 
 conexion_electrica:
   subestacion: "Dos subestaciones (no identificadas por NTT)"
   tension_kv: 20
-  fuentes: [src-1]
+  titular_red: null
+  mw_solicitados: null
+  mw_concedidos: null
+  nota: >-
+    Suministro dual a 20 kV desde dos subestaciones externas redundantes que, según la hoja de
+    datos del operador, aportan 10 MVA. La cifra está en potencia aparente y no se traduce a MW.
+  fuentes: [src-1, src-3]
 
 superficie_construida_m2: 3400
-refrigeracion: "Sistemas de refrigeración altamente redundantes; UPS 2N y generadores N+1."
+refrigeracion: >-
+  Sistema redundante de refrigeración por agua con respaldo de refrigeración natural (N+1),
+  unidades CRAH en las suites y salas técnicas y contención de pasillo frío. UPS 2N y generadores
+  diésel N+1.
+
+agua:
+  circuito: desconocido
+  sistema: >-
+    Sistema redundante de refrigeración por agua con respaldo de refrigeración natural en
+    configuración N+1, con unidades de tratamiento de aire para salas de ordenadores y contención
+    de pasillo frío.
+  origen: null
+  consumo_m3_ano: null
+  wue_l_kwh: null
+  nota: >-
+    La hoja de datos describe el sistema pero no publica consumo de agua, WUE ni el tipo de
+    circuito, así que este último se deja como desconocido.
+  fuentes: [src-3]
 enlaces_proyecto:
   - "https://datacenter.hello.global.ntt/en/location/madrid/madrid-1-data-center"
 
@@ -51,7 +87,7 @@ incertidumbres:
     fuentes: [src-1, src-2]
 
 confianza: alta
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -68,3 +104,11 @@ fuentes:
     tipo: asociacion
     fecha_consulta: "2026-08-29"
     cita: "NTT Madrid 1 Data Center (MAD1) | Calle Aquisgran 2 | 28232 Las Rozas de Madrid"
+  - id: src-3
+    url: "https://services.global.ntt/-/media/ntt/global/insights-and-resources/data-sheets/madrid-1-data-center-fact-sheet-es.pdf"
+    titulo: "Fact sheet: Madrid 1 Data Center"
+    editor: "NTT DATA Global Data Centers"
+    tipo: empresa
+    fecha_publicacion: "2024"
+    fecha_consulta: "2026-08-31"
+    cita: "Espacio del centro de datos • 3.400 m² de espacio para TI ... Potencia • Dos subestaciones externas redundantes que proporcionan 10 MVA de potencia • Potencia de TI: 6,9 MW • Densidad media de potencia de 1,5 - 2,0 kW/m² • Dos subestaciones para un suministro dual a 20 kV • Dos sistemas de alimentación ininterrumpida independientes (suministro A y B) con redundancia 2N • Sistema redundante de alimentación de emergencia con generadores diésel N+1 Refrigeración • Sistema redundante de refrigeración por agua con respaldo de refrigeración natural (N+1) • Unidades de tratamiento de aire para salas de ordenadores (CRAH) en las suites y salas técnicas ... • Contención mediante pasillos fríos"

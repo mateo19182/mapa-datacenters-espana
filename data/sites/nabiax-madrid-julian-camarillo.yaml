@@ -22,8 +22,12 @@ estado: ampliacion_en_construccion
 estado_detalle: >-
   Tres módulos en servicio con arranques escalonados entre 1995 y 2011. Adquirido a Telefónica
   en 2019. En mayo de 2024 Nabiax contrató 2,5 MW IT adicionales en este campus con
-  hiperescalares.
-estado_fuentes: [src-1, src-2]
+  hiperescalares. Entre 2024 y 2025 el centro pasó por una modernización de doce meses,
+  ejecutada con el CPD en producción: partía de una infraestructura de baja densidad, de unos
+  2 kW por armario y con una sala IT de 2,5 MW operativa y sin posibilidad de ampliación física,
+  y se rediseñaron los sistemas eléctricos e hidráulicos, se reubicaron enfriadoras y grupos
+  electrógenos, se sustituyeron transformadores y se incorporó almacenamiento térmico.
+estado_fuentes: [src-1, src-2, src-3]
 fecha_puesta_en_servicio: "1995"
 
 potencia:
@@ -58,7 +62,10 @@ fases:
     fuentes: [src-1]
 
 superficie_construida_m2: 10000
-refrigeracion: "Chiller N+1 y CRAH N+1; 100% energía renovable."
+refrigeracion: >-
+  Chiller N+1 y CRAH N+1; 100% energía renovable. La modernización de 2024-2025 reubicó las
+  enfriadoras y los cuadros de climatización e incorporó almacenamiento térmico; la ingeniería
+  que la ejecutó declara un uso optimizado del agua, sin cifras.
 enlaces_proyecto:
   - "https://nabiax.com/en/our-data-centers/spain/julian-camarillo/"
 
@@ -89,3 +96,11 @@ fuentes:
     fecha_publicacion: "2024-05-07"
     fecha_consulta: "2026-08-29"
     cita: "La nueva capacidad se desarrolla en los campus de data center ubicados en Alcalá de Henares (7,5 MW) y Julián Camarillo (2,5 MW)"
+  - id: src-3
+    url: "https://www.fibratel.com/wp-content/uploads/2026/05/Caso-de-exito-Nabiax-Julian-Camarillo_fdata-2025.pdf"
+    titulo: "Nabiax moderniza el Centro de Datos Julián Camarillo para responder a las nuevas demandas digitales"
+    editor: "fibratel"
+    tipo: empresa
+    fecha_publicacion: "2026-05"
+    fecha_consulta: "2026-08-31"
+    cita: "El punto de partida era una infraestructura diseñada originalmente para entornos IT de baja densidad, con una capacidad aproximada de 2 kW por rack. El centro contaba con una sala IT de 2,5 MW totalmente operativa, sin posibilidad de ampliación física ni construcción de nuevas áreas ... Todo el proceso debía completarse en un plazo exigente de 12 meses ... La solución contempló el desplazamiento y reorganización de sistemas críticos, como los chillers y los cuadros de climatización, así como la reconfiguración de las alimentaciones eléctricas para soportar mayores densidades de carga. Se incorporaron nuevos sistemas de almacenamiento térmico y se sustituyeron equipos obsoletos, como transformadores ... La nueva configuración ofrece una elevada eficiencia energética y un uso optimizado del agua, apoyándose además en un suministro eléctrico proveniente al 100 % de fuentes renovables."

@@ -3,6 +3,7 @@ nombre: "Centro de datos Toledo de Stackscale — Talavera de la Reina"
 alias:
   - "Data center Toledo (Stackscale)"
   - "CPD de Grupo Aire en Talavera de la Reina"
+  - "Centro de datos de Aire en Toledo"
 tipo: edificio
 operador: "Stackscale (Grupo Aire)"
 propietario: "Grupo Aire"
@@ -12,42 +13,79 @@ ubicacion:
   municipio: "Talavera de la Reina"
   provincia: "Toledo"
   ccaa: "Castilla-La Mancha"
-  lat: 39.9522413
-  lon: -4.8901772
-  precision: municipio
-  fuentes: [src-stackscale, src-osm]
+  direccion: "Calle Puebla de México, 58"
+  lat: 39.9569433
+  lon: -4.8440534
+  precision: aproximada
+  fuentes: [src-aire, src-osm-calle]
 
 estado: operativo
 estado_detalle: >-
-  Centro de datos de colocation en Talavera de la Reina comercializado por
-  Stackscale (Grupo Aire), presentado como instalación carrier neutral con doble
-  SAI N+1 y red de N*400 Gbps. Certificaciones ISO 9001, 14001, 22301, 27001,
-  27017 y 27018.
-estado_fuentes: [src-stackscale]
+  Centro de datos de colocation inaugurado en 2022, cuya primera piedra colocó el
+  presidente de Castilla-La Mancha en diciembre de 2021. Se comercializa por
+  Stackscale y por Aire Cloud, ambas del Grupo Aire, como instalación carrier
+  neutral con doble SAI N+1, red de N*400 Gbps, características de TIER III y más
+  de 54 racks en unos 800 metros cuadrados. Conecta con Aire Networks, Lyntia,
+  Avatel, Reintel y Telefónica, y con los puntos neutros AMS-IX, LINX, DE-CIX,
+  Equinix y ESPANIX. Certificaciones ISO 9001, 14001, 22301, 27001, 27017 y 27018.
+estado_fuentes: [src-stackscale, src-aire, src-silicon]
+fecha_puesta_en_servicio: "2022"
 
 potencia: []
 
 fases: []
 
 superficie_construida_m2: 800
+inversion_anunciada_eur: 1300000
+
+refrigeracion: >-
+  Salas IT climatizadas con pasillos de frío y calor. La compañía declara sistemas
+  N+1 tolerantes al fallo en energía, refrigeración y conectividad, y placas
+  solares propias para reducir el impacto ambiental.
+
+empleo:
+  - tipo: total
+    valor: 300
+    referencia: "Puestos directos e indirectos previstos en la inauguración"
+    fecha_dato: "2022-06-30"
+    fuentes: [src-silicon]
+    nota: >-
+      Cifra de previsión publicada en la inauguración, sin desglosar entre directos
+      e indirectos y desproporcionada frente a los 800 m2 de la instalación:
+      probablemente incluya el efecto sobre clientes y economía local. No se ha
+      contrastado con ningún registro laboral.
 
 incertidumbres:
   - campo: potencia
     descripcion: >-
-      La ficha comercial no publica potencia eléctrica, carga TI ni número de
-      racks.
-    fuentes: [src-stackscale]
+      Ni la ficha comercial de Stackscale ni la de Aire Cloud publican potencia
+      eléctrica, carga TI ni potencia contratada. Solo consta que hay "más de 54
+      racks" y doble SAI N+1 con autonomía de hasta 72 horas, lo que no permite
+      derivar ninguna cifra de MW sin suponer una densidad por rack.
+    fuentes: [src-stackscale, src-aire]
   - campo: ubicacion
     descripcion: >-
-      La ficha solo indica "Talavera de la Reina, Toledo"; no consta dirección.
-      Las coordenadas son las del casco urbano de Talavera de la Reina.
-    fuentes: [src-stackscale, src-osm]
+      La ficha de Aire Cloud sí publica la dirección, calle Puebla de México 58,
+      pero Nominatim solo geocodifica la calle y no el número: las coordenadas son
+      las del eje de la vía, no las del edificio. La ficha de Stackscale sigue
+      indicando únicamente "Talavera de la Reina, Toledo".
+    fuentes: [src-aire, src-stackscale, src-osm-calle]
   - campo: fecha_puesta_en_servicio
-    descripcion: "No consta el año de entrada en servicio."
-    fuentes: [src-stackscale]
+    descripcion: >-
+      Las fuentes sitúan la inauguración en 2022 sin coincidir en el mes: la ficha
+      comercial dice "Se inauguró en 2022", la prensa especializada fechó la
+      inauguración el 30 de junio de 2022 y la nota sobre la primera piedra es de
+      diciembre de 2021. Se registra el año.
+    fuentes: [src-aire, src-silicon, src-dcm-piedra]
+  - campo: empleo
+    descripcion: >-
+      Los 300 puestos "directos e indirectos" son una previsión de la inauguración
+      y no se han desglosado ni verificado. No hay dato de plantilla en el
+      emplazamiento.
+    fuentes: [src-silicon]
 
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-stackscale
@@ -59,10 +97,52 @@ fuentes:
     cita: >-
       Talavera de la Reina, Toledo [...] Con unos 800 m2 [...] Doble SAI N+1, A+B
       trifásicos.
-  - id: src-osm
-    url: "https://nominatim.openstreetmap.org/search?q=Talavera+de+la+Reina%2C+Toledo&format=json&limit=1"
-    titulo: "Nominatim — Talavera de la Reina, Toledo"
+  - id: src-aire
+    url: "https://airetech.es/cloud/centros-de-datos/toledo/"
+    titulo: "Centro de datos en Talavera de la Reina, Toledo | Aire"
+    editor: "Aire Cloud (Grupo Aire)"
+    tipo: empresa
+    fecha_publicacion: "2025-12-11"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Nuestro centro de datos en Talavera de la Reina de última generación tiene
+      características de TIER III. Dispone de: - Más de 800 metros cuadrados. - Más
+      de 54 racks. [...] Nuestro centro de datos de Toledo es un datacenter neutro
+      situado en la calle Calle Puebla de México, 58, Talavera de la Reina. Se
+      inauguró en 2022 y cuenta con un total de 800 metros cuadrados y más de 54
+      racks. [...] Sistema de alimentación ininterrumpida. Servicio activo hasta 72
+      horas en caso de caída de luz [...] Salas IT climatizadas. Pasillos de
+      frío-calor
+  - id: src-silicon
+    url: "https://www.silicon.es/nuevo-data-center-de-grupo-aire-en-talavera-de-la-reina-2460423"
+    titulo: "Nuevo data center de Grupo Aire en Talavera de la Reina"
+    editor: "Silicon España"
+    tipo: prensa_especializada
+    fecha_publicacion: "2022-06-30"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Con una inversión superior a 1,3 millones de euros, el Grupo AIre ha
+      inaugurado su nuevo centro de proceso de datos (CPD) ubicado en la localidad
+      toledana de Talavera de la Reina. [...] Este nuevo CPD creará alrededor de
+      300 puestos de trabajo directos e indirectos, además de suponer un impacto
+      relevante para la economía local y regional.
+  - id: src-dcm-piedra
+    url: "https://www.datacentermarket.es/proyectos/emiliano-garcia-page-coloca-la-primera-piedra-del-cpd-de-grupo-aire/"
+    titulo: "Emiliano García-Page coloca la primera piedra del CPD de Grupo Aire"
+    editor: "Data Center Market"
+    tipo: prensa_especializada
+    fecha_publicacion: "2021-12-12"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El presidente del Gobierno de Castilla-La Mancha, Emiliano García-Page, ha
+      puesto la primera piedra del edificio que albergará próximamente el Centro de
+      Proceso de Datos (CPD) de Grupo Aire en Talavera de la Reina.
+  - id: src-osm-calle
+    url: "https://nominatim.openstreetmap.org/search?q=Calle+Puebla+de+M%C3%A9xico+58%2C+Talavera+de+la+Reina&format=json&limit=2"
+    titulo: "Nominatim — Calle Puebla de México, Talavera de la Reina"
     editor: "OpenStreetMap / Nominatim"
     tipo: otro
-    fecha_consulta: "2026-08-29"
-    cita: "Talavera de la Reina, Toledo, Castilla-La Mancha, España — lat 39.9522413, lon -4.8901772"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Calle Puebla de México, La Piedad, Puerta Cuartos, Talavera de la Reina,
+      Toledo, Castilla-La Mancha, 45600, España — lat 39.9569433, lon -4.8440534

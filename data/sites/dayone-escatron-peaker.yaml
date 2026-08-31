@@ -1,0 +1,183 @@
+id: dayone-escatron-peaker
+nombre: "DayOne — campus de centros de datos de IA de Escatrón (junto a la central Peaker)"
+alias:
+  - "DayOne Aragón"
+  - "Campus DayOne Escatrón"
+  - "Ignis Escatrón data center"
+tipo: campus
+operador: "DayOne"
+propietario: "IGNIS (titular del suelo y promotor del desarrollo)"
+cliente_ancla: null
+modelo: hyperscale
+
+ubicacion:
+  municipio: "Escatrón"
+  provincia: "Zaragoza"
+  ccaa: "Aragón"
+  direccion: "Suelo industrial contiguo a la central de ciclo combinado «Peaker Escatrón», a unos siete kilómetros del casco urbano"
+  lat: 41.2870705
+  lon: -0.3249532
+  precision: municipio
+  fuentes: [src-1, src-2, src-osm]
+
+estado: anunciado
+estado_detalle: >-
+  Proyecto anunciado en junio de 2026. DayOne, filial internacional del grupo chino GDS
+  independizada en 2025, se alía con IGNIS para levantar un campus de centros de datos de
+  inteligencia artificial junto a la central de ciclo combinado «Peaker Escatrón», propiedad
+  de IGNIS desde 2016. IGNIS aporta el suelo, el acceso a la red y el respaldo del ciclo de
+  gas; DayOne operará las instalaciones. El 25 de junio de 2026 el Ayuntamiento de Escatrón
+  aprobó la segregación de las 78 hectáreas que ocupará el complejo, primer trámite
+  urbanístico del proyecto. No se ha publicado calendario de obras ni tamaño de la primera
+  fase.
+estado_fuentes: [src-1, src-2, src-3]
+
+potencia:
+  - tipo: conexion_red
+    valor_mw: 444
+    ambito: campus
+    referencia: "Acceso a la red eléctrica que IGNIS garantiza al campus"
+    estado_asociado: anunciado
+    fecha_dato: "2026-06-07"
+    fuentes: [src-1]
+    nota: >-
+      La fuente habla de un «enchufe de 444 megavatios a la red eléctrica»: es potencia en el
+      punto de conexión, no carga TI.
+  - tipo: no_especificado
+    valor_mw: 300
+    ambito: campus
+    referencia: "Capacidad a la que está diseñado para escalar el campus"
+    estado_asociado: anunciado
+    fecha_dato: "2026-06-10"
+    fuentes: [src-3]
+    nota: >-
+      DCD dice «designed to scale to 300MW» sin precisar si son MW IT o de conexión. No se
+      suma ni se compara con los 444 MW de acceso a red.
+
+conexion_electrica:
+  subestacion: null
+  tension_kv: null
+  titular_red: null
+  mw_solicitados: null
+  mw_concedidos: null
+  fuentes: [src-1, src-5]
+  nota: >-
+    El suministro se apoya en la central de ciclo combinado «Peaker Escatrón» (285 MW),
+    adquirida por IGNIS en 2016, que se hibrida con generación renovable. La potencia del
+    ciclo combinado es capacidad de generación y no capacidad del centro de datos.
+
+superficie_parcela_m2: 785000
+inversion_anunciada_eur: 3000000000
+enlaces_proyecto: []
+
+empleo:
+  - tipo: no_especificado
+    valor: 250
+    referencia: "Trabajadores previstos en el complejo"
+    fecha_dato: "2026-06"
+    fuentes: [src-1]
+    nota: "La fuente dice «superará los 250 trabajadores» sin distinguir obra y explotación."
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      Conviven dos cifras que no miden lo mismo: 444 MW de acceso a la red (Heraldo) y 300 MW
+      de capacidad de diseño del campus (DCD). Se registran por separado y no se suman.
+    fuentes: [src-1, src-3]
+  - campo: superficie_parcela_m2
+    descripcion: >-
+      Heraldo cifra la parcela en 78,5 hectáreas y el Ayuntamiento segregó 78 hectáreas,
+      mientras que DCD habla de «a plot of around 900 hectares». Se registra la cifra
+      respaldada por el trámite urbanístico local.
+    fuentes: [src-1, src-2, src-3]
+  - campo: ubicacion
+    descripcion: >-
+      En Escatrón hay dos proyectos de centro de datos distintos, en dos centrales de ciclo
+      combinado distintas: este, junto a la planta «Peaker» de IGNIS, y el de Repsol, junto a
+      su ciclo combinado de más de 800 MW (ficha «repsol-escatron-campus-ia»). No son el mismo
+      emplazamiento y sus potencias no deben sumarse como si fueran fases de un mismo campus.
+    fuentes: [src-1, src-4, src-6]
+  - campo: inversion_anunciada_eur
+    descripcion: >-
+      Las fuentes dicen «más de 3.000 millones de euros». Se registra el umbral citado, no una
+      cifra cerrada.
+    fuentes: [src-1, src-3]
+
+confianza: media
+ultima_verificacion: "2026-08-31"
+
+fuentes:
+  - id: src-1
+    url: "https://www.heraldo.es/noticias/aragon/2026/06/07/dayone-invertira-mas-3-000-millones-un-centro-datos-ia-escatron-2026914.html"
+    titulo: "DayOne invertirá más de 3.000 millones en un centro de datos de IA en Escatrón"
+    editor: "Heraldo de Aragón"
+    tipo: prensa_general
+    fecha_publicacion: "2026-06-07"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      La compañía de Singapur se alía con Ignis para garantizarse un enchufe de 444 MW a la red
+      eléctrica, energía verde y respaldo de su ciclo de gas. Se levantará junto a la central
+      térmica y superará los 250 trabajadores. [...] Panorámica de la central térmica Peaker,
+      junto a la que se levantará el centro de datos en 78,5 hectáreas de uso industrial que
+      pertenecen a Ignis.
+  - id: src-2
+    url: "https://www.heraldo.es/noticias/aragon/2026/06/25/primer-paso-urbanistico-para-instalacion-centro-datos-dayone-escatron-2031831.html"
+    titulo: "Impulso urbanístico a la inversión milmillonaria del centro de datos de DayOne en Escatrón"
+    editor: "Heraldo de Aragón"
+    tipo: prensa_general
+    fecha_publicacion: "2026-06-25"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El Ayuntamiento ha aprobado la segregación de los suelos que ocupará el complejo
+      tecnológico junto a la central de ciclo combinado Peaker. Se trata de 78 hectáreas que son
+      propiedad de la titular de la planta de gas, Ignis, que cederá los terrenos a la
+      multinacional de Singapur, además de garantizarle la energía.
+  - id: src-3
+    url: "https://www.datacenterdynamics.com/en/news/ignis-to-build-dayones-300mw-data-center-in-aragon-spain/"
+    titulo: "Ignis to build DayOne's 300MW data center in Aragon, Spain"
+    editor: "DatacenterDynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-06-10"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Renewable energy firm Ignis is developing the data center in the municipality of Escatrón,
+      near Zaragoza. The project, which will cost more than €3 billion ($3.47bn), aims to become
+      one of the largest AI campuses in Southern Europe. It will be operated by DayOne and
+      located on a plot of around 900 hectares. [...] designed to scale to 300MW, though the
+      size of the first phase hasn't been revealed.
+  - id: src-4
+    url: "https://ignis.es/quienes-somos/"
+    titulo: "Quiénes somos — IGNIS"
+    editor: "IGNIS"
+    tipo: empresa
+    fecha_publicacion: "2026-04-21"
+    fecha_consulta: "2026-08-31"
+    cita: "Adquisición del CCGT Peaker en Escatrón, Zaragoza (285MW)"
+  - id: src-5
+    url: "https://www.elperiodicodearagon.com/aragon/2026/06/09/multinacional-asiatica-dayone-elige-escatron-131169465.html"
+    titulo: "La multinacional asiática DayOne elige Escatrón para levantar un gran centro de datos de IA de más de 3.000 millones"
+    editor: "El Periódico de Aragón"
+    tipo: prensa_general
+    fecha_publicacion: "2026-06-09"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      La compañía, con sede en Singapur, impulsa un campus tecnológico asociado al ciclo
+      combinado que Ignis tiene en el municipio, que se hibridará con energía renovable y tiene
+      asegurado el acceso a la red eléctrica.
+  - id: src-6
+    url: "https://www.heraldo.es/noticias/aragon/2025/02/21/centro-datos-repsol-escatron-via-libre-red-electrica-1801555.html"
+    titulo: "El gran centro de datos que impulsa Repsol en Escatrón ya tiene vía libre de Red Eléctrica"
+    editor: "Heraldo de Aragón"
+    tipo: prensa_general
+    fecha_publicacion: "2025-02-21"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El gran centro de datos que impulsa Repsol junto a su central de ciclo combinado de
+      Escatrón ya tiene la autorización de Red Eléctrica de España (REE).
+  - id: src-osm
+    url: "https://nominatim.openstreetmap.org/search?q=Escatr%C3%B3n%2C+Zaragoza&format=json&limit=1"
+    titulo: "Nominatim — Escatrón, Zaragoza"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-08-31"
+    cita: "Escatrón, Ribera Baja del Ebro, Zaragoza, Aragón, 50790, España — lat 41.2870705, lon -0.3249532"

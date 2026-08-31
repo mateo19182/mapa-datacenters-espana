@@ -35,19 +35,23 @@ potencia:
     referencia: "Potencia del centro de datos en el momento de la inauguración"
     estado_asociado: operativo
     fecha_dato: "2025-05-13"
-    fuentes: [src-2]
+    fuentes: [src-2, src-5]
     nota: >-
       La nota de MERLIN dice literalmente "una potencia de 15 MW" sin precisar si
       es carga TI. Una nota de prensa de la propia compañía recogida por prensa
-      generalista la califica como "15 MW IT".
+      generalista la califica como "15 MW IT". La nota de CoreWeave habla de "The
+      15MW site".
   - tipo: instalada_total
     valor_mw: 22
     ambito: edificio
     referencia: "Capacidad eléctrica total del edificio"
     estado_asociado: operativo
     fecha_dato: "2025-05-13"
-    fuentes: [src-3]
-    nota: "La fuente dice 'capacidad eléctrica total de 22 megavatios'."
+    fuentes: [src-3, src-5, src-6]
+    nota: >-
+      La fuente dice 'capacidad eléctrica total de 22 megavatios'. La agencia EFE
+      la recoge como "una capacidad eléctrica de 22 megavatios" y la nota de
+      CoreWeave habla de "The 22 MW facility".
 
 fases:
   - nombre: "Puesta en servicio inicial (CoreWeave H200)"
@@ -62,6 +66,25 @@ inversion_anunciada_eur: 198000000
 refrigeracion: >-
   Consumo nulo de agua según la propiedad; PUE declarado de 1,15 frente a la
   media europea de 1,46.
+
+agua:
+  circuito: sin_agua
+  sistema: >-
+    Diseño de MERLIN Edged con consumo cero de agua para la refrigeración, según
+    la propiedad y el cliente ancla.
+  origen: null
+  nota: "No se publica ningún consumo residual ni WUE numérico."
+  fuentes: [src-5]
+
+empleo:
+  - tipo: no_especificado
+    valor: 60
+    referencia: "Profesionales que emplea el centro en el momento de la inauguración"
+    fecha_dato: "2025-05-13"
+    fuentes: [src-6]
+    nota: >-
+      La agencia EFE dice "emplea a 60 profesionales" sin distinguir empleo
+      directo de subcontratado.
 enlaces_proyecto:
   - "https://www.merlinproperties.com/activos/data-center-barcelona/"
 
@@ -80,7 +103,7 @@ incertidumbres:
     fuentes: [src-3]
 
 confianza: alta
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -119,3 +142,27 @@ fuentes:
       Carrer Número 25, Parc Logístic Zona Franca, la Marina del Prat Vermell,
       Sants-Montjuïc, Barcelona, Barcelonès, Barcelona, Catalunya, 08040, España
       — lat 41.3412624, lon 2.1287874
+  - id: src-5
+    url: "https://investors.coreweave.com/news/news-details/2025/The-Mayor-of-Barcelona-Jaume-Collboni-Inaugurates-Data-Center-Hosting-CoreWeaves-Leading-AI-Cloud-Platform-in-Partnership-with-MERLIN-Edged/default.aspx"
+    titulo: "The Mayor of Barcelona Jaume Collboni Inaugurates Data Center Hosting CoreWeave's Leading AI Cloud Platform, in Partnership with MERLIN Edged"
+    editor: "CoreWeave"
+    tipo: empresa
+    fecha_publicacion: "2025-05-13"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      The 15MW site will host 10,224 NVIDIA H200 Tensor Core GPUs with InfiniBand
+      connectivity, with plans to extend capacity with a Blackwell supercomputer
+      in 2026 ... MERLIN Edged data centers are at the forefront of international
+      innovation in sustainability, with zero water consumption ... a Power Usage
+      Effectiveness (PUE) of 1.15, compared to the European average of 1.46
+  - id: src-6
+    url: "https://www.infobae.com/espana/agencias/2025/05/13/merlin-invertira-198-millones-en-un-centro-de-datos-en-la-zona-franca-de-barcelona/"
+    titulo: "Merlin invertirá 198 millones en un centro de datos en la Zona Franca de Barcelona"
+    editor: "Infobae / EFE"
+    tipo: prensa_general
+    fecha_publicacion: "2025-05-13"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      La socimi Merlin Properties invertirá un total de 198 millones de euros en
+      un centro de datos en la Zona Franca de Barcelona, que ofrece una capacidad
+      eléctrica de 22 megavatios y emplea a 60 profesionales.

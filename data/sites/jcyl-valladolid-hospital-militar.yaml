@@ -2,6 +2,7 @@ id: jcyl-valladolid-hospital-militar
 nombre: "CPD corporativo de la Junta de Castilla y León — Valladolid (antiguo Hospital Militar)"
 alias:
   - "Centro de Proceso de Datos de la Junta de Castilla y León"
+  - "CPD corporativo de la JCyL"
 tipo: edificio
 operador: "Junta de Castilla y León"
 propietario: "Junta de Castilla y León"
@@ -15,16 +16,21 @@ ubicacion:
   lat: 41.6444613
   lon: -4.7342196
   precision: aproximada
-  fuentes: [src-dcm, src-osm]
+  fuentes: [src-dcm, src-elespanol, src-osm]
 
 estado: operativo
 estado_detalle: >-
-  CPD corporativo de la administración autonómica en un inmueble de dos plantas
-  y unos 750 metros cuadrados en el recinto del antiguo Hospital Militar de
-  Valladolid. El proyecto, de 9,93 millones de euros, preveía siete meses de
-  obra y entrada en operación en julio de 2015. Consolida las infraestructuras
-  TIC de la Junta.
-estado_fuentes: [src-dcm]
+  CPD corporativo de la administración autonómica en un inmueble de dos plantas en
+  el recinto del antiguo Hospital Militar de Valladolid. El proyecto, de 9,93
+  millones de euros, preveía siete meses de obra y entrada en operación en julio
+  de 2015. En enero de 2018 la Junta dio por culminado el traslado de sus centros
+  de proceso de datos dispersos a esta sede única, liberando 1.200 metros
+  cuadrados de suelo para otros usos e incrementando un 130 % la capacidad de
+  computación. En 2023 daba servicio a 2.335 centros —735 administrativos y 1.600
+  educativos— y a más de 35.000 empleados públicos, con un archivo digital de 1,9
+  petabytes de capacidad inicial y un coste de mantenimiento de 1,5 millones de
+  euros al año.
+estado_fuentes: [src-dcm, src-esmartcity, src-elespanol]
 
 potencia: []
 
@@ -33,21 +39,68 @@ fases: []
 superficie_construida_m2: 750
 inversion_anunciada_eur: 9930000
 
+refrigeracion: >-
+  Climatización con sistemas de inteligencia artificial y equipos alternativos que
+  entran en funcionamiento de manera automática para mantener iguales condiciones
+  climáticas, alojada en salas de instalaciones separadas de las salas técnicas.
+
+conexion_electrica:
+  subestacion: null
+  tension_kv: null
+  titular_red: null
+  mw_solicitados: null
+  mw_concedidos: null
+  nota: >-
+    La Junta describe "dos subestaciones eléctricas independientes que permiten
+    mantener el suministro en caso de que falle" y dos grupos electrógenos con
+    autonomía de más de 48 horas prorrogable indefinidamente. No nombra las
+    subestaciones ni publica potencia contratada, tensión ni MW.
+  fuentes: [src-elespanol]
+
 incertidumbres:
   - campo: potencia
     descripcion: >-
-      No consta la potencia eléctrica ni la carga TI del centro en las fuentes
-      consultadas.
-    fuentes: [src-dcm]
+      No consta la potencia eléctrica ni la carga TI del centro en ninguna de las
+      fuentes consultadas, pese a que varias describen con detalle sus sistemas de
+      continuidad eléctrica. Sí consta una reducción de la factura energética de
+      940.000 euros anuales frente a los centros dispersos que sustituyó, que es un
+      dato de coste y no de potencia.
+    fuentes: [src-dcm, src-elespanol, src-esmartcity]
+  - campo: fecha_puesta_en_servicio
+    descripcion: >-
+      Las fuentes no coinciden y no se registra fecha. El proyecto de 2014 preveía
+      la entrada en operación en julio de 2015; un reportaje de enero de 2018 dice
+      que el CPD entró en funcionamiento "dos años" antes, lo que apuntaría a 2016;
+      y otra información de 2018 afirma que "ofrece desde 2015 un ahorro de 2,5
+      millones anuales". Lo que sí está fechado con precisión es la culminación del
+      traslado de los centros dispersos, en enero de 2018.
+    fuentes: [src-dcm, src-esmartcity]
+  - campo: superficie_construida_m2
+    descripcion: >-
+      Conviven dos superficies muy próximas y no se sustituye la registrada: la
+      descripción del proyecto de 2014 habla de "en torno a 750 metros cuadrados" y
+      el reportaje de 2023, ya con el centro en marcha, de "una superficie total
+      construida de 760 metros cuadrados en dos plantas" y de "casi 800 metros
+      cuadrados" en la entradilla del mismo texto.
+    fuentes: [src-dcm, src-elespanol]
+  - campo: propietario
+    descripcion: >-
+      Las fuentes discrepan sobre cuántos centros de proceso de datos se
+      consolidaron aquí: esmartcity habla del traslado de "los seis centros de
+      procesos de datos" y El Español de "la unión de los cinco que la Junta tenía
+      disgregados por diferentes edificios".
+    fuentes: [src-esmartcity, src-elespanol]
   - campo: estado
     descripcion: >-
-      La fuente consultada describe el proyecto y su calendario previsto (julio
-      de 2015); no se ha localizado una fuente reciente que documente la
-      situación y capacidad actuales del CPD.
-    fuentes: [src-dcm]
+      La fuente más reciente localizada sobre esta instalación es de febrero de
+      2023. En septiembre de 2024 la Junta licitó y anunció una remodelación de un
+      millón de euros, pero referida al CPD de respaldo, que puede no ser este
+      inmueble. No se ha localizado ninguna fuente de 2025 o 2026 que documente la
+      situación y la capacidad actuales.
+    fuentes: [src-elespanol]
 
 confianza: baja
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-dcm
@@ -55,10 +108,51 @@ fuentes:
     titulo: "Castilla y León invertirá 9,9 millones en un nuevo CPD"
     editor: "Data Center Market"
     tipo: prensa_especializada
+    fecha_publicacion: "2014-09-07"
     fecha_consulta: "2026-08-29"
     cita: >-
       El centro ocupará un inmueble de dos plantas y en torno a 750 metros
       cuadrados en el recinto del antiguo Hospital Militar de Valladolid.
+  - id: src-elespanol
+    url: "https://www.elespanol.com/invertia/disruptores/autonomias/castilla-leon/20230208/hospital-militar-centro-servicio-funcionarios-castilla-leon/739676080_0.html"
+    titulo: "De hospital militar a centro de datos que da servicio a 35.000 funcionarios de Castilla y León"
+    editor: "Invertia — Disruptores (El Español)"
+    tipo: prensa_general
+    fecha_publicacion: "2023-02-08"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Da servicio a 2.335 centros (735 administrativos y 1.600 educativos) y a más
+      de 35.000 empleados públicos, además de su archivo digital, con una capacidad
+      inicial de almacenamiento de 1,9 PetaBytes [...] el CPD, que ocupa una
+      superficie total construida de 760 metros cuadrados en dos plantas, cuenta
+      con dos tipos de alojamientos: las denominadas salas técnicas [...] y las
+      salas de instalaciones [...] cabe destacar las dos subestaciones eléctricas
+      independientes que permiten mantener el suministro en caso de que falle y dos
+      grupos electrógenos con una autonomía de más de 48 horas que se puede
+      prolongar por tiempo indefinido. [...] "moderno sistema de climatización en
+      el que intervienen sistemas de inteligencia artificial y equipos alternativos
+      que entran en funcionamiento de manera automática" [...] El actual CPD, por
+      cierto, es el resultado de la unión de los cinco que la Junta tenía
+      disgregados por diferentes edificios [...] cifrada en 1,5 millones de euros
+      anuales, como a nivel energético, calculándose una reducción en la factura de
+      940.000 euros al año
+  - id: src-esmartcity
+    url: "https://www.esmartcity.es/2018/01/25/castilla-y-leon-centraliza-tecnologia-administracion-electronica-cpd-valladolid"
+    titulo: "Castilla y León centraliza la tecnología de Administración Electrónica en su CPD de Valladolid"
+    editor: "esmartcity.es"
+    tipo: prensa_especializada
+    fecha_publicacion: "2018-01-25"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Dos años después de que entrara en funcionamiento por primera vez, el Centro
+      de Proceso de Datos (CPD) de la Junta de Castilla y León ha culminado el
+      traslado de los seis centros de procesos de datos a su sede central, situada
+      en el complejo del Hospital Militar de Valladolid [...] La sede fue
+      acondicionada, protegida y conectada con una inversión de algo más de tres
+      millones de euros, a los que se sumaron los 6,9 millones correspondientes a
+      la actualización y modernización del equipo informático. [...] la liberación
+      de 1.200 metros cuadrados de suelo para otros usos, el incremento del 130 %
+      de la capacidad de computación
   - id: src-osm
     url: "https://nominatim.openstreetmap.org/search?q=Antiguo+Hospital+Militar%2C+Valladolid&format=json&limit=2"
     titulo: "Nominatim — antiguo Hospital Militar, Paseo de Zorrilla, Valladolid"

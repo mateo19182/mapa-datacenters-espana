@@ -1,0 +1,69 @@
+id: merlin-edged-tres-cantos
+nombre: "MERLIN Edged — Tres Cantos"
+alias:
+  - "Merlin Madrid-Tres Cantos"
+  - "MERLIN Edged Madrid II"
+tipo: edificio
+operador: "MERLIN Edged"
+propietario: "MERLIN Properties"
+modelo: mayorista
+
+ubicacion:
+  municipio: "Tres Cantos"
+  provincia: "Madrid"
+  ccaa: "Comunidad de Madrid"
+  lat: null
+  lon: null
+  precision: municipio
+  fuentes: [src-1]
+
+estado: en_construccion
+estado_detalle: >-
+  Emplazamiento incluido en la Fase II del Plan MEGA de MERLIN Properties. En su informe de
+  resultados del primer semestre de 2026 la compañía sitúa las obras de Madrid-Tres Cantos en
+  marcha, junto a las de Lisboa y Madrid-Getafe II.
+estado_fuentes: [src-1]
+
+potencia: []
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      MERLIN publica la capacidad de la Fase II del Plan MEGA como un agregado de 254 MW IT que
+      reparte entre Bilbao-Arasur 01 y 02, Lisboa, Madrid-Getafe II y Madrid-Tres Cantos, y solo
+      desglosa las tres primeras. No consta ninguna cifra atribuible a Tres Cantos, y deducirla
+      por resta sería inventarla.
+    fuentes: [src-1]
+  - campo: ubicacion
+    descripcion: >-
+      No consta dirección, parcela ni licencia municipal. El Ayuntamiento de Tres Cantos anunció
+      en mayo de 2026 que prepara un Plan Especial de Data Centers, sin identificar proyectos.
+    fuentes: [src-1, src-2]
+
+confianza: media
+ultima_verificacion: "2026-08-31"
+
+fuentes:
+  - id: src-1
+    url: "https://www.merlinproperties.com/prensa/merlin-incrementa-ingresos-y-ebitda-un-11-7-gracias-a-la-division-de-data-centers-que-alcanza-160-mw-alquilados/"
+    titulo: "MERLIN incrementa ingresos y EBITDA un 11.7% gracias a la división de Data Centers, que alcanza 160 MW alquilados"
+    editor: "MERLIN Properties"
+    tipo: empresa
+    fecha_publicacion: "2026-07-28"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      En la Fase II (254 MW IT), la comercialización continúa superando previsiones. Bilbao-Arasur
+      02 (48 MW) se alquiló por completo doce meses antes de su entrega y Bilbao-Arasur 01 (48 MW)
+      ha sido arrendado dieciocho meses antes de su puesta en operación. Asimismo, avanzan las
+      obras en Lisboa (80 MW), Madrid-Getafe II y Madrid-Tres Cantos.
+  - id: src-2
+    url: "https://www.datacenterdynamics.com/es/noticias/tres-cantos-refuerza-su-apuesta-por-la-industria-de-los-data-centers/"
+    titulo: "Tres Cantos refuerza su apuesta por la industria de los data centers"
+    editor: "DatacenterDynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-06-02"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      el anuncio que ha hecho el alcalde de la ciudad, Jesús Moreno, sobre la puesta en marcha de
+      un Plan Especial de Data Centers con el objetivo de atraer nuevas inversiones y consolidar
+      la presencia de infraestructuras digitales en el municipio

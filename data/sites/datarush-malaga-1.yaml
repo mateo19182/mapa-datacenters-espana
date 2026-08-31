@@ -1,0 +1,101 @@
+id: datarush-malaga-1
+nombre: "DataRush — primer centro de datos de Málaga"
+alias:
+  - "DataRush Malaga 1"
+  - "DataRush IT Data Center"
+tipo: edificio
+operador: "Grupo DataRush (Data Rush IT Services, S.L.)"
+propietario: "Grupo DataRush (Data Rush IT Services, S.L.)"
+cliente_ancla: null
+modelo: colocation
+
+ubicacion:
+  municipio: "Málaga"
+  provincia: "Málaga"
+  ccaa: "Andalucía"
+  direccion: "Calle Ciro Alegría, 83, 29004 Málaga"
+  lat: 36.7647913
+  lon: -4.4422005
+  precision: municipio
+  fuentes: [src-1, src-2, src-osm]
+
+estado: operativo
+estado_detalle: >-
+  Primer centro de datos propio del grupo malagueño DataRush. En junio de 2024, cuando la
+  compañía inauguró su segundo centro en la misma ciudad, describía este como en operación
+  desde hacía más de diez años y conectado con el nuevo. Es una instalación neutral de
+  colocation orientada a alojamiento de servidores, hosting, virtualización y copia de
+  seguridad para pymes.
+estado_fuentes: [src-1, src-2, src-3]
+
+potencia: []
+
+inversion_anunciada_eur: null
+enlaces_proyecto:
+  - "https://www.datarush.es/"
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      DataRush no publica potencia, superficie de sala técnica ni número de racks de ninguno de
+      sus centros. Baxtel mantiene los campos de potencia y superficie ocultos tras registro.
+    fuentes: [src-2]
+  - campo: ubicacion
+    descripcion: >-
+      La calle procede de directorios sectoriales (Baxtel y datacenters.com), no de la compañía.
+      Las coordenadas registradas son el centroide municipal de Málaga.
+    fuentes: [src-2, src-4, src-osm]
+  - campo: fecha_puesta_en_servicio
+    descripcion: >-
+      No consta la fecha exacta. En junio de 2024 la compañía hablaba de «más de una década en
+      operación» y de doce años de trayectoria del grupo, lo que situaría la apertura en torno a
+      2012-2014.
+    fuentes: [src-1]
+
+confianza: baja
+ultima_verificacion: "2026-08-31"
+
+fuentes:
+  - id: src-1
+    url: "https://www.datarush.es/inauguracion_del_segundo_centro_de_datarush_en_malaga/"
+    titulo: "Inauguración del Segundo Centro de Datos en Málaga"
+    editor: "Grupo DataRush"
+    tipo: empresa
+    fecha_publicacion: "2024-07-17"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El nuevo centro de datos en Málaga está estratégicamente conectado con nuestro primer data
+      center, que lleva más de una década en operación.
+  - id: src-2
+    url: "https://baxtel.com/data-center/datarush-malaga-1"
+    titulo: "DataRush: Malaga 1 Data Center"
+    editor: "Baxtel"
+    tipo: consultora
+    fecha_consulta: "2026-08-31"
+    cita: "DataRush: Malaga 1 [...] C. Ciro Alegría [...] Operational — Fully operational facility"
+  - id: src-3
+    url: "https://www.datacenterdynamics.com/es/noticias/datarush-inaugura-su-segundo-data-center-en-malaga/"
+    titulo: "DataRush inaugura su segundo Data Center en Málaga"
+    editor: "DatacenterDynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2024-07-01"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El grupo DataRush ha inaugurado su segundo Data Center en Málaga. Según la compañía, este
+      nuevo centro de datos está completamente integrado con el otro que lleva más de 10 años en
+      operación.
+  - id: src-4
+    url: "https://www.datacenters.com/providers/datarush-it"
+    titulo: "DataRush IT — Provider profile"
+    editor: "Datacenters.com"
+    tipo: consultora
+    fecha_publicacion: "2022-08-09"
+    fecha_consulta: "2026-08-31"
+    cita: "Calle Ciro Alegría, 83, Málaga, Spain 29004"
+  - id: src-osm
+    url: "https://nominatim.openstreetmap.org/search?q=M%C3%A1laga%2C+Andaluc%C3%ADa&format=json&limit=1"
+    titulo: "Nominatim — Málaga, Andalucía"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-08-31"
+    cita: "Málaga, Málaga-Costa del Sol, Málaga, Andalucía, España — lat 36.7647913, lon -4.4422005"

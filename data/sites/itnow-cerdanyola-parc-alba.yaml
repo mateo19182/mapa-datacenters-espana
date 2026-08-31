@@ -23,8 +23,11 @@ estado: operativo
 estado_detalle: >-
   Centro de proceso de datos corporativo del grupo 'la Caixa'/CaixaBank operado
   por ITnow, sociedad constituida en enero de 2012. Baxtel fecha la construcción
-  del edificio en 2011 y no registra crecimiento de potencia desde 2022.
-estado_fuentes: [src-1]
+  del edificio en 2011 y no registra crecimiento de potencia desde 2022;
+  Expansión, en abril de 2014, se refería a él como «el CPD inaugurado en 2012».
+  Un reportaje sectorial de 2025 cuenta dos CPD de Silc Inmuebles —la sociedad
+  patrimonial de CaixaBank— entre los cuatro en operación del Parc de l'Alba.
+estado_fuentes: [src-1, src-4, src-5]
 fecha_puesta_en_servicio: "2011"
 
 potencia: []
@@ -41,15 +44,31 @@ incertidumbres:
       l'Alba (parcela PC10601, códigos ESBARCRD / ES1). Dado que Kyndryl es
       copropietaria de ITnow y ambas fichas se sitúan en el Parc de l'Alba, es
       probable que se refieran al mismo emplazamiento. No se crea un registro
-      separado para evitar doble conteo.
-    fuentes: [src-1, src-3]
+      separado para evitar doble conteo. En contra de esa lectura, el inventario
+      de 30Virtual enumera cuatro CPD distintos en operación en el parque
+      —T-Systems, Silc Inmuebles 1, Silc Inmuebles 2 y Kyndryl—, lo que
+      sugeriría que el de Kyndryl es un cuarto edificio separado de los dos de
+      ITnow/Silc. La duda queda abierta.
+    fuentes: [src-1, src-3, src-5]
+  - campo: fecha_puesta_en_servicio
+    descripcion: >-
+      Baxtel fecha la construcción en 2011 y la ficha registra esa fecha;
+      Expansión habla del «CPD inaugurado en 2012». Se conservan ambas.
+    fuentes: [src-1, src-4]
+  - campo: ubicacion
+    descripcion: >-
+      Un directorio de colocation da un número de portal concreto, «Carrer de
+      Creu Casas i Sicart, 85, 08290 Cerdanyola del Vallès», que no se ha podido
+      contrastar con fuente primaria. Las coordenadas registradas siguen siendo
+      de vial.
+    fuentes: [src-2, src-6]
   - campo: ubicacion
     descripcion: >-
       Coordenadas obtenidas por geocodificación de la calle, no del número.
     fuentes: [src-2]
 
 confianza: baja
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -81,3 +100,38 @@ fuentes:
     cita: >-
       Address/Municipality: Parc de l'Alba (plot PC10601), Cerdanyola del Valles,
       Barcelona, Spain ... Site codes: ESBARCRD / ES1
+  - id: src-4
+    url: "https://www.expansion.com/2014/04/28/catalunya/1398709231.html"
+    titulo: "CaixaBank invertirá 100 millones de euros en un nuevo centro de datos"
+    editor: "Expansión"
+    tipo: prensa_general
+    fecha_publicacion: "2014-04-29"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El grupo financiero acaba de activar una inversión de cien millones de
+      euros para construir un segundo centro de procesamiento de datos (CPD) en
+      unos terrenos situados junto al sincrotrón Alba de Cerdanyola del Vallès.
+      Las nuevas instalaciones se sumarán al CPD inaugurado en 2012 ... y elevarán
+      a 200 millones de euros la inversión global de la entidad en su complejo de
+      Cerdanyola.
+  - id: src-5
+    url: "https://www.30virtual.net/Noticias.aspx?idnoticia=33351"
+    titulo: "El Parc de l'Alba mejorará las infraestructuras especiales por CPDs, ampliando la actual a red de distribución eléctrica y minimizando las afecciones al entorno y la ocupación del dominio público"
+    editor: "30Virtual"
+    tipo: prensa_especializada
+    fecha_publicacion: "2025-01-06"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      cuenta con 4 centros de procesamiento de datos en operación (T-Systems,
+      Silc Inmuebles 1 y 2, Kyndryl) y 4 en proyecto y/o en construcción (AQ
+      Compute, Adam Ecotech, GTR y Panattoni)
+  - id: src-6
+    url: "https://www.datacenters.com/itnow-itnow-cd1"
+    titulo: "ITnow Data Center: ITnow CD1"
+    editor: "Datacenters.com"
+    tipo: otro
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      ITnow Data Center ITnow CD1 is located at Carrer de Creu Casas i Sicart,
+      85, 08290 Cerdanyola del Vallès, Spain ... No power information has been
+      offered for this location.

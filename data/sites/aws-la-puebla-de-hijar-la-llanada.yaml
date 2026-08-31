@@ -75,8 +75,26 @@ incertidumbres:
       emplazamiento.
     fuentes: [src-1, src-2]
 
+  - campo: empleo
+    descripcion: >-
+      El Acuerdo de 25 de marzo de 2026 no publica ninguna cifra de empleo ni de inversión
+      por emplazamiento. Las únicas cifras que da son del conjunto de la inversión de AWS:
+      33.700 millones de euros en la Región de AWS en España durante 2026-2035, una media
+      anual de 29.900 empleos a tiempo completo en España de los que unos 13.400 estarían en
+      Aragón, y 6.700 empleos anuales directos en España (4.200 en Aragón). No se registran
+      en «empleo» ni en «inversion_anunciada_eur» porque atribuirlas a este emplazamiento
+      —uno de los once de AWS en Aragón— multiplicaría la misma cifra por cada ficha.
+    fuentes: [src-4]
+  - campo: agua
+    descripcion: >-
+      Ninguna fuente publica consumo de agua, sistema de refrigeración ni origen del recurso
+      para este emplazamiento. El Acuerdo se limita a mencionar que el plan comprende "las
+      conexiones externas para infraestructuras de agua y energía". El expediente ambiental
+      todavía no se ha tramitado.
+    fuentes: [src-4]
+
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -102,3 +120,11 @@ fuentes:
     tipo: otro
     fecha_consulta: "2026-08-29"
     cita: "La Puebla de Híjar 41.2132393 -0.4456249"
+  - id: src-4
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1442795570404"
+    titulo: "ORDEN PEJ/523/2026, de 7 de abril [...] «Plan para la consolidación de la Región AWS en Aragón» — inversión y generación de empleo previstas"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2026-04-09"
+    fecha_consulta: "2026-08-31"
+    cita: "AWS tiene previsto invertir 33.700 millones de euros en la Región de AWS en España durante los próximos 10 años (período 2026-2035). [...] Por lo que respecta a la generación de empleo prevista, la promotora estima que la inversión de AWS en España podría promover la creación de una media anual de 29.900 empleos a tiempo completo, de los cuales alrededor de 13.400 se ubicarían en la Comunidad Autónoma de Aragón. En concreto, se prevé la generación de 6.700 empleos anuales directos en España (4.200 en Aragón)"

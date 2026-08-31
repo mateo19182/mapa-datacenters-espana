@@ -11,27 +11,34 @@ ubicacion:
   municipio: "Alcantarilla"
   provincia: "Murcia"
   ccaa: "Región de Murcia"
-  direccion: "Parque Empresarial Magalia, Polígono Industrial Oeste, 30820 Alcantarilla"
+  direccion: "Calle Uruguay, parcelas 13/21, nave 10, Parque Empresarial Magalia, Polígono Industrial Oeste, 30820 Alcantarilla"
   lat: 37.958679
   lon: -1.194223
   precision: exacta
-  fuentes: [src-1]
+  fuentes: [src-1, src-3]
 
 estado: operativo
 estado_detalle: >-
   Instalación registrada como facility activa en PeeringDB por Grupo Sys4net, S.L. en el
   Parque Empresarial Magalia del polígono industrial Oeste de Alcantarilla. Es una de las
   pocas instalaciones de interconexión documentadas en la Región de Murcia además de la de
-  Kumo Networks en Espinardo.
-estado_fuentes: [src-1]
+  Kumo Networks en Espinardo. El operador describe doble acometida eléctrica desde centros
+  de transformación independientes, grupos electrógenos N+1 de arranque automático, doble
+  rama A+B protegida por UPS modulares de 300 kW, climatización InRow en configuración N+2,
+  extinción por gas FM-200, anillo de fibra con tres caminos independientes y un compromiso
+  de disponibilidad anual superior al 99,9 %.
+estado_fuentes: [src-1, src-3]
 
 incertidumbres:
   - campo: potencia
     descripcion: >-
-      No consta potencia, superficie ni número de racks. La instalación no figura en el
-      directorio del Observatorio Español de Data Centers, que solo recoge tres registros
-      para la Región de Murcia.
-    fuentes: [src-1, src-2]
+      No consta potencia del centro, superficie ni número de racks. La instalación no figura
+      en el directorio del Observatorio Español de Data Centers, que solo recoge tres
+      registros para la Región de Murcia. La única cifra eléctrica que publica el operador
+      son los «equipos UPS Vertiv modulares de 300 kW» de cada rama de distribución: es
+      capacidad de respaldo ininterrumpido por rama, no carga TI ni potencia contratada del
+      emplazamiento, así que no se registra en `potencia[]`.
+    fuentes: [src-1, src-2, src-3]
   - campo: estado
     descripcion: >-
       PeeringDB no distingue estado operativo; se asume operativo por figurar en el
@@ -39,7 +46,7 @@ incertidumbres:
     fuentes: [src-1]
 
 confianza: baja
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -56,3 +63,10 @@ fuentes:
     tipo: otro
     fecha_consulta: "2026-08-29"
     cita: "Región de Murcia (3)"
+  - id: src-3
+    url: "https://sys4net.com/centro-de-datos/"
+    titulo: "Centro de Datos en Murcia | Redundancia N+1 y ENS ALTO"
+    editor: "Grupo Sys4net"
+    tipo: empresa
+    fecha_consulta: "2026-08-31"
+    cita: "SUMINISTRO ELÉCTRICO. Doble acometida eléctrica, de centros de transformación independientes. Generación de emergencia con grupos electrógenos N+1 de arranque automático. Doble rama (A+B) protegida por equipos UPS Vertiv® modulares de 300 kW. [...] Equipos InRow de control preciso de humedad y temperatura, en configuración N+2. [...] GRUPO SYS4NET S.L. Calle Uruguay, Parcela 13/21 · Nave 10 · Polígono Industrial Oeste · Alcantarilla (Murcia) · 30820"

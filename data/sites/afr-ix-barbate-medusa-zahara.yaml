@@ -20,10 +20,12 @@ ubicacion:
 estado: desconocido
 estado_detalle: >-
   Zahara figura como punto de aterraje español del sistema de cable submarino Medusa, junto a
-  Manilva y Barcelona. El operador informa de que el despliegue de los aterrajes pendientes continúa
-  a lo largo de 2026, pero no publica el estado concreto de la estación de Zahara. Es un punto de
-  aterraje de cable submarino, no un centro de datos de colocation.
-estado_fuentes: [src-1]
+  Manilva y Barcelona. El primer aterrizaje del sistema fue el de Marsella, en octubre de 2025, y el
+  operador situó el despliegue de los aterrajes restantes «a lo largo de 2026»; la primera fase en
+  servicio (Marsella, Bizerta y Nador) no incluye Zahara. El directorio GeoCables da el sistema por
+  disponible para servicio en 2026. No se publica el estado concreto de la estación de Zahara. Es un
+  punto de aterraje de cable submarino, no un centro de datos de colocation.
+estado_fuentes: [src-1, src-3, src-4]
 
 enlaces_proyecto:
   - "https://medusascs.com/"
@@ -32,8 +34,10 @@ incertidumbres:
   - campo: estado
     descripcion: >-
       No hay fuente que confirme si la estación de aterraje de Zahara está construida, en obras o
-      solo prevista. Se deja como desconocido.
-    fuentes: [src-1]
+      solo prevista. Lo único acreditado es que en octubre de 2025 aún no había aterrizado el cable
+      —el primer aterrizaje fue Marsella— y que el despliegue restante se anunció para 2026. Se deja
+      como desconocido.
+    fuentes: [src-1, src-3, src-4]
   - campo: potencia
     descripcion: "No consta potencia eléctrica. Campo omitido."
     fuentes: [src-1]
@@ -50,7 +54,7 @@ incertidumbres:
     fuentes: [src-1, src-2]
 
 confianza: baja
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -67,3 +71,26 @@ fuentes:
     tipo: prensa_especializada
     fecha_consulta: "2026-08-29"
     cita: "Cádiz es la gran anfitriona, con enlaces desde Rota, Conil de la Frontera, Chipiona, Tarifa, Zahara de los Atunes y La Línea de la Concepción."
+  - id: src-3
+    url: "https://www.redestelecom.es/infraestructuras/el-cable-submarino-medusa-aterriza-en-marsella/"
+    titulo: "El cable submarino Medusa aterriza en Marsella"
+    editor: "RedesTelecom"
+    tipo: prensa_especializada
+    fecha_publicacion: "2025-10-08"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Medusa, el sistema de cable submarino de fibra óptica impulsado por AFR-IX Telecom, ha llegado
+      a la estación de aterrizaje de Marsella. Se trata del primer aterrizaje de esta infraestructura
+      como inicio de su despliegue por el Mediterráneo [...] Posteriormente, tendrá lugar el
+      despliegue de los aterrizajes restantes a lo largo de 2026 [...] La previsión es que la primera
+      fase de Medusa, con puntos de aterrizaje en Marsella, Bizerta y Nador, entre en servicio a
+      principios de 2026.
+  - id: src-4
+    url: "https://geocables.com/location/zahara-de-los-atunes-spain"
+    titulo: "Zahara de los Atunes, Spain: 1 Submarine Cable Landing"
+    editor: "GeoCables"
+    tipo: otro
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      The Medusa Submarine Cable System is 8,760 km in length and is scheduled to be ready for
+      service in 2026 [...] 36.1348°N 5.8438°W

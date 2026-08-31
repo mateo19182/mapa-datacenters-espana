@@ -1,6 +1,8 @@
 id: dc-mudarra-torrelobaton-valladolid
 nombre: "DC Mudarra — Torrelobatón (Valladolid)"
 alias:
+  - "Centro de Proceso de Datos San Lorenzo"
+  - "CPD San Lorenzo"
   - "Macrocentro de datos de Torrelobatón"
   - "Proyecto de centro de datos de Vapat en Valladolid"
 tipo: campus
@@ -12,18 +14,22 @@ ubicacion:
   municipio: "Torrelobatón"
   provincia: "Valladolid"
   ccaa: "Castilla y León"
+  direccion: "Finca de San Lorenzo, Montes Torozos"
   lat: 41.6490374
   lon: -5.0250798
   precision: municipio
-  fuentes: [src-bebeez, src-osm]
+  fuentes: [src-jcyl, src-bebeez, src-osm]
 
 estado: en_tramitacion
 estado_detalle: >-
-  Proyecto en fase temprana de tramitación: sometido a evaluación de impacto
-  ambiental, con información pública abierta desde finales de julio de 2026 y
-  plazo de alegaciones hasta el 2 de septiembre de 2026. Vapat constituyó las
-  sociedades promotoras en febrero de 2026.
-estado_fuentes: [src-bebeez, src-ti]
+  El proyecto tramita autorización ambiental y evaluación de impacto ambiental
+  ante la Junta de Castilla y León con el nombre oficial «Centro de Proceso de
+  Datos San Lorenzo» (expediente 013-26-AAVA). La información pública se anunció
+  en el BOCYL nº 140 de 22 de julio de 2026, con plazo de alegaciones hasta el 2
+  de septiembre de 2026. Vapat constituyó las sociedades promotoras en febrero de
+  2026. El proyecto ha generado oposición vecinal organizada en un municipio de
+  unos 400 habitantes.
+estado_fuentes: [src-jcyl, src-bebeez, src-ti, src-dv]
 
 potencia:
   - tipo: it
@@ -32,58 +38,199 @@ potencia:
     referencia: "Potencia informática neta del campus a pleno desarrollo"
     estado_asociado: en_tramitacion
     fecha_dato: "2026-08"
-    fuentes: [src-bebeez, src-ti]
+    fuentes: [src-bebeez, src-ti, src-dv, src-ec]
     nota: >-
       Las fuentes hablan de "up to 160MW of IT capacity" y de "una potencia
-      informática (IT) neta de 160 megavatios", repartida en dos edificios con
-      ocho salas de 10 MW cada uno.
+      informática (IT) neta de 160 megavatios", repartida en dos edificios de
+      ocho salas de 10 MW cada una, es decir 80 MW por edificio. Los promotores
+      advierten de que el proyecto podría no completarse en su integridad.
+  - tipo: termica_respaldo
+    valor_mw: 786.82
+    ambito: campus
+    referencia: "Potencia térmica total del parque de grupos electrógenos de emergencia y equipos auxiliares"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2026-08-08"
+    fuentes: [src-dv, src-ti]
+    nota: >-
+      No es capacidad del centro de datos. Corresponde a 96 grupos electrógenos de
+      emergencia de 8,16 MW de potencia térmica cada uno más otros equipos
+      auxiliares. No se compara ni se suma con los 160 MW IT.
 
 fases:
-  - nombre: "Dos edificios de ocho salas TI de 10 MW cada una"
+  - nombre: "Fase 1 — primer edificio de ocho salas IT"
     estado: en_tramitacion
+    superficie_m2: 141189
     nota: >-
-      El proyecto se estructura en dos edificios; el consumo de agua declarado,
-      5.996 m3/año, se refiere a "las dos fases previstas".
-    fuentes: [src-bebeez, src-ti]
+      Superficie de desarrollo de la primera fase. Incluye el primer edificio de
+      centro de datos (24.771 m2 de edificación), una balsa de acumulación de
+      7.200 m2 y la balsa final de 32.700 m2, que estará lista en esta fase.
+    fuentes: [src-dv]
+  - nombre: "Fase 2 — segundo edificio de ocho salas IT"
+    estado: en_tramitacion
+    superficie_m2: 97298
+    nota: >-
+      Superficie de desarrollo de la segunda fase, con un segundo edificio de
+      24.771 m2 y otra balsa de acumulación de 7.200 m2. Las dos fases se
+      describen como idénticas.
+    fuentes: [src-dv]
 
 conexion_electrica:
-  subestacion: "SE La Mudarra"
+  subestacion: "Subestación eléctrica anexa propia, próxima a la SE La Mudarra"
+  tension_kv: null
   titular_red: null
+  mw_solicitados: null
+  mw_concedidos: null
   nota: >-
     El emplazamiento se sitúa junto a los parques eólicos San Lorenzo de Vapat y
     cerca de la subestación eléctrica de La Mudarra, descrita como punto
-    estratégico de la red de la zona. No consta la potencia de acceso solicitada
-    ni concedida.
-  fuentes: [src-bebeez]
+    estratégico de la red de la zona; la ubicación se eligió por la proximidad de
+    infraestructura eléctrica con capacidad suficiente. El CPD contará además con
+    una subestación eléctrica anexa. La demanda eléctrica estimada a plena
+    capacidad es de 2.025,6 GWh al año, que es energía y no potencia. No consta la
+    potencia de acceso solicitada ni concedida.
+  fuentes: [src-bebeez, src-dv, src-ec]
+
+superficie_construida_m2: 49543
 
 refrigeracion: >-
-  Circuitos sellados y sistema de vertido cero según la promotora; consumo
-  directo declarado de 5.996 metros cúbicos de agua al año para las dos fases
-  previstas.
+  Circuitos sellados y sistema de vertido cero según la promotora, con patios
+  mecánicos exteriores para los equipos de refrigeración y balsas de acumulación
+  que garantizan la reserva de agua.
+
+agua:
+  circuito: cerrado
+  sistema: >-
+    Circuitos sellados con recirculación y vertido cero, según la promotora, con
+    balsas de acumulación de 7.200 m2 en cada fase y una balsa final de 32.700 m2.
+  origen: null
+  consumo_m3_ano: 5996
+  consumo_m3_dia: null
+  wue_l_kwh: null
+  nota: >-
+    Los 5.996 m3 anuales se refieren a las dos fases previstas y al desarrollo
+    completo. El consumo de agua es uno de los ejes de la oposición vecinal y
+    política al proyecto, pese a que la cifra declarada es modesta en términos
+    absolutos.
+  fuentes: [src-ti, src-ec]
+
+inversion_anunciada_eur: null
+
+empleo:
+  - tipo: directo
+    valor: 140
+    referencia: "Empleo del complejo si se ejecuta completo"
+    fecha_dato: "2026-08"
+    fuentes: [src-dv, src-ec, src-dcd]
+    nota: >-
+      Las fuentes lo describen indistintamente como "140 puestos de trabajo",
+      "140 trabajadores" y "140 empleos directos". No consta empleo de
+      construcción.
 
 incertidumbres:
   - campo: superficie_parcela_m2
     descripcion: >-
-      Las fuentes discrepan sobre la superficie: DCD (recogido por BeBeez) habla
-      de hasta 250 hectáreas y la prensa económica española de 117,83 hectáreas.
-      No se registra ninguna de las dos como dato firme.
-    fuentes: [src-bebeez]
+      Las fuentes dan tres superficies distintas y no se registra ninguna como
+      dato firme. DCD, recogido por BeBeez, habla de hasta 250 hectáreas; El
+      Confidencial de 117,83 hectáreas; y el Diario de Valladolid, citando la
+      documentación sometida a información pública, de una parcela de 239.118
+      metros cuadrados (casi 40 hectáreas) repartidos en 141.189 m2 en la primera
+      fase y 97.298 en la segunda. Es probable que se trate de ámbitos distintos
+      (finca, ámbito de proyecto y superficie efectivamente ocupada), pero ninguna
+      fuente lo aclara. Sí se registra como superficie construida los 49.543 m2 de
+      edificaciones y elementos constructivos asociados.
+    fuentes: [src-bebeez, src-ec, src-dv]
   - campo: potencia
     descripcion: >-
       Junto a los 160 MW de potencia TI neta, el expediente declara una potencia
-      térmica total de 786,82 MW correspondiente a 96 grupos electrógenos de
-      emergencia. Son magnitudes distintas y no comparables entre sí.
-    fuentes: [src-ti]
+      térmica total de 786,82 MW de grupos electrógenos de emergencia. Son
+      magnitudes distintas y no comparables. Las fuentes discrepan además sobre el
+      número de grupos: el Diario de Valladolid y Tercera Información hablan de 96
+      grupos electrógenos y El Confidencial de 100.
+    fuentes: [src-ti, src-dv, src-ec]
   - campo: inversion_anunciada_eur
     descripcion: >-
-      La inversión se cita como una horquilla de 1.600 a 2.000 millones de
-      euros; no se registra cifra única.
-    fuentes: [src-bebeez]
+      La inversión se cita como una horquilla de 1.600 a 2.000 millones de euros
+      ("más de 1.600 millones", "algunas fuentes elevan la inversión hasta rozar
+      los 2.000", "no menos de 1.600-2.000 millones"); no se registra cifra única.
+    fuentes: [src-bebeez, src-dv, src-ec]
+  - campo: ubicacion
+    descripcion: >-
+      El expediente oficial nombra el proyecto por la finca de San Lorenzo, en los
+      Montes Torozos, dentro del término municipal de Torrelobatón, pero no se ha
+      localizado la delimitación de la parcela. Las coordenadas son las del
+      municipio.
+    fuentes: [src-jcyl, src-osm]
 
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
+  - id: src-jcyl
+    url: "https://medioambiente.jcyl.es/web/jcyl/MedioAmbiente/es/Plantilla100Detalle/1284745686027/Texto%20Generico/1285665196913/Texto"
+    titulo: "INFORMACIÓN pública relativa al proyecto de autorización ambiental y al estudio de impacto ambiental del proyecto «Centro de Proceso de Datos San Lorenzo», en el término municipal de Torrelobatón (Valladolid). Expte.: 013-26-AAVA"
+    editor: "Consejería de Medio Ambiente, Junta de Castilla y León"
+    tipo: oficial
+    fecha_publicacion: "2026-07-22"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      INFORMACIÓN pública relativa al proyecto de autorización ambiental y al
+      estudio de impacto ambiental del proyecto «Centro de Proceso de Datos San
+      Lorenzo», en el término municipal de Torrelobatón (Valladolid). Expte.:
+      013-26-AAVA. Plazo de alegaciones: hasta el 2 de septiembre de 2026 - BOCYL
+      nº 140 de 22 de julio de 2026
+  - id: src-dv
+    url: "https://www.diariodevalladolid.es/valladolid/260808/285397/tramitan-gran-centro-proceso-datos-1-600-millones-torrelobaton.html"
+    titulo: "Tramitan un gran centro de proceso de datos de 1.600 millones en Torrelobatón"
+    editor: "Diario de Valladolid"
+    tipo: prensa_general
+    fecha_publicacion: "2026-08-08"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      el proyecto contempla una inversión de más de 1.600 millones de euros
+      —algunas fuentes elevan la inversión hasta rozar los 2.000—, y la creación
+      de 140 puestos de trabajo. [...] Según la documentación sometida a
+      información pública, el complejo alcanzará una potencia informática (IT)
+      neta de 160 megavatios, distribuida en dos fases idénticas de ocho salas de
+      datos cada una. Cada edificio tendrá capacidad para albergar hasta 80 MW de
+      potencia IT [...] el proyecto prevé un parque de 96 grupos electrógenos de
+      emergencia de 8,16 MW de potencia térmica, además de otros equipos
+      auxiliares, alcanzando una potencia térmica total de 786,82 MW. La demanda
+      eléctrica estimada cuando el centro funcione a plena capacidad asciende a
+      2.025,6 GWh al año [...] Las instalaciones previstas se ubicarán en una
+      parcela de casi 40 hectáreas, en concreto 239.118 metros cuadrados, de los
+      que se desarrollarán en una primera fase 141.189 y en una segunda fase los
+      otros 97.298. Las edificaciones propiamente dichas del centro de datos y
+      elementos constructivos asociados ocuparán 49.543 metros cuadrados (24.771
+      en cada fase). [...] El Centro de Proceso de Datos San Lorenzo contará
+      además con una subestación eléctrica anexa.
+  - id: src-ec
+    url: "https://www.elconfidencial.com/espana/castilla-y-leon/2026-08-01/castilla-y-leon-entra-en-la-carrera-de-los-centros-de-datos-con-un-importante-proyecto-de-1-600-millones_4399021/"
+    titulo: "Castilla y León entra en la carrera de los centros de datos con un importante proyecto de 1.600 millones"
+    editor: "El Confidencial"
+    tipo: prensa_general
+    fecha_publicacion: "2026-08-01"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      La empresa DC Mudarra SLU proyecta en Torrelobatón un centro con una
+      capacidad máxima de 160 MW que requerirá una inversión de no menos de
+      1.600-2.000 millones de euros, y que requerirá 140 trabajadores, si se
+      ejecuta completo. [...] ocupará una superficie de 117,83 hectáreas. La zona
+      en la que se instalará está próxima a una instalación de parques eólicos
+      [...] y próxima a la subestación eléctrica de La Mudarra. [...] El centro de
+      Torrelobatón, en su desarrollo final completo, consumirá 2.025 GWh/año de
+      electricidad, para cuya refrigeración serán necesarios 5.996 metros cúbicos
+      de agua al año. [...] el proyecto de Torrelobatón contempla 100 grupos
+      electrógenos autónomos
+  - id: src-dcd
+    url: "https://www.datacenterdynamics.com/es/noticias/valladolid-atrae-uno-de-los-mayores-centros-de-datos-de-espa%C3%B1a/"
+    titulo: "Valladolid atrae uno de los mayores centros de datos de España"
+    editor: "DatacenterDynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-08-07"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Torrelobatón acogerá la primera instalación de este tipo en la Comunidad con
+      una inversión millonaria y que creará 140 empleos directos
   - id: src-bebeez
     url: "https://bebeez.eu/2026/08/21/vapat-enters-the-data-center-market-with-a-160mw-project-in-valladolid/"
     titulo: "Vapat enters the data center market with a 160MW project in Valladolid"

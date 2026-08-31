@@ -20,10 +20,14 @@ ubicacion:
 estado: en_construccion
 estado_detalle: >-
   Segundo centro de ADI. Proyecto adjudicado a KREAN en febrero de 2025. La prensa
-  vasca situó la finalización a finales de 2026 y, en abril de 2026, el arranque de
-  obras con disponibilidad prevista en 2027. Las salas se equiparán por fases según
-  comercialización.
-estado_fuentes: [src-1, src-2]
+  vasca situó primero la finalización a finales de 2026. En abril de 2026 Crónica
+  Vasca confirmó que las obras habían arrancado en el solar del parque Garaia, con
+  las licencias municipales aprobadas, los movimientos de tierra en marcha y la
+  cimentación iniciada a mediados de marzo de 2026, y situó la finalización a
+  finales de 2027. Las dos salas se equiparán por fases según comercialización: la
+  primera arranca con 1 MW. Data Center Euskadi, S.L. tramitó ante el Gobierno Vasco
+  la autorización ambiental única del centro (expediente AAU01338).
+estado_fuentes: [src-1, src-2, src-4]
 
 potencia:
   - tipo: it
@@ -32,13 +36,26 @@ potencia:
     referencia: "Capacidad máxima del edificio en equipos IT, repartida en dos salas"
     estado_asociado: en_construccion
     fecha_dato: "2025-02-07"
-    fuentes: [src-1]
-    nota: "La fuente dice literalmente «hasta 3MW en equipos IT»."
+    fuentes: [src-1, src-3]
+    nota: >-
+      El Parque Tecnológico Garaia dice «hasta 3MW en equipos IT» y KREAN, la
+      ingeniería del proyecto, «up to 3MW of IT equipment in two rooms».
+  - tipo: it
+    valor_mw: 1
+    ambito: fase
+    referencia: "Primera sala, equipamiento inicial"
+    estado_asociado: en_construccion
+    fecha_dato: "2026-04-07"
+    fuentes: [src-4]
+    nota: >-
+      Crónica Vasca dice «La primera de ellas contará con 1 MW de potencia», como
+      reparto de los 3 MW que las fuentes del promotor y del proyectista tipifican
+      como equipos IT. La propia fuente no repite la tipificación.
 
 fases:
-  - nombre: "Sala 1"
+  - nombre: "Sala 1 (1 MW iniciales)"
     estado: en_construccion
-    fuentes: [src-1]
+    fuentes: [src-1, src-4]
   - nombre: "Sala 2"
     estado: anunciado
     fuentes: [src-1]
@@ -55,12 +72,19 @@ incertidumbres:
   - campo: fecha_puesta_en_servicio
     descripcion: >-
       Febrero de 2025: «estará todo listo para finales del próximo año» (finales de
-      2026). Titulares de abril de 2026 recogidos en agregadores hablan de 2027, pero
-      no se ha podido abrir esa pieza para verificarlo.
-    fuentes: [src-2, src-3]
+      2026). En abril de 2026, con las obras ya iniciadas, la misma cabecera lo
+      retrasa a finales de 2027. Se conservan las dos previsiones; no hay acta de
+      puesta en servicio.
+    fuentes: [src-2, src-4]
+  - campo: estado
+    descripcion: >-
+      No se ha localizado la resolución de la autorización ambiental única del
+      expediente AAU01338: en el tablón electrónico del Gobierno Vasco solo consta el
+      anuncio de información pública del proyecto técnico.
+    fuentes: [src-5]
 
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -87,3 +111,25 @@ fuentes:
     fecha_publicacion: "2025-02-06"
     fecha_consulta: "2026-08-29"
     cita: "up to 3MW of IT equipment in two rooms"
+  - id: src-4
+    url: "https://cronicavasca.elespanol.com/empresas/20260407/adi-arranca-obras-segundo-centro-arrasate-albergara/1003742747384_0.html"
+    titulo: "ADI arranca las obras de su segundo centro de datos en Arrasate: albergará 3MW y estará listo en 2027"
+    editor: "Crónica Vasca (El Español)"
+    tipo: prensa_general
+    fecha_publicacion: "2026-04-07"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Contará con una superficie de más de 5.000 metros cuadrados que albergará
+      potentes salas de equipos informáticos y un espacio reducido de oficinas.
+      Tendrá una capacidad de 3MW, que estará repartida en dos salas que se irán
+      equipando por fases. La primera de ellas contará con 1 MW de potencia [...]
+      «las obras han comenzado en el solar del parque Garaia. Las licencias están
+      aprobadas en el ayuntamiento y los movimientos de tierra están en marcha». La
+      cimentación comenzó a mediados del mes de marzo.
+  - id: src-5
+    url: "https://www.euskadi.eus/anuncio-administrativo/aau01338-anuncio-del-director-administracion-ambiental-que-se-somete-informacion-publica-proyecto-tecnico-presentado-empresa-data-center-euskadi-s-l-actividad-centro-procesamiento-datos-polo-innovacion-garaia-mondragon-gipuzkoa-obtencion-autorizacion-amb/web01-tramite/es/"
+    titulo: "AAU01338. ANUNCIO del director de Administración Ambiental, por el que se somete a información pública el proyecto técnico presentado por la empresa DATA CENTER EUSKADI S.L., para la actividad de CENTRO DE PROCESAMIENTO DE DATOS, en el polo de innovación Garaia, de Mondragón (Gipuzkoa)"
+    editor: "Gobierno Vasco / Eusko Jaurlaritza — Dirección de Administración Ambiental"
+    tipo: oficial
+    fecha_consulta: "2026-08-31"
+    cita: "para la actividad de CENTRO DE PROCESAMIENTO DE DATOS, en el polo de innovación Garaia, de Mondragón (Gipuzkoa)"

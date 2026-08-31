@@ -25,8 +25,14 @@ estado_detalle: >-
   servicio exclusivamente de HPC. La infraestructura del IFCA incluye además varios
   clústeres, un sistema de almacenamiento de más de 1 petabyte y un sistema de
   archivo de capacidad equivalente. En febrero de 2025 recibió 760.000 euros para
-  la mejora de sus infraestructuras.
-estado_fuentes: [src-1, src-2]
+  la mejora de sus infraestructuras. Según la ficha del nodo en la RES, Altamira
+  aporta 325 TFlop/s de rendimiento máximo con 69 nodos (3.312 cores) de Intel Xeon
+  Platinum 8160 y 8 nodos (1.024 cores) de AMD EPYC 9554, 500 TB de almacenamiento
+  GPFS e interconexión OmniPath e Infiniband; el 62% de la máquina está destinado a
+  la RES. La primera versión del nodo se instaló en 2007 con hardware procedente de
+  MareNostrum I y el sistema se renovó en 2012 y 2017. Es una Infraestructura
+  Científico Técnica Singular (ICTS).
+estado_fuentes: [src-1, src-2, src-3, src-4]
 
 enlaces_proyecto:
   - "https://www.res.es/es/sobre-la-res/nodos"
@@ -34,9 +40,11 @@ enlaces_proyecto:
 incertidumbres:
   - campo: potencia
     descripcion: >-
-      Ni la RES ni el IFCA publican potencia eléctrica ni carga TI de la sala.
-      Campo potencia omitido.
-    fuentes: [src-1, src-2]
+      Ni la RES, ni el IFCA, ni el Servicio Santander de Supercomputación de la
+      Universidad de Cantabria publican potencia eléctrica ni carga TI de la sala.
+      La ficha del nodo detalla cores, memoria, almacenamiento y rendimiento, pero
+      ninguna magnitud eléctrica. Campo potencia omitido.
+    fuentes: [src-1, src-3, src-4]
   - campo: nombre
     descripcion: >-
       No confundir con el «Campus Tecnológico de Datos Altamira» de Piélagos y
@@ -62,3 +70,30 @@ fuentes:
     tipo: oficial
     fecha_consulta: "2026-08-29"
     cita: "a supercomputer, several clusters, an storage system with a capacity above 1 Petabyte, and an archiving system with an equivalent capacity"
+  - id: src-3
+    url: "https://www.res.es/es/sobre-la-res/nodos/altamira-uc"
+    titulo: "Altamira - UC | RES"
+    editor: "Red Española de Supercomputación (RES)"
+    tipo: oficial
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Altamira es un clúster HPC que pertenece a la RES [...] y que está situado en
+      la Universidad de Cantabria, en el edificio del Instituto de Física de Cantabria
+      (IFCA) [...] % de la máquina destinada a la RES: 62% | Rendimiento máximo: 325
+      TFlop/s | Número de nodos y cores: 69 nodos (3 312 cores), 8 nodos (1 024
+      cores) [...] Almacenamiento de disco: 500 TB GPFS | Red de interconexión:
+      OmniPath 100 Gbps Infiniband EDR 100
+  - id: src-4
+    url: "https://web.unican.es/unidades/scti/servicio-santander-de-supercomputacion/presentacion"
+    titulo: "Presentación — Servicio Santander Supercomputación (SSC)"
+    editor: "Universidad de Cantabria"
+    tipo: oficial
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      En 2007 se instaló la primera versión de Altamira (Altamira I) como nodo de la
+      Universidad de Cantabria dentro de la Red Española de Supercomputación [...]
+      Altamira fue actualizado en 2012 con la instalación de un nuevo sistema [...]
+      Este sistema fue actualizado en 2017 con la integración de nuevos nodos llegados
+      del Marenostrum 3 [...] uno de los 14 nodos de la Red Española de
+      Supercomputación (RES), coordinada por BSC, y por tanto, integrado como una
+      Infraestructura Científico Técnica Singular (ICTS).

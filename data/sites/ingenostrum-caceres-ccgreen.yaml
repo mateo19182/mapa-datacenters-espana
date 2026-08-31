@@ -22,11 +22,16 @@ estado: en_tramitacion
 estado_detalle: >-
   Declarado Proyecto Empresarial de Interés Autonómico (PREMIA) por el Consejo de
   Gobierno de Extremadura en agosto de 2024 y con visto bueno ambiental de la
-  Dirección General de Sostenibilidad en octubre de 2024. El proyecto pasa a
-  integrarse en la ampliación Capellanías II, cuya urbanización se preveía
-  completar a mediados de 2026, con operación del centro de datos en torno a
-  2028. A esa fecha tenía adjudicados 34 MW frente a los 300 MW que necesita.
-estado_fuentes: [src-regiondigital]
+  Dirección General de Sostenibilidad en octubre de 2024. El 30 de junio de 2025 el Ayuntamiento de
+  Cáceres, la Junta de Extremadura e Ingenostrum firmaron un protocolo general de actuación. El
+  proyecto se integra en la ampliación Capellanías II: en marzo de 2026 el Ayuntamiento tenía
+  asegurado en torno al 85% del suelo y el 29 de julio de 2026 aprobó la delimitación de las áreas
+  de Capellanías II y Montebola para expropiar el resto. El calendario de la promotora mantiene la
+  urbanización y el inicio de obras en 2026 y la operación en torno a 2028, a la espera de que Red
+  Eléctrica confirme la potencia: a esa fecha tenía adjudicados 34 MW frente a los 300 MW que
+  necesita. El 28 de agosto de 2026 la consejera de Industria afirmó que el proyecto «avanzará más
+  ahora con el polígono desbloqueado».
+estado_fuentes: [src-regiondigital, src-dcd-feb, src-dcd-mar, src-hoy]
 
 potencia:
   - tipo: it
@@ -35,7 +40,7 @@ potencia:
     referencia: "Primera fase del Campus Data Center CCGreen"
     estado_asociado: en_tramitacion
     fecha_dato: "2023"
-    fuentes: [src-ti]
+    fuentes: [src-ti, src-dcd-feb]
     nota: "La fuente dice literalmente \"un centro de datos de 70 MW IT\"."
   - tipo: no_especificado
     valor_mw: 300
@@ -43,10 +48,10 @@ potencia:
     referencia: "Potencia que necesita el centro de proceso de datos a pleno desarrollo"
     estado_asociado: en_tramitacion
     fecha_dato: "2026"
-    fuentes: [src-regiondigital]
+    fuentes: [src-regiondigital, src-dcd-feb]
     nota: >-
       La fuente dice "este centro de procesamiento de datos necesita unos 300 MW"
-      sin precisar el tipo.
+      sin precisar el tipo. Data Center Dynamics los llama «300 MW eléctricos».
   - tipo: conexion_red
     valor_mw: 34
     ambito: campus
@@ -72,34 +77,56 @@ fases:
 
 superficie_parcela_m2: 2000000
 
+empleo:
+  - tipo: construccion
+    valor: 1500
+    referencia: "Fase de construcción"
+    fecha_dato: "2026-02-16"
+    fuentes: [src-dcd-feb]
+    nota: "La fuente dice «alrededor de 1.500 puestos durante la fase de construcción»."
+  - tipo: directo
+    valor: 200
+    referencia: "Empleos estables una vez en operación"
+    fecha_dato: "2026-02-16"
+    fuentes: [src-dcd-feb]
+    nota: "La fuente los describe como «unos 200 empleos estables una vez en operación»."
+
 incertidumbres:
   - campo: inversion_anunciada_eur
     descripcion: >-
       Las cifras publicadas discrepan: 850 millones de euros en presentaciones
       iniciales, 1.300 millones "a lo largo de varias fases, que se desarrollarán
-      desde 2023 hasta 2030" y unos 1.000 millones en 2026. No se registra ninguna
-      como dato firme.
-    fuentes: [src-ti, src-regiondigital]
+      desde 2023 hasta 2030" y unos 1.000 millones en 2026. Data Center Dynamics recoge en 2026 una
+      horquilla de 1.000 a 1.300 millones. No se registra ninguna como dato firme.
+    fuentes: [src-ti, src-regiondigital, src-dcd-feb]
   - campo: potencia
     descripcion: >-
       Coexisten 70 MW IT (primera fase), 300 MW de necesidad total sin tipificar
       y 34 MW efectivamente adjudicados. El desfase entre lo adjudicado y lo
-      necesario es el principal riesgo del proyecto.
-    fuentes: [src-ti, src-regiondigital]
+      necesario es el principal riesgo del proyecto, y la propia promotora vincula el inicio de
+      obras a que Red Eléctrica confirme la potencia.
+    fuentes: [src-ti, src-regiondigital, src-dcd-feb]
   - campo: superficie_parcela_m2
     descripcion: >-
       La superficie del ecopolígono se cita entre 200 y 300 hectáreas según la
       fuente y el año; se registra la cifra de 200 hectáreas de la memoria más
-      reciente consultada.
-    fuentes: [src-ti]
+      reciente consultada. La delimitación municipal aprobada en julio de 2026 para expropiar en
+      Capellanías II y Montebola suma más de 548.000 m², que no son los mismos terrenos.
+    fuentes: [src-ti, src-pex-expropiaciones]
   - campo: operador
     descripcion: >-
       El 7 de mayo de 2026 IREN Limited anunció un acuerdo para adquirir
       Ingenostrum, S.L. (Nostrum Group), pendiente de condiciones de cierre.
     fuentes: [src-iren]
+  - campo: agua
+    descripcion: >-
+      No se ha localizado ninguna cifra de consumo de agua ni descripción del circuito de
+      refrigeración del campus. Las fuentes solo hablan de «sistemas avanzados de refrigeración».
+      Campo agua omitido.
+    fuentes: [src-dcd-feb]
 
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-ti
@@ -120,6 +147,49 @@ fuentes:
     cita: >-
       De momento, tienen adjudicados 34 megavatios (MW) pero este centro de
       procesamiento de datos necesita unos 300 MW.
+  - id: src-dcd-feb
+    url: "https://www.datacenterdynamics.com/es/noticias/cuenta-atr%C3%A1s-para-cc-green-el-macrocentro-de-datos-de-c%C3%A1ceres-avanza-en-su-tramitaci%C3%B3n-y-apunta-a-2028/"
+    titulo: "Cuenta atrás para CC Green: el macrocentro de datos de Cáceres avanza en su tramitación y apunta a 2028"
+    editor: "Data Center Dynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-02-16"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      prevé una inversión de alrededor de 1.000–1.300 millones de euros a lo largo de varias fases,
+      con un primer bloque de 70 MW IT y una capacidad objetivo cercana a los 300 MW eléctricos
+      [...] el proyecto contempla alrededor de 1.500 puestos durante la fase de construcción y unos
+      200 empleos estables una vez en operación
+  - id: src-dcd-mar
+    url: "https://www.datacenterdynamics.com/es/noticias/cc-green-acelera-en-c%C3%A1ceres-con-el-85-del-suelo-asegurado/"
+    titulo: "CC Green acelera en Cáceres con el 85% del suelo asegurado"
+    editor: "Data Center Dynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-03-30"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      el Ayuntamiento ha logrado asegurar aproximadamente el 85% del suelo requerido para la
+      ampliación del polígono de Capellanías II, donde se ubicará el complejo. El 15% restante
+      continúa en negociación con los propietarios
+  - id: src-pex-expropiaciones
+    url: "https://www.elperiodicoextremadura.com/caceres-local/2026/07/29/caceres-expropiaciones-capellanias-suelo-industrial-132874338.html"
+    titulo: "Cáceres da vía libre a las expropiaciones para conseguir suelo industrial y ampliar el polígono de Capellanías"
+    editor: "El Periódico Extremadura"
+    tipo: prensa_general
+    fecha_publicacion: "2026-07-29"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El ayuntamiento aprueba la delimitación de las áreas Capellanías II y Montebola para expropiar
+      terrenos y facilitar la implantación de nuevas empresas: sumará más de 548.000 metros cuadrados
+  - id: src-hoy
+    url: "https://www.hoy.es/extremadura/centros-datos-nostrum-badajoz-merlin-navalmoral-ultiman-20260828133327-nt.html"
+    titulo: "Los centros de datos de Nostrum en Badajoz y de Merlin en Navalmoral ultiman sus permisos"
+    editor: "Hoy"
+    tipo: prensa_general
+    fecha_publicacion: "2026-08-28"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      la misma empresa es la que está detrás del CC Green de Cáceres, sobre el que la consejera fue
+      optimista: «Avanzará más ahora con el polígono desbloqueado».
   - id: src-iren
     url: "https://iren.com/resources/news/nostrum-announcement"
     titulo: "IREN to acquire Nostrum Group"

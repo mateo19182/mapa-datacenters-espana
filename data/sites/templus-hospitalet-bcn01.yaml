@@ -21,9 +21,12 @@ ubicacion:
 estado: operativo
 estado_detalle: >-
   Comprado por Templus a Cellnex en febrero de 2025 y ampliado de 1,7 a 6 MW.
-  Desde el 28 de mayo de 2026 se comercializa junto al edificio BCN02 (a unos
-  500-750 m) como un único campus de 10 MW.
-estado_fuentes: [src-2]
+  El campus formado por BCN01 y BCN02 se inauguró el 26 o 27 de mayo de 2026 con
+  presencia de la directora general de Infraestructures Digitals de la
+  Generalitat, y se comercializa como una única plataforma de 10 MW. La ficha de
+  producto de Templus atribuye a BCN01 700 m² de superficie TI, 2,5 MW de
+  potencia total y densidades de 4 a 15 kW por rack.
+estado_fuentes: [src-2, src-4, src-5]
 
 potencia:
   - tipo: no_especificado
@@ -43,10 +46,36 @@ potencia:
     nota: >-
       La fuente dice "cuya potencia se ha ampliado de 1,7 a 6 MW" sin precisar
       tipo de potencia.
+  - tipo: no_especificado
+    valor_mw: 2.5
+    ambito: edificio
+    referencia: "«Total power» del edificio según la ficha de producto de Templus"
+    estado_asociado: operativo
+    fecha_dato: "2026-04-27"
+    fuentes: [src-4]
+    nota: >-
+      La web de Templus publica "Total power 2.5 MW" y "Superficie IT 700 m²"
+      para BCN01, cifra muy inferior a los 6 MW que la prensa especializada
+      atribuye al centro comprado a Cellnex. Se conservan las dos.
 
 refrigeracion: >-
   Templus declara estándar Tier III, energía 100% renovable y refrigeración
-  líquida para cargas de alta densidad en el campus.
+  líquida para cargas de alta densidad en el campus. Para BCN01 describe además
+  un sistema de «District Heating & Cooling» y una planta fotovoltaica propia.
+
+agua:
+  circuito: sin_agua
+  sistema: >-
+    Refrigeración líquida para alta densidad que, según el operador, permite
+    soportar esas cargas sin consumo de agua; BCN01 emplea además un sistema de
+    District Heating & Cooling.
+  origen: null
+  nota: >-
+    La afirmación de «sin consumo de agua» la hace Templus para el conjunto del
+    campus, no específicamente para este edificio, y no va acompañada de ninguna
+    cifra ni de WUE. El District Heating & Cooling implica un intercambio con una
+    red urbana cuyo circuito no se detalla.
+  fuentes: [src-4, src-5]
 
 incertidumbres:
   - campo: potencia
@@ -58,13 +87,22 @@ incertidumbres:
     fuentes: [src-2, src-3]
   - campo: ubicacion
     descripcion: >-
-      Data Center Market sitúa los dos edificios del campus en L'Hospitalet de
-      Llobregat; DCD y otras cabeceras lo sitúan en la Zona Franca de Barcelona.
-      PeeringDB da BCN01 en L'Hospitalet (08908) y BCN02 en Barcelona (08038).
-    fuentes: [src-1, src-2]
+      Data Center Market y Data Center Dynamics sitúan los dos edificios del
+      campus en L'Hospitalet de Llobregat; Europa Press, Revista Cloud y Diario
+      TI lo sitúan en la Zona Franca de Barcelona. PeeringDB da BCN01 en
+      L'Hospitalet (08908) y BCN02 en Barcelona (08038).
+    fuentes: [src-1, src-2, src-5]
+  - campo: potencia
+    descripcion: >-
+      Las cifras de la propia Templus (2,5 MW en BCN01 y 8 MW en BCN02, total
+      10,5 MW) no cuadran con las de la prensa especializada (6 MW y 4 MW, total
+      10 MW), aunque los campus totales sean casi iguales. Podría tratarse de un
+      reparto distinto entre los dos edificios o de magnitudes distintas. No se
+      ha resuelto.
+    fuentes: [src-2, src-4]
 
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -94,3 +132,30 @@ fuentes:
     cita: >-
       Former Names: Colt Barcelona; Barcelona Steel. Address: Carrer de l'Acer,
       Zona Franca district, Barcelona, Spain.
+  - id: src-4
+    url: "https://templus.com/data-centers/barcelona-bcn01/"
+    titulo: "Data Center en Barcelona BCN01 | Infraestructura Tier III"
+    editor: "Templus Data Centers"
+    tipo: empresa
+    fecha_publicacion: "2026-04-27"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Integra un sistema avanzado de refrigeración pionero en el mercado
+      «District Heating & Cooling» y destaca por su alta eficiencia operativa y
+      uso de energía de origen renovable con planta fotovoltaica propia ...
+      Densidad por rack 4 kW – 15 kW ... Superficie IT 700 m² ... Total power 2.5
+      MW ... Energía 100% renovable
+  - id: src-5
+    url: "https://www.datacenterdynamics.com/es/noticias/templus-inaugura-un-campus-de-10-mw-en-barcelona/"
+    titulo: "Templus inaugura un campus de 10 MW en Barcelona"
+    editor: "Data Center Dynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-05-27"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El nuevo campus integra dos instalaciones estratégicas adquiridas durante
+      el último año: el centro de datos comprado a Cellnex en febrero de 2025
+      —ampliado desde 1,7 MW hasta 6 MW— y el activo adquirido a AtlasEdge en
+      diciembre, con una capacidad de hasta 4 MW ... La compañía asegura que el
+      uso de liquid cooling permitirá soportar entornos de alta densidad sin
+      consumo de agua

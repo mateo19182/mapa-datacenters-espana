@@ -3,90 +3,131 @@ nombre: "Nostrum Data Centers GUA1 — Guadalajara (P.I. El Ruiseñor)"
 alias:
   - "GUA1"
   - "Guadalajara DC"
+  - "Centro de Datos GUA1"
 tipo: edificio
 operador: "Nostrum Data Centers"
-propietario: "Ingenostrum, S.L. (Nostrum Group)"
+propietario: "Ingenostrum, S.L. (Nostrum Group), filial de IREN Limited desde el 15 de junio de 2026"
 modelo: mayorista
 
 ubicacion:
   municipio: "Guadalajara"
   provincia: "Guadalajara"
   ccaa: "Castilla-La Mancha"
-  direccion: "Polígono Industrial El Ruiseñor"
+  direccion: "Polígono Industrial El Ruiseñor, próximo al Corredor del Henares"
   lat: 40.6326979
   lon: -3.1646067
   precision: municipio
-  fuentes: [src-ayto, src-osm]
+  fuentes: [src-ayto, src-idom, src-osm]
 
 estado: anunciado
 estado_detalle: >-
   Presentado el 25 de febrero de 2026 por Nostrum Data Centers junto al
-  Ayuntamiento de Guadalajara. Suelo adquirido (2 hectáreas) y potencia
-  eléctrica ya concedida. Fase de diseño durante 2026, inicio de obras previsto
-  para finales de 2026 y entrada en operación en 2028.
-estado_fuentes: [src-ayto]
+  Ayuntamiento de Guadalajara. Suelo adquirido (dos hectáreas) y 40 MWe de
+  potencia eléctrica ya concedida y garantizada. El diseño integral —arquitectura,
+  instalaciones eléctricas y mecánicas, seguridad y logística técnica— lo firma la
+  ingeniería IDOM. Fase de diseño durante 2026, inicio de obras previsto para
+  finales de 2026 y entrada en operación en 2028. El 15 de junio de 2026 IREN
+  Limited cerró la adquisición de Ingenostrum y las operaciones de Nostrum
+  continúan bajo la marca IREN.
+estado_fuentes: [src-ayto, src-idom, src-dcd-hitos, src-iren-cierre]
 
 potencia:
   - tipo: conexion_red
     valor_mw: 40
     ambito: edificio
-    referencia: "Potencia eléctrica concedida (MWe)"
+    referencia: "Potencia eléctrica concedida y garantizada (MWe)"
     estado_asociado: anunciado
-    fecha_dato: "2026-02-25"
-    fuentes: [src-ayto]
+    fecha_dato: "2026-03-13"
+    fuentes: [src-ayto, src-dcd-hitos, src-idom]
     nota: >-
-      La nota municipal dice "40 MWe de potencia eléctrica ya concedida"; se
-      interpreta como potencia de acceso concedida en el punto de conexión.
+      La nota municipal dice "40 MWe de potencia eléctrica ya concedida" y la nota
+      corporativa de marzo de 2026 la describe como "40 MWe of power already
+      granted and guaranteed for this development". Se interpreta como potencia de
+      acceso concedida en el punto de conexión, no como carga TI.
   - tipo: it
     valor_mw: 29
     ambito: edificio
     referencia: "Capacidad IT en salas de nueva generación"
     estado_asociado: anunciado
     fecha_dato: "2026-02-25"
-    fuentes: [src-ayto]
-    nota: "La fuente dice \"capacidad IT de hasta 29 MW en salas de nueva generación\"."
+    fuentes: [src-ayto, src-iren-cierre]
+    nota: >-
+      La fuente municipal dice "capacidad IT de hasta 29 MW en salas de nueva
+      generación". DCD, al inventariar la cartera española que IREN adquiere,
+      también cifra Guadalajara en 29 MW, lo que corrobora que los 29 MW son la
+      magnitud TI y los 40 MWe la de conexión.
 
 fases:
   - nombre: "Fase de diseño"
     estado: anunciado
     fecha_puesta_en_servicio: "2026"
-    fuentes: [src-ayto]
+    nota: "Diseño integral a cargo de la ingeniería IDOM."
+    fuentes: [src-ayto, src-idom]
   - nombre: "Construcción y puesta en operación"
     estado: anunciado
     fecha_puesta_en_servicio: "2028"
     nota: >-
       Inicio de obras previsto para finales de 2026. Cuatro salas de nueva
       generación preparadas para computación de inteligencia artificial.
-    fuentes: [src-ayto, src-dcm]
+    fuentes: [src-ayto, src-dcm, src-dcd-hitos]
 
 superficie_parcela_m2: 20000
 inversion_anunciada_eur: 1000000000
 refrigeracion: >-
-  Tecnologías de refrigeración sin consumo de agua mediante circuitos cerrados,
-  según la nota municipal. La prensa sectorial añade catalogación TIER III, PUE
-  declarado de 1,1 y fotovoltaica de autoconsumo.
+  Sistema waterless: refrigeración sin consumo de agua mediante circuitos
+  cerrados, con refrigerantes de bajo impacto ambiental, catalogación TIER III y
+  autoconsumo fotovoltaico.
+
+agua:
+  circuito: sin_agua
+  sistema: >-
+    Diseño "waterless" que elimina el uso de agua en la refrigeración, mediante
+    circuitos cerrados y refrigerantes de bajo impacto ambiental.
+  origen: null
+  consumo_m3_ano: null
+  consumo_m3_dia: null
+  wue_l_kwh: null
+  nota: >-
+    Ni la ingeniería ni la promotora publican cifra de consumo residual, y la
+    afirmación de consumo cero se refiere expresamente a la refrigeración, no al
+    conjunto del edificio. IDOM sitúa el PUE objetivo en el rango 1,1-1,2; la nota
+    corporativa de marzo de 2026 lo fija en 1,1. No se publica WUE.
+  fuentes: [src-idom, src-dcd-hitos, src-ayto]
 
 incertidumbres:
   - campo: operador
     descripcion: >-
-      El 7 de mayo de 2026 IREN Limited anunció un acuerdo para adquirir
-      Ingenostrum, S.L. (Nostrum Group), operación sujeta a condiciones de
-      cierre. Si se completa, el titular último del proyecto cambiaría.
-    fuentes: [src-iren]
+      IREN Limited anunció el 7 de mayo de 2026 el acuerdo para adquirir
+      Ingenostrum, S.L. (Nostrum Group) y cerró la operación el 15 de junio de
+      2026, incorporando unos 490 MW de potencia asegurada y conectada a red en
+      España y un equipo de 50 personas. Las operaciones continúan bajo la marca
+      IREN, de modo que el titular último del proyecto ya ha cambiado aunque la
+      sociedad promotora siga siendo la misma. No se ha localizado ninguna
+      comunicación posterior que confirme si GUA1 mantiene calendario bajo el nuevo
+      propietario.
+    fuentes: [src-iren, src-iren-cierre]
   - campo: inversion_anunciada_eur
     descripcion: >-
       Los 1.000 millones citados corresponden a "una inversión global superior a
       1.000 millones de euros a lo largo de sus distintas fases", no al primer
-      edificio de 40 MWe.
-    fuentes: [src-ayto]
+      edificio de 40 MWe. IDOM da la misma cifra como "inversión total estimada",
+      incluyendo obra civil, equipamiento tecnológico, sistemas críticos y
+      servidores.
+    fuentes: [src-ayto, src-idom]
   - campo: ubicacion
     descripcion: >-
       No se ha localizado el polígono El Ruiseñor en OpenStreetMap; las
       coordenadas son las del municipio de Guadalajara.
     fuentes: [src-osm]
+  - campo: refrigeracion
+    descripcion: >-
+      El PUE declarado difiere ligeramente entre fuentes: IDOM habla de un "PUE
+      objetivo en el rango 1,1-1,2" y la nota corporativa recogida por DCD de un
+      PUE de 1,1. Son cifras de diseño, no medidas.
+    fuentes: [src-idom, src-dcd-hitos, src-dcm]
 
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-ayto
@@ -99,6 +140,38 @@ fuentes:
     cita: >-
       40 MWe de potencia eléctrica ya concedida, 2 hectáreas de suelo industrial
       adquirido y capacidad IT de hasta 29 MW en salas de nueva generación.
+  - id: src-idom
+    url: "https://www.idom.com/noticia/idom-disena-el-nuevo-centro-de-datos-gua1-en-guadalajara-un-proyecto-estrategico-de-1-000-millones-de-euros/"
+    titulo: "IDOM diseña el nuevo Centro de Datos GUA1 en Guadalajara: un proyecto estratégico de 1.000 millones de euros"
+    editor: "IDOM"
+    tipo: empresa
+    fecha_publicacion: "2026-03-05"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Nostrum Data Centers presentó en Guadalajara su nuevo Centro de Datos GUA1,
+      una infraestructura de hasta 40 MWe que consolidará el crecimiento del sector
+      digital en España. [...] El proyecto se desarrollará en el Polígono El
+      Ruiseñor, un enclave estratégico próximo al Corredor del Henares [...] El
+      GUA1 contará con certificación TIER III [...] El CPD se construye bajo un
+      sistema waterless, eliminando el uso de agua en refrigeración y alcanzando un
+      PUE objetivo en el rango 1,1-1,2. Además, integrará autoconsumo fotovoltaico,
+      refrigerantes de bajo impacto ambiental [...] La inversión total estimada
+      asciende a 1.000 millones de euros.
+  - id: src-dcd-hitos
+    url: "https://www.datacenterdynamics.com/en/product-news/nostrum-data-centers-consolidates-its-maturity-with-key-milestones-in-badajoz-guadalajara-and-galicia/"
+    titulo: "Nostrum Data Centers consolidates its maturity with key milestones in Badajoz, Guadalajara, and Galicia"
+    editor: "Nostrum Data Centers (nota de prensa publicada por DatacenterDynamics)"
+    tipo: empresa
+    fecha_publicacion: "2026-03-13"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      GUA1 (Guadalajara), a strategic connectivity node [...] The company has
+      acquired two hectares of industrial land and has 40 MWe of power already
+      granted and guaranteed for this development. - Construction milestones: The
+      start of construction is planned for late 2026. - Time to market: It is
+      estimated that GUA1 will enter into operation during 2028. - Efficiency:
+      Designed by the engineering firm IDOM, the center will operate with a PUE of
+      1.1 and zero water consumption for cooling.
   - id: src-iren
     url: "https://iren.com/resources/news/nostrum-announcement"
     titulo: "IREN to acquire Nostrum Group"
@@ -109,6 +182,21 @@ fuentes:
     cita: >-
       approximately 490MW of secured, grid-connected power in Spain, together
       with an additional development pipeline.
+  - id: src-iren-cierre
+    url: "https://www.datacenterdynamics.com/en/news/iren-completes-acquisition-of-spanish-data-center-developer-nostrum/"
+    titulo: "Iren completes acquisition of Spanish data center developer Nostrum"
+    editor: "DatacenterDynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-06-16"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      The acquisition closed on June 15, and saw Iren gain 490MW of secured,
+      grid-connected power in Spain and an additional development pipeline, as well
+      as a team of 50 employees [...] Nostrum's operations will continue under the
+      Iren brand. Nostrum (previously known as Ingenostrum) has a number of
+      projects in development across Extremadura (Badajoz and Cáceres, both 214MW),
+      Castile-La-Mancha (Guadalajara, 29MW and Pinto, 21MW), the Basque Country
+      (Zamudio, 21MW), and Galicia (18MW).
   - id: src-osm
     url: "https://nominatim.openstreetmap.org/search?city=Guadalajara&country=Espa%C3%B1a&format=json&limit=2"
     titulo: "Nominatim — Guadalajara, Castilla-La Mancha"
@@ -124,4 +212,4 @@ fuentes:
     fecha_consulta: "2026-08-29"
     cita: >-
       Cuatro salas de nueva generación preparadas para necesidades de computación
-      de la inteligencia artificial [...] Catalogación TIER III.
+      de la inteligencia artificial [...] Catalogación TIER III [...] PUE de 1,1.

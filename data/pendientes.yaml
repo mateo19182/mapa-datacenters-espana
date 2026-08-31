@@ -7,262 +7,202 @@
 #
 # Origen: cruce del dossier por compañías (research/companias.md, sección 9a)
 # contra las fichas existentes, hecho en la auditoría de cobertura del
-# 29 de agosto de 2026. La potencia citada es la que aparece en ese dossier y
-# no ha sido verificada en fuente primaria: por eso el proyecto no tiene ficha.
+# 29 de agosto de 2026, y revisado a fondo el 31 de agosto de 2026 tras el
+# barrido documental descrito en research/acceso-a-fuentes.md.
+#
+# En esa revisión, 32 de las entradas originales pasaron a tener ficha propia y
+# salen de aquí. Las que quedan no se han fichado por una razón concreta, que
+# cada una explica: unas porque podrían duplicar un emplazamiento ya registrado,
+# otras porque la fuente se contradice, otras porque resultaron no ser centros
+# de datos. Que una pista no prospere también es un resultado.
 
-fecha: "2026-08-29"
-origen: "Auditoría de cobertura (research/cobertura.md, sección 3)"
+fecha: "2026-08-31"
+origen: "Auditoría de cobertura (research/cobertura.md, sección 3) y barrido documental del 31 de agosto de 2026"
 
 proyectos:
-  # --- hiperescala fuera de los clusters conocidos --------------------------
-  - municipio: Vianos
-    provincia: Albacete
-    ccaa: Castilla-La Mancha
-    compania: Pure DC (Oaktree), antes EdgeMode
-    potencia_citada: 300 MW
-    prioridad: alta
-    nota: Albacete no tiene ningún emplazamiento registrado.
+  # --- riesgo de duplicar un emplazamiento ya fichado ------------------------
   - municipio: Palma del Río
     provincia: Córdoba
     ccaa: Andalucía
-    compania: Pure DC (Oaktree), antes EdgeMode
+    compania: EdgeMode (preacuerdo de venta a Pure Data Centres Group)
     potencia_citada: 300 MW
-    prioridad: alta
-    nota: Podría ser el mismo activo que la ficha de Torrecampo. Verificar antes de dar de alta.
-  - municipio: Cáceres
-    provincia: Cáceres
-    ccaa: Extremadura
-    compania: Pure DC (Oaktree), antes EdgeMode
-    potencia_citada: 300 MW
-    prioridad: alta
-    nota: Distinto del proyecto de Nostrum en el mismo municipio, que sí está registrado.
-  - municipio: Soria
-    provincia: Soria
-    ccaa: Castilla y León
-    compania: GISS (Gerencia de Informática de la Seguridad Social)
-    potencia_citada: 6 MW
-    prioridad: media
-  - municipio: Torija
-    provincia: Guadalajara
-    ccaa: Castilla-La Mancha
-    compania: Fortinet
-    potencia_citada: 7 MW
-    prioridad: media
-    nota: Corredor del Henares, la zona con menor cobertura relativa del conjunto.
-
-  # --- promotores poco mediáticos dentro de los clusters --------------------
-  - municipio: Fuenlabrada
-    provincia: Madrid
-    ccaa: Comunidad de Madrid
-    compania: Apto
-    potencia_citada: 240 MW
-    prioridad: alta
-  - municipio: Fuenlabrada
-    provincia: Madrid
-    ccaa: Comunidad de Madrid
-    compania: Form8tion Data Centers
-    potencia_citada: 160 MW
-    prioridad: alta
-  - municipio: Alcobendas
-    provincia: Madrid
-    ccaa: Comunidad de Madrid
-    compania: Ferrovial (campus Valdelacasa)
-    potencia_citada: más de 100 MW; fase 1 con 60 MW disponibles y 40 MW IT
-    prioridad: alta
-  - municipio: Alcobendas
-    provincia: Madrid
-    ccaa: Comunidad de Madrid
-    compania: Prime Data Centers
-    potencia_citada: 40 MW
-    prioridad: media
-  - municipio: Algete
-    provincia: Madrid
-    ccaa: Comunidad de Madrid
-    compania: AVAIO Digital Partners (proyecto «Scorpio»)
-    potencia_citada: 64 MW
-    prioridad: alta
-    nota: Encaja con un «Madrid MAD1» que la investigación de Madrid descartó por atribución no verificable.
-  - municipio: Tres Cantos
-    provincia: Madrid
-    ccaa: Comunidad de Madrid
-    compania: Quetta (Azora), QTT-MAD1
-    potencia_citada: 20 MW
-    prioridad: media
-  - municipio: Tres Cantos
-    provincia: Madrid
-    ccaa: Comunidad de Madrid
-    compania: MERLIN Edged, fase II
-    potencia_citada: null
-    prioridad: media
-  - municipio: Madrid (Vicálvaro)
-    provincia: Madrid
-    ccaa: Comunidad de Madrid
-    compania: Edgnex (DAMAC)
-    potencia_citada: 40 MW
     prioridad: alta
     nota: >-
-      La investigación de Madrid documentó la operación (23.000 m² comprados a ASG Iberia,
-      derechos de 40 MW) pero la descartó porque ninguna fuente daba el municipio. El cruce por
-      compañías sí lo da.
-  - municipio: Madrid (Iveco-Pegaso)
-    provincia: Madrid
-    ccaa: Comunidad de Madrid
-    compania: Goodman MAD01
-    potencia_citada: 11,7 MW IT
-    prioridad: media
-  - municipio: Pinto
-    provincia: Madrid
-    ccaa: Comunidad de Madrid
-    compania: Nostrum
-    potencia_citada: null
-    prioridad: baja
+      No se ficha por duda razonable de duplicado. Expansión y DCD sitúan «Palma del Río»
+      entre los cuatro suelos del preacuerdo, pero el documento primario —el Form 8-K que
+      EdgeMode presentó a la SEC el 1 de julio de 2026— dice solo «Cordoba, Palma, Vianos and
+      Caceres». En el Registro Mercantil constan cinco sociedades vehículo constituidas el
+      09/10/2025 con socio único Blackberry AIF: DC Estate Córdoba, Torrecampo, Cáceres,
+      Vianos y Malpica. No existe ninguna «DC Estate Palma», y la única que no aparece en la
+      operación es justo Torrecampo, que sí tiene ficha. O hay un solar más sin sociedad
+      inscrita, o «Palma» es el nombre interno del activo que el Registro llama Torrecampo.
+      En Palma del Río no hay rastro de expediente urbanístico ni ambiental.
   - municipio: Sant Joan Despí
     provincia: Barcelona
     ccaa: Cataluña
-    compania: AtlasEdge BCN002
+    compania: AtlasEdge (BCN002)
     potencia_citada: 10 MW
-    prioridad: media
-  - municipio: Sant Fruitós de Bages
-    provincia: Barcelona
-    ccaa: Cataluña
-    compania: Oxigen ODC2
-    potencia_citada: 8 MW
-    prioridad: baja
-  - municipio: Òdena
-    provincia: Barcelona
-    ccaa: Cataluña
-    compania: Adequa Real Estate
-    potencia_citada: 200 MW
-    prioridad: alta
-    nota: La investigación de Cataluña señaló Anoia como su mayor hueco; faltaba el nombre del promotor.
-  - municipio: Santa Bàrbara
-    provincia: Tarragona
-    ccaa: Cataluña
-    compania: Adequa Real Estate
-    potencia_citada: 200 MW
-    prioridad: alta
-  - municipio: Alcover
-    provincia: Tarragona
-    ccaa: Cataluña
-    compania: Scranton (proyecto «Iberdata»)
-    potencia_citada: 20 MW
-    prioridad: media
-  - municipio: L'Hospitalet de l'Infant
-    provincia: Tarragona
-    ccaa: Cataluña
-    compania: Ponentia Logistics
-    potencia_citada: null
-    prioridad: baja
-  - municipio: L'Espluga de Francolí
-    provincia: Tarragona
-    ccaa: Cataluña
-    compania: Ponentia Logistics
-    potencia_citada: null
-    prioridad: baja
-  - municipio: Lleida
-    provincia: Lleida
-    ccaa: Cataluña
-    compania: Ponentia Logistics
-    potencia_citada: null
-    prioridad: baja
-  - municipio: Tamarite de Litera
-    provincia: Huesca
-    ccaa: Aragón
-    compania: Ponentia Logistics
-    potencia_citada: null
-    prioridad: baja
-  - municipio: Escatrón
-    provincia: Zaragoza
-    ccaa: Aragón
-    compania: Ignis / DayOne
-    potencia_citada: 300 MW
     prioridad: alta
     nota: >-
-      Repsol anuncia 400 MW en el mismo municipio sin identificar operador. Si fueran el mismo
-      proyecto y se ficharan por separado, el mapa contaría el doble. Verificar antes de dar de alta.
-  - municipio: Escatrón
-    provincia: Zaragoza
-    ccaa: Aragón
-    compania: Repsol
-    potencia_citada: 400 MW
-    prioridad: alta
-    nota: Ver la advertencia de la entrada anterior.
-  - municipio: Boecillo
-    provincia: Valladolid
-    ccaa: Castilla y León
-    compania: Vodafone
-    potencia_citada: null
-    prioridad: baja
+      No se ficha por riesgo de duplicar `atlasedge-sant-adria-barcelona2`. La nota de la
+      propia AtlasEdge describe un único segundo centro en Barcelona, de 10 MW en 2027
+      ampliables a 24 MW, «a 6 km del centro existente» y cerca de la Barcelona Cable Landing
+      Station, que está en Sant Adrià de Besòs. Pero Inflect lo sitúa en el 08970 (Sant Joan
+      Despí) y OCOLO en Carrer de les Planes, y los 6 km encajan mejor con Sant Joan Despí
+      que con Sant Adrià. O son el mismo activo mal geolocalizado por los directorios, o son
+      dos. Decidirlo exige una fuente que hoy no existe.
+
+  # --- la fuente se contradice o no basta -----------------------------------
   - municipio: Granada
     provincia: Granada
     ccaa: Andalucía
-    compania: Vodafone / Cloud Center Andalucía
+    compania: DataRush IT
     potencia_citada: null
     prioridad: baja
-
-  # --- rescatadas de la lista de pistas: el municipio sí constaba ------------
+    nota: >-
+      La fuente se contradice consigo misma. DataRush anunció en 2024 un centro en Granada
+      «para finales de este año», pero su ficha de proveedor en Baxtel dice en prosa que
+      opera tres centros —dos en Málaga y uno en Granada— mientras su propio listado muestra
+      solo los dos de Málaga, ambos ya fichados. Sin dirección, sin fecha de apertura y sin
+      confirmación de la compañía.
   - municipio: Velilla del Río Carrión
     provincia: Palencia
     ccaa: Castilla y León
     compania: Echelon Iberdrola Digital Infra
     potencia_citada: null
     prioridad: media
-    nota: Segundo emplazamiento atribuido a la empresa conjunta. Sin fuente primaria localizada.
-  - municipio: Torrelavega
-    provincia: Cantabria
-    ccaa: Cantabria
-    compania: RIC Energy
-    potencia_citada: null
-    prioridad: media
-    nota: Sobre el suelo de la antigua Sniace. Anunciado en abril de 2026.
-  - municipio: Málaga
-    provincia: Málaga
-    ccaa: Andalucía
-    compania: Unicaja
-    potencia_citada: null
-    prioridad: baja
-    nota: En el Málaga TechPark.
-  - municipio: Málaga
-    provincia: Málaga
-    ccaa: Andalucía
-    compania: DataRush IT
-    potencia_citada: null
-    prioridad: baja
-    nota: Dos centros en el municipio según el dossier de compañías.
-  - municipio: Granada
-    provincia: Granada
-    ccaa: Andalucía
-    compania: DataRush IT
-    potencia_citada: null
-    prioridad: baja
+    nota: >-
+      Sigue sin fuente primaria tras dos barridos. La nota de Iberdrola de 26/11/2025 que
+      formaliza la empresa conjunta nombra solo Madrid Sur y habla de «más de 700 MW
+      asegurados cerca de Madrid». Velilla no aparece ahí, ni en la nota de julio de 2025, ni
+      en echelon-dc.com. La única mención es un reportaje de DCD que además sitúa mal la
+      central de Aceca. La térmica de Velilla existe y es de Iberdrola, pero está en
+      desmantelamiento desde 2020: que haya suelo y nudo no es prueba de proyecto.
   - municipio: Donostia-San Sebastián
     provincia: Gipuzkoa
     ccaa: País Vasco
-    compania: IBM
+    compania: IBM / Gobierno Vasco
     potencia_citada: null
     prioridad: media
-    nota: IBM Quantum System Two, inaugurado en octubre de 2025. Computación cuántica, no CPD convencional.
-  - municipio: León
-    provincia: León
-    ccaa: Castilla y León
-    compania: SCAYLE (Supercomputación Castilla y León)
-    potencia_citada: null
-    prioridad: media
-    nota: Centro público de supercomputación.
-  - municipio: Arakaldo
-    provincia: Bizkaia
-    ccaa: País Vasco
+    nota: >-
+      Documentado con fuente oficial y deliberadamente no fichado, a la espera de una
+      decisión de criterio. El IBM Quantum System Two del Centro de Computación Cuántica
+      IBM-Euskadi se inauguró el 14/10/2025 con un procesador Heron de 156 cúbits. No encaja
+      en el conjunto porque no publica ninguna de las magnitudes con que este mide —MW IT, de
+      conexión o instalados—, su carga dominante es un criostato de dilución y no una sala de
+      racks, y no es comparable con los centros públicos ya fichados (BSC, CESGA, CSUC, IFCA,
+      SCAYLE). Incluirlo invitaría a leerlo como capacidad de cómputo convencional.
+
+  # --- huecos nuevos detectados en el barrido -------------------------------
+  - municipio: Peralta
+    provincia: Navarra
+    ccaa: Navarra
     compania: null
+    potencia_citada: 132 MW
+    prioridad: alta
+    nota: >-
+      El mayor de los seis proyectos de la Ribera de Navarra y el único que faltaba en esta
+      lista. Sigue en tramitación, con nudo previsto en Castejón 400 kV. El Gobierno foral se
+      niega a identificar al promotor.
+  - municipio: Barcelona (22@)
+    provincia: Barcelona
+    ccaa: Cataluña
+    compania: Oxigen Data Center (ODC2)
+    potencia_citada: null
+    prioridad: media
+    nota: >-
+      Hueco descubierto al corregir un error del Observatorio EDC. El código ODC2 no
+      corresponde al centro de Sant Fruitós de Bages, que es el tercero del operador y tiene
+      10 MW y no 8: ODC2 es un centro del 22@ de Barcelona que no tiene ficha.
+  - municipio: Madrid
+    provincia: Madrid
+    ccaa: Comunidad de Madrid
+    compania: Unicaja
     potencia_citada: null
     prioridad: baja
-    nota: Titular de mayo de 2026 sin pieza recuperable ni promotor identificado.
+    nota: >-
+      Sustituye a la antigua entrada de Málaga, que estaba mal formulada. Lo que Unicaja
+      anunció el 04/06/2026 en su Plan Estratégico 2025-2027 son dos cosas distintas: un hub
+      tecnológico de oficinas en el Málaga TechPark, que no es un CPD, y un centro de datos
+      nuevo en Madrid para el proyecto Atlas. Sin ubicación publicada.
+  - municipio: Cifuentes
+    provincia: Guadalajara
+    ccaa: Castilla-La Mancha
+    compania: Solaria
+    potencia_citada: 50-100 MW
+    prioridad: media
+    nota: >-
+      Sin confirmación oficial ni expediente administrativo. Plataformas vecinales (Alcarria
+      es Patrimonio, ALIENTE, Ecologistas en Acción) alertan de que Solaria busca unas 20
+      hectáreas en el municipio, incluida una parcela municipal sacada a licitación. Solaria
+      no respondió a elDiario.es el 06/08/2026.
+  - municipio: A Coruña
+    provincia: A Coruña
+    ccaa: Galicia
+    compania: ABANCA
+    potencia_citada: null
+    prioridad: media
+    nota: >-
+      Segundo CPD del banco, gemelo del de Pocomaco y situado en la sede de A Coruña. Dos
+      fuentes independientes confirman que existe, opera en paralelo y replica cada
+      operación. No tiene ficha porque no consta dirección ni ninguna magnitud.
 
 # Pistas abiertas: aquí falta el municipio, el promotor o ambos, así que no
 # pueden pasar ni a la tabla de arriba. Cada una dice qué le falta.
 pistas:
-  - "Seis centros en la Ribera de Navarra (Tudela, Ribaforada, Valtierra, Arguedas), 382 MW combinados. Los municipios constan; los promotores, no."
-  - "Aprisco Group en Asturias y Submer en Cataluña: ninguno de los dos ha publicado terreno."
-  - "Nasertic, en Navarra: instalación pública sin ubicación publicada."
-  - "CPD de la Comunidad de Madrid, adjudicado a Telefónica en junio de 2025, ubicación no publicada."
-  - "Nueve activos de MasOrange y hasta cuatro emplazamientos de Quetta, sin localizar."
-  - "Las dos zonas no publicadas de la región Google europe-southwest1."
+  - >-
+    L14 REIS promueve el «Campus Logístico de Datos de Villena» sobre los 332.000 m² del área
+    industrial Casa del Padre (Alicante), con Plan Parcial aprobado y la promotora como
+    propietaria del 100 % del suelo y agente urbanizador. Se le abrió ficha el 31 de agosto de
+    2026 y se retiró el mismo día, por el mismo criterio que Ponentia: no hay operador de
+    centro de datos, y los «hasta 100 MW IT» son un techo de masterplan que publica la asesora
+    legal de la promotora, no potencia de una instalación. Es la más sólida de las pistas de
+    suelo, porque el Ayuntamiento la presentó oficialmente el 23 de septiembre de 2025.
+  - >-
+    Ponentia Logistics comercializa cuatro suelos para centros de datos —Lleida Nord,
+    L'Hospitalet de l'Infant, L'Espluga de Francolí (Tarragona) y La Melusa, en Tamarite de
+    Litera (Huesca)— sin operador conocido en ninguno. Se les llegó a abrir ficha el 31 de
+    agosto de 2026 y se retiraron el mismo día: este registro documenta centros de datos, no
+    ofertas de suelo, y ninguno tiene promotor de centro ni proyecto técnico. El de Tamarite
+    es el más avanzado, con un Plan de Interés General de Aragón cuya modificación sustancial
+    se aprobó inicialmente (Orden VFL/907/2026) y una línea de 132 kV en información pública.
+    Si alguno llega a tener operador, vuelve a la tabla de arriba.
+  - >-
+    Ribera de Navarra: seis proyectos y 382 MW, ahora desglosados gracias a la respuesta del
+    consejero Irujo de 15/11/2025. Son Peralta (132 MW), Valtierra I y II (50 cada uno),
+    Tudela I (50), Arguedas (50) y Ribaforada (50). Solo dos siguen en tramitación, Peralta y
+    uno de Valtierra; a los otros cuatro Industria les devolvió el aval por falta de acceso a
+    la red. Nudos previstos: Castejón 400 kV, La Serna 66, Tudela 66 y Quel 66. Los
+    promotores no se publican: una empresa navarra impulsa los de Ribaforada y Tudela, una
+    madrileña los de Valtierra y Arguedas, y el de Peralta va sin atribuir.
+  - >-
+    Aprisco Group en Asturias: compañía catalana fundada en 2018. En marzo de 2026 ofreció
+    1.000 millones y 700-800 empleos y exigió al Principado 100.000 m² con alta potencia en
+    la zona central, con un plazo de siete días y la amenaza de irse a Galicia o Cantabria.
+    No consta desenlace ni terreno.
+  - >-
+    Segundo CPD del Gobierno de Navarra: Nasertic gestiona dos, y solo el principal, en la
+    calle Orkoien de Pamplona, tiene ficha. La ubicación del segundo no se publica.
+  - >-
+    CPD de la Comunidad de Madrid adjudicado a Telefónica en junio de 2025 por más de 24,5
+    millones a diez años: no es un emplazamiento nuevo sino un contrato de arrendamiento de
+    espacios técnicos, es decir, capacidad alojada en una instalación de terceros. Ficharlo
+    duplicaría MW ya contados bajo el anfitrión. Debe modelarse como inquilino cuando se
+    identifique dónde está. El expediente original, ECON/000182/2023, quedó desierto el
+    26/04/2024 pese a tres ofertas (Telefónica, Kyndryl y Data4); falta el expediente de la
+    relicitación de 2024-2025, que diría en qué instalación física se aloja.
+  - >-
+    MasOrange: cerca de doce centros en España puestos en venta, con Templus, CVC DIF y
+    AtlasEdge como candidatos. Ninguna fuente publica el inventario de ubicaciones. El sitio
+    más probable donde estén listados es el Informe de Sostenibilidad 2025 de la compañía.
+  - >-
+    Quetta (Azora): quedan tres emplazamientos por anunciar, no cuatro. El objetivo declarado
+    en 2024 eran seis centros y 60 MW en España y Portugal; hoy tiene fichados Tres Cantos y
+    Molins de Rei, y el tercero conocido es Lisboa, fuera del ámbito peninsular español.
+  - >-
+    Las dos zonas no publicadas de la región Google europe-southwest1: la documentación de
+    Google Cloud lista las tres zonas y a las tres les asigna la misma etiqueta genérica,
+    «Madrid, España». Google no publica direcciones de zona por política, así que la pista
+    solo es cerrable por vía indirecta: contratos de colocation, licencias municipales o
+    permisos de grupos electrógenos. La única de las tres atribuida es la de Alcalá de
+    Henares, herencia de Telefónica y hoy de Nabiax.

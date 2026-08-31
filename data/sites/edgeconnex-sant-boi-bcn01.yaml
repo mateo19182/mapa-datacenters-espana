@@ -21,8 +21,12 @@ ubicacion:
 estado: operativo
 estado_detalle: >-
   Primer centro de EdgeConneX en España, en el eje del Baix Llobregat cerca del
-  aeropuerto y contiguo a una subestación eléctrica según la propia compañía.
-estado_fuentes: [src-2]
+  aeropuerto y contiguo a una subestación eléctrica según la propia compañía. La
+  ficha técnica vigente describe los 8,4 MW N+1 como «diseño inicial» y sitúa la
+  instalación junto a una subestación de la red de transporte. En 2023 la
+  compañía anunció la ampliación de la capacidad eléctrica del campus a 8 MW y su
+  conexión directa a la Barcelona Cable Landing Station de AFR-IX.
+estado_fuentes: [src-2, src-3]
 
 potencia:
   - tipo: no_especificado
@@ -30,10 +34,20 @@ potencia:
     ambito: edificio
     referencia: "Capacidad total N+1 del edificio"
     estado_asociado: operativo
-    fuentes: [src-2]
-    nota: "La compañía dice literalmente '8.4 MW N+1 total capacity'."
+    fuentes: [src-2, src-3]
+    nota: >-
+      La compañía dice literalmente '8.4 MW N+1 total capacity'; la ficha técnica
+      vigente lo formula como «8.4 MW N+1 initial design». No precisa si es carga
+      TI o potencia instalada.
 
 superficie_construida_m2: 3000
+
+conexion_electrica:
+  nota: >-
+    La compañía sitúa el edificio «junto a una subestación de la red de
+    transporte» (supergrid substation) y ofrece densidades de 20 kW o más por
+    rack. No nombra la subestación ni publica tensión ni potencia de acceso.
+  fuentes: [src-2, src-3]
 
 incertidumbres:
   - campo: ubicacion
@@ -54,11 +68,14 @@ incertidumbres:
     descripcion: >-
       Directorios terceros citan cifras de 2 MW y 3,4 MW para esta instalación,
       frente a los 8,4 MW que publica la compañía. No se ha localizado la fuente
-      primaria de las cifras menores.
-    fuentes: [src-2]
+      primaria de las cifras menores. Una reimpresión de S&P Global de julio de
+      2023 titulaba que EdgeConneX «amplía la capacidad de potencia de su campus
+      en Barcelona a 8 MW», cifra que tampoco coincide exactamente con los 8,4 MW
+      de la ficha técnica.
+    fuentes: [src-2, src-3, src-4]
 
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -75,3 +92,26 @@ fuentes:
     tipo: empresa
     fecha_consulta: "2026-08-29"
     cita: "8.4 MW N+1 total capacity ... Total space: 3000 m2"
+  - id: src-3
+    url: "https://www.edgeconnex.com/wp-content/uploads/2026/03/Barcelona-Data-Sheet-Q1-update.pdf"
+    titulo: "BCN01 — Barcelona Data Center (data sheet, Q1 update)"
+    editor: "EdgeConneX"
+    tipo: empresa
+    fecha_publicacion: "2026-03-01"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      8.4 MW N+1 initial design located next to supergrid substation ... Power
+      8.4 MW N+1 Located next to supergrid substation ... EdgeConneX can offer a
+      rack density of 20kW+ ... Space Total Space: 3000 m2 ... Direct link to the
+      AFR-IX cable landing station
+  - id: src-4
+    url: "https://www.edgeconnex.com/wp-content/uploads/2023/07/Barcelona-SPGMI_Reprint_EdgeConnex_07JUL2023.pdf"
+    titulo: "EdgeConneX expands the power capacity of its campus in Barcelona to 8 MW"
+    editor: "S&P Global Market Intelligence (reimpresión distribuida por EdgeConneX)"
+    tipo: consultora
+    fecha_publicacion: "2023-07-07"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      EdgeConneX expands the power capacity of its campus in Barcelona to 8 MW
+      ... The company is connecting its campus to the Barcelona Cable Landing
+      Station and expanding its power capacity

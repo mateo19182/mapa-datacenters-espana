@@ -25,8 +25,13 @@ estado_detalle: >-
   gestión de datos e IA. Incluye subestación eléctrica propia e instalación
   fotovoltaica. Tramitación administrativa prevista para 2026-2027, urbanización
   entre el segundo semestre de 2027 y el primero de 2028, y construcción de
-  infraestructuras del tercer trimestre de 2027 al cuarto de 2030.
-estado_fuentes: [src-1]
+  infraestructuras del tercer trimestre de 2027 al cuarto de 2030. El recinto reserva
+  un 28% del espacio para zonas verdes, contará con 375 plazas de aparcamiento y una
+  instalación fotovoltaica de 350 paneles. Aspira a la calificación de proyecto de
+  interés estratégico regional (PIER). Un informe de PwC estima una aportación
+  acumulada de 4.177 millones al PIB regional en veinte años. El proyecto está
+  financiado por un fondo de inversión estadounidense.
+estado_fuentes: [src-1, src-4, src-5]
 
 potencia:
   - tipo: no_especificado
@@ -35,24 +40,28 @@ potencia:
     referencia: "Capacidad total del campus"
     estado_asociado: anunciado
     fecha_dato: "2026-08-03"
-    fuentes: [src-1, src-2]
+    fuentes: [src-1, src-2, src-4]
     nota: >-
-      La nota oficial habla de «120 megavatios totales»; DCD lo describe como
-      «final computing capacity». No se precisa si es carga TI o potencia de conexión.
+      La nota de prensa oficial del Principado dice «alcanzará una capacidad
+      informática final de 120 megavatios»; DCD lo describe como «final computing
+      capacity». «Capacidad informática» apunta a carga TI, pero ninguna fuente lo
+      dice con esas palabras y no se tipifica por interpretación.
   - tipo: no_especificado
     valor_mw: 24
     ambito: fase
     referencia: "Fase 1"
     estado_asociado: anunciado
     fecha_dato: "2026-08-03"
-    fuentes: [src-1]
+    fuentes: [src-1, src-4]
+    nota: "La nota oficial dice «permitirá instalar 24 megavatios de capacidad informática»."
   - tipo: no_especificado
     valor_mw: 96
     ambito: fase
     referencia: "Fase 2 (potencia adicional)"
     estado_asociado: anunciado
     fecha_dato: "2026-08-03"
-    fuentes: [src-1]
+    fuentes: [src-1, src-4]
+    nota: "La nota oficial dice «La segunda sumará 96 megavatios más y un gasto de 960 millones»."
 
 fases:
   - nombre: "Fase 1 (24 MW, 240 M€)"
@@ -70,8 +79,53 @@ superficie_parcela_m2: 154584
 superficie_construida_m2: 46865
 inversion_anunciada_eur: 1226300000
 
+agua:
+  circuito: desconocido
+  sistema: >-
+    Sin describir en la documentación difundida del proyecto. Promotor y Principado
+    lo han equiparado verbalmente a un circuito cerrado de refrigeración que se llena
+    una vez y no repone agua de forma continua.
+  origen: null
+  nota: >-
+    Ninguna fuente cifra el consumo. El socio director de la promotora afirmó en la
+    presentación que «consumimos lo mismo que cualquier circuito cerrado de
+    refrigeración», y el presidente del Principado describió después un sistema en el
+    que «la misma agua se está utilizando una y otra vez [...] no hay reposición
+    continua de agua, se llena una vez y se mantiene». Son declaraciones públicas, no
+    documentación técnica: la documentación difundida del proyecto no concreta el
+    sistema de refrigeración ni el consumo de agua, de modo que el circuito se deja
+    como desconocido.
+  fuentes: [src-3, src-5, src-6]
+
+empleo:
+  - tipo: total
+    valor: 1318
+    referencia: "Empleos anuales, entre directos, indirectos e inducidos"
+    fecha_dato: "2026-08-03"
+    fuentes: [src-4]
+    nota: null
+  - tipo: directo
+    valor: 120
+    referencia: "Explotación del campus"
+    fecha_dato: "2026-08-03"
+    fuentes: [src-5]
+    nota: null
+  - tipo: indirecto
+    valor: 960
+    referencia: "Explotación del campus"
+    fecha_dato: "2026-08-03"
+    fuentes: [src-5]
+    nota: null
+  - tipo: construccion
+    valor: 3000
+    referencia: "Pico de empleo durante la construcción"
+    fecha_dato: "2026-08-03"
+    fuentes: [src-5]
+    nota: null
+
 enlaces_proyecto:
   - "https://actualidad.asturias.es/-/digital-valley38"
+  - "https://actualidad.asturias.es/documents/533407/0/2026_08_03+NP+Proyecto+Asturias+Digital+Valley.pdf/3c3232de-ad40-2655-b202-e15e3743758e"
 
 incertidumbres:
   - campo: potencia
@@ -91,9 +145,17 @@ incertidumbres:
       identificado públicamente el operador final, los clientes ni la estructura
       financiera, ni se concreta el sistema de refrigeración ni el consumo de agua.
     fuentes: [src-1, src-3]
+  - campo: empleo
+    descripcion: >-
+      Las cifras no cuadran entre sí: la nota oficial habla de «1.318 empleos
+      anuales, entre directos, indirectos e inducidos», mientras la prensa que cubrió
+      la presentación desglosa 120 directos y unos 960 indirectos, que suman 1.080.
+      La diferencia serían los inducidos, pero ninguna fuente lo dice. Se registran
+      las tres cifras por separado y no se suman.
+    fuentes: [src-4, src-5]
 
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -120,3 +182,51 @@ fuentes:
     fecha_publicacion: "2026-08-08"
     fecha_consulta: "2026-08-29"
     cita: "La documentación difundida no concreta el sistema de refrigeración ni el consumo de agua"
+  - id: src-4
+    url: "https://actualidad.asturias.es/documents/533407/0/2026_08_03+NP+Proyecto+Asturias+Digital+Valley.pdf/3c3232de-ad40-2655-b202-e15e3743758e"
+    titulo: "El Gobierno del Principado logra atraer una inversión de 1.226 millones para desarrollar en Salas un gran campus tecnológico dedicado a la gestión del dato y el desarrollo de la IA"
+    editor: "Gobierno del Principado de Asturias"
+    tipo: oficial
+    fecha_publicacion: "2026-08-03"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Digital Valley Asturias, que aspira a obtener la calificación de proyecto de
+      interés estratégico, generará 1.318 empleos anuales, entre directos, indirectos
+      e inducidos [...] Digital Valley Asturias ocupará una superficie de 154.584
+      metros cuadrados, de los cuales 46.865 corresponderán a equipamientos. El
+      recinto reservará un 28% del espacio para zonas verdes y contará con 375 plazas
+      de aparcamiento. El campus estará formado por diez módulos de centro de datos y
+      alcanzará una capacidad informática final de 120 megavatios. También incluye
+      una subestación eléctrica y una instalación fotovoltaica con 350 paneles
+      solares [...] La primera movilizará 240 millones y permitirá instalar 24
+      megavatios de capacidad informática. La segunda sumará 96 megavatios más y un
+      gasto de 960 millones.
+  - id: src-5
+    url: "https://www.lne.es/asturias/2026/08/04/campus-virtual-gran-centro-datos-133073634.html"
+    titulo: "El «campus virtual» del gran centro de datos de Salas dará servicio a la IA y la nube: 120 empleos, un subestación eléctrica, 350 paneles solares..."
+    editor: "La Nueva España"
+    tipo: prensa_general
+    fecha_publicacion: "2026-08-04"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      La construcción del centro, que sus promotores definen como "campus virtual",
+      alcanzará un pico de empleo de 3.000 trabajadores, afirmó Armando Layna, socio
+      director de Sales For You Consulting y Digital Valley. Una vez que el almacén
+      esté en marcha, en él trabajarán de forma directa unas 120 personas, así como
+      unas 960 de forma indirecta [...] Layna también trató de desmentir "tabús" de
+      los almacenes informáticos como su consumo de agua: "Consumimos lo mismo que
+      cualquier circuito cerrado de refrigeración". [...] el proyecto de Salas está
+      financiado por un fondo de inversión estadounidense.
+  - id: src-6
+    url: "https://www.lne.es/asturias/2026/08/19/barbon-asegura-centro-datos-salas-133467991.html"
+    titulo: "Barbón asegura que «el centro de datos de Salas no consumirá mucha agua»"
+    editor: "La Nueva España"
+    tipo: prensa_general
+    fecha_publicacion: "2026-08-19"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      "Consumían mucha agua los primeros centros de datos, pero los actuales lo que
+      hacen es un sistema de refrigeración continua, de modo que la misma agua se
+      está utilizando una y otra vez, salvo lógicamente pequeñas pérdidas; es decir,
+      no hay reposición continua de agua, se llena una vez y se mantiene", afirmó
+      Barbón.

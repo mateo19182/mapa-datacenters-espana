@@ -1,0 +1,179 @@
+id: dc-estate-vianos-albacete
+nombre: "DC Estate Vianos — centro de datos de IA de Vianos (Albacete)"
+alias:
+  - "Centro de datos de Vianos"
+  - "EdgeMode Vianos"
+  - "Pure DC Vianos"
+tipo: campus
+operador: null
+propietario: "DC Estate Vianos, S.L. (socio único Blackberry AIF, S.L.; sociedad conjunta con EdgeMode)"
+cliente_ancla: null
+modelo: mayorista
+
+ubicacion:
+  municipio: "Vianos"
+  provincia: "Albacete"
+  ccaa: "Castilla-La Mancha"
+  direccion: "Suelo rústico de uso agrario al borde de la N-322, en la Sierra de Alcaraz"
+  lat: 38.6328160
+  lon: -2.5007956
+  precision: municipio
+  fuentes: [src-1, src-2, src-osm]
+
+estado: en_tramitacion
+estado_detalle: >-
+  El promotor, DC Estate Vianos, S.L., presentó al Gobierno de Castilla-La Mancha el documento
+  inicial del proyecto y en junio de 2026 la Junta abrió el trámite de consultas previas de
+  cara al estudio de impacto ambiental. El proyecto deberá superar una evaluación de impacto
+  ambiental ordinaria y obtener después una autorización ambiental integrada. El diseño
+  contempla dos edificios principales y generación propia con turbinas de gas natural más
+  fotovoltaica en cubierta, sin conexión a la red de transporte. La plataforma Pueblos Vivos
+  del Segura y Ecologistas en Acción anunciaron alegaciones y califican el proyecto de
+  inviable y especulativo. En julio de 2026 EdgeMode firmó con Pure Data Centres Group
+  (Oaktree/Brookfield) un term sheet no vinculante para venderle su participación en este y
+  otros tres emplazamientos españoles.
+estado_fuentes: [src-1, src-2, src-3]
+
+potencia:
+  - tipo: it
+    valor_mw: 300
+    ambito: campus
+    referencia: "Potencia IT del complejo según el documento inicial presentado a la Junta"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2026-06"
+    fuentes: [src-1]
+    nota: "La fuente dice literalmente «un complejo de 300 megavatios (MW) de potencia IT»."
+  - tipo: generacion_asociada
+    valor_mw: 62
+    ambito: campus
+    referencia: "Cada una de las ocho turbinas de gas natural previstas en el emplazamiento"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2026-06"
+    fuentes: [src-1]
+    nota: >-
+      La fuente da la potencia unitaria («ocho turbinas de gas natural, con unos 62 MW cada
+      una») y no un total. No se multiplica ni se suma: es capacidad de generar, no del centro.
+  - tipo: generacion_asociada
+    valor_mw: 60
+    ambito: campus
+    referencia: "Instalación fotovoltaica en cubierta"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2026-06"
+    fuentes: [src-1]
+    nota: "Generación asociada al emplazamiento, no capacidad del centro de datos."
+
+superficie_parcela_m2: 988000
+superficie_construida_m2: null
+inversion_anunciada_eur: null
+refrigeracion: "Free-cooling por aire, descrito por el promotor como de alta eficiencia y baja demanda hídrica."
+enlaces_proyecto: []
+
+agua:
+  circuito: sin_agua
+  sistema: "Refrigeración free-cooling por aire exterior, sin sistemas mecánicos activos como base del diseño."
+  origen: null
+  nota: >-
+    El documento inicial del promotor afirma que el proyecto «no se concibe como una
+    instalación dependiente del agua» y restringe su uso a necesidades sanitarias, limpieza y
+    requerimientos operacionales puntuales, sin prever vertidos industriales significativos. No
+    aporta ninguna cifra de consumo. Es una afirmación del promotor en fase preliminar, todavía
+    no verificada por el órgano ambiental.
+  fuentes: [src-2]
+
+incertidumbres:
+  - campo: estado
+    descripcion: >-
+      El proyecto está en consultas previas, la fase más temprana de la evaluación ambiental.
+      No hay estudio de impacto ambiental, ni autorización ambiental integrada, ni licencia
+      urbanística. Los colectivos que se oponen señalan que no hay gasoducto de alta presión en
+      la zona y que haría falta un ramal de unos 90 kilómetros para alimentar las turbinas.
+    fuentes: [src-2]
+  - campo: propietario
+    descripcion: >-
+      La titularidad puede cambiar: el acuerdo con Pure DC es un term sheet no vinculante con
+      60 días de exclusividad, condicionado a permisos y a un contrato con un hiperescalador.
+      Expansión añade que Pure DC prevé descartar dos de los cuatro emplazamientos, y que
+      Vianos y Cáceres son los que espera desarrollar.
+    fuentes: [src-3, src-4]
+  - campo: superficie_parcela_m2
+    descripcion: >-
+      Cadena SER cifra la superficie en cerca de 988.000 m² de suelo rústico; elDiario.es habla
+      de «más de un centenar de hectáreas». Se registra la cifra más precisa publicada.
+    fuentes: [src-1, src-2]
+
+confianza: baja
+ultima_verificacion: "2026-08-31"
+
+fuentes:
+  - id: src-1
+    url: "https://cadenaser.com/castillalamancha/2026/06/29/un-macrocentro-de-datos-para-ia-de-300-mw-pone-el-foco-en-vianos-para-su-desarrollo-tecnologico-radio-albacete/"
+    titulo: "Un macrocentro de datos para IA de 300 MW pone el foco en Vianos para su desarrollo tecnológico"
+    editor: "Cadena SER"
+    tipo: prensa_general
+    fecha_publicacion: "2026-06-29"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El proyecto, promovido por DC Estate Vianos S.L., se encuentra en fase inicial y ya ha
+      iniciado su tramitación ante la Junta. La iniciativa contempla la creación de un complejo
+      de 300 megavatios (MW) de potencia IT [...] El futuro centro de datos se levantaría sobre
+      una superficie cercana a los 988.000 metros cuadrados de suelo rústico, actualmente de uso
+      agrario. El proyecto incluye: - Dos edificios principales de unos 150.000 m² cada uno
+      [...] - Ocho turbinas de gas natural, con unos 62 MW cada una - Instalación fotovoltaica
+      en cubierta de aproximadamente 60 MW
+  - id: src-2
+    url: "https://www.eldiario.es/castilla-la-mancha/social/proyecto-nuevo-centro-datos-corredor-ecologico-serrania-albacetena-desata-alarma-inviable_1_13427493.html"
+    titulo: "El proyecto para un nuevo centro de datos en un corredor ecológico de la serranía albaceteña desata la alarma por «inviable»"
+    editor: "elDiario.es Castilla-La Mancha"
+    tipo: prensa_general
+    fecha_publicacion: "2026-08-06"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      La Administración autonómica ya ha remitido este documento a varios departamentos
+      regionales y estatales, así como a diversos colectivos ecologistas, para la realización de
+      consultas previas de cara al futuro estudio de impacto ambiental. [...] el proyecto no se
+      concibe como una instalación dependiente del agua, sino que su uso se restringe a
+      «necesidades sanitarias del personal, tareas de limpieza y requerimientos operacionales muy
+      específicos y puntuales».
+  - id: src-3
+    url: "https://www.expansion.com/empresas/2026/07/13/6a538798e5fdea2b078b456e.html"
+    titulo: "Brookfield atiza la batalla de los grandes fondos por los centros de datos en España"
+    editor: "Expansión"
+    tipo: prensa_general
+    fecha_publicacion: "2026-07-13"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Oaktree adquirirá sociedades que tramitan la ubicación de centros en Cáceres, Vianos
+      (Albacete), Córdoba y Palma del Río (también en Córdoba), cuando tengan los permisos y
+      estén preparadas para iniciar los trabajos de construcción. El plan contempla que cada
+      instalación tenga 300 megavatios (MW) de potencia, pero la intención de Pure DC es
+      descartar dos de las localizaciones (probablemente las de Córdoba y Palma).
+  - id: src-4
+    url: "https://www.sec.gov/Archives/edgar/data/1652958/000168316826005308/edgemode_8k.htm"
+    titulo: "Edgemode, Inc. Form 8-K (7 de julio de 2026)"
+    editor: "Edgemode, Inc. / U.S. Securities and Exchange Commission"
+    tipo: empresa
+    fecha_publicacion: "2026-07-06"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      On July 1, 2026, Edgemode, Inc. (the "Company") entered into a non-binding term sheet (the
+      "Term Sheet") with a third-party purchaser (the "Purchaser") regarding the sale of the
+      Company's interest in certain land sites controlled via leaseholds in Cordoba, Palma,
+      Vianos and Caceres, Spain (the "Acquisition").
+  - id: src-5
+    url: "https://www.datoscif.es/empresa/dc-estate-vianos-sl"
+    titulo: "DC ESTATE VIANOS SL — Informe de empresa"
+    editor: "DatosCif (a partir del Boletín Oficial del Registro Mercantil)"
+    tipo: otro
+    fecha_publicacion: "2025-11-11"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      DC ESTATE VIANOS SL Dirección social Calle Virgen de Lujan, 48 [...] Municipio Sevilla
+      [...] Fecha de Constitución 09/10/2025 Objeto Social - Infraestructura informática,
+      procesamiento de datos, hosting y actividades relacionadas.
+  - id: src-osm
+    url: "https://nominatim.openstreetmap.org/search?q=Vianos%2C+Albacete&format=json&limit=1"
+    titulo: "Nominatim — Vianos, Albacete"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-08-31"
+    cita: "Vianos, Albacete, Castilla-La Mancha, España — lat 38.6328160, lon -2.5007956"

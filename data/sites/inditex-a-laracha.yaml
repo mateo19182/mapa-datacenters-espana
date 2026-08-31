@@ -20,10 +20,12 @@ ubicacion:
 estado: operativo
 estado_detalle: >-
   Segundo centro de proceso de datos de Inditex, en el polígono industrial de A Laracha, junto a
-  la plataforma logística del grupo. Anunciado en 2019 con una inversión superior a ocho millones
-  de euros. El Uptime Institute lo registra como «Data Center 2, Phase 1» con certificación Tier IV
-  de diseño y de instalación construida. Ninguna fuente publica una fecha de puesta en servicio.
-estado_fuentes: [src-1, src-2]
+  la plataforma logística del grupo. El Concello de A Laracha concedió la licencia urbanística en
+  la primera Junta de Gobierno Local del mandato, en junio de 2019, para un inmueble de dos
+  plantas (baja y primera) y 3.800 m², con un presupuesto superior a ocho millones de euros. El
+  Uptime Institute lo registra como «Data Center 2, Phase 1» con certificación Tier IV de diseño y
+  de instalación construida. Ninguna fuente publica una fecha de puesta en servicio.
+estado_fuentes: [src-1, src-2, src-3]
 
 potencia: []
 
@@ -40,8 +42,10 @@ incertidumbres:
     fuentes: [src-1, src-2]
   - campo: potencia
     descripcion: >-
-      No consta potencia de ningún tipo. La inversión y la superficie no permiten derivarla.
-    fuentes: [src-1]
+      No consta potencia de ningún tipo. La inversión y la superficie no permiten derivarla. A
+      diferencia del CPD de Arteixo, del que el instalador eléctrico publicó las acometidas, no se
+      ha localizado ninguna empresa proveedora que describa la instalación de A Laracha.
+    fuentes: [src-1, src-3]
   - campo: fases
     descripcion: >-
       El Uptime Institute lo nombra «Phase 1», lo que sugiere fases posteriores previstas. No se ha
@@ -67,3 +71,16 @@ fuentes:
     tipo: asociacion
     fecha_consulta: "2026-08-31"
     cita: "INDITEX DATA CENTER 2, Phase 1 — Laracha, Spain"
+  - id: src-3
+    url: "https://www.laopinioncoruna.es/gran-coruna/2019/06/27/inditex-invertira-ocho-millones-euros-23750331.html"
+    titulo: "Inditex invertirá ocho millones de euros en un centro para procesar datos en A Laracha"
+    editor: "La Opinión A Coruña"
+    tipo: prensa_general
+    fecha_publicacion: "2019-06-27"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El Concello de A Laracha ha concedido a Inditex una licencia urbanística para la construcción
+      de un centro de procesamiento de datos complementario a los edificios que ya posee en el
+      polígono. Este nuevo inmueble contará con dos plantas (baja y primera) y una superficie total
+      de 3.800 metros cuadrados. El proyecto que promueve la multinacional tiene un presupuesto
+      superior a los ocho millones euros.

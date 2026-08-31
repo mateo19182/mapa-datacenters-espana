@@ -1,0 +1,120 @@
+id: edgnex-madrid-vicalvaro
+nombre: "Edgnex (DAMAC) — Madrid, Vicálvaro"
+alias:
+  - "EDGNEX Data Centers by DAMAC Madrid"
+  - "DAMAC Digital MAD1"
+tipo: edificio
+operador: "Edgnex Data Centers (DAMAC)"
+propietario: "DAMAC Group"
+modelo: mayorista
+
+ubicacion:
+  municipio: "Madrid"
+  provincia: "Madrid"
+  ccaa: "Comunidad de Madrid"
+  direccion: "Distrito de Vicálvaro, Madrid"
+  lat: null
+  lon: null
+  precision: municipio
+  fuentes: [src-1, src-2]
+
+estado: anunciado
+estado_detalle: >-
+  DAMAC compró en octubre de 2024 a ActivumSG (ASG Iberia) una parcela de unos 22.000-23.000 m² en
+  Vicálvaro con derechos de suministro eléctrico ya ratificados, para levantar un centro de datos
+  con una inversión anunciada de 400 millones de euros y puesta en operación prevista en 2026. No
+  se ha localizado ninguna fuente posterior que confirme el inicio de las obras ni la entrada en
+  servicio.
+estado_fuentes: [src-1, src-2, src-3]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 40
+    ambito: edificio
+    edificio: "Vicálvaro"
+    referencia: "«Committed power» del centro anunciado por la compañía"
+    estado_asociado: anunciado
+    fecha_dato: "2024-10-16"
+    fuentes: [src-1, src-2]
+  - tipo: conexion_red
+    valor_mw: 10
+    ambito: fase
+    referencia: "Suministro garantizado de forma inmediata en el contrato de compra del suelo"
+    estado_asociado: anunciado
+    fecha_dato: "2024-10-15"
+    fuentes: [src-3]
+  - tipo: conexion_red
+    valor_mw: 30
+    ambito: fase
+    referencia: "Suministro adicional comprometido para el primer trimestre de 2026"
+    estado_asociado: anunciado
+    fecha_dato: "2024-10-15"
+    fuentes: [src-3]
+
+superficie_parcela_m2: 22000
+inversion_anunciada_eur: 400000000
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      Los 40 MW se publican como «committed power», sin decir si son carga TI o potencia de
+      acceso. El desglose del vendedor del suelo (10 MW inmediatos y 30 MW adicionales) sí son
+      derechos de suministro, y su suma coincide con los 40 MW anunciados.
+    fuentes: [src-1, src-3]
+  - campo: superficie_parcela_m2
+    descripcion: >-
+      La nota de DAMAC habla de 22.000 m² y la del vendedor del suelo, de «cerca de 23.000 metros
+      cuadrados». Se registra la primera y se deja constancia de la segunda.
+    fuentes: [src-1, src-3]
+  - campo: estado
+    descripcion: >-
+      La única información localizada es la del anuncio de compra del suelo, de octubre de 2024,
+      que preveía operación en 2026. No hay confirmación pública posterior, así que el estado se
+      mantiene en «anunciado».
+    fuentes: [src-1, src-2, src-3]
+  - campo: ubicacion
+    descripcion: >-
+      Las fuentes sitúan el emplazamiento «en la zona de Vicálvaro», a 15 km del centro de Madrid
+      y a 5 km del punto neutro de interconexión, sin dar dirección ni parcela.
+    fuentes: [src-1, src-2, src-3]
+
+confianza: media
+ultima_verificacion: "2026-08-31"
+
+fuentes:
+  - id: src-1
+    url: "https://www.zawya.com/en/press-release/companies-news/edgnex-data-centers-by-damac-powers-european-expansion-with-40mw-data-center-investment-in-spain-r6oamwj0"
+    titulo: "EDGNEX data centers by DAMAC Powers European expansion with 40MW data center investment in Spain"
+    editor: "EDGNEX Data Centers by DAMAC (nota de prensa)"
+    tipo: empresa
+    fecha_publicacion: "2024-10-16"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      The 22,000 sqm facility, with the committed power of 40MW, is scheduled to commence
+      operations by 2026 ... EDGNEX's data center will be in the Vicalvaro region, just 10km from
+      Madrid International Airport and 5km from the Internet Exchange
+  - id: src-2
+    url: "https://www.datacenterdynamics.com/en/news/damacs-edgnex-to-develop-40mw-data-center-in-madrid-spain/"
+    titulo: "Damac's Edgnex to develop 40MW data center in Madrid, Spain"
+    editor: "DatacenterDynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2024-10-17"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      The site has been acquired from real estate private equity manager ActivumSG and will host a
+      40MW data center. Located in the Vicalvaro region, the 236,805 sq ft (22,000 sqm) facility
+      is due to go live in 2026 ... The deal guarantees 10MW immediately, with an additional 30MW
+      by Q1 2026.
+  - id: src-3
+    url: "https://brainsre.news/asg-iberia-edgnex-damac-suelo-madrid-data-center/"
+    titulo: "ASG Iberia vende a Edgnex, de Damac Group, un suelo en Madrid para el desarrollo de un data center"
+    editor: "Brainsre News"
+    tipo: prensa_especializada
+    fecha_publicacion: "2024-10-15"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Después de adquirir la parcela de cerca de 23.000 metros cuadrados en el año 2022, ASG
+      Iberia aprovechó su experiencia local para ratificar los derechos de suministro eléctrico de
+      40 MW antes de la venta. Se acordaron con el suministrador unas «condiciones muy favorables»
+      que garantizan 10 MW de suministro de forma inmediata y 30 MW adicionales para el primer
+      trimestre de 2026

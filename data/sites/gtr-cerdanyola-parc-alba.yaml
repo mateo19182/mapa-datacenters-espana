@@ -21,25 +21,44 @@ estado: anunciado
 estado_detalle: >-
   Primera entrada de Global Technical Realty en España. Parcela de 15.000 m² en
   el Parc de l'Alba, en fase de planificación y sin calendario de desarrollo
-  publicado. Baxtel indica año previsto 2027.
-estado_fuentes: [src-1]
+  publicado. Baxtel indica año previsto 2027. La compañía, respaldada por el
+  tercer fondo global de infraestructuras de KKR, anunció la adquisición del
+  suelo el 31 de julio de 2023; la venta la asesoró JLL en nombre de DCITE,
+  plataforma promovida por Nilo Partners y ADEQUA Real Estate.
+estado_fuentes: [src-1, src-3, src-4]
 
-potencia: []
+potencia:
+  - tipo: it
+    valor_mw: 16
+    ambito: edificio
+    referencia: "Carga TI que admite la parcela según la propia compañía"
+    estado_asociado: anunciado
+    fecha_dato: "2023-07-31"
+    fuentes: [src-3]
+    nota: >-
+      La nota de GTR dice "The 15,000 sq m plot has the capacity to accommodate a
+      new 16MW IT load facility". Es la capacidad que admite el emplazamiento, no
+      una potencia contratada ni construida.
 
 superficie_parcela_m2: 15000
 
 incertidumbres:
   - campo: potencia
-    descripcion: "La potencia no ha sido anunciada según la fuente."
-    fuentes: [src-1]
+    descripcion: >-
+      Baxtel no publica potencia. Los 16 MW proceden de la nota de la propia GTR
+      de julio de 2023 y describen lo que la parcela «puede acoger»; no consta
+      potencia de acceso solicitada ni concedida. Un reportaje sectorial de enero
+      de 2025 sigue citando 16 MW para este proyecto.
+    fuentes: [src-1, src-3, src-5]
   - campo: estado
     descripcion: >-
-      Fuente única (directorio especializado). No se ha localizado nota de prensa
-      de la compañía, licencia urbanística ni expediente ambiental.
-    fuentes: [src-1]
+      No se ha localizado licencia urbanística ni expediente ambiental. El último
+      anuncio público de la compañía es de julio de 2023 y no se ha encontrado
+      información posterior sobre el desarrollo.
+    fuentes: [src-1, src-3]
 
-confianza: baja
-ultima_verificacion: "2026-08-29"
+confianza: media
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -60,3 +79,35 @@ fuentes:
     cita: >-
       Parc de l'Alba, Cerdanyola del Vallès, Vallès Occidental, Barcelona,
       Catalunya, España — lat 41.4856180, lon 2.1076426
+  - id: src-3
+    url: "https://globaltechnicalrealty.com/gtr-expands-european-footprint/"
+    titulo: "Global Technical Realty Expands European Footprint with Barcelona Site Acquisition"
+    editor: "Global Technical Realty"
+    tipo: empresa
+    fecha_publicacion: "2023-07-31"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      The site is located on Parc de l'Alba in Cerdanyola del Vallès which is 20
+      kilometres from the centre of Barcelona. The 15,000 sq m plot has the
+      capacity to accommodate a new 16MW IT load facility.
+  - id: src-4
+    url: "https://www.jll.com/en-uk/newsroom/jll-advises-on-the-disposal-of-development-site-for-new-data-cen"
+    titulo: "JLL advises on the disposal of development site for new data centre facility in Spain"
+    editor: "JLL"
+    tipo: consultora
+    fecha_publicacion: "2023-10-04"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      JLL acted as the sole agent to DCITE, a specialist data centre development
+      platform backed by Nilo Partners and ADEQUA Real Estate, on the disposal of
+      a development site part of Parc de l'Alba to Global Technical Realty
+  - id: src-5
+    url: "https://www.30virtual.net/Noticias.aspx?idnoticia=33351"
+    titulo: "El Parc de l'Alba mejorará las infraestructuras especiales por CPDs, ampliando la actual a red de distribución eléctrica y minimizando las afecciones al entorno y la ocupación del dominio público"
+    editor: "30Virtual"
+    tipo: prensa_especializada
+    fecha_publicacion: "2025-01-06"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Global Technical Realty construirá un data center de 16MW en el Parc de
+      l'Alba de Cerdanyola

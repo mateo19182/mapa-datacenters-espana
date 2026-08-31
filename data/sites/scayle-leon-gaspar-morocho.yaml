@@ -1,0 +1,130 @@
+id: scayle-leon-gaspar-morocho
+nombre: "SCAYLE — nueva sede del Centro de Supercomputación de Castilla y León (León)"
+alias:
+  - "Centro de Supercomputación de Castilla y León"
+  - "Supercomputador Caléndula"
+tipo: edificio
+operador: "Fundación Centro de Supercomputación de Castilla y León (SCAYLE)"
+propietario: "Junta de Castilla y León"
+cliente_ancla: null
+modelo: corporativo
+
+ubicacion:
+  municipio: "León"
+  provincia: "León"
+  ccaa: "Castilla y León"
+  direccion: "Calle Profesor Gaspar Morocho, junto al Centro Integrado de Formación Profesional Tecnológico Industrial y al Campus de Vegazana de la Universidad de León"
+  lat: 42.6341451
+  lon: -5.9714151
+  precision: municipio
+  fuentes: [src-1, src-3, src-osm]
+
+estado: en_construccion
+estado_detalle: >-
+  SCAYLE es una entidad pública creada por la Junta de Castilla y León y la Universidad de
+  León que opera el supercomputador Caléndula, hoy alojado en el Campus de Vegazana. La
+  construcción de una nueva sede propia en la calle Profesor Gaspar Morocho se licitó en
+  diciembre de 2023 para albergar el centro de procesamiento de datos, el supercomputador y
+  las oficinas de gestión. La Junta situó el final de las obras en el último trimestre de
+  2025; en marzo de 2026 los trabajos estaban en fase final, centrados en los sistemas de
+  refrigeración, y la migración de los servicios de Caléndula había comenzado. La previsión
+  oficial es que el centro esté plenamente operativo en la nueva sede en el primer semestre de
+  2027, con una migración de aproximadamente un año presupuestada en 1,8 millones de euros.
+estado_fuentes: [src-1, src-2, src-3, src-4]
+
+potencia: []
+
+inversion_anunciada_eur: null
+refrigeracion: "Uno de los frentes principales de la obra son los sistemas de refrigeración necesarios para el supercomputador."
+enlaces_proyecto:
+  - "https://www.scayle.es/infraestructuras/"
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      SCAYLE no publica potencia eléctrica, superficie de sala técnica ni número de racks de la
+      nueva sede. La página de infraestructuras describe salas IT, racks de alta densidad y
+      alimentación redundante sin ninguna cifra. Campo de potencia vacío.
+    fuentes: [src-5]
+  - campo: inversion_anunciada_eur
+    descripcion: >-
+      Las cifras publicadas del edificio no coinciden: la propia SCAYLE hablaba en diciembre de
+      2023 de una inversión prevista superior a 3,6 millones de euros, leonoticias de 3,1
+      millones en marzo de 2024 y la Junta de «cerca de 3 millones» en marzo de 2025. A ello se
+      suman 1,8 millones para la migración. No se registra ninguna como cifra única.
+    fuentes: [src-1, src-2, src-4]
+  - campo: ubicacion
+    descripcion: >-
+      El emplazamiento registrado es la nueva sede en construcción. Mientras dure la migración,
+      el equipamiento sigue en las instalaciones actuales del Campus de Vegazana, en el mismo
+      municipio. Las coordenadas son el centroide municipal de León.
+    fuentes: [src-3, src-osm]
+
+confianza: media
+ultima_verificacion: "2026-08-31"
+
+fuentes:
+  - id: src-1
+    url: "https://www.scayle.es/la-nueva-sede-de-scayle-en-marcha-2/"
+    titulo: "La nueva sede de Scayle, en marcha"
+    editor: "SCAYLE — Centro de Supercomputación de Castilla y León"
+    tipo: oficial
+    fecha_publicacion: "2023-12-11"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El centro de Supercomputación de Castilla y León contará una nueva sede donde la
+      Consejería de Movilidad y Transformación Digital tiene prevista una inversión superior a
+      los 3,6 millones de euros y donde ya se ha lanzado la licitación. Se construirá en la calle
+      Profesor Gaspar Morocho, junto al Centro Integrado de Formación Profesional Tecnológico
+      Industrial de León. El nuevo edificio albergará el centro de procesamiento de datos, el
+      supercomputador Caléndula y las oficinas necesarias para su gestión.
+  - id: src-2
+    url: "https://comunicacion.jcyl.es/web/jcyl/Comunicacion/es/Plantilla100Detalle/1284663638052/_/1285494321608/Comunicacion"
+    titulo: "Las obras de la nueva sede de Scayle concluirán en el último trimestre del 2025"
+    editor: "Junta de Castilla y León"
+    tipo: oficial
+    fecha_publicacion: "2025-03-03"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El consejero de Movilidad y Transformación Digital comprueba el avance de los trabajos que
+      cuentan con una inversión cercana a los 3 millones de euros.
+  - id: src-3
+    url: "https://www.lanuevacronica.com/actualidad/obras-en-ampliacion-scayle-entran-en-su-fase-final_192119_102.html"
+    titulo: "Las obras en la ampliación de Scayle entran en su fase final"
+    editor: "La Nueva Crónica"
+    tipo: prensa_general
+    fecha_publicacion: "2026-03-03"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Uno de los principales frentes abiertos en los trabajos es la migración de los servicios
+      del supercomputador Caléndula [...] Estado actual de las obras en la nueva sede de Scayle,
+      junto al Campus de Vegazana de la ULE.
+  - id: src-4
+    url: "https://cronicacastillayleon.es/el-centro-de-supercomputacion-de-castilla-y-leon-migrara-a-su-nueva-sede-en-2026-2027"
+    titulo: "El Centro de Supercomputación de Castilla y León migrará a su nueva sede en 2026-2027"
+    editor: "Crónica de Castilla y León"
+    tipo: prensa_general
+    fecha_publicacion: "2026-05-11"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El Centro de Supercomputación de Castilla y León (Scayle), con sede en León, estará
+      completamente operativo en su nueva ubicación entre finales de 2026 y principios de 2027.
+      [...] La inversión total en la migración asciende a 1,8 millones de euros.
+  - id: src-5
+    url: "https://www.scayle.es/infraestructuras/"
+    titulo: "Infraestructuras — SCAYLE"
+    editor: "SCAYLE — Centro de Supercomputación de Castilla y León"
+    tipo: oficial
+    fecha_publicacion: "2026-03-08"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Data Center y Salas IT. Las infraestructuras físicas del centro están diseñadas para
+      garantizar alta disponibilidad, eficiencia energética y seguridad operativa [...] Salas IT
+      especializadas [...] Racks de alta densidad [...] Alimentación redundante.
+  - id: src-osm
+    url: "https://nominatim.openstreetmap.org/search?q=Le%C3%B3n%2C+Castilla+y+Le%C3%B3n&format=json&limit=1"
+    titulo: "Nominatim — León, Castilla y León"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-08-31"
+    cita: "León, Castilla y León, España — lat 42.6341451, lon -5.9714151"

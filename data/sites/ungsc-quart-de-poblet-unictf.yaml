@@ -13,10 +13,11 @@ ubicacion:
   municipio: "Quart de Poblet"
   provincia: "Valencia"
   ccaa: "Comunitat Valenciana"
+  direccion: "Avinguda Comarques del País Valencià, 2, 46930 Quart de Poblet (área de servicio del aeropuerto de València)"
   lat: 39.4827
   lon: -0.4439
   precision: municipio
-  fuentes: [src-2]
+  fuentes: [src-2, src-3]
 
 estado: operativo
 estado_detalle: >-
@@ -24,24 +25,33 @@ estado_detalle: >-
   actúa como centro tecnológico gemelo de la base de Brindisi, garantizando continuidad de
   negocio y recuperación ante desastres de los servicios digitales de la ONU. El directorio
   del Observatorio Español de Data Centers lo clasifica como público/on-premise con
-  certificación Tier III.
-estado_fuentes: [src-1, src-2]
+  certificación Tier III, nivel que el propio UNGSC confirma para sus dos centros. El
+  modelo gemelo se puso a prueba durante la DANA del 29/10/2024: los servicios alojados en
+  València conmutaron automáticamente a Brindisi sin interrupción.
+estado_fuentes: [src-1, src-2, src-3, src-4]
 
 incertidumbres:
   - campo: potencia
     descripcion: >-
       No se publica potencia eléctrica ni superficie de sala. La ficha del Observatorio no
-      asigna MW.
-    fuentes: [src-2]
+      asigna MW, y la comunicación del propio UNGSC solo publica una magnitud energética:
+      que en 2025 los sistemas fotovoltaicos «de los dos emplazamientos» generaron unos
+      2,26 GWh y evitaron unas 541 toneladas de CO2. La cifra es conjunta de Brindisi y
+      València y no se reparte entre ambas, así que no se registra como generación asociada
+      a este emplazamiento.
+    fuentes: [src-2, src-4]
   - campo: ubicacion
     descripcion: >-
-      La web oficial de UNGSC sitúa la base en «Valencia» sin más precisión; el término
-      municipal exacto (Quart de Poblet) procede del directorio del Observatorio Español de
-      Data Centers.
+      La página general de bases de UNGSC sitúa la instalación en «Valencia» sin más
+      precisión, pero la página específica de la base publica la dirección postal completa
+      en Quart de Poblet, que coincide con el término municipal que asigna el directorio del
+      Observatorio Español de Data Centers. Las coordenadas siguen siendo de nivel
+      municipal: no se ha localizado la posición exacta del edificio de datos dentro del
+      recinto.
     fuentes: [src-1, src-2]
 
-confianza: baja
-ultima_verificacion: "2026-08-29"
+confianza: media
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -58,3 +68,18 @@ fuentes:
     tipo: otro
     fecha_consulta: "2026-08-29"
     cita: "United Nations | UN Global Service Centre | Quart de Poblet | Comunidad Valenciana | PUBLICO / ON PREMISE | Tier III | Operativo"
+  - id: src-3
+    url: "https://www.ungsc.org/valencia"
+    titulo: "UNGSC Base in Valencia"
+    editor: "United Nations Global Service Centre"
+    tipo: oficial
+    fecha_consulta: "2026-08-31"
+    cita: "Welcome to the UNGSC Base in Valencia! The Base is located at Avinguda Comarques del País Valencià, 2, 46930 Quart de Poblet, Valencia [...] The UNGSC Base in Valencia, formally known as the United Nations Information and Communications Technology Facility (UNICTF) is located in the Service Area of the Valencia Airport"
+  - id: src-4
+    url: "https://www.ungsc.org/news/twin-data-centres-how-ungsc-safeguards-continuity-critical-digital-services"
+    titulo: "Twin Data Centres: How UNGSC Safeguards Continuity of Critical Digital Services"
+    editor: "United Nations Global Service Centre"
+    tipo: oficial
+    fecha_publicacion: "2026-04-30"
+    fecha_consulta: "2026-08-31"
+    cita: "During this event, that design was tested in real conditions. Services were automatically and seamlessly failed over from Valencia to Brindisi. [...] The data centres are certified as Tier III, which means the facilities are designed so that planned maintenance can be carried out without shutting down services (\"concurrently maintainable\"). [...] In 2025, the photovoltaic systems at the two sites generated approximately 2.26 gigawatt-hours of clean electricity, avoiding around 541 metric tons of carbon dioxide emissions."

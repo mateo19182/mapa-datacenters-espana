@@ -4,7 +4,7 @@ alias:
   - "Centro de datos de Novagrid en Elche"
 tipo: campus
 operador: "Novagrid Hub"
-propietario: "Novagrid Hub"
+propietario: "Novagrid Hub, S.L. (Boxleo TIC, Roberna Inversiones e Ivcus Holding)"
 modelo: desconocido
 
 ubicacion:
@@ -25,8 +25,13 @@ estado_detalle: >-
   reparcelación del sector E-49, aprobada por el consejo de Pimesa el 16/07/2026 y pendiente
   de exposición pública; las obras de urbanización del sector se licitan por 37,5 millones
   con adjudicación esperada en el primer trimestre de 2027. Novagrid asume la urbanización
-  de su suelo.
-estado_fuentes: [src-1, src-2, src-3]
+  de su suelo. La sociedad se constituyó el 30/07/2025 en Pozuelo de Alarcón con un capital
+  social de 4.002 euros y objeto social de «promoción, desarrollo, implantación,
+  intermediación, construcción, operación y compraventa de centros de procesos de datos»;
+  sus accionistas son Boxleo TIC (patrimonial de Tino Fernández, presidente de Altia),
+  Roberna Inversiones e Ivcus Holding, administrada por Martín Costa, operating partner de
+  Macquarie.
+estado_fuentes: [src-1, src-2, src-3, src-4]
 
 conexion_electrica:
   subestacion: "Subestación eléctrica propia prevista por el promotor dentro del sector E-49"
@@ -43,19 +48,22 @@ incertidumbres:
     fuentes: [src-3]
   - campo: operador
     descripcion: >-
-      Las fuentes describen a Novagrid Hub como «dedicada a centros de gestión de datos» sin
-      aportar más información societaria. No consta si operará el centro o solo lo
-      promoverá («compañía encargada de construir el inmueble»).
-    fuentes: [src-1, src-3]
+      Economía Digital (16/04/2026) aporta el accionariado y el objeto social, pero sigue sin
+      constar si Novagrid Hub operará el centro o solo lo promoverá. La sociedad tiene
+      capital social de 4.002 euros, de modo que la financiación del proyecto no procederá
+      de recursos propios.
+    fuentes: [src-1, src-3, src-4]
   - campo: precio_suelo
     descripcion: >-
-      La oferta se publicó primero como 2,9 millones de euros (precio de tasación,
-      05/12/2025) y después como 3,6 millones en la clasificación de ofertas (13/01/2026).
-      No es una inversión del proyecto sino el precio del suelo.
-    fuentes: [src-1, src-2]
+      La oferta se publicó primero como 2,9 millones de euros (05/12/2025) y después como
+      3,6 millones en la clasificación de ofertas (13/01/2026). Economía Digital resuelve la
+      aparente contradicción: la oferta fue de 2,99 millones más IVA, «lo que elevará el
+      importe total por encima de los 3,6 millones de euros». No es una inversión del
+      proyecto sino el precio del suelo.
+    fuentes: [src-1, src-2, src-4]
 
 confianza: baja
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -82,3 +90,11 @@ fuentes:
     fecha_publicacion: "2026-07-16"
     fecha_consulta: "2026-08-29"
     cita: "En el caso del centro de datos, por ejemplo, el gerente del medio municipal, Antonio Martínez, añadía que dado que requerirá de un gran suministro eléctrico, ha ahorrado al proyecto de urbanización la instalación de centros de transformación, porque será suficiente la subestación eléctrica de la compañía."
+  - id: src-4
+    url: "https://www.economiadigital.es/galicia/empresas/tino-fernandez-altia-desembarca-negocio-centros-datos-macquarie.html"
+    titulo: "Tino Fernández (Altia) desembarca en el negocio de los centros de datos de la mano de Macquarie"
+    editor: "Economía Digital"
+    tipo: prensa_general
+    fecha_publicacion: "2026-04-16"
+    fecha_consulta: "2026-08-31"
+    cita: "Novagrid Hub se ha asegurado estos terrenos equivalentes a casi 15 campos de fútbol tras presentar una oferta por 2,99 millones de euros más IVA, lo que elevará el importe total por encima de los 3,6 millones de euros. [...] La firma fue constituida en el municipio madrileño de Pozuelo de Alarcón el pasado 30 de julio con un capital social de 4.002 euros. Su objeto social contempla la «promoción, desarrollo, implantación, intermediación, construcción, operación y compraventa de centros de procesos de datos». Como accionistas de esta empresa figuran tres sociedades. Se trata de la propia Boxleo TIC, la patrimonial con la que Tino Fernández controla el 80,91% de Altia; Roberna Inversiones, vinculada a Roberto Pérez; e Ivcus Holding, que tiene a Martín Costa como administrador único desde el pasado mes de julio."

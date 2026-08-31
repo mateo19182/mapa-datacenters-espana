@@ -1,0 +1,114 @@
+id: scranton-alcover-iberdata
+nombre: "Iberdata — Alcover (antigua papelera Iberboard Mill)"
+alias:
+  - "Iberdata"
+  - "Scranton Alcover"
+tipo: edificio
+operador: null
+propietario: "Scranton Enterprises"
+modelo: desconocido
+
+ubicacion:
+  municipio: "Alcover"
+  provincia: "Tarragona"
+  ccaa: "Cataluña"
+  direccion: "Terrenos de la antigua papelera Iberboard Mill, carretera de Salou a Ponts (C-14), Alcover (Alt Camp)"
+  lat: null
+  lon: null
+  precision: municipio
+  fuentes: [src-1, src-2]
+
+estado: anunciado
+estado_detalle: >-
+  Scranton Enterprises, accionista mayoritario de la quebrada Iberboard Mill, conserva los
+  terrenos de Alcover y proyecta reconvertir la fábrica en un centro de datos bajo la marca
+  Iberdata. Su consejero delegado describe dos fases: primero asegurar el suministro eléctrico
+  —negociación abierta con la eléctrica local— y después buscar un socio industrial que desarrolle
+  y explote la instalación, con la construcción a dos o tres años vista. No hay proyecto
+  presentado ni licencia.
+estado_fuentes: [src-1, src-2]
+
+potencia:
+  - tipo: conexion_red
+    valor_mw: 20
+    ambito: edificio
+    edificio: "Iberdata Alcover"
+    referencia: "Potencia que la promotora intenta asegurar; la fuente dice «más de 20 MW»"
+    estado_asociado: anunciado
+    fecha_dato: "2026-02-10"
+    fuentes: [src-1, src-2]
+    nota: >-
+      Es potencia en negociación, no concedida, y un mínimo declarado: 20 MW es además el umbral
+      a partir del cual la Generalitat puede considerar el proyecto de interés estratégico, lo que
+      resta valor a la cifra como dimensionamiento real de la instalación.
+
+conexion_electrica:
+  titular_red: null
+  mw_solicitados: 20
+  nota: >-
+    La compañía declara estar «intentando asegurar más de 20 MW» con la compañía eléctrica local.
+    No consta solicitud de acceso formalizada ni permiso concedido.
+  fuentes: [src-1]
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      La única cifra publicada son los «más de 20 MW» que la promotora negocia con la
+      distribuidora. No hay dimensionamiento de carga TI ni proyecto técnico. Un blog sectorial
+      (Kora Grup) repite «más de 20 MW» citando el mismo origen.
+    fuentes: [src-1, src-2]
+  - campo: ubicacion
+    descripcion: >-
+      La versión en español de DatacenterDynamics sitúa por error esta reconversión «en Igualada
+      (Barcelona)»; la prensa económica que cita al consejero delegado y la versión inglesa del
+      propio medio la ubican en Alcover (Alt Camp, Tarragona), que es donde estaba la planta de
+      Iberboard Mill. Se registra Alcover y se deja constancia del error para que no se propague.
+    fuentes: [src-1, src-2, src-3]
+  - campo: operador
+    descripcion: >-
+      No hay operador: Scranton es el propietario del suelo y declara estar buscando un socio
+      industrial que desarrolle y explote el centro.
+    fuentes: [src-1, src-2]
+
+confianza: baja
+ultima_verificacion: "2026-08-31"
+
+fuentes:
+  - id: src-1
+    url: "https://www.eleconomista.es/infraestructuras-servicios/noticias/13768631/02/26/scranton-construira-un-centro-de-datos-en-la-antigua-planta-de-iberboard-mill.html"
+    titulo: "Scranton construirá un centro de datos en la antigua planta de Iberboard Mill"
+    editor: "elEconomista.es"
+    tipo: prensa_general
+    fecha_publicacion: "2026-02-10"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Scranton Enterprises, accionista mayoritario de la compañía, mantiene los terrenos de Alcover
+      (Tarragona) ... El vehículo inversor ... ya tiene nombre para la infraestructura: Iberdata.
+      El consejero delegado del holding, Luca Tassan ... "Ya hemos empezado a hablar con la
+      compañía eléctrica local y estamos intentando asegurar más de 20 MW" ... "Estamos buscando
+      un socio para que desarrolle el data center" ... Al superar los 20 MW, Iberdata entra dentro
+      de la potencia mínima para ser considerada estratégica para el Ejecutivo catalán.
+  - id: src-2
+    url: "https://www.elnacional.cat/oneconomia/es/empresas/scranton-grifols-busca-socio-levantar-centro-datos-en-alcover_1550135_102.html"
+    titulo: "Scranton (Grifols) busca socio para levantar un centro de datos en Alcover"
+    editor: "El Nacional — On Economia"
+    tipo: prensa_general
+    fecha_publicacion: "2026-02-10"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      la planta industrial de Iberboard Mill en Alcover (Alt Camp) ha estado inactiva ... el grupo
+      ya proyecta el futuro de la ubicación bajo la marca Iberdata ... se han establecido contactos
+      con compañías del sector eléctrico para garantizar una capacidad inicial superior a los 20
+      megavatios. Esta cifra no es arbitraria, sino que representa el umbral mínimo para que el
+      Govern considere el proyecto de interés estratégico
+  - id: src-3
+    url: "https://www.datacenterdynamics.com/es/noticias/scranton-reconvierte-la-antigua-iberboard-mill-en-un-nuevo-centro-de-datos-en-igualada/"
+    titulo: "Scranton reconvierte la antigua Iberboard Mill en un nuevo centro de datos en Igualada"
+    editor: "DatacenterDynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-02-10"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Scranton levantará un nuevo centro de datos en los terrenos de la antigua papelera Iberboard
+      Mill ... La instalación, ubicada en Igualada (Barcelona), pasará de su pasado como fábrica
+      papelera a convertirse en un emplazamiento especializado en infraestructuras digitales

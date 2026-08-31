@@ -5,7 +5,7 @@ alias:
   - "Valle de los data centers del Mediterráneo"
 tipo: campus
 operador: "Digital Valley Comunitat Valenciana"
-propietario: "Digital Valley Comunitat Valenciana"
+propietario: "Digital Valley Spain (grupo Sales4U / Sales For You Consulting)"
 modelo: desconocido
 
 ubicacion:
@@ -23,8 +23,11 @@ estado_detalle: >-
   Picassent el 28/01/2025. A febrero de 2026 el proyecto seguía pendiente del permiso de
   acceso y conexión: el MITECO no había concedido la potencia solicitada y el promotor
   había presentado alegaciones. El plan de urbanización de las parcelas se definirá en la
-  fase siguiente. Puesta en servicio prevista por el promotor para 2028.
-estado_fuentes: [src-1, src-2]
+  fase siguiente. Puesta en servicio prevista por el promotor para 2028. En agosto de 2026,
+  al presentar un tercer campus en Salas (Asturias), El Comercio recogía que ninguno de los
+  dos proyectos anteriores de la promotora —San Sebastián de los Reyes (Madrid, 2023) y
+  Picassent— está aún en marcha.
+estado_fuentes: [src-1, src-2, src-6, src-7]
 
 potencia:
   - tipo: no_especificado
@@ -33,7 +36,7 @@ potencia:
     referencia: "Capacidad máxima del campus"
     estado_asociado: en_tramitacion
     fecha_dato: "2025-01-28"
-    fuentes: [src-1, src-2, src-3, src-4]
+    fuentes: [src-1, src-2, src-3, src-4, src-6]
     nota: >-
       Las fuentes hablan de «instalar una capacidad de 200 MW» / «capacidad máxima de
       200 MW» sin especificar si es carga TI o potencia de conexión.
@@ -65,6 +68,27 @@ refrigeracion: >-
   Circuito cerrado de climatización; el promotor prevé recuperar el calor residual para
   alimentar el centro penitenciario de Picassent.
 
+agua:
+  circuito: cerrado
+  sistema: "Circuito cerrado de climatización, según el promotor."
+  origen: null
+  nota: >-
+    No consta ninguna cifra de consumo de agua ni WUE en las fuentes consultadas, pese a
+    que el emplazamiento está a unos 2.800 metros del Parc Natural de l'Albufera y junto a
+    la Séquia Reial del Xúquer, y a que las entidades opositoras han hecho del consumo
+    hídrico el eje de sus alegaciones.
+  fuentes: [src-5, src-8]
+
+empleo:
+  - tipo: no_especificado
+    valor: 30000
+    referencia: "Anuncio del president de la Generalitat en la firma del acuerdo de intenciones"
+    fecha_dato: "2025-01-28"
+    fuentes: [src-6]
+    nota: >-
+      Cifra política anunciada sin desglose entre empleo de obra, directo e inducido, y sin
+      memoria pública que la sostenga. Se registra como anuncio, no como previsión validada.
+
 incertidumbres:
   - campo: inversion_anunciada_eur
     descripcion: >-
@@ -82,10 +106,32 @@ incertidumbres:
     descripcion: >-
       77,3 ha totales, de las que 37 ha se destinan a data centers (29 ha edificables) y
       11,2 ha son dotacionales. No se ha localizado la superficie construida de los CPD.
-    fuentes: [src-1, src-5]
+    fuentes: [src-1, src-5, src-6]
+  - campo: empleo
+    descripcion: >-
+      Los 30.000 empleos proceden de la nota de prensa de la Generalitat de enero de 2025 y
+      no se han desglosado nunca. El colectivo vecinal Juntes pel Territori los califica de
+      «mentida» comparándolos con la experiencia aragonesa. No hay memoria de empleo
+      publicada que permita contrastar la cifra.
+    fuentes: [src-6, src-8]
+  - campo: estado
+    descripcion: >-
+      A 31/08/2026 el índice público de Proyectos de Interés Autonómico de la Conselleria de
+      Medio Ambiente solo contiene cuatro expedientes (El Plantío Golf en Alicante, Armonia
+      Green Castellón, PLD Space en Elche y el data center El Lobo en Monforte del Cid);
+      Picassent no figura entre ellos. La ausencia en el índice no equivale a una denegación,
+      pero tampoco consta admisión a trámite pública del PIA de Digital Valley.
+    fuentes: [src-9]
+  - campo: inversion_anunciada_eur
+    descripcion: >-
+      La cifra de «casi 2.300 millones» reaparece en agosto de 2026 en El Comercio, junto a
+      la de 200 MW de capacidad, lo que consolida la existencia de dos cifras de inversión
+      en circulación (2.200 y 2.300 millones) sin que el promotor haya publicado una
+      memoria económica.
+    fuentes: [src-2, src-7]
 
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -127,3 +173,34 @@ fuentes:
     fecha_publicacion: "2026-04-20"
     fecha_consulta: "2026-08-29"
     cita: "Digital Valley Comunitat Valenciana se ubicará, según el proyecto, sobre una superficie de 77,3 hectáreas en el término municipal de Picassent. En la actuación están previstos espacios de data centers para la gestión y almacenamiento de datos que ocuparán 37 hectáreas, de las que 29 serán edificables"
+  - id: src-6
+    url: "https://comunica.gva.es/es/detalle?id=389502749&site=373409432"
+    titulo: "Carlos Mazón: «Digital Valley generará 30.000 empleos con una inversión superior a los 2.200 millones de euros»"
+    editor: "Generalitat Valenciana — Gabinete de prensa"
+    tipo: oficial
+    fecha_publicacion: "2025-01-28"
+    fecha_consulta: "2026-08-31"
+    cita: "Digital Valley Comunitat Valenciana se ubicará en el municipio de Picassent sobre una superficie de 77,3 hectáreas en el que se instalarán espacios de Data Centers de última tecnología para la gestión y el almacenamiento a gran escalada de datos que ocuparán 37 hectáreas de las cuales 29 serán edificables. [...] En materia energética, la actuación contempla instalar una capacidad de 200 MW para lo que se va a desarrollar una planta fotovoltaica y una central de generación de hidrógeno verde, entre otras medidas. Además, contará con una superficie de 11,2 hectáreas de carácter dotacional [...] «generará una inversión superior a los 2.200 millones de euros y la creación de 30.000 empleos»."
+  - id: src-7
+    url: "https://www.elcomercio.es/economia/campus-datos-salas-asturias-proyectos-hermanos-20260804193017-nt.html"
+    titulo: "Los proyectos 'hermanos' del futuro campus de datos de Salas"
+    editor: "El Comercio"
+    tipo: prensa_general
+    fecha_publicacion: "2026-08-05"
+    fecha_consulta: "2026-08-31"
+    cita: "La consultora Sales4U, a través de Digital Valley, ha anunciado en los últimos años dos instalaciones similares en Madrid y en Valencia, aunque ninguna está aún en marcha [...] A principios de 2025, la empresa también anunció, junto al expresidente de la Comunidad Valenciana, Carlos Mazón, otras instalaciones del estilo en la localidad de Picasent [...] con una inversión de casi 2.300 millones de euros y una capacidad de 200 MW. En su momento, los planes eran que a lo largo de 2028 pudieran estar operativas las primeras fases."
+  - id: src-8
+    url: "https://directa.cat/entitats-ecologistes-soposen-als-centres-de-dades-a-picassent/"
+    titulo: "Entitats ecologistes i veïnals s'oposen als centres de dades a Picassent: «30.000 llocs de treball? Sabem que és mentida»"
+    editor: "La Directa"
+    tipo: prensa_general
+    fecha_publicacion: "2026-02-19"
+    fecha_consulta: "2026-08-31"
+    cita: "Amb una inversió anunciada de més de 2.200 milions d'euros i la suposada creació de 30.000 llocs de treball [...] Carles Climent, membre de l'organització veïnal Juntes pel Territori, es mostra taxatiu davant aquestes xifres: «sabem que són mentida». [...] des de Juntes pel Territori es mostren preocupades per l'elecció d'un espai «a 2.800 metres del Parc Natural de l'Albufera i al costat de la Séquia Reial del Xúquer»."
+  - id: src-9
+    url: "https://mediambient.gva.es/auto/planes-accion-territorial/Proyectos%20Inter%C3%A9s%20Auton%C3%B3mico%20%28PIA%29/"
+    titulo: "Index of /auto/planes-accion-territorial/Proyectos Interés Autonómico (PIA)"
+    editor: "Generalitat Valenciana — Conselleria de Medi Ambient, Infraestructures i Territori"
+    tipo: oficial
+    fecha_consulta: "2026-08-31"
+    cita: "PIA Alicante - El Plantío Golf/ | PIA Castellón - Armonia Green Castellon/ | PIA Elche - PLD Space/ | PIA Monforte del Cid - El Lobo/"

@@ -18,25 +18,36 @@ ubicacion:
   precision: exacta
   fuentes: [src-1, src-2]
 
-estado: operativo
-estado_detalle: "Dos instalaciones en la misma dirección; Global Switch declara además 'advanced expansion plans' para el campus de Madrid."
-estado_fuentes: [src-1]
+estado: ampliacion_en_construccion
+estado_detalle: >-
+  Madrid 1 está en servicio: se construyó en el año 2000, tiene 12.000 m² y 14 MW, y arrastra
+  ampliaciones con mejoras previstas hasta 2027. Madrid 2 no está construido: las obras
+  arrancaron en agosto de 2026, con 24.000 m² y 56 MW, entrada en funcionamiento prevista en
+  2029 y plena capacidad en 2032, a cargo de la constructora EIGO Construcciones. Con los dos
+  edificios el campus declara 70 MW.
+estado_fuentes: [src-1, src-4]
 
 potencia:
   - tipo: no_especificado
     valor_mw: 14
     ambito: edificio
+    edificio: "Madrid 1"
     referencia: "Madrid 1"
     estado_asociado: operativo
-    fecha_dato: "2026-08-29"
-    fuentes: [src-1]
+    fecha_dato: "2026-08-17"
+    fuentes: [src-1, src-4]
   - tipo: no_especificado
     valor_mw: 56
     ambito: edificio
+    edificio: "Madrid 2"
     referencia: "Madrid 2"
-    estado_asociado: operativo
-    fecha_dato: "2026-08-29"
-    fuentes: [src-1]
+    estado_asociado: en_construccion
+    fecha_dato: "2026-08-17"
+    fuentes: [src-1, src-4]
+    nota: >-
+      La ficha comercial de Global Switch lista Madrid 2 junto a Madrid 1 sin distinguir su
+      estado; la crónica del inicio de obras, de agosto de 2026, aclara que el edificio está por
+      construir y prevé su entrada en servicio en 2029 y la plena capacidad en 2032.
   - tipo: no_especificado
     valor_mw: 18
     ambito: campus
@@ -44,15 +55,21 @@ potencia:
     estado_asociado: operativo
     fecha_dato: "2026-08-29"
     fuentes: [src-3]
-    nota: "Contradice la suma de las cifras publicadas por el propio operador."
+    nota: >-
+      Contradice la suma de las cifras publicadas por el propio operador. La fecha del dato es la
+      de consulta del directorio, no la del dato: el directorio no lo data.
 
 fases:
   - nombre: "Madrid 1"
     estado: operativo
-    fuentes: [src-1]
+    fecha_puesta_en_servicio: "2000"
+    superficie_m2: 12000
+    fuentes: [src-1, src-4]
   - nombre: "Madrid 2"
-    estado: operativo
-    fuentes: [src-1]
+    estado: en_construccion
+    fecha_puesta_en_servicio: "2029"
+    superficie_m2: 24000
+    fuentes: [src-4]
 
 refrigeracion: "Global Switch destaca 'low water consumption rates' y ofrece refrigeración líquida en su cartera."
 enlaces_proyecto:
@@ -67,12 +84,21 @@ incertidumbres:
     fuentes: [src-1, src-3]
   - campo: estado
     descripcion: >-
-      No se ha localizado fuente que aclare si los 56 MW de Madrid 2 están plenamente construidos
-      y energizados o si corresponden a la capacidad de diseño del edificio.
-    fuentes: [src-1]
+      La web de Global Switch presenta Madrid 1 y Madrid 2 en el mismo listado, sin decir que el
+      segundo está por construir. La cronología quedó clara en agosto de 2026 con el inicio de
+      las obras: los 56 MW de Madrid 2 son capacidad de diseño y no capacidad energizada, y no
+      llegarán completos hasta 2032.
+    fuentes: [src-1, src-4]
+  - campo: potencia
+    descripcion: >-
+      La cifra de 18 MW del directorio comercial no lleva fecha propia, de modo que no se puede
+      saber si es una lectura antigua de Madrid 1 o una atribución errónea al conjunto. Al
+      registrarse con la fecha de consulta, es la lectura de ámbito campus más reciente y domina
+      la agregación por delante de los 70 MW que declara el operador.
+    fuentes: [src-1, src-3, src-4]
 
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -96,3 +122,11 @@ fuentes:
     tipo: otro
     fecha_consulta: "2026-08-29"
     cita: "Madrid C. de Yécora, 4, San Blas-Canillejas, 28022 Madrid, Spain 18.00 MW"
+  - id: src-4
+    url: "https://www.datacenterdynamics.com/es/noticias/global-switch-inicia-las-obras-de-su-segundo-centro-de-datos-en-madrid/"
+    titulo: "Global Switch inicia las obras de su segundo centro de datos en Madrid"
+    editor: "DatacenterDynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-08-17"
+    fecha_consulta: "2026-08-31"
+    cita: "Han comenzado las obras del segundo centro de datos de Global Switch en Madrid, España ... La instalación de coubicación, de 24 000 m² (258 335 pies cuadrados), tendrá una capacidad de 56 MW ... Está previsto que el centro de datos entre en funcionamiento en 2029 y alcance su plena capacidad en 2032. La empresa constructora encargada del edificio es la española EIGO Construcciones. Las instalaciones existentes en el campus de centros de datos de Global Switch en Madrid, «Madrid 1», se construyeron en el año 2000 y, desde entonces, han sido objeto de ampliaciones, con mejoras previstas hasta 2027. Este centro de datos de coubicación, de 12 000 m² (129 165 pies cuadrados), tiene una capacidad de 14 MW ... el complejo de centros de datos de Global Switch en Madrid contará con una capacidad total de 70 MW."

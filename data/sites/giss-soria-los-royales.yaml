@@ -1,0 +1,138 @@
+id: giss-soria-los-royales
+nombre: "Centro de Proceso de Datos de la Seguridad Social — Soria (Los Royales)"
+alias:
+  - "CPD GISS Soria"
+  - "Centro de Procesamiento de Datos de la Gerencia de Informática de la Seguridad Social"
+tipo: edificio
+operador: "Gerencia de Informática de la Seguridad Social (GISS)"
+propietario: "Ministerio de Inclusión, Seguridad Social y Migraciones"
+cliente_ancla: null
+modelo: corporativo
+
+ubicacion:
+  municipio: "Soria"
+  provincia: "Soria"
+  ccaa: "Castilla y León"
+  direccion: "Barrio de Los Royales, sector SUR-D9, parcela municipal cedida al Ministerio"
+  lat: 41.6012505
+  lon: -2.7219380
+  precision: municipio
+  fuentes: [src-1, src-3, src-osm]
+
+estado: en_construccion
+estado_detalle: >-
+  Nueva sede del centro de proceso de datos de la Gerencia de Informática de la Seguridad
+  Social, que se traslada desde Madrid a Soria dentro del plan de deslocalización de
+  infraestructuras públicas. El Ayuntamiento de Soria cedió una parcela de 37.000 m² en Los
+  Royales; el Consejo de Ministros autorizó el contrato en noviembre de 2022 y las obras se
+  formalizaron en 2023 con la UTE de Grupo Cobra e Itercon, financiadas con fondos del Plan de
+  Recuperación, Transformación y Resiliencia. En mayo de 2026 la ejecución alcanzaba el 82 %,
+  con los trabajos centrados en urbanización, viales internos, fachada y cubierta. El plazo
+  inicial de 24 meses se ha superado y la puesta en marcha sigue sin fecha. El edificio tendrá
+  tres plantas, un sótano y 117 plazas de aparcamiento. La elección de Soria se justificó por
+  el clima —temperatura media anual en torno a 11 ºC, apta para free-cooling— y por la
+  disponibilidad de energía renovable en la provincia.
+estado_fuentes: [src-1, src-2, src-3]
+
+potencia: []
+
+superficie_parcela_m2: 37000
+inversion_anunciada_eur: 88470000
+refrigeracion: "El estudio de idoneidad se apoya en el aprovechamiento del aire exterior (free-cooling) por la temperatura media anual de la provincia."
+enlaces_proyecto:
+  - "https://www.boe.es/diario_boe/txt.php?id=BOE-B-2023-23394"
+
+empleo:
+  - tipo: directo
+    valor: 60
+    referencia: "Empleos previstos en el centro una vez en servicio"
+    fecha_dato: "2026-06"
+    fuentes: [src-1]
+    nota: "Las fuentes hablan de «unos 60 empleos» sin desglosar plantilla propia y contratas."
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      No hay ninguna cifra de potencia publicada en fuente primaria. El directorio del
+      Observatorio ECD atribuye 6 MW a esta instalación, pero no ha sido posible contrastarlo ni
+      con el expediente de contratación ni con la documentación del ministerio, así que el campo
+      queda vacío en lugar de registrar una cifra sin respaldo.
+    fuentes: [src-1]
+  - campo: inversion_anunciada_eur
+    descripcion: >-
+      Circulan tres cifras distintas: 73 millones autorizados por el Consejo de Ministros en
+      noviembre de 2022, 86 millones de adjudicación en julio de 2023 y 88,47 millones de
+      presupuesto base de licitación con impuestos incluidos, más dos modificados posteriores de
+      211.070 euros y 2,97 millones. Se registra el presupuesto base de licitación y se dejan
+      las demás aquí.
+    fuentes: [src-1, src-4]
+  - campo: fecha_puesta_en_servicio
+    descripcion: >-
+      El plazo inicial era de 24 meses desde 2023 y la finalización se anunció primero para
+      diciembre de 2025 y luego para el verano de 2026. A mayo de 2026 la obra estaba al 82 % y
+      la puesta en marcha seguía sin fecha.
+    fuentes: [src-1, src-2]
+  - campo: ubicacion
+    descripcion: >-
+      Consta el barrio (Los Royales, sector SUR-D9) pero no la dirección postal. Las coordenadas
+      son el centroide municipal de Soria.
+    fuentes: [src-3, src-osm]
+
+confianza: media
+ultima_verificacion: "2026-08-31"
+
+fuentes:
+  - id: src-1
+    url: "https://revistacloud.com/el-cpd-de-la-seguridad-social-en-soria-entra-en-la-fase-final-de-obras/"
+    titulo: "El CPD de la Seguridad Social en Soria entra en la fase final de obras"
+    editor: "Revista Cloud"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-06-25"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Las obras del futuro Centro de Procesamiento de Datos de la Seguridad Social en Soria han
+      alcanzado el 82 % de ejecución y entran ya en su tramo final. La infraestructura, situada
+      en el barrio de Los Royales [...] El proyecto, adjudicado en 2023 a la UTE formada por
+      Grupo Cobra e ITERCON, cuenta con un presupuesto base de licitación de 88,47 millones de
+      euros, impuestos incluidos [...] El complejo contará con tres plantas, un sótano y 117
+      plazas de aparcamiento. La previsión es que genere unos 60 empleos.
+  - id: src-2
+    url: "https://elmirondesoria.es/soria/capital/el-cpd-de-soria-ha-certificado-la-mitad-de-sus-obras-y-amplia-plazo-de-ejecucion"
+    titulo: "El CPD de Soria ha certificado la mitad de sus obras y amplia plazo de ejecución"
+    editor: "El Mirón de Soria"
+    tipo: prensa_general
+    fecha_publicacion: "2025-11-02"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Las obras del Centro de Procesamiento de Datos de la Seguridad Social de Soria no
+      finalizarán en diciembre de este año, como había anunciado el Gobierno, sino en el verano
+      de 2026. Su puesta en marcha sigue sin fecha.
+  - id: src-3
+    url: "https://revista.seg-social.es/-/el-futuro-cpd-de-la-seguridad-social-ya-cuenta-con-terreno-definitivo-en-soria"
+    titulo: "El futuro CPD de la Seguridad Social ya cuenta con terreno definitivo en Soria"
+    editor: "Revista de la Seguridad Social (Ministerio de Inclusión, Seguridad Social y Migraciones)"
+    tipo: oficial
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El Pleno del Ayuntamiento de Soria ha aprobado por unanimidad la cesión de una parcela de
+      37.000 metros cuadrados al Ministerio de Inclusión, Seguridad Social y Migraciones para la
+      construcción del Centro de Proceso de Datos (CPD) de la Seguridad Social que actualmente se
+      encuentra en Madrid. El solar está ubicado en el centro del SUR-D9.
+  - id: src-4
+    url: "https://www.boe.es/diario_boe/txt.php?id=BOE-B-2023-23394"
+    titulo: "Anuncio de formalización de contratos de: Gerencia de Informática de la Seguridad Social. Objeto: Obras de construcción de la nueva sede del Centro de Procesos de Datos para la Gerencia de Informática de la Seguridad Social. Expediente: 2022/7509"
+    editor: "Boletín Oficial del Estado"
+    tipo: oficial
+    fecha_publicacion: "2023"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Anuncio de formalización de contratos de: Gerencia de Informática de la Seguridad Social.
+      Objeto: Obras de construcción de la nueva sede del Centro de Procesos de Datos para la
+      Gerencia de Informática de la Seguridad Social. Expediente: 2022/7509.
+  - id: src-osm
+    url: "https://nominatim.openstreetmap.org/search?q=Soria%2C+Castilla+y+Le%C3%B3n&format=json&limit=1"
+    titulo: "Nominatim — Soria, Castilla y León"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-08-31"
+    cita: "Soria, Castilla y León, España — lat 41.6012505, lon -2.7219380"

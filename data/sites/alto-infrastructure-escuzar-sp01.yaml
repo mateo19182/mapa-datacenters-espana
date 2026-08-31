@@ -13,19 +13,20 @@ ubicacion:
   municipio: "Escúzar"
   provincia: "Granada"
   ccaa: "Andalucía"
-  direccion: "Ciudad Industrial, Tecnológica y de la Innovación (CITAI), Escúzar"
+  direccion: "Avenida de Incar, Ciudad Industrial, Tecnológica y de la Innovación (CITAI), 18130 Escúzar"
   lat: 37.0642
   lon: -3.7481
   precision: municipio
-  fuentes: [src-1, src-2]
+  fuentes: [src-1, src-2, src-4]
 
 estado: en_construccion
 estado_detalle: >-
-  Primera piedra colocada en junio de 2026 en el parque tecnológico CITAI de Escúzar. La empresa,
-  antes denominada Sierra DC, se renombró Alto Infrastructure. El campus se desarrolla en ocho fases
-  independientes hasta 2029.
-estado_fuentes: [src-2, src-3]
-fecha_puesta_en_servicio: "2027"
+  Primera piedra colocada el 25 de junio de 2026 en el parque tecnológico CITAI de Escúzar. La
+  empresa, antes denominada Sierra DC, se renombró Alto Infrastructure y tiene su oficina en
+  Benahavís (Málaga). El campus se desarrolla en fases hasta 2029 sobre 100.000 m², a unos 500
+  metros del futuro acelerador IFMIF-DONES. A 30 de agosto de 2026 es, junto al CPD de la Junta en
+  Sevilla, uno de los dos únicos centros de datos andaluces con obras en marcha.
+estado_fuentes: [src-2, src-3, src-4, src-5, src-7]
 
 potencia:
   - tipo: it
@@ -34,7 +35,7 @@ potencia:
     referencia: "Capacidad IT máxima del campus al completar las ocho fases"
     estado_asociado: en_construccion
     fecha_dato: "2026-06-29"
-    fuentes: [src-2, src-3]
+    fuentes: [src-2, src-3, src-4]
     nota: "«70 MW de potencia IT» al máximo de capacidad."
   - tipo: conexion_red
     valor_mw: 100
@@ -42,15 +43,19 @@ potencia:
     referencia: "Potencia redundante requerida por la instalación completa"
     estado_asociado: en_construccion
     fecha_dato: "2026-07-24"
-    fuentes: [src-1]
-    nota: "La fuente habla de «hasta 100 MW» de potencia redundante para la instalación completa."
+    fuentes: [src-1, src-5]
+    nota: >-
+      La fuente habla de «hasta 100 MW» de potencia redundante para la instalación completa. Granada
+      Hoy los describe como «100 megavatios de potencia brutos ya concedidos» y El Español como
+      «100 MW de potencia bruta»: las tres formulaciones apuntan al mismo dato, pero ninguna emplea
+      el lenguaje de un permiso de acceso.
   - tipo: it
     valor_mw: 10
     ambito: fase
     referencia: "Fase 1 — entrada en operación comercial"
     estado_asociado: en_construccion
     fecha_dato: "2026-07-01"
-    fuentes: [src-3]
+    fuentes: [src-3, src-4]
   - tipo: it
     valor_mw: 25
     ambito: fase
@@ -58,7 +63,7 @@ potencia:
     acumulado: true
     estado_asociado: en_construccion
     fecha_dato: "2026-07-01"
-    fuentes: [src-3]
+    fuentes: [src-3, src-4]
   - tipo: it
     valor_mw: 45
     ambito: fase
@@ -66,29 +71,78 @@ potencia:
     acumulado: true
     estado_asociado: en_construccion
     fecha_dato: "2026-07-01"
-    fuentes: [src-3]
+    fuentes: [src-3, src-4]
+  - tipo: instalada_total
+    valor_mw: 15
+    ambito: fase
+    referencia: "Fase 1 — potencia bruta"
+    estado_asociado: en_construccion
+    fecha_dato: "2026-06-25"
+    fuentes: [src-5]
+    nota: >-
+      Granada Hoy contrapone en la misma frase «una potencia de 15 megavatios brutos y 10 de potencia
+      informática» para la primera fase. Es la única fuente que publica la potencia bruta de la fase.
 
 fases:
   - nombre: "Fase 1"
     estado: en_construccion
     fecha_puesta_en_servicio: "2027-06"
     fuentes: [src-1, src-3]
+  - nombre: "Fase Ia — 10 MW IT (RFS)"
+    estado: en_construccion
+    fecha_puesta_en_servicio: "2027"
+    fuentes: [src-4]
+  - nombre: "Fase Ib — 25 MW IT acumulados"
+    estado: en_construccion
+    fecha_puesta_en_servicio: "2027"
+    fuentes: [src-4]
   - nombre: "Desarrollo completo (ocho fases)"
     estado: en_construccion
     fecha_puesta_en_servicio: "2029"
-    fuentes: [src-2, src-3]
+    fuentes: [src-2, src-3, src-4]
 
 conexion_electrica:
   subestacion: "SE Escúzar 132/66/20 kV (ampliación) y nueva subestación 220/132 kV"
   tension_kv: 220
   titular_red: "Red Eléctrica de España / Cuerva (distribución)"
-  fuentes: [src-1]
+  mw_concedidos: 100
+  nota: >-
+    Cuerva desarrollará la infraestructura eléctrica: ampliación de la SE Escúzar 132/66/20 kV para
+    la primera fase y, después, una nueva subestación 220/132 kV conectada a la red de transporte que
+    dé un segundo punto de alimentación independiente. Granada Hoy afirma que el proyecto «cuenta con
+    100 megavatios de potencia brutos ya concedidos»; no se ha localizado la resolución de acceso y
+    conexión que lo acredite.
+  fuentes: [src-1, src-5, src-6]
 
 superficie_parcela_m2: 100000
 inversion_anunciada_eur: 3000000000
 refrigeracion: >-
   Circuito cerrado con consumo de agua «prácticamente cero»; refrigeración híbrida por aire
   preparada para líquido, según el operador.
+
+agua:
+  circuito: cerrado
+  sistema: >-
+    Refrigeración líquida en circuito cerrado, híbrida aire-líquido, declarada «WUE neutral» por el
+    operador.
+  origen: null
+  wue_l_kwh: 0.0013
+  nota: >-
+    La cifra de WUE la publica el propio operador en su web junto al PUE de diseño de 1,29. Granada
+    Hoy habla de consumo de agua «prácticamente nulo». No hay expediente ambiental publicado que
+    cuantifique el consumo.
+  fuentes: [src-4, src-5, src-6]
+
+empleo:
+  - tipo: directo
+    valor: 150
+    referencia: "Campus a pleno rendimiento"
+    fecha_dato: "2026-06-25"
+    fuentes: [src-5]
+    nota: >-
+      La compañía multiplica esa cifra por cuatro para estimar el empleo indirecto, pero la fuente no
+      publica el resultado, así que no se registra.
+
 enlaces_proyecto:
   - "https://altoinfrastructure.com/"
 
@@ -98,17 +152,31 @@ incertidumbres:
       Las fuentes distinguen «inversión inducida total de hasta 3.000 millones de euros» del coste
       de la infraestructura de centro de datos, cifrado en «aproximadamente 700 millones».
       Se registra la cifra mayor como inversión anunciada, pero no son magnitudes equivalentes.
-    fuentes: [src-1, src-2]
+      Ideal cifró además en «mil millones» la inversión de la compañía el día de la primera piedra.
+    fuentes: [src-1, src-2, src-5]
   - campo: conexion_electrica
     descripcion: >-
-      Smart Grids Info describe la ampliación de la SE Escúzar 132/66/20 kV más una nueva
-      subestación 220/132 kV conectada a Red Eléctrica. Revista Cloud, en cambio, resume la
-      conexión eléctrica como «130 kV con subestación propia». No se ha localizado el expediente
-      de acceso y conexión que resuelva la discrepancia.
-    fuentes: [src-1, src-3]
+      Smart Grids Info y Data Center Dynamics describen la ampliación de la SE Escúzar 132/66/20 kV
+      más una nueva subestación 220/132 kV conectada a Red Eléctrica; el propio operador anuncia en
+      su web una «direct 130 kV grid connection» con subestación propia, igual que Revista Cloud.
+      No se ha localizado el expediente de acceso y conexión que resuelva si la tensión de conexión
+      es 132 kV (denominada 130 kV comercialmente) o 220 kV.
+    fuentes: [src-1, src-3, src-4, src-6]
+  - campo: potencia
+    descripcion: >-
+      Los 100 MW se describen como «potencia redundante» (Smart Grids Info), «potencia bruta»
+      (El Español) y «potencia brutos ya concedidos» (Granada Hoy). Se registran como potencia de
+      conexión por ser la lectura mayoritaria, pero ninguna fuente cita una resolución de acceso.
+    fuentes: [src-1, src-5]
+  - campo: refrigeracion
+    descripcion: >-
+      La densidad por rack difiere: el operador anuncia «120+ kW per rack» con refrigeración híbrida
+      preparada para líquido y Granada Hoy atribuye a la compañía «refrigeración líquida directa al
+      chip de hasta 250 kilovatios por rack».
+    fuentes: [src-4, src-5]
 
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -134,3 +202,53 @@ fuentes:
     tipo: prensa_especializada
     fecha_consulta: "2026-08-29"
     cita: "Hybrid, air and prepared for liquid"
+  - id: src-4
+    url: "https://altoinfrastructure.com/"
+    titulo: "Alto Infrastructure — AI-Ready Data Centers in Southern Europe"
+    editor: "Alto Infrastructure"
+    tipo: empresa
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      SP01 Escúzar Granada 37.10°N 70 MW Full Build 1.29 Design PUE Q3 2027 Phase Ia RFS [...] A
+      greenfield campus with direct 130 kV grid connection and sub-8 ms latency to Madrid. 10 MW IT
+      online at Q3 2027 RFS, scaling to 25 MW by Q4 2027 and 70 MW at full build [...] 120+ kW per
+      rack with hybrid air and liquid-ready cooling [...] 1.29 Design PUE 0.0013 L/kWh Water Use
+      Effectiveness [...] 2029 Phase II and III — 70 MW IT full campus (+45 MW IT in two datablocks)
+      [...] Campus Avenida de Incar, 18130 Escúzar, Granada, Spain
+  - id: src-5
+    url: "https://www.granadahoy.com/granada/primera-piedra-futuro-macrocentro-datos-ia-escuzar-3-000-millones-euros_0_2007187729.html"
+    titulo: "Primera piedra del futuro macrocentro de datos para IA de Escúzar, que movilizará 3.000 millones de euros potenciales"
+    editor: "Granada Hoy"
+    tipo: prensa_general
+    fecha_publicacion: "2026-06-25"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      estima que a pleno rendimiento dé trabajo directo a 150 personas [...] entrará en funcionamiento
+      en su primera fase en verano de 2027 con una potencia de 15 megavatios brutos y 10 de potencia
+      informática [...] el proyecto SP01 cuenta con 100 megavatios de potencia brutos ya concedidos
+      [...] consumo de agua "prácticamente nulo" [...] "refrigeración líquida directa al chip" de
+      hasta 250 kilovatios por rack
+  - id: src-6
+    url: "https://www.datacenterdynamics.com/es/noticias/el-campus-sp01-avanza-con-un-acuerdo-para-su-infraestructura-energ%C3%A9tica/"
+    titulo: "El campus SP01 avanza con un acuerdo para su infraestructura energética"
+    editor: "Data Center Dynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-07-08"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      el desarrollo contempla una ampliación de la subestación de Escúzar 132/66/20 kV, que permitirá
+      atender la primera fase del campus. Posteriormente, está prevista la construcción de una nueva
+      subestación de 220/132 kV conectada a la red de transporte de Red Eléctrica [...] incorporará
+      sistemas de refrigeración líquida en circuito cerrado, diseñados para minimizar el consumo de
+      agua durante la operación.
+  - id: src-7
+    url: "https://www.economiadigital.es/andalucia/empresas/meridian-edge-mode-elmya-asi-futuros-centros-datos-andaluces-afectados-normativa-gobierno.html"
+    titulo: "Meridian, Edge Mode o Elmya: así son los futuros centros de datos andaluces afectados por la normativa del Gobierno"
+    editor: "Economía Digital"
+    tipo: prensa_general
+    fecha_publicacion: "2026-08-30"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      En Granada sí se está construyendo el SP01, promovido por Alto Infrastructure con la
+      participación de la compañía granadina Cuerva [...] la empresa espera abrir su primera parte en
+      2027 y terminar el complejo en 2029, cuando tendrá 100 MW de potencia total.

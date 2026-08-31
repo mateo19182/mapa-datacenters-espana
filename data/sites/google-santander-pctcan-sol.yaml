@@ -20,21 +20,29 @@ ubicacion:
 
 estado: anunciado
 estado_detalle: >-
-  Google adquirió en mayo de 2026 a la Sociedad Gestora del PCTCAN una parcela de
-  5.907,72 m² para construir una estación de entronque o centro de transmisión de
-  datos vinculado al cable submarino de fibra óptica Sol, que conectará Cantabria
-  con Estados Unidos (Florida), Bermudas y Azores. No es un centro de datos de
-  colocación: es infraestructura de aterraje y transmisión.
-estado_fuentes: [src-1]
+  La Sociedad Gestora del PCTCAN, dependiente de la Consejería de Industria, Empleo,
+  Innovación y Comercio del Gobierno de Cantabria, formalizó en mayo de 2026 la venta
+  a Google de una parcela de 5.907,72 m² para instalar una estación de entronque o
+  centro de transmisión de datos vinculado al cable submarino de fibra óptica Sol,
+  que conectará desde Cantabria Europa con Estados Unidos, las islas Bermudas y las
+  Azores, y será el primer cable de fibra óptica con conexión directa en servicio
+  entre Europa y Florida. Con esta venta el PCTCAN alcanza el 99% de ocupación de sus
+  240.000 m². No es un centro de datos de colocación: es infraestructura de aterraje
+  y transmisión.
+estado_fuentes: [src-1, src-2]
 
 superficie_parcela_m2: 5907
 
-enlaces_proyecto: []
+enlaces_proyecto:
+  - "https://www.pctcan.es/buruaga-anuncia-la-compra-por-parte-de-google-de-una-parcela-en-el-pctcan-para-construir-un-centro-de-transmision-de-datos-vinculado-al-cable-submarino-sol/"
 
 incertidumbres:
   - campo: potencia
-    descripcion: "No consta potencia eléctrica en ninguna fuente consultada. Campo omitido."
-    fuentes: [src-1]
+    descripcion: >-
+      No consta potencia eléctrica en ninguna fuente consultada, incluida la nota
+      oficial de la Sociedad Gestora del PCTCAN. Tampoco consta superficie construida,
+      inversión, calendario de obra ni empleo. Campo omitido.
+    fuentes: [src-1, src-2]
   - campo: tipo
     descripcion: >-
       Inclusión discutible en un inventario de CPD: es una estación de entronque de
@@ -43,10 +51,10 @@ incertidumbres:
     fuentes: [src-1]
   - campo: superficie_parcela_m2
     descripcion: "La fuente da 5.907,72 m²; se redondea a la unidad."
-    fuentes: [src-1]
+    fuentes: [src-1, src-2]
 
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -57,3 +65,20 @@ fuentes:
     fecha_publicacion: "2026-05-06"
     fecha_consulta: "2026-08-29"
     cita: "5.907,72 metros cuadrados"
+  - id: src-2
+    url: "https://www.pctcan.es/buruaga-anuncia-la-compra-por-parte-de-google-de-una-parcela-en-el-pctcan-para-construir-un-centro-de-transmision-de-datos-vinculado-al-cable-submarino-sol/"
+    titulo: "Buruaga anuncia la compra por parte de Google de una parcela en el PCTCAN para construir un centro de transmisión de datos vinculado al cable submarino SOL"
+    editor: "Parque Científico y Tecnológico de Cantabria (PCTCAN) — Gobierno de Cantabria"
+    tipo: oficial
+    fecha_publicacion: "2026-05-06"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      La Sociedad Gestora del Parque Científico y Tecnológico de Cantabria (PCTCAN),
+      dependiente de la Consejería de Industria, Empleo, Innovación y Comercio del
+      Gobierno de Cantabria, ha formalizado la venta a Google de una parcela de
+      5.907,72 metros cuadrados para la instalación de una estación de entronque o
+      centro de transmisión de datos vinculado al proyecto SOL. Se trata de un cable
+      submarino transatlántico que conectará, desde Cantabria, Europa con Estados
+      Unidos, las islas Bermudas y las Azores [...] Con la venta de esta parcela y de
+      sus edificios de oficinas [...] el PCTCAN alcanza una ocupación del 99% de su
+      superficie total (240.000 metros cuadrados).

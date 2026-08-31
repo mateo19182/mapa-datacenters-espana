@@ -19,10 +19,14 @@ ubicacion:
 
 estado: anunciado
 estado_detalle: >-
-  Proyecto promovido por Grupo VDR con diseño técnico liderado por Quark (Grupo
-  Sener). Desarrollo previsto entre 2027 y 2029. No se ha localizado a agosto de
-  2026 la resolución de aprobación del planeamiento.
-estado_fuentes: [src-sener]
+  Proyecto promovido por Grupo VDR e impulsado por la consultora Colliers, con diseño
+  técnico liderado por Quark (Grupo Sener). Consta de cuatro edificios sobre terrenos
+  ya urbanizados del polígono de Gazólaz, con acceso directo a la A-12 y a menos de
+  1,5 km de la A-15. Desarrollo previsto entre 2027 y 2029, con puesta en servicio en
+  2029. La aprobación del planeamiento se esperaba entre finales de 2025 y principios
+  de 2026; no se ha localizado a agosto de 2026 la resolución. No se ha identificado
+  públicamente el usuario final.
+estado_fuentes: [src-sener, src-ndn, src-dcd]
 
 potencia:
   - tipo: instalada_total
@@ -34,38 +38,121 @@ potencia:
     fuentes: [src-sener]
     nota: >-
       La nota de Sener dice "300 MW installed capacity"; no se precisa el reparto
-      entre carga TI y resto.
+      entre carga TI y resto. Noticias de Navarra lo describe como «una potencia
+      eléctrica de 300 MW» cuando esté en pleno funcionamiento, en 2029.
+  - tipo: instalada_total
+    valor_mw: 50
+    ambito: edificio
+    edificio: "Edificio 1 (fase 1)"
+    referencia: "Primer edificio, de varias plantas con salas técnicas"
+    estado_asociado: anunciado
+    fecha_dato: "2025-06-23"
+    fuentes: [src-ndn]
+    nota: >-
+      «En la primera fase [...] se construirá un edificio de varias plantas con salas
+      técnicas que permitirán albergar un centro de datos de 50 MW de potencia
+      eléctrica de capacidad total».
+  - tipo: instalada_total
+    valor_mw: 100
+    ambito: edificio
+    edificio: "Edificio 2"
+    referencia: "Uno de los tres edificios similares de fases posteriores"
+    estado_asociado: anunciado
+    fecha_dato: "2025-06-23"
+    fuentes: [src-ndn]
+    nota: null
+  - tipo: instalada_total
+    valor_mw: 100
+    ambito: edificio
+    edificio: "Edificio 3"
+    referencia: "Uno de los tres edificios similares de fases posteriores"
+    estado_asociado: anunciado
+    fecha_dato: "2025-06-23"
+    fuentes: [src-ndn]
+    nota: null
+  - tipo: instalada_total
+    valor_mw: 100
+    ambito: edificio
+    edificio: "Edificio 4"
+    referencia: "Uno de los tres edificios similares de fases posteriores"
+    estado_asociado: anunciado
+    fecha_dato: "2025-06-23"
+    fuentes: [src-ndn]
+    nota: null
 
 fases:
-  - nombre: "Desarrollo por fases 2027-2029"
+  - nombre: "Fase 1 — un edificio de 50 MW"
     estado: anunciado
     fecha_puesta_en_servicio: "2027"
-    fuentes: [src-sener]
+    fuentes: [src-sener, src-ndn]
+  - nombre: "Fases siguientes — tres edificios de 100 MW cada uno"
+    estado: anunciado
+    fecha_puesta_en_servicio: "2029"
+    fuentes: [src-ndn]
 
+conexion_electrica:
+  subestacion: "SE Orkoien (nueva posición de 220 kV), a unos tres kilómetros del campus"
+  tension_kv: 220
+  titular_red: null
+  mw_solicitados: null
+  mw_concedidos: null
+  nota: >-
+    Noticias de Navarra indica que «se está solicitando el acceso y conexión a la
+    potencia final desde una nueva posición 220 KV en la subestación de Orkoien a
+    tres kilómetros del Campus Data Navarra, pendientes de ser incluidos y
+    posteriormente concedidos en el marco de la nueva planificación eléctrica
+    2025-2030». La fuente no cifra los MW solicitados, de modo que el campo queda
+    vacío: los 300 MW son la potencia que el campus requiere, no una cifra de
+    solicitud publicada.
+  fuentes: [src-ndn]
+
+superficie_parcela_m2: 200000
 inversion_anunciada_eur: 3300000000
+
+empleo:
+  - tipo: total
+    valor: 2600
+    referencia: "Directos e indirectos, construcción y operación"
+    fecha_dato: "2025-06-23"
+    fuentes: [src-ndn]
+    nota: >-
+      «2.600 empleos de calidad directos e indirectos durante su fase de construcción
+      y operación, según estimaciones del sector». No es una previsión del promotor
+      desglosada ni verificada.
 
 incertidumbres:
   - campo: potencia
     descripcion: >-
-      Fuentes secundarias describen un reparto de una primera fase de 50 MW y
-      tres edificios adicionales de 100 MW cada uno (total 350 MW), que no cuadra
-      con los 300 MW de capacidad instalada de la nota del diseñador técnico. No
-      se ha podido resolver.
-    fuentes: [src-sener]
+      El reparto por edificios y el total no cuadran, y la contradicción está dentro
+      de una misma fuente: Noticias de Navarra describe una primera fase de 50 MW y
+      tres edificios adicionales de 100 MW cada uno (350 MW en total) y, dos párrafos
+      después, afirma que «cuando esté en pleno funcionamiento, en 2029, requerirá
+      una potencia eléctrica de 300 MW», que es también la cifra de Sener y de DCD.
+      Se conservan ambas lecturas: la cifra de campus manda sobre la suma.
+    fuentes: [src-sener, src-ndn, src-dcd]
+  - campo: superficie_parcela_m2
+    descripcion: >-
+      Las fuentes dicen que los cuatro edificios «en total, ocuparán una superficie de
+      200.000 m2», sin aclarar si es superficie de parcela o construida. Se registra
+      como superficie de parcela por ser la lectura más conservadora.
+    fuentes: [src-ndn, src-dcd]
   - campo: conexion_electrica
     descripcion: >-
-      Se cita el acceso a una subestación de 220 kV en Orkoien como ventaja del
-      emplazamiento, pero no se ha podido verificar en fuente primaria ni consta
-      potencia de acceso solicitada o concedida.
-    fuentes: [src-sener]
+      La solicitud de acceso a una nueva posición de 220 kV en la subestación de
+      Orkoien está descrita por la prensa navarra, pero no se ha localizado ni la
+      solicitud ni la resolución en fuente primaria, ni consta la potencia de acceso
+      solicitada o concedida. La propia fuente advierte de que la inclusión depende de
+      la planificación eléctrica 2025-2030.
+    fuentes: [src-ndn]
   - campo: estado
     descripcion: >-
-      La aprobación del planeamiento se esperaba entre finales de 2025 y
-      principios de 2026; no se ha localizado la resolución.
-    fuentes: [src-sener]
+      La aprobación del planeamiento se esperaba entre finales de 2025 y principios de
+      2026; no se ha localizado la resolución en el Boletín Oficial de Navarra ni en
+      los portales del Gobierno foral o de la Cendea de Cizur.
+    fuentes: [src-sener, src-dcd]
 
-confianza: baja
-ultima_verificacion: "2026-08-29"
+confianza: media
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-sener
@@ -86,3 +173,41 @@ fuentes:
     cita: >-
       Gazólaz, Cizur, Iruñerria, Navarra, Navarra / Nafarroa, España — lat
       42.7916465, lon -1.7175431
+  - id: src-ndn
+    url: "https://www.noticiasdenavarra.com/economia/2025/06/23/campus-data-navarra-mayor-centro-9794846.html"
+    titulo: "Campus Data Navarra: el mayor centro de datos del norte promete 2.600 empleos"
+    editor: "Diario de Noticias de Navarra"
+    tipo: prensa_general
+    fecha_publicacion: "2025-06-23"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Su puesta en servicio sería en 2029 / El proyecto consta de cuatro edificios que
+      ocuparían una superficie de 200.000 m2 y requeriría una capacidad total de 300MW
+      de potencia eléctrica [...] supondría la creación de un total de 2.600 empleos
+      de calidad directos e indirectos durante su fase de construcción y operación,
+      según estimaciones del sector [...] En la primera fase, y con el fin de
+      optimizar el suministro de energía, se construirá un edificio de varias plantas
+      con salas técnicas que permitirán albergar un centro de datos de 50 MW de
+      potencia eléctrica de capacidad total. En las siguientes fases, se ejecutarían
+      tres edificios similares con una capacidad de 100 MW de potencia eléctrica cada
+      uno. Cuando esté en pleno funcionamiento, en 2029, requerirá una potencia
+      eléctrica de 300 MW [...] También se está solicitando el acceso y conexión a la
+      potencia final desde una nueva posición 220 KV en la subestación de Orkoien a
+      tres kilómetros del Campus Data Navarra, pendientes de ser incluidos y
+      posteriormente concedidos en el marco de la nueva planificación eléctrica
+      2025-2030.
+  - id: src-dcd
+    url: "https://www.datacenterdynamics.com/en/news/300mw-data-center-campus-planned-outside-pamplona-spain/"
+    titulo: "300MW data center campus planned outside Pamplona, Spain"
+    editor: "DataCenterDynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2025-06-24"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Spanish construction firm VDR Group and Colliers have filed to develop a campus
+      on the Gazólaz industrial estate in Cendea de Cizur, Navarre. The four buildings
+      will reportedly total 200,000 sqm [...] Planning approval for this project is
+      expected to arrive between late 2025 and early 2026. The €3.3 billion ($3.83bn)
+      project will be developed in phases from 2027 through to 2029 and offer 300MW at
+      full build-out [...] Further details, including an intended end user, are yet to
+      be shared.

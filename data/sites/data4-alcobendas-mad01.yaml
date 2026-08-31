@@ -33,6 +33,18 @@ potencia:
     fecha_dato: "2026-08-29"
     fuentes: [src-1]
     nota: "La ficha de DATA4 indica '50 MW' para MAD01 sin especificar si es carga TI o potencia total."
+  - tipo: it
+    valor_mw: 50
+    ambito: campus
+    referencia: "Potencia IT de MAD01 según la ingeniería que ejecutó las instalaciones"
+    estado_asociado: operativo
+    fecha_dato: "2024"
+    fuentes: [src-4]
+    nota: >-
+      DConcept, que hizo la dirección técnica y las instalaciones MEP del proyecto en 2024,
+      encabeza su ficha con «Potencia IT: 50 MW». Es la misma cifra que DATA4 publica sin
+      tipificar, ahora atribuida a carga TI por un tercero que trabajó en la obra. Se registra
+      como lectura tipificada del mismo número, no como capacidad adicional.
   - tipo: conexion_red
     valor_mw: 20
     ambito: campus
@@ -67,9 +79,19 @@ incertidumbres:
   - campo: potencia
     descripcion: >-
       DATA4 anuncia "Importantes reservas eléctricas (100 MW)" para España y 50 MW para MAD01,
-      pero simultáneamente describe una acometida de 20 MW más dos respaldos de 10 MW. No queda
-      claro si los 50 MW son capacidad contratada, potencia TI o reserva futura.
-    fuentes: [src-1]
+      pero simultáneamente describe una acometida de 20 MW más dos respaldos de 10 MW. La
+      ingeniería que ejecutó las instalaciones llama a esos 50 MW «Potencia IT», lo que agrava la
+      distancia con los 20 MW de acometida: no hay fuente que explique cómo se sirven 50 MW de
+      carga TI con una acometida principal de 20 MW y dos respaldos de 10 MW.
+    fuentes: [src-1, src-4]
+  - campo: potencia
+    descripcion: >-
+      La misma ingeniería publica dos fichas con idéntico título, «DATA4 – MAD01, Alcobendas,
+      Madrid»: una atribuye 50 MW de potencia IT con DATA4 como promotor, y otra 14 MW de
+      potencia IT con Digital Realty como promotor. Podría tratarse de dos encargos distintos mal
+      etiquetados —Digital Realty no opera en Alcobendas sino en Julián Camarillo— pero no hay
+      forma de resolverlo con lo publicado, así que la cifra de 14 MW no se registra.
+    fuentes: [src-4, src-5]
   - campo: fases
     descripcion: >-
       Prensa especializada indicó en 2023 que el campus de Alcobendas albergaría seis edificios
@@ -78,7 +100,7 @@ incertidumbres:
     fuentes: [src-1, src-3]
 
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -103,3 +125,17 @@ fuentes:
     fecha_publicacion: "2023-04-26"
     fecha_consulta: "2026-08-29"
     cita: "el actual de Alcobendas, que sigue en fase de crecimiento y construcción de un nuevo edificio- está más pensado para el colocation de empresas"
+  - id: src-4
+    url: "https://dconceptgroup.com/portfolio_page/data4-mad01-alcobendas-madrid/"
+    titulo: "DATA4 – MAD01, Alcobendas, Madrid"
+    editor: "DConcept"
+    tipo: empresa
+    fecha_consulta: "2026-08-31"
+    cita: "DATA4 – MAD01, Alcobendas, Madrid Potencia IT: 50 MW Detalles del proyecto: - Promotor: DATA4 - País: España - Año: 2024 - Cliente: CAP DC - Constructora: Vertiv ... Ejecución de Instalaciones MEP (Ensamblaje mecánico y eléctrico de las UPS, Cableado eléctrico, Baterías de plomo, Cuadros eléctricos y Sistema de monitorización de baterías, Cableado de comunicaciones)"
+  - id: src-5
+    url: "https://dconceptgroup.com/portfolio_page/data4-mad01-alcobendas-madrid-2/"
+    titulo: "DATA4 – MAD01, Alcobendas, Madrid"
+    editor: "DConcept"
+    tipo: empresa
+    fecha_consulta: "2026-08-31"
+    cita: "DATA4 – MAD01, Alcobendas, Madrid Potencia IT: 14 MW Detalles del proyecto: - Promotor: Digital Realty - País: España - Año: 2024 - Cliente: WSP Spain - Constructora: Mercury"

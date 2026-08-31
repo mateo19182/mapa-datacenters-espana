@@ -26,8 +26,11 @@ estado_detalle: >-
   en marzo de 2025. Es el primero de los dos centros del proyecto ADI; el segundo
   se construye en Arrasate (ficha adi-arrasate-garaia). En enero de 2026 la prensa
   económica vasca lo describe como «centro de datos activo en Abanto con una
-  capacidad de 2MW».
-estado_fuentes: [src-1, src-2, src-4]
+  capacidad de 2MW». El Gobierno Vasco concedió a Data Center Euskadi, S.L. la
+  autorización ambiental única (expediente AAU01497), solicitada el 13 de octubre de
+  2025, que describe el inmueble como centro de datos de colocación con planta
+  primera destinada a espacio IT y equipos de climatización en cubierta.
+estado_fuentes: [src-1, src-2, src-4, src-5, src-6]
 
 potencia:
   - tipo: no_especificado
@@ -39,12 +42,52 @@ potencia:
     fuentes: [src-4]
     nota: >-
       La fuente dice «un centro de datos activo en Abanto con una capacidad de 2MW»,
-      sin precisar si es carga TI, potencia instalada o potencia de conexión.
+      sin precisar si es carga TI, potencia instalada o potencia de conexión. El
+      Parque Tecnológico Garaia y Crónica Vasca coinciden en la misma cifra, también
+      sin tipificarla. La autorización ambiental única no publica ninguna potencia
+      eléctrica del centro.
+  - tipo: termica_respaldo
+    valor_mw: 4.56
+    ambito: edificio
+    referencia: "Cada uno de los cuatro grupos electrógenos de emergencia"
+    estado_asociado: operativo
+    fecha_dato: "2026-08-31"
+    fuentes: [src-5]
+    nota: >-
+      La autorización ambiental única cataloga cuatro focos (G1 a G4) como
+      instalaciones de combustión mediana de 4,56 MWt de potencia térmica nominal
+      cada uno. Es potencia de respaldo declarada en el expediente ambiental, no
+      capacidad del centro de datos.
 
+superficie_parcela_m2: 11013.91
+superficie_construida_m2: 4369.52
 inversion_anunciada_eur: 25000000
+
+agua:
+  circuito: desconocido
+  sistema: >-
+    La autorización ambiental única solo describe que los equipos de climatización se
+    sitúan en la planta cubierta del edificio; no identifica la tecnología ni si el
+    circuito consume agua.
+  origen: "Red municipal; saneamiento separativo de pluviales y sanitarias"
+  nota: >-
+    La autorización ambiental única indica que la actividad consume agua de la red
+    municipal y produce vertidos de aguas sanitarias y de limpieza, pero no cifra el
+    consumo ni describe el sistema de refrigeración, más allá de situar los equipos
+    de climatización en la planta cubierta.
+  fuentes: [src-5]
+
+empleo:
+  - tipo: directo
+    valor: 30
+    referencia: "Puestos creados por el centro de Abanto"
+    fecha_dato: "2026-04"
+    fuentes: [src-7]
+    nota: null
 
 enlaces_proyecto:
   - "https://www.euskadi.eus/gobierno-vasco/-/noticia/2023/el-lehendakari-asiste-colocacion-primera-piedra-adi-data-center-gran-centro-datos-zona-atlantica/"
+  - "https://www.euskadi.eus/contenidos/anuncio_tablon/inf_3516842/es_def/adjuntos/AAU01497_SOL_2025_001_RES.pdf"
 
 incertidumbres:
   - campo: potencia
@@ -60,10 +103,11 @@ incertidumbres:
     fuentes: [src-2]
   - campo: propietario
     descripcion: >-
-      Accionariado cambiante: constituida por Euskaltel, Dominion Global, Teknei y
-      Gobierno Vasco (15%), con entrada posterior anunciada de Kutxabank e Iberdrola
-      y apertura a las diputaciones forales.
-    fuentes: [src-2]
+      Accionariado cambiante. En diciembre de 2024 el Parque Tecnológico Garaia
+      publicó la composición completa de Data Center Euskadi, S.L.: Gobierno Vasco,
+      Teknei, Dominion, Euskaltel, Gertek, Kutxabank, Iberdrola, MONDRAGON, Seed
+      Capital Bizkaia y Seed Gipuzkoa. No se ha localizado el reparto de porcentajes.
+    fuentes: [src-2, src-6]
   - campo: inversion_anunciada_eur
     descripcion: >-
       Los 25 M€ corresponden al primer centro (Abanto-Zierbena) según Crónica Vasca.
@@ -72,7 +116,7 @@ incertidumbres:
     fuentes: [src-2, src-3]
 
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -107,3 +151,44 @@ fuentes:
     fecha_publicacion: "2026-01-10"
     fecha_consulta: "2026-08-29"
     cita: "Cuenta con un centro de datos activo en Abanto con una capacidad de 2MW"
+  - id: src-5
+    url: "https://www.euskadi.eus/contenidos/anuncio_tablon/inf_3516842/es_def/adjuntos/AAU01497_SOL_2025_001_RES.pdf"
+    titulo: "RESOLUCIÓN DEL VICECONSEJERO DE MEDIO AMBIENTE, POR LA QUE SE CONCEDE AUTORIZACIÓN AMBIENTAL ÚNICA A LA INSTALACIÓN DE CENTRO DE PROCESAMIENTO DE DATOS PROMOVIDO POR DATA CENTER EUSKADI S.L. EN PARQUE TECNOLÓGICO DE EZKERRALDEA/MEATZALDEA, TÉRMINO MUNICIPAL DE ABANTO-ZIERBENA (BIZKAIA)"
+    editor: "Gobierno Vasco / Eusko Jaurlaritza — Dirección de Administración Ambiental"
+    tipo: oficial
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      La parcela donde se asienta el edificio CPD cuenta con una superficie total de
+      11.013,91 m2, correspondiendo 2.660,56 m2 a superficie construida y 4.452,35 m2
+      a superficie pavimentada [...] El edificio CPD, que en planta tiene 2,660,56
+      m2, tiene una superficie construida con ocupación de unos 4.369,52 m2 [...]
+      Planta primera: destinado a espacio IT. Planta cubierta: equipos de
+      climatización [...] Se dispone de 4 focos de emisión a la atmósfera
+      provenientes de grupos electrógenos de emergencia [...] Generador de emergencia
+      G1 [...] 4,56 [...] La actividad consume agua de la red municipal y produce
+      vertidos de aguas residuales
+  - id: src-6
+    url: "https://www.ptgaraia.eus/es/adi-data-center-euskadi-arranca-con-la-construccion-de-su-segundo-centro-en-ptgaraia/"
+    titulo: "ADI Data Center Euskadi arranca con la construcción de su segundo centro en PTGaraia"
+    editor: "Parque Tecnológico Garaia"
+    tipo: oficial
+    fecha_publicacion: "2024-12-16"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Con las obras en Parque Tecnológico Garaia se inicia la segunda fase de este
+      proyecto, cuya primera infraestructura tiene 2 MW de capacidad y entrará en
+      funcionamiento durante el primer trimestre del 2025 [...] la sociedad DATA
+      CENTER EUSKADI, S.L quedará conformada por los siguientes socios: Gobierno
+      Vasco, Teknei, Dominion, Euskaltel, Gertek, Kutxabank, Iberdrola, MONDRAGON,
+      Seed Capital Bizkaia y Seed Gipuzkoa.
+  - id: src-7
+    url: "https://cronicavasca.elespanol.com/empresas/20260407/adi-arranca-obras-segundo-centro-arrasate-albergara/1003742747384_0.html"
+    titulo: "ADI arranca las obras de su segundo centro de datos en Arrasate: albergará 3MW y estará listo en 2027"
+    editor: "Crónica Vasca (El Español)"
+    tipo: prensa_general
+    fecha_publicacion: "2026-04-07"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      el 'data center' ubicado en la localidad vizcaína cuenta con unas instalaciones
+      de 2 MW después de realizar una inversión de 25 millones de euros y crear unos
+      30 puestos de trabajo

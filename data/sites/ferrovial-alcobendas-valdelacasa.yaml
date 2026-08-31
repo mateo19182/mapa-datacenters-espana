@@ -1,0 +1,122 @@
+id: ferrovial-alcobendas-valdelacasa
+nombre: "Ferrovial — Campus de centros de datos de Valdelacasa (Alcobendas)"
+alias:
+  - "Ferrovial Digital Infrastructure MAD 01"
+  - "Campus de centros de datos de Alcobendas"
+tipo: campus
+operador: "Ferrovial Digital Infrastructure"
+propietario: "Ferrovial"
+modelo: desconocido
+
+ubicacion:
+  municipio: "Alcobendas"
+  provincia: "Madrid"
+  ccaa: "Comunidad de Madrid"
+  direccion: "Avenida Monte de Valdelatas 10-16, Alcobendas; cuatro parcelas del Plan Parcial de Valdelacasa"
+  lat: null
+  lon: null
+  precision: municipio
+  fuentes: [src-2]
+
+estado: permisos_concedidos
+estado_detalle: >-
+  El proyecto cuenta con informes favorables en urbanismo, estrategia digital y transición
+  energética y con la licencia de movimiento de tierras que habilita el comienzo de las obras. La
+  primera fase, denominada MAD 01, ha sido declarada Proyecto de Especial Interés por la
+  Aceleradora de Inversiones de la Comunidad de Madrid y tiene concedidos los permisos de acceso y
+  conexión de i-DE. La Comunidad de Madrid prevé para esa fase medio centenar de empleos directos
+  indefinidos.
+estado_fuentes: [src-1, src-2]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 100
+    ambito: campus
+    referencia: "Capacidad del campus; la fuente dice «superior a los 100 MW»"
+    estado_asociado: permisos_concedidos
+    fecha_dato: "2026-07-09"
+    fuentes: [src-1, src-2]
+    nota: >-
+      Es un mínimo declarado, no una cifra cerrada, y la fuente no dice si son MW de carga TI o de
+      acceso a red.
+  - tipo: no_especificado
+    valor_mw: 60
+    ambito: fase
+    referencia: "Fase 1 (MAD 01) — «potencia disponible»"
+    estado_asociado: permisos_concedidos
+    fecha_dato: "2026-07-09"
+    fuentes: [src-1, src-2]
+  - tipo: it
+    valor_mw: 40
+    ambito: fase
+    referencia: "Fase 1 (MAD 01) — potencia destinada a equipos informáticos"
+    estado_asociado: permisos_concedidos
+    fecha_dato: "2026-07-09"
+    fuentes: [src-2]
+    nota: "La fuente distingue explícitamente los 60 MW disponibles de los 40 MW de cómputo."
+
+fases:
+  - nombre: "Fase 1 — MAD 01"
+    estado: permisos_concedidos
+    superficie_m2: 21914.86
+    nota: >-
+      Superficie construida declarada, sobre una parcela de aproximadamente 32.269 m² en la
+      Avenida Monte de Valdelatas 10-16. Inversión prevista para la fase: 153 millones de euros.
+    fuentes: [src-2]
+
+conexion_electrica:
+  titular_red: "i-DE (Grupo Iberdrola)"
+  nota: "El proyecto cuenta ya con los permisos de acceso y conexión otorgados por i-DE."
+  fuentes: [src-2]
+
+inversion_anunciada_eur: 1000000000
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      Ni la nota de la Comunidad de Madrid ni la información de prensa precisan el tipo de los MW
+      del campus (>100 MW) ni el de los 60 MW «disponibles» de la fase 1. Solo los 40 MW de
+      cómputo están identificados como carga TI, así que no se comparan con las otras dos cifras.
+    fuentes: [src-1, src-2]
+  - campo: ubicacion
+    descripcion: >-
+      El campus ocupa cuatro parcelas del mismo Plan Parcial de Valdelacasa en el que se levanta
+      el CyrusOne MAD1 (parcela 5A). Son proyectos distintos de promotores distintos; no se han
+      podido delimitar las parcelas concretas de Ferrovial más allá de la dirección de la fase 1.
+    fuentes: [src-2]
+
+confianza: media
+ultima_verificacion: "2026-08-31"
+
+fuentes:
+  - id: src-1
+    url: "https://www.comunidad.madrid/noticias/2026/07/09/diaz-ayuso-anuncia-campus-centros-datos-alcobendas-1000-millones-euros-inversion"
+    titulo: "Díaz Ayuso anuncia un campus de centros de datos en Alcobendas con 1.000 millones de euros de inversión"
+    editor: "Comunidad de Madrid"
+    tipo: oficial
+    fecha_publicacion: "2026-07-09"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      un campus de centros de datos en Alcobendas que tendrá una capacidad superior a los 100
+      megavatios (MW) y una inversión de más de 1.000 millones de euros. Este proyecto de la
+      empresa Ferrovial ... cuenta ya con los informes favorables en materia de urbanismo,
+      estrategia digital y transición energética, así como la licencia de movimiento de tierras
+      que habilita el comienzo de las obras ... La primera fase del campus, en la que está
+      previsto alcanzar 60 MW de potencia y la creación de medio centenar de empleos directos
+      indefinidos, ha sido declarada Proyecto de Especial Interés
+  - id: src-2
+    url: "https://www.eldebate.com/espana/madrid/20260709/ferrovial-abrira-gran-centro-datos-alcobendas-inversion-1000-millones-euros_437786.html"
+    titulo: "Ferrovial abrirá un gran centro de datos en Alcobendas con una inversión de 1.000 millones de euros"
+    editor: "El Debate"
+    tipo: prensa_general
+    fecha_publicacion: "2026-07-09"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Se localizará en cuatro parcelas urbanizadas recogidas en el Plan Parcial de Valdelacasa ...
+      La primera fase del campus, denominada MAD 01, levantará un centro de datos en la Avenida
+      Monte de Valdelatas, 10-16 de Alcobendas con 60 MW de potencia disponible, de los cuales 40
+      MW corresponden a equipos informáticos. Contará con una superficie construida de 21.914,86
+      metros cuadrados sobre una parcela de aproximadamente 32.269 metros cuadrados ... La
+      inversión prevista para esta primera fase es de 153 millones de euros ... También cuenta ya
+      con los permisos de acceso y conexión por parte de i-DE, empresa de distribución eléctrica
+      del Grupo Iberdrola en España.

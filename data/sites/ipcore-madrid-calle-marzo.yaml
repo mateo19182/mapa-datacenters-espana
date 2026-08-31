@@ -2,6 +2,7 @@ id: ipcore-madrid-calle-marzo
 nombre: "IPCore Datacenter Madrid — Calle Marzo"
 alias:
   - "IPCore Datacenter Madrid"
+  - "ipcore MAD-NE"
 tipo: edificio
 operador: "IPCore Datacenter SL"
 propietario: "IPCore Datacenter SL"
@@ -17,25 +18,60 @@ ubicacion:
   precision: exacta
   fuentes: [src-1]
 
-estado: desconocido
-estado_detalle: "Instalación registrada en PeeringDB. No se ha localizado web operativa del operador ni confirmación independiente del estado."
-estado_fuentes: [src-1]
+estado: operativo
+estado_detalle: >-
+  La web del operador, consultada en agosto de 2026, presenta la instalación en servicio con el
+  nombre comercial «ipcore MAD-NE»: 1.200 m² de edificio en Madrid capital, racks de 42U con
+  alimentación A+B, potencia contratable de 1 a 5 kW por rack, UPS y distribución eléctrica 2N y
+  respaldo con generación de emergencia.
+estado_fuentes: [src-2]
 
-potencia: []
+potencia:
+  - tipo: no_especificado
+    valor_mw: 2
+    ambito: edificio
+    referencia: "Capacidad atribuida por un directorio sectorial"
+    estado_asociado: operativo
+    fecha_dato: "2026-08-31"
+    fuentes: [src-3]
+    nota: >-
+      Único valor localizado. Procede de un directorio, no del operador: la web de ipcore solo
+      publica potencia contratable por armario (1 a 5 kW) y no da capacidad del edificio.
+
+refrigeracion: "Refrigeración N+1 con enfriadoras Carrier y expansión directa; sin evaporación ni adiabática."
+
+agua:
+  circuito: sin_agua
+  sistema: >-
+    Refrigeración N+1 con enfriadoras Carrier y expansión directa. El operador declara en su
+    tabla de datos públicos que el uso de agua para refrigeración es «sin evaporación ni
+    adiabática».
+  origen: null
+  consumo_m3_ano: null
+  wue_l_kwh: null
+  nota: >-
+    La fuente no dice literalmente «consumo cero», sino que descarta los dos usos evaporativos
+    que consumen agua. Se clasifica como sin_agua por eso, y no por una cifra medida.
+  fuentes: [src-2]
+
+superficie_construida_m2: 1200
 
 incertidumbres:
   - campo: estado
     descripcion: >-
-      Única fuente localizada: el registro de PeeringDB. El dominio del operador no responde y
-      no se ha encontrado ninguna otra referencia verificable, por lo que no puede confirmarse
-      que la instalación siga activa.
-    fuentes: [src-1]
+      En la verificación anterior el dominio del operador no respondía y la ficha quedó como
+      desconocida. En agosto de 2026 la web está activa y describe la instalación en servicio con
+      un nombre comercial nuevo, «MAD-NE», de modo que el estado pasa a operativo.
+    fuentes: [src-1, src-2]
   - campo: potencia
-    descripcion: "Sin datos de potencia ni superficie."
-    fuentes: [src-1]
+    descripcion: >-
+      El operador no publica la capacidad eléctrica del edificio, solo la potencia contratable
+      por armario, de 1 a 5 kW. Los 2 MW registrados vienen de un directorio sectorial y no
+      indican si son carga TI o potencia total.
+    fuentes: [src-2, src-3]
 
 confianza: baja
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -45,3 +81,17 @@ fuentes:
     tipo: asociacion
     fecha_consulta: "2026-08-29"
     cita: "IPCore Datacenter Madrid | Calle Marzo 16 | 28022 Madrid"
+  - id: src-2
+    url: "https://www.ipcore.com/es/"
+    titulo: "Centro de datos en Madrid | ipcore"
+    editor: "ipcore"
+    tipo: empresa
+    fecha_consulta: "2026-08-31"
+    cita: "ipcore opera MAD-NE, un centro de datos en Madrid para organizaciones de toda España ... Instalación ipcore MAD-NE Ubicación Madrid capital Modelo Carrier-neutral Edificio 1.200 m² ... | Edificio | 1.200 m² en Madrid capital | | Racks | 42U; 600 u 800 mm de ancho | | Alimentación en rack | A+B; toma de 32 A en cada rama | | Potencia contratable | 1, 2, 3, 4 o 5 kW por rack | ... | Continuidad eléctrica | UPS 2N, distribución eléctrica 2N y respaldo mediante generación eléctrica de emergencia | | Refrigeración | N+1; chillers Carrier y expansión directa | | Uso de agua para refrigeración | Sin evaporación ni adiabática | | Fibra | Dos entradas al edificio |"
+  - id: src-3
+    url: "https://dcatlas.io/en/explore/facilities/ipcore-ipcore-madrid-madrid"
+    titulo: "Madrid IPcore 001 — 2 MW live"
+    editor: "DC Atlas"
+    tipo: consultora
+    fecha_consulta: "2026-08-31"
+    cita: "Madrid IPcore 001 is a colocation data centre operated by IPcore in Madrid, Spain. The site is operational, with 2 MW of live capacity."

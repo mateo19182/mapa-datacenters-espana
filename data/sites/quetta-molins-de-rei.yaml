@@ -18,14 +18,59 @@ estado: en_construccion
 estado_detalle: >-
   Primer proyecto de Quetta en Barcelona, anunciado en diciembre de 2025 junto
   con la ampliación de su centro de Tres Cantos (Madrid). Forma parte de un plan
-  de seis centros edge en España y Portugal.
-estado_fuentes: [src-1]
+  de seis centros edge en España y Portugal, con 500 millones de euros para el
+  conjunto. En abril de 2026 la compañía declaraba estar esperando la licencia
+  de obra «a principios de mayo», con 14 a 18 meses de construcción más seis de
+  pruebas, y situaba la entrada en servicio entre 2027 y 2028.
+estado_fuentes: [src-1, src-2]
 
-potencia: []
+potencia:
+  - tipo: it
+    valor_mw: 7.2
+    ambito: edificio
+    referencia: "Capacidad de procesamiento del centro"
+    estado_asociado: en_construccion
+    fecha_dato: "2026-04-14"
+    fuentes: [src-2]
+    nota: >-
+      La fuente dice "tendrá una capacidad de procesamiento de 7,2 megavatios",
+      magnitud que contrapone explícitamente al consumo eléctrico total.
+  - tipo: no_especificado
+    valor_mw: 10
+    ambito: edificio
+    referencia: "Consumo eléctrico máximo de la instalación"
+    estado_asociado: en_construccion
+    fecha_dato: "2026-04-14"
+    fuentes: [src-2]
+    nota: >-
+      La fuente dice "consumirá hasta 10 megavatios de energía eléctrica". No se
+      tipifica como potencia instalada ni como potencia de acceso porque la
+      fuente no lo precisa.
+
+conexion_electrica:
+  nota: >-
+    La compañía indica que la instalación se construirá al lado de una
+    subestación eléctrica para garantizar el suministro, sin nombrarla ni dar
+    tensión ni potencia de acceso.
+  fuentes: [src-2]
 
 refrigeracion: >-
   Refrigeración líquida directa en circuito cerrado (DLC), consumo nulo de agua
   (WUE 0) y PUE declarado inferior a 1,15.
+
+agua:
+  circuito: cerrado
+  sistema: >-
+    Refrigeración líquida directa (direct liquid cooling) mediante un circuito
+    cerrado de agua por tuberías que, según la compañía, no requiere absorción
+    de agua del entorno.
+  origen: null
+  wue_l_kwh: 0
+  nota: >-
+    La gestora publica «WUE 0» para el modelo de la plataforma; El Periódico
+    describe el sistema como circuito cerrado de agua, no como ausencia total de
+    agua en la instalación.
+  fuentes: [src-1, src-2]
 
 incertidumbres:
   - campo: potencia
@@ -37,16 +82,18 @@ incertidumbres:
     fuentes: [src-1]
   - campo: potencia
     descripcion: >-
-      Prensa especializada atribuye 10 MW al centro de Molins de Rei, pero la
-      nota de la gestora (Azora) solo publica la cifra agregada de 30 MW para
-      Madrid + Barcelona. No se registra la cifra individual por no estar
-      confirmada en fuente primaria abierta.
-    fuentes: [src-1]
+      Prensa especializada atribuía 10 MW al centro de Molins de Rei frente a la
+      cifra agregada de 30 MW de la gestora. En abril de 2026 la propia compañía
+      precisó a El Periódico dos magnitudes distintas para este centro: 7,2 MW de
+      capacidad de procesamiento y hasta 10 MW de consumo eléctrico. Los «10 MW»
+      que circulaban parecen corresponder al consumo, no a la capacidad, pero
+      ninguna fuente lo afirma.
+    fuentes: [src-1, src-2]
   - campo: ubicacion
     descripcion: "No se ha localizado dirección postal ni parcela concreta en Molins de Rei."
     fuentes: [src-1]
 
-confianza: baja
+confianza: media
 ultima_verificacion: "2026-08-31"
 
 fuentes:
@@ -60,3 +107,19 @@ fuentes:
       located in Molins de Rei ... a total capacity to 30 MW, 50% of its overall
       target of 60 MW ... closed-loop liquid cooling (DLC), no water consumption
       (WUE 0), and a power usage effectiveness (PUE) of less than 1.15.
+  - id: src-2
+    url: "https://www.elperiodico.com/es/tecnologia/20260414/empresa-quetta-construye-centro-datos-molins-de-rei-ia-nube-128967438"
+    titulo: "La empresa Quetta construirá un centro de datos en Molins de Rei para acercar la IA a Barcelona"
+    editor: "El Periódico"
+    tipo: prensa_general
+    fecha_publicacion: "2026-04-14"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El centro de datos que Quetta construirá en Molins de Rei tendrá una
+      capacidad de procesamiento de 7,2 megavatios y consumirá hasta 10
+      megavatios de energía eléctrica, equivalente al consumo medio de
+      aproximadamente unas 10.000 viviendas o al de un hospital grande. Para
+      garantizar su suministro la instalación se construirá al lado de una
+      subestación eléctrica ... utilizará sistemas de refrigeración avanzados que
+      no requieren de la absorción de agua ... 'direct liquid cooling', un método
+      de refrigeración mediante un circuito cerrado de agua a través de tuberías

@@ -1,0 +1,149 @@
+id: adequa-odena-d-hub-can-morera
+nombre: "D-hub Òdena — Can Morera (Adequa Real Estate)"
+alias:
+  - "D-Hub Òdena"
+  - "Data Center Hub Can Morera"
+  - "Campus D-hub Òdena"
+tipo: campus
+operador: null
+propietario: "Adequa Real Estate (familia Singla)"
+modelo: desconocido
+
+ubicacion:
+  municipio: "Òdena"
+  provincia: "Barcelona"
+  ccaa: "Cataluña"
+  direccion: "Sector de Can Morera, al norte de la autovía A-2, Conca d'Òdena (Anoia)"
+  lat: null
+  lon: null
+  precision: municipio
+  no_derivar: true
+  fuentes: [src-1, src-2]
+
+estado: anunciado
+estado_detalle: >-
+  Campus promovido por Adequa Real Estate sobre la finca privada de Can Morera. El Pla Director
+  Urbanístic de l'Activitat Econòmica de la Conca d'Òdena, aprobado inicialmente en 2022, dejó
+  fuera el ámbito de la Plataforma Ferroviària Nord donde se sitúa Can Morera, y la promotora
+  presentó alegaciones. En marzo de 2026 el proyecto figuraba entre los 26 que la Generalitat
+  estudia declarar estratégicos o de interés general superior; según la Cadena SER, Òdena concentra
+  tres de esos proyectos. No consta aprobación urbanística ni licencia.
+estado_fuentes: [src-3, src-4, src-5]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 200
+    ambito: campus
+    referencia: "Capacidad prevista según la lista de proyectos de la Generalitat avanzada por la Cadena SER"
+    estado_asociado: anunciado
+    fecha_dato: "2026-03-25"
+    fuentes: [src-3, src-6]
+  - tipo: no_especificado
+    valor_mw: 150
+    ambito: campus
+    referencia: "«Potencia estimada superior a los 150 MW» publicada por la propia promotora"
+    estado_asociado: anunciado
+    fecha_dato: "2023-09-01"
+    fuentes: [src-2]
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      Las dos cifras publicadas no coinciden: Adequa habla en su propia web de «una potencia
+      estimada superior a los 150 MW» (2023) y la lista de proyectos estratégicos de la
+      Generalitat avanzada por la Cadena SER atribuye a este emplazamiento 200 MW (2026). Se
+      registran las dos y no se elige ninguna. Ninguna dice si son MW de carga TI o de acceso a
+      red.
+    fuentes: [src-2, src-3]
+  - campo: superficie_parcela_m2
+    descripcion: >-
+      La superficie también discrepa dentro del propio material del promotor: la web del proyecto
+      dice que la propiedad «té un total de 200 hectàrees»; el artículo de Adequa habla de «unas
+      100 hectáreas». No se registra ninguna de las dos como dato.
+    fuentes: [src-1, src-2]
+  - campo: estado
+    descripcion: >-
+      El material del promotor accesible es de 2020-2023 y el planeamiento director de la Conca
+      d'Òdena excluyó el ámbito de Can Morera. La única señal reciente es la inclusión del
+      proyecto en la lista de la Generalitat de marzo de 2026, que es una solicitud en estudio, no
+      una autorización.
+    fuentes: [src-3, src-4, src-5]
+  - campo: ubicacion
+    descripcion: >-
+      La finca es un ámbito rústico al norte de la A-2, fuera del casco urbano de Òdena. No se
+      sitúa el punto en el centroide municipal por no contradecir a la fuente.
+    fuentes: [src-1]
+
+enlaces_proyecto:
+  - "https://www.d-hubodena.cat/"
+  - "https://adequa-re.cat/ca/data-center-hub-can-morera-2/"
+
+confianza: baja
+ultima_verificacion: "2026-08-31"
+
+fuentes:
+  - id: src-1
+    url: "https://www.d-hubodena.cat/"
+    titulo: "Inici — D-hubodena"
+    editor: "D-Hub Òdena (Adequa Real Estate)"
+    tipo: empresa
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El motor del campus és la creació del primer HyperScale Datacenter de l'Àrea Metropolitana
+      de Barcelona ... es troba en el sector de Ca Morera, dins del terme municipal d'Òdena. La
+      propietat representa un sector totalment privat i té un total de 200 hectàrees situades al
+      nord de l'autovia A-2 ... Compta amb una àmplia capacitat de subministrament elèctric per a
+      grans potències gràcies a l'existència de 2 línies d'Alta Tensió de REE
+  - id: src-2
+    url: "https://adequa-re.cat/es/los-data-centers-un-activo-con-alta-rentabilidad/"
+    titulo: "Data Centers: Alta Rentabilidad y Transformación en el Sector Inmobiliario"
+    editor: "Adequa Real Estate"
+    tipo: empresa
+    fecha_publicacion: "2023-09-01"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Adequa Real Estate ha desarrollado el proyecto D-hub Òdena, un polígono sostenible de última
+      generación ... situado en la conca d'Òdena, y con una superficie de unas 100 hectáreas y una
+      potencia estimada superior a los 150 MW.
+  - id: src-3
+    url: "https://cadenaser.com/cataluna/2026/03/25/el-govern-facilitara-la-installacio-de-26-centres-de-dades-nous-a-catalunya-sercat/"
+    titulo: "El Govern facilitarà la instal·lació de 26 centres de dades nous a Catalunya"
+    editor: "Cadena SER"
+    tipo: prensa_general
+    fecha_publicacion: "2026-03-25"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Entre els principals promotors hi ha la immobiliària Adequa, que vol instal·lar data centers
+      a Santa Bàrbara (el Montsià) i Òdena (l'Anoia) de 200 MW cada un. De fet, Òdena concentra 3
+      projectes previstos.
+  - id: src-4
+    url: "https://veuanoia.cat/generalitat-vol-facilitar-installacio-quatre-grans-centres-dades-odena-jorba/"
+    titulo: "La Generalitat vol facilitar la instal·lació de quatre grans centres de dades entre Òdena i Jorba"
+    editor: "La Veu de l'Anoia"
+    tipo: prensa_general
+    fecha_publicacion: "2026-03-28"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      La Generalitat vol facilitar la construcció de quatre grans centres de dades projectats a la
+      Conca d'Òdena; tres d'ells s'ubicarien al terme municipal d'Òdena i un altre a Jorba
+  - id: src-5
+    url: "https://www.d-hubodena.cat/adequa-presenta-alegacions-pduaeco/"
+    titulo: "Els impulsors del Campus D-hub Òdena presenten al·legacions al PDUAECO per presentar irregularitats i ser inviable econòmicament"
+    editor: "D-Hub Òdena (Adequa Real Estate)"
+    tipo: empresa
+    fecha_publicacion: "2022-07-20"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      L'empresa Adequa, promotora del D-hub Òdena als terrenys de Can Morera, ha presentat
+      al·legacions al Pla Director Urbanístic de l'Activitat Econòmica de la Conca d'Òdena
+      (PDUAECO)
+  - id: src-6
+    url: "https://ebredigital.cat/2026/03/27/santa-barbara-aspirant-a-acollir-un-centre-de-dades-de-200-mw/"
+    titulo: "Santa Bàrbara, aspirant a acollir un centre de dades de 200 MW"
+    editor: "Ebre Digital"
+    tipo: prensa_general
+    fecha_publicacion: "2026-03-27"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      La seva promotora, Adequa, preveu que tingui una capacitat de 200 MW, els mateixos que
+      planifica per l'altra implantació que té programada a Òdena (l'Anoia).

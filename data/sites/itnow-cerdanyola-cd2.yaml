@@ -22,15 +22,32 @@ estado: operativo
 estado_detalle: >-
   Segundo centro de proceso de datos de ITnow, sociedad constituida en enero de
   2012 y rebautizada como ITnow en mayo del mismo año, que presta servicios de
-  infraestructura a CaixaBank y otras sociedades del grupo 'la Caixa'.
-estado_fuentes: [src-1]
+  infraestructura a CaixaBank y otras sociedades del grupo 'la Caixa'. CaixaBank
+  anunció en abril de 2014 una inversión de 100 millones de euros para construir
+  un segundo CPD junto al sincrotrón Alba, al que trasladaría su copia de
+  respaldo desde las instalaciones de HP en Sant Cugat, elevando a 200 millones
+  la inversión total del grupo en el complejo de Cerdanyola. Un reportaje
+  sectorial de 2025 cuenta dos CPD de Silc Inmuebles —la sociedad patrimonial de
+  CaixaBank— entre los cuatro en operación del Parc de l'Alba.
+estado_fuentes: [src-1, src-3, src-4]
 
 potencia: []
 
+inversion_anunciada_eur: 100000000
+
 incertidumbres:
   - campo: potencia
-    descripcion: "Sin datos públicos de potencia ni superficie."
-    fuentes: [src-1]
+    descripcion: >-
+      Sin datos públicos de potencia ni superficie. La única magnitud publicada
+      es la inversión de 100 millones de euros anunciada en 2014.
+    fuentes: [src-1, src-3]
+  - campo: inversion_anunciada_eur
+    descripcion: >-
+      Los 100 millones son la inversión anunciada en abril de 2014 para el
+      segundo CPD; la misma fuente cifra en 200 millones la inversión acumulada
+      del grupo en todo el complejo de Cerdanyola, que incluye el CD1. No se
+      suman ni se confunden.
+    fuentes: [src-3]
   - campo: ubicacion
     descripcion: >-
       Baxtel indica "Camí Ral, Barcelona" sin municipio; la calle corresponde al
@@ -40,7 +57,7 @@ incertidumbres:
     fuentes: [src-1, src-2]
 
 confianza: baja
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -62,3 +79,26 @@ fuentes:
     cita: >-
       Camí Ral, Centre Direccional, Cerdanyola del Vallès, Vallès Occidental,
       Barcelona, Catalunya, 08193, España — lat 41.4834774, lon 2.1087645
+  - id: src-3
+    url: "https://www.expansion.com/2014/04/28/catalunya/1398709231.html"
+    titulo: "CaixaBank invertirá 100 millones de euros en un nuevo centro de datos"
+    editor: "Expansión"
+    tipo: prensa_general
+    fecha_publicacion: "2014-04-29"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El banco trasladará su 'back up' desde las instalaciones de HP en Sant
+      Cugat a unos terrenos cercanos al sincrotrón Alba, donde acumulará una
+      inversión tecnológica de 200 millones de euros ... una inversión de cien
+      millones de euros para construir un segundo centro de procesamiento de
+      datos (CPD)
+  - id: src-4
+    url: "https://www.30virtual.net/Noticias.aspx?idnoticia=33351"
+    titulo: "El Parc de l'Alba mejorará las infraestructuras especiales por CPDs, ampliando la actual a red de distribución eléctrica y minimizando las afecciones al entorno y la ocupación del dominio público"
+    editor: "30Virtual"
+    tipo: prensa_especializada
+    fecha_publicacion: "2025-01-06"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      cuenta con 4 centros de procesamiento de datos en operación (T-Systems,
+      Silc Inmuebles 1 y 2, Kyndryl)

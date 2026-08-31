@@ -12,11 +12,11 @@ ubicacion:
   municipio: "Alcalá de Henares"
   provincia: "Madrid"
   ccaa: "Comunidad de Madrid"
-  direccion: "Corredor del Henares, Alcalá de Henares (parcela de 67.160 m²)"
-  lat: null
-  lon: null
-  precision: municipio
-  fuentes: [src-1, src-2]
+  direccion: "Polígono Industrial El Encín, A-2, parcela 29T, 28805 Alcalá de Henares"
+  lat: 40.506628
+  lon: -3.32168
+  precision: aproximada
+  fuentes: [src-3, src-4]
 
 estado: en_construccion
 estado_detalle: >-
@@ -60,12 +60,15 @@ incertidumbres:
     fuentes: [src-1, src-2]
   - campo: ubicacion
     descripcion: >-
-      No se ha localizado la dirección ni el polígono concreto de la parcela. Dragados menciona
-      su integración en un "complejo de campus MAD1" sin más detalle.
-    fuentes: [src-2]
+      Ni ACS ni Dragados ni el asesor de la venta publican la dirección: hablan del «corredor del
+      Henares» y de un «complejo de campus MAD1». La dirección registrada, polígono industrial El
+      Encín, parcela 29T junto a la A-2, procede de dos directorios sectoriales que pueden
+      compartir origen, así que no está confirmada por el promotor. Las coordenadas son el
+      centroide del polígono industrial, no de la parcela.
+    fuentes: [src-2, src-3, src-4, src-5]
 
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -83,3 +86,24 @@ fuentes:
     tipo: empresa
     fecha_consulta: "2026-08-29"
     cita: "concebido para alcanzar una capacidad total superior a 100 MW IT ... parcela de 67.160 m2"
+  - id: src-3
+    url: "https://www.datacentermap.com/spain/madrid/iridium-alcal-de-henares/"
+    titulo: "Iridium Alcalá de Henares Data Center in Madrid (50 MW)"
+    editor: "Data Center Map"
+    tipo: otro
+    fecha_consulta: "2026-08-31"
+    cita: "Iridium Alcalá de Henares Iridium Concesiones de Infraestructuras, S.A. Pol. Ind. el Encín, A-2, 29T 28805 Alcalá de Henares Spain ... Iridium, the infrastructure concessions arm of Grupo ACS, is developing a 50MW data center in Alcalá de Henares ... The project spans 6.7 hectares and is scheduled to begin operations in 2025 ... The land was acquired from Arcano Partners, who had advanced the site to a \"ready-to-build\" stage."
+  - id: src-4
+    url: "https://colomap.com/facilities/iridium-alcala-de-henares/"
+    titulo: "Iridium Alcalá de Henares — Colocation in Alcalá de Henares, ES"
+    editor: "Colo Map"
+    tipo: otro
+    fecha_consulta: "2026-08-31"
+    cita: "Pol. Ind. el Encín, A-2, 29T, Alcalá de Henares, 28805, ES ... Iridium Alcalá de Henares is a colocation data center operated by Iridium Concesiones de Infraestructuras, S.A. located in Alcalá de Henares, ES."
+  - id: src-5
+    url: "https://www.colliers.com/es-es/news/colliers-asesora-a-arcano-en-la-venta-de-data-center-a-acs"
+    titulo: "Colliers asesora a Arcano en la venta de un suelo para construir el primer Data Center de ACS en España"
+    editor: "Colliers"
+    tipo: consultora
+    fecha_consulta: "2026-08-31"
+    cita: "El suelo supone 6,7 hectáreas (67.000 m2) y tiene garantizado el suministro de energía por valor de 50 megavatios (MW). ACS ha realizado está operación mediante su filial Iridium ... El proyecto se encuentra en una de las localizaciones premium para el desarrollo de centros de datos, dentro del corredor del Henares ... \"El factor clave para el éxito del proyecto de Arcano en Alcalá de Henares ha sido la excelente gestión del activo tanto a nivel urbanístico como en su acceso a la potencia eléctrica.\""

@@ -37,7 +37,7 @@ potencia:
     referencia: "Potencia eléctrica total instalada de los 46 grupos electrógenos diésel de respaldo"
     estado_asociado: operativo
     fecha_dato: "2020-07-27"
-    fuentes: [src-1]
+    fuentes: [src-1, src-9]
     nota: >-
       La resolución no da carga TI ni potencia de conexión a red. El dato es la potencia
       eléctrica instalada del conjunto de generadores de reserva (46 x 2,4 MWe), no la
@@ -54,6 +54,42 @@ fases:
 superficie_parcela_m2: null
 inversion_anunciada_eur: null
 refrigeracion: "La AAI de 2020 fija una demanda media diaria máxima de agua de 405 m³ en los meses de verano."
+agua:
+  circuito: hibrido
+  sistema: >-
+    Unidades de tratamiento de aire (AHU) sin consumo de agua la mayor parte del año; los
+    días de más calor, paneles evaporativos que sí consumen agua, con recirculación del
+    mayor número de ciclos posible y tratamiento previo para reducir la dureza.
+  origen: "Red municipal de abastecimiento del polígono"
+  consumo_m3_ano: 36461
+  consumo_m3_dia: 405
+  nota: >-
+    Las dos cifras proceden de la misma resolución y no miden lo mismo: 36.461 m³/año es el
+    consumo total anual declarado (35.000 de climatización, 1.460 de servicios sanitarios y
+    limpieza y menos de 1 del sistema contra incendios); 405 m³ es la demanda media diaria
+    máxima en los meses de verano. No se convierte una en otra. La modificación no
+    sustancial número 2 del PIGA, aprobada el 31 de julio de 2024, centralizó el tratamiento
+    de agua de los tres centros para mejorar hasta un 10 % la eficiencia de uso del agua sin
+    aumentar la demanda instantánea ni el consumo anual.
+  fuentes: [src-5, src-8]
+
+energia:
+  - consumo_gwh_ano: 739.9
+    referencia: "Consumo anual de electricidad de la actividad declarado en la autorización ambiental integrada de 2020"
+    fecha_dato: "2020-07-27"
+    fuentes: [src-10]
+    nota: >-
+      La resolución lo publica en MWh: 739.900 MWh/año. Las autorizaciones de los otros dos
+      centros del mismo Proyecto de Interés General declaran esta misma cifra.
+
+empleo:
+  - tipo: directo
+    valor: 60
+    referencia: "Plantilla total prevista del centro al completar las fases de implementación (30 por edificio, tres turnos, 24 h, 365 días)"
+    fecha_dato: "2020-07-27"
+    fuentes: [src-6]
+    nota: null
+
 enlaces_proyecto:
   - "https://www.aragon.es/-/proyecto-de-interes-general-de-aragon-sobre-la-implantacion-de-centros-de-datos-en-la-comunidad-autonoma-de-aragon-a-propuesta-de-amazon-data-services-spain"
 
@@ -65,6 +101,18 @@ incertidumbres:
       emplazamiento, y con coordenadas distintas. Son instalaciones y expedientes
       ambientales separados, pero el riesgo de confusión entre ambos es alto.
     fuentes: [src-1, src-3]
+  - campo: agua
+    descripcion: >-
+      La propia resolución recoge dos lecturas incompatibles de la demanda de agua. En su
+      descripción de la instalación fija una demanda media diaria máxima de 405 m³ en verano
+      y un consumo total de 36.461 m³/año. En cambio, el informe del Ingeniero Industrial
+      del Ayuntamiento de Villanueva de Gállego de 10 de febrero de 2020, reproducido en la
+      misma resolución, dice que las condiciones de suministro solicitadas en el proyecto
+      eran de 1.143 m³ de consumo medio diario y 2.675 m³ de consumo máximo diario, y
+      concluye que "difícilmente se alcanzará la suficiencia de la red de suministro de agua
+      potable". Se registran las cifras de la descripción de la instalación y se deja
+      constancia de las del informe municipal.
+    fuentes: [src-5, src-7]
   - campo: fecha_puesta_en_servicio
     descripcion: >-
       La fecha 2022-11 corresponde a la apertura de la Región AWS Europe (Spain), no a una
@@ -107,3 +155,51 @@ fuentes:
     fecha_publicacion: "2025-03-25"
     fecha_consulta: "2026-08-29"
     cita: "proyecto de modificación de centro de datos, ubicado en carretera A-1102 a Castejón de Valdejasa, km 2, polígono Aeronáutico, nave 2 Amazon, en el término municipal de Villanueva de Gállego (Zaragoza)"
+  - id: src-5
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1125849664141"
+    titulo: "RESOLUCIÓN de 27 de julio de 2020, del Instituto Aragonés de Gestión Ambiental [...] centro de almacenamiento de datos [...] Villanueva de Gállego (INAGA 500301/02/2019/12453) — consumo de agua y sistema de climatización"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2020-08-10"
+    fecha_consulta: "2026-08-31"
+    cita: "Se prevé un consumo de agua total de 36.461 m³/año dividido en 35.000 m³/año para equipos de climatización, 1.460 m³/año para servicios sanitarios y limpieza y menos de 1 m³/año para los sistemas de protección contra incendios. [...] La demanda media diaria en los meses de verano necesaria en el centro de datos es de como máximo 405 m³ [...] El abastecimiento de agua se realizará desde la red municipal que abastece al polígono. [...] El sistema de climatización trabaja la mayor parte del año mediante unidades de trata miento de aire (AHU) sin consumo de agua, sin embargo, los días de más calor del año tra baja mediante paneles evaporativos con agua."
+  - id: src-6
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1125849664141"
+    titulo: "RESOLUCIÓN de 27 de julio de 2020, del Instituto Aragonés de Gestión Ambiental [...] Villanueva de Gállego (INAGA 500301/02/2019/12453) — régimen de funcionamiento y personal"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2020-08-10"
+    fecha_consulta: "2026-08-31"
+    cita: "El régimen de funcionamiento del centro está previsto que vaya aumentando con el avance de las fases de implementación hasta alcanzar un total de 60 trabajadores (30 por edificio) que se distribuirán en tres turnos de trabajo, durante 24 horas al día y 365 días al año."
+  - id: src-7
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1125849664141"
+    titulo: "RESOLUCIÓN de 27 de julio de 2020, del Instituto Aragonés de Gestión Ambiental [...] Villanueva de Gállego (INAGA 500301/02/2019/12453) — informe del Ingeniero Industrial del Ayuntamiento sobre la red de suministro de agua"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2020-08-10"
+    fecha_consulta: "2026-08-31"
+    cita: "Se indica que las condiciones de suministro solicitadas en el proyecto son 20 mca en el punto de conexión, 52 litros/s de caudal instantáneo, 1143 m³ de consumo medio diario y 2675 m³ de consumo máximo diario, informando que el consumo medio diario de Villanueva de Gállego es de 2.700 m³"
+  - id: src-8
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1346904080606"
+    titulo: "ORDEN FOM/902/2024, de 31 de julio, por la que se aprueba la modificación no sustancial número 2 del Proyecto de Interés General de Aragón para la implantación de tres centros de datos en la Comunidad Autónoma de Aragón promovido por Amazon Data Services Spain, SL"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2024-08-09"
+    fecha_consulta: "2026-08-31"
+    cita: "Centralizar las instalaciones de gestión del agua de refrigeración en cada uno de los tres emplazamientos de los centros de datos (Villanueva de Gállego, PLHUS Huesca y El Burgo de Ebro) y aumentar la eficiencia y robustez del sistema para lograr una mejora de hasta el 10% en la eficiencia del uso del agua en los tres centros de datos de Amazon en Aragón. [...] La instalación no impondrá una carga adicional a la red local de agua en términos de demanda instantánea o consumo anual, ni un aumento de cantidad de agua vertida a la red."
+  - id: src-9
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1125849664141"
+    titulo: "RESOLUCIÓN de 27 de julio de 2020, del Instituto Aragonés de Gestión Ambiental [...] Villanueva de Gállego (INAGA 500301/02/2019/12453) — grupos electrógenos de reserva"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2020-08-10"
+    fecha_consulta: "2026-08-31"
+    cita: "Los generadores de reserva son un total de 46 grupos electrógenos, 27 en el edifico A y 19 en el B. Cada generador contará con una potencia eléctrica de 2,4 MWe siendo capaces de generar 6,4 MWt (energía térmica) cada uno de manera que la potencia eléctrica total instalada es de 110,4 MWe y la potencia térmica total de 294,4 MWt."
+  - id: src-10
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1125849664141"
+    titulo: "RESOLUCIÓN de 27 de julio de 2020, del Instituto Aragonés de Gestión Ambiental [...] Villanueva de Gállego (INAGA 500301/02/2019/12453) — consumo de electricidad"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2020-08-10"
+    fecha_consulta: "2026-08-31"
+    cita: "Electricidad. El consumo anual de electricidad para el desarrollo de la actividad es de 739.900 MWh."

@@ -21,7 +21,17 @@ estado: operativo
 estado_detalle: "acens declara 6.000 m² de data centers propios repartidos entre Barcelona y Madrid."
 estado_fuentes: [src-1, src-2]
 
-potencia: []
+potencia:
+  - tipo: no_especificado
+    valor_mw: 2.4
+    ambito: edificio
+    referencia: "Capacidad eléctrica atribuida por un directorio de colocation"
+    estado_asociado: operativo
+    fecha_dato: "2026-08-31"
+    fuentes: [src-3]
+    nota: >-
+      Único valor localizado. Procede de un directorio comercial, no de acens ni de Telefónica, y
+      no distingue entre carga TI y potencia total.
 
 incertidumbres:
   - campo: superficie_construida_m2
@@ -30,11 +40,13 @@ incertidumbres:
       centro de Alcobendas.
     fuentes: [src-1]
   - campo: potencia
-    descripcion: "No consta ninguna cifra pública de potencia."
-    fuentes: [src-1, src-2]
+    descripcion: >-
+      acens no publica ninguna cifra de potencia del centro de Alcobendas. Los 2,4 MW registrados
+      vienen de un directorio comercial de colocation, sin fecha del dato ni tipificación.
+    fuentes: [src-1, src-2, src-3]
 
 confianza: baja
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -51,3 +63,10 @@ fuentes:
     tipo: asociacion
     fecha_consulta: "2026-08-29"
     cita: "Acens Technologies | C/ San Rafael, 14 | 28108 Alcobendas"
+  - id: src-3
+    url: "https://inflect.com/building/calle-de-san-rafael-alcobendas/acens-technologies/datacenter/madrid"
+    titulo: "Acens Technologies Madrid"
+    editor: "Inflect"
+    tipo: otro
+    fecha_consulta: "2026-08-31"
+    cita: "Calle De San Rafael Alcobendas Comunidad de Madrid 28108 ESP ... Operated by Acens Technologies ... The data center located at Calle de San Rafael, Alcobendas, operated by Acens Technologies in Madrid, offers a robust environment for housing critical IT infrastructure. It features a power capacity of 2.4 MW"

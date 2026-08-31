@@ -21,8 +21,12 @@ estado: operativo
 estado_detalle: >-
   Data center certificado Tier IV por el Uptime Institute, en servicio desde
   aproximadamente 2011. En 2022 se activó una sala adicional de 300 kW (ampliable a
-  600 kW). En julio de 2023 la ocupación declarada era del 60 %.
-estado_fuentes: [src-1, src-2]
+  600 kW). En julio de 2023 la ocupación declarada era del 60 %. Entre mayo y junio de 2026
+  el operador ejecutó una ampliación de sus sistemas de emergencia —nuevos grupos
+  electrógenos y mayor capacidad de depósitos de combustible en superficie— para alcanzar
+  72 horas de autonomía sin recarga externa, frente al mínimo de 12 horas que exige el
+  Uptime Institute, manteniendo la certificación Tier IV y el ENS de nivel Alto.
+estado_fuentes: [src-1, src-2, src-4]
 
 potencia:
   - tipo: no_especificado
@@ -50,11 +54,12 @@ incertidumbres:
       Los 2 MW proceden de un reportaje de julio de 2023; no se ha localizado dato
       posterior ni desglose entre carga TI y potencia contratada. La sala añadida en 2022
       se describe como «de 300kW (que podría llegar a los 600kW)», sin aclarar si está
-      incluida en los 2 MW.
-    fuentes: [src-1]
+      incluida en los 2 MW. La cobertura de la ampliación de grupos electrógenos de 2026 no
+      publica ni la potencia de los nuevos grupos ni el volumen de combustible almacenado.
+    fuentes: [src-1, src-4]
 
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -79,3 +84,11 @@ fuentes:
     tipo: otro
     fecha_consulta: "2026-08-29"
     cita: "Walhalla Cloud | WALHALLA | Castellón de la Plana | Comunidad Valenciana | COLOCATION | Tier IV | Operativo"
+  - id: src-4
+    url: "https://material-electrico.cdecomunicacion.es/centros-de-datos/205591/walhalla-data-center-ampliacion-72-horas-autonomia"
+    titulo: "Walhalla amplía a 72 horas la autonomía de su centro de datos Tier IV frente a riesgos eléctricos"
+    editor: "Material Eléctrico (C de Comunicación)"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-05-27"
+    fecha_consulta: "2026-08-31"
+    cita: "A través de la instalación de nuevos grupos electrógenos de respaldo y expandiendo la capacidad de sus depósitos de combustible, el objetivo de la firma es alcanzar las 72 horas de autonomía in situ, sin necesidad de recarga externa. La cifra supera el mínimo regulatorio de 12 horas que exige el organismo internacional Uptime Institute, manteniendo la certificación Tier IV"

@@ -20,11 +20,14 @@ ubicacion:
 
 estado: en_tramitacion
 estado_detalle: >-
-  Preval Renewable 2 (sociedad participada por Valfortec) ha solicitado que la instalación
-  se tramite como Proyecto de Interés Autonómico (PIA); la solicitud está admitida a
-  trámite por la Generalitat Valenciana. A julio de 2026 el proyecto se encontraba en fase
-  de exposición pública. Orientado a edge computing / Edge AI.
-estado_fuentes: [src-1, src-2]
+  Preval Renewable 2 (sociedad participada por Valfortec) solicitó el 17/12/2025, a través
+  de Premier Engineering and Procurement, que la instalación se tramite como Proyecto de
+  Interés Autonómico (PIA). La Dirección General de Urbanismo, Paisaje y Evaluación
+  Ambiental resolvió la admisión a trámite el 28/04/2026; la resolución no prejuzga el
+  acuerdo del Consell ni los trámites ambientales y sectoriales posteriores. El expediente
+  público incluye memoria descriptiva, proyecto de actividad, informe económico y análisis
+  de encaje en la infraestructura verde. Orientado a edge computing / Edge AI.
+estado_fuentes: [src-1, src-2, src-5]
 
 potencia:
   - tipo: no_especificado
@@ -52,6 +55,26 @@ potencia:
     nota: >-
       Valor discrepante con las fuentes primarias sobre la memoria del proyecto. Se
       registra sin fusionar con los anteriores.
+  - tipo: instalada_total
+    valor_mw: 30
+    ambito: edificio
+    referencia: "Demanda eléctrica total del centro al completar las tres fases"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2026-04-28"
+    fuentes: [src-5]
+    nota: >-
+      Resolución de admisión a trámite del PIA: «tres fases independientes de 10 MW cada
+      una hasta alcanzar una capacidad total de 30 MW de demanda».
+  - tipo: it
+    valor_mw: 25
+    ambito: edificio
+    referencia: "Carga TI efectiva al completar las tres fases"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2026-04-28"
+    fuentes: [src-5]
+    nota: >-
+      Primera cifra tipificada del proyecto: «de los cuales aproximadamente 25 MW
+      corresponden a carga IT efectiva». No se resta ni se suma a los 30 MW de demanda.
 
 fases:
   - nombre: "Fase 1"
@@ -61,11 +84,70 @@ fases:
     estado: en_tramitacion
     fuentes: [src-1]
 
+conexion_electrica:
+  subestacion: >-
+    ST Petrel 66 kV (punto de conexión de I-DE Redes Eléctricas Inteligentes para el
+    conjunto de generación y autoconsumo), más una subestación dedicada prevista en la
+    parcela colindante 8218306XH9581N0001MK (10.001 m²), dimensionada en la fase I para
+    los 30 MW finales
+  tension_kv: 66
+  titular_red: "I-DE Redes Eléctricas Inteligentes"
+  mw_solicitados: 10
+  mw_concedidos: null
+  fuentes: [src-5, src-7]
+  nota: >-
+    La memoria descriptiva declara «DEMANDA PARA AUTOCONSUMO (MW) | 10» dentro del complejo
+    híbrido formado por la planta fotovoltaica El Lobo (44,07 MWp, con autorización
+    administrativa de construcción y ready to build), un parque eólico de 30 MW y un
+    almacenamiento de 10 MW y 40 MWh, ambos en desarrollo, a 2 km del punto de conexión y a
+    4 km del data center. Los 10 MW corresponden a la capacidad inicial, no a los 30 MW
+    finales, y no consta permiso de acceso otorgado ni potencia concedida. La resolución de
+    admisión a trámite describe además «suministro inicial en media tensión y esquema
+    definitivo mediante subestación dedicada».
+
 superficie_parcela_m2: 12557
 inversion_anunciada_eur: 302000000
 refrigeracion: >-
   Refrigeración por aire de alta eficiencia; objetivo declarado de PUE inferior a 1,2 y
-  criterios de reducción del consumo de agua.
+  criterios de reducción del consumo de agua. El proyecto de actividad describe
+  climatización mediante circuito cerrado de glicol con disipación en seco.
+
+agua:
+  circuito: cerrado
+  sistema: >-
+    Climatización mediante circuito cerrado de glicol con disipación en seco; el
+    abastecimiento de agua se limita a usos auxiliares y a la protección contra incendios.
+  origen: null
+  nota: >-
+    La resolución habla de «la reducción significativa del consumo de agua mediante
+    refrigeración por aire seco» y la memoria descriptiva cuantifica esa reducción en «una
+    reducción aproximada del 95 % en el consumo frente a los sistemas tradicionales basados
+    en agua». Es una cifra relativa a una referencia no definida: no hay consumo absoluto,
+    ni m³, ni WUE. No se registra circuito sin_agua porque el expediente sí prevé
+    abastecimiento auxiliar y depósito de protección contra incendios.
+  fuentes: [src-5, src-7]
+
+empleo:
+  - tipo: directo
+    valor: 135
+    referencia: "Puestos indefinidos a jornada completa en operación (45 por fase)"
+    fecha_dato: "2026-03"
+    fuentes: [src-5, src-6]
+    nota: null
+  - tipo: construccion
+    valor: 280
+    referencia: "Pico de empleo directo en obra entre los años 1 y 3"
+    fecha_dato: "2026-03"
+    fuentes: [src-6]
+    nota: >-
+      El informe económico oficial dice 280; el antetítulo de elEconomista (03/07/2026)
+      habla de 285 y su cuerpo de 280.
+  - tipo: indirecto
+    valor: 345
+    referencia: "Empleos indirectos o inducidos anuales estimados (metodología IVACE)"
+    fecha_dato: "2026-03"
+    fuentes: [src-6]
+    nota: null
 
 incertidumbres:
   - campo: potencia
@@ -74,22 +156,70 @@ incertidumbres:
       en la primera (elEconomista, 03/07/2026, y diario Información, 04/07/2026, ambos sobre
       la memoria del proyecto); «capacidad inicial de 10 MW ampliable» (Castellón Plaza,
       06/07/2026); y «una capacidad aproximada de 60 MW» (DatacenterDynamics, 07/07/2026).
-      No se ha localizado el expediente administrativo para dirimirlo.
-    fuentes: [src-1, src-2, src-3, src-4]
+      El expediente administrativo, localizado en agosto de 2026, tipifica la cifra:
+      30 MW de demanda total en tres fases de 10 MW y unos 25 MW de carga TI. Los 60 MW de
+      DatacenterDynamics no aparecen en ningún documento del expediente.
+    fuentes: [src-1, src-2, src-3, src-4, src-5]
   - campo: inversion_anunciada_eur
     descripcion: >-
       elEconomista e Información cifran la inversión en 302 millones de euros (182 M€ en la
       fase 1 más 120 M€ en las fases 2 y 3); Castellón Plaza habla de «entre 350 y 500
-      millones de euros» citando la memoria del proyecto.
-    fuentes: [src-1, src-2, src-3]
+      millones de euros» citando la memoria del proyecto. El informe económico del
+      expediente oficial, de marzo de 2026, cierra el CAPEX del proyecto completo en
+      302.149.928 €, con 182 M€ en la fase I y unos 120 M€ en las ampliaciones, lo que
+      respalda la cifra baja. La horquilla de 350-500 M€ que publicó Castellón Plaza sí tiene
+      soporte documental, pero en otro documento del mismo expediente: la memoria descriptiva
+      de 2025 estima «una inversión total estimada entre 350 y 500 millones de euros»
+      sumando 120-200 M€ de inversión directa y 200-300 M€ de inversión indirecta (hardware,
+      software, mantenimiento y servicios). Son dos magnitudes distintas —CAPEX del activo
+      frente a inversión directa más indirecta— y dos documentos oficiales de fechas
+      distintas. Se conserva la cifra de CAPEX y se deja constancia de las dos.
+    fuentes: [src-1, src-2, src-3, src-6, src-7]
   - campo: conexion_electrica
     descripcion: >-
       Castellón Plaza menciona la «proximidad a la subestación eléctrica de Petrer» como
       factor de localización, pero no consta el punto de conexión solicitado ni concedido.
-    fuentes: [src-2]
+      El expediente PIA prevé subestación dedicada propia y alimentación exclusiva desde la
+      planta fotovoltaica El Lobo, sin publicar MW de acceso.
+    fuentes: [src-2, src-5]
+  - campo: ubicacion
+    descripcion: >-
+      El expediente sitúa la parcela (referencia catastral 8218305XH9581N0001FK) en suelo
+      urbano industrial consolidado del Parque Empresarial Las Norias, en el límite entre
+      Monforte del Cid y Novelda, a unos 18 km del área metropolitana de Alicante. Las
+      coordenadas de la ficha siguen siendo aproximadas.
+    fuentes: [src-5]
+  - campo: superficie_parcela_m2
+    descripcion: >-
+      Dos superficies para la misma referencia catastral dentro del expediente oficial: la
+      memoria descriptiva de 2025 dice 12.587 m² y la resolución de admisión a trámite de
+      abril de 2026 dice «aproximadamente 12.557 m²», que es la cifra que también reproduce
+      la prensa y la registrada aquí. Diferencia de 30 m², probablemente una errata, sin
+      determinar cuál de las dos es la buena.
+    fuentes: [src-5, src-7]
+  - campo: empleo
+    descripcion: >-
+      El propio expediente contiene dos estimaciones de empleo incompatibles. La memoria
+      descriptiva de 2025 proyecta entre 200 y 250 empleos directos, entre 350 y 450
+      indirectos y entre 250 y 300 inducidos, «entre 800 y 1.000 empleos a lo largo de los
+      primeros cinco años de operación». El informe económico de marzo de 2026, presentado
+      para subsanar precisamente la acreditación de la generación de empleo, rebaja el
+      directo a unos 135 puestos indefinidos. Se registran las cifras del informe económico,
+      que es el documento más reciente y el que la Administración da por bueno, y se anota
+      aquí la horquilla anterior.
+    fuentes: [src-6, src-7]
+  - campo: refrigeracion
+    descripcion: >-
+      También hay dos diseños en el expediente: la memoria descriptiva de 2025 describe
+      «módulos en contenedores ISO estándar (1-2 MW cada uno), con racks de alta densidad
+      (5-15 kW/rack), sistemas UPS redundantes (N+1), y refrigeración de precisión (RowCool
+      o free-cooling)», mientras que el proyecto de actividad de 2026 que resume la
+      resolución habla de edificio técnico o data hall de 24 metros de altura (B+2) y
+      climatización por circuito cerrado de glicol con disipación en seco.
+    fuentes: [src-5, src-7]
 
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -124,3 +254,27 @@ fuentes:
     fecha_publicacion: "2026-07-07"
     fecha_consulta: "2026-08-29"
     cita: "La infraestructura prevé alcanzar una capacidad aproximada de 60 MW, situándose entre los proyectos de mayor tamaño anunciados hasta la fecha en la Comunidad Valenciana."
+  - id: src-5
+    url: "https://mediambient.gva.es/auto/planes-accion-territorial/Proyectos%20Inter%C3%A9s%20Auton%C3%B3mico%20%28PIA%29/PIA%20Monforte%20del%20Cid%20-%20El%20Lobo/00.%20Resoluci%C3%B3n%20de%20admisi%C3%B3n%20a%20tr%C3%A1mite%20de%2028.04.2026.pdf"
+    titulo: "Resolución de la Dirección General de Urbanismo, Paisaje y Evaluación Ambiental, de admisión a trámite del proyecto del data center «El Lobo» en Monforte del Cid (Alicante) promovida por Preval Renewable 2, S.L., a efectos de su posible declaración como Proyecto de Interés Autonómico (PIA)"
+    editor: "Generalitat Valenciana — Direcció General d'Urbanisme, Paisatge i Avaluació Ambiental"
+    tipo: oficial
+    fecha_publicacion: "2026-04-28"
+    fecha_consulta: "2026-08-31"
+    cita: "se configura como una actuación modular y escalable, desarrollada en tres fases independientes de 10 MW cada una hasta alcanzar una capacidad total de 30 MW de demanda, de los cuales aproximadamente 25 MW corresponden a carga IT efectiva [...] todo ello se localiza en el Parque Empresarial \"Las Norias\", sobre una parcela industrial ya urbanizada de aproximadamente 12.557 m² [...] El proyecto incorpora medidas de eficiencia y sostenibilidad, como un PUE inferior a 1,2 (indicador de eficiencia energética), la reducción significativa del consumo de agua mediante refrigeración por aire seco [...] el documento \"INFORME ECONÓMICO DATA CENTER EL LOBO\" cuantifica un CAPEX total del proyecto (30 MW) de 302.149.928 €, superando ampliamente la inversión mínima de 50.000.000 € prevista por la norma, y prevé, durante la fase de operación, la creación de aproximadamente 135 puestos de trabajo indefinidos a jornada completa"
+  - id: src-6
+    url: "https://mediambient.gva.es/auto/planes-accion-territorial/Proyectos%20Inter%C3%A9s%20Auton%C3%B3mico%20%28PIA%29/PIA%20Monforte%20del%20Cid%20-%20El%20Lobo/Informe%20econ%C3%B3mico.pdf"
+    titulo: "Informe económico Data Center «El Lobo» — Desarrollo y explotación de data center (30 MW)"
+    editor: "Preval Renewable 2, S.L. (expediente PIA publicado por la Generalitat Valenciana)"
+    tipo: oficial
+    fecha_publicacion: "2026-03"
+    fecha_consulta: "2026-08-31"
+    cita: "TOTAL CAPEX PROYECTO (30 MW) | 302.149.928 € [...] Durante la fase de operación, el centro de datos generará aproximadamente 135 puestos de trabajo indefinidos a jornada completa, distribuidos en tres fases de desarrollo (45 empleos por fase). Durante la fase de construcción, se estima un pico de aproximadamente 280 empleos directos entre los años 1 y 3. [...] podría generar alrededor de 345 empleos indirectos o inducidos al año, lo que equivale a un multiplicador aproximado de 3,1 veces el empleo directo."
+  - id: src-7
+    url: "https://mediambient.gva.es/auto/planes-accion-territorial/Proyectos%20Inter%C3%A9s%20Auton%C3%B3mico%20%28PIA%29/PIA%20Monforte%20del%20Cid%20-%20El%20Lobo/Memoria%20descriptiva.pdf"
+    titulo: "Data Center «El Lobo» — Memoria descriptiva"
+    editor: "Preval Renewable 2, S.L. (expediente PIA publicado por la Generalitat Valenciana)"
+    tipo: oficial
+    fecha_publicacion: "2025"
+    fecha_consulta: "2026-08-31"
+    cita: "El proyecto consiste en el desarrollo de un Edge data center modular y escalable en una superficie de aproximadamente 12.587 metros cuadrados, con una capacidad inicial de 10 MWs (dividida en módulos de 2-5 MW para flexibilidad) [...] PLANTA FOTOVOLTAICA (MWp) | 44,07 | PARQUE EÓLICO(MW) | 30,00 | SISTEMA DE ALMACENAMIENTO DE ENERGÍA (MW) | 10 | SISTEMA DE CAPACIDAD DE ALMACENAMIENTO (MWh) | 40 | DEMANDA PARA AUTOCINSUMO (MW) | 10. [...] El punto de conexión del proyecto lo proporciona la compañía eléctrica I-DE Redes Eléctricas Inteligentes en la ST «Petrel» con una tensión de 66 kV. [...] se utilizarán módulos en contenedores ISO estándar (1-2 MW cada uno), con racks de alta densidad (5-15 kW/rack), sistemas UPS redundantes (N+1), y refrigeración de precisión (RowCool o free-cooling) [...] En lo relativo al agua, se implementará un sistema de refrigeración mediante aire seco, que permite una reducción aproximada del 95 % en el consumo frente a los sistemas tradicionales basados en agua. [...] el proyecto representa una inversión total estimada entre 350 y 500 millones de euros [...] Directo: Se estima la creación de entre 200 y 250 puestos de trabajo [...] Indirecto: Se proyecta la creación de entre 350 y 450 empleos adicionales [...] Inducido: Se estima la generación de entre 250 y 300 puestos de trabajo adicionales [...] Total estimado: En conjunto, el proyecto podría generar entre 800 y 1.000 empleos a lo largo de los primeros cinco años de operación."

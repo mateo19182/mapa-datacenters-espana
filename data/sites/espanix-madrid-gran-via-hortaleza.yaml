@@ -45,9 +45,18 @@ incertidumbres:
   - campo: potencia
     descripcion: "Sin datos de potencia ni superficie."
     fuentes: [src-1, src-2]
+  - campo: tipo
+    descripcion: >-
+      La ficha técnica de ESpanix describe un único centro de datos, en la calle Mesena 80, con
+      «doble acceso desde la Calle Mesena y desde la Gran Vía de Hortaleza». Cabe por tanto que
+      los registros «Cantabria» y «Magdalena» de PeeringDB sean el mismo edificio visto desde su
+      otra entrada, y no dos emplazamientos independientes. Ninguna fuente lo confirma ni lo
+      desmiente, así que el fichero se mantiene, marcado como no resuelto, en vez de fusionarlo
+      con el de Mesena.
+    fuentes: [src-1, src-2, src-3]
 
 confianza: baja
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -64,3 +73,11 @@ fuentes:
     tipo: asociacion
     fecha_consulta: "2026-08-29"
     cita: "Magdalena Datacenter | Asociación ESpanix | Gran Via de Hortaleza 3 | 28033 Madrid"
+  - id: src-3
+    url: "https://www.espanix.net/es/datacenter/"
+    titulo: "Datacenter — ESpanix"
+    editor: "Asociación ESpanix"
+    tipo: asociacion
+    fecha_publicacion: "2026-05-11"
+    fecha_consulta: "2026-08-31"
+    cita: "En la calle Mesena 80, dentro uno de los Campus más modernos de España. Entre la M30 y la M40, a 15 minutos del aeropuerto. Doble acceso desde la Calle Mesena y desde la Gran Vía de Hortaleza."

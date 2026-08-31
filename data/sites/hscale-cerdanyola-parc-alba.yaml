@@ -25,8 +25,10 @@ estado_detalle: >-
   Campus de edificios independientes en el Parc de l'Alba. ACCIÓ anunció el inicio de obras con
   un primer edificio de 15 MW y 43.000 m², previsto para 2025. El directorio Baxtel describe el
   campus ya bajo la marca hscale, con cinco edificios de dos plantas más uno auxiliar y año
-  previsto 2026. No se ha localizado confirmación pública de puesta en servicio.
-estado_fuentes: [src-accio, src-baxtel]
+  previsto 2026. No se ha localizado confirmación pública de puesta en servicio. El acto de
+  colocación de la primera piedra se celebró el 27 de junio de 2024 con presencia del alcalde
+  de Cerdanyola y del secretario de Polítiques Digitals de la Generalitat.
+estado_fuentes: [src-accio, src-baxtel, src-cerdanyola]
 
 potencia:
   - tipo: no_especificado
@@ -34,27 +36,55 @@ potencia:
     ambito: campus
     referencia: "Capacidad total del campus"
     estado_asociado: en_construccion
-    fuentes: [src-accio]
+    fuentes: [src-accio, src-cerdanyola]
     nota: >-
       ACCIÓ habla de «IT capacity of 60MW» para el campus terminado. Al proceder de una agencia
-      de promoción y no del operador, no se ha tipificado como carga TI.
+      de promoción y no del operador, no se ha tipificado como carga TI. El Ayuntamiento de
+      Cerdanyola da la misma cifra sin calificarla: «una potència de 60 MW».
   - tipo: no_especificado
     valor_mw: 15
     ambito: fase
     referencia: "Primer edificio"
     estado_asociado: en_construccion
     fuentes: [src-accio]
+  - tipo: no_especificado
+    valor_mw: 80
+    ambito: campus
+    referencia: "Objetivo de potencia en negociación en el momento de la primera piedra"
+    estado_asociado: anunciado
+    fecha_dato: "2024-06-27"
+    fuentes: [src-cerdanyola]
+    nota: >-
+      El Ayuntamiento escribe «amb una potència de 60 MW (s'està treballant perquè siguin 80
+      MW)». Es un objetivo declarado, no una capacidad confirmada.
 
 fases:
   - nombre: "Fase 1 (primer edificio)"
     estado: en_construccion
     superficie_m2: 43000
-    fuentes: [src-accio]
+    nota: "Primera piedra colocada el 27 de junio de 2024."
+    fuentes: [src-accio, src-cerdanyola]
 
 refrigeracion: >-
   Agua refrigerada con freecooling e infraestructura preparada para refrigeración líquida;
   densidades de rack declaradas de 11 a 130 kW y PUE objetivo de 1,2. ACCIÓ añadía principios de
   diseño Tier III y suministro 100 % renovable.
+
+inversion_anunciada_eur: 600000000
+
+empleo:
+  - tipo: directo
+    valor: 300
+    referencia: "Previsión para el campus AQ-BCN1"
+    fecha_dato: "2024-06"
+    fuentes: [src-cerdanyola]
+    nota: null
+  - tipo: indirecto
+    valor: 1500
+    referencia: "Previsión para el campus AQ-BCN1"
+    fecha_dato: "2024-06"
+    fuentes: [src-cerdanyola]
+    nota: null
 
 incertidumbres:
   - campo: identidad
@@ -73,8 +103,16 @@ incertidumbres:
   - campo: superficie
     descripcion: >-
       Los 43.000 m² se atribuyen al «primer edificio», lo que encaja mal con una fase de 15 MW;
-      podría referirse a la parcela y no a la superficie construida.
-    fuentes: [src-accio]
+      podría referirse a la parcela y no a la superficie construida. El Ayuntamiento de
+      Cerdanyola, en cambio, dice que el campus «ocuparà una superfície de 7.000 metres
+      quadrats». Las dos cifras se conservan sin elegir.
+    fuentes: [src-accio, src-cerdanyola]
+  - campo: inversion_anunciada_eur
+    descripcion: >-
+      Los 600 millones de euros proceden del Ayuntamiento de Cerdanyola en junio de 2024 y
+      duplican los 300 millones que se manejaban en el anuncio inicial del proyecto. No se ha
+      localizado confirmación de la cifra por parte del operador.
+    fuentes: [src-cerdanyola]
   - campo: estado
     descripcion: >-
       Ninguna de las dos fuentes es del operador. ACCIÓ daba la fase 1 por terminada en 2025 y
@@ -86,8 +124,8 @@ incertidumbres:
       Las coordenadas son el centroide del Parc de l'Alba según Nominatim, no la parcela concreta.
     fuentes: [src-nominatim]
 
-confianza: baja
-ultima_verificacion: "2026-08-29"
+confianza: media
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-accio
@@ -119,3 +157,16 @@ fuentes:
     cita: >-
       Parc de l'Alba, Cerdanyola del Vallès, Vallès Occidental, Barcelona, Catalunya, España —
       lat 41.4856180, lon 2.1076426
+  - id: src-cerdanyola
+    url: "https://www.cerdanyola.cat/actualitat/aq-compute-posa-la-primera-pedra-del-futur-data-center-campus-al-parc-de-lalba"
+    titulo: "AQ Compute posa la primera pedra del futur Data Center Campus al Parc de l'Alba"
+    editor: "Ajuntament de Cerdanyola del Vallès"
+    tipo: oficial
+    fecha_publicacion: "2024-06-27"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      La gestora de centres de dades, filial del grup alemany Aquila Capital, invertirà 600
+      milions d'euros ... un centre de dades, amb una potència de 60 MW (s'està treballant
+      perquè siguin 80 MW) i abastit amb energia 100% renovable ... L'AQ-BCN 1 Data Center
+      Campus ocuparà una superfície de 7.000 metres quadrats i preveu generar 300 llocs de
+      treball directes i 1.500 d'indirectes.

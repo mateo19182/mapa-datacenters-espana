@@ -87,8 +87,46 @@ conexion_electrica:
 
 superficie_parcela_m2: 799073
 superficie_construida_m2: 300000
-inversion_anunciada_eur: null
-refrigeracion: null
+inversion_anunciada_eur: 2360000000
+refrigeracion: >-
+  Refrigeración por aire. La ordenación orienta las cuatro unidades de edificación de
+  noroeste a sureste, alineadas con el viento dominante, para favorecer la ventilación
+  natural y la evacuación del aire caliente de los sistemas de refrigeración.
+
+agua:
+  circuito: desconocido
+  sistema: >-
+    Refrigeración por aire según la documentación ambiental del PIGA. La promotora afirma que
+    "la instalación minimiza el consumo de agua".
+  origen: "Conexión exterior de abastecimiento de agua potable incluida en el PIGA"
+  consumo_m3_ano: 6066
+  nota: >-
+    Cifra tomada del estudio de impacto ambiental publicado en julio de 2026 y difundida por
+    prensa; no se ha localizado el documento ambiental original en abierto. La memoria del
+    PIGA de febrero de 2026 no cuantifica el consumo de agua. La misma fuente atribuye al
+    proyecto un consumo eléctrico de 2.628 GWh al año una vez completadas las dos fases.
+  fuentes: [src-5]
+
+energia:
+  - consumo_gwh_ano: 2628
+    referencia: "Consumo eléctrico anual del campus una vez completadas las dos fases previstas"
+    fecha_dato: "2026-07-08"
+    fuentes: [src-5]
+    nota: >-
+      Cifra de la documentación ambiental del PIGA publicada en julio de 2026, conocida a
+      través de prensa; no se ha podido leer el documento original. La segunda fase queda
+      condicionada a disponer de la capacidad eléctrica necesaria, de modo que es un techo,
+      no una previsión firme.
+
+empleo:
+  - tipo: total
+    valor: 1308
+    referencia: "Media anual de empleos durante la vida útil del proyecto, incluidos directos, indirectos e inducidos"
+    fecha_dato: "2026-02-21"
+    fuentes: [src-6]
+    nota: >-
+      La memoria eleva la cifra a 1.773 en el escenario en que el campus alcanza los 300 MW.
+      No desglosa cuántos son de obra y cuántos de explotación.
 enlaces_proyecto:
   - "https://www.aragon.es/-/piga-tillion-aragon"
 
@@ -100,6 +138,20 @@ incertidumbres:
       se registran como no especificados. Solo los 150 MW asegurados pueden clasificarse con
       seguridad como potencia de acceso a la red.
     fuentes: [src-1]
+  - campo: inversion_anunciada_eur
+    descripcion: >-
+      La cifra de 2.360 millones procede de la documentación ambiental del PIGA publicada en
+      julio de 2026, difundida por prensa. Anuncios anteriores de la promotora y de la
+      prensa hablaron de 1.100 millones en una primera fase y hasta 1.950 o 2.000 millones
+      con la ampliación. No se ha podido leer el documento ambiental original para
+      contrastar la cifra.
+    fuentes: [src-5]
+  - campo: agua
+    descripcion: >-
+      La memoria del PIGA no cuantifica el consumo de agua; los 6.066 m³/año proceden del
+      estudio de impacto ambiental a través de prensa. No consta el sistema concreto de
+      refrigeración ni el origen del agua de proceso.
+    fuentes: [src-1, src-5]
   - campo: ubicacion
     descripcion: >-
       Las coordenadas registradas son el centroide municipal de Villamayor de Gállego
@@ -141,3 +193,18 @@ fuentes:
     fecha_publicacion: "2026-02-17"
     fecha_consulta: "2026-08-29"
     cita: "para la implantación del campus de centro de datos \"Tillion Aragón\", en el término municipal de Villamayor de Gállego"
+  - id: src-5
+    url: "https://www.eldiario.es/aragon/economia/azora-blackstone-centros-datos-absorberan-70-electricidad-consume-hoy-aragon_1_13364372.html"
+    titulo: "Azora y Blackstone: dos centros de datos absorberán casi el 70% de la electricidad que consume hoy Aragón"
+    editor: "elDiario.es Aragón"
+    tipo: prensa_general
+    fecha_publicacion: "2026-07-08"
+    fecha_consulta: "2026-08-31"
+    cita: "El proyecto de Azora, denominado Tillion Aragón, prevé una inversión de 2.360 millones de euros para levantar cuatro edificios de centros de datos en Villamayor de Gállego. La documentación ambiental estima un consumo de 2.628 GWh anuales una vez completadas las dos fases previstas [...] Tanto Blackstone como Azora recurrirán a sistemas de refrigeración por aire, una tecnología que reduce notablemente las necesidades hídricas frente a otros modelos. El proyecto de Calatorao estima un consumo anual de 4.782 metros cúbicos de agua y el de Villamayor, 6.066 metros cúbicos."
+  - id: src-6
+    url: "https://www.aragon.es/documents/d/guest/til_1_01_memoria-piga_rev05_00"
+    titulo: "Plan de Interés General de Aragón «Tillion Aragón». Tomo 1, Documento 1: Memoria PIGA — apartado 3.2 Aumento de la oferta de empleo"
+    editor: "Gobierno de Aragón"
+    tipo: oficial
+    fecha_consulta: "2026-08-31"
+    cita: "Se estima la creación de una media de 1.308 empleos anuales durante la vida útil del Proyecto (1.773 en el caso de 300 MW). Se crearán puestos de trabajo en las distintas etapas de construcción y operación."

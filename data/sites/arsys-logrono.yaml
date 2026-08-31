@@ -2,6 +2,8 @@ id: arsys-logrono
 nombre: "Centro de Datos de Arsys — Logroño"
 alias:
   - "Data Center de Arsys en La Rioja"
+  - "Centro de Datos Portalada"
+  - "Arsys Logroño Data Center Portalada"
 tipo: edificio
 operador: "Arsys"
 propietario: "Arsys Internet, S.L.U."
@@ -18,21 +20,32 @@ ubicacion:
 
 estado: operativo
 estado_detalle: >-
-  Centro de datos propio de Arsys en Logroño, en explotación y ampliado por
-  fases mediante salas técnicas de 250 m². En abril de 2019 entró en servicio la
-  segunda sala, duplicando la capacidad. El diseño contempla cuatro salas
-  técnicas y unos 20.000 servidores físicos a plena capacidad. Aloja la nube
-  privada del Gobierno de La Rioja.
-estado_fuentes: [src-aslan]
+  Centro de datos propio de Arsys en Logroño, conocido como Centro de Datos
+  Portalada, en explotación y ampliado por fases mediante salas técnicas de 250 m².
+  Se inauguró en 2009 con una única sala técnica y una capacidad estimada de 5.000
+  servidores físicos. En abril de 2019 entró en servicio la segunda sala, duplicando
+  el suelo técnico hasta 500 m² y la capacidad hasta unos 10.000 servidores. El
+  diseño modular contempla cuatro salas técnicas y unos 20.000 servidores físicos a
+  plena capacidad. Obtuvo en 2020 la certificación Tier III de Diseño del Uptime
+  Institute para una de las cuatro salas y en 2024 la renovó, la amplió a Instalación
+  Construida y extendió su alcance al conjunto de las instalaciones. Cuenta con
+  suministro de fuentes renovables desde 2015 e ISO 50001. Aloja la nube privada del
+  Gobierno de La Rioja.
+estado_fuentes: [src-aslan, src-arsys, src-dcm]
 
 potencia: []
 
 fases:
+  - nombre: "Primera sala técnica"
+    estado: operativo
+    fecha_puesta_en_servicio: "2009"
+    fuentes: [src-arsys]
+    nota: "Inaugurada en 2009 con una capacidad estimada de 5.000 servidores físicos."
   - nombre: "Segunda sala técnica (250 m²)"
     estado: operativo
     fecha_puesta_en_servicio: "2019-04"
     superficie_m2: 250
-    fuentes: [src-aslan]
+    fuentes: [src-aslan, src-arsys]
   - nombre: "Tercera y cuarta salas técnicas"
     estado: anunciado
     nota: >-
@@ -40,28 +53,51 @@ fases:
       servidores físicos.
     fuentes: [src-aslan]
 
-refrigeracion: "PUE objetivo declarado de 1,25, con monitorización asistida por IA."
+refrigeracion: >-
+  Climatización por agua de alto rendimiento con sistemas de refrigeración basados en
+  IoT e inteligencia artificial. PUE objetivo declarado de 1,25.
+
+agua:
+  circuito: desconocido
+  sistema: >-
+    Climatización por agua de alto rendimiento, con sistemas de refrigeración basados
+    en IoT e inteligencia artificial, según la descripción publicada por la compañía.
+  origen: null
+  nota: >-
+    Arsys no publica consumo de agua, WUE ni el tipo de circuito. Se registra el
+    sistema porque es de los pocos del norte que declara refrigeración por agua y no
+    free cooling.
+  fuentes: [src-dcm]
 
 incertidumbres:
   - campo: potencia
     descripcion: >-
       Arsys publica superficie técnica, número de racks y servidores, pero no la
-      potencia eléctrica del centro en ninguna de las fuentes consultadas.
-    fuentes: [src-aslan]
+      potencia eléctrica del centro en ninguna de las fuentes consultadas, ni en su
+      propio blog, ni en las fichas de certificación, ni en la cobertura
+      especializada de 2024. Tampoco consta la potencia de acceso a la red.
+    fuentes: [src-aslan, src-arsys, src-dcm]
   - campo: ubicacion
     descripcion: >-
-      No se ha localizado la dirección exacta; las coordenadas corresponden al
-      municipio de Logroño.
-    fuentes: [src-osm]
+      No se ha localizado la dirección exacta. El centro se llama «Portalada», que es
+      el nombre de un polígono industrial de Logroño, pero ni Arsys ni el Uptime
+      Institute publican calle ni parcela; el domicilio social de la compañía (calle
+      Madre de Dios 21) es su sede, no el centro de datos. Las coordenadas
+      corresponden al municipio.
+    fuentes: [src-osm, src-arsys]
   - campo: estado
     descripcion: >-
-      La información técnica más detallada localizada es de 2019. Fuentes
-      posteriores confirman que el centro sigue operativo y que se puso en
-      producción una tercera sala, pero sin datos técnicos verificados.
-    fuentes: [src-aslan]
+      La descripción técnica más reciente localizada es de febrero de 2024 y sigue
+      hablando de «cuatro salas técnicas de 250 metros cuadrados y una capacidad total
+      aproximada de unos 20.000 servidores físicos», sin decir cuántas están en
+      producción. En 2022, con motivo del contrato de la nube privada del Gobierno de
+      La Rioja, la prensa especializada situaba la capacidad ampliada en 15.000
+      servidores con una nueva sala técnica. No se ha verificado cuántas salas están
+      hoy operativas.
+    fuentes: [src-aslan, src-dcm]
 
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-aslan
@@ -83,3 +119,35 @@ fuentes:
     tipo: otro
     fecha_consulta: "2026-08-29"
     cita: "Logroño, La Rioja, España — lat 42.4661196, lon -2.4396676"
+  - id: src-arsys
+    url: "https://www.arsys.es/blog/arsys-certificacion-tier3"
+    titulo: "Arsys consigue la Certificación Tier III para su CPD de Logroño"
+    editor: "Arsys Internet, S.L.U."
+    tipo: empresa
+    fecha_publicacion: "2020-03-09"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El Centro de Datos Portalada se inauguró en Logroño en 2009 con una única sala
+      técnica y una capacidad estimada de 5.000 servidores físicos. Tras la
+      inauguración de una segunda sala, en abril de 2019, el Centro de Datos de Arsys
+      duplicó su capacidad de suelo técnico hasta los 500 m2, con capacidad para unos
+      10.000 servidores físicos [...] Con todas sus salas operativas, la capacidad del
+      Centro de Datos de Arsys se situaría en 20.000 servidores físicos,
+      aproximadamente.
+  - id: src-dcm
+    url: "https://www.datacentermarket.es/news/el-cpd-principal-de-arsys-amplia-el-alcance-de-sus-tier-iii/"
+    titulo: "El CPD principal de Arsys amplía el alcance de sus Tier III"
+    editor: "Data Center Market"
+    tipo: prensa_especializada
+    fecha_publicacion: "2024-02-13"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Desde 2020, Arsys contaba con la certificación Tier III de Diseño para una de
+      las cuatro salas de su principal centro de datos. Ahora, además de renovar su
+      vigencia y ampliarla a la categoría Instalación Construida, ha extendido su
+      alcance al conjunto de las instalaciones [...] El CPD se caracteriza por un
+      diseño modular de cuatro salas técnicas de 250 metros cuadrados y una capacidad
+      total aproximada de unos 20.000 servidores físicos [...] cuenta con suministro
+      energético procedente de fuentes renovables desde 2015, climatización por agua
+      de alto rendimiento y eficiencia e innovadores sistemas de refrigeración,
+      basados en IoT e Inteligencia Artificial

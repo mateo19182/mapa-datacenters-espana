@@ -1,0 +1,122 @@
+id: trevenque-granada-cloud-center-andalucia
+nombre: "Cloud Center Andalucía — Grupo Trevenque (Granada)"
+alias:
+  - "Cloud Center Andalucía"
+  - "CCA"
+  - "Trevenque Data Center"
+tipo: edificio
+operador: "Grupo Trevenque"
+propietario: "Grupo Trevenque"
+cliente_ancla: null
+modelo: colocation
+
+ubicacion:
+  municipio: "Granada"
+  provincia: "Granada"
+  ccaa: "Andalucía"
+  direccion: "Calle Pago de Cambea, nave 13, Parque Empresarial Cortijo del Conde, Polígono Sur, 18015 Granada"
+  lat: 37.1734995
+  lon: -3.5995337
+  precision: municipio
+  fuentes: [src-1, src-osm]
+
+estado: operativo
+estado_detalle: >-
+  Centro de datos neutral operado por el Grupo Trevenque, en funcionamiento desde noviembre de
+  2012. En 2015 se describía como el mayor centro de datos de Andalucía por capacidad, con más
+  de 1.000 m² y sitio para más de 5.000 servidores físicos, catorce operarios en el centro y
+  clientes en dieciséis países. En junio de 2020 instaló placas solares en la cubierta que
+  cubren en torno al 25 % de la energía que consume.
+estado_fuentes: [src-1, src-2, src-4]
+fecha_puesta_en_servicio: "2012-11"
+
+potencia: []
+
+superficie_construida_m2: 1000
+inversion_anunciada_eur: null
+refrigeracion: null
+enlaces_proyecto:
+  - "https://www.trevenque.es/servicio/housing/"
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      Ni Trevenque ni la prensa publican potencia eléctrica del centro. La única magnitud de
+      capacidad difundida es el número de servidores físicos alojables (más de 5.000), que no es
+      convertible a MW. Campo de potencia vacío.
+    fuentes: [src-2, src-4]
+  - campo: operador
+    descripcion: >-
+      El cruce por compañías que originó esta pista atribuía un centro de datos en Granada a
+      Vodafone bajo el nombre «Cloud Center Andalucía». Son cosas distintas: Cloud Center
+      Andalucía es la marca del centro de datos del Grupo Trevenque, empresa granadina sin
+      relación societaria con Vodafone. No se ha localizado ningún centro de datos de Vodafone en
+      Granada.
+    fuentes: [src-1, src-2]
+  - campo: superficie_construida_m2
+    descripcion: >-
+      Los «más de 1.000 m²» son de 2015 y no se ha localizado una cifra actualizada. Se registra
+      como suelo mínimo conocido.
+    fuentes: [src-2]
+  - campo: ubicacion
+    descripcion: >-
+      La dirección procede de la guía sectorial de Data Center Market. Una nota de la propia
+      Trevenque de 2020 sitúa las instalaciones «en el noroeste de Granada capital», mientras que
+      el Parque Empresarial Cortijo del Conde está al sur de la ciudad. Las coordenadas
+      registradas son el centroide municipal, no la nave.
+    fuentes: [src-1, src-3, src-osm]
+
+confianza: baja
+ultima_verificacion: "2026-08-31"
+
+fuentes:
+  - id: src-1
+    url: "https://guia.datacentermarket.es/gratuita/cloud-center-andalucia-grupo-trevenque/"
+    titulo: "Cloud Center Andalucía (Grupo Trevenque) — Guía CPDs"
+    editor: "Data Center Market"
+    tipo: prensa_especializada
+    fecha_publicacion: "2024-02-16"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Dirección: Calle Pago de Cambea nave 13, Parque Empresarial Cortijo del Conde, Polígono Sur
+      Localidad: 18015 – Granada (Granada) [...] CPD: SI Categoria: Centros de datos neutrales
+  - id: src-2
+    url: "https://www.ideal.es/granada/201503/11/mayor-centro-datos-andalucia-20150311135634.html"
+    titulo: "El mayor centro de datos de Andalucía atiende a 1.200 empresas de 16 países"
+    editor: "Ideal / EFE"
+    tipo: prensa_general
+    fecha_publicacion: "2015-03-11"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El 'Cloud Center Andalucía' ocupa más de 1.000 metros cuadrados, tiene capacidad para
+      albergar más de 5.000 servidores informáticos y dispone de sistemas específicos y
+      especializados de seguridad, suministro eléctrico.
+  - id: src-3
+    url: "https://www.trevenque.es/blog/posts-cloud/cloud-center-andalucia-instala-placas-solares/"
+    titulo: "Cloud Center Andalucía instala placas solares con las que ya genera el 25% de la energía que consume"
+    editor: "Grupo Trevenque"
+    tipo: empresa
+    fecha_publicacion: "2020-07-17"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      hemos instalado placas solares en la azotea de nuestras instalaciones, ubicadas en el
+      noroeste de Granada capital. Así, desde su puesta en marcha, a finales del pasado mes de
+      junio, estas placas están generando en torno al 25% de toda la energía.
+  - id: src-4
+    url: "https://granadaeconomica.es/el-cloud-center-andalucia-es-unico-por-tamano-volumen-y-capacidad/"
+    titulo: "«El Cloud Center Andalucía es único por tamaño, volumen y capacidad»"
+    editor: "Granada Económica"
+    tipo: prensa_general
+    fecha_publicacion: "2013-04-11"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El Cloud Center Andalucía es, por capacidad, el primer data center de la región de
+      Andalucía, con capacidad para albergar más de 5.000 servidores físicos. Puesto en marcha por
+      Grupo Trevenque [...] en funcionamiento desde el pasado mes de noviembre.
+  - id: src-osm
+    url: "https://nominatim.openstreetmap.org/search?q=Granada%2C+Andaluc%C3%ADa&format=json&limit=1"
+    titulo: "Nominatim — Granada, Andalucía"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-08-31"
+    cita: "Granada, Comarca de la Vega de Granada, Granada, Andalucía, España — lat 37.1734995, lon -3.5995337"

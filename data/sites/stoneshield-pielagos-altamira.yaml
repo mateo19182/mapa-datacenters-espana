@@ -27,9 +27,17 @@ estado_detalle: >-
   terrenos se vendió a la promotora en mayo de 2025. El desarrollo se articula
   mediante Proyectos Singulares de Interés Regional (PSIR) en tres fases; el inicio
   de obras de la fase 1 estaba previsto para enero de 2026 y la plena operación
-  para 2032. A agosto de 2026 el debate público en Cantabria gira en torno al acceso
-  a la red eléctrica, aún no concedido por el Ministerio.
-estado_fuentes: [src-1, src-2, src-3]
+  para 2032. La presentación del proyecto describe un campus modular de 12 módulos
+  de centro de datos adyacentes de 40 MW cada uno, con 75.000 m² de paneles
+  fotovoltaicos en el propio recinto y certificaciones LEED y BREEAM como objetivo.
+  En junio de 2025 el consejero de Industria detalló en el Parlamento de Cantabria
+  que el PSIR de la fase 1 se aprobaría previsiblemente en diciembre de 2025, con
+  obras desde enero de 2026, y las fases 2 y 3 a partir de noviembre de 2028. A
+  agosto de 2026 el debate público en Cantabria gira en torno al acceso a la red
+  eléctrica: el proyecto necesita que el Ministerio para la Transición Ecológica
+  incluya dos nuevas posiciones en la subestación de Penagos en la planificación de
+  la red de transporte, y las obras previstas para enero de 2026 no habían comenzado.
+estado_fuentes: [src-1, src-2, src-3, src-4, src-5]
 
 potencia:
   - tipo: no_especificado
@@ -48,46 +56,163 @@ potencia:
     fecha_dato: "2025-02-26"
     fuentes: [src-1, src-3]
     nota: "Las fuentes dicen «500 en 2030» sin precisar tipo de potencia."
+  - tipo: it
+    valor_mw: 162
+    ambito: fase
+    referencia: "Primera fase — Altamira 1, tres edificios"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2025-02-25"
+    fuentes: [src-4]
+    nota: "La presentación del promotor dice literalmente «162 MW carga de IT»."
+  - tipo: it
+    valor_mw: 81
+    ambito: fase
+    referencia: "Segunda fase — Altamira 2, un edificio"
+    estado_asociado: anunciado
+    fecha_dato: "2025-02-25"
+    fuentes: [src-4]
+    nota: "La presentación del promotor dice literalmente «81 MW carga de IT»."
+  - tipo: it
+    valor_mw: 81
+    ambito: fase
+    referencia: "Tercera fase — Altamira 3, un edificio"
+    estado_asociado: anunciado
+    fecha_dato: "2025-02-25"
+    fuentes: [src-4]
+    nota: "La presentación del promotor dice literalmente «81 MW carga de IT»."
+  - tipo: no_especificado
+    valor_mw: 100
+    ambito: fase
+    referencia: "Necesidad de potencia de la primera fase, según el consejero de Industria"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2025-06-16"
+    fuentes: [src-5]
+    nota: >-
+      Arasti declaró en el Parlamento de Cantabria que «se pondrá en marcha en tres
+      fases y en las dos primeras la necesidad será de 100 y 200 MW». No coincide con
+      los 162 MW de carga IT que la presentación del promotor atribuye a la fase 1.
+  - tipo: no_especificado
+    valor_mw: 200
+    ambito: fase
+    referencia: "Necesidad de potencia de la segunda fase, según el consejero de Industria"
+    estado_asociado: anunciado
+    fecha_dato: "2025-06-16"
+    fuentes: [src-5]
+    nota: "No coincide con los 81 MW de carga IT de la fase 2 según la presentación del promotor."
 
 fases:
-  - nombre: "Fase 1"
+  - nombre: "Fase 1 — Altamira 1 (3 edificios, 162 MW carga IT)"
     estado: en_tramitacion
     fecha_puesta_en_servicio: "2028"
-    fuentes: [src-1, src-3]
-  - nombre: "Fase 2"
+    superficie_m2: 103054
+    fuentes: [src-1, src-3, src-4]
+    nota: "374.572 m² de superficie del ámbito y 103.054 m² construidos."
+  - nombre: "Fase 2 — Altamira 2 (1 edificio, 81 MW carga IT)"
     estado: anunciado
-    fuentes: [src-1, src-3]
-  - nombre: "Fase 3"
+    superficie_m2: 51436
+    fuentes: [src-1, src-3, src-4]
+    nota: "131.200 m² de superficie del ámbito y 51.436 m² construidos."
+  - nombre: "Fase 3 — Altamira 3 (1 edificio, 81 MW carga IT)"
     estado: anunciado
-    fuentes: [src-1, src-3]
+    superficie_m2: 51436
+    fuentes: [src-1, src-3, src-4]
+    nota: "130.660 m² de superficie del ámbito y 51.436 m² construidos."
 
 conexion_electrica:
   subestacion: "SE Penagos"
   tension_kv: 220
-  fuentes: [src-3]
+  titular_red: null
+  mw_solicitados: null
+  mw_concedidos: null
+  nota: >-
+    El proyecto depende de que el Ministerio para la Transición Ecológica incluya dos
+    nuevas posiciones en la subestación de Penagos en la planificación de la red de
+    transporte. El consejero de Industria sostiene que la solución «no implica ningún
+    gasto al sistema eléctrico español ya que será sufragado por el promotor». No
+    consta resolución de acceso y conexión ni cifra de MW solicitados o concedidos.
+  fuentes: [src-3, src-5]
 
 superficie_parcela_m2: 637000
 inversion_anunciada_eur: 3600000000
+
+agua:
+  circuito: desconocido
+  sistema: >-
+    Recolección de agua de lluvia en el campus para su uso en la refrigeración, según
+    la presentación del promotor. El consejero de Industria afirma, en cambio, que la
+    instalación «no gastará agua para su refrigeración» por las condiciones
+    climáticas de la región.
+  origen: "Recolección de agua de lluvia en el propio campus (según el promotor)"
+  nota: >-
+    Las dos descripciones disponibles no son compatibles y ninguna cifra el consumo.
+    No se declara circuito cerrado ni sin_agua: la afirmación de que no consume agua
+    procede de una comparecencia parlamentaria, no de documentación técnica, y el
+    propio promotor describe un aprovechamiento de pluviales para refrigerar.
+  fuentes: [src-4, src-5]
+
+empleo:
+  - tipo: construccion
+    valor: 1500
+    referencia: "Fase de desarrollo"
+    fecha_dato: "2025-02-25"
+    fuentes: [src-4, src-5]
+    nota: "La presentación dice «Más de 1.500 empleos directos» durante la construcción."
+  - tipo: total
+    valor: 1450
+    referencia: "Fase de operación, directos e indirectos"
+    fecha_dato: "2025-02-25"
+    fuentes: [src-4]
+    nota: "«más de 1.450 puestos de trabajo, de los cuales 350 serán directos y 1.100 indirectos»."
+  - tipo: directo
+    valor: 350
+    referencia: "Fase de operación"
+    fecha_dato: "2025-02-25"
+    fuentes: [src-4]
+    nota: null
+  - tipo: indirecto
+    valor: 1100
+    referencia: "Fase de operación"
+    fecha_dato: "2025-02-25"
+    fuentes: [src-4]
+    nota: null
 
 enlaces_proyecto: []
 
 incertidumbres:
   - campo: potencia
     descripcion: >-
-      Ninguna fuente precisa si los 100/500 MW son carga TI, potencia de conexión o
-      potencia instalada. No se comparan con MW IT de otros emplazamientos.
-    fuentes: [src-1, src-3]
+      Conviven cuatro descripciones que no encajan. La presentación del promotor
+      (febrero de 2025) da 162 + 81 + 81 MW de «carga de IT» por fase, describe el
+      pilar del campus como «un centro de datos de 500MW» y a la vez lo compone de
+      «12 módulos de centros de datos adyacentes de 40 MW cada uno». Invest in
+      Cantabria y Data Center Market hablan de 100 MW en 2028 y 500 en 2030 sin
+      tipificar. El consejero de Industria, en junio de 2025, cifra la necesidad de
+      las dos primeras fases en 100 y 200 MW y el total en 500. Solo las cifras por
+      fase de la presentación están tipificadas como carga IT; el resto se conserva
+      sin tipificar y no se suma con ellas.
+    fuentes: [src-1, src-3, src-4, src-5]
   - campo: superficie_parcela_m2
     descripcion: >-
       Data Center Market da dos cifras en la misma pieza: «637.000 metros cuadrados»
       y «636.432 metros cuadrados». Invest in Cantabria dice «637,000 square meters».
-    fuentes: [src-1, src-3]
+      La presentación del promotor desglosa los tres ámbitos en 374.572, 131.200 y
+      130.660 m², que coinciden con la cifra menor. Se mantiene el valor registrado.
+    fuentes: [src-1, src-3, src-4]
   - campo: conexion_electrica
     descripcion: >-
       Data Center Market cita la subestación de Penagos (220.000 voltios) como punto
-      de conexión, pero en noviembre de 2025 la propia Consejería reclamaba al
-      Ministerio acceso a la red, lo que indica que la capacidad no estaba concedida.
-    fuentes: [src-3]
+      de conexión, pero en junio de 2025 el consejero ya explicaba que hacían falta
+      dos nuevas posiciones en esa subestación, en noviembre de 2025 la Consejería
+      seguía reclamando el acceso al Ministerio y en mayo de 2026 el propio consejero
+      condicionaba la ejecución del proyecto a esa decisión. La capacidad no consta
+      concedida a agosto de 2026.
+    fuentes: [src-3, src-5]
+  - campo: estado
+    descripcion: >-
+      El calendario ha resbalado. En junio de 2025 el consejero situaba la aprobación
+      del PSIR de la fase 1 en diciembre de 2025 y el inicio de obras en enero de
+      2026. No se ha localizado ni la aprobación del PSIR ni el inicio de las obras.
+    fuentes: [src-5]
   - campo: otros
     descripcion: >-
       Data Center Market afirma que el campus se conecta al «cable submarino MAREA que
@@ -97,7 +222,7 @@ incertidumbres:
     fuentes: [src-3]
 
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -123,3 +248,45 @@ fuentes:
     fecha_publicacion: "2025-02-26"
     fecha_consulta: "2026-08-29"
     cita: "Impulsado a través de XDC Properties, filial de Stoneshield"
+  - id: src-4
+    url: "https://www.cantabriadirecta.es/wp-content/uploads/2025/02/ALTAMIRA-Presentacion-25-Feb_vFinal.pdf"
+    titulo: "Proyecto Altamira – Campus Tecnológico en Cantabria (presentación de 25 de febrero de 2025)"
+    editor: "Stoneshield Capital / XDC Properties, difundida por Cantabria Directa"
+    tipo: empresa
+    fecha_publicacion: "2025-02-25"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      integrando un parque tecnológico-industrial cuyo pilar será un centro de datos
+      de 500MW [...] El Proyecto Altamira constará de 12 módulos de centros de datos
+      adyacentes de 40 MW cada uno, que contarán con una superficie de 75.000 metros
+      cuadrados de paneles fotovoltaicos [...] Durante la fase de construcción se
+      generarán más de 1.500 empleos directos, mientras que la etapa operativa creará
+      más de 1.450 puestos de trabajo, de los cuales 350 serán directos y 1.100
+      indirectos [...] Primera Fase – Altamira 1: 374.572 m² de superficie del
+      ámbito; 103.054 m² construidos; 3 edificios; 162 MW carga de IT. Segunda Fase –
+      Altamira 2: 131.200 m² de superficie del ámbito; 51.436 m² construidos; 1
+      edificio; 81 MW carga de IT. Tercera Fase – Altamira 3: 130.660 m² de
+      superficie del ámbito; 51.436 m² construidos; 1 edificio; 81 MW carga de IT
+      [...] Recuperación de agua de lluvia: Recolección de agua de lluvia para su uso
+      en la refrigeración del campus
+  - id: src-5
+    url: "https://www.europapress.es/cantabria/noticia-centro-datos-altamira-consumira-menos-electricidad-resto-no-usara-agua-arasti-20250616195835.html"
+    titulo: "El centro de datos Altamira consumirá menos electricidad que el resto y no usará agua, según Arasti"
+    editor: "Europa Press"
+    tipo: prensa_general
+    fecha_publicacion: "2025-06-16"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      el centro de datos Altamira consumirá 500 megawatios cuando esté ejecutado en
+      su totalidad [...] ya que se pondrá en marcha en tres fases y en las dos
+      primeras la necesidad será de 100 y 200 MW, respectivamente [...] no gastará
+      agua para su refrigeración por las condiciones climáticas "excepcionales" de la
+      región y dependerá de la subestación de Penagos [...] se necesita que el
+      Ministerio para la Transición Ecológica incluya en la Planificación de la Red
+      de Transporte de Energía 2026-2030 dos nuevas posiciones en esta subestación
+      [...] La primera de las tres fases, que se acometerá en un terreno de más de
+      370.000 metros cuadrados, se desarrollará mediante un Plan Singular de Interés
+      Regional (PSIR) [...] cuya tramitación concluirá con su aprobación por el
+      Consejo de Gobierno "previsiblemente en diciembre", de modo que las obras
+      comenzarían en enero de 2026. Mientras, las de las fases 2 y 3 se acometerían a
+      partir de noviembre 2028, para que el campus comience a operar en 2032.

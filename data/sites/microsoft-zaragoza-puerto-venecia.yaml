@@ -33,7 +33,7 @@ potencia:
     referencia: "Potencia de acceso a red asegurada para la primera fase"
     estado_asociado: en_tramitacion
     fecha_dato: "2025-11-19"
-    fuentes: [src-3]
+    fuentes: [src-3, src-7]
     nota: "Dato de prensa; no confirmado por fuente oficial."
   - tipo: no_especificado
     valor_mw: 300
@@ -41,7 +41,7 @@ potencia:
     referencia: "Objetivo de potencia por planta en segunda fase"
     estado_asociado: anunciado
     fecha_dato: "2025-11-19"
-    fuentes: [src-3]
+    fuentes: [src-3, src-7]
     nota: "Dato de prensa, sin precisar tipo de potencia."
 
 fases:
@@ -63,7 +63,50 @@ conexion_electrica:
 
 superficie_parcela_m2: 552700
 inversion_anunciada_eur: 1443329286
-refrigeracion: null
+refrigeracion: >-
+  Refrigeración líquida recirculada en circuito cerrado, sin torres de evaporación.
+
+agua:
+  circuito: cerrado
+  sistema: >-
+    Refrigeración líquida recirculada en circuito cerrado que enfría directamente los chips.
+    Según la compañía, no depende de torres de evaporación ni de aportes continuos de agua:
+    "una vez que el sistema se llena durante la construcción, el agua circula de manera
+    continua entre los servidores y los equipos de refrigeración sin necesidad de suministro
+    adicional". El agua de lluvia de las cubiertas se recoge para usos no potables.
+  origen: null
+  nota: >-
+    La documentación del PIGA cifra en 3.975 m³/año la demanda industrial a plena capacidad a partir del segundo año de operación y en 27.717 m³ el llenado inicial del circuito el primer año, pero lo hace para los TRES campus de Microsoft en Aragón conjuntamente. No se registra consumo por emplazamiento porque repartir esa cifra exigiría una clave de reparto que no consta. El Acuerdo de declaración de interés autonómico recoge además el compromiso corporativo de "Impacto positivo en Agua (Water positive)" para 2030.
+  fuentes: [src-5]
+
+energia:
+  - consumo_gwh_ano: 3100
+    referencia: "Consumo eléctrico máximo anual previsto para el campus de Zaragoza (Área 88/3, Puerto Venecia)"
+    fecha_dato: "2025-11-19"
+    fuentes: [src-8]
+    nota: >-
+      Cifra de la documentación del PIGA conocida a través de prensa. Es un máximo, no una
+      previsión central: la fuente subraya que el campus por sí solo podría requerir más
+      energía que toda la ciudad de Zaragoza, cuyo consumo en 2023 fue de 3.004 GWh. Sumada
+      a las de La Muela (3.700 GWh/año) y Villamayor de Gállego (3.777 GWh/año), la misma
+      fuente da más de 10.500 GWh/año para los tres campus.
+
+empleo:
+  - tipo: construccion
+    valor: 2000
+    referencia: "Extremo superior de la horquilla de trabajadores necesarios para completar el desarrollo del campus (entre 1.000 y 2.000, con una media anual aproximada de 300-400)"
+    fecha_dato: "2025-03-24"
+    fuentes: [src-6]
+    nota: >-
+      La memoria da una horquilla de 1.000 a 2.000 trabajadores; se registra el extremo
+      superior y se advierte del rango en lugar de promediarlo. La media anual estimada es de
+      300 a 400 empleos.
+  - tipo: directo
+    valor: 300
+    referencia: "Empleos fijos previstos en la fase operativa del campus"
+    fecha_dato: "2025-03-24"
+    fuentes: [src-6]
+    nota: "La memoria dice «hasta 300», es decir, un techo, no una previsión central."
 enlaces_proyecto:
   - "https://www.aragon.es/-/piga-microsoft"
 
@@ -78,6 +121,14 @@ incertidumbres:
       Suma de los dos conceptos que el PIGA desglosa para Zaragoza (1.421.466.768,40 € de
       obras en el campus y 21.862.517,82 € de urbanización).
     fuentes: [src-1]
+  - campo: agua
+    descripcion: >-
+      La única cifra publicada de consumo de agua —3.975 m³/año a plena capacidad y
+      27.717 m³ de llenado inicial— es conjunta para los tres campus de Microsoft en Aragón
+      y llega a través de prensa, que la atribuye a la documentación del PIGA. No se ha
+      localizado en abierto el estudio de impacto ambiental de cada campus, sometido a
+      información pública en agosto de 2026, que debería dar el desglose por emplazamiento.
+    fuentes: [src-5]
   - campo: ubicacion
     descripcion: >-
       Las coordenadas registradas son el centroide municipal de Zaragoza; el ámbito real
@@ -85,7 +136,7 @@ incertidumbres:
     fuentes: [src-4]
 
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -118,3 +169,34 @@ fuentes:
     tipo: otro
     fecha_consulta: "2026-08-29"
     cita: "Zaragoza 41.65 -0.88333333333333"
+  - id: src-5
+    url: "https://www.elperiodicodearagon.com/aragon/2025/11/14/microsoft-asegura-centros-datos-aragon-123735748.html"
+    titulo: "La 'nube' de Microsoft apenas tiene sed: el consumo de sus centros de datos equivaldrá al de 90 personas"
+    editor: "El Periódico de Aragón"
+    tipo: prensa_general
+    fecha_publicacion: "2025-11-14"
+    fecha_consulta: "2026-08-31"
+    cita: "La compañía asegura que sus tres campus de infraestructuras tecnológicas, que se levantarán en La Muela, Villamayor de Gállego y Zaragoza, funcionarán con un sistema de refrigeración líquida en circuito cerrado [...] La demanda industrial de sus instalaciones a plena capacidad a partir del segundo año de operación será de 3.975 metros cúbicos [...] El único momento en el que se requiere una cantidad significativa de agua es el inicial. En concreto, 27.717 m³ el primer año, destinados exclusivamente al llenado del circuito cerrado, según la información facilitada desde la empresa."
+  - id: src-6
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1384892600909"
+    titulo: "ORDEN PEJ/285/2025, de 20 de marzo [...] «Nuevo Campus de Centros de Datos Microsoft», en el término municipal de Zaragoza — empleo"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2025-03-24"
+    fecha_consulta: "2026-08-31"
+    cita: "Durante la fase de construcción, además de los futuros empleos directos creados, estimamos que se necesitarán entre 1.000 y 2.000 trabajadores (una media anual aproximada de 300-400 empleos) para completar el desarrollo del Campus en su totalidad. [...] Una vez concluida la fase de construcción, se espera poder generar hasta 300 empleos fijos (estimados en puestos de trabajo equivalentes a tiempo completo) en la fase operativa del Campus."
+  - id: src-7
+    url: "https://www.eldiario.es/aragon/sociedad/microsoft-avanza-red-centros-datos-zaragoza-proyecta-mayores-regiones-europa_1_12768636.html"
+    titulo: "Microsoft avanza con su red de centros de datos en Zaragoza, donde proyecta una de sus mayores regiones en Europa — potencia asegurada por instalación"
+    editor: "elDiario.es Aragón"
+    tipo: prensa_general
+    fecha_consulta: "2026-08-31"
+    cita: "Por ahora, la multinacional estadounidense tiene asegurados 50 megavatios de 'enchufe' para cada instalación; el resto, hasta 300 MW por planta, está previsto para una segunda fase."
+  - id: src-8
+    url: "https://www.elespanol.com/aragon/economia/20251119/centros-datos-microsoft-aragon-consumiran-energia-toda-comunidad/1003744019227_0.html"
+    titulo: "Los centros de datos de Microsoft en Aragón consumirán más energía que toda la Comunidad — consumo previsto del campus de Zaragoza"
+    editor: "El Español — Aragón"
+    tipo: prensa_general
+    fecha_publicacion: "2025-11-19"
+    fecha_consulta: "2026-08-31"
+    cita: "Los nuevos centros de datos que construirá Microsoft en Aragón tendrán un consumo máximo de electricidad, entre todos, de más de 10.500 GWh cuando estén plenamente operativos, más que la demanda de toda la Comunidad a día de hoy (9.955 GWh en 2024, según Red Eléctrica) [...] solo el centro de datos que se instalará en Zaragoza, junto al centro de ocio Puerto Venecia, podría llegar a requerir de más energía que toda la ciudad, hasta un máximo de 3.100 GWh al año."

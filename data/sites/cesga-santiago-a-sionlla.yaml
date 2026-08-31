@@ -29,6 +29,19 @@ estado_detalle: >-
   a salud.
 estado_fuentes: [src-1, src-2]
 
+potencia:
+  - tipo: it
+    valor_mw: 3.2
+    ambito: edificio
+    referencia: "Potencia IT máxima para la que está preparado el nuevo edificio"
+    estado_asociado: en_construccion
+    fecha_dato: "2026-08-31"
+    fuentes: [src-3]
+    nota: >-
+      Dominion, autora del proyecto y constructora del edificio junto a Copasa, dice
+      que «el nuevo centro está preparado para operar con potencias IT de hasta 3,2
+      MW». Ni la Xunta ni el CESGA publican la cifra.
+
 fases:
   - nombre: "Edificio y equipamiento (FinisTerrae IV + cuántico)"
     estado: en_construccion
@@ -39,6 +52,11 @@ fases:
 superficie_parcela_m2: 9100
 superficie_construida_m2: 2700
 inversion_anunciada_eur: 56000000
+refrigeracion: >-
+  Soluciones de refrigeración líquida directa, según la empresa que redactó el
+  proyecto y construye el edificio; diseño compatible con certificación Tier III.
+  La nota de la Xunta habla de «sistemas de climatización de alta adecuación
+  técnica» y paneles fotovoltaicos.
 
 enlaces_proyecto:
   - "https://www.xunta.gal/es/notas-de-prensa/-/nova/015782/construccion-del-nuevo-cesga-sera-primero-proyecto-estrategico-investigacion"
@@ -46,10 +64,16 @@ enlaces_proyecto:
 incertidumbres:
   - campo: potencia
     descripcion: >-
-      Fuentes secundarias atribuyen al edificio «potencias IT de hasta 3,2 MW», pero
-      la nota de prensa oficial de la Xunta no lo recoge y no se ha podido abrir esa
-      fuente. Campo potencia omitido.
-    fuentes: [src-1, src-2]
+      Los 3,2 MW IT proceden de la ficha de proyecto de Dominion, adjudicataria de
+      la obra. La nota de prensa oficial de la Xunta no publica ninguna cifra de
+      potencia, de modo que el dato no está confirmado por el promotor público.
+    fuentes: [src-1, src-3]
+  - campo: superficie_construida_m2
+    descripcion: >-
+      La Xunta y El Correo Gallego dan 2.700 m² para el edificio principal; Dominion
+      habla de «más de 2.400 m² construidos y más de 1.200 m² de espacio exterior
+      técnico». No se sustituye el valor registrado.
+    fuentes: [src-1, src-3]
   - campo: inversion_anunciada_eur
     descripcion: >-
       Los 56 M€ son la inversión total; 13 M€ corresponden a la obra del edificio y
@@ -57,7 +81,7 @@ incertidumbres:
     fuentes: [src-1, src-2]
 
 confianza: alta
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -76,3 +100,16 @@ fuentes:
     fecha_publicacion: "2026-03-03"
     fecha_consulta: "2026-08-29"
     cita: "ordenador cuántico de 54 cúbits de la finlandesa IQM proveído por Telefónica"
+  - id: src-3
+    url: "https://www.dominion-global.com/es/casos-de-exito/area-de-telecomunicaciones/proyectos-tecnologicos-sistemas-comunicacion/ampliacion-del-centro-tecnologico-de-supercomputacion-de-galicia-cesga"
+    titulo: "Ampliación del Centro Tecnológico de Supercomputación de Galicia (CESGA)"
+    editor: "Dominion Global"
+    tipo: empresa
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Un edificio altamente tecnológico y energéticamente eficiente con más de 2.400
+      m² construidos y más de 1.200 m² de espacio exterior técnico. El nuevo centro
+      está preparado para operar con potencias IT de hasta 3,2 MW y para acoger
+      tecnologías emergentes en supercomputación, almacenamiento masivo y
+      computación cuántica [...] integramos soluciones de refrigeración líquida
+      directa, cableado estructurado redundante y un sistema de gestión BMS

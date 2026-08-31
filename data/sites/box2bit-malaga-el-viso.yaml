@@ -2,6 +2,7 @@ id: box2bit-malaga-el-viso
 nombre: "Box2bit Málaga — Polígono Industrial El Viso"
 alias:
   - "Box2bit Malaga Data Center"
+  - "Olive Urban"
 tipo: edificio
 operador: "Box2bit"
 propietario: "Box2bit"
@@ -11,38 +12,83 @@ ubicacion:
   municipio: "Málaga"
   provincia: "Málaga"
   ccaa: "Andalucía"
-  direccion: "Calle Canadá, Polígono Industrial El Viso, Málaga"
+  direccion: "Calle Canadá, Parque Empresarial El Viso, junto al arroyo de las Cañas, Málaga"
   lat: 36.6957
   lon: -4.4538
   precision: aproximada
-  fuentes: [src-1]
+  fuentes: [src-1, src-2]
 
-estado: en_construccion
+estado: en_tramitacion
 estado_detalle: >-
-  Edificio de tres a cuatro plantas en el polígono El Viso de Málaga, con finalización prevista en
-  2027. El proyecto incluye placas solares y una subestación en la propia parcela.
-estado_fuentes: [src-1]
+  Proyecto denominado Olive Urban, promovido por Box2bit, filial de centros de datos del empresario
+  Jesús Martín Buezas, fundador de Capital Energy. La Gerencia de Urbanismo del Ayuntamiento de
+  Málaga lo incluyó en su Unidad Aceleradora de Proyectos por considerarlo de interés estratégico
+  para la ciudad y la Junta de Gobierno Local aprobó inicialmente el estudio de detalle de la
+  parcela el 6 de junio de 2025, con informes pendientes de Aviación Civil y de la administración
+  hidráulica. El 29 de enero de 2026 Urbanismo dio luz verde a que siguieran los trámites tras
+  aportar la promotora una garantía económica. En febrero de 2026 Box2bit refinanció 25,5 millones
+  de euros con Eiffel Investment Group, extendiendo vencimientos hasta 2027 para completar sus
+  proyectos de Málaga, Guadalajara y Épila. No se ha localizado licencia de obra ni constancia del
+  inicio de la construcción.
+estado_fuentes: [src-2, src-3, src-4, src-5, src-6]
 
+superficie_parcela_m2: 16770
 superficie_construida_m2: 15000
 inversion_anunciada_eur: 279000000
+
+empleo:
+  - tipo: directo
+    valor: 80
+    referencia: "Empleos permanentes en explotación"
+    fecha_dato: "2025-06-11"
+    fuentes: [src-4]
+    nota: "La fuente dice «around 80 permanent jobs»."
+  - tipo: construccion
+    valor: 450
+    referencia: "Empleos durante la construcción"
+    fecha_dato: "2025-06-11"
+    fuentes: [src-4]
+    nota: >-
+      «more than 450 during its construction». Otros medios suman ambas cifras y hablan de «más de
+      530 empleos».
+
 enlaces_proyecto: []
 
 incertidumbres:
   - campo: potencia
     descripcion: >-
-      No consta potencia eléctrica ni carga TI en la fuente. Solo se publica superficie total
-      (15.000 m²) y superficie TI (aproximadamente 12.770 m²). Campo potencia omitido.
-    fuentes: [src-1]
+      No consta potencia eléctrica ni carga TI en ninguna fuente, incluidos el expediente municipal
+      recogido por la prensa local y las notas sectoriales. Solo se publican superficies: 15.000 m²
+      totales, unos 12.770 m² de superficie TI y 2.260 m² de edificio administrativo. Campo potencia
+      omitido.
+    fuentes: [src-1, src-2, src-4]
   - campo: estado
     descripcion: >-
-      Un único directorio secundario (Baxtel) sostiene el estado «en construcción». No se ha
-      localizado licencia municipal, expediente urbanístico ni nota de prensa del Ayuntamiento de
-      Málaga o del promotor que lo confirme. El estado podría ser anterior (permisos concedidos).
-    fuentes: [src-1]
+      Baxtel da el proyecto por «en construcción», pero el rastro municipal y la prensa local sitúan
+      el expediente en tramitación urbanística: aprobación inicial del estudio de detalle en junio de
+      2025 e impulso de los trámites en enero de 2026, sin licencia de obra acreditada. Data Center
+      Dynamics habla en febrero de 2026 de refinanciar para «completar» los centros de Málaga y
+      Guadalajara, formulación ambigua. Se registra en_tramitacion por ser lo que sostiene la fuente
+      administrativa más reciente.
+    fuentes: [src-1, src-2, src-5, src-6]
   - campo: conexion_electrica
     descripcion: >-
-      La fuente menciona una subestación en parcela pero no da tensión, titular ni MW de conexión.
-    fuentes: [src-1]
+      Las fuentes mencionan una subestación eléctrica en la propia parcela —que podría ir soterrada—
+      y una inversión de 1,4 millones de euros en mejora y adaptación de las redes eléctricas, pero
+      no dan tensión, titular ni MW de conexión.
+    fuentes: [src-1, src-4]
+  - campo: superficie_parcela_m2
+    descripcion: >-
+      El estudio de detalle da 16.770,60 m² de parcela, con una edificabilidad máxima de
+      21.562,05 m² que el proyecto no agota; Sur in English redondea a «17.000 m²». Se registra la
+      cifra del expediente truncada a metros enteros.
+    fuentes: [src-2, src-4]
+  - campo: agua
+    descripcion: >-
+      No consta sistema de refrigeración ni consumo de agua. El expediente sí exige informe de la
+      Consejería competente «en materia de aguas, sobre la afección hidráulica del sector», por la
+      proximidad del arroyo de la Palma. Campo agua omitido.
+    fuentes: [src-2]
 
 confianza: baja
 ultima_verificacion: "2026-08-31"
@@ -55,3 +101,66 @@ fuentes:
     tipo: consultora
     fecha_consulta: "2026-08-29"
     cita: "The facility will include solar panels and an on-site substation for power management."
+  - id: src-2
+    url: "https://www.laopiniondemalaga.es/malaga/2025/06/06/malaga-tendra-centro-procesamiento-datos-118319315.html"
+    titulo: "Málaga tendrá un centro de procesamiento de datos en El Viso"
+    editor: "La Opinión de Málaga"
+    tipo: prensa_general
+    fecha_publicacion: "2025-06-06"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      un proyecto denominado Olive Urban que promueve la firma Box2Bit, vinculada a la compañía
+      Capital Energy [...] hoy la Junta de Gobierno Local del Ayuntamiento de Málaga ha dado luz
+      verde de forma inicial al estudio de detalle para la ordenación de la parcela donde se
+      construirá. Esa parcela se corresponde con un suelo productivo de la calle Canadá con una
+      superficie de 16.770,60 metros cuadrados junto al Arroyo las Cañas [...] el promotor deberá
+      requerir informe preceptivo y vinculante a la Dirección General de Aviación Civil [...] y a la
+      Delegación Territorial de la Consejería de Agricultura, Pesca, Agua y Desarrollo Rural, en
+      materia de aguas, sobre la afección hidráulica del sector
+  - id: src-3
+    url: "https://www.datacenterdynamics.com/en/news/spains-box2bit-plans-data-center-in-malaga/"
+    titulo: "Spain's Box2bit plans data center in Malaga"
+    editor: "Data Center Dynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2025-06-19"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Box2bit aims to invest €279 million ($320.2m) developing a 15,000 sqm (161,460 sq ft) data
+      center on Calle Canadá, in the El Viso industrial area of Malaga. The project was initially
+      approved by the city council earlier this month. [...] The three-to-four-story project will
+      reportedly total around 12,770 sqm (137,455 sq ft) of IT space.
+  - id: src-4
+    url: "https://www.surinenglish.com/malaga/malaga-city/this-what-the-big-data-centre-built-20250611130128-nt.html"
+    titulo: "This is what the huge new data centre to be built in Malaga will look like"
+    editor: "Sur in English"
+    tipo: prensa_general
+    fecha_publicacion: "2025-06-11"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      the building will reach a maximum height of 18.2 metres [...] Next to this main structure,
+      which will have a total built area of 12,770 square metres, an administrative area covering
+      2,260 square metres will also be constructed, with a maximum height of 14 metres, as well as an
+      electrical substation [...] will represent a total investment of 279 million euros and will
+      generate around 80 permanent jobs, as well as more than 450 during its construction.
+  - id: src-5
+    url: "https://www.diariosur.es/malaga-capital/nuevo-paso-gran-centro-datos-construira-malaga-20260129113128-nt.html"
+    titulo: "Nuevo paso hacia el gran centro de datos que se construirá en Málaga"
+    editor: "Diario Sur"
+    tipo: prensa_general
+    fecha_publicacion: "2026-01-29"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      La promotora aporta una garantía económica y Urbanismo da luz verde a que sigan los trámites
+      para una inversión de 279 millones de euros
+  - id: src-6
+    url: "https://www.datacenterdynamics.com/es/noticias/box2bit-refinancia-255-millones-y-extiende-plazos-hasta-2027-para-sus-data-centers/"
+    titulo: "Box2Bit refinancia 25,5 millones y extiende plazos hasta 2027 para sus data centers"
+    editor: "Data Center Dynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-02-04"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Box2Bit, filial de centros de datos del empresario Jesús Martín Buezas —también fundador de
+      Capital Energy—, ha refinanciado 25,5 millones de euros con su principal acreedor, Eiffel
+      Investment Group, extendiendo vencimientos hasta 2027 para completar sus proyectos en Málaga,
+      Guadalajara y Épila (Zaragoza).

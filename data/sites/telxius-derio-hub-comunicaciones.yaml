@@ -23,7 +23,12 @@ estado_detalle: >-
   conectan los cables submarinos transatlánticos que amarran en la estación de
   Sopelana (Marea y Grace Hopper), y desde el que se ofrecen servicios de
   colocación, capacidad e IP. Grace Hopper amarró en Sopelana en septiembre de 2021.
-estado_fuentes: [src-1, src-2]
+  Lanzado en octubre de 2019 para canalizar la capacidad del cable Marea, es
+  carrier-neutral, opera con energía 100% renovable y declara especificaciones
+  Tier III. Entre los operadores conectados figuran Telefónica, Arelion, Colt
+  Technology Services, EXA, Sipartech y Euskaltel. En febrero de 2024 recibió el
+  premio a la Excelencia en Conectividad de los DCM Awards.
+estado_fuentes: [src-1, src-2, src-3]
 
 potencia:
   - tipo: no_especificado
@@ -35,18 +40,37 @@ potencia:
     nota: >-
       La nota de Telxius dice «offering up to 4 MW of power», sin precisar si es
       carga TI o potencia instalada.
+  - tipo: it
+    valor_mw: 2
+    ambito: edificio
+    referencia: "Capacidad TI del centro de datos de Derio"
+    estado_asociado: operativo
+    fecha_dato: "2024-02-01"
+    fuentes: [src-3]
+    nota: >-
+      La nota de Telxius de 2024 dice «advanced colocation capabilities and 2MW of IT
+      power». Es la primera cifra tipificada como carga TI del emplazamiento y no se
+      compara con los 4 MW sin tipificar de 2020.
 
 conexion_electrica:
   fuentes: []
 
-enlaces_proyecto: []
+refrigeracion: >-
+  Edificio alimentado con energía 100% renovable y refrigerado por free cooling,
+  según la nota de Telxius de diciembre de 2020.
+
+enlaces_proyecto:
+  - "https://telxius.com/en/our-data-centers/"
 
 incertidumbres:
   - campo: potencia
     descripcion: >-
-      El dato de 4 MW procede de un anuncio de diciembre de 2020; no se ha localizado
-      una cifra actualizada a 2026.
-    fuentes: [src-1]
+      Las dos cifras publicadas por el propio operador no encajan: «up to 4 MW of
+      power» en diciembre de 2020 y «2MW of IT power» en febrero de 2024. Pueden ser
+      magnitudes distintas (potencia total ofertada frente a carga TI) o una
+      corrección a la baja. Telxius no lo aclara y se conservan ambas, en campos de
+      tipo distinto. No se ha localizado cifra posterior a 2024.
+    fuentes: [src-1, src-3]
   - campo: ubicacion
     descripcion: >-
       Telxius no publica dirección. El hub está en Derio y la estación de amarre de
@@ -73,3 +97,17 @@ fuentes:
     fecha_publicacion: "2021-09-09"
     fecha_consulta: "2026-08-29"
     cita: "Google's Grace Hopper subsea cable has landed at our Sopelana station, near Bilbao"
+  - id: src-3
+    url: "https://telxius.com/en/telxius-derio-data-center-recognized-for-excellence-in-global-connectivity/"
+    titulo: "Telxius' Derio Data Center Recognized for Excellence in Global Connectivity"
+    editor: "Telxius"
+    tipo: empresa
+    fecha_publicacion: "2024-02-01"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      The carrier-neutral facility is designed to harness the potential of the subsea
+      cables connected to it, with advanced colocation capabilities and 2MW of IT
+      power. Featuring Tier III specifications, the data center provides a "one-stop
+      shop" for advanced colocation services [...] with existing connections
+      including, among others, Telefónica, Arelion, Colt Technology Services, EXA,
+      Sipartech and Euskaltel [...] all while running on 100% renewable energy

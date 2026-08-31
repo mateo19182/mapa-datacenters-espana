@@ -12,20 +12,27 @@ ubicacion:
   municipio: "Navalmoral de la Mata"
   provincia: "Cáceres"
   ccaa: "Extremadura"
-  direccion: "Parque Industrial Norte de Extremadura (Expacio Navalmoral), acceso desde la A-5"
+  direccion: "Parcela I-64 del Parque Industrial Norte de Extremadura (Expacio Navalmoral), acceso desde la A-5"
   lat: 39.9130138
   lon: -5.5173522
   precision: aproximada
-  fuentes: [src-cope, src-osm]
+  fuentes: [src-cope, src-osm, src-pex-aai]
 
 estado: en_tramitacion
 estado_detalle: >-
   Protocolo con la Junta de Extremadura firmado el 14 de enero de 2025.
-  Información pública de la autorización ambiental integrada abierta el 22 de
-  mayo de 2026. Declarado Proyecto Empresarial de Interés Autonómico (PREMIA) el
-  12 de mayo de 2026. En agosto de 2026 la promotora esperaba las licencias para
-  septiembre y anunciaba el inicio de obras de la primera fase en otoño de 2026.
-estado_fuentes: [src-merlin, src-cope, src-eldiario-premia, src-brains]
+  Información pública de la autorización ambiental integrada y del estudio de impacto ambiental
+  abierta el 22 de mayo de 2026 (DOE núm. 96, anuncio de 19 de mayo, expediente AAI25/032).
+  Declarado Proyecto Empresarial de Interés Autonómico (PREMIA) el 12 de mayo de 2026. En el
+  trámite de información pública Adenex presentó alegaciones pidiendo que se deniegue la
+  autorización. El 28 de agosto de 2026 la consejera de Industria afirmó que el proyecto
+  «prácticamente tiene la autorización ambiental favorable» tras atender un requerimiento de
+  protección civil, y que el siguiente paso es la respuesta eléctrica del Ministerio. La promotora
+  esperaba la licencia de obras para septiembre de 2026 y anunciaba el inicio inmediato de la
+  primera fase. La documentación ambiental describe dos edificios, 16 salas técnicas de 12 MW IT,
+  104 generadores diésel de emergencia, 48 depósitos de gasóleo de 120 m³ y 144 equipos de
+  refrigeración en cubierta.
+estado_fuentes: [src-merlin, src-cope, src-eldiario-premia, src-brains, src-pex-aai, src-doe-sumario, src-hoy, src-cincodias]
 
 potencia:
   - tipo: it
@@ -34,7 +41,7 @@ potencia:
     referencia: "Capacidad TI del campus a pleno desarrollo (8-10 edificios de 100 MW TI)"
     estado_asociado: anunciado
     fecha_dato: "2025-01-14"
-    fuentes: [src-merlin]
+    fuentes: [src-merlin, src-edged]
     nota: >-
       La nota de la compañía habla de "1GW de capacidad IT en cada emplazamiento"
       y de "8 y 10 edificios con 100MW de capacidad IT cada uno".
@@ -44,28 +51,52 @@ potencia:
     referencia: "Primera fase equipada"
     estado_asociado: anunciado
     fecha_dato: "2026-08"
-    fuentes: [src-brains]
+    fuentes: [src-brains, src-cincodias]
     nota: >-
       "20 megavatios (MW) de capacidad destinada a tecnología de la información
       (TI)", en un edificio preparado para alcanzar los 100 MW.
+  - tipo: it
+    valor_mw: 12
+    ambito: edificio
+    edificio: "Sala técnica tipo (16 iguales)"
+    referencia: "Cada una de las 16 salas técnicas descritas en la autorización ambiental integrada"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2026-05-22"
+    fuentes: [src-pex-aai]
+    nota: >-
+      Es el único dato del expediente ambiental tipificado como MW IT. No se multiplica por 16 para
+      derivar la capacidad del campus: la propia documentación publica por separado una demanda
+      crítica de 192 MW.
   - tipo: no_especificado
     valor_mw: 288
     ambito: campus
     referencia: "Demanda energética total declarada en la autorización ambiental integrada"
     estado_asociado: en_tramitacion
     fecha_dato: "2026-05-22"
-    fuentes: [src-cope]
+    fuentes: [src-cope, src-pex-aai]
     nota: >-
       El anuncio de información pública cita 288 MW de demanda total y 192 MW de
       demanda crítica funcionando 8.760 horas al año, sin calificarlos como TI ni
       como potencia de acceso.
+  - tipo: no_especificado
+    valor_mw: 1400
+    ambito: campus
+    referencia: "Capacidad total pretendida a largo plazo (200 MW en una primera etapa y 1,2 GW adicionales)"
+    estado_asociado: anunciado
+    fecha_dato: "2026-08-10"
+    fuentes: [src-cincodias]
+    nota: >-
+      Cinco Días atribuye a fuentes de la empresa la intención de alcanzar 1,4 GW con 14.000 millones
+      de inversión a largo plazo, frente al 1 GW de capacidad IT que anunció la compañía en enero de
+      2025. La fuente no califica los 1,4 GW como MW IT, aunque en el mismo artículo mide el resto de
+      la cartera de Merlin en «MW de potencia IT».
   - tipo: conexion_red
     valor_mw: 29
     ambito: campus
     referencia: "Potencia eléctrica ya asegurada"
     estado_asociado: en_tramitacion
     fecha_dato: "2026-08"
-    fuentes: [src-brains]
+    fuentes: [src-brains, src-cincodias]
     nota: "La fuente dice que la compañía tiene asegurados \"29 MW de potencia eléctrica\"."
 
 fases:
@@ -74,7 +105,7 @@ fases:
     nota: >-
       Inversión inicial de unos 400 millones de euros; inicio de obras previsto
       para otoño de 2026 tras la licencia.
-    fuentes: [src-brains]
+    fuentes: [src-brains, src-cincodias]
   - nombre: "Campus completo (8-10 edificios de 100 MW TI)"
     estado: anunciado
     fuentes: [src-merlin]
@@ -87,8 +118,10 @@ conexion_electrica:
   nota: >-
     La compañía sitúa el campus junto a la subestación Arañuelo 400 kV de Redeia
     y menciona fibra oscura desde Lisboa. A agosto de 2026 solo consta asegurada
-    una potencia de 29 MW.
-  fuentes: [src-merlin, src-brains]
+    una potencia de 29 MW, suficiente para equipar unos 20 MW de capacidad TI; la compañía declaró
+    ocupar la primera posición en un concurso de capacidad eléctrica en marcha y decidió construir
+    el edificio sin esperar a que se concediera el resto.
+  fuentes: [src-merlin, src-brains, src-cincodias]
 
 superficie_parcela_m2: 206753
 inversion_anunciada_eur: 1600000000
@@ -96,30 +129,56 @@ refrigeracion: >-
   Sistema modular de Edged Energy sin consumo de agua, con densidades de hasta
   70 kW por rack y PUE declarado de 1,15.
 
+agua:
+  circuito: sin_agua
+  sistema: "Sistema ThermalWorks de Edged Energy, declarado sin consumo de agua para refrigeración."
+  origen: null
+  nota: >-
+    Adenex sostiene en sus alegaciones que el expediente presenta el complejo como de consumo neto
+    de agua nulo mientras la documentación incorpora consumos para servicios sanitarios y
+    humectación de salas. No se ha publicado ninguna cifra de consumo.
+  fuentes: [src-edged, src-adenex]
+
+empleo:
+  - tipo: no_especificado
+    valor: 250
+    referencia: "Empleos previstos según la información pública del expediente ambiental"
+    fecha_dato: "2026-05-22"
+    fuentes: [src-pex-aai, src-cope]
+    nota: "Las fuentes no distinguen entre empleo directo e indirecto."
+
 incertidumbres:
   - campo: potencia
     descripcion: >-
       Conviven cifras heterogéneas y no sumables: 1 GW de capacidad TI del campus
-      (compañía, enero 2025), 288 MW de demanda total y 192 MW de demanda crítica
-      (expediente ambiental, mayo 2026), 200 MW de primer tramo y 1,2 GW de
-      ampliación posterior según prensa, y solo 29 MW de potencia eléctrica
+      (compañía, enero 2025), 1,4 GW como objetivo a largo plazo (fuentes de la empresa citadas por
+      Cinco Días, agosto 2026), 288 MW de demanda total y 192 MW de demanda crítica repartida en 16
+      salas técnicas de 12 MW IT (expediente ambiental, mayo 2026), 200 MW de primer tramo y 1,2 GW
+      de ampliación posterior según prensa, y solo 29 MW de potencia eléctrica
       efectivamente asegurada en agosto de 2026.
-    fuentes: [src-merlin, src-cope, src-brains]
+    fuentes: [src-merlin, src-cope, src-brains, src-cincodias, src-pex-aai]
   - campo: inversion_anunciada_eur
     descripcion: >-
       La información pública de la AAI cita 1.600 millones de euros, cifra que
       coincide con la declaración PREMIA; la prensa habla además de 400 millones
-      para la primera fase y de 2.000 millones para los dos primeros edificios.
-    fuentes: [src-cope, src-eldiario-premia, src-brains]
+      para la primera fase, de 2.000 millones para los dos primeros edificios y de 14.000 millones
+      para el desarrollo completo de 1,4 GW. No se sustituye la cifra registrada.
+    fuentes: [src-cope, src-eldiario-premia, src-brains, src-cincodias]
   - campo: conexion_electrica
     descripcion: >-
       En junio de 2026 la Junta de Extremadura situó públicamente en Red
       Eléctrica el escollo para el suministro del campus. No se ha podido abrir
-      la fuente original de esa información.
-    fuentes: [src-brains]
+      la fuente original de esa información. En agosto de 2026 la consejera de Industria situaba la
+      decisión sobre la potencia adicional en los ministerios competentes.
+    fuentes: [src-brains, src-hoy]
+  - campo: refrigeracion
+    descripcion: >-
+      La densidad por rack difiere según la fuente: la nota de MERLIN habla de hasta 70 kW por rack
+      y la de Edged Energy, para los mismos dos campus extremeños, de hasta 200 kW por rack.
+    fuentes: [src-merlin, src-edged]
 
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-merlin
@@ -132,6 +191,17 @@ fuentes:
     cita: >-
       8 y 10 edificios con 100MW de capacidad IT cada uno [...] subestación
       Arañuelo 400kv (Redeia).
+  - id: src-edged
+    url: "https://edged.us/news/merlin-properties-and-edged-energy-partner-with-spanish-regional-government-of-extremadura-to-build-two-gigawatt-scale-ai-data-center-campuses"
+    titulo: "MERLIN Properties and Edged Energy Partner With Spanish Regional Government of Extremadura To Build Two Gigawatt-Scale AI Data Center Campuses"
+    editor: "Edged Energy"
+    tipo: empresa
+    fecha_publicacion: "2025-01-14"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      will each offer up to 1GW of IT capacity with an industry-leading average PUE of 1.15 [...]
+      They are expected to consume no water for cooling [...] the breakthrough ThermalWorks waterless
+      cooling system [...] with rack densities of up to 200kW per rack.
   - id: src-cope
     url: "https://www.cope.es/emisoras/extremadura/noticias/sale-informacion-publica-centro-datos-merlin-navalmoral-mata-20260522_3369660.html"
     titulo: "Sale a información pública el centro de datos de Merlin en Navalmoral de la Mata"
@@ -142,6 +212,67 @@ fuentes:
     cita: >-
       parcela de suelo urbano de 206.753 m² [...] 192 MW de demanda crítica [...]
       8.760 horas del año.
+  - id: src-pex-aai
+    url: "https://www.elperiodicoextremadura.com/extremadura/2026/05/22/centro-datos-navalmoral-sale-informacion-130530883.html"
+    titulo: "El centro de datos de Merlin en Navalmoral inicia su trámite ambiental"
+    editor: "El Periódico Extremadura"
+    tipo: prensa_general
+    fecha_publicacion: "2026-05-22"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      un proyecto promovido por Merlin Edged, SL que prevé una inversión de 1.600 millones de euros y
+      la creación de 250 empleos [...] la parcela I-64 del Parque Industrial Norte de Extremadura
+      [...] una demanda energética total crítica de 192 megavatios y una demanda energética total de
+      288 megavatios, con funcionamiento previsto durante 8.760 horas al año. Entre sus principales
+      instalaciones figuran 16 salas técnicas de 12 MW IT, 104 generadores diésel de emergencia, 48
+      depósitos de gasóleo de 120 metros cúbicos y 144 equipos de refrigeración en cubierta.
+  - id: src-doe-sumario
+    url: "https://doe.juntaex.es/ultimosdoe/mostrardoe.php?fecha=20260522&t=o"
+    titulo: "Diario Oficial de Extremadura, 22 de mayo de 2026 — Sumario"
+    editor: "Junta de Extremadura"
+    tipo: oficial
+    fecha_publicacion: "2026-05-22"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Anuncio de 19 de mayo de 2026 por el que se someten a información pública la solicitud de
+      autorización ambiental integrada y el estudio de impacto ambiental del proyecto de un centro de
+      procesamiento de datos, promovido por Merlin Edged, SL, a ubicar en el término municipal de
+      Navalmoral de la Mata, provincia de Cáceres. Expte.: AAI25/032.
+  - id: src-adenex
+    url: "https://www.elperiodicoextremadura.com/navalmoral/2026/07/07/adenex-presenta-alegaciones-proyecto-centro-132178960.html"
+    titulo: "Adenex presenta alegaciones contra el proyecto del centro de procesamiento de datos de Navalmoral de la Mata"
+    editor: "El Periódico Extremadura"
+    tipo: prensa_general
+    fecha_publicacion: "2026-07-07"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      La entidad ve preocupada que el expediente presente el complejo como un centro de consumo neto
+      de agua nulo, mientras la documentación incorpora consumos de agua para servicios sanitarios y
+      humectación de salas, así como volumen elevado de aguas pluviales.
+  - id: src-cincodias
+    url: "https://cincodias.elpais.com/companias/2026-08-10/merlin-arrancara-este-otono-en-extremadura-las-obras-de-su-mayor-centro-de-datos.html"
+    titulo: "Merlin arrancará este otoño en Extremadura las obras de su mayor centro de datos"
+    editor: "Cinco Días"
+    tipo: prensa_general
+    fecha_publicacion: "2026-08-10"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      La compañía planea comenzar con una primera fase de 20 MW (megawatios) de capacidad de
+      tecnología de la información (TI), aunque su intención es alcanzar los 1,4 GW en el futuro, lo
+      que conllevaría una inversión a largo plazo de 14.000 millones de euros [...] el proyecto ya ha
+      recibido los primeros 29 MW de potencia eléctrica, suficientes para instalar aproximadamente
+      20 MW de capacidad TI.
+  - id: src-hoy
+    url: "https://www.hoy.es/extremadura/centros-datos-nostrum-badajoz-merlin-navalmoral-ultiman-20260828133327-nt.html"
+    titulo: "Los centros de datos de Nostrum en Badajoz y de Merlin en Navalmoral ultiman sus permisos"
+    editor: "Hoy"
+    tipo: prensa_general
+    fecha_publicacion: "2026-08-28"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      el que Merlin Edged promueve en Navalmoral de la Mata «va a tener en muy poco tiempo la
+      autorización ambiental favorable» [...] «Acaban de atender un requerimiento de protección
+      civil», pero «no tienen ningún impedimento grave»
   - id: src-eldiario-premia
     url: "https://www.eldiario.es/extremadura/economia/junta-otorga-prioridad-autonomica-centro-datos-navalmoral-ampliacion-matadero-fregenal_1_13215547.html"
     titulo: "La Junta otorga prioridad autonómica al centro de datos de Navalmoral y a la ampliación del matadero de Fregenal"

@@ -2,6 +2,7 @@ id: edgemode-torrecampo-green-dc
 nombre: "Green DC Torrecampo — EdgeMode"
 alias:
   - "EdgeMode Torrecampo"
+  - "DC Estate Torrecampo"
 tipo: campus
 operador: "EdgeMode"
 propietario: "Sociedad conjunta EdgeMode (75%) — Blackberry AIF (25%)"
@@ -11,18 +12,24 @@ ubicacion:
   municipio: "Torrecampo"
   provincia: "Córdoba"
   ccaa: "Andalucía"
+  direccion: "Fincas rústicas de los polígonos 3, 4 y 5 de Torrecampo (entre ellas las parcelas 27 y 42 del polígono 5)"
   lat: 38.4525
   lon: -4.6878
   precision: municipio
-  fuentes: [src-1, src-2]
+  fuentes: [src-1, src-2, src-3]
 
 estado: anunciado
 estado_detalle: >-
   Segundo emplazamiento andaluz del porfolio español de cinco campus que EdgeMode adquirió a
   Blackberry AIF. pv-tech sitúa el ready-to-build del conjunto en el primer trimestre de 2026 y el
-  arranque comercial escalonado desde 2027. Cada campus se proyecta con unos 60 MW de fotovoltaica
-  dedicada y 240 MWh de baterías, que son activos de generación, no potencia del centro de datos.
-estado_fuentes: [src-1, src-2]
+  arranque comercial escalonado desde 2027. El suelo se controla mediante un contrato de
+  arrendamiento firmado el 3 de marzo de 2025 entre los propietarios y NGE Spain Solia Renewables,
+  S.L., que describe el proyecto como «un centro de datos de tipo IV y una planta solar
+  fotovoltaica» y condiciona su continuidad a obtener el punto de suministro y un informe de
+  compatibilidad urbanística favorable. Torrecampo no figura entre los cuatro emplazamientos que
+  EdgeMode acordó vender a Pure Data Centres Group en julio de 2026, donde aparece en su lugar Palma
+  del Río. A 30 de agosto de 2026 seguía sin obras, sin permisos y sin punto de conexión.
+estado_fuentes: [src-1, src-2, src-3, src-4, src-5]
 
 potencia:
   - tipo: no_especificado
@@ -30,11 +37,21 @@ potencia:
     ambito: campus
     referencia: "Capacidad atribuida al campus de Torrecampo dentro del porfolio de 1,5 GW"
     estado_asociado: anunciado
-    fecha_dato: "2026-01-01"
-    fuentes: [src-2]
+    fecha_dato: "2026-08-30"
+    fuentes: [src-2, src-5]
     nota: >-
       El Conciso dice «Córdoba y Torrecampo, dotadas con 300 MW cada una» sin especificar el tipo
-      de MW.
+      de MW; Economía Digital repite la cifra el 30 de agosto de 2026.
+  - tipo: generacion_asociada
+    valor_mw: 360
+    ambito: campus
+    referencia: "Pilas de combustible de óxido sólido desplegables en cada uno de los cinco emplazamientos"
+    estado_asociado: anunciado
+    fecha_dato: "2026-07-14"
+    fuentes: [src-4]
+    nota: >-
+      «Up to 360MW of fuel cell capacity could be deployed at each of the five sites». Es capacidad
+      de generación con gas natural, no capacidad del centro de datos, y no entra en ningún agregado.
 
 enlaces_proyecto: []
 
@@ -42,20 +59,38 @@ incertidumbres:
   - campo: potencia
     descripcion: >-
       Cifra derivada del reparto del objetivo agregado de 1,5 GW entre cinco campus. Sin fuente
-      específica para Torrecampo ni tipo de MW.
-    fuentes: [src-1, src-2]
+      específica para Torrecampo ni tipo de MW. El contrato de arrendamiento del suelo, que es la
+      única fuente primaria localizada, no cifra la potencia del centro ni de la planta fotovoltaica
+      («de una capacidad determinada»).
+    fuentes: [src-1, src-2, src-3]
   - campo: ubicacion
     descripcion: >-
-      Sin parcela, polígono ni dirección. Coordenadas de municipio.
-    fuentes: [src-1, src-2]
+      El contrato de arrendamiento identifica nueve fincas rústicas en los polígonos 3, 4 y 5 del
+      término municipal de Torrecampo, dos de ellas —parcelas 27 y 42 del polígono 5— pendientes de
+      regularizar a nombre de los propietarios. La transcripción del documento está degradada por el
+      reconocimiento óptico y no permite reproducir con seguridad las referencias catastrales ni la
+      superficie total arrendada. Sin dirección postal ni parcela publicada por la promotora;
+      coordenadas de municipio.
+    fuentes: [src-1, src-2, src-3]
   - campo: estado
     descripcion: >-
       A diferencia de Córdoba, no se ha localizado ficha de proyecto ni referencia a licencias o
-      conexión a red para Torrecampo. Solo consta como uno de los cinco emplazamientos del porfolio.
-    fuentes: [src-1, src-2]
+      conexión a red para Torrecampo. El contrato de arrendamiento de marzo de 2025 se firma con el
+      punto de suministro y el informe de compatibilidad urbanística aún por solicitar, y prevé la
+      resolución automática si no se obtienen en plazo. Torrecampo desaparece además de las dos
+      listas más recientes del porfolio: la del suministro asegurado de 1,5 GW (diciembre de 2025) y
+      la de la venta a Pure DC (julio de 2026), en la que figura Palma del Río. Sigue apareciendo, en
+      cambio, en la prensa económica andaluza de agosto de 2026.
+    fuentes: [src-3, src-4, src-5, src-6]
+  - campo: operador
+    descripcion: >-
+      El arrendatario del suelo es NGE Spain Solia Renewables, S.L., sociedad con domicilio en
+      Sevilla, no EdgeMode ni Blackberry AIF. El contrato permite la cesión de la posición
+      contractual a terceros. No se ha localizado documento que acredite esa cesión.
+    fuentes: [src-3]
 
 confianza: baja
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -72,3 +107,53 @@ fuentes:
     tipo: prensa_general
     fecha_consulta: "2026-08-29"
     cita: "Córdoba y Torrecampo, dotadas con 300 MW cada una"
+  - id: src-3
+    url: "https://www.sec.gov/Archives/edgar/data/1652958/000168316825008441/edgemode_ex1020.htm"
+    titulo: "EdgeMode Inc — Contrato de arrendamiento de fincas en Torrecampo, de 3 de marzo de 2025 (exhibit 10.20)"
+    editor: "EdgeMode, Inc. (SEC EDGAR)"
+    tipo: empresa
+    fecha_publicacion: "2025-03-03"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      The DEVELOPER expresses its interest in the economic exploitation of the Properties through the
+      construction and installation therein of the elements necessary to develop a business project
+      consisting of the operation of a Type IV data center and a photovoltaic solar power plant of a
+      determined capacity [...] THE PROPERTY undertakes to carry out, at its own expense, all the
+      necessary legal procedures to regularize and register in its name the properties located in
+      polygon 5, plots 27 and 42 of Torrecampo in the Land Registry and Cadastre [...] The rent will
+      be €100/year for 24 months from the date of obtaining the supply point and the favorable urban
+      compatibility report.
+  - id: src-4
+    url: "https://www.datacenterdynamics.com/en/news/edgemode-looks-to-sell-multiple-data-center-development-sites-in-spain/"
+    titulo: "EdgeMode looks to sell multiple data center development sites in Spain"
+    editor: "Data Center Dynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-07-14"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      EdgeMode this month announced it has entered into a non-binding term sheet with Pure Data
+      Centres Group to sell the former's interest in land sites controlled via leaseholds in Cordoba,
+      Palma del Río (Córdoba), Vianos (Albacete), and Cáceres, Spain [...] up to 360MW of fuel cell
+      capacity could be deployed at each of the five sites under the joint venture with AIF
+  - id: src-5
+    url: "https://www.economiadigital.es/andalucia/empresas/meridian-edge-mode-elmya-asi-futuros-centros-datos-andaluces-afectados-normativa-gobierno.html"
+    titulo: "Meridian, Edge Mode o Elmya: así son los futuros centros de datos andaluces afectados por la normativa del Gobierno"
+    editor: "Economía Digital"
+    tipo: prensa_general
+    fecha_publicacion: "2026-08-30"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Edge Mode trabaja en 2 proyectos de 300 MW cada uno en Córdoba capital y Torrecampo, municipio
+      de la misma provincia. La empresa dispone de sociedades y acuerdos de alquiler sobre los
+      terrenos, pero todavía necesita permisos y puntos de conexión. Ninguno de los 2 centros está
+      actualmente en obras.
+  - id: src-6
+    url: "https://www.datacenterdynamics.com/en/news/edgemode-secures-power-supply-for-15gw-spanish-data-center-platform/"
+    titulo: "EdgeMode secures power supply for 1.5GW Spanish data center platform"
+    editor: "Data Center Dynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2025-12-23"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Through its IberData Hub portfolio, the company aims to develop a 120MW data center in Córdoba,
+      Andalusia; 100MW facilities in Vianos and Alcaraz, Albacete; and a 100MW facility in Toledo.

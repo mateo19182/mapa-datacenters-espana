@@ -22,21 +22,27 @@ estado: operativo
 estado_detalle: >-
   Instalación de IslaLink (sociedad BalaLink S.A.U.) en València, registrada como
   facility activa en PeeringDB y como data center de colocation operativo en el directorio
-  del Observatorio Español de Data Centers. IslaLink opera el sistema de cable submarino
-  que enlaza la península con las Islas Baleares; el directorio recoge también sus
-  instalaciones de Madrid e Ibiza.
-estado_fuentes: [src-1, src-2]
+  del Observatorio Español de Data Centers. La instalación es la estación de aterraje
+  (Cable Landing Station) del sistema submarino que enlaza la península con las Islas
+  Baleares, en la Fuente de San Luis, y lleva más de 25 años en funcionamiento; sobre ella
+  el operador presta colocation y housing. IslaLink opera seis centros de datos propios,
+  cuatro en España (Madrid, Valencia, Mallorca e Ibiza) y dos en Italia y Grecia. Según el
+  Colegio Oficial de la Ingeniería Informática de la Comunitat Valenciana, la instalación
+  mantuvo el servicio durante la DANA de octubre de 2024 y el apagón de 2025 y no ha
+  sufrido ningún «paso por cero» desde su inauguración.
+estado_fuentes: [src-1, src-2, src-3]
 
 incertidumbres:
   - campo: potencia
     descripcion: >-
-      No se ha localizado ninguna cifra de potencia, superficie ni número de racks. La
-      relación exacta entre esta instalación y el punto de aterraje del cable a Baleares no
-      está documentada en las fuentes consultadas.
-    fuentes: [src-1, src-2]
+      No se ha localizado ninguna cifra de potencia, superficie ni número de racks: ni el
+      operador ni el reportaje de la visita institucional de junio de 2026 publican MW. Lo
+      que sí queda documentado es la naturaleza de la instalación: es la Cable Landing
+      Station del cable a Baleares, no un data center independiente del punto de aterraje.
+    fuentes: [src-1, src-2, src-3]
 
 confianza: baja
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -53,3 +59,11 @@ fuentes:
     tipo: otro
     fecha_consulta: "2026-08-29"
     cita: "IslaLink Data Center | Valencia | Comunidad Valenciana | COLOCATION | Operativo"
+  - id: src-3
+    url: "https://www.coiicv.org/actualidad/noticias/representantes-de-coiicv-y-som-digitals-visitan-el-data-center-de-islalink-para-conocer-de-cerca-una-infraestructura-critica-para-la-conectividad-naciona"
+    titulo: "Representantes de COIICV y Som Digitals visitan el Data Center de IslaLink para conocer de cerca una infraestructura crítica para la conectividad nacional"
+    editor: "Colegio Oficial de la Ingeniería Informática de la Comunitat Valenciana (COIICV)"
+    tipo: asociacion
+    fecha_publicacion: "2026-06-30"
+    fecha_consulta: "2026-08-31"
+    cita: "Esta infraestructura, en funcionamiento desde hace más de 25 años, permite conectar las Islas Baleares con la Península a través de un triple cable de fibra óptica submarina [...] La compañía opera seis Centros de Datos propios, cuatro de ellos en España (Madrid, Valencia, Mallorca e Ibiza), además de otros dos ubicados en Italia y Grecia. [...] La instalación visitada en Valencia, conocida también como Cable Landing Station (CLS), cumple con los estándares más exigentes del sector en materia de disponibilidad de conectividad, suministro eléctrico, climatización y control de acceso."

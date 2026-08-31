@@ -34,7 +34,7 @@ potencia:
     referencia: "Suministro energético de la primera fase"
     estado_asociado: anunciado
     fecha_dato: "2026-01-28"
-    fuentes: [src-1]
+    fuentes: [src-1, src-6]
     nota: >-
       La fuente dice "El proyecto incluirá infraestructuras eléctricas necesarias para
       asegurar un suministro energético, que durante la primera fase será de 150 MW".
@@ -44,7 +44,7 @@ potencia:
     referencia: "Suministro energético del campus completo tras las fases posteriores"
     estado_asociado: anunciado
     fecha_dato: "2026-01-28"
-    fuentes: [src-1]
+    fuentes: [src-1, src-6]
     nota: >-
       "en las fases posteriores alcanzaría hasta 520 MW"; las fases 2 y 3 asumen la
       obtención de 370 MW adicionales.
@@ -80,7 +80,46 @@ conexion_electrica:
 
 superficie_parcela_m2: 330000
 inversion_anunciada_eur: 3900000000
-refrigeracion: null
+refrigeracion: >-
+  Enfriamiento mediante circuito cerrado de agua, que según el Acuerdo elimina el consumo
+  directo de agua en la climatización de las salas.
+
+agua:
+  circuito: cerrado
+  sistema: >-
+    "El sistema de climatización de los centros de datos desarrollados por Box2Bit se basa
+    en un modo de enfriamiento mediante circuito cerrado de agua, lo que permite eliminar el
+    consumo directo de agua en el proceso de climatización de sus salas."
+  origen: null
+  nota: >-
+    El Acuerdo indica que la memoria incluye una estimación del consumo de agua por usos
+    (operacional, no operacional y zonas verdes) pero no reproduce ninguna cifra. No consta
+    consumo cuantificado, ni WUE, ni PUE. La inversión se someterá después a evaluación
+    ambiental estratégica, evaluación de impacto ambiental y autorización ambiental
+    integrada, que sí deberían cuantificarlo.
+  fuentes: [src-4]
+
+empleo:
+  - tipo: construccion
+    valor: 550
+    referencia: "Empleos directos en la fase de construcción de la primera fase"
+    fecha_dato: "2026-01-28"
+    fuentes: [src-5]
+    nota: "El mismo Acuerdo añade 1.000 empleos indirectos en esa fase."
+  - tipo: directo
+    valor: 63
+    referencia: "Empleos directos en la fase de operación de la primera fase"
+    fecha_dato: "2026-01-28"
+    fuentes: [src-5]
+    nota: null
+  - tipo: indirecto
+    valor: 200
+    referencia: "Empleos indirectos en la fase de operación de la primera fase"
+    fecha_dato: "2026-01-28"
+    fuentes: [src-5]
+    nota: >-
+      El Acuerdo estima que en las fases posteriores el número total de empleos aumentará de
+      forma proporcional, sin dar cifras.
 enlaces_proyecto: []
 
 incertidumbres:
@@ -97,7 +136,7 @@ incertidumbres:
     fuentes: [src-3]
 
 confianza: alta
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -123,3 +162,27 @@ fuentes:
     tipo: otro
     fecha_consulta: "2026-08-29"
     cita: "Épila 41.5984995 -1.2796166"
+  - id: src-4
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1434356510505"
+    titulo: "ORDEN PEJ/160/2026, de 30 de enero [...] proyecto «Campus de centros de procesamiento de datos - proyecto Epilon» [...] — gestión de los recursos hídricos"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2026-02-06"
+    fecha_consulta: "2026-08-31"
+    cita: "en cuanto a la gestión de los recursos hídricos, se indica que el sistema de climatización de los centros de datos desarrollados por Box2Bit se basa en un modo de enfriamiento mediante circuito cerrado de agua, lo que permite eliminar el consumo directo de agua en el proceso de climatización de sus salas, minimizando el consumo a volúmenes propios de otras industrias como la logística [...] Se incluye en la memoria estimación del consumo de agua en atención a los distintos usos: consumo operacional, consumo no operacional y consumo de las zonas verdes."
+  - id: src-5
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1434356510505"
+    titulo: "ORDEN PEJ/160/2026, de 30 de enero [...] proyecto «Campus de centros de procesamiento de datos - proyecto Epilon» [...] — generación de empleo"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2026-02-06"
+    fecha_consulta: "2026-08-31"
+    cita: "Se estima que el proyecto en primera fase generará aproximadamente 550 empleos directos y 1.000 indirectos en la fase de construcción, así como 63 empleos directos y 200 empleos indirectos en la fase de operación. Se estima que, en las fases posteriores de desarrollo del proyecto, el número total de empleos aumente de manera proporcional a las cifras indicadas para la fase inicial."
+  - id: src-6
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1434356510505"
+    titulo: "ORDEN PEJ/160/2026, de 30 de enero [...] proyecto «Campus de centros de procesamiento de datos - proyecto Epilon» [...] — suministro energético"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2026-02-06"
+    fecha_consulta: "2026-08-31"
+    cita: "El proyecto incluirá infraestructuras eléctricas necesarias para asegurar un suministro energético, que durante la primera fase será de 150 MW, y en las fases posteriores alcanzaría hasta 520 MW."

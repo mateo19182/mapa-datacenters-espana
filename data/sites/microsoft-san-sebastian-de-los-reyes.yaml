@@ -14,9 +14,9 @@ ubicacion:
   provincia: "Madrid"
   ccaa: "Comunidad de Madrid"
   direccion: "Avenida de Fuente Nueva 3, Polígono Industrial Sur, San Sebastián de los Reyes"
-  lat: null
-  lon: null
-  precision: municipio
+  lat: 40.548108
+  lon: -3.613668
+  precision: aproximada
   fuentes: [src-1, src-2, src-3]
 
 estado: en_construccion
@@ -122,7 +122,9 @@ incertidumbres:
   - campo: ubicacion
     descripcion: >-
       La dirección consta en el expediente ambiental, pero no se han publicado coordenadas ni
-      referencia catastral de la parcela, así que la geolocalización queda a nivel de municipio.
+      referencia catastral de la parcela. Las coordenadas registradas son el centroide de la
+      avenida de la Fuente Nueva dentro del polígono industrial Sur, no las del edificio, y por
+      eso la precisión es aproximada.
     fuentes: [src-2, src-3]
 
 confianza: media

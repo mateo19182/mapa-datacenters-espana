@@ -22,8 +22,11 @@ estado: operativo
 estado_detalle: >-
   Centro heredado por Equinix con la compra de Itconic en 2017; anteriormente
   identificado como "Itconic Barcelona 1". Sigue en servicio y forma ecosistema
-  con BA2.
-estado_fuentes: [src-2]
+  con BA2, con el que está unido por anillos redundantes de fibra. La ficha del
+  IBX declara 22.755 pies cuadrados, redundancia 2N en alimentación y N+1 en
+  refrigeración, energía 100 % renovable y más de 60 operadores de
+  telecomunicaciones concentrados en el ecosistema.
+estado_fuentes: [src-2, src-4, src-5]
 
 potencia: []
 
@@ -32,18 +35,22 @@ superficie_construida_m2: 1500
 incertidumbres:
   - campo: potencia
     descripcion: >-
-      Equinix no publica la potencia de BA1. Baxtel oculta la cifra tras muro de
-      pago. No se registra ningún valor.
-    fuentes: [src-2]
+      Equinix no publica la potencia de BA1 en la ficha del IBX, que solo da
+      superficie y redundancias. Baxtel oculta la cifra tras muro de pago y la
+      ficha comercial en PDF («BA1_IBX_Site_Spec_A4-EN.pdf») tampoco es accesible
+      sin registro. No se registra ningún valor.
+    fuentes: [src-2, src-4]
   - campo: superficie_construida_m2
     descripcion: >-
       La cifra de ~1.500 m² procede de prensa especializada citando "more than
       16,000 sq ft of colocation space"; es superficie de colocation, no
-      superficie construida total.
-    fuentes: [src-3]
+      superficie construida total. La propia Equinix publica en la ficha del IBX
+      «22,755 Square feet (ft²)», magnitud mayor que no se convierte ni sustituye
+      a la registrada.
+    fuentes: [src-3, src-4]
 
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -71,3 +78,25 @@ fuentes:
     cita: >-
       The BA2 facility is situated next to Equinix's existing BA1 site in
       Barcelona, forming a campus and a dense digital ecosystem.
+  - id: src-4
+    url: "https://www.equinix.com/data-centers/europe-colocation/spain-colocation/barcelona-data-centers/ba1"
+    titulo: "Barcelona BA1"
+    editor: "Equinix"
+    tipo: empresa
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Covered by 100% renewable energy, our BA1 data center is a strategic
+      connection point for data communications between Europe, Africa and the
+      Middle East. Tech specs ... 22,755 Square feet (ft²) 2N Power redundancy
+      N+1 Cooling redundancy 99.999%+ Global Guaranteed Uptime
+  - id: src-5
+    url: "https://www.techshowmadrid.es/noticias/como-funciona-un-centro-de-datos-por-dentro-visita-al-ba2-de-equinix-en-barcelona"
+    titulo: "Cómo funciona un centro de datos por dentro: visita al BA2 de Equinix en Barcelona"
+    editor: "Tech Show Madrid / Data Centre World"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-04-23"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El BA2 está conectado mediante anillos de fibra óptica redundantes con
+      otros nodos del ecosistema digital de Barcelona, entre ellos Barcelona 1.
+      En este punto se concentran más de 60 operadores de telecomunicaciones

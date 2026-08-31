@@ -17,11 +17,14 @@ ubicacion:
   precision: municipio
   fuentes: [src-1, src-2]
 
-estado: en_construccion
+estado: parcialmente_operativo
 estado_detalle: >-
   Campus de cuatro edificios anunciado en abril de 2023, con primera piedra el 16 de mayo de 2023
-  y finalización prevista en 2029. Orientado a clientes hiperescalares.
-estado_fuentes: [src-2]
+  y finalización prevista en 2029. Orientado a clientes hiperescalares. En marzo de 2026 DATA4
+  puso en operación el primero de los cuatro edificios, con refrigeración en circuito cerrado sin
+  consumo de agua.
+estado_fuentes: [src-2, src-3]
+fecha_puesta_en_servicio: "2026-03"
 
 potencia:
   - tipo: instalada_total
@@ -49,6 +52,10 @@ potencia:
     nota: "La ficha corporativa vigente indica 50 MW y 6,7 hectáreas, cifra distinta de la anunciada en 2023."
 
 fases:
+  - nombre: "Primer edificio del campus"
+    estado: operativo
+    fecha_puesta_en_servicio: "2026-03"
+    fuentes: [src-3]
   - nombre: "Cuatro edificios con 16.000 m² de espacio IT"
     estado: en_construccion
     superficie_m2: 16000
@@ -56,6 +63,22 @@ fases:
 
 superficie_parcela_m2: 67000
 inversion_anunciada_eur: 530000000
+refrigeracion: >-
+  El primer edificio incorpora un sistema de refrigeración en circuito cerrado que, según la
+  compañía, permite operar sin consumo de agua.
+
+agua:
+  circuito: cerrado
+  sistema: >-
+    Refrigeración en circuito cerrado en el primer edificio del campus, descrita por la compañía
+    como capaz de operar sin consumo de agua.
+  origen: null
+  consumo_m3_ano: null
+  wue_l_kwh: null
+  nota: >-
+    La afirmación se refiere al primer edificio puesto en servicio en marzo de 2026; no hay dato
+    publicado para los otros tres, ni cifra de consumo ni WUE para ninguno.
+  fuentes: [src-3]
 enlaces_proyecto:
   - "https://www.data4group.com/es/centros-de-datos-en-espana-2/"
 
@@ -64,9 +87,10 @@ incertidumbres:
     descripcion: >-
       Contradicción abierta: el anuncio de 2023 habla de 80 MW totales / 48 MW IT para MAD02 y de
       130 MW de DATA4 en la Comunidad de Madrid al completar los dos campus; la ficha corporativa
-      de 2026 declara 50 MW para MAD02 y 100 MW para España. No se ha localizado una explicación
-      oficial del cambio.
-    fuentes: [src-1, src-2]
+      de 2026 declara 50 MW para MAD02 y 100 MW para España, y la crónica de la puesta en marcha
+      del primer edificio, en marzo de 2026, habla de «una capacidad total prevista cercana a los
+      70–80 MW». No se ha localizado una explicación oficial del cambio.
+    fuentes: [src-1, src-2, src-3]
   - campo: ubicacion
     descripcion: >-
       No se ha localizado la dirección exacta ni la parcela del campus. La geolocalización queda
@@ -74,7 +98,7 @@ incertidumbres:
     fuentes: [src-1]
 
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -92,3 +116,11 @@ fuentes:
     fecha_publicacion: "2023-04-26"
     fecha_consulta: "2026-08-29"
     cita: "un gran campus al que llaman MAD02, conformado por cuatro edificios de 16.000 metros cuadrados de espacio IT, que supondrán, de cara a 2029 ... 80 MW de potencia total -unos 48 MW de potencia IT- en una inversión de 530 millones de euros"
+  - id: src-3
+    url: "https://www.datacenterdynamics.com/es/noticias/data4-activa-su-data-center-en-el-campus-de-san-agust%C3%ADn-del-guadalix/"
+    titulo: "Data4 activa su data center en el campus de San Agustín del Guadalix"
+    editor: "DatacenterDynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-03-20"
+    fecha_consulta: "2026-08-31"
+    cita: "El operador francés Data4 ha iniciado la operación del primer centro de datos de su nuevo campus en San Agustín del Guadalix (Madrid) ... La instalación es la primera de las cuatro previstas dentro del complejo ... El centro incorpora un sistema de refrigeración en circuito cerrado que permite operar sin consumo de agua ... una inversión de alrededor de 530 millones de euros y una capacidad total prevista cercana a los 70–80 MW, distribuida en cuatro edificios ... la compañía prevé destinar hasta 850 millones de euros hasta 2030"

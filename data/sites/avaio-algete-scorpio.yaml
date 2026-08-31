@@ -1,0 +1,139 @@
+id: avaio-algete-scorpio
+nombre: "AVAIO Digital — Algete Data Hub (Scorpio)"
+alias:
+  - "AVAIO Digital Scorpio"
+  - "Algete Data Hub"
+  - "AVAIO Madrid Scorpio"
+tipo: campus
+operador: "AVAIO Digital Partners"
+propietario: "AVAIO Digital Partners"
+modelo: hyperscale
+
+ubicacion:
+  municipio: "Algete"
+  provincia: "Madrid"
+  ccaa: "Comunidad de Madrid"
+  lat: null
+  lon: null
+  precision: municipio
+  fuentes: [src-1, src-2]
+
+estado: permisos_concedidos
+estado_detalle: >-
+  AVAIO Digital anunció en agosto de 2025 su primer centro de datos en España, en Algete, sobre un
+  antiguo suelo industrial. La compañía declara el proyecto «fully entitled» y con potencia
+  asegurada: un acuerdo de interconexión cerrado con Iberdrola por 8 MW y 56,3 MW adicionales
+  contratados, con entrega a partir de 2028. No se ha localizado licencia de obra ni anuncio de
+  inicio de construcción.
+estado_fuentes: [src-1, src-2]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 64
+    ambito: campus
+    referencia: "Capacidad anunciada del campus"
+    estado_asociado: permisos_concedidos
+    fecha_dato: "2025-08-14"
+    fuentes: [src-2, src-3]
+    nota: "La nota no dice si son MW de carga TI o de acceso a red."
+  - tipo: conexion_red
+    valor_mw: 56.3
+    ambito: fase
+    referencia: "Potencia limpia contratada con Iberdrola, adicional a los 8 MW iniciales"
+    estado_asociado: permisos_concedidos
+    fecha_dato: "2025-08-14"
+    fuentes: [src-1, src-4]
+  - tipo: conexion_red
+    valor_mw: 8
+    ambito: fase
+    referencia: "Acuerdo de interconexión inicial cerrado con Iberdrola, entrega desde 2028"
+    estado_asociado: permisos_concedidos
+    fecha_dato: "2025-08-14"
+    fuentes: [src-1, src-4]
+
+refrigeracion: >-
+  Sistema por aire, con diseño de bajo consumo de agua y recuperación de agua de lluvia, según la
+  nota de la compañía.
+
+empleo:
+  - tipo: construccion
+    valor: 500
+    referencia: "Empleos previstos durante la construcción; la fuente dice «500+»"
+    fecha_dato: "2025-08"
+    fuentes: [src-1]
+  - tipo: directo
+    valor: 50
+    referencia: "Puestos en el emplazamiento una vez en operación; la fuente dice «~50»"
+    fecha_dato: "2025-08"
+    fuentes: [src-1]
+
+inversion_anunciada_eur: 650000000
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      La compañía publica dos tramos de potencia contratada con Iberdrola (8 MW iniciales y 56,3
+      MW adicionales) que, sumados, dan 64,3 MW, coherentes con los «64 MW» del titular de la
+      nota. Se registran los tres valores por separado y no se mezcla la cifra genérica de 64 MW
+      con las de conexión a red.
+    fuentes: [src-1, src-3]
+  - campo: ubicacion
+    descripcion: >-
+      No consta dirección ni parcela. La compañía solo dice que es «un antiguo suelo industrial»
+      bien separado de zonas residenciales. Algete acoge también un emplazamiento de Microsoft:
+      son proyectos distintos.
+    fuentes: [src-1]
+
+enlaces_proyecto:
+  - "https://www.avaiodigital.com/updates/press-avaio-digital-achieves-major-development-milestone-at-the-fully-powered-ai-ready-algete-data-hub-in-madrid-spain"
+
+confianza: media
+ultima_verificacion: "2026-08-31"
+
+fuentes:
+  - id: src-1
+    url: "https://www.avaiodigital.com/updates/press-avaio-digital-achieves-major-development-milestone-at-the-fully-powered-ai-ready-algete-data-hub-in-madrid-spain"
+    titulo: "AVAIO Digital Achieves Major Development Milestone at the Fully Powered, AI-Ready Algete Data Hub in Madrid, Spain"
+    editor: "AVAIO Digital"
+    tipo: empresa
+    fecha_publicacion: "2025-08-14"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      AVAIO Digital is pleased to announce its first data center in Spain, strategically located
+      in the town of Algete in the Community of Madrid ... This €650 million capital investment
+      ... creating an expected [500+] jobs during construction and a further ~50 on-site positions
+      once the project is in operation ... The project has secured 56.3 MW of clean power with
+      Iberdrola ... incremental to the initial 8 MW of power for which an interconnection
+      agreement with Iberdrola has been finalized, with delivery starting on 2028 ... rainwater
+      recapture, rooftop solar and a water efficient, flexible air-cooled system
+  - id: src-2
+    url: "https://www.prnewswire.com/news-releases/avaio-digital-achieves-major-development-milestone-at-the-fully-powered-ai-ready-algete-data-hub-in-madrid-spain-302529793.html"
+    titulo: "AVAIO Digital Achieves Major Development Milestone at the Fully Powered, AI-Ready Algete Data Hub in Madrid, Spain"
+    editor: "PR Newswire (AVAIO Digital)"
+    tipo: empresa
+    fecha_publicacion: "2025-08-14"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Power secured and entitlements in place to develop a major new 64 MW, AI-ready data center
+      campus in the heart of Madrid's digital corridor
+  - id: src-3
+    url: "https://datacentremagazine.com/news/avaio-to-build-64-mw-ai-ready-data-centre-campus-in-madrid"
+    titulo: "AVAIO to Build a 64MW AI-Ready Data Centre Campus in Madrid"
+    editor: "Data Centre Magazine"
+    tipo: prensa_especializada
+    fecha_publicacion: "2025-08-18"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      AVAIO Digital secures power and approvals to develop a €650m (US$760m) AI-ready data centre
+      campus in Madrid ... AVAIO to Build a 64MW AI-Ready Data Centre Campus in Madrid
+  - id: src-4
+    url: "https://www.prnewswire.com/news-releases/avaio-digital-alcanza-un-importante-hito-de-desarrollo-en-el-centro-de-datos-de-algete-madrid-espana-302530297.html"
+    titulo: "AVAIO Digital alcanza un importante hito de desarrollo en el centro de datos de Algete (Madrid, España)"
+    editor: "PR Newswire (AVAIO Digital)"
+    tipo: empresa
+    fecha_publicacion: "2025-08-14"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El proyecto ha asegurado 56,3 MW de energía limpia con Iberdrola, líder español en
+      generación y transmisión de energía, que se suman a los 8 MW iniciales para los que se ha
+      firmado un acuerdo de interconexión con Iberdrola, con entrega a partir de 2028.

@@ -25,8 +25,11 @@ estado_detalle: >-
   Edificio en servicio desde 2001 como "Barcelona Steel" (salas Acero 1 y Acero
   2), explotado por Colt Data Centre Services y después por AtlasEdge. En
   diciembre de 2025 AtlasEdge vendió nueve centros europeos a Templus, incluido
-  este. Desde mayo de 2026 se comercializa junto a BCN01 como campus de 10 MW.
-estado_fuentes: [src-2, src-3]
+  este. Desde mayo de 2026 se comercializa junto a BCN01 como campus de 10 MW. El
+  inmueble fue adquirido en agosto de 2022 por el Principal European Data Centre
+  Fund I por 22,6 millones de euros, con arrendamiento a AtlasEdge hasta agosto
+  de 2033.
+estado_fuentes: [src-2, src-3, src-5, src-6]
 fecha_puesta_en_servicio: "2001"
 
 potencia:
@@ -40,6 +43,28 @@ potencia:
     nota: >-
       La fuente dice "el adquirido a AtlasEdge en diciembre, que alcanza ya los
       4 MW" sin precisar tipo de potencia.
+  - tipo: no_especificado
+    valor_mw: 8
+    ambito: edificio
+    referencia: "«Total power» del edificio según la ficha de producto de Templus"
+    estado_asociado: operativo
+    fecha_dato: "2026-04-27"
+    fuentes: [src-5]
+    nota: >-
+      La web de Templus publica "Total power 8 MW" y "Superficie IT 2.100 m²"
+      para BCN02, el doble de los 4 MW que le atribuye la prensa especializada.
+      Se conservan las dos lecturas.
+  - tipo: no_especificado
+    valor_mw: 6
+    ambito: edificio
+    referencia: "Potencia del edificio en el momento de su compra por Principal Real Estate"
+    estado_asociado: operativo
+    fecha_dato: "2022-08-24"
+    fuentes: [src-6]
+    nota: >-
+      La operación describe "a 6MW, 10,500 square meter data center in Barcelona"
+      arrendado a AtlasEdge hasta agosto de 2033, con imágenes que corresponden a
+      la antigua instalación de Colt DCS en Carrer de l'Acer 5.
 
 superficie_construida_m2: 2160
 
@@ -52,8 +77,28 @@ incertidumbres:
     descripcion: >-
       La ficha técnica de Colt de 2019 anunciaba "Powered by 6MVA" / "Total power
       provision of 6MVA". Es potencia aparente (MVA), no MW, y no se convierte.
-      Además es un dato de 2019 anterior a los cambios de propiedad.
-    fuentes: [src-2, src-4]
+      Además es un dato de 2019 anterior a los cambios de propiedad. La ficha
+      posterior de AtlasEdge para el mismo edificio (BCN001) rebaja esa cifra a
+      "Powered by 4.8 MVA". En total hay cuatro lecturas distintas del mismo
+      inmueble —4 MW, 8 MW, 6 MW y 4,8/6 MVA— y ninguna fuente explica la
+      diferencia.
+    fuentes: [src-2, src-4, src-5, src-6, src-7]
+  - campo: superficie_construida_m2
+    descripcion: >-
+      Baxtel y la ficha de Colt dan 2.160 m² de superficie construida; Templus
+      publica 2.100 m² de «Superficie IT»; la operación de Principal Real Estate
+      habla de un edificio de 10.500 m². No se ha determinado si describen
+      perímetros distintos del mismo inmueble.
+    fuentes: [src-2, src-5, src-6]
+  - campo: propietario
+    descripcion: >-
+      La ficha registra a Templus como propietario. El inmueble fue comprado en
+      2022 por el Principal European Data Centre Fund I y arrendado al operador;
+      un portavoz de AtlasEdge precisó entonces que la venta la hizo el
+      arrendador anterior y no AtlasEdge. No se ha localizado documento posterior
+      que aclare si Templus adquirió el edificio o solo el negocio y el
+      arrendamiento.
+    fuentes: [src-3, src-6]
   - campo: operador
     descripcion: >-
       Baxtel todavía lista el activo como AtlasEdge; la venta a Templus se cerró
@@ -61,7 +106,7 @@ incertidumbres:
     fuentes: [src-2, src-3]
 
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -100,3 +145,36 @@ fuentes:
       Colt Barcelona Data Centre offers over 2,160sqm of secure and flexible
       space. ... Powered by 6MVA ... Range of power densities: Acero 1 Hall -
       1000 W/sqm, Acero 2 Hall - 1,500 W/sqm
+  - id: src-5
+    url: "https://templus.com/data-centers/barcelona-bcn02/"
+    titulo: "Data Center en Barcelona BCN02 | Infraestructura Tier III"
+    editor: "Templus Data Centers"
+    tipo: empresa
+    fecha_publicacion: "2026-04-27"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Cuenta con más de 2.100 m² IT y 8 MW de capacidad, proporcionando
+      conectividad avanzada ... Densidad por rack 4 kW – 15 kW ... Superficie IT
+      2.100 m² ... Total power 8 MW ... Nivel Tier III Ready
+  - id: src-6
+    url: "https://www.datacenterdynamics.com/en/news/principal-real-estate-acquires-atlasedge-leased-data-center-in-barcelona-spain/"
+    titulo: "Principal Real Estate acquires AtlasEdge-leased data center in Barcelona, Spain"
+    editor: "Data Center Dynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2022-08-24"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      The company said the acquisition was a 6MW, 10,500 square meter (113,000 sq
+      ft) data center in Barcelona, Spain. Acquired for €22.6 million ($22.5m),
+      the site is leased to AtlasEdge until August 2033 ... Baxtel reports the
+      Colt facility, at Carrer de l'Acer, 5, was a former industrial building
+      known as Barcelona Steel
+  - id: src-7
+    url: "https://atlasedge.com/wp-content/uploads/2021/10/Data-Fact-Sheet-BCN001-1.pdf"
+    titulo: "BCN001 Data Centre — Barcelona (data fact sheet)"
+    editor: "AtlasEdge Data Centres"
+    tipo: empresa
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Powered by 4.8 MVA AtlasEdge BCN001 Data Centre offers over 2.100m2 of
+      secure resilient space.

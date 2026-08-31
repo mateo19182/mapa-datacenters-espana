@@ -4,6 +4,7 @@ alias:
   - "Meta Data Center Campus"
   - "Centro de datos de Meta en Talavera"
   - "Zarza Networks (Torrehierro Fase 2)"
+  - "PSI Meta Data Center Campus (expediente PRO-SC-22-1030)"
 tipo: campus
 operador: "Meta Platforms"
 propietario: "Zarza Networks, S.L."
@@ -23,14 +24,30 @@ ubicacion:
 estado: permisos_concedidos
 estado_detalle: >-
   Proyecto de Singular Interés aprobado definitivamente el 22 de octubre de 2024,
-  con declaración de impacto ambiental de 22 de marzo de 2024. El 21 de agosto de
-  2026 el DOCM publicó la aprobación definitiva de la reparcelación urbanística y
-  el 26 de agosto de 2026 la Junta otorgó la autorización definitiva, de modo que
-  Meta ya puede presentar los proyectos constructivos y pedir licencia de obra al
-  Ayuntamiento. Las obras no han comenzado a 29 de agosto de 2026.
-estado_fuentes: [src-psi, src-eldiario-2026, src-elespanol-repar]
+  con declaración de impacto ambiental de 20 de marzo de 2024 publicada en el DOCM
+  el 22 de marzo. El ámbito se extiende por los términos municipales de Talavera
+  de la Reina y Calera y Chozas: la subestación de conexión está proyectada en la
+  parcela 35 del polígono 506 de Calera y Chozas. El 21 de agosto de 2026 el DOCM
+  publicó la aprobación definitiva de la reparcelación urbanística y el 26 de
+  agosto de 2026 la Junta otorgó la autorización definitiva, de modo que Meta ya
+  puede presentar los proyectos constructivos y pedir licencia de obra al
+  Ayuntamiento. Las obras no han comenzado a 31 de agosto de 2026.
+estado_fuentes: [src-psi, src-docm-dia, src-eldiario-2026, src-elespanol-repar, src-jccm-reparcelacion]
 
 potencia:
+  - tipo: conexion_red
+    valor_mw: null
+    valor_mva: 240
+    ambito: campus
+    referencia: "Demanda máxima global prevista en la subestación propia del campus"
+    estado_asociado: permisos_concedidos
+    fecha_dato: "2024-03-20"
+    fuentes: [src-docm-dia]
+    nota: >-
+      La declaración de impacto ambiental describe una subestación propia con
+      cuatro transformadores de 120 MVA cada uno y "una demanda máxima global
+      prevista de 240 MVA". Se registra en MVA y no se convierte a MW: haría
+      falta el factor de potencia, que no se publica. No es carga TI.
   - tipo: no_especificado
     valor_mw: 248
     ambito: campus
@@ -42,6 +59,31 @@ potencia:
       La ficha dice "Potencia instalada: 248 MW" sin precisar si es carga TI,
       potencia de conexión o potencia instalada del conjunto. No se ha localizado
       ninguna fuente oficial ni de la compañía que confirme esta cifra.
+  - tipo: termica_respaldo
+    valor_mw: 12.9
+    ambito: campus
+    referencia: "Potencia térmica nominal total de los grupos generadores de emergencia"
+    estado_asociado: permisos_concedidos
+    fecha_dato: "2023-09-13"
+    fuentes: [src-docm-dia]
+    nota: >-
+      No es capacidad del centro de datos. El promotor comunicó el 13 de
+      septiembre de 2023 que el rediseño rebajaba la potencia térmica de los
+      grupos de los más de 50 MW iniciales a 12,9 MW, por debajo del umbral que
+      habría obligado a autorización ambiental integrada. La DIA añade que los
+      generadores de reserva pasaron de nueve a tres.
+  - tipo: generacion_asociada
+    valor_mw: 24.3
+    ambito: campus
+    referencia: "Planta solar fotovoltaica del ámbito del PSI — potencia nominal total"
+    estado_asociado: permisos_concedidos
+    fecha_dato: "2024-03-20"
+    fuentes: [src-docm-dia]
+    nota: >-
+      Capacidad de producir, no de consumir. La DIA da 24,3 MW de potencia
+      nominal total y 31,6 MW de potencia pico sobre 526.552 m2, en la fase 4 del
+      calendario. Aparte, y por exigencia del Código Técnico de la Edificación,
+      se prevé una fotovoltaica in situ de 1,09 MW pico junto a la subestación.
 
 fases:
   - nombre: "Declaración de Interés Regional (DIR)"
@@ -57,94 +99,198 @@ fases:
   - nombre: "Declaración de Impacto Ambiental"
     estado: permisos_concedidos
     fecha_puesta_en_servicio: "2024-03-22"
-    nota: "Publicada en el DOCM; hito administrativo."
-    fuentes: [src-psi, src-dia]
+    nota: >-
+      Resolución de 20/03/2024 de la Dirección General de Calidad Ambiental,
+      publicada en el DOCM el 22 de marzo de 2024. Hito administrativo.
+    fuentes: [src-psi, src-dia, src-docm-dia]
   - nombre: "Aprobación definitiva del PSI"
     estado: permisos_concedidos
     fecha_puesta_en_servicio: "2024-10-22"
-    nota: "Hito administrativo."
-    fuentes: [src-psi]
+    nota: >-
+      Acuerdo del Consejo de Gobierno de 14 de octubre de 2024, publicado en el
+      DOCM nº 205 de 22 de octubre. Hito administrativo.
+    fuentes: [src-psi, src-jccm-psi]
+  - nombre: "Información pública en materia de expropiación forzosa"
+    estado: permisos_concedidos
+    fecha_puesta_en_servicio: "2025-12-23"
+    nota: >-
+      Resolución de 05/12/2025 de la Secretaría General de la Consejería de
+      Fomento, publicada en el DOCM el 23 de diciembre de 2025. Hito
+      administrativo.
+    fuentes: [src-docm-expropiacion]
   - nombre: "Reparcelación urbanística definitiva"
     estado: permisos_concedidos
     fecha_puesta_en_servicio: "2026-08"
     nota: >-
-      Publicada en el DOCM el 21 de agosto de 2026; autorización definitiva de la
-      Junta el 26 de agosto de 2026. Zarza Networks debía constituir una garantía
-      de 1.089.554 euros en diez días.
-    fuentes: [src-elespanol-repar, src-eldiario-2026]
-  - nombre: "Construcción por fases del campus"
+      Aprobada definitivamente por el Gobierno regional el 11 de agosto de 2026 y
+      publicada en el DOCM el 21 de agosto; autorización definitiva de la Junta el
+      26 de agosto de 2026. Zarza Networks debía constituir una garantía de
+      1.089.554 euros en diez días.
+    fuentes: [src-jccm-reparcelacion, src-elespanol-repar, src-eldiario-2026]
+  - nombre: "Fase 1 de obra — subestación interior y conexión de alta tensión"
     estado: anunciado
     nota: >-
-      La nota de la DIA habla de unas obras de diez años que darían comienzo en
-      los doce meses siguientes a la conclusión de los procesos administrativos.
-      Una ficha divulgativa local sitúa el inicio en 2027 y la plena capacidad en
-      2036.
-    fuentes: [src-dia, src-talaveravalley]
+      Según la DIA, comprende la subestación eléctrica interior del centro de
+      datos, la línea de alta tensión de conexión exterior (entre 18 y 22 meses de
+      ejecución) y la reposición del colector unitario de Gamonal.
+    fuentes: [src-docm-dia]
+  - nombre: "Fase 2 de obra — edificio de centro de datos 1 (DCB 1) y edificios auxiliares"
+    estado: anunciado
+    nota: >-
+      Edificio DCB 1 (340 x 96 m, 32.723,79 m2, una planta, 9,115 m de altura),
+      edificio de administración (ADM), edificio de apoyo a operaciones (IBOS),
+      caseta de vigilancia, viales, aparcamientos, paisajismo y primera fase de
+      urbanización interior.
+    fuentes: [src-docm-dia]
+  - nombre: "Fase 3 de obra — edificio de centro de datos 2 (DCB 2)"
+    estado: anunciado
+    nota: >-
+      Edificio DCB 2 (288 x 96 m, 27.779,77 m2, una planta, 9,115 m de altura),
+      viales, aparcamientos y paisajismo del campus.
+    fuentes: [src-docm-dia]
+  - nombre: "Fase 4 de obra — planta solar fotovoltaica y segunda fase de urbanización"
+    estado: anunciado
+    nota: >-
+      Un año previsto de ejecución para la planta solar. El conjunto de las obras
+      se estima en unos diez años. Una ficha divulgativa local sitúa el inicio en
+      2027 y la plena capacidad en 2036.
+    fuentes: [src-docm-dia, src-talaveravalley]
 
 conexion_electrica:
-  subestacion: "SE Calera y Chozas 220 kV"
+  subestacion: "Subestación propia del campus (220/33 kV), conectada a la SET Calera y Chozas 220 kV de Red Eléctrica"
   tension_kv: 220
   titular_red: "Red Eléctrica (Redeia)"
+  mw_solicitados: null
+  mw_concedidos: null
   nota: >-
-    El informe ambiental prevé una doble línea eléctrica de alta tensión que
-    unirá el ámbito con la subestación proyectada en Calera y Chozas. La
-    subestación de 220 kV de Redeia era "ya una realidad" en julio de 2025 y se
-    presenta como esencial tanto para el centro de datos de Meta como para la
-    futura línea de alta velocidad. No consta la potencia de acceso solicitada
-    ni concedida.
-  fuentes: [src-cmm, src-lovetalavera]
+    La DIA describe una subestación propia de 18.688 m2 con cuatro
+    transformadores de 120 MVA y una demanda máxima global prevista de 240 MVA,
+    que recibe energía de dos líneas aéreo-subterráneas de 220 kV y suministra
+    33 kV al campus. Las líneas discurren por Talavera de la Reina y Calera y
+    Chozas, con unos 3.100 metros de trazado aéreo y 350 subterráneos. La SET
+    Calera y Chozas 220 kV es de Red Eléctrica, ajena al procedimiento ambiental,
+    y está proyectada en la parcela 35 del polígono 506 de Calera y Chozas. No
+    consta la potencia de acceso solicitada ni concedida en MW.
+  fuentes: [src-docm-dia, src-cmm, src-lovetalavera]
 
 superficie_parcela_m2: 1910000
 inversion_anunciada_eur: 750000000
 refrigeracion: >-
-  Sistema de refrigeración por aire seco. Las cifras de consumo de agua se han
-  revisado a la baja varias veces: de 2,2-2,9 hm3/año iniciales a 504.500 m3/año
-  en el informe ambiental y a 0,2 hm3/año (unos 200 millones de litros) en la
-  documentación de 2026, con abastecimiento desde el Tajo por la red municipal.
+  Enfriadores de aire seco. La DIA recoge que se descartó el sistema híbrido con
+  almohadillas adiabáticas precisamente por minimizar la demanda de agua, y que
+  el cambio de tecnología de refrigeración redujo un 80 % la demanda de agua
+  respecto a la alternativa previa.
+
+agua:
+  circuito: cerrado
+  sistema: >-
+    Enfriadores de aire seco (alternativa 1 del estudio de impacto ambiental),
+    elegidos frente a un sistema híbrido con almohadillas adiabáticas por
+    minimizar la demanda de agua.
+  origen: "Red municipal de abastecimiento de Talavera de la Reina; el riego del parque fluvial, de la masa de agua subterránea 030.015 Talavera"
+  consumo_m3_ano: 40000
+  wue_l_kwh: null
+  nota: >-
+    La cifra registrada es el agua potable anual que la DIA asigna al centro de
+    datos. El desglose oficial es: 600 m3 anuales de agua industrial para los
+    equipos de refrigeración del centro de datos (caudal pico 12 l/s); 40.000 m3
+    anuales de agua potable para el centro de datos (caudal pico 10 l/s); 7.000
+    m3 anuales de agua subterránea para el riego del parque fluvial; y 470.900 m3
+    anuales para el resto del ámbito del PSI excluyendo el propio centro de
+    datos. El total del conjunto del PSI son 511.500 m3 anuales, de los que
+    504.500 son de agua potable. Los 504.500 m3/año que la prensa atribuyó al
+    centro de datos son, por tanto, la demanda del ámbito urbanizado completo, no
+    la del CPD. En agosto de 2026 la Junta cifró el consumo directo de la
+    instalación en 0,2 hm3/año y aclaró que las estimaciones de 0,5 hm3/año
+    corresponden a una reserva máxima de seguridad municipal para futuros
+    equipamientos públicos, no al gasto del centro. Las aguas residuales
+    industriales del centro de datos se declaran en 360 m3 anuales.
+  fuentes: [src-docm-dia, src-jccm-delegado]
+
+empleo:
+  - tipo: directo
+    valor: 250
+    referencia: "Fase operativa del campus"
+    fecha_dato: "2026-08"
+    fuentes: [src-jccm-reparcelacion, src-jccm-psi]
+    nota: "Cifra sostenida por el Gobierno regional desde la aprobación definitiva del PSI en octubre de 2024."
+  - tipo: construccion
+    valor: 300
+    referencia: "Fase de construcción"
+    fecha_dato: "2026-08"
+    fuentes: [src-jccm-reparcelacion, src-jccm-psi]
+    nota: null
+  - tipo: total
+    valor: 780
+    referencia: "Empleos anuales apoyados en la región, sumando cadena de suministro y consumo inducido"
+    fecha_dato: "2026-08-25"
+    fuentes: [src-jccm-delegado]
+    nota: >-
+      No es empleo en el emplazamiento: es una estimación de empleo apoyado en el
+      conjunto de la región. No se suma a los 250 directos.
+
 enlaces_proyecto:
   - "https://urbanismo.castillalamancha.es/planeamiento/planeamiento-territorial/proyectos-de-singular-interes/meta-data-center-campus"
 
 incertidumbres:
   - campo: potencia
     descripcion: >-
-      No existe cifra de potencia en fuentes oficiales ni de la compañía. La
-      única cifra localizada, 248 MW de "potencia instalada", procede de una
-      ficha divulgativa de una asociación empresarial local y no distingue el
-      tipo de MW.
-    fuentes: [src-talaveravalley]
-  - campo: refrigeracion
+      Sigue sin publicarse la carga TI del campus. La única magnitud eléctrica de
+      fuente oficial son los 240 MVA de demanda máxima prevista en la subestación
+      propia, que es potencia de acceso y no capacidad de servidor. La cifra de
+      248 MW de "potencia instalada" procede de una ficha divulgativa de una
+      asociación empresarial local, no distingue el tipo de MW y no está
+      confirmada por ninguna fuente oficial ni de la compañía. Los 240 MVA y los
+      248 MW no son la misma magnitud y no se convierten entre sí.
+    fuentes: [src-talaveravalley, src-docm-dia]
+  - campo: agua
     descripcion: >-
-      Las cifras de consumo de agua difieren radicalmente entre versiones del
-      proyecto: 4.800 millones de litros al año en una ficha divulgativa; entre
-      2,2 y 2,9 millones de metros cúbicos anuales como consumo "inicialmente
-      previsto" según el informe ambiental; 504.500 m3/año en ese mismo informe;
-      y 0,2 hectómetros cúbicos anuales (unos 200 millones de litros) en la
-      documentación de 2026. Se conservan todas.
-    fuentes: [src-talaveravalley, src-cmm, src-elespanol-ruido, src-xataka]
+      Las cifras de consumo de agua difieren radicalmente entre versiones y entre
+      ámbitos, y buena parte de la discrepancia pública nace de atribuir al centro
+      de datos cifras que son del ámbito urbanizado completo. Se conservan todas:
+      4.800 millones de litros al año en una ficha divulgativa; entre 2,2 y 2,9
+      millones de metros cúbicos anuales como consumo "inicialmente previsto"
+      según el informe ambiental; 504.500 m3/año de agua potable, que la DIA
+      atribuye al conjunto del PSI y no al CPD; 40.600 m3/año para el centro de
+      datos según el desglose de la DIA (40.000 potable más 600 industrial); y 0,2
+      hm3/año de consumo directo según la Junta en agosto de 2026. Ninguna fuente
+      concilia la cifra de 0,2 hm3/año con el desglose de la DIA.
+    fuentes: [src-talaveravalley, src-cmm, src-elespanol-ruido, src-xataka, src-docm-dia, src-jccm-delegado]
   - campo: inversion_anunciada_eur
     descripcion: >-
-      La Junta cifró la inversión en 750 millones de euros (685 millones para la
-      construcción del centro de datos). El informe ambiental recogido por CMM
-      habla de "más de mil millones de euros" y la prensa de agosto de 2026 dice
-      que puede superar los 1.000 millones según el desarrollo definitivo.
-    fuentes: [src-dia, src-cmm, src-eldiario-2026]
+      La Junta cifra la inversión en 750 millones de euros y la ha mantenido desde
+      octubre de 2024 hasta agosto de 2026. El informe ambiental recogido por CMM
+      habla de "más de mil millones de euros" y el delegado de la Junta en
+      Talavera admitió en agosto de 2026 que puede superar los 1.000 millones
+      según el desarrollo definitivo de las instalaciones.
+    fuentes: [src-dia, src-cmm, src-eldiario-2026, src-jccm-reparcelacion, src-jccm-delegado]
   - campo: ubicacion
     descripcion: >-
-      Las fuentes describen el emplazamiento de forma incoherente: una ficha
-      local lo sitúa "a 12 kilómetros al oeste del núcleo urbano" y la prensa de
-      agosto de 2026 lo sitúa "a 400 metros del núcleo urbano de Gamonal". Las
-      coordenadas usadas son el centroide del polígono industrial de Torrehierro
-      en OpenStreetMap, no la parcela concreta.
-    fuentes: [src-talaveravalley, src-elespanol-ruido, src-osm]
+      Las fuentes describen el emplazamiento de forma incoherente: la nota de la
+      Junta de octubre de 2024 lo sitúa "a unos doce kilómetros del núcleo urbano
+      de Talavera de la Reina" y la de agosto de 2026 "a 400 metros del núcleo
+      urbano" de Gamonal. Son referencias a núcleos distintos, pero ninguna fuente
+      lo aclara. Las coordenadas usadas son el centroide del polígono industrial
+      de Torrehierro en OpenStreetMap, no la parcela concreta.
+    fuentes: [src-talaveravalley, src-elespanol-ruido, src-jccm-psi, src-jccm-delegado, src-osm]
   - campo: superficie_parcela_m2
     descripcion: >-
-      Conviven dos superficies: un ámbito global de 191 hectáreas y unas 102
-      hectáreas para el núcleo principal de centros de datos, más un parque
-      fluvial público de entre 50 y 60 hectáreas. Se registra el ámbito global.
-    fuentes: [src-dia, src-eldiario-2026, src-elespanol-repar]
+      Conviven varias superficies. El ámbito global del PSI son 191 hectáreas, de
+      las cuales 175,74 son suelo urbano no consolidado industrial; 102 hectáreas
+      (53,4 %) se destinan a zonas industriales y 50 hectáreas (26,2 %) a zonas
+      verdes, con un parque fluvial público de entre 50 y 60 hectáreas. Se
+      registra el ámbito global.
+    fuentes: [src-dia, src-docm-dia, src-eldiario-2026, src-elespanol-repar, src-jccm-psi]
+  - campo: empleo
+    descripcion: >-
+      Los 250 empleos directos y 300 de construcción son cifras del Gobierno
+      regional, no de la compañía, y no se han contrastado con ningún registro
+      laboral. Los 780 "empleos anuales apoyados en la región" son una magnitud
+      distinta que incluye cadena de suministro y consumo inducido.
+    fuentes: [src-jccm-reparcelacion, src-jccm-delegado]
 
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-psi
@@ -152,11 +298,102 @@ fuentes:
     titulo: "Meta Data Center Campus — Proyectos de Singular Interés"
     editor: "Consejería de Fomento, Junta de Comunidades de Castilla-La Mancha"
     tipo: oficial
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-08-31"
     cita: >-
       el desarrollo de un Centro de Datos (Data Center Campus) dentro de un suelo
       urbano no consolidado (SUNC) de uso industrial en el ámbito Torrehierro
       Fase 2, ubicado en Talavera de la Reina (Toledo).
+  - id: src-docm-dia
+    url: "https://urbanismo.castillalamancha.es/sites/default/files/2026-02/4_dia__docm%20%281%29.pdf"
+    titulo: "Resolución de 20/03/2024, de la Dirección General de Calidad Ambiental, por la que se formula la declaración de impacto ambiental del proyecto: Proyecto de singular interés Meta Data Center Campus (expediente PRO-SC-22-1030), situado en los términos municipales de Talavera de la Reina y Calera y Chozas (Toledo), cuya promotora es Zarza Networks, SL"
+    editor: "Diario Oficial de Castilla-La Mancha — Consejería de Desarrollo Sostenible"
+    tipo: oficial
+    fecha_publicacion: "2024-03-22"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Agua industrial necesaria para los equipos de refrigeración del centro de
+      datos: 600 m3 anuales; caudal pico de demanda: 12 l/s. - Agua potable
+      necesaria para el centro de datos: 40.000 m3 anuales; caudal pico de
+      demanda: 10 l/s. [...] Aguas subterráneas destinadas a riego en el resto del
+      ámbito del PSI: 7.000 m3 anuales de riego en el parque fluvial. [...] Agua
+      necesaria para el conjunto del ámbito del PSI, excluyendo la consumida por
+      el propio centro de datos: 470.900 m3 anuales. Agua necesaria para el
+      conjunto del PSI, incluyendo la estimada para el ámbito completo de la
+      urbanización además de la consumida por el propio centro de datos: 511.500
+      m3 anuales; 504.500 m3 anuales de agua potable con 59 l/s de caudal punta, y
+      7.000 m3 anuales de aguas subterráneas. [...] Agua residual industrial del
+      Centro de Datos: 360 m3 anuales [...] Subestación (SUB): ocupa 18.688 m2
+      [...] Contará con cuatro transformadores de 120 MVA cada uno y una demanda
+      máxima global prevista de 240 MVA. Recibirá energía de las dos líneas aéreas
+      de transmisión de 220 kV y suministrará energía de 33 kV al campus. [...]
+      Planta fotovoltaica in situ: en cumplimiento del Código Técnico de la
+      Edificación, al sur de la subestación se emplazarán 1,09 MW pico [...] Se
+      prevén 526.552 m2 de planta solar fotovoltaica [...] 24,3 MW de potencia
+      nominal total. - 31,6 MW de potencia pico. [...] la potencia térmica nominal
+      total de los grupos generadores es de 12,9 MW frente a los 50 MW
+      establecidos como umbral [...] Se selecciona el empleo de enfriadores de
+      aire seco (alternativa 1) por minimizar la demanda de agua para su
+      funcionamiento. [...] Mediante la modificación de la tecnología de
+      refrigeración del Centro de Datos, se ha logrado reducir un 80% la demanda
+      de agua respecto a la alternativa 2. Del mismo modo, se han podido optimizar
+      los generadores de reserva pasando de nueve a tres. [...] El ámbito del PSI
+      se extiende por 191 hectáreas situadas al noroeste del núcleo urbano de
+      Talavera de la Reina [...] La subestación está proyectada en la parcela 35
+      del polígono 506 de Calera y Chozas [...] Edificio de centro de datos 2 (DCB
+      2): presenta 288 m x 96 m; 27.779,77 m2 [...] Edificio de centro de datos 1
+      (DCB 1) [...] presenta 340 m x 96 m; 32.723,79 m2
+  - id: src-jccm-reparcelacion
+    url: "https://urbanismo.castillalamancha.es/actualidad/el-gobierno-regional-aprueba-definitivamente-la-reparcelacion-del-psi-del-futuro-campus"
+    titulo: "El Gobierno regional aprueba definitivamente la reparcelación del PSI del futuro campus de centros de datos de Meta en Talavera de la Reina"
+    editor: "Consejería de Fomento, Junta de Comunidades de Castilla-La Mancha"
+    tipo: oficial
+    fecha_publicacion: "2026-08-11"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El proyecto contempla una inversión estimada de 750 millones de euros y
+      permitirá la creación de 250 puestos de trabajo directos, además de otros
+      300 empleos durante la fase de construcción.
+  - id: src-jccm-delegado
+    url: "https://www.castillalamancha.es/actualidad/notasdeprensa/castilla-la-mancha-consolida-el-avance-definitivo-del-proyecto-de-meta-en-talavera-tras-culminar-el"
+    titulo: "Castilla-La Mancha consolida el avance definitivo del proyecto de Meta en Talavera tras culminar el proceso de reparcelación urbana"
+    editor: "Gobierno de Castilla-La Mancha"
+    tipo: oficial
+    fecha_publicacion: "2026-08-25"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      el consumo directo de agua de la instalación será de apenas 0,2 Hm3/año
+      gracias al uso de refrigeración por aire seco [...] las estimaciones de 0,5
+      Hm3/año corresponden únicamente a una reserva máxima de seguridad municipal
+      para futuros equipamientos públicos de Talavera, y no al gasto real del
+      centro [...] el campus tecnológico generará 250 puestos de trabajo directos
+      estables [...] apoyando un total de 780 empleos anuales en la región al
+      sumar la cadena de suministro y el consumo inducido [...] La inversión
+      estimada se sitúa en torno a los 750 millones de euros, "pudiendo superar
+      los 1.000 millones según el desarrollo definitivo de las instalaciones"
+  - id: src-jccm-psi
+    url: "https://www.castillalamancha.es/actualidad/notasdeprensa/el-gobierno-regional-aprueba-definitivamente-el-psi-de-meta-en-talavera-de-la-reina"
+    titulo: "El Gobierno regional aprueba definitivamente el PSI de META en Talavera de la Reina"
+    editor: "Gobierno de Castilla-La Mancha"
+    tipo: oficial
+    fecha_publicacion: "2024-10-14"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      contará con una inversión de 750 millones de euros, va a generar 250 empleos
+      directos y 300 en la fase de construcción y estará ubicado en una superficie
+      de 191 hectáreas, de las cuales 102 será el Data Campus META Center, en el
+      polígono industrial de Torrehierro, ubicado a unos doce kilómetros del
+      núcleo urbano de Talavera de la Reina.
+  - id: src-docm-expropiacion
+    url: "https://urbanismo.castillalamancha.es/sites/default/files/2026-02/d.o.c.m.__23.12.2025_expropiacion_forzosa.pdf"
+    titulo: "Resolución de 05/12/2025, de la Secretaría General, por la que se somete a información pública en materia de expropiación forzosa el proyecto de singular interés Meta Data Center Campus en Talavera de la Reina, promovido por la mercantil Zarza Networks, SL"
+    editor: "Diario Oficial de Castilla-La Mancha — Consejería de Fomento"
+    tipo: oficial
+    fecha_publicacion: "2025-12-23"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Zarza Networks, S.L., perteneciente al grupo empresarial Meta Platforms,
+      Inc., promueve la tramitación y aprobación del proyecto de singular interés
+      Meta Data Center Campus en Talavera de la Reina.
   - id: src-dia
     url: "https://www.castillalamancha.es/actualidad/notasdeprensa/el-gobierno-de-castilla-la-mancha-publica-la-declaracion-de-impacto-ambiental-del-centro-de-datos"
     titulo: "El Gobierno de Castilla-La Mancha publica la declaración de impacto ambiental del centro de datos que Meta proyecta en Talavera de la Reina"

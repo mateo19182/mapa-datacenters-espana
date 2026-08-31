@@ -1,0 +1,96 @@
+id: adequa-santa-barbara
+nombre: "Adequa Real Estate — Centro de datos de Santa Bàrbara (Montsià)"
+alias:
+  - "Data center d'Adequa a Santa Bàrbara"
+tipo: campus
+operador: null
+propietario: "Adequa Real Estate"
+modelo: desconocido
+
+ubicacion:
+  municipio: "Santa Bàrbara"
+  provincia: "Tarragona"
+  ccaa: "Cataluña"
+  lat: null
+  lon: null
+  precision: municipio
+  fuentes: [src-1, src-2]
+
+estado: anunciado
+estado_detalle: >-
+  Proyecto atribuido a la promotora inmobiliaria Adequa dentro de la lista de 26 iniciativas que
+  la Generalitat estudia declarar estratégicas o de interés general superior para acelerar su
+  tramitación, avanzada por SER Catalunya el 25 de marzo de 2026. No consta expediente
+  urbanístico, ambiental ni municipal identificable, ni parcela, ni operador.
+estado_fuentes: [src-1, src-2, src-3]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 200
+    ambito: campus
+    referencia: "Capacidad prevista según la lista de proyectos avanzada por la Cadena SER"
+    estado_asociado: anunciado
+    fecha_dato: "2026-03-25"
+    fuentes: [src-1, src-2, src-3]
+    nota: >-
+      Ninguna de las fuentes precisa si son MW de carga TI o de acceso a red, ni de dónde procede
+      la cifra.
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      Los 200 MW proceden de una lista de proyectos de la Generalitat filtrada a la prensa, no de
+      un documento publicado ni de la promotora. La misma fuente atribuye idénticos 200 MW al otro
+      proyecto de Adequa en Òdena, lo que puede indicar una cifra de encuadre y no una capacidad
+      dimensionada.
+    fuentes: [src-1, src-2]
+  - campo: ubicacion
+    descripcion: >-
+      No consta emplazamiento dentro del término municipal. La investigación previa de Cataluña ya
+      había registrado menciones de CGT y Ecologistes en Acció a un «megacentro» en Santa Bàrbara
+      sin promotor ni parcela; la lista de la Generalitat aporta el promotor, pero no la
+      ubicación.
+    fuentes: [src-1, src-2]
+  - campo: estado
+    descripcion: >-
+      Figurar en la lista de proyectos que aspiran a la declaración de estratégico es una
+      solicitud en estudio, no una autorización. No se ha localizado ningún trámite abierto.
+    fuentes: [src-1]
+
+confianza: baja
+ultima_verificacion: "2026-08-31"
+
+fuentes:
+  - id: src-1
+    url: "https://cadenaser.com/cataluna/2026/03/25/el-govern-facilitara-la-installacio-de-26-centres-de-dades-nous-a-catalunya-sercat/"
+    titulo: "El Govern facilitarà la instal·lació de 26 centres de dades nous a Catalunya"
+    editor: "Cadena SER"
+    tipo: prensa_general
+    fecha_publicacion: "2026-03-25"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Entre els principals promotors hi ha la immobiliària Adequa, que vol instal·lar data centers
+      a Santa Bàrbara (el Montsià) i Òdena (l'Anoia) de 200 MW cada un.
+  - id: src-2
+    url: "https://ebredigital.cat/2026/03/27/santa-barbara-aspirant-a-acollir-un-centre-de-dades-de-200-mw/"
+    titulo: "Santa Bàrbara, aspirant a acollir un centre de dades de 200 MW"
+    editor: "Ebre Digital"
+    tipo: prensa_general
+    fecha_publicacion: "2026-03-27"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Entre aquestes iniciatives ... se'n troba un d'ubicat a Santa Bàraba, tal com ha avançat
+      aquest divendres SER Catalunya. La seva promotora, Adequa, preveu que tingui una capacitat
+      de 200 MW, els mateixos que planifica per l'altra implantació que té programada a Òdena
+      (l'Anoia).
+  - id: src-3
+    url: "https://www.laplanaradio.cat/news/santa-barbara-podria-acollir-una-gran-infraestructura-digital-amb-debat-ambiental-obert/"
+    titulo: "Santa Bàrbara podria acollir una gran infraestructura digital amb debat ambiental obert"
+    editor: "La Plana Ràdio"
+    tipo: prensa_general
+    fecha_publicacion: "2026-03-27"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      el municipi del Montsià figura entre les ubicacions previstes per a la implantació de nous
+      centres de dades dins del pla del Govern per impulsar aquest sector. En concret, el projecte
+      estaria promogut per l'empresa immobiliària Adequa i tindria una potència de 200 megawatts.

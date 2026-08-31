@@ -1,0 +1,102 @@
+id: nasertic-pamplona-orkoien
+nombre: "Nasertic — Centro de Proceso de Datos del Gobierno de Navarra (Pamplona)"
+alias:
+  - "CPD del Gobierno de Navarra"
+  - "CPD Nasertic"
+tipo: edificio
+operador: "Nasertic — Navarra de Servicios y Tecnologías, S.A."
+propietario: "Gobierno de Navarra"
+cliente_ancla: null
+modelo: corporativo
+
+ubicacion:
+  municipio: "Pamplona"
+  provincia: "Navarra"
+  ccaa: "Comunidad Foral de Navarra"
+  direccion: "Calle Orkoien, s/n, 31011 Pamplona (sede central de Nasertic)"
+  lat: null
+  lon: null
+  precision: municipio
+  fuentes: [src-3, src-4]
+
+estado: operativo
+estado_detalle: >-
+  Nasertic gestiona y mantiene los dos centros de proceso de datos del Gobierno de Navarra,
+  que alojan los sistemas de la Administración foral y de las sociedades públicas de la CPEN:
+  historia clínica electrónica, portales educativos, tributos, expedientes policiales y
+  servicios sociales, entre otros. Cuentan con certificaciones ISO 27001, ENS y CEEDA,
+  alimentación redundante N+1 con transformadores de media tensión, grupos electrógenos y SAI,
+  y climatización de precisión con enfriadoras aire-agua y free-cooling. En enero de 2024 el
+  Gobierno de Navarra anunció una inversión de 2,6 millones de euros para doblar la capacidad
+  del CPD; la ampliación y modernización se inauguró el 25 de abril de 2025 con un coste final
+  de 4 millones de euros procedentes del Mecanismo de Recuperación y Resiliencia.
+estado_fuentes: [src-1, src-2]
+
+potencia: []
+
+inversion_anunciada_eur: 4000000
+refrigeracion: "Climatización de precisión con enfriadoras aire-agua con free-cooling, unidades CRAH o in-row y sistemas de puerta fría."
+enlaces_proyecto:
+  - "https://www.nasertic.es/es/infraestructuras/centros-de-proceso-de-datos-cpd"
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      Nasertic describe la infraestructura eléctrica y de clima pero no publica potencia,
+      superficie de sala técnica ni número de racks. La ampliación se anuncia como «doblar la
+      capacidad» sin decir capacidad de qué. Campo de potencia vacío.
+    fuentes: [src-1, src-2]
+  - campo: ubicacion
+    descripcion: >-
+      Nasertic no publica la dirección de sus centros de proceso de datos. La dirección
+      registrada, calle Orkoien s/n de Pamplona, coincide con la sede central de la sociedad y
+      procede de la ficha de obra de un proveedor (Legrand), rotulada «SEDE CPDs DEL GOBIERNO DE
+      NAVARRA». No se ha localizado la ubicación del segundo CPD, que podría estar en otro
+      municipio. No se registran coordenadas.
+    fuentes: [src-3, src-4]
+  - campo: tipo
+    descripcion: >-
+      La ficha describe el CPD principal. El Gobierno de Navarra tiene dos y no publica cuál es
+      cuál ni dónde está el segundo, así que este registro no cubre el conjunto.
+    fuentes: [src-1]
+
+confianza: baja
+ultima_verificacion: "2026-08-31"
+
+fuentes:
+  - id: src-1
+    url: "https://www.nasertic.es/es/infraestructuras/centros-de-proceso-de-datos-cpd"
+    titulo: "Centros de Proceso de Datos (CPD) — Nasertic"
+    editor: "Nasertic — Navarra de Servicios y Tecnologías"
+    tipo: oficial
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      NASERTIC gestiona y mantiene los dos Centros de Procesamiento de Datos (CPDs) del Gobierno
+      de Navarra [...] Cuentan con certificaciones oficiales de seguridad y calidad (ISO 27001,
+      ENS y CEEDA) [...] Alimentación eléctrica redundante (estándar N+1), Transformadores de
+      media tensión, Grupos electrógenos, Sistemas de suministro eléctrico ininterrumpido (SAI),
+      Climatización de precisión, Enfriadoras aire-agua con free-cooling.
+  - id: src-2
+    url: "https://www.sociedadespublicasdenavarra.es/es/cpen-al-dia/nuestras-noticias/el-gobierno-de-navarra-ha-invertido-4-millones-de-euros-para-duplicar"
+    titulo: "El Gobierno de Navarra ha invertido 4 millones de euros para duplicar la capacidad de su Centro de Proceso de Datos"
+    editor: "Corporación Pública Empresarial de Navarra"
+    tipo: oficial
+    fecha_publicacion: "2025-04-25"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      La Presidenta Chivite inaugura esta infraestructura que se ha ampliado para avanzar en la
+      digitalización del Ejecutivo y las entidades locales y dar servicio a la ciudadanía.
+  - id: src-3
+    url: "https://obrasemblematicas.legrand.es/ficha/?id=382"
+    titulo: "cpd nasertic — Obras emblemáticas"
+    editor: "Legrand"
+    tipo: empresa
+    fecha_consulta: "2026-08-31"
+    cita: "cpd nasertic — Calle Orcoyen, s/n, 31011 Pamplona, Navarra — SEDE CPDs DEL GOBIERNO DE NAVARRA"
+  - id: src-4
+    url: "https://www.nasertic.es/es/contacto"
+    titulo: "Contacto — Nasertic"
+    editor: "Nasertic — Navarra de Servicios y Tecnologías"
+    tipo: oficial
+    fecha_consulta: "2026-08-31"
+    cita: "Sede Central C/ Orkoien, s/n 31011 Pamplona (Navarra), España"

@@ -24,10 +24,15 @@ estado_detalle: >-
   Reconversión de los edificios del antiguo pozo minero San Jorge en un centro de
   datos que debe ser la base de la «nube asturiana». Financiado con 3 millones de
   euros del Fondo de Transición Justa. Las obras de reforma estaban previstas para
-  2025 y la instalación de las primeras máquinas para 2026. El Principado plantea
-  replicar el modelo en otros 16 pozos inactivos y estudia refrigeración con agua
-  de las galerías subterráneas.
-estado_fuentes: [src-1]
+  2025 y la instalación de las primeras máquinas para 2026. Las obras se ejecutarán
+  siempre en superficie y se centran en la sala de máquinas, la sala de embarque y el
+  castillete; el edificio dispondrá además de oficinas para empresas de gestión del
+  dato e IA. El Principado plantea replicar el modelo en otros 16 pozos inactivos y
+  aprovechar el agua de las galerías subterráneas para la refrigeración. En
+  septiembre de 2025 el consejero de Ciencia, Industria y Empleo declaró que quedaba
+  un único trámite en la CUOTA y que la licitación de las obras podría hacerse antes
+  de final de 2025; no se ha localizado el anuncio de licitación ni la adjudicación.
+estado_fuentes: [src-1, src-3, src-4]
 
 potencia:
   - tipo: no_especificado
@@ -42,7 +47,33 @@ potencia:
       carga TI o potencia instalada.
 
 inversion_anunciada_eur: 3000000
-refrigeracion: "Se estudia el aprovechamiento del agua de las galerías mineras subterráneas."
+refrigeracion: >-
+  Aprovechamiento del agua de las galerías mineras subterráneas, extraída mediante
+  bombeo automático, para la refrigeración del centro.
+
+agua:
+  circuito: desconocido
+  sistema: "Refrigeración con agua procedente de las galerías mineras subterráneas del propio pozo."
+  origen: "Galerías subterráneas del antiguo pozo San Jorge, mediante bombeo automático; sin recurrir a la red de consumo"
+  nota: >-
+    La Nueva España, recogiendo las explicaciones del viceconsejero de Ciencia,
+    indica que el complejo está conectado a un sistema de extracción de agua del
+    interior de las galerías mediante bombeo automático «por lo que dispone de
+    abastecimiento sin recurrir a la red de consumo». No se publica caudal, consumo
+    ni WUE, ni consta si el circuito es abierto o cerrado.
+  fuentes: [src-3]
+
+conexion_electrica:
+  subestacion: null
+  tension_kv: null
+  titular_red: null
+  mw_solicitados: null
+  mw_concedidos: null
+  nota: >-
+    La Nueva España indica que el emplazamiento «cuenta con dos líneas de alta
+    tensión que garantizan la energía», sin precisar tensión, titular ni potencia de
+    acceso.
+  fuentes: [src-3]
 
 enlaces_proyecto:
   - "https://actualidad.asturias.es/-/ciencia-conf%C3%ADa-en-que-el-centro-de-datos-del-principado-en-el-pozo-san-jorge-atraiga-empresas-del-sector-a-la-comunidad"
@@ -56,12 +87,15 @@ incertidumbres:
     fuentes: [src-1, src-2]
   - campo: estado
     descripcion: >-
-      No se ha localizado confirmación de finalización de obras ni de puesta en
-      servicio a agosto de 2026.
-    fuentes: [src-1]
+      No se ha localizado confirmación de licitación, adjudicación, finalización de
+      obras ni puesta en servicio a agosto de 2026. La última referencia localizada es
+      de septiembre de 2025 y sitúa la licitación como intención para ese mismo año.
+      El estado «en construcción» registrado se apoya en la previsión de 2025, no en
+      un acta.
+    fuentes: [src-1, src-4]
 
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -80,3 +114,32 @@ fuentes:
     fecha_publicacion: "2024-10-10"
     fecha_consulta: "2026-08-29"
     cita: "una potencia aproximada de 0,4 megavatios"
+  - id: src-3
+    url: "https://www.lne.es/cuencas/2025/03/26/carbon-centro-datos-transformacion-pozo-115722334.html"
+    titulo: "Del carbón al centro de datos: la transformación del pozo San Jorge de Aller se iniciará ya este año"
+    editor: "La Nueva España"
+    tipo: prensa_general
+    fecha_publicacion: "2025-03-26"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      ahora "se prevé licitar las obras, que se ejecutarán siempre en superficie", si
+      bien se aprovechará el agua de las galerías subterráneas "para la
+      refrigeración" [...] Las obras de adecuación se centran en la sala de máquinas,
+      la sala de embarque y el castillete [...] En el caso de San Jorge, el complejo
+      está conectado a un sistema de extracción de agua del interior de las galerías
+      mediante bombeo automático, por lo que dispone de abastecimiento sin recurrir a
+      la red de consumo. Además, cuenta con dos líneas de alta tensión que garantizan
+      la energía.
+  - id: src-4
+    url: "https://www.lne.es/cuencas/2025/09/19/principado-agiliza-centro-datos-aller-121761857.html"
+    titulo: "El Principado agiliza el centro de datos de Aller y ve más lejos el laboratorio lunar"
+    editor: "La Nueva España"
+    tipo: prensa_general
+    fecha_publicacion: "2025-09-19"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El Consejero de Ciencia, Industria y Empleo, Borja Sánchez, ha asegurado que el
+      Gobierno del Principado tiene la intención de licitar antes de final de año el
+      proyecto para ubicar un gran centro de datos en el pozo San Jorge, en Aller. El
+      responsable regional aseguró que solo falta un trámite administrativo en la
+      CUOTA [...] El proyecto cuenta con un presupuesto de más de 3 millones de euros.

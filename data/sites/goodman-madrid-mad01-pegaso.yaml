@@ -1,0 +1,111 @@
+id: goodman-madrid-mad01-pegaso
+nombre: "Goodman MAD01 — Madrid (antigua fábrica Iveco-Pegaso)"
+alias:
+  - "Goodman MAD 01 Data Centre"
+  - "Goodman Madrid Gate"
+tipo: edificio
+operador: "Goodman"
+propietario: "Goodman"
+modelo: mayorista
+
+ubicacion:
+  municipio: "Madrid"
+  provincia: "Madrid"
+  ccaa: "Comunidad de Madrid"
+  direccion: "Calle Provisional Iveco-Pegaso Cinco 2, 28022 Madrid"
+  lat: null
+  lon: null
+  precision: municipio
+  fuentes: [src-1]
+
+estado: en_construccion
+estado_detalle: >-
+  Reconversión de suelo industrial en desuso de la antigua fábrica de Iveco-Pegaso, dentro de la
+  operación que Goodman denomina «Madrid Gate». La compañía lo incluye en su cartera de proyectos
+  «en construcción o cuyo desarrollo está previsto que comience antes de junio de 2026» y lo
+  comercializa como disponible, en el corredor este de la A-2, a unos 7 km del nodo de San Blas.
+estado_fuentes: [src-1, src-2]
+
+potencia:
+  - tipo: it
+    valor_mw: 6
+    ambito: fase
+    referencia: "Primera fase — «6 MW IT power»"
+    estado_asociado: en_construccion
+    fecha_dato: "2026-08-31"
+    fuentes: [src-1, src-2]
+  - tipo: it
+    valor_mw: 5.7
+    ambito: fase
+    referencia: "Segunda fase — «second phase of 5,7 MW IT»"
+    estado_asociado: en_construccion
+    fecha_dato: "2026-08-31"
+    fuentes: [src-1]
+  - tipo: conexion_red
+    valor_mw: 9
+    ambito: edificio
+    edificio: "MAD01"
+    referencia: "Potencia disponible en el emplazamiento"
+    estado_asociado: en_construccion
+    fecha_dato: "2026-08-31"
+    fuentes: [src-1, src-2]
+  - tipo: conexion_red
+    valor_mw: 8.6
+    ambito: fase
+    referencia: "Potencia adicional asegurada, sobre los 9 MW ya disponibles en el emplazamiento"
+    estado_asociado: en_construccion
+    fecha_dato: "2026-08-31"
+    fuentes: [src-1]
+
+superficie_construida_m2: 5240
+refrigeracion: "Diseño con refrigeración sin agua («waterless cooling»), según la ficha de la compañía."
+
+agua:
+  circuito: sin_agua
+  sistema: "Refrigeración sin agua («waterless cooling») en el diseño de las instalaciones técnicas."
+  origen: null
+  nota: "Solo consta la declaración de diseño de la compañía; no se publica consumo alguno."
+  fuentes: [src-1]
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      Los 9 MW «on site» y los 8,6 MW «secured» adicionales son potencia de acceso y no se
+      comparan ni se suman con los 6 + 5,7 MW de carga TI de las dos fases. La ficha de producto
+      y la cartera global de Goodman dan cifras coherentes entre sí.
+    fuentes: [src-1, src-2]
+  - campo: ubicacion
+    descripcion: >-
+      La dirección publicada por Goodman es una calle provisional del ámbito de la antigua fábrica
+      de Iveco-Pegaso; un directorio de mercado sitúa la instalación en la Calle de Lola Flores
+      (San Blas-Canillejas). No se ha fijado un punto exacto.
+    fuentes: [src-1]
+
+enlaces_proyecto:
+  - "https://es.goodman.com/en/our-properties/properties-for-lease/mad-01"
+
+confianza: alta
+ultima_verificacion: "2026-08-31"
+
+fuentes:
+  - id: src-1
+    url: "https://es.goodman.com/en/our-properties/properties-for-lease/mad-01"
+    titulo: "MAD01"
+    editor: "Goodman"
+    tipo: empresa
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      MAD01 C/ Provisional Iveco-Pegaso Cinco, 2, Madrid, 28022, Spain Total size: 5,240 sqm
+      Property type: Data Centre ... 6 MW IT power ... 9 MW power capacity on site, and additional
+      8,6 MW secured ... First phase of 6 and second phase of 5,7 MW IT ... Design includes
+      efficient and state-of-the-art technical installations, including waterless cooling
+  - id: src-2
+    url: "https://es.goodman.com/en/our-properties/data-centres/global-data-centre-pipeline"
+    titulo: "Global data centre pipeline | Goodman"
+    editor: "Goodman"
+    tipo: empresa
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Data centre projects under construction or scheduled to commence development by June 2026
+      include: ... MAD01 ... Madrid – MAD01 ... 6MW IT power ... 9MW of power capacity secured ...
+      Located in Madrid Central Availability Zone

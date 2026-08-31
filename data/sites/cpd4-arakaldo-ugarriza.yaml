@@ -1,0 +1,101 @@
+id: cpd4-arakaldo-ugarriza
+nombre: "CPD 4 Arakaldo — centro de datos proyectado en Ugarriza (Arakaldo)"
+alias:
+  - "Datu zentroa Arakaldo"
+  - "Centro de datos de Ekin Inbertsioak en Arakaldo"
+tipo: edificio
+operador: null
+propietario: "CPD 4 Arakaldo, S.L., sociedad creada por Ekin Inbertsioak"
+cliente_ancla: null
+modelo: desconocido
+
+ubicacion:
+  municipio: "Arakaldo"
+  provincia: "Bizkaia"
+  ccaa: "País Vasco"
+  direccion: "Suelo industrial de Ugarriza, en la parcela de la antigua fábrica de hormigón Norten, junto a la BI-625 y el río Nervión"
+  lat: 43.1527730
+  lon: -2.9349498
+  precision: municipio
+  fuentes: [src-1, src-osm]
+
+estado: en_tramitacion
+estado_detalle: >-
+  Ekin Inbertsioak, propietaria del suelo desde 2019, trabaja en el proyecto desde 2021 y ha
+  constituido para ejecutarlo la sociedad CPD 4 Arakaldo, S.L. Presentó la solicitud de Plan
+  Especial en marzo de 2025, la retiró en mayo y volvió a presentarla en septiembre. El pleno
+  municipal de marzo de 2026 le dio la aprobación inicial, con el informe urbanístico
+  favorable del arquitecto municipal y el visto bueno de la Diputación Foral de Bizkaia y de
+  la agencia URA. El alcalde, Humberto Perea, se declara escéptico sobre la viabilidad: calcula
+  que los trámites pueden alargarse otros dos años, la aprobación definitiva corresponde a la
+  Diputación Foral por tener Arakaldo menos de 1.000 habitantes, y advierte de que el
+  emplazamiento no está preparado hoy para el consumo eléctrico de un centro de datos. Según el
+  alcalde, Ekin Inbertsioak se limitaría a gestionar el suelo y dejaría después el proyecto en
+  manos de otra empresa. La compañía declinó hacer declaraciones al medio que publicó la
+  información. El terreno se usa entretanto como depósito de residuos.
+estado_fuentes: [src-1]
+
+potencia: []
+
+superficie_parcela_m2: 2000
+inversion_anunciada_eur: null
+enlaces_proyecto: []
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      No hay ninguna cifra de potencia publicada. El propio alcalde plantea el consumo eléctrico
+      como una incógnita del proyecto.
+    fuentes: [src-1]
+  - campo: operador
+    descripcion: >-
+      No hay operador. La promotora del suelo dice, según el Ayuntamiento, que traspasaría el
+      proyecto a un tercero todavía no identificado.
+    fuentes: [src-1]
+  - campo: estado
+    descripcion: >-
+      Solo hay aprobación inicial de un Plan Especial municipal. Faltan la aprobación definitiva
+      foral, la tramitación ambiental y la licencia de obras. El Ayuntamiento estima dos años más
+      de trámites y no descarta recursos.
+    fuentes: [src-1]
+  - campo: ubicacion
+    descripcion: >-
+      Consta el polígono (Ugarriza, antigua Norten) pero no una dirección ni referencia
+      catastral. Las coordenadas son el centroide municipal de Arakaldo.
+    fuentes: [src-1, src-osm]
+
+confianza: baja
+ultima_verificacion: "2026-08-31"
+
+fuentes:
+  - id: src-1
+    url: "https://aiaraldea.eus/arakaldo/1772455945438-arakaldon-datu-zentro-bat-eraikitzeko-lehen-urratsak-eman-dituzte-"
+    titulo: "Arakaldon datu zentro bat eraikitzeko lehen urratsak egin dituzte"
+    editor: "Aiaraldea Komunikabidea"
+    tipo: prensa_general
+    fecha_publicacion: "2026-05-05"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Arakaldon datu zentro bat eraikitzeko lehen urrats legalak eman ditu Ekin Inbertsioak
+      enpresak. Ugarrizan kokatutako zoru industrialean eraikiko litzateke azpiegitura, Norten
+      enpresa zegoen tokian, 2.000 metro karratuko espazioa okupatuta. Martxoko Udal Osoko
+      Bilkuran eman zioten hasierako onarpena azpiegitura hori eraikitzea baimenduko lukeen Plan
+      Bereziari. [...] Ekin Inbertsioak konpainiak enpresa juridiko berri bat sortu du datu
+      zentroaren proiektua egikaritzeko, CPD 4 Arakaldo SL izenekoa.
+  - id: src-2
+    url: "https://www.datoscif.es/empresa/cpd-4-arakaldo-sl"
+    titulo: "CPD 4 ARAKALDO SL — Informe de empresa"
+    editor: "DatosCif (a partir del Boletín Oficial del Registro Mercantil)"
+    tipo: otro
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      CPD 4 ARAKALDO SL Dirección social POLIG INDUSTRIAL IGORRE - F - 9 Municipio Igorre
+      Provincia Bizkaia Razón Social CPD 4 ARAKALDO SL Capital Social 2,445,408.00 Euros Fecha de
+      Constitución 11/04/2025.
+  - id: src-osm
+    url: "https://nominatim.openstreetmap.org/search?q=Arakaldo%2C+Bizkaia&format=json&limit=1"
+    titulo: "Nominatim — Arakaldo, Bizkaia"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-08-31"
+    cita: "Arakaldo, Bizkaia, Euskadi, 48498, España — lat 43.1527730, lon -2.9349498"

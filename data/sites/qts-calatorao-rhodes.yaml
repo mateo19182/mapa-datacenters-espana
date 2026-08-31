@@ -74,7 +74,61 @@ conexion_electrica:
 
 superficie_parcela_m2: 2234088
 inversion_anunciada_eur: 11805195141
-refrigeracion: null
+refrigeracion: >-
+  Refrigeración por aire según la documentación ambiental publicada en julio de 2026. La
+  promotora sostiene que las necesidades de suministro de agua son "sólo una fracción del
+  consumo de agua previsto en el Plan Parcial aprobado".
+
+agua:
+  circuito: desconocido
+  sistema: >-
+    Refrigeración por aire según el estudio de impacto ambiental. El abastecimiento se
+    resuelve desde la red municipal de Calatorao, con una nueva estación de bombeo y
+    depósitos de regulación en la parte alta de la parcela dimensionados para cinco días de
+    autonomía del centro de datos.
+  origen: "Red municipal de Calatorao, aguas abajo de la planta, mediante nueva estación de bombeo"
+  consumo_m3_dia: 204.4
+  nota: >-
+    204,40 m³/día es el máximo atribuido a la parcela de centros de datos (81,8 m³/día de
+    media) en la documentación del PIGA sometida a información pública en agosto de 2025. El
+    conjunto del complejo, incluida la zona industrial y logística, la limpieza de viales y
+    el sistema contra incendios, suma 707,4 m³/día y 258.201 m³/año en la horquilla más
+    elevada. Esa cifra anual choca frontalmente con los 4.782 m³/año que la prensa atribuye
+    al estudio de impacto ambiental de julio de 2026; véase la incertidumbre registrada. No
+    se convierte el dato diario en anual.
+  fuentes: [src-6, src-7]
+
+energia:
+  - consumo_gwh_ano: 4745
+    referencia: "Consumo medio anual estimado en el estudio de impacto ambiental del campus"
+    fecha_dato: "2026-07-08"
+    fuentes: [src-9]
+    nota: >-
+      Cifra del estudio de impacto ambiental publicado en julio de 2026, conocida a través
+      de prensa; no se ha podido leer el documento original. Es el mayor consumo eléctrico
+      anual de todos los proyectos de centros de datos registrados en Aragón.
+
+empleo:
+  - tipo: directo
+    valor: 1400
+    referencia: "Empleos anuales directos estimados por la promotora (unos 1.200 en construcción y hasta unos 200 en explotación)"
+    fecha_dato: "2024-10-14"
+    fuentes: [src-8]
+    nota: >-
+      El Acuerdo añade entre 1.100 y 2.000 empleos anuales indirectos, de los que entre 920
+      y 1.700 serían de construcción y entre 180 y 300 de explotación.
+  - tipo: construccion
+    valor: 1200
+    referencia: "Parte de los empleos anuales directos que se generarían durante la construcción"
+    fecha_dato: "2024-10-14"
+    fuentes: [src-8]
+    nota: "Subconjunto de los 1.400 directos; no se suma con ellos."
+  - tipo: directo
+    valor: 200
+    referencia: "Parte de los empleos anuales directos correspondiente a la fase de explotación"
+    fecha_dato: "2024-10-14"
+    fuentes: [src-8]
+    nota: "Subconjunto de los 1.400 directos; no se suma con ellos."
 enlaces_proyecto:
   - "https://www.aragon.es/-/proyecto-rhodes"
   - "https://www.aragon.es/-/rhodes-proy-reparcelacion"
@@ -93,6 +147,26 @@ incertidumbres:
       a 11.728 millones de euros" y en la tabla económica que la inversión total (fases 1 y
       2) es de 11.805.195.141 €. Se registra la cifra de la tabla.
     fuentes: [src-1]
+  - campo: agua
+    descripcion: >-
+      Dos fuentes dan cifras que difieren en un factor de 54. La documentación del PIGA
+      sometida a información pública en agosto de 2025 arroja 707,4 m³/día para el conjunto
+      del complejo y 258.201 m³/año "siempre en la horquilla más elevada"; el estudio de
+      impacto ambiental publicado en julio de 2026 estima, según la prensa, 4.782 m³/año.
+      No se ha podido leer ninguno de los dos documentos originales para determinar si miden
+      lo mismo (el dato de 2025 incluye la zona industrial y logística, riego de viales y
+      protección contra incendios, y el de 2026 podría referirse solo al agua de proceso de
+      los centros de datos) o si el proyecto ha cambiado de sistema de refrigeración. Se
+      registra el dato diario de la parcela de centros de datos y se conservan ambas
+      lecturas anuales sin elegir entre ellas.
+    fuentes: [src-6, src-7, src-9]
+  - campo: inversion_anunciada_eur
+    descripcion: >-
+      A la discrepancia ya registrada entre el texto del PIGA (11.728 millones) y su tabla
+      económica (11.805.195.141 €) se suma que el Acuerdo de 14 de octubre de 2024, que
+      declaró el proyecto de interés autonómico, hablaba de "una inversión potencial de
+      hasta 7.500 millones de euros".
+    fuentes: [src-1, src-8]
   - campo: ubicacion
     descripcion: >-
       Las coordenadas registradas son el centroide municipal de Calatorao (Wikidata); el
@@ -142,3 +216,35 @@ fuentes:
     fecha_publicacion: "2026-08-05"
     fecha_consulta: "2026-08-29"
     cita: "Plan de Interés General de Aragón \"Proyecto Rhodes\", de construcción de un campus Centro de Datos en el término municipal de Calatorao (Zaragoza)."
+  - id: src-6
+    url: "https://www.aragondigital.es/articulo/economia/complejo-blackstone-calatorao-requerira-equivalente-8-litros-agua-segundo/20250826080000938861.html"
+    titulo: "El complejo de Blackstone en Calatorao requerirá el equivalente a ocho litros de agua por segundo"
+    editor: "Aragón Digital"
+    tipo: prensa_general
+    fecha_publicacion: "2025-08-26"
+    fecha_consulta: "2026-08-31"
+    cita: "El consumo de agua en el Proyecto Rhodes de Blackstone y QTS en Calatorao, en Zaragoza, rondará los 707,4 metros cúbicos diarios [...] la parcela de centros de datos, con hasta ocho en la primera fase y la posibilidad de ampliarla con otros cinco, consumirá 204,40 metros cúbicos diarios (204.400 litros) máximos y 81,8 de media [...] Al año, el complejo del Proyecto Rhodes consumiría 258.201 metros cúbicos de agua o, lo que es lo mismo, 258,2 millones de litros, siempre en la horquilla más elevada."
+  - id: src-7
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1408861960606"
+    titulo: "ORDEN FOM/1039/2025, de 19 de agosto, por la que se aprueba inicialmente el Plan de Interés General de Aragón «Proyecto Rhodes» — infraestructuras para abastecimiento de agua"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2025-08-25"
+    fecha_consulta: "2026-08-31"
+    cita: "Infraestructuras para abastecimiento de agua: La nueva red de abastecimiento se conectará a la red de agua municipal, aguas abajo de la planta, y se extenderá hasta una nueva estación de bombeo de abastecimiento, situada junto a la estación de bombeo de aguas residuales. Desde allí, el agua será impulsada hasta el depósito de abastecimiento del SUI-4."
+  - id: src-8
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1356301600707"
+    titulo: "ORDEN PEJ/1229/2024, de 15 de octubre, por la que se da publicidad al Acuerdo de 14 de octubre de 2024, del Gobierno de Aragón, por el que se declara como inversión de interés autonómico con interés general de Aragón el proyecto «Rhodes» de construcción de un campus data center en el municipio de Calatorao (Zaragoza), promovido por Calanza Inmuebles SL"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2024-10-16"
+    fecha_consulta: "2026-08-31"
+    cita: "el proyecto de inversión presentado supondrá una inversión potencial de hasta 7.500 millones de euros. Por lo que respecta al impacto en el empleo regional previsto por el proyecto, la mercantil estima: Hasta 1.400 empleos anuales directos, de los cuales aproximadamente 1.200 se generarán durante la construcción y hasta aproximadamente 200 durante la explotación. Entre 1.100 y 2.000 empleos anuales indirectos, de los que entre 920 y 1.700 serán durante la fase de construcción y entre 180 y 300 durante la fase de explotación."
+  - id: src-9
+    url: "https://www.eldiario.es/aragon/economia/azora-blackstone-centros-datos-absorberan-70-electricidad-consume-hoy-aragon_1_13364372.html"
+    titulo: "Azora y Blackstone: dos centros de datos absorberán casi el 70% de la electricidad que consume hoy Aragón"
+    editor: "elDiario.es Aragón"
+    tipo: prensa_general
+    fecha_publicacion: "2026-07-08"
+    fecha_consulta: "2026-08-31"
+    cita: "El único proyecto que supera esas cifras es Rhodes, el campus que Blackstone impulsa en Calatorao. Su estudio de impacto ambiental estima un consumo medio anual de 4.745 GWh [...] Tanto Blackstone como Azora recurrirán a sistemas de refrigeración por aire [...] El proyecto de Calatorao estima un consumo anual de 4.782 metros cúbicos de agua y el de Villamayor, 6.066 metros cúbicos."

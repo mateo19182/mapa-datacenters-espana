@@ -47,7 +47,7 @@ potencia:
     referencia: "Consumo eléctrico final previsto con escalabilidad"
     estado_asociado: anunciado
     fecha_dato: "2025-11-12"
-    fuentes: [src-1]
+    fuentes: [src-1, src-4]
     nota: >-
       "se plantea una situación final de consumo eléctrico para los tres centros de datos
       con una escalabilidad hasta 275 MW IT para el \"DCM Data\"". Requiere sobredimensionar
@@ -81,7 +81,25 @@ conexion_electrica:
     centro de datos puede obtener hasta el 50 % de la capacidad de acceso de la instalación
     de generación a la que se asocia, por lo que no puede conectarse sin ella.
 
-inversion_anunciada_eur: null
+empleo:
+  - tipo: construccion
+    valor: 9625
+    referencia: "Empleo previsto en fase de construcción para «DCM Data», a razón de 35 empleos directos, indirectos e inducidos por MW IT sobre 275 MW IT"
+    fecha_dato: "2025-11-12"
+    fuentes: [src-4]
+    nota: >-
+      Cifra derivada de una ratio por MW IT aplicada al objetivo final de escalabilidad, no
+      de un plan de plantilla.
+  - tipo: total
+    valor: 825
+    referencia: "Empleo previsto en fase de explotación para «DCM Data», a razón de 3 empleos directos, indirectos e inducidos por MW IT"
+    fecha_dato: "2025-11-12"
+    fuentes: [src-4]
+    nota: >-
+      Cifra derivada de una ratio por MW IT aplicada al objetivo final de escalabilidad, no
+      de un plan de plantilla.
+
+inversion_anunciada_eur: 3307774000
 enlaces_proyecto: []
 
 incertidumbres:
@@ -91,6 +109,24 @@ incertidumbres:
       "demanda IT", y a la vez fija un objetivo final de 275 MW IT muy superior. Se
       registran ambos valores sin sumarlos.
     fuentes: [src-1]
+  - campo: inversion_anunciada_eur
+    descripcion: >-
+      La tabla del Acuerdo titula la cifra "Inversión Capex DCM Data" dentro de un
+      apartado que describe la inversión de los tres centros de datos "con sus proyectos
+      energéticos asociados", de modo que no consta qué parte corresponde al centro de datos
+      y qué parte a la generación renovable vinculada.
+    fuentes: [src-3]
+  - campo: estado
+    descripcion: >-
+      Es el único de los tres centros del proyecto "Búfalo" que sigue en manos de Forestalia.
+      A finales de febrero de 2026 el grupo vendió a MERLIN Properties los derechos de acceso
+      y conexión de los otros dos nudos —María 220 kV y Los Vientos 220 kV, 227 MW de los
+      300 MW iniciales—, que MERLIN ha refundido en su campus «Zaragoza-WIND» de Botorrita;
+      el nudo de Magallón quedó fuera de la operación. Fuentes del sector citadas por la
+      prensa consideran probable que este activo acabe también en manos de MERLIN, que no lo
+      ha confirmado. Los 70 MW de esta ficha son, por tanto, la única potencia del proyecto
+      "Búfalo" que no está duplicada con la del campus de MERLIN.
+    fuentes: [src-5, src-6, src-7]
   - campo: ubicacion
     descripcion: >-
       No se publican coordenadas ni referencias catastrales; solo la proximidad al nudo
@@ -116,3 +152,43 @@ fuentes:
     tipo: otro
     fecha_consulta: "2026-08-29"
     cita: "Magallón 41.832608 -1.460934"
+  - id: src-3
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1424067523636"
+    titulo: "ORDEN PEJ/1656/2025, de 25 de noviembre [...] proyecto «Búfalo» [...] — tabla de inversión por centro de datos"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2025-12-02"
+    fecha_consulta: "2026-08-31"
+    cita: "Inversión Capex DCM Data 3.307.774.000,00 € Inversión Capex DCM Dédalo 3.323.320.000,00 € Inversión Capex DCM Blue 5.417.400.000,00 € Inversión Capex total 12.048.494.000,00 €"
+  - id: src-4
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1424067523636"
+    titulo: "ORDEN PEJ/1656/2025, de 25 de noviembre [...] proyecto «Búfalo» [...] — generación de empleo prevista por centro de datos"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2025-12-02"
+    fecha_consulta: "2026-08-31"
+    cita: "En cuanto a la generación de empleo asociada a la implantación del proyecto \"Búfalo\", tanto en fase de construcción como de explotación se han considerado las siguientes ratios por MW IT, para cada uno de los centros de datos: - 35 empleos directos, indirectos e inducidos por MW IT en fase de construcción. - 3 empleos directos, indirectos e inducidos por MW IT en fase de operación. [...] Data center Potencia DC (MW IT) Empleo (F construcción) Empleo (F explotación) Data 275 9.625 825 Dédalo 275 9.625 825 Blue 450 15.750 1.350"
+  - id: src-5
+    url: "https://www.elperiodicodearagon.com/aragon/2026/03/14/merlin-levantara-gran-centro-datos-127939373.html"
+    titulo: "Merlin se queda con dos tercios del macroproyecto de centros de datos de Forestalia en medio del terremoto judicial y levantará su campus en Muel"
+    editor: "El Periódico de Aragón"
+    tipo: prensa_general
+    fecha_publicacion: "2026-03-14"
+    fecha_consulta: "2026-08-31"
+    cita: "Merlin ha asumido 227 megavatios (MW) de acceso y conexión a la red eléctrica, de los 300 MW con los que contaba inicialmente el proyecto. Esta capacidad corresponde a dos de los tres nudos eléctricos sobre los que se articulaba la iniciativa: Los Vientos, ubicado en el término municipal de Muel, y María, en María de Huerva. De esta forma, la inmobiliaria liderada por Ismael Clemente se queda con dos de los tres centros de datos que Forestalia pretendía desarrollar dentro de este proyecto, mientras que el tercero —vinculado al nudo de Magallón— queda por ahora fuera de la operación."
+  - id: src-6
+    url: "https://www.hoyaragon.es/economia/forestalia-merlin-properties-centro-datos/20260825115657143286.html"
+    titulo: "De estar en manos de Forestalia a ejecutarse la opción Merlin: la historia del centro de datos que promete no gastar agua"
+    editor: "Hoy Aragón"
+    tipo: prensa_general
+    fecha_publicacion: "2026-08-25"
+    fecha_consulta: "2026-08-31"
+    cita: "El pasado marzo, en un contexto de investigación judicial abierta sobre la compañía —de la que ninguno de los implicados ha sido acusado ni condenado—, Forestalia vendió a Merlin dos tercios de la capacidad eléctrica del proyecto, correspondientes a Botorrita y a un segundo emplazamiento en Muel, quedándose únicamente con el centro de Magallón. [...] Merlin ha unificado toda esa capacidad en un solo campus de 28,8 hectáreas en el Polígono Industrial San Antonio"
+  - id: src-7
+    url: "https://theobjective.com/espana/tribunales/2026-03-19/forestalia-macroproyecto-centros-datos-investigacion/"
+    titulo: "Forestalia se desprende de su macroproyecto de centros de datos en plena investigación"
+    editor: "The Objective"
+    tipo: prensa_general
+    fecha_publicacion: "2026-03-19"
+    fecha_consulta: "2026-08-31"
+    cita: "Merlin asumirá 227 megavatios de acceso y conexión a la red eléctrica de los 300 con los que contaba inicialmente el proyecto. La compañía se queda con dos tercios del proyecto de Forestalia. Solo queda fuera el centro de Magallón"

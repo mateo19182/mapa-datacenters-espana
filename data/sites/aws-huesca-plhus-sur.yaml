@@ -48,6 +48,24 @@ incertidumbres:
     descripcion: "El Acuerdo no publica potencia para este emplazamiento."
     fuentes: [src-1]
 
+  - campo: empleo
+    descripcion: >-
+      El Acuerdo de 25 de marzo de 2026 no publica ninguna cifra de empleo ni de inversión
+      por emplazamiento. Las únicas cifras que da son del conjunto de la inversión de AWS:
+      33.700 millones de euros en la Región de AWS en España durante 2026-2035, una media
+      anual de 29.900 empleos a tiempo completo en España de los que unos 13.400 estarían en
+      Aragón, y 6.700 empleos anuales directos en España (4.200 en Aragón). No se registran
+      en «empleo» ni en «inversion_anunciada_eur» porque atribuirlas a este emplazamiento
+      —uno de los once de AWS en Aragón— multiplicaría la misma cifra por cada ficha.
+    fuentes: [src-2]
+  - campo: agua
+    descripcion: >-
+      Ninguna fuente publica consumo de agua, sistema de refrigeración ni origen del recurso
+      para este emplazamiento. El Acuerdo se limita a mencionar que el plan comprende "las
+      conexiones externas para infraestructuras de agua y energía". El expediente ambiental
+      todavía no se ha tramitado.
+    fuentes: [src-2]
+
 confianza: media
 ultima_verificacion: "2026-08-31"
 
@@ -60,3 +78,11 @@ fuentes:
     fecha_publicacion: "2026-04-09"
     fecha_consulta: "2026-08-29"
     cita: "En Huesca la delimitación del ámbito tiene una extensión de 46,93 ha y afecta a 3 parcelas catastrales de propiedad privada y una zona de viario de dominio público. [...] El área planificada se encuentra aproximadamente a 7,8 km al suroeste del centro de la ciudad de Huesca y adyacente por el sur con la PLHUS."
+  - id: src-2
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1442795570404"
+    titulo: "ORDEN PEJ/523/2026, de 7 de abril [...] «Plan para la consolidación de la Región AWS en Aragón» — inversión y generación de empleo previstas"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2026-04-09"
+    fecha_consulta: "2026-08-31"
+    cita: "AWS tiene previsto invertir 33.700 millones de euros en la Región de AWS en España durante los próximos 10 años (período 2026-2035). [...] Por lo que respecta a la generación de empleo prevista, la promotora estima que la inversión de AWS en España podría promover la creación de una media anual de 29.900 empleos a tiempo completo, de los cuales alrededor de 13.400 se ubicarían en la Comunidad Autónoma de Aragón. En concreto, se prevé la generación de 6.700 empleos anuales directos en España (4.200 en Aragón)"

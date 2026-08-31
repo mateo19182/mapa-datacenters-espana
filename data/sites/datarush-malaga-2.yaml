@@ -1,0 +1,91 @@
+id: datarush-malaga-2
+nombre: "DataRush — segundo centro de datos de Málaga"
+alias:
+  - "DataRush Malaga 2"
+tipo: edificio
+operador: "Grupo DataRush (Data Rush IT Services, S.L.)"
+propietario: "Grupo DataRush (Data Rush IT Services, S.L.)"
+cliente_ancla: null
+modelo: colocation
+
+ubicacion:
+  municipio: "Málaga"
+  provincia: "Málaga"
+  ccaa: "Andalucía"
+  direccion: "Calle Bielorrusia, Málaga"
+  lat: 36.7647913
+  lon: -4.4422005
+  precision: municipio
+  fuentes: [src-2, src-osm]
+
+estado: operativo
+estado_detalle: >-
+  Segundo centro de datos del grupo malagueño DataRush, inaugurado el 25 de junio de 2024 e
+  interconectado con el primero, situado a algo más de un kilómetro. Su apertura coincidió con
+  la constitución de la marca Grupo DataRush. Presta servicios de seguridad, almacenamiento,
+  alojamiento de servidores, hosting y copia de seguridad.
+estado_fuentes: [src-1, src-2, src-3]
+fecha_puesta_en_servicio: "2024-06-25"
+
+potencia: []
+
+inversion_anunciada_eur: null
+enlaces_proyecto:
+  - "https://www.datarush.es/"
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      La compañía no publica potencia, superficie ni número de racks. Ninguna de las coberturas
+      de la inauguración aporta cifras técnicas.
+    fuentes: [src-1, src-3]
+  - campo: ubicacion
+    descripcion: >-
+      La calle procede de Baxtel, no de la compañía. Las coordenadas registradas son el centroide
+      municipal de Málaga, igual que en la ficha del primer centro: los dos puntos no representan
+      la posición real de cada edificio, que Baxtel sitúa a unos 0,7 millas uno de otro.
+    fuentes: [src-2, src-osm]
+
+confianza: baja
+ultima_verificacion: "2026-08-31"
+
+fuentes:
+  - id: src-1
+    url: "https://www.datarush.es/inauguracion_del_segundo_centro_de_datarush_en_malaga/"
+    titulo: "Inauguración del Segundo Centro de Datos en Málaga"
+    editor: "Grupo DataRush"
+    tipo: empresa
+    fecha_publicacion: "2024-07-17"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El pasado martes 25 de junio marcó una fecha importante para nosotros. Con gran emoción y
+      orgullo, celebramos la inauguración del Segundo Centro de Datos en Málaga. [...] El nuevo
+      centro de datos en Málaga está estratégicamente conectado con nuestro primer data center,
+      que lleva más de una década en operación.
+  - id: src-2
+    url: "https://baxtel.com/data-center/datarush-malaga-2"
+    titulo: "DataRush: Malaga 2 Data Center"
+    editor: "Baxtel"
+    tipo: consultora
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      DataRush: Malaga 2 [...] C. Bielorrusia [...] Operational — Fully operational facility
+      [...] Sites within 15 miles of DataRush: Malaga 2 | 0.70 miles | DataRush: Malaga 1
+  - id: src-3
+    url: "https://cadenaser.com/andalucia/2024/06/28/el-grupo-datarush-de-malaga-se-convertira-en-la-mayor-empresa-del-sector-de-centros-de-datos-de-andalucia-ser-malaga/"
+    titulo: "El Grupo DataRush de Málaga se convertirá en la mayor empresa del sector de Centros de Datos de Andalucía"
+    editor: "Cadena SER"
+    tipo: prensa_general
+    fecha_publicacion: "2024-06-28"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El pasado martes 25 de junio tuvo lugar la inauguración del segundo Centro de Datos del
+      Grupo DataRush en Málaga. Este nuevo centro ya está conectado con el otro Datacenter que
+      poseen en Málaga y que lleva más de 10 años en producción.
+  - id: src-osm
+    url: "https://nominatim.openstreetmap.org/search?q=M%C3%A1laga%2C+Andaluc%C3%ADa&format=json&limit=1"
+    titulo: "Nominatim — Málaga, Andalucía"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-08-31"
+    cita: "Málaga, Málaga-Costa del Sol, Málaga, Andalucía, España — lat 36.7647913, lon -4.4422005"

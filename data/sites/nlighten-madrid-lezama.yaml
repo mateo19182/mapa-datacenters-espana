@@ -48,11 +48,15 @@ incertidumbres:
   - campo: potencia
     descripcion: >-
       nLighten publica 1.500 kW como capacidad final del emplazamiento; el directorio OCOLO
-      atribuye 2,00 MW. No se especifica si es carga TI o total.
-    fuentes: [src-1, src-3]
+      atribuye 2,00 MW. No se especifica si es carga TI o total. La diferencia tiene explicación
+      documental: la hoja de datos que nLighten publicó en enero de 2025 encabezaba «3,300 m
+      2,000 kW» y la de diciembre de 2025 la rebajó a «3,300 m 1,500 kW» para el mismo centro,
+      de modo que el directorio parece arrastrar la cifra antigua. La compañía no explica la
+      revisión.
+    fuentes: [src-1, src-3, src-4, src-5]
 
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -76,3 +80,19 @@ fuentes:
     tipo: otro
     fecha_consulta: "2026-08-29"
     cita: "Madrid MA1 C. de Lezama, 4, Fuencarral-El Pardo, 28034 Madrid, Spain 2.00 MW • 48,437 sq ft"
+  - id: src-4
+    url: "https://www.nlighten.com/wp-content/uploads/2025/12/nLighten_Datasheet_ES_Madrid_MAD1_EN.pdf"
+    titulo: "nLighten Madrid MAD1 — Datasheet (diciembre de 2025)"
+    editor: "nLighten"
+    tipo: empresa
+    fecha_publicacion: "2025-12"
+    fecha_consulta: "2026-08-31"
+    cita: "3,300 m 1,500 kW ... nLighten Madrid. Calle De Lezama 4 28034 Madrid ... The data center is located in the north of Madrid, close to the M-607 motorway and just 15 minutes by car from Madrid Airport."
+  - id: src-5
+    url: "https://www.nlighten.com/wp-content/uploads/2025/01/nLighten_Datasheet_ES_Madrid_MAD1_EN.pdf"
+    titulo: "nLighten Madrid MAD1 — Datasheet (enero de 2025)"
+    editor: "nLighten"
+    tipo: empresa
+    fecha_publicacion: "2025-01"
+    fecha_consulta: "2026-08-31"
+    cita: "3,300 m 2,000 kW ... M-607 motorway and just 15 minutes by car from Madrid Airport."

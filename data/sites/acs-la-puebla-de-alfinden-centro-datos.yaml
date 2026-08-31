@@ -47,7 +47,7 @@ potencia:
     referencia: "Potencia TI de los dos edificios de la primera fase (Data Hall de 40 MW IT + Data Hall de 60 MW IT)"
     estado_asociado: en_tramitacion
     fecha_dato: "2025-12-09"
-    fuentes: [src-1]
+    fuentes: [src-1, src-7]
     nota: >-
       La memoria describe "2 Centros de Datos (1 edificio Data Hall de 40 MW IT con cuatro
       módulos de 10 MW y otro edificio con Data Hall de 60 MW IT con seis módulos de 10 MW)"
@@ -96,6 +96,51 @@ inversion_anunciada_eur: 1090106216
 refrigeracion: >-
   La memoria indica que el diseño "es de última generación y no requiere consumo de agua"
   para refrigeración.
+agua:
+  circuito: cerrado
+  sistema: >-
+    Climatización en circuito cerrado de glicol conectada a los equipos de cubierta. La
+    memoria afirma que la tecnología elegida "no requiere consumo de agua permanente".
+  origen: "Red municipal de La Puebla de Alfindén"
+  consumo_m3_dia: 9.31
+  nota: >-
+    Los 9,31 m³/día son el caudal ordinario, suma de usos industriales, domésticos y riego;
+    no se convierte a consumo anual. Aparte, la memoria prevé un consumo extraordinario solo
+    el primer año de 1.585 m³, correspondiente al llenado de los circuitos de climatización
+    (1.200 m³, en cinco llenados parciales de 240 m³) y de los tanques contra incendios
+    (385 m³). La memoria compara ese caudal ordinario con los 486,86 m³/día que el Plan
+    Parcial de 2008 preveía para esa superficie, un 1,9 %.
+  fuentes: [src-5]
+
+empleo:
+  - tipo: total
+    valor: 2774
+    referencia: "Impacto neto estimado de la primera fase: 964 directos, 1.086 indirectos y 724 inducidos"
+    fecha_dato: "2025-09"
+    fuentes: [src-6]
+    nota: null
+  - tipo: directo
+    valor: 964
+    referencia: "Empleos directos dentro de los 2.774 totales estimados para la primera fase"
+    fecha_dato: "2025-09"
+    fuentes: [src-6]
+    nota: "Subconjunto del total; no se suma con él."
+  - tipo: construccion
+    valor: 1510
+    referencia: "Puestos en la fase de urbanización y construcción"
+    fecha_dato: "2025-09"
+    fuentes: [src-6]
+    nota: >-
+      La memoria los calcula a razón de 9,16 empleos por MW más un 10 % por el personal de
+      urbanización, y da un rango alternativo de 8,3 a 13,2 empleos por MW, equivalente a
+      entre 1.245 y 1.980 empleos.
+  - tipo: total
+    valor: 540
+    referencia: "Empleos permanentes en operación y mantenimiento, directos e indirectos, a razón de 3,6 empleos por MW"
+    fecha_dato: "2025-09"
+    fuentes: [src-6]
+    nota: "La memoria no separa cuántos de los 540 son directos y cuántos indirectos."
+
 enlaces_proyecto:
   - "https://www.aragon.es/-/piga-acs-dc-la-puebla"
 
@@ -146,3 +191,27 @@ fuentes:
     fecha_publicacion: "2025-07-23"
     fecha_consulta: "2026-08-29"
     cita: "se declara como inversión de interés autonómico con interés general de Aragón el proyecto de instalación de un centro de datos en el término municipal de La Puebla de Alfindén (Zaragoza)"
+  - id: src-5
+    url: "https://www.aragon.es/documents/d/guest/tomo-i-memoria-1"
+    titulo: "PIGA «Instalación de un centro de datos en el término municipal de La Puebla de Alfindén». Tomo I. Memoria — apartado 2.3.1 Consumo de agua"
+    editor: "Gobierno de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2025-09"
+    fecha_consulta: "2026-08-31"
+    cita: "la tecnología elegida para la refrigeración del centro de datos de ACS DC Infra La Puebla, S.L., es de última generación y no requiere consumo de agua permanente, ya que es un sistema de climatización de circuito cerrado. [...] El Centro de Datos proyectado [...] consumirá en situación ordinaria, como sumatorio de los usos industriales, domésticos y riego, un caudal de 9,31 metros cúbicos al día. [...] Volumen de llenado total de los circuitos de climatización = 1.200 m3. [...] Volumen de llenado de los tanques de incendios = 385 m3. [...] El consumo extraordinario del Centro de Datos para el primer año será de 1.585 m3."
+  - id: src-6
+    url: "https://www.aragon.es/documents/d/guest/tomo-i-memoria-1"
+    titulo: "PIGA «Instalación de un centro de datos en el término municipal de La Puebla de Alfindén». Tomo I. Memoria — apartado 5.2.2 Creación de empleo"
+    editor: "Gobierno de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2025-09"
+    fecha_consulta: "2026-08-31"
+    cita: "Se estima que la primera fase del proyecto, generará un impacto neto de 2.774 empleos totales, abarcando desde la fase de construcción hasta la operación del centro e incluyendo el empleo inducido derivado del aumento de la actividad económica en el entorno. [...] se estiman 2.774 empleos totales, de los cuales 964 serán directos y 1.086 indirectos (1.510 puestos en la fase de urbanización y construcción y cerca de 540 empleos permanentes en operación y mantenimiento), además de 724 empleos inducidos en la economía por el efecto multiplicador en la actividad económica."
+  - id: src-7
+    url: "https://www.aragon.es/documents/d/guest/tomo-i-memoria-1"
+    titulo: "PIGA «Instalación de un centro de datos en el término municipal de La Puebla de Alfindén». Tomo I. Memoria — apartado 2.3.2 Potencia energética"
+    editor: "Gobierno de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2025-09"
+    fecha_consulta: "2026-08-31"
+    cita: "Los 150 MW de potencia eléctrica máxima del acceso concedido, suponen 100 MW de potencia IT aproximadamente."

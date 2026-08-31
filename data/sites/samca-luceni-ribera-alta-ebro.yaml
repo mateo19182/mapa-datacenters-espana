@@ -81,7 +81,7 @@ potencia:
     referencia: "Potencia eléctrica instalada de la planta de turbinas de gas de emergencia de cada edificio"
     estado_asociado: en_tramitacion
     fecha_dato: "2025-11-21"
-    fuentes: [src-1]
+    fuentes: [src-1, src-7]
     nota: >-
       "una potencia eléctrica instalada del orden de 125,5 MWe por edificio" en tres plantas
       de generación de emergencia con 27 turbinas de gas en total (9 por centro de datos, en
@@ -116,7 +116,52 @@ conexion_electrica:
 
 superficie_parcela_m2: 682929
 inversion_anunciada_eur: 2001800000
-refrigeracion: null
+refrigeracion: >-
+  Enfriadoras con compresores de levitación magnética y free cooling indirecto operativo la
+  mayor parte del año, con pulverización opcional de agua sobre los radiadores de las
+  enfriadoras. PUE objetivo de 1,25 y Peak PUE de 1,45.
+
+agua:
+  circuito: cerrado
+  sistema: >-
+    Enfriadoras con compresores de levitación magnética y free cooling indirecto operativo la
+    mayor parte del año, en circuitos cerrados con reposición mínima. Como apoyo puntual se
+    pulveriza agua sobre los radiadores de las enfriadoras en determinadas condiciones
+    ambientales; la memoria lo describe como un consumo optativo, sujeto a la disponibilidad
+    del recurso hídrico y del que se puede prescindir sin pérdida operativa.
+  origen: "Canal Imperial de Aragón, mediante la toma única ya autorizada a favor del Grupo SAMCA"
+  consumo_m3_ano: 460000
+  nota: >-
+    460.000 m³/año es el techo declarado ("será inferior a"), no una previsión de consumo.
+    Se descompone en unos 10.000 m³/año de reposición de los circuitos cerrados de
+    refrigeración y de los tanques contra incendios, y hasta 450.000 m³/año del apoyo
+    evaporativo optativo a las enfriadoras. La memoria estima además que la balsa de
+    regulación captará unos 150.000 m³ anuales de escorrentía, con 20.000 m³/año de pérdidas
+    por evaporación, y sostiene que el balance hídrico global es excedentario respecto al uso
+    agrícola actual. No consta WUE.
+  fuentes: [src-5]
+
+empleo:
+  - tipo: construccion
+    valor: 800
+    referencia: "Empleos directos durante las obras de urbanización e infraestructura (2026-2029)"
+    fecha_dato: "2025-11-21"
+    fuentes: [src-6]
+    nota: "La misma memoria estima además entre 560 y 1.050 empleos indirectos en esa fase."
+  - tipo: directo
+    valor: 150
+    referencia: "Empleos directos permanentes en fase operativa"
+    fecha_dato: "2025-11-21"
+    fuentes: [src-6]
+    nota: null
+  - tipo: indirecto
+    valor: 150
+    referencia: "Extremo superior de la horquilla de empleos indirectos en fase operativa (entre 90 y 150)"
+    fecha_dato: "2025-11-21"
+    fuentes: [src-6]
+    nota: >-
+      La memoria da una horquilla de 90 a 150; se registra el extremo superior y se advierte
+      del rango en lugar de promediarlo.
 enlaces_proyecto:
   - "https://www.aragon.es/-/piga-green-it"
 
@@ -127,6 +172,15 @@ incertidumbres:
       corresponden al sector urbanístico del campus y 3.404.921 m² a las infraestructuras
       energéticas, logísticas y de comunicaciones. Se registra la del sector del campus.
     fuentes: [src-1]
+  - campo: agua
+    descripcion: >-
+      La cifra de 460.000 m³/año es un máximo condicionado, no un consumo previsto: 450.000
+      de los 460.000 corresponden a un sistema de pulverización de agua que la memoria
+      califica de "optativo y sujeto a la disponibilidad del recurso hídrico" y del que
+      afirma poder prescindir sin pérdida operativa. Si no se usa, el consumo declarado baja
+      a unos 10.000 m³/año. Las dos lecturas se separan por un factor de 46 y la
+      documentación no fija cuál se producirá.
+    fuentes: [src-5]
   - campo: ubicacion
     descripcion: >-
       Las coordenadas registradas son el centroide municipal de Luceni (Wikidata); el
@@ -167,3 +221,24 @@ fuentes:
     fecha_publicacion: "2026-08-27"
     fecha_consulta: "2026-08-29"
     cita: "Proyecto de Subestación Transformadora \"Ribera Alta del Ebro\" (RADE) [...] Proyecto de Línea Subterránea Alta Tensión 220KV de Subestación \"Jalón PRE\" a Subestación \"Ribera Alta del Ebro\""
+  - id: src-5
+    url: "https://www.aragon.es/documents/d/guest/vol_i_a_memoria_piga"
+    titulo: "Plan de Interés General de Aragón «Green It Aragón». Volumen I — Memoria PIGA, apartados 5.5 Consumo de agua del Campus de Datos, 5.6 Balance hídrico y 5.7 Abastecimiento"
+    editor: "Gobierno de Aragón"
+    tipo: oficial
+    fecha_consulta: "2026-08-31"
+    cita: "El consumo total de agua que se estima tendrá el Campus de Datos del PIGA Green IT Aragón, será inferior a 460.000 m³/año incluyendo la eventual reposición anual de los circuitos cerrados de refrigeración y de los tanques contra incendios, que supone aproximadamente 10.000 m³/año [...] así como el consumo de agua para el eventual apoyo de los sistemas de refrigeración mecánicos [...] siendo este último un consumo optativo y sujeto a la disponibilidad del recurso hídrico, y que sería de 450.000 m³/año. [...] El abastecimiento de agua del PIGA Green IT Aragón se realizará íntegramente desde el Canal Imperial de Aragón, a través de la toma única [...] autorizada actualmente a favor del Grupo SAMCA. [...] Los tres centros de datos utilizan un sistema de refrigeración basado en: Enfriadoras con compresores de levitación magnética. Free-cooling indirecto, operativo la mayor parte del año. Sistemas de apoyo puntual a la operación de las enfriadoras, consistente en la pulverización de agua en los radiadores o \"coolers\" de las mismas [...] En esta instalación, el PUE es de 1,25 y el Peak PUE de 1,45"
+  - id: src-6
+    url: "https://www.aragon.es/documents/d/guest/vol_i_a_memoria_piga"
+    titulo: "Plan de Interés General de Aragón «Green It Aragón». Volumen I — Memoria PIGA, impacto laboral"
+    editor: "Gobierno de Aragón"
+    tipo: oficial
+    fecha_consulta: "2026-08-31"
+    cita: "Durante el periodo de obras de urbanización e infraestructura (2026–2029), se estiman 800 empleos directos y entre 560 y 1.050 empleos indirectos vinculados a obra civil, ingeniería, sistemas eléctricos, telecomunicaciones y logística especializada. En fase operativa, el Campus consolidará 150 empleos directos permanentes altamente cualificados y entre 90 y 150 empleos indirectos asociados a mantenimiento, supervisión digital, refrigeración industrial, ciberseguridad y servicios auxiliares."
+  - id: src-7
+    url: "https://www.aragon.es/documents/d/guest/vol_i_a_memoria_piga"
+    titulo: "Plan de Interés General de Aragón «Green It Aragón». Volumen I — Memoria PIGA, plantas de generación eléctrica de emergencia"
+    editor: "Gobierno de Aragón"
+    tipo: oficial
+    fecha_consulta: "2026-08-31"
+    cita: "el conjunto del Campus dispone de tres plataformas de generación, con un total de 27 turbinas de gas (9 por centro de datos, en configuración N+1: ocho unidades operativas y una de reserva). Cada planta está concebida para garantizar el suministro eléctrico independiente de un centro de datos, con una potencia eléctrica instalada del orden de 125,5 MWe por edificio, lo que permite cubrir su carga crítica en caso de fallo del suministro exterior."

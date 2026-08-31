@@ -34,14 +34,56 @@ fases:
 refrigeracion: >-
   Aprovechamiento del frío residual de la planta de regasificación de GNL de Enagás en
   Escombreras mediante intercambio térmico, con requisito de vertido térmico cero al medio
-  marino. Se plantea hidrógeno verde como energía de respaldo en lugar de grupos diésel.
+  marino. Se plantea hidrógeno verde como energía de respaldo en lugar de grupos diésel. El
+  promotor declara que la integración reduce «más de un 40%» los costes operativos de
+  refrigeración frente a un centro convencional de Madrid o Barcelona.
+
+agua:
+  circuito: desconocido
+  sistema: >-
+    Intercambio térmico con el frío residual de la regasificación de GNL de la planta de
+    Enagás en Escombreras, con exigencia de vertido térmico cero al medio marino.
+  origen: null
+  nota: >-
+    Ninguna fuente describe el fluido del circuito secundario ni si hay consumo de agua, y
+    tampoco consta caudal ni WUE. El único requisito ambiental publicado es que el
+    intercambio no altere la temperatura del ecosistema marino, lo que es una restricción
+    térmica, no un dato de consumo.
+  fuentes: [src-1]
+
+empleo:
+  - tipo: construccion
+    valor: 250
+    referencia: "Construcción y montaje de la primera fase"
+    fecha_dato: "2026-02-06"
+    fuentes: [src-1]
+    nota: null
+  - tipo: directo
+    valor: 50
+    referencia: "Plantilla estable prevista en explotación"
+    fecha_dato: "2026-02-06"
+    fuentes: [src-1]
+    nota: >-
+      «una plantilla estable de alrededor de 50 profesionales altamente cualificados». La
+      misma fuente añade «cerca de un centenar de empleos indirectos vinculados a servicios
+      auxiliares», que no se registra como cifra por no publicarse como número.
 
 incertidumbres:
   - campo: potencia
     descripcion: >-
       Ninguna fuente consultada publica potencia (ni MW IT ni de conexión), superficie ni
-      inversión del proyecto.
+      inversión del proyecto. La revisión de agosto de 2026 no ha encontrado ningún avance
+      posterior a febrero de 2026: ni anuncio de concesión de suelo por la Autoridad
+      Portuaria de Cartagena, ni expediente ambiental, ni cifra económica. El Plan
+      Estratégico 2026-2030 del puerto, presentado en mayo de 2026, no menciona el proyecto
+      en la cobertura consultada.
     fuentes: [src-1, src-2]
+  - campo: empleo
+    descripcion: >-
+      Las cifras de empleo proceden de un único medio especializado y del «consorcio
+      promotor», sin memoria pública que las sostenga; el proyecto no tiene todavía ni suelo
+      concedido ni potencia conocida, de modo que el empleo declarado no es contrastable.
+    fuentes: [src-1]
   - campo: operador
     descripcion: >-
       Las fuentes hablan de un «consorcio promotor» y de «fondos de inversión especializados»
@@ -49,7 +91,7 @@ incertidumbres:
     fuentes: [src-1]
 
 confianza: baja
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -59,7 +101,7 @@ fuentes:
     tipo: prensa_especializada
     fecha_publicacion: "2026-02-06"
     fecha_consulta: "2026-08-29"
-    cita: "El hub Cartagena Data Green proyecta levantar en el Valle de Escombreras, Murcia, uno de los primeros centros de datos de Europa enfriados con gas natural licuado, GLN [...] El proyecto se apoya en la planta de regasificación de Enagás en Escombreras, cuyo excedente de frío se utilizará para refrigerar servidores de alto rendimiento"
+    cita: "El hub Cartagena Data Green proyecta levantar en el Valle de Escombreras, Murcia, uno de los primeros centros de datos de Europa enfriados con gas natural licuado, GLN [...] El proyecto se apoya en la planta de regasificación de Enagás en Escombreras, cuyo excedente de frío se utilizará para refrigerar servidores de alto rendimiento [...] Esta integración permite reducir más de un 40% los costes operativos de refrigeración frente a centros de datos convencionales ubicados en polos como Madrid o Barcelona [...] El diseño del complejo deberá garantizar el vertido térmico cero [...] La construcción y montaje de la primera fase generará unos 250 empleos directos [...] Una vez en operación, el centro de datos contará con una plantilla estable de alrededor de 50 profesionales altamente cualificados [...] además de cerca de un centenar de empleos indirectos vinculados a servicios auxiliares."
   - id: src-2
     url: "https://observatorioedc.com/directorio/"
     titulo: "Data Centers — Directorio, Observatorio Español de Data Centers"

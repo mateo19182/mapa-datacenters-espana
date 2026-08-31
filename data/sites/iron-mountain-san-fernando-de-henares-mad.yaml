@@ -25,8 +25,12 @@ estado_detalle: >-
   en julio de 2025. Restantes edificios en desarrollo: MAD-2 y MAD-3 previstos para 2027, MAD-4 y
   MAD-5 para 2029 y MAD-6/7/8 para 2030 según la ficha corporativa; la compañía declaró en 2025
   haber adelantado a 2027 la entrega del resto del campus. Permisos de potencia asegurados para
-  los 79 MW completos.
-estado_fuentes: [src-1, src-2, src-4]
+  los 79 MW completos. En abril de 2026 Iron Mountain concretó el calendario: MAD-2 aportará
+  10 MW en el cuarto trimestre de 2026 y MAD-3 otros 10 MW en el primer trimestre de 2027, los
+  20 MW que la compañía declara en construcción. En marzo de 2026 el consejero de Digitalización
+  de la Comunidad de Madrid visitó las obras y el complejo figura en la candidatura española a
+  albergar una de las Gigafactorías de Inteligencia Artificial de la Unión Europea.
+estado_fuentes: [src-1, src-2, src-4, src-6, src-7]
 fecha_puesta_en_servicio: "2025-07"
 
 potencia:
@@ -43,9 +47,11 @@ potencia:
     ambito: fase
     referencia: "MAD-1, capacidad actual"
     estado_asociado: operativo
-    fecha_dato: "2026-08-29"
-    fuentes: [src-1]
-    nota: "\"phased expansion capabilities from 3 MW to 79 MW of IT load\"."
+    fecha_dato: "2026-04-22"
+    fuentes: [src-1, src-6]
+    nota: >-
+      "phased expansion capabilities from 3 MW to 79 MW of IT load"; en abril de 2026 la prensa
+      especializada lo repite como «MAD-1, ya opera con 3 MW de capacidad IT».
   - tipo: no_especificado
     valor_mw: 2
     ambito: fase
@@ -54,6 +60,24 @@ potencia:
     fecha_dato: "2025-03-26"
     fuentes: [src-2]
     nota: "Prensa especializada: \"la primera fase contará con 2 MW y comenzará a operar el próximo mes de julio\". Contradice los 3 MW de la ficha corporativa."
+  - tipo: no_especificado
+    valor_mw: 10
+    ambito: fase
+    referencia: "MAD-2, capacidad prevista en el cuarto trimestre de 2026"
+    estado_asociado: en_construccion
+    fecha_dato: "2026-04-22"
+    fuentes: [src-6]
+    nota: >-
+      La compañía habla de «10 MW adicionales» sin decir si son carga TI, aunque la capacidad del
+      campus la publica como IT. Se registra sin tipificar.
+  - tipo: no_especificado
+    valor_mw: 10
+    ambito: fase
+    referencia: "MAD-3, capacidad prevista en el primer trimestre de 2027"
+    estado_asociado: en_construccion
+    fecha_dato: "2026-04-22"
+    fuentes: [src-6]
+    nota: "Misma salvedad que MAD-2: la fuente no dice de qué tipo de MW se trata."
   - tipo: no_especificado
     valor_mw: 130
     ambito: campus
@@ -71,10 +95,14 @@ fases:
     fuentes: [src-1, src-2]
   - nombre: "MAD-2"
     estado: en_construccion
-    fuentes: [src-1]
+    fecha_puesta_en_servicio: "2026"
+    fuentes: [src-1, src-6]
+    # "MAD-2 mantiene el objetivo de aportar 10 MW adicionales en el cuarto trimestre de 2026"
   - nombre: "MAD-3"
     estado: en_construccion
-    fuentes: [src-1]
+    fecha_puesta_en_servicio: "2027"
+    fuentes: [src-1, src-6]
+    # "MAD-3 sumará otros 10 MW en el primer trimestre de 2027"
   - nombre: "MAD-4"
     estado: anunciado
     fuentes: [src-1]
@@ -114,11 +142,18 @@ incertidumbres:
       La ficha corporativa fecha MAD-2/MAD-3 en 2027 y el resto en 2029-2030, mientras que un
       artículo de opinión del director general de Iron Mountain para EMEA (julio de 2025) afirma
       que los dos siguientes edificios entran en servicio en 2026 y el resto del campus se
-      adelanta de 2029 a 2027.
-    fuentes: [src-1, src-5]
+      adelanta de 2029 a 2027. La actualización de abril de 2026 sitúa MAD-2 en el cuarto
+      trimestre de 2026 y MAD-3 en el primero de 2027.
+    fuentes: [src-1, src-5, src-6]
+  - campo: estado
+    descripcion: >-
+      La Comunidad de Madrid data en 2027 el conjunto de los 79 MW y de las ocho instalaciones,
+      mientras que el folleto de la compañía fecha el campus completo en 2030. Las dos fechas
+      conviven sin que ninguna fuente explique la diferencia.
+    fuentes: [src-1, src-7]
 
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -159,3 +194,19 @@ fuentes:
     fecha_publicacion: "2025-07-02"
     fecha_consulta: "2026-08-29"
     cita: "Los dos próximos edificios del campus, más enfocados en la hiperescala, están programados para entrar en servicio en 2026, y la fecha de entrega prevista para el resto del campus, originalmente prevista para 2029, se ha adelantado a 2027."
+  - id: src-6
+    url: "https://revistacloud.com/iron-mountain-acelera-en-madrid-mad-2-llegara-con-10-mw-en-2026-y-mad-3-en-2027/"
+    titulo: "Iron Mountain acelera en Madrid: MAD-2 llegará con 10 MW en 2026 y MAD-3 en 2027"
+    editor: "Revista Cloud"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-04-22"
+    fecha_consulta: "2026-08-31"
+    cita: "Según ha comunicado la empresa, MAD-2 mantiene el objetivo de aportar 10 MW adicionales en el cuarto trimestre de 2026, mientras que MAD-3 sumará otros 10 MW en el primer trimestre de 2027. Con ello, el grupo sigue desplegando una hoja de ruta que eleva la capacidad prevista del campus madrileño hasta 79 MW ... La primera fase del complejo, MAD-1, ya opera con 3 MW de capacidad IT dentro de una instalación de 4.000 metros cuadrados ... La documentación oficial de Iron Mountain señala que hay 20 MW actualmente en construcción, precisamente los que corresponden a MAD-2 y MAD-3"
+  - id: src-7
+    url: "https://www.eldiariodemadrid.es/articulo/tecnologia/madrid-centro-procesamiento-datos-iron-mountain/20260316115708124552.html"
+    titulo: "El CPD de Iron Mountain en Madrid aspira a formar parte de la red europea de Gigafactorías de IA"
+    editor: "El Diario de Madrid"
+    tipo: prensa_general
+    fecha_publicacion: "2026-03-16"
+    fecha_consulta: "2026-08-31"
+    cita: "El consejero de Digitalización, Miguel López-Valverde, ha visitado este lunes las obras del nuevo Centro de Procesamiento de Datos (CPD) que la empresa Iron Mountain Data Centers construye en San Fernando de Henares. Este complejo tecnológico ha sido seleccionado para formar parte de la candidatura española que aspira a albergar una de las futuras Gigafactorías de Inteligencia Artificial promovidas por la Unión Europea ... El complejo forma parte de un plan estratégico de expansión de Iron Mountain que prevé alcanzar 79 megavatios de potencia tecnológica en 2027, distribuidos en ocho instalaciones interconectadas dentro de la región."

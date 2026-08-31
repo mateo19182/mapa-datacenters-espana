@@ -23,8 +23,11 @@ estado_detalle: >-
   propia compañía indica que el suelo requiere tramitación urbanística local y
   autonómica y obras previas de conectividad viaria y fibra, por lo que el
   campus se promocionará internacionalmente en una etapa posterior a la de
-  Navalmoral.
-estado_fuentes: [src-merlin]
+  Navalmoral. A 31 de agosto de 2026 no consta expediente ambiental ni urbanístico iniciado: en el
+  DOE solo ha salido a información pública el campus de Navalmoral. El 28 de agosto de 2026 la
+  consejera de Industria confirmó que el planteamiento para Valdecaballeros es el mismo que para
+  Navalmoral —empezar con 20 MW y aspirar a 1 GW—, sin anunciar ningún trámite nuevo.
+estado_fuentes: [src-merlin, src-hoy, src-dcd-extremadura]
 
 potencia:
   - tipo: it
@@ -33,7 +36,7 @@ potencia:
     referencia: "Capacidad TI del campus a pleno desarrollo (10 edificios de 100 MW TI)"
     estado_asociado: anunciado
     fecha_dato: "2025-01-14"
-    fuentes: [src-merlin]
+    fuentes: [src-merlin, src-edged]
     nota: >-
       La nota de la compañía habla de "1GW de capacidad IT en cada emplazamiento"
       y de "10 edificios con 100MW de capacidad IT cada uno".
@@ -58,6 +61,15 @@ refrigeracion: >-
   Sistema modular de Edged Energy sin consumo de agua, con densidades de hasta
   70 kW por rack y PUE declarado de 1,15.
 
+agua:
+  circuito: sin_agua
+  sistema: "Sistema ThermalWorks de Edged Energy, declarado sin consumo de agua para refrigeración."
+  origen: null
+  nota: >-
+    La declaración es de la promotora y se refiere conjuntamente a los dos campus extremeños. No hay
+    expediente ambiental que la contraste ni cifra alguna de consumo.
+  fuentes: [src-edged, src-merlin-es]
+
 incertidumbres:
   - campo: inversion_anunciada_eur
     descripcion: >-
@@ -69,11 +81,18 @@ incertidumbres:
   - campo: estado
     descripcion: >-
       No consta expediente urbanístico ni ambiental iniciado a agosto de 2026.
-      La única fuente firme es la nota de la propia compañía de enero de 2025.
+      La única fuente firme sigue siendo la nota de la propia compañía de enero de 2025; las
+      referencias posteriores de la Junta y de la prensa especializada repiten el anuncio sin
+      documentar ningún hito administrativo propio de Valdecaballeros.
+    fuentes: [src-merlin, src-hoy, src-dcd-extremadura]
+  - campo: empleo
+    descripcion: >-
+      Ninguna fuente publica una cifra de empleo atribuible solo a Valdecaballeros: los 4.000
+      empleos anunciados son del conjunto de los dos campus extremeños. Campo empleo omitido.
     fuentes: [src-merlin]
 
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-merlin
@@ -87,6 +106,48 @@ fuentes:
       10 edificios con 100MW de capacidad IT cada uno [...] subestación
       Valdecaballeros 400kv (Redeia) [...] Decommissioned Nuclear Power Plant
       grounds.
+  - id: src-edged
+    url: "https://edged.us/news/merlin-properties-and-edged-energy-partner-with-spanish-regional-government-of-extremadura-to-build-two-gigawatt-scale-ai-data-center-campuses"
+    titulo: "MERLIN Properties and Edged Energy Partner With Spanish Regional Government of Extremadura To Build Two Gigawatt-Scale AI Data Center Campuses"
+    editor: "Edged Energy"
+    tipo: empresa
+    fecha_publicacion: "2025-01-14"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      The facilities will be located in Navalmoral de la Mata in Cáceres Province and Valdecaballeros
+      in Badajoz Province, and will each offer up to 1GW of IT capacity with an industry-leading
+      average PUE of 1.15 [...] They are expected to consume no water for cooling
+  - id: src-merlin-es
+    url: "https://www.merlinproperties.com/prensa/la-junta-de-extremadura-se-alia-con-merlin-properties-y-edged-energy-para-promover-dos-grandes-campus-de-centros-de-datos-de-inteligencia-artificial-en-la-comunidad/"
+    titulo: "La Junta de Extremadura se alía con MERLIN Properties y Edged Energy para promover dos grandes campus de centros de datos de Inteligencia Artificial en la Comunidad"
+    editor: "MERLIN Properties SOCIMI"
+    tipo: empresa
+    fecha_publicacion: "2025-01-14"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Se trata de instalaciones ultra-eficientes de última generación, sin consumo de agua y
+      alimentadas por energía verde, y se ubicarán en Navalmoral de la Mata y Valdecaballeros
+  - id: src-hoy
+    url: "https://www.hoy.es/extremadura/centros-datos-nostrum-badajoz-merlin-navalmoral-ultiman-20260828133327-nt.html"
+    titulo: "Los centros de datos de Nostrum en Badajoz y de Merlin en Navalmoral ultiman sus permisos"
+    editor: "Hoy"
+    tipo: prensa_general
+    fecha_publicacion: "2026-08-28"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      La previsión del centro de datos de Merlin para Navalmoral es empezar con 20 megavatios (MW) de
+      potencia instalada, aunque espera llegar a 1 gigavatio (GW). El mismo planteamiento tiene para
+      la instalación que plantea en Valdecaballeros.
+  - id: src-dcd-extremadura
+    url: "https://www.datacenterdynamics.com/es/noticias/extremadura-acelera-sus-grandes-proyectos-de-centros-de-datos/"
+    titulo: "Extremadura acelera sus grandes proyectos de centros de datos"
+    editor: "Data Center Dynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-08-28"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      En el caso de Navalmoral, la Junta de Extremadura declaró el proyecto Premia en mayo, una
+      figura destinada a acelerar su tramitación administrativa.
   - id: src-osm
     url: "https://nominatim.openstreetmap.org/search?q=Valdecaballeros%2C+Badajoz&format=json&limit=1"
     titulo: "Nominatim — Valdecaballeros, Badajoz"

@@ -2,6 +2,7 @@ id: t-systems-cerdanyola
 nombre: "T-Systems — Cerdanyola del Vallès (Camí Ral)"
 alias:
   - "T Systems: Cerdanyola"
+  - "CPD modular de T-Systems en Cerdanyola"
 tipo: edificio
 operador: "T-Systems Iberia (Deutsche Telekom)"
 modelo: corporativo
@@ -17,23 +18,83 @@ ubicacion:
   fuentes: [src-1, src-2]
 
 estado: operativo
-estado_detalle: "Instalación registrada por Baxtel como plenamente operativa."
-estado_fuentes: [src-1]
+estado_detalle: >-
+  Centro de datos modular en contenedores, anunciado en 2013 y desarrollado con
+  Vertiv. Está formado por 38 módulos integrados que albergan cerca de 300 racks
+  y cuenta con certificación de nivel III del Uptime Institute. Se construyó en
+  Croacia y se instaló después en Cerdanyola, con un plazo de obra de nueve
+  meses. T-Systems lo describe como el mayor centro de datos modular de España y
+  el primero de este tipo del grupo. Forma pareja (Twin-DC) con la instalación de
+  Sant Boi dentro de la región cloud de Barcelona de la compañía. Un reportaje
+  sectorial de 2025 lo cuenta entre los cuatro CPD en operación del Parc de
+  l'Alba.
+estado_fuentes: [src-1, src-3, src-4, src-5]
 
-potencia: []
+potencia:
+  - tipo: it
+    valor_mw: 1.1
+    ambito: edificio
+    referencia: "Carga TI del centro"
+    estado_asociado: operativo
+    fecha_dato: "2023-09"
+    fuentes: [src-3]
+    nota: >-
+      La fuente dice "1,1 MW de carga de TI, escalable hasta 5 MW". Es una de las
+      pocas cifras tipificadas como carga TI en el clúster del Vallès.
+  - tipo: it
+    valor_mw: 5
+    ambito: edificio
+    referencia: "Carga TI máxima escalable del diseño modular"
+    estado_asociado: anunciado
+    fecha_dato: "2023-09"
+    fuentes: [src-3]
+    nota: null
+
+superficie_construida_m2: 2400
+refrigeracion: >-
+  Freecooling indirecto con pasillos de frío confinados y enfriamiento por
+  districooling, topología eléctrica 2N y PUE declarado de 1,3. Dos salas con
+  densidad estándar de 2,5 kW por rack y una sala de alta densidad de 10 kW por
+  rack para cloud. Alimentación con energía verde y paneles solares en el
+  edificio de operación.
+
+agua:
+  circuito: desconocido
+  sistema: >-
+    Freecooling indirecto y pasillos de frío confinados, diseñados para reducir
+    la necesidad de agua en la refrigeración.
+  origen: "Agua de lluvia recogida en la propia instalación"
+  nota: >-
+    La compañía afirma que el centro «reduce la necesidad de uso de agua» y que
+    el agua empleada «se recoge de la lluvia para evitar sobrecargar los
+    acuíferos». No publica ni el tipo de circuito ni consumo ni WUE.
+  fuentes: [src-4]
 
 incertidumbres:
   - campo: potencia
-    descripcion: "Sin datos públicos de potencia, superficie ni fecha de puesta en servicio."
-    fuentes: [src-1]
+    descripcion: >-
+      Los 1,1 MW de carga TI y los 5 MW de techo escalable proceden de un
+      reportaje de prensa especializada con declaraciones de T-Systems y Vertiv,
+      no de una publicación propia de la compañía. No consta la potencia de
+      acceso ni la subestación de conexión.
+    fuentes: [src-3]
   - campo: ubicacion
     descripcion: >-
       Coordenadas obtenidas por geocodificación del vial Camí Ral en el Centre
-      Direccional de Cerdanyola, no del número concreto.
-    fuentes: [src-2]
+      Direccional de Cerdanyola, no del número concreto. Un directorio de
+      colocation sitúa la instalación en la Carretera BP-1413 km 3,70 (08290),
+      dirección distinta que no se ha podido contrastar.
+    fuentes: [src-2, src-6]
+  - campo: fecha_puesta_en_servicio
+    descripcion: >-
+      La construcción se anunció en 2013 y el reportaje de 2023 habla de «hace
+      ocho años» al referirse a la alianza con Vertiv, lo que situaría la puesta
+      en servicio hacia 2015-2016. Ninguna fuente da la fecha exacta, así que el
+      campo queda vacío.
+    fuentes: [src-3]
 
-confianza: baja
-ultima_verificacion: "2026-08-29"
+confianza: media
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -54,3 +115,51 @@ fuentes:
     cita: >-
       Camí Ral, Centre Direccional, Cerdanyola del Vallès, Vallès Occidental,
       Barcelona, Catalunya, 08193, España — lat 41.4834774, lon 2.1087645
+  - id: src-3
+    url: "https://www.ituser.es/actualidad/2023/09/eficiente-y-sostenible-asi-es-el-cpd-modular-de-tsystems-desarrollado-junto-a-vertiv-en-cerdanyola-del-valles"
+    titulo: "Eficiente y sostenible, así es el CPD modular de T-Systems, desarrollado junto a Vertiv, en Cerdanyola del Vallés"
+    editor: "IT User"
+    tipo: prensa_especializada
+    fecha_publicacion: "2023-09-01"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El resultado es un datacenter que presenta, como principales
+      características, 1,1 MW de carga de TI, escalable hasta 5 MW, topología
+      eléctrica 2N, un índice de efectividad en el uso de energía (PUE) de 1,3 y
+      Certificación de nivel III del Uptime Institute ... El centro de datos
+      tiene una superficie de 2400 m2, cuenta con 2 salas con densidad potencia
+      estándar 2.5 kW/RACK, una sala con alta densidad de potencia 10 kW/RACK
+      para cloud y consta de 38 módulos integrados que albergan cerca de 300
+      racks
+  - id: src-4
+    url: "https://www.t-systemsblog.es/un-centro-de-datos-modular-para-empezar-a-operar-en-tiempo-record/"
+    titulo: "Un centro de datos modular para empezar a operar en tiempo récord"
+    editor: "T-Systems Iberia"
+    tipo: empresa
+    fecha_publicacion: "2023-10-02"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Está en Cerdanyola del Vallès y es uno de los hitos en centros de datos de
+      T-Systems: es el primer data center modular de la compañía y es, de manera
+      general, el centro de datos modular más grande de España ... El centro usa
+      pasillos de frío para bajar la temperatura de un modo natural y reduce la
+      necesidad de uso de agua para esos procesos —agua, por otra parte, que se
+      recoge de la lluvia para evitar sobrecargar los acuíferos—.
+  - id: src-5
+    url: "https://www.30virtual.net/Noticias.aspx?idnoticia=33351"
+    titulo: "El Parc de l'Alba mejorará las infraestructuras especiales por CPDs, ampliando la actual a red de distribución eléctrica y minimizando las afecciones al entorno y la ocupación del dominio público"
+    editor: "30Virtual"
+    tipo: prensa_especializada
+    fecha_publicacion: "2025-01-06"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      cuenta con 4 centros de procesamiento de datos en operación (T-Systems,
+      Silc Inmuebles 1 y 2, Kyndryl) y 4 en proyecto y/o en construcción (AQ
+      Compute, Adam Ecotech, GTR y Panattoni)
+  - id: src-6
+    url: "https://colomap.com/facilities/t-systems-cerdanyola/"
+    titulo: "T-Systems Cerdanyola — Colocation in Cerdanyola del Vallés"
+    editor: "Colo Map"
+    tipo: otro
+    fecha_consulta: "2026-08-31"
+    cita: "Carretera BP-1413 Km 3,70 8290, Cerdanyola Del Vallés, Spain, 08290, ES"

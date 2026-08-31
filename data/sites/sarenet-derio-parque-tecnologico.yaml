@@ -23,8 +23,11 @@ estado_detalle: >-
   Inaugurado el 19 de junio de 2026 tras una inversión de 20 millones de euros y
   unos tres años y medio de obra sobre una nave adquirida por la compañía. Arranca
   con 3 MW operativos y 340 racks, con capacidad de escalado en fases sucesivas.
-  Es la nueva sede corporativa de Sarenet además de centro de datos.
-estado_fuentes: [src-1]
+  Es la nueva sede corporativa de Sarenet además de centro de datos. Está diseñado
+  para obtener la certificación LEED Oro, declara una disponibilidad garantizada
+  superior al 99,98% equiparable a Tier III y cuenta con instalación fotovoltaica
+  propia. Sarenet forma parte del Climate Neutral Data Centre Pact.
+estado_fuentes: [src-1, src-2]
 fecha_puesta_en_servicio: "2026-06-19"
 
 potencia:
@@ -34,10 +37,11 @@ potencia:
     referencia: "Potencia operativa inicial en la inauguración"
     estado_asociado: operativo
     fecha_dato: "2026-06-19"
-    fuentes: [src-1]
+    fuentes: [src-1, src-2]
     nota: >-
-      La fuente habla de «potencia operativa inicial de 3 MW»; otro titular la
-      describe como «3 MW de potencia instalada». No se ha localizado desglose de carga TI.
+      El Español habla de «potencia operativa inicial de 3 MW»; el Parque Tecnológico
+      de Euskadi y Computerworld, de «una potencia eléctrica instalada de 3
+      megavatios». No se ha localizado desglose de carga TI.
   - tipo: no_especificado
     valor_mw: 8
     ambito: edificio
@@ -61,6 +65,18 @@ refrigeracion: >-
   Free cooling aprovechando el aire exterior combinado con unidades CRAC; las fases
   3 y 4 incorporarán enfriadoras por agua. PUE estimado de 1,3.
 
+agua:
+  circuito: desconocido
+  sistema: >-
+    Free cooling que aprovecha las condiciones del aire exterior; las fases 3 y 4
+    previstas incorporarían enfriadoras por agua.
+  origen: null
+  nota: >-
+    Ninguna fuente publica consumo de agua ni WUE. El sistema declarado en la
+    inauguración es de aire; el paso a enfriadoras por agua está anunciado para
+    fases posteriores y no consta ejecutado.
+  fuentes: [src-1, src-2]
+
 enlaces_proyecto: []
 
 incertidumbres:
@@ -77,8 +93,8 @@ incertidumbres:
       publica dirección ni parcela.
     fuentes: [src-1]
 
-confianza: media
-ultima_verificacion: "2026-08-29"
+confianza: alta
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -89,3 +105,18 @@ fuentes:
     fecha_publicacion: "2026-06-19"
     fecha_consulta: "2026-08-29"
     cita: "una potencia operativa inicial de 3 MW, con capacidad de escalado hasta casi 8 MW"
+  - id: src-2
+    url: "https://parke.eus/sarenet-inaugura-su-nuevo-data-center-en-el-hub-de-comunicaciones-en-el-campus-zamudio-derio/"
+    titulo: "Sarenet inaugura su nuevo Data Center en el hub de comunicaciones en el Campus Zamudio/Derio"
+    editor: "Parque Tecnológico de Euskadi (Parke)"
+    tipo: oficial
+    fecha_publicacion: "2026-06-22"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      La infraestructura cuenta con una potencia eléctrica instalada de 3 megavatios,
+      capacidad para albergar hasta 340 armarios o racks y una disponibilidad
+      garantizada superior al 99,98%, un nivel de servicio equiparable a los
+      estándares de un centro de datos Tier III [...] Entre ellas destaca una
+      instalación fotovoltaica propia, así como sistemas de free cooling que
+      aprovechan las condiciones del aire exterior [...] La infraestructura está
+      diseñada para obtener la certificación LEED Oro

@@ -25,8 +25,10 @@ estado: operativo
 estado_detalle: >-
   MD2 y MD6 operativos; MD3x (primer xScale de Equinix en Madrid) operativo desde 2022;
   MD5 inaugurado el 22 de mayo de 2026. Equinix presenta las instalaciones de la calle de la
-  Pedriza y la calle Valgrande como un único "campus de Alcobendas".
-estado_fuentes: [src-1, src-2, src-3, src-4]
+  Pedriza y la calle Valgrande como un único "campus de Alcobendas". La Comunidad de Madrid
+  reconoció la inversión de 460 millones de euros en junio de 2025, tras una reunión de la
+  presidencia regional con directivos de la compañía en Nueva York.
+estado_fuentes: [src-1, src-2, src-3, src-4, src-12, src-13]
 fecha_puesta_en_servicio: "2026-05"
 
 potencia:
@@ -139,6 +141,15 @@ incertidumbres:
     fuentes: [src-2, src-4]
   - campo: fases
     descripcion: >-
+      La nota oficial de la Comunidad de Madrid del 22 de mayo de 2026 dice que la presidenta
+      regional inauguró ese día «dos nuevos Centros de Procesamientos de Datos (CPDs) de la
+      compañía tecnológica Equinix» en Alcobendas, mientras que la nota de la propia Equinix y la
+      cobertura de prensa de la misma jornada solo describen la apertura de MD5. No se ha
+      localizado qué segunda instalación se inauguró, ni si la nota regional cuenta como segundo
+      centro alguna fase ya en servicio.
+    fuentes: [src-4, src-11, src-13]
+  - campo: fases
+    descripcion: >-
       No se ha localizado documentación pública sobre la existencia o el destino de un MD3 o un
       MD4 en Madrid. La página de centros de datos de Equinix Madrid solo lista MD1, MD2, MD6 y MD3x.
     fuentes: [src-7]
@@ -221,3 +232,19 @@ fuentes:
     fecha_publicacion: "2026-05-22"
     fecha_consulta: "2026-08-31"
     cita: "El nuevo edificio añade 4.400 m² de espacio de colocation a la red global de Equinix, diseñado específicamente para soportar entornos críticos y altas densidades de potencia energética con una disponibilidad superior al 99,999% ... \"Nosotros hemos apostado por un modelo de refrigeración que permite operar sin consumo de agua, un paso hacia una nueva generación de infraestructura para la IA más eficiente y más responsable\" ... \"Alcobendas se ha convertido hoy en un hub de innovación digital que alberga ya seis grandes data centers.\""
+  - id: src-12
+    url: "https://www.comunidad.madrid/noticias/2025/06/27/diaz-ayuso-cierra-equinix-inversion-460-millones-expandir-su-campus-centro-datos-alcobendas"
+    titulo: "Díaz Ayuso cierra con Equinix una inversión de 460 millones para expandir su campus del centro de datos en Alcobendas"
+    editor: "Comunidad de Madrid"
+    tipo: oficial
+    fecha_publicacion: "2025-06-27"
+    fecha_consulta: "2026-08-31"
+    cita: "Díaz Ayuso cierra con Equinix una inversión de 460 millones para expandir su campus del centro de datos en Alcobendas"
+  - id: src-13
+    url: "https://www.comunidad.madrid/noticias/2026/05/22/diaz-ayuso-inaugura-alcobendas-dos-nuevos-centros-procesamiento-datos-madrid-es-lugar-donde-todo-mundo-quiere-estar"
+    titulo: "Díaz Ayuso inaugura en Alcobendas dos nuevos Centros de Procesamiento de Datos: “Madrid es el lugar donde todo el mundo quiere estar”"
+    editor: "Comunidad de Madrid"
+    tipo: oficial
+    fecha_publicacion: "2026-05-22"
+    fecha_consulta: "2026-08-31"
+    cita: "La presidenta de la Comunidad de Madrid, Isabel Díaz Ayuso, ha inaugurado en Alcobendas dos nuevos Centros de Procesamientos de Datos (CPDs) de la compañía tecnológica Equinix ... ha recordado la reunión que el año pasado mantuvo con directivos de la compañía estadounidense en Nueva York, en la que se cerró un nuevo compromiso de inversión en la región de 460 millones de euros."

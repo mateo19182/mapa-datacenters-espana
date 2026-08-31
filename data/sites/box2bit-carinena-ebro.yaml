@@ -45,6 +45,30 @@ fases:
     fuentes: [src-1]
     nota: "Resto del edificio 4 y edificio 5, control de acceso 5 y la infraestructura eléctrica del edificio 5."
 
+empleo:
+  - tipo: construccion
+    valor: 5600
+    referencia: "Empleos estimados durante la fase de construcción del campus completo"
+    fecha_dato: "2024-10-29"
+    fuentes: [src-5]
+    nota: >-
+      El Acuerdo desglosa por fases 3.400 empleos en la primera, 2.200 en la segunda y 1.400
+      en la tercera, incluyendo directos e indirectos.
+  - tipo: total
+    valor: 1400
+    referencia: "Empleos estimados durante la fase de operación"
+    fecha_dato: "2024-10-29"
+    fuentes: [src-5]
+    nota: null
+  - tipo: total
+    valor: 350
+    referencia: "Puestos de trabajo con el campus en pleno funcionamiento, según otro pasaje del mismo Acuerdo"
+    fecha_dato: "2024-10-29"
+    fuentes: [src-6]
+    nota: >-
+      Cifra incompatible con los "más de 1.400 durante la fase de operación" que da el mismo
+      documento. Se conservan ambas.
+
 superficie_parcela_m2: 280000
 superficie_construida_m2: 245000
 inversion_anunciada_eur: 3400000000
@@ -62,9 +86,22 @@ incertidumbres:
       La declaración de 2024 no publica ninguna cifra de potencia eléctrica para el campus
       de Cariñena.
     fuentes: [src-1]
+  - campo: empleo
+    descripcion: >-
+      El Acuerdo de 29 de octubre de 2024 da dos cifras que no encajan para la fase de
+      explotación: "más de 1.400 durante la fase de operación" en el apartado de generación
+      de empleo y "la generación de 350 puestos de trabajo una vez que el Campus se
+      encuentre en pleno funcionamiento" en el de valoración del interés autonómico. Se
+      registran ambas.
+    fuentes: [src-5, src-6]
+  - campo: agua
+    descripcion: >-
+      Ni la declaración de 2024 ni la modificación del ámbito de 2026 publican dato alguno
+      de consumo de agua ni de sistema de refrigeración para el campus de Cariñena.
+    fuentes: [src-1, src-4]
 
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -98,3 +135,19 @@ fuentes:
     fecha_publicacion: "2026-05-12"
     fecha_consulta: "2026-08-29"
     cita: "se modifica la delimitación del ámbito de la declaración de inversión de interés autonómico y de interés general de Aragón del proyecto de inversión denominado Campus de centros de procesamiento de datos \"Ebro\" en el término municipal de Cariñena (Zaragoza)"
+  - id: src-5
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1363605680606"
+    titulo: "ORDEN PEJ/1429/2024, de 21 de noviembre [...] «Campus de centros de procesamiento de datos \"Ebro\"», Cariñena (Zaragoza) — generación de empleo"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2024-11-29"
+    fecha_consulta: "2026-08-31"
+    cita: "Respecto a la generación de empleo promovido por esta iniciativa de inversión, la promotora estima una cifra de más de 5.600 empleos durante la fase de construcción y más de 1.400 durante la fase de operación. En concreto, la memoria indica una generación de empleo por fases, de en torno a 3.400 empleos (incluyendo directos e indirectos) durante la primera fase, 2.200, en la segunda y 1.400 en la tercera."
+  - id: src-6
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1363605680606"
+    titulo: "ORDEN PEJ/1429/2024, de 21 de noviembre [...] «Campus de centros de procesamiento de datos \"Ebro\"», Cariñena (Zaragoza) — valoración del interés autonómico"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2024-11-29"
+    fecha_consulta: "2026-08-31"
+    cita: "la ejecución del proyecto supone una inversión de 3.400 millones de euros, así como la generación de 350 puestos de trabajo una vez que el Campus se encuentre en pleno funcionamiento."

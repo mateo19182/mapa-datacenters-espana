@@ -12,10 +12,11 @@ ubicacion:
   municipio: "Alcalá de Henares"
   provincia: "Madrid"
   ccaa: "Comunidad de Madrid"
-  lat: null
-  lon: null
-  precision: municipio
-  fuentes: [src-2]
+  direccion: "Calle Tales de Mileto 1, 28806 Alcalá de Henares"
+  lat: 40.49285
+  lon: -3.392774
+  precision: aproximada
+  fuentes: [src-3, src-4]
 
 estado: ampliacion_en_construccion
 estado_detalle: >-
@@ -54,9 +55,19 @@ enlaces_proyecto:
 incertidumbres:
   - campo: ubicacion
     descripcion: >-
-      Templus no publica la dirección postal de MAD01 en su web ni figura en PeeringDB. Solo
-      consta el municipio (Alcalá de Henares).
-    fuentes: [src-1, src-2]
+      La ficha del centro en la web de Templus no da dirección postal y MAD01 no figura en
+      PeeringDB. La dirección registrada, calle Tales de Mileto 1, es el domicilio que la propia
+      Templus declara en su aviso de privacidad y la que usan los directorios sectoriales; un
+      directorio la sitúa en el número 21 de la misma calle. Las coordenadas son el centroide de
+      la calle, no del edificio, y por eso la precisión es aproximada.
+    fuentes: [src-1, src-3, src-4, src-5]
+  - campo: superficie_construida_m2
+    descripcion: >-
+      La prensa especializada da dos superficies para el mismo centro en la misma semana de
+      septiembre de 2025: 16.000 m² «de superficie» y 32.000 m² «construidos entre zonas técnicas
+      y oficinas». Se conserva la primera, que es la del registro, y se deja constancia de la
+      segunda.
+    fuentes: [src-2, src-5]
   - campo: potencia
     descripcion: >-
       La ficha de Templus etiqueta los 20 MW como "Total power" pero la nota de prensa habla de
@@ -83,3 +94,26 @@ fuentes:
     fecha_publicacion: "2025-09-18"
     fecha_consulta: "2026-08-29"
     cita: "El centro, de 16.000 metros cuadrados de superficie, acoge dos CPD simétricos con el objetivo de alcanzar a medio plazo los 20 MW de potencia, pasando de los 10 MW actuales."
+  - id: src-3
+    url: "https://templus.com/politica-de-privacidad/"
+    titulo: "Política de privacidad"
+    editor: "Templus Centros de Datos, S. L."
+    tipo: empresa
+    fecha_consulta: "2026-08-31"
+    cita: "el Responsable del tratamiento, TEMPLUS CENTROS DE DATOS, S.L. con nº de CIF B56381379 y con domicilio en C/ Tales de Mileto nº 1, 28806 Alcalá de Henares – Madrid"
+  - id: src-4
+    url: "https://guia.datacentermarket.es/gratuita/templus/"
+    titulo: "Templus — Guía CPDs"
+    editor: "Data Center Market"
+    tipo: prensa_especializada
+    fecha_publicacion: "2024-06-20"
+    fecha_consulta: "2026-08-31"
+    cita: "Dirección: Calle Tales de Mileto 1 Localidad: 28806 – Alcalá de Henares (Madrid)"
+  - id: src-5
+    url: "https://material-electrico.cdecomunicacion.es/centros-de-datos/193751/templus-centro-de-datos-madrid-potencia"
+    titulo: "Templus prevé duplicar la potencia de su centro de datos de Madrid hasta los 20 MW"
+    editor: "Material Eléctrico (CdeComunicación)"
+    tipo: prensa_especializada
+    fecha_publicacion: "2025-09-18"
+    fecha_consulta: "2026-08-31"
+    cita: "Con 32.000 metros cuadrados construidos entre zonas técnicas y oficinas se ubica en Alcalá de Henares el centro de datos de Templus Insight Madrid"

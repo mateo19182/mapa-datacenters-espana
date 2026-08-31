@@ -4,7 +4,7 @@ alias:
   - "ON DIVERSITY CLOUD MAD1"
 tipo: edificio
 operador: "ON Diversity Cloud"
-propietario: "Desconocido"
+propietario: "ON Diversity Cloud"
 modelo: colocation
 
 ubicacion:
@@ -16,9 +16,13 @@ ubicacion:
   precision: municipio
   fuentes: [src-1]
 
-estado: desconocido
-estado_detalle: "Instalación registrada en PeeringDB con dirección no divulgada ('Not Disclosed') y sin coordenadas."
-estado_fuentes: [src-1]
+estado: operativo
+estado_detalle: >-
+  DIVERSITY declara en su web ser una compañía europea de capital privado fundada en 2015 que
+  explota cuatro centros de datos propios en Madrid, Múnich, Helsinki y Ámsterdam, con más de
+  1.500 clientes. El de Madrid es el que PeeringDB registra como DIVERSITY CLOUD MAD1 en Arganda
+  del Rey. La compañía no publica ninguna característica física del emplazamiento.
+estado_fuentes: [src-1, src-2]
 
 potencia: []
 
@@ -30,12 +34,21 @@ incertidumbres:
     fuentes: [src-1]
   - campo: estado
     descripcion: >-
-      Única fuente localizada. No se ha encontrado web del operador ni ninguna otra referencia
-      que confirme la existencia física ni el estado del centro.
-    fuentes: [src-1]
+      La web del operador confirma que explota centros de datos propios y sitúa uno en Madrid,
+      pero no lo describe ni lo localiza; el municipio de Arganda del Rey solo consta en el
+      registro de PeeringDB. No hay ninguna fuente que describa el edificio, su superficie o su
+      potencia, ni que permita comprobar de forma independiente que la instalación existe donde
+      se dice.
+    fuentes: [src-1, src-2]
+  - campo: propietario
+    descripcion: >-
+      La compañía habla de «our own datacenters», de lo que se deduce titularidad propia, pero no
+      publica la sociedad titular del inmueble ni si el espacio está alojado en instalaciones de
+      un tercero.
+    fuentes: [src-2]
 
 confianza: baja
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -45,3 +58,10 @@ fuentes:
     tipo: asociacion
     fecha_consulta: "2026-08-29"
     cita: "DIVERSITY CLOUD MAD1 | ON DIVERSITY CLOUD | Arganda del Rey | Not Disclosed | 28500"
+  - id: src-2
+    url: "https://ondiversity.cloud/"
+    titulo: "DIVERSITY | The sovereign cloud for Europe"
+    editor: "ON Diversity Cloud"
+    tipo: empresa
+    fecha_consulta: "2026-08-31"
+    cita: "DIVERSITY is a privately held European company, founded in 2015, operating four datacenters in Europe ... We run cloud, bare metal, telecom, and colocation from our own datacenters in Madrid, Munich, Helsinki, and Amsterdam. Over 1,500 customers, from startups to Santander and BASF ... European datacenters Madrid, Munich, Helsinki, Amsterdam. Owned and operated by us ... Colocation Rack, half-rack and cage space across our own European datacenters ... Tier III power & cooling, carrier-neutral"

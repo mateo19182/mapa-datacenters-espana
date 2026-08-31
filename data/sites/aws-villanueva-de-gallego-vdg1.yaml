@@ -41,6 +41,17 @@ potencia:
       Dato térmico (MWt) de los grupos electrógenos de respaldo declarado en la AAI. No es
       carga TI ni potencia de conexión a red y no debe compararse con ellas.
 
+energia:
+  - consumo_gwh_ano: 756.9
+    referencia: "Recursos de energía previstos para la actividad del centro de datos «VDG1» a plena capacidad"
+    fecha_dato: "2025-07-16"
+    fuentes: [src-5]
+    nota: >-
+      La cifra figura en la declaración ambiental estratégica del PIGA, dentro del escrito de
+      alegaciones de SEO/BirdLife que la resolución reproduce literalmente y que la atribuye
+      a la documentación del proyecto: no la formula INAGA por su cuenta. La misma relación
+      suma 10.848,2 GWh/año para los cinco emplazamientos de la ampliación.
+
 fases:
   - nombre: "Fase 1 (totalidad del campus proyectado)"
     estado: permisos_concedidos
@@ -74,6 +85,27 @@ inversion_anunciada_eur: null
 refrigeracion: >-
   Instalación fotovoltaica de autoconsumo sobre la parcela y tanque de tormentas bajo los
   paneles con volumen útil mínimo de 3.204 m³ exigido por la resolución ambiental.
+agua:
+  circuito: desconocido
+  sistema: >-
+    Cuatro redes hidráulicas independientes: agua potable, agua industrial de proceso,
+    vertido de aguas sanitarias y vertido de aguas pluviales y de proceso. La parcela
+    incorpora planta de tratamiento de agua propia y un tanque de tormentas de 3.204 m³ de
+    volumen útil mínimo. En VDG1 no está prevista la recuperación ni la reutilización del
+    agua pluvial recogida, por limitaciones de espacio.
+  origen: >-
+    Agua potable desde la red municipal de Villanueva de Gállego; agua de proceso desde tres
+    nuevos pozos de agua subterránea (P1, P2 y P3) junto al pozo municipal existente, con
+    una tubería nueva de 3,9 km desde la estación de bombeo. Vertido parcial al río Gállego.
+  consumo_m3_ano: 56980
+  nota: >-
+    La estimación de 56.980 m³/año procede de la declaración ambiental estratégica del PIGA.
+    El estudio de impacto ambiental de la infraestructura hidráulica exterior advierte de
+    que "no se evalúan los consumos, características de vertidos, ni otros aspectos
+    relacionados con la operación del centro de datos en sí". No consta WUE ni PUE
+    publicados para este emplazamiento.
+  fuentes: [src-3, src-4]
+
 enlaces_proyecto:
   - "https://www.aragon.es/-/piga-aws-ampliacion"
   - "https://www.aragon.es/-/expansion-aws-aragon"
@@ -84,6 +116,23 @@ incertidumbres:
       No consta en ninguna fuente oficial consultada la carga TI (MW IT) ni la potencia de
       acceso a red concedida para este emplazamiento. El único valor publicado es la
       potencia térmica de los grupos electrógenos.
+    fuentes: [src-1]
+  - campo: agua
+    descripcion: >-
+      El consumo de 56.980 m³/año consta en el escrito de alegaciones de SEO/BirdLife que la
+      declaración ambiental estratégica reproduce, atribuido a la documentación del
+      proyecto. Ni la declaración de impacto ambiental ni la autorización ambiental
+      integrada de 29 de abril de 2026 publican una cifra propia de consumo de agua para
+      VDG1, y el estudio de impacto ambiental de la infraestructura hidráulica exterior
+      declara expresamente que no evalúa los consumos del centro de datos.
+    fuentes: [src-3, src-4]
+  - campo: empleo
+    descripcion: >-
+      El cuadro de parámetros urbanísticos del Acuerdo de 4 de mayo de 2026 recoge los
+      trabajadores previstos en la Fase 1 de VDG1, VDG2 y WQA en una tabla de tres columnas
+      cuya correspondencia no se puede reconstruir de forma literal desde el texto
+      publicado. No se registra por ello un valor en «empleo»; la cifra que figura en la
+      nota de la fase procede de una lectura previa de esa tabla.
     fuentes: [src-1]
   - campo: ubicacion
     descripcion: >-
@@ -113,3 +162,27 @@ fuentes:
     fecha_publicacion: "2024-12-13"
     fecha_consulta: "2026-08-29"
     cita: "se aprueba inicialmente el Plan de Interés General \"Expansión de la Región AWS en Aragón\" promovido por la mercantil Amazon Data Services Spain, SL"
+  - id: src-3
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1406588900808"
+    titulo: "RESOLUCIÓN de 16 de julio de 2025, del Instituto Aragonés de Gestión Ambiental, por la que se formula la declaración ambiental estratégica del Plan de Interés General «Expansión Región AWS en Aragón» [...] (INAGA 500201/71H/2025/05122 y otros)"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2025-08-06"
+    fecha_consulta: "2026-08-31"
+    cita: "Respecto de las afecciones al recurso hídrico, el consumo de agua asociado a la actividad de los centros de datos se ha estimado en: VDG1: 56.980 m 3/ año; VDG2: 208.920 m 3/año; BDE: 111.880 m 3/año, WQA: 143.400 m 3/año y CAR: 204.700 m 3/año. Por lo tanto, las necesidades de agua para sistemas de refrigeración del conjunto de centros de datos ascenderían, aproximadamente, a 725.880 m 3/año"
+  - id: src-4
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1419875120606"
+    titulo: "RESOLUCIÓN de 6 de octubre de 2025, del Instituto Aragonés de Gestión Ambiental, por la que se formula la declaración de impacto ambiental de las infraestructuras hidráulicas exteriores que darán servicio a los nuevos centros de datos VDG1 y VDG2, en el término municipal de Villanueva de Gállego (Zaragoza) (INAGA 500201/01A/2025/05152)"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2025-11-11"
+    fecha_consulta: "2026-08-31"
+    cita: "El diseño técnico está conformado por cuatro redes hidráulicas independientes pero complementarias: suministro de agua potable, suministro de agua industrial de proceso, vertido de aguas sanitarias y vertido de aguas pluviales y de proceso. [...] Para la red de suministro de agua de proceso, se propone construir un nuevo pozo (P1) junto al pozo municipal existente (1+1) [...] Adicionalmente se propone construir dos nuevos pozos P2 y P3 (1+1) como refuerzo del abastecimiento actual [...] En VDG1 no está prevista la recuperación ni la reutilización del agua pluvial recogida por limitaciones de espacio. [...] El promotor señala que en el estudio de impacto ambiental no se evalúan los consumos, características de vertidos, ni otros aspectos relacionados con la operación del centro de datos en sí"
+  - id: src-5
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1406588900808"
+    titulo: "RESOLUCIÓN de 16 de julio de 2025, del Instituto Aragonés de Gestión Ambiental, por la que se formula la declaración ambiental estratégica del Plan de Interés General «Expansión Región AWS en Aragón» — recursos de energía por centro de datos"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2025-08-06"
+    fecha_consulta: "2026-08-31"
+    cita: "Los recursos de energía para la actividad a desarrollar en los centros de datos ascienden a: VDG1: 756,9 GWh/año, VDG2: 2.775 GWh/año, BDE: 1.766 GWh/año, WQA: 2.270,6 GWh/año y CAR: 3.279,7 GWh/año. Las necesidades de electricidad del conjunto de centros de datos ascenderían a 10.848,2 GWh/año."

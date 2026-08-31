@@ -33,10 +33,17 @@ potencia: []
 incertidumbres:
   - campo: potencia
     descripcion: >-
-      No se ha localizado una cifra publicada del consumo eléctrico de
-      MareNostrum 5 en fuente primaria. Las cifras de 1,3 MW que circulan
-      corresponden a MareNostrum 4, no al sistema actual, y no se registran aquí.
-    fuentes: [src-1]
+      Sí existen cifras publicadas, pero no son capacidad del centro y por eso no
+      se registran en `potencia[]`. Una presentación del director de operaciones
+      del BSC de octubre de 2024 da consumos medidos durante la ejecución del
+      benchmark Linpack por partición: «5.7 MW under HPL» para la partición de
+      propósito general y «2.5 MW under HPL» / «4.1 MW under HPL (175 PF/s)» para
+      la acelerada, más 400-550 kW del almacenamiento en disco y menos de 10 kW
+      de las librerías de cinta. Son potencias instantáneas en una prueba de
+      carga máxima, no potencia instalada ni contratada, y sumarlas o compararlas
+      con los MW de un CPD comercial daría una cifra falsa. Las cifras de 1,3 MW
+      que circulan corresponden a MareNostrum 4, no al sistema actual.
+    fuentes: [src-1, src-3]
   - campo: ubicacion
     descripcion: >-
       Las coordenadas corresponden al edificio principal del BSC. La capilla de
@@ -65,3 +72,14 @@ fuentes:
       Barcelona Supercomputing Center, 1-3, Plaça d'Eusebi Güell, Pedralbes, les
       Corts, Barcelona, Barcelonès, Barcelona, Catalunya, 08034, España — lat
       41.3897809, lon 2.1163849
+  - id: src-3
+    url: "https://www.hpcuserforum.com/wp-content/uploads/2024/10/Sergi-Girona-BSC_MareNostrum-5_HPC-UF-BSC-Oct-2024.pdf"
+    titulo: "MareNostrum 5 — Sergi Girona, Operations Director, October 2024"
+    editor: "Barcelona Supercomputing Center / HPC User Forum"
+    tipo: otro
+    fecha_publicacion: "2024-10-01"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      HPL: 40.10 PFlops HPCG: 484.36 TFlops Green500: 6.97 Gflops/watt ... 5.7 MW
+      under HPL ... 2.5 MW under HPL ... 4.1 MW under HPL (175 PF/s) ... Power
+      consumption: 400-550 kW

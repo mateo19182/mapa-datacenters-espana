@@ -2,6 +2,7 @@ id: solaria-datasection-puertollano
 nombre: "Centro de datos de IA de Solaria y Data Section — Puertollano"
 alias:
   - "Data center de IA de Puertollano"
+  - "Solaria Data Center Puertollano"
 tipo: edificio
 operador: "Data Section"
 propietario: "Solaria Energía y Medio Ambiente"
@@ -11,55 +12,143 @@ ubicacion:
   municipio: "Puertollano"
   provincia: "Ciudad Real"
   ccaa: "Castilla-La Mancha"
-  direccion: "Antiguas salas blancas de fabricación de células fotovoltaicas de Solaria"
+  direccion: "Instalaciones industriales de Solaria en el polígono La Nava — antiguas salas blancas de fabricación de células fotovoltaicas"
   lat: 38.6852161
   lon: -4.1111749
   precision: municipio
-  fuentes: [src-eldiario, src-osm]
+  fuentes: [src-eldiario, src-solaria, src-osm]
 
-estado: anunciado
+estado: paralizado
 estado_detalle: >-
-  Acuerdo entre Solaria y la japonesa Data Section anunciado en septiembre de
-  2024 para reutilizar las antiguas salas blancas de Solaria en Puertollano. No
-  se ha localizado documentación posterior que confirme el inicio de obras ni la
-  puesta en servicio.
-estado_fuentes: [src-eldiario]
+  Acuerdo entre Solaria y la japonesa Datasection presentado el 17 de septiembre
+  de 2024 en Puertollano, con presencia del presidente de Castilla-La Mancha y del
+  alcalde, para reutilizar las antiguas salas blancas de Solaria. El objetivo
+  declarado era empezar a funcionar en 2025. El 16 de enero de 2026 la Cadena SER
+  informó de que el proyecto estaba "en vía muerta" tras el abandono de
+  Datasection: no se había instalado ningún servidor ni ejecutado las
+  instalaciones eléctricas de gran capacidad, y Solaria seguía interesada en el
+  emplazamiento pero "sin socio, sin plazos y sin inversión". No se ha localizado
+  información posterior que acredite la reactivación del proyecto.
+estado_fuentes: [src-eldiario, src-solaria, src-ser]
 
 potencia:
   - tipo: no_especificado
+    valor_mw: 200
+    ambito: edificio
+    referencia: "Suministro máximo previsto en el acuerdo con Datasection"
+    estado_asociado: anunciado
+    fecha_dato: "2024-09-17"
+    fuentes: [src-solaria]
+    nota: >-
+      La nota de la propia Solaria dice "El acuerdo prevé la consecución de un
+      suministro de hasta 200 MW de energía". Es un suministro comprometido por el
+      propio generador, no un permiso de acceso a la red ni una carga TI
+      declarada, así que no se tipifica.
+  - tipo: no_especificado
     valor_mw: 40
     ambito: edificio
-    referencia: "Potencia anunciada del centro de datos de IA"
+    referencia: "Potencia de la primera fase, que ocuparía la totalidad de las salas blancas"
     estado_asociado: anunciado
     fecha_dato: "2024-09"
-    fuentes: [src-eldiario]
+    fuentes: [src-solaria, src-eldiario]
     nota: >-
-      La declaración citada dice "más de 40 megavatios de potencia" sin precisar
-      si es carga TI o potencia de conexión.
+      Solaria dice "En una primera fase contará con 40 MW de potencia y ocupará la
+      totalidad de la superficie de las salas blancas". La declaración pública
+      recogida por elDiario.es habla en cambio de "más de 40 megavatios de
+      potencia" para el conjunto del centro. Se registra como lectura rival de los
+      200 MW, no como una fase que se sume a ellos.
 
-fases: []
+fases:
+  - nombre: "Primera fase — reconversión de las salas blancas"
+    estado: paralizado
+    superficie_m2: 100000
+    nota: >-
+      Ocuparía la totalidad de las salas blancas y hasta 100.000 m2 de las
+      instalaciones industriales de Solaria, con racks de Super Micro y GPU de
+      NVIDIA. A enero de 2026 no se había instalado ningún servidor.
+    fuentes: [src-solaria, src-ser]
 
 superficie_construida_m2: 100000
 inversion_anunciada_eur: 500000000
 
+empleo:
+  - tipo: directo
+    valor: 100
+    referencia: "Primera fase del proyecto"
+    fecha_dato: "2024-09-17"
+    fuentes: [src-solaria, src-eldiario]
+    nota: >-
+      La nota de Solaria habla de "la creación de más de 100 empleos" en la
+      primera fase. Es una previsión de 2024 sobre un proyecto que en enero de
+      2026 estaba parado.
+
 incertidumbres:
   - campo: estado
     descripcion: >-
-      No se ha encontrado información posterior a 2024 que acredite avance del
-      proyecto. El estado real a 2026 es desconocido.
-    fuentes: [src-eldiario]
+      El proyecto se registra como paralizado sobre la base de una única
+      información periodística de enero de 2026, que cita fuentes no
+      identificadas y atribuye el parón al abandono de Datasection. Ni Solaria ni
+      Datasection lo han confirmado ni desmentido públicamente, y Solaria ha
+      seguido comunicando en 2026 su crecimiento en "infraestructura digital" sin
+      mencionar Puertollano. No se ha localizado ninguna comunicación de la
+      compañía que cancele formalmente el acuerdo.
+    fuentes: [src-ser, src-solaria]
   - campo: potencia
     descripcion: >-
-      El acuerdo original recogido por prensa económica preveía un suministro de
-      hasta 200 MW y una primera fase de 40 MW; la declaración pública citada
-      habla de "más de 40 megavatios". Solo se registra la cifra de la fuente
-      efectivamente consultada.
-    fuentes: [src-eldiario]
+      Conviven dos cifras que no son la misma magnitud pero que las fuentes usan
+      indistintamente: un suministro de hasta 200 MW previsto en el acuerdo y una
+      primera fase de 40 MW. La declaración pública citada por elDiario.es dice
+      "más de 40 megavatios" refiriéndose al centro entero, lo que confunde la fase
+      con el conjunto. Ninguna fuente distingue carga TI de potencia de conexión.
+    fuentes: [src-eldiario, src-solaria]
+  - campo: operador
+    descripcion: >-
+      Data Section (Datasection) figura como socio tecnológico del acuerdo de 2024,
+      pero la información de enero de 2026 sostiene que abandonó el proyecto. Si
+      así fuera, el operador registrado ya no lo sería. Se conserva a falta de
+      confirmación de las partes.
+    fuentes: [src-solaria, src-ser]
 
 confianza: baja
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
+  - id: src-solaria
+    url: "https://solariaenergia.com/solaria-presenta-en-puertollano-su-acuerdo-con-la-japonesa-datasection-para-desarrollar-un-centro-de-datos-apoyado-por-el-gobierno-de-castilla-la-mancha/"
+    titulo: "Solaria presenta en Puertollano su acuerdo con la japonesa Datasection para desarrollar un centro de datos apoyado por el gobierno de Castilla-La Mancha"
+    editor: "Solaria Energía y Medio Ambiente"
+    tipo: empresa
+    fecha_publicacion: "2024-09-17"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El acuerdo prevé la consecución de un suministro de hasta 200 MW de energía y
+      el uso de las propias instalaciones que la compañía española tiene en la
+      localidad. En una primera fase contará con 40 MW de potencia. - Gracias a
+      este proyecto se crearán más de 100 empleos y contará con una inversión
+      inicial cercana a los 500 millones de euros. [...] el uso de hasta 100.000 m2
+      de superficie en las propias instalaciones industriales de Solaria en
+      Puertollano, que cuenta con las denominadas «salas blancas» [...] que en los
+      próximos meses albergarán los racks de la empresa Súper Micro y los micro
+      chips de última generación de NVIDIA [...] En una primera fase contará con 40
+      MW de potencia y ocupará la totalidad de la superficie de las salas blancas.
+  - id: src-ser
+    url: "https://cadenaser.com/castillalamancha/2026/01/16/en-via-muerta-un-proyecto-de-quinientos-millones-de-euros-unico-en-europa-y-que-iba-a-crear-cien-empleos-en-puertollano-ser-ciudad-real/"
+    titulo: "En vía muerta un proyecto de quinientos millones de euros único en Europa y que iba a crear cien empleos en Puertollano"
+    editor: "Cadena SER Ciudad Real"
+    tipo: prensa_general
+    fecha_publicacion: "2026-01-16"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      según puede confirmar la SER, la gran nave de Solaria que en su día albergase
+      una planta de producción de placas solares y que iba a albergar el primer
+      centro de datos para IA de España sigue esencialmente como estaba: después de
+      la presentación oficial y firma del convenio no se llegó a instalar ni un
+      solo servidor ni se realizaron las instalaciones eléctricas de gran capacidad
+      que un centro así necesita [...] Fuentes consultadas por la SER confirman que
+      el proyecto está en vía muerta por el abandono del mismo de la compañía
+      japonesa Datasection [...] pero también que Solaria sigue muy interesada en
+      crear su primer centro de datos del país en Puertollano, aunque de momento...
+      sin socio, sin plazos y sin inversión
   - id: src-eldiario
     url: "https://www.eldiario.es/castilla-la-mancha/social/data-center-inteligencia-artificial-puertollano-preve-100-empleos-inversion-500-millones_1_11659102.html"
     titulo: "El 'data center' de inteligencia artificial de Puertollano prevé 100 empleos y una inversión de 500 millones"

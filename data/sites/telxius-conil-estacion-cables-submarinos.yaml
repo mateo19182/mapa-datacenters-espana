@@ -57,8 +57,16 @@ incertidumbres:
       entrada de tráfico hacia África y América.
     fuentes: [src-1, src-2, src-3]
 
+  - campo: propietario
+    descripcion: >-
+      El 16 de julio de 2026 Telefónica (70%) y Pontegadea (30%) iniciaron el proceso de venta del
+      100% de Telxius, con un precio de salida estimado en 1.200 millones de euros y mandato a
+      Guggenheim y JPMorgan. La operación no estaba cerrada a la fecha de verificación, por lo que se
+      mantiene la titularidad registrada.
+    fuentes: [src-venta]
+
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -82,3 +90,16 @@ fuentes:
     tipo: prensa_especializada
     fecha_consulta: "2026-08-29"
     cita: "Cádiz es la gran anfitriona, con enlaces desde Rota, Conil de la Frontera, Chipiona, Tarifa, Zahara de los Atunes y La Línea de la Concepción."
+  - id: src-venta
+    url: "https://cincodias.elpais.com/companias/2026-07-16/telefonica-y-pontegadea-ponen-a-la-venta-telxius-por-1200-millones.html"
+    titulo: "Telefónica y Pontegadea ponen a la venta Telxius por 1.200 millones"
+    editor: "Cinco Días"
+    tipo: prensa_general
+    fecha_publicacion: "2026-07-16"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Telefónica y Pontegadea han iniciado la distribución de los cuadernos de venta (teasers) para
+      la desinversión total del proveedor de infraestructuras y cable submarino Telxius [...]
+      Telefónica controla actualmente el 70% del capital de la compañía con sede en Madrid, mientras
+      que Pontegadea, el vehículo inversor del fundador de Inditex, Amancio Ortega, posee el 30%
+      restante. La venta puede rondar un precio de salida de 1.200 millones de euros

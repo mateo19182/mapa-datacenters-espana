@@ -21,22 +21,78 @@ estado: operativo
 estado_detalle: >-
   Operador de colocation neutral con sede y centro de proceso de datos en el polígono
   Fuente del Jarro (Paterna). Certificación de conformidad con el ENS en categoría Alta.
-estado_fuentes: [src-1, src-2]
+  En julio de 2024 puso en servicio una ampliación con dos nuevas salas IT de 600 m² en
+  total, la primera ya operativa y la segunda prevista para los meses siguientes, junto a
+  una acometida eléctrica redundante y separada para todo el centro.
+estado_fuentes: [src-1, src-2, src-3]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 1
+    ambito: edificio
+    referencia: "Capacidad del centro tras la ampliación de 2024"
+    estado_asociado: operativo
+    fecha_dato: "2024-07-02"
+    fuentes: [src-3]
+    nota: >-
+      DCD: «el Data Center ahora tiene 1 MW de capacidad con sus dos nuevas salas IT». La
+      fuente no dice si es carga TI o potencia contratada, ni si el 1 MW es el total del
+      centro o solo el aportado por la ampliación.
+  - tipo: termica_respaldo
+    valor_mw: 1
+    ambito: edificio
+    referencia: "Cada uno de los dos grupos electrógenos de respaldo"
+    estado_asociado: operativo
+    fecha_dato: "2024-07-02"
+    fuentes: [src-3]
+    nota: >-
+      «respaldo de dos generadores de 1 MW y un depósito de 12 mil litros cada uno». Es
+      potencia de emergencia, no capacidad del centro: no se suma a nada.
+
+fases:
+  - nombre: "Instalaciones anteriores a 2024"
+    estado: operativo
+    fuentes: [src-3]
+  - nombre: "Ampliación 2024 (dos nuevas salas IT)"
+    estado: operativo
+    fecha_puesta_en_servicio: "2024-07"
+    superficie_m2: 600
+    fuentes: [src-3]
+
+agua:
+  circuito: cerrado
+  sistema: >-
+    Las salas antiguas se climatizan por expansión directa; las nuevas, por refrigeración
+    por agua en circuito cerrado.
+  origen: null
+  nota: >-
+    DCD, en un reportaje patrocinado: «Se trata de un circuito cerrado que no tiene ningún
+    consumo de agua». No hay cifra ni WUE auditados.
+  fuentes: [src-3]
 
 incertidumbres:
   - campo: potencia
     descripcion: >-
       Ni la web del operador ni el directorio del Observatorio Español de Data Centers
-      publican potencia, superficie ni número de racks de la instalación.
-    fuentes: [src-1, src-2]
+      publican potencia, superficie ni número de racks. La única cifra localizada procede
+      de un reportaje patrocinado de DatacenterDynamics de julio de 2024, que no distingue
+      el tipo de MW ni aclara si el 1 MW es el total del centro o solo el de las dos salas
+      nuevas. No hay dato posterior.
+    fuentes: [src-1, src-2, src-3]
+  - campo: superficie_construida_m2
+    descripcion: >-
+      Constan 600 m² en las dos salas nuevas de 2024 y «más de mil metros cuadrados de las
+      instalaciones anteriores». El «más de» impide fijar un total, así que la superficie
+      construida del emplazamiento se deja vacía.
+    fuentes: [src-3]
   - campo: ubicacion
     descripcion: >-
       La dirección de la sede publicada por el operador coincide con la ficha de la
       instalación «NIXVAL Datacenter» en PeeringDB, de donde proceden las coordenadas.
     fuentes: [src-1, src-pdb]
 
-confianza: baja
-ultima_verificacion: "2026-08-29"
+confianza: media
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -60,3 +116,11 @@ fuentes:
     tipo: asociacion
     fecha_consulta: "2026-08-29"
     cita: "NIXVAL Datacenter | Calle Villa de Madrid, 44 | Paterna | 46988 | 39.519555 -0.46719 | NIXVAL (Falbox, S.L.)"
+  - id: src-3
+    url: "https://www.datacenterdynamics.com/es/features/nixval-presenta-la-ampliacion-de-su-data-center-en-valencia/"
+    titulo: "NIXVAL presenta la ampliación de su Data Center en Valencia"
+    editor: "DatacenterDynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2024-07-02"
+    fecha_consulta: "2026-08-31"
+    cita: "Activo desde hace más de 20 años, el Data Center ahora tiene 1 MW de capacidad con sus dos nuevas salas IT, que totalizan 600 metros cuadrados y se incorporan a los más de mil metros cuadrados de las instalaciones anteriores. [...] El Data Center ahora cuenta con respaldo de dos generadores de 1 MW y un depósito de 12 mil litros cada uno [...] las nuevas zonas cuentan con climatización por refrigeración por agua, lo que mejora la eficiencia, especialmente para altas cargas. Se trata de un circuito cerrado que no tiene ningún consumo de agua."

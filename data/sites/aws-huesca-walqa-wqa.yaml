@@ -42,6 +42,17 @@ potencia:
       Dato térmico (MWt) de grupos electrógenos de respaldo. No es carga TI ni potencia de
       conexión a red.
 
+energia:
+  - consumo_gwh_ano: 2270.6
+    referencia: "Recursos de energía previstos para la actividad del centro de datos «WQA» a plena capacidad"
+    fecha_dato: "2025-07-16"
+    fuentes: [src-5]
+    nota: >-
+      La cifra figura en la declaración ambiental estratégica del PIGA, dentro del escrito de
+      alegaciones de SEO/BirdLife que la resolución reproduce literalmente y que la atribuye
+      a la documentación del proyecto: no la formula INAGA por su cuenta. La misma relación
+      suma 10.848,2 GWh/año para los cinco emplazamientos de la ampliación.
+
 fases:
   - nombre: "Fase 1"
     estado: permisos_concedidos
@@ -80,6 +91,25 @@ inversion_anunciada_eur: null
 refrigeracion: >-
   Dos balsas de agua reciclada de proceso y de escorrentías superficiales para refrigeración
   en verano, con dos tanques de tormentas bajo ellas y planta fotovoltaica sobre su superficie.
+agua:
+  circuito: desconocido
+  sistema: >-
+    Dos balsas de agua reciclada de proceso y de escorrentías superficiales para la
+    refrigeración en verano, con dos tanques de tormentas debajo y planta fotovoltaica sobre
+    su superficie, más planta de tratamiento de agua en la parcela.
+  origen: >-
+    Agua bruta bombeada desde el embalse de Valdabra mediante una tubería de impulsión de
+    400 mm y 9 km hasta las balsas del CEEI, con ampliación de la ETAP existente, y tres
+    pozos de extracción de agua subterránea dentro del propio emplazamiento. El caudal
+    máximo de agua potable que recibe hoy el Parque Tecnológico Walqa, 7,31 l/s, se
+    considera insuficiente.
+  consumo_m3_ano: 143400
+  nota: >-
+    La estimación de 143.400 m³/año procede de la declaración ambiental estratégica del
+    PIGA. Los sondeos previstos dentro del emplazamiento se dimensionan para un caudal
+    estimado de 7-14 l/s. No consta WUE publicado.
+  fuentes: [src-3, src-4]
+
 enlaces_proyecto:
   - "https://www.aragon.es/-/piga-aws-ampliacion"
 
@@ -88,6 +118,25 @@ incertidumbres:
     descripcion: >-
       No consta carga TI ni potencia de acceso a red publicada. Solo hay potencia térmica
       de grupos electrógenos.
+    fuentes: [src-1]
+
+  - campo: agua
+    descripcion: >-
+      El consumo de 143.400 m³/año consta en el escrito de alegaciones de SEO/BirdLife que
+      la declaración ambiental estratégica reproduce, atribuido a la documentación del
+      proyecto. La resolución de impacto ambiental de la infraestructura hidráulica exterior
+      de WQA describe cuatro alternativas de suministro de agua industrial —conexión a la
+      tubería del Parque Tecnológico Walqa, nueva toma del Canal del Cinca, tres pozos
+      subterráneos y plataforma flotante en el embalse de Valdabra— sin que las fuentes
+      consultadas permitan fijar cuál es la definitiva.
+    fuentes: [src-3, src-4]
+  - campo: empleo
+    descripcion: >-
+      El cuadro de parámetros urbanísticos del Acuerdo de 4 de mayo de 2026 recoge los
+      trabajadores previstos en la Fase 1 de VDG1, VDG2 y WQA en una tabla de tres columnas
+      cuya correspondencia no se puede reconstruir de forma literal desde el texto
+      publicado. No se registra por ello un valor en «empleo»; la cifra que figura en la
+      nota de la fase procede de una lectura previa de esa tabla.
     fuentes: [src-1]
 
 confianza: alta
@@ -110,3 +159,27 @@ fuentes:
     fecha_publicacion: "2026-06-24"
     fecha_consulta: "2026-08-29"
     cita: "Tomo IV. Huesca. Tomo IV.5 Proyecto subestación WQA2HV 220/20 kV."
+  - id: src-3
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1406588900808"
+    titulo: "RESOLUCIÓN de 16 de julio de 2025, del Instituto Aragonés de Gestión Ambiental, por la que se formula la declaración ambiental estratégica del Plan de Interés General «Expansión Región AWS en Aragón» [...] (INAGA 500201/71H/2025/05122 y otros)"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2025-08-06"
+    fecha_consulta: "2026-08-31"
+    cita: "Respecto de las afecciones al recurso hídrico, el consumo de agua asociado a la actividad de los centros de datos se ha estimado en: VDG1: 56.980 m 3/ año; VDG2: 208.920 m 3/año; BDE: 111.880 m 3/año, WQA: 143.400 m 3/año y CAR: 204.700 m 3/año. Por lo tanto, las necesidades de agua para sistemas de refrigeración del conjunto de centros de datos ascenderían, aproximadamente, a 725.880 m 3/año"
+  - id: src-4
+    url: "https://gd.aragon.es/cgi-bin/INPU/BRSCGI?CMD=VEROBJ&MLKOB=1419282150202"
+    titulo: "RESOLUCIÓN de 6 de octubre de 2025, del Instituto Aragonés de Gestión Ambiental, por la que se formula la declaración de impacto ambiental del proyecto de infraestructura hidráulica exterior que dará servicio al centro de datos de Walqa (WQA), en el término municipal de Huesca (INAGA 500201/01A/2025/05159)"
+    editor: "Gobierno de Aragón / Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2025-11-06"
+    fecha_consulta: "2026-08-31"
+    cita: "Se estima que el caudal máximo de agua potable que recibe actualmente el PT Walqa, de 7,31 l/s, no es suficiente [...] Nuevos pozos de agua subterránea. Esta fuente de suministro industrial incluye la creación de tres pozos de extracción de agua subterránea dentro del emplazamiento donde se ubicarán los nuevos centros de datos WQA [...] Nueva tubería de impulsión de agua bruta de 400 mm de diámetro y 9 km de longitud desde el embalse de Valdabra hasta las balsas existentes del CEEI. - Ampliación de la ETAP existente"
+  - id: src-5
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1406588900808"
+    titulo: "RESOLUCIÓN de 16 de julio de 2025, del Instituto Aragonés de Gestión Ambiental, por la que se formula la declaración ambiental estratégica del Plan de Interés General «Expansión Región AWS en Aragón» — recursos de energía por centro de datos"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2025-08-06"
+    fecha_consulta: "2026-08-31"
+    cita: "Los recursos de energía para la actividad a desarrollar en los centros de datos ascienden a: VDG1: 756,9 GWh/año, VDG2: 2.775 GWh/año, BDE: 1.766 GWh/año, WQA: 2.270,6 GWh/año y CAR: 3.279,7 GWh/año. Las necesidades de electricidad del conjunto de centros de datos ascenderían a 10.848,2 GWh/año."

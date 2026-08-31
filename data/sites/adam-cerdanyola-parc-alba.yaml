@@ -20,10 +20,13 @@ ubicacion:
 
 estado: en_construccion
 estado_detalle: >-
-  Cuarto centro de datos del grupo Adam (tercero en Cataluña). Primera piedra
-  colocada en octubre de 2025. La compañía prevé entrada en servicio en 2027 con
-  una primera fase de cuatro salas.
-estado_fuentes: [src-1, src-2]
+  Cuarto centro de datos del grupo Adam (tercero en Cataluña). El acto de
+  colocación de la primera piedra se celebró el 11 de noviembre de 2025 con el
+  conseller d'Empresa i Treball y el alcalde de Cerdanyola. La compañía prevé
+  entrada en servicio en 2027 con una primera fase de cuatro salas. Adam Ecotech
+  pasó a manos de CVC DIF, que acordó comprar el 100 % del capital a Ogic
+  Informática el 31 de octubre de 2024.
+estado_fuentes: [src-1, src-2, src-3, src-5]
 
 potencia:
   - tipo: no_especificado
@@ -34,6 +37,17 @@ potencia:
     fecha_dato: "2025-10"
     fuentes: [src-2]
     nota: "La fuente habla de '8 MW de potencia instalada' con certificación Tier III."
+  - tipo: instalada_total
+    valor_mw: 8
+    ambito: edificio
+    referencia: "Potencia instalada del edificio según el Ayuntamiento de Cerdanyola"
+    estado_asociado: en_construccion
+    fecha_dato: "2025-11-12"
+    fuentes: [src-3]
+    nota: >-
+      La nota municipal dice «una potència instal·lada de 8 MW», lo que tipifica
+      la cifra que la prensa daba sin calificar. Es la misma magnitud que el
+      registro anterior, no una capacidad adicional.
   - tipo: no_especificado
     valor_mw: 4
     ambito: fase
@@ -51,7 +65,19 @@ fases:
 superficie_construida_m2: 7500
 refrigeracion: >-
   Paneles fotovoltaicos en cubierta, sistemas de refrigeración de alta eficiencia
-  y suministro eléctrico 100% renovable, según la compañía.
+  y suministro eléctrico 100% renovable, según la compañía. El director general
+  de Adam declaró en la primera piedra que la instalación funcionará «sense
+  consum d'aigua».
+
+agua:
+  circuito: sin_agua
+  sistema: "Mecanismos avanzados de refrigeración que, según la compañía, no emplean agua."
+  origen: null
+  nota: >-
+    Declaración del director general de Adam en el acto de la primera piedra,
+    recogida por el Ayuntamiento de Cerdanyola. No se publica sistema concreto ni
+    consumo de agua auxiliar.
+  fuentes: [src-3, src-4]
 
 incertidumbres:
   - campo: ubicacion
@@ -73,9 +99,23 @@ incertidumbres:
       prensa lo sitúan en el Parc de l'Alba. No se ha localizado dirección
       postal exacta ni coordenadas de fuente.
     fuentes: [src-1, src-2]
+  - campo: estado
+    descripcion: >-
+      La ficha databa la primera piedra en octubre de 2025 siguiendo a la prensa
+      especializada, que publicó el anuncio del proyecto el 3 y el 7 de octubre.
+      El Ayuntamiento de Cerdanyola y la propia Adam sitúan el acto el 11 de
+      noviembre de 2025. Se conservan ambas fechas.
+    fuentes: [src-2, src-3]
+  - campo: propietario
+    descripcion: >-
+      El campo `propietario` registra «Adam», anterior a la compra del 100 % de
+      Adam Ecotech por CVC DIF acordada el 31 de octubre de 2024. No se
+      sobrescribe: queda anotado para que una persona decida cómo nombrar al
+      titular.
+    fuentes: [src-5]
 
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -95,8 +135,10 @@ fuentes:
     tipo: prensa_especializada
     fecha_consulta: "2026-08-29"
     cita: >-
-      7.500 metros cuadrados ... 8 MW de potencia instalada ... Tier III, que
-      garantiza alta fiabilidad y redundancia
+      El proyecto contará con salas modulares de última generación y una potencia
+      instalada de 8 MW con certificación Tier III, que garantiza alta fiabilidad
+      y redundancia. La primera fase del complejo, prevista también para 2027,
+      incluirá cuatro salas con 4 MW de potencia.
   - id: src-alba
     url: "https://nominatim.openstreetmap.org/search?q=Parc+de+l%27Alba%2C+Cerdanyola+del+Vall%C3%A8s&format=json&limit=3"
     titulo: "Nominatim — geocodificación de Parc de l'Alba, Cerdanyola del Vallès"
@@ -106,3 +148,38 @@ fuentes:
     cita: >-
       Parc de l'Alba, Cerdanyola del Vallès, Vallès Occidental, Barcelona,
       Catalunya, España — lat 41.4856180, lon 2.1076426
+  - id: src-3
+    url: "https://www.cerdanyola.cat/actualitat/adam-inicia-la-construccio-del-seu-nou-centre-de-dades-al-parc-de-lalba"
+    titulo: "Adam inicia la construcció del seu nou Centre de Dades al Parc de l'Alba"
+    editor: "Ajuntament de Cerdanyola del Vallès"
+    tipo: oficial
+    fecha_publicacion: "2025-11-12"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El nou centre disposarà de 8 MW de potència instal·lada, classificació Tier
+      III i sistemes d'eficiència energètica i sostenibilitat amb plaques
+      fotovoltaiques ... disposarà d'una superfície de 7.500 m² i una potència
+      instal·lada de 8 MW ... «El nou centre tindrà un impacte ambiental mínim,
+      sense consum d'aigua»
+  - id: src-4
+    url: "https://www.cugat.cat/noticies/el-parc-de-lalba-acollira-un-nou-centre-de-dades-de-cara-al-2027/"
+    titulo: "Primera pedra a un macro centre de dades al Parc de l'Alba"
+    editor: "Cugat Mèdia"
+    tipo: prensa_general
+    fecha_publicacion: "2025-11-12"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      L'obertura d'un centre de dades de 7.500 m² i 8 megawatts elèctrics
+      instal·lats a tocar de Sant Cugat ... L'empresa preveu integrar energia
+      solar pròpia, mecanismes avançats de refrigeració que no fan ús d'aigua i
+      sistemes intel·ligents de control energètic
+  - id: src-5
+    url: "https://www.cvc.com/media/news/2024/2024-10-31-cvc-dif-to-acquire-leading-data-centre-operator-adam-ecotech/"
+    titulo: "CVC DIF to acquire leading data centre operator Adam Ecotech"
+    editor: "CVC"
+    tipo: empresa
+    fecha_publicacion: "2024-10-31"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      CVC DIF has agreed to acquire a 100% stake in Adam Ecotech, the data centre
+      operator, with operations in Madrid and Barcelona, from Ogic Informatica.

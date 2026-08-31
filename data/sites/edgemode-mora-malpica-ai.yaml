@@ -2,6 +2,8 @@ id: edgemode-mora-malpica-ai
 nombre: "Malpica AI 300MW — Mora (Toledo)"
 alias:
   - "Data Center Malpica AI 300MW"
+  - "DC Malpica AI"
+  - "DC MALPICA AI 300 MW"
 tipo: campus
 operador: "EdgeMode"
 propietario: null
@@ -11,79 +13,167 @@ ubicacion:
   municipio: "Mora"
   provincia: "Toledo"
   ccaa: "Castilla-La Mancha"
+  direccion: "Junto a la carretera TO-2836, que une Mora con Villasequilla"
   lat: 39.683223
   lon: -3.7727849
   precision: municipio
-  fuentes: [src-enclm, src-osm]
+  fuentes: [src-enclm, src-eldiario, src-osm]
 
 estado: anunciado
 estado_detalle: >-
-  Anunciado en junio de 2026 mediante un memorándum de entendimiento y
-  colaboración entre el consorcio promotor y el Ayuntamiento de Mora. En junio
-  de 2026 el Gobierno regional declaró apoyar el proyecto sin conocer aún el
-  expediente. No consta trámite ambiental ni urbanístico iniciado.
-estado_fuentes: [src-enclm, src-idealista]
+  Anunciado el 10 de junio de 2026 en un acto público en el Ayuntamiento de Mora y
+  formalizado el 16 de junio mediante un memorándum de entendimiento a 24 meses
+  entre EdgeMode y el consistorio. El 20 de julio de 2026 los promotores
+  presentaron el proyecto al Gobierno regional en una reunión de trabajo en
+  Guadalajara y anunciaron que ultimaban la documentación para solicitar la
+  declaración de Proyecto Prioritario de Castilla-La Mancha. Un día después de la
+  presentación de junio, la consejera de Desarrollo Sostenible declaró no haber
+  recibido aún solicitud de evaluación ambiental. A 31 de agosto de 2026 no consta
+  expediente ambiental, urbanístico ni de acceso a red iniciado. El 13 de julio de
+  2026 Spark AI Foundry Holdings presentó una oferta no vinculante para adquirir
+  el 100 % del proyecto cuando alcance el estado ready-to-build, previsto para
+  finales de 2026 o el primer trimestre de 2027.
+estado_fuentes: [src-enclm, src-idealista, src-eldiario, src-globenewswire, src-dcd]
 
 potencia:
   - tipo: no_especificado
     valor_mw: 300
     ambito: campus
-    referencia: "Potencia del proyecto según el nombre y la presentación"
+    referencia: "Capacidad combinada de los dos centros de datos del campus"
     estado_asociado: anunciado
-    fecha_dato: "2026-06"
-    fuentes: [src-idealista, src-enclm]
+    fecha_dato: "2026-07-20"
+    fuentes: [src-globenewswire, src-eldiario, src-idealista, src-enclm]
     nota: >-
-      Las fuentes hablan de "300 MW de potencia" sin distinguir carga TI de
-      potencia instalada. La generación se describe como 30 módulos de 10 MW
-      alimentados con gas natural, de forma autónoma de la red eléctrica.
+      La nota de la propia EdgeMode de julio de 2026 atribuye los 300 MW a los dos
+      centros de datos ("two state-of-the-art data centers, 150,000 square meters
+      each, with a combined capacity of 300 MW"), no a la planta de generación, lo
+      que acota la lectura respecto de las primeras informaciones. Sigue sin
+      distinguirse carga TI de potencia instalada. El sistema energético es
+      independiente de la red: 30 módulos de 10 MW de pila de combustible de óxido
+      sólido (SOFC) de Bloom Energy alimentados con gas natural, que suman también
+      300 MW de generación propia.
 
 fases: []
 
 conexion_electrica:
   subestacion: null
+  tension_kv: null
   titular_red: null
+  mw_solicitados: null
+  mw_concedidos: null
   nota: >-
     El proyecto se plantea sin conexión a la red eléctrica principal: "30 módulos
     de 10 Mw alimentados mediante gas natural, de forma autónoma de la Red
-    Eléctrica".
-  fuentes: [src-enclm]
+    Eléctrica". La tecnología es de pila de combustible de óxido sólido (SOFC) de
+    Bloom Energy, que transforma gas natural en electricidad; el promotor justifica
+    la autonomía en que "el sistema energético europeo no permite este tipo de
+    conexión". La elección de Mora se atribuye a la cercanía a Madrid y a la
+    proximidad de las líneas de gas subterráneas.
+  fuentes: [src-enclm, src-eldiario]
 
 superficie_parcela_m2: 1000000
 inversion_anunciada_eur: 3000000000
-refrigeracion: "Según los promotores, no precisa de una fuente de agua."
+refrigeracion: >-
+  Los promotores afirman que la tecnología SOFC no precisa agua ni productos
+  químicos en operación continua, aunque sí en el arranque y en el mantenimiento.
+
+agua:
+  circuito: desconocido
+  sistema: >-
+    Generación mediante pilas de combustible de óxido sólido (SOFC) de Bloom
+    Energy, que según el promotor funcionan a temperatura muy alta y no requieren
+    agua ni químicos como aceites o amoniacos una vez en régimen.
+  origen: null
+  consumo_m3_ano: null
+  consumo_m3_dia: null
+  wue_l_kwh: null
+  nota: >-
+    No hay ninguna cifra publicada. El titular del anuncio fue "no necesitaremos
+    agua", pero el director para Europa de Bloom Energy matizó ante los medios que
+    sí se usa: "Utiliza más agua hasta que la maquinaria empieza a funcionar, pero
+    una vez que la reacción química está a una temperatura alta podemos pararlo
+    [...] solo necesitamos agua para empezar o cuando llevamos a cabo el
+    mantenimiento". La nota corporativa de julio de 2026 rebaja la afirmación a
+    minimizar "prácticamente por completo" el consumo de agua. El circuito se deja
+    como desconocido porque ninguna fuente describe el sistema de refrigeración de
+    las salas, solo el de la planta de generación.
+  fuentes: [src-eldiario, src-globenewswire]
+
+empleo:
+  - tipo: construccion
+    valor: 5000
+    referencia: "Fase de construcción, según los promotores"
+    fecha_dato: "2026-07-20"
+    fuentes: [src-globenewswire]
+    nota: >-
+      "Up to 5,000 jobs during the construction phase". El alcalde de Mora dio en
+      junio una cifra distinta y desglosada de otro modo: 3.000 empleos directos y
+      hasta 2.500 indirectos durante la construcción.
+  - tipo: total
+    valor: 1000
+    referencia: "Empleos directos e indirectos una vez en funcionamiento"
+    fecha_dato: "2026-07-20"
+    fuentes: [src-globenewswire, src-enclm]
+    nota: >-
+      "Approximately 1,000 direct and indirect jobs once the facilities become
+      operational". Otras fuentes del mismo anuncio hablan de "hasta 900 empleos
+      permanentes" y de "entre 500 y 900 empleos".
 
 incertidumbres:
   - campo: potencia
     descripcion: >-
-      No puede determinarse si los 300 MW son capacidad del centro de datos o de su planta de
-      generación. Idealista los presenta como «potencia del proyecto»; En Castilla-La Mancha
-      describe «30 módulos de 10 MW alimentados mediante gas natural, de forma autónoma de la
-      Red Eléctrica», que son 300 MW de generación aislada. Ambas lecturas son compatibles con
-      la misma cifra y ninguna fuente las separa, así que la potencia queda sin tipificar y no
-      se compara con la de ningún otro emplazamiento.
-    fuentes: [src-idealista, src-enclm]
+      Los 300 MW siguen sin tipificar. La nota corporativa de julio de 2026 los
+      atribuye a la capacidad combinada de los dos centros de datos, mientras que
+      la descripción del sistema energético —30 módulos de 10 MW— arroja
+      exactamente la misma cifra para la generación aislada. Que ambas magnitudes
+      coincidan puede ser un diseño en el que la generación se dimensiona a la
+      carga, o puede ser que una sola cifra se esté reutilizando para dos cosas
+      distintas. Ninguna fuente las separa, así que la potencia no se compara con
+      la de ningún otro emplazamiento.
+    fuentes: [src-idealista, src-enclm, src-globenewswire, src-eldiario]
   - campo: estado
     descripcion: >-
-      El único acto documentado es un memorándum de entendimiento con el
-      Ayuntamiento y la financiación está "en marcha". No hay expediente
-      ambiental, urbanístico ni de acceso a red conocido, y la Junta declaró en
-      junio de 2026 no conocer el proyecto.
-    fuentes: [src-enclm, src-idealista]
+      Los actos documentados son un memorándum de entendimiento con el
+      Ayuntamiento, una reunión de presentación ante el Gobierno regional y una
+      oferta no vinculante de compra. No hay expediente ambiental, urbanístico ni
+      de acceso a red conocido: la consejera de Desarrollo Sostenible confirmó en
+      junio de 2026 no haber recibido la solicitud de evaluación ambiental, pese a
+      que el alcalde afirmó ese mismo día que los promotores ya la habían pedido.
+      La declaración de Proyecto Prioritario estaba solo en preparación en julio de
+      2026.
+    fuentes: [src-enclm, src-idealista, src-eldiario, src-globenewswire, src-dcd]
   - campo: superficie_parcela_m2
     descripcion: >-
       La fuente dice "cerca a las 100 hectáreas"; se registra 1.000.000 m2 como
-      cifra aproximada declarada, no medida.
-    fuentes: [src-idealista]
-  - campo: potencia
+      cifra aproximada declarada, no medida. Dentro de ese ámbito se prevén dos
+      edificios de 150.000 metros cuadrados cada uno; no se registra superficie
+      construida porque sumarlos sería aritmética propia y ninguna fuente da el
+      total.
+    fuentes: [src-idealista, src-eldiario]
+  - campo: empleo
     descripcion: >-
-      El empleo previsto se cita de forma incoherente entre fuentes: "hasta 900
-      empleos permanentes", "entre 500 y 900 empleos permanentes" y "cerca de
-      1.000 puestos". Esto rebaja la fiabilidad general de las cifras del
+      El empleo previsto se cita de forma incoherente entre fuentes y entre
+      portavoces del mismo acto: "hasta 900 empleos permanentes", "entre 500 y 900
+      empleos permanentes", "cerca de 1.000 puestos", "más de 1.000 personas" de
+      empleo sobre todo indirecto, "hasta 5.000 empleos durante la construcción" y
+      "3.000 puestos de trabajo en empleo directo y hasta 2.500 en empleo
+      indirecto" durante la obra. Se registran solo las cifras de la nota
+      corporativa. Esta incoherencia rebaja la fiabilidad general de las cifras del
       anuncio, incluidos los 300 MW.
-    fuentes: [src-idealista, src-enclm]
+    fuentes: [src-idealista, src-enclm, src-eldiario, src-globenewswire]
+  - campo: operador
+    descripcion: >-
+      El promotor se describe de forma distinta según la fuente: elDiario.es habla
+      de un consorcio de EdgeMode y Bloom Energy, mientras que la nota corporativa
+      y DCD lo atribuyen a EdgeMode y BlackBerry AIF, con Bloom Energy como
+      suministrador de la tecnología de generación. El 28 de julio de 2026 EdgeMode
+      y BlackBerry AIF anunciaron su intención de fusionarse para crear BLACK AI.
+      Si prospera la oferta de Spark AI Foundry Holdings, el titular volvería a
+      cambiar.
+    fuentes: [src-eldiario, src-globenewswire, src-dcd]
 
 confianza: baja
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-idealista
@@ -104,6 +194,64 @@ fuentes:
     cita: >-
       30 módulos de 10 Mw alimentados mediante gas natural, de forma autónoma de
       la Red Eléctrica.
+  - id: src-globenewswire
+    url: "https://www.globenewswire.com/news-release/2026/07/20/3329770/0/en/EdgeMode-Mora-Town-Council-and-other-developers-of-the-DC-MALPICA-AI-300-MW-project-present-a-strategic-investment-of-3-billion-euros-to-the-Castilla-La-Mancha-Regional-Government.html"
+    titulo: "EdgeMode, Mora Town Council and other developers of the DC MALPICA AI 300 MW project present a strategic investment of 3 billion euros to the Castilla-La Mancha Regional Government"
+    editor: "EdgeMode Inc. (GlobeNewswire)"
+    tipo: empresa
+    fecha_publicacion: "2026-07-20"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      The project, developed by EdgeMode and BlackBerry AIF, contemplates an
+      estimated investment of 3 billion euros for the construction of a
+      technological campus formed by two state-of-the-art data centers, 150,000
+      square meters each, with a combined capacity of 300 MW, designed to house
+      high-performance computing infrastructure for artificial intelligence
+      applications. [...] the developers are finalizing the necessary documentation
+      to request the declaration of Priority Project of Castilla-La Mancha [...]
+      The complex has been designed to generate its own energy, significantly
+      reducing its dependence on the conventional electrical grid, while
+      incorporating next-generation technologies that practically completely
+      minimize water consumption for its operation [...] Initial forecasts from the
+      project developers point to the creation of up to 5,000 jobs during the
+      construction phase and approximately 1,000 direct and indirect jobs once the
+      facilities become operational.
+  - id: src-eldiario
+    url: "https://www.eldiario.es/castilla-la-mancha/provincias/toledo/localidad-toledana-mora-anuncia-gigantesco-centro-datos-100-hectareas-no-necesitaremos-agua_1_13290755.html"
+    titulo: "La localidad toledana de Mora anuncia un gigantesco centro de datos en 100 hectáreas: «No necesitaremos agua»"
+    editor: "elDiario.es Castilla-La Mancha"
+    tipo: prensa_general
+    fecha_publicacion: "2026-06-10"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      las instalaciones se situarían junto a la carretera TO-2836 que une Mora con
+      Villasequilla y que conecta con Toledo o con Aranjuez. Habría dos edificios,
+      cada uno con una superficie de 150.000 metros cuadrados, en un total de 100
+      hectáreas [...] el complejo tendrá una potencia de 300Mw [...] "No
+      necesitamos agua, ni químicos como aceites o amoniacos, por lo que es una
+      solución muy sostenible" [...] "Utiliza más agua hasta que la maquinaria
+      empieza a funcionar, pero una vez que la reacción química está a una
+      temperatura alta podemos pararlo, el agua del ambiente es suficiente para que
+      el gas funcione" [...] "solo necesitamos agua para empezar o cuando llevamos
+      a cabo el mantenimiento" [...] el sistema energético de la planta se
+      realizará instalando 30 módulos de 10 Mw alimentados gracias al gas natural
+      [...] La consejera de Desarrollo Sostenible Mercedes Gómez [...] confirmaba
+      no haber recibido, de momento, solicitud para su evaluación ambiental.
+  - id: src-dcd
+    url: "https://www.datacenterdynamics.com/es/noticias/el-campus-dc-malpica-ai-avanza-en-castilla-la-mancha-con-una-inversi%C3%B3n-de-3000-millones/"
+    titulo: "El campus DC Malpica AI avanza en Castilla-La Mancha con una inversión de 3.000 millones"
+    editor: "DatacenterDynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-07-21"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El proyecto DC Malpica AI, promovido por EdgeMode y BlackBerry AIF en el
+      municipio de Mora (Toledo), da un nuevo paso en su desarrollo administrativo
+      tras haber sido presentado oficialmente al Gobierno de Castilla-La Mancha
+      [...] ultiman la documentación necesaria para solicitar la declaración de
+      Proyecto Prioritario de Castilla-La Mancha [...] pocos días después de que
+      Spark AI Foundry Holdings anunciara una oferta no vinculante para adquirir el
+      proyecto una vez alcance el estado ready-to-build.
   - id: src-osm
     url: "https://nominatim.openstreetmap.org/search?q=Mora%2C+Toledo&format=json&limit=1"
     titulo: "Nominatim — Mora, Toledo"

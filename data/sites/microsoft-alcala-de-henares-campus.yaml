@@ -11,44 +11,126 @@ ubicacion:
   municipio: "Alcalá de Henares"
   provincia: "Madrid"
   ccaa: "Comunidad de Madrid"
-  direccion: "Sector 26, Polígono Industrial Las Matillas, Avenida de Madrid nº 15, Alcalá de Henares"
+  direccion: "Avenida de Madrid 15, Sector 26, Polígono Industrial Las Matillas, Alcalá de Henares"
   lat: null
   lon: null
   precision: aproximada
-  fuentes: [src-1]
+  fuentes: [src-1, src-5, src-6]
 
 estado: en_tramitacion
 estado_detalle: >-
   La Junta de Gobierno Local del Ayuntamiento de Alcalá de Henares aprobó inicialmente el 5 de
   septiembre de 2025 el Plan Especial de Ordenación del solar del Sector 26 (Polígono Industrial
   Las Matillas), promovido por Microsoft 7724 Spain, S.L.U. Tras la información pública procede
-  la aprobación definitiva antes de iniciar los trámites de ejecución.
-estado_fuentes: [src-1]
+  la aprobación definitiva antes de iniciar los trámites de ejecución. El Plan Especial está
+  además en evaluación ambiental estratégica en la Comunidad de Madrid con la referencia
+  SIA 25/139, en fase de consulta a las administraciones afectadas desde octubre de 2025. A 30
+  de abril de 2026 la prensa regional situaba el expediente todavía en tramitación
+  administrativa, sin aprobación definitiva. El cambio de planeamiento era necesario porque la
+  parcela seguía sujeta a una ordenación industrial de finales de los años ochenta que no
+  permitía este uso.
+estado_fuentes: [src-1, src-3, src-4]
 
-potencia: []
+potencia:
+  - tipo: it
+    valor_mw: 57.6
+    ambito: campus
+    referencia: "Potencia nominal necesaria para los equipos de TI del futuro centro de datos"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2025-04-30"
+    fuentes: [src-5]
+    nota: >-
+      El análisis ambiental del Plan Especial dice «la potencia nominal será de 57.6 MW,
+      necesaria para el funcionamiento de los equipos de IT». Es la primera cifra oficial de
+      carga TI del proyecto. El documento escribe el decimal con punto, a la inglesa.
+  - tipo: instalada_total
+    valor_mw: 86.25
+    ambito: campus
+    referencia: "Consumo total de energía del centro de datos declarado en el análisis ambiental"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2025-04-30"
+    fuentes: [src-5]
+    nota: >-
+      «Por tanto, el consumo total de energía del Centro de Datos es de 86.25 MW». La cifra la
+      obtiene el propio promotor aplicando un PUE de diseño de 1,5 a los 57,6 MW de carga TI: no
+      es una medida independiente, y aquí no se usa para deducir nada en sentido contrario.
 
-superficie_parcela_m2: null
+conexion_electrica:
+  subestacion: "Nuevo Meco 220 kV"
+  tension_kv: 220
+  titular_red: "Red Eléctrica de España"
+  mw_solicitados: null
+  mw_concedidos: null
+  nota: >-
+    El suministro se hará con nuevas líneas de alta tensión, subterráneas en todo su trazado, que
+    conectarán el centro con la subestación Nuevo Meco 220 kV de Red Eléctrica de España, en el
+    término municipal de Meco. El promotor subraya que la energía no se tomará de las redes
+    locales de Alcalá de Henares. Como el trazado afecta a más de un municipio, requerirá un Plan
+    Especial de Infraestructuras propio, que no consta tramitado. No se publican MW solicitados
+    ni concedidos en el punto de conexión.
+  fuentes: [src-5, src-6]
+
+superficie_parcela_m2: 98693.19
+refrigeracion: >-
+  El proyecto sustituye el enfriamiento adiabático por una solución combinada de free cooling y
+  enfriamiento por compresión, que elimina el agua de proceso; el agua se recicla en circuito
+  cerrado y solo se consume para humectación de los sistemas de climatización en invierno. PUE
+  de diseño de 1,5.
+
+agua:
+  circuito: cerrado
+  sistema: >-
+    Free cooling combinado con enfriamiento por compresión, en sustitución del enfriamiento
+    adiabático, con el agua reciclada en circuito cerrado. El único consumo asociado a la
+    refrigeración es la humectación de los sistemas de climatización durante los meses de
+    invierno. Se recuperan las aguas pluviales de las cubiertas de oficinas en un tanque de
+    50 m³ para inodoros y limpieza.
+  origen: "1.364 m³/año de la red municipal y 573 m³/año de agua de lluvia recuperada"
+  consumo_m3_ano: 1937
+  wue_l_kwh: null
+  nota: >-
+    Del agua de red, 1.310 m³/año son para lavabos y picas y 54 m³/año para humidificación. A la
+    protección contra incendios se le suma el llenado inicial del depósito y un posible llenado
+    de 680 m³ en caso de mantenimiento, que el promotor no incluye en el consumo anual. La cifra
+    corresponde al diseño en desarrollo y el propio documento advierte de que «deberá precisarse
+    conforme se avance con el diseño».
+  fuentes: [src-5, src-6]
+
+empleo:
+  - tipo: directo
+    valor: 125
+    referencia: "Personas previstas trabajando en el centro de datos, según el cálculo de consumo de agua"
+    fecha_dato: "2025-04-30"
+    fuentes: [src-6]
+    nota: >-
+      La cifra no aparece como estimación de empleo, sino como base del cálculo del consumo de
+      agua por persona: «Si calculamos estas estimaciones sobre las 125 personas que se prevé
+      trabajen en el data center». No hay estimación publicada de empleo de construcción.
 
 incertidumbres:
   - campo: potencia
     descripcion: >-
-      No consta ninguna cifra oficial de potencia. Un reportaje de prensa generalista de 2026
-      atribuye al campus una horquilla estimada de 30-50 MW, pero se trata de una estimación
-      periodística y no se registra como dato.
-    fuentes: [src-2]
-  - campo: superficie_parcela_m2
+      Un reportaje de prensa generalista de 2026 atribuía al campus una horquilla estimada de
+      30-50 MW. El análisis ambiental del Plan Especial, de abril de 2025, da 57,6 MW de carga TI
+      y 86,25 MW de consumo total, por encima de esa horquilla. Se conserva la cifra oficial y se
+      deja constancia de la estimación periodística, que no se registra como dato.
+    fuentes: [src-2, src-5]
+  - campo: potencia
     descripcion: >-
-      El mismo reportaje cita una parcela de 98.700 m² y un consumo anual de agua estimado de
-      hasta 1.937 m³/año en el diseño en desarrollo; el anuncio municipal no aporta superficies.
-    fuentes: [src-1, src-2]
+      Las cifras son las del diseño presentado con el Plan Especial, todavía sin aprobación
+      definitiva, y no hay proyecto de ejecución ni licencia que las confirme. El propio
+      documento remite la evaluación de los efectos energéticos a la evaluación ambiental del
+      proyecto, aún por hacer.
+    fuentes: [src-5]
   - campo: estado
     descripcion: >-
       A fecha de verificación no se ha localizado publicación de la aprobación definitiva del
-      Plan Especial ni licencia de obra.
-    fuentes: [src-1]
+      Plan Especial ni licencia de obra. El expediente de evaluación ambiental estratégica
+      SIA 25/139 seguía en consulta a las administraciones afectadas.
+    fuentes: [src-1, src-3, src-4]
 
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -67,3 +149,35 @@ fuentes:
     fecha_publicacion: "2026-08-03"
     fecha_consulta: "2026-08-29"
     cita: "con el diseño actualmente en desarrollo se estima un consumo de agua anual de hasta 1.937 metros cúbicos al año"
+  - id: src-3
+    url: "https://www.comunidad.madrid/transparencia/sia-25139-plan-especial-sector-26-poligono-industrial-matillas-alcala-henares"
+    titulo: "SIA 25/139 Plan Especial Sector 26, Polígono Industrial Las Matillas en Alcalá de Henares"
+    editor: "Comunidad de Madrid — Portal de Transparencia"
+    tipo: oficial
+    fecha_publicacion: "2025-10-14"
+    fecha_consulta: "2026-08-31"
+    cita: "Documento en fase de consulta a los efectos de la Ley 21/2013 de 9 de diciembre, de evaluación ambiental, en el procedimiento de evaluación ambiental estratégica del Plan Especial del solar situado en el Sector 26, Polígono Industrial Las Matillas, Avenida de Madrid nº 15 en el término municipal de Alcalá de Henares (SIA 25/139) ... Responsable: Dirección General de Transición Energética y Economía Circular - Municipio: Alcalá de Henares"
+  - id: src-4
+    url: "https://madridinforma.eldiario.es/microsoft-avanza-en-su-gran-campus-de-centros-de-datos-en-alcala-de-henares-donde-estara-y-que-falta-para-que-salga-adelante/"
+    titulo: "Microsoft avanza en su gran campus de centros de datos en Alcalá de Henares: dónde estará y qué falta para que salga adelante"
+    editor: "Madrid Informa (elDiario.es)"
+    tipo: prensa_general
+    fecha_publicacion: "2026-04-30"
+    fecha_consulta: "2026-08-31"
+    cita: "La ubicación elegida es el Sector 26 del polígono industrial Las Matillas, en la avenida de Madrid, 15 ... la aprobación inicial del plan especial se produjo el 5 de septiembre de 2025 por la Junta de Gobierno Local de Alcalá de Henares ... El principal obstáculo era normativo. La parcela seguía condicionada por un modelo industrial diseñado a finales de los años 80 ... De momento, el campus de Alcalá sigue en fase administrativa"
+  - id: src-5
+    url: "https://www.comunidad.madrid/transparencia/sites/default/files/regulation/documents/03_documento_ambiental.pdf"
+    titulo: "Análisis Ambiental del Plan Especial del solar situado en el Sector 26, Polígono Industrial Las Matillas, Avenida de Madrid nº 15, Alcalá de Henares (SIA 25/139)"
+    editor: "Microsoft 7724 Spain, S. L. U., publicado por la Comunidad de Madrid en el expediente SIA 25/139"
+    tipo: oficial
+    fecha_publicacion: "2025-04-30"
+    fecha_consulta: "2026-08-31"
+    cita: "Microsoft 7724 Spain S.L.U. planea desarrollar un Campus de Centros de Datos en una parcela de 98.693,19 m² en el polígono “Las Matillas”, en Alcalá de Henares (Madrid) ... Se prevé que el suministro de energía eléctrica necesaria para el funcionamiento del Centro de Datos que forma parte del Plan Especial se realizará mediante nuevas líneas eléctricas de suministro que conectarán dicho Centro de Datos con la subestación Nuevo Meco 220 kV perteneciente a Red Eléctrica de España, localizada en el término municipal de Meco, Comunidad de Madrid ... Dado que el trazado de estas líneas afecta a más de un término municipal, su desarrollo estará sujeto a un Plan Especial de Infraestructuras específico. En cuanto al consumo eléctrico del futuro Centro de Datos, la potencia nominal será de 57.6 MW, necesaria para el funcionamiento de los equipos de IT. La eficiencia energética del Centro de Datos, medida a través del Power Usage Effectiveness (PUE, por sus siglas en inglés) será de 1.5 ... Por tanto, el consumo total de energía del Centro de Datos es de 86.25 MW ... Con el diseño actualmente en desarrollo se estima un consumo de agua anual de hasta 1.937 m3/año, procedente un 70,4% de la red de abastecimiento y un 29.6% de la reutilización del agua de lluvia ... TABLA 4 ESTIMACIÓN DEL CONSUMO DE AGUA DE RED EN EL FUTURO CENTRO DE DATOS Uso Consumo (m3/año) Usos sanitarios 1.310 Sistema de refrigeración (humidificación) 54 TOTAL 1.364 ... TABLA 5 ESTIMACIÓN DEL USO DE AGUA DE LLUVIA EN EL FUTURO CENTRO DE DATOS Uso Consumo (m3/año) Usos sanitarios 547 Riego de zona verde ajardinada 0 Limpieza 26 TOTAL 573 ... la tecnología de refrigeración avanzada que se utilizará recicla el agua en un circuito cerrado, consumiendo una cantidad mínima de agua (asociada a la humectación)"
+  - id: src-6
+    url: "https://www.comunidad.madrid/transparencia/sites/default/files/regulation/documents/01_plan_especial_memoria.pdf"
+    titulo: "Memoria del Plan Especial de Ordenación del solar situado en Avenida de Madrid, 15, Polígono “Las Matillas”, Alcalá de Henares"
+    editor: "Microsoft 7724 Spain, S. L. U., publicado por la Comunidad de Madrid en el expediente SIA 25/139"
+    tipo: oficial
+    fecha_publicacion: "2025"
+    fecha_consulta: "2026-08-31"
+    cita: "Campus de Centros de Datos sobre un área de unos 98.693,19m2 ... el proyecto planteado propone reemplazar el sistema de enfriamiento adiabático por una solución combinada de free-cooling y enfriamiento por compresión, eliminando por completo el uso de agua de proceso ... El sistema incorporará la recuperación de aguas pluviales mediante la canalización de las cubiertas de las oficinas hacia un tanque de almacenamiento de 50 m³ ... El consumo anual de agua se prevé de hasta 1.937 m3 anuales desglosados en: • 573 m³/año para inodoros y limpieza y procedentes de la recuperación de agua de lluvia • 1.364 m³/año de agua de red para agua de boca (54 m3/año para humidificación y 1.310 m3/año lavabos y picas). Si calculamos estas estimaciones sobre las 125 personas que se prevé trabajen en el data center, el consumo medio diario estará por debajo de los 30 litros/día/persona. Adicionalmente, para la protección contra incendios del edificio, será necesario prever el llenado inicial del depósito, así como un posible llenado de 680 m³ en caso de mantenimiento o reparación del sistema ... nuevas líneas de alta tensión que lo conectarán con la subestación Nuevo Meco 220 kV, perteneciente a Red Eléctrica de España y ubicada en el municipio de Meco ... Edificabilidad 1,125 m2/m2"

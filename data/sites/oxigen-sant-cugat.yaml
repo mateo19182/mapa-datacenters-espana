@@ -1,39 +1,91 @@
 id: oxigen-sant-cugat
 nombre: "Oxigen Data Center — Sant Cugat del Vallès"
+alias:
+  - "Oxigen DC Sant Cugat del Vallès"
 tipo: edificio
 operador: "Oxigen Data Center"
+propietario: "Oxigen Data Center (Benjamín Rovira y la familia Salicrú)"
 modelo: colocation
 
 ubicacion:
   municipio: "Sant Cugat del Vallès"
   provincia: "Barcelona"
   ccaa: "Cataluña"
-  precision: municipio
-  fuentes: [src-1]
+  direccion: "Avinguda de la Generalitat 163-167, Sant Cugat del Vallès"
+  lat: 41.4926186
+  lon: 2.0552643
+  precision: exacta
+  fuentes: [src-2, src-3, src-6]
 
 estado: operativo
 estado_detalle: >-
-  Operador catalán de centros de datos citado por Ara en abril de 2026 al hilo
-  del mapa de polos de la Generalitat, con edificio en Sant Cugat del Vallès. No
-  se han localizado la dirección, la potencia ni la superficie.
-estado_fuentes: [src-1]
+  Centro de datos de capital catalán levantado sobre el antiguo CPD que
+  CaixaBank tenía en Sant Cugat y que llevaba tiempo en desuso. Entró en
+  funcionamiento en 2023 tras dos años de obras y celebró su inauguración
+  oficial el 5 de abril de 2024. La parcela cuenta con dos subestaciones
+  eléctricas propias, según el fundador de la compañía.
+estado_fuentes: [src-1, src-3, src-4, src-5]
+fecha_puesta_en_servicio: "2023"
 
-potencia: []
+potencia:
+  - tipo: no_especificado
+    valor_mw: 6
+    ambito: edificio
+    referencia: "Potencia total del centro según la propia compañía"
+    estado_asociado: operativo
+    fuentes: [src-2]
+    nota: >-
+      La web publica "6MW de potencia total" y una densidad máxima de 20 kW por
+      rack sobre 700 racks. No precisa si es carga TI o potencia instalada.
+
+conexion_electrica:
+  nota: >-
+    El fundador de la compañía afirma que la parcela heredada de CaixaBank
+    dispone de dos subestaciones eléctricas propias. No consta su titular, su
+    tensión ni la potencia de acceso contratada.
+  fuentes: [src-3]
+
+superficie_construida_m2: 6000
+inversion_anunciada_eur: 15000000
+refrigeracion: >-
+  La compañía declara eficiencia energética, placas solares propias y suministro
+  procedente de renovables. No publica el sistema de refrigeración ni consumos
+  de agua.
 
 incertidumbres:
+  - campo: superficie_construida_m2
+    descripcion: >-
+      La web de Oxigen habla de "6000 m² de espacio" y de "hasta 3.000 m² de
+      operación de salas blancas". VIA Empresa describe 2.500 m² de salas
+      blancas más de 5.000 m² de oficinas y salas técnicas, y Data Center
+      Dynamics da 6.000 m² totales con 2.500 m² de sala blanca. Se registra el
+      total de 6.000 m² y se conservan las lecturas parciales.
+    fuentes: [src-2, src-3, src-5]
+  - campo: potencia
+    descripcion: >-
+      Los 6 MW son la cifra que la compañía publica para este centro. Data
+      Center Dynamics informó en febrero de 2026 de que Oxigen «duplicaba su
+      capacidad operativa hasta 20 MW» al poner en producción un centro de 10 MW
+      en Sant Fruitós de Bages comprado a Banc Sabadell; ese agregado incluye
+      otras instalaciones del grupo y no se reparte aquí por emplazamiento.
+    fuentes: [src-2, src-5]
+  - campo: propietario
+    descripcion: >-
+      VIA Empresa describe el edificio como el antiguo centro de datos de
+      CaixaBank y Data Center Dynamics lo confirma («previously operated by
+      CaixaBank»). No se ha localizado documento registral sobre la titularidad
+      actual del inmueble.
+    fuentes: [src-3, src-5]
   - campo: ubicacion
     descripcion: >-
-      La única referencia localizada es el pie de foto de una pieza enlazada de
-      Ara ("El edificio donde se encuentra Oxigen Data Center en Sant Cugat del
-      Vallès"). No hay dirección postal ni coordenadas. La instalación no figura
-      en PeeringDB ni en los directorios consultados.
-    fuentes: [src-1]
-  - campo: potencia
-    descripcion: "Sin ningún dato de potencia, superficie ni fecha."
-    fuentes: [src-1]
+      La dirección procede de directorios sectoriales (la guía de Data Center
+      Market y datacenterHawk), no de la propia compañía, que no la publica en su
+      web. Nominatim resuelve el número 163-167 de la Avinguda de la Generalitat
+      con código postal 08172, mientras que los directorios indican 08174.
+    fuentes: [src-4, src-6, src-7]
 
-confianza: baja
-ultima_verificacion: "2026-08-29"
+confianza: media
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -44,3 +96,65 @@ fuentes:
     fecha_publicacion: "2026-04-14"
     fecha_consulta: "2026-08-29"
     cita: "El edificio donde se encuentra Oxigen Data Center en Sant Cugat del Vallès"
+  - id: src-2
+    url: "https://oxigendc.com/"
+    titulo: "Oxigen DC | Data Center Barcelona"
+    editor: "Oxigen Data Center"
+    tipo: empresa
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      6000m2 de espacio y 6MW de potencia total ... 6000 m2 de espacio 700 racks
+      con múltiples opciones 20KW potencia máxima / rack 6MW de potencia total
+      ... Data Center de hasta 3.000m2 de operación de salas blancas
+  - id: src-3
+    url: "https://www.viaempresa.cat/empresa/oxigen-centre-dades-catala-empreses_2207109_102.html"
+    titulo: "Oxigen, el centre de dades català que dona aire a les empreses"
+    editor: "VIA Empresa"
+    tipo: prensa_general
+    fecha_publicacion: "2024-12-16"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      van trobar l'antic centre de dades de CaixaBank a Sant Cugat, que feia
+      temps que estava en desús: «Aquesta parcel·la ja comptava amb dues
+      subestacions elèctriques, cosa que no passa en cap altre centre de dades de
+      Catalunya» ... Amb una inversió inicial de quinze milions d'euros i dos
+      anys d'obres ... 2.500 metres quadrats de sales blanques a sota terra
+  - id: src-4
+    url: "https://guia.datacentermarket.es/gratuita/oxigen-data-center/"
+    titulo: "Oxigen Data Center — Guía CPDs"
+    editor: "Data Center Market"
+    tipo: prensa_especializada
+    fecha_publicacion: "2024-07-01"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Dirección: Avenida Generalitat 163-167 Localidad: 08174 – San Cugat del
+      Vallés (Barcelona)
+  - id: src-5
+    url: "https://www.datacenterdynamics.com/en/news/spains-oxigen-dc-acquires-banco-sabadell-data-center-outside-barcelona/"
+    titulo: "Spain's Oxigen DC acquires Banco Sabadell data center outside Barcelona"
+    editor: "Data Center Dynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-02-18"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Its existing Tier III facility, outside Barcelona in Sant Cugat del Vallès,
+      was previously operated by CaixaBank. Relaunched in 2023, the site totals
+      6,000 sqm (64,580 sq ft), including 2,500 sqm (26,910 sq ft) of white
+      space.
+  - id: src-6
+    url: "https://nominatim.openstreetmap.org/search?q=Avinguda+de+la+Generalitat+163%2C+Sant+Cugat+del+Vall%C3%A8s&format=json&limit=3"
+    titulo: "Nominatim — geocodificación de Avinguda de la Generalitat 163-167, Sant Cugat del Vallès"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      163-167, Avinguda de la Generalitat, Volpelleres, Sant Cugat del Vallès,
+      Vallès Occidental, Barcelona, Catalunya, 08172, España — lat 41.4926186,
+      lon 2.0552643
+  - id: src-7
+    url: "https://datacenterhawk.com/marketplace/providers/oxigen"
+    titulo: "Oxigen: company profile and data center locations"
+    editor: "datacenterHawk"
+    tipo: consultora
+    fecha_consulta: "2026-08-31"
+    cita: "Avda. Generalitat 163-167, Sant Cugat del Vallés, Spain"

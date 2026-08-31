@@ -1,7 +1,8 @@
 id: mediterra-montmelo
-nombre: "Mediterra DataCenters — Montmeló"
+nombre: "Mediterra DataCenters BCN01 — Montmeló"
 alias:
   - "Mediterra Barcelona"
+  - "Mediterra BCN01"
 tipo: edificio
 operador: "Mediterra DataCenters"
 propietario: "Mediterra DataCenters (respaldada por DWS Infrastructure)"
@@ -12,34 +13,92 @@ ubicacion:
   provincia: "Barcelona"
   ccaa: "Cataluña"
   precision: municipio
-  fuentes: [src-1]
+  fuentes: [src-1, src-3]
 
 estado: en_construccion
 estado_detalle: >-
   Instalación de 9.700 m² con diseño modular orientado a cargas de IA y HPC de
-  alta densidad. Baxtel indica puesta en servicio en el segundo semestre de 2027.
-estado_fuentes: [src-1]
+  alta densidad. La compañía italiana anunció la compra de los terrenos el 17 de
+  febrero de 2026 y declaró tener ya las aprobaciones necesarias. Baxtel y la
+  propia compañía sitúan la puesta en servicio en el segundo semestre de 2027.
+estado_fuentes: [src-1, src-2, src-3, src-4]
 
-potencia: []
+potencia:
+  - tipo: conexion_red
+    valor_mw: 12
+    ambito: edificio
+    referencia: "Conexión eléctrica asegurada en el emplazamiento"
+    estado_asociado: en_construccion
+    fecha_dato: "2026-02-18"
+    fuentes: [src-2]
+    nota: >-
+      La fuente dice "a 12MW electrical connection, of which 8MW will be
+      allocated to IT capacity".
+  - tipo: it
+    valor_mw: 8
+    ambito: edificio
+    referencia: "Capacidad TI prevista"
+    estado_asociado: en_construccion
+    fecha_dato: "2026-02-18"
+    fuentes: [src-2]
+    nota: >-
+      Misma fuente: de los 12 MW de conexión, 8 MW se destinan a capacidad TI.
+      La ficha de producto de la propia compañía llama a esos 8 MW "Installed
+      electricity", entregados en bloques de 1,3 MW.
+  - tipo: no_especificado
+    valor_mw: 8
+    ambito: edificio
+    referencia: "«Installed electricity» según la ficha de producto de Mediterra"
+    estado_asociado: en_construccion
+    fecha_dato: "2026-02-16"
+    fuentes: [src-3]
+    nota: >-
+      La compañía escribe "Installed electricity 8 MW delivered in 1.3 MW
+      blocks". Es la misma cifra que el registro anterior con otra etiqueta, no
+      capacidad adicional; se conserva porque las dos fuentes la tipifican
+      distinto.
+
+conexion_electrica:
+  mw_concedidos: 12
+  nota: >-
+    Prensa especializada describe el emplazamiento como asegurado con una
+    conexión eléctrica de 12 MW. No consta la subestación, la tensión ni el
+    titular de la red.
+  fuentes: [src-2]
 
 superficie_construida_m2: 9700
 refrigeracion: >-
   Refrigeración líquida con circuito cerrado de bajo consumo de agua, energía
   renovable, grupos de respaldo con HVO100 y sistema de exportación de calor
-  residual a servicios públicos locales.
+  residual a servicios públicos locales. La compañía describe un circuito cerrado
+  con refrigerante que no se expulsa ni se repone.
+
+agua:
+  circuito: sin_agua
+  sistema: >-
+    Circuito cerrado con refrigerante que, según la compañía, elimina el consumo
+    de agua; compatible además con refrigeración líquida para alta densidad.
+  origen: null
+  nota: "No se publican consumos de agua auxiliar ni WUE."
+  fuentes: [src-2, src-3]
 
 incertidumbres:
   - campo: potencia
-    descripcion: "No se ha localizado ninguna cifra de potencia para este proyecto."
-    fuentes: [src-1]
-  - campo: estado
     descripcion: >-
-      Fuente única (directorio especializado). No se ha localizado licencia
-      urbanística, expediente ambiental ni nota de prensa de la compañía.
-    fuentes: [src-1]
+      Data Center Dynamics presenta los 8 MW como capacidad TI dentro de una
+      conexión de 12 MW; la ficha de producto de Mediterra los presenta como
+      "Installed electricity" y no menciona los 12 MW. No se ha podido
+      determinar cuál de las dos etiquetas es la correcta.
+    fuentes: [src-2, src-3]
+  - campo: ubicacion
+    descripcion: >-
+      No se ha localizado la dirección postal ni la parcela concreta en
+      Montmeló. La compañía no publica dirección y la prensa local solo indica
+      «uns terrenys a Montmeló».
+    fuentes: [src-1, src-4]
 
-confianza: baja
-ultima_verificacion: "2026-08-29"
+confianza: media
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -52,3 +111,39 @@ fuentes:
       Address/Municipality: Montmeló, Barcelona, Spain ... Size: 9,700 square
       meters ... Status: Under Construction ... Commissioning: Second half of
       2027
+  - id: src-2
+    url: "https://www.datacenterdynamics.com/en/news/mediterra-arrives-in-catalonia-plans-barcelona-data-center/"
+    titulo: "Mediterra arrives in Catalonia, plans Barcelona data center"
+    editor: "Data Center Dynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-02-18"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      The Italian company has secured a strategic location in the industrial
+      heart of Catalonia with a 12MW electrical connection, of which 8MW will be
+      allocated to IT capacity over an area of approximately 9,700 sqm ... The
+      data center will run on 100 percent green energy and will employ a
+      closed-loop cooling system that uses a refrigerant, reducing water use.
+  - id: src-3
+    url: "https://mediterradatacenters.com/bcn-01/"
+    titulo: "BCN01 | Mediterra Datacenters"
+    editor: "Mediterra DataCenters"
+    tipo: empresa
+    fecha_publicacion: "2026-02-16"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Total Surface 9.700 m2 Installed electricity 8 MW delivered in 1.3 MW
+      blocks ... Equipped with a closed-circuit cooling system that eliminates
+      water consumption by using a refrigerant that is never expelled or
+      replenished ... Expected to be operational by the second half of 2027.
+  - id: src-4
+    url: "https://el9nou.cat/valles-oriental/actualitat/economia/mediterra-construira-un-centre-de-dades-de-9-700-metres-quadrats-a-montmelo/"
+    titulo: "Mediterra construirà un centre de dades de 9.700 metres quadrats a Montmeló"
+    editor: "El 9 Nou"
+    tipo: prensa_general
+    fecha_publicacion: "2026-02-18"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      La firma italiana Mediterra DataCenters ha comunicat aquest dimarts la
+      compra d'uns terrenys a Montmeló on hi edificarà un centre de dades
+      d'última generació.

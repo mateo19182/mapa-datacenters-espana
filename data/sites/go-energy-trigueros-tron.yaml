@@ -2,6 +2,7 @@ id: go-energy-trigueros-tron
 nombre: "Campus TRON — Go Energy, Trigueros (Huelva)"
 alias:
   - "Project TRON"
+  - "TRON AI Infrastructures"
   - "Campus IA Verde hyperscale de Huelva"
 tipo: campus
 operador: "Go Energy"
@@ -20,10 +21,14 @@ ubicacion:
 
 estado: en_tramitacion
 estado_detalle: >-
-  Proyecto declarado de interés general y carácter supramunicipal. En febrero de 2026 contaba con
-  informe de compatibilidad urbanística y estaba en fase de ingeniería, con TSK seleccionada para
-  el diseño y la construcción. Inicio de operaciones anunciado para 2028.
-estado_fuentes: [src-2, src-4]
+  Proyecto declarado de interés general y carácter supramunicipal. Obtuvo el certificado de
+  compatibilidad urbanística en febrero de 2026 y en ese momento estaba en fase de ingeniería, con
+  TSK a cargo del diseño y la futura construcción. En julio de 2026 Go Energy actualizó el proyecto:
+  pasa a ser un ecosistema de tres emplazamientos en un radio inferior a cinco kilómetros, con más
+  de 1 GW de capacidad IT conjunta y una inversión superior a 10.000 millones de euros para el
+  conjunto de desarrollos digitales y energéticos, y sitúa el inicio de la construcción de las
+  primeras fases a partir de 2028. A 30 de agosto de 2026 seguía en tramitación administrativa.
+estado_fuentes: [src-2, src-4, src-6, src-7, src-9]
 
 potencia:
   - tipo: no_especificado
@@ -32,10 +37,22 @@ potencia:
     referencia: "Capacidad anunciada del campus TRON"
     estado_asociado: en_tramitacion
     fecha_dato: "2025-12-05"
-    fuentes: [src-1, src-2, src-3, src-4]
+    fuentes: [src-1, src-2, src-3, src-4, src-10]
     nota: >-
-      Las fuentes dicen «200 MW» sin especificar si es carga TI, potencia de conexión o potencia
-      instalada. No se convierte ni se compara con MW IT.
+      Las fuentes del anuncio de diciembre de 2025 dicen «200 MW» sin especificar si es carga TI,
+      potencia de conexión o potencia instalada.
+  - tipo: it
+    valor_mw: 200
+    ambito: campus
+    referencia: "Potencia IT del campus de centros de datos"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2026-02-06"
+    fuentes: [src-6, src-7, src-9]
+    nota: >-
+      Al informar de la compatibilidad urbanística, pv magazine y Energías Renovables tipifican por
+      primera vez la cifra: «un campus de centro de datos de inteligencia artificial de 200 MW de
+      potencia IT». Economía Digital lo repite en agosto de 2026 como «potencia informática de
+      200 MW». Es la misma cifra que el registro anterior, no una capacidad adicional.
   - tipo: no_especificado
     valor_mw: 133
     ambito: campus
@@ -55,30 +72,63 @@ incertidumbres:
   - campo: potencia
     descripcion: >-
       TSK, pv magazine, El Periódico de la Energía y Huelva24 cifran el campus en 200 MW.
-      El Conciso lo cifra en 133 MW. Ninguna fuente especifica el tipo de MW. No resuelto.
-    fuentes: [src-1, src-2, src-3, src-4, src-5]
+      El Conciso lo cifra en 133 MW. Desde febrero de 2026 pv magazine, Energías Renovables y
+      Economía Digital tipifican los 200 MW como potencia IT; las fuentes del anuncio original no lo
+      hacían. Sin resolver la discrepancia de 133 MW.
+    fuentes: [src-1, src-2, src-3, src-4, src-5, src-6, src-7]
+  - campo: potencia
+    descripcion: >-
+      La actualización de julio de 2026 habla de tres emplazamientos en un radio inferior a cinco
+      kilómetros que alcanzarían «conjuntamente más de 1GW de capacidad IT». Esa cifra no es de este
+      emplazamiento sino del conjunto del ecosistema, y no se registra como potencia de la ficha para
+      no atribuir a Trigueros la capacidad de los tres sitios. No consta el reparto entre ellos.
+    fuentes: [src-8]
+  - campo: inversion_anunciada_eur
+    descripcion: >-
+      El anuncio de diciembre de 2025 cifraba la inversión del campus en más de 1.500 millones de
+      euros. La actualización de julio de 2026 eleva la cifra a más de 10.000 millones, pero referida
+      al conjunto de desarrollos energéticos y digitales —centros de datos, fotovoltaica, baterías,
+      hidrógeno y amoníaco—, no solo al centro de datos. Se conserva la cifra registrada.
+    fuentes: [src-2, src-8]
   - campo: ubicacion
     descripcion: >-
       El proyecto se describe unas veces como situado en Trigueros (finca Millares) y otras como
       repartido entre San Juan del Puerto, Trigueros y Gibraleón. Las plantas de hidrógeno
       (100 MW, San Juan del Puerto) y de amoníaco (70 MW, Gibraleón) son instalaciones distintas
       del centro de datos y no se suman a su potencia. Se registra Trigueros como municipio del
-      campus por ser el que citan las fuentes que hablan de la finca y de la tramitación urbanística.
-    fuentes: [src-1, src-2, src-3, src-4]
+      campus por ser el que citan las fuentes que hablan de la finca y de la tramitación urbanística,
+      aunque Data Center Dynamics atribuyó la compatibilidad urbanística de febrero de 2026 al
+      municipio de Gibraleón y pv magazine, a Trigueros.
+    fuentes: [src-1, src-2, src-3, src-4, src-6]
   - campo: estado
     descripcion: >-
       Huelva24 sitúa el inicio de la construcción de la primera fase en 2028; TSK, pv magazine y
-      El Periódico de la Energía sitúan en 2028 el inicio de operaciones. Contradicción sin resolver.
-    fuentes: [src-1, src-2, src-3, src-4]
+      El Periódico de la Energía sitúan en 2028 el inicio de operaciones. La nota de julio de 2026
+      habla de iniciar la construcción de las primeras fases «a partir de 2028». Contradicción sin
+      resolver.
+    fuentes: [src-1, src-2, src-3, src-4, src-8]
   - campo: conexion_electrica
     descripcion: >-
       No se ha localizado punto de conexión, subestación ni expediente de acceso a red. Las fuentes
       solo indican que el campus «funcionará exclusivamente con energía renovable» ligada al hub de
-      hidrógeno y amoníaco de Go Energy.
-    fuentes: [src-2, src-3]
+      hidrógeno y amoníaco de Go Energy, con generación fotovoltaica propia y baterías.
+    fuentes: [src-2, src-3, src-8]
+  - campo: empleo
+    descripcion: >-
+      Huelva24 titula «Mil empleos» y su texto habla de «más de un millar de empleos entre puestos
+      directos e indirectos»; Huelva Información dice «miles de puestos de trabajo directos e
+      indirectos». Ninguna fuente publica una cifra numérica desglosada, así que no se registra
+      empleo.
+    fuentes: [src-4, src-10]
+  - campo: agua
+    descripcion: >-
+      Ninguna fuente describe el sistema de refrigeración del campus ni publica consumo de agua, pese
+      a tratarse de un proyecto vinculado a electrólisis de hidrógeno. TSK menciona «sistemas de
+      refrigeración avanzada» sin más detalle. Campo agua omitido.
+    fuentes: [src-6]
 
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -118,3 +168,61 @@ fuentes:
     tipo: prensa_general
     fecha_consulta: "2026-08-29"
     cita: "ubicado en la localidad de Trigueros (Huelva), un proyecto con capacidad de 133 MW y que se espera que comience a operar en 2028"
+  - id: src-6
+    url: "https://www.pv-magazine.es/2026/02/06/el-proyecto-tron-de-hidrogeno-verde-y-campus-ia-de-200-mw-obtiene-la-compatibilidad-urbanistica-en-gibraleon/"
+    titulo: "El proyecto TRON de hidrógeno verde y Campus IA de 200 MW obtiene la compatibilidad urbanística en Huelva"
+    editor: "pv magazine España"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-02-06"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Go Energy Group [...] ha obtenido la compatibilidad urbanística para el proyecto TRON, que
+      promueve en Trigueros (Huelva). Se trata de un campus de centro de datos de inteligencia
+      artificial de 200 MW de potencia IT [...] La compañía TSK lidera actualmente la ingeniería
+      integral del proyecto y su futura construcción, con el desarrollo de ingeniería básica y de
+      detalle, diseño de infraestructuras eléctricas, sistemas de refrigeración avanzada
+  - id: src-7
+    url: "https://www.energias-renovables.com/panorama/luz-verde-al-proyecto-tron-un-campus-20260205"
+    titulo: "Luz verde al proyecto TRON, un campus onubense de IA alimentado con renovables e hidrógeno"
+    editor: "Energías Renovables"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-02-05"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      un campus de centros de datos de inteligencia artificial de 200 MW de potencia IT, que ha
+      obtenido el certificado de compatibilidad urbanística del Ayuntamiento
+  - id: src-8
+    url: "https://www.europapress.es/andalucia/andalucia-verde-01334/noticia-go-energy-group-impulsa-huelva-proyecto-ia-hidrogeno-renovable-amoniaco-10000-millones-euros-20260714121102.html"
+    titulo: "GO Energy Group impulsa en Huelva un proyecto de IA, hidrógeno renovable y amoníaco de 10.000 millones de euros"
+    editor: "Europa Press"
+    tipo: prensa_general
+    fecha_publicacion: "2026-07-14"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      un ecosistema de IA, hidrógeno renovable y amoniaco bajo con una inversión de 10.000 millones
+      de euros, compuesto por tres emplazamientos "estratégicamente ubicados" en un radio inferior a
+      cinco kilómetros, alcanzando conjuntamente más de 1GW de capacidad IT [...] La compañía prevé
+      iniciar la construcción de las primeras fases a partir de 2028
+  - id: src-9
+    url: "https://www.economiadigital.es/andalucia/empresas/meridian-edge-mode-elmya-asi-futuros-centros-datos-andaluces-afectados-normativa-gobierno.html"
+    titulo: "Meridian, Edge Mode o Elmya: así son los futuros centros de datos andaluces afectados por la normativa del Gobierno"
+    editor: "Economía Digital"
+    tipo: prensa_general
+    fecha_publicacion: "2026-08-30"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      En Huelva, Go Energy prepara el proyecto TRON entre Trigueros, San Juan del Puerto y Gibraleón
+      [...] La empresa prevé una potencia informática de 200 MW y calcula que podría comenzar a
+      funcionar en 2028, aunque todavía continúa pasando los trámites administrativos.
+  - id: src-10
+    url: "https://www.huelvainformacion.es/economia/go-energy-impulsara-trigueros-primer_0_2005395249.html"
+    titulo: "Go Energy impulsará en Trigueros el primer campus europeo de inteligencia artificial verde hyperscale, con una inversión de 1.500 millones"
+    editor: "Huelva Información"
+    tipo: prensa_general
+    fecha_publicacion: "2025-12-05"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      contempla la construcción del primer campus de IA verde hyperscale de Europa, con una capacidad
+      prevista de 200 MW y una entrada en operación programada para 2028 [...] Con una inversión
+      superior a 1.500 millones de euros, el campus prevé generar miles de puestos de trabajo
+      directos e indirectos

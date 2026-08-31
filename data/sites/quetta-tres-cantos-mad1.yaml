@@ -1,0 +1,99 @@
+id: quetta-tres-cantos-mad1
+nombre: "Quetta Data Centers MAD1 — Tres Cantos"
+alias:
+  - "QTT-MAD1"
+  - "Quetta Tres Cantos"
+tipo: edificio
+operador: "Quetta Data Centers"
+propietario: "Quetta Data Centers (Azora / Core Tech Capital)"
+modelo: edge
+
+ubicacion:
+  municipio: "Tres Cantos"
+  provincia: "Madrid"
+  ccaa: "Comunidad de Madrid"
+  lat: null
+  lon: null
+  precision: municipio
+  fuentes: [src-1, src-2]
+
+estado: en_construccion
+estado_detalle: >-
+  Primer centro de datos de Quetta en España. Azora anunció el 10 de diciembre de 2025 el inicio
+  de las obras en Tres Cantos con la potencia duplicada hasta 20 MW, junto con el arranque del
+  proyecto de Molins de Rei. El edificio incluye además la sede corporativa de la compañía.
+estado_fuentes: [src-1]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 20
+    ambito: edificio
+    edificio: "MAD1"
+    referencia: "Potencia del centro tras duplicarse, según la nota de Azora"
+    estado_asociado: en_construccion
+    fecha_dato: "2025-12-10"
+    fuentes: [src-1]
+    nota: "La nota dice «potencia» sin distinguir carga TI de potencia de acceso."
+  - tipo: it
+    valor_mw: 6.45
+    ambito: edificio
+    edificio: "MAD1"
+    referencia: "Sala IT de 3.200 m², según la ingeniería redactora del proyecto"
+    estado_asociado: en_construccion
+    fecha_dato: "2025"
+    fuentes: [src-2]
+
+superficie_construida_m2: 11880
+refrigeracion: >-
+  Refrigeración líquida directa de circuito cerrado (DLC), con PUE declarado de 1,15 y consumo
+  neto de agua cero (WUE 0).
+
+agua:
+  circuito: cerrado
+  sistema: "Refrigeración líquida directa (DLC) en circuito cerrado."
+  origen: null
+  wue_l_kwh: 0
+  nota: >-
+    La compañía declara «consumo neto de agua 0 (WUE 0)»; es una cifra de diseño, no una medición
+    de explotación.
+  fuentes: [src-1, src-2]
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      Azora publica 20 MW para el centro y la ingeniería del proyecto describe una sala IT de
+      3.200 m² para 6,45 MW. Son magnitudes distintas —potencia del centro frente a carga TI de
+      una sala— y no se restan ni se comparan. No consta qué parte de los 20 MW es carga TI.
+    fuentes: [src-1, src-2]
+  - campo: ubicacion
+    descripcion: "No se ha localizado dirección postal ni parcela concreta en Tres Cantos."
+    fuentes: [src-1]
+
+confianza: media
+ultima_verificacion: "2026-08-31"
+
+fuentes:
+  - id: src-1
+    url: "https://www.azora.com/es/blog/quetta-data-centers-inicia-las-obras-de-su-data-center-de-madrid-duplicando-su-capacidad-a-20-mw-e-impulsa-su-expansion-con-un-nuevo-proyecto-en-barcelona/"
+    titulo: "QUETTA DATA CENTERS INICIA LAS OBRAS DE SU DATA CENTER DE MADRID, DUPLICANDO SU CAPACIDAD A 20 MW, E IMPULSA SU EXPANSIÓN CON UN NUEVO PROYECTO EN BARCELONA"
+    editor: "Azora"
+    tipo: empresa
+    fecha_publicacion: "2025-12-10"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Quetta inicia las obras de su Data Center en Tres Cantos (Madrid) con una potencia duplicada
+      hasta los 20 MW, consolidando sus capacidades en el principal mercado de España ... con
+      refrigeración líquida de circuito cerrado (DLC), con consumo neto de agua 0 (WUE 0 en
+      inglés) y PUE inferior a 1,15
+  - id: src-2
+    url: "https://www.typsa.com/proyectos/centro-de-proceso-de-datos-y-sede-corporativa-de-quetta-en-tres-cantos/"
+    titulo: "Centro de Proceso de Datos y Sede Corporativa de Quetta en Tres Cantos"
+    editor: "Grupo TYPSA"
+    tipo: empresa
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Cliente Quetta Tres Cantos. Año 2025. Superficie construida 11.880 m2. Edificio para CPD con
+      una superficie de 11.000 m². CPD de tipo Colocation Edge, operado con energía 100 %
+      renovable, consiguiendo el Water Usage Effectiveness (WUE) de 0 y el Power Usage
+      Effectiveness (PUE) de 1.15 ... Sala IT de 3.200 m² para 6.45 MW con una densidad de 5
+      KW/rack. Sede corporativa con una superficie de 880 m²

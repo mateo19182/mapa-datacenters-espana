@@ -1,0 +1,122 @@
+id: ric-energy-torrelavega-sniace
+nombre: "RIC Energy — centro de datos proyectado en los terrenos de Sniace (Torrelavega)"
+alias:
+  - "Centro de datos de Sniace"
+  - "Data center Besaya"
+tipo: campus
+operador: null
+propietario: "RIC Energy"
+cliente_ancla: null
+modelo: desconocido
+
+ubicacion:
+  municipio: "Torrelavega"
+  provincia: "Cantabria"
+  ccaa: "Cantabria"
+  direccion: "Antiguos terrenos de Sniace, en la cuenca del Besaya"
+  lat: 43.3487303
+  lon: -4.0515082
+  precision: municipio
+  fuentes: [src-1, src-2, src-osm]
+
+estado: anunciado
+estado_detalle: >-
+  RIC Energy proyecta un centro de datos sobre parte de los cerca de 500.000 m² de los
+  antiguos terrenos de Sniace, junto a su plan industrial de hidrógeno verde y combustibles
+  sintéticos. El proyecto energético matriz, Besaya Green H2, fue declarado Proyecto
+  Empresarial Estratégico por el Consejo de Gobierno de Cantabria el 26 de febrero de 2026 y
+  se sitúa en los términos municipales de Torrelavega y Santillana del Mar. Según El Diario
+  Montañés, la compañía contempla otros usos en la superficie sobrante y ya realiza gestiones
+  con Viesgo y la Consejería de Industria para garantizar el punto de conexión eléctrica. El
+  desarrollo depende de que concluyan los derribos y la descontaminación del recinto; la
+  planta de hidrógeno no empezaría a construirse antes de 2027.
+estado_fuentes: [src-1, src-2, src-3]
+
+potencia: []
+
+inversion_anunciada_eur: null
+enlaces_proyecto: []
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      No hay ninguna cifra de potencia del centro de datos respaldada por fuente utilizable. Las
+      cifras que circulan en agregadores automáticos (25 MW eléctricos, 100 MW IT, escalable a
+      150 MW) proceden de una web de contenido generado que inventa además referencias
+      normativas inexistentes, y no se recogen aquí.
+    fuentes: [src-1]
+  - campo: estado
+    descripcion: >-
+      No consta expediente urbanístico ni ambiental del centro de datos. Lo que está declarado
+      estratégico es la planta de hidrógeno y combustibles sintéticos, no el centro de datos.
+    fuentes: [src-1, src-2]
+  - campo: ubicacion
+    descripcion: >-
+      El recinto de Sniace se reparte entre Torrelavega y Santillana del Mar. Las fuentes sitúan
+      el conjunto industrial en Torrelavega, pero no precisan en qué término municipal caería el
+      centro de datos. Las coordenadas son el centroide municipal de Torrelavega.
+    fuentes: [src-1, src-2, src-osm]
+  - campo: operador
+    descripcion: >-
+      RIC Energy es una promotora de energía (fotovoltaica, almacenamiento, hidrógeno y biogás),
+      no un operador de centros de datos. No se ha identificado operador ni socio tecnológico.
+    fuentes: [src-1, src-4]
+
+confianza: baja
+ultima_verificacion: "2026-08-31"
+
+fuentes:
+  - id: src-1
+    url: "https://www.eldiariomontanes.es/economia/empresas/ric-energy-proyecta-centro-datos-suelo-sniace-20260404152640-nt.html"
+    titulo: "RIC Energy proyecta un centro de datos en suelo de Sniace junto a su plan industrial del hidrógeno"
+    editor: "El Diario Montañés"
+    tipo: prensa_general
+    fecha_publicacion: "2026-04-04"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      RIC Energy proyecta un centro de datos en suelo de Sniace junto a su plan industrial del
+      hidrógeno. La compañía contempla otros usos en superficie sobrante y ya realiza gestiones
+      junto a Viesgo y Consejería para garantizar el punto de conexión. Las administraciones
+      públicas de Cantabria siempre han defendido la necesidad de que los cerca de 500.000 metros
+      cuadrados que ocupan los antiguos terrenos de Sniace [...]
+  - id: src-2
+    url: "https://ric.energy/ric-energy-besaya-green-h2-proyecto-estrategico-gobierno-cantabria/"
+    titulo: "El Gobierno de Cantabria declara estratégico el proyecto Besaya Green H2 en Torrelavega"
+    editor: "RIC Energy"
+    tipo: empresa
+    fecha_publicacion: "2026-02-26"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El Consejo de Gobierno de Cantabria ha declarado hoy como Proyecto Empresarial Estratégico
+      el proyecto Besaya Green H2 de RIC Energy, destinado a la construcción de una planta de
+      producción de hidrógeno verde y combustibles sintéticos sostenibles, que se situará en los
+      antiguos terrenos de Sniace, en los municipios de Torrelavega y Santillana del Mar.
+  - id: src-3
+    url: "https://www.eldiariomontanes.es/economia/ric-reduce-capacidad-fabrica-hidrogeno-sniace-agrega-20250929073646-nt.html"
+    titulo: "RIC reduce un 75% la capacidad de su fábrica de hidrógeno en Sniace y agrega más negocios al plan"
+    editor: "El Diario Montañés"
+    tipo: prensa_general
+    fecha_publicacion: "2025-09-29"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Dentro de las incertidumbres que rodean el futuro de los terrenos industriales de Sniace,
+      tanto por los retrasos en el desmantelamiento final de la antigua cotizada con complejo
+      fabril en Torrelavega como por los cambios en el sector secundario europeo en los últimos
+      tiempos, RIC Energy trata de avanzar con su proyecto para el corazón del Besaya.
+  - id: src-4
+    url: "https://ric.energy/que-hacemos/nuestras-tecnologias/"
+    titulo: "Nuestras tecnologías — RIC Energy"
+    editor: "RIC Energy"
+    tipo: empresa
+    fecha_publicacion: "2024-07-31"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Entre ellos destacan Compostilla Green (León) y Besaya Green H2 (Cantabria), con una
+      potencia conjunta de 500 MW y capacidad para producir más de 110 kt/año de e-SAF.
+  - id: src-osm
+    url: "https://nominatim.openstreetmap.org/search?q=Torrelavega%2C+Cantabria&format=json&limit=1"
+    titulo: "Nominatim — Torrelavega, Cantabria"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-08-31"
+    cita: "Torrelavega, Cantabria, España — lat 43.3487303, lon -4.0515082"

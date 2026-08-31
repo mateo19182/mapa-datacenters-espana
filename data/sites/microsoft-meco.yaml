@@ -14,9 +14,9 @@ ubicacion:
   provincia: "Madrid"
   ccaa: "Comunidad de Madrid"
   direccion: "Calle Hércules 9 y calle Zeus 14, Polígono Industrial «Meco R2», Meco"
-  lat: null
-  lon: null
-  precision: municipio
+  lat: 40.532843
+  lon: -3.313717
+  precision: aproximada
   fuentes: [src-1, src-2, src-3]
 
 estado: en_construccion
@@ -120,8 +120,9 @@ incertidumbres:
     fuentes: [src-1, src-2]
   - campo: ubicacion
     descripcion: >-
-      Las direcciones y referencias catastrales constan en el expediente ambiental, pero no se
-      han publicado coordenadas, así que la geolocalización queda a nivel de municipio.
+      Las direcciones y las referencias catastrales constan en el expediente ambiental, pero no
+      se han publicado coordenadas. Las registradas son el centroide de la calle Zeus dentro del
+      polígono Meco R-2, no las de la parcela, y por eso la precisión es aproximada.
     fuentes: [src-2]
 
 confianza: media

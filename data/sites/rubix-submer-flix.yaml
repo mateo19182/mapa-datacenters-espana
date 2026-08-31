@@ -22,8 +22,12 @@ estado_detalle: >-
   Illa, dentro del grupo de trabajo de reindustrialización de la comarca tras el
   cierre de la actividad química de Ercros y en el contexto de la transición
   nuclear (Ascó y Vandellòs). Submer prevé poner en marcha el centro a partir de
-  2027 y desplegarlo en dos fases.
-estado_fuentes: [src-1, src-2]
+  2027 y desplegarlo en dos fases. El centro lo desarrollará y
+  operará Rubix Data Centers bajo un modelo «develop and operate» para un
+  inquilino externo a largo plazo. Ercros arrienda los terrenos y presta
+  servicios necesarios para el proyecto. La compañía prevé pleno funcionamiento
+  en 2029.
+estado_fuentes: [src-1, src-2, src-4, src-5, src-6]
 
 potencia:
   - tipo: no_especificado
@@ -37,6 +41,18 @@ potencia:
       La fuente dice "Més de 20 MW estaran disponibles de manera immediata";
       además menciona "s'hi sumaran 20 MW més" adquiridos a una empresa del
       sector tecnológico. No se suman aquí porque la fuente no da un total.
+  - tipo: no_especificado
+    valor_mw: 50
+    ambito: fase
+    referencia: "Potencia de la primera fase"
+    estado_asociado: anunciado
+    fecha_dato: "2026-07-13"
+    fuentes: [src-5]
+    nota: >-
+      La agencia ACN, recogida por VIA Empresa, dice "En la primera fase, la
+      fàbrica tindrà una potència de 50 MW". No precisa si es carga TI o
+      potencia de acceso, ni cómo se relaciona con los 20+20 MW de Crónica
+      Global.
   - tipo: no_especificado
     valor_mw: 70
     ambito: campus
@@ -62,6 +78,30 @@ refrigeracion: >-
   Tecnología de refrigeración de alta eficiencia energética que, según la
   compañía, permitirá operar sin consumo de agua.
 
+agua:
+  circuito: sin_agua
+  sistema: >-
+    Refrigeración líquida de última generación que, según Submer, no consume
+    agua durante la operación.
+  origen: null
+  nota: >-
+    La compañía no publica consumo de agua auxiliar ni WUE. El emplazamiento
+    está junto al Ebro y esa proximidad se ha señalado en el debate público, sin
+    que exista dato de captación.
+  fuentes: [src-4]
+
+empleo:
+  - tipo: directo
+    valor: 150
+    referencia: "Puestos permanentes con la instalación terminada"
+    fecha_dato: "2026-07"
+    fuentes: [src-4, src-5]
+    nota: >-
+      Submer habla de "up to 150 permanent jobs covering operations &
+      maintenance, critical facilities engineering, facilities management,
+      security, site services, and operator support". El Ayuntamiento de Flix
+      daba una horquilla de 105 a 150.
+
 incertidumbres:
   - campo: inversion_anunciada_eur
     descripcion: >-
@@ -71,11 +111,18 @@ incertidumbres:
     fuentes: [src-1, src-2]
   - campo: potencia
     descripcion: >-
-      Circulan cifras de 50 MW para la fase 1 y de 85-90 MW de capacidad
-      eléctrica instalada que no se han podido confirmar en las fuentes abiertas
-      consultadas. Solo se registran los valores citados literalmente por Crónica
-      Global.
-    fuentes: [src-2]
+      Los 50 MW de la fase 1 quedan confirmados por la agencia ACN, pero no
+      cuadran con los «más de 20 MW inmediatos más otros 20 MW» de Crónica
+      Global ni con los ~70 MW atribuidos al complejo de Ercros. Las cifras de
+      85-90 MW de capacidad instalada que circulan no se han podido confirmar.
+      No se suman entre sí.
+    fuentes: [src-2, src-5]
+  - campo: empleo
+    descripcion: >-
+      El Ayuntamiento de Flix habla de «entre 105 i 150 llocs de treball
+      permanents un cop acabada»; Submer y la ACN dan la cifra de 150. Se
+      registra 150 y se deja constancia de la horquilla.
+    fuentes: [src-1, src-4, src-5]
   - campo: fecha_puesta_en_servicio
     descripcion: >-
       Ara habla de estar operativo "a finales de 2027"; el Ayuntamiento de Flix
@@ -83,7 +130,7 @@ incertidumbres:
     fuentes: [src-1, src-3]
 
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -118,3 +165,41 @@ fuentes:
       expected to be operational by the end of 2027 ... full deployment will be
       carried out in two phases ... Rubix Data Centers, Submer's subsidiary
       dedicated to the development of data centers for AI
+  - id: src-4
+    url: "https://submer.com/blog/press/invest-more-than-1-billion-in-an-ai-data-center-in-flix/"
+    titulo: "Submer invests more than €1 billion in AI data center in northeastern Spain"
+    editor: "Submer Group"
+    tipo: empresa
+    fecha_publicacion: "2026-07-11"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      The data center is designed using the latest energy efficient liquid
+      cooling technology, which uses no water during operations ... It is planned
+      to be developed in two phases, and on completion, is expected to provide up
+      to 150 permanent jobs covering operations & maintenance, critical
+      facilities engineering, facilities management, security, site services, and
+      operator support.
+  - id: src-5
+    url: "https://www.viaempresa.cat/empresa/submer-inverteix-mes-1000-milions-en-centre-dades-ia-terrenys-ercros-flix_2237801_102.html"
+    titulo: "Submer inverteix més de 1.000 milions en un centre de dades d'IA als terrenys d'Ercros a Flix"
+    editor: "VIA Empresa / ACN"
+    tipo: prensa_general
+    fecha_publicacion: "2026-07-13"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      L'empresa preveu posar en marxa la factoria el 2027 amb una potència
+      inicial de 50 MW i la creació de 150 llocs de treball ... En la primera
+      fase, la fàbrica tindrà una potència de 50 MW i es crearan 150 llocs de
+      treball ... amb l'objectiu que el 2029 ja estigui totalment operativa.
+  - id: src-6
+    url: "https://www.ercros.es/es/sala-de-prensa/noticias/un-centro-de-datos-de-ultima-generacion-se-instala-en-los-terrenos-de-flix"
+    titulo: "Un centro de datos de última generación se instala en los terrenos de Flix"
+    editor: "Ercros"
+    tipo: empresa
+    fecha_publicacion: "2026-07-11"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Ercros ha firmado un contrato con Submer Group para la implantación de un
+      centro de datos de última generación en terrenos propiedad de la compañía
+      en Flix ... En virtud del acuerdo, Ercros arrienda los terrenos y presta
+      determinados servicios necesarios para el desarrollo del proyecto.

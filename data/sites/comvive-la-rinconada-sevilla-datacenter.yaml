@@ -12,31 +12,48 @@ ubicacion:
   municipio: "La Rinconada"
   provincia: "Sevilla"
   ccaa: "Andalucía"
-  direccion: "Calle Nicolás Copérnico 18, 41300 San José de la Rinconada"
+  direccion: "Calle Nicolás Copérnico 18, P.I. El Cáñamo II, 41300 San José de la Rinconada"
   lat: 37.4877
   lon: -5.9760
   precision: aproximada
-  fuentes: [src-1]
+  fuentes: [src-1, src-4]
 
-estado: operativo
+estado: ampliacion_en_construccion
 estado_detalle: >-
-  Centro de datos neutro operado por Comvive. Ampliación anunciada que triplica la capacidad de
-  racks y eleva la potencia disponible a 1 MW, con inversión propia superior a un millón de euros.
-  El operador lo presenta como el mayor CPD privado de Andalucía.
-estado_fuentes: [src-1, src-2, src-3]
+  Centro de datos neutro operado por Comvive, con sala técnica propia desde 2017 y marca Sevilla
+  Datacenter desde 2019. La ampliación anunciada en mayo de 2025 triplica la capacidad de racks y
+  eleva la potencia disponible a 1 MW, con inversión propia superior a un millón de euros. El
+  dosier comercial de octubre de 2025 describe la ampliación como «en marcha» y en diciembre de 2025
+  la empresa comunicaba la recepción de los cuadros eléctricos de la siguiente fase. El operador lo
+  presenta como el mayor CPD privado de Andalucía.
+estado_fuentes: [src-1, src-2, src-3, src-4]
 
 potencia:
   - tipo: no_especificado
     valor_mw: 1
     ambito: edificio
     referencia: "Potencia disponible tras la ampliación"
-    estado_asociado: operativo
-    fecha_dato: "2026-08-29"
-    fuentes: [src-2]
+    estado_asociado: ampliacion_en_construccion
+    fecha_dato: "2025-10"
+    fuentes: [src-2, src-4]
     nota: >-
       La fuente habla de «potencia disponible» de 1 MW sin precisar si se refiere a carga TI o a
-      potencia contratada en el punto de suministro.
+      potencia contratada en el punto de suministro. El dosier del operador precisa que es el
+      objetivo de una ampliación en curso —«para alcanzar 1 megavatio (MW) de potencia eléctrica»—,
+      no la potencia ya instalada.
+  - tipo: termica_respaldo
+    valor_mva: 0.2
+    ambito: edificio
+    referencia: "Grupo electrógeno propio"
+    estado_asociado: operativo
+    fecha_dato: "2025-10"
+    fuentes: [src-4]
+    nota: >-
+      «Generador propio de gasoil de 200 KVA con autonomía indefinida». Es potencia de respaldo, no
+      capacidad del centro, y la fuente la da en kVA, así que no se convierte a MW.
 
+superficie_parcela_m2: 1200
+superficie_construida_m2: 1100
 inversion_anunciada_eur: 1000000
 refrigeracion: >-
   Free-cooling y confinamiento de pasillo frío/caliente. Instalación fotovoltaica en cubierta que
@@ -52,9 +69,21 @@ incertidumbres:
     fuentes: [src-2]
   - campo: fecha_puesta_en_servicio
     descripcion: >-
-      No se ha podido verificar en fuente abierta el año de puesta en servicio del edificio ni de
-      la marca Sevilla Datacenter. Campo omitido.
-    fuentes: [src-1, src-3]
+      El dosier del operador sitúa en 2017 el montaje «desde cero» de una sala técnica de 100 m² en
+      La Rinconada y en 2019 la creación formal de la marca Sevilla Datacenter, pero no da una fecha
+      de puesta en servicio del CPD. Campo omitido.
+    fuentes: [src-4, src-5]
+  - campo: potencia
+    descripcion: >-
+      1 MW es el objetivo de la ampliación en curso, no una capacidad verificada en servicio. Ninguna
+      fuente publica la potencia actual del centro ni distingue carga TI de potencia contratada.
+    fuentes: [src-2, src-4]
+  - campo: superficie_construida_m2
+    descripcion: >-
+      El dosier distingue 1.200 m² de parcela, 800 m² en planta, 1.100 m² construidos, 500 m² de
+      oficinas y salas técnicas y 120 m² de sala CPD con 46 racks instalados. La ampliación prevé
+      120 armarios adicionales. Se registran parcela y superficie construida.
+    fuentes: [src-4]
   - campo: estado
     descripcion: >-
       La afirmación de ser «el mayor centro de datos de Andalucía» o «el CPD privado más grande de
@@ -62,9 +91,15 @@ incertidumbres:
       1 MW queda muy por debajo de los proyectos de Escúzar, Málaga o Huelva, y del propio CPD de
       la Junta. Es una afirmación comercial, no un dato comparado.
     fuentes: [src-1, src-3]
+  - campo: agua
+    descripcion: >-
+      El dosier describe free-cooling y confinamiento de pasillos, sin mencionar torres de
+      refrigeración ni consumo de agua. Al no declararse el circuito, el campo agua se omite en lugar
+      de suponerlo seco.
+    fuentes: [src-4]
 
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -88,3 +123,27 @@ fuentes:
     tipo: prensa_general
     fecha_consulta: "2026-08-29"
     cita: "el CPD privado más grande de Andalucía"
+  - id: src-4
+    url: "https://sevilladatacenter.com/wp-content/uploads/2025/10/Dosier_Sevilla_Datacenter.pdf"
+    titulo: "Dosier Sevilla Datacenter"
+    editor: "Sevilla Datacenter (Comvive Servidores)"
+    tipo: empresa
+    fecha_publicacion: "2025-10"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      La infraestructura se ubica en una parcela vallada y aislada de 1.200 m², que incluye 800 m² en
+      planta y 1.100 m² construidos. Las oficinas y salas técnicas suman 500 m², y la sala CPD cuenta
+      con 120 m² dedicados con 46 armarios rack instalados [...] está en marcha una importante
+      ampliación del CPD para alcanzar 1 megavatio (MW) de potencia eléctrica, con capacidad para
+      instalar 120 armarios racks adicionales [...] Dispone de generador propio de gasoil de 200 KVA
+      con autonomía indefinida
+  - id: src-5
+    url: "https://www.comvive.es/datacenter/"
+    titulo: "Datacenter en España. Housing servidores y alquiler de racks"
+    editor: "Comvive"
+    tipo: empresa
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      en el año 2017 decidimos ponernos manos a la obra y montar desde cero una sala técnica de
+      100m2, ampliables, en nuestras instalaciones de San José de la Rinconada (P.I. El Cáñamo II),
+      para alojar 46 Armarios rack

@@ -22,9 +22,12 @@ estado: operativo
 estado_detalle: >-
   En funcionamiento desde 2016. Comercializado por el operador como «centro de datos de
   Alicante» pese a estar en término municipal de Elche, junto a las oficinas centrales del
-  grupo. No entró en la venta de tres CPD a Templus de enero de 2026: Grupo Aire mantiene
-  este centro como propio.
-estado_fuentes: [src-1, src-2]
+  grupo. No entró en la venta de tres CPD a Templus de enero de 2026: Grupo Aire —hoy
+  simplemente Aire— mantiene este centro como propio y en abril de 2026 relanzó su oferta
+  de colocation apoyándose en la red de Templus, hasta 26 centros de datos comercializados.
+  La ficha del operador lo describe como carrier neutral con conexión a Aire Networks,
+  AMS-IX, LINX, DE-CIX, Equinix y Espanix.
+estado_fuentes: [src-1, src-2, src-4]
 fecha_puesta_en_servicio: "2016"
 
 fases:
@@ -36,17 +39,27 @@ fases:
 
 superficie_construida_m2: 500
 refrigeracion: >-
-  Proyecto propio de placas solares con orientación este-oeste para autoconsumo.
+  Proyecto propio de placas solares con orientación este-oeste para autoconsumo, instaladas
+  en acuerdo con la startup noruega Over Easy, que usa la sede de Elche como banco de
+  pruebas de sus unidades fotovoltaicas premontadas; el resto del suministro se declara de
+  origen renovable. No consta la potencia instalada de esas placas.
 
 incertidumbres:
   - campo: potencia
     descripcion: >-
       El operador no publica potencia eléctrica; solo 500 m² y más de 55 racks. El
-      directorio del Observatorio Español de Data Centers tampoco asigna MW.
-    fuentes: [src-1, src-3]
+      directorio del Observatorio Español de Data Centers tampoco asigna MW, ni la ficha
+      técnica del propio operador revisada en agosto de 2026, ni el autoconsumo fotovoltaico
+      instalado, del que no se publica potencia pico.
+    fuentes: [src-1, src-3, src-4, src-5]
+  - campo: superficie_construida_m2
+    descripcion: >-
+      La ficha comercial del operador dice «Más de 500 metros cuadrados» y «Más de 55
+      racks»; los 500 m² registrados son por tanto un mínimo, no una medida cerrada.
+    fuentes: [src-1, src-4]
 
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -78,3 +91,19 @@ fuentes:
     tipo: asociacion
     fecha_consulta: "2026-08-29"
     cita: "OASIX ALICANTE AIRENETWORKS | C/ SANTIAGO RAMÓN Y CAJAL Nº 11, ELCHE PARQUE EMPRESARIAL | Elche | 03203 | 38.291392 -0.611276 | Aire Networks del Mediterraneo S.L.U."
+  - id: src-4
+    url: "https://airetech.es/cloud/centros-de-datos/alicante/"
+    titulo: "Centro de datos en Alicante, España"
+    editor: "Aire (Grupo Aire)"
+    tipo: empresa
+    fecha_publicacion: "2025-12-11"
+    fecha_consulta: "2026-08-31"
+    cita: "Más de 500 metros cuadrados. Más de 55 racks. Carrier neutral con conexión a múltiples IXPs nacionales e internacionales: Aire Networks, AMS-IX, LINX, DE-CIX, EQUINIX y ESPANIX. Sistema de Mitigación AntiDDoS integrado. Vigilancia 24/7. [...] Placas solares para reducir el impacto medioambiental de la actividad de nuestro data center."
+  - id: src-5
+    url: "https://airetech.es/un-centro-de-datos-en-alicante-con-placas-solares/"
+    titulo: "Un centro de datos en Alicante con instalación de placas solares"
+    editor: "Aire (Grupo Aire)"
+    tipo: empresa
+    fecha_publicacion: "2024-02-19"
+    fecha_consulta: "2026-08-31"
+    cita: "llegamos a un acuerdo con la startup noruega Over Easy, que se dedica a desarrollar, fabricar y suministrar unidades fotovoltaicas premontadas para facilitar las instalaciones solares en tejados verdes y planos, para que utilice la sede central de Grupo Aire en Elche como banco de pruebas. [...] El sistema de esta empresa noruega es revolucionario ya que coloca las placas solares con orientación este-oeste"

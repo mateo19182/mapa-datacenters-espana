@@ -1,0 +1,103 @@
+id: prime-alcobendas-mad01
+nombre: "Prime Data Centers MAD01 — Alcobendas"
+alias:
+  - "Prime Madrid"
+  - "Prime MAD01-01"
+tipo: edificio
+operador: "Prime Data Centers"
+propietario: "Prime Data Centers"
+modelo: mayorista
+
+ubicacion:
+  municipio: "Alcobendas"
+  provincia: "Madrid"
+  ccaa: "Comunidad de Madrid"
+  direccion: "Calle de la Pedriza 1, Alcobendas (Madrid)"
+  lat: null
+  lon: null
+  precision: municipio
+  fuentes: [src-1, src-2, src-3]
+
+estado: anunciado
+estado_detalle: >-
+  Prime anunció en mayo de 2024 la compra de 7,6 acres en Alcobendas para un único edificio de
+  unos 26.000 m². La ficha de la compañía mantiene el emplazamiento en estado «Development» y
+  declara que se desarrollará según la demanda del cliente. No se ha localizado licencia de obra
+  ni anuncio de inicio de obras.
+estado_fuentes: [src-1, src-2]
+
+potencia:
+  - tipo: it
+    valor_mw: 40
+    ambito: edificio
+    edificio: "MAD01-01"
+    referencia: "Critical IT Load del edificio MAD01-01"
+    estado_asociado: anunciado
+    fecha_dato: "2025-06-25"
+    fuentes: [src-2]
+  - tipo: no_especificado
+    valor_mw: 40
+    ambito: edificio
+    edificio: "MAD01-01"
+    referencia: "«40 megawatts of critical power» en la nota de lanzamiento"
+    estado_asociado: anunciado
+    fecha_dato: "2024-05-22"
+    fuentes: [src-1]
+    nota: >-
+      La nota de 2024 habla de «critical power» sin más; la ficha de producto posterior la
+      identifica como «Critical IT Load». Es la misma cifra leída dos veces, no capacidad
+      adicional.
+
+superficie_construida_m2: 25810
+refrigeracion: "Refrigeración de circuito cerrado por aire y líquido, según la ficha de la compañía."
+
+incertidumbres:
+  - campo: estado
+    descripcion: >-
+      El anuncio es de mayo de 2024 y la ficha de la compañía sigue marcando el edificio como
+      «Development» / «Available». No consta ningún hito posterior (licencia, obras, cliente).
+    fuentes: [src-1, src-2]
+  - campo: potencia
+    descripcion: >-
+      Los 40 MW aparecen como «critical power» en 2024 y como «Critical IT Load» en la ficha de
+      producto de 2025. Se registran las dos lecturas de la misma unidad, que no se suman.
+    fuentes: [src-1, src-2]
+
+enlaces_proyecto:
+  - "https://primedatacenters.com/locations/madrid/"
+
+confianza: media
+ultima_verificacion: "2026-08-31"
+
+fuentes:
+  - id: src-1
+    url: "https://primedatacenters.com/news/prime-madrid-data-center/"
+    titulo: "Prime Data Centers Announces Plans for 40MW Madrid Data Center"
+    editor: "Prime Data Centers"
+    tipo: empresa
+    fecha_publicacion: "2024-05-22"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      The company has secured 7.6 acres in Alcobendas with a development plan to deliver a 26,000
+      square-meter, 40-megawatt hyperscale data center ... Prime Madrid will be located at Calle
+      de la Pedriza 1, Alcobendas
+  - id: src-2
+    url: "https://primedatacenters.com/locations/madrid/"
+    titulo: "Madrid — Prime Data Centers"
+    editor: "Prime Data Centers"
+    tipo: empresa
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Madrid Campus MAD01 ... 40MW Total critical power ... Critical IT Load 40MW Size 25,810 sq m
+      No Of Data Halls 4 Utility Provider Iberdrola Substation On site ... Cooling Closed loop air
+      and liquid ... MAD01-01 | C. de la Pedriza - Type Hyperscale - Status Development
+  - id: src-3
+    url: "https://www.datacenterdynamics.com/en/news/prime-data-centers-expands-into-spain-plans-madrid-facility/"
+    titulo: "Prime Data Centers expands into Spain, plans Madrid facility"
+    editor: "DatacenterDynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2024-05-22"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      The company has acquired a 7.6-acre site at Calle de la Pedriza 1 in Alcobendas, close to
+      Equinix, CyrusOne, and Data4 facilities. The 40MW facility will span 26,000 sqm

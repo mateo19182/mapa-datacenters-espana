@@ -34,10 +34,12 @@ potencia:
     referencia: "Capacidad total planificada del edificio BCN1"
     estado_asociado: operativo
     fecha_dato: "2026-05-18"
-    fuentes: [src-2]
+    fuentes: [src-2, src-5]
     nota: >-
       Las fuentes hablan de "14 MW of total planned capacity" / "una capacidad de
-      14 MW" sin precisar si son MW TI o potencia instalada.
+      14 MW" sin precisar si son MW TI o potencia instalada. La nota de la propia
+      Digital Realty confirma el valor con la misma imprecisión: "with 14 MW of
+      total planned capacity".
   - tipo: no_especificado
     valor_mw: 20
     ambito: edificio
@@ -56,10 +58,14 @@ fases:
     estado: anunciado
     fuentes: [src-1]
 
+superficie_construida_m2: 15000
 refrigeracion: >-
   La compañía declara consumo cero de agua y energía 100% renovable; los grupos
-  electrógenos de respaldo funcionan con biodiésel HVO100.
-enlaces_proyecto: []
+  electrógenos de respaldo funcionan con biodiésel HVO100. La ficha técnica del
+  edificio declara redundancia N+1 en alimentación ininterrumpida y N+2 en
+  refrigeración, y certificación LEED Gold.
+enlaces_proyecto:
+  - "https://www.digitalrealty.com/data-centers/emea/barcelona/bcn1"
 
 incertidumbres:
   - campo: ubicacion
@@ -67,8 +73,15 @@ incertidumbres:
       La prensa local sitúa el edificio en "calle d'Ifni, 26"; el directorio
       Baxtel da "Av. del Maresme, 43", ambos en Sant Adrià de Besòs. Podrían ser
       dos frentes de la misma parcela. Se toman las coordenadas de la dirección
-      de Ifni 26.
-    fuentes: [src-1, src-4]
+      de Ifni 26. La propia Digital Realty publica la dirección "Av. del
+      Maresme, 43 – 08930 Sant Adrià de Besòs", lo que refuerza la lectura de
+      Baxtel; la coordenada registrada no se ha cambiado.
+    fuentes: [src-1, src-4, src-6]
+  - campo: superficie_construida_m2
+    descripcion: >-
+      Los 15.000 m² son el "total building size" que publica la compañía en la
+      ficha del edificio. No consta si incluye o no la superficie técnica.
+    fuentes: [src-6]
   - campo: potencia
     descripcion: >-
       Ninguna de las fuentes localizadas especifica si los 14 MW son carga TI,
@@ -83,7 +96,7 @@ incertidumbres:
     fuentes: [src-1, src-2]
 
 confianza: alta
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -126,3 +139,24 @@ fuentes:
       Address: Av. del Maresme, 43 in Sant Adrià de Besòs, Barcelona, Spain ...
       Year Built: 2026 ... BCN1 is Digital Realty's first data center in
       Barcelona
+  - id: src-5
+    url: "https://investor.digitalrealty.com/news-releases/news-release-details/digital-realty-opens-first-data-center-barcelona-strengthening"
+    titulo: "Digital Realty Opens First Data Center in Barcelona, Strengthening Its Position Across the Mediterranean"
+    editor: "Digital Realty Trust"
+    tipo: empresa
+    fecha_publicacion: "2026-05-18"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      The new data center, with 14 MW of total planned capacity, is designed to
+      support connectivity with a broad range of network providers ... back-up
+      generators fuelled by HVO100 — a biodiesel of renewable origin
+  - id: src-6
+    url: "https://www.digitalrealty.com/data-centers/emea/barcelona/bcn1"
+    titulo: "BCN1 Data Center | Av. del Maresme, 43"
+    editor: "Digital Realty"
+    tipo: empresa
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      BCN1 Av. del Maresme, 43 – 08930 Sant Adrià de Besòs ... Total building
+      size: 161,500 ft² (15,000 m²) ... UPS redundancy: N+1 ... Cooling
+      redundancy: N+2 ... Certifications LEED Gold ... Renewable Energy % 100%

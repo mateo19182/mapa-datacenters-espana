@@ -2,6 +2,7 @@ id: echelon-iberdrola-madrid-sur
 nombre: "Echelon Iberdrola Digital Infra — Madrid Sur"
 alias:
   - "Madrid Sur"
+  - "Madrid South"
   - "Echelon Iberdrola Digital Infra"
 tipo: campus
 operador: "Echelon Iberdrola Digital Infra"
@@ -15,15 +16,21 @@ ubicacion:
   lat: null
   lon: null
   precision: desconocida
-  fuentes: [src-1, src-2]
+  fuentes: [src-1, src-2, src-4, src-5]
 
 estado: anunciado
 estado_detalle: >-
-  Primer proyecto de la empresa conjunta entre Iberdrola y Echelon Data Centres, anunciada en
-  julio de 2025 y cerrada en noviembre de 2025. A 29 de agosto de 2026 no consta inicio de obras.
-  Ninguna de las dos compañías ha publicado el municipio: hablan de «Madrid Sur» y de «zonas
-  estratégicas cerca de Madrid».
-estado_fuentes: [src-1, src-2]
+  Primer proyecto de la empresa conjunta entre Iberdrola (20 %, a través de su
+  filial CPD4Green) y Echelon Data Centres (80 %), anunciada en julio de 2025,
+  autorizada por la Comisión Europea el 11 de noviembre de 2025 y cerrada el 26 de
+  noviembre de 2025. En febrero de 2026 la prensa financiera especializada situaba
+  la decisión final de inversión antes de que acabara 2026 y el cierre de la
+  financiación a principios de 2027. Echelon anunció en julio de 2025 una entrada
+  en servicio prevista para 2030. A 31 de agosto de 2026 no consta inicio de obras
+  ni expediente urbanístico o ambiental localizable. Ninguna de las dos compañías
+  ha publicado el municipio: hablan de «Madrid Sur» y de «zonas estratégicas cerca
+  de la capital».
+estado_fuentes: [src-1, src-2, src-4, src-6, src-7, src-8]
 
 potencia:
   - tipo: conexion_red
@@ -32,7 +39,7 @@ potencia:
     referencia: "Conexión a red asegurada para el campus"
     estado_asociado: anunciado
     fecha_dato: "2026-01-22"
-    fuentes: [src-1, src-2]
+    fuentes: [src-1, src-2, src-6]
     nota: "La compañía habla de «230MW grid connection» asegurada."
   - tipo: it
     valor_mw: 144
@@ -40,34 +47,94 @@ potencia:
     referencia: "Capacidad de procesamiento del campus"
     estado_asociado: anunciado
     fecha_dato: "2025-11-26"
-    fuentes: [src-2]
+    fuentes: [src-2, src-6]
     nota: >-
-      La fuente dice «144 MW para procesamiento de datos», expresión que se corresponde con carga
-      TI y no con la potencia de acceso. Se registra como MW IT, sin convertir ni comparar con los
-      230 MW de conexión.
+      La fuente dice «144 MW para procesamiento de datos», expresión que se
+      corresponde con carga TI y no con la potencia de acceso. Se registra como MW
+      IT, sin convertir ni comparar con los 230 MW de conexión.
+
+fases: []
+
+conexion_electrica:
+  subestacion: null
+  tension_kv: null
+  titular_red: null
+  mw_solicitados: null
+  mw_concedidos: 230
+  nota: >-
+    Iberdrola aporta a la sociedad conjunta terrenos con conexión a la red ya
+    asegurada; los 230 MW se describen como conexión «ya asegurada», es decir,
+    permiso de acceso concedido, aunque no se publica el nudo. La matriz de
+    Iberdrola declaraba en noviembre de 2025 más de 700 MW asegurados en
+    conexiones eléctricas «en zonas estratégicas cerca de la capital» y una
+    cartera potencial de 5.000 MW. No se ha localizado ninguna resolución de
+    acceso ni expediente que identifique la subestación de este proyecto.
+  fuentes: [src-1, src-4, src-6, src-7]
 
 superficie_parcela_m2: 160000
+inversion_anunciada_eur: 1200000000
+
+empleo:
+  - tipo: total
+    valor: 1500
+    referencia: "Empleos directos e indirectos del proyecto Madrid Sur"
+    fecha_dato: "2025-11-26"
+    fuentes: [src-6, src-1]
+    nota: >-
+      La compañía da la cifra agregando directos e indirectos, sin desglosarla y
+      sin distinguir fase de obra de fase operativa.
 
 incertidumbres:
   - campo: ubicacion
     descripcion: >-
-      Ni Iberdrola ni Echelon publican el municipio. Directorios sectoriales asocian el proyecto a
-      Aceca, que es una central térmica situada en Villaseca de la Sagra (Toledo), no en la
-      Comunidad de Madrid, y alguna cobertura lo sitúa directamente «en Madrid». La fuente más
-      reciente, de agosto de 2026, tampoco da municipio: habla del «corredor Madrid-Toledo», que
-      son dos comunidades autónomas. El nombre comercial del proyecto no basta para asignarle
-      región, así que el emplazamiento se deja sin ubicar y no aparece en el mapa ni en las vistas
-      por región.
-    fuentes: [src-1, src-2, src-3]
+      Ni Iberdrola ni Echelon publican el municipio: sus notas hablan de «Madrid
+      Sur» y de «zonas estratégicas cerca de la capital». La atribución más
+      concreta y mejor sostenida procede de Cinco Días, que el 26 de noviembre de
+      2025 escribió, citando «fuentes del mercado», que el campus «se instalará en
+      terrenos de la central de ciclo combinado de Aceca, ubicada en Toledo en el
+      límite con Madrid»; El Mundo recogió esa misma atribución el 18 de agosto de
+      2026 remitiéndose expresamente a Cinco Días. La central de Aceca está, según
+      el BOE, en el término municipal de Villaseca de la Sagra (Toledo). Pero
+      ninguna fuente nombra el municipio del centro de datos: llegar a él exige
+      encadenar «terrenos de Aceca» con «Aceca está en Villaseca», que es una
+      deducción, no un dato publicado. Ambas atribuciones son además de fuentes de
+      mercado no identificadas y contradicen el nombre comercial que usan las
+      propias compañías. Se conserva la contradicción y el emplazamiento se deja
+      sin ubicar: no aparece en el mapa ni en las vistas por región.
+    fuentes: [src-1, src-2, src-3, src-4, src-5, src-9]
+  - campo: ubicacion
+    descripcion: >-
+      El proyecto no es el único de la cartera y las fuentes lo mezclan con otros.
+      Cinco Días añade que «otro de los centros» de la sociedad conjunta se
+      ubicaría «en el norte de Madrid», donde se estarían mirando distintos
+      emplazamientos. Un blog financiero atribuye a la empresa conjunta dos
+      emplazamientos, «Aceca (Madrid, 144 MW iniciales) y Velilla (Palencia)»,
+      situando Aceca en Madrid cuando está en Toledo; no se ha localizado ninguna
+      fuente que documente un centro de datos de Echelon o de Iberdrola en Velilla
+      del Río Carrión, donde Iberdrola sí desmanteló su central térmica y donde hay
+      un complejo fotovoltaico y una central de bombeo de otros promotores.
+    fuentes: [src-3, src-4, src-10]
   - campo: potencia
     descripcion: >-
-      Los 230 MW de conexión y los 144 MW de procesamiento proceden de fuentes distintas y no son
-      la misma magnitud. Ninguna compañía publica ambas cifras juntas, de modo que no puede
-      descartarse que una de las dos se refiera al conjunto de la cartera y no a este campus.
-    fuentes: [src-1, src-2]
+      Los 230 MW de conexión y los 144 MW de procesamiento proceden de la misma
+      nota corporativa pero no son la misma magnitud y no se convierten entre sí.
+      La nota añade una demanda estimada de 1 TWh anuales (1.000 GWh), que es
+      energía y no potencia. No consta la potencia instalada total ni el reparto
+      por edificios o fases.
+    fuentes: [src-1, src-2, src-6]
+  - campo: inversion_anunciada_eur
+    descripcion: >-
+      Los 1.200 millones de euros son la cifra que la prensa financiera
+      especializada atribuye específicamente a Madrid Sur, citando «una fuente
+      próxima al proyecto»; el resto del artículo está tras muro de pago. No es
+      una cifra publicada por las compañías. Los más de 2.000 millones que sí
+      anuncian Iberdrola y Echelon corresponden a la inversión prevista de toda la
+      sociedad conjunta en España, no a este emplazamiento, y la matriz habla
+      además de nuevos proyectos que podrían sumar 6.000 millones.
+    fuentes: [src-8, src-6, src-4]
 
 confianza: baja
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -94,3 +161,92 @@ fuentes:
     fecha_publicacion: "2026-08-19"
     fecha_consulta: "2026-08-31"
     cita: "El primer hito de esta sociedad fue el proyecto Madrid Sur (con 144 MW de capacidad y 230 MW de conexión asegurada), estableciendo el corredor Madrid-Toledo como enclave prioritario"
+  - id: src-4
+    url: "https://cincodias.elpais.com/companias/2025-11-26/iberdrola-cierra-con-la-irlandesa-echelon-una-alianza-para-operar-centros-de-datos-en-espana.html"
+    titulo: "Iberdrola cierra con la irlandesa Echelon una alianza para operar centros de datos en España"
+    editor: "Cinco Días (El País)"
+    tipo: prensa_general
+    fecha_publicacion: "2025-11-26"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El primer proyecto de esta alianza se ubicará en Madrid Sur, un complejo de
+      160.000 metros cuadrados que dispondrá de 144 MW para procesamiento de datos
+      y que ya tiene asegurada una conexión eléctrica de 230 MW. Concretamente,
+      según fuentes del mercado, se instalará en terrenos de la central de ciclo
+      combinado de Aceca, ubicada en Toledo en el límite con Madrid, aunque se
+      abastecerá de energía fotovoltaica de la energética. Este proyecto generará
+      unos 1.500 empleos directos e indirectos y su demanda estimada es de 1.000
+      GWh. [...] Otro de los centros, confirman las mismas fuentes, se ubicaría en
+      el norte de Madrid, donde se están mirando distintos emplazamientos.
+  - id: src-5
+    url: "https://www.elmundo.es/economia/empresas/2026/08/18/6a845dffe4d4d89c278b45ba.html"
+    titulo: "El Gobierno tumba a Iberdrola una megaplanta solar en Toledo por su cercanía a un nido de águila imperial y complica su plan millonario de centros de datos"
+    editor: "El Mundo"
+    tipo: prensa_general
+    fecha_publicacion: "2026-08-18"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Según informó CincoDías, la idea era ubicar ese primer data center en las
+      proximidades de la central de ciclo combinado Aceca, casi en la frontera
+      entre Toledo y el territorio madrileño. Precisamente, el lugar donde
+      Iberdrola pensaba levantar el megaparque solar que le acaba de frenar el
+      Gobierno.
+  - id: src-6
+    url: "https://www.iberdrolaespana.com/sala-comunicacion/noticias/joint-venture-echelon-iberdrola-digital-centros-datos-espana"
+    titulo: "Nace Echelon Iberdrola Digital Infra para invertir más de 2.000 millones de euros en centros de datos en España"
+    editor: "Iberdrola España"
+    tipo: empresa
+    fecha_publicacion: "2025-11-26"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      La nueva sociedad cuenta con más de 700 MW asegurados y una cartera
+      potencial de 5.000 MW - El primer proyecto será Madrid Sur, un centro de
+      datos con una capacidad de tratamiento de 144 MW, para lo que tiene
+      asegurada una conexión eléctrica de 230 MW - Este primer proyecto emblemático
+      para el Grupo Iberdrola generará unos 1.500 empleos directos e indirectos y
+      tendrá una demanda estimada de 1 TWh [...] contará con una planta solar
+      fotovoltaica y energía renovable adicional de Iberdrola España para
+      garantizar la totalidad de su consumo eléctrico.
+  - id: src-7
+    url: "https://www.datacenterdynamics.com/en/news/starwoods-echelon-partners-with-iberdrola-for-spanish-data-center-venture/"
+    titulo: "Starwood's Echelon partners with Iberdrola for Spanish data center venture"
+    editor: "DatacenterDynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2025-07-28"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      The first project under the JV is to be located around Madrid; Madrid South
+      will be a 160,000 sqm (1.72 million sq ft), 230MW campus, expected to be
+      ready for service by 2030. Further details weren't shared, but the site will
+      also include on-site solar. [...] CPD4Green has secured more than 700MW of
+      power connections, including locations close to Madrid and in Aragon.
+  - id: src-8
+    url: "https://www.proximoinfra.com/news/76265/Iberdrola-and-Echelons-Madrid-Sur-nears-FID"
+    titulo: "Iberdrola and Echelon's Madrid Sur nears FID"
+    editor: "Proximo"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-02-13"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Iberdrola and Echelon Data Centres hope to make a final investment decision
+      (FID) on their €1.2 billion Madrid Sur data centre project before the end of
+      the year, and close on its financing at the start of 2027, according to a
+      source familiar with the project.
+  - id: src-9
+    url: "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2007-7101"
+    titulo: "Resolución de 2 de marzo de 2007, de la Secretaría General para la Prevención de la Contaminación y el Cambio Climático, por la que se formula declaración de impacto ambiental sobre la evaluación del proyecto de Construcción de un grupo de ciclo combinado de 400 MW de potencia eléctrica nominal en la actual central térmica de Aceca, en Villaseca de la Sagra (Toledo), promovida por Iberdrola Generación, S. A. U."
+    editor: "Boletín Oficial del Estado"
+    tipo: oficial
+    fecha_publicacion: "2007-04-02"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      en terrenos de la central térmica existente (en adelante C. T. Aceca),
+      ubicada en el término municipal de Villaseca de la Sagra, al norte de la
+      provincia de Toledo.
+  - id: src-10
+    url: "https://www.rankia.com/blog/bolsa-al-dia/7317729-centros-datos-espana-boom-66-900-millones-euros"
+    titulo: "Centros de datos en España: el Boom de 66.900 millones de euros"
+    editor: "Rankia"
+    tipo: otro
+    fecha_consulta: "2026-08-31"
+    cita: "Aceca (Madrid, 144 MW iniciales) y Velilla (Palencia)"

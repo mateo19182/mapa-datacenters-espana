@@ -12,11 +12,11 @@ ubicacion:
   municipio: "Meco"
   provincia: "Madrid"
   ccaa: "Comunidad de Madrid"
-  direccion: "Corredor Madrid-Barcelona (A-2), Meco"
-  lat: null
-  lon: null
-  precision: municipio
-  fuentes: [src-1, src-2]
+  direccion: "Calle Zeus 17-19, Polígono Industrial Meco R-2, Meco"
+  lat: 40.532843
+  lon: -3.313717
+  precision: aproximada
+  fuentes: [src-3]
 
 estado: anunciado
 estado_detalle: >-
@@ -54,9 +54,16 @@ incertidumbres:
       No se ha localizado licencia municipal, expediente urbanístico ni fecha objetivo de puesta
       en servicio. Tampoco consta capacidad TI proyectada.
     fuentes: [src-1, src-2]
+  - campo: ubicacion
+    descripcion: >-
+      Pure DC no publica la dirección. La calle Zeus 17-19 procede de un directorio sectorial y
+      encaja con el polígono Meco R-2, donde Microsoft tiene su parcela en las calles Hércules 9
+      y Zeus 14, pero no está confirmada por el promotor ni por el Ayuntamiento. Las coordenadas
+      son el centroide de la calle.
+    fuentes: [src-3]
 
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -75,3 +82,10 @@ fuentes:
     fecha_publicacion: "2024-07-29"
     fecha_consulta: "2026-08-29"
     cita: "ASG Iberia consiguió asegurar en 2022 un contrato de 25 MW de potencia eléctrica para la conexión de cables de alimentación desde una subestación eléctrica cercana y obtuvo el sistema dual feed en 2023."
+  - id: src-3
+    url: "https://www.datacentermap.com/spain/madrid/iridium-alcal-de-henares/"
+    titulo: "Iridium Alcalá de Henares Data Center in Madrid (50 MW) — listado de centros de datos próximos"
+    editor: "Data Center Map"
+    tipo: otro
+    fecha_consulta: "2026-08-31"
+    cita: "The below data centers are located closest to Pol. Ind. el Encín, A-2, 29T. ... 2.42 km PureDC Madrid (Meco) C. Zeus, 19-17"

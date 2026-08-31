@@ -23,16 +23,21 @@ estado_detalle: >-
   cable Grace Hopper de Google amarró aquí el 9 de septiembre de 2021; es el primer
   cable financiado por Google que llega a España y une Estados Unidos, Reino Unido
   y España con 16 pares de fibra. Desde Sopelana el tráfico se encamina al Derio
-  Communications Hub de Telxius. Es también el punto de amarre del cable Marea. No
-  es un centro de datos de colocación: es infraestructura de aterraje.
-estado_fuentes: [src-1, src-2, src-3]
+  Communications Hub de Telxius. Es también el punto de amarre del cable Marea: la
+  propia Telxius describe su centro de datos de Derio como «very close to the Marea
+  landing station in Sopelana». No es un centro de datos de colocación: es
+  infraestructura de aterraje.
+estado_fuentes: [src-1, src-2, src-3, src-4]
 
 enlaces_proyecto: []
 
 incertidumbres:
   - campo: potencia
-    descripcion: "No consta potencia eléctrica de la estación en ninguna fuente consultada. Campo omitido."
-    fuentes: [src-1, src-2]
+    descripcion: >-
+      No consta potencia eléctrica de la estación en ninguna fuente consultada,
+      incluida la página de centros de datos de Telxius, que solo publica cifras para
+      Derio y Virginia Beach. Campo omitido.
+    fuentes: [src-1, src-2, src-4]
   - campo: tipo
     descripcion: >-
       Inclusión discutible en un inventario de CPD: es estación de aterraje de cable
@@ -46,7 +51,7 @@ incertidumbres:
     fuentes: [src-1]
 
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -73,3 +78,14 @@ fuentes:
     fecha_publicacion: "2026-06-19"
     fecha_consulta: "2026-08-29"
     cita: "cercano a cables submarinos transatlánticos (Marea de Microsoft/Meta y Grace Hopper de Google) en Sopelana"
+  - id: src-4
+    url: "https://telxius.com/en/our-data-centers/"
+    titulo: "Our Data Centers"
+    editor: "Telxius"
+    tipo: empresa
+    fecha_publicacion: "2023-11-02"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Strategically located in Bilbao (Northern Spain), the Derio Data Center is very
+      close to the Marea landing station in Sopelana. It is fully carrier-neutral and
+      designed to harness the potential of the subsea cables connected to it.

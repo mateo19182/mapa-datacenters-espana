@@ -12,8 +12,8 @@ ubicacion:
   provincia: "Madrid"
   ccaa: "Comunidad de Madrid"
   direccion: "Polígono industrial Los Salobrales, Alcalá de Henares"
-  lat: null
-  lon: null
+  lat: 40.497181
+  lon: -3.411786
   precision: aproximada
   fuentes: [src-1, src-2]
 
@@ -49,7 +49,9 @@ incertidumbres:
       ni fecha prevista de puesta en servicio.
     fuentes: [src-1, src-2]
   - campo: ubicacion
-    descripcion: "No se ha publicado la dirección concreta dentro del polígono Los Salobrales."
+    descripcion: >-
+      No se ha publicado la dirección concreta dentro del polígono Los Salobrales. Las
+      coordenadas registradas son el centroide del polígono industrial, no las de la parcela.
     fuentes: [src-2]
 
 confianza: media

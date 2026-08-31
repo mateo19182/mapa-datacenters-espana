@@ -1,0 +1,169 @@
+id: apto-fuenlabrada-madrid-one
+nombre: "Apto Madrid One — Fuenlabrada (antigua embotelladora de Casbega/Coca-Cola)"
+alias:
+  - "Apto DC Madrid Campus"
+  - "Madrid One"
+  - "Form8tion Madrid One"
+  - "Thor Digital Madrid"
+tipo: campus
+operador: "Apto Data Centres"
+propietario: "Apto Data Centres (participada por PIMCO)"
+modelo: hyperscale
+
+ubicacion:
+  municipio: "Fuenlabrada"
+  provincia: "Madrid"
+  ccaa: "Comunidad de Madrid"
+  direccion: "Calle Sauce 20, 28942 Fuenlabrada (barrio de El Naranjo, antigua planta embotelladora de Casbega/Coca-Cola)"
+  lat: null
+  lon: null
+  precision: municipio
+  fuentes: [src-1, src-4, src-6]
+
+estado: en_construccion
+estado_detalle: >-
+  El pleno municipal aprobó en marzo de 2023 el planeamiento que permite urbanizar y construir un
+  campus de cinco edificios sobre la parcela industrial en desuso de la antigua embotelladora. En
+  marzo de 2026 Apto declaró el emplazamiento completamente despejado, con la subestación in situ
+  ejecutada y licencia de obra para la primera fase, y anunció el arranque de una segunda fase de
+  122 MW.
+estado_fuentes: [src-1, src-2, src-6]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 240
+    ambito: campus
+    referencia: "Capacidad total prevista del campus, repartida en cinco centros de datos"
+    estado_asociado: en_construccion
+    fecha_dato: "2026-03-13"
+    fuentes: [src-1, src-3]
+    nota: "La compañía dice 'total campus capacity' sin precisar si es carga TI o potencia de acceso."
+  - tipo: conexion_red
+    valor_mw: 40
+    ambito: campus
+    referencia: "Subestación eléctrica in situ ya ejecutada"
+    estado_asociado: en_construccion
+    fecha_dato: "2026-03-13"
+    fuentes: [src-1]
+  - tipo: no_especificado
+    valor_mw: 122
+    ambito: fase
+    referencia: "Segunda fase de desarrollo"
+    estado_asociado: en_construccion
+    fecha_dato: "2026-03-13"
+    fuentes: [src-1]
+  - tipo: no_especificado
+    valor_mw: 24
+    ambito: fase
+    referencia: "Primera fase, según el anuncio de inicio de obras de Form8tion (2023)"
+    estado_asociado: en_construccion
+    fecha_dato: "2023-07-07"
+    fuentes: [src-5]
+    nota: >-
+      Cifra anterior a la aparición de Apto como promotor. Se conserva porque describe la misma
+      parcela.
+
+superficie_parcela_m2: 195000
+inversion_anunciada_eur: 2000000000
+
+incertidumbres:
+  - campo: operador
+    descripcion: >-
+      Thor Equities compró la antigua planta de Coca-Cola de Fuenlabrada en octubre de 2022 y en
+      julio de 2023 su plataforma Form8tion inició las obras de un campus de cinco edificios
+      llamado "Madrid One" en Calle Sauce 20. Desde marzo de 2026 el mismo emplazamiento y el
+      mismo nombre comercial aparecen atribuidos a Apto. No se ha localizado ninguna fuente que
+      documente el traspaso, así que se registra un único emplazamiento con los dos promotores
+      como alias en lugar de dos fichas.
+    fuentes: [src-1, src-4, src-5]
+  - campo: superficie_parcela_m2
+    descripcion: >-
+      Apto habla de 195.000 m²; el acuerdo plenario del Ayuntamiento de Fuenlabrada (2023) cifraba
+      el campus en "cerca de 225.000 metros cuadrados". No se ha podido determinar si describen el
+      mismo perímetro.
+    fuentes: [src-1, src-2]
+  - campo: inversion_anunciada_eur
+    descripcion: >-
+      La inversión anunciada pasa de 600 millones de euros en el acuerdo municipal de 2023 a hasta
+      2.000 millones en la nota de Apto de 2026. Se registra la más reciente y se deja constancia
+      de la anterior.
+    fuentes: [src-1, src-2]
+  - campo: potencia
+    descripcion: >-
+      Ninguna fuente distingue entre MW de carga TI y MW de acceso a red para los 240 MW del
+      campus. Los 40 MW de la subestación sí son potencia de conexión y no se comparan con
+      aquella cifra.
+    fuentes: [src-1]
+
+enlaces_proyecto:
+  - "https://aptodc.com/apto-announces-largest-data-centre-campus-in-madrid-cloud-region/"
+
+confianza: media
+ultima_verificacion: "2026-08-31"
+
+fuentes:
+  - id: src-1
+    url: "https://aptodc.com/apto-announces-largest-data-centre-campus-in-madrid-cloud-region/"
+    titulo: "Apto Announces Largest Data Centre Campus in Madrid Cloud Region"
+    editor: "Apto"
+    tipo: empresa
+    fecha_publicacion: "2026-03-13"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Apto, a provider of world-class hyperscale data centres across Europe, has confirmed a
+      landmark 195,000m2 site in Fuenlabrada as the location of its new Madrid campus. With a
+      total capital investment estimated at up to €2bn ... Apto has already completed site
+      enabling works, including an onsite 40MW substation, with total campus capacity projected
+      to reach up to 240MW across 5 data centres. Apto is now commencing the second phase,
+      totalling 122 MW
+  - id: src-2
+    url: "https://www.ayto-fuenlabrada.es/web/portal/w/fuenlabrada-da-luz-verde-a-la-creacion-de-uno-de-los-mayores-centros-tecnologicos-de-espana"
+    titulo: "Fuenlabrada da luz verde a una inversión de 600 millones de euros para la creación de uno de los mayores centros tecnológicos de España"
+    editor: "Ayuntamiento de Fuenlabrada"
+    tipo: oficial
+    fecha_publicacion: "2023-03-02"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      se ha aprobado el planeamiento para la instalación de uno de los más importantes campus de
+      datos de España, que contará con 5 edificios y cerca de 225.000 metros cuadrados ... Lo
+      aprobado hoy por el Pleno de Fuenlabrada permite la urbanización y posterior construcción de
+      este gran centro en una parcela industrial que en la actualidad se encontraba en desuso
+  - id: src-3
+    url: "https://www.datacenterdynamics.com/es/noticias/apto-confirma-un-campus-de-centros-de-datos-en-fuenlabrada-con-capacidad-de-240-mw/"
+    titulo: "Apto confirma un campus de centros de datos en Fuenlabrada con capacidad de 240 MW"
+    editor: "DatacenterDynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-03-13"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      En total, el campus está diseñado para alcanzar hasta 240 MW de capacidad, distribuidos en
+      cinco centros de datos. Tras la fase inicial, la empresa prevé avanzar con una segunda fase
+      de desarrollo de 122 MW
+  - id: src-4
+    url: "https://datacenterhawk.com/marketplace/providers/apto-dc-limited/c-sauce-20/madrid-one"
+    titulo: "Apto DC Limited Madrid One | C. Sauce, 20, Madrid"
+    editor: "datacenterHawk"
+    tipo: consultora
+    fecha_consulta: "2026-08-31"
+    cita: "Apto DC Limited · Madrid One ... C. Sauce, 20 ... Fuenlabrada, Spain"
+  - id: src-5
+    url: "https://www.datacenterdynamics.com/en/news/thors-form8ation-breaks-ground-on-spanish-data-center-campus-in-madrid/"
+    titulo: "Thor's Form8tion breaks ground on Spanish data center campus in Madrid"
+    editor: "DatacenterDynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2023-07-07"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Thor's Form8tion breaks ground on Spanish data center campus in Madrid. Work on first 24MW
+      phase underway at former Coca-Cola bottling plant
+  - id: src-6
+    url: "https://cadenaser.com/cmadrid/2026/03/13/el-nuevo-centro-de-datos-de-fuenlabrada-se-encuentra-ya-en-la-segunda-fase-de-su-construccion-ser-madrid-sur/"
+    titulo: "El nuevo Centro de Datos de Fuenlabrada se encuentra ya en la segunda fase de su construcción"
+    editor: "Cadena SER"
+    tipo: prensa_general
+    fecha_publicacion: "2026-03-13"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      La empresa británica Apto se encuentra ya en la segunda fase de construcción de su Centro de
+      Procesamiento de Datos en Fuenlabrada, en la parcela industrial que antiguamente ocupaba
+      Casbega (Coca Cola). En total contará con 195.000 metros cuadrados y tendrá cinco edificios

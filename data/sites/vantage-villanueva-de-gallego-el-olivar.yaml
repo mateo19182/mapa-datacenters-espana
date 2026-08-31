@@ -18,7 +18,7 @@ ubicacion:
   precision: municipio
   fuentes: [src-1, src-3]
 
-estado: en_tramitacion
+estado: paralizado
 estado_detalle: >-
   Declarado inversión de interés autonómico con interés general de Aragón por Acuerdo del
   Gobierno de Aragón de 10 de septiembre de 2025, con "Desarrollos Ecoindustriales La
@@ -35,7 +35,7 @@ potencia:
     referencia: "Concesión de potencia asociada a la fase 1 según la tabla de inversión del proyecto"
     estado_asociado: en_tramitacion
     fecha_dato: "2025-09-10"
-    fuentes: [src-1]
+    fuentes: [src-1, src-7]
     nota: >-
       La tabla de fases del acuerdo indica como fuente de alimentación de la fase 1
       "Concesión de 90 MW"; las fases 3, 4 y 5 figuran "En proceso". No se precisa si son
@@ -66,19 +66,57 @@ conexion_electrica:
 
 superficie_parcela_m2: 476891
 inversion_anunciada_eur: 3200000000
-refrigeracion: null
+refrigeracion: >-
+  Refrigeración en circuito cerrado, con reutilización del calor, en lugar de los sistemas
+  evaporativos tradicionales.
+
+agua:
+  circuito: cerrado
+  sistema: >-
+    "El proyecto se diseñará con métodos de refrigeración en circuito cerrado, reutilización
+    del calor y diseños energéticamente eficientes en lugar de los tradicionales sistemas
+    evaporativos que consumen más agua."
+  origen: null
+  nota: >-
+    El Acuerdo no publica ninguna cifra de consumo: se limita a decir que "el consumo total
+    de agua en el Campus Centro de datos de Villanueva de Gállego se limitará al uso humano
+    equiparable al de una instalación industrial estándar". No consta WUE ni PUE. El
+    proyecto no había llegado a evaluación de impacto ambiental cuando la promotora
+    renunció al emplazamiento, de modo que no hay expediente ambiental que cuantifique el
+    agua.
+  fuentes: [src-5]
+
+empleo:
+  - tipo: directo
+    valor: 520
+    referencia: "Empleos permanentes directos previstos con el centro de datos construido, alcanzados en el año 10"
+    fecha_dato: "2025-09-10"
+    fuentes: [src-6]
+    nota: >-
+      El Acuerdo indica que se pasaría de 180 en los primeros años a 520 en el año 10, sobre
+      la base de una ratio de 1 empleado a tiempo completo por MW de potencia de TI.
+  - tipo: construccion
+    valor: 60
+    referencia: "Puestos de trabajo directos durante la urbanización de la fase 1"
+    fecha_dato: "2025-09-10"
+    fuentes: [src-6]
+    nota: "El Acuerdo añade otros 80 indirectos en el mismo periodo."
 enlaces_proyecto: []
 
 incertidumbres:
   - campo: estado
     descripcion: >-
-      El estado registrado procede del BOA y de la tramitación de INAGA hasta marzo de 2026.
-      Prensa aragonesa de julio de 2026 informa de que Vantage habría renunciado a estos suelos
-      y buscaría reubicar el proyecto, por la saturación de los nudos Villanueva 220 y Peñaflor
-      220. No ha sido posible abrir esa noticia para verificar sus términos literales en esta
-      revisión, de modo que el estado no se ha modificado. Si se confirma, este emplazamiento
-      pasaría a «cancelado» y habría que dar de alta el nuevo.
-    fuentes: [src-renuncia]
+      Chocan una fuente oficial y una periodística. La declaración de inversión de interés
+      autonómico de 10 de septiembre de 2025 sigue formalmente vigente y ninguna resolución
+      publicada la ha revocado; la prensa aragonesa de 24 de julio de 2026 informa, citando
+      fuentes no identificadas, de que la promotora "ha renunciado a ubicarse en una
+      pastilla de suelo de 40 hectáreas junto a la Universidad San Jorge" por dificultades
+      con la infraestructura energética y busca otro emplazamiento, aunque el proyecto
+      "sigue adelante". Se registra el estado como «paralizado», siguiendo el mismo criterio
+      aplicado al campus de Cariñena de Box2Bit: la declaración vive, el emplazamiento no.
+      Si la renuncia se formaliza en el BOA, este emplazamiento pasará a «cancelado» y habrá
+      que dar de alta el nuevo.
+    fuentes: [src-1, src-renuncia]
   - campo: inversion_anunciada_eur
     descripcion: >-
       La tabla de inversión publicada en el BOA suma 3.200 M€ en su fila de totales, pero
@@ -100,7 +138,7 @@ incertidumbres:
     fuentes: [src-3]
 
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -128,9 +166,33 @@ fuentes:
     cita: "el proyecto del Campus Data Center Villanueva de Gállego"
   - id: src-renuncia
     url: "https://www.elperiodicodearagon.com/aragon/2026/07/24/vantage-reubicara-centro-datos-renunciar-zaragoza-132732543.html"
-    titulo: "Vantage reubicará su centro de datos tras renunciar a los suelos de Zaragoza"
+    titulo: "Vantage reubicará su centro de datos al renunciar a los suelos de Villanueva de Gállego"
     editor: "El Periódico de Aragón"
     tipo: prensa_general
     fecha_publicacion: "2026-07-24"
-    fecha_consulta: "2026-08-29"
-    cita: null
+    fecha_consulta: "2026-08-31"
+    cita: "Cambio de planes en el centro de datos que el gigante estadounidense Vantage Data Centers, aliado con una sociedad de empresarios aragoneses, proyectaba en Villanueva de Gállego con una inversión de 3.200 millones de euros. La promotora de uno de los grandes complejos tecnológicos que prometen aterrizar sobre la comunidad ha renunciado a ubicarse en una pastilla de suelo de 40 hectáreas junto a la Universidad San Jorge, en la carretera de Huesca, por lo que trabaja a contrarreloj para encontrar un nuevo emplazamiento para su infraestructura tecnológica. [...] En cualquier caso, el proyecto \"sigue adelante\", según confirman las citadas fuentes"
+  - id: src-5
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1413456710909"
+    titulo: "ORDEN PEJ/1264/2025, de 18 de septiembre [...] «Centro de datos del Campus Villanueva de Gállego» — eficiencia energética y materia hídrica"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2025-10-01"
+    fecha_consulta: "2026-08-31"
+    cita: "En materia hídrica, el proyecto se diseñará con métodos de refrigeración en circuito cerrado, reutilización del calor y diseños energéticamente eficientes en lugar de los tradicionales sistemas evaporativos que consumen más agua. [...] De esta forma, el consumo total de agua en el Campus Centro de datos de Villanueva de Gállego se limitará al uso humano equiparable al de una instalación industrial estándar."
+  - id: src-6
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1413456710909"
+    titulo: "ORDEN PEJ/1264/2025, de 18 de septiembre [...] «Centro de datos del Campus Villanueva de Gállego» — creación de puestos de trabajo"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2025-10-01"
+    fecha_consulta: "2026-08-31"
+    cita: "Teniendo en cuenta que las previsiones de inversión se estiman en 13.600.000 euros, se prevé la creación de unos 60 puestos de trabajo directos, y otros 80 indirectos durante el mismo periodo. Una vez construido, se espera que el centro de datos respalde alrededor de 520 empleos permanentes directos, pasando de 180 en los primeros años a 520 en el año 10. Esta estimación se basa en una proporción típica de la industria de 1 FTE por MW de potencia de TI y se valida con las operaciones existentes de Vantage."
+  - id: src-7
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1413456710909"
+    titulo: "ORDEN PEJ/1264/2025, de 18 de septiembre [...] «Centro de datos del Campus Villanueva de Gállego» — tabla de fases, fuente de alimentación e inversión"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2025-10-01"
+    fecha_consulta: "2026-08-31"
+    cita: "Fase Fuente de alimentación Año Inversión 1 Concesión de 90 MW 1-2 500 M€ 2 El excedente de suministro de la Fase 1 se trasladará a la Fase 2 2-4 5000 M€ 3 En proceso 4-5 500 M€ 4 En proceso 6-8 500 M€ 5 En proceso 9-10 1200 M€ - - - 3200 M€"

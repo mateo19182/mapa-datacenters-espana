@@ -27,8 +27,15 @@ estado_detalle: >-
   Center Docks); en febrero de 2023 Sineasen encabezaba la valoración. El gobierno
   municipal de PP y Vox descartó después el proyecto por no querer «una granja de
   servidores» en un edificio histórico, y Nethits trasladó su inversión al polígono de Vara
-  de Quart (ver `nxn-valencia-vara-de-quart-nx01`).
-estado_fuentes: [src-2, src-3]
+  de Quart (ver `nxn-valencia-vara-de-quart-nx01`). La cancelación quedó confirmada en vía
+  judicial: el 13/06/2025 el juzgado de lo Contencioso-Administrativo nº 1 de València
+  desestimó el recurso de Sineasen contra la anulación del concurso, apoyándose en un
+  informe de la Abogacía del Estado según el cual ceder los Docks a una empresa privada a
+  cambio de un canon contradice la finalidad de utilidad pública con la que el Puerto cedió
+  el inmueble al Ayuntamiento. En junio de 2026 el edificio seguía vacío y deteriorado, a la
+  espera de un uso público, con el centro de datos ya expresamente descartado. La ficha
+  sigue siendo, por tanto, un proyecto cancelado.
+estado_fuentes: [src-2, src-3, src-4, src-5]
 
 potencia:
   - tipo: conexion_red
@@ -53,9 +60,11 @@ incertidumbres:
   - campo: operador
     descripcion: >-
       El concurso no llegó a materializarse en una explotación. Sineasen (marca Datium)
-      encabezaba la valoración en febrero de 2023, pero el proyecto fue descartado por el
-      Ayuntamiento.
-    fuentes: [src-2, src-3]
+      encabezaba la valoración en febrero de 2023 con 99,11 puntos, frente a los 46,44 de
+      Nethits Telecom y los 25,01 de Data Center Docks; el proyecto fue descartado por el
+      Ayuntamiento y la empresa fue compensada con 24.000 euros frente a los cerca de
+      115.000 que reclamaba.
+    fuentes: [src-2, src-3, src-4]
   - campo: ubicacion
     descripcion: >-
       Las coordenadas corresponden al recinto de la Marina de València, no al edificio de
@@ -63,7 +72,7 @@ incertidumbres:
     fuentes: [src-1]
 
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -90,3 +99,19 @@ fuentes:
     fecha_publicacion: "2023-02-01"
     fecha_consulta: "2026-08-29"
     cita: "El Ayuntamiento de València hizo público este miércoles el contenido de las tres ofertas presentadas, Sineasen, Nethits Telecom y Data Center Docks [...] El único parámetro en el que Nethits Telecom está por delante es la inversión prevista, pero por poco. Esta empresa la cifra en 45 millones de euros, frente a los 43 millones de Sineasen y los 37 de Data Center Docks."
+  - id: src-4
+    url: "https://valenciaplaza.com/valenciaplaza/valencia/un-juzgado-avala-la-anulacion-del-concurso-del-data-center-en-los-docks-de-valencia"
+    titulo: "Un juzgado avala la anulación del concurso del 'data center' en los Docks de València"
+    editor: "Valencia Plaza"
+    tipo: prensa_general
+    fecha_publicacion: "2025-06-18"
+    fecha_consulta: "2026-08-31"
+    cita: "La sentencia, emitida por el juzgado de lo Contencioso Administrativo número 1 de Valencia el pasado 13 de junio, puede ser recurrida. Considera que la resolución del Ayuntamiento de València contaba con la suficiente fundamentación. [...] deja claro que la cesión de los Docks a una empresa privada «no es interese público, sino interés particular con contraprestación económica». [...] En la licitación, la oferta de Sineasen obtuvo en la calificación de la mesa 99,11 puntos, más del doble que la de Nethis (46,44). En tercer lugar en el concurso, según el informe de los técnicos, quedo la oferta de la empresa Data Center Docks (25,01 puntos) [...] el Ayuntamiento de València le compensó con 24.000 euros, frente a su exigencia de cerca de 115.000 euros."
+  - id: src-5
+    url: "https://www.levante-emv.com/valencia/2026/06/10/docks-puerto-asoman-ruina-espera-131207443.html"
+    titulo: "Los Docks del Puerto se asoman a la ruina a la espera de un uso público"
+    editor: "Levante-EMV"
+    tipo: prensa_general
+    fecha_publicacion: "2026-06-10"
+    fecha_consulta: "2026-08-31"
+    cita: "El edificio de los Docks languidece cada día y se asoma al abismo de la ruina mientras espera un uso público que no termina de llegar. [...] Descartado el centro de datos –que se implantará en Vara de Quart–, el gobierno municipal se subió a la rueda de las declaraciones sin contenido y habló de «uso emblemático»"

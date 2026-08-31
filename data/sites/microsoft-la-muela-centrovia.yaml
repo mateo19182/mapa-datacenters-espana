@@ -73,7 +73,48 @@ conexion_electrica:
 
 superficie_parcela_m2: 1461200
 inversion_anunciada_eur: 2179843352
-refrigeracion: null
+refrigeracion: >-
+  Refrigeración líquida recirculada en circuito cerrado, sin torres de evaporación.
+
+agua:
+  circuito: cerrado
+  sistema: >-
+    Refrigeración líquida recirculada en circuito cerrado que enfría directamente los chips.
+    Según la compañía, no depende de torres de evaporación ni de aportes continuos de agua:
+    "una vez que el sistema se llena durante la construcción, el agua circula de manera
+    continua entre los servidores y los equipos de refrigeración sin necesidad de suministro
+    adicional". El agua de lluvia de las cubiertas se recoge para usos no potables.
+  origen: null
+  nota: >-
+    La documentación del PIGA cifra en 3.975 m³/año la demanda industrial a plena capacidad a partir del segundo año de operación y en 27.717 m³ el llenado inicial del circuito el primer año, pero lo hace para los TRES campus de Microsoft en Aragón conjuntamente. No se registra consumo por emplazamiento porque repartir esa cifra exigiría una clave de reparto que no consta. El Acuerdo de declaración de interés autonómico recoge además el compromiso corporativo de "Impacto positivo en Agua (Water positive)" para 2030.
+  fuentes: [src-6]
+
+energia:
+  - consumo_gwh_ano: 3700
+    referencia: "Consumo eléctrico máximo anual previsto para el campus de La Muela"
+    fecha_dato: "2025-11-19"
+    fuentes: [src-5]
+    nota: >-
+      Cifra de la documentación del PIGA conocida a través de prensa. Es un máximo, no una
+      previsión central. Sumada a las de Villamayor de Gállego (3.777 GWh/año) y Zaragoza
+      (3.100 GWh/año), la misma fuente da más de 10.500 GWh/año para los tres campus.
+
+empleo:
+  - tipo: construccion
+    valor: 2000
+    referencia: "Extremo superior de la horquilla de trabajadores necesarios para completar el desarrollo del campus (entre 1.000 y 2.000, con una media anual aproximada de 300-400)"
+    fecha_dato: "2024-01-09"
+    fuentes: [src-7]
+    nota: >-
+      La memoria da una horquilla de 1.000 a 2.000 trabajadores; se registra el extremo
+      superior y se advierte del rango en lugar de promediarlo. La media anual estimada es de
+      300 a 400 empleos.
+  - tipo: directo
+    valor: 300
+    referencia: "Empleos fijos previstos en la fase operativa del campus"
+    fecha_dato: "2024-01-09"
+    fuentes: [src-7]
+    nota: "La memoria dice «hasta 300», es decir, un techo, no una previsión central."
 enlaces_proyecto:
   - "https://www.aragon.es/-/piga-microsoft"
   - "https://www.aragon.es/-/microsoft-eia"
@@ -90,6 +131,14 @@ incertidumbres:
       Ninguna fuente oficial consultada publica potencia eléctrica por campus. Los 50 MW y
       los 300 MW proceden únicamente de prensa.
     fuentes: [src-1, src-3, src-5]
+  - campo: agua
+    descripcion: >-
+      La única cifra publicada de consumo de agua —3.975 m³/año a plena capacidad y
+      27.717 m³ de llenado inicial— es conjunta para los tres campus de Microsoft en Aragón
+      y llega a través de prensa, que la atribuye a la documentación del PIGA. No se ha
+      localizado en abierto el estudio de impacto ambiental de cada campus, sometido a
+      información pública en agosto de 2026, que debería dar el desglose por emplazamiento.
+    fuentes: [src-6]
   - campo: ubicacion
     descripcion: >-
       Las coordenadas registradas son el centroide municipal de La Muela (Wikidata), no la
@@ -97,7 +146,7 @@ incertidumbres:
     fuentes: [src-4]
 
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -138,3 +187,19 @@ fuentes:
     fecha_publicacion: "2025-11-19"
     fecha_consulta: "2026-08-29"
     cita: "El centro más importante será el de La Muela, a 23 kilómetros de Zaragoza, con 146 hectáreas, la mitad de toda la infraestructura, y se ha previsto un consumo eléctrico máximo anual de unos 3.700 GWh/año."
+  - id: src-6
+    url: "https://www.elperiodicodearagon.com/aragon/2025/11/14/microsoft-asegura-centros-datos-aragon-123735748.html"
+    titulo: "La 'nube' de Microsoft apenas tiene sed: el consumo de sus centros de datos equivaldrá al de 90 personas"
+    editor: "El Periódico de Aragón"
+    tipo: prensa_general
+    fecha_publicacion: "2025-11-14"
+    fecha_consulta: "2026-08-31"
+    cita: "La compañía asegura que sus tres campus de infraestructuras tecnológicas, que se levantarán en La Muela, Villamayor de Gállego y Zaragoza, funcionarán con un sistema de refrigeración líquida en circuito cerrado [...] La demanda industrial de sus instalaciones a plena capacidad a partir del segundo año de operación será de 3.975 metros cúbicos [...] El único momento en el que se requiere una cantidad significativa de agua es el inicial. En concreto, 27.717 m³ el primer año, destinados exclusivamente al llenado del circuito cerrado, según la información facilitada desde la empresa."
+  - id: src-7
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1311667640606"
+    titulo: "ORDEN EEI/1979/2023, de 28 de diciembre, por la que se da publicidad al Acuerdo de 20 de diciembre de 2023, del Gobierno de Aragón, por el que se declara como inversión de interés autonómico con interés general el proyecto «Nuevo Campus de Centros de Datos Microsoft» en la Fase 5 del Polígono «Centro Vía» del término municipal de La Muela (Zaragoza) — empleo"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2024-01-09"
+    fecha_consulta: "2026-08-31"
+    cita: "Durante la fase de construcción, además de los futuros empleos directos creados, estimamos que se necesitarán entre 1.000 y 2.000 trabajadores (una media anual aproximada de 300-400 empleos) para completar el desarrollo del Campus en su totalidad. La construcción de la totalidad del campus requerirá aproximadamente unos 12 millones de horas trabajadas. [...] Una vez concluida la fase de construcción, se espera poder generar hasta 300 empleos fijos en la fase operativa del Campus."

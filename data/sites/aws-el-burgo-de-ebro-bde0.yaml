@@ -35,7 +35,7 @@ potencia:
     referencia: "Potencia eléctrica total instalada de los 46 grupos electrógenos diésel de respaldo"
     estado_asociado: operativo
     fecha_dato: "2020-07-27"
-    fuentes: [src-1]
+    fuentes: [src-1, src-9]
     nota: >-
       Potencia instalada de los generadores de reserva (46 x 2,4 MWe), no carga TI ni
       potencia de conexión a red.
@@ -57,6 +57,41 @@ fases:
   - nombre: "Edificio B"
     estado: operativo
     fuentes: [src-1, src-2]
+
+agua:
+  circuito: hibrido
+  sistema: >-
+    Unidades de tratamiento de aire (AHU) sin consumo de agua la mayor parte del año; los
+    días de más calor, paneles evaporativos con agua, con recirculación del mayor número de
+    ciclos posible.
+  origen: "Red municipal de abastecimiento del polígono"
+  consumo_m3_ano: 36461
+  nota: >-
+    36.461 m³/año es el consumo total declarado en la AAI de 2020 (35.000 de climatización,
+    1.460 de servicios sanitarios y limpieza y menos de 1 del sistema contra incendios). Es
+    la misma cifra que declaran las AAI de Villanueva de Gállego y Huesca PLHUS del mismo
+    día, con el mismo desglose. La modificación no sustancial número 2 del PIGA, de 31 de
+    julio de 2024, centralizó el tratamiento de agua de los tres centros para mejorar hasta
+    un 10 % la eficiencia de uso del agua; en El Burgo de Ebro creó además nuevos puntos de
+    conexión en el vial oeste de la parcela por la ubicación de la nueva depuradora.
+  fuentes: [src-6, src-8]
+
+energia:
+  - consumo_gwh_ano: 739.9
+    referencia: "Consumo anual de electricidad de la actividad declarado en la autorización ambiental integrada de 2020"
+    fecha_dato: "2020-07-27"
+    fuentes: [src-10]
+    nota: >-
+      La resolución lo publica en MWh: 739.900 MWh/año. Las autorizaciones de los otros dos
+      centros del mismo Proyecto de Interés General declaran esta misma cifra.
+
+empleo:
+  - tipo: directo
+    valor: 60
+    referencia: "Plantilla total prevista del centro al completar las fases de implementación (30 por edificio, tres turnos, 24 h, 365 días)"
+    fecha_dato: "2020-07-27"
+    fuentes: [src-7]
+    nota: null
 
 inversion_anunciada_eur: null
 enlaces_proyecto:
@@ -118,3 +153,43 @@ fuentes:
     fecha_publicacion: "2026-06-24"
     fecha_consulta: "2026-08-29"
     cita: "para el centro de almacenamiento de datos denominado BDE (ZAZ082), ubicado en el polígono industrial El Espartal III coordenadas de referencia UTM ETRS89, Huso 30, X: 692.855 e Y: 4.601.757, Z=180 msnm"
+  - id: src-6
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1126018963636"
+    titulo: "RESOLUCIÓN de 27 de julio de 2020, del Instituto Aragonés de Gestión Ambiental [...] El Espartal II, El Burgo de Ebro (INAGA 500301/02/2019/12454) — consumo de agua y sistema de climatización"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2020-08-11"
+    fecha_consulta: "2026-08-31"
+    cita: "Se prevé un consumo de agua total de 36.461 m³/año dividido en 35.000 m³/año para equipos de climatización, 1.460 m³/año para servicios sanitarios y lim pieza y menos de 1 m³/año para los sistemas de protección contra incendios. [...] El abastecimiento de agua se realizará desde la red municipal que abastece al polígono. [...] El sistema de climatización trabaja la mayor parte del año mediante unidades de trata miento de aire (AHU) sin consumo de agua, sin embargo, los días de más calor del año tra baja mediante paneles evaporativos con agua."
+  - id: src-7
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1126018963636"
+    titulo: "RESOLUCIÓN de 27 de julio de 2020, del Instituto Aragonés de Gestión Ambiental [...] El Espartal II, El Burgo de Ebro (INAGA 500301/02/2019/12454) — régimen de funcionamiento y personal"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2020-08-11"
+    fecha_consulta: "2026-08-31"
+    cita: "El régimen de funcionamiento del centro está previsto que vaya aumentando con el avance de las fases de implementación hasta alcanzar un total de 60 trabajadores (30 por edificio) que se distribuirán en tres turnos de trabajo, durante 24 horas al día y 365 días al año."
+  - id: src-8
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1346904080606"
+    titulo: "ORDEN FOM/902/2024, de 31 de julio, por la que se aprueba la modificación no sustancial número 2 del Proyecto de Interés General de Aragón para la implantación de tres centros de datos en la Comunidad Autónoma de Aragón promovido por Amazon Data Services Spain, SL"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2024-08-09"
+    fecha_consulta: "2026-08-31"
+    cita: "Centralizar las instalaciones de gestión del agua de refrigeración en cada uno de los tres emplazamientos de los centros de datos (Villanueva de Gállego, PLHUS Huesca y El Burgo de Ebro) y aumentar la eficiencia y robustez del sistema para lograr una mejora de hasta el 10% en la eficiencia del uso del agua en los tres centros de datos de Amazon en Aragón. [...] En el caso del emplazamiento de El Burgo de Ebro, debido a la ubicación de la nueva depuradora en el suroeste de la parcela se crean nuevos puntos de conexión en el vial oeste de la parcela."
+  - id: src-9
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1126018963636"
+    titulo: "RESOLUCIÓN de 27 de julio de 2020, del Instituto Aragonés de Gestión Ambiental [...] El Espartal II, El Burgo de Ebro (INAGA 500301/02/2019/12454) — grupos electrógenos de reserva"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2020-08-11"
+    fecha_consulta: "2026-08-31"
+    cita: "Los generadores de reserva son un total de 46 grupos electrógenos, 27 en el edifico A y 19 en el B. Cada generador contará con una potencia eléctrica de 2,4 MWe siendo capaces de ge nerar 6,4 MWt (energía térmica) cada uno de manera que la potencia eléctrica total instalada es de 110,4 MWe siendo la potencia térmica total aproximada de 294,4 MWt."
+  - id: src-10
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1126018963636"
+    titulo: "RESOLUCIÓN de 27 de julio de 2020, del Instituto Aragonés de Gestión Ambiental [...] El Espartal II, El Burgo de Ebro (INAGA 500301/02/2019/12454) — consumo de electricidad"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2020-08-11"
+    fecha_consulta: "2026-08-31"
+    cita: "Electricidad. El consumo anual de electricidad para el desarrollo de la actividad es de 739.900 MWh."

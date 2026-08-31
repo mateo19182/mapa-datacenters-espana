@@ -19,8 +19,11 @@ ubicacion:
 estado: operativo
 estado_detalle: >-
   Instalación registrada por EXA Infrastructure en el directorio de PeeringDB
-  como punto de presencia/edge en el Vallès Occidental.
-estado_fuentes: [src-1]
+  como punto de presencia/edge en el Vallès Occidental. Los directorios la sitúan
+  en el polígono industrial Uralita de Cerdanyola. EXA figura también como uno de
+  los operadores presentes en el centro de EdgeConneX en Sant Boi, lo que encaja
+  con un nodo de red antes que con un centro de datos comercial.
+estado_fuentes: [src-1, src-2]
 
 potencia: []
 
@@ -28,8 +31,11 @@ incertidumbres:
   - campo: potencia
     descripcion: >-
       No se ha localizado ninguna cifra de potencia, superficie ni fecha de
-      puesta en servicio. El único registro localizado es la ficha de PeeringDB.
-    fuentes: [src-1]
+      puesta en servicio. Ni EXA Infrastructure en su web ni los directorios
+      sectoriales publican datos técnicos de esta instalación; su ficha de
+      PeeringDB no declara operadores ni redes conectadas, lo que apunta a un
+      nodo de red propio más que a colocation abierto.
+    fuentes: [src-1, src-2]
   - campo: estado
     descripcion: >-
       PeeringDB no distingue estado operativo; se asume operativo por figurar en
@@ -47,3 +53,12 @@ fuentes:
     tipo: asociacion
     fecha_consulta: "2026-08-29"
     cita: "EXA Edge DC Barcelona | Carrer Bosc Tancat 1 | Cerdanyola del Vallès | 8290 | 41.500726 | 2.13558"
+  - id: src-2
+    url: "https://www.datacentermap.com/spain/barcelona/"
+    titulo: "Barcelona Data Centers — 29 Facilities from 13 Operators"
+    editor: "Data Center Map"
+    tipo: otro
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      EXA Barcelona EXA Infrastructure Bosc Tancat 1, Poligono Industrial Uralita
+      Cerdanyola del Valles

@@ -1,0 +1,171 @@
+id: repsol-escatron-campus-ia
+nombre: "Centro de datos de Escatrón — autoconsumo de 402 MW de Repsol"
+alias:
+  - "Macrocentro de datos de Repsol en Escatrón"
+  - "Campus digital de Escatrón"
+tipo: campus
+operador: null
+propietario: "Repsol (titular del suelo, de la central de ciclo combinado y del acceso de autoconsumo)"
+cliente_ancla: null
+modelo: desconocido
+
+ubicacion:
+  municipio: "Escatrón"
+  provincia: "Zaragoza"
+  ccaa: "Aragón"
+  direccion: "Terrenos colindantes a la central de ciclo combinado de Repsol en Escatrón"
+  lat: 41.2870705
+  lon: -0.3249532
+  precision: municipio
+  fuentes: [src-2, src-3, src-osm]
+
+estado: anunciado
+estado_detalle: >-
+  Repsol registró en diciembre de 2024 la solicitud para desarrollar el proyecto en los
+  terrenos colindantes a su central de ciclo combinado de Escatrón, adquirida en 2018. En
+  febrero de 2025 Red Eléctrica le otorgó 402 MW de autoconsumo. Repsol ha declarado que no
+  será el promotor del centro de datos, sino el socio energético: la instalación la
+  desarrollaría un tercero todavía no identificado públicamente. En octubre de 2025 Repsol y
+  Forestalia anunciaron la hibridación de la central con quince parques eólicos para dar
+  soporte al futuro centro, y en julio de 2026 Repsol comprometió 11,8 millones de euros en la
+  infraestructura eléctrica que conectará esos parques con el campus. No hay proyecto
+  constructivo, promotor ni calendario publicados.
+estado_fuentes: [src-1, src-2, src-3, src-4]
+
+potencia:
+  - tipo: conexion_red
+    valor_mw: 402
+    ambito: campus
+    referencia: "Autoconsumo de energía renovable otorgado por Red Eléctrica de España"
+    estado_asociado: anunciado
+    fecha_dato: "2025-02-20"
+    fuentes: [src-1, src-2, src-3]
+    nota: >-
+      Es la potencia concedida en el punto de conexión bajo régimen de autoconsumo, no la carga
+      TI del centro. Las primeras informaciones de enero de 2025 hablaban de «algo más de 400
+      MW»; 402 MW es la cifra que da la propia Repsol tras la autorización.
+  - tipo: generacion_asociada
+    valor_mw: 818
+    ambito: campus
+    referencia: "Central de ciclo combinado de Repsol en Escatrón, que da soporte al proyecto"
+    estado_asociado: operativo
+    fecha_dato: "2025-10-16"
+    fuentes: [src-1]
+    nota: "Capacidad de generar, no de consumir. No es capacidad del centro de datos."
+  - tipo: generacion_asociada
+    valor_mw: 805
+    ambito: campus
+    referencia: "Quince parques eólicos adquiridos a Forestalia que se hibridan con la central"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2025-10-16"
+    fuentes: [src-1]
+    nota: >-
+      Capacidad instalada conjunta de los parques, en tramitación y con DIA favorable. No es
+      capacidad del centro de datos.
+
+conexion_electrica:
+  subestacion: "Subestación de la central de ciclo combinado de Escatrón"
+  tension_kv: null
+  titular_red: "Red Eléctrica de España"
+  mw_solicitados: 402
+  mw_concedidos: 402
+  fuentes: [src-1, src-2, src-4]
+  nota: >-
+    Repsol prevé duplicar la subestación de la que dispone la central para acoger la
+    hibridación con las renovables que abastecerán al centro tecnológico, con una inversión de
+    11,8 millones de euros anunciada en julio de 2026.
+
+inversion_anunciada_eur: null
+enlaces_proyecto: []
+
+incertidumbres:
+  - campo: operador
+    descripcion: >-
+      No hay operador del centro de datos identificado. Repsol dice expresamente que no será el
+      promotor principal, sino el socio energético, y que la inversión la haría el tercero que
+      entre en el proyecto. Desde febrero de 2025 no se ha publicado quién es ese socio.
+    fuentes: [src-2, src-1]
+  - campo: potencia
+    descripcion: >-
+      La única cifra publicada, 402 MW, es potencia de acceso en autoconsumo. No consta ninguna
+      cifra de carga TI ni de superficie de sala técnica.
+    fuentes: [src-1, src-2]
+  - campo: ubicacion
+    descripcion: >-
+      En Escatrón hay dos proyectos de centro de datos distintos junto a dos centrales de ciclo
+      combinado distintas: este, junto al ciclo combinado de 818 MW de Repsol, y el de
+      DayOne/IGNIS, junto a la planta «Peaker» de 285 MW (ficha «dayone-escatron-peaker»). No
+      son el mismo emplazamiento y sus potencias no se suman.
+    fuentes: [src-1, src-5]
+
+confianza: media
+ultima_verificacion: "2026-08-31"
+
+fuentes:
+  - id: src-1
+    url: "https://www.repsol.com/es/sala-prensa/notas-prensa/2025/repsol-forestalia-promueven-aragon-mayor-hibridacion-energetica-espana/index.cshtml"
+    titulo: "Repsol y Forestalia promueven en Aragón la mayor hibridación energética de España"
+    editor: "Repsol"
+    tipo: empresa
+    fecha_publicacion: "2025-10-16"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      La central de ciclo combinado de Repsol en Escatrón (818 MW), Zaragoza, se hibridará con
+      quince parques eólicos adquiridos a Forestalia con una capacidad instalada conjunta de 805
+      MW. [...] Este proyecto tiene una clara sinergia con el desarrollo, por parte de un
+      tercero, de un centro de datos ubicado en las proximidades de la central. Para este centro
+      de datos, Repsol dispone de 402 MW de autoconsumo de energía renovable otorgados ya por
+      Red Eléctrica de España.
+  - id: src-2
+    url: "https://www.elperiodicodearagon.com/aragon/2025/02/21/repsol-lanza-socio-centro-datos-114536195.html"
+    titulo: "Repsol se lanza a por un socio para su centro de datos en Escatrón tras lograr la vía libre de Red Eléctrica"
+    editor: "El Periódico de Aragón"
+    tipo: prensa_general
+    fecha_publicacion: "2025-02-21"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El operador del sistema eléctrico autoriza a la petrolera a impulsar un autoconsumo
+      energético de 402 MW junto a su central de ciclo combinado en el municipio zaragozano
+      [...] insistió en que Repsol no será el promotor principal, sino el socio energético [...]
+      Repsol había registrado el pasado diciembre su solicitud para desarrollar el citado
+      proyecto en los terrenos colindantes a su central de ciclo combinado de Escatrón, adquirida
+      en 2018.
+  - id: src-3
+    url: "https://www.heraldo.es/noticias/aragon/2025/02/21/centro-datos-repsol-escatron-via-libre-red-electrica-1801555.html"
+    titulo: "El gran centro de datos que impulsa Repsol en Escatrón ya tiene vía libre de Red Eléctrica"
+    editor: "Heraldo de Aragón"
+    tipo: prensa_general
+    fecha_publicacion: "2025-02-21"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El gran centro de datos que impulsa Repsol junto a su central de ciclo combinado de
+      Escatrón ya tiene la autorización de Red Eléctrica de España (REE). El operador del sistema
+      eléctrico le concedió hace dos días los 402 megavatios de potencia solicitados para
+      consumo.
+  - id: src-4
+    url: "https://www.datacenterdynamics.com/es/noticias/repsol-invertir%C3%A1-118-millones-para-reforzar-la-infraestructura-energ%C3%A9tica-de-su-campus-de-ia/"
+    titulo: "Repsol invertirá 11,8 millones para reforzar la infraestructura energética de su campus de IA"
+    editor: "DatacenterDynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-07-07"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Repsol continúa avanzando en el desarrollo de su proyecto de centro de datos en Escatrón
+      (Zaragoza) con una nueva inversión de 11,8 millones de euros destinada a construir la
+      infraestructura eléctrica que conectará quince parques eólicos con el futuro campus
+      digital.
+  - id: src-5
+    url: "https://ignis.es/quienes-somos/"
+    titulo: "Quiénes somos — IGNIS"
+    editor: "IGNIS"
+    tipo: empresa
+    fecha_publicacion: "2026-04-21"
+    fecha_consulta: "2026-08-31"
+    cita: "Adquisición del CCGT Peaker en Escatrón, Zaragoza (285MW)"
+  - id: src-osm
+    url: "https://nominatim.openstreetmap.org/search?q=Escatr%C3%B3n%2C+Zaragoza&format=json&limit=1"
+    titulo: "Nominatim — Escatrón, Zaragoza"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-08-31"
+    cita: "Escatrón, Ribera Baja del Ebro, Zaragoza, Aragón, 50790, España — lat 41.2870705, lon -0.3249532"

@@ -1,0 +1,92 @@
+id: oxigen-sant-fruitos-de-bages
+nombre: "Oxigen Data Center — Sant Fruitós de Bages (ex Banc Sabadell)"
+alias:
+  - "Oxigen DC Sant Fruitós"
+  - "CPD de Banc Sabadell en Sant Fruitós de Bages"
+tipo: edificio
+operador: "Oxigen Data Center"
+propietario: "Oxigen Data Center"
+modelo: colocation
+
+ubicacion:
+  municipio: "Sant Fruitós de Bages"
+  provincia: "Barcelona"
+  ccaa: "Cataluña"
+  lat: null
+  lon: null
+  precision: municipio
+  fuentes: [src-1, src-2]
+
+estado: parcialmente_operativo
+estado_detalle: >-
+  Centro de datos comprado por Oxigen DC a Banc Sabadell y anunciado en febrero de 2026. La
+  compañía declaró que la puesta en producción se completaría durante el primer semestre de 2026 y
+  que la operación duplicaba su capacidad operativa hasta los 20 MW. No se ha localizado
+  confirmación posterior de que la puesta en producción esté terminada.
+estado_fuentes: [src-1, src-2, src-3]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 10
+    ambito: edificio
+    edificio: "Sant Fruitós de Bages"
+    referencia: "Capacidad del centro adquirido a Banc Sabadell"
+    estado_asociado: parcialmente_operativo
+    fecha_dato: "2026-02-15"
+    fuentes: [src-1, src-2]
+    nota: "Las fuentes dicen «un centro de datos de 10 MW» sin precisar el tipo de MW."
+
+incertidumbres:
+  - campo: nombre
+    descripcion: >-
+      El directorio del Observatorio EDC identifica este emplazamiento como «Oxigen ODC2 — Sant
+      Fruitós de Bages, 8 MW». Las fuentes de la propia compañía y la prensa sitúan ODC2 en el
+      distrito 22@ de Barcelona y describen el de Sant Fruitós como el tercer centro del operador,
+      con 10 MW. No se adopta aquí el código ODC2 ni la cifra de 8 MW.
+    fuentes: [src-1, src-2]
+  - campo: estado
+    descripcion: >-
+      El anuncio es de febrero de 2026 y hablaba de completar la puesta en producción «durante el
+      primer semestre». No hay confirmación pública del cierre de ese proceso.
+    fuentes: [src-1, src-3]
+  - campo: ubicacion
+    descripcion: "No consta dirección ni parcela; solo el municipio."
+    fuentes: [src-1, src-2]
+
+confianza: media
+ultima_verificacion: "2026-08-31"
+
+fuentes:
+  - id: src-1
+    url: "https://revistacloud.com/oxigen-dc-acelera-en-cataluna-con-un-centro-de-datos-bunker-de-banco-sabadell-y-mira-ya-a-madrid/"
+    titulo: "Oxigen DC acelera en Cataluña con un centro de datos «búnker» de Banco Sabadell y mira ya a Madrid"
+    editor: "Revista Cloud"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-02-15"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      la compañía ha adquirido a Banco Sabadell un centro de datos de 10 MW en Sant Fruitós de
+      Bages (Barcelona), una instalación que prevé poner en producción durante el primer semestre
+      de 2026. El salto le permite duplicar capacidad y alcanzar los 20 MW operativos
+  - id: src-2
+    url: "https://es.linkedin.com/posts/oxigen-data-center_oxigendatacenter-datacenter-infraestructuracr%C3%ADtica-activity-7429193625692991488-agrE"
+    titulo: "Nos complace compartir la adquisición de un nuevo data center en Sant Fruitós de Bages, un paso estratégico en nuestro plan de expansión en la Península Ibérica"
+    editor: "Oxigen Data Center (LinkedIn)"
+    tipo: empresa
+    fecha_publicacion: "2026-02-16"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Nos complace compartir la adquisición de un nuevo data center en Sant Fruitós de Bages, un
+      paso estratégico en nuestro plan de expansión en la Península Ibérica
+  - id: src-3
+    url: "https://www.datacenterdynamics.com/es/noticias/oxigen-dc-duplica-capacidad-a-20-mw-con-la-adquisici%C3%B3n-del-data-center-de-banc-sabadell-en-barcelona/"
+    titulo: "Oxigen DC duplica capacidad a 20 MW con la adquisición del data center de Banc Sabadell en Barcelona"
+    editor: "DatacenterDynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-02-16"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Oxigen Data Center ha duplicado su capacidad operativa hasta los 20 MW tras poner en
+      producción un centro de datos de 10 MW adquirido a Banc Sabadell ... La puesta en
+      producción, que se completará en el primer semestre, permite a la compañía de Sant Cugat del
+      Vallès consolidar su oferta para clientes corporativos e institucionales

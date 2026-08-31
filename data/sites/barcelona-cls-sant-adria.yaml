@@ -23,12 +23,26 @@ estado_detalle: >-
   Estación de amarre de cables submarinos operada por AFR-IX telecom en régimen
   de operador independiente que alquila la infraestructura a operadores. Diseñada
   para alojar hasta ocho cables submarinos. Es la pieza a la que se conectan los
-  centros de datos de Sant Adrià y la Zona Franca.
-estado_fuentes: [src-2, src-3]
+  centros de datos de Sant Adrià y la Zona Franca. Edificio de dos plantas con
+  ocho salas de sistemas submarinos de 16 racks cada una, dos Meet-Me Rooms y
+  una sala de colocation en la primera planta, con topología de diseño Tier IV
+  declarada.
+estado_fuentes: [src-2, src-3, src-5, src-6]
 
-potencia: []
+potencia:
+  - tipo: no_especificado
+    valor_mw: 1
+    ambito: edificio
+    referencia: "Potencia eléctrica que el edificio está preparado para alojar"
+    estado_asociado: operativo
+    fecha_dato: "2022-11-29"
+    fuentes: [src-6]
+    nota: >-
+      La compañía dice "it is prepared to house telecommunications equipment up
+      to 1MWatt of electrical power". Es capacidad declarada del edificio, no
+      carga TI contratada.
 
-superficie_construida_m2: null
+superficie_construida_m2: 2657
 inversion_anunciada_eur: 8000000
 
 incertidumbres:
@@ -36,22 +50,40 @@ incertidumbres:
     descripcion: >-
       The New Barcelona Post cifra la inversión en 8 millones de euros ("2
       millones más de lo previsto por el rediseño"); 22@Network Barcelona la
-      cifra en 10 millones. Se registran ambas.
-    fuentes: [src-2, src-3]
+      cifra en 10 millones. La propia AFR-IX distingue dos magnitudes que
+      explican en parte la horquilla: 7 millones de euros para la
+      infraestructura y 10 millones para el proyecto global incluyendo la
+      canalización desde la playa. Se conservan las tres cifras.
+    fuentes: [src-2, src-3, src-6]
   - campo: potencia
     descripcion: >-
-      No se ha localizado ninguna cifra de potencia eléctrica del edificio.
-      Baxtel la mantiene tras muro de pago.
-    fuentes: [src-4]
+      El único valor publicado es el 1 MW que la propia AFR-IX declara como
+      capacidad del edificio para alojar equipo de telecomunicaciones. No consta
+      la potencia contratada ni la de acceso. Baxtel mantiene su cifra tras muro
+      de pago.
+    fuentes: [src-4, src-6]
   - campo: superficie_construida_m2
     descripcion: >-
-      Baxtel indica una sala de colocation de 400 m² en la primera planta; otras
-      fuentes hablan de 380 m² de superficie de acogida. No es la superficie
-      total del edificio.
-    fuentes: [src-4]
+      Los 2.657 m² son la dimensión total del edificio según la propia AFR-IX.
+      Dentro de esa cifra conviven una sala de colocation de 400 m² en la primera
+      planta y una «room for data center» de 380 m² con capacidad para 160 racks
+      que la compañía menciona por separado, sin que quede claro si son el mismo
+      espacio.
+    fuentes: [src-4, src-5, src-6]
+
+agua:
+  circuito: sin_agua
+  sistema: >-
+    Free cooling directo mediante unidades CRAH con módulo de aire exterior,
+    confinamiento de pasillo frío y control de humedad integrado.
+  origen: null
+  nota: >-
+    La compañía declara «Zero water consumption» entre los atributos de
+    sostenibilidad del edificio. No publica consumos residuales ni WUE.
+  fuentes: [src-5]
 
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -84,3 +116,31 @@ fuentes:
     tipo: prensa_especializada
     fecha_consulta: "2026-08-29"
     cita: "400m2 space ... 8 colocation rooms for subsea systems"
+  - id: src-5
+    url: "https://barcelonacls.com/thebuilding/"
+    titulo: "The Building — Barcelona Cable Landing Station"
+    editor: "AFR-IX telecom / Barcelona CLS"
+    tipo: empresa
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      400m2 of Colocation Hall ... 8 Submarine System Rooms ... 2 Meet Me Rooms
+      ... Tier 4 Design Topology ... Low PUE (power usage effectiveness) - Solar
+      panels: renewable source energy - Direct free cooling technology ... Cold
+      aisle containment solutions for high densities - Zero water consumption
+  - id: src-6
+    url: "https://barcelonacls.com/barcelona-cable-landing-station-is-ready-to-receive-the-first-international-submarine-cables-3/"
+    titulo: "Barcelona Cable Landing Station is ready to receive the first international submarine cables"
+    editor: "AFR-IX telecom / Barcelona CLS"
+    tipo: empresa
+    fecha_publicacion: "2022-11-29"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      The infrastructure has involved an investment of 7 million euros (the
+      overall project, including the channelling works from the beach to the
+      station, amounts to 10 million euros), capital contributed 100% by AFR-IX
+      telecom ... Barcelona CLS is a two-storey building with a total dimension
+      of 2,657 m2 ... the facilities have a room for data center of 380 m2 with
+      capacity to accommodate 160 racks ... it is prepared to house
+      telecommunications equipment up to 1MWatt of electrical power ... the
+      installation of 194 photovoltaic solar panels in two areas of the roof
+      (which will provide 1.07GWh of power annually)

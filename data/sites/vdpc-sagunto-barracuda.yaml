@@ -17,14 +17,19 @@ ubicacion:
   precision: municipio
   fuentes: [src-1, src-2]
 
-estado: anunciado
+estado: en_tramitacion
 estado_detalle: >-
   Emplazamiento anunciado el 29/05/2025: Sagunto acogerá la estación de aterraje del cable
   submarino Barracuda y un data center multipropósito. Plazo de ejecución de tres años e
   inicio de operaciones previsto para principios de 2028. En enero de 2026 el promotor
   cerró el acuerdo con Sparkle para el aterraje en Génova. Sustituye al emplazamiento
-  previo del puerto de Alicante.
-estado_fuentes: [src-1, src-2, src-3]
+  previo del puerto de Alicante. El proyecto ha entrado en tramitación administrativa: en
+  enero de 2026 la Demarcación de Costas tramitaba la ocupación de dominio público
+  marítimo-terrestre y el 01/04/2026 el BOE publicó la apertura de información pública de
+  la concesión demanial solicitada por Valencia Digital Port Connect, S.L. a la Autoridad
+  Portuaria de Valencia, por 410 metros lineales de terrenos junto al Muelle Norte I y
+  2.614 metros lineales de aguas exteriores, a treinta años.
+estado_fuentes: [src-1, src-2, src-3, src-4, src-5]
 fecha_puesta_en_servicio: "2028"
 
 potencia:
@@ -37,7 +42,8 @@ potencia:
     fuentes: [src-1, src-2]
     nota: >-
       Las fuentes dicen literalmente «una potencia eléctrica de 10 MW pico», sin precisar
-      si se refiere a carga TI o a potencia de conexión.
+      si se refiere a carga TI o a potencia de conexión. La nota del propio promotor lo
+      formula como «peak electrical power of 10 MW».
 
 fases:
   - nombre: "Estación de aterraje de cables (CLS)"
@@ -46,26 +52,43 @@ fases:
     fuentes: [src-1, src-2]
   - nombre: "Data center multipropósito"
     estado: anunciado
-    fuentes: [src-1, src-2]
+    fuentes: [src-1, src-2, src-6]
 
 inversion_anunciada_eur: 100000000
 refrigeracion: null
-enlaces_proyecto: []
+enlaces_proyecto:
+  - "https://www.valenciaport.com/concursoautorizacion/solicitud-de-otorgamiento-de-concesion-administrativa-formulada-por-valencia-digital-port-connect-s-l/"
 
 incertidumbres:
   - campo: ubicacion
     descripcion: >-
-      Las fuentes sitúan la instalación en el término municipal de Sagunto pero no publican
-      dirección, parcela ni polígono concretos.
-    fuentes: [src-1, src-2]
+      Las fuentes periodísticas sitúan la instalación en el término municipal de Sagunto sin
+      dirección ni parcela. El anuncio del BOE concreta la ocupación de dominio público
+      portuario junto al Muelle Norte I del puerto de Sagunto, pero se refiere al cable, no
+      al edificio del data center, cuya parcela sigue sin constar. Las coordenadas siguen
+      siendo de nivel municipal.
+    fuentes: [src-1, src-2, src-4]
   - campo: potencia
     descripcion: >-
       «10 MW pico» es una expresión ambigua; no se ha localizado ni el permiso de acceso y
-      conexión ni el desglose entre carga TI y potencia contratada.
-    fuentes: [src-1, src-2]
+      conexión ni el desglose entre carga TI y potencia contratada. Además, la cifra cambió
+      de escala en tres meses: en febrero de 2025, cuando el aterraje se anunciaba en
+      «Valencia», el diario Información describía el mismo data center como «dotado
+      inicialmente con una potencia eléctrica de 1,5 MW y un ratio de eficiencia en el uso
+      de la energía inferior a 1,25 (PUE)», la misma cifra que se había atribuido al
+      proyecto abandonado del puerto de Alicante. No se registra ese 1,5 MW en `potencia[]`
+      porque corresponde a un emplazamiento distinto del actual.
+    fuentes: [src-1, src-2, src-6]
+  - campo: superficie
+    descripcion: >-
+      Los 4.600 m² son de la estación de aterraje: «The submarine cable landing station will
+      occupy a 4,600-square-meter facility». Levante-EMV (25/01/2026) atribuye esa misma
+      superficie al «centro de datos multipropósito». No consta superficie propia del data
+      center.
+    fuentes: [src-1, src-5, src-6]
 
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -92,3 +115,27 @@ fuentes:
     fecha_publicacion: "2025-05-30"
     fecha_consulta: "2026-08-29"
     cita: "Con una inversión estimada de 100 millones de euros, el proyecto contempla un plazo de ejecución de tres años, con el inicio de operaciones previsto para principios de 2028."
+  - id: src-4
+    url: "https://boe.es/diario_boe/txt.php?id=BOE-B-2026-10170"
+    titulo: "Anuncio de la Autoridad Portuaria de Valencia sobre solicitud de otorgamiento de concesión demanial en el puerto de Sagunto"
+    editor: "Boletín Oficial del Estado — Ministerio de Transportes y Movilidad Sostenible"
+    tipo: oficial
+    fecha_publicacion: "2026-04-01"
+    fecha_consulta: "2026-08-31"
+    cita: "Valencia Digital Port Connect, S.L. con NIF B16761702, dirigió escrito a esta Autoridad Portuaria de Valencia solicitando el otorgamiento de concesión administrativa de ocupación de dominio público portuario para la instalación de un cable de fibra óptica en el puerto de Sagunto, destinado a establecer la conexión entre Génova y Sagunto, cuya superficie aproximada asciende a 410 metros lineales de terrenos, junto al Muelle Norte I, y a 2.614 metros lineales de aguas exteriores, por un plazo de 30 años."
+  - id: src-5
+    url: "https://www.levante-emv.com/morvedre/2026/01/25/proyecto-barracuda-unico-telecomunicaciones-toca-tierra-sagunt-125940909.html"
+    titulo: "Un proyecto único en telecomunicaciones toca tierra en Sagunt"
+    editor: "Levante-EMV"
+    tipo: prensa_general
+    fecha_publicacion: "2026-01-25"
+    fecha_consulta: "2026-08-31"
+    cita: "De la mano de Valencia Digital Port Connect (VDPC), la Demarcación de Costas ya tramita la ocupación de terreno público marítimo-terrestre que precisa esta iniciativa [...] el expediente diferencia entre el tendido de cable en el lecho marino hasta unos 700 metros de la costa, su llegada a la arqueta de playa y su canalización terrestre hasta la estación de aterrizaje y el centro de datos multipropósito de 4.600 metros cuadrados. Este edificio contará con cuatro salas de computación con capacidad para más de 400 racks [...] A ese punto llegará el cable a través de una canalización terrestre de cerca de 1.900 metros [...] el cable submarino está previsto que entre en funcionamiento durante el verano de 2028."
+  - id: src-6
+    url: "https://valenciadigitalport.com/valencia-digital-port-connect-to-establish-barracuda-submarine-cable-landing-station-in-sagunto/"
+    titulo: "Valencia Digital Port Connect to Establish Barracuda Submarine Cable Landing Station in Sagunto"
+    editor: "Valencia Digital Port Connect"
+    tipo: empresa
+    fecha_publicacion: "2025-05-29"
+    fecha_consulta: "2026-08-31"
+    cita: "The submarine cable landing station will occupy a 4,600-square-meter facility and will be capable of hosting up to four submarine cable systems. [...] The multipurpose data center will also be neutral and high-capacity. It will initially have a peak electrical power of 10 MW and will include: Four computing rooms accommodating more than 400 racks [...] 100% sustainable energy supply through a highly efficient 250 kWp rooftop solar photovoltaic system. [...] The project has an estimated total investment of €100 million and is scheduled to be completed in three years, with operations expected to begin in early 2028."

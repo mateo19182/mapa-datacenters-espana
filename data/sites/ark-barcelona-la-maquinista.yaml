@@ -2,6 +2,7 @@ id: ark-barcelona-la-maquinista
 nombre: "Ark Data Centres Barcelona — La Maquinista (Sant Andreu)"
 alias:
   - "Ark DC Barcelona"
+  - "Project Montjuïc"
 tipo: edificio
 operador: "Ark Data Centres"
 propietario: "Ark Data Centres"
@@ -17,32 +18,75 @@ ubicacion:
 
 estado: anunciado
 estado_detalle: >-
-  Entrada de Ark Data Centres en el mercado español. Suelo industrial en Sant
-  Andreu obtenido con apoyo de Catalonia Trade & Investment (ACCIÓ) y el
-  Ajuntament de Barcelona. Baxtel indica año previsto 2029.
-estado_fuentes: [src-1]
+  Entrada de Ark Data Centres en el mercado español, anunciada el 18 de marzo de
+  2026. La compañía británica, controlada por Elliott Investment Management,
+  adquirió unos 30.000 m² de suelo industrial en La Maquinista con el apoyo
+  institucional del Ajuntament de Barcelona y de la Generalitat a través de
+  ACCIÓ; la operación la asesoró Cushman & Wakefield. No se ha publicado
+  calendario de obra. Baxtel indica año previsto 2029.
+estado_fuentes: [src-1, src-2, src-3]
 
-potencia: []
+potencia:
+  - tipo: it
+    valor_mw: 45
+    ambito: edificio
+    referencia: "Capacidad TI prevista del centro"
+    estado_asociado: anunciado
+    fecha_dato: "2026-03-18"
+    fuentes: [src-2, src-3]
+    nota: >-
+      Dos fuentes independientes lo tipifican como carga TI: "plans to develop a
+      facility with 45MW of IT capacity" (DCD) y "una capacitat prevista de fins
+      a 45 MW IT" (El Nacional).
 
 superficie_parcela_m2: 30000
+inversion_anunciada_eur: 600000000
+
+empleo:
+  - tipo: construccion
+    valor: 350
+    referencia: "Puestos directos por año durante la fase de obra"
+    fecha_dato: "2026-03"
+    fuentes: [src-3]
+    nota: "La fuente habla de «aproximadament 350 llocs de treball directes a l'any durant la fase d'obra»."
+  - tipo: directo
+    valor: 150
+    referencia: "Plantilla estimada con el centro plenamente operativo"
+    fecha_dato: "2026-03"
+    fuentes: [src-3]
+    nota: null
+
+agua:
+  circuito: desconocido
+  sistema: >-
+    La compañía declara que usará soluciones de refrigeración de alta eficiencia
+    diseñadas para minimizar el consumo de agua, pero el diseño concreto se
+    definirá durante la ingeniería de detalle.
+  origen: null
+  nota: "No hay ninguna cifra de consumo ni tipo de circuito publicada."
+  fuentes: [src-3]
 
 incertidumbres:
   - campo: potencia
-    descripcion: "No se ha publicado ninguna cifra de potencia."
-    fuentes: [src-1]
+    descripcion: >-
+      Los 45 MW IT son la capacidad anunciada del proyecto. No consta potencia de
+      acceso solicitada ni concedida, ni la subestación de conexión.
+    fuentes: [src-2, src-3]
   - campo: estado
     descripcion: >-
-      Fuente única (directorio especializado). No se ha localizado el expediente
-      urbanístico municipal ni una nota de prensa oficial que lo confirme.
-    fuentes: [src-1]
+      No se ha localizado el expediente urbanístico municipal ni licencia de
+      obra. Baxtel da 2029 como año previsto; ni la compañía ni la prensa
+      publicaron calendario en el anuncio de marzo de 2026.
+    fuentes: [src-1, src-2]
   - campo: ubicacion
     descripcion: >-
       No se han obtenido coordenadas de fuente; la localización se conoce solo a
-      nivel de calle y polígono.
+      nivel de calle y polígono. Un directorio sectorial denomina al proyecto
+      «Project Montjuïc» pese a situarlo en La Maquinista.
     fuentes: [src-1]
 
-confianza: baja
-ultima_verificacion: "2026-08-29"
+confianza: media
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -55,3 +99,31 @@ fuentes:
       developing a new data center in the La Maquinista industrial area of
       Barcelona, marking its entry into the Spanish market ... Approximately
       30,000 square meters ... Year planned for 2029
+  - id: src-2
+    url: "https://www.datacenterdynamics.com/en/news/ark-bets-on-barcelona-with-an-urban-data-center-worth-over-600-million/"
+    titulo: "Ark DC enters Spain to build 45MW data center in Barcelona"
+    editor: "Data Center Dynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-03-19"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      The company this week announced an investment of more than €600 million
+      ($689.1m) to develop a new data center in the La Maquinista area of
+      Barcelona. The company has acquired approximately 30,000 square meters
+      (322,915 sq ft) of industrial land and plans to develop a facility with
+      45MW of IT capacity.
+  - id: src-3
+    url: "https://www.elnacional.cat/oneconomia/ca/empreses/ark-invertira-600-milions-en-centre-dades-urba-maquinista_1613034_102.html"
+    titulo: "Ark invertirà 600 milions en un centre de dades urbà a La Maquinista"
+    editor: "ON Economia (El Nacional)"
+    tipo: prensa_general
+    fecha_publicacion: "2026-03-18"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El projecte requereix una inversió de 600 milions d'euros, que inclouen
+      l'adquisició del sòl industrial de 30.000 m². La planificació es concreta
+      en un centre de dades urbà amb una capacitat prevista de fins a 45 MW IT.
+      Durant la construcció, es preveu la creació d'aproximadament 350 llocs de
+      treball directes a l'any durant la fase d'obra ... S'estima que el centre
+      podria generar fins a 150 llocs de feina directes a temps complet quan
+      estigui plenament operatiu.

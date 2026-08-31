@@ -12,19 +12,45 @@ ubicacion:
   municipio: "Sevilla"
   provincia: "Sevilla"
   ccaa: "Andalucía"
-  direccion: "Solar del antiguo Palenque, Isla de la Cartuja (PCT Cartuja / Sevilla TechPark), Sevilla"
+  direccion: "Calle Camino de los Descubrimientos, 9 (solar del antiguo Palenque), Parque Científico y Tecnológico Cartuja, 41092 Sevilla"
   lat: 37.4083
   lon: -6.0057
   precision: aproximada
-  fuentes: [src-1, src-2]
+  fuentes: [src-1, src-2, src-4]
 
 estado: en_construccion
 estado_detalle: >-
-  Obra licitada por la Agencia Digital de Andalucía y Sandetel en el DOUE; construcción iniciada en
-  el segundo semestre de 2024 sobre el solar del antiguo Palenque de la Isla de la Cartuja, con
-  finalización prevista en el primer semestre de 2026. No se ha localizado confirmación pública de
-  la puesta en servicio a fecha de verificación.
-estado_fuentes: [src-1, src-2, src-3]
+  Obra licitada por la Agencia Digital de Andalucía y Sandetel en el DOUE. La primera piedra se
+  colocó el 5 de diciembre de 2025 en el solar del antiguo Palenque de la Isla de la Cartuja, con la
+  maquinaria entrando en la parcela desde finales de septiembre de 2025. A 30 de agosto de 2026
+  seguía en obras: la prensa económica lo cita, junto al SP01 de Escúzar, como uno de los dos únicos
+  centros de datos andaluces con obras en marcha. El pliego técnico del equipamiento crítico
+  (Sandetel, expediente 24-00025) lo diseña para certificación Tier III del Uptime Institute.
+estado_fuentes: [src-1, src-2, src-3, src-5, src-6]
+
+potencia:
+  - tipo: it
+    valor_mw: 0.85
+    ambito: edificio
+    referencia: "Carga máxima de salida de los sistemas de SAI destinados a cargas IT"
+    estado_asociado: en_construccion
+    fecha_dato: "2024-05-24"
+    fuentes: [src-4]
+    nota: >-
+      El pliego de prescripciones técnicas de Sandetel dimensiona los SAI de cargas IT para
+      garantizar 850 kW de salida (935 kW con el coeficiente de seguridad del 10%), repartidos en
+      cuatro sistemas de dos SAI modulares de 500 kW en paralelo. Es la única cifra de potencia
+      publicada del edificio y se refiere a la carga IT, no al suministro contratado.
+  - tipo: termica_respaldo
+    valor_mw: 1.75
+    ambito: edificio
+    referencia: "Cada uno de los cuatro grupos electrógenos de emergencia"
+    estado_asociado: en_construccion
+    fecha_dato: "2024-05-24"
+    fuentes: [src-4]
+    nota: >-
+      Cuatro grupos en contenedor insonorizado sobre cubierta, de 2.250 kVA / 1.750 kW nominales
+      cada uno. Es potencia de respaldo, no capacidad del centro de datos, y no se suma a nada.
 
 fases:
   - nombre: "Módulo CPD"
@@ -41,15 +67,30 @@ inversion_anunciada_eur: 34100000
 refrigeracion: >-
   Refrigeración por gas mediante expansión directa, en lugar del sistema tradicional basado en agua.
   Autoconsumo con plataforma fotovoltaica de más de 20.000 m².
+
+agua:
+  circuito: sin_agua
+  sistema: >-
+    Climatización de la sala IT con equipos tipo Roof-Top sobre cubierta y refrigeración por gas
+    mediante expansión directa, que sustituye al uso de agua.
+  origen: null
+  nota: >-
+    La Junta lo presenta como «una medida pionera» justificada por «el contexto de sequía
+    estructural de la región». No se publica ningún consumo de agua residual (servicios sanitarios u
+    otros usos), por lo que el circuito se registra como sin_agua solo en cuanto a refrigeración.
+  fuentes: [src-1, src-4, src-5]
+
 enlaces_proyecto: []
 
 incertidumbres:
   - campo: inversion_anunciada_eur
     descripcion: >-
       La Junta y Data Center Market cifran el presupuesto en 34,1 millones de euros cofinanciados
-      con fondos Next Generation; la nota de Sevilla TechPark habla de 35 millones. Se registra
-      la cifra oficial de 34,1 millones.
-    fuentes: [src-1, src-2, src-3]
+      con fondos Next Generation; la nota de Sevilla TechPark y la nota de la Junta del acto de la
+      primera piedra hablan de 35 millones, y el subdelegado del Gobierno situó en unos 23 millones
+      la aportación del Plan de Recuperación «de los 34 que son necesarios aproximadamente». Se
+      mantiene la cifra de 34,1 millones.
+    fuentes: [src-1, src-2, src-3, src-5]
   - campo: superficie_construida_m2
     descripcion: >-
       Sevilla TechPark da 5.150 m² de superficie con 6.240 m² de edificabilidad. La nota de la Junta
@@ -59,13 +100,24 @@ incertidumbres:
     fuentes: [src-1, src-2, src-3]
   - campo: potencia
     descripcion: >-
-      Ninguna fuente consultada publica potencia eléctrica ni carga TI del CPD. Campo omitido.
-    fuentes: [src-1, src-2, src-3]
+      Ninguna nota de prensa de la Junta publica potencia. Los 850 kW de carga IT proceden del
+      pliego técnico del equipamiento crítico, que es un requisito mínimo de licitación y puede
+      diferir de lo finalmente instalado; el mismo pliego contiene una incoherencia interna en los
+      SAI de cargas mecánicas («350 kW (+10% de coeficiente de seguridad 650 kW aprox.)»). No consta
+      la potencia contratada en el punto de suministro.
+    fuentes: [src-4]
+  - campo: empleo
+    descripcion: >-
+      Ninguna fuente publica empleo creado. Los «140 puestos» que citan la Junta y Data Center Market
+      son las plazas de trabajo que alberga el módulo de operaciones, no una cifra de contratación,
+      así que no se registran como empleo.
+    fuentes: [src-1, src-3]
   - campo: estado
     descripcion: >-
-      La finalización estaba prevista para el primer semestre de 2026 pero no se ha encontrado
-      nota de inauguración ni de puesta en servicio. Se mantiene en_construccion.
-    fuentes: [src-1, src-2]
+      La nota de licitación de 2024 preveía el arranque de la obra en el segundo semestre de ese año
+      y la finalización en el primer semestre de 2026; la obra empezó en realidad a finales de 2025
+      y en agosto de 2026 seguía en construcción, sin nota de inauguración ni de puesta en servicio.
+    fuentes: [src-1, src-5, src-6]
 
 confianza: media
 ultima_verificacion: "2026-08-31"
@@ -91,4 +143,44 @@ fuentes:
     editor: "Data Center Market"
     tipo: prensa_especializada
     fecha_consulta: "2026-08-29"
-    cita: "1.900 m² para equipos + 2.084 m² infraestructura"
+    cita: "1.900 m² para equipos + 2.084 m² infraestructura [...] un módulo de operaciones de tres plantas para unos 140 puestos"
+  - id: src-4
+    url: "https://www.juntadeandalucia.es/haciendayadministracionpublica/apl/pdc_sirec_documentacion/rest/descargar/documento/220110"
+    titulo: "Pliego de prescripciones técnicas para la contratación por Sandetel del suministro del equipamiento crítico para el nuevo Centro de Proceso de Datos de la Junta de Andalucía (expte. 24-00025)"
+    editor: "Sociedad Andaluza para el Desarrollo de las Telecomunicaciones (Sandetel), Junta de Andalucía"
+    tipo: oficial
+    fecha_publicacion: "2024-05-24"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Los sistemas SAI IT se dimensionarán para una carga máxima que garantice 850 kW (+10% de
+      coeficiente de seguridad 935 kW aprox.) de salida [...] Para las cargas IT se instalarán 4
+      sistemas SAIs, compuesto cada uno por 2 SAIs modulares de 500 kW cada una que trabajarán en
+      paralelo [...] 4 grupos electrógenos completos electrógenos instalados en contenedores
+      insonorizados que se montarán al aire libre en la cubierta del edificio que garanticen a su
+      salida un mínimo de 1750 kW [...] Potencia nominal 2250 kVA / 1.750 kW (mínimo) [...] los
+      equipos de climatización tipo Roof-Top para controlar la temperatura en la Sala IT del nuevo
+      Data Center para la JUNTA DE ANDALUCÍA a construir en la Calle Camino de los Descubrimientos, 9
+  - id: src-5
+    url: "https://www.europapress.es/esandalucia/sevilla/noticia-junta-andalucia-invierte-35-millones-euros-obras-nuevo-centro-proceso-datos-20251205134906.html"
+    titulo: "La Junta de Andalucía invierte 35 millones de euros en las obras de su nuevo Centro de Proceso de Datos"
+    editor: "Europa Press"
+    tipo: prensa_general
+    fecha_publicacion: "2025-12-05"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      ha participado este viernes en el acto simbólico de colocación de la primera piedra del nuevo
+      Centro de Proceso de Datos (CPD) de la Junta de Andalucía [...] contará con "un innovador
+      sistema de refrigeración" por gas que sustituye al tradicional uso de agua, lo que constituye
+      "una medida pionera que refuerza el compromiso con la sostenibilidad y la gestión responsable
+      de los recursos hídricos, especialmente relevante en el contexto de sequía estructural de la
+      región"
+  - id: src-6
+    url: "https://www.economiadigital.es/andalucia/empresas/meridian-edge-mode-elmya-asi-futuros-centros-datos-andaluces-afectados-normativa-gobierno.html"
+    titulo: "Meridian, Edge Mode o Elmya: así son los futuros centros de datos andaluces afectados por la normativa del Gobierno"
+    editor: "Economía Digital"
+    tipo: prensa_general
+    fecha_publicacion: "2026-08-30"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Por ahora, solo están en obras el SP01 de Escúzar, en Granada, y El Palenque, en Sevilla. Los
+      demás siguen en fase de preparación.

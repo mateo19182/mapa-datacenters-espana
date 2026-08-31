@@ -1,0 +1,106 @@
+id: fortinet-torija
+nombre: "Fortinet — centro de datos de Torija (Guadalajara)"
+alias:
+  - "Fortinet Torija"
+  - "Fortinet Spain data center"
+tipo: edificio
+operador: "Fortinet"
+propietario: "Fortinet"
+cliente_ancla: null
+modelo: corporativo
+
+ubicacion:
+  municipio: "Torija"
+  provincia: "Guadalajara"
+  ccaa: "Castilla-La Mancha"
+  direccion: "Junto al eje de la A-2 Madrid-Barcelona, en el corredor del Henares"
+  lat: 40.7506848
+  lon: -3.0292084
+  precision: municipio
+  fuentes: [src-1, src-3, src-osm]
+
+estado: operativo
+estado_detalle: >-
+  Primer centro de datos propio de Fortinet en España, inaugurado el 29 de enero de 2025 con
+  la asistencia del presidente de Castilla-La Mancha. Da servicio de nube y SaaS de
+  ciberseguridad —FortiCloud y SASE— a España, Francia, Alemania y Portugal. La compañía
+  declara certificación Tier III y categoría alta del Esquema Nacional de Seguridad para los
+  servicios prestados desde el centro. Fortinet lo incluye entre sus centros de datos en
+  propiedad, junto a los de Atlanta, Chicago, Nueva York, Plano, Fráncfort y Sídney.
+estado_fuentes: [src-1, src-2, src-3]
+fecha_puesta_en_servicio: "2025-01"
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 7
+    ambito: edificio
+    referencia: "Potencia de las instalaciones inauguradas en enero de 2025"
+    estado_asociado: operativo
+    fecha_dato: "2025-01-29"
+    fuentes: [src-1, src-2]
+    nota: >-
+      Las fuentes dicen «una potencia de 7 megavatios (MW)» sin precisar si es carga TI,
+      potencia contratada o potencia instalada.
+
+superficie_construida_m2: 11250
+inversion_anunciada_eur: 40000000
+refrigeracion: null
+enlaces_proyecto: []
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      Los 7 MW proceden del comunicado de la compañía difundido en la inauguración y no
+      distinguen el tipo de MW. No hay dato de superficie de sala técnica ni de número de racks.
+    fuentes: [src-1, src-2]
+  - campo: ubicacion
+    descripcion: >-
+      No se publica la dirección exacta ni el polígono. Las coordenadas son el centroide
+      municipal de Torija.
+    fuentes: [src-osm]
+
+confianza: media
+ultima_verificacion: "2026-08-31"
+
+fuentes:
+  - id: src-1
+    url: "https://www.abc.es/espana/castilla-la-mancha/fortinet-inaugura-torija-primer-centro-datos-espana-20250129190619-nt.html"
+    titulo: "Fortinet inaugura en Torija su primer centro de datos en España tras invertir 40 millones"
+    editor: "ABC"
+    tipo: prensa_general
+    fecha_publicacion: "2025-01-29"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Las instalaciones cuentan con dos edificios simétricos que abarcan una superficie de 11.250
+      metros cuadrados y cuenta con una potencia de 7 megavatios (MW). La empresa de
+      ciberseguridad Fortinet ha inaugurado en Torija (Guadalajara) su primer centro de datos en
+      España tras invertir 40 millones de euros.
+  - id: src-2
+    url: "https://www.infobae.com/espana/agencias/2025/01/29/fortinet-destina-40-millones-a-su-primer-centro-datos-en-espana-en-torija-guadalajara/"
+    titulo: "Fortinet destina 40 millones a su primer centro datos en España, en Torija (Guadalajara)"
+    editor: "EFECOM / Infobae"
+    tipo: prensa_general
+    fecha_publicacion: "2025-01-29"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Fortinet, líder global de ciberseguridad, ha inaugurado este miércoles su primer centro de
+      datos en España, situado en Torija (Guadalajara), que ha supuesto una inversión de más de
+      40 millones de euros y cuenta con una potencia de 7 megavatios.
+  - id: src-3
+    url: "https://www.fortinet.com/corporate/about-us/newsroom/press-releases/2025/fortinet-expands-forticloud-with-identity-secure-storage-and-communication-services"
+    titulo: "Fortinet Expands FortiCloud with Identity, Secure Storage, and Communication Services to Power the Modern Enterprise"
+    editor: "Fortinet"
+    tipo: empresa
+    fecha_publicacion: "2025"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      This announcement builds on Fortinet's continued investment in its global hybrid-cloud
+      infrastructure, including company-owned data centers in Atlanta, Chicago, New York, Plano,
+      Frankfurt, Sydney, and Torija (Spain).
+  - id: src-osm
+    url: "https://nominatim.openstreetmap.org/search?q=Torija%2C+Guadalajara&format=json&limit=1"
+    titulo: "Nominatim — Torija, Guadalajara"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-08-31"
+    cita: "Torija, Guadalajara, Castilla-La Mancha, 19190, España — lat 40.7506848, lon -3.0292084"

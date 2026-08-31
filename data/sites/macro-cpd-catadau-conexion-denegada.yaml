@@ -21,8 +21,12 @@ estado_detalle: >-
   25 MW. Red Eléctrica denegó la solicitud por saturación de la red —una de seis negativas
   en dos meses según Valencia Plaza—. A mayo de 2026 el promotor buscaba emplazamiento
   alternativo en la provincia de Valencia; se citan como candidatos los nudos de Sagunto,
-  L'Eliana y Betxí. Se registra como cancelado en este emplazamiento.
-estado_fuentes: [src-1]
+  L'Eliana y Betxí. Se registra como cancelado en este emplazamiento. La negativa se
+  enmarca en un bloqueo más amplio: Valencia Plaza, con datos de Red Eléctrica, cifró en
+  132,5 MW la potencia rechazada en la Comunitat Valenciana en seis peticiones de conexión
+  en dos meses. A 31/08/2026 no consta que el promotor haya reaparecido en ningún otro
+  emplazamiento bajo otro nombre.
+estado_fuentes: [src-1, src-2]
 
 potencia:
   - tipo: conexion_red
@@ -60,9 +64,25 @@ incertidumbres:
       periodística a partir del coste medio por megavatio, no una inversión anunciada por
       el promotor. No se registra en el campo de inversión.
     fuentes: [src-1]
+  - campo: conexion_electrica
+    descripcion: >-
+      Los 25 MW solicitados y su denegación descansan sobre una sola fuente periodística.
+      Búsquedas específicas en el registro de expedientes de conflictos de acceso de la CNMC
+      (que sí publica resoluciones equivalentes de otros CPD: Trujillo 220, Fuencarral,
+      Arrigorriaga, Renedo, Castejón) no devuelven ningún conflicto planteado por este
+      proyecto en el nudo de Catadau, ni resolución alguna de la CNMC sobre él. Cabe que el
+      promotor aceptara la denegación de Red Eléctrica sin recurrir, o que el expediente no
+      esté publicado. Tampoco consta el nombre del promotor ni el número de expediente AUT.
+    fuentes: [src-1]
+  - campo: conexion_electrica
+    descripcion: >-
+      La tensión de 400 kV se toma del nudo CATADAU 400 registrado en la capa de red; la
+      fuente periodística no precisa el nivel de tensión del punto solicitado, y la
+      subestación de Catadau tiene también parque de 220 kV.
+    fuentes: [src-1]
 
 confianza: baja
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -73,3 +93,11 @@ fuentes:
     fecha_publicacion: "2026-05-05"
     fecha_consulta: "2026-08-29"
     cita: "Un gran centro de datos rastrea suelo y conexión eléctrica en la provincia de Valencia tras tumbar Red Eléctrica su solicitud de conectarse al nudo de Catadau con una petición de potencia de 25 megavatios. La negativa a este proyecto es una de las seis que el operador ha rechazado en tan sólo dos meses por la elevada saturación de la red"
+  - id: src-2
+    url: "https://valenciaplaza.com/valenciaplaza/empresas1/el-colapso-electrico-frena-proyectos-industriales-por-130-millones-de-euros-en-la-comunitat-en-solo-dos-meses"
+    titulo: "El colapso eléctrico frena proyectos industriales por 130 millones de euros en la Comunitat en solo dos meses"
+    editor: "Valencia Plaza"
+    tipo: prensa_general
+    fecha_publicacion: "2026-05-04"
+    fecha_consulta: "2026-08-31"
+    cita: "Los datos más recientes de Red Eléctrica, consultados por este periódico, arrojan una cifra reveladora: en tan sólo dos meses se han rechazado 132,5 megavatios (MW) de potencia correspondientes a seis peticiones de conexión. [...] la red eléctrica española mantiene una situación de saturación estructural creciente, con el 86,3% de las subestaciones sin capacidad disponible [...] la red en el sur de Valencia y Alicante se centra en la repotenciación de activos existentes, como el eje Catadau-Torrent"

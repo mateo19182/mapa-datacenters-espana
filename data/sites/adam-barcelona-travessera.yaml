@@ -33,6 +33,23 @@ potencia:
 
 superficie_construida_m2: 600
 
+incertidumbres:
+  - campo: propietario
+    descripcion: >-
+      El campo `propietario` registra «Adam», anterior a la compra del 100 % de
+      Adam Ecotech por CVC DIF, acordada el 31 de octubre de 2024 con Ogic
+      Informática como vendedora. No se sobrescribe el valor: queda anotado para
+      decisión humana.
+    fuentes: [src-3]
+  - campo: potencia
+    descripcion: >-
+      La cifra de este centro procede de la ficha comercial de Adam. En el
+      momento de la compra por CVC DIF, la prensa especializada atribuía al
+      conjunto de los tres centros operativos del grupo (dos en Barcelona y uno
+      en Madrid) unos 6.900 m² y 7 MW de capacidad; ese agregado no se reparte
+      aquí por emplazamiento.
+    fuentes: [src-4]
+
 confianza: media
 ultima_verificacion: "2026-08-31"
 
@@ -51,3 +68,24 @@ fuentes:
     tipo: empresa
     fecha_consulta: "2026-08-29"
     cita: "Barcelona Center — Travessera de Gràcia 342, 08025 Barcelona — 600 m² — 1.5 MW — Tier III"
+  - id: src-3
+    url: "https://www.cvc.com/media/news/2024/2024-10-31-cvc-dif-to-acquire-leading-data-centre-operator-adam-ecotech/"
+    titulo: "CVC DIF to acquire leading data centre operator Adam Ecotech"
+    editor: "CVC"
+    tipo: empresa
+    fecha_publicacion: "2024-10-31"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      CVC DIF has agreed to acquire a 100% stake in Adam Ecotech, the data centre
+      operator, with operations in Madrid and Barcelona, from Ogic Informatica.
+  - id: src-4
+    url: "https://www.datacenterdynamics.com/es/noticias/el-fondo-cvc-dif-adquiere-adam-ecotech-poseedor-de-tres-data-centers-en-barcelona-y-madrid/"
+    titulo: "El fondo CVC DIF adquiere Adam Ecotech, poseedor de tres data centers en Barcelona y Madrid"
+    editor: "Data Center Dynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2024-10-31"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Adam Ecotech cuenta con tres data centers operativos en Barcelona y Madrid,
+      que suman una superficie total de aproximadamente 6.900 m2 y una capacidad
+      de 7 MW

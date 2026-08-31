@@ -62,6 +62,55 @@ conexion_electrica:
     "Cierzo" 220 kV, propiedad de ADSS, donde está la aparamenta de medida. No consta
     potencia de acceso concedida en MW.
 
+agua:
+  circuito: desconocido
+  sistema: >-
+    Planta de tratamiento de agua y sala de bombas contraincendios propias en la Fase 1. A
+    diferencia de los campus de Villanueva de Gállego 2 y Walqa, el proyecto de El Burgo de
+    Ebro no incluye balsas de agua reciclada de proceso. Está previsto el vertido de aguas
+    pluviales y de rechazo de las aguas de refrigeración a cauce público.
+  origen: >-
+    Canal Imperial de Aragón. En marzo de 2025 el Servicio 1.º de Explotación de la
+    Confederación Hidrográfica del Ebro autorizó un aprovechamiento de 14,38 l/s
+    (expediente 2024-DT-658), y en diciembre de 2023 la CHE había autorizado el paso de la
+    tubería por el talud del camino del Canal.
+  consumo_m3_ano: 111880
+  nota: >-
+    Es el único de los cinco emplazamientos de la ampliación con un aprovechamiento de agua
+    ya autorizado y con reparto mensual publicado: 111.881 m³/año concentrados en tres
+    meses —23.367 m³ en junio, 44.752 m³ en julio y 44.752 m³ en agosto—, destinados
+    específicamente al sistema de refrigeración. La declaración ambiental estratégica del
+    PIGA da la misma magnitud redondeada a 111.880 m³/año, que es la registrada aquí. No
+    consta WUE.
+  fuentes: [src-2, src-5]
+
+energia:
+  - consumo_gwh_ano: 1766
+    referencia: "Recursos de energía previstos para la actividad del centro de datos «BDE» a plena capacidad"
+    fecha_dato: "2025-07-16"
+    fuentes: [src-6]
+    nota: >-
+      La cifra figura en la declaración ambiental estratégica del PIGA, dentro del escrito de
+      alegaciones de SEO/BirdLife que la resolución reproduce literalmente y que la atribuye
+      a la documentación del proyecto: no la formula INAGA por su cuenta. La misma relación
+      suma 10.848,2 GWh/año para los cinco emplazamientos de la ampliación.
+
+empleo:
+  - tipo: directo
+    valor: 122
+    referencia: "Plantilla total prevista del campus completo (30 por cada edificio de centro de datos y 2 en la caseta de seguridad)"
+    fecha_dato: "2026-06-10"
+    fuentes: [src-3]
+    nota: null
+  - tipo: directo
+    valor: 62
+    referencia: "Trabajadores previstos en la Fase 1 según el cuadro de parámetros urbanísticos del mismo Acuerdo"
+    fecha_dato: "2026-06-10"
+    fuentes: [src-4]
+    nota: >-
+      Cifra del cuadro de parámetros urbanísticos, que exige 74 plazas de aparcamiento. No
+      es acumulable con los 122 del campus completo.
+
 inversion_anunciada_eur: null
 enlaces_proyecto:
   - "https://www.aragon.es/-/piga-aws-ampliacion"
@@ -72,6 +121,23 @@ incertidumbres:
       No consta carga TI ni potencia de acceso a red. Solo potencia térmica de grupos
       electrógenos.
     fuentes: [src-1]
+
+  - campo: empleo
+    descripcion: >-
+      El mismo Acuerdo de 10 de junio de 2026 da dos cifras que no encajan: el texto dice
+      que "el campus contará con un total de 122 trabajadores", con una dotación mínima
+      exigida de 146 plazas, y el cuadro de parámetros urbanísticos de la Fase 1 dice
+      "Requeridas: 62 trabajadores previstos x 1,2 = 74 plazas". Se registran ambas.
+    fuentes: [src-3, src-4]
+  - campo: agua
+    descripcion: >-
+      Dos fuentes oficiales dan la misma magnitud con distinto redondeo: 111.880 m³/año en
+      la declaración ambiental estratégica del PIGA —dentro del escrito de alegaciones de
+      SEO/BirdLife que reproduce— y 111.881 m³/año en el aprovechamiento que la
+      Confederación Hidrográfica del Ebro autorizó en marzo de 2025. Se registra la primera
+      y se deja constancia de la segunda, que es además la que lleva reparto mensual. La
+      resolución de INAGA de 21 de mayo de 2026 no publica cifra propia de consumo de agua.
+    fuentes: [src-1, src-2, src-5]
 
 confianza: alta
 ultima_verificacion: "2026-08-31"
@@ -85,3 +151,43 @@ fuentes:
     fecha_publicacion: "2026-06-24"
     fecha_consulta: "2026-08-29"
     cita: "para el centro de almacenamiento de datos denominado BDE (ZAZ082), ubicado en el polígono industrial El Espartal III coordenadas de referencia UTM ETRS89, Huso 30, X: 692.855 e Y: 4.601.757, Z=180 msnm [...] con una potencia térmica nominal total de 750,66 MWt."
+  - id: src-2
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1406588900808"
+    titulo: "RESOLUCIÓN de 16 de julio de 2025, del Instituto Aragonés de Gestión Ambiental, por la que se formula la declaración ambiental estratégica del Plan de Interés General «Expansión Región AWS en Aragón» [...] (INAGA 500201/71H/2025/05122 y otros)"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2025-08-06"
+    fecha_consulta: "2026-08-31"
+    cita: "Respecto de las afecciones al recurso hídrico, el consumo de agua asociado a la actividad de los centros de datos se ha estimado en: VDG1: 56.980 m 3/ año; VDG2: 208.920 m 3/año; BDE: 111.880 m 3/año, WQA: 143.400 m 3/año y CAR: 204.700 m 3/año. Por lo tanto, las necesidades de agua para sistemas de refrigeración del conjunto de centros de datos ascenderían, aproximadamente, a 725.880 m 3/año"
+  - id: src-3
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1454107610505"
+    titulo: "ORDEN VFL/906/2026, de 12 de junio [...] aprobación definitiva parcial del Plan de Interés General de Aragón «Ampliación Región AWS Aragón» — informe técnico del proyecto de El Burgo de Ebro (Fase 1)"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2026-06-24"
+    fecha_consulta: "2026-08-31"
+    cita: "según la memoria aportada, el campus contará con un total de 122 trabajadores -30 por cada edificio de centro de datos y 2 en la caseta de seguridad-, lo que supone una dotación mínima exigida de 146 plazas de aparcamiento. El proyecto prevé un total de 212 plazas, cumpliendo con la dotación requerida."
+  - id: src-4
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1454107610505"
+    titulo: "ORDEN VFL/906/2026, de 12 de junio [...] «Ampliación Región AWS Aragón» — cuadro de parámetros urbanísticos de la Fase 1 de El Burgo de Ebro"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2026-06-24"
+    fecha_consulta: "2026-08-31"
+    cita: "Requeridas: 62 trabajadores previstos x 1,2 = 74 plazas"
+  - id: src-5
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1419873100606"
+    titulo: "RESOLUCIÓN de 3 de octubre de 2025, del Instituto Aragonés de Gestión Ambiental, por la que se formula la declaración de impacto ambiental del Proyecto de las infraestructuras hidráulicas exteriores que darán servicio al futuro centro de datos BDE, en los términos municipales de El Burgo de Ebro y Zaragoza (Zaragoza), promovido por Amazon Data Services Spain, SL (INAGA 500201/01A/2025/05158)"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2025-11-11"
+    fecha_consulta: "2026-08-31"
+    cita: "En diciembre de 2023, la CHE autorizó a la comunidad general de usuarios del Canal Imperial de Aragón el paso de tubería por el talud del camino del Canal Imperial. En marzo de 2025, el Servicio 1.º de Explotación autorizó el aprovechamiento de 14,38 l/s (111.881 m3 /año, distribuidos en los meses de junio 23.367 m 3, julio 44.752 m 3, agosto 44.752 m 3 destinados al centro de datos y concretamente para el sistema de refrigeración en el término municipal de El Burgo de Ebro (Zaragoza) en el expediente 2024-DT-658."
+  - id: src-6
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1406588900808"
+    titulo: "RESOLUCIÓN de 16 de julio de 2025, del Instituto Aragonés de Gestión Ambiental, por la que se formula la declaración ambiental estratégica del Plan de Interés General «Expansión Región AWS en Aragón» — recursos de energía por centro de datos"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2025-08-06"
+    fecha_consulta: "2026-08-31"
+    cita: "Los recursos de energía para la actividad a desarrollar en los centros de datos ascienden a: VDG1: 756,9 GWh/año, VDG2: 2.775 GWh/año, BDE: 1.766 GWh/año, WQA: 2.270,6 GWh/año y CAR: 3.279,7 GWh/año. Las necesidades de electricidad del conjunto de centros de datos ascenderían a 10.848,2 GWh/año."

@@ -31,6 +31,17 @@ estado_fuentes: [src-1, src-2]
 
 potencia: []
 
+energia:
+  - consumo_gwh_ano: 3279.7
+    referencia: "Recursos de energía previstos para la actividad del centro de datos «CAR» a plena capacidad"
+    fecha_dato: "2025-07-16"
+    fuentes: [src-6]
+    nota: >-
+      La cifra figura en la declaración ambiental estratégica del PIGA, dentro del escrito de
+      alegaciones de SEO/BirdLife que la resolución reproduce literalmente y que la atribuye
+      a la documentación del proyecto: no la formula INAGA por su cuenta. La misma relación
+      suma 10.848,2 GWh/año para los cinco emplazamientos de la ampliación.
+
 fases:
   - nombre: "Urbanización del ámbito"
     estado: permisos_concedidos
@@ -51,6 +62,31 @@ conexion_electrica:
     del mismo)". INAGA formuló el 3 de octubre de 2025 la DIA del proyecto de redes de alta
     tensión y centro de medida asociado para dotar de suministro energético al centro CAR.
 
+agua:
+  circuito: desconocido
+  sistema: null
+  origen: >-
+    Tres fuentes de suministro distintas según la declaración de impacto ambiental de las
+    infraestructuras hidráulicas exteriores: nueva toma en el Canal Imperial de Aragón, con
+    una balsa de almacenamiento y regulación de 190.297 m³ y estación de bombeo propia;
+    ampliación de la concesión de Forestalia para captar agua del río Ebro; y nueva toma de
+    agua potable de la red municipal de Zaragoza en La Cartuja Baja, sobre una conducción
+    existente DN500. El Ayuntamiento limita el caudal detraíble a 11,5 l/s para el uso
+    industrial y a 4,3 l/s para el potable.
+  consumo_m3_ano: 204700
+  nota: >-
+    204.700 m³/año es la cifra que da la declaración ambiental estratégica del PIGA, dentro
+    del escrito de alegaciones de SEO/BirdLife que reproduce literalmente. El informe de la
+    Oficina Técnica del Ciclo Integral del Agua del Ayuntamiento de Zaragoza, recogido en la
+    declaración de impacto ambiental de las infraestructuras hidráulicas, precisa la misma
+    magnitud sin redondear: "El volumen anual solicitado según se refleja en la memoria es
+    de 204.697 m3 anuales" para la toma de agua de uso industrial, más 5.311 m³ anuales para
+    la toma de agua potable. Es el segundo mayor consumo de los cinco emplazamientos de la
+    ampliación, pese a que CAR es el único que a la fecha de verificación no ha presentado a
+    aprobación definitiva su proyecto de edificación. No consta sistema de refrigeración ni
+    WUE.
+  fuentes: [src-4, src-5]
+
 inversion_anunciada_eur: null
 enlaces_proyecto:
   - "https://www.aragon.es/-/piga-aws-ampliacion"
@@ -69,6 +105,24 @@ incertidumbres:
       CAR. Su autorización ambiental integrada (expediente INAGA 500301/02/2024/12133) no
       constaba resuelta a la fecha de verificación.
     fuentes: [src-1]
+
+  - campo: agua
+    descripcion: >-
+      Las dos fuentes oficiales dan la misma magnitud con distinto redondeo: 204.700 m³/año
+      en la declaración ambiental estratégica y 204.697 m³ anuales en el informe municipal
+      del ciclo integral del agua, este último referido en concreto a la toma de uso
+      industrial y acompañado de otros 5.311 m³ anuales de agua potable. Se registra la
+      cifra redondeada y se deja constancia de la exacta.
+    fuentes: [src-4, src-5]
+  - campo: agua
+    descripcion: >-
+      El Ayuntamiento de Zaragoza advierte de que su informe "no debe suponer una garantía
+      estricta de volúmenes y caudales" y se reserva "la potestad de ejercer las acciones
+      correctoras pertinentes" si se superan los volúmenes solicitados. El suministro
+      depende además de una nueva toma en el Canal Imperial de Aragón y de la ampliación de
+      una concesión de Forestalia sobre el río Ebro, ninguna de las dos otorgada a la fecha
+      de verificación.
+    fuentes: [src-5]
 
 confianza: media
 ultima_verificacion: "2026-08-31"
@@ -97,3 +151,27 @@ fuentes:
     tipo: otro
     fecha_consulta: "2026-08-29"
     cita: "Zaragoza 41.65 -0.88333333333333"
+  - id: src-4
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1406588900808"
+    titulo: "RESOLUCIÓN de 16 de julio de 2025, del Instituto Aragonés de Gestión Ambiental, por la que se formula la declaración ambiental estratégica del Plan de Interés General «Expansión Región AWS en Aragón» [...] (INAGA 500201/71H/2025/05122 y otros)"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2025-08-06"
+    fecha_consulta: "2026-08-31"
+    cita: "Respecto de las afecciones al recurso hídrico, el consumo de agua asociado a la actividad de los centros de datos se ha estimado en: VDG1: 56.980 m 3/ año; VDG2: 208.920 m 3/año; BDE: 111.880 m 3/año, WQA: 143.400 m 3/año y CAR: 204.700 m 3/año. Por lo tanto, las necesidades de agua para sistemas de refrigeración del conjunto de centros de datos ascenderían, aproximadamente, a 725.880 m 3/año"
+  - id: src-5
+    url: "https://gd.aragon.es/cgi-bin/INPU/BRSCGI?CMD=VEROBJ&MLKOB=1419005732727"
+    titulo: "RESOLUCIÓN de 10 de octubre de 2025, del Instituto Aragonés de Gestión Ambiental, por la que se formula la declaración de impacto ambiental del proyecto de infraestructuras hidráulicas exteriores que dará servicio al nuevo centro de datos CAR, en los términos municipales de Zaragoza y El Burgo de Ebro (Zaragoza), promovido por Amazon Data Services Spain, SL (AWS España) (INAGA 500201/01A/2025/05153)"
+    editor: "Gobierno de Aragón / Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2025-11-05"
+    fecha_consulta: "2026-08-31"
+    cita: "Para garantizar el nivel de servicio de la red municipal de abastecimiento del polígono Empresarium, el caudal máximo a detraer no deberá superar los 11,5 l/seg. [...] El volumen anual solicitado según se refleja en la memoria es de 204.697m 3 anuales; en caso de superarse este volumen el Ayuntamiento se reserva la potestad de ejercer las acciones correctoras pertinentes. [...] Para garantizar el nivel de servicio de la red municipal de abastecimiento del polígono Empresarium, el caudal a detraer no deberá superar los 4,3 l/seg. en régimen de funcionamiento normal. [...] El volumen anual solicitado según se refleja en la memoria es de 5.311m 3 anuales [...] nueva toma en el Canal Imperial de Aragón; ampliación de la concesión de Forestalia para captar agua del río Ebro y nueva toma a la red de abastecimiento del Ayuntamiento de Zaragoza. [...] nueva balsa de almacenamiento y regulación de agua, con una capacidad de 190.297 m³ gestionada por el Canal Imperial de Aragón"
+  - id: src-6
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1406588900808"
+    titulo: "RESOLUCIÓN de 16 de julio de 2025, del Instituto Aragonés de Gestión Ambiental, por la que se formula la declaración ambiental estratégica del Plan de Interés General «Expansión Región AWS en Aragón» — recursos de energía por centro de datos"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2025-08-06"
+    fecha_consulta: "2026-08-31"
+    cita: "Los recursos de energía para la actividad a desarrollar en los centros de datos ascienden a: VDG1: 756,9 GWh/año, VDG2: 2.775 GWh/año, BDE: 1.766 GWh/año, WQA: 2.270,6 GWh/año y CAR: 3.279,7 GWh/año. Las necesidades de electricidad del conjunto de centros de datos ascenderían a 10.848,2 GWh/año."

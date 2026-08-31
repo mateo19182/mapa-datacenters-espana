@@ -20,25 +20,46 @@ ubicacion:
 estado: operativo
 estado_detalle: >-
   Centro de proceso de datos propio de Inditex, junto a la sede del grupo en Arteixo. Certificado
-  Tier IV de fiabilidad por el Uptime Institute y LEED Platino de sostenibilidad. Ninguna fuente
-  publica su potencia, ni de carga TI ni de conexión.
+  Tier IV de fiabilidad por el Uptime Institute y LEED Platino de sostenibilidad. La empresa que
+  ejecutó la instalación eléctrica en 2016 describe una configuración en espejo con doble
+  alimentación de 1.600 kVA cada una conectada en anillo, dos grupos de dos generadores de
+  emergencia de 1.000 kVA y un doble sistema de alimentación ininterrumpida. Ninguna fuente
+  publica carga TI ni potencia de conexión a la red.
 estado_fuentes: [src-1, src-2]
 
-potencia: []
+potencia:
+  - tipo: instalada_total
+    valor_mw: null
+    valor_mva: 1.6
+    ambito: edificio
+    referencia: "Cada una de las dos alimentaciones de la configuración en espejo"
+    estado_asociado: operativo
+    fecha_dato: "2016"
+    fuentes: [src-3]
+    nota: >-
+      La fuente da «doble alimentación de potencia 1.600 KVA cada uno conectada en anillo». Es
+      potencia aparente de acometida, no carga TI, y no se convierte a MW: haría falta el factor
+      de potencia, que no se publica. Tampoco se suman las dos alimentaciones: por definición
+      una configuración en espejo es redundante.
 
 superficie_construida_m2: 4000
 
 incertidumbres:
   - campo: potencia
     descripcion: >-
-      No consta ninguna cifra de potencia. Lo que publican las fuentes es superficie, número de
-      servidores y ahorro anual de consumo, que no permiten derivar la carga TI ni la potencia de
-      acceso sin suponer un PUE y un factor de uso.
-    fuentes: [src-1]
+      No consta ninguna cifra de carga TI ni de potencia de conexión. Lo único eléctrico publicado
+      son los 1.600 kVA de cada alimentación y los 1.000 kVA de cada uno de los cuatro grupos
+      electrógenos de emergencia, aportados por el instalador eléctrico y referidos a 2016. Las
+      demás fuentes dan superficie, número de servidores y ahorro anual de consumo, que no
+      permiten derivar la carga TI sin suponer un PUE y un factor de uso.
+    fuentes: [src-1, src-3]
   - campo: estado
     descripcion: >-
-      Las fuentes accesibles son de 2015, año de la certificación. No se ha localizado ninguna
-      posterior que confirme el estado actual de la instalación ni eventuales ampliaciones.
+      Las fuentes descriptivas son de 2015 (año de la certificación) y 2016 (instalación
+      eléctrica). No se ha localizado ninguna posterior que confirme el estado actual de la
+      instalación ni eventuales ampliaciones. En 2019 Inditex construyó un segundo CPD en A
+      Laracha (ficha inditex-a-laracha), lo que sugiere que Arteixo sigue en servicio como centro
+      principal, pero ninguna fuente lo afirma.
     fuentes: [src-1, src-2]
 
 confianza: media
@@ -60,3 +81,16 @@ fuentes:
     tipo: asociacion
     fecha_consulta: "2026-08-31"
     cita: "INDITEX DATA CENTER — Arteixo A Coruna, A Coruna, Spain"
+  - id: src-3
+    url: "https://energysolartech.com/alquiler-y-gestion-del-frio-400-kwp/"
+    titulo: "Inditex – Instalación eléctrica del CPD"
+    editor: "Energy Solar Tech"
+    tipo: empresa
+    fecha_publicacion: "2024-05-20"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      En la sede de Arteixo se encuentra instalado el «cerebro» de Inditex. Se trata del Centro de
+      Proceso de Datos (CPD) del grupo [...] Nos encargamos de la instalación eléctrica de este
+      CPD, que dispone de una configuración en espejo con doble alimentación de potencia 1.600 KVA
+      cada uno conectada en anillo, dos grupos de dos generadores de emergencia de 1.000 KVA y un
+      doble sistema de alimentación ininterrumpida (SAI)
