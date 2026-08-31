@@ -42,15 +42,13 @@ const pct = (n, total) => (total ? Math.round((n / total) * 100) : 0)
   <div class="contenedor">
     <h1>Cobertura</h1>
     <p class="sumario">
-      Un mapa que no dice lo que le falta induce a error. Estas son las cifras de cobertura del
-      registro y los proyectos que se sabe que faltan.
+      Qué cubre el registro comunidad por comunidad, y los proyectos que se sabe que faltan.
     </p>
 
     <div class="nota">
-      <strong>La distorsión principal.</strong> El número de emplazamientos de una comunidad mide su
-      actividad real y también lo accesible que sea su boletín oficial. Que Aragón esté mejor
-      documentado que Cataluña no significa que tenga más centros de datos, sino que su boletín
-      permite consultar los expedientes y el catalán no.
+      <strong>Sesgo documental.</strong> El recuento por comunidad depende de lo accesible que sea su
+      boletín oficial. Aragón está mejor documentado que Cataluña porque su boletín es consultable,
+      no porque tenga más centros de datos.
     </div>
 
     <h2>Cobertura por comunidad</h2>
@@ -88,8 +86,8 @@ const pct = (n, total) => (total ? Math.round((n / total) * 100) : 0)
     <h2>Lo que se sabe que falta</h2>
     <p>
       {numero(proyectos.length)} proyectos con promotor y municipio conocidos que aún no tienen
-      ficha, más {pistas.length} pistas abiertas. Están aquí y no en el mapa porque sus
-      cifras no se han verificado en fuente primaria. Ninguno entra en ningún total.
+      ficha, más {pistas.length} pistas abiertas. Sin verificar en fuente primaria, así que no
+      entran en el mapa ni en ningún total.
     </p>
 
     <div class="tabla-envoltorio">
@@ -119,8 +117,7 @@ const pct = (n, total) => (total ? Math.round((n / total) * 100) : 0)
 
     <h3>Pistas abiertas</h3>
     <p class="pequeno silencio">
-      A estas les falta el municipio, el promotor o ambos, así que no llegan ni a la tabla de
-      arriba. Cada una dice qué le falta.
+      A estas les falta el municipio, el promotor o ambos.
     </p>
     <ul class="pistas">
       {pistas.map((t) => <li>{t}</li>)}

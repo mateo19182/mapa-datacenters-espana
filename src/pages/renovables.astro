@@ -34,16 +34,13 @@ const contrapartes = [...new Set(renovables.map((r) => r.contraparte_ppa).filter
   <div class="contenedor">
     <h1>Renovables y almacenamiento</h1>
     <p class="sumario">
-      Solo entran los activos con un vínculo documentado a un centro de datos concreto, sea un
-      contrato de compra de energía firmado, generación en el propio emplazamiento o conexión al
-      mismo nudo. No es un inventario de renovables en España.
+      Generación renovable y baterías con vínculo documentado a un centro de datos concreto: PPA
+      firmado, generación en el propio emplazamiento o conexión al mismo nudo.
     </p>
 
     <div class="nota">
-      <strong>Un PPA no es un cable.</strong> Un contrato de compra de energía es un acuerdo
-      financiero y de garantías de origen. No significa que ese centro se alimente físicamente de
-      esa planta: la electricidad le llega de la red, mezclada con todo lo demás. Estas cifras
-      describen contratos.
+      <strong>Un PPA no es un cable.</strong> Es un contrato de compra de energía y de garantías de
+      origen. El centro se alimenta de la red, no de la planta.
     </div>
 
     <dl class="cifras">
@@ -69,9 +66,8 @@ const contrapartes = [...new Set(renovables.map((r) => r.contraparte_ppa).filter
     </dl>
 
     <p class="pequeno silencio">
-      Los MW de generación y los MW de un centro de datos no son comparables. Una planta de 200 MW
-      no «alimenta» un centro de 200 MW, porque su producción es intermitente y el consumo del
-      centro es continuo.
+      Los MW de generación y los de un centro de datos no son comparables: la producción es
+      intermitente y el consumo, continuo.
     </p>
 
     <h2>Por contraparte</h2>
@@ -142,7 +138,7 @@ const contrapartes = [...new Set(renovables.map((r) => r.contraparte_ppa).filter
 
     <p class="pequeno silencio" style="margin-bottom:3rem">
       Se pueden ver <a href="/?capas=renovables">sobre el mapa</a>. Casi ninguno publica
-      coordenadas, así que se sitúan en el centro de su municipio y se dibujan atenuados.
+      coordenadas: se sitúan en el centro de su municipio y se dibujan atenuados.
     </p>
   </div>
 </Base>

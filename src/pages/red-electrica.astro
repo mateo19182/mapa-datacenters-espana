@@ -61,16 +61,14 @@ const explicarLimitante = (codigo) =>
   <div class="contenedor">
     <h1>Red eléctrica</h1>
     <p class="sumario">
-      El cuello de botella de los centros de datos en España no es el suelo ni el capital, es el
-      permiso para enchufarse a la red. Cómo se reparte ese derecho y dónde queda margen, según
-      fuentes públicas.
+      Capacidad de acceso a la red de transporte para demanda, nudo a nudo, y las actuaciones de
+      red planificadas.
     </p>
 
     <div class="nota">
-      <strong>Demanda, no generación.</strong> Todas las cifras de capacidad de esta página son de
-      acceso para <em>demanda</em> (consumo). La de <em>generación</em> se calcula con otros
-      criterios, se publica aparte y no es comparable ni sumable con esta. Confundirlas es el error
-      clásico.
+      <strong>Demanda, no generación.</strong> Todas las cifras de capacidad son de acceso para
+      <em>demanda</em> (consumo). La de <em>generación</em> se calcula con otros criterios y no es
+      comparable con esta.
     </div>
 
     {nudos.length > 0 && (
@@ -95,8 +93,8 @@ const explicarLimitante = (codigo) =>
         </dl>
 
         <p class="pequeno silencio">
-          Datos de Red Eléctrica{fechaDato ? `, publicados el ${fechaLegible(fechaDato)}` : ''}, de publicación
-          mensual. Estas cifras caducan en meses: el reparto cambia con cada resolución de acceso.
+          Datos de Red Eléctrica{fechaDato ? `, publicados el ${fechaLegible(fechaDato)}` : ''}, de
+          publicación mensual. El reparto cambia con cada resolución de acceso.
         </p>
 
         <h2>Reparto por comunidad autónoma</h2>
@@ -207,8 +205,8 @@ const explicarLimitante = (codigo) =>
       <>
         <h2>Emplazamientos con conexión documentada</h2>
         <p class="pequeno silencio">
-          Los que declaran subestación de conexión en alguna fuente. Son una minoría, porque el
-          punto de conexión casi nunca se hace público.
+          Los que declaran subestación de conexión en alguna fuente. El punto de conexión casi
+          nunca se hace público.
         </p>
         <div class="tabla-envoltorio">
           <table class="tabla-fichas">

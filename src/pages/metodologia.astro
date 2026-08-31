@@ -28,8 +28,8 @@ const conPotencia = (tipo) => sitios.filter((s) => s.resumen_potencia[tipo]).len
   <div class="contenedor-estrecho texto">
     <h1>Metodología</h1>
     <p class="sumario">
-      El criterio de este registro no es la exhaustividad ni la actualidad inmediata. Es que cada
-      dato pueda rastrearse hasta una fuente concreta y que lo desconocido se vea como desconocido.
+      Reglas de registro, tipos de potencia, estados, precisión de las coordenadas y niveles de
+      confianza.
     </p>
 
     <h2>Las cinco reglas</h2>
@@ -62,9 +62,8 @@ const conPotencia = (tipo) => sitios.filter((s) => s.resumen_potencia[tipo]).len
 
     <h2>Tipos de potencia</h2>
     <p>
-      Es la distinción más importante del conjunto y la que más se maltrata en la prensa: «un centro
-      de datos de 200 MW» rara vez aclara a qué se refiere, y entre una lectura y otra hay casi el
-      doble.
+      «Un centro de datos de 200 MW» rara vez aclara a qué magnitud se refiere, y entre una lectura
+      y otra hay casi el doble.
     </p>
     <dl class="glosario">
       {['it', 'conexion_red', 'instalada_total', 'no_especificado', 'termica_respaldo', 'generacion_asociada'].map((t) => (
@@ -100,10 +99,7 @@ const conPotencia = (tipo) => sitios.filter((s) => s.resumen_potencia[tipo]).len
     </p>
 
     <h2>Estados</h2>
-    <p>
-      Un proyecto anunciado y uno en construcción no son lo mismo, y confundirlos infla la capacidad
-      futura. Se usan diez estados:
-    </p>
+    <p>Diez estados, del anuncio a la cancelación:</p>
     <ul class="estados">
       {ORDEN_ESTADOS.map((e) => (
         <li>
@@ -113,14 +109,14 @@ const conPotencia = (tipo) => sitios.filter((s) => s.resumen_potencia[tipo]).len
       ))}
     </ul>
     <p>
-      Cada ficha añade un detalle en prosa, porque un proyecto puede tener a la vez una fase
-      operativa, otra en obras y una tercera solo anunciada.
+      Cada ficha añade un detalle en prosa: un proyecto puede tener a la vez una fase operativa,
+      otra en obras y una tercera solo anunciada.
     </p>
 
     <h2>Coordenadas</h2>
     <p>
-      Cada ficha declara la precisión de su ubicación; el mapa no debe sugerir una parcela que las
-      fuentes no acreditan. Cuando solo consta el municipio, el punto va al centro del término, con
+      Cada ficha declara la precisión de su ubicación. Cuando solo consta el municipio, el punto
+      va al centro del término, con
       centroides de OpenStreetMap cacheados, se dibuja atenuado y la ficha lo dice. Así se sitúan{' '}
       {resumen.coordenadas_derivadas} de {resumen.total_emplazamientos}. Esa coordenada se calcula
       al construir y nunca se escribe en el fichero, que sigue diciendo lo único cierto: el
@@ -143,8 +139,7 @@ const conPotencia = (tipo) => sitios.filter((s) => s.resumen_potencia[tipo]).len
 
     <h2>Confianza</h2>
     <p>
-      El nivel de confianza resume la calidad del respaldo documental. No mide la importancia del
-      proyecto, sino cuánto fiarse de lo que aquí se afirma.
+      Resume la calidad del respaldo documental, no la importancia del proyecto.
     </p>
     <dl class="glosario">
       {['alta', 'media', 'baja'].map((c) => (

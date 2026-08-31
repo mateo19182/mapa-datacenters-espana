@@ -1,13 +1,6 @@
-# La capa eléctrica: acceso, conexión y capacidad de red para centros de datos en España
+# El acceso a la red, en detalle
 
-*Última verificación: 29 de agosto de 2026. Todas las cifras llevan fecha porque casi
-todas caducan.*
-
-Cómo se reparte hoy en España el derecho a enchufarse a la red eléctrica, por qué ese
-reparto se ha vuelto el cuello de botella de los centros de datos, y qué se sabe con
-fuentes públicas. Todas las cifras son de capacidad de acceso para demanda.
-
----
+*Última verificación: 29 de agosto de 2026.*
 
 ## 1. Cómo funciona el acceso y la conexión a la red para demanda
 
@@ -56,7 +49,7 @@ completa, primero en la cola (RD 1183/2020, art. 7.1). La fecha que cuenta es la
 *admisión a trámite*; si hay que subsanar, la fecha se mueve al momento en que la
 documentación está correcta y completa.
 
-Hay tres grandes excepciones, y las tres son recientes y muy relevantes para los CPD:
+Hay tres excepciones, todas recientes y todas relevantes para los CPD:
 
 1. **Concursos de capacidad de demanda** (arts. 20 bis a 20 quater del RD 1183/2020,
    introducidos por el RDL 8/2023). Cuando en un nudo de ≥220 kV llegan varias
@@ -156,8 +149,7 @@ firmar el contrato técnico de acceso (plazo modificado por el RDL 18/2026, de 2
 
 ## 2. Por qué «MW de conexión» ≠ «MW IT»
 
-Es la confusión más frecuente al leer prensa sobre centros de datos, y ahora tiene
-definición legal. El proyecto de real decreto de centros de datos sometido a audiencia
+Desde agosto de 2026 las dos magnitudes tienen definición legal. El proyecto de real decreto de centros de datos sometido a audiencia
 pública el 27 de agosto de 2026 define las dos magnitudes por separado (art. 3):
 
 > «f) Potencia de acceso: la potencia eléctrica que figure en los permisos de acceso
@@ -181,18 +173,12 @@ Relación práctica entre ambas:
 - Un mismo campus suele pedir la potencia de acceso del build-out completo años antes
   de instalar la primera fila de racks. El permiso es para el campus terminado; la carga
   TI del año 1 puede ser una fracción pequeña.
-- **No se debe convertir de una a otra aplicando un PUE supuesto.** Es exactamente lo que
-  prohíbe el esquema de datos de este proyecto, y por buenas razones: el PUE de diseño no
-  es el PUE real, y el margen entre potencia contratada y potencia usada tampoco es
-  constante.
+- **No se debe convertir de una a otra aplicando un PUE supuesto.** El PUE de diseño no es
+  el PUE real, y el margen entre potencia contratada y potencia usada tampoco es constante.
 - El propio proyecto de RD ilustra la asimetría al fijar dos umbrales distintos: las
   obligaciones sustantivas se aplican a centros con potencia de acceso ≥ 1 MW,
   mientras que las obligaciones de publicidad e información del art. 14 se fijan en
   500 kW de potencia de TI, por coherencia con el Reglamento Delegado (UE) 2024/1364.
-
-Conclusión operativa para el mapa: un titular anuncia «300 MW» y casi nunca dice de qué.
-Hay que registrar el tipo (`it`, `conexion_red`, `instalada_total`, `no_especificado`) y
-no mezclarlos.
 
 ---
 
@@ -200,9 +186,8 @@ no mezclarlos.
 
 ### 3.1 El dato existe desde febrero de 2026, y antes no
 
-Este es el cambio más importante del periodo. Hasta 2026 la capacidad de acceso de
-*demanda* en la red de transporte no era pública; sí lo era la de generación. La
-secuencia:
+Hasta 2026 la capacidad de acceso de *demanda* en la red de transporte no era pública; sí
+lo era la de generación. La secuencia:
 
 1. La Circular 1/2024 (art. 16) obliga a gestores de transporte y distribución a
    publicar, por barra de tensión > 1 kV y con actualización mensual: denominación,
@@ -279,8 +264,8 @@ Advertencias imprescindibles sobre esta tabla:
 
 ### 3.4 Por qué está limitado cada nudo: los criterios
 
-El fichero de REE indica el criterio limitante de cada nudo, y esto importa porque
-determina si la limitación es estructural o disolvible:
+El fichero de REE indica el criterio limitante de cada nudo, que determina si la limitación
+es estructural o disolvible:
 
 - **`WSCR_Nudo`**. Potencia de cortocircuito insuficiente. Solo aplica a consumos con
   electrónica de potencia en la interfaz (en la nomenclatura de REE, «CEP»), que es
@@ -350,8 +335,6 @@ la tesis del regulador, y es el argumento que sostiene toda la reforma de 2026.
 
 ### 4.2 Cómo hay que leer esas cifras
 
-Con mucho cuidado, y el mapa debe decirlo explícitamente:
-
 - **Solicitado ≠ concedido ≠ construido.** Los 12 GW son permisos concedidos, no obra. Y
   REE es tajante: de los 11,8 GW de nueva demanda otorgada en transporte desde 2022,
   ninguno estaba en servicio en febrero de 2026.
@@ -390,9 +373,7 @@ nueva demanda previstos en la red de transporte, y solo incorpora al escenario
 
 ## 5. Concursos de capacidad de demanda: el primero ya se ha resuelto
 
-Es el mecanismo que sustituye a la cola cuando en un nudo hay más peticiones que
-capacidad, y merece atención porque su primera edición dice mucho sobre el trato que
-reciben los CPD.
+El concurso sustituye a la cola cuando en un nudo hay más peticiones que capacidad.
 
 Convocatoria: [Resolución de 11 de julio de 2025, de la Secretaría de Estado de
 Energía](https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-14863) (BOE de 17-07-2025).
@@ -430,8 +411,8 @@ Resolución: [Resolución de 24 de febrero de 2026](https://www.boe.es/diario_bo
 | Francolí 220 | Planta ASU de El Morell Messer IV | Messer Ibérica de Gases, S.A.U. | 52,0 |
 | Cristóbal Colón 220 | Complejo Metalúrgico de Huelva | Atlantic Copper, S.L. | 18,7 |
 
-**Lo relevante para este proyecto: ninguna de las solicitudes cuyo nombre societario las
-identifica como promotoras de centros de datos llegó a ser valorada.** El anexo II relaciona
+**Ninguna de las solicitudes cuyo nombre societario las identifica como promotoras de
+centros de datos llegó a ser valorada.** El anexo II relaciona
 como excluidas, por las causas a, b y c del anexo V.D de la convocatoria, referidas a
 defectos de documentación y de garantías, las solicitudes de CPD4GREEN, S.A.U. en
 Brazatortas 400, Benbros DC, S.L. en Francolí 220, ACS DC Infra, S.L.U. en Nuevo Vigo
@@ -473,9 +454,8 @@ Cronología de lo que ha cambiado el terreno de juego, de más antiguo a más re
 
 ### 6.1 El proyecto de real decreto de centros de datos (agosto de 2026)
 
-Es la norma que más directamente afecta a este mapa. Estado a 29-08-2026: **borrador en
-audiencia e información pública, abierta del 27 de agosto al 4 de septiembre de 2026**.
-No está aprobado. Contenido:
+Estado a 29-08-2026: **borrador en audiencia e información pública, abierta del 27 de
+agosto al 4 de septiembre de 2026**. No está aprobado. Contenido:
 
 - **Ámbito**: centros de datos con potencia de acceso ≥ 1 MW. Obligaciones de
   publicidad a partir de 500 kW de potencia de TI.
@@ -510,7 +490,7 @@ nuevo, casado hora a hora, en territorio español.
 
 ## 7. Planificación de red: qué está vigente y qué no
 
-Resumen para no equivocarse de documento (el detalle está en `data/red/actuaciones.yaml`):
+Detalle en `data/red/actuaciones.yaml`.
 
 - **Vigente y vinculante**: Planificación de la Red de Transporte Horizonte 2026
   (periodo 2021-2026), aprobada por Consejo de Ministros el 22 de marzo de 2022, con tres
@@ -537,9 +517,9 @@ Verneda, Farners-Riudarenes y Algete 220 kV. Su motivación literal:
 > caracterizan por conllevar unos consumos de electricidad significativos, razón por la
 > cual se requiere su abastecimiento directamente desde la red de transporte eléctrica.»
 
-Ojo: el documento no nombra empresas ni tipos de instalación. «Digitalización de la
-economía» no equivale a «centro de datos». No se debe atribuir una actuación concreta a un
-CPD concreto sin una fuente que lo diga.
+El documento no nombra empresas ni tipos de instalación. «Digitalización de la economía» no
+equivale a «centro de datos», y ninguna actuación se atribuye aquí a un CPD concreto sin una
+fuente que lo diga.
 
 ---
 
@@ -562,15 +542,14 @@ tomar el enlace vigente de la página de REE, no adivinar la fecha.
 
 ### 8.2 Limitaciones documentadas
 
-1. **El mapa de la CNMC es un visor, no una descarga.** Los mapas de capacidad de la CNMC
-   se publican como aplicaciones ArcGIS Experience. No consta en la página un fichero
-   descargable equivalente. Para datos tabulados de transporte hay que ir al CSV/XLSX de
-   Red Eléctrica; para distribución, a los portales de cada distribuidora. **Aquí no se
-   han inventado cifras de distribución.**
-2. **La capacidad en distribución no está consolidada en un único fichero público.** Cada
-   gestor publica lo suyo conforme al art. 16 de la Circular 1/2024. Homogeneizarlo
-   requiere recorrer i-DE, e-distribución, UFD, Viesgo y decenas de distribuidoras
-   menores; no se ha hecho para este documento.
+1. **El mapa de la CNMC es un visor, no una descarga.** Se publica como aplicación ArcGIS
+   Experience, sin fichero descargable equivalente. Para datos tabulados de transporte hay
+   que ir al CSV/XLSX de Red Eléctrica; para distribución, a los portales de cada
+   distribuidora.
+2. **La capacidad en distribución no está consolidada en un único fichero público**, ni se
+   recoge aquí. Cada gestor publica lo suyo conforme al art. 16 de la Circular 1/2024, y
+   homogeneizarlo exige recorrer i-DE, e-distribución, UFD, Viesgo y decenas de
+   distribuidoras menores.
 3. **No hay registro público que diga qué empresa tiene qué permiso de acceso, en qué nudo
    y por cuántos MW.** El fichero de REE publica agregados por nudo, no titulares. La
    única vía por la que aparecen nombres propios es la resolución de un concurso, o los
@@ -580,17 +559,15 @@ tomar el enlace vigente de la página de REE, no adivinar la fecha.
    marcar la confianza en consecuencia.
 4. **El desglose de los «12 GW de CPD» no es público.** El MITECO da la cifra agregada
    (>6 GW en transporte, ~6 GW en distribución) sin lista de proyectos ni de nudos.
-5. **El listado individualizado de actuaciones de la propuesta de planificación a 2030 no
-   se ha podido localizar en acceso público directo**; solo el sumario ejecutivo. Las
-   cifras funcionales (3,8 GW para centros de datos) proceden de la comunicación oficial
-   del MITECO/La Moncloa, no de un anexo tabulado consultado.
+5. **De la propuesta de planificación a 2030 solo es público el sumario ejecutivo**, no el
+   listado individualizado de actuaciones. Las cifras funcionales (3,8 GW para centros de
+   datos) proceden de la comunicación oficial del MITECO y La Moncloa.
 6. **Las coordenadas de subestaciones de `data/red/subestaciones.yaml` proceden de
    OpenStreetMap** (ODbL), validadas cruzando la comunidad autónoma obtenida por
    geocodificación inversa con la que Red Eléctrica asigna al nudo. Red Eléctrica está
    obligada por la Circular 1/2024 a publicar la georreferenciación de cada barra, pero no
    se ha localizado un fichero geográfico oficial descargable que la contenga. Donde la
    correspondencia no se ha podido validar, lat/lon van a `null`.
-7. **Todo esto caduca.** La capacidad de acceso se recalcula cada mes; los requisitos de
+7. **Todo esto caduca.** La capacidad de acceso se recalcula cada mes, los requisitos de
    robustez frente a huecos de tensión están pendientes de norma y REE ya avisa de que
-   liberarán capacidad; y el real decreto de centros de datos está en audiencia pública.
-   Cualquier cifra de este documento debe releerse con su fecha delante.
+   liberarán capacidad, y el real decreto de centros de datos está en audiencia pública.

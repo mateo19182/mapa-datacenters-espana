@@ -39,9 +39,9 @@ const afectados = new Set(entradas.map((e) => e.sitio.id)).size
   <div class="contenedor">
     <h1>Incertidumbres</h1>
     <p class="sumario">
-      {numero(entradas.length)} contradicciones y lagunas en {afectados} de los {sitios.length}
-      emplazamientos. Ninguna está resuelta. Todas están registradas, con las dos versiones y el
-      punto exacto del choque.
+      {numero(entradas.length)} contradicciones y lagunas documentadas en {afectados} de los
+      {' '}{sitios.length} emplazamientos, agrupadas por el campo al que afectan. Ninguna está
+      resuelta.
     </p>
 
     <p class="pequeno">
