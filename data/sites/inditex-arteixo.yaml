@@ -1,0 +1,62 @@
+id: inditex-arteixo
+nombre: "Inditex — CPD de Arteixo"
+alias:
+  - "Inditex Data Center"
+  - "CPD de Inditex"
+tipo: edificio
+operador: "Inditex"
+propietario: "Inditex"
+modelo: corporativo
+
+ubicacion:
+  municipio: Arteixo
+  provincia: A Coruña
+  ccaa: Galicia
+  lat: null
+  lon: null
+  precision: municipio
+  fuentes: [src-1, src-2]
+
+estado: operativo
+estado_detalle: >-
+  Centro de proceso de datos propio de Inditex, junto a la sede del grupo en Arteixo. Certificado
+  Tier IV de fiabilidad por el Uptime Institute y LEED Platino de sostenibilidad. Ninguna fuente
+  publica su potencia, ni de carga TI ni de conexión.
+estado_fuentes: [src-1, src-2]
+
+potencia: []
+
+superficie_construida_m2: 4000
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      No consta ninguna cifra de potencia. Lo que publican las fuentes es superficie, número de
+      servidores y ahorro anual de consumo, que no permiten derivar la carga TI ni la potencia de
+      acceso sin suponer un PUE y un factor de uso.
+    fuentes: [src-1]
+  - campo: estado
+    descripcion: >-
+      Las fuentes accesibles son de 2015, año de la certificación. No se ha localizado ninguna
+      posterior que confirme el estado actual de la instalación ni eventuales ampliaciones.
+    fuentes: [src-1, src-2]
+
+confianza: media
+ultima_verificacion: "2026-08-31"
+
+fuentes:
+  - id: src-1
+    url: "https://www.datacentermarket.es/proyectos/noticias/1081870032709/cpd-inditex-ahorra-cerca-4.2-millones.1.html"
+    titulo: "El CPD de Inditex ahorra cerca de 4,2 millones de kilovatios hora de consumo al año"
+    editor: "Data Center Market"
+    tipo: prensa_especializada
+    fecha_publicacion: "2015-06-08"
+    fecha_consulta: "2026-08-31"
+    cita: "Arteixo (A Coruña) [...] 4.000 servidores, 1.300 kilómetros de fibra [...] 4.000 metros cuadrados [...] Tier IV en fiabilidad otorgada por el Uptime Institute [...] certificación en sostenibilidad Leed Platino"
+  - id: src-2
+    url: "https://uptimeinstitute.com/component/tierachievement/client/inditex/240"
+    titulo: "Tier Certification achievements — Inditex"
+    editor: "Uptime Institute"
+    tipo: asociacion
+    fecha_consulta: "2026-08-31"
+    cita: "INDITEX DATA CENTER — Arteixo A Coruna, A Coruna, Spain"

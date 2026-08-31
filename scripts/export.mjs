@@ -203,7 +203,7 @@ const regiones = [...porClave((s) => s.ubicacion.ccaa).entries()]
 // Cobertura pendiente: pistas conocidas que aún no son fichas. No es dataset.
 const pendientes = existsSync(join(RAIZ, 'data/pendientes.yaml'))
   ? YAML.parse(readFileSync(join(RAIZ, 'data/pendientes.yaml'), 'utf8'))
-  : { proyectos: [], sin_municipio: [] }
+  : { proyectos: [], pistas: [] }
 
 const red = q('SELECT datos FROM red_nodos').map((r) => JSON.parse(r.datos))
 const actuaciones = q('SELECT datos FROM red_actuaciones').map((r) => JSON.parse(r.datos))
@@ -407,7 +407,7 @@ const resumen = {
   sin_region: sitios.filter((s) => !s.ubicacion.ccaa).length,
   calidad,
   pendientes: (pendientes.proyectos ?? []).length,
-  pistas_sin_municipio: (pendientes.sin_municipio ?? []).length,
+  pistas_abiertas: (pendientes.pistas ?? []).length,
 }
 
 const escribir = (nombre, datos, publico = true) => {

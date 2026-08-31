@@ -326,29 +326,33 @@ hoy mismo, sin buscar nada nuevo:
 3. **El «Madrid MAD1» de Algete que Madrid descartó por atribución no verificable** encaja
    con el proyecto «Scorpio» de AVAIO Digital Partners, 64 MW.
 
-### 3.4 Pistas sin municipio, que no se pueden fichar todavía
+### 3.4 Pistas sueltas
 
-No son omisiones imputables a nadie: falta el dato mínimo que exige el esquema. Se agrupan
-aquí porque son el mejor guion para una segunda pasada.
+No son omisiones imputables a nadie: falta el municipio, el promotor o ambos. Se agrupan aquí
+porque son el mejor guion para una segunda pasada.
 
-- **Inditex, CPD de Arteixo (A Coruña).** Certificado Tier IV en 2013. Con casi total
-  seguridad el mayor CPD corporativo de Galicia. Ninguna fuente accesible.
 - **Seis CPD en la Ribera de Navarra** (Tudela, Ribaforada, Valtierra, Arguedas), 382 MW
   combinados, con avales presentados y solicitudes de acceso a red. Ninguna fuente nombra a
   los promotores. Navarra tiene hoy una ficha.
-- **Velilla del Río Carrión (Palencia)**, segundo emplazamiento atribuido a Echelon-Iberdrola.
-- **RIC Energy en el suelo de Sniace (Torrelavega)**, anunciado en abril de 2026.
-- **Arakaldo (Bizkaia)**, titular de mayo de 2026 sin pieza recuperable.
 - **Aprisco Group en Asturias** (1.000 M€) y Submer en Cataluña (100 MW): ambos siguen
   buscando terreno o no lo han publicado.
-- **Unicaja en Málaga TechPark**; DataRush IT con dos centros en Málaga y uno en Granada.
-- **IBM Quantum System Two de Donostia**, inaugurado en octubre de 2025, sin fuente abierta.
-- **SCAYLE (León)** y Nasertic (Navarra): instalaciones públicas reales sin ubicación
-  publicada.
+- **Nasertic (Navarra)**: instalación pública real sin ubicación publicada.
 - **CPD de la Comunidad de Madrid**, adjudicado a Telefónica en junio de 2025 por 24,5 M€,
   ubicación no publicada.
 - **Nueve activos de MasOrange** y hasta cuatro emplazamientos de Quetta sin localizar.
 - **Las dos zonas no publicadas** de la región Google `europe-southwest1`.
+
+#### Resueltas después de la auditoría (2026-08-31)
+
+Siete de las pistas originales sí traían municipio y estaban mal clasificadas: Velilla del
+Río Carrión, Torrelavega, Málaga (Unicaja y DataRush IT), Granada, Donostia-San Sebastián,
+León y Arakaldo. Pasan a la tabla de cobertura pendiente.
+
+El caso de **Inditex en Arteixo** estaba mal juzgado: la auditoría lo dio por sin fuente
+accesible y sí las hay. Data Center Market publicó las cifras en 2015 y el propio Uptime
+Institute mantiene el registro de la certificación Tier IV. Ya tiene ficha. Ese registro
+destapó además un **segundo CPD de Inditex en A Laracha**, «Data Center 2, Phase 1», que no
+aparecía en ninguna lista de este mapa ni entre las pistas. También tiene ficha.
 
 ---
 

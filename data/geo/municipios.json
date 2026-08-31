@@ -257,5 +257,32 @@
   "tipo_osm": "administrative",
   "nombre_osm": "Fuendetodos, Campo de Belchite, Zaragoza, Aragón, 50142, España",
   "consultado": "2026-08-29"
+ },
+ "arganda del rey|madrid": {
+  "municipio": "Arganda del Rey",
+  "provincia": "Madrid",
+  "lat": 40.30079,
+  "lon": -3.43816,
+  "tipo_osm": "administrative",
+  "nombre_osm": "Arganda del Rey, Comunidad de Madrid, 28500, España",
+  "consultado": "2026-08-31"
+ },
+ "a laracha|a coruña": {
+  "municipio": "A Laracha",
+  "provincia": "A Coruña",
+  "lat": 43.24341,
+  "lon": -8.54981,
+  "tipo_osm": "administrative",
+  "nombre_osm": "A Laracha, Bergantiños, La Coruña, Galicia, España",
+  "consultado": "2026-08-31"
+ },
+ "arteixo|a coruña": {
+  "municipio": "Arteixo",
+  "provincia": "A Coruña",
+  "lat": 43.30458,
+  "lon": -8.50791,
+  "tipo_osm": "administrative",
+  "nombre_osm": "Arteixo, La Coruña, Galicia, España",
+  "consultado": "2026-08-31"
  }
 }

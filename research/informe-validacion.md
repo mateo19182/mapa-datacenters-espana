@@ -2,10 +2,10 @@
 
 Generado el 2026-08-31 por `npm run validate`.
 
-- Emplazamientos cargados: **162**
+- Emplazamientos cargados: **164**
 - Nodos de red: **133**
 - Activos renovables/BESS: **22**
-- Errores: **0** · Avisos: **263**
+- Errores: **0** · Avisos: **267**
 
 ## Incidencias por fichero
 
@@ -347,6 +347,16 @@ Generado el 2026-08-31 por `npm run validate`.
 ### `iberdrola-toledo-benquerencia.yaml`
 
 - aviso: sin ningún dato de potencia
+
+### `inditex-a-laracha.yaml`
+
+- aviso: sin ningún dato de potencia
+- aviso: sin coordenadas: no aparecerá en el mapa
+
+### `inditex-arteixo.yaml`
+
+- aviso: sin ningún dato de potencia
+- aviso: sin coordenadas: no aparecerá en el mapa
 
 ### `ingenostrum-badajoz-nostrum-evergreen.yaml`
 

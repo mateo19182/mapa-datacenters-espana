@@ -7,7 +7,7 @@ import sitios from '../data/sitios.json'
 import { numero, slug } from '../lib/etiquetas.js'
 
 const proyectos = pendientes.proyectos ?? []
-const sinMunicipio = pendientes.sin_municipio ?? []
+const pistas = pendientes.pistas ?? []
 
 const ORDEN = { alta: 0, media: 1, baja: 2 }
 const ordenados = [...proyectos].sort(
@@ -88,7 +88,7 @@ const pct = (n, total) => (total ? Math.round((n / total) * 100) : 0)
     <h2>Lo que se sabe que falta</h2>
     <p>
       {numero(proyectos.length)} proyectos con promotor y municipio conocidos que aún no tienen
-      ficha, más {sinMunicipio.length} pistas sin municipio. Están aquí y no en el mapa porque sus
+      ficha, más {pistas.length} pistas abiertas. Están aquí y no en el mapa porque sus
       cifras no se han verificado en fuente primaria. Ninguno entra en ningún total.
     </p>
 
@@ -106,7 +106,7 @@ const pct = (n, total) => (total ? Math.round((n / total) * 100) : 0)
               </td>
               <td class="pequeno" data-etiqueta="Comunidad">{p.ccaa}</td>
               <td data-etiqueta="Compañía">
-                {p.compania}
+                {p.compania ?? <span class="silencio">sin promotor identificado</span>}
                 {p.nota && <span class="pequeno silencio"><br />{p.nota}</span>}
               </td>
               <td class="pequeno" data-etiqueta="Potencia citada">{p.potencia_citada ?? <span class="silencio">sin cifra</span>}</td>
@@ -117,13 +117,13 @@ const pct = (n, total) => (total ? Math.round((n / total) * 100) : 0)
       </table>
     </div>
 
-    <h3>Pistas sin municipio</h3>
+    <h3>Pistas abiertas</h3>
     <p class="pequeno silencio">
-      El esquema exige municipio, así que estas no pueden registrarse todavía. Son el guion de la
-      siguiente revisión.
+      A estas les falta el municipio, el promotor o ambos, así que no llegan ni a la tabla de
+      arriba. Cada una dice qué le falta.
     </p>
     <ul class="pistas">
-      {sinMunicipio.map((t) => <li>{t}</li>)}
+      {pistas.map((t) => <li>{t}</li>)}
     </ul>
 
     <div class="cifras">

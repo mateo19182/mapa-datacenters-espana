@@ -53,10 +53,12 @@ incertidumbres:
     descripcion: >-
       Ni Iberdrola ni Echelon publican el municipio. Directorios sectoriales asocian el proyecto a
       Aceca, que es una central térmica situada en Villaseca de la Sagra (Toledo), no en la
-      Comunidad de Madrid, y alguna cobertura lo sitúa directamente «en Madrid». Sin fuente
-      primaria que lo confirme, el emplazamiento se deja sin ubicar y no aparece en el mapa ni en
-      las vistas por región.
-    fuentes: [src-1, src-2]
+      Comunidad de Madrid, y alguna cobertura lo sitúa directamente «en Madrid». La fuente más
+      reciente, de agosto de 2026, tampoco da municipio: habla del «corredor Madrid-Toledo», que
+      son dos comunidades autónomas. El nombre comercial del proyecto no basta para asignarle
+      región, así que el emplazamiento se deja sin ubicar y no aparece en el mapa ni en las vistas
+      por región.
+    fuentes: [src-1, src-2, src-3]
   - campo: potencia
     descripcion: >-
       Los 230 MW de conexión y los 144 MW de procesamiento proceden de fuentes distintas y no son
@@ -84,3 +86,11 @@ fuentes:
     fecha_publicacion: "2025-11-26"
     fecha_consulta: "2026-08-29"
     cita: "144 MW para procesamiento de datos [...] conexión eléctrica de 230 MW [...] más de 700 MW en conexiones eléctricas"
+  - id: src-3
+    url: "https://www.elespanol.com/eldigitalcastillalamancha/economia/empresas/20260819/veto-gobierno-macroplanta-aceca-no-frena-iberdrola-proyecta-gran-centro-datos-toledo/1003744357801_0.html"
+    titulo: "El veto del Gobierno a la macroplanta de Aceca no frena a Iberdrola, que proyecta un gran centro de datos en Toledo"
+    editor: "El Español — El Digital de Castilla-La Mancha"
+    tipo: prensa_general
+    fecha_publicacion: "2026-08-19"
+    fecha_consulta: "2026-08-31"
+    cita: "El primer hito de esta sociedad fue el proyecto Madrid Sur (con 144 MW de capacidad y 230 MW de conexión asegurada), estableciendo el corredor Madrid-Toledo como enclave prioritario"

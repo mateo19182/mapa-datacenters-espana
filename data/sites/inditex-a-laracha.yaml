@@ -1,0 +1,69 @@
+id: inditex-a-laracha
+nombre: "Inditex — CPD de A Laracha"
+alias:
+  - "Inditex Data Center 2"
+  - "CPD Inditex Laracha"
+tipo: edificio
+operador: "Inditex"
+propietario: "Inditex"
+modelo: corporativo
+
+ubicacion:
+  municipio: A Laracha
+  provincia: A Coruña
+  ccaa: Galicia
+  lat: null
+  lon: null
+  precision: municipio
+  fuentes: [src-1, src-2]
+
+estado: operativo
+estado_detalle: >-
+  Segundo centro de proceso de datos de Inditex, en el polígono industrial de A Laracha, junto a
+  la plataforma logística del grupo. Anunciado en 2019 con una inversión superior a ocho millones
+  de euros. El Uptime Institute lo registra como «Data Center 2, Phase 1» con certificación Tier IV
+  de diseño y de instalación construida. Ninguna fuente publica una fecha de puesta en servicio.
+estado_fuentes: [src-1, src-2]
+
+potencia: []
+
+superficie_construida_m2: 3800
+inversion_anunciada_eur: 8000000
+
+incertidumbres:
+  - campo: estado
+    descripcion: >-
+      La certificación de instalación construida acredita que el edificio existe y se ha probado,
+      no que esté prestando servicio. Ninguna fuente publica fecha de puesta en servicio, de modo
+      que el estado operativo se apoya en la certificación y en el anuncio de 2019, no en una
+      declaración expresa.
+    fuentes: [src-1, src-2]
+  - campo: potencia
+    descripcion: >-
+      No consta potencia de ningún tipo. La inversión y la superficie no permiten derivarla.
+    fuentes: [src-1]
+  - campo: fases
+    descripcion: >-
+      El Uptime Institute lo nombra «Phase 1», lo que sugiere fases posteriores previstas. No se ha
+      localizado ninguna fuente que las describa.
+    fuentes: [src-2]
+
+confianza: baja
+ultima_verificacion: "2026-08-31"
+
+fuentes:
+  - id: src-1
+    url: "https://www.elidealgallego.com/texto-diario/mostrar/2417009/inditex-completara-complejo-laracha-centro-datos"
+    titulo: "Inditex completará su complejo de A Laracha con un centro de datos"
+    editor: "El Ideal Gallego"
+    tipo: prensa_general
+    fecha_publicacion: "2019-06-28"
+    fecha_consulta: "2026-08-31"
+    cita: "Inditex sigue apostando fuerte por el polígono de A Laracha [...] superará los 8 millones de euros [...] El centro de procesamiento de datos tendrá una superficie de 3.800 metros cuadrados"
+  - id: src-2
+    url: "https://uptimeinstitute.com/component/tierachievement/client/inditex/240"
+    titulo: "Tier Certification achievements — Inditex"
+    editor: "Uptime Institute"
+    tipo: asociacion
+    fecha_consulta: "2026-08-31"
+    cita: "INDITEX DATA CENTER 2, Phase 1 — Laracha, Spain"

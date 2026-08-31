@@ -1,5 +1,5 @@
-# Cobertura pendiente: proyectos de los que se conoce promotor y municipio pero
-# que todavía NO tienen ficha.
+# Cobertura pendiente: proyectos de los que se conoce al menos el municipio
+# pero que todavía NO tienen ficha.
 #
 # Esto no es el dataset: son pistas de trabajo. Ningún dato de aquí se muestra
 # como hecho registrado ni entra en ningún total. Existe para que el mapa diga
@@ -200,18 +200,69 @@ proyectos:
     potencia_citada: null
     prioridad: baja
 
-# Pistas que ni siquiera pueden ficharse: falta el municipio, que es el dato
-# mínimo que exige el esquema.
-sin_municipio:
-  - "Inditex — CPD de Arteixo (A Coruña): certificado Tier IV en 2013, probablemente el mayor CPD corporativo de Galicia."
-  - "Seis centros en la Ribera de Navarra (Tudela, Ribaforada, Valtierra, Arguedas), 382 MW combinados, sin promotores identificados."
-  - "Velilla del Río Carrión (Palencia): segundo emplazamiento atribuido a Echelon-Iberdrola."
-  - "RIC Energy en el suelo de Sniace (Torrelavega), anunciado en abril de 2026."
-  - "Arakaldo (Bizkaia): titular de mayo de 2026 sin pieza recuperable."
-  - "Aprisco Group en Asturias y Submer en Cataluña: ambos sin terreno publicado."
-  - "Unicaja en Málaga TechPark; DataRush IT con dos centros en Málaga y uno en Granada."
-  - "IBM Quantum System Two de Donostia, inaugurado en octubre de 2025."
-  - "SCAYLE (León) y Nasertic (Navarra): instalaciones públicas sin ubicación publicada."
+  # --- rescatadas de la lista de pistas: el municipio sí constaba ------------
+  - municipio: Velilla del Río Carrión
+    provincia: Palencia
+    ccaa: Castilla y León
+    compania: Echelon Iberdrola Digital Infra
+    potencia_citada: null
+    prioridad: media
+    nota: Segundo emplazamiento atribuido a la empresa conjunta. Sin fuente primaria localizada.
+  - municipio: Torrelavega
+    provincia: Cantabria
+    ccaa: Cantabria
+    compania: RIC Energy
+    potencia_citada: null
+    prioridad: media
+    nota: Sobre el suelo de la antigua Sniace. Anunciado en abril de 2026.
+  - municipio: Málaga
+    provincia: Málaga
+    ccaa: Andalucía
+    compania: Unicaja
+    potencia_citada: null
+    prioridad: baja
+    nota: En el Málaga TechPark.
+  - municipio: Málaga
+    provincia: Málaga
+    ccaa: Andalucía
+    compania: DataRush IT
+    potencia_citada: null
+    prioridad: baja
+    nota: Dos centros en el municipio según el dossier de compañías.
+  - municipio: Granada
+    provincia: Granada
+    ccaa: Andalucía
+    compania: DataRush IT
+    potencia_citada: null
+    prioridad: baja
+  - municipio: Donostia-San Sebastián
+    provincia: Gipuzkoa
+    ccaa: País Vasco
+    compania: IBM
+    potencia_citada: null
+    prioridad: media
+    nota: IBM Quantum System Two, inaugurado en octubre de 2025. Computación cuántica, no CPD convencional.
+  - municipio: León
+    provincia: León
+    ccaa: Castilla y León
+    compania: SCAYLE (Supercomputación Castilla y León)
+    potencia_citada: null
+    prioridad: media
+    nota: Centro público de supercomputación.
+  - municipio: Arakaldo
+    provincia: Bizkaia
+    ccaa: País Vasco
+    compania: null
+    potencia_citada: null
+    prioridad: baja
+    nota: Titular de mayo de 2026 sin pieza recuperable ni promotor identificado.
+
+# Pistas abiertas: aquí falta el municipio, el promotor o ambos, así que no
+# pueden pasar ni a la tabla de arriba. Cada una dice qué le falta.
+pistas:
+  - "Seis centros en la Ribera de Navarra (Tudela, Ribaforada, Valtierra, Arguedas), 382 MW combinados. Los municipios constan; los promotores, no."
+  - "Aprisco Group en Asturias y Submer en Cataluña: ninguno de los dos ha publicado terreno."
+  - "Nasertic, en Navarra: instalación pública sin ubicación publicada."
   - "CPD de la Comunidad de Madrid, adjudicado a Telefónica en junio de 2025, ubicación no publicada."
-  - "Nueve activos de MasOrange y hasta cuatro emplazamientos de Quetta sin localizar."
+  - "Nueve activos de MasOrange y hasta cuatro emplazamientos de Quetta, sin localizar."
   - "Las dos zonas no publicadas de la región Google europe-southwest1."
