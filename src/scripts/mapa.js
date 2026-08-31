@@ -34,6 +34,39 @@ const ETIQUETA_ESTADO = {
   desconocido: 'Estado desconocido',
 }
 
+// Cinco colores y un neutro, no uno por combustible. La paleta está validada
+// para daltonismo (separación mínima ΔE 13,1 sobre fondo claro y 12,7 sobre
+// oscuro, en protanopia y deuteranopia), y eso deja de cumplirse a partir de
+// seis tonos: por encima de ahí el color miente. Por eso carbón, gas y fuelóleo
+// comparten grupo y la biomasa cae en «otras». El `plant:source` literal se
+// conserva en la ficha, que es donde se lee sin depender de la vista.
+const COLOR_FUENTE_CLARO = {
+  solar: '#b99d14',
+  hidraulica: '#5c80bc',
+  eolica: '#42b2ae',
+  nuclear: '#8b2979',
+  fosil: '#a8523a',
+  otra: '#77746c',
+}
+
+const COLOR_FUENTE_OSCURO = {
+  solar: '#a28b23',
+  hidraulica: '#405ec9',
+  eolica: '#32a090',
+  nuclear: '#a52280',
+  fosil: '#ab2b06',
+  otra: '#86837c',
+}
+
+const ETIQUETA_FUENTE = {
+  solar: 'Solar',
+  hidraulica: 'Hidráulica',
+  eolica: 'Eólica',
+  nuclear: 'Nuclear',
+  fosil: 'Térmica fósil',
+  otra: 'Otras y mixtas',
+}
+
 const METRICAS = {
   mw_it: 'MW IT',
   mw_conexion: 'MW de conexión',
@@ -65,7 +98,7 @@ const estado = {
   confianza: '',
   minimo: 0,
   soloConMetrica: false,
-  capas: { lineas: false, subestaciones: false, renovables: false },
+  capas: { lineas: false, subestaciones: false, renovables: false, centrales: false },
 }
 
 let mapa
@@ -78,6 +111,9 @@ const cargadas = new Set()
 // Registro completo de subestaciones y renovables, para las fichas emergentes.
 const detalleRed = new Map()
 const detalleRenovables = new Map()
+const detalleCentrales = new Map()
+let metadatosCentrales = null
+let metadatosGeneracion = null
 
 // --- expresiones de estilo ---------------------------------------------------
 
@@ -97,6 +133,36 @@ const radioPorMetrica = (metrica) => [
   ['case', ['==', ['get', metrica], null], 3, ['*', 0.55, ['sqrt', ['max', ['get', metrica], 1]]]],
   11,
   ['case', ['==', ['get', metrica], null], 6, ['*', 2.2, ['sqrt', ['max', ['get', metrica], 1]]]],
+]
+
+// Un solo color para toda la capa, no uno por tecnología. La capa de centrales
+// ya colorea por tecnología, y su oro solar y el oro de aquí eran el mismo punto
+// amarillo: con las dos encendidas no había manera de saber cuál era cuál. Estos
+// veintitantos activos están en el mapa por su vínculo contractual con un centro
+// de datos, no por su tecnología —que la ficha sigue diciendo—, así que el color
+// que les corresponde es el de «activo vinculado», uno solo. El violeta está
+// validado para convivir con los cinco de centrales sin confundirse con ninguno
+// (ΔE 10,7 en protanopia y deuteranopia, sobre los dos fondos).
+const COLOR_RENOVABLE_CLARO = '#a797f9'
+const COLOR_RENOVABLE_OSCURO = '#9180d5'
+
+const paletaFuente = () => (oscuro() ? COLOR_FUENTE_OSCURO : COLOR_FUENTE_CLARO)
+
+const colorPorFuente = () => {
+  const paleta = paletaFuente()
+  return ['match', ['get', 'fuente'], ...Object.entries(paleta).flat(), paleta.otra]
+}
+
+// Radio proporcional a la raíz de la potencia: el área representa los MW, igual
+// que en la capa de emplazamientos.
+const radioPorPotencia = [
+  'interpolate',
+  ['linear'],
+  ['zoom'],
+  4,
+  ['case', ['==', ['get', 'potencia_mw'], null], 1.4, ['*', 0.26, ['sqrt', ['max', ['get', 'potencia_mw'], 1]]]],
+  11,
+  ['case', ['==', ['get', 'potencia_mw'], null], 3.6, ['*', 0.95, ['sqrt', ['max', ['get', 'potencia_mw'], 1]]]],
 ]
 
 function filtroMapLibre() {
@@ -358,6 +424,47 @@ async function cargarCapa(nombre) {
     conManejadores('subestaciones-simbolo', abrirSubestacion)
   }
 
+  if (nombre === 'centrales') {
+    const datos = await (await fetch('/datos/centrales.geojson')).json()
+    for (const f of datos.features) detalleCentrales.set(f.properties.id, f.properties)
+    metadatosCentrales = datos.metadata ?? null
+    metadatosGeneracion = datos.generacion ?? null
+    quitarSiEsta(['centrales-circulo'], ['centrales'])
+    mapa.addSource('centrales', { type: 'geojson', data: datos })
+    mapa.addLayer(
+      {
+        id: 'centrales-circulo',
+        type: 'circle',
+        source: 'centrales',
+        paint: {
+          'circle-color': colorPorFuente(),
+          'circle-radius': radioPorPotencia,
+          // Dos cosas a la vez. Las centrales sin potencia declarada no se pueden
+          // dibujar a escala, y en vez de darles un tamaño inventado se pintan
+          // casi huecas: el punto dice «aquí hay una central» y el hueco dice «no
+          // consta cuánta potencia». Y como son más de cinco mil puntos sobre un
+          // mapa que trata de otra cosa, a escala nacional toda la capa queda
+          // recesiva para que los centros de datos sigan leyéndose encima; gana
+          // cuerpo al acercarse.
+          'circle-opacity': [
+            'interpolate',
+            ['linear'],
+            ['zoom'],
+            4,
+            ['case', ['==', ['get', 'potencia_mw'], null], 0.1, 0.4],
+            8,
+            ['case', ['==', ['get', 'potencia_mw'], null], 0.14, 0.62],
+          ],
+          'circle-stroke-width': ['case', ['==', ['get', 'potencia_mw'], null], 0.9, 0.5],
+          'circle-stroke-color': colorPorFuente(),
+          'circle-stroke-opacity': 0.85,
+        },
+      },
+      'sitios-borde',
+    )
+    conManejadores('centrales-circulo', abrirCentral)
+  }
+
   if (nombre === 'renovables') {
     const [datos, completo] = await Promise.all([
       fetch('/datos/renovables.geojson').then((r) => r.json()),
@@ -371,8 +478,10 @@ async function cargarCapa(nombre) {
       type: 'circle',
       source: 'renovables',
       paint: {
-        'circle-color': ['match', ['get', 'tipo'], 'bess', '#7a6fa8', 'eolica', '#4f8fa8', '#c9a227'],
+        'circle-color': oscuro() ? COLOR_RENOVABLE_OSCURO : COLOR_RENOVABLE_CLARO,
         'circle-radius': ['interpolate', ['linear'], ['zoom'], 5, 2.5, 11, 7],
+        // Macizo, y atenuado cuando la coordenada es derivada. El hueco está
+        // reservado en todo el sitio para «esta magnitud no se publica».
         'circle-opacity': ['case', ['==', ['get', 'coordenada_derivada'], true], 0.45, 0.7],
         'circle-stroke-width': 0.8,
         'circle-stroke-color': oscuro() ? '#15171a' : '#fbfaf8',
@@ -449,12 +558,67 @@ function abrirRenovable(id) {
   `)
 }
 
+function abrirCentral(id) {
+  const c = detalleCentrales.get(id)
+  if (!c) return
+
+  // Tres estados distintos, y se distinguen: la cifra, «lo dice y no se pudo
+  // leer» y «no lo dice». Colapsarlos en un guion perdería la diferencia entre
+  // un hueco de la fuente y un fallo de lectura nuestro.
+  const potencia = c.potencia_mw != null
+    ? mw(c.potencia_mw)
+    : c.potencia_bruta
+      ? `<span class="silencio">declarada como «${c.potencia_bruta}», sin cifra legible</span>`
+      : '<span class="silencio">no consta</span>'
+
+  const generacion = c.generacion_mwh != null
+    ? `
+      <dt>Generación (${metadatosGeneracion?.dia ?? 'día registrado'})</dt>
+      <dd>${c.generacion_mwh.toLocaleString('es-ES')} MWh${
+        c.generacion_punta_mw != null ? ` · punta ${mw(c.generacion_punta_mw)}` : ''
+      }</dd>
+      ${c.bombeo_mwh ? `<dt>Consumo en bombeo</dt><dd>${c.bombeo_mwh.toLocaleString('es-ES')} MWh</dd>` : ''}
+      ${c.unidades ? `<dt>Unidades ENTSO-E</dt><dd>${c.unidades}</dd>` : ''}`
+    : ''
+
+  const [tipo, numero] = String(c.id).split('/')
+  panelHtml(`
+    <span class="etiqueta">${ETIQUETA_FUENTE[c.fuente] ?? 'Central eléctrica'}</span>
+    <h2>${c.nombre ?? 'Central sin nombre en OpenStreetMap'}</h2>
+    <dl class="detalle">
+      <dt>Potencia instalada</dt><dd>${potencia}</dd>
+      ${generacion}
+      ${c.fuente_osm ? `<dt>Fuente primaria</dt><dd>${c.fuente_osm}</dd>` : ''}
+      ${c.metodo ? `<dt>Tecnología</dt><dd>${c.metodo}</dd>` : ''}
+      <dt>Operador</dt><dd>${c.operador ?? '—'}</dd>
+      ${c.inicio ? `<dt>En servicio desde</dt><dd>${c.inicio}</dd>` : ''}
+    </dl>
+    <p class="pequeno silencio">
+      Potencia instalada y generación son magnitudes distintas y no se suman ni se
+      convierten una en otra.
+      ${
+        c.generacion_mwh != null
+          ? ''
+          : metadatosGeneracion
+            ? 'Esta central no aparece en la instantánea de ENTSO-E, que solo publica generación por unidad a partir de 100 MW.'
+            : 'No hay ninguna instantánea de generación cargada en este momento.'
+      }
+    </p>
+    <p class="pequeno silencio">
+      Inventario de <a href="https://www.openstreetmap.org/${tipo}/${numero}" rel="noreferrer">OpenStreetMap</a>${
+        metadatosCentrales?.descargado ? `, descargado el ${metadatosCentrales.descargado}` : ''
+      }. No es el registro oficial de instalaciones de producción.
+    </p>
+  `)
+}
+
 function alternarCapa(nombre, activa) {
   estado.capas[nombre] = activa
   const capas = {
     lineas: ['lineas-trazado'],
     subestaciones: ['subestaciones-simbolo'],
     renovables: ['renovables-circulo'],
+    centrales: ['centrales-circulo'],
   }[nombre]
 
   const aplicarVisibilidad = () => {
@@ -647,7 +811,7 @@ async function montarVista(opciones = {}) {
   mapa.addControl(
     new AttributionControl({
       compact: true,
-      customAttribution: 'red de transporte derivada de OpenStreetMap (ODbL)',
+      customAttribution: 'red de transporte y centrales de generación derivadas de OpenStreetMap (ODbL)',
     }),
     'bottom-right',
   )
@@ -803,6 +967,13 @@ function actualizarLeyenda() {
   }
   if (estado.capas.renovables) {
     piezas.push('<span class="leyenda-item"><span class="punto-renovable"></span>Renovables y BESS</span>')
+  }
+  if (estado.capas.centrales) {
+    for (const [clave, etiqueta] of Object.entries(ETIQUETA_FUENTE)) {
+      piezas.push(
+        `<span class="leyenda-item"><span class="punto-central" style="background:${paletaFuente()[clave]}"></span>${etiqueta}</span>`,
+      )
+    }
   }
   extra.innerHTML = piezas.join('')
   extra.hidden = piezas.length === 0

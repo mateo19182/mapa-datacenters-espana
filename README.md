@@ -19,6 +19,9 @@ publicados, con su procedencia y su fecha de verificación.
   publicada por Red Eléctrica, y actuaciones de red planificadas.
 - Generación renovable y baterías con vínculo documentado a un centro concreto.
 - Trazado de la red de transporte derivado de OpenStreetMap.
+- **Capa opcional de centrales de generación**, apagada por defecto: potencia
+  instalada por central y, cuando hay instantánea cargada, generación real por
+  unidad de ENTSO-E. Son dos magnitudes distintas y viajan en campos distintos.
 
 ## Las reglas del conjunto
 
@@ -71,11 +74,14 @@ npm run dev        # valida, reconcilia, construye los datos y levanta el sitio
 | `npm run refresh:sellar` | Igual, y actualiza la fecha de verificación de las fichas comprobadas |
 | `npm run propuestas` | Simula la integración de `data/propuestas/` y separa los conflictos |
 | `npm run grid:osm` | Recachea el trazado de 220/400 kV desde OpenStreetMap |
+| `npm run centrales:osm` | Recachea el inventario de centrales de generación desde OpenStreetMap |
+| `npm run generacion:entsoe` | Descarga una instantánea de generación real por unidad de ENTSO-E |
 | `npm run contorno` | Recachea el contorno de costa del mapa de reserva desde Natural Earth |
 | `npm run geo` | Recachea los centroides municipales |
 
-Los dos últimos son los únicos que salen a la red al construir, se ejecutan a
-mano y dejan su resultado cacheado en el repositorio.
+`contorno` y `geo` son los únicos que salen a la red al construir; junto con
+`grid:osm`, `centrales:osm` y `generacion:entsoe` se ejecutan a mano y dejan su
+resultado cacheado en el repositorio.
 
 ## Actualización
 
@@ -111,6 +117,49 @@ El flujo `.github/workflows/revision-fuentes.yml` ejecuta todo esto cada lunes y
 abre un *pull request* con los tres informes, para revisión humana antes de
 fusionar.
 
+## Centrales de generación
+
+La capa es opcional y arranca apagada. Combina dos fuentes que responden a
+preguntas distintas y **nunca se suman ni se convierten una en otra**:
+
+| Magnitud | De dónde sale | Cobertura |
+|---|---|---|
+| Potencia instalada (MW) | OpenStreetMap, `power=plant` | 5.173 centrales, 2.052 con potencia legible |
+| Generación real (MWh/día) | ENTSO-E, documento 16.1.A | solo unidades de 100 MW o más |
+
+```bash
+npm run centrales:osm                              # inventario y potencia
+ENTSOE_TOKEN=… npm run generacion:entsoe -- --sugerir   # instantánea + cotejo
+```
+
+El token de ENTSO-E es gratuito, pero no se obtiene en el momento. Son tres
+pasos: registrarse en la plataforma de transparencia; escribir a
+transparency@entsoe.eu con el asunto «RESTful API access» indicando en el cuerpo
+la dirección con la que uno se registró; y, una vez concedido el acceso —hasta
+tres días laborables—, generar el token desde *My Account Settings*. La
+plataforma lo enseña **una sola vez**, así que hay que copiarlo al generarlo. El
+correo solo desbloquea el permiso: el token se lo genera uno.
+
+**Sin token la capa funciona igual**, mostrando potencia instalada y dejando la
+generación vacía, que es como está ahora.
+
+Dos avisos que condicionan lo que se puede afirmar con esto:
+
+1. **`plant:output:electricity` sin unidad son vatios**, no megavatios. Leerlo mal
+   multiplica por un millón: la solar española pasaba de ~25 GW a 1,3 TW, y ese
+   disparate fue justo lo que delató el error. Lo que no se puede leer se deja
+   vacío y se conserva el texto original en `potencia_bruta`.
+2. **16.1.A no cubre parques eólicos ni plantas solares individuales.** Cubre
+   nucleares, ciclos combinados, grandes hidráulicas y carbón. La mayoría de las
+   centrales del mapa no tendrá nunca cifra de generación, y así se dice en la
+   ficha en lugar de estimarla.
+
+ENTSO-E identifica cada unidad por su código EIC y un nombre comercial que no
+coincide con el de OpenStreetMap, así que la correspondencia se escribe a mano en
+`data/generacion/unidades.yaml`. Con `--sugerir`, el script propone candidatos por
+parecido de nombre en `research/informe-generacion.md` y no modifica nada: decide
+una persona, como con las propuestas de datos.
+
 ## Despliegue
 
 Sitio estático en `dist/`, publicado en Cloudflare Pages sobre el proyecto
@@ -142,6 +191,7 @@ compañía como los informes que genera la tubería:
 | `auditoria-datos.md` | Verificación independiente de los datos de mayor impacto |
 | `red-electrica.md` | Cómo se reparte el acceso a la red (se publica en el sitio) |
 | `renovables.md` | Contratos de energía vinculados a centros de datos (se publica) |
+| `informe-generacion.md` | Cola de cotejo entre unidades de ENTSO-E y centrales de OSM |
 
 ## Calidad conocida
 
@@ -156,6 +206,8 @@ que oculta sus defectos no es más fiable, solo lo parece.
 Los datos originales de este registro, bajo
 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.es). El trazado de
 la red eléctrica deriva de OpenStreetMap y se rige por la
-[ODbL](https://opendatacommons.org/licenses/odbl/). Las citas literales
+[ODbL](https://opendatacommons.org/licenses/odbl/), igual que el inventario de
+centrales de generación. Las cifras de generación real proceden de la plataforma
+de transparencia de ENTSO-E y se reutilizan citando la fuente. Las citas literales
 pertenecen a sus editores y se reproducen como fragmento breve a efectos de
 verificación.

@@ -125,8 +125,18 @@ const modelosPresentes = Object.keys(MODELO_ETIQUETA).filter((m) => sitios.some(
           <input type="checkbox" data-capa="renovables" />
           <span class="casilla-texto">Renovables y BESS vinculados ({resumen.activos_renovables})</span>
         </label>
+        <label class="casilla">
+          <input type="checkbox" data-capa="centrales" />
+          <span class="casilla-texto">Centrales de generación ({resumen.centrales_generacion.toLocaleString('es-ES')})</span>
+        </label>
         <p class="ayuda">
-          Trazado de OpenStreetMap, de completitud variable. No es cartografía oficial.
+          Trazado y centrales de OpenStreetMap, de completitud variable. No es cartografía
+          oficial. {resumen.centrales_con_potencia.toLocaleString('es-ES')} de las
+          {resumen.centrales_generacion.toLocaleString('es-ES')} centrales declaran potencia;
+          el resto se dibuja hueco.
+          {resumen.generacion_dia
+            ? ` Generación real por unidad del ${resumen.generacion_dia}, solo para unidades de 100 MW o más.`
+            : ' Sin instantánea de generación real cargada.'}
         </p>
       </fieldset>
 
@@ -340,7 +350,12 @@ const modelosPresentes = Object.keys(MODELO_ETIQUETA).filter((m) => sitios.some(
     backdrop-filter: blur(3px);
   }
 
-  .leyenda-item {
+  /* Las entradas de las capas se inyectan con innerHTML desde el mapa y no
+     reciben el atributo de ámbito de Astro, así que la regla tiene que salir
+     del ámbito. Sin esto el contenedor no llega a ser inline-flex, sus hijos
+     no son elementos flex y las muestras de color se quedan sin anchura: la
+     leyenda enseñaba los rótulos y ninguna marca. */
+  .leyenda :global(.leyenda-item) {
     display: inline-flex;
     align-items: center;
     gap: 0.3rem;
@@ -379,12 +394,19 @@ const modelosPresentes = Object.keys(MODELO_ETIQUETA).filter((m) => sitios.some(
     border: 1px solid #7a6a4a;
   }
 
+  .leyenda :global(.punto-central) {
+    flex: none;
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 50%;
+  }
+
   .leyenda :global(.punto-renovable) {
     flex: none;
     width: 0.55rem;
     height: 0.55rem;
     border-radius: 50%;
-    background: #c9a227;
+    background: #a797f9;
   }
 
   .detalle-flotante {

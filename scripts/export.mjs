@@ -303,6 +303,69 @@ for (const s of sitios) {
   }
 }
 
+// --- centrales de generación -------------------------------------------------
+
+// Inventario cacheado desde OpenStreetMap (scripts/fetch-osm-centrales.mjs) al
+// que se le pega, cuando existe, la instantánea de generación real de ENTSO-E
+// (scripts/fetch-entsoe-generacion.mjs). Las dos magnitudes viajan en campos
+// distintos y no se combinan: la potencia instalada es una placa de
+// características y la generación es lo que la máquina hizo un día concreto.
+const RUTA_CENTRALES = join(RAIZ, 'data/generacion/centrales.geojson')
+const RUTA_PRODUCCION = join(RAIZ, 'data/generacion/produccion.json')
+const RUTA_UNIDADES = join(RAIZ, 'data/generacion/unidades.yaml')
+
+const centrales = existsSync(RUTA_CENTRALES)
+  ? JSON.parse(readFileSync(RUTA_CENTRALES, 'utf8'))
+  : { type: 'FeatureCollection', metadata: null, features: [] }
+
+const produccion = existsSync(RUTA_PRODUCCION) ? JSON.parse(readFileSync(RUTA_PRODUCCION, 'utf8')) : null
+const unidadesPorCentral = new Map()
+if (produccion && existsSync(RUTA_UNIDADES)) {
+  const correspondencia = YAML.parse(readFileSync(RUTA_UNIDADES, 'utf8')) ?? {}
+  const porEic = new Map(produccion.unidades.map((u) => [u.eic, u]))
+  for (const [eic, idCentral] of Object.entries(correspondencia)) {
+    const u = porEic.get(eic)
+    if (!u) continue
+    if (!unidadesPorCentral.has(idCentral)) unidadesPorCentral.set(idCentral, [])
+    unidadesPorCentral.get(idCentral).push(u)
+  }
+}
+
+for (const f of centrales.features) {
+  const unidades = unidadesPorCentral.get(f.properties.id)
+  if (!unidades?.length) {
+    f.properties.generacion_mwh = null
+    f.properties.generacion_punta_mw = null
+    f.properties.bombeo_mwh = null
+    f.properties.unidades = null
+    continue
+  }
+  // Sumar los grupos de una misma central sí es legítimo: son la misma
+  // magnitud, el mismo día y la misma unidad de medida.
+  const suma = (campo) => {
+    const v = unidades.map((u) => u[campo]).filter((n) => n != null)
+    return v.length ? v.reduce((a, b) => a + b, 0) : null
+  }
+  f.properties.generacion_mwh = suma('mwh_dia')
+  f.properties.generacion_punta_mw = suma('mw_punta')
+  f.properties.bombeo_mwh = suma('mwh_bombeo')
+  f.properties.unidades = unidades.map((u) => u.nombre).filter(Boolean).join(', ') || null
+}
+
+// La procedencia de la instantánea viaja con el GeoJSON para que la ficha pueda
+// fechar la cifra en vez de presentarla como si fuese de ahora mismo.
+centrales.generacion = produccion?.metadata ?? null
+
+const conGeneracion = centrales.features.filter((f) => f.properties.generacion_mwh != null).length
+const potenciaPorFuente = {}
+for (const f of centrales.features) {
+  const g = f.properties.fuente
+  potenciaPorFuente[g] ??= { centrales: 0, mw: 0, sin_potencia: 0 }
+  potenciaPorFuente[g].centrales++
+  if (f.properties.potencia_mw == null) potenciaPorFuente[g].sin_potencia++
+  else potenciaPorFuente[g].mw = Number((potenciaPorFuente[g].mw + f.properties.potencia_mw).toFixed(1))
+}
+
 const calidad = existsSync(join(RAIZ, 'build/calidad.json'))
   ? JSON.parse(readFileSync(join(RAIZ, 'build/calidad.json'), 'utf8'))
   : null
@@ -334,6 +397,11 @@ const resumen = {
   actuaciones_red: actuaciones.length,
   nudos_con_capacidad: capacidad.length,
   activos_renovables: renovables.length,
+  centrales_generacion: centrales.features.length,
+  centrales_con_potencia: centrales.features.filter((f) => f.properties.potencia_mw != null).length,
+  centrales_con_generacion: conGeneracion,
+  centrales_por_fuente: potenciaPorFuente,
+  generacion_dia: produccion?.metadata?.dia ?? null,
   fuentes_distintas: todasLasFuentes.size,
   emplazamientos_con_incertidumbres: sitios.filter((s) => s.incertidumbres.length > 0).length,
   sin_region: sitios.filter((s) => !s.ubicacion.ccaa).length,
@@ -393,6 +461,14 @@ if (existsSync(lineas)) {
   copyFileSync(lineas, join(PUBLICO, 'lineas.geojson'))
 } else {
   writeFileSync(join(PUBLICO, 'lineas.geojson'), JSON.stringify({ type: 'FeatureCollection', features: [] }), 'utf8')
+}
+
+// Centrales de generación: se publica el GeoJSON ya cruzado con la instantánea
+// de ENTSO-E (ver scripts/fetch-osm-centrales.mjs y fetch-entsoe-generacion.mjs).
+if (existsSync(RUTA_CENTRALES)) {
+  writeFileSync(join(PUBLICO, 'centrales.geojson'), JSON.stringify(centrales), 'utf8')
+} else {
+  writeFileSync(join(PUBLICO, 'centrales.geojson'), JSON.stringify({ type: 'FeatureCollection', features: [] }), 'utf8')
 }
 
 // Contorno de costa para el mapa de reserva (ver scripts/fetch-contorno.mjs).

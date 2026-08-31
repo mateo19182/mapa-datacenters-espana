@@ -1,0 +1,24 @@
+# Correspondencia entre las unidades de producción de ENTSO-E y las centrales
+# del inventario de OpenStreetMap.
+#
+#   <código EIC de la unidad>: <id de la central en centrales.geojson>
+#
+# ENTSO-E identifica cada unidad por su código EIC y un nombre comercial
+# («ALMARAZ I»); OpenStreetMap la nombra de otra manera («Central nuclear de
+# Almaraz») y agrupa en un solo polígono lo que ENTSO-E parte en grupos. La
+# correspondencia no se puede derivar del nombre sin equivocarse, así que se
+# escribe a mano y se revisa.
+#
+# Para poblarla:
+#
+#   1. npm run centrales:osm
+#   2. ENTSOE_TOKEN=… npm run generacion:entsoe -- --sugerir
+#   3. leer research/informe-generacion.md y copiar aquí lo que sea correcto
+#
+# Varias unidades pueden apuntar a la misma central: es lo normal cuando una
+# central tiene varios grupos. La ficha suma la generación de todos ellos, que
+# es la única suma legítima aquí — nunca con la potencia instalada, que es otra
+# magnitud.
+#
+# Aún sin poblar: la capa muestra potencia instalada y deja la generación vacía.
+{}

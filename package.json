@@ -20,7 +20,9 @@
     "geo": "node scripts/geocode-municipios.mjs",
     "reconcile": "node scripts/reconcile.mjs",
     "refresh:sellar": "node scripts/check-updates.mjs --sellar",
-    "contorno": "node scripts/fetch-contorno.mjs"
+    "contorno": "node scripts/fetch-contorno.mjs",
+    "centrales:osm": "node scripts/fetch-osm-centrales.mjs",
+    "generacion:entsoe": "node scripts/fetch-entsoe-generacion.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
