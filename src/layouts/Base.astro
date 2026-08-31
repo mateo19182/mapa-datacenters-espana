@@ -53,6 +53,10 @@ const enlacesCriticos = [
           {enlacesCriticos.map(([href, texto]) => (
             <a class="nav-critico" href={href} aria-current={activo(href)}>{texto}</a>
           ))}
+          <span class="nav-separador" aria-hidden="true"></span>
+          <a class="nav-externo" href={REPOSITORIO} rel="noopener" title="Código, datos de origen e historial de cambios">
+            GitHub
+          </a>
         </nav>
       </div>
     </header>

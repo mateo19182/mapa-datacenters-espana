@@ -234,6 +234,17 @@ hr {
   margin: 0 0.1rem;
 }
 
+/* El único enlace de la cabecera que sale del sitio. Va marcado con la flecha
+   para que no se lea como una sección más del registro. */
+.nav-externo {
+  color: var(--tinta-3);
+}
+
+.nav-externo::after {
+  content: ' ↗';
+  font-size: 0.85em;
+}
+
 @media (max-width: 900px) {
   .nav-separador {
     display: none;
@@ -801,6 +812,15 @@ html {
 
   .nav-critico {
     color: var(--tinta-2);
+  }
+
+  /* En el menú plegado, a dos columnas, el enlace externo cierra la rejilla
+     ocupando la fila entera en lugar de quedar suelto junto a «Datos». */
+  .nav-externo {
+    grid-column: 1 / -1;
+    color: var(--tinta-2);
+    border-top: 1px solid var(--borde);
+    margin-top: 0.35rem;
   }
 }
 
