@@ -135,6 +135,24 @@ incertidumbres:
       está junto a Puerto Venecia, en el sur de la ciudad.
     fuentes: [src-4]
 
+  - campo: energia
+    descripcion: >-
+      Las dos magnitudes eléctricas de esta ficha no pueden ser ciertas a la vez. Un consumo de
+      3.100 GWh/año exige una potencia media sostenida de 354 MW durante las 8.760 horas del
+      año (3100 GWh ÷ 8.760 h), por encima del techo de 300 MW que la propia ficha registra para
+      el campus, y muy por encima de los 50 MW asegurados. La contradicción se agrava con la
+      salvedad que acompaña a los 300 MW en la documentación del PIGA: «no se prevé que todos los
+      edificios funcionen simultáneamente a esa capacidad», lo que sitúa la potencia media por
+      debajo de 300 MW, no en 354.
+
+      Las dos cifras están transcritas correctamente y se atribuyen a la misma documentación del
+      PIGA a través de prensa, de modo que la incoherencia está en la fuente y no en el registro. No
+      se corrige ninguna de las dos ni se deriva una tercera: falta el documento original —el
+      estudio de impacto ambiental por emplazamiento, en información pública desde agosto de 2026—
+      para saber si el desajuste viene de un techo de potencia mayor que el publicado, de un consumo
+      que corresponde a un alcance distinto, o de un error de la propia memoria.
+    fuentes: [src-8, src-3, src-piga-hoyaragon]
+
 confianza: media
 ultima_verificacion: "2026-08-31"
 
@@ -200,3 +218,14 @@ fuentes:
     fecha_publicacion: "2025-11-19"
     fecha_consulta: "2026-08-31"
     cita: "Los nuevos centros de datos que construirá Microsoft en Aragón tendrán un consumo máximo de electricidad, entre todos, de más de 10.500 GWh cuando estén plenamente operativos, más que la demanda de toda la Comunidad a día de hoy (9.955 GWh en 2024, según Red Eléctrica) [...] solo el centro de datos que se instalará en Zaragoza, junto al centro de ocio Puerto Venecia, podría llegar a requerir de más energía que toda la ciudad, hasta un máximo de 3.100 GWh al año."
+  - id: src-piga-hoyaragon
+    url: "https://www.hoyaragon.es/aragon/piga-microsoft-aragon-centro-datos/20251114215413116030.html"
+    titulo: "La letra pequeña del PIGA de Microsoft: ¿qué incluyen los tres centros de datos?"
+    editor: "Hoy Aragón"
+    tipo: prensa_general
+    fecha_publicacion: "2025-11-14"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Microsoft dispone ya de 50 MW de potencia de conexión asegurada y necesitará alrededor de 300
+      MW por campus en el despliegue completo, aunque no se prevé que todos los edificios funcionen
+      simultáneamente a esa capacidad.

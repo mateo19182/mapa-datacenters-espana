@@ -105,7 +105,12 @@ const sitios = q('SELECT * FROM sitios ORDER BY nombre').map((s) => {
     estado_fuentes: respaldoDe('estado'),
     fecha_puesta_en_servicio: s.fecha_puesta_en_servicio,
     potencia: pot,
-    resumen_potencia: resumirPotencia(pot),
+    // La marca `disputada` sale de las incertidumbres declaradas, no de las
+    // cifras: es el único camino por el que un choque entre tipos de potencia
+    // llega al agregado. Ver la regla 4b de potencia.mjs.
+    resumen_potencia: resumirPotencia(pot, {
+      disputada: (incert.get(s.id) ?? []).some((u) => u.campo === 'potencia'),
+    }),
     fases: (fases.get(s.id) ?? []).map((f) => ({
       nombre: f.nombre,
       estado: f.estado,

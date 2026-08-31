@@ -15,6 +15,44 @@ import { cargarTodo, RAIZ, DIR_SITIOS, distanciaKm } from './load.mjs'
 
 const { sitios } = cargarTodo()
 
+// Igual que `normalizar` pero sin quitar palabras: para comparar contra un
+// dominio, donde «properties» o «grupo» siguen ahí pegados al nombre.
+const llano = (s) =>
+  String(s ?? '')
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]/g, '')
+
+// Las palabras con las que merece la pena buscar dentro de un dominio: las
+// cortas y las genéricas casarían con cualquier cosa.
+const PALABRAS_VACIAS = new Set([
+  'data', 'center', 'centers', 'centre', 'centres', 'centro', 'centros', 'datos',
+  'grupo', 'group', 'holding', 'diario', 'noticias', 'revista', 'press', 'prensa',
+  'nota', 'espana', 'espanola', 'espanol', 'spain', 'iberia', 'asociacion',
+  'telecom', 'energy', 'energia', 'digital', 'properties', 'socimi', 'system',
+  'submarine', 'cable', 'comunicaciones', 'periodico',
+])
+const palabrasDe = (s) =>
+  String(s ?? '')
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .split(/[^a-z0-9]+/)
+    .filter((p) => p.length >= 4 && !PALABRAS_VACIAS.has(p))
+
+// Muchos medios usan sus iniciales como dominio: «La Nueva España» es lne.es y
+// «Data Centre & Network News», dcnnmagazine.com.
+const inicialesDe = (s) => {
+  const partes = String(s ?? '')
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .split(/[^a-z0-9]+/)
+    .filter(Boolean)
+  return partes.length >= 3 ? partes.map((p) => p[0]).join('') : ''
+}
+
 const normalizar = (s) =>
   String(s ?? '')
     .toLowerCase()
@@ -229,12 +267,35 @@ for (const s of sitios) {
     } catch {
       continue
     }
-    const e = normalizar(f.editor)
-    const h = normalizar(host.split('.')[0])
-    if (f.tipo === 'oficial' || !e || !h) continue
-    if (!host.includes(h) || (!e.includes(h) && !h.includes(e) && distancia(e, h) > 4)) {
-      editorRaro.push({ id: s.id, fuente: f.id, editor: f.editor, host })
-    }
+    if (f.tipo === 'oficial') continue
+
+    // El nombre de la casa puede estar en cualquier parte del dominio, no solo
+    // en la primera etiqueta: `comunicacion.abanca.com` es de ABANCA y
+    // `pressroom.grupoacs.com` del Grupo ACS. Y como el dominio va todo pegado,
+    // basta con que una palabra del editor aparezca dentro: «MERLIN Properties
+    // SOCIMI» casa con `merlinproperties.com` por «merlin». Lo que queda tras
+    // esto sí suele ser lo que busca el informe: una nota de prensa republicada
+    // en un medio ajeno.
+    const sinTld = host.split('.').slice(0, -1)
+    if (sinTld.length > 1 && /^(com|co|org|gob|net)$/.test(sinTld.at(-1))) sinTld.pop()
+    // El host entero entra también: hay TLD de marca (`group.sener`) donde el
+    // nombre está justo en la parte que se acaba de recortar.
+    const agujas = [llano(host), llano(sinTld.join('')), ...sinTld.map(llano)].filter(Boolean)
+    if (!agujas.length) continue
+
+    const e = llano(f.editor)
+    if (!e) continue
+    const palabras = palabrasDe(f.editor)
+    const iniciales = inicialesDe(f.editor)
+    const cuadra = agujas.some(
+      (h) =>
+        e.includes(h) ||
+        h.includes(e) ||
+        distancia(e, h) <= 4 ||
+        palabras.some((p) => h.includes(p)) ||
+        (iniciales.length >= 3 && h.startsWith(iniciales)),
+    )
+    if (!cuadra) editorRaro.push({ id: s.id, fuente: f.id, editor: f.editor, host })
   }
 }
 

@@ -159,7 +159,7 @@ incertidumbres:
       estaciones de medida de AWS y de ACS, todos ellos emplazamientos distintos.
     fuentes: [src-3]
 
-confianza: alta
+confianza: media
 ultima_verificacion: "2026-08-31"
 
 fuentes:

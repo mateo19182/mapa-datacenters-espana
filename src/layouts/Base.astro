@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css'
 import resumen from '../data/resumen.json'
+import { REPOSITORIO } from '../lib/enlaces.js'
 
 // `pantallaCompleta` es para la vista de mapa: ocupa exactamente la ventana y
 // el scroll ocurre dentro del panel, no en la página.
@@ -89,7 +90,8 @@ const enlacesCriticos = [
           <p>
             {resumen.total_emplazamientos} emplazamientos y {resumen.fuentes_distintas} fuentes.
             Conjunto generado el {resumen.generado}.
-            <a href="/metodologia">Metodología</a> · <a href="/datos">datos abiertos</a>.
+            <a href="/metodologia">Metodología</a> · <a href="/datos">datos abiertos</a> ·
+            <a href={REPOSITORIO} rel="noopener">código y datos en GitHub</a>.
           </p>
           <p>
             Cartografía base © <a href="https://www.openstreetmap.org/copyright" rel="noopener">colaboradores de OpenStreetMap</a> y ©

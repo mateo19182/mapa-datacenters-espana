@@ -15,6 +15,15 @@
 //     se toma el más reciente por `fecha_dato` y se marca `discrepancia: true`
 //     conservando el rango observado.
 //  4. `no_especificado` no se compara ni se mezcla con nada: solo se muestra.
+//  4b. `discrepancia` solo puede ver los choques DENTRO de un mismo tipo y
+//     ámbito, porque es lo único que la regla 1 permite comparar. Pero en este
+//     conjunto las contradicciones más fuertes son casi siempre entre tipos: un
+//     expediente que publica 288 MW de demanda frente a una nota de prensa que
+//     anuncia 1.000 MW de carga TI no produce ninguna discrepancia detectable, y
+//     el agregado sale limpio. Para que eso no se pierda, quien llama pasa
+//     `disputada` cuando la ficha declara una incertidumbre sobre `potencia`, y
+//     la marca viaja con cada magnitud del resumen. No cambia ninguna cifra:
+//     cambia lo que el sitio puede decir sobre ella.
 //  5. `termica_respaldo` y `generacion_asociada` no son capacidad del centro de
 //     datos. Se registran y se muestran, pero no entran en ninguna suma.
 
@@ -92,21 +101,34 @@ function agregarTipo(registros) {
   )
 }
 
-const construir = (valor, base, discrepancia, valores, registros, fecha) => ({
+const construir = (valor, base, discrepancia, valores, registros, fecha, disputada = false) => ({
   valor_mw: Math.round(valor * 100) / 100,
   base,
   discrepancia,
+  // Contradicción declarada en la ficha, aunque las lecturas de este tipo
+  // concreto coincidan entre sí. Ver la regla 4b.
+  disputada,
   minimo_observado: Math.min(...valores),
   maximo_observado: Math.max(...valores),
   registros,
   fecha_dato: fecha,
 })
 
-/** Un resumen por cada tipo de potencia presente; null donde no hay dato. */
-export function resumirPotencia(potencias) {
+/**
+ * Un resumen por cada tipo de potencia presente; null donde no hay dato.
+ *
+ * `disputada` indica que la ficha documenta una contradicción sobre la potencia
+ * que la agregación por tipos no puede ver por sí sola (regla 4b).
+ */
+export function resumirPotencia(potencias, { disputada = false } = {}) {
   const porTipo = Object.fromEntries(TIPOS_POTENCIA.map((t) => [t, []]))
   for (const p of potencias) (porTipo[p.tipo] ?? porTipo.no_especificado).push(p)
-  return Object.fromEntries(TIPOS_POTENCIA.map((t) => [t, agregarTipo(porTipo[t])]))
+  return Object.fromEntries(
+    TIPOS_POTENCIA.map((t) => {
+      const r = agregarTipo(porTipo[t])
+      return [t, r && { ...r, disputada }]
+    }),
+  )
 }
 
 /**

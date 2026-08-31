@@ -126,6 +126,24 @@ incertidumbres:
     descripcion: "Ninguna fuente oficial publica potencia por campus; 50 MW y 300 MW proceden de prensa."
     fuentes: [src-1, src-3]
 
+  - campo: energia
+    descripcion: >-
+      Las dos magnitudes eléctricas de esta ficha no pueden ser ciertas a la vez. Un consumo de
+      3.777 GWh/año exige una potencia media sostenida de 431 MW durante las 8.760 horas del
+      año (3777 GWh ÷ 8.760 h), por encima del techo de 300 MW que la propia ficha registra para
+      el campus, y muy por encima de los 50 MW asegurados. La contradicción se agrava con la
+      salvedad que acompaña a los 300 MW en la documentación del PIGA: «no se prevé que todos los
+      edificios funcionen simultáneamente a esa capacidad», lo que sitúa la potencia media por
+      debajo de 300 MW, no en 431.
+
+      Las dos cifras están transcritas correctamente y se atribuyen a la misma documentación del
+      PIGA a través de prensa, de modo que la incoherencia está en la fuente y no en el registro. No
+      se corrige ninguna de las dos ni se deriva una tercera: falta el documento original —el
+      estudio de impacto ambiental por emplazamiento, en información pública desde agosto de 2026—
+      para saber si el desajuste viene de un techo de potencia mayor que el publicado, de un consumo
+      que corresponde a un alcance distinto, o de un error de la propia memoria.
+    fuentes: [src-5, src-3, src-piga-hoyaragon]
+
 confianza: media
 ultima_verificacion: "2026-08-31"
 
@@ -191,3 +209,14 @@ fuentes:
     tipo: prensa_general
     fecha_consulta: "2026-08-31"
     cita: "Por ahora, la multinacional estadounidense tiene asegurados 50 megavatios de 'enchufe' para cada instalación; el resto, hasta 300 MW por planta, está previsto para una segunda fase."
+  - id: src-piga-hoyaragon
+    url: "https://www.hoyaragon.es/aragon/piga-microsoft-aragon-centro-datos/20251114215413116030.html"
+    titulo: "La letra pequeña del PIGA de Microsoft: ¿qué incluyen los tres centros de datos?"
+    editor: "Hoy Aragón"
+    tipo: prensa_general
+    fecha_publicacion: "2025-11-14"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Microsoft dispone ya de 50 MW de potencia de conexión asegurada y necesitará alrededor de 300
+      MW por campus en el despliegue completo, aunque no se prevé que todos los edificios funcionen
+      simultáneamente a esa capacidad.

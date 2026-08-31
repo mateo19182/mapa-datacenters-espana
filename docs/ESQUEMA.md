@@ -134,12 +134,22 @@ fuentes:
 
 ## Niveles de confianza
 
+El nivel califica el respaldo de los datos centrales —dónde está, qué es, cuánta
+potencia tiene—, **no cuántas fuentes hay**. Una ficha con seis referencias sigue
+en `baja` si ninguna publica la potencia.
+
 - **alta** — potencia, ubicación y estado respaldados por fuente oficial o de la
   propia compañía, sin contradicciones abiertas.
-- **media** — respaldado por prensa especializada o consultora, o hay una fuente
-  primaria pero con datos parciales.
-- **baja** — una sola fuente secundaria, datos antiguos, o contradicciones sin
-  resolver. Se marca visiblemente en la ficha.
+- **media** — emplazamiento identificado y situado, pero con datos centrales
+  incompletos o sostenidos solo por prensa especializada o consultora.
+- **baja** — faltan datos centrales, la ubicación es imprecisa o quedan
+  contradicciones sin resolver. Se marca visiblemente en la ficha.
+
+La ficha publicada no muestra esta definición: muestra qué falla en ese registro
+concreto, leído de sus propios campos —«sin ninguna cifra de potencia», «una sola
+fuente», «situado en el centro del municipio»— para que la explicación no pueda
+contradecir lo que se ve al lado. Cuando no falla nada mecánicamente, el motivo
+del nivel está escrito en `incertidumbres`.
 
 ## Tipos de potencia
 

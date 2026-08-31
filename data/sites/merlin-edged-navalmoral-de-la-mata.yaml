@@ -78,18 +78,20 @@ potencia:
       El anuncio de información pública cita 288 MW de demanda total y 192 MW de
       demanda crítica funcionando 8.760 horas al año, sin calificarlos como TI ni
       como potencia de acceso.
-  - tipo: no_especificado
+  - tipo: it
     valor_mw: 1400
     ambito: campus
     referencia: "Capacidad total pretendida a largo plazo (200 MW en una primera etapa y 1,2 GW adicionales)"
     estado_asociado: anunciado
     fecha_dato: "2026-08-10"
-    fuentes: [src-cincodias]
+    fuentes: [src-cincodias, src-pex-1400]
     nota: >-
       Cinco Días atribuye a fuentes de la empresa la intención de alcanzar 1,4 GW con 14.000 millones
       de inversión a largo plazo, frente al 1 GW de capacidad IT que anunció la compañía en enero de
-      2025. La fuente no califica los 1,4 GW como MW IT, aunque en el mismo artículo mide el resto de
-      la cartera de Merlin en «MW de potencia IT».
+      2025, y no califica los 1,4 GW como MW IT. El Periódico Extremadura sí lo hace al día
+      siguiente, con la misma cifra: «1.400 megavatios —MW— destinados solo a los equipos
+      informáticos». Con ese respaldo la cifra se tipifica como IT, de modo que pasa a ser una
+      lectura rival del 1 GW de enero de 2025 sobre el mismo campus y no una magnitud distinta.
   - tipo: conexion_red
     valor_mw: 29
     ambito: campus
@@ -151,19 +153,35 @@ incertidumbres:
   - campo: potencia
     descripcion: >-
       Conviven cifras heterogéneas y no sumables: 1 GW de capacidad TI del campus
-      (compañía, enero 2025), 1,4 GW como objetivo a largo plazo (fuentes de la empresa citadas por
-      Cinco Días, agosto 2026), 288 MW de demanda total y 192 MW de demanda crítica repartida en 16
-      salas técnicas de 12 MW IT (expediente ambiental, mayo 2026), 200 MW de primer tramo y 1,2 GW
-      de ampliación posterior según prensa, y solo 29 MW de potencia eléctrica
-      efectivamente asegurada en agosto de 2026.
-    fuentes: [src-merlin, src-cope, src-brains, src-cincodias, src-pex-aai]
+      (compañía, enero 2025), 1,4 GW de capacidad IT como objetivo a largo plazo (fuentes de la
+      empresa citadas por Cinco Días y por El Periódico Extremadura, agosto 2026), 288 MW de demanda
+      total y 192 MW de demanda crítica repartida en 16 salas técnicas de 12 MW IT (expediente
+      ambiental, mayo 2026), 200 MW de primer tramo y 1,2 GW de ampliación posterior según prensa, y
+      solo 29 MW de potencia eléctrica efectivamente asegurada en agosto de 2026.
+
+      Dos consecuencias para los agregados. Primera: el 1 GW y el 1,4 GW son la misma magnitud
+      medida dos veces, así que la agregación toma la más reciente (1.400 MW) y marca la
+      discrepancia con el rango observado; hasta el 31 de agosto de 2026 los 1,4 GW estaban
+      tipificados como no especificados y el total nacional de MW IT tomaba el 1 GW de enero de 2025
+      como si fuese indiscutido. Segunda: la única cifra de fuente oficial —192 MW de demanda
+      crítica, coherente con 16 salas de 12 MW IT— sigue fuera del total de MW IT, porque el
+      expediente la publica como demanda y no como carga TI del campus, y multiplicar 12 por 16 para
+      derivarla sería rellenar un hueco. El resultado es que el agregado de este emplazamiento lo
+      fija un objetivo empresarial a largo plazo, no el proyecto autorizado.
+    fuentes: [src-merlin, src-cope, src-brains, src-cincodias, src-pex-aai, src-pex-1400]
   - campo: inversion_anunciada_eur
     descripcion: >-
       La información pública de la AAI cita 1.600 millones de euros, cifra que
       coincide con la declaración PREMIA; la prensa habla además de 400 millones
       para la primera fase, de 2.000 millones para los dos primeros edificios y de 14.000 millones
-      para el desarrollo completo de 1,4 GW. No se sustituye la cifra registrada.
-    fuentes: [src-cope, src-eldiario-premia, src-brains, src-cincodias]
+      (Cinco Días) o hasta 15.000 (El Periódico Extremadura) para el desarrollo completo de 1,4 GW.
+      No se sustituye la cifra registrada. Conviene no dividir la inversión registrada por la
+      potencia agregada: los 1.600 millones corresponden al proyecto de 288 MW que tramita la AAI, y
+      dividirlos por los 1.400 MW del objetivo a largo plazo da 1,1 millones por MW, un coste
+      unitario que ninguna fuente afirma y que resulta de cruzar dos alcances distintos. Contra los
+      288 MW autorizados la ratio es de 5,6 millones por MW, y los 14.000-15.000 millones contra los
+      1.400 MW dan 10-10,7.
+    fuentes: [src-cope, src-eldiario-premia, src-brains, src-cincodias, src-pex-1400]
   - campo: conexion_electrica
     descripcion: >-
       En junio de 2026 la Junta de Extremadura situó públicamente en Red
@@ -262,6 +280,19 @@ fuentes:
       que conllevaría una inversión a largo plazo de 14.000 millones de euros [...] el proyecto ya ha
       recibido los primeros 29 MW de potencia eléctrica, suficientes para instalar aproximadamente
       20 MW de capacidad TI.
+  - id: src-pex-1400
+    url: "https://www.elperiodicoextremadura.com/extremadura/2026/08/11/merlin-prepara-septiembre-inicio-megacampus-133253034.html"
+    titulo: "Merlin prepara para septiembre el inicio del megacampus de datos de Navalmoral"
+    editor: "El Periódico Extremadura"
+    tipo: prensa_general
+    fecha_publicacion: "2026-08-11"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Con una capacidad total prevista de 1,4 gigavatios IT (1.400 megavatios —MW— destinados solo a
+      los equipos informáticos) es también el mayor planteado hasta la fecha de todo el país en un
+      único emplazamiento. [...] Serán los primeros pasos de un proyecto ubicado en Expacio
+      Navalmoral que contempla una inversión potencial de hasta 15.000 millones de euros para
+      desarrollar el campus completo.
   - id: src-hoy
     url: "https://www.hoy.es/extremadura/centros-datos-nostrum-badajoz-merlin-navalmoral-ultiman-20260828133327-nt.html"
     titulo: "Los centros de datos de Nostrum en Badajoz y de Merlin en Navalmoral ultiman sus permisos"

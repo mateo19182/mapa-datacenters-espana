@@ -12,6 +12,7 @@ import {
   CONFIANZA_DESCRIPCION,
   numero,
 } from '../lib/etiquetas.js'
+import { REPOSITORIO, REPO_INCIDENCIAS } from '../lib/enlaces.js'
 
 const precisiones = ['exacta', 'aproximada', 'municipio', 'desconocida'].map((p) => ({
   clave: p,
@@ -19,6 +20,7 @@ const precisiones = ['exacta', 'aproximada', 'municipio', 'desconocida'].map((p)
 }))
 
 const conPotencia = (tipo) => sitios.filter((s) => s.resumen_potencia[tipo]).length
+const conEnergia = sitios.filter((s) => (s.energia ?? []).length).length
 ---
 
 <Base
@@ -139,7 +141,10 @@ const conPotencia = (tipo) => sitios.filter((s) => s.resumen_potencia[tipo]).len
 
     <h2>Confianza</h2>
     <p>
-      Resume la calidad del respaldo documental, no la importancia del proyecto.
+      Resume la calidad del respaldo documental, no la importancia del proyecto, y tampoco cuenta
+      fuentes: una ficha con seis referencias sigue en confianza baja si ninguna publica la
+      potencia. Cada ficha muestra en su panel de trazabilidad qué le falta en concreto, leído de
+      sus propios campos, en vez de esta definición general.
     </p>
     <dl class="glosario">
       {['alta', 'media', 'baja'].map((c) => (
@@ -186,10 +191,20 @@ const conPotencia = (tipo) => sitios.filter((s) => s.resumen_potencia[tipo]).len
         como hecho verificado.
       </li>
       <li>
-        <strong>No mide consumo real.</strong> La potencia no es energía consumida. Si nadie publica
-        el consumo, el dato no aparece.
+        <strong>No mide consumo real.</strong> La potencia no es energía consumida. Cuando alguien
+        publica el consumo eléctrico anual se registra aparte, en GWh, y nunca se suma ni se compara
+        con los MW. Hoy lo publican {conEnergia} emplazamientos de los {numero(resumen.total_emplazamientos)}.
       </li>
     </ul>
+
+    <h2>Corregir un dato</h2>
+    <p>
+      El registro está entero en <a href={REPOSITORIO} rel="noopener">GitHub</a>: los YAML de
+      origen, el código que construye el sitio y el historial de cada cambio. Si un dato está mal,
+      lo que hace falta es la fuente. Una corrección con URL y fragmento literal se puede integrar;
+      una sin ella, no, porque la regla del conjunto es que nada entra sin cita que lo sostenga.
+      Las <a href={REPO_INCIDENCIAS} rel="noopener">incidencias</a> son el sitio para dejarla.
+    </p>
 
     <h2>Actualización</h2>
     <p>

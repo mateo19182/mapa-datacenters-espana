@@ -36,7 +36,7 @@ incertidumbres:
       armario de 2 kVA y redundancia N+1). No se ha localizado una cifra de MW trazable.
     fuentes: [src-1]
 
-confianza: alta
+confianza: media
 ultima_verificacion: "2026-08-29"
 
 fuentes:

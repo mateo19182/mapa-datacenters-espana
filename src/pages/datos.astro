@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro'
 import resumen from '../data/resumen.json'
 import validacion from '../data/validacion.json'
 import { numero } from '../lib/etiquetas.js'
+import { REPOSITORIO, REPO_DATOS, REPO_ESQUEMA, REPO_INCIDENCIAS } from '../lib/enlaces.js'
 
 const descargas = [
   ['/datos/sitios.json', 'sitios.json', 'Emplazamientos completos, con potencias, fases, incertidumbres y fuentes.'],
@@ -38,7 +39,8 @@ const avisos = parte.filter((l) => l.includes('aviso:')).length
     <h1>Datos</h1>
     <p class="sumario">
       El conjunto completo en formatos abiertos, su estructura y el parte de validación. El sitio no
-      usa ningún dato que no esté en estos ficheros.
+      usa ningún dato que no esté en estos ficheros, y todos ellos, más el código que los construye,
+      están en <a href={REPOSITORIO} rel="noopener">GitHub</a>.
     </p>
 
     <dl class="cifras">
@@ -75,6 +77,25 @@ const avisos = parte.filter((l) => l.includes('aviso:')).length
       </table>
     </div>
 
+    <h2>Repositorio</h2>
+    <p>
+      El proyecto entero es público: los YAML de origen, los scripts de construcción, el esquema y
+      el historial de cada cambio con su motivo. Descargar los JSON de arriba sirve para reutilizar
+      los datos; el repositorio sirve para auditarlos, porque en él se ve quién cambió qué cifra,
+      cuándo y con qué fuente.
+    </p>
+    <ul class="enlaces-repo">
+      <li><a href={REPOSITORIO} rel="noopener">mateo19182/mapa-datacenters-espana</a> — código, datos e historial.</li>
+      <li><a href={REPO_DATOS} rel="noopener">data/</a> — los YAML de origen, uno por emplazamiento.</li>
+      <li><a href={REPO_ESQUEMA} rel="noopener">docs/ESQUEMA.md</a> — qué significa cada campo y qué reglas se aplican.</li>
+      <li><a href={REPO_INCIDENCIAS} rel="noopener">Incidencias</a> — para corregir un dato o aportar una fuente.</li>
+    </ul>
+    <div class="nota">
+      <strong>Si un dato está mal, dígalo con la fuente.</strong> Una corrección sin referencia no se
+      puede integrar: la regla del conjunto es que nada entra sin cita literal que lo sostenga. Con la
+      URL y el fragmento, entra.
+    </div>
+
     <h2>Estructura</h2>
     <p>
       La fuente de verdad son ficheros YAML, uno por emplazamiento, para revisarse a mano. La
@@ -107,7 +128,8 @@ scripts/
   fetch-osm-grid.mjs     cachea el trazado de la red de transporte
   fetch-osm-centrales.mjs        cachea las centrales de generación
   fetch-entsoe-generacion.mjs    instantánea de generación real por unidad
-  fetch-contorno.mjs     cachea el contorno de costa de reserva`}</code></pre>
+  fetch-contorno.mjs     cachea el contorno de costa de reserva
+  exa.mjs                buscador documental para localizar fuentes primarias`}</code></pre>
 
     <h2>Control de calidad</h2>
     <p>
@@ -214,6 +236,16 @@ scripts/
   .pasos {
     max-width: 42rem;
     padding-left: 1.2rem;
+  }
+
+  .enlaces-repo {
+    max-width: 42rem;
+    padding-left: 1.2rem;
+    font-size: 0.93rem;
+  }
+
+  .enlaces-repo li {
+    margin-bottom: 0.3rem;
   }
 
   .pasos li {

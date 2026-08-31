@@ -10,6 +10,7 @@ import {
   PRECISION_ETIQUETA,
   CONFIANZA_ETIQUETA,
   CONFIANZA_DESCRIPCION,
+  motivosConfianza,
   MODELO_ETIQUETA,
   CIRCUITO_ETIQUETA,
   CIRCUITO_DESCRIPCION,
@@ -37,6 +38,9 @@ const refs = (ids) =>
     .map((id) => indice.get(id))
     .filter(Boolean)
     .sort((a, b) => a - b)
+
+// Lo que debilita el respaldo de esta ficha en concreto, leído de la propia ficha.
+const motivos = motivosConfianza(s)
 
 const r = s.resumen_potencia
 const tiposConDato = [
@@ -113,6 +117,13 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
                         maximo_acumulado: 'mayor hito acumulado publicado',
                       }[r[t].base]}
                       {r[t].discrepancia && ` · las fuentes discrepan (${numero(r[t].minimo_observado, 1)}–${numero(r[t].maximo_observado, 1)} MW)`}
+                      {/* La agregación solo compara lecturas del mismo tipo y ámbito, así que
+                          un choque entre tipos —un expediente que da demanda total frente a una
+                          nota que anuncia carga TI— no se ve en la cifra. Si la ficha lo declara,
+                          se dice aquí en lugar de publicar el número como si nadie lo discutiera. */}
+                      {r[t].disputada && (
+                        <> · <a href="#incertidumbres">contradicción documentada</a></>
+                      )}
                     </small>
                   </dd>
                 </div>
@@ -211,7 +222,7 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
 
         {s.incertidumbres.length > 0 && (
           <>
-            <h2>Incertidumbres y contradicciones</h2>
+            <h2 id="incertidumbres">Incertidumbres y contradicciones</h2>
             <p class="pequeno silencio">
               Lo que las fuentes no aclaran o en lo que se contradicen.
             </p>
@@ -432,8 +443,17 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
             <dt>Confianza</dt>
             <dd>
               <span class={`confianza-${s.confianza}`}>{CONFIANZA_ETIQUETA[s.confianza]}</span>
-              <br />
-              <span class="pequeno silencio">{CONFIANZA_DESCRIPCION[s.confianza]}</span>
+              {motivos.length > 0 ? (
+                <ul class="motivos-confianza">
+                  {motivos.map((m) => <li>{m}</li>)}
+                </ul>
+              ) : (
+                <><br /><span class="pequeno silencio">
+                  {s.confianza === 'alta'
+                    ? 'Ubicación, potencia y estado con respaldo primario y sin contradicciones abiertas.'
+                    : <>Nada falta de forma mecánica: el motivo está en las <a href="#incertidumbres">incertidumbres</a>.</>}
+                </span></>
+              )}
             </dd>
             <dt>Identificador</dt>
             <dd class="mono pequeno">{s.id}</dd>
@@ -508,6 +528,24 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
   .unidad {
     font-weight: 600;
     font-size: 0.85rem;
+  }
+
+  /* Qué debilita el respaldo de esta ficha, no la definición del nivel. */
+  .motivos-confianza {
+    list-style: none;
+    padding: 0;
+    margin: 0.3rem 0 0;
+    font-size: 0.8rem;
+    color: var(--tinta-3);
+  }
+
+  .motivos-confianza li {
+    padding-left: 0.8rem;
+    text-indent: -0.8rem;
+  }
+
+  .motivos-confianza li::before {
+    content: '· ';
   }
 
   .mono {

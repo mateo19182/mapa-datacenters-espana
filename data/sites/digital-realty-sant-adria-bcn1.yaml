@@ -95,7 +95,7 @@ incertidumbres:
       de 2026.
     fuentes: [src-1, src-2]
 
-confianza: alta
+confianza: media
 ultima_verificacion: "2026-08-31"
 
 fuentes:

@@ -5,7 +5,7 @@ Generado el 2026-08-31 por `npm run validate`.
 - Emplazamientos cargados: **191**
 - Nodos de red: **133**
 - Activos renovables/BESS: **22**
-- Errores: **0** · Avisos: **258**
+- Errores: **0** · Avisos: **257**
 
 ## Incidencias por fichero
 
@@ -444,7 +444,6 @@ Generado el 2026-08-31 por `npm run validate`.
 ### `merlin-edged-navalmoral-de-la-mata.yaml`
 
 - aviso: potencia[3] («Demanda energética total declarada en la autorización ambiental integrada») no distingue el tipo de MW
-- aviso: potencia[4] («Capacidad total pretendida a largo plazo (200 MW en una primera etapa y 1,2 GW adicionales)») no distingue el tipo de MW
 - aviso: empleo[0] no distingue entre empleo de obra y de explotación
 
 ### `merlin-edged-ribera-baja-arasur.yaml`

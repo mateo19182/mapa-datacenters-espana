@@ -65,10 +65,48 @@ export const CONFIANZA_ETIQUETA = {
   baja: 'Confianza baja',
 }
 
+// El nivel califica el respaldo de los datos centrales —dónde está, qué es, cuánta
+// potencia tiene—, no cuántas fuentes hay. Una ficha con seis referencias sigue en
+// baja si ninguna publica la potencia. El recuento de fuentes se muestra aparte, y
+// `motivosConfianza` dice qué falla en cada ficha concreta.
 export const CONFIANZA_DESCRIPCION = {
   alta: 'Ubicación, estado y potencia respaldados por fuente oficial o de la propia compañía, sin contradicciones abiertas.',
-  media: 'Respaldado por prensa especializada o consultora, o con fuente primaria pero incompleta.',
-  baja: 'Una sola fuente secundaria, datos antiguos o contradicciones sin resolver.',
+  media: 'Emplazamiento identificado y situado, pero con datos centrales incompletos o sostenidos solo por prensa especializada o consultora.',
+  baja: 'Faltan datos centrales, la ubicación es imprecisa o quedan contradicciones sin resolver entre las fuentes.',
+}
+
+const PRIMARIAS = new Set(['oficial', 'empresa'])
+
+/**
+ * Qué debilita, en concreto, el respaldo de esta ficha. Se lee de la propia
+ * ficha, así que nunca puede contradecir lo que muestra el resto del panel: si
+ * dice «una sola fuente» es que hay una. Cuando no devuelve nada, la razón del
+ * nivel no es mecánica y está escrita en las incertidumbres.
+ */
+export function motivosConfianza(s) {
+  const motivos = []
+  const fuentes = s.fuentes ?? []
+  const potencia = s.potencia ?? []
+
+  if (fuentes.length === 1) motivos.push('una sola fuente')
+  else if (!fuentes.some((f) => PRIMARIAS.has(f.tipo)))
+    motivos.push('ninguna fuente oficial ni de la propia compañía')
+
+  if (potencia.length === 0) {
+    motivos.push('sin ninguna cifra de potencia')
+  } else {
+    const respaldos = new Set(potencia.flatMap((p) => p.fuentes ?? []))
+    const primaria = fuentes.some((f) => PRIMARIAS.has(f.tipo) && respaldos.has(f.id))
+    if (!primaria) motivos.push('la potencia no la publica ni la compañía ni un organismo oficial')
+    else if (potencia.every((p) => p.tipo === 'no_especificado'))
+      motivos.push('la potencia publicada no dice de qué magnitud es')
+  }
+
+  const precision = s.ubicacion?.precision
+  if (precision === 'desconocida') motivos.push('sin coordenadas')
+  else if (precision === 'municipio') motivos.push('situado en el centro del municipio, sin dirección')
+
+  return motivos
 }
 
 export const FUENTE_ETIQUETA = {

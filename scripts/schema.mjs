@@ -631,6 +631,25 @@ export function revisarCoherencia(sitio) {
   }
   if (sitio.estado_fuentes.length === 0) problemas.push({ nivel: 'aviso', msg: 'el estado no cita fuente' })
 
+  // `confianza: alta` afirma que ubicación, estado y potencia están respaldados.
+  // La ficha publica al lado, leídas de sus propios campos, las lagunas que tiene;
+  // si hay alguna, la etiqueta se contradice con lo que se ve debajo y sobra una de
+  // las dos. Los otros dos niveles no se comprueban: su motivo puede ser editorial
+  // —una contradicción entre fuentes— y no se lee de ningún campo.
+  if (sitio.confianza === 'alta') {
+    const lagunas = []
+    if (sitio.potencia.length === 0) lagunas.push('no tiene ninguna cifra de potencia')
+    else if (sitio.potencia.every((p) => p.tipo === 'no_especificado'))
+      lagunas.push('su potencia no está tipificada')
+    if (sitio.ubicacion.precision === 'municipio') lagunas.push('solo está situada en su municipio')
+    if (sitio.ubicacion.precision === 'desconocida') lagunas.push('no tiene coordenadas')
+    if (!sitio.fuentes.some((f) => f.tipo === 'oficial' || f.tipo === 'empresa'))
+      lagunas.push('no cita ninguna fuente oficial ni de la compañía')
+    for (const laguna of lagunas) {
+      problemas.push({ nivel: 'aviso', msg: `declara confianza alta pero ${laguna}` })
+    }
+  }
+
   const huerfanas = sitio.fuentes.filter((f) => {
     const usada = refs.some(([, lista]) => lista.includes(f.id))
     return !usada
