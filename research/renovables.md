@@ -14,7 +14,7 @@ Rodrigo, Valdemoro, Iglesias, El Escudo, Escatrón II, Fuendetodos II, Cascante 
 Baobab. El resto son carteras sin desglosar. Amazon anuncia 100 proyectos y 3,8
 GW en España sin publicar una lista con nombre, municipio y MW. Repsol firma seis
 VPPA con Microsoft y no dice cuáles son los seis activos. Equinix firma cinco PPA
-con IGNIS y los sitúa en "distintas regiones de España". Para un mapa es un
+con IGNIS y los sitúa en «distintas regiones de España». Para un mapa es un
 problema serio, y se registra como tal en vez de disimularlo con un punto en el
 centroide de la provincia.
 
@@ -60,7 +60,7 @@ Solo cuenta como adicional lo que la fuente dice. Donde no lo dice, el campo
 
 Declaran nueva construcción:
 
-- Microsoft y Repsol. Los seis activos "estarán operativos en diciembre de 2025",
+- Microsoft y Repsol. Los seis activos «estarán operativos en diciembre de 2025»,
   o sea que no existían al firmar. 230 MW.
 - Microsoft en el agregado de España. 1.496 MW de nueva capacidad solar y eólica
   ligados a 16 contratos, de los que más de 522 MW ya están operativos. Es el
@@ -72,7 +72,7 @@ Declaran nueva construcción:
 - Equinix y Sonnedix. Entrada en operación prevista a finales de 2024. 150 MWp.
 - Amazon e Iberdrola en Ciudad Rodrigo. Planta en construcción, inversión de unos
   200 millones. 212 MW.
-- Data4 y TotalEnergies. Plantas "a punto de empezar a producir". 30 MW.
+- Data4 y TotalEnergies. Plantas «a punto de empezar a producir». 30 MW.
 - Acciona e IGNIS en Segovia, y la planta de Meta en Talavera. Ambas de nueva
   construcción, sin MW publicados.
 
@@ -117,8 +117,8 @@ solución aislada
 Hay un segundo motivo, menos limpio. Quien promueve baterías suele controlar
 nudos y derechos de acceso. Solaria pasó de vender electrones a vender conexión.
 Entró en el negocio en junio de 2024 con 155 MW de acceso concedidos por Red
-Eléctrica y una filial, Solaria Data Center, apoyada en "infraestructuras
-eléctricas propias vinculadas a sus proyectos de generación"
+Eléctrica y una filial, Solaria Data Center, apoyada en «infraestructuras
+eléctricas propias vinculadas a sus proyectos de generación»
 ([Data Center Market, 2024-06-04](https://www.datacentermarket.es/news/solaria-se-adentra-en-el-mercado-de-los-centros-de-datos/)).
 Después encadenó 213 MW en Madrid (febrero de 2025), 225 MW en el País Vasco
 (febrero de 2025) y 130 MW más en Madrid
@@ -148,7 +148,7 @@ Tres consecuencias prácticas para el mapa:
    comprador: es una liquidación financiera por diferencias más la transferencia
    de garantías de origen. El generador vende su energía al mercado como
    cualquier otro.
-3. "100 % renovable" en el material corporativo casi siempre significa
+3. «100 % renovable» en el material corporativo casi siempre significa
    compensación anual, no coincidencia horaria. AWS dice que compensa su consumo
    eléctrico en España con un 100 % de energía renovable desde 2022. Compensar y
    consumir no son lo mismo.
@@ -194,7 +194,7 @@ veremos aparecer mucho más almacenamiento pegado a los campus.
 - Cuerva y Alto Infrastructure en Escúzar (Granada), 100 MW de potencia eléctrica
   redundante y ampliación de la subestación de Escúzar
   ([El Periódico de la Energía, 2026-07-08](https://elperiodicodelaenergia.com/cuerva-y-alto-infrastructure-impulsan-el-primer-gran-centro-de-datos-especializado-en-inteligencia-artificial-de-andalucia/)).
-  La fuente dice "alimentada íntegramente con energía renovable" sin nombrar una
+  La fuente dice «alimentada íntegramente con energía renovable» sin nombrar una
   sola planta. Sin activo identificable, no entra.
 - La cartera de almacenamiento de Solaria en general. En marzo de 2026 sumaba
   3.280 MWh con aprobación ambiental, incluidos 480 MWh nuevos asociados a siete
@@ -203,7 +203,7 @@ veremos aparecer mucho más almacenamiento pegado a los campus.
   Ninguna fuente liga esos MWh a un CPD concreto, así que solo entran los 600 MWh
   del contrato con Merlin.
 - CoreWeave, que según Data Center Dynamics firmó en junio de 2025 un PPA solar y
-  eólico "a gran escala" en España. La fuente original no es accesible ni la
+  eólico «a gran escala» en España. La fuente original no es accesible ni la
   noticia aparece en un medio abierto, así que no se registra.
 - Digital Realty, que en mayo de 2024 habría firmado cinco PPA en Francia y
   España con Bruc y wpd. Mismo problema: no hay fuente primaria accesible, ni el
@@ -211,8 +211,8 @@ veremos aparecer mucho más almacenamiento pegado a los campus.
 - Samca, con tres centros de datos en Luceni (Zaragoza) y generación renovable
   propia, incluidas dos plantas solares con baterías por 60 millones. Es
   el tipo de caso que busca este registro. Lo único legible en fuente accesible es
-  que el PIGA de Luceni prevé "llegar a 300 MW de
-  potencia, con un consumo potencial de 2.600 GWh"
+  que el PIGA de Luceni prevé «llegar a 300 MW de
+  potencia, con un consumo potencial de 2.600 GWh»
   ([AraInfo, 2026-02-11](https://arainfo.org/el-ano-de-los-pigas-las-macrocorporaciones-se-aduenan-de-aragon/)),
   y ese texto no describe la generación asociada. Heraldo, El
   Periódico de Aragón, Aragón Digital y Europa Press bloquearon el acceso.
@@ -244,7 +244,7 @@ Lo que no es público, ordenado por lo que más daña al mapa.
 6. **Reparto dentro de acuerdos conjuntos.** Iberdrola no reparte los 150 MW
    entre Iglesias y El Escudo. Zelestra no reparte los 95,7 MW entre Escatrón II
    y Fuendetodos II. Son dos plantas, dos municipios y un solo número.
-7. **Potencia total de Ciudad Rodrigo.** pv magazine titula "planta de 212 MW";
+7. **Potencia total de Ciudad Rodrigo.** pv magazine titula «planta de 212 MW»;
    Data Center Market presenta los 212 MW como lo que compra Amazon dentro de una
    planta mayor. Sin fuente primaria accesible, queda como incertidumbre abierta.
 8. **Meta en Talavera.** El PSI confirma una planta solar al norte de los

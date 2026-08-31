@@ -1,6 +1,6 @@
 # Cobertura, huecos y contradicciones del mapa
 
-Auditoría independiente cerrada el **2026-08-29**, sobre el estado del repositorio a esa
+Auditoría independiente cerrada el 2026-08-29, sobre el estado del repositorio a esa
 fecha: 163 fichas en `data/sites/`, 133 subestaciones y 548 nudos con capacidad en
 `data/red/`, 41 actuaciones de red, 22 activos renovables y diez dossieres de
 investigación en `research/`.
@@ -13,18 +13,18 @@ estimación, se dice.
 
 ## 1. Resumen
 
-El mapa cubre bien **quién promueve centros de datos en España y dónde**, siempre que el
-proyecto sea grande y tenga prensa. Cubre mal **cuánta potencia hay**, y cubre muy mal
-**cómo se conecta esa potencia a la red**.
+El mapa cubre bien quién promueve centros de datos en España y dónde, siempre que el
+proyecto sea grande y tenga prensa. Cubre mal cuánta potencia hay, y cubre muy mal
+cómo se conecta esa potencia a la red.
 
 Tres cifras resumen el estado:
 
-- El **23%** de las fichas (37 de 163) tiene alguna cifra de MW con el tipo declarado. En el
+- El 23% de las fichas (37 de 163) tiene alguna cifra de MW con el tipo declarado. En el
   resto, o no hay potencia (63 fichas), o la hay sin saber si son MW de carga TI, de
   conexión o de generadores (58 fichas).
-- El **29%** de las fichas (48 de 163) cita al menos una fuente oficial. De las 81 fuentes
-  oficiales del conjunto, **45 son del Boletín Oficial de Aragón**.
-- El **23%** de las fichas (37 de 163) tiene bloque `conexion_electrica`, y solo **9** tienen
+- El 29% de las fichas (48 de 163) cita al menos una fuente oficial. De las 81 fuentes
+  oficiales del conjunto, 45 son del Boletín Oficial de Aragón.
+- El 23% de las fichas (37 de 163) tiene bloque `conexion_electrica`, y solo 9 tienen
   MW concedidos.
 
 El sesgo dominante no es geográfico ni sectorial. Es de accesibilidad documental: el mapa
@@ -81,7 +81,7 @@ A nivel de registro individual de potencia, y no de ficha, el desequilibrio es a
 claro: 111 registros `no_especificado` frente a 41 `it`, 27 `conexion_red` y 10
 `instalada_total`.
 
-Las sumas por tipo, que **no deben publicarse como totales**, ilustran el problema:
+Las sumas por tipo, que no deben publicarse como totales, ilustran el problema:
 
 | Tipo | MW acumulados |
 |---|---:|
@@ -90,7 +90,7 @@ Las sumas por tipo, que **no deben publicarse como totales**, ilustran el proble
 | `conexion_red` | 3.407 |
 | `instalada_total` | 757 |
 
-De esos 11.055 MW sin tipificar, **3.967 MW son potencia térmica** (los MWt de los grupos
+De esos 11.055 MW sin tipificar, 3.967 MW son potencia térmica (los MWt de los grupos
 electrógenos diésel que declaran las autorizaciones ambientales de AWS en Aragón y la
 central asociada a Monfarracinos) y otros 221 MW son potencia eléctrica de generadores de
 respaldo. Es decir, **el 38% del bloque de MW sin tipificar no es carga informática ni
@@ -98,7 +98,7 @@ demanda de red, es calor de motores diésel**. No convertirlo es lo correcto, pe
 visualización que sume la columna `no_especificado` producirá una cifra sin sentido
 físico. Esta es, con diferencia, la trampa más peligrosa del dataset.
 
-De las 73 fichas operativas o parcialmente operativas, solo **8** publican MW IT y **33** no
+De las 73 fichas operativas o parcialmente operativas, solo 8 publican MW IT y 33 no
 publican ninguna potencia. El mapa no está en condiciones de decir cuánta capacidad hay en
 servicio en España.
 
@@ -135,8 +135,8 @@ El reparto territorial de la precisión es muy desigual:
 | La Rioja | 2 | 0 | 0 | 0 |
 | Navarra | 1 | 0 | 0 | 0 |
 
-Andalucía tiene quince fichas y **ninguna coordenada exacta**. Cataluña tiene treinta y dos
-fichas y **una sola** con dato de conexión eléctrica. Aragón, con la mitad de fichas que
+Andalucía tiene quince fichas y ninguna coordenada exacta. Cataluña tiene treinta y dos
+fichas y una sola con dato de conexión eléctrica. Aragón, con la mitad de fichas que
 Madrid y Cataluña, tiene más datos de red que las dos juntas por un factor de tres.
 
 ### 2.4 Fuentes
@@ -157,7 +157,7 @@ fuente. El máximo son 10.
 450 de los 454 enlaces estaban vivos el día de la verificación. La higiene de enlaces es
 buena y no es un problema.
 
-El reparto por nivel de confianza declarado: **alta 23**, **media 87**, **baja 53**. Que un
+El reparto por nivel de confianza declarado: alta 23, media 87, baja 53. Que un
 tercio del conjunto esté marcado como confianza baja es honesto, y hay que respetarlo al
 publicar: esas 53 fichas no deberían presentarse con el mismo peso visual que las 23 de
 confianza alta.
@@ -246,7 +246,7 @@ Hay también una incoherencia de nomenclatura que rompe cualquier agrupación au
 capas: las fichas usan `Comunitat Valenciana` y la capa de red usa `Comunidad Valenciana`;
 las fichas usan `Navarra` y la capa de renovables usa `Comunidad Foral de Navarra`.
 
-**Capa renovable.** 22 activos. **Ninguno tiene coordenadas**, por decisión explícita de
+**Capa renovable.** 22 activos. Ninguno tiene coordenadas, por decisión explícita de
 registro: `null` antes que centroides inventados. Nueve de los 22 no tienen ni
 comunidad autónoma, porque la fuente anuncia un PPA sin decir dónde están las plantas. Solo
 4 de 22 tienen `cpds_relacionados` poblado. La capa, hoy, no se puede dibujar ni cruzar.
@@ -258,21 +258,20 @@ y fichas sin ningún dato de potencia. Coincide con lo medido arriba.
 
 `npm run reconcile` señala 3 variantes de nombre de operador, 1 posible duplicado
 (`espanix-madrid-mesena` y `espanix-madrid-gran-via-hortaleza`, mismo operador a 199 metros)
-y **64 fuentes cuyo editor declarado no coincide con el dominio del enlace**. Ese último
+y 64 fuentes cuyo editor declarado no coincide con el dominio del enlace. Ese último
 número parece alarmante y en su mayor parte no lo es: son notas de prensa corporativas
 alojadas en subdominios (`comunicacion.abanca.com`, `pressroom.grupoacs.com`,
 `newsroom.equinix.com`). Conviene revisarlas, pero no bloquean nada.
 
 ---
 
-## 3. Proyectos con promotor y municipio conocidos que **no** tienen ficha
+## 3. Proyectos con promotor y municipio conocidos que no tienen ficha
 
-Este es el resultado más accionable de la auditoría. `research/companias.md` incluye en su
-sección 9a una lista de 80 proyectos que su autor consideraba probablemente omitidos por los
-agentes territoriales. He comprobado los 80 contra `src/data/sitios.json`, buscando por
-municipio, operador, propietario y alias.
+Este es el resultado más accionable de la auditoría. La sección 9a de
+`research/companias.md` lista 80 proyectos como probablemente omitidos. Contrastados uno a
+uno contra `src/data/sitios.json` por municipio, operador, propietario y alias:
 
-**49 de los 80 sí tienen ficha.** Los **31 restantes no la tienen** y son los siguientes.
+**49 de los 80 sí tienen ficha.** Los 31 restantes no la tienen y son los siguientes.
 
 ### 3.1 Hiperescala fuera de los hubs conocidos
 
@@ -281,7 +280,7 @@ municipio, operador, propietario y alias.
 | **Vianos** | Albacete | Pure DC (Oaktree), ex-EdgeMode | 300 MW | El municipio se menciona dentro de las fichas de EdgeMode Córdoba y Torrecampo, pero no tiene ficha propia. Albacete se queda con cero emplazamientos. |
 | **Palma del Río** | Córdoba | Pure DC (Oaktree), ex-EdgeMode | 300 MW | Ver la contradicción de la sección 4.5: podría ser el mismo activo que la ficha de Torrecampo. |
 | **Cáceres** | Cáceres | Pure DC (Oaktree), ex-EdgeMode | 300 MW | Distinto del CCGreen de Nostrum, que sí está fichado en el mismo municipio. |
-| **Soria** | Soria | GISS (Seguridad Social) | 6 MW | El dossier de centro-norte buscó un "centro de datos de Soria" sin promotor. El promotor es este. |
+| **Soria** | Soria | GISS (Seguridad Social) | 6 MW | El dossier de centro-norte buscó un «centro de datos de Soria» sin promotor. El promotor es este. |
 | **Torija** | Guadalajara | Fortinet | 7 MW | En el corredor del Henares, la zona que centro-norte declara infrarrepresentada. |
 
 ### 3.2 Dentro de los hubs, promotores poco mediáticos
@@ -292,7 +291,7 @@ municipio, operador, propietario y alias.
 | **Fuenlabrada** | Madrid | Form8tion Data Centers | 160 MW |
 | **Alcobendas** | Madrid | Ferrovial (campus Valdelacasa) | >100 MW (fase 1: 60 MW disponibles / 40 MW IT) |
 | **Alcobendas** | Madrid | Prime Data Centers | 40 MW |
-| **Algete** | Madrid | AVAIO Digital Partners, proyecto "Scorpio" | 64 MW |
+| **Algete** | Madrid | AVAIO Digital Partners, proyecto «Scorpio» | 64 MW |
 | **Tres Cantos** | Madrid | Quetta (Azora), QTT-MAD1 | 20 MW |
 | **Tres Cantos** | Madrid | Merlin Edged, fase II | sin dato |
 | **Madrid capital (Vicálvaro)** | Madrid | Edgnex / DAMAC | 40 MW |
@@ -302,7 +301,7 @@ municipio, operador, propietario y alias.
 | **Sant Fruitós de Bages** | Barcelona | Oxigen ODC2 | 8 MW |
 | **Òdena** | Barcelona | Adequa Real Estate | 200 MW |
 | **Santa Bàrbara** | Tarragona | Adequa Real Estate | 200 MW |
-| **Alcover** | Tarragona | Scranton, proyecto "Iberdata" | 20 MW |
+| **Alcover** | Tarragona | Scranton, proyecto «Iberdata» | 20 MW |
 | **L'Hospitalet de l'Infant** | Tarragona | Ponentia Logistics | sin dato |
 | **L'Espluga de Francolí** | Tarragona | Ponentia Logistics | sin dato |
 | **Lleida** | Lleida | Ponentia Logistics | sin dato |
@@ -322,40 +321,40 @@ hoy mismo, sin buscar nada nuevo:
    descartó expresamente porque ninguna fuente daba el municipio. El dossier de compañías lo
    da. La ficha se puede crear ya.
 2. **Òdena y Santa Bàrbara tienen promotor: Adequa Real Estate.** El dossier de Cataluña
-   señala Anoia como "el hueco más grande y más accionable" y Santa Bàrbara como una cita
+   señala Anoia como «el hueco más grande y más accionable» y Santa Bàrbara como una cita
    sindical sin promotor. Faltaba el nombre. Ya está.
-3. **El "Madrid MAD1" de Algete que Madrid descartó por atribución no verificable** encaja
-   con el proyecto "Scorpio" de AVAIO Digital Partners, 64 MW.
+3. **El «Madrid MAD1» de Algete que Madrid descartó por atribución no verificable** encaja
+   con el proyecto «Scorpio» de AVAIO Digital Partners, 64 MW.
 
 ### 3.4 Pistas sin municipio, que no se pueden fichar todavía
 
-No son omisiones imputables a nadie: falta el dato mínimo que exige el esquema. Las agrupo
-porque son el mejor guion para una segunda pasada.
+No son omisiones imputables a nadie: falta el dato mínimo que exige el esquema. Se agrupan
+aquí porque son el mejor guion para una segunda pasada.
 
 - **Inditex, CPD de Arteixo (A Coruña).** Certificado Tier IV en 2013. Con casi total
   seguridad el mayor CPD corporativo de Galicia. Ninguna fuente accesible.
 - **Seis CPD en la Ribera de Navarra** (Tudela, Ribaforada, Valtierra, Arguedas), 382 MW
   combinados, con avales presentados y solicitudes de acceso a red. Ninguna fuente nombra a
-  los promotores. Navarra tiene hoy **una** ficha.
+  los promotores. Navarra tiene hoy una ficha.
 - **Velilla del Río Carrión (Palencia)**, segundo emplazamiento atribuido a Echelon-Iberdrola.
 - **RIC Energy en el suelo de Sniace (Torrelavega)**, anunciado en abril de 2026.
 - **Arakaldo (Bizkaia)**, titular de mayo de 2026 sin pieza recuperable.
-- **Aprisco Group en Asturias** (1.000 M€) y **Submer en Cataluña** (100 MW): ambos siguen
+- **Aprisco Group en Asturias** (1.000 M€) y Submer en Cataluña (100 MW): ambos siguen
   buscando terreno o no lo han publicado.
-- **Unicaja en Málaga TechPark**; **DataRush IT** con dos centros en Málaga y uno en Granada.
+- **Unicaja en Málaga TechPark**; DataRush IT con dos centros en Málaga y uno en Granada.
 - **IBM Quantum System Two de Donostia**, inaugurado en octubre de 2025, sin fuente abierta.
-- **SCAYLE (León)** y **Nasertic (Navarra)**: instalaciones públicas reales sin ubicación
+- **SCAYLE (León)** y Nasertic (Navarra): instalaciones públicas reales sin ubicación
   publicada.
 - **CPD de la Comunidad de Madrid**, adjudicado a Telefónica en junio de 2025 por 24,5 M€,
   ubicación no publicada.
-- **Nueve activos de MasOrange** y **hasta cuatro emplazamientos de Quetta** sin localizar.
+- **Nueve activos de MasOrange** y hasta cuatro emplazamientos de Quetta sin localizar.
 - **Las dos zonas no publicadas** de la región Google `europe-southwest1`.
 
 ---
 
 ## 4. Contradicciones abiertas
 
-El conjunto registra **382 incertidumbres en 161 de las 163 fichas**, 2,3 de media. Solo dos
+El conjunto registra 382 incertidumbres en 161 de las 163 fichas, 2,3 de media. Solo dos
 fichas no declaran ninguna. Ese nivel de autocrítica es una virtud del dataset, no un
 defecto, pero hay que saber leerlo: no es un mapa con 382 errores, es un mapa que documenta
 382 sitios donde las fuentes no se ponen de acuerdo.
@@ -386,8 +385,8 @@ Estas son las que más cambiarían el mapa si se resolvieran.
 
 ### 4.1 Escatrón: ¿un proyecto de 300 MW, uno de 400, o dos que suman 700?
 
-Repsol anunció que prepara la subestación de Escatrón "para la llegada de un gran centro de
-datos" sin identificar operador, y por otra parte Ignis y DayOne anunciaron un campus de 300
+Repsol anunció que prepara la subestación de Escatrón «para la llegada de un gran centro de
+datos» sin identificar operador, y por otra parte Ignis y DayOne anunciaron un campus de 300
 MW en el mismo municipio. **Ninguno de los dos tiene ficha.** Si son el mismo proyecto y se
 crean dos fichas, el mapa contará entre 300 y 400 MW de más en un solo municipio de 1.000
 habitantes. Si son distintos y no se crea ninguna, faltan 700 MW. Es la verificación con
@@ -396,7 +395,7 @@ mayor relación entre esfuerzo y consecuencia de toda la lista.
 ### 4.2 AWS en Aragón: 3.000 MW de calor que no son capacidad
 
 Las autorizaciones ambientales integradas de INAGA son la mejor fuente documental del
-dataset entero, con coordenadas UTM y expediente. Y **ninguna publica MW IT**. Lo que
+dataset entero, con coordenadas UTM y expediente. Y ninguna publica MW IT. Lo que
 publican es la potencia térmica nominal de los grupos electrógenos diésel de respaldo: 327,
 342, 750 y 1.169 MWt. Se registraron como `no_especificado` con nota explícita, que es lo
 correcto. El resultado es que Aragón, la comunidad mejor documentada
@@ -418,8 +417,8 @@ condiciona cualquier total nacional.
 ### 4.4 Meta en Talavera: un factor 24 en el consumo de agua
 
 Cuatro cifras sucesivas, todas conservadas en la ficha: 4.800 millones de litros al año en
-una ficha divulgativa local; 2,2 a 2,9 millones de m³ al año como consumo "inicialmente
-previsto"; 504.500 m³ al año en el informe ambiental; y 0,2 hm³ al año en la documentación de
+una ficha divulgativa local; 2,2 a 2,9 millones de m³ al año como consumo «inicialmente
+previsto»; 504.500 m³ al año en el informe ambiental; y 0,2 hm³ al año en la documentación de
 2026. Entre el máximo y el mínimo hay un factor 24. Es el proyecto mejor trazado
 administrativamente de todo el centro peninsular, con nueve hitos fechados desde 2022, y
 aun así nadie sabe cuánta agua va a consumir. La potencia tampoco está: los 248 MW que
@@ -429,18 +428,18 @@ circulan salen de una ficha divulgativa de una asociación empresarial.
 
 El dataset tiene ficha para `edgemode-torrecampo-green-dc`, con 300 MW derivados de repartir
 un objetivo agregado de 1,5 GW entre cinco campus, sin parcela y sin fuente específica. El
-dossier de compañías enumera esos cinco campus y **Torrecampo no está entre ellos**: son
+dossier de compañías enumera esos cinco campus y Torrecampo no está entre ellos: son
 Cáceres, Vianos, Córdoba, Palma del Río y Mora. O bien la ficha de Torrecampo y el proyecto
 de Palma del Río son el mismo activo bajo dos topónimos de la provincia de Córdoba, o bien
-hay un sexto emplazamiento. La propia ficha reconoce que "no se ha localizado ficha de
-proyecto ni referencia a licencias o conexión a red para Torrecampo".
+hay un sexto emplazamiento. La propia ficha reconoce que «no se ha localizado ficha de
+proyecto ni referencia a licencias o conexión a red para Torrecampo».
 
 ### 4.6 Echelon-Iberdrola: uno, dos o tres proyectos
 
 La ficha `echelon-iberdrola-madrid-sur` existe **sin municipio, sin provincia y sin
-comunidad autónoma**. La nota que sí se pudo leer habla de "Madrid Sur" con 160.000 m², 144
+comunidad autónoma**. La nota que sí se pudo leer habla de «Madrid Sur» con 160.000 m², 144
 MW de procesamiento y 230 MW de conexión asegurada, sin situarlo. Un recopilatorio lo sitúa
-en "Aceca (Madrid)", pero la central de Aceca está en Villaseca de la Sagra, Toledo. Un
+en «Aceca (Madrid)», pero la central de Aceca está en Villaseca de la Sagra, Toledo. Un
 tercer medio describe un CPD de Iberdrola en el polígono de Toledo capital, que tiene ficha
 propia. Y DCD atribuye a la misma sociedad un segundo emplazamiento en Velilla del Río
 Carrión, Palencia. Cuatro topónimos en tres comunidades para lo que puede ser un solo
@@ -452,7 +451,7 @@ proyecto.
 coordenadas**, el mismo parque (Parc de l'Alba) y el mismo linaje societario (Aquila Group
 figura en el propietario de ambas). El dossier de compañías dice sin ambages que es el mismo
 activo antes y después del rebranding de Bain Capital y que hay que fusionarlo. El informe
-de reconciliación no lo señala porque compara nombres de operador, y "AQ Compute" y "hscale"
+de reconciliación no lo señala porque compara nombres de operador, y «AQ Compute» y «hscale»
 no se parecen. La ficha de AQ Compute aporta 60 MW de campus; la de hscale no aporta
 potencia, así que la fusión no altera ningún total, pero sí el recuento de emplazamientos de
 Cataluña.
@@ -460,7 +459,7 @@ Cataluña.
 ### 4.8 Y en el nivel agregado, cuatro cifras para lo mismo
 
 La capacidad operativa de España a cierre de 2025 se publica como 385 MW IT en Iberia
-(Colliers), 439 MW IT en España (Spain DC), 499 MW "de red" (CBRE) y 293 MW operativos
+(Colliers), 439 MW IT en España (Spain DC), 499 MW «de red» (CBRE) y 293 MW operativos
 (DCD). El pipeline se publica como 10,5 GW, 12 GW, 8,3 GW y más de 12,7 GW según quién
 sume. Ninguna de estas cifras está cargada en el dataset, y hacen bien en no estarlo. Pero
 si el mapa se publica junto a un titular de sector, hay que elegir una y decir cuál.
@@ -509,7 +508,7 @@ Con la misma claridad, y por orden de gravedad del error:
 
 2. **Que una comunidad tenga pocas fichas no significa que tenga poca actividad.** Andalucía
    tiene 15 emplazamientos. Endesa, gestora de las solicitudes de acceso desde 2022, publica
-   una cola de **305 solicitudes, 5.133 MW, en 75 municipios andaluces**. Jaén tiene cero
+   una cola de 305 solicitudes, 5.133 MW, en 75 municipios andaluces. Jaén tiene cero
    fichas y cinco solicitudes de acceso. Que la mayoría de esas solicitudes sean anónimas o
    especulativas es exactamente el punto: no se pueden fichar, pero tampoco se pueden ignorar
    al interpretar el vacío.
@@ -578,7 +577,7 @@ opaco. El problema no es lo que falta. El problema sería publicarlo sin decir q
 
 6. **Extender la capa eléctrica a las siete comunidades que faltan**, o marcar explícitamente
    en la interfaz que allí no hay datos de red. Veinte fichas están sobre un mapa eléctrico en
-   blanco, y ahora mismo nada distingue "no hay capacidad" de "el dato no está cargado".
+   blanco, y ahora mismo nada distingue «no hay capacidad» de «el dato no está cargado».
 
 7. **Unificar los nombres de comunidad entre capas** (`Comunitat Valenciana` frente a
    `Comunidad Valenciana`, `Navarra` frente a `Comunidad Foral de Navarra`). Es una hora de

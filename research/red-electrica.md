@@ -40,18 +40,18 @@ demanda, la metodología concreta la fija la
   (Circular 1/2024, art. 5.2.b). Es decir: un proyecto de 60 kV puede morir por un
   problema en el nudo de 220 kV del que cuelga.
 
-Ese acoplamiento se materializa en el **«valor de referencia»**: la porción de capacidad
+Ese acoplamiento se materializa en el «valor de referencia»: la porción de capacidad
 del nudo de transporte que se reserva para alimentar los consumos que se conecten aguas
 abajo en distribución. Es una novedad de 2025-2026 y todavía está a medio pactar: el 20
 de febrero de 2026 Red Eléctrica reconocía acuerdos sobre valores de referencia en solo
-el **45 % de las interfaces transporte-distribución**, equivalentes a 33,1 GW
+el 45 % de las interfaces transporte-distribución, equivalentes a 33,1 GW
 ([nota de prensa de REE, 20-02-2026](https://www.ree.es/sites/default/files/2026-03/PR_demand_access_capacities.pdf)).
 En los nudos sin acuerdo, el fichero de REE dice literalmente «Valor de referencia no
-acordado» y **no publica capacidad otorgable**. No es que haya cero: es que no hay dato.
+acordado» y no publica capacidad otorgable. No es que haya cero: es que no hay dato.
 
 ### 1.3 El criterio de reparto: prelación temporal, con excepciones
 
-El criterio general es la **prelación temporal**: primero en registrar la solicitud
+El criterio general es la prelación temporal: primero en registrar la solicitud
 completa, primero en la cola (RD 1183/2020, art. 7.1). La fecha que cuenta es la de
 *admisión a trámite*; si hay que subsanar, la fecha se mueve al momento en que la
 documentación está correcta y completa.
@@ -64,8 +64,8 @@ Hay tres grandes excepciones, y las tres son recientes y muy relevantes para los
    tramitaciones y avisa a la Secretaría de Estado de Energía, que puede convocar un
    concurso. Ahí ya no gana el primero, sino el que más puntúa. Ver §5.
 2. **Proyectos de «alta prioridad»** (art. 13 del RDL 7/2026). Cuando entra una solicitud
-   de alta prioridad, el gestor **suspende todas las demás** del mismo nudo o zona de
-   capacidad, no admite nuevas hasta resolverla, y **no se activa concurso**: va por el
+   de alta prioridad, el gestor suspende todas las demás del mismo nudo o zona de
+   capacidad, no admite nuevas hasta resolverla, y no se activa concurso: va por el
    procedimiento general. La lista es cerrada: promociones residenciales y servicios
    esenciales; consumos industriales declarados proyecto estratégico; y ampliaciones de
    consumos ya existentes que estén usando la red de verdad (hasta 3 veces la potencia
@@ -102,25 +102,25 @@ está derogado** desde el 22 de marzo de 2026 por la disposición final 15.7 del
 [Real Decreto-ley 7/2026, de 20 de marzo](https://www.boe.es/buscar/act.php?id=BOE-A-2026-6544).
 
 En su lugar, el art. 11 del RDL 7/2026 crea la **prestación por reserva de capacidad de
-acceso**: quien tiene un permiso de demanda en un punto de ≥1 kV **paga todos los meses**
+acceso: quien tiene un permiso de demanda en un punto de ≥1 kV paga todos los meses**
 desde que obtiene el permiso hasta que inicia la actividad (firma del contrato ATR).
 
 - Se calcula multiplicando el término de potencia del peaje de su segmento tarifario en
-  el periodo P1 por un factor **k** y por la capacidad otorgada.
+  el periodo P1 por un factor k y por la capacidad otorgada.
 - Valores transitorios de k: 0,4 (6.1TD), 0,6 (6.2TD), 1,0 (6.3TD) y 1,5 (6.4TD), **con
   incrementos de 0,2 / 0,3 / 0,5 / 0,75 por cada semestre transcurrido** desde la obtención
   del permiso. Es decir: cuanto más alta la tensión y más tiempo sin construir, más caro.
 - Hay tres meses de exención al principio.
-- Es un **pago anticipado de peajes**: cuando arranca el consumo se minora el 100 % de lo
+- Es un pago anticipado de peajes: cuando arranca el consumo se minora el 100 % de lo
   pagado el primer año y hasta el 80 % de lo pagado después. Si el permiso caduca, se
   pierde el derecho a esa devolución.
 - **Impagar más del 10 % de un trimestre supone la caducidad automática del permiso.**
 
-El RDL 7/2026 dio además una ventana de tres meses para **renunciar** a permisos sin
+El RDL 7/2026 dio además una ventana de tres meses para renunciar a permisos sin
 ejecución de avales, o para reducir la capacidad en más del 50 % sin que la instalación
 deje de considerarse la misma (DT 3.ª). La capacidad liberada por encima de 5 MW queda
 reservada y se reasigna después priorizando a los consumos de alta prioridad. También
-obliga a declarar el **código CNAE** de la actividad en la solicitud y a mantenerlo tres
+obliga a declarar el código CNAE de la actividad en la solicitud y a mantenerlo tres
 años, bajo pena de caducidad automática (art. 12): un antiespeculación directo contra el
 permiso que se pide para una cosa y se usa para otra.
 
@@ -137,16 +137,16 @@ Son tres números distintos y el salto entre ellos es enorme:
   el fin de la prestación por reserva de capacidad y el inicio de la «actividad».
 
 Recuento propio sobre el fichero de Red Eléctrica de 3 de agosto de 2026, sumando la
-columna correspondiente en los 937 nudos publicados: **17.737 MW otorgados** para demanda
-en la red de transporte y **24.048 MW solicitados en curso y pendientes de resolver**.
+columna correspondiente en los 937 nudos publicados: 17.737 MW otorgados para demanda
+en la red de transporte y 24.048 MW solicitados en curso y pendientes de resolver.
 (Suma propia, no cifra publicada por REE; las columnas de capacidad *otorgada* y
 *solicitada* sí son aditivas entre nudos, a diferencia de las de capacidad disponible.) La propia REE cifraba en febrero de 2026 en 19 GW los permisos
 de demanda concedidos en transporte, de los cuales 11,8 GW corresponden a nueva demanda
-otorgada desde 2022 y **ninguno estaba aún en servicio**.
+otorgada desde 2022 y ninguno estaba aún en servicio.
 
 ### 1.7 Caducidad
 
-El titular tiene **cinco años desde la concesión del permiso para conectarse** (REE,
+El titular tiene cinco años desde la concesión del permiso para conectarse (REE,
 20-02-2026). El RDL 7/2026 añadió hitos intermedios para los permisos ya otorgados sin
 contrato ATR (DT 4.ª): 12 meses para aportar el 10 % del valor de la inversión de las
 actuaciones de red, 3 años para firmar el contrato de encargo de proyecto y 4 años para
@@ -160,10 +160,10 @@ Es la confusión más frecuente al leer prensa sobre centros de datos, y ahora t
 definición legal. El proyecto de real decreto de centros de datos sometido a audiencia
 pública el 27 de agosto de 2026 define las dos magnitudes por separado (art. 3):
 
-> «f) **Potencia de acceso**: la potencia eléctrica que figure en los permisos de acceso
+> «f) Potencia de acceso: la potencia eléctrica que figure en los permisos de acceso
 > y conexión otorgados al centro de datos o, cuando resulte superior, la potencia
 > contratada en el contrato ATR.
-> g) **Potencia de tecnología de la información**: la demanda de potencia eléctrica de los
+> g) Potencia de tecnología de la información: la demanda de potencia eléctrica de los
 > sistemas de tecnologías de la información instalados, determinada conforme al artículo 2
 > del Reglamento Delegado (UE) 2024/1364.»
 
@@ -175,10 +175,10 @@ Y explica por qué usa una y no la otra para fijar su umbral de aplicación:
 
 Relación práctica entre ambas:
 
-- La potencia de acceso **siempre es mayor** que la carga TI. Cubre refrigeración,
+- La potencia de acceso siempre es mayor que la carga TI. Cubre refrigeración,
   pérdidas de transformación y de SAI, iluminación y servicios. La relación depende del
   PUE de diseño y del margen de contratación.
-- Un mismo campus suele pedir la potencia de acceso **del build-out completo** años antes
+- Un mismo campus suele pedir la potencia de acceso del build-out completo años antes
   de instalar la primera fila de racks. El permiso es para el campus terminado; la carga
   TI del año 1 puede ser una fracción pequeña.
 - **No se debe convertir de una a otra aplicando un PUE supuesto.** Es exactamente lo que
@@ -186,9 +186,9 @@ Relación práctica entre ambas:
   es el PUE real, y el margen entre potencia contratada y potencia usada tampoco es
   constante.
 - El propio proyecto de RD ilustra la asimetría al fijar dos umbrales distintos: las
-  obligaciones sustantivas se aplican a centros con **potencia de acceso ≥ 1 MW**,
+  obligaciones sustantivas se aplican a centros con potencia de acceso ≥ 1 MW,
   mientras que las obligaciones de publicidad e información del art. 14 se fijan en
-  **500 kW de potencia de TI**, por coherencia con el Reglamento Delegado (UE) 2024/1364.
+  500 kW de potencia de TI, por coherencia con el Reglamento Delegado (UE) 2024/1364.
 
 Conclusión operativa para el mapa: un titular anuncia «300 MW» y casi nunca dice de qué.
 Hay que registrar el tipo (`it`, `conexion_red`, `instalada_total`, `no_especificado`) y
@@ -201,23 +201,23 @@ no mezclarlos.
 ### 3.1 El dato existe desde febrero de 2026, y antes no
 
 Este es el cambio más importante del periodo. Hasta 2026 la capacidad de acceso de
-*demanda* en la red de transporte **no era pública**; sí lo era la de generación. La
+*demanda* en la red de transporte no era pública; sí lo era la de generación. La
 secuencia:
 
-1. La **Circular 1/2024** (art. 16) obliga a gestores de transporte y distribución a
-   publicar, por barra de tensión > 1 kV y **con actualización mensual**: denominación,
+1. La Circular 1/2024 (art. 16) obliga a gestores de transporte y distribución a
+   publicar, por barra de tensión > 1 kV y con actualización mensual: denominación,
    georreferenciación, provincia, nivel de tensión, capacidad total de acceso firme de
    demanda, capacidad ocupada, capacidad de solicitudes admitidas pendientes y capacidad
-   disponible. En subestaciones de > 66 kV, además, desagregado **por posición**.
-2. La **[Resolución de la CNMC de 1 de diciembre de 2025](https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-25253)**
+   disponible. En subestaciones de > 66 kV, además, desagregado por posición.
+2. La [Resolución de la CNMC de 1 de diciembre de 2025](https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-25253)
    (expediente RDC/DE/008/25) aprueba las especificaciones de detalle para calcular esa
    capacidad en la red de transporte.
 3. Red Eléctrica pidió tres meses de prórroga alegando falta de acuerdo en los nudos
-   frontera y normas técnicas pendientes. **La CNMC se la denegó** y fijó el
+   frontera y normas técnicas pendientes. La CNMC se la denegó y fijó el
    [20 de febrero de 2026 a las 12:00 como fecha de publicación](https://www.cnmc.es/prensa/mapa-capacidad-transporte-20260213).
 4. Ese día REE publicó por primera vez las capacidades de acceso de demanda de la red de
-   transporte, con compromiso de **actualización mensual**.
-5. El **15 de abril de 2026** la CNMC publicó sus propios mapas interactivos agregando
+   transporte, con compromiso de actualización mensual.
+5. El 15 de abril de 2026 la CNMC publicó sus propios mapas interactivos agregando
    transporte y distribución.
 
 ### 3.2 Las cifras oficiales
@@ -227,15 +227,15 @@ De la nota de Red Eléctrica de 20 de febrero de 2026:
 > «On the transmission grid alone, access and connection permits have been granted for
 > 129 GW of wind and solar installations, 16 GW of storage facilities, and **19 GW of
 > demand facilities**. Of the latter, since 2022, when the current planning was approved,
-> **11.8 GW of capacity has been granted for new demand, none of which is yet in service**.
+> 11.8 GW of capacity has been granted for new demand, none of which is yet in service.
 > Holders have five years from the date the permit was granted to connect. The volume of
 > permitted demand pending connection on the transmission grid alone would represent a
-> **25 % increase over the country's current demand**.»
+> 25 % increase over the country's current demand.»
 
 Y:
 
 > «The published figures show that the transmission grid still has capacity for new demand
-> at **25 % of its nodes**.»
+> at 25 % of its nodes.»
 
 Es decir, el 75 % de los nudos de transporte están copados para nueva demanda. En
 distribución la situación es peor: AELEC cifraba en septiembre de 2025 que
@@ -273,7 +273,7 @@ Advertencias imprescindibles sobre esta tabla:
   interdependencias entre nudos (zonas de capacidad compartida), de modo que otorgar en
   uno reduce la de otros. Por eso arriba se cuentan nudos y se da el máximo, no sumas.
 - **Caduca en semanas.** El fichero se actualiza mensualmente.
-- Que un nudo tenga 0 MW disponibles **no significa que no se pueda conectar nunca**:
+- Que un nudo tenga 0 MW disponibles no significa que no se pueda conectar nunca:
   significa que no se puede por el criterio general hoy. Puede haber capacidad reservada
   a concurso, o puede aflorar tras un refuerzo de red o tras un cambio de metodología.
 
@@ -283,7 +283,7 @@ El fichero de REE indica el criterio limitante de cada nudo, y esto importa porq
 determina si la limitación es estructural o disolvible:
 
 - **`WSCR_Nudo`**. Potencia de cortocircuito insuficiente. Solo aplica a consumos con
-  **electrónica de potencia** en la interfaz (en la nomenclatura de REE, «CEP»), que es
+  electrónica de potencia en la interfaz (en la nomenclatura de REE, «CEP»), que es
   precisamente el caso de un centro de datos con rectificadores y SAI. Un nudo puede
   tener mucha capacidad para un consumo convencional y muy poca para un CPD.
 - **`Est_Dem_Nudo` / `Est_Dem_Zona`**. Criterio estático: la red no aguanta los flujos.
@@ -292,13 +292,13 @@ determina si la limitación es estructural o disolvible:
   como más susceptible de relajarse:
 
 > «The results of the studies conducted, particularly those related to the dynamic
-> criterion, confirm the need to ensure robustness requirements (**voltage dip support**)
+> criterion, confirm the need to ensure robustness requirements (voltage dip support)
 > in future demand facilities that come into service, especially those connected through
 > power electronics. The upcoming regulatory updates are expected to **significantly
 > increase the capacity that can be granted at many nodes** where the current value is
 > limited by the dynamic criterion.»
 
-De ahí que el fichero distinga **CH** («con hueco») y **SH** («sin hueco»): instalaciones
+De ahí que el fichero distinga CH («con hueco») y SH («sin hueco»): instalaciones
 capaces o no de soportar huecos de tensión. Un CPD que se diseñe para aguantar huecos
 podrá acceder, en varios nudos, a más capacidad que uno que no.
 
@@ -306,14 +306,14 @@ podrá acceder, en varios nudos, a más capacidad que uno que no.
 
 El 11 de agosto de 2026 se publicó la
 [Resolución de la CNMC de 31 de julio de 2026](https://www.boe.es/buscar/act.php?id=BOE-A-2026-17571),
-que establece los **permisos de acceso flexible de la demanda**. La capacidad flexible es
+que establece los permisos de acceso flexible de la demanda. La capacidad flexible es
 aquella en la que no se garantiza el suministro todas las horas del año: el gestor
 determina un patrón y un porcentaje de horas de funcionamiento esperado. Para el criterio
 estático en transporte, la resolución fija que la capacidad flexible garantice la demanda
 en el mismo percentil que la firme en caso base y en el 90 % del tiempo ante N-X, con
 sobrecargas admisibles de hasta el 140 %, y advierte de que «esta expectativa de consumo
 en ningún caso ha de entenderse como un compromiso en la garantía de suministro». Los
-gestores de distribución tienen hasta el **1 de enero de 2028** para disponer de las
+gestores de distribución tienen hasta el 1 de enero de 2028 para disponer de las
 herramientas de desconexión preventiva o correctiva necesarias.
 
 Para un centro de datos, el acceso flexible es una vía real de conexión anticipada, pero
@@ -330,8 +330,8 @@ La memoria del análisis de impacto normativo del proyecto de real decreto de ce
 datos (MITECO, agosto de 2026) lo dice sin rodeos:
 
 > «En los últimos años, el gestor de la red de transporte ha concedido a este tipo de
-> instalaciones **más de 6 GW de capacidad de acceso**, mientras que en el ámbito de la
-> distribución, se han otorgado **en torno a otros 6 GW**. A esas cifras debe sumarse el
+> instalaciones más de 6 GW de capacidad de acceso, mientras que en el ámbito de la
+> distribución, se han otorgado en torno a otros 6 GW. A esas cifras debe sumarse el
 > interés por capacidad de acceso identificado durante la tramitación de la Planificación
 > de la Red de Transporte 2025-2030, cuyo volumen agregado, de atenderse, obligaría a
 > dedicar buena parte de los esfuerzos económicos previstos en dicha planificación a los
@@ -354,7 +354,7 @@ Con mucho cuidado, y el mapa debe decirlo explícitamente:
 
 - **Solicitado ≠ concedido ≠ construido.** Los 12 GW son permisos concedidos, no obra. Y
   REE es tajante: de los 11,8 GW de nueva demanda otorgada en transporte desde 2022,
-  **ninguno estaba en servicio en febrero de 2026**.
+  ninguno estaba en servicio en febrero de 2026.
 - **Concedido ≠ va a construirse.** El permiso es barato de mantener (lo era: ver §1.5) y
   caro de perder, así que sobra incentivo para pedir de más, pedir en varios sitios y
   quedarse con el mejor. Es exactamente el fenómeno que el RDL 7/2026 llama
@@ -374,7 +374,7 @@ El propio RDL 7/2026 explica la lógica de política energética:
 Y describe el problema técnico de fondo: los consumos de CPD «son esencialmente planos y
 no disponen a priori de la flexibilidad necesaria», y «a diferencia de otros vectores y
 consumos, como el hidrógeno renovable o la electrificación de la industria, son en buena
-parte **adicionales**: no sustituyen tecnológicamente a consumos actualmente responsables
+parte adicionales: no sustituyen tecnológicamente a consumos actualmente responsables
 de emisiones».
 
 ### 4.3 El pulso territorial
@@ -382,7 +382,7 @@ de emisiones».
 La tensión no es solo entre Gobierno y promotores. En la tramitación de la planificación
 a 2030, el Gobierno de Aragón manifestó públicamente su decepción con el reparto estatal,
 al considerar que no permite conectar todos los centros de datos proyectados en la
-comunidad. La propuesta a 2030 asigna **3,8 GW a centros de datos** de los 27,7 GW de
+comunidad. La propuesta a 2030 asigna 3,8 GW a centros de datos de los 27,7 GW de
 nueva demanda previstos en la red de transporte, y solo incorpora al escenario
 «aproximadamente un 25 % de las propuestas de demanda recibidas».
 
@@ -394,7 +394,7 @@ Es el mecanismo que sustituye a la cola cuando en un nudo hay más peticiones qu
 capacidad, y merece atención porque su primera edición dice mucho sobre el trato que
 reciben los CPD.
 
-**Convocatoria**: [Resolución de 11 de julio de 2025, de la Secretaría de Estado de
+Convocatoria: [Resolución de 11 de julio de 2025, de la Secretaría de Estado de
 Energía](https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-14863) (BOE de 17-07-2025).
 Ocho nudos y la capacidad convocada en cada uno:
 
@@ -412,14 +412,14 @@ Ocho nudos y la capacidad convocada en cada uno:
 Con dos zonas de capacidad compartida: Cristóbal Colón / Palos / Torrearenillas 220
 (276 MW conjuntos) y Brazatortas 400 / 220 (1.217 MW).
 
-**Garantías para participar** (anexo VII): 25 €/kW solicitado por el compromiso de fecha
+Garantías para participar (anexo VII): 25 €/kW solicitado por el compromiso de fecha
 de inicio del consumo y otros 25 €/kW por el compromiso de emisiones evitadas,
 adicionales e independientes de las del procedimiento ordinario de acceso.
 
-**Criterios de puntuación**: emisiones de CO₂ evitadas, fecha de inicio del consumo y
+Criterios de puntuación: emisiones de CO₂ evitadas, fecha de inicio del consumo y
 volumen de inversión (con inversión unitaria en €/MW).
 
-**Resolución**: [Resolución de 24 de febrero de 2026](https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-4357)
+Resolución: [Resolución de 24 de febrero de 2026](https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-4357)
 (BOE de 25-02-2026). Adjudicatarios:
 
 | Nudo | Instalación | Adjudicatario | MW |
@@ -433,15 +433,15 @@ volumen de inversión (con inversión unitaria en €/MW).
 **Lo relevante para este proyecto: ninguna de las solicitudes cuyo nombre societario las
 identifica como promotoras de centros de datos llegó a ser valorada.** El anexo II relaciona
 como excluidas, por las causas a, b y c del anexo V.D de la convocatoria, referidas a
-defectos de documentación y de garantías, las solicitudes de **CPD4GREEN, S.A.U.** en
-Brazatortas 400, **Benbros DC, S.L.** en Francolí 220, **ACS DC Infra, S.L.U.** en Nuevo Vigo
-220 e **Iberdrola Clientes, S.A.** en Palos 220 (esta última, de actividad no identificable
+defectos de documentación y de garantías, las solicitudes de CPD4GREEN, S.A.U. en
+Brazatortas 400, Benbros DC, S.L. en Francolí 220, ACS DC Infra, S.L.U. en Nuevo Vigo
+220 e Iberdrola Clientes, S.A. en Palos 220 (esta última, de actividad no identificable
 por el nombre). Los cinco adjudicatarios son proyectos de acero verde, energía, automoción,
 gases industriales y cobre. La resolución no clasifica los proyectos por sector: la
 atribución anterior se basa en el nombre de la instalación declarado en el anexo III, y en
 el caso de la «Instalación de Palos» de Moeve el anexo no precisa de qué se trata.
 
-A 3 de agosto de 2026, el fichero de REE marca **54 nudos como «nudo de concurso»**, entre
+A 3 de agosto de 2026, el fichero de REE marca 54 nudos como «nudo de concurso», entre
 ellos varios en pleno corazón de los clusters de CPD: Algete 220, Anchuelo 220, La Cereal 400, Fortuna 220 y Prado Santo Domingo 220 (Madrid),
 AVE Zaragoza 220, Cartujos 220, Fuendetodos 220, Montetorrero 220, Peñaflor 220, Plaza II
 (Moncasi) 220 y Villanueva de Gállego 220 (Aragón), Zona Franca 220 y Puigpelat 220
@@ -477,29 +477,29 @@ Es la norma que más directamente afecta a este mapa. Estado a 29-08-2026: **bor
 audiencia e información pública, abierta del 27 de agosto al 4 de septiembre de 2026**.
 No está aprobado. Contenido:
 
-- **Ámbito**: centros de datos con **potencia de acceso ≥ 1 MW**. Obligaciones de
-  publicidad a partir de **500 kW de potencia de TI**.
+- **Ámbito**: centros de datos con potencia de acceso ≥ 1 MW. Obligaciones de
+  publicidad a partir de 500 kW de potencia de TI.
 - **Condición para obtener el permiso de acceso** (art. 4): declaración responsable de
   resiliencia y soberanía digital; declaración de eficiencia energética e hídrica; y
   cumplimiento de los requisitos de energía renovable.
-- **Adicionalidad** (art. 8): cubrir el **80 % del consumo total** con autoconsumo o con
+- **Adicionalidad** (art. 8): cubrir el 80 % del consumo total con autoconsumo o con
   PPA con instalaciones renovables ubicadas en España, cuyas actas de puesta en servicio
   no sean anteriores en más de 18 meses a la entrada en funcionamiento del CPD.
-- **Correlación horaria** (art. 9): que **cada hora** el consumo esté respaldado al menos
-  en un **80 %** por generación renovable de esa misma hora.
+- **Correlación horaria** (art. 9): que cada hora el consumo esté respaldado al menos
+  en un 80 % por generación renovable de esa misma hora.
 - **Eficiencia**: hasta que se aplique el etiquetado europeo (previsto para agosto de
-  2027), **PUE ≤ 1,15 y WUE ≤ 0,1**, calculados según el anexo III del Reglamento
+  2027), PUE ≤ 1,15 y WUE ≤ 0,1, calculados según el anexo III del Reglamento
   Delegado (UE) 2024/1364.
 - **Soberanía digital**: establecimiento en la UE, permanencia de los datos operativos en
   la UE, control y trazabilidad del soporte prestado desde terceros países, supervisión de
   subcontratistas y medidas frente a requerimientos de datos de autoridades extranjeras.
 - **Consecuencias**: recargos sobre peajes y cargos, y en última instancia **pérdida de
   los permisos de acceso y conexión**.
-- **Transitorias**: los proyectos con permiso otorgado y no conectados tienen **seis meses**
+- **Transitorias**: los proyectos con permiso otorgado y no conectados tienen seis meses
   para acreditar cumplimiento, so pena de caducidad con ejecución de garantías; y se abre
-  una ventana de **seis meses para renunciar** sin ejecución de avales.
+  una ventana de seis meses para renunciar sin ejecución de avales.
 - **Efecto sobre los concursos** (DA 1.ª): las solicitudes que no acrediten estos
-  requisitos **no se tendrán en cuenta** para activar un concurso de demanda ni para abrir
+  requisitos no se tendrán en cuenta para activar un concurso de demanda ni para abrir
   el mes de publicidad del art. 20 quater.
 
 Si se aprueba en estos términos, cambia por completo la economía de un proyecto de CPD en
@@ -512,19 +512,19 @@ nuevo, casado hora a hora, en territorio español.
 
 Resumen para no equivocarse de documento (el detalle está en `data/red/actuaciones.yaml`):
 
-- **Vigente y vinculante**: Planificación de la Red de Transporte **Horizonte 2026**
+- **Vigente y vinculante**: Planificación de la Red de Transporte Horizonte 2026
   (periodo 2021-2026), aprobada por Consejo de Ministros el 22 de marzo de 2022, con tres
   modificaciones de aspectos puntuales (abril de 2024, +489 M€; julio de 2025, +750 M€;
-  julio de 2026, +615 M€). Inversión total tras la tercera MAP: **8.818 M€**.
-- **En tramitación, NO aprobada**: Planificación **2025-2030** (horizonte 2030). Propuesta
+  julio de 2026, +615 M€). Inversión total tras la tercera MAP: 8.818 M€.
+- **En tramitación, NO aprobada**: Planificación 2025-2030 (horizonte 2030). Propuesta
   presentada el 12 de septiembre de 2025, audiencia pública del 10 de octubre al 16 de
   diciembre de 2025. A 29 de agosto de 2026 el proceso está en la **fase 4 de 6
   (Estudios)**: Red Eléctrica analiza alegaciones y elabora la Propuesta de Desarrollo.
-  Cifras indicativas: **13.590 M€**, **27,7 GW** de nueva demanda en transporte y 5,3 GW
-  en distribución, **422 ampliaciones de conexión**, con **3,8 GW asignados a centros de
+  Cifras indicativas: 13.590 M€, 27,7 GW de nueva demanda en transporte y 5,3 GW
+  en distribución, 422 ampliaciones de conexión, con **3,8 GW asignados a centros de
   datos** frente a 13,1 GW a hidrógeno verde y 9 GW a industria.
 
-El capítulo **MAP_CONSUM** de la modificación de abril de 2024 es el bloque de red más
+El capítulo MAP_CONSUM de la modificación de abril de 2024 es el bloque de red más
 directamente ligado a la nueva demanda: 342,9 M€ para conectar nuevos consumidores
 directamente a la red de transporte, con actuaciones en Sagunto (nueva SE Saguntum
 400/220 kV, 62,1 M€), el eje de 220 kV de Zaragoza (Peñaflor, Villanueva de Gállego,
@@ -537,7 +537,7 @@ Verneda, Farners-Riudarenes y Algete 220 kV. Su motivación literal:
 > caracterizan por conllevar unos consumos de electricidad significativos, razón por la
 > cual se requiere su abastecimiento directamente desde la red de transporte eléctrica.»
 
-Ojo: el documento **no nombra empresas ni tipos de instalación**. «Digitalización de la
+Ojo: el documento no nombra empresas ni tipos de instalación. «Digitalización de la
 economía» no equivale a «centro de datos». No se debe atribuir una actuación concreta a un
 CPD concreto sin una fuente que lo diga.
 
