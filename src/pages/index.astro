@@ -456,6 +456,113 @@ const modelosPresentes = Object.keys(MODELO_ETIQUETA).filter((m) => sitios.some(
     padding: 0.3rem 0.45rem;
   }
 
+  /* Aviso sobre el lienzo: un mapa que falla en silencio es indistinguible de
+     un mapa vacío, así que cuando falla lo dice y explica qué sigue sirviendo. */
+  .zona-mapa :global(.aviso-mapa) {
+    position: absolute;
+    z-index: 15;
+    top: 0.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(30rem, calc(100% - 2rem));
+    padding: 0.8rem 2.2rem 0.85rem 0.95rem;
+    background: var(--papel);
+    border: 1px solid var(--borde-fuerte);
+    border-left: 3px solid var(--aviso);
+    border-radius: var(--radio);
+    box-shadow: 0 6px 24px rgb(0 0 0 / 0.16);
+    font-size: 0.85rem;
+  }
+
+  .zona-mapa :global(.aviso-mapa strong) {
+    display: block;
+    font-family: var(--serif);
+    font-size: 0.98rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .zona-mapa :global(.aviso-mapa p) {
+    margin: 0;
+    color: var(--tinta-2);
+    line-height: 1.45;
+  }
+
+  .zona-mapa :global(.aviso-mapa button) {
+    margin-top: 0.6rem;
+    font-size: 0.83rem;
+  }
+
+  .zona-mapa :global(.aviso-cerrar) {
+    position: absolute;
+    top: 0.35rem;
+    right: 0.35rem;
+    margin: 0;
+    padding: 0 0.3rem;
+    border: 0;
+    background: none;
+    color: var(--tinta-3);
+    font-size: 1.15rem;
+    line-height: 1.2;
+  }
+
+  .zona-mapa :global(.aviso-cerrar:hover) {
+    background: none;
+    color: var(--tinta);
+  }
+
+  /* Los controles de MapLibre vienen con su propio blanco y su propia sombra:
+     se los trae a la paleta del sitio, y sus iconos se invierten en oscuro. */
+  :global(.maplibregl-ctrl-group) {
+    background: var(--papel);
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    box-shadow: 0 1px 4px rgb(0 0 0 / 0.12);
+    overflow: hidden;
+  }
+
+  :global(.maplibregl-ctrl-group button) {
+    width: 28px;
+    height: 28px;
+    background: transparent;
+    border-radius: 0;
+    transition: background-color 0.12s ease;
+  }
+
+  :global(.maplibregl-ctrl-group button:hover) {
+    background: var(--papel-2);
+  }
+
+  :global(.maplibregl-ctrl-group button + button) {
+    border-top: 1px solid var(--borde);
+  }
+
+  :global(.maplibregl-ctrl-attrib) {
+    background: color-mix(in srgb, var(--papel) 88%, transparent);
+    color: var(--tinta-3);
+    font-size: 0.68rem;
+  }
+
+  :global(.maplibregl-ctrl-attrib a) {
+    color: var(--tinta-2);
+  }
+
+  :global(.maplibregl-ctrl-scale) {
+    background: color-mix(in srgb, var(--papel) 80%, transparent);
+    border-color: var(--borde-fuerte);
+    color: var(--tinta-2);
+    font-size: 0.68rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :global(:root:not([data-tema='claro']) .maplibregl-ctrl-icon) {
+      filter: invert(0.88);
+    }
+  }
+
+  :global(:root[data-tema='oscuro'] .maplibregl-ctrl-icon) {
+    filter: invert(0.88);
+  }
+
   @media (max-width: 900px) {
     .disposicion {
       grid-template-columns: 1fr;
@@ -490,6 +597,11 @@ const modelosPresentes = Object.keys(MODELO_ETIQUETA).filter((m) => sitios.some(
     /* El botón de filtros flota sobre el panel: se le deja sitio. */
     .panel-cabecera {
       padding-left: 6rem;
+    }
+
+    /* El botón de filtros ocupa la esquina: el aviso baja para no taparlo. */
+    .zona-mapa :global(.aviso-mapa) {
+      top: 3.2rem;
     }
 
     .leyenda {

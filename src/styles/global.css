@@ -439,30 +439,311 @@ tbody tr:hover {
   color: var(--tinta-3);
 }
 
+/* --- controles ------------------------------------------------------------
+
+   Los controles nativos se rehacen a mano porque los de serie no comparten ni
+   la paleta ni el tema oscuro del resto del sitio. Los iconos van en un gris
+   intermedio (#7d7a72) que sirve para los dos temas: así el mismo SVG vale
+   para ambos y no hay que duplicar cada regla.
+   -------------------------------------------------------------------------- */
+
 button,
 select,
 input[type='search'],
-input[type='text'] {
+input[type='text'],
+input[type='number'] {
   font: inherit;
   font-size: 0.87rem;
   color: var(--tinta);
   background: var(--papel);
   border: 1px solid var(--borde-fuerte);
   border-radius: var(--radio);
-  padding: 0.35rem 0.5rem;
+  padding: 0.35rem 0.55rem;
+  transition:
+    border-color 0.12s ease,
+    background-color 0.12s ease;
+}
+
+button:hover,
+select:hover,
+input[type='search']:hover,
+input[type='text']:hover {
+  border-color: var(--tinta-3);
+}
+
+select:focus,
+input[type='search']:focus,
+input[type='text']:focus {
+  border-color: var(--acento);
+  outline: none;
+  box-shadow: 0 0 0 3px var(--acento-suave);
+}
+
+::placeholder {
+  color: var(--tinta-3);
+  opacity: 1;
 }
 
 button {
   cursor: pointer;
+  background: var(--papel-2);
+  user-select: none;
 }
 
 button:hover {
-  background: var(--papel-2);
+  background: var(--papel-3);
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Buscadores: la lupa indica de un vistazo que se escribe para filtrar. */
+input[type='search'] {
+  padding-left: 1.9rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%237d7a72' stroke-width='1.6' stroke-linecap='round'%3E%3Ccircle cx='6.8' cy='6.8' r='4.4'/%3E%3Cpath d='M10.2 10.2 14 14'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: left 0.55rem center;
+  background-size: 0.85rem;
+}
+
+input[type='search']::-webkit-search-cancel-button {
+  appearance: none;
+  width: 0.85rem;
+  height: 0.85rem;
+  cursor: pointer;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' stroke='%237d7a72' stroke-width='1.7' stroke-linecap='round'%3E%3Cpath d='M4 4l8 8M12 4l-8 8'/%3E%3C/svg%3E")
+    no-repeat center / contain;
+}
+
+select {
+  appearance: none;
+  cursor: pointer;
+  padding-right: 1.85rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%237d7a72' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 6.2l4 4 4-4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+  background-size: 0.7rem;
+  text-overflow: ellipsis;
+}
+
+/* La lista desplegada la pinta el sistema: al menos que no salga en blanco
+   sobre un sitio en oscuro. */
+option {
+  background: var(--papel);
+  color: var(--tinta);
+}
+
+/* Casillas: cuadro propio, con la marca en el color del estado cuando la
+   casilla filtra por estado, para que coincida con el color del mapa. */
+input[type='checkbox'] {
+  --marca: var(--acento);
+  appearance: none;
+  /* Los navegadores fijan `color` en los controles de formulario, y sin esto
+     currentColor no hereda el color del estado que pinta la etiqueta. */
+  color: inherit;
+  flex: none;
+  width: 1.05rem;
+  height: 1.05rem;
+  margin: 0;
+  display: inline-grid;
+  place-content: center;
+  border: 1px solid var(--borde-fuerte);
+  border-radius: var(--radio);
+  background: var(--papel);
+  cursor: pointer;
+  transition:
+    background-color 0.12s ease,
+    border-color 0.12s ease;
+}
+
+.casilla[class*='estado-'] input[type='checkbox'] {
+  --marca: currentColor;
+}
+
+input[type='checkbox']::before {
+  content: '';
+  width: 0.55rem;
+  height: 0.3rem;
+  border-left: 2px solid var(--papel);
+  border-bottom: 2px solid var(--papel);
+  transform: translateY(-1px) rotate(-45deg) scale(0.5);
+  opacity: 0;
+  transition:
+    opacity 0.12s ease,
+    transform 0.12s ease;
+}
+
+input[type='checkbox']:hover:not(:disabled) {
+  border-color: var(--tinta-3);
+}
+
+input[type='checkbox']:checked {
+  background: var(--marca);
+  border-color: var(--marca);
+}
+
+input[type='checkbox']:checked::before {
+  opacity: 1;
+  transform: translateY(-1px) rotate(-45deg) scale(1);
+}
+
+input[type='checkbox']:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.casilla.inerte {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Deslizador: la parte recorrida se pinta con --relleno, que fija el script al
+   mover el mando. Sin script queda el carril entero en gris, que es correcto. */
+input[type='range'] {
+  --relleno: 0%;
+  appearance: none;
+  width: 100%;
+  height: 1.2rem;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+input[type='range']::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    var(--acento) 0 var(--relleno),
+    var(--papel-3) var(--relleno) 100%
+  );
+}
+
+input[type='range']::-webkit-slider-thumb {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  margin-top: -5px;
+  border-radius: 50%;
+  background: var(--papel);
+  border: 2px solid var(--acento);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.25);
+  transition: transform 0.12s ease;
+}
+
+input[type='range']::-moz-range-track {
+  height: 4px;
+  border-radius: 999px;
+  background: var(--papel-3);
+}
+
+input[type='range']::-moz-range-progress {
+  height: 4px;
+  border-radius: 999px;
+  background: var(--acento);
+}
+
+input[type='range']::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--papel);
+  border: 2px solid var(--acento);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.25);
+}
+
+input[type='range']:hover::-webkit-slider-thumb,
+input[type='range']:active::-webkit-slider-thumb {
+  transform: scale(1.12);
+}
+
+input[type='range']:focus-visible {
+  outline: none;
+}
+
+input[type='range']:focus-visible::-webkit-slider-thumb {
+  box-shadow: 0 0 0 4px var(--acento-suave);
+}
+
+input[type='range']:focus-visible::-moz-range-thumb {
+  box-shadow: 0 0 0 4px var(--acento-suave);
 }
 
 :focus-visible {
   outline: 2px solid var(--acento);
   outline-offset: 2px;
+}
+
+/* En pantallas de dedo los controles crecen: 1 rem de casilla es un blanco
+   demasiado pequeño para tocar. */
+@media (max-width: 900px) {
+  .casilla {
+    padding: 0.4rem 0;
+  }
+
+  input[type='checkbox'] {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+
+  input[type='range'] {
+    height: 1.7rem;
+  }
+
+  input[type='range']::-webkit-slider-thumb {
+    width: 18px;
+    height: 18px;
+    margin-top: -7px;
+  }
+
+  input[type='range']::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* --- barras de desplazamiento --------------------------------------------
+   Finas y sin carril visible: el panel del mapa y las tablas anchas se
+   desplazan a menudo, y la barra de serie pesa demasiado en la composición.
+   -------------------------------------------------------------------------- */
+
+html {
+  scrollbar-color: var(--borde-fuerte) transparent;
+  scrollbar-width: thin;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track,
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--borde-fuerte);
+  background-clip: content-box;
+  border: 3px solid transparent;
+  border-radius: 999px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--tinta-3);
+  background-clip: content-box;
+}
+
+::selection {
+  background: var(--acento-suave);
+  color: var(--tinta);
 }
 
 /* --- menú plegable en pantallas estrechas --------------------------------- */

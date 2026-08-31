@@ -1,6 +1,6 @@
 # Parte de validación del dataset
 
-Generado el 2026-08-30 por `npm run validate`.
+Generado el 2026-08-31 por `npm run validate`.
 
 - Emplazamientos cargados: **162**
 - Nodos de red: **133**

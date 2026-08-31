@@ -19,7 +19,8 @@
     "validate:strict": "node scripts/validate.mjs --strict",
     "geo": "node scripts/geocode-municipios.mjs",
     "reconcile": "node scripts/reconcile.mjs",
-    "refresh:sellar": "node scripts/check-updates.mjs --sellar"
+    "refresh:sellar": "node scripts/check-updates.mjs --sellar",
+    "contorno": "node scripts/fetch-contorno.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",

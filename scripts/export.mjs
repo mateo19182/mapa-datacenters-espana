@@ -395,6 +395,10 @@ if (existsSync(lineas)) {
   writeFileSync(join(PUBLICO, 'lineas.geojson'), JSON.stringify({ type: 'FeatureCollection', features: [] }), 'utf8')
 }
 
+// Contorno de costa para el mapa de reserva (ver scripts/fetch-contorno.mjs).
+const contorno = join(RAIZ, 'data/geo/contorno.geojson')
+if (existsSync(contorno)) copyFileSync(contorno, join(PUBLICO, 'contorno.geojson'))
+
 // La propia base SQLite se publica como descarga.
 copyFileSync(join(RAIZ, 'build/datacenters.db'), join(PUBLICO, 'datacenters.db'))
 

@@ -71,6 +71,7 @@ npm run dev        # valida, reconcilia, construye los datos y levanta el sitio
 | `npm run refresh:sellar` | Igual, y actualiza la fecha de verificación de las fichas comprobadas |
 | `npm run propuestas` | Simula la integración de `data/propuestas/` y separa los conflictos |
 | `npm run grid:osm` | Recachea el trazado de 220/400 kV desde OpenStreetMap |
+| `npm run contorno` | Recachea el contorno de costa del mapa de reserva desde Natural Earth |
 | `npm run geo` | Recachea los centroides municipales |
 
 Los dos últimos son los únicos que salen a la red al construir, se ejecutan a

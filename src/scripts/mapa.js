@@ -69,6 +69,9 @@ const estado = {
 }
 
 let mapa
+// Si el estilo base no carga, el mapa de reserva no trae glifos y los rótulos
+// de texto no pueden pintarse.
+let conRotulos = true
 let sitios = { type: 'FeatureCollection', features: [] }
 let inventario = []
 const cargadas = new Set()
@@ -195,11 +198,13 @@ function pintarLista() {
 
 function aplicar() {
   const filtro = filtroMapLibre()
+  // `mapa?` y no `mapa`: si el lienzo no ha podido crearse, el panel y la lista
+  // siguen funcionando como buscador. Los filtros no dependen del mapa.
   for (const capa of ['sitios-circulo', 'sitios-borde', 'sitios-etiqueta']) {
-    if (mapa.getLayer(capa)) mapa.setFilter(capa, filtro)
+    if (mapa?.getLayer(capa)) mapa.setFilter(capa, filtro)
   }
   for (const capa of ['sitios-circulo', 'sitios-borde']) {
-    if (mapa.getLayer(capa)) mapa.setPaintProperty(capa, 'circle-radius', radioPorMetrica(estado.metrica))
+    if (mapa?.getLayer(capa)) mapa.setPaintProperty(capa, 'circle-radius', radioPorMetrica(estado.metrica))
   }
   pintarLista()
   guardarEnUrl()
@@ -268,12 +273,33 @@ function leerDeUrl() {
 
 // --- capas opcionales --------------------------------------------------------
 
+// Al cambiar de estilo, MapLibre a veces conserva nuestras fuentes y capas (si
+// consigue diferenciar los dos estilos) y a veces las borra. Volver a añadirlas
+// sin más lanza «there is already a source with ID», así que se quitan primero.
+function quitarSiEsta(capas, fuentes = []) {
+  for (const c of capas) if (mapa.getLayer(c)) mapa.removeLayer(c)
+  for (const f of fuentes) if (mapa.getSource(f)) mapa.removeSource(f)
+}
+
+// Los manejadores de eventos sobreviven a un cambio de estilo, que sí borra las
+// capas: se registran una sola vez por capa para no abrir la ficha dos veces.
+const conEventos = new Set()
+
+function conManejadores(capa, abrir) {
+  if (conEventos.has(capa)) return
+  conEventos.add(capa)
+  mapa.on('click', capa, (e) => abrir(e.features[0].properties.id))
+  mapa.on('mouseenter', capa, () => (mapa.getCanvas().style.cursor = 'pointer'))
+  mapa.on('mouseleave', capa, () => (mapa.getCanvas().style.cursor = ''))
+}
+
 async function cargarCapa(nombre) {
   if (cargadas.has(nombre)) return
   cargadas.add(nombre)
 
   if (nombre === 'lineas') {
     const datos = await (await fetch('/datos/lineas.geojson')).json()
+    quitarSiEsta(['lineas-trazado'], ['lineas'])
     mapa.addSource('lineas', { type: 'geojson', data: datos })
     mapa.addLayer(
       {
@@ -296,6 +322,7 @@ async function cargarCapa(nombre) {
       fetch('/datos/red.json').then((r) => r.json()),
     ])
     for (const n of completo) detalleRed.set(n.id, n)
+    quitarSiEsta(['subestaciones-simbolo'], ['subestaciones'])
     mapa.addSource('subestaciones', { type: 'geojson', data: datos })
     mapa.addLayer(
       {
@@ -307,11 +334,16 @@ async function cargarCapa(nombre) {
           'icon-image': 'cuadro-subestacion',
           'icon-allow-overlap': false,
           'icon-size': ['interpolate', ['linear'], ['zoom'], 5, 0.45, 11, 1],
-          'text-field': ['get', 'nombre'],
-          'text-size': 10,
-          'text-offset': [0, 1.1],
-          'text-anchor': 'top',
-          'text-optional': true,
+          // Sin glifos, pedir texto tumbaría la capa entera y con ella los iconos.
+          ...(conRotulos
+            ? {
+                'text-field': ['get', 'nombre'],
+                'text-size': 10,
+                'text-offset': [0, 1.1],
+                'text-anchor': 'top',
+                'text-optional': true,
+              }
+            : {}),
         },
         paint: {
           'text-color': oscuro() ? '#c9c6c0' : '#55524c',
@@ -323,9 +355,7 @@ async function cargarCapa(nombre) {
       },
       'sitios-borde',
     )
-    mapa.on('click', 'subestaciones-simbolo', (e) => abrirSubestacion(e.features[0].properties.id))
-    mapa.on('mouseenter', 'subestaciones-simbolo', () => (mapa.getCanvas().style.cursor = 'pointer'))
-    mapa.on('mouseleave', 'subestaciones-simbolo', () => (mapa.getCanvas().style.cursor = ''))
+    conManejadores('subestaciones-simbolo', abrirSubestacion)
   }
 
   if (nombre === 'renovables') {
@@ -334,6 +364,7 @@ async function cargarCapa(nombre) {
       fetch('/datos/renovables.json').then((r) => r.json()),
     ])
     for (const a of completo) detalleRenovables.set(a.id, a)
+    quitarSiEsta(['renovables-circulo'], ['renovables'])
     mapa.addSource('renovables', { type: 'geojson', data: datos })
     mapa.addLayer({
       id: 'renovables-circulo',
@@ -347,9 +378,7 @@ async function cargarCapa(nombre) {
         'circle-stroke-color': oscuro() ? '#15171a' : '#fbfaf8',
       },
     })
-    mapa.on('click', 'renovables-circulo', (e) => abrirRenovable(e.features[0].properties.id))
-    mapa.on('mouseenter', 'renovables-circulo', () => (mapa.getCanvas().style.cursor = 'pointer'))
-    mapa.on('mouseleave', 'renovables-circulo', () => (mapa.getCanvas().style.cursor = ''))
+    conManejadores('renovables-circulo', abrirRenovable)
   }
 }
 
@@ -463,10 +492,147 @@ function iconoSubestacion() {
   return { width: tam, height: tam, data: datos }
 }
 
+// --- arranque tolerante a fallos ---------------------------------------------
+
+// El estilo base vive en un CDN ajeno. Cuando no se puede cargar —bloqueador de
+// contenidos, filtrado de red corporativo, caída del proveedor— el mapa se
+// queda negro y, antes de este cambio, se llevaba consigo el resto de la vista:
+// el `load` no llegaba nunca, así que ni los datos ni los filtros se montaban.
+// Ahora se cae a un estilo servido desde este mismo dominio.
+const ESTILO_RESERVA = () => ({
+  version: 8,
+  sources: {
+    contorno: {
+      type: 'geojson',
+      data: '/datos/contorno.geojson',
+      attribution: 'contorno: Natural Earth (dominio público)',
+    },
+  },
+  layers: [
+    { id: 'mar', type: 'background', paint: { 'background-color': oscuro() ? '#0f1215' : '#e9edf0' } },
+    { id: 'tierra', type: 'fill', source: 'contorno', paint: { 'fill-color': oscuro() ? '#1b1f24' : '#fbfaf8' } },
+    {
+      id: 'costa',
+      type: 'line',
+      source: 'contorno',
+      paint: { 'line-color': oscuro() ? '#3d444c' : '#c7c2b7', 'line-width': 0.9 },
+    },
+  ],
+})
+
+/** Un lienzo WebGL de prueba, liberado en el acto para no robarle el contexto al mapa. */
+function soportaWebgl() {
+  try {
+    const lienzo = document.createElement('canvas')
+    const ctx = lienzo.getContext('webgl2') ?? lienzo.getContext('webgl')
+    if (!ctx) return false
+    ctx.getExtension('WEBGL_lose_context')?.loseContext()
+    return true
+  } catch {
+    return false
+  }
+}
+
+/** Mensaje sobre el mapa: un fallo silencioso es indistinguible de un mapa vacío. */
+function avisarEnMapa({ titulo, texto, accion }) {
+  const zona = document.getElementById('mapa')?.parentElement
+  if (!zona) return
+  zona.querySelector('.aviso-mapa')?.remove()
+  const caja = document.createElement('div')
+  caja.className = 'aviso-mapa'
+  caja.innerHTML = `<strong>${titulo}</strong><p>${texto}</p>`
+  if (accion) {
+    const boton = document.createElement('button')
+    boton.type = 'button'
+    boton.textContent = accion.texto
+    boton.addEventListener('click', () => {
+      caja.remove()
+      accion.hacer()
+    })
+    caja.append(boton)
+  }
+  const cerrar = document.createElement('button')
+  cerrar.type = 'button'
+  cerrar.className = 'aviso-cerrar'
+  cerrar.setAttribute('aria-label', 'Cerrar el aviso')
+  cerrar.textContent = '\u00d7'
+  cerrar.addEventListener('click', () => caja.remove())
+  caja.append(cerrar)
+  zona.append(caja)
+}
+
+/**
+ * Espera a que el estilo cargue de verdad. Devuelve false si falla o si tarda
+ * más de lo razonable: cuando el estilo no llega no se emite ningún evento de
+ * carga, y esperarlo sin límite deja la vista a medio montar.
+ *
+ * Se consulta `isStyleLoaded()` en vez de esperar un evento: `load` solo se
+ * emite en la primera carga —en un segundo intento no llegaría nunca— y
+ * `styledata` se adelanta a que el estilo esté realmente listo.
+ */
+function esperarEstilo(limite = 9000) {
+  return new Promise((resolver) => {
+    let resuelto = false
+    const acabar = (bien) => {
+      if (resuelto) return
+      resuelto = true
+      clearTimeout(reloj)
+      clearInterval(sondeo)
+      mapa.off('error', conError)
+      resolver(bien)
+    }
+    const conError = (e) => {
+      // Un sprite o una fuente que falta no impiden usar el mapa; el estilo, sí.
+      if (String(e?.error?.url ?? e?.error?.message ?? '').includes('style.json')) acabar(false)
+    }
+    const sondeo = setInterval(() => {
+      if (mapa.isStyleLoaded()) acabar(true)
+    }, 150)
+    const reloj = setTimeout(() => acabar(false), limite)
+    mapa.on('error', conError)
+  })
+}
+
+/**
+ * Punto de entrada. Cualquier fallo se cuenta en pantalla: el origen de este
+ * envoltorio es un mapa que se quedaba en blanco sin decir por qué.
+ */
 export async function iniciarMapa(opciones = {}) {
+  try {
+    await montarVista(opciones)
+  } catch (e) {
+    console.error('mapa:', e)
+    avisarEnMapa({
+      titulo: 'El mapa no ha podido montarse',
+      texto: `Ha fallado la carga de la vista cartográfica (${String(e?.message ?? e).slice(0, 140)}). El registro completo sigue disponible en <a href="/proyectos">la lista de proyectos</a>.`,
+    })
+  }
+}
+
+async function montarVista(opciones = {}) {
   leerDeUrl()
   if (opciones.ccaa) estado.ccaa = opciones.ccaa
   if (opciones.operador) estado.operador = opciones.operador
+
+  // Los datos se piden primero: son de este dominio y no dependen del mapa.
+  const [geo, lista] = await Promise.all([
+    fetch('/datos/sitios.geojson').then((r) => r.json()),
+    fetch('/datos/sitios-lista.json').then((r) => r.json()),
+  ])
+  sitios = geo
+  inventario = lista
+  for (const s of lista) if (s.alias?.length) indiceAlias.set(s.id, s.alias.join(' '))
+
+  if (!soportaWebgl()) {
+    avisarEnMapa({
+      titulo: 'Este navegador no puede dibujar el mapa',
+      texto:
+        'El mapa necesita WebGL, que aquí está desactivado o no disponible. El buscador y los filtros del panel siguen funcionando, y el registro completo está en <a href="/proyectos">la lista de proyectos</a>.',
+    })
+    conectarControles()
+    aplicar()
+    return
+  }
 
   mapa = new MapaGL({
     container: 'mapa',
@@ -487,18 +653,64 @@ export async function iniciarMapa(opciones = {}) {
   )
   mapa.addControl(new ScaleControl({ unit: 'metric' }), 'bottom-left')
 
-  const [geo, lista] = await Promise.all([
-    fetch('/datos/sitios.geojson').then((r) => r.json()),
-    fetch('/datos/sitios-lista.json').then((r) => r.json()),
-  ])
-  sitios = geo
-  inventario = lista
-  for (const s of lista) if (s.alias?.length) indiceAlias.set(s.id, s.alias.join(' '))
+  if (await esperarEstilo()) {
+    conRotulos = true
+    castellanizarRotulos()
+  } else {
+    conRotulos = false
+    mapa.setStyle(ESTILO_RESERVA())
+    await new Promise((r) => mapa.once('styledata', r))
+    avisarEnMapa({
+      titulo: 'Sin mapa base',
+      texto:
+        'No se ha podido cargar la cartografía de fondo (CARTO). Suele ser un bloqueador de contenidos o un filtro de red. Los emplazamientos y las capas eléctricas se dibujan igual, sobre un contorno de costa mínimo.',
+      accion: { texto: 'Reintentar', hacer: reintentarMapaBase },
+    })
+  }
 
-  await new Promise((r) => mapa.on('load', r))
+  montarCapas()
+  conectarControles()
+  for (const [nombre, activa] of Object.entries(estado.capas)) if (activa) alternarCapa(nombre, true)
+  aplicar()
+}
 
-  castellanizarRotulos()
-  mapa.addImage('cuadro-subestacion', iconoSubestacion())
+/** Segundo intento con el estilo remoto, a petición de quien mira. */
+async function reintentarMapaBase() {
+  try {
+    await intentarMapaBase()
+  } catch (e) {
+    console.error('mapa (reintento):', e)
+    avisarEnMapa({
+      titulo: 'El reintento ha fallado',
+      texto: `No se ha podido rehacer la vista (${String(e?.message ?? e).slice(0, 140)}). Recargar la página debería dejarla como estaba.`,
+    })
+  }
+}
+
+async function intentarMapaBase() {
+  mapa.setStyle(ESTILO())
+  cargadas.clear()
+  if (await esperarEstilo()) {
+    conRotulos = true
+    castellanizarRotulos()
+  } else {
+    conRotulos = false
+    mapa.setStyle(ESTILO_RESERVA())
+    await new Promise((r) => mapa.once('styledata', r))
+    avisarEnMapa({
+      titulo: 'Sigue sin cargar el mapa base',
+      texto: 'El fondo cartográfico continúa inaccesible desde esta red. Los datos no se ven afectados.',
+    })
+  }
+  montarCapas()
+  for (const [nombre, activa] of Object.entries(estado.capas)) if (activa) alternarCapa(nombre, true)
+  aplicar()
+}
+
+/** Fuentes y capas propias. Se vuelve a llamar tras cada cambio de estilo, que las borra. */
+function montarCapas() {
+  if (!mapa.hasImage('cuadro-subestacion')) mapa.addImage('cuadro-subestacion', iconoSubestacion())
+  quitarSiEsta(['sitios-etiqueta', 'sitios-circulo', 'sitios-borde'], ['sitios'])
   mapa.addSource('sitios', { type: 'geojson', data: sitios })
 
   mapa.addLayer({
@@ -533,32 +745,29 @@ export async function iniciarMapa(opciones = {}) {
       ],
     },
   })
-  mapa.addLayer({
-    id: 'sitios-etiqueta',
-    type: 'symbol',
-    source: 'sitios',
-    minzoom: 9,
-    layout: {
-      'text-field': ['get', 'nombre'],
-      'text-size': 11,
-      'text-offset': [0, 1.3],
-      'text-anchor': 'top',
-      'text-optional': true,
-    },
-    paint: {
-      'text-color': oscuro() ? '#e7e5e0' : '#1b1b19',
-      'text-halo-color': oscuro() ? '#15171a' : '#fbfaf8',
-      'text-halo-width': 1.4,
-    },
-  })
+  // Los rótulos necesitan los glifos del estilo base: sin él no se pintan.
+  if (conRotulos) {
+    mapa.addLayer({
+      id: 'sitios-etiqueta',
+      type: 'symbol',
+      source: 'sitios',
+      minzoom: 9,
+      layout: {
+        'text-field': ['get', 'nombre'],
+        'text-size': 11,
+        'text-offset': [0, 1.3],
+        'text-anchor': 'top',
+        'text-optional': true,
+      },
+      paint: {
+        'text-color': oscuro() ? '#e7e5e0' : '#1b1b19',
+        'text-halo-color': oscuro() ? '#15171a' : '#fbfaf8',
+        'text-halo-width': 1.4,
+      },
+    })
+  }
 
-  mapa.on('click', 'sitios-circulo', (e) => abrirFicha(e.features[0].properties.id))
-  mapa.on('mouseenter', 'sitios-circulo', () => (mapa.getCanvas().style.cursor = 'pointer'))
-  mapa.on('mouseleave', 'sitios-circulo', () => (mapa.getCanvas().style.cursor = ''))
-
-  conectarControles()
-  for (const [nombre, activa] of Object.entries(estado.capas)) if (activa) alternarCapa(nombre, true)
-  aplicar()
+  conManejadores('sitios-circulo', abrirFicha)
 }
 
 /** El estilo base rotula en inglés o en el idioma local; se prefiere el español. */
@@ -644,11 +853,18 @@ function conectarControles() {
 
   const minimo = $('#filtro-minimo')
   if (minimo) {
+    // El carril del deslizador se pinta con un degradado hasta --relleno: es la
+    // única forma de teñir la parte recorrida en todos los navegadores.
+    const pintarCarril = () => {
+      const tope = Number(minimo.max) || 1
+      minimo.style.setProperty('--relleno', `${(Number(minimo.value) / tope) * 100}%`)
+      $('#valor-minimo').textContent = estado.minimo ? `${estado.minimo} MW` : 'sin mínimo'
+    }
     minimo.value = String(estado.minimo)
-    $('#valor-minimo').textContent = estado.minimo ? `${estado.minimo} MW` : 'sin mínimo'
+    pintarCarril()
     minimo.addEventListener('input', () => {
       estado.minimo = Number(minimo.value)
-      $('#valor-minimo').textContent = estado.minimo ? `${estado.minimo} MW` : 'sin mínimo'
+      pintarCarril()
       aplicar()
     })
   }
@@ -663,6 +879,13 @@ function conectarControles() {
   }
 
   $$('[data-capa]').forEach((el) => {
+    // Sin lienzo no hay dónde dibujarlas: la casilla se desactiva en vez de fallar.
+    if (!mapa) {
+      el.checked = false
+      el.disabled = true
+      el.closest('.casilla')?.classList.add('inerte')
+      return
+    }
     el.checked = estado.capas[el.dataset.capa] ?? false
     el.addEventListener('change', () => alternarCapa(el.dataset.capa, el.checked))
   })
@@ -681,7 +904,10 @@ function conectarControles() {
       if (buscador) buscador.value = ''
       $$('[data-filtro]').forEach((el) => (el.value = ''))
       $$('[data-estado]').forEach((el) => (el.checked = false))
-      if (minimo) minimo.value = '0'
+      if (minimo) {
+        minimo.value = '0'
+        minimo.style.setProperty('--relleno', '0%')
+      }
       if (soloCon) soloCon.checked = false
       $('#valor-minimo').textContent = 'sin mínimo'
       aplicar()

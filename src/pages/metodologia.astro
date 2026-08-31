@@ -188,6 +188,18 @@ const conPotencia = (tipo) => sitios.filter((s) => s.resumen_potencia[tipo]).len
       <a href="/red-electrica">sección de red eléctrica</a>.
     </p>
 
+    <h2>La cartografía de fondo</h2>
+    <p>
+      El mapa base lo sirve CARTO a partir de datos de OpenStreetMap. Es el único elemento del
+      sitio que depende de un servicio ajeno, así que cuando no se puede cargar —un bloqueador de
+      contenidos, un filtro de red, una caída del proveedor— el mapa no se queda en blanco: dibuja
+      los emplazamientos sobre un contorno de costa mínimo derivado de
+      <a href="https://www.naturalearthdata.com/" rel="noopener nofollow" target="_blank">Natural Earth</a>
+      (dominio público), servido desde este mismo dominio, y lo dice en pantalla. Si el navegador
+      no tiene WebGL, el mapa no puede dibujarse en absoluto; el buscador y los filtros siguen
+      funcionando y el registro completo está en la <a href="/proyectos">lista de proyectos</a>.
+    </p>
+
     <h2>Lo que este registro no es</h2>
     <ul>
       <li>
