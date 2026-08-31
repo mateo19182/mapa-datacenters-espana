@@ -58,6 +58,7 @@ const fases = agrupar(q('SELECT * FROM fases ORDER BY idx'), 'sitio_id')
 const incert = agrupar(q('SELECT * FROM incertidumbres ORDER BY idx'), 'sitio_id')
 const empleos = agrupar(q('SELECT * FROM empleo ORDER BY idx'), 'sitio_id')
 const energias = agrupar(q('SELECT * FROM energia ORDER BY idx'), 'sitio_id')
+const computos = agrupar(q('SELECT * FROM computo ORDER BY idx'), 'sitio_id')
 const fuentes = agrupar(q('SELECT * FROM fuentes'), 'sitio_id')
 const respaldos = agrupar(q('SELECT * FROM respaldos'), 'sitio_id')
 
@@ -151,6 +152,23 @@ const sitios = q('SELECT * FROM sitios ORDER BY nombre').map((s) => {
       fecha_dato: e.fecha_dato,
       nota: e.nota,
       fuentes: respaldoDe(`energia[${e.idx}]`),
+    })),
+    computo: (computos.get(s.id) ?? []).map((c) => ({
+      tipo: c.tipo,
+      sistema: c.sistema,
+      operador_computo: c.operador_computo,
+      modelo: c.modelo,
+      unidades: c.unidades,
+      tipo_unidad: c.tipo_unidad,
+      nodos: c.nodos,
+      rendimiento: c.rendimiento,
+      rendimiento_unidad: c.rendimiento_unidad,
+      rendimiento_tipo: c.rendimiento_tipo,
+      rendimiento_precision: c.rendimiento_precision,
+      estado: c.estado,
+      fecha_dato: c.fecha_dato,
+      nota: c.nota,
+      fuentes: respaldoDe(`computo[${c.idx}]`),
     })),
     empleo: (empleos.get(s.id) ?? []).map((e) => ({
       tipo: e.tipo,

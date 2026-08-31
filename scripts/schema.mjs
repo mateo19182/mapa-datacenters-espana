@@ -56,6 +56,22 @@ export const CIRCUITOS_AGUA = ['cerrado', 'abierto', 'hibrido', 'sin_agua', 'des
 
 export const TIPOS_EMPLEO = ['directo', 'indirecto', 'construccion', 'total', 'no_especificado']
 
+// Cómputo instalado. Es hardware, no potencia eléctrica: nada de este bloque
+// entra en `potencia[]` ni dimensiona el punto en el mapa.
+export const TIPOS_COMPUTO = [
+  'gpu', // acelerador gráfico de propósito general (NVIDIA, AMD, Intel)
+  'asic_ia', // silicio propio de un hyperscaler: Trainium, TPU, Maia
+  'cpu_hpc', // partición de cálculo basada en CPU
+  'qpu', // procesador cuántico
+  'no_especificado',
+]
+export const UNIDADES_COMPUTO = ['acelerador', 'procesador', 'qubit', 'nodo', 'no_especificado']
+// Los FLOPS no se comparan entre precisiones ni entre pico y medida: un EFlop/s
+// en FP4 no es mil PFlop/s en FP64. Por eso las tres cosas viajan por separado.
+export const UNIDADES_RENDIMIENTO = ['tflops', 'pflops', 'eflops']
+export const TIPOS_RENDIMIENTO = ['pico', 'linpack_rmax', 'no_especificado']
+export const PRECISIONES_RENDIMIENTO = ['fp64', 'fp32', 'fp16', 'fp8', 'fp4', 'no_especificado']
+
 // --- normalización -----------------------------------------------------------
 
 const SINONIMOS_ESTADO = {
@@ -130,6 +146,62 @@ const SINONIMOS_EMPLEO = {
   obra: 'construccion',
   temporal: 'construccion',
   durante_la_construccion: 'construccion',
+}
+
+const SINONIMOS_COMPUTO = {
+  gpus: 'gpu',
+  acelerador: 'gpu',
+  aceleradores: 'gpu',
+  nvidia: 'gpu',
+  asic: 'asic_ia',
+  trainium: 'asic_ia',
+  tpu: 'asic_ia',
+  cpu: 'cpu_hpc',
+  hpc: 'cpu_hpc',
+  cuantico: 'qpu',
+  cuantica: 'qpu',
+  qubits: 'qpu',
+  'no especificado': 'no_especificado',
+  desconocido: 'no_especificado',
+}
+
+const SINONIMOS_UNIDAD_COMPUTO = {
+  aceleradores: 'acelerador',
+  gpu: 'acelerador',
+  gpus: 'acelerador',
+  chips: 'acelerador',
+  chip: 'acelerador',
+  procesadores: 'procesador',
+  cpu: 'procesador',
+  cpus: 'procesador',
+  qubits: 'qubit',
+  cubit: 'qubit',
+  cubits: 'qubit',
+  nodos: 'nodo',
+  servidores: 'nodo',
+  servidor: 'nodo',
+}
+
+const SINONIMOS_RENDIMIENTO = {
+  petaflops: 'pflops',
+  'pflop/s': 'pflops',
+  pflop: 'pflops',
+  teraflops: 'tflops',
+  'tflop/s': 'tflops',
+  tflop: 'tflops',
+  exaflops: 'eflops',
+  'eflop/s': 'eflops',
+  eflop: 'eflops',
+}
+
+const SINONIMOS_TIPO_RENDIMIENTO = {
+  rpeak: 'pico',
+  peak: 'pico',
+  teorico: 'pico',
+  rmax: 'linpack_rmax',
+  linpack: 'linpack_rmax',
+  hpl: 'linpack_rmax',
+  medido: 'linpack_rmax',
 }
 
 const SINONIMOS_FUENTE = {
@@ -303,6 +375,30 @@ const zEnergia = z.object({
   nota: z.string().nullable().optional(),
 })
 
+// Cómputo instalado: aceleradores, particiones de CPU y procesadores cuánticos.
+// Un registro por sistema o partición. Los recuentos de registros distintos solo
+// se suman si nombran sistemas distintos; y nunca se convierte una cifra de
+// rendimiento entre precisiones ni entre pico y medida.
+const zComputo = z.object({
+  tipo: z.enum(TIPOS_COMPUTO),
+  sistema: z.string().nullable().optional(),
+  // Quién opera el hardware. Se rellena cuando no es el operador del CPD: el
+  // caso del inquilino de un centro mayorista (CoreWeave en Zona Franca).
+  operador_computo: z.string().nullable().optional(),
+  modelo: z.string().nullable().optional(),
+  unidades: z.number().nonnegative().nullable().optional(),
+  tipo_unidad: z.enum(UNIDADES_COMPUTO).default('no_especificado'),
+  nodos: z.number().nonnegative().nullable().optional(),
+  rendimiento: z.number().nonnegative().nullable().optional(),
+  rendimiento_unidad: z.enum(UNIDADES_RENDIMIENTO).nullable().optional(),
+  rendimiento_tipo: z.enum(TIPOS_RENDIMIENTO).default('no_especificado'),
+  rendimiento_precision: z.enum(PRECISIONES_RENDIMIENTO).default('no_especificado'),
+  estado: z.enum(ESTADOS).default('desconocido'),
+  fecha_dato: z.string().nullable().optional(),
+  fuentes: z.array(z.string()).min(1),
+  nota: z.string().nullable().optional(),
+})
+
 export const zSitio = z.object({
   id: z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/, 'el id debe ser kebab-case'),
   nombre: z.string().min(1),
@@ -327,6 +423,7 @@ export const zSitio = z.object({
   agua: zAgua.nullable().optional(),
   empleo: z.array(zEmpleo).default([]),
   energia: z.array(zEnergia).default([]),
+  computo: z.array(zComputo).default([]),
   enlaces_proyecto: z.array(z.string()).default([]),
   incertidumbres: z.array(zIncertidumbre).default([]),
   confianza: z.enum(CONFIANZAS),
@@ -432,6 +529,27 @@ export function normalizarSitio(crudo) {
     nota: e.nota ?? null,
   }))
 
+  d.computo = arr(d.computo).map((c) => ({
+    tipo: mapear(c.tipo, SINONIMOS_COMPUTO, TIPOS_COMPUTO, 'no_especificado'),
+    sistema: c.sistema ?? null,
+    operador_computo: c.operador_computo ?? null,
+    modelo: c.modelo ?? null,
+    unidades: numero(c.unidades),
+    tipo_unidad: mapear(c.tipo_unidad, SINONIMOS_UNIDAD_COMPUTO, UNIDADES_COMPUTO, 'no_especificado'),
+    nodos: numero(c.nodos),
+    rendimiento: numero(c.rendimiento),
+    rendimiento_unidad:
+      c.rendimiento_unidad == null
+        ? null
+        : mapear(c.rendimiento_unidad, SINONIMOS_RENDIMIENTO, UNIDADES_RENDIMIENTO, 'pflops'),
+    rendimiento_tipo: mapear(c.rendimiento_tipo, SINONIMOS_TIPO_RENDIMIENTO, TIPOS_RENDIMIENTO, 'no_especificado'),
+    rendimiento_precision: mapear(c.rendimiento_precision, {}, PRECISIONES_RENDIMIENTO, 'no_especificado'),
+    estado: mapear(c.estado, SINONIMOS_ESTADO, ESTADOS, 'desconocido'),
+    fecha_dato: fecha(c.fecha_dato),
+    fuentes: arr(c.fuentes).map(String),
+    nota: c.nota ?? null,
+  }))
+
   d.empleo = arr(d.empleo).map((e) => ({
     tipo: mapear(e.tipo, SINONIMOS_EMPLEO, TIPOS_EMPLEO, 'no_especificado'),
     valor: numero(e.valor),
@@ -473,7 +591,7 @@ export function normalizarSitio(crudo) {
  * ¿Aparece el número en el texto? Tolera los formatos con que se escribe la
  * misma cifra: coma o punto decimal, separador de millares, GW en vez de MW.
  */
-function cifraEnTexto(valor, texto) {
+function cifraEnTexto(valor, texto, { escalar = true } = {}) {
   if (valor == null || !texto) return false
   // El mismo texto admite dos lecturas y no se puede saber cuál es sin mirar:
   // «1.234» son mil doscientos treinta y cuatro en español y uno coma algo en
@@ -503,8 +621,13 @@ function cifraEnTexto(valor, texto) {
     admitir(n.toFixed(2))
   }
   anotar(valor)
-  anotar(valor / 1000) // la fuente puede darlo en GW
-  anotar(valor * 1000)
+  // El salto de escala vale para las magnitudes que se publican en dos unidades
+  // (MW/GW, PFlops/TFlops). No vale para un recuento de piezas: 4.480 GPU no las
+  // respalda una cita que hable de 4.480.000 de nada.
+  if (escalar) {
+    anotar(valor / 1000)
+    anotar(valor * 1000)
+  }
   for (const c of candidatos) {
     const escapado = c.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
     const patron = new RegExp(`(^|[^\\d.])${escapado}([^\\d]|$)`)
@@ -528,6 +651,7 @@ export function revisarCoherencia(sitio) {
     ['agua.fuentes', sitio.agua?.fuentes ?? []],
     ...(sitio.empleo ?? []).map((e, i) => [`empleo[${i}].fuentes`, e.fuentes]),
     ...(sitio.energia ?? []).map((e, i) => [`energia[${i}].fuentes`, e.fuentes]),
+    ...(sitio.computo ?? []).map((c, i) => [`computo[${i}].fuentes`, c.fuentes]),
   ]
   for (const [donde, lista] of refs) {
     for (const ref of lista) {
@@ -610,6 +734,51 @@ export function revisarCoherencia(sitio) {
         nivel: 'aviso',
         msg: `energia[${i}]: la cifra ${e.consumo_gwh_ano} no aparece en la cita de ninguna de sus fuentes`,
       })
+    }
+  }
+
+  for (const [i, c] of (sitio.computo ?? []).entries()) {
+    const citas = c.fuentes.map((id) => porId.get(id)).filter((f) => f?.cita)
+    const donde = `computo[${i}]${c.sistema ? ` («${c.sistema}»)` : ''}`
+
+    // Un registro que no dice ni cuánto hay, ni qué es, ni cuánto rinde, no
+    // aporta nada que no dijera ya la ausencia del bloque.
+    if (c.unidades == null && c.rendimiento == null && !c.modelo && !c.nota) {
+      problemas.push({ nivel: 'error', msg: `${donde} no registra ni recuento, ni modelo, ni rendimiento` })
+    }
+    if (c.tipo === 'no_especificado') {
+      problemas.push({ nivel: 'aviso', msg: `${donde} no distingue el tipo de cómputo` })
+    }
+    if (c.unidades != null && c.tipo_unidad === 'no_especificado') {
+      problemas.push({ nivel: 'error', msg: `${donde} da un recuento sin decir de qué unidad` })
+    }
+    if (c.rendimiento != null && !c.rendimiento_unidad) {
+      problemas.push({ nivel: 'error', msg: `${donde} da un rendimiento sin unidad` })
+    }
+    // Un FLOPS sin precisión no se puede comparar con ningún otro, así que se
+    // registra pero se avisa de que la fuente no la publica.
+    if (c.rendimiento != null && c.rendimiento_precision === 'no_especificado') {
+      problemas.push({ nivel: 'aviso', msg: `${donde} da FLOPS sin precisión: no comparable con otras cifras` })
+    }
+    if (c.tipo === 'qpu' && c.tipo_unidad !== 'qubit' && c.unidades != null) {
+      problemas.push({ nivel: 'aviso', msg: `${donde} es una QPU pero su recuento no está en qubits` })
+    }
+    // La cifra tiene que estar en la cita, igual que en potencia, agua y energía.
+    if (citas.length > 0 && c.unidades != null) {
+      if (!citas.some((f) => cifraEnTexto(c.unidades, f.cita, { escalar: false }))) {
+        problemas.push({
+          nivel: 'aviso',
+          msg: `${donde}: el recuento ${c.unidades} no aparece en la cita de ninguna de sus fuentes`,
+        })
+      }
+    }
+    if (citas.length > 0 && c.rendimiento != null) {
+      if (!citas.some((f) => cifraEnTexto(c.rendimiento, f.cita))) {
+        problemas.push({
+          nivel: 'aviso',
+          msg: `${donde}: el rendimiento ${c.rendimiento} no aparece en la cita de ninguna de sus fuentes`,
+        })
+      }
     }
   }
 
