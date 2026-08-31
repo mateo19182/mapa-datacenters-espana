@@ -204,11 +204,6 @@ hr {
   white-space: nowrap;
 }
 
-.marca span {
-  color: var(--tinta-3);
-  font-weight: 400;
-}
-
 .nav {
   display: flex;
   align-items: center;
@@ -765,10 +760,6 @@ html {
   .marca {
     font-size: 0.92rem;
     white-space: normal;
-  }
-
-  .marca span {
-    display: none;
   }
 
   .boton-menu {

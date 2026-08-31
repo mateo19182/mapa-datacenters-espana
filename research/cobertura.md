@@ -473,15 +473,13 @@ si el mapa se publica junto a un titular de sector, hay que elegir una y decir c
 
 ## 5. El sesgo del conjunto: lo que este mapa mide de verdad
 
-Los diez investigadores informaron de lo mismo, cada uno por su lado: el presupuesto de
-búsqueda web de la sesión (200 consultas) se agotó a mitad del trabajo, compartido entre
-todos. A partir de ahí trabajaron abriendo URL directamente, con feeds RSS de Google News,
-con los buscadores internos de Data Center Market y pv magazine, con la API de PeeringDB y
-con proxies de extracción de texto para las páginas tras Cloudflare. Google, Bing,
-DuckDuckGo, Startpage, Brave, Mojeek y las instancias de SearXNG devolvieron captcha, 403 o
-resultados vacíos.
+La investigación se hizo casi sin buscador: Google, Bing, DuckDuckGo, Startpage, Brave,
+Mojeek y las instancias de SearXNG devolvieron captcha, 403 o resultados vacíos. El trabajo
+salió de abrir URL directamente, de los feeds RSS de Google News, de los buscadores internos
+de Data Center Market y pv magazine, de la API de PeeringDB y de proxies de extracción de
+texto para las páginas tras Cloudflare.
 
-La consecuencia es un sesgo que no es aleatorio y que hay que enunciar con precisión.
+El sesgo que eso deja no es aleatorio, y conviene enunciarlo con precisión.
 
 **El mapa mide la accesibilidad automatizada de las fuentes tanto como mide la realidad
 industrial.** Un proyecto entra en el dataset si, y solo si, existe al menos un documento

@@ -17,8 +17,8 @@ lista con nombre, municipio y MW. Repsol firma seis VPPA con Microsoft y no dice
 cuáles son los seis activos. Equinix firma cinco PPA con IGNIS y los sitúa en
 "distintas regiones de España".
 
-Para un mapa esto es un problema serio, y conviene decirlo en la web en vez de
-disimularlo con un punto en el centroide de la provincia.
+Para un mapa es un problema serio, y se dice en vez de disimularlo con un punto
+en el centroide de la provincia.
 
 ## Tabla resumen de PPA y generación ligada a CPD en España
 
@@ -100,12 +100,11 @@ En el dataset hay un solo activo de almacenamiento con vínculo contractual
 documentado a un centro de datos: los 600 MWh que Merlin contrató a Solaria a 10
 años en la Comunidad de Madrid, junto al PPA solar de 426 MW a 40 años. Solaria
 lo vende como el primer PPA híbrido de solar y baterías firmado en España para un
-cliente del sector digital, y hasta donde he podido comprobar nadie ha
-desmentido esa primicia.
+cliente del sector digital.
 
 Ojo con las unidades. 600 MWh es energía almacenable. Ninguna fuente publica los
 MW de ese BESS, así que el campo va a `null`. Mezclar MWh de batería con MW de
-planta o con MW de CPD produce sumas sin sentido, y se ve hacer con frecuencia.
+planta o de CPD produce sumas sin sentido.
 
 Aparecen juntos por una razón física. Un centro de datos consume plano las 24
 horas y la fotovoltaica produce en campana. Sin almacenamiento, un PPA solar
@@ -133,8 +132,6 @@ Echelon terrenos con conexión.
 El activo escaso no es el sol. Es el punto de conexión.
 
 ## Advertencia metodológica: un PPA no es un cable
-
-Esto debe salir en la web, en la propia ficha, no en una nota al pie.
 
 Un PPA es un contrato de compraventa de energía. Fija precio y volumen entre un
 generador y un comprador durante años. No es una línea eléctrica entre la planta
@@ -166,9 +163,8 @@ cobrarla. En el primer trimestre de 2026 hubo 397 horas de precios negativos en
 España, la mayoría en los picos solares. El PPA existe, los megavatios existen, y
 aun así el reparto de riesgo entre las partes es cualquier cosa menos simétrico.
 
-Mi recomendación para la ficha web: mostrar el vínculo como una relación
-contractual etiquetada, con la distancia entre planta y CPD visible cuando ambas
-ubicaciones se conozcan, y sin ninguna arista de suministro físico.
+La ficha muestra el vínculo como lo que es, una relación contractual, y nunca
+como una arista de suministro físico.
 
 ## El Real Decreto de agosto de 2026 cambia las reglas
 
@@ -241,8 +237,8 @@ Lo que no es público, ordenado por lo que más daña al mapa.
    emplazamiento. `cpds_relacionados` solo está relleno en los tres casos de
    generación en el propio proyecto: Meta en Talavera, Acciona e IGNIS en Segovia
    e Ingenostrum en Cáceres. En los dieciocho contratos de compraventa va vacío a
-   propósito. Cruzarlos por operador contra `data/sites/` daría un mapa más
-   bonito y sería una atribución nuestra, no de la fuente.
+   propósito. Cruzarlos por operador contra `data/sites/` sería una
+   atribución nuestra, no de la fuente.
 4. **Precios y duración.** El precio nunca se publica. La duración solo consta en
    siete de los dieciocho contratos.
 5. **Potencia de las baterías.** Los 600 MWh de Merlin y Solaria no llevan MW
@@ -263,17 +259,14 @@ Lo que no es público, ordenado por lo que más daña al mapa.
    Ciudad Rodrigo 2025) no he confirmado ninguno operativo. Los estados están
    registrados como los describía la fuente en su fecha, no como están hoy.
 
-## Nota sobre el método de búsqueda
+## Sesgo de las fuentes
 
-El presupuesto de búsqueda web de la sesión se agotó pronto, y los buscadores
-generalistas bloquean el acceso automatizado. El grueso del trabajo salió de los
-buscadores internos de pv magazine España y Data Center Market, del feed RSS de
-Google News para descubrir titulares, y de la API REST de los medios y promotores
-montados sobre WordPress (Solaria, Toledodiario, Merca2). Varios medios relevantes
-quedaron fuera de alcance por Cloudflare o muros de pago: Data Center Dynamics,
-El Economista, Expansión, Heraldo de Aragón, El Periódico de Aragón, Ecologistas
-en Acción. Eso sesga el dataset hacia lo que publican las propias empresas y la
-prensa técnica abierta, y explica los huecos de Aragón.
+El grueso del trabajo salió de pv magazine España, Data Center Market y las API
+de los medios y promotores montados sobre WordPress. Data Center Dynamics, El
+Economista, Expansión, Heraldo de Aragón, El Periódico de Aragón y Ecologistas en
+Acción quedaron fuera de alcance por Cloudflare o muros de pago. Eso sesga el
+conjunto hacia lo que publican las propias empresas y la prensa técnica abierta,
+y explica los huecos de Aragón.
 
 Las 37 URL citadas en `data/renovables/*.yaml` se comprobaron una a una el
 2026-08-29 y todas devolvían 200.

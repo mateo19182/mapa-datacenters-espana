@@ -36,13 +36,13 @@ const conPotencia = (tipo) => sitios.filter((s) => s.resumen_potencia[tipo]).len
     <ol class="reglas">
       <li>
         <strong>Nada sin fuente.</strong> Cada cifra, estado, coordenada y fecha lleva al menos una
-        referencia con URL, editor y, cuando ha sido posible, la cita literal que la sostiene. Cada
-        ficha enlaza el dato con el número de su referencia.
+        referencia con URL, editor y, cuando se ha podido, la cita literal que la sostiene, enlazada
+        desde el dato.
       </li>
       <li>
-        <strong>No se rellenan huecos.</strong> Cuando una magnitud no consta, el campo queda vacío.
-        Nada se estima por analogía con proyectos parecidos ni se deduce del tamaño de la parcela o
-        de la inversión anunciada.
+        <strong>No se rellenan huecos.</strong> Si una magnitud no consta, el campo queda vacío. Nada
+        se estima por analogía con proyectos parecidos ni se deduce de la parcela o de la inversión
+        anunciada.
       </li>
       <li>
         <strong>No se mezclan tipos de potencia.</strong> Los MW IT, los MW de conexión a red y la
@@ -50,22 +50,21 @@ const conPotencia = (tipo) => sitios.filter((s) => s.resumen_potencia[tipo]).len
         un PUE supuesto.
       </li>
       <li>
-        <strong>Las contradicciones se conservan.</strong> Cuando dos fuentes fiables dan cifras
-        distintas se registran ambas y la ficha señala la discrepancia. Elegir una en silencio
-        produciría un dato limpio y falso.
+        <strong>Las contradicciones se conservan.</strong> Si dos fuentes fiables discrepan se
+        registran ambas y la ficha lo señala. Elegir una en silencio daría un dato limpio y falso.
       </li>
       <li>
-        <strong>Un emplazamiento, un registro.</strong> Los campus con varios edificios son una sola
-        entrada con sus fases dentro. Los renombrados por adquisición, como Interxion a Digital
-        Realty o Itconic a Equinix, se reconcilian con alias en lugar de duplicar entradas.
+        <strong>Un emplazamiento, un registro.</strong> Un campus de varios edificios es una entrada
+        con sus fases dentro. Los renombrados por adquisición, como Interxion a Digital Realty o
+        Itconic a Equinix, se reconcilian con alias, no duplicando entradas.
       </li>
     </ol>
 
     <h2>Tipos de potencia</h2>
     <p>
-      Es la distinción más importante del conjunto y la que más se maltrata en la prensa. Una nota
-      que anuncia «un centro de datos de 200 MW» rara vez aclara a qué se refiere, y entre una
-      lectura y otra hay casi el doble.
+      Es la distinción más importante del conjunto y la que más se maltrata en la prensa: «un centro
+      de datos de 200 MW» rara vez aclara a qué se refiere, y entre una lectura y otra hay casi el
+      doble.
     </p>
     <dl class="glosario">
       {['it', 'conexion_red', 'instalada_total', 'no_especificado', 'termica_respaldo', 'generacion_asociada'].map((t) => (
@@ -81,29 +80,23 @@ const conPotencia = (tipo) => sitios.filter((s) => s.resumen_potencia[tipo]).len
       ))}
     </dl>
     <p>
-      Los totales por compañía y por región suman solo los emplazamientos que publican esa magnitud,
-      e indican siempre cuántos son.
+      Los totales por compañía y por región suman solo los que publican esa magnitud, e indican
+      cuántos son.
     </p>
     <p>
-      Las dos últimas magnitudes no describen el centro de datos y quedan fuera de todos los
-      totales. Aparecen porque a veces son lo único numérico del expediente ambiental. Varios campus
-      de hiperescala en España no han publicado ni su carga TI ni su potencia de acceso, solo la
-      potencia de sus grupos electrógenos de emergencia. Tomar esa cifra por la capacidad del centro
-      exagera su tamaño en un orden de magnitud.
+      Las dos últimas no describen el centro de datos y quedan fuera de todos los totales. Aparecen
+      porque a veces son lo único numérico del expediente ambiental: varios campus de hiperescala en
+      España solo han publicado la potencia de sus grupos electrógenos de emergencia. Tomar esa
+      cifra por la capacidad del centro exagera su tamaño en un orden de magnitud.
     </p>
 
     <h2>Campus, edificio y fase</h2>
     <p>
-      Una cifra de potencia puede referirse a un campus entero, a un edificio o a una fase. El
-      registro guarda ese ámbito junto al valor. Si hay una cifra publicada para el conjunto, esa
-      manda y no se le suman las fases, que ya están dentro.
-    </p>
-    <p>
-      Con los edificios la regla es más estricta. Tres cifras de edificio pueden ser tres edificios,
-      y hay que sumarlas, o tres lecturas del mismo, y sumarlas triplicaría la capacidad. El texto
-      de la fuente casi nunca permite distinguirlo, así que el dato lo declara. Si el registro no
-      nombra el edificio concreto, <strong>no se suma</strong>. Ante la duda, el conjunto se queda
-      corto antes que inflado.
+      Cada cifra guarda su ámbito. Si hay cifra del conjunto, esa manda y no se le suman las fases,
+      que ya están dentro. Con los edificios la regla es más estricta: tres cifras de edificio pueden
+      ser tres edificios, y se suman, o tres lecturas del mismo, y sumarlas triplicaría la capacidad.
+      Como la fuente casi nunca lo aclara, si el dato no nombra el edificio concreto,
+      <strong>no se suma</strong>. Ante la duda, el conjunto se queda corto antes que inflado.
     </p>
 
     <h2>Estados</h2>
@@ -126,15 +119,12 @@ const conPotencia = (tipo) => sitios.filter((s) => s.resumen_potencia[tipo]).len
 
     <h2>Coordenadas</h2>
     <p>
-      Cada ficha declara la precisión de su ubicación. Cuando solo consta el municipio, el punto se
-      sitúa en su centro, se dibuja atenuado y la ficha lo dice. El mapa no debe sugerir una parcela
-      que las fuentes no acreditan.
-    </p>
-    <p>
-      Los centroides municipales vienen de OpenStreetMap, cacheados en el repositorio.{' '}
-      {resumen.coordenadas_derivadas} de los {resumen.total_emplazamientos} emplazamientos se sitúan
-      así. Esa coordenada se calcula al construir el sitio y nunca se escribe en el fichero, que
-      sigue diciendo lo único cierto, el municipio.
+      Cada ficha declara la precisión de su ubicación; el mapa no debe sugerir una parcela que las
+      fuentes no acreditan. Cuando solo consta el municipio, el punto va al centro del término, con
+      centroides de OpenStreetMap cacheados, se dibuja atenuado y la ficha lo dice. Así se sitúan{' '}
+      {resumen.coordenadas_derivadas} de {resumen.total_emplazamientos}. Esa coordenada se calcula
+      al construir y nunca se escribe en el fichero, que sigue diciendo lo único cierto: el
+      municipio.
     </p>
     <div class="tabla-envoltorio">
       <table>
@@ -168,57 +158,49 @@ const conPotencia = (tipo) => sitios.filter((s) => s.resumen_potencia[tipo]).len
       ))}
     </dl>
 
-    <h2>La capa eléctrica</h2>
+    <h2>Las capas del mapa</h2>
     <p>
-      El trazado de 220 y 400 kV viene de OpenStreetMap (ODbL), cacheado en el repositorio. Su
-      completitud es variable. Sirve para situar los emplazamientos respecto a los ejes de
-      transporte, no para análisis de red.
-    </p>
-    <p>
-      Las subestaciones, las actuaciones planificadas y la capacidad de acceso para demanda se
-      registran a mano desde fuentes oficiales, con su fecha. La capacidad de acceso caduca en
-      meses, así que sin fecha no significa nada. Los detalles están en{' '}
+      El trazado de 220 y 400 kV y el inventario de centrales vienen de OpenStreetMap (ODbL),
+      cacheados y de completitud variable: sitúan los emplazamientos respecto a la red y al parque
+      generador, no sirven para análisis de red. Las subestaciones, las actuaciones planificadas y
+      la capacidad de acceso para demanda se registran a mano desde fuentes oficiales, con su fecha.
+      La capacidad de acceso caduca en meses, así que sin fecha no significa nada. Los detalles, en{' '}
       <a href="/red-electrica">red eléctrica</a>.
     </p>
-
-    <h2>La cartografía de fondo</h2>
     <p>
-      El mapa base lo sirve CARTO con datos de OpenStreetMap, y es lo único del sitio que depende de
-      un servicio ajeno. Si no carga, por un bloqueador de contenidos o un filtro de red, el mapa
-      dibuja los emplazamientos sobre un contorno de costa de{' '}
+      El mapa base lo sirve CARTO, lo único del sitio que depende de un servicio ajeno. Si no carga,
+      los datos se dibujan igual sobre un contorno de{' '}
       <a href="https://www.naturalearthdata.com/" rel="noopener nofollow" target="_blank">Natural Earth</a>{' '}
-      (dominio público) servido desde este dominio, y lo avisa en pantalla. Sin WebGL no hay mapa
-      posible, pero el buscador y los filtros siguen funcionando.
+      y se avisa en pantalla. Sin WebGL no hay mapa, pero el buscador y los filtros siguen
+      funcionando.
     </p>
 
     <h2>Lo que este registro no es</h2>
     <ul>
       <li>
-        <strong>No es un censo completo.</strong> Recoge lo documentado públicamente. Los CPD
-        corporativos pequeños y las salas técnicas quedan casi todos fuera.
+        <strong>No es un censo completo.</strong> Recoge lo documentado públicamente; los CPD
+        corporativos pequeños y las salas técnicas quedan fuera.
       </li>
       <li>
-        <strong>No es una previsión.</strong> Los proyectos anunciados se registran como anunciados.
-        Una solicitud de acceso a la red no es un centro de datos, y una parte de lo anunciado no se
-        construirá nunca.
+        <strong>No es una previsión.</strong> Lo anunciado se registra como anunciado. Una solicitud
+        de acceso a la red no es un centro de datos, y parte de lo anunciado no se construirá.
       </li>
       <li>
         <strong>No es análisis de mercado ni de inversión.</strong> No hay valoraciones ni
-        estimaciones de rentabilidad. Las cifras de inversión que aparecen son las anunciadas, y se
-        citan como declaración, no como hecho verificado.
+        rentabilidades. Las cifras de inversión son las anunciadas, citadas como declaración y no
+        como hecho verificado.
       </li>
       <li>
-        <strong>No mide consumo real.</strong> La potencia contratada o instalada no es energía
-        consumida. Si ninguna fuente publica el consumo, el dato no aparece.
+        <strong>No mide consumo real.</strong> La potencia no es energía consumida. Si nadie publica
+        el consumo, el dato no aparece.
       </li>
     </ul>
 
     <h2>Actualización</h2>
     <p>
-      Cada lunes, un proceso automático vuelve a leer las fuentes registradas y compara una huella
-      de su contenido con la guardada. Lo que cambió, lo que ya no responde y las fichas que llevan
-      más de 180 días sin comprobar acaban en una propuesta de actualización que revisa una persona.
-      Ningún dato existente se sobrescribe solo. Los detalles están en{' '}
+      Cada lunes un proceso relee las fuentes y deja en una cola de revisión lo que cambió, lo que
+      ya no responde y lo que lleva más de 180 días sin comprobar. Ningún dato existente se
+      sobrescribe solo. El proceso, paso a paso, en{' '}
       <a href="/datos#actualizacion">la sección de datos</a>.
     </p>
     <p class="pequeno silencio">
