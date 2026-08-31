@@ -26,7 +26,16 @@ estado_detalle: >-
   plantas inferiores del edificio del BSC, a corta distancia. Se incluye en el
   mapa por su consumo eléctrico y su papel en la infraestructura de cómputo
   catalana, no como centro de datos comercial.
-estado_fuentes: [src-1]
+  El emplazamiento aloja además **tres ordenadores cuánticos**, que no generan ficha propia
+  por la regla del esquema para instalaciones cuánticas: los dos instalados por la iniciativa
+  Quantum Spain y la SEDIA, entre ellos MareNostrum Ona, ampliado con un procesador de 35
+  cúbits; y el EuroQCS-Spain, inaugurado el 28 de mayo de 2026 en la renovada capilla de Torre
+  Girona, cofinanciado por la Comisión Europea y el Gobierno de España con 9,8 millones y
+  construido por Qilimanjaro Quantum Tech. Con ellos MareNostrum 5 es uno de los primeros
+  superordenadores del mundo que combina computación clásica con cuántica digital y analógica.
+  Ninguna fuente publica el consumo eléctrico de estos sistemas por separado, así que no
+  aportan ninguna cifra a `potencia[]`.
+estado_fuentes: [src-1, src-4, src-5]
 
 potencia: []
 
@@ -83,3 +92,31 @@ fuentes:
       HPL: 40.10 PFlops HPCG: 484.36 TFlops Green500: 6.97 Gflops/watt ... 5.7 MW
       under HPL ... 2.5 MW under HPL ... 4.1 MW under HPL (175 PF/s) ... Power
       consumption: 400-550 kW
+  - id: src-4
+    url: "https://www.bsc.es/es/noticias/noticias-del-bsc/el-bsc-inaugura-su-tercer-ordenador-cu%C3%A1ntico-el-euroqcs-spain-en-la-renovada-capilla-de-torre-girona"
+    titulo: "El BSC inaugura su tercer ordenador cuántico, el EuroQCS-Spain, en la renovada capilla de Torre Girona"
+    editor: "Barcelona Supercomputing Center"
+    tipo: oficial
+    fecha_publicacion: "2026-05-28"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El nuevo ordenador, cofinanciado por la Comisión Europea y el Gobierno de España con una
+      inversión de 9,8 millones de euros, añade nuevas capacidades a la supercomputación y
+      computación cuántica europea [...] MareNostrum 5 se convierte en uno de los primeros
+      superordenadores de todo el mundo en combinar computación clásica (con las particiones de
+      propósito general y la acelerada) y computación cuántica digital y analógica (con los dos
+      ordenadores cuánticos instalados por el proyecto Quantum Spain y la SEDIA y este último,
+      respectivamente).
+  - id: src-5
+    url: "https://www.bsc.es/es/noticias/noticias-del-bsc/el-bsc-ampl%C3%ADa-la-capacidad-de-su-ordenador-cu%C3%A1ntico-y-refuerza-el-acceso-abierto-su-infraestructura"
+    titulo: "El BSC amplía la capacidad de su ordenador cuántico y refuerza el acceso abierto a su infraestructura"
+    editor: "Barcelona Supercomputing Center"
+    tipo: oficial
+    fecha_publicacion: null
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      La infraestructura cuántica del BSC, MareNostrum Ona, ha completado su evolución con un
+      nuevo procesador de 35 cúbits, que se encuentra a disposición de la comunidad
+      investigadora, pública y empresarial, a través de la Red Española de Supercomputación
+      [...] El desarrollo del sistema se enmarca en la iniciativa Quantum Spain, impulsada por
+      el Ministerio para la Transformación Digital y de la Función Pública.

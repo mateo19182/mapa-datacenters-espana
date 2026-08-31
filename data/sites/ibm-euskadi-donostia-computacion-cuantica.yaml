@@ -1,0 +1,169 @@
+id: ibm-euskadi-donostia-computacion-cuantica
+nombre: "Centro de Computación Cuántica IBM-Euskadi — edificio Ikerbasque (Donostia-San Sebastián)"
+alias:
+  - "IBM Quantum System Two Donostia"
+  - "IBM-Euskadi Quantum Computational Center"
+  - "IBM_BasqueCountry"
+tipo: edificio
+operador: "IBM"
+propietario: "Fundación Ikerbasque (Gobierno Vasco)"
+modelo: corporativo
+
+ubicacion:
+  municipio: "Donostia-San Sebastián"
+  provincia: "Gipuzkoa"
+  ccaa: "País Vasco"
+  direccion: >-
+    Edificio de Ikerbasque, avenida Tolosa, anexo al edificio Korta, campus de Ibaeta,
+    Donostia-San Sebastián.
+  lat: null
+  lon: null
+  precision: desconocida
+  fuentes: [src-1, src-4]
+
+estado: operativo
+estado_detalle: >-
+  Se incluye en el mapa por su condición de infraestructura de cómputo pública, no como centro
+  de datos convencional: la carga dominante es un criostato de dilución y el sistema opera en el
+  orden de los kilovatios, no de los megavatios. No debe leerse como capacidad de cómputo
+  comparable con la de los demás emplazamientos del registro.
+  El Gobierno Vasco e IBM inauguraron la instalación el 14 de octubre de 2025. Es el primer IBM
+  Quantum System Two operativo de Europa y el tercero del mundo, con un procesador IBM Quantum
+  Heron de 156 cúbits. Ocupa una sala de 110 m² en la planta baja de un edificio de Ikerbasque de
+  cinco plantas y 6.000 m² construidos, levantado en el campus de Ibaeta; los sistemas de
+  refrigeración están en la planta inferior. Forma parte de la estrategia vasca de computación
+  cuántica BasQ / IKUR 2030. En 2027 el mismo edificio debe alojar además Hyperion, un
+  supercomputador convencional del DIPC, lo que cambiará la naturaleza del emplazamiento.
+estado_fuentes: [src-1, src-2, src-3, src-4]
+fecha_puesta_en_servicio: "2025-10-14"
+
+potencia: []
+
+fases:
+  - nombre: "Sala del IBM Quantum System Two"
+    estado: operativo
+    fecha_puesta_en_servicio: "2025-10-14"
+    superficie_m2: 110
+    fuentes: [src-3]
+    nota: >-
+      Sala de la planta baja, visible desde la calle. No es una sala de racks: aloja la
+      plataforma criogénica del sistema cuántico.
+
+superficie_construida_m2: 6000
+
+refrigeracion: >-
+  Criostato de dilución. Los sistemas de refrigeración se disponen en la planta inferior del
+  edificio y operan a temperaturas cercanas al cero absoluto, en torno a -273 °C.
+
+agua:
+  circuito: desconocido
+  sistema: null
+  origen: null
+  nota: >-
+    Ninguna fuente describe el circuito de refrigeración por agua del edificio ni publica
+    consumo. No se declara `sin_agua` porque nadie lo afirma: la refrigeración criogénica del
+    sistema cuántico no dice nada sobre el agua que consuma el edificio que lo aloja.
+  fuentes: [src-3]
+
+inversion_anunciada_eur: null
+
+enlaces_proyecto:
+  - "https://www.basquequantum.eus/"
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      No hay ninguna magnitud eléctrica publicada de esta instalación: ni MW IT, ni potencia de
+      conexión, ni potencia instalada, ni consumo anual. IBM tampoco publica especificaciones
+      eléctricas del modelo System Two. Lo único que consta es el orden de magnitud, en boca del
+      viceconsejero de Universidades e Investigación: el ordenador «consume energía en
+      kilowatios, no en megawatios». Las cifras que circulan —unos 30 kW, o decenas de kW— son
+      del modelo genérico o de otros fabricantes, no de esta unidad, y por eso no se registran.
+      `potencia` queda vacío, como en las fichas del BSC, el CSUC, el IFCA y SCAYLE, que tampoco
+      publican ninguna.
+    fuentes: [src-2]
+  - campo: inversion_anunciada_eur
+    descripcion: >-
+      Las cifras publicadas son del programa, no del emplazamiento, y no deben atribuirse a él:
+      más de 50 millones en el acuerdo inicial entre IBM e Ikerbasque de marzo de 2023, más de
+      120 millones para la estrategia BasQ completa, y 153 millones hasta 2028 según la prensa,
+      de los que 25 los aporta la Diputación de Gipuzkoa. El edificio que aloja el sistema costó
+      12 millones, según el Gobierno Vasco, pero es un edificio de investigación entero y no una
+      instalación de cómputo. El campo queda vacío.
+    fuentes: [src-3, src-4]
+  - campo: superficie_construida_m2
+    descripcion: >-
+      Los 6.000 m² son el edificio de Ikerbasque completo, cinco plantas de laboratorios y
+      despachos con cerca de 1.100 m² por planta. Al sistema cuántico le corresponden los 110 m²
+      de su sala, registrados como fase. No son magnitudes comparables.
+    fuentes: [src-3, src-4]
+  - campo: tipo
+    descripcion: >-
+      No es un centro de datos en el sentido del resto del conjunto y no debe agregarse con
+      ellos. Se registra siguiendo la regla del esquema para instalaciones de cómputo cuántico:
+      tiene sala técnica propia y emplazamiento identificable con fuente pública, así que recibe
+      ficha; las instalaciones cuánticas alojadas dentro de un emplazamiento ya fichado, como
+      MareNostrum Ona y EuroQCS-Spain en el BSC o el equipo de IQM en el CESGA, se anotan en el
+      `estado_detalle` de su anfitrión y no generan registro nuevo.
+    fuentes: [src-1]
+  - campo: operador
+    descripcion: >-
+      El reparto exacto entre IBM y la Fundación Ikerbasque no se publica. El sistema es de IBM y
+      el centro se llama IBM-Euskadi; el edificio lo promovió el Departamento de Educación del
+      Gobierno Vasco a través de Ikerbasque. No hubo licitación pública del ordenador: la
+      adquisición se articuló como acuerdo directo entre Ikerbasque e IBM, firmado en marzo de
+      2023.
+    fuentes: [src-1, src-4]
+
+confianza: media
+ultima_verificacion: "2026-08-31"
+
+fuentes:
+  - id: src-1
+    url: "https://www.euskadi.eus/gobierno-vasco/-/noticia/2025/el-gobierno-vasco-e-ibm-inauguran-donostia-primer-ibm-quantum-system-two-europa/"
+    titulo: "El Gobierno Vasco e IBM inauguran en Donostia el primer IBM Quantum System Two de Europa"
+    editor: "Gobierno Vasco"
+    tipo: oficial
+    fecha_publicacion: "2025-10-14"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El Gobierno Vasco e IBM han inaugurado hoy el primer IBM Quantum System Two operativo en
+      Europa y el tercero en todo el mundo, instalado en el Centro de Computación Cuántica
+      IBM-Euskadi, en Donostia/San Sebastián. [...] El IBM Quantum Heron de 156 qubits
+  - id: src-2
+    url: "https://www.noticiasdegipuzkoa.eus/sociedad/2025/10/15/vista-inaccesible-bunker-superordenador-cuantico-10216476.html"
+    titulo: "A la vista de todos, pero inaccesible: así es el búnker del superordenador cuántico"
+    editor: "Noticias de Gipuzkoa"
+    tipo: prensa_general
+    fecha_publicacion: "2025-10-15"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Un ordenador, dijo Morais, que "consume energía en kilowatios, no en megawatios", como los
+      supercomputadores convencionales o la Inteligencia Artificial (IA).
+  - id: src-3
+    url: "https://www.diariovasco.com/economia/donostia-inicia-montaje-ordenador-cuantico-ibm-operativo-20250807000200-nt.html"
+    titulo: "Donostia inicia el montaje del ordenador cuántico de IBM que estará operativo en otoño"
+    editor: "El Diario Vasco"
+    tipo: prensa_general
+    fecha_publicacion: "2025-08-07"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El edificio que alberga la máquina, de cinco plantas y 6.000 metros cuadrados, ya está
+      terminado. En su planta baja, visible desde la calle, se ha habilitado una sala de 110
+      metros cuadrados donde se instalará el sistema cuántico. En el nivel inferior ya se han
+      dispuesto los sistemas de refrigeración necesarios para operar a temperaturas cercanas al
+      cero absoluto (-273 ºC). [...] La inversión para este ambicioso proyecto asciende a 153
+      millones de euros hasta 2028. De esta cantidad, 25 millones han sido aportados por la
+      Diputación de Gipuzkoa.
+  - id: src-4
+    url: "https://www.euskadi.eus/gobierno-vasco/-/noticia/2022/el-departamento-educacion-impulsa-nuevo-edificio-para-la-investigacion/"
+    titulo: "El Departamento de Educación impulsa un nuevo edificio para la investigación"
+    editor: "Gobierno Vasco"
+    tipo: oficial
+    fecha_publicacion: "2022-01-01"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El edificio ubicado en la avenida Tolosa estará anexo al actual edificio Korta y contará con
+      6.000 m² construidos, distribuidos en 5 plantas sobre superficie y una planta sótano, con
+      cerca de 1.100 m² por planta. [...] El coste asciende a 12 millones de euros financiados por
+      el Departamento de Educación del Gobierno Vasco.

@@ -238,6 +238,29 @@ magnitud: el empleo de obra es temporal y suele ser diez veces el de explotació
 así que `construccion` y `directo` no se suman entre sí. `total` se reserva para
 cuando la fuente da un agregado sin desglosar.
 
+## Instalaciones de cómputo cuántico
+
+España tiene ya varias y se estaban tratando de formas distintas, así que la
+regla se fija aquí:
+
+> Una instalación de cómputo cuántico recibe ficha **si y solo si es un
+> emplazamiento físico identificable, con sala técnica propia y fuente pública**.
+> Si está **dentro de un emplazamiento ya fichado**, no genera registro nuevo:
+> se anota en el `estado_detalle` del anfitrión, por la regla «un emplazamiento,
+> un registro». Y **nunca aporta cifra a `potencia[]`** salvo que la fuente
+> publique una magnitud eléctrica de esa instalación concreta.
+
+La razón de admitirlas no es que sean centros de datos, porque no lo son: la
+carga dominante es un criostato de dilución y consumen kilovatios donde un CPD
+consume megavatios. Es que el conjunto ya registra infraestructura de cómputo
+público —BSC, CESGA, CSUC, IFCA, SCAYLE— y cuatro de esos cinco tampoco publican
+ninguna magnitud eléctrica. Excluir la cuántica por no publicar MW sería aplicar
+un criterio que el resto de la categoría no cumple.
+
+Lo que sí exige es **decir en la ficha lo que no es**. El `estado_detalle` abre
+advirtiéndolo y el orden de magnitud va en `incertidumbres[]`, nunca en
+`potencia[]`, igual que se hace con los consumos de *benchmark* del BSC.
+
 ## Red eléctrica
 
 `data/red/subestaciones.yaml` y `data/red/actuaciones.yaml` siguen el mismo

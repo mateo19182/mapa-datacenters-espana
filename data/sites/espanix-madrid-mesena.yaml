@@ -12,7 +12,10 @@ ubicacion:
   municipio: "Madrid"
   provincia: "Madrid"
   ccaa: "Comunidad de Madrid"
-  direccion: "Calle Mesena 80, 28033 Madrid (distrito de Hortaleza)"
+  direccion: >-
+    Calle Mesena 80, 28033 Madrid (distrito de Hortaleza). El recinto es el Campus Acciona
+    Mesena y tiene una segunda entrada por la Gran Vía de Hortaleza, números 1 y 3, direcciones
+    con las que ESpanix registra en PeeringDB dos nodos del mismo campus.
   lat: 40.466022
   lon: -3.660963
   precision: exacta
@@ -26,8 +29,9 @@ estado_detalle: >-
   parte del Campus Acciona Mesena, el antiguo complejo de Banesto y después del Banco Santander:
   104.000 m² con tres edificios —Magdalena, Cantabria y Pedreña— entre la calle Mesena y la Gran
   Vía de Hortaleza. ESpanix registra en PeeringDB otros dos nodos con dirección en Gran Vía de
-  Hortaleza 1 y 3, agrupados por la propia PeeringDB en el mismo campus que este (véase
-  `incertidumbres`).
+  Hortaleza 1 y 3, «Cantabria» y «Magdalena», que son dos de esos edificios y que la propia
+  PeeringDB agrupa con este en un único campus. Se registraron como emplazamiento aparte hasta el
+  31 de agosto de 2026, cuando se comprobó que son el mismo recinto (véase `incertidumbres`).
 estado_fuentes: [src-1, src-2, src-3, src-4, src-5, src-6]
 fecha_puesta_en_servicio: "1988"
 
@@ -85,9 +89,14 @@ incertidumbres:
       los centros donde se puede conectar con su nodo, lista un solo centro propio, «ESpanix
       Datacenter, C/Mesena 80», y ninguno en Gran Vía de Hortaleza. El Catastro lo respalda: Mesena
       80, Gran Vía de Hortaleza 1 y Gran Vía de Hortaleza 3 son parcelas contiguas de la misma
-      manzana catastral 42000 y de la misma unidad de planeamiento APE 16.01 (parcelas III, IV y V).
-      No se fusionan ni se borran ficheros por decisión propia: la fusión queda propuesta y
-      pendiente de decisión humana.
+      manzana catastral 42000 y de la misma unidad de planeamiento APE 16.01 (parcelas III, IV y V),
+      y los tres puntos de PeeringDB distan entre sí menos de 340 m.
+      **Resuelto el 31 de agosto de 2026**: la ficha `espanix-madrid-gran-via-hortaleza` se
+      suprimió y su contenido quedó refundido aquí. Las direcciones de Gran Vía de Hortaleza 1 y 3
+      constan en `direccion` como la segunda entrada del recinto, no como alias, para que la
+      reconciliación por nombres no vuelva a tratarlas como emplazamientos distintos. Lo único que
+      añadiría certeza formal sería que ESpanix explicase por qué registró «Cantabria» y
+      «Magdalena» como instalaciones separadas en PeeringDB.
     fuentes: [src-2, src-3, src-4, src-5, src-6, src-7, src-8]
 
 confianza: media

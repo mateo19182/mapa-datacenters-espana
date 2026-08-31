@@ -262,11 +262,6 @@ Generado el 2026-08-31 por `npm run validate`.
 
 - aviso: potencia[0] («Capacidad en servicio según un directorio sectorial») no distingue el tipo de MW
 
-### `espanix-madrid-gran-via-hortaleza.yaml`
-
-- aviso: sin ningún dato de potencia
-- aviso: posible duplicado de espanix-madrid-mesena: mismo operador a 199 m
-
 ### `espanix-madrid-mesena.yaml`
 
 - aviso: potencia[0] («Potencia del centro de datos según la ficha técnica de ESpanix») no distingue el tipo de MW
@@ -362,6 +357,11 @@ Generado el 2026-08-31 por `npm run validate`.
 ### `ibercom-madrid-maria-tubau.yaml`
 
 - aviso: sin ningún dato de potencia
+
+### `ibm-euskadi-donostia-computacion-cuantica.yaml`
+
+- aviso: sin ningún dato de potencia
+- aviso: sin coordenadas: no aparecerá en el mapa
 
 ### `inditex-a-laracha.yaml`
 

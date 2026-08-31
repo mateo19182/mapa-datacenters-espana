@@ -46,21 +46,6 @@ proyectos:
       en echelon-dc.com. La única mención es un reportaje de DCD que además sitúa mal la
       central de Aceca. La térmica de Velilla existe y es de Iberdrola, pero está en
       desmantelamiento desde 2020: que haya suelo y nudo no es prueba de proyecto.
-  - municipio: Donostia-San Sebastián
-    provincia: Gipuzkoa
-    ccaa: País Vasco
-    compania: IBM / Gobierno Vasco
-    potencia_citada: null
-    prioridad: media
-    nota: >-
-      Documentado con fuente oficial y deliberadamente no fichado, a la espera de una
-      decisión de criterio. El IBM Quantum System Two del Centro de Computación Cuántica
-      IBM-Euskadi se inauguró el 14/10/2025 con un procesador Heron de 156 cúbits. No encaja
-      en el conjunto porque no publica ninguna de las magnitudes con que este mide —MW IT, de
-      conexión o instalados—, su carga dominante es un criostato de dilución y no una sala de
-      racks, y no es comparable con los centros públicos ya fichados (BSC, CESGA, CSUC, IFCA,
-      SCAYLE). Incluirlo invitaría a leerlo como capacidad de cómputo convencional.
-
   # --- huecos nuevos detectados en el barrido -------------------------------
   - municipio: Peralta
     provincia: Navarra
