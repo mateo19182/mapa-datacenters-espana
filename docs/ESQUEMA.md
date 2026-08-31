@@ -84,6 +84,24 @@ superficie_parcela_m2: null
 superficie_construida_m2: null
 inversion_anunciada_eur: null         # dato documental, no valoración
 refrigeracion: null                   # texto breve si consta (aire, agua, consumo)
+
+agua:                                 # bloque estructurado; ver «Agua» más abajo
+  circuito: cerrado                   # cerrado | abierto | hibrido | sin_agua | desconocido
+  sistema: "Torres de refrigeración adiabáticas."
+  origen: "Red municipal"             # de dónde sale el agua, si consta
+  consumo_m3_ano: 120000              # se omite si no consta
+  consumo_m3_dia: null                # NO se convierte al anual ni al revés
+  wue_l_kwh: 0.2                      # litros por kWh, si la fuente lo publica
+  nota: null
+  fuentes: [src-3]
+
+empleo:                               # cifras anunciadas, no verificadas
+  - tipo: directo                     # directo | indirecto | construccion | total | no_especificado
+    valor: 250
+    referencia: "Fase de explotación"
+    fecha_dato: "2026-06"
+    fuentes: [src-2]
+    nota: null
 enlaces_proyecto: []                  # web oficial del proyecto/expediente
 
 incertidumbres:
@@ -161,6 +179,43 @@ Muchas fuentes dan la capacidad **acumulada** a cada hito («10 MW en 2026, 25 M
 cierre de 2027, 45 MW en 2028»). Esas cifras no se suman entre sí: se marca cada
 registro con `acumulado: true` y la agregación toma la mayor. Sumarlas produciría
 un total inflado con aspecto de rigor, que es justo lo que este proyecto evita.
+
+## Agua
+
+El consumo de agua es la magnitud que más se discute públicamente y la que peor
+se publica. El bloque `agua` recoge lo que diga la fuente y nada más.
+
+| campo | qué es |
+|---|---|
+| `circuito` | `cerrado` (el agua recircula y solo se repone la merma), `abierto` (evaporativa: se evapora entera y hay que reponerla), `hibrido` (seca o evaporativa según la temperatura, con el consumo concentrado en verano), `sin_agua`, `desconocido`. |
+| `consumo_m3_ano` / `consumo_m3_dia` | Volumen tal y como lo da la fuente. |
+| `wue_l_kwh` | *Water Usage Effectiveness*, en litros por kWh. |
+| `sistema`, `origen` | Texto breve: cómo se disipa el calor y de dónde sale el agua. |
+
+Tres reglas:
+
+1. **El consumo diario y el anual no se convierten uno en otro.** La conversión
+   exige suponer los días de operación a plena carga, que es justo lo que no
+   consta. Si una ficha tiene los dos, vienen de fuentes distintas y así se dice.
+2. **`sin_agua` solo se pone cuando la fuente lo afirma**, y sigue siendo una
+   afirmación del proyecto, no una medición. No es el valor por defecto de lo
+   que se desconoce: para eso está `desconocido`.
+3. **La cifra tiene que aparecer en la cita**, igual que las de potencia. El
+   validador lo comprueba.
+
+`refrigeracion` (texto libre) no desaparece: describe el sistema en prosa cuando
+la fuente no da nada cuantificable. `agua` es lo estructurado; conviven.
+
+## Empleo e inversión
+
+`empleo[]` e `inversion_anunciada_eur` son **cifras anunciadas** por el promotor
+o por la administración que autoriza. No se han contrastado con ningún registro
+laboral ni contable, y la ficha lo dice donde se muestran.
+
+El empleo se separa por tipo porque mezclarlo deforma la cifra en un orden de
+magnitud: el empleo de obra es temporal y suele ser diez veces el de explotación,
+así que `construccion` y `directo` no se suman entre sí. `total` se reserva para
+cuando la fuente da un agregado sin desglosar.
 
 ## Red eléctrica
 

@@ -29,18 +29,35 @@ potencia:
     ambito: edificio
     referencia: "Critical Load Capacity (encabezado de la ficha)"
     estado_asociado: operativo
-    fecha_dato: "2026-08-29"
-    fuentes: [src-1]
+    fecha_dato: "2026-08-31"
+    fuentes: [src-1, src-3]
   - tipo: no_especificado
     valor_mw: 20
     ambito: edificio
     referencia: "Critical Load Capacity (segundo bloque de la misma ficha)"
     estado_asociado: operativo
-    fecha_dato: "2026-08-29"
-    fuentes: [src-1]
+    fecha_dato: "2026-08-31"
+    fuentes: [src-1, src-3]
     nota: "La misma página de Edged muestra dos cifras distintas para el mismo edificio."
 
-refrigeracion: "Sistema ThermalWorks sin consumo de agua (WUE 0,00 l/kWh); PUE de diseño de cartera 1,15."
+refrigeracion: >-
+  Sistema ThermalWorks sin consumo de agua (WUE 0,00 l/kWh); PUE de diseño de cartera 1,15;
+  transferencia de calor con glicol y enfriadoras de techo refrigeradas por aire; evaporadores de
+  circuito cerrado para la refrigeración secundaria; 500 kW por pasillo caliente.
+
+agua:
+  circuito: sin_agua
+  sistema: >-
+    Refrigeración modular ThermalWorks: transferencia de calor con glicol y enfriadoras de techo
+    refrigeradas por aire, con evaporadores de circuito cerrado para la refrigeración secundaria.
+    Edged declara que el sistema no consume agua.
+  origen: null
+  consumo_m3_ano: null
+  wue_l_kwh: 0
+  nota: >-
+    Cifra publicada por el operador para toda su cartera y repetida en la ficha de este edificio;
+    no hay medición independiente ni consumo declarado en metros cúbicos.
+  fuentes: [src-3]
 enlaces_proyecto:
   - "https://www.edged.es/madrid-getafe-2"
 
@@ -48,9 +65,10 @@ incertidumbres:
   - campo: potencia
     descripcion: >-
       La ficha de Edged para Madrid-Getafe 2 muestra "48 MW Critical Load Capacity" en el
-      encabezado y "20 MW Critical Load Capacity" en el bloque inferior. Se conservan ambos
-      valores sin elegir.
-    fuentes: [src-1]
+      encabezado y "20 MW Critical Load Capacity" en el bloque inferior. La versión en español de
+      la misma página, consultada en agosto de 2026, repite las dos cifras, de modo que no es un
+      error puntual de una traducción. Se conservan ambos valores sin elegir.
+    fuentes: [src-1, src-3]
   - campo: estado
     descripcion: >-
       La nota de prensa de MERLIN de enero de 2025 solo menciona MAD 01 en Getafe (20 MW
@@ -59,7 +77,7 @@ incertidumbres:
     fuentes: [src-1, src-2]
 
 confianza: baja
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -77,3 +95,10 @@ fuentes:
     fecha_publicacion: "2025-01-14"
     fecha_consulta: "2026-08-29"
     cita: "with operations in Madrid-Getafe (MAD 01 with 20MW in operation, expandable to 27MW)"
+  - id: src-3
+    url: "https://es.edged.es/madrid-getafe-2"
+    titulo: "Madrid-Getafe 2"
+    editor: "Edged (MERLIN Edged)"
+    tipo: empresa
+    fecha_consulta: "2026-08-31"
+    cita: "48 MW Capacidad de carga crítica 1,15 PUE PUE Diseño de carteras PUE ... 20 MW Capacidad de carga crítica 1.15 PUE garantizado Abierto Espacio disponible ... Centro de datos madrid-getafe 2 Calle Fundidores, nº 2 Polígono Industrial, Los Ángeles, 28906 Getafe, España ... Sistema avanzado de refrigeración sin agua - Eficacia del uso del agua (WUE) 0,00 litros/kWh de refrigeración - Redundancia N+1 - Transferencia de calor con glicol con enfriadoras de techo refrigeradas por aire - Los evaporadores de circuito cerrado proporcionan refrigeración secundaria"

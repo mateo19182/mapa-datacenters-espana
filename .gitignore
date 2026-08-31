@@ -7,3 +7,4 @@ src/data/
 .DS_Store
 *.log
 src/contenido/
+.claude/settings.local.json

@@ -2,6 +2,8 @@ id: microsoft-san-sebastian-de-los-reyes
 nombre: "Microsoft — Centro de datos de San Sebastián de los Reyes (región Spain Central)"
 alias:
   - "Microsoft Azure Spain Central — San Sebastián de los Reyes"
+  - "MAD04"
+  - "Microsoft 7724 Spain, S. L. — Avenida Fuente Nueva 3"
 tipo: campus
 operador: "Microsoft"
 propietario: "Microsoft"
@@ -11,39 +13,120 @@ ubicacion:
   municipio: "San Sebastián de los Reyes"
   provincia: "Madrid"
   ccaa: "Comunidad de Madrid"
+  direccion: "Avenida de Fuente Nueva 3, Polígono Industrial Sur, San Sebastián de los Reyes"
   lat: null
   lon: null
   precision: municipio
-  fuentes: [src-1]
+  fuentes: [src-1, src-2, src-3]
 
 estado: en_construccion
 estado_detalle: >-
-  Microsoft declaró en la apertura de su región cloud Spain Central (Comunidad de Madrid) que
-  avanzaba en la construcción de centros de datos adicionales en Algete, Meco y San Sebastián de
-  los Reyes, que se inaugurarían "próximamente". La región Spain Central está formada por tres
-  zonas de disponibilidad con energía, refrigeración y redes independientes.
-estado_fuentes: [src-1]
+  El expediente ambiental (10-EIA-00035.3/2022, referencia interna SEA 35/22) describe un centro
+  de datos de un solo edificio, denominado MAD04, en una parcela del Polígono Industrial Sur. El
+  edificio se divide en la nave de servidores —llamada Ballard o Baluarte, con cuatro celdas—, el
+  área administrativa y la de logística y almacenaje. La Comunidad de Madrid hizo público el
+  Informe de Impacto Ambiental por Resolución de 28 de febrero de 2023 (BOCM de 16 de marzo de
+  2023). Microsoft declaró en la apertura de su región cloud Spain Central que avanzaba en la
+  construcción de centros de datos adicionales en Algete, Meco y San Sebastián de los Reyes.
+estado_fuentes: [src-1, src-2, src-3]
 
-potencia: []
+potencia:
+  - tipo: it
+    valor_mw: 9.5
+    ambito: edificio
+    edificio: "Ballard (MAD04)"
+    referencia: "Capacidad de los equipos informáticos de las 4 celdas del edificio Ballard"
+    estado_asociado: en_construccion
+    fecha_dato: "2023-02-28"
+    fuentes: [src-2]
+    nota: >-
+      El expediente dice «capacidad total de potencia de equipos informáticos de 9,5 MW», que es
+      carga TI.
+  - tipo: instalada_total
+    valor_mw: 13
+    ambito: edificio
+    edificio: "Ballard (MAD04)"
+    referencia: "Demanda de potencia del edificio declarada en el documento ambiental"
+    estado_asociado: en_construccion
+    fecha_dato: "2023-02-28"
+    fuentes: [src-2]
+    nota: >-
+      El documento la llama indistintamente «demanda de potencia de 13 MW» y «potencia instalada
+      de 13 MW». No se compara con los 9,5 MW de carga TI ni se deduce un PUE de la relación.
+  - tipo: termica_respaldo
+    valor_mw: 7.1
+    ambito: edificio
+    edificio: "Ballard (MAD04)"
+    referencia: "Cada uno de los 4 generadores de emergencia de las salas de datos"
+    estado_asociado: en_construccion
+    fecha_dato: "2023-02-28"
+    fuentes: [src-2]
+    nota: >-
+      Cifra por unidad, no del conjunto: cada generador declara 3,5 MW eléctricos y 7,1 MW
+      térmicos. No es capacidad del centro de datos y no entra en ningún agregado.
 
-refrigeracion: "Microsoft indica refrigeración evaporativa directa para los centros de datos de la región, con uso de agua en torno al 15% del tiempo de operación."
+conexion_electrica:
+  subestacion: null
+  tension_kv: 20
+  titular_red: null
+  mw_solicitados: null
+  mw_concedidos: null
+  nota: >-
+    El documento ambiental prevé el suministro desde dos subestaciones situadas fuera del
+    emplazamiento, con acometidas subterráneas independientes en alta tensión a 20 kV, y cinco
+    transformadores 20/0,415 kV alimentados en anillo. No nombra las subestaciones ni su titular.
+  fuentes: [src-2]
+
+superficie_parcela_m2: 24762
+superficie_construida_m2: null
+refrigeracion: >-
+  Unidades de ventilación con enfriamiento evaporativo que usan agua como refrigerante, con dos
+  tanques de hormigón en el sótano y tratamiento previo del agua, incluida descalcificación.
+
+agua:
+  circuito: desconocido
+  sistema: >-
+    Enfriamiento evaporativo de las salas de datos con agua tratada almacenada en dos tanques de
+    hormigón en el sótano. Genera purgas del sistema de refrigeración que se vierten a la red.
+  origen: "Acometida de la red pública; vertido a la red de Canal de Isabel II"
+  consumo_m3_ano: 9199.2
+  wue_l_kwh: null
+  nota: >-
+    El expediente añade un vertido anual previsto de 2.490 m³ de purgas del circuito de
+    refrigeración y 394 m³ de aguas sanitarias. El circuito se deja como desconocido porque la
+    fuente describe un sistema evaporativo con purga sin clasificarlo como abierto ni cerrado.
+  fuentes: [src-2]
+
+enlaces_proyecto:
+  - "https://www.bocm.es/boletin/CM_Orden_BOCM/2023/03/16/BOCM-20230316-50.PDF"
 
 incertidumbres:
   - campo: potencia
-    descripcion: "Microsoft no publica potencia ni superficie de sus emplazamientos en la Comunidad de Madrid."
-    fuentes: [src-1]
+    descripcion: >-
+      Las cifras proceden del documento ambiental de 2022-2023 y describen el diseño presentado
+      entonces para un solo edificio. Microsoft no ha publicado la capacidad del emplazamiento en
+      servicio, y no consta si el proyecto ejecutado mantiene los 9,5 MW de carga TI.
+    fuentes: [src-1, src-2]
   - campo: estado
     descripcion: >-
-      La única fuente localizada es la nota de apertura de la región (2024), que sitúa estos tres
-      emplazamientos en construcción. No se ha encontrado confirmación pública posterior de su
-      puesta en servicio, ni expedientes municipales accesibles.
-    fuentes: [src-1]
+      No se ha localizado confirmación pública de la puesta en servicio. Microsoft situaba el
+      emplazamiento en construcción en la nota de apertura de la región; el expediente ambiental
+      es de 2023 y no hay publicación posterior sobre su ejecución.
+    fuentes: [src-1, src-2]
+  - campo: tipo
+    descripcion: >-
+      La ficha está registrada como campus, pero el expediente ambiental describe un único
+      edificio de centro de datos en la parcela. No consta que el emplazamiento vaya a albergar
+      más edificios.
+    fuentes: [src-2]
   - campo: ubicacion
-    descripcion: "No consta dirección ni parcela; la geolocalización queda a nivel de municipio."
-    fuentes: [src-1]
+    descripcion: >-
+      La dirección consta en el expediente ambiental, pero no se han publicado coordenadas ni
+      referencia catastral de la parcela, así que la geolocalización queda a nivel de municipio.
+    fuentes: [src-2, src-3]
 
-confianza: baja
-ultima_verificacion: "2026-08-29"
+confianza: media
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -53,3 +136,19 @@ fuentes:
     tipo: empresa
     fecha_consulta: "2026-08-29"
     cita: "Microsoft avanza en la construcción de centros de datos adicionales ubicados en Algete, Meco y San Sebastián de los Reyes, que se inaugurarán próximamente."
+  - id: src-2
+    url: "https://transparencia.ssreyes.org/documents/1678104/2103617/819305892_1462023192729.pdf/6b22353e-8d39-6f69-e668-415d0316374e?t=1697736054194"
+    titulo: "35/22 INFORME DE IMPACTO AMBIENTAL DEL PROYECTO DE CENTRO DE DATOS, EN LA AVDA. FUENTE NUEVA Nº 3, EN EL TÉRMINO MUNICIPAL DE SAN SEBASTIÁN DE LOS REYES, PROMOVIDO POR MICROSOFT 7724 SPAIN S.L."
+    editor: "Comunidad de Madrid — Consejería de Medio Ambiente, Vivienda y Agricultura (publicado en el portal de transparencia del Ayuntamiento de San Sebastián de los Reyes)"
+    tipo: oficial
+    fecha_publicacion: "2023-02-28"
+    fecha_consulta: "2026-08-31"
+    cita: "En la zona central de la parcela se construirá un Centro de Datos (también denominado MAD04), con un área de 7.085 m2 ... La parcela tiene una superficie de 24.762 m2 ... El edificio BALLARD dispondrá de 4 celdas destinadas a alojar equipos de informática y redes con una capacidad total de potencia de equipos informáticos de 9,5 MW. Existirán 4 generadores de emergencia para las salas de datos, cada uno con una potencia eléctrica de 3,5 MW y potencia térmica de 7,1 MW ... El suministro eléctrico se prevé desde dos subestaciones eléctricas situadas fuera del emplazamiento, con acometidas subterráneas independientes en alta tensión a 20 KV 50 Hz. El edificio tendrá una demanda de potencia de 13 MW, encontrándose previstos cinco (5) transformadores de 20/0,415 KV distribuidos por el complejo ... Las salas de datos se proveerán de un sistema de unidades de ventilación con enfriamiento evaporativo que utiliza agua como elemento refrigerante ... con una potencia instalada de 13 MW y un consumo eléctrico máximo estimado anual de aproximadamente 68.330 MWh Se encuentra previsto un consumo anual de agua de 9.199,2 m 3, destinado en su mayor parte al uso en la refrigeración de los equipos. Se estima un volumen de vertido anual de purgas del sistema de refrigeración de 2.490 m 3 anuales y 394 m 3 anuales de aguas sanitarias."
+  - id: src-3
+    url: "https://www.bocm.es/boletin/CM_Orden_BOCM/2023/03/16/BOCM-20230316-50.PDF"
+    titulo: "RESOLUCIÓN de 28 de febrero de 2023, del Director General de Descarbonización y Transición Energética de la Consejería de Medio Ambiente, Vivienda y Agricultura, por la que se acuerda hacer público el Informe de Impacto Ambiental del proyecto de “Centro de Datos en Avenida Fuente Nueva, número 3, localizado en el polígono industrial Sur”, en el término municipal de San Sebastián de los Reyes, promovido por Microsoft 7724 Spain, S. L."
+    editor: "Boletín Oficial de la Comunidad de Madrid"
+    tipo: oficial
+    fecha_publicacion: "2023-03-16"
+    fecha_consulta: "2026-08-31"
+    cita: "se acuerda hacer público el Informe de Impacto Ambiental correspondiente al proyecto de “Centro de Datos en Avenida Fuente Nueva, número 3, localizado en el polígono industrial Sur”, en el término municipal de San Sebastián de los Reyes, promovido por Microsoft 7724 Spain, S. L., con domicilio social en Paseo Club Deportivo, número 1, Parque Empresarial “La Finca”, 28223 Pozuelo de Alarcón, Madrid. (Expediente: 10-EIA-00035.3/2022)"

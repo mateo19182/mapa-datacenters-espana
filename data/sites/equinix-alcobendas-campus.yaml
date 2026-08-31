@@ -33,13 +33,38 @@ potencia:
   - tipo: no_especificado
     valor_mw: 4.8
     ambito: edificio
+    edificio: "MD6"
     referencia: "MD6"
     estado_asociado: operativo
-    fecha_dato: "2026-08-29"
-    fuentes: [src-6]
+    fecha_dato: "2022-09-19"
+    fuentes: [src-6, src-9]
     nota: >-
-      Dato de un directorio comercial (OCOLO), no de Equinix. La ficha oficial de MD6 no
-      publica potencia. Se registra como no_especificado.
+      La cifra aparece en la crónica de la inauguración de MD6 («una potencia de 4,8 MW») y en
+      un directorio comercial. Ninguna de las dos dice si es carga TI o potencia total, y la
+      ficha oficial de Equinix no publica potencia, así que se registra como no_especificado.
+  - tipo: instalada_total
+    valor_mw: 9.6
+    ambito: edificio
+    edificio: "MD5"
+    referencia: "MD5 en configuración definitiva"
+    estado_asociado: operativo
+    fecha_dato: "2026-05-15"
+    fuentes: [src-10]
+    nota: >-
+      El director general de Equinix España habla de «una potencia instalada de 9,6 megavatios
+      en su configuración definitiva». Se registra como potencia instalada, no como carga TI. La
+      misma fuente añade «cuatro megavatios disponibles en esta primera fase de arranque», cifra
+      que no se registra aparte porque es parte de esos 9,6 MW y la fuente la escribe con letra.
+  - tipo: no_especificado
+    valor_mw: 30
+    ambito: campus
+    referencia: "Capacidad prevista del campus una vez desplegado por completo"
+    estado_asociado: anunciado
+    fecha_dato: "2022-09-19"
+    fuentes: [src-9]
+    nota: >-
+      La fuente dice que «se espera que supere los 30 MW cuando esté todo completamente
+      desplegado», de modo que 30 MW es un suelo y no una cifra cerrada. No indica el tipo de MW.
 
 fases:
   - nombre: "MD2 — Calle Valgrande 6"
@@ -58,21 +83,53 @@ fases:
     # "más de 4.400 m² de espacio de colocation"
   - nombre: "MD6 — Calle de la Pedriza 12"
     estado: operativo
-    fuentes: [src-1]
+    fecha_puesta_en_servicio: "2022-09"
+    superficie_m2: 1500
+    fuentes: [src-1, src-9]
+    # "cerca de 1.500 metros cuadrados de sala técnica"
 
 superficie_construida_m2: null
 inversion_anunciada_eur: 460000000
-refrigeracion: "Redundancia de refrigeración N+1; free cooling y contención pasillo frío/caliente en MD3x y MD6 (fichas técnicas Equinix)."
+refrigeracion: >-
+  Redundancia de refrigeración N+1; free cooling y contención pasillo frío/caliente en MD3x y
+  MD6 (fichas técnicas Equinix). En la inauguración de MD6 Equinix declaró un PUE de 1,17 y un
+  diseño de encapsulado de aire caliente sin suelo técnico. Para MD5, concebido para densidades
+  altas, la compañía describe refrigeración líquida directa con circuitos cerrados.
+
+agua:
+  circuito: cerrado
+  sistema: >-
+    Circuito cerrado de agua: según el director general de Equinix España en la inauguración de
+    MD6, los depósitos se llenan una vez y no se vuelve a consumir agua salvo de forma
+    excepcional. Para MD5 la compañía describe refrigeración líquida directa en circuito cerrado.
+  origen: null
+  nota: >-
+    En la inauguración de MD5, Equinix declaró «un modelo de refrigeración que permite operar sin
+    consumo de agua». No se registra el circuito como sin_agua porque la afirmación se refiere a
+    MD5 y el campus incluye instalaciones anteriores; para MD6 el operador describe un circuito
+    cerrado que se rellena de forma excepcional. No hay cifra publicada de consumo de agua ni WUE
+    para ninguna instalación del campus, ni dato alguno que cubra MD2 y MD3x.
+  fuentes: [src-9, src-10, src-11]
 enlaces_proyecto:
   - "https://www.equinix.com/data-centers/europe-colocation/spain-colocation/madrid-data-centers"
 
 incertidumbres:
   - campo: potencia
     descripcion: >-
-      Equinix no publica capacidad en MW de ninguna de las instalaciones del campus. El único
-      valor localizado (4,8 MW para MD6) procede de un directorio comercial y no indica si es
-      carga TI o potencia total.
-    fuentes: [src-1, src-6]
+      Equinix no publica en sus fichas técnicas la capacidad en MW de ninguna instalación del
+      campus. Las cifras registradas proceden de declaraciones de sus directivos a la prensa
+      (9,6 MW instalados en MD5, 4,8 MW en MD6, más de 30 MW para el campus completo) y de un
+      directorio comercial. Ninguna de ellas se expresa como carga TI, y no hay cifra alguna
+      para MD2 ni para MD3x, de modo que las cuatro instalaciones no suman una capacidad de
+      campus comprobable.
+    fuentes: [src-1, src-6, src-9, src-10]
+  - campo: ubicacion
+    descripcion: >-
+      Dos fuentes de prensa sitúan mal MD1 al describir el origen del campus: la crónica de 2022
+      lo ubica en Fuenlabrada y la entrevista de 2026 lo cuenta entre «sus dos centros de datos
+      en Alcobendas». La ficha oficial de Equinix sitúa MD1 en la calle Isabel Colbrand de
+      Madrid, y así se registra en su propio fichero.
+    fuentes: [src-9, src-10]
   - campo: ubicacion
     descripcion: >-
       MD2 (Calle Valgrande 6) y MD3x/MD5/MD6 (Calle de la Pedriza 12) están en direcciones
@@ -87,7 +144,7 @@ incertidumbres:
     fuentes: [src-7]
 
 confianza: media
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -140,3 +197,27 @@ fuentes:
     tipo: otro
     fecha_consulta: "2026-08-29"
     cita: "Equinix MD3x Calle de la Pedriza 12 ... Year Built: 2022"
+  - id: src-9
+    url: "https://www.datacenterdynamics.com/es/noticias/md6-el-nuevo-data-center-de-equinx-en-alcobendas/"
+    titulo: "MD6, el nuevo Data Center de Equinix en Alcobendas"
+    editor: "DatacenterDynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2022-09-19"
+    fecha_consulta: "2026-08-31"
+    cita: "Cuenta con 1.500 metros cuadrados de sala técnica y 4,8 MW de potencia, aunque se prevé que supere los 30 MW cuando la instalación esté completa ... El Data Center que ya está en funcionamiento cuenta con una potencia de 4,8 MW y cerca de 1.500 metros cuadrados de sala técnica, aunque se espera que supere los 30 MW cuando esté todo completamente desplegado ... \"Nuestro consumo de agua es residual. Una vez llenamos nuestros depósitos para crear el circuito cerrado de agua que tenemos no volvemos a consumir agua, excepto de forma muy excepcional\", ha asegurado Velilla ... \"MD6 cuenta con un PUE de 1,17\" ... MD1 y MD2 (en Fuenlabrada y Alcobendas, respectivamente)"
+  - id: src-10
+    url: "https://www.elespanol.com/invertia/disruptores/grandes-actores/tecnologicas/20260516/equinix-inaugura-proxima-semana-md5-centro-datos-corona-inversion-millones-euros/1003744245768_0.html"
+    titulo: "Equinix inaugura la próxima semana MD5, un centro de datos que corona una inversión de 460 millones de euros"
+    editor: "El Español — Disruptores/Invertia"
+    tipo: prensa_general
+    fecha_publicacion: "2026-05-15"
+    fecha_consulta: "2026-08-31"
+    cita: "El próximo 22 de mayo, Equinix España inaugurará un nuevo centro de datos en el campus de Alcobendas. Una obra colosal de nuevo cuño con una potencia instalada de 9,6 megavatios en su configuración definitiva (cuatro megavatios disponibles en esta primera fase de arranque) ... \"Tienes que refrigerar con circuitos cerrados, con refrigeración líquida directa, dejar espacios entre racks\" ... la inversión de 460 millones de euros reconocida el año pasado por la Comunidad de Madrid como Proyecto de Especial Interés para estos nuevos centros en Alcobendas ... la adquisición de Itconic -y sus dos centros de datos en Alcobendas, MD1 y MD2"
+  - id: src-11
+    url: "https://www.datacenterdynamics.com/es/noticias/equinix-inaugura-el-data-center-md5-en-alcobendas-refrigeraci%C3%B3n-sin-consumo-de-agua-para-impulsar-la-ia-en-el-sur-de-europa/"
+    titulo: "Equinix inaugura el data center MD5 en Alcobendas: refrigeración sin consumo de agua para impulsar la IA en el sur de Europa"
+    editor: "DatacenterDynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-05-22"
+    fecha_consulta: "2026-08-31"
+    cita: "El nuevo edificio añade 4.400 m² de espacio de colocation a la red global de Equinix, diseñado específicamente para soportar entornos críticos y altas densidades de potencia energética con una disponibilidad superior al 99,999% ... \"Nosotros hemos apostado por un modelo de refrigeración que permite operar sin consumo de agua, un paso hacia una nueva generación de infraestructura para la IA más eficiente y más responsable\" ... \"Alcobendas se ha convertido hoy en un hub de innovación digital que alberga ya seis grandes data centers.\""

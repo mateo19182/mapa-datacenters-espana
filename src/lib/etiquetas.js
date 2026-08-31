@@ -98,6 +98,37 @@ export const VINCULO_ETIQUETA = {
   declarado_para_cpd: 'Declarado para centros de datos',
 }
 
+export const CIRCUITO_ETIQUETA = {
+  cerrado: 'Circuito cerrado',
+  abierto: 'Circuito abierto',
+  hibrido: 'Circuito híbrido',
+  sin_agua: 'Sin consumo de agua',
+  desconocido: 'Circuito no publicado',
+}
+
+export const CIRCUITO_DESCRIPCION = {
+  cerrado: 'El agua recircula y solo se repone lo que se pierde. Consume menos que un circuito abierto, pero no es cero.',
+  abierto: 'Refrigeración evaporativa: el agua se evapora y hay que reponerla entera. Es el sistema que más consume.',
+  hibrido: 'Combina disipación seca y evaporativa según la temperatura exterior, así que el consumo se concentra en verano.',
+  sin_agua: 'La fuente afirma que el sistema no consume agua para refrigerar. Es una afirmación del proyecto, no una medición.',
+  desconocido: 'No consta cómo se disipa el calor.',
+}
+
+export const EMPLEO_ETIQUETA = {
+  directo: 'Empleo directo',
+  indirecto: 'Empleo indirecto',
+  construccion: 'Empleo en construcción',
+  total: 'Empleo total',
+  no_especificado: 'Empleo sin tipificar',
+}
+
+/** Volumen de agua. El diario y el anual nunca se convierten uno en otro. */
+export function volumen(n) {
+  if (n == null) return null
+  if (n >= 1e6) return `${(n / 1e6).toLocaleString('es-ES', { maximumFractionDigits: 2 })} hm³`
+  return `${numero(n)} m³`
+}
+
 /** Nombres legibles para el campo al que apunta una incertidumbre. */
 export const CAMPO_ETIQUETA = {
   potencia: 'Potencia',
@@ -110,6 +141,8 @@ export const CAMPO_ETIQUETA = {
   refrigeracion: 'Refrigeración',
   refrigeración: 'Refrigeración',
   agua: 'Consumo de agua',
+  empleo: 'Empleo',
+  refrigeracion_agua: 'Agua y refrigeración',
   inversion_anunciada_eur: 'Inversión anunciada',
   inversion: 'Inversión anunciada',
   superficie_parcela_m2: 'Superficie de parcela',

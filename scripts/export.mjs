@@ -56,6 +56,7 @@ const alias = agrupar(q('SELECT * FROM alias'), 'sitio_id')
 const potencias = agrupar(q('SELECT * FROM potencias ORDER BY idx'), 'sitio_id')
 const fases = agrupar(q('SELECT * FROM fases ORDER BY idx'), 'sitio_id')
 const incert = agrupar(q('SELECT * FROM incertidumbres ORDER BY idx'), 'sitio_id')
+const empleos = agrupar(q('SELECT * FROM empleo ORDER BY idx'), 'sitio_id')
 const fuentes = agrupar(q('SELECT * FROM fuentes'), 'sitio_id')
 const respaldos = agrupar(q('SELECT * FROM respaldos'), 'sitio_id')
 
@@ -126,6 +127,26 @@ const sitios = q('SELECT * FROM sitios ORDER BY nombre').map((s) => {
     superficie_construida_m2: s.superficie_construida_m2,
     inversion_anunciada_eur: s.inversion_anunciada_eur,
     refrigeracion: s.refrigeracion,
+    agua: s.agua_circuito || s.agua_sistema || s.agua_consumo_m3_ano || s.agua_consumo_m3_dia || s.agua_wue_l_kwh
+      ? {
+          circuito: s.agua_circuito,
+          sistema: s.agua_sistema,
+          origen: s.agua_origen,
+          consumo_m3_ano: s.agua_consumo_m3_ano,
+          consumo_m3_dia: s.agua_consumo_m3_dia,
+          wue_l_kwh: s.agua_wue_l_kwh,
+          nota: s.agua_nota,
+          fuentes: respaldoDe('agua'),
+        }
+      : null,
+    empleo: (empleos.get(s.id) ?? []).map((e) => ({
+      tipo: e.tipo,
+      valor: e.valor,
+      referencia: e.referencia,
+      fecha_dato: e.fecha_dato,
+      nota: e.nota,
+      fuentes: respaldoDe(`empleo[${e.idx}]`),
+    })),
     enlaces_proyecto: JSON.parse(s.enlaces_proyecto ?? '[]'),
     incertidumbres: (incert.get(s.id) ?? []).map((u) => ({
       campo: u.campo,

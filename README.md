@@ -17,6 +17,11 @@ publicados, con su procedencia y su fecha de verificación.
   que nunca se suman entre sí ni se convierten aplicando un PUE supuesto.
 - Subestaciones de 220 y 400 kV, capacidad de acceso para demanda por nudo
   publicada por Red Eléctrica, y actuaciones de red planificadas.
+- **Consumo de agua y tipo de circuito de refrigeración** cuando el expediente
+  lo publica. El consumo diario y el anual van en campos distintos y no se
+  convierten uno en otro.
+- Empleo e inversión anunciados, marcados como lo que son: cifras del promotor
+  sin contrastar con ningún registro.
 - Generación renovable y baterías con vínculo documentado a un centro concreto.
 - Trazado de la red de transporte derivado de OpenStreetMap.
 - **Capa opcional de centrales de generación**, apagada por defecto: potencia
@@ -116,6 +121,24 @@ discrepancia en `incertidumbres[]`.
 El flujo `.github/workflows/revision-fuentes.yml` ejecuta todo esto cada lunes y
 abre un *pull request* con los tres informes, para revisión humana antes de
 fusionar.
+
+## Búsqueda documental
+
+`scripts/exa.mjs` consulta la API de Exa para localizar la fuente primaria de un
+dato y traerse el texto con el que rellenar la cita. No lo llama ningún paso del
+build y no escribe nada en `data/`.
+
+```bash
+export EXA_API_KEY=…                                   # dashboard.exa.ai/api-keys
+npm run exa -- buscar "centro de datos Escatrón DayOne" --n 8
+npm run exa -- buscar "impacto ambiental centro de datos" --sitio boa.aragon.es --desde 2024-01-01
+npm run exa -- contenido https://… --max 8000
+```
+
+`buscar` marca con `[OFICIAL]` los resultados de boletines y administraciones,
+que es donde están las cifras capaces de sostener una ficha. Encontrar la página
+no cambia ninguna regla: se registra la página, con su URL, su editor y su fecha,
+nunca el resumen que el buscador haga de ella.
 
 ## Centrales de generación
 

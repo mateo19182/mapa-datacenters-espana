@@ -50,6 +50,12 @@ export const TIPOS_FUENTE = [
 ]
 export const MODELOS = ['hyperscale', 'colocation', 'mayorista', 'corporativo', 'edge', 'desconocido']
 
+// Cómo se disipa el calor. `sin_agua` es una afirmación fuerte y solo se pone
+// cuando la fuente lo dice: no es el valor por defecto de lo que se desconoce.
+export const CIRCUITOS_AGUA = ['cerrado', 'abierto', 'hibrido', 'sin_agua', 'desconocido']
+
+export const TIPOS_EMPLEO = ['directo', 'indirecto', 'construccion', 'total', 'no_especificado']
+
 // --- normalización -----------------------------------------------------------
 
 const SINONIMOS_ESTADO = {
@@ -98,6 +104,32 @@ const SINONIMOS_POTENCIA = {
   'sin_especificar': 'no_especificado',
   desconocido: 'no_especificado',
   'no especificado': 'no_especificado',
+}
+
+const SINONIMOS_CIRCUITO = {
+  circuito_cerrado: 'cerrado',
+  closed_loop: 'cerrado',
+  circuito_abierto: 'abierto',
+  evaporativo: 'abierto',
+  torres_de_refrigeracion: 'abierto',
+  mixto: 'hibrido',
+  hibrida: 'hibrido',
+  aire: 'sin_agua',
+  seco: 'sin_agua',
+  free_cooling: 'sin_agua',
+  sin_consumo_de_agua: 'sin_agua',
+}
+
+const SINONIMOS_EMPLEO = {
+  empleo_directo: 'directo',
+  explotacion: 'directo',
+  operacion: 'directo',
+  fijo: 'directo',
+  empleo_indirecto: 'indirecto',
+  inducido: 'indirecto',
+  obra: 'construccion',
+  temporal: 'construccion',
+  durante_la_construccion: 'construccion',
 }
 
 const SINONIMOS_FUENTE = {
@@ -231,6 +263,34 @@ const zConexion = z.object({
   fuentes: z.array(z.string()).default([]),
 })
 
+// El agua es la magnitud que más se discute públicamente y la que peor se
+// publica. Se registra el consumo tal y como lo da la fuente —diario o anual—
+// y NUNCA se convierte de uno a otro: la conversión exige suponer días de
+// operación a plena carga, que es justo lo que no consta.
+const zAgua = z.object({
+  circuito: z.enum(CIRCUITOS_AGUA),
+  sistema: z.string().nullable().optional(),
+  origen: z.string().nullable().optional(),
+  consumo_m3_ano: z.number().nonnegative().nullable().optional(),
+  consumo_m3_dia: z.number().nonnegative().nullable().optional(),
+  // Water Usage Effectiveness, en litros por kWh, si la fuente lo publica.
+  wue_l_kwh: z.number().nonnegative().nullable().optional(),
+  nota: z.string().nullable().optional(),
+  fuentes: z.array(z.string()).default([]),
+})
+
+// Cifras de empleo anunciadas, no verificadas contra registro laboral alguno.
+// Se separan por tipo porque mezclar el empleo de obra con el de explotación
+// multiplica por diez la cifra que se acaba citando.
+const zEmpleo = z.object({
+  tipo: z.enum(TIPOS_EMPLEO),
+  valor: z.number().nonnegative(),
+  referencia: z.string().nullable().optional(),
+  fecha_dato: z.string().nullable().optional(),
+  fuentes: z.array(z.string()).min(1),
+  nota: z.string().nullable().optional(),
+})
+
 export const zSitio = z.object({
   id: z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/, 'el id debe ser kebab-case'),
   nombre: z.string().min(1),
@@ -252,6 +312,8 @@ export const zSitio = z.object({
   superficie_construida_m2: z.number().nullable().optional(),
   inversion_anunciada_eur: z.number().nullable().optional(),
   refrigeracion: z.string().nullable().optional(),
+  agua: zAgua.nullable().optional(),
+  empleo: z.array(zEmpleo).default([]),
   enlaces_proyecto: z.array(z.string()).default([]),
   incertidumbres: z.array(zIncertidumbre).default([]),
   confianza: z.enum(CONFIANZAS),
@@ -335,6 +397,29 @@ export function normalizarSitio(crudo) {
     }
   }
 
+  if (d.agua) {
+    const a = d.agua
+    d.agua = {
+      circuito: mapear(a.circuito, SINONIMOS_CIRCUITO, CIRCUITOS_AGUA, 'desconocido'),
+      sistema: a.sistema ?? null,
+      origen: a.origen ?? null,
+      consumo_m3_ano: numero(a.consumo_m3_ano),
+      consumo_m3_dia: numero(a.consumo_m3_dia),
+      wue_l_kwh: numero(a.wue_l_kwh),
+      nota: a.nota ?? null,
+      fuentes: arr(a.fuentes).map(String),
+    }
+  }
+
+  d.empleo = arr(d.empleo).map((e) => ({
+    tipo: mapear(e.tipo, SINONIMOS_EMPLEO, TIPOS_EMPLEO, 'no_especificado'),
+    valor: numero(e.valor),
+    referencia: e.referencia ?? null,
+    fecha_dato: fecha(e.fecha_dato),
+    fuentes: arr(e.fuentes).map(String),
+    nota: e.nota ?? null,
+  }))
+
   d.superficie_parcela_m2 = numero(d.superficie_parcela_m2)
   d.superficie_construida_m2 = numero(d.superficie_construida_m2)
   d.inversion_anunciada_eur = numero(d.inversion_anunciada_eur)
@@ -400,6 +485,8 @@ export function revisarCoherencia(sitio) {
     ...sitio.fases.map((f, i) => [`fases[${i}].fuentes`, f.fuentes]),
     ...sitio.incertidumbres.map((u, i) => [`incertidumbres[${i}].fuentes`, u.fuentes]),
     ['conexion_electrica.fuentes', sitio.conexion_electrica?.fuentes ?? []],
+    ['agua.fuentes', sitio.agua?.fuentes ?? []],
+    ...(sitio.empleo ?? []).map((e, i) => [`empleo[${i}].fuentes`, e.fuentes]),
   ]
   for (const [donde, lista] of refs) {
     for (const ref of lista) {
@@ -437,6 +524,43 @@ export function revisarCoherencia(sitio) {
           msg: `potencia[${i}]: la cifra ${valor} no aparece en la cita de ninguna de sus fuentes`,
         })
       }
+    }
+  }
+
+  // El agua se somete a la misma exigencia que la potencia: la cifra tiene que
+  // poder leerse en la cita, o no sirve para que un tercero la compruebe.
+  if (sitio.agua) {
+    const a = sitio.agua
+    const citas = a.fuentes.map((id) => porId.get(id)).filter((f) => f?.cita)
+    for (const [campo, valor] of [
+      ['consumo_m3_ano', a.consumo_m3_ano],
+      ['consumo_m3_dia', a.consumo_m3_dia],
+      ['wue_l_kwh', a.wue_l_kwh],
+    ]) {
+      if (valor == null) continue
+      if (a.fuentes.length === 0) {
+        problemas.push({ nivel: 'error', msg: `agua.${campo} tiene valor y no cita fuente` })
+      } else if (citas.length > 0 && !citas.some((f) => cifraEnTexto(valor, f.cita))) {
+        problemas.push({ nivel: 'aviso', msg: `agua.${campo}: la cifra ${valor} no aparece en la cita de ninguna de sus fuentes` })
+      }
+    }
+    // Decir que no consume agua y a la vez cuantificar el consumo es una
+    // contradicción de la ficha, no de las fuentes: hay que resolverla.
+    if (a.circuito === 'sin_agua' && (a.consumo_m3_ano > 0 || a.consumo_m3_dia > 0)) {
+      problemas.push({ nivel: 'error', msg: 'agua: el circuito se declara sin_agua pero se registra consumo' })
+    }
+    if (a.circuito === 'desconocido' && !a.sistema && a.consumo_m3_ano == null && a.consumo_m3_dia == null && a.wue_l_kwh == null) {
+      problemas.push({ nivel: 'aviso', msg: 'bloque agua sin ningún dato: equivale a no tenerlo' })
+    }
+  }
+
+  for (const [i, e] of (sitio.empleo ?? []).entries()) {
+    const citas = e.fuentes.map((id) => porId.get(id)).filter((f) => f?.cita)
+    if (citas.length > 0 && !citas.some((f) => cifraEnTexto(e.valor, f.cita))) {
+      problemas.push({ nivel: 'aviso', msg: `empleo[${i}]: la cifra ${e.valor} no aparece en la cita de ninguna de sus fuentes` })
+    }
+    if (e.tipo === 'no_especificado') {
+      problemas.push({ nivel: 'aviso', msg: `empleo[${i}] no distingue entre empleo de obra y de explotación` })
     }
   }
 

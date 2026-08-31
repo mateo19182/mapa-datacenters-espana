@@ -5,7 +5,7 @@ Generado el 2026-08-31 por `npm run validate`.
 - Emplazamientos cargados: **164**
 - Nodos de red: **133**
 - Activos renovables/BESS: **22**
-- Errores: **0** · Avisos: **267**
+- Errores: **0** · Avisos: **265**
 
 ## Incidencias por fichero
 
@@ -226,7 +226,7 @@ Generado el 2026-08-31 por `npm run validate`.
 ### `equinix-alcobendas-campus.yaml`
 
 - aviso: potencia[0] («MD6») no distingue el tipo de MW
-- aviso: potencia[0]: la cifra 4.8 no aparece en la cita de ninguna de sus fuentes
+- aviso: potencia[2] («Capacidad prevista del campus una vez desplegado por completo») no distingue el tipo de MW
 
 ### `equinix-barcelona-ba1.yaml`
 
@@ -469,12 +469,10 @@ Generado el 2026-08-31 por `npm run validate`.
 
 ### `microsoft-meco.yaml`
 
-- aviso: sin ningún dato de potencia
 - aviso: sin coordenadas: no aparecerá en el mapa
 
 ### `microsoft-san-sebastian-de-los-reyes.yaml`
 
-- aviso: sin ningún dato de potencia
 - aviso: sin coordenadas: no aparecerá en el mapa
 
 ### `microsoft-villamayor-de-gallego.yaml`

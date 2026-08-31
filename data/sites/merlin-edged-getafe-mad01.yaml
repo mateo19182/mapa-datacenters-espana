@@ -49,8 +49,40 @@ potencia:
     estado_asociado: anunciado
     fecha_dato: "2025-01-14"
     fuentes: [src-3]
+  - tipo: it
+    valor_mw: 20
+    ambito: edificio
+    referencia: "Potencia eléctrica instalada para uso IT según la ingeniería del proyecto"
+    estado_asociado: operativo
+    fecha_dato: "2024-10"
+    fuentes: [src-7]
+    nota: >-
+      JG Ingenieros, autora del diseño y de la dirección de obra, dice «La potencia eléctrica
+      total instalada es de 20 MW para uso IT». Es la única fuente que tipifica los 20 MW como
+      carga TI; Edged y MERLIN los publican sin tipo. Se registra como lectura tipificada de la
+      misma cifra, no como capacidad adicional.
 
-refrigeracion: "Sistema ThermalWorks sin consumo de agua (WUE 0,00 l/kWh); PUE de diseño de cartera 1,15; glicol con chillers en cubierta; 500 kW por pasillo caliente."
+refrigeracion: >-
+  Sistema ThermalWorks sin consumo de agua (WUE 0,00 l/kWh); PUE anualizado de 1,15; plantas
+  enfriadoras condensadas por aire con distribución de agua fría glicolada y evaporadores de
+  circuito cerrado; 500 kW por pasillo caliente, hasta 70 kW por rack en refrigeración por aire
+  y hasta 200 kW por rack si se pasa a refrigeración líquida.
+
+agua:
+  circuito: sin_agua
+  sistema: >-
+    Refrigeración ThermalWorks con plantas enfriadoras condensadas por aire y distribución de
+    agua fría glicolada en circuito cerrado; los evaporadores de circuito cerrado dan la
+    refrigeración secundaria. La ingeniería del proyecto declara que el consumo de agua para
+    refrigeración es nulo.
+  origen: null
+  consumo_m3_ano: null
+  wue_l_kwh: 0
+  nota: >-
+    JG Ingenieros cifra en unos 290 millones de litros al año el agua que se ahorra respecto a
+    una solución con torres de refrigeración; es un ahorro estimado frente a una alternativa, no
+    un consumo, y por eso no se registra como cifra de consumo.
+  fuentes: [src-7, src-8]
 enlaces_proyecto:
   - "https://www.edged.es/madrid-getafe"
   - "https://www.merlinproperties.com/en/assets/data-center-madrid-getafe/"
@@ -64,12 +96,13 @@ incertidumbres:
     fuentes: [src-5, src-6]
   - campo: potencia
     descripcion: >-
-      Ni Edged ni MERLIN precisan si los 20 MW son carga TI o potencia total, por lo que se
-      registran como no_especificado.
-    fuentes: [src-1, src-3]
+      Ni Edged ni MERLIN precisan si los 20 MW son carga TI o potencia total, por lo que sus
+      cifras se registran como no_especificado. La ingeniería del proyecto sí los llama «20 MW
+      para uso IT», de modo que hay una lectura tipificada y dos sin tipificar del mismo número.
+    fuentes: [src-1, src-3, src-7]
 
 confianza: alta
-ultima_verificacion: "2026-08-29"
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -116,3 +149,18 @@ fuentes:
     fecha_publicacion: "2022-05-04"
     fecha_consulta: "2026-08-29"
     cita: "Por seguridad y confidencialidad, la cotizada ha declinado revelar en nuevo inquilino ... En Madrid, en concreto en Getafe, Merlin promoverá uno de 20mW."
+  - id: src-7
+    url: "https://www.jgingenieros.es/fileblog/proyectos/JG_Focus_72_Data_Center_Getafe.pdf"
+    titulo: "Focus 72 · Octubre 2024 — MERLIN-EDGED DATA CENTER GETAFE, MADRID"
+    editor: "JG Ingenieros"
+    tipo: empresa
+    fecha_publicacion: "2024-10"
+    fecha_consulta: "2026-08-31"
+    cita: "La potencia eléctrica total instalada es de 20 MW para uso IT, y el PUE anualizado (Power Usage Effectivenes - relación entre potencia total del edificio y potencia aplicada a IT) es un excelente 1,15 ... Plantas enfriadoras condensadas por aire de diseño propio (Thermalworks) y de muy alta eficiencia energética. El consumo de agua para refrigeración es nulo ... La capacidad de refrigeración es de 500 kW por pasillo caliente, lo que significa hasta 70 kW por rack en refrigeración por aire. Para potencias superiores se pasaría a refrigeración líquida, con una capacidad de hasta 200 kW por rack ... El utilizar plantas enfriadoras sin consumo de agua (condensadas por aire) significa un muy importante ahorro de agua de las torres de refrigeración: para el data center de Getafe son unos 290 millones de litros de agua al año."
+  - id: src-8
+    url: "https://es.edged.es/madrid-getafe"
+    titulo: "España | Madrid-Getafe"
+    editor: "Edged (MERLIN Edged)"
+    tipo: empresa
+    fecha_consulta: "2026-08-31"
+    cita: "20 MW Capacidad de carga crítica 1,15 PUE ... Sistema avanzado de refrigeración sin agua - Eficacia del uso del agua (WUE) 0,00 litros/kWh de refrigeración - Redundancia N+1 - Transferencia de calor con glicol con enfriadoras de techo refrigeradas por aire - Los evaporadores de circuito cerrado proporcionan refrigeración secundaria - Capacidad de 500 kW por pasillo caliente (modular)"

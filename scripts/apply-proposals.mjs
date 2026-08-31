@@ -141,6 +141,57 @@ for (const fichero of ficheros) {
     tocado = true
   }
 
+  // Agua: campo a campo, porque una propuesta suele traer solo el consumo o
+  // solo el sistema, y sustituir el bloque entero borraría lo que ya constaba.
+  if (propuesta.agua) {
+    for (const campo of ['circuito', 'sistema', 'origen', 'consumo_m3_ano', 'consumo_m3_dia', 'wue_l_kwh']) {
+      const nuevo = propuesta.agua[campo]
+      if (nuevo == null) continue
+      const antes = actual.agua?.[campo]
+      if (antes == null) {
+        resultado.agua = { ...(resultado.agua ?? {}), [campo]: nuevo }
+        adiciones.push({ id, campo: `agua.${campo}`, valor: nuevo, fichero })
+        tocado = true
+      } else if (!iguales(antes, nuevo)) {
+        conflictos.push({
+          id,
+          campo: `agua.${campo}`,
+          antes,
+          ahora: nuevo,
+          fichero,
+          consejo: 'el consumo diario y el anual no se convierten entre sí; documentar la discrepancia en incertidumbres[]',
+        })
+      }
+    }
+    const nuevas = (propuesta.agua.fuentes ?? []).filter((f) => !(actual.agua?.fuentes ?? []).includes(f))
+    if (nuevas.length && resultado.agua) {
+      resultado.agua.fuentes = [...(actual.agua?.fuentes ?? []), ...nuevas]
+      tocado = true
+    }
+  }
+
+  // Empleo: una cifra del mismo tipo y la misma referencia con otro valor es un
+  // conflicto; lo demás, un registro más.
+  for (const e of propuesta.empleo ?? []) {
+    const gemela = (actual.empleo ?? []).find(
+      (g) => g.tipo === e.tipo && (g.referencia ?? null) === (e.referencia ?? null),
+    )
+    if (!gemela) {
+      resultado.empleo = [...(resultado.empleo ?? []), e]
+      adiciones.push({ id, campo: 'empleo', valor: `${e.valor} (${e.tipo})`, fichero })
+      tocado = true
+    } else if (gemela.valor !== e.valor) {
+      conflictos.push({
+        id,
+        campo: `empleo ${e.tipo} · ${e.referencia ?? 'sin referencia'}`,
+        antes: gemela.valor,
+        ahora: e.valor,
+        fichero,
+        consejo: 'conservar ambas cifras con su fecha_dato y documentar la discrepancia',
+      })
+    }
+  }
+
   for (const u of propuesta.incertidumbres ?? []) {
     if ((actual.incertidumbres ?? []).some((v) => v.descripcion === u.descripcion)) continue
     resultado.incertidumbres = [...(resultado.incertidumbres ?? []), u]

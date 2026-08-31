@@ -22,7 +22,8 @@
     "refresh:sellar": "node scripts/check-updates.mjs --sellar",
     "contorno": "node scripts/fetch-contorno.mjs",
     "centrales:osm": "node scripts/fetch-osm-centrales.mjs",
-    "generacion:entsoe": "node scripts/fetch-entsoe-generacion.mjs"
+    "generacion:entsoe": "node scripts/fetch-entsoe-generacion.mjs",
+    "exa": "node scripts/exa.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",

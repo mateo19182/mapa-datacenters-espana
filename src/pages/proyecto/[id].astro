@@ -11,6 +11,10 @@ import {
   CONFIANZA_ETIQUETA,
   CONFIANZA_DESCRIPCION,
   MODELO_ETIQUETA,
+  CIRCUITO_ETIQUETA,
+  CIRCUITO_DESCRIPCION,
+  EMPLEO_ETIQUETA,
+  volumen,
   campoLegible,
   fechaLegible,
   numero,
@@ -90,7 +94,7 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
       <div>
         <h2>Potencia</h2>
         {tiposConDato.length === 0 ? (
-          <p class="silencio">No consta ninguna cifra de potencia publicada para este emplazamiento.</p>
+          <p class="silencio">Ninguna fuente publica cifras de potencia.</p>
         ) : (
           <>
             <dl class="cifras">
@@ -318,7 +322,70 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
           </div>
         )}
 
-        {(s.superficie_parcela_m2 || s.superficie_construida_m2 || s.inversion_anunciada_eur || s.refrigeracion || s.fecha_puesta_en_servicio) && (
+        {(s.agua || s.refrigeracion) && (
+          <div class="tarjeta">
+            <h3 class="titulo-lateral">Agua y refrigeración</h3>
+            <dl class="pares">
+              {s.agua?.circuito && (
+                <>
+                  <dt>Circuito</dt>
+                  <dd>
+                    {CIRCUITO_ETIQUETA[s.agua.circuito] ?? s.agua.circuito}
+                    <br />
+                    <span class="pequeno silencio">{CIRCUITO_DESCRIPCION[s.agua.circuito]}</span>
+                  </dd>
+                </>
+              )}
+              {s.agua?.origen && (<><dt>Origen del agua</dt><dd>{s.agua.origen}</dd></>)}
+              {s.agua?.consumo_m3_ano != null && (<><dt>Consumo anual</dt><dd>{volumen(s.agua.consumo_m3_ano)}</dd></>)}
+              {s.agua?.consumo_m3_dia != null && (<><dt>Consumo diario</dt><dd>{volumen(s.agua.consumo_m3_dia)}</dd></>)}
+              {s.agua?.wue_l_kwh != null && (<><dt>WUE</dt><dd>{numero(s.agua.wue_l_kwh, 2)} l/kWh</dd></>)}
+              {s.agua?.sistema && (<><dt>Sistema</dt><dd>{s.agua.sistema}</dd></>)}
+              {s.refrigeracion && (<><dt>Detalle</dt><dd>{s.refrigeracion}</dd></>)}
+            </dl>
+            {s.agua?.nota && <p class="pequeno silencio">{s.agua.nota}</p>}
+            {refs(s.agua?.fuentes).length > 0 && (
+              <p class="pequeno">
+                Fuente:{' '}
+                {refs(s.agua.fuentes).map((n, i) => (
+                  <>{i > 0 && ', '}<a href={`#fuente-${s.fuentes[n - 1].id}`}>{n}</a></>
+                ))}
+              </p>
+            )}
+            {s.agua?.consumo_m3_ano != null && s.agua?.consumo_m3_dia != null && (
+              <p class="pequeno silencio">
+                El consumo diario y el anual proceden de fuentes distintas y no se han convertido
+                uno en otro: hacerlo exigiría suponer los días de operación a plena carga.
+              </p>
+            )}
+          </div>
+        )}
+
+        {s.empleo.length > 0 && (
+          <div class="tarjeta">
+            <h3 class="titulo-lateral">Empleo anunciado</h3>
+            <dl class="pares">
+              {s.empleo.map((e) => (
+                <>
+                  <dt>{EMPLEO_ETIQUETA[e.tipo] ?? e.tipo}</dt>
+                  <dd>
+                    {numero(e.valor)} puestos
+                    {e.referencia && <span class="pequeno silencio"><br />{e.referencia}</span>}
+                    {refs(e.fuentes).length > 0 && (
+                      <sup>{refs(e.fuentes).map((n, i) => <>{i > 0 && ','}<a href={`#fuente-${s.fuentes[n - 1].id}`}>{n}</a></>)}</sup>
+                    )}
+                  </dd>
+                </>
+              ))}
+            </dl>
+            <p class="pequeno silencio">
+              Cifras anunciadas por el promotor o la administración, no contrastadas con ningún
+              registro laboral. El empleo de obra es temporal y no se suma con el de explotación.
+            </p>
+          </div>
+        )}
+
+        {(s.superficie_parcela_m2 || s.superficie_construida_m2 || s.inversion_anunciada_eur || s.fecha_puesta_en_servicio) && (
           <div class="tarjeta">
             <h3 class="titulo-lateral">Otros datos</h3>
             <dl class="pares">
@@ -326,7 +393,6 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
               {s.superficie_parcela_m2 && (<><dt>Parcela</dt><dd>{superficie(s.superficie_parcela_m2)}</dd></>)}
               {s.superficie_construida_m2 && (<><dt>Construido</dt><dd>{superficie(s.superficie_construida_m2)}</dd></>)}
               {s.inversion_anunciada_eur && (<><dt>Inversión anunciada</dt><dd>{euros(s.inversion_anunciada_eur)}<br /><span class="pequeno silencio">cifra anunciada públicamente, no verificada</span></dd></>)}
-              {s.refrigeracion && (<><dt>Refrigeración</dt><dd>{s.refrigeracion}</dd></>)}
             </dl>
           </div>
         )}

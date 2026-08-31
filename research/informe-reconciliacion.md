@@ -9,7 +9,7 @@ Nada de lo que sigue se corrige automáticamente: son propuestas para decidir a 
 - Potencias de fase que superan la cifra global: **0**
 - Estados en conflicto con sus fases: **0**
 - Fechas posteriores a hoy: **0**
-- Editores que no cuadran con el dominio: **64**
+- Editores que no cuadran con el dominio: **65**
 
 ## Variantes del nombre de operador
 
@@ -70,6 +70,7 @@ Suele ser una cita de segunda mano: el contenido es de un medio pero el enlace a
 | `merlin-botorrita-zaragoza-wind` | src-2 | Wikidata | query.wikidata.org |
 | `merlin-edged-getafe-2` | src-2 | MERLIN Properties | ir.merlinproperties.com |
 | `merlin-edged-getafe-mad01` | src-3 | MERLIN Properties | ir.merlinproperties.com |
+| `merlin-edged-getafe-mad01` | src-8 | Edged (MERLIN Edged) | es.edged.es |
 | `merlin-edged-navalmoral-de-la-mata` | src-merlin | MERLIN Properties SOCIMI | ir.merlinproperties.com |
 | `merlin-edged-ribera-baja-arasur` | src-1 | MERLIN Properties SOCIMI | merlinproperties.com |
 | `merlin-edged-ribera-baja-arasur` | src-2 | MERLIN Properties SOCIMI | merlinproperties.com |

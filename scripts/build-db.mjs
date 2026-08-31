@@ -42,6 +42,13 @@ CREATE TABLE sitios (
   superficie_construida_m2 REAL,
   inversion_anunciada_eur REAL,
   refrigeracion TEXT,
+  agua_circuito TEXT,
+  agua_sistema TEXT,
+  agua_origen TEXT,
+  agua_consumo_m3_ano REAL,
+  agua_consumo_m3_dia REAL,
+  agua_wue_l_kwh REAL,
+  agua_nota TEXT,
   enlaces_proyecto TEXT,
   confianza TEXT,
   ultima_verificacion TEXT
@@ -55,6 +62,9 @@ CREATE TABLE potencias (
 CREATE TABLE fases (
   sitio_id TEXT, idx INTEGER, nombre TEXT, estado TEXT,
   fecha_puesta_en_servicio TEXT, superficie_m2 REAL, nota TEXT
+);
+CREATE TABLE empleo (
+  sitio_id TEXT, idx INTEGER, tipo TEXT, valor REAL, referencia TEXT, fecha_dato TEXT, nota TEXT
 );
 CREATE TABLE incertidumbres (sitio_id TEXT, idx INTEGER, campo TEXT, descripcion TEXT);
 CREATE TABLE fuentes (
@@ -83,11 +93,14 @@ const insSitio = db.prepare(`INSERT INTO sitios VALUES (
   @direccion,@lat,@lon,@precision_coord,@no_derivar,@estado,@estado_detalle,@fecha_puesta_en_servicio,
   @subestacion,@tension_kv,@titular_red,@mw_solicitados,@mw_concedidos,
   @superficie_parcela_m2,@superficie_construida_m2,@inversion_anunciada_eur,@refrigeracion,
+  @agua_circuito,@agua_sistema,@agua_origen,@agua_consumo_m3_ano,@agua_consumo_m3_dia,
+  @agua_wue_l_kwh,@agua_nota,
   @enlaces_proyecto,@confianza,@ultima_verificacion)`)
 const insAlias = db.prepare('INSERT INTO alias VALUES (?,?)')
 const insPot = db.prepare('INSERT INTO potencias VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)')
 const insFase = db.prepare('INSERT INTO fases VALUES (?,?,?,?,?,?,?)')
 const insInc = db.prepare('INSERT INTO incertidumbres VALUES (?,?,?,?)')
+const insEmpleo = db.prepare('INSERT INTO empleo VALUES (?,?,?,?,?,?,?)')
 const insFuente = db.prepare('INSERT INTO fuentes VALUES (?,?,?,?,?,?,?,?,?)')
 const insResp = db.prepare('INSERT INTO respaldos VALUES (?,?,?)')
 const insRed = db.prepare('INSERT INTO red_nodos VALUES (?,?)')
@@ -98,6 +111,7 @@ const insCap = db.prepare('INSERT INTO red_capacidad VALUES (?,?,?)')
 const cargar = db.transaction(() => {
   for (const s of sitios) {
     const c = s.conexion_electrica ?? {}
+    const ag = s.agua ?? {}
     insSitio.run({
       id: s.id,
       nombre: s.nombre,
@@ -126,6 +140,13 @@ const cargar = db.transaction(() => {
       superficie_construida_m2: s.superficie_construida_m2 ?? null,
       inversion_anunciada_eur: s.inversion_anunciada_eur ?? null,
       refrigeracion: s.refrigeracion ?? null,
+      agua_circuito: ag.circuito ?? null,
+      agua_sistema: ag.sistema ?? null,
+      agua_origen: ag.origen ?? null,
+      agua_consumo_m3_ano: ag.consumo_m3_ano ?? null,
+      agua_consumo_m3_dia: ag.consumo_m3_dia ?? null,
+      agua_wue_l_kwh: ag.wue_l_kwh ?? null,
+      agua_nota: ag.nota ?? null,
       enlaces_proyecto: JSON.stringify(s.enlaces_proyecto ?? []),
       confianza: s.confianza,
       ultima_verificacion: s.ultima_verificacion,
@@ -144,12 +165,17 @@ const cargar = db.transaction(() => {
       insInc.run(s.id, i, u.campo, u.descripcion)
       for (const src of u.fuentes) insResp.run(s.id, `incertidumbres[${i}]`, src)
     }
+    for (const [i, e] of (s.empleo ?? []).entries()) {
+      insEmpleo.run(s.id, i, e.tipo, e.valor, e.referencia, e.fecha_dato, e.nota)
+      for (const src of e.fuentes) insResp.run(s.id, `empleo[${i}]`, src)
+    }
     for (const f of s.fuentes) {
       insFuente.run(s.id, f.id, f.url, f.titulo, f.editor, f.tipo, f.fecha_publicacion, f.fecha_consulta, f.cita)
     }
     for (const src of s.ubicacion.fuentes) insResp.run(s.id, 'ubicacion', src)
     for (const src of s.estado_fuentes) insResp.run(s.id, 'estado', src)
     for (const src of s.conexion_electrica?.fuentes ?? []) insResp.run(s.id, 'conexion_electrica', src)
+    for (const src of s.agua?.fuentes ?? []) insResp.run(s.id, 'agua', src)
   }
   for (const n of red) insRed.run(n.id, JSON.stringify(n))
   for (const a of actuaciones) insAct.run(a.id, JSON.stringify(a))

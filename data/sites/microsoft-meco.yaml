@@ -2,6 +2,8 @@ id: microsoft-meco
 nombre: "Microsoft — Centro de datos de Meco (región Spain Central)"
 alias:
   - "Microsoft Azure Spain Central — Meco"
+  - "MAD03"
+  - "Microsoft 7724 Spain, S. L. — Polígono Industrial Meco R2"
 tipo: campus
 operador: "Microsoft"
 propietario: "Microsoft"
@@ -11,39 +13,119 @@ ubicacion:
   municipio: "Meco"
   provincia: "Madrid"
   ccaa: "Comunidad de Madrid"
+  direccion: "Calle Hércules 9 y calle Zeus 14, Polígono Industrial «Meco R2», Meco"
   lat: null
   lon: null
   precision: municipio
-  fuentes: [src-1]
+  fuentes: [src-1, src-2, src-3]
 
 estado: en_construccion
 estado_detalle: >-
-  Microsoft declaró en la apertura de su región cloud Spain Central (Comunidad de Madrid) que
-  avanzaba en la construcción de centros de datos adicionales en Algete, Meco y San Sebastián de
-  los Reyes, que se inaugurarían "próximamente". La región Spain Central está formada por tres
-  zonas de disponibilidad con energía, refrigeración y redes independientes.
-estado_fuentes: [src-1]
+  El expediente ambiental (10-EIA-00012.2/2023, referencia interna SEA 12/23) describe un centro
+  de datos denominado MAD03 sobre dos parcelas del Polígono Industrial «Meco R2» (referencias
+  catastrales 3473101VK7837S0001TE y 3473102VK7837S0001FE). El edificio principal, de 27.445 m²
+  en planta baja y primera, contiene la nave de servidores —Ballard o Baluarte— con cinco salas
+  de servidores o colos divididas a su vez en cuatro celdas, más el área administrativa y la de
+  logística. La parcela alberga además una subestación eléctrica propia en la esquina noreste,
+  tramitada como proyecto independiente. El Informe de Impacto Ambiental se hizo público por
+  Resolución de 13 de junio de 2023, publicada en el BOCM el 11 de julio de 2023.
+estado_fuentes: [src-1, src-2, src-3]
 
-potencia: []
+potencia:
+  - tipo: it
+    valor_mw: 48
+    ambito: edificio
+    edificio: "Ballard (MAD03)"
+    referencia: "Capacidad informática de las cinco salas de servidores del edificio"
+    estado_asociado: en_construccion
+    fecha_dato: "2023-06-13"
+    fuentes: [src-2]
+    nota: >-
+      El expediente dice «una capacidad informática de 48 MW (9,6 MW por Colo)», que es carga TI.
+      Los 9,6 MW por colo son la subdivisión de esa misma cifra y no se suman aparte.
+  - tipo: termica_respaldo
+    valor_mw: 154
+    ambito: edificio
+    edificio: "Ballard (MAD03)"
+    referencia: "Potencia térmica total de los grupos electrógenos de emergencia"
+    estado_asociado: en_construccion
+    fecha_dato: "2023-06-13"
+    fuentes: [src-2]
+    nota: >-
+      Son 21 generadores de emergencia: 20 de 3 MW eléctricos para las salas de datos y uno de
+      1,12 MW para la zona administrativa. No es capacidad del centro de datos y no entra en
+      ningún agregado.
+  - tipo: generacion_asociada
+    valor_mw: 0.278
+    ambito: edificio
+    referencia: "Fotovoltaica de autoconsumo sobre suelo en la propia parcela"
+    estado_asociado: en_construccion
+    fecha_dato: "2023-06-13"
+    fuentes: [src-2]
+    nota: >-
+      «Sistemas fotovoltaicos de 278 kW de potencia instalada, que abastecerán a parte de la
+      demanda de la zona de oficinas». Es capacidad de producir, no de consumir.
 
-refrigeracion: "Microsoft indica refrigeración evaporativa directa para los centros de datos de la región, con uso de agua en torno al 15% del tiempo de operación."
+conexion_electrica:
+  subestacion: "SE Meco (Iberdrola)"
+  tension_kv: 20
+  titular_red: "Iberdrola"
+  mw_solicitados: null
+  mw_concedidos: null
+  nota: >-
+    El suministro se hará a través de una subestación propia situada en la esquina noreste del
+    emplazamiento, que conectará con la subestación SE Meco existente, propiedad de Iberdrola, a
+    unos 565 m al noreste. En funcionamiento normal la instalación se alimenta a 20 kV. El
+    expediente no publica MW solicitados ni concedidos en el punto de conexión.
+  fuentes: [src-2]
+
+superficie_parcela_m2: 85938
+superficie_construida_m2: 27445
+refrigeracion: >-
+  Unidades de ventilación con enfriamiento evaporativo que usan agua como refrigerante, con seis
+  tanques de hormigón exteriores de 690 m³ y tratamiento previo del agua en una planta propia.
+
+agua:
+  circuito: desconocido
+  sistema: >-
+    Enfriamiento evaporativo de las salas de datos con agua tratada en una planta de tratamiento
+    propia y almacenada en seis tanques de hormigón exteriores. Genera purgas del circuito de
+    refrigeración que se vierten a la red.
+  origen: "Red de Canal de Isabel II"
+  consumo_m3_ano: 24372.1
+  wue_l_kwh: null
+  nota: >-
+    El expediente añade un vertido anual previsto de 6.900 m³ de purgas del sistema de
+    refrigeración y 2.810 m³ de aguas sanitarias, y recoge que Canal de Isabel II no pudo
+    calcular las demandas de agua potable y vertido al no constar las superficies edificables en
+    la documentación aportada. El circuito se deja como desconocido porque la fuente describe un
+    sistema evaporativo con purga sin clasificarlo como abierto ni cerrado.
+  fuentes: [src-2]
+
+enlaces_proyecto:
+  - "https://gestiona.comunidad.madrid/rlma_web/html/web/FichaNormativa.icm?ID=6874"
 
 incertidumbres:
   - campo: potencia
-    descripcion: "Microsoft no publica potencia ni superficie de sus emplazamientos en la Comunidad de Madrid."
-    fuentes: [src-1]
+    descripcion: >-
+      Los 48 MW de carga TI son los del diseño presentado en el expediente ambiental de 2023.
+      Microsoft no publica la capacidad de sus emplazamientos en la Comunidad de Madrid, y no
+      consta si el proyecto ejecutado mantiene esa cifra ni cuánta capacidad está en servicio.
+    fuentes: [src-1, src-2]
   - campo: estado
     descripcion: >-
-      La única fuente localizada es la nota de apertura de la región (2024), que sitúa estos tres
-      emplazamientos en construcción. No se ha encontrado confirmación pública posterior de su
-      puesta en servicio, ni expedientes municipales accesibles.
-    fuentes: [src-1]
+      No se ha localizado confirmación pública de la puesta en servicio. La nota de apertura de
+      la región cloud sitúa el emplazamiento en construcción y el expediente ambiental es de
+      2023; no hay publicación posterior sobre su ejecución.
+    fuentes: [src-1, src-2]
   - campo: ubicacion
-    descripcion: "No consta dirección ni parcela; la geolocalización queda a nivel de municipio."
-    fuentes: [src-1]
+    descripcion: >-
+      Las direcciones y referencias catastrales constan en el expediente ambiental, pero no se
+      han publicado coordenadas, así que la geolocalización queda a nivel de municipio.
+    fuentes: [src-2]
 
-confianza: baja
-ultima_verificacion: "2026-08-29"
+confianza: media
+ultima_verificacion: "2026-08-31"
 
 fuentes:
   - id: src-1
@@ -53,3 +135,19 @@ fuentes:
     tipo: empresa
     fecha_consulta: "2026-08-29"
     cita: "Microsoft avanza en la construcción de centros de datos adicionales ubicados en Algete, Meco y San Sebastián de los Reyes, que se inaugurarán próximamente."
+  - id: src-2
+    url: "https://gestiona.comunidad.madrid/rlma_web/html/web/Descarga.icm?idDocumento=2&idLegislacion=6874"
+    titulo: "N/Ref.: SEA Nº 12/23 INFORME DE IMPACTO AMBIENTAL DEL PROYECTO CENTRO DE DATOS EN C/HÉRCULES 9 Y C/ZEUS 14, EN EL POLÍGONO INDUSTRIAL “MECO R2” EN EL TÉRMINO MUNICIPAL DE MECO, PROMOVIDO POR MICROSOFT 7724 SPAIN S.L."
+    editor: "Comunidad de Madrid — Consejería de Medio Ambiente, Vivienda y Agricultura"
+    tipo: oficial
+    fecha_publicacion: "2023-06-13"
+    fecha_consulta: "2026-08-31"
+    cita: "el proyecto de centro de datos situado en Calle Hércules 9 y referencia catastral 3473101VK7837S0001TE y Calle Zeus 14, y referencia catastral 3473102VK7837S0001FE, localizado en el Polígono Industrial “Meco R2” ... En la zona oeste de la parcela se construirá un Centro de Datos (también denominado MAD03), con un área de 27.445 m 2, repartidos en dos plantas (baja y primera) ... En cuanto a la superficie ocupada en los 85.938 m 2 de la parcela ... una nave (edificio Ballard o Baluarte) para alojar los equipos informáticos y redes, con 5 salas de servidores (Colos) que a su vez se dividen en 4 celdas, repartidos en dos plantas, con una capacidad informática de 48 MW (9,6 MW por Colo) ... Existirán 21 generadores de emergencia, de los cuales, 20 contarán con 3 MW de potencia eléctrica y estarán asociados a las salas de datos, mientras que uno (1) tendrá 1,12 MW de potencia eléctrica para la zona administrativa ... unos grupos electrógenos con una potencia total térmica de 154 MW para situaciones de corte de energía eléctrica ... una (1) subestación eléctrica situada en la esquina noreste del emplazamiento, que conectará, con la subestación SE MECO existente, propiedad de Iberdrola, ubicada a unos 565 m al noreste del emplazamiento. Durante el funcionamiento normal, la instalación se proveerá de electricidad a través de la conexión a una fuente de alimentación de media tensión a 20kV ... tendrá un consumo eléctrico máximo estimado anual de aproximadamente 515.789 MWh. Además, se incorporarán sistemas fotovoltaicos de 278 kW de potencia instalada, que abastecerán a parte de la demanda de la zona de oficinas. Se encuentra previsto un consumo anual de agua de 24.372,10 m 3, destinado en su mayor parte al uso en la refrigeración de los equipos. Se estima un volumen de vertido anual de purgas del sistema de refrigeración de 6.900 m 3 anuales y 2.810 m 3 anuales de aguas sanitarias."
+  - id: src-3
+    url: "https://gestiona.comunidad.madrid/rlma_web/html/web/FichaNormativa.icm?ID=6874"
+    titulo: "RESOLUCIÓN DE 13 DE JUNIO DE 2023, DEL DIRECTOR GENERAL DE DESCARBONIZACIÓN Y TRANSICIÓN ENERGÉTICA DE LA CONSEJERÍA DE MEDIO AMBIENTE, VIVIENDA Y AGRICULTURA, POR LA QUE SE ACUERDA HACER PÚBLICO EL INFORME DE IMPACTO AMBIENTAL DEL PROYECTO DE CENTRO DE DATOS EN CALLE HÉRCULES, NÚMERO 9, Y CALLE ZEUS, NÚMERO 14, EN EL POLÍGONO INDUSTRIAL \"MECO R2\", EN EL TÉRMINO MUNICIPAL DE MECO, PROMOVIDO POR MICROSOFT 7724 SPAIN, S. L. (EXPEDIENTE: 10-EIA-00012.2/2023)"
+    editor: "Comunidad de Madrid — Repertorio de Legislación de Medio Ambiente"
+    tipo: oficial
+    fecha_publicacion: "2023-07-11"
+    fecha_consulta: "2026-08-31"
+    cita: "Estado VIGENTE Tipo de boletín BOLETÍN OFICIAL DE LA COMUNIDAD DE MADRID Rango RESOLUCIÓN Informe de Impacto Ambiental Ámbito de aplicación AUTONÓMICO Fecha de publicación 11/07/2023 Fecha de disposicion 13/06/2023"
