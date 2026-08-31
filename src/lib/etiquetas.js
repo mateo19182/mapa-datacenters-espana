@@ -122,6 +122,13 @@ export const EMPLEO_ETIQUETA = {
   no_especificado: 'Empleo sin tipificar',
 }
 
+/** Energía anual. Se guarda en GWh; por debajo de 1 GWh se enseña en MWh. */
+export function energia(n) {
+  if (n == null) return null
+  if (n < 1) return `${numero(n * 1000)} MWh/año`
+  return `${numero(n, 1)} GWh/año`
+}
+
 /** Volumen de agua. El diario y el anual nunca se convierten uno en otro. */
 export function volumen(n) {
   if (n == null) return null
@@ -142,6 +149,7 @@ export const CAMPO_ETIQUETA = {
   refrigeración: 'Refrigeración',
   agua: 'Consumo de agua',
   empleo: 'Empleo',
+  energia: 'Consumo eléctrico',
   refrigeracion_agua: 'Agua y refrigeración',
   inversion_anunciada_eur: 'Inversión anunciada',
   inversion: 'Inversión anunciada',

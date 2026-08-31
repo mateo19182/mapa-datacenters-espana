@@ -14,6 +14,7 @@ import {
   CIRCUITO_ETIQUETA,
   CIRCUITO_DESCRIPCION,
   EMPLEO_ETIQUETA,
+  energia as energiaLegible,
   volumen,
   campoLegible,
   fechaLegible,
@@ -358,6 +359,30 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
                 uno en otro: hacerlo exigiría suponer los días de operación a plena carga.
               </p>
             )}
+          </div>
+        )}
+
+        {s.energia.length > 0 && (
+          <div class="tarjeta">
+            <h3 class="titulo-lateral">Consumo eléctrico</h3>
+            <dl class="pares">
+              {s.energia.map((e) => (
+                <>
+                  <dt>{e.referencia ?? 'Consumo anual'}</dt>
+                  <dd>
+                    {energiaLegible(e.consumo_gwh_ano)}
+                    {e.nota && <span class="pequeno silencio"><br />{e.nota}</span>}
+                    {refs(e.fuentes).length > 0 && (
+                      <sup>{refs(e.fuentes).map((n, i) => <>{i > 0 && ','}<a href={`#fuente-${s.fuentes[n - 1].id}`}>{n}</a></>)}</sup>
+                    )}
+                  </dd>
+                </>
+              ))}
+            </dl>
+            <p class="pequeno silencio">
+              Energía consumida al año, no potencia. No se compara ni se suma con las cifras de
+              MW, que miden cosas distintas.
+            </p>
           </div>
         )}
 

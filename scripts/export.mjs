@@ -57,6 +57,7 @@ const potencias = agrupar(q('SELECT * FROM potencias ORDER BY idx'), 'sitio_id')
 const fases = agrupar(q('SELECT * FROM fases ORDER BY idx'), 'sitio_id')
 const incert = agrupar(q('SELECT * FROM incertidumbres ORDER BY idx'), 'sitio_id')
 const empleos = agrupar(q('SELECT * FROM empleo ORDER BY idx'), 'sitio_id')
+const energias = agrupar(q('SELECT * FROM energia ORDER BY idx'), 'sitio_id')
 const fuentes = agrupar(q('SELECT * FROM fuentes'), 'sitio_id')
 const respaldos = agrupar(q('SELECT * FROM respaldos'), 'sitio_id')
 
@@ -139,6 +140,13 @@ const sitios = q('SELECT * FROM sitios ORDER BY nombre').map((s) => {
           fuentes: respaldoDe('agua'),
         }
       : null,
+    energia: (energias.get(s.id) ?? []).map((e) => ({
+      consumo_gwh_ano: e.consumo_gwh_ano,
+      referencia: e.referencia,
+      fecha_dato: e.fecha_dato,
+      nota: e.nota,
+      fuentes: respaldoDe(`energia[${e.idx}]`),
+    })),
     empleo: (empleos.get(s.id) ?? []).map((e) => ({
       tipo: e.tipo,
       valor: e.valor,
@@ -190,15 +198,22 @@ const porClave = (clave) => {
   return m
 }
 
-const carteraDe = (lista) => ({
-  emplazamientos: lista.length,
-  por_estado: Object.fromEntries(
-    ESTADOS.map((e) => [e, lista.filter((s) => s.estado === e).length]).filter(([, n]) => n > 0),
-  ),
-  // Solo se agregan las magnitudes que describen la capacidad del centro: los
-  // grupos de respaldo y la generación asociada quedan fuera de todo total.
-  potencia: Object.fromEntries(TIPOS_CAPACIDAD.map((t) => [t, sumarCartera(lista, t)])),
-})
+const carteraDe = (lista) => {
+  // Un proyecto cancelado no es capacidad de la cartera. Sus cifras se conservan
+  // en la ficha como lectura histórica, pero sumarlas aquí infla el total y, en
+  // el caso de una capacidad revendida a otro promotor, la cuenta dos veces.
+  const vigentes = lista.filter((s) => s.estado !== 'cancelado')
+  return {
+    emplazamientos: lista.length,
+    emplazamientos_en_potencia: vigentes.length,
+    por_estado: Object.fromEntries(
+      ESTADOS.map((e) => [e, lista.filter((s) => s.estado === e).length]).filter(([, n]) => n > 0),
+    ),
+    // Solo se agregan las magnitudes que describen la capacidad del centro: los
+    // grupos de respaldo y la generación asociada quedan fuera de todo total.
+    potencia: Object.fromEntries(TIPOS_CAPACIDAD.map((t) => [t, sumarCartera(vigentes, t)])),
+  }
+}
 
 const companias = [...porClave((s) => s.operador).entries()]
   .map(([nombre, lista]) => ({

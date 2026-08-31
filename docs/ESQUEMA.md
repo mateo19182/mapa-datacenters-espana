@@ -95,6 +95,13 @@ agua:                                 # bloque estructurado; ver «Agua» más a
   nota: null
   fuentes: [src-3]
 
+energia:                              # consumo eléctrico anual, no potencia
+  - consumo_gwh_ano: 3279.7
+    referencia: "Campus a plena capacidad"
+    fecha_dato: "2025-07"
+    fuentes: [src-4]
+    nota: null
+
 empleo:                               # cifras anunciadas, no verificadas
   - tipo: directo                     # directo | indirecto | construccion | total | no_especificado
     valor: 250
@@ -205,6 +212,20 @@ Tres reglas:
 
 `refrigeracion` (texto libre) no desaparece: describe el sistema en prosa cuando
 la fuente no da nada cuantificable. `agua` es lo estructurado; conviven.
+
+## Consumo eléctrico
+
+`energia[]` guarda la energía consumida al año, en GWh. Es la magnitud que más
+aparece en los expedientes ambientales y **no cabe en `potencia[]`**: una es
+energía y la otra potencia, y mezclarlas produce disparates. Nunca se comparan ni
+se suman entre sí.
+
+Va en GWh/año, pero la comprobación de la cita tolera que la fuente lo publique en
+MWh, porque prueba también la cifra multiplicada por mil: `739.9` queda respaldado
+por una cita que diga «739.900 MWh/año».
+
+Es un array porque un mismo emplazamiento suele tener varias lecturas, por fase o
+por escenario, y aquí las contradicciones se conservan como en todo lo demás.
 
 ## Empleo e inversión
 

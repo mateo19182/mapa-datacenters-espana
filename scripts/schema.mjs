@@ -291,6 +291,18 @@ const zEmpleo = z.object({
   nota: z.string().nullable().optional(),
 })
 
+// Consumo eléctrico anual. Es la magnitud que más aparece en los expedientes
+// ambientales y no cabe en `potencia[]`: son energía y potencia, y mezclarlas
+// produce disparates. Va en GWh/año; la comprobación de cita ya tolera que la
+// fuente lo publique en MWh, porque prueba también la cifra multiplicada por mil.
+const zEnergia = z.object({
+  consumo_gwh_ano: z.number().nonnegative(),
+  referencia: z.string().nullable().optional(),
+  fecha_dato: z.string().nullable().optional(),
+  fuentes: z.array(z.string()).min(1),
+  nota: z.string().nullable().optional(),
+})
+
 export const zSitio = z.object({
   id: z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/, 'el id debe ser kebab-case'),
   nombre: z.string().min(1),
@@ -314,6 +326,7 @@ export const zSitio = z.object({
   refrigeracion: z.string().nullable().optional(),
   agua: zAgua.nullable().optional(),
   empleo: z.array(zEmpleo).default([]),
+  energia: z.array(zEnergia).default([]),
   enlaces_proyecto: z.array(z.string()).default([]),
   incertidumbres: z.array(zIncertidumbre).default([]),
   confianza: z.enum(CONFIANZAS),
@@ -411,6 +424,14 @@ export function normalizarSitio(crudo) {
     }
   }
 
+  d.energia = arr(d.energia).map((e) => ({
+    consumo_gwh_ano: numero(e.consumo_gwh_ano),
+    referencia: e.referencia ?? null,
+    fecha_dato: fecha(e.fecha_dato),
+    fuentes: arr(e.fuentes).map(String),
+    nota: e.nota ?? null,
+  }))
+
   d.empleo = arr(d.empleo).map((e) => ({
     tipo: mapear(e.tipo, SINONIMOS_EMPLEO, TIPOS_EMPLEO, 'no_especificado'),
     valor: numero(e.valor),
@@ -454,21 +475,40 @@ export function normalizarSitio(crudo) {
  */
 function cifraEnTexto(valor, texto) {
   if (valor == null || !texto) return false
-  const limpio = texto.replace(/[.\u00a0\u202f]/g, '').replace(/,/g, '.')
+  // El mismo texto admite dos lecturas y no se puede saber cuál es sin mirar:
+  // «1.234» son mil doscientos treinta y cuatro en español y uno coma algo en
+  // inglés. Se prueban las dos. Leer solo la española daba por no respaldada
+  // cualquier cifra decimal escrita a la inglesa, que es como publican el WUE
+  // casi todos los operadores.
+  const lecturas = [
+    texto.replace(/[.\u00a0\u202f]/g, '').replace(/,/g, '.'), // punto de millares
+    texto.replace(/[,\u00a0\u202f]/g, ''), // coma de millares, punto decimal
+  ]
   const candidatos = new Set()
   const anotar = (n) => {
     if (n == null || !Number.isFinite(n)) return
-    candidatos.add(String(n))
-    candidatos.add(String(Math.round(n)))
-    candidatos.add(n.toFixed(1))
-    candidatos.add(n.toFixed(2))
+    // Solo se admite una variante si sigue representando el mismo número. Sin
+    // esta guarda, redondear 0,0009 daba el candidato «0», que casa con el cero
+    // de cualquier cifra del texto y daba por respaldado casi todo.
+    const admitir = (c) => {
+      if (c == null) return
+      const leido = Number.parseFloat(c)
+      if (!Number.isFinite(leido)) return
+      if (n === 0 ? leido !== 0 : leido === 0) return
+      candidatos.add(c)
+    }
+    admitir(String(n))
+    if (Math.abs(n) >= 1) admitir(String(Math.round(n)))
+    admitir(n.toFixed(1))
+    admitir(n.toFixed(2))
   }
   anotar(valor)
   anotar(valor / 1000) // la fuente puede darlo en GW
   anotar(valor * 1000)
   for (const c of candidatos) {
     const escapado = c.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-    if (new RegExp(`(^|[^\\d.])${escapado}([^\\d]|$)`).test(limpio)) return true
+    const patron = new RegExp(`(^|[^\\d.])${escapado}([^\\d]|$)`)
+    if (lecturas.some((l) => patron.test(l))) return true
   }
   return false
 }
@@ -487,6 +527,7 @@ export function revisarCoherencia(sitio) {
     ['conexion_electrica.fuentes', sitio.conexion_electrica?.fuentes ?? []],
     ['agua.fuentes', sitio.agua?.fuentes ?? []],
     ...(sitio.empleo ?? []).map((e, i) => [`empleo[${i}].fuentes`, e.fuentes]),
+    ...(sitio.energia ?? []).map((e, i) => [`energia[${i}].fuentes`, e.fuentes]),
   ]
   for (const [donde, lista] of refs) {
     for (const ref of lista) {
@@ -549,8 +590,26 @@ export function revisarCoherencia(sitio) {
     if (a.circuito === 'sin_agua' && (a.consumo_m3_ano > 0 || a.consumo_m3_dia > 0)) {
       problemas.push({ nivel: 'error', msg: 'agua: el circuito se declara sin_agua pero se registra consumo' })
     }
-    if (a.circuito === 'desconocido' && !a.sistema && a.consumo_m3_ano == null && a.consumo_m3_dia == null && a.wue_l_kwh == null) {
-      problemas.push({ nivel: 'aviso', msg: 'bloque agua sin ningún dato: equivale a no tenerlo' })
+    // Un bloque sin cifras pero con nota sí dice algo: deja constancia de que la
+    // fuente habla del agua y no la cuantifica, que es un hueco documentado y no
+    // un descuido. Solo sobra cuando no queda ni eso.
+    const vacio =
+      a.circuito === 'desconocido' &&
+      !a.sistema &&
+      !a.nota &&
+      a.consumo_m3_ano == null &&
+      a.consumo_m3_dia == null &&
+      a.wue_l_kwh == null
+    if (vacio) problemas.push({ nivel: 'aviso', msg: 'bloque agua sin ningún dato: equivale a no tenerlo' })
+  }
+
+  for (const [i, e] of (sitio.energia ?? []).entries()) {
+    const citas = e.fuentes.map((id) => porId.get(id)).filter((f) => f?.cita)
+    if (citas.length > 0 && !citas.some((f) => cifraEnTexto(e.consumo_gwh_ano, f.cita))) {
+      problemas.push({
+        nivel: 'aviso',
+        msg: `energia[${i}]: la cifra ${e.consumo_gwh_ano} no aparece en la cita de ninguna de sus fuentes`,
+      })
     }
   }
 

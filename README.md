@@ -22,6 +22,8 @@ publicados, con su procedencia y su fecha de verificación.
   convierten uno en otro.
 - Empleo e inversión anunciados, marcados como lo que son: cifras del promotor
   sin contrastar con ningún registro.
+- **Consumo eléctrico anual en GWh**, en un campo aparte de la potencia. Energía
+  y potencia no se comparan ni se suman.
 - Generación renovable y baterías con vínculo documentado a un centro concreto.
 - Trazado de la red de transporte derivado de OpenStreetMap.
 - **Capa opcional de centrales de generación**, apagada por defecto: potencia
@@ -211,6 +213,8 @@ compañía como los informes que genera la tubería:
 | `informe-reconciliacion.md` | Variantes de nombre, duplicados, incoherencias |
 | `informe-actualizacion.md` | Cola de revisión de fuentes |
 | `cobertura.md` | Huecos, contradicciones y nivel de cobertura |
+| `estado-del-arte.md` | Quién más ha mapeado esto y en qué queda por detrás este registro |
+| `acceso-a-fuentes.md` | Qué documentos no se pueden consultar y por qué, con lo que puede hacer una persona |
 | `auditoria-datos.md` | Verificación independiente de los datos de mayor impacto |
 | `red-electrica.md` | Cómo se reparte el acceso a la red (se publica en el sitio) |
 | `renovables.md` | Contratos de energía vinculados a centros de datos (se publica) |

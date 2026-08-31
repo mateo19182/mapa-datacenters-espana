@@ -170,6 +170,25 @@ for (const fichero of ficheros) {
     }
   }
 
+  // Consumo eléctrico: misma referencia y otro valor es conflicto.
+  for (const e of propuesta.energia ?? []) {
+    const gemela = (actual.energia ?? []).find((g) => (g.referencia ?? null) === (e.referencia ?? null))
+    if (!gemela) {
+      resultado.energia = [...(resultado.energia ?? []), e]
+      adiciones.push({ id, campo: 'energia', valor: `${e.consumo_gwh_ano} GWh/año`, fichero })
+      tocado = true
+    } else if (gemela.consumo_gwh_ano !== e.consumo_gwh_ano) {
+      conflictos.push({
+        id,
+        campo: `energia · ${e.referencia ?? 'sin referencia'}`,
+        antes: gemela.consumo_gwh_ano,
+        ahora: e.consumo_gwh_ano,
+        fichero,
+        consejo: 'conservar ambas lecturas con su fecha_dato y documentar la discrepancia',
+      })
+    }
+  }
+
   // Empleo: una cifra del mismo tipo y la misma referencia con otro valor es un
   // conflicto; lo demás, un registro más.
   for (const e of propuesta.empleo ?? []) {

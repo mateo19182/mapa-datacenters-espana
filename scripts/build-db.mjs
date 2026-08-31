@@ -66,6 +66,9 @@ CREATE TABLE fases (
 CREATE TABLE empleo (
   sitio_id TEXT, idx INTEGER, tipo TEXT, valor REAL, referencia TEXT, fecha_dato TEXT, nota TEXT
 );
+CREATE TABLE energia (
+  sitio_id TEXT, idx INTEGER, consumo_gwh_ano REAL, referencia TEXT, fecha_dato TEXT, nota TEXT
+);
 CREATE TABLE incertidumbres (sitio_id TEXT, idx INTEGER, campo TEXT, descripcion TEXT);
 CREATE TABLE fuentes (
   sitio_id TEXT, id TEXT, url TEXT, titulo TEXT, editor TEXT, tipo TEXT,
@@ -101,6 +104,7 @@ const insPot = db.prepare('INSERT INTO potencias VALUES (?,?,?,?,?,?,?,?,?,?,?,?
 const insFase = db.prepare('INSERT INTO fases VALUES (?,?,?,?,?,?,?)')
 const insInc = db.prepare('INSERT INTO incertidumbres VALUES (?,?,?,?)')
 const insEmpleo = db.prepare('INSERT INTO empleo VALUES (?,?,?,?,?,?,?)')
+const insEnergia = db.prepare('INSERT INTO energia VALUES (?,?,?,?,?,?)')
 const insFuente = db.prepare('INSERT INTO fuentes VALUES (?,?,?,?,?,?,?,?,?)')
 const insResp = db.prepare('INSERT INTO respaldos VALUES (?,?,?)')
 const insRed = db.prepare('INSERT INTO red_nodos VALUES (?,?)')
@@ -168,6 +172,10 @@ const cargar = db.transaction(() => {
     for (const [i, e] of (s.empleo ?? []).entries()) {
       insEmpleo.run(s.id, i, e.tipo, e.valor, e.referencia, e.fecha_dato, e.nota)
       for (const src of e.fuentes) insResp.run(s.id, `empleo[${i}]`, src)
+    }
+    for (const [i, e] of (s.energia ?? []).entries()) {
+      insEnergia.run(s.id, i, e.consumo_gwh_ano, e.referencia, e.fecha_dato, e.nota)
+      for (const src of e.fuentes) insResp.run(s.id, `energia[${i}]`, src)
     }
     for (const f of s.fuentes) {
       insFuente.run(s.id, f.id, f.url, f.titulo, f.editor, f.tipo, f.fecha_publicacion, f.fecha_consulta, f.cita)
