@@ -6,7 +6,6 @@ import renovables from '../../data/renovables.json'
 import {
   ESTADO_ETIQUETA,
   POTENCIA_ETIQUETA,
-  POTENCIA_DESCRIPCION,
   PRECISION_ETIQUETA,
   CONFIANZA_ETIQUETA,
   CONFIANZA_DESCRIPCION,
@@ -27,6 +26,13 @@ import {
   superficie,
   slug,
 } from '../../lib/etiquetas.js'
+import {
+  GLOSARIO_POTENCIA,
+  GLOSARIO_CIRCUITO,
+  GLOSARIO_COMPUTO,
+  GLOSARIO_MODELO,
+} from '../../lib/glosario.js'
+import Termino from '../../components/Termino.astro'
 
 export function getStaticPaths() {
   return sitios.map((s) => ({ params: { id: s.id }, props: { sitio: s } }))
@@ -81,7 +87,7 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
       <div>
         <span class={`etiqueta estado-${s.estado}`}><span class="punto"></span>{ESTADO_ETIQUETA[s.estado]}</span>
         <span class={`etiqueta confianza-${s.confianza}`} title={CONFIANZA_DESCRIPCION[s.confianza]}>
-          {CONFIANZA_ETIQUETA[s.confianza]}
+          <Termino id="confianza">{CONFIANZA_ETIQUETA[s.confianza]}</Termino>
         </span>
         <h1>{s.nombre}</h1>
         {s.alias.length > 0 && (
@@ -108,7 +114,7 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
             <dl class="cifras">
               {tiposConDato.map((t) => (
                 <div class="cifra">
-                  <dt title={POTENCIA_DESCRIPCION[t]}>{POTENCIA_ETIQUETA[t]}</dt>
+                  <dt><Termino id={GLOSARIO_POTENCIA[t]}>{POTENCIA_ETIQUETA[t]}</Termino></dt>
                   <dd>
                     {numero(r[t].valor_mw, 1)} MW
                     <small>
@@ -148,7 +154,7 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
                 <tbody>
                   {s.potencia.map((p) => (
                     <tr>
-                      <td title={POTENCIA_DESCRIPCION[p.tipo]}>{POTENCIA_ETIQUETA[p.tipo]}</td>
+                      <td><Termino id={GLOSARIO_POTENCIA[p.tipo]}>{POTENCIA_ETIQUETA[p.tipo]}</Termino></td>
                       <td class="num" data-etiqueta="MW">
                         {numero(p.valor_mw, 1) ?? (p.valor_mva ? `${numero(p.valor_mva, 1)} MVA` : '—')}
                         {p.valor_mw_max && `–${numero(p.valor_mw_max, 1)}`}
@@ -288,7 +294,11 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
             {s.propietario && s.propietario !== s.operador && (<><dt>Propietario</dt><dd>{s.propietario}</dd></>)}
             {s.cliente_ancla && (<><dt>Cliente ancla</dt><dd>{s.cliente_ancla}</dd></>)}
             <dt>Modelo</dt>
-            <dd>{MODELO_ETIQUETA[s.modelo]}</dd>
+            <dd>
+              {GLOSARIO_MODELO[s.modelo]
+                ? <Termino id={GLOSARIO_MODELO[s.modelo]}>{MODELO_ETIQUETA[s.modelo]}</Termino>
+                : MODELO_ETIQUETA[s.modelo]}
+            </dd>
             <dt>Tipo de registro</dt>
             <dd>{s.tipo === 'campus' ? 'Campus (varios edificios)' : 'Edificio'}</dd>
           </dl>
@@ -325,14 +335,14 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
           <div class="tarjeta">
             <h3 class="titulo-lateral">Conexión eléctrica</h3>
             <dl class="pares">
-              {s.conexion_electrica.subestacion && (<><dt>Subestación</dt><dd>{s.conexion_electrica.subestacion}</dd></>)}
-              {s.conexion_electrica.tension_kv && (<><dt>Tensión</dt><dd>{numero(s.conexion_electrica.tension_kv)} kV</dd></>)}
+              {s.conexion_electrica.subestacion && (<><dt><Termino id="subestacion">Subestación</Termino></dt><dd>{s.conexion_electrica.subestacion}</dd></>)}
+              {s.conexion_electrica.tension_kv && (<><dt>Tensión</dt><dd>{numero(s.conexion_electrica.tension_kv)} <Termino id="kv">kV</Termino></dd></>)}
               {s.conexion_electrica.titular_red && (<><dt>Titular de red</dt><dd>{s.conexion_electrica.titular_red}</dd></>)}
-              {s.conexion_electrica.mw_solicitados != null && (<><dt>MW solicitados</dt><dd>{numero(s.conexion_electrica.mw_solicitados, 1)} MW</dd></>)}
-              {s.conexion_electrica.mw_concedidos != null && (<><dt>MW concedidos</dt><dd>{numero(s.conexion_electrica.mw_concedidos, 1)} MW</dd></>)}
+              {s.conexion_electrica.mw_solicitados != null && (<><dt><Termino id="capacidad-en-curso">MW solicitados</Termino></dt><dd>{numero(s.conexion_electrica.mw_solicitados, 1)} MW</dd></>)}
+              {s.conexion_electrica.mw_concedidos != null && (<><dt><Termino id="capacidad-otorgada">MW concedidos</Termino></dt><dd>{numero(s.conexion_electrica.mw_concedidos, 1)} MW</dd></>)}
             </dl>
             <p class="pequeno silencio">
-              Una solicitud de acceso no es un centro construido. Véase <a href="/red-electrica">red eléctrica</a>.
+              Una <Termino id="permiso-acceso">solicitud de acceso</Termino> no es un centro construido. Véase <a href="/red-electrica">red eléctrica</a>.
             </p>
           </div>
         )}
@@ -345,7 +355,9 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
                 <>
                   <dt>Circuito</dt>
                   <dd>
-                    {CIRCUITO_ETIQUETA[s.agua.circuito] ?? s.agua.circuito}
+                    {GLOSARIO_CIRCUITO[s.agua.circuito]
+                      ? <Termino id={GLOSARIO_CIRCUITO[s.agua.circuito]}>{CIRCUITO_ETIQUETA[s.agua.circuito]}</Termino>
+                      : (CIRCUITO_ETIQUETA[s.agua.circuito] ?? s.agua.circuito)}
                     <br />
                     <span class="pequeno silencio">{CIRCUITO_DESCRIPCION[s.agua.circuito]}</span>
                   </dd>
@@ -354,7 +366,7 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
               {s.agua?.origen && (<><dt>Origen del agua</dt><dd>{s.agua.origen}</dd></>)}
               {s.agua?.consumo_m3_ano != null && (<><dt>Consumo anual</dt><dd>{volumen(s.agua.consumo_m3_ano)}</dd></>)}
               {s.agua?.consumo_m3_dia != null && (<><dt>Consumo diario</dt><dd>{volumen(s.agua.consumo_m3_dia)}</dd></>)}
-              {s.agua?.wue_l_kwh != null && (<><dt>WUE</dt><dd>{numero(s.agua.wue_l_kwh, 2)} l/kWh</dd></>)}
+              {s.agua?.wue_l_kwh != null && (<><dt><Termino id="wue">WUE</Termino></dt><dd>{numero(s.agua.wue_l_kwh, 2)} l/kWh</dd></>)}
               {s.agua?.sistema && (<><dt>Sistema</dt><dd>{s.agua.sistema}</dd></>)}
               {s.refrigeracion && (<><dt>Detalle</dt><dd>{s.refrigeracion}</dd></>)}
             </dl>
@@ -394,8 +406,8 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
               ))}
             </dl>
             <p class="pequeno silencio">
-              Energía consumida al año, no potencia. No se compara ni se suma con las cifras de
-              MW, que miden cosas distintas.
+              <Termino id="gwh-ano">Energía consumida al año</Termino>, no potencia. No se compara
+              ni se suma con las cifras de <Termino id="mw">MW</Termino>, que miden cosas distintas.
             </p>
           </div>
         )}
@@ -406,7 +418,11 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
             <dl class="pares">
               {s.computo.map((c) => (
                 <>
-                  <dt>{COMPUTO_ETIQUETA[c.tipo] ?? c.tipo}</dt>
+                  <dt>
+                    {GLOSARIO_COMPUTO[c.tipo]
+                      ? <Termino id={GLOSARIO_COMPUTO[c.tipo]}>{COMPUTO_ETIQUETA[c.tipo] ?? c.tipo}</Termino>
+                      : (COMPUTO_ETIQUETA[c.tipo] ?? c.tipo)}
+                  </dt>
                   <dd>
                     {unidadesComputo(c.unidades, c.tipo_unidad) ?? 'Recuento no publicado'}
                     {c.sistema && <span class="pequeno silencio"><br />{c.sistema}</span>}
@@ -428,7 +444,9 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
             </dl>
             <p class="pequeno silencio">
               Hardware instalado, no potencia eléctrica: nada de este bloque entra en las cifras
-              de MW. Los FLOPS no se comparan entre precisiones distintas ni entre pico y medida.
+              de MW. Los <Termino id="flops">FLOPS</Termino> no se comparan entre{' '}
+              <Termino id="precision-numerica">precisiones distintas</Termino> ni entre{' '}
+              <Termino id="pico-vs-medido">pico y medida</Termino>.
             </p>
           </div>
         )}
@@ -478,7 +496,7 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
             <dd>{s.fuentes.length}</dd>
             <dt>Confianza</dt>
             <dd>
-              <span class={`confianza-${s.confianza}`}>{CONFIANZA_ETIQUETA[s.confianza]}</span>
+              <span class={`confianza-${s.confianza}`}><Termino id="confianza">{CONFIANZA_ETIQUETA[s.confianza]}</Termino></span>
               {motivos.length > 0 ? (
                 <ul class="motivos-confianza">
                   {motivos.map((m) => <li>{m}</li>)}

@@ -1,0 +1,195 @@
+---
+import Base from '../layouts/Base.astro'
+import { CATEGORIAS, TERMINOS, porCategoria } from '../lib/glosario.js'
+
+const conMatiz = TERMINOS.filter((t) => t.matiz).length
+---
+
+<Base
+  titulo="Glosario"
+  descripcion="Vocabulario del registro: potencia, acceso a la red, refrigeración, cómputo, contratos de energía e indicadores de inversión, con la trampa de cada término."
+>
+  <div class="contenedor">
+    <h1>Glosario</h1>
+    <p class="sumario">
+      Las {TERMINOS.length} palabras que hacen falta para leer estas cifras sin confundirlas. En el
+      resto del sitio están subrayadas con puntos: al pasar el cursor por encima se explican sin
+      salir de la página.
+    </p>
+
+    <div class="nota">
+      <strong>Casi todo el vocabulario eléctrico es una trampa de unidades.</strong> Solicitado,
+      otorgado y contratado son tres números distintos. Potencia y energía no se suman. MW IT y MW
+      de conexión difieren en casi el doble. {conMatiz} de estos {TERMINOS.length} términos llevan
+      anotado dónde está el error frecuente.
+    </div>
+
+    <div class="controles">
+      <input id="busca-termino" type="search" placeholder="Filtrar término o definición…" autocomplete="off" />
+      <span id="contador-termino" class="pequeno silencio"></span>
+    </div>
+
+    <nav class="atajos" aria-label="Secciones del glosario">
+      {CATEGORIAS.map(([id, nombre]) => (
+        <a href={`#${id}`}>{nombre} <span class="silencio">{porCategoria(id).length}</span></a>
+      ))}
+    </nav>
+
+    {CATEGORIAS.map(([id, nombre, entradilla]) => (
+      <section class="bloque" id={id} data-bloque>
+        <h2>{nombre}</h2>
+        <p class="pequeno silencio">{entradilla}</p>
+        <dl class="terminos">
+          {porCategoria(id).map((t) => (
+            <div class="termino" id={t.id} data-busca={`${t.termino} ${(t.alias ?? []).join(' ')} ${t.definicion} ${t.matiz ?? ''}`.toLowerCase()}>
+              <dt>
+                {t.termino}
+                {(t.alias ?? []).filter((a) => a.toLowerCase() !== t.termino.toLowerCase()).length > 0 && (
+                  <span class="alias">
+                    {(t.alias ?? [])
+                      .filter((a) => a.toLowerCase() !== t.termino.toLowerCase())
+                      .slice(0, 4)
+                      .join(' · ')}
+                  </span>
+                )}
+              </dt>
+              <dd>
+                <p>{t.definicion}</p>
+                {t.matiz && <p class="matiz">{t.matiz}</p>}
+                {t.enlace && (
+                  <p class="pequeno"><a href={t.enlace}>Dónde se usa</a></p>
+                )}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+    ))}
+
+    <p class="pequeno silencio" style="margin-bottom:3rem">
+      Las definiciones son propias. Cuando resumen una norma, la norma manda: el detalle está en{' '}
+      <a href="/red-electrica">red eléctrica</a>, <a href="/renovables">renovables</a> y{' '}
+      <a href="/metodologia">metodología</a>, con su cita y su enlace.
+    </p>
+  </div>
+</Base>
+
+<script>
+  const entrada = document.getElementById('busca-termino')
+  const contador = document.getElementById('contador-termino')
+  const fichas = [...document.querySelectorAll('.termino[data-busca]')]
+  const bloques = [...document.querySelectorAll('[data-bloque]')]
+
+  const actualizar = () => {
+    const t = entrada.value.trim().toLowerCase()
+    let visibles = 0
+    for (const ficha of fichas) {
+      const encaja = !t || ficha.dataset.busca.includes(t)
+      ficha.hidden = !encaja
+      if (encaja) visibles++
+    }
+    for (const bloque of bloques) {
+      bloque.hidden = ![...bloque.querySelectorAll('.termino')].some((f) => !f.hidden)
+    }
+    contador.textContent = t ? `${visibles} de ${fichas.length} términos` : `${fichas.length} términos`
+  }
+
+  entrada?.addEventListener('input', actualizar)
+  actualizar()
+</script>
+
+<style>
+  .controles {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    margin: 1.4rem 0 1.2rem;
+  }
+
+  .controles input {
+    flex: 1;
+    max-width: 24rem;
+  }
+
+  .atajos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1.1rem;
+    border-top: 1px solid var(--borde);
+    border-bottom: 1px solid var(--borde);
+    padding: 0.7rem 0;
+    font-size: 0.78rem;
+  }
+
+  .bloque {
+    margin-top: 2.6rem;
+    scroll-margin-top: 4.5rem;
+  }
+
+  .bloque h2 {
+    margin-bottom: 0.15rem;
+  }
+
+  .terminos {
+    margin: 1.2rem 0 0;
+    border-top: 1px solid var(--borde);
+  }
+
+  .termino {
+    display: grid;
+    grid-template-columns: 14rem minmax(0, 1fr);
+    gap: 0 1.6rem;
+    border-bottom: 1px solid var(--borde);
+    padding: 0.85rem 0;
+    scroll-margin-top: 4.5rem;
+  }
+
+  .termino:target {
+    background: var(--acento-suave);
+    box-shadow: -0.6rem 0 0 var(--acento-suave), 0.6rem 0 0 var(--acento-suave);
+  }
+
+  dt {
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .alias {
+    display: block;
+    margin-top: 0.15rem;
+    color: var(--tinta-3);
+    font: 0.68rem/1.4 var(--mono);
+    font-weight: 400;
+  }
+
+  dd {
+    margin: 0;
+    max-width: 46rem;
+  }
+
+  dd p {
+    margin: 0;
+    color: var(--tinta-2);
+    font-size: 0.88rem;
+  }
+
+  .matiz {
+    margin-top: 0.4rem;
+    padding-left: 0.7rem;
+    border-left: 2px solid var(--borde-fuerte);
+    color: var(--tinta-3) !important;
+    font-size: 0.84rem !important;
+  }
+
+  dd .pequeno {
+    margin-top: 0.35rem;
+  }
+
+  @media (max-width: 700px) {
+    .termino {
+      grid-template-columns: 1fr;
+      gap: 0.3rem;
+    }
+  }
+</style>

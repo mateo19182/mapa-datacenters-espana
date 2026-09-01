@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro'
+import Glosa from './Glosa.astro'
 
 const { tesis } = Astro.props
 const signo = (valor) => `${valor > 0 ? '+' : ''}${valor.toLocaleString('es-ES', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}%`
@@ -20,12 +21,12 @@ const claseRetorno = (valor) => valor > 0 ? 'positivo' : valor < 0 ? 'negativo' 
           <div>
             <p class="sobrelinea">{tesis.sobrelinea}</p>
             <h1>{tesis.titulo}</h1>
-            <p class="tesis-corta">{tesis.tesisCorta}</p>
+            <p class="tesis-corta"><Glosa texto={tesis.tesisCorta} /></p>
           </div>
           <aside class="veredicto">
             <span>Lectura</span>
             <strong>{tesis.lectura}</strong>
-            <p>{tesis.veredicto}</p>
+            <p><Glosa texto={tesis.veredicto} /></p>
             <dl>
               <div><dt>Precio de referencia</dt><dd>{tesis.mercado.precio}</dd></div>
               <div><dt>Cierre</dt><dd>{tesis.mercado.fecha}</dd></div>
@@ -53,9 +54,9 @@ const claseRetorno = (valor) => valor > 0 ? 'positivo' : valor < 0 ? 'negativo' 
       <section class="panel-metricas" aria-label="Indicadores principales">
         {tesis.metricas.map((metrica) => (
           <div class="metrica">
-            <span>{metrica.etiqueta}</span>
+            <span><Glosa texto={metrica.etiqueta} /></span>
             <strong>{metrica.valor}</strong>
-            <small>{metrica.nota}</small>
+            <small><Glosa texto={metrica.nota} /></small>
           </div>
         ))}
       </section>
@@ -68,18 +69,18 @@ const claseRetorno = (valor) => valor > 0 ? 'positivo' : valor < 0 ? 'negativo' 
       <section id="tesis" class="seccion">
         <div class="titulo-lateral"><span>01</span><h2>La tesis en una página</h2></div>
         <div class="contenido">
-          <p class="entradilla">{tesis.resumen}</p>
+          <p class="entradilla"><Glosa texto={tesis.resumen} /></p>
           <div class="tesis-grid">
             <div class="caso favor">
               <p class="caso-titulo">Qué tiene que salir bien</p>
-              <ul>{tesis.favor.map((punto) => <li>{punto}</li>)}</ul>
+              <ul>{tesis.favor.map((punto) => <li><Glosa texto={punto} /></li>)}</ul>
             </div>
             <div class="caso contra">
               <p class="caso-titulo">Qué puede romperla</p>
-              <ul>{tesis.contra.map((punto) => <li>{punto}</li>)}</ul>
+              <ul>{tesis.contra.map((punto) => <li><Glosa texto={punto} /></li>)}</ul>
             </div>
           </div>
-          <div class="lectura-clave"><span>Mi lectura</span><p>{tesis.miLectura}</p></div>
+          <div class="lectura-clave"><span>Mi lectura</span><p><Glosa texto={tesis.miLectura} /></p></div>
         </div>
       </section>
 
@@ -119,10 +120,10 @@ const claseRetorno = (valor) => valor > 0 ? 'positivo' : valor < 0 ? 'negativo' 
       <section id="exposicion" class="seccion">
         <div class="titulo-lateral"><span>03</span><h2>Cómo llega al centro de datos</h2></div>
         <div class="contenido">
-          <p class="entradilla">{tesis.exposicion.intro}</p>
+          <p class="entradilla"><Glosa texto={tesis.exposicion.intro} /></p>
           <div class="cadena">
             {tesis.exposicion.cadena.map((paso, indice) => (
-              <div><span>{String(indice + 1).padStart(2, '0')}</span><strong>{paso.titulo}</strong><p>{paso.texto}</p></div>
+              <div><span>{String(indice + 1).padStart(2, '0')}</span><strong>{paso.titulo}</strong><p><Glosa texto={paso.texto} /></p></div>
             ))}
           </div>
           {tesis.exposicion.proyectos?.length > 0 && (
@@ -133,13 +134,13 @@ const claseRetorno = (valor) => valor > 0 ? 'positivo' : valor < 0 ? 'negativo' 
                   <tr>
                     <td>{proyecto.href ? <a href={proyecto.href}>{proyecto.nombre}</a> : proyecto.nombre}</td>
                     <td>{proyecto.estado}</td>
-                    <td>{proyecto.lectura}</td>
+                    <td><Glosa texto={proyecto.lectura} /></td>
                   </tr>
                 ))}</tbody>
               </table>
             </div>
           )}
-          {tesis.exposicion.nota && <p class="nota-analista">{tesis.exposicion.nota}</p>}
+          {tesis.exposicion.nota && <p class="nota-analista"><Glosa texto={tesis.exposicion.nota} /></p>}
         </div>
       </section>
 
@@ -151,24 +152,24 @@ const claseRetorno = (valor) => valor > 0 ? 'positivo' : valor < 0 ? 'negativo' 
             {tesis.finanzas.bloques.map((bloque) => (
               <div>
                 <h3>{bloque.titulo}</h3>
-                <dl>{bloque.filas.map((fila) => <div><dt>{fila[0]}</dt><dd>{fila[1]}</dd></div>)}</dl>
+                <dl>{bloque.filas.map((fila) => <div><dt><Glosa texto={fila[0]} /></dt><dd>{fila[1]}</dd></div>)}</dl>
               </div>
             ))}
           </div>
-          <p class="nota-analista">{tesis.finanzas.nota}</p>
+          <p class="nota-analista"><Glosa texto={tesis.finanzas.nota} /></p>
         </div>
       </section>
 
       <section id="valoracion" class="seccion">
         <div class="titulo-lateral"><span>05</span><h2>Valoración y materialidad</h2></div>
         <div class="contenido">
-          <p class="entradilla">{tesis.valoracion.intro}</p>
+          <p class="entradilla"><Glosa texto={tesis.valoracion.intro} /></p>
           <div class="valoracion-grid">
             {tesis.valoracion.bloques.map((bloque) => (
-              <div><span>{bloque.etiqueta}</span><strong>{bloque.valor}</strong><p>{bloque.texto}</p></div>
+              <div><span><Glosa texto={bloque.etiqueta} /></span><strong>{bloque.valor}</strong><p><Glosa texto={bloque.texto} /></p></div>
             ))}
           </div>
-          <p class="nota-analista">{tesis.valoracion.nota}</p>
+          <p class="nota-analista"><Glosa texto={tesis.valoracion.nota} /></p>
         </div>
       </section>
 
@@ -177,7 +178,7 @@ const claseRetorno = (valor) => valor > 0 ? 'positivo' : valor < 0 ? 'negativo' 
         <div class="contenido">
           <div class="escenarios">
             {tesis.escenarios.map((escenario) => (
-              <div><span>{escenario.nombre}</span><h3>{escenario.titulo}</h3><p>{escenario.texto}</p></div>
+              <div><span>{escenario.nombre}</span><h3>{escenario.titulo}</h3><p><Glosa texto={escenario.texto} /></p></div>
             ))}
           </div>
           <p class="metodo">Los escenarios aíslan los supuestos que importan. No sustituyen un modelo financiero completo ni estiman una cotización puntual.</p>
@@ -191,7 +192,7 @@ const claseRetorno = (valor) => valor > 0 ? 'positivo' : valor < 0 ? 'negativo' 
             <table>
               <thead><tr><th>Indicador</th><th>Qué confirmaría la tesis</th><th>Señal de alarma</th></tr></thead>
               <tbody>{tesis.seguimiento.map((fila) => (
-                <tr><td><strong>{fila.indicador}</strong></td><td>{fila.confirma}</td><td>{fila.alarma}</td></tr>
+                <tr><td><strong><Glosa texto={fila.indicador} /></strong></td><td><Glosa texto={fila.confirma} /></td><td><Glosa texto={fila.alarma} /></td></tr>
               ))}</tbody>
             </table>
           </div>
@@ -202,7 +203,7 @@ const claseRetorno = (valor) => valor > 0 ? 'positivo' : valor < 0 ? 'negativo' 
         <div class="titulo-lateral"><span>08</span><h2>Fuentes y límites</h2></div>
         <div class="contenido">
           <ol>{tesis.fuentes.map((fuente) => <li><a href={fuente.url} rel="noopener">{fuente.titulo}</a><span>{fuente.nota}</span></li>)}</ol>
-          <p>{tesis.limites}</p>
+          <p><Glosa texto={tesis.limites} /></p>
         </div>
       </section>
     </div>

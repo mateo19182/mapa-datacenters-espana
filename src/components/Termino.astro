@@ -1,0 +1,259 @@
+---
+import { POR_ID, idDeGlobo } from '../lib/glosario.js'
+
+// Un término del glosario con su explicación al pasar el cursor.
+//
+//   <Termino id="epra-nta" />              el nombre canónico
+//   <Termino id="ffo">rentabilidad FFO</Termino>   el texto que ya estaba escrito
+//
+// Sin JavaScript el navegador enseña la definición con su propio globo, porque
+// el botón lleva `title`. El script lo retira y la sustituye por el globo
+// propio, que además cabe en dos líneas y se puede leer con el teclado.
+const { id, sinEnlace = false } = Astro.props
+const t = POR_ID.get(id)
+
+if (!t && import.meta.env.DEV) console.warn(`[glosario] término desconocido: ${id}`)
+
+const idGlobo = t ? idDeGlobo(id) : null
+const titulo = t ? [t.definicion, t.matiz].filter(Boolean).join(' ') : null
+---
+
+{t ? (
+  <span class="glosa">
+    <button
+      type="button"
+      class="glosa-marca"
+      popovertarget={idGlobo}
+      title={titulo}
+      aria-describedby={idGlobo}
+    >
+      <slot>{t.termino}</slot>
+    </button>
+    <span class="glosa-globo" id={idGlobo} popover>
+      <span class="glosa-termino">{t.termino}</span>
+      <span class="glosa-definicion">{t.definicion}</span>
+      {t.matiz && <span class="glosa-matiz">{t.matiz}</span>}
+      {!sinEnlace && (
+        <a class="glosa-mas" href={`/glosario#${t.id}`}>Ver en el glosario</a>
+      )}
+    </span>
+  </span>
+) : (
+  <slot />
+)}
+
+<style>
+  .glosa {
+    display: inline;
+  }
+
+  .glosa-marca {
+    /* Un botón que no parece un botón: subrayado punteado, como una nota al pie. */
+    all: unset;
+    display: inline;
+    cursor: help;
+    text-decoration: underline dotted;
+    text-decoration-color: var(--borde-fuerte);
+    text-underline-offset: 0.18em;
+  }
+
+  .glosa-marca:hover,
+  .glosa-marca:focus-visible {
+    text-decoration-color: var(--acento);
+  }
+
+  .glosa-marca:focus-visible {
+    outline: 2px solid var(--acento);
+    outline-offset: 2px;
+  }
+
+  .glosa-globo {
+    position: fixed;
+    inset: auto;
+    margin: 0;
+    width: min(22rem, calc(100vw - 1.5rem));
+    padding: 0.6rem 0.7rem;
+    border: 1px solid var(--borde-fuerte);
+    border-top: 2px solid var(--acento);
+    border-radius: var(--radio);
+    background: var(--papel);
+    color: var(--tinta-2);
+    box-shadow: 0 6px 20px rgb(0 0 0 / 0.13);
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    line-height: 1.45;
+    text-align: left;
+    text-transform: none;
+    letter-spacing: normal;
+  }
+
+  .glosa-globo:not(:popover-open) {
+    display: none;
+  }
+
+  .glosa-termino {
+    display: block;
+    color: var(--tinta);
+    font-weight: 600;
+    font-size: 0.8rem;
+  }
+
+  .glosa-definicion {
+    display: block;
+    margin-top: 0.2rem;
+  }
+
+  .glosa-matiz {
+    display: block;
+    margin-top: 0.4rem;
+    padding-left: 0.55rem;
+    border-left: 2px solid var(--borde-fuerte);
+    color: var(--tinta-3);
+  }
+
+  .glosa-mas {
+    display: block;
+    margin-top: 0.45rem;
+    font-size: 0.7rem;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .glosa-globo {
+      animation: glosa-entra 0.12s ease-out;
+    }
+  }
+
+  @keyframes glosa-entra {
+    from {
+      opacity: 0;
+      transform: translateY(-2px);
+    }
+  }
+</style>
+
+<script>
+  // Un solo script para todos los términos de la página. Astro lo incluye una
+  // vez, por muchas veces que se use el componente.
+  //
+  // Del clic se encarga el navegador, porque el botón es `popovertarget` del
+  // globo. Aquí solo se añade lo que el HTML no da: abrir al pasar el cursor o
+  // al recibir el foco, y colocar el globo junto a su palabra. Vive en la capa
+  // superior, así que ninguna tabla con scroll lo recorta, pero tampoco
+  // acompaña al scroll de la página: hay que recolocarlo.
+  if (typeof HTMLElement !== 'undefined' && 'popover' in HTMLElement.prototype) {
+    const MARGEN = 8
+    let temporizador = null
+    let origen = null
+
+    const globoDe = (marca) => marca.parentElement?.querySelector('.glosa-globo')
+    const abiertos = () => document.querySelectorAll('.glosa-globo:popover-open')
+
+    const colocar = (globo) => {
+      const marca = globo.parentElement?.querySelector('.glosa-marca')
+      if (!marca) return
+      // Se mide con el globo en la esquina para que su ancho sea el real y no
+      // el que tendría estrujado contra el borde de la ventana.
+      globo.style.left = '0px'
+      globo.style.top = '0px'
+      const m = marca.getBoundingClientRect()
+      const g = globo.getBoundingClientRect()
+      globo.style.left = `${Math.min(
+        Math.max(MARGEN, m.left + m.width / 2 - g.width / 2),
+        Math.max(MARGEN, window.innerWidth - g.width - MARGEN),
+      )}px`
+      const debajo = m.bottom + 6
+      globo.style.top = `${
+        debajo + g.height > window.innerHeight - MARGEN && m.top - g.height - 6 > MARGEN
+          ? m.top - g.height - 6
+          : debajo
+      }px`
+    }
+
+    const cerrar = () => {
+      clearTimeout(temporizador)
+      for (const globo of abiertos()) {
+        try {
+          globo.hidePopover()
+        } catch {}
+      }
+      origen = null
+    }
+
+    const abrir = (marca, porQue) => {
+      const globo = globoDe(marca)
+      if (!globo || globo.matches(':popover-open')) return
+      cerrar()
+      try {
+        globo.showPopover()
+      } catch {
+        return
+      }
+      colocar(globo)
+      origen = porQue
+    }
+
+    // El `title` es el respaldo para quien no tenga JS. Con JS estorba: el
+    // navegador lo pintaría encima del globo propio.
+    for (const marca of document.querySelectorAll('.glosa-marca[title]')) {
+      marca.removeAttribute('title')
+    }
+
+    document.addEventListener('pointerover', (e) => {
+      const marca = e.target.closest?.('.glosa-marca')
+      if (!marca) return
+      clearTimeout(temporizador)
+      temporizador = setTimeout(() => abrir(marca, 'cursor'), 90)
+    })
+
+    document.addEventListener('pointerout', (e) => {
+      if (!e.target.closest?.('.glosa')) return
+      clearTimeout(temporizador)
+      // Un globo abierto a propósito, pulsándolo, no se cierra por mover el ratón.
+      if (origen === 'cursor') temporizador = setTimeout(cerrar, 160)
+    })
+
+    // Solo el foco de teclado abre. Si abriera también el del ratón, el clic que
+    // viene detrás encontraría el globo abierto y el navegador lo cerraría.
+    document.addEventListener('focusin', (e) => {
+      const marca = e.target.closest?.('.glosa-marca')
+      if (marca) {
+        if (marca.matches(':focus-visible')) abrir(marca, 'foco')
+      } else if (!e.target.closest?.('.glosa-globo')) {
+        cerrar()
+      }
+    })
+
+    // El clic lo resuelve el navegador. Se detiene la propagación porque puede
+    // haber términos dentro de elementos con su propio manejador, y se recoloca
+    // el globo en el mismo fotograma en que el navegador lo abre.
+    document.addEventListener(
+      'click',
+      (e) => {
+        const marca = e.target.closest?.('.glosa-marca')
+        if (!marca) return
+        e.stopPropagation()
+        clearTimeout(temporizador)
+        requestAnimationFrame(() => {
+          const globo = globoDe(marca)
+          if (globo?.matches(':popover-open')) {
+            colocar(globo)
+            origen = 'toque'
+          } else {
+            origen = null
+          }
+        })
+      },
+      true,
+    )
+
+    for (const evento of ['scroll', 'resize']) {
+      window.addEventListener(
+        evento,
+        () => {
+          for (const globo of abiertos()) colocar(globo)
+        },
+        { passive: true, capture: true },
+      )
+    }
+  }
+</script>

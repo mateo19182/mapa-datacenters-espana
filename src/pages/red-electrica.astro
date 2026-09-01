@@ -6,6 +6,7 @@ import capacidad from '../data/capacidad.json'
 import actuaciones from '../data/actuaciones.json'
 import sitios from '../data/sitios.json'
 import { fechaLegible, numero, slug } from '../lib/etiquetas.js'
+import Termino from '../components/Termino.astro'
 
 // Un nudo se considera sin margen cuando el fichero de Red Eléctrica no publica
 // ningún valor disponible bajo ninguno de los tres criterios.
@@ -61,12 +62,13 @@ const explicarLimitante = (codigo) =>
   <div class="contenedor">
     <h1>Red eléctrica</h1>
     <p class="sumario">
-      Capacidad de acceso a la red de transporte para demanda, nudo a nudo, y las actuaciones de
-      red planificadas.
+      Capacidad de acceso a la <Termino id="red-transporte">red de transporte</Termino> para demanda,{' '}
+      <Termino id="nudo">nudo</Termino> a nudo, y las{' '}
+      <Termino id="actuacion-de-red">actuaciones de red</Termino> planificadas.
     </p>
 
     <div class="nota">
-      <strong>Demanda, no generación.</strong> Todas las cifras de capacidad son de acceso para
+      <strong>Demanda, no generación.</strong> Todas las cifras de capacidad son de acceso para{' '}
       <em>demanda</em> (consumo). La de <em>generación</em> se calcula con otros criterios y no es
       comparable con esta.
     </div>
@@ -75,11 +77,11 @@ const explicarLimitante = (codigo) =>
       <>
         <dl class="cifras">
           <div class="cifra">
-            <dt>Nudos registrados</dt>
+            <dt><Termino id="nudo">Nudos</Termino> registrados</dt>
             <dd>{numero(nudos.length)}<small>de la red de transporte</small></dd>
           </div>
           <div class="cifra">
-            <dt>Con margen para demanda</dt>
+            <dt>Con <Termino id="capacidad-disponible">margen para demanda</Termino></dt>
             <dd>{numero(conMargen.length)}<small>{Math.round((conMargen.length / nudos.length) * 100)} % del total</small></dd>
           </div>
           <div class="cifra">
@@ -87,7 +89,7 @@ const explicarLimitante = (codigo) =>
             <dd>{numero(sinMargen.length)}<small>saturados o sin valor de referencia acordado</small></dd>
           </div>
           <div class="cifra">
-            <dt>Demanda en curso</dt>
+            <dt><Termino id="capacidad-en-curso">Demanda en curso</Termino></dt>
             <dd>{numero(nudos.reduce((a, n) => a + (n.solicitada_en_curso_demanda_rdt_mw ?? 0), 0))} MW<small>solicitudes en tramitación, no instalaciones</small></dd>
           </div>
         </dl>
@@ -103,11 +105,11 @@ const explicarLimitante = (codigo) =>
             <thead>
               <tr>
                 <th>Comunidad</th>
-                <th class="num">Nudos</th>
+                <th class="num"><Termino id="nudo">Nudos</Termino></th>
                 <th class="num">Con margen</th>
-                <th class="num">Disponible</th>
-                <th class="num">Otorgada</th>
-                <th class="num">En curso</th>
+                <th class="num"><Termino id="capacidad-disponible">Disponible</Termino></th>
+                <th class="num"><Termino id="capacidad-otorgada">Otorgada</Termino></th>
+                <th class="num"><Termino id="capacidad-en-curso">En curso</Termino></th>
               </tr>
             </thead>
             <tbody>
@@ -125,8 +127,9 @@ const explicarLimitante = (codigo) =>
           </table>
         </div>
         <p class="pequeno silencio">
-          «Otorgada» es potencia con permiso concedido; «en curso», solicitudes en tramitación. Ni
-          una ni otra son centros construidos.
+          «Otorgada» es potencia con <Termino id="permiso-acceso">permiso concedido</Termino>; «en
+          curso», solicitudes en tramitación. Ni una ni otra son centros construidos. Las cifras
+          disponibles, en cambio, <Termino id="zona-capacidad">no son sumables entre nudos</Termino>.
         </p>
 
         <h2>Nudos con más margen para nueva demanda</h2>
@@ -138,12 +141,12 @@ const explicarLimitante = (codigo) =>
           <table id="tabla-nudos" class="tabla-fichas">
             <thead>
               <tr>
-                <th>Nudo</th>
+                <th><Termino id="nudo">Nudo</Termino></th>
                 <th>Comunidad</th>
-                <th class="num">kV</th>
-                <th class="num">Disponible</th>
-                <th class="num">Otorgada</th>
-                <th class="num">En curso</th>
+                <th class="num"><Termino id="kv">kV</Termino></th>
+                <th class="num"><Termino id="capacidad-disponible">Disponible</Termino></th>
+                <th class="num"><Termino id="capacidad-otorgada">Otorgada</Termino></th>
+                <th class="num"><Termino id="capacidad-en-curso">En curso</Termino></th>
                 <th>Limitación</th>
               </tr>
             </thead>
@@ -174,6 +177,14 @@ const explicarLimitante = (codigo) =>
             </tbody>
           </table>
         </div>
+        <p class="pequeno silencio">
+          La limitación dice si el nudo se abre con obra o con norma. El{' '}
+          <Termino id="criterio-estatico">criterio estático</Termino> se resuelve construyendo; el{' '}
+          <Termino id="criterio-dinamico">dinámico</Termino> puede relajarse cuando cambien los
+          requisitos de robustez; y la <Termino id="wscr">relación de cortocircuito</Termino> solo
+          limita a los consumos con <Termino id="cep">electrónica de potencia</Termino>, que es
+          justo el caso de un centro de datos.
+        </p>
       </>
     )}
 
@@ -183,7 +194,7 @@ const explicarLimitante = (codigo) =>
         <div class="tabla-envoltorio">
           <table class="tabla-fichas">
             <thead>
-              <tr><th>Actuación</th><th>Tipo</th><th class="num">kV</th><th>Horizonte</th><th>Estado</th></tr>
+              <tr><th><Termino id="actuacion-de-red">Actuación</Termino></th><th>Tipo</th><th class="num"><Termino id="kv">kV</Termino></th><th>Horizonte</th><th>Estado</th></tr>
             </thead>
             <tbody>
               {actuaciones.map((a) => (
@@ -205,13 +216,14 @@ const explicarLimitante = (codigo) =>
       <>
         <h2>Emplazamientos con conexión documentada</h2>
         <p class="pequeno silencio">
-          Los que declaran subestación de conexión en alguna fuente. El punto de conexión casi
-          nunca se hace público.
+          Los que declaran <Termino id="subestacion">subestación</Termino> de conexión en alguna
+          fuente. El <Termino id="permiso-conexion">punto de conexión</Termino> casi nunca se hace
+          público.
         </p>
         <div class="tabla-envoltorio">
           <table class="tabla-fichas">
             <thead>
-              <tr><th>Emplazamiento</th><th>Subestación</th><th class="num">kV</th><th>Titular</th><th class="num">MW solicitados</th><th class="num">MW concedidos</th></tr>
+              <tr><th>Emplazamiento</th><th><Termino id="subestacion">Subestación</Termino></th><th class="num"><Termino id="kv">kV</Termino></th><th>Titular</th><th class="num"><Termino id="capacidad-en-curso">MW solicitados</Termino></th><th class="num"><Termino id="capacidad-otorgada">MW concedidos</Termino></th></tr>
             </thead>
             <tbody>
               {conConexion.map((s) => (
@@ -237,7 +249,7 @@ const explicarLimitante = (codigo) =>
     </article>
 
     <p class="pequeno silencio" style="margin-bottom:3rem">
-      Las {red.length} subestaciones registradas se pueden ver
+      Las {red.length} subestaciones registradas se pueden ver{' '}
       <a href="/?capas=lineas,subestaciones">sobre el mapa</a>.
     </p>
   </div>

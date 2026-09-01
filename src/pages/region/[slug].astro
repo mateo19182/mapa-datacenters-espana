@@ -6,6 +6,7 @@ import sitios from '../../data/sitios.json'
 import red from '../../data/red.json'
 import renovables from '../../data/renovables.json'
 import { ESTADO_ETIQUETA, ORDEN_ESTADOS, numero, slug as aSlug } from '../../lib/etiquetas.js'
+import Termino from '../../components/Termino.astro'
 
 export function getStaticPaths() {
   return regiones.map((r) => ({ params: { slug: r.slug }, props: { region: r } }))
@@ -99,7 +100,7 @@ const centro = (() => {
             <th>Operador</th>
             <th>Municipio</th>
             <th>Estado</th>
-            <th class="num">MW IT</th>
+            <th class="num"><Termino id="mw-it">MW IT</Termino></th>
             <th class="num">MW conexión</th>
             <th class="num">MW s/tipo</th>
           </tr>

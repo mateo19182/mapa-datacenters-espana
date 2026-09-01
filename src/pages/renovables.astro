@@ -3,6 +3,8 @@ import Base from '../layouts/Base.astro'
 import { Content as Documento } from '../contenido/renovables.md'
 import renovables from '../data/renovables.json'
 import { VINCULO_ETIQUETA, numero } from '../lib/etiquetas.js'
+import { GLOSARIO_VINCULO } from '../lib/glosario.js'
+import Termino from '../components/Termino.astro'
 
 const porTipo = [...new Set(renovables.map((r) => r.tipo).filter(Boolean))].map((t) => ({
   tipo: t,
@@ -34,13 +36,15 @@ const contrapartes = [...new Set(renovables.map((r) => r.contraparte_ppa).filter
   <div class="contenedor">
     <h1>Renovables y almacenamiento</h1>
     <p class="sumario">
-      Generación renovable y baterías con vínculo documentado a un centro de datos concreto: PPA
-      firmado, generación en el propio emplazamiento o conexión al mismo nudo.
+      Generación renovable y baterías con vínculo documentado a un centro de datos concreto:{' '}
+      <Termino id="ppa">PPA</Termino> firmado, <Termino id="autoconsumo">generación en el propio
+      emplazamiento</Termino> o conexión al <Termino id="mismo-nudo">mismo nudo</Termino>.
     </p>
 
     <div class="nota">
-      <strong>Un PPA no es un cable.</strong> Es un contrato de compra de energía y de garantías de
-      origen. El centro se alimenta de la red, no de la planta.
+      <strong>Un <Termino id="ppa">PPA</Termino> no es un cable.</strong> Es un contrato de compra
+      de energía y de <Termino id="garantias-origen">garantías de origen</Termino>. El centro se
+      alimenta de la red, no de la planta.
     </div>
 
     <dl class="cifras">
@@ -53,7 +57,7 @@ const contrapartes = [...new Set(renovables.map((r) => r.contraparte_ppa).filter
         <dd>{numero(totalMw)} MW<small>en {conPotencia.length} de {renovables.length} activos; el resto no publica la cifra</small></dd>
       </div>
       <div class="cifra">
-        <dt>Almacenamiento</dt>
+        <dt><Termino id="bess">Almacenamiento</Termino></dt>
         <dd>
           {almacenamiento.length ? `${numero(almacenamiento.reduce((a, r) => a + r.capacidad_mwh, 0))} MWh` : '—'}
           <small>{almacenamiento.length} {almacenamiento.length === 1 ? 'proyecto de baterías' : 'proyectos de baterías'}</small>
@@ -66,8 +70,9 @@ const contrapartes = [...new Set(renovables.map((r) => r.contraparte_ppa).filter
     </dl>
 
     <p class="pequeno silencio">
-      Los MW de generación y los de un centro de datos no son comparables: la producción es
-      intermitente y el consumo, continuo.
+      Los <Termino id="generacion-asociada">MW de generación</Termino> y los de un centro de datos
+      no son comparables: la producción es <Termino id="fotovoltaica">intermitente</Termino> y el
+      consumo, continuo.
     </p>
 
     <h2>Por contraparte</h2>
@@ -116,7 +121,9 @@ const contrapartes = [...new Set(renovables.map((r) => r.contraparte_ppa).filter
                 </td>
                 <td class="pequeno" data-etiqueta="Promotor">{r.promotor ?? <span class="silencio">—</span>}</td>
                 <td class="pequeno" data-etiqueta="Vínculo">
-                  {VINCULO_ETIQUETA[r.tipo_vinculo] ?? r.tipo_vinculo}
+                  {GLOSARIO_VINCULO[r.tipo_vinculo]
+                    ? <Termino id={GLOSARIO_VINCULO[r.tipo_vinculo]}>{VINCULO_ETIQUETA[r.tipo_vinculo]}</Termino>
+                    : (VINCULO_ETIQUETA[r.tipo_vinculo] ?? r.tipo_vinculo)}
                   {r.contraparte_ppa && <span class="pequeno silencio"><br />{r.contraparte_ppa}</span>}
                 </td>
                 <td class="pequeno" data-etiqueta="Estado">{r.estado}</td>

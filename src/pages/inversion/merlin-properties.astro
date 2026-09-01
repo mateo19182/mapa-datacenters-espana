@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro'
 import sitios from '../../data/sitios.json'
+import Termino from '../../components/Termino.astro'
 
 const idsMerlin = [
   'merlin-edged-getafe-mad01',
@@ -81,11 +82,11 @@ const matriz = [0.75, 0.9, 1].map((captura) => ({
         </div>
         <div class="portada-grid">
           <div>
-            <p class="sobrelinea">Infraestructura digital dentro de una SOCIMI diversificada</p>
+            <p class="sobrelinea">Infraestructura digital dentro de una <Termino id="socimi">SOCIMI</Termino> diversificada</p>
             <h1>MERLIN Properties<br /><span>como inversión</span></h1>
             <p class="tesis-corta">
-              El mercado ya reconoce parte del giro hacia centros de datos, pero no paga todavía el
-              EPRA NTA. La oportunidad existe. También el riesgo de un plan con €7.800 millones de
+              El mercado ya reconoce parte del giro hacia centros de datos, pero no paga todavía el{' '}
+              <Termino id="epra-nta">EPRA NTA</Termino>. La oportunidad existe. También el riesgo de un plan con €7.800 millones de
               inversión total mientras la mayor parte de la renta aún no ha llegado a caja.
             </p>
           </div>
@@ -93,12 +94,13 @@ const matriz = [0.75, 0.9, 1].map((captura) => ({
             <span class="veredicto-etiqueta">Lectura</span>
             <strong>Selectiva</strong>
             <p>
-              Activos y balance sólidos. Precio razonable frente a NTA, exigente frente a FFO actual.
+              Activos y balance sólidos. Precio razonable frente a <Termino id="epra-nta">NTA</Termino>,
+              exigente frente a <Termino id="ffo">FFO</Termino> actual.
               La tesis depende de ejecutar, energizar y alquilar la Fase II y la Fase III.
             </p>
             <dl>
             <div><dt>Precio de referencia</dt><dd>€{decimal(precio, 2)}</dd></div>
-              <div><dt>EPRA NTA</dt><dd>€{decimal(nta, 2)}</dd></div>
+              <div><dt><Termino id="epra-nta">EPRA NTA</Termino></dt><dd>€{decimal(nta, 2)}</dd></div>
               <div><dt>Horizonte</dt><dd>2027–2032</dd></div>
             </dl>
           </aside>
@@ -121,17 +123,17 @@ const matriz = [0.75, 0.9, 1].map((captura) => ({
     <div class="pagina cuerpo">
       <section class="panel-metricas" aria-label="Indicadores principales">
         <div class="metrica metrica-principal">
-          <span>Descuento a EPRA NTA</span>
+          <span><Termino id="descuento-nta">Descuento a EPRA NTA</Termino></span>
           <strong>{decimal(descuentoNta)}%</strong>
           <small>€{decimal(precio, 2)} frente a €{decimal(nta, 2)} por acción</small>
         </div>
         <div class="metrica">
-          <span>Precio / FFO 2026e</span>
+          <span><Termino id="ffo">Precio / FFO</Termino> 2026e</span>
           <strong>{decimal(pFfo)}×</strong>
           <small>Guía de €{decimal(ffo, 2)} por acción</small>
         </div>
         <div class="metrica">
-          <span>Rentabilidad FFO</span>
+          <span><Termino id="ffo">Rentabilidad FFO</Termino></span>
           <strong>{decimal(rentabilidadFfo)}%</strong>
           <small>Inversa del múltiplo anterior</small>
         </div>
@@ -141,7 +143,7 @@ const matriz = [0.75, 0.9, 1].map((captura) => ({
           <small>€{decimal(dividendo, 2)} por acción sobre el precio</small>
         </div>
         <div class="metrica">
-          <span>LTV</span>
+          <span><Termino id="ltv">LTV</Termino></span>
           <strong>24,5%</strong>
           <small>Después de ampliar capital</small>
         </div>
@@ -161,7 +163,7 @@ const matriz = [0.75, 0.9, 1].map((captura) => ({
         <div class="contenido">
           <p class="entradilla">
             MERLIN ya no es solo una cartera de oficinas, centros comerciales y logística. Los data
-            centers representan €2.103 millones de GAV, un 15,6% del total, y explicaron cerca del
+            centers representan €2.103 millones de <Termino id="gav">GAV</Termino>, un 15,6% del total, y explicaron cerca del
             80% de la creación de valor del primer semestre. Sin embargo, el negocio digital aportó
             solo €28,1 millones de rentas brutas en esos seis meses. El valor se ha adelantado al flujo.
           </p>
@@ -173,15 +175,15 @@ const matriz = [0.75, 0.9, 1].map((captura) => ({
                 <li>La Fase I alcanza €97 millones de renta estabilizada en 2027.</li>
                 <li>Los 160 MW alquilados o prealquilados se entregan en calendario.</li>
                 <li>La potencia concedida en Arasur y Zaragoza se convierte en edificios operativos.</li>
-                <li>El coste de capital queda muy por debajo del 14,4%–15,8% de yield on cost bruto.</li>
+                <li>El coste de capital queda muy por debajo del 14,4%–15,8% de <Termino id="yield-on-cost">yield on cost</Termino> bruto.</li>
               </ul>
             </div>
             <div class="caso caso-contra">
               <p class="caso-titulo">Qué puede romperla</p>
               <ul>
-                <li>Retrasos en red, licencias o equipos desplazan rentas y reducen la TIR.</li>
-                <li>Más ampliaciones de capital diluyen el FFO por acción antes de estabilizar rentas.</li>
-                <li>Unos pocos hiperescaladores concentran capacidad y poder de negociación.</li>
+                <li>Retrasos en red, licencias o equipos desplazan rentas y reducen la <Termino id="tir">TIR</Termino>.</li>
+                <li>Más <Termino id="ampliacion-capital">ampliaciones de capital</Termino> diluyen el FFO por acción antes de estabilizar rentas.</li>
+                <li>Unos pocos <Termino id="hiperescalar">hiperescaladores</Termino> concentran capacidad y poder de negociación.</li>
                 <li>Las opciones extremeñas de 1 GW se valoran como proyecto firme cuando aún no lo son.</li>
               </ul>
             </div>
@@ -240,7 +242,7 @@ const matriz = [0.75, 0.9, 1].map((captura) => ({
           <h3>Balance para financiar la obra</h3>
           <div class="balance-grid">
             <dl>
-              <div><dt>GAV total</dt><dd>€13.508m</dd></div>
+              <div><dt><Termino id="gav">GAV</Termino> total</dt><dd>€13.508m</dd></div>
               <div><dt>Deuda neta</dt><dd>€3.394m</dd></div>
               <div><dt>Liquidez</dt><dd>€2.571m</dd></div>
             </dl>
@@ -251,9 +253,9 @@ const matriz = [0.75, 0.9, 1].map((captura) => ({
             </dl>
           </div>
           <p class="nota-analista">
-            El LTV bajo es una ventaja real, pero se logró en parte con €768 millones de capital nuevo.
-            Las acciones pasaron de unos 564 a 620 millones, cerca de un 10% más. El balance soporta
-            capex; el accionista soporta la dilución.
+            El <Termino id="ltv">LTV</Termino> bajo es una ventaja real, pero se logró en parte con €768 millones de capital nuevo.
+            Las acciones pasaron de unos 564 a 620 millones, cerca de un 10% más. El balance soporta{' '}
+            <Termino id="capex">capex</Termino>; el accionista soporta la <Termino id="dilucion">dilución</Termino>.
           </p>
         </div>
       </section>
@@ -265,7 +267,7 @@ const matriz = [0.75, 0.9, 1].map((captura) => ({
         </div>
         <div class="contenido">
           <p class="entradilla">
-            Las tres fases suman {totalMw} MW IT, €{decimal(totalInversion / 1000)} mil millones de
+            Las tres fases suman {totalMw} <Termino id="mw-it">MW IT</Termino>, €{decimal(totalInversion / 1000)} mil millones de
             inversión y €{decimal(totalGri / 1000, 2)} mil millones de renta bruta estabilizada. No son
             magnitudes actuales. Son el objetivo corporativo una vez construida y alquilada la cartera.
           </p>
@@ -278,8 +280,8 @@ const matriz = [0.75, 0.9, 1].map((captura) => ({
                 <div class="fase-barra"><i style={`width:${(fase.mw / 406) * 100}%`}></i></div>
                 <dl>
                   <div><dt>Inversión</dt><dd>€{fase.inversion.toLocaleString('es-ES')}m</dd></div>
-                  <div><dt>GRI estabilizado</dt><dd>€{fase.gri}m</dd></div>
-                  <div><dt>YoC bruto</dt><dd>{decimal((fase.gri / fase.inversion) * 100)}%</dd></div>
+                  <div><dt><Termino id="gri">GRI</Termino> estabilizado</dt><dd>€{fase.gri}m</dd></div>
+                  <div><dt><Termino id="yield-on-cost">YoC</Termino> bruto</dt><dd>{decimal((fase.gri / fase.inversion) * 100)}%</dd></div>
                 </dl>
               </article>
             ))}
@@ -287,8 +289,8 @@ const matriz = [0.75, 0.9, 1].map((captura) => ({
 
           <h3>Sensibilidad de valor sobre coste</h3>
           <p>
-            Esta matriz divide el yield on cost bruto del plan, {decimal(ycTotal)}%, por un yield de
-            salida. Ajusta antes la renta efectivamente capturada. Un resultado de 2,1× significa que
+            Esta matriz divide el <Termino id="yield-on-cost">yield on cost</Termino> bruto del plan,
+            {decimal(ycTotal)}%, por un <Termino id="yield-salida">yield de salida</Termino>. Ajusta antes la renta efectivamente capturada. Un resultado de 2,1× significa que
             el valor bruto estabilizado sería 2,1 veces el coste, antes de financiación, impuestos,
             retrasos y valor temporal del dinero. No es un precio objetivo.
           </p>
@@ -308,7 +310,7 @@ const matriz = [0.75, 0.9, 1].map((captura) => ({
             </table>
           </div>
           <p class="nota-analista">
-            El spread de desarrollo es amplio en papel. El tiempo importa: la Fase III no estabiliza
+            El <Termino id="spread-desarrollo">spread de desarrollo</Termino> es amplio en papel. El tiempo importa: la Fase III no estabiliza
             hasta 2032. Seis años de obra, comercialización y capital inmovilizado reducen mucho una
             comparación directa entre yield on cost y yield de salida.
           </p>
@@ -396,7 +398,7 @@ const matriz = [0.75, 0.9, 1].map((captura) => ({
             </article>
             <article>
               <span>02 / refrigeración</span>
-              <h3>PUE 1,15 y WUE 0,00 son objetivos de diseño</h3>
+              <h3><Termino id="pue">PUE</Termino> 1,15 y <Termino id="wue">WUE</Termino> 0,00 son objetivos de diseño</h3>
               <p>
                 Edged usa circuitos con glicol, enfriadoras de aire y refrigeración secundaria cerrada.
                 El sistema admite hasta 500 kW por pasillo caliente y, en Getafe, hasta 200 kW por rack
@@ -438,7 +440,7 @@ const matriz = [0.75, 0.9, 1].map((captura) => ({
             <article><span class="impacto impacto-medio">Medio</span><h3>Concentración de clientes</h3><p>Contratos de 48 MW reducen el riesgo de vacío, pero crean exposiciones grandes a un inquilino. La calidad del crédito, garantías, duración, escaladores y opciones de salida importan más que el porcentaje prealquilado aislado.</p></article>
             <article><span class="impacto impacto-medio">Medio</span><h3>Yield de salida</h3><p>Los data centers en operación se tasan con yield bruto del 6,2%. Una expansión de 100 puntos básicos reduce en torno a un 14% el valor capitalizado de una renta constante.</p></article>
             <article><span class="impacto impacto-medio">Medio</span><h3>Activos tradicionales</h3><p>El 84% del GAV no es digital. Oficinas, retail y logística siguen determinando ocupación, renta y deuda. La tesis Merlin no es una inversión pura en data centers.</p></article>
-            <article><span class="impacto impacto-bajo">Vigilar</span><h3>Promesas de eficiencia</h3><p>PUE y WUE de diseño ayudan en permisos y costes, pero no sustituyen series operativas. El inversor debería pedir consumo medido, disponibilidad y coste de mantenimiento por instalación.</p></article>
+            <article><span class="impacto impacto-bajo">Vigilar</span><h3>Promesas de eficiencia</h3><p><Termino id="pue">PUE</Termino> y <Termino id="wue">WUE</Termino> de diseño ayudan en permisos y costes, pero no sustituyen series operativas. El inversor debería pedir consumo medido, disponibilidad y coste de mantenimiento por instalación.</p></article>
           </div>
 
           <div class="monitor">
@@ -446,7 +448,7 @@ const matriz = [0.75, 0.9, 1].map((captura) => ({
             <ol>
               <li><span>MW energizados</span><b>frente a MW equipados y alquilados</b></li>
               <li><span>FFO por acción</span><b>frente a crecimiento de FFO total</b></li>
-              <li><span>Capex acumulado</span><b>frente a presupuesto por fase</b></li>
+              <li><span><Termino id="capex">Capex</Termino> acumulado</span><b>frente a presupuesto por fase</b></li>
               <li><span>GRI digital</span><b>frente a €97m / €397m / €646m estabilizados</b></li>
               <li><span>Deuda y capital</span><b>LTV, coste y nuevas acciones</b></li>
               <li><span>Contratos</span><b>MW, contraparte, fecha RFS y garantías</b></li>

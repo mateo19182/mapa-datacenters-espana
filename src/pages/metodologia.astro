@@ -12,6 +12,8 @@ import {
   CONFIANZA_DESCRIPCION,
   numero,
 } from '../lib/etiquetas.js'
+import { GLOSARIO_POTENCIA, TERMINOS } from '../lib/glosario.js'
+import Termino from '../components/Termino.astro'
 import { REPOSITORIO, REPO_INCIDENCIAS } from '../lib/enlaces.js'
 
 const precisiones = ['exacta', 'aproximada', 'municipio', 'desconocida'].map((p) => ({
@@ -48,9 +50,11 @@ const conComputo = sitios.filter((s) => (s.computo ?? []).length).length
         anunciada.
       </li>
       <li>
-        <strong>No se mezclan tipos de potencia.</strong> Los MW IT, los MW de conexión a red y la
-        potencia instalada son magnitudes distintas. No se suman entre sí ni se convierten aplicando
-        un PUE supuesto.
+        <strong>No se mezclan tipos de potencia.</strong> Los <Termino id="mw-it">MW IT</Termino>,
+        los <Termino id="potencia-acceso">MW de conexión a red</Termino> y la{' '}
+        <Termino id="potencia-instalada-edificio">potencia instalada</Termino> son magnitudes
+        distintas. No se suman entre sí ni se convierten aplicando un{' '}
+        <Termino id="pue">PUE</Termino> supuesto.
       </li>
       <li>
         <strong>Las contradicciones se conservan.</strong> Si dos fuentes fiables discrepan se
@@ -66,12 +70,14 @@ const conComputo = sitios.filter((s) => (s.computo ?? []).length).length
     <h2>Tipos de potencia</h2>
     <p>
       «Un centro de datos de 200 MW» rara vez aclara a qué magnitud se refiere, y entre una lectura
-      y otra hay casi el doble.
+      y otra hay casi el doble. El <a href="/glosario">glosario</a> recoge estas seis magnitudes y
+      otros {TERMINOS.length - 6} términos, y las explica también al pasar el cursor por encima
+      allí donde aparecen.
     </p>
     <dl class="glosario">
       {['it', 'conexion_red', 'instalada_total', 'no_especificado', 'termica_respaldo', 'generacion_asociada'].map((t) => (
         <>
-          <dt>{POTENCIA_ETIQUETA[t]}</dt>
+          <dt><Termino id={GLOSARIO_POTENCIA[t]} sinEnlace>{POTENCIA_ETIQUETA[t]}</Termino></dt>
           <dd>
             {POTENCIA_DESCRIPCION[t]}
             <span class="dato-glosario">
@@ -87,8 +93,9 @@ const conComputo = sitios.filter((s) => (s.computo ?? []).length).length
     </p>
     <p>
       Las dos últimas no describen el centro de datos y quedan fuera de todos los totales. Aparecen
-      porque a veces son lo único numérico del expediente ambiental: varios campus de hiperescala en
-      España solo han publicado la potencia de sus grupos electrógenos de emergencia. Tomar esa
+      porque a veces son lo único numérico del expediente ambiental: varios campus de{' '}
+      <Termino id="hiperescalar">hiperescala</Termino> en España solo han publicado la potencia de sus{' '}
+      <Termino id="grupo-electrogeno">grupos electrógenos</Termino> de emergencia. Tomar esa
       cifra por la capacidad del centro exagera su tamaño en un orden de magnitud.
     </p>
 

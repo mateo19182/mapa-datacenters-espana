@@ -1,0 +1,16 @@
+---
+import { trocear } from '../lib/glosario.js'
+import Termino from './Termino.astro'
+
+// Marca automáticamente los términos del glosario que aparezcan en un texto.
+// Para etiquetas que vienen del propio conjunto de datos, donde no se puede
+// escribir el marcado a mano:
+//
+//   <Glosa texto={metrica.etiqueta} />
+//
+// Solo marca la primera aparición de cada término en ese texto.
+const { texto } = Astro.props
+const trozos = trocear(texto)
+---
+
+{trozos.map((trozo) => (trozo.id ? <Termino id={trozo.id}>{trozo.texto}</Termino> : trozo.texto))}

@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro'
+import Glosa from '../../components/Glosa.astro'
 import { TESIS_ESTADO, tesisPublicadas, proximasTesis } from '../../lib/inversion.js'
 
 const relaciones = (empresa) => [
@@ -41,7 +42,7 @@ const relaciones = (empresa) => [
             <div>
               <span class="etiqueta">{TESIS_ESTADO[empresa.estado]}</span>
               <h3><a href={empresa.href}>{empresa.nombre}</a></h3>
-              <p>{empresa.resumen}</p>
+              <p><Glosa texto={empresa.resumen} /></p>
             </div>
             <dl>
               <div><dt>Cotización</dt><dd>{empresa.ticker}</dd></div>
@@ -70,8 +71,8 @@ const relaciones = (empresa) => [
               <tr>
                 <td class="prioridad" data-etiqueta="Prioridad">0{indice + 1}</td>
                 <td data-etiqueta="Compañía"><strong>{empresa.nombre}</strong><small>{empresa.ticker}<br />{empresa.tipo}</small></td>
-                <td data-etiqueta="Por qué">{empresa.resumen}</td>
-                <td data-etiqueta="Pregunta">{empresa.pregunta}</td>
+                <td data-etiqueta="Por qué"><Glosa texto={empresa.resumen} /></td>
+                <td data-etiqueta="Pregunta"><Glosa texto={empresa.pregunta} /></td>
                 <td data-etiqueta="Registro">
                   {relaciones(empresa).map((relacion, i) => <>{i > 0 && ' · '}<a href={relacion.href}>{relacion.nombre}</a></>)}
                   {empresa.fuente && <><br /><a class="fuente-candidata" href={empresa.fuente} rel="noopener">fuente corporativa ↗</a></>}
@@ -88,7 +89,7 @@ const relaciones = (empresa) => [
       <h2>Método de cada tesis</h2>
       <ol>
         <li><strong>Exposición física.</strong> Qué emplazamientos, MW y permisos pertenecen de verdad a la compañía.</li>
-        <li><strong>Traducción financiera.</strong> Capex, rentas, contratos, financiación y materialidad dentro del grupo.</li>
+        <li><strong>Traducción financiera.</strong> <Glosa texto="Capex, rentas, contratos, financiación y materialidad dentro del grupo." /></li>
         <li><strong>Valoración.</strong> Qué descuenta la cotización y qué supuestos exige.</li>
         <li><strong>Falsación.</strong> Qué datos trimestrales demostrarían que la tesis estaba equivocada.</li>
       </ol>

@@ -4,6 +4,7 @@ import Cartera from '../../components/Cartera.astro'
 import companias from '../../data/companias.json'
 import sitios from '../../data/sitios.json'
 import { ESTADO_ETIQUETA, ORDEN_ESTADOS, numero, fechaLegible, slug as aSlug } from '../../lib/etiquetas.js'
+import Termino from '../../components/Termino.astro'
 
 export function getStaticPaths() {
   return companias.map((c) => ({ params: { slug: c.slug }, props: { compania: c } }))
@@ -54,7 +55,7 @@ const ultima = propios.map((s) => s.ultima_verificacion).sort().at(-1)
             <th>Emplazamiento</th>
             <th>Ubicación</th>
             <th>Estado</th>
-            <th class="num">MW IT</th>
+            <th class="num"><Termino id="mw-it">MW IT</Termino></th>
             <th class="num">MW conexión</th>
             <th class="num">MW s/tipo</th>
             <th>Fases</th>

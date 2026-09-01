@@ -1,5 +1,7 @@
 ---
-import { POTENCIA_ETIQUETA, POTENCIA_DESCRIPCION, numero } from '../lib/etiquetas.js'
+import { POTENCIA_ETIQUETA, numero } from '../lib/etiquetas.js'
+import { GLOSARIO_POTENCIA } from '../lib/glosario.js'
+import Termino from './Termino.astro'
 
 // Resumen de potencia de un conjunto de emplazamientos. Cada tipo se muestra por
 // separado y siempre acompañado de su cobertura: cuántos emplazamientos aportan
@@ -19,7 +21,7 @@ const tipos = ['it', 'conexion_red', 'no_especificado', 'instalada_total'].filte
   <dl class="cifras">
     {tipos.map((t) => (
       <div class="cifra">
-        <dt title={POTENCIA_DESCRIPCION[t]}>{POTENCIA_ETIQUETA[t]}</dt>
+        <dt><Termino id={GLOSARIO_POTENCIA[t]}>{POTENCIA_ETIQUETA[t]}</Termino></dt>
         <dd>
           {numero(cartera.potencia[t].total_mw)} MW
           <small>

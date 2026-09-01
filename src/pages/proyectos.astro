@@ -9,6 +9,7 @@ import {
   numero,
   slug,
 } from '../lib/etiquetas.js'
+import Termino from '../components/Termino.astro'
 
 const ordenados = [...sitios].sort((a, b) => {
   const pa = ORDEN_ESTADOS.indexOf(a.estado)
@@ -25,8 +26,10 @@ const ordenados = [...sitios].sort((a, b) => {
   <div class="contenedor">
     <h1>Todos los proyectos</h1>
     <p class="sumario">
-      {numero(sitios.length)} emplazamientos. Las tres columnas de potencia son magnitudes distintas
-      y no se suman entre sí. Un guion es dato no publicado, no cero. La marca
+      {numero(sitios.length)} emplazamientos. Las tres columnas de potencia son magnitudes
+      distintas y no se suman entre sí: <Termino id="mw-it">MW IT</Termino>,{' '}
+      <Termino id="potencia-acceso">MW de conexión</Termino> y{' '}
+      <Termino id="mw-sin-tipificar">MW sin tipificar</Termino>. Un guion es dato no publicado, no cero. La marca{' '}
       <span class="marca-respaldo">gen</span> señala los que solo publican la potencia de sus grupos
       electrógenos.
     </p>

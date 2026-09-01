@@ -5,6 +5,7 @@ import pendientes from '../data/pendientes.json'
 import resumen from '../data/resumen.json'
 import sitios from '../data/sitios.json'
 import { numero, slug } from '../lib/etiquetas.js'
+import Termino from '../components/Termino.astro'
 
 const proyectos = pendientes.proyectos ?? []
 const pistas = pendientes.pistas ?? []
@@ -79,8 +80,10 @@ const pct = (n, total) => (total ? Math.round((n / total) * 100) : 0)
       </table>
     </div>
     <p class="pequeno silencio">
-      «Con MW tipificados» son las fichas que publican carga TI o potencia de conexión, no MW sin
-      especificar. «Con conexión eléctrica», las que identifican subestación o potencia de acceso.
+      «Con MW tipificados» son las fichas que publican <Termino id="mw-it">carga TI</Termino> o
+      <Termino id="potencia-acceso">potencia de conexión</Termino>, no
+      <Termino id="mw-sin-tipificar">MW sin especificar</Termino>. «Con conexión eléctrica», las que
+      identifican <Termino id="subestacion">subestación</Termino> o potencia de acceso.
     </p>
 
     <h2>Lo que se sabe que falta</h2>

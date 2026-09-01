@@ -1,0 +1,1292 @@
+// Glosario del registro: el vocabulario que hace falta para leer las cifras sin
+// confundirlas. Cada término se explica al pasar el cursor por encima, con el
+// componente `Termino` o `Glosa`, y se lista entero en /glosario.
+//
+// Reglas de esta tabla:
+//   - `definicion` dice qué es, en una o dos frases.
+//   - `matiz` dice dónde está la trampa. Solo cuando existe una.
+//   - `alias` son las formas con que el término aparece escrito en el sitio. Se
+//     usan para el marcado automático, así que no valen palabras cortas y
+//     ambiguas: «IT» sola no, «MW IT» sí.
+//
+// El orden de `CATEGORIAS` es el de la página del glosario.
+
+export const CATEGORIAS = [
+  ['potencia', 'Potencia y capacidad', 'Las magnitudes en MW, que miden cosas distintas y no se suman entre sí.'],
+  ['acceso', 'Acceso a la red: permisos y trámite', 'Qué hay que conseguir para conectar un consumo grande, y en qué orden.'],
+  ['red', 'La red física y sus criterios', 'Dónde se conecta, qué limita cada nudo y con qué nomenclatura lo publica Red Eléctrica.'],
+  ['centro', 'El centro de datos', 'Modelos de negocio, fases y las piezas que consumen la electricidad.'],
+  ['agua', 'Agua y refrigeración', 'Cómo se disipa el calor y qué mide cada cifra de consumo.'],
+  ['computo', 'Cómputo instalado', 'El hardware de cálculo que hay dentro. Es hardware, no potencia.'],
+  ['energia', 'Energía, contratos y almacenamiento', 'Cómo se compra la electricidad y qué acredita cada contrato.'],
+  ['mercado', 'Inversión y mercado', 'Los indicadores de las tesis de inversión.'],
+  ['norma', 'Normas, organismos y fuentes', 'Quién publica cada dato y con qué norma detrás.'],
+  ['registro', 'El registro y su método', 'Los calificadores propios de este conjunto de datos.'],
+]
+
+export const TERMINOS = [
+  // ─── Potencia y capacidad ────────────────────────────────────────────────
+  {
+    id: 'mw-it',
+    termino: 'MW IT',
+    alias: ['MW IT', 'carga TI', 'potencia de TI', 'potencia de tecnología de la información'],
+    categoria: 'potencia',
+    definicion: 'La potencia que consumen los servidores, el almacenamiento y el equipo de red. Es la única magnitud que permite comparar el tamaño de dos centros.',
+    matiz: 'Desde agosto de 2026 tiene definición legal por remisión al Reglamento Delegado (UE) 2024/1364. Antes cada promotor la usaba a su gusto.',
+    enlace: '/metodologia',
+  },
+  {
+    id: 'potencia-acceso',
+    termino: 'Potencia de acceso',
+    alias: ['potencia de acceso', 'MW de conexión', 'MW de conexión a red'],
+    categoria: 'potencia',
+    definicion: 'La potencia que figura en el permiso de acceso y conexión, o la contratada si resulta superior. Incluye refrigeración, pérdidas de transformación y servicios, así que siempre es mayor que la carga TI.',
+    matiz: 'No se convierte en MW IT aplicando un PUE supuesto: el PUE de diseño no es el real y el margen de contratación tampoco es constante.',
+    enlace: '/metodologia',
+  },
+  {
+    id: 'potencia-instalada-edificio',
+    termino: 'MW instalados',
+    alias: ['MW instalados', 'potencia instalada del edificio', 'potencia eléctrica instalada'],
+    categoria: 'potencia',
+    definicion: 'Potencia eléctrica instalada del edificio: servidores, climatización, iluminación y servicios auxiliares.',
+    matiz: 'Es una cifra de equipamiento, no de consumo. Un edificio con 40 MW instalados puede estar consumiendo 8.',
+  },
+  {
+    id: 'termica-respaldo',
+    termino: 'MW de grupos de respaldo',
+    alias: ['MW de grupos de respaldo', 'potencia térmica de respaldo', 'MW térmicos'],
+    categoria: 'potencia',
+    definicion: 'Potencia de los grupos electrógenos de emergencia, tal como la declaran las autorizaciones ambientales, a menudo en megavatios térmicos.',
+    matiz: 'Mide los motores diésel, no el centro de datos. No se agrega con ninguna otra cifra de MW.',
+  },
+  {
+    id: 'generacion-asociada',
+    termino: 'MW de generación asociada',
+    alias: ['MW de generación asociada', 'generación asociada'],
+    categoria: 'potencia',
+    definicion: 'Potencia de una central vinculada al emplazamiento. Es capacidad de producir electricidad, no de consumirla.',
+    matiz: 'No describe el tamaño del centro y no se compara con su demanda: la producción renovable es intermitente y el consumo, plano.',
+  },
+  {
+    id: 'mw-sin-tipificar',
+    termino: 'MW sin tipificar',
+    alias: ['MW sin tipificar', 'MW sin tipo'],
+    categoria: 'potencia',
+    definicion: 'La fuente da una cifra en megavatios sin aclarar a qué magnitud corresponde. Se registra tal cual.',
+    matiz: 'Entre leer «200 MW» como carga TI o como potencia de acceso hay casi el doble de centro. Por eso no se compara ni se suma con las demás.',
+  },
+  {
+    id: 'mw',
+    termino: 'MW',
+    alias: ['megavatio', 'megavatios'],
+    categoria: 'potencia',
+    definicion: 'Megavatio, unidad de potencia: electricidad por unidad de tiempo. Mide el tamaño de la instalación, no lo que gasta.',
+    matiz: 'Potencia y energía no se suman ni se comparan. Un MW no dice nada de las horas que estará en marcha.',
+  },
+  {
+    id: 'mwh',
+    termino: 'MWh',
+    alias: ['MWh', 'megavatio hora', 'megavatios hora'],
+    categoria: 'potencia',
+    definicion: 'Megavatio hora, unidad de energía: la que produce o consume un megavatio en una hora.',
+    matiz: 'En baterías, los MWh son la capacidad de almacenamiento y los MW la velocidad a la que se cargan o descargan. Son dos datos y aquí van en campos distintos.',
+  },
+  {
+    id: 'gwh-ano',
+    termino: 'GWh/año',
+    alias: ['GWh/año', 'GWh al año', 'consumo eléctrico anual'],
+    categoria: 'potencia',
+    definicion: 'Gigavatios hora consumidos en un año. Es energía, y va en un campo aparte de la potencia.',
+    matiz: 'Del consumo anual no se deduce la potencia contratada, ni al contrario: haría falta suponer el factor de carga.',
+  },
+  {
+    id: 'rack',
+    termino: 'Rack',
+    alias: ['rack', 'racks'],
+    categoria: 'centro',
+    definicion: 'El armario donde se montan los servidores. La unidad física con que se mide el llenado de una sala.',
+    matiz: 'La densidad por rack ha pasado de 5 o 10 kW a más de 100 kW con los aceleradores de IA, así que el número de racks ya no informa de la potencia.',
+  },
+
+  // ─── Acceso a la red ─────────────────────────────────────────────────────
+  {
+    id: 'permiso-acceso',
+    termino: 'Permiso de acceso',
+    alias: ['permiso de acceso'],
+    categoria: 'acceso',
+    definicion: 'Dice que el sistema eléctrico puede suministrar esa potencia en ese punto. Es una cuestión de capacidad del conjunto de la red.',
+    matiz: 'Se tramita a la vez que el de conexión, pero no es lo mismo. Y ninguno de los dos es un centro construido.',
+    enlace: '/red-electrica',
+  },
+  {
+    id: 'permiso-conexion',
+    termino: 'Permiso de conexión',
+    alias: ['permiso de conexión'],
+    categoria: 'acceso',
+    definicion: 'Dice que físicamente se puede enganchar ahí: que hay posición libre en la subestación, que el diseño es viable y con qué obras.',
+    enlace: '/red-electrica',
+  },
+  {
+    id: 'informe-aceptabilidad',
+    termino: 'Informe de aceptabilidad',
+    alias: ['informe de aceptabilidad'],
+    categoria: 'acceso',
+    definicion: 'Cuando una petición en la red de distribución puede afectar aguas arriba, la distribuidora lo pide a Red Eléctrica. Si es desfavorable, el acceso se deniega.',
+    matiz: 'Es el acoplamiento entre las dos redes: un proyecto de 60 kV puede morir por un problema en el nudo de 220 kV del que cuelga.',
+    enlace: '/red-electrica',
+  },
+  {
+    id: 'valor-referencia',
+    termino: 'Valor de referencia',
+    alias: ['valor de referencia'],
+    categoria: 'acceso',
+    definicion: 'La porción de capacidad de un nudo de transporte que se reserva para los consumos que se conecten aguas abajo, en distribución. La acuerdan el gestor de transporte y la distribuidora.',
+    matiz: 'En los nudos sin acuerdo, Red Eléctrica no publica capacidad otorgable. No es que haya cero: es que no hay dato.',
+    enlace: '/red-electrica',
+  },
+  {
+    id: 'prelacion-temporal',
+    termino: 'Prelación temporal',
+    alias: ['prelación temporal'],
+    categoria: 'acceso',
+    definicion: 'El criterio general de reparto: primero en registrar la solicitud completa, primero en la cola. Cuenta la fecha de admisión a trámite.',
+    matiz: 'Si hay que subsanar documentación, la fecha se mueve al día en que el expediente está correcto.',
+    enlace: '/red-electrica',
+  },
+  {
+    id: 'admision-a-tramite',
+    termino: 'Admisión a trámite',
+    alias: ['admisión a trámite'],
+    categoria: 'acceso',
+    definicion: 'El momento en que el gestor acepta la solicitud como completa. Fija el puesto en la cola y arranca los plazos de respuesta, 60 días en la red de transporte.',
+  },
+  {
+    id: 'concurso-capacidad',
+    termino: 'Concurso de capacidad',
+    alias: ['concurso de capacidad', 'concurso de capacidad de demanda', 'concursos de capacidad'],
+    categoria: 'acceso',
+    definicion: 'Cuando en un nudo de 220 kV o más llegan más solicitudes que capacidad, la cola se sustituye por un concurso: gana quien más puntúa en emisiones evitadas, fecha de inicio del consumo e inversión.',
+    matiz: 'En el primero resuelto, en febrero de 2026, ninguna solicitud identificable como centro de datos llegó a valorarse. Todas quedaron excluidas por defectos de documentación o de garantías.',
+    enlace: '/red-electrica',
+  },
+  {
+    id: 'alta-prioridad',
+    termino: 'Proyecto de alta prioridad',
+    alias: ['alta prioridad'],
+    categoria: 'acceso',
+    definicion: 'Categoría del RDL 7/2026 que suspende las demás solicitudes del mismo nudo hasta resolverse. Cubre vivienda, servicios esenciales, industria declarada estratégica y ampliaciones de consumos que ya usan la red.',
+    matiz: 'La lista es cerrada y los centros de datos no figuran en ella.',
+    enlace: '/red-electrica',
+  },
+  {
+    id: 'nudo-transicion-justa',
+    termino: 'Nudo de transición justa',
+    alias: ['nudo de transición justa', 'nudos de transición justa'],
+    categoria: 'acceso',
+    definicion: 'Vía de concurso específica para reasignar la capacidad que liberó el cierre de las centrales de carbón, en las comarcas afectadas.',
+  },
+  {
+    id: 'contrato-atr',
+    termino: 'Contrato ATR',
+    alias: ['contrato ATR', 'contrato de acceso de terceros a la red'],
+    categoria: 'acceso',
+    definicion: 'Acceso de terceros a la red: el contrato con el que la potencia se puede consumir de verdad. Marca el inicio de la actividad.',
+    matiz: 'Entre el permiso y el contrato ATR median años de obra, autorizaciones y contratos intermedios. Es el salto que separa el papel de la electricidad.',
+    enlace: '/red-electrica',
+  },
+  {
+    id: 'contrato-encargo-proyecto',
+    termino: 'Contrato de encargo de proyecto',
+    alias: ['contrato de encargo de proyecto'],
+    categoria: 'acceso',
+    definicion: 'El contrato con el que el titular del permiso paga al gestor el proyecto de las actuaciones de red que necesita su conexión. Uno de los hitos intermedios con que el RDL 7/2026 vigila que un permiso avance.',
+  },
+  {
+    id: 'prestacion-reserva-capacidad',
+    termino: 'Prestación por reserva de capacidad',
+    alias: ['prestación por reserva de capacidad'],
+    categoria: 'acceso',
+    definicion: 'Pago mensual que debe hacer quien tiene un permiso de demanda desde que lo obtiene hasta que firma el contrato ATR. Sustituye a los avales desde marzo de 2026.',
+    matiz: 'Sube con la tensión y con los semestres transcurridos: cuanto más tiempo sin construir, más caro. Impagar más del 10 % de un trimestre caduca el permiso.',
+    enlace: '/red-electrica',
+  },
+  {
+    id: 'caducidad-permiso',
+    termino: 'Caducidad del permiso',
+    alias: ['caducidad del permiso', 'caducidad automática'],
+    categoria: 'acceso',
+    definicion: 'El titular tiene cinco años desde la concesión para conectarse, con hitos intermedios a los 12 meses, 3 años y 4 años.',
+    matiz: 'Un permiso caducado libera capacidad, y la que supera 5 MW se reasigna priorizando los consumos de alta prioridad.',
+  },
+  {
+    id: 'acceso-flexible',
+    termino: 'Acceso flexible',
+    alias: ['acceso flexible', 'permiso de acceso flexible', 'capacidad flexible'],
+    categoria: 'acceso',
+    definicion: 'Capacidad en la que no se garantiza el suministro todas las horas del año: el gestor fija un patrón y un porcentaje de horas de funcionamiento esperado. Regulada desde agosto de 2026.',
+    matiz: 'Para un centro de datos es una vía de conexión anticipada a cambio de aceptar interrumpibilidad, que encaja mal con un compromiso de disponibilidad salvo con generación o baterías propias.',
+    enlace: '/red-electrica',
+  },
+  {
+    id: 'capacidad-disponible',
+    termino: 'Capacidad disponible',
+    alias: ['capacidad disponible', 'margen para nueva demanda'],
+    categoria: 'acceso',
+    definicion: 'Los MW que un nudo todavía puede otorgar a nueva demanda por el criterio general, según el fichero mensual de Red Eléctrica.',
+    matiz: 'No es sumable entre nudos: hay zonas de capacidad compartida, y otorgar en uno reduce la de otros. Por eso aquí se cuentan nudos, no se agregan MW.',
+    enlace: '/red-electrica',
+  },
+  {
+    id: 'capacidad-otorgada',
+    termino: 'Capacidad otorgada',
+    alias: ['capacidad otorgada', 'demanda otorgada', 'potencia concedida', 'MW concedidos'],
+    categoria: 'acceso',
+    definicion: 'Potencia que ya figura en un permiso de acceso y conexión concedido. Es un derecho administrativo con caducidad.',
+    matiz: 'De los 11,8 GW de nueva demanda otorgados en transporte desde 2022, ninguno estaba en servicio en febrero de 2026.',
+    enlace: '/red-electrica',
+  },
+  {
+    id: 'capacidad-en-curso',
+    termino: 'Capacidad en curso',
+    alias: ['capacidad en curso', 'demanda en curso', 'potencia solicitada', 'MW solicitados', 'solicitada en curso'],
+    categoria: 'acceso',
+    definicion: 'Solicitudes admitidas y pendientes de resolver. Lo que los promotores piden, no lo que existe.',
+    matiz: 'Las peticiones pueden solaparse, cambiar o caducar, y un mismo promotor puede pedir en varios nudos para quedarse con el mejor.',
+    enlace: '/red-electrica',
+  },
+  {
+    id: 'potencia-contratada',
+    termino: 'Potencia contratada',
+    alias: ['potencia contratada'],
+    categoria: 'acceso',
+    definicion: 'La potencia del contrato ATR: la que de verdad se puede consumir.',
+    matiz: 'Es el tercero de tres números que se confunden a diario. Solicitada, otorgada y contratada pueden diferir en un orden de magnitud.',
+  },
+  {
+    id: 'criterio-general',
+    termino: 'Criterio general',
+    alias: ['criterio general'],
+    categoria: 'acceso',
+    definicion: 'La vía ordinaria de acceso, frente al concurso y a la alta prioridad. Es la que usan las cifras de capacidad disponible de este sitio.',
+    matiz: 'Que un nudo tenga 0 MW por el criterio general no significa que no se pueda conectar nunca: puede haber capacidad reservada a concurso o aflorar tras un refuerzo.',
+  },
+  {
+    id: 'actuacion-de-red',
+    termino: 'Actuación de red',
+    alias: ['actuación de red', 'actuaciones de red', 'refuerzo de red'],
+    categoria: 'acceso',
+    definicion: 'La obra que hace falta para que un nudo admita más demanda: nueva subestación, nueva posición, repotenciación de una línea.',
+    matiz: 'Estar en la planificación no es estar construida. La fecha que importa para el consumidor es la de puesta en servicio.',
+    enlace: '/red-electrica',
+  },
+  {
+    id: 'planificacion-red',
+    termino: 'Planificación de la red de transporte',
+    alias: ['planificación de la red de transporte', 'planificación a 2030'],
+    categoria: 'acceso',
+    definicion: 'El plan estatal que decide qué se refuerza y cuándo. La propuesta a 2030 asigna 3,8 GW a centros de datos de los 27,7 GW de nueva demanda previstos.',
+    matiz: 'Solo incorpora al escenario cerca del 25 % de las propuestas de demanda recibidas, y ese reparto es hoy un pulso territorial abierto.',
+  },
+  {
+    id: 'puesta-en-servicio',
+    termino: 'Puesta en servicio',
+    alias: ['puesta en servicio'],
+    categoria: 'acceso',
+    definicion: 'La fecha en que una instalación empieza a operar. Para una actuación de red, cuando el refuerzo ya sirve. Para un activo regulado, cuando empieza a remunerarse.',
+  },
+  {
+    id: 'segmento-tarifario',
+    termino: 'Segmento tarifario',
+    alias: ['segmento tarifario', '6.1TD', '6.4TD'],
+    categoria: 'acceso',
+    definicion: 'El peaje que corresponde al nivel de tensión del consumidor, de 6.1TD a 6.4TD según se sube de tensión. Fija el término de potencia con que se calcula la prestación por reserva de capacidad.',
+  },
+  {
+    id: 'cnae',
+    termino: 'CNAE',
+    alias: ['CNAE', 'código CNAE'],
+    categoria: 'acceso',
+    definicion: 'Clasificación nacional de actividades económicas. Desde 2026 hay que declararlo en la solicitud de acceso y mantenerlo tres años.',
+    matiz: 'Es una medida antiespeculación: contra el permiso que se pide para una cosa y se usa para otra.',
+  },
+
+  // ─── La red física ───────────────────────────────────────────────────────
+  {
+    id: 'nudo',
+    termino: 'Nudo',
+    alias: ['nudo', 'nudos', 'nudo eléctrico'],
+    categoria: 'red',
+    definicion: 'El punto de la red donde se mide y se reparte la capacidad, normalmente una subestación a una tensión determinada. La unidad con que Red Eléctrica publica el acceso.',
+    matiz: 'Los nudos no son independientes: forman zonas de capacidad compartida, así que sus MW disponibles no se pueden sumar.',
+    enlace: '/red-electrica',
+  },
+  {
+    id: 'subestacion',
+    termino: 'Subestación',
+    alias: ['subestación', 'subestaciones'],
+    categoria: 'red',
+    definicion: 'La instalación que transforma la tensión y reparte la energía entre líneas. Es donde se engancha físicamente un centro de datos.',
+    matiz: 'El punto de conexión concreto casi nunca se hace público, así que solo una parte de las fichas lo declara.',
+  },
+  {
+    id: 'posicion',
+    termino: 'Posición',
+    alias: ['posición de subestación', 'posición libre'],
+    categoria: 'red',
+    definicion: 'El hueco de una subestación al que se conecta una línea o un consumo, con su interruptor y su aparamenta. Sin posición libre no hay permiso de conexión, aunque haya capacidad.',
+  },
+  {
+    id: 'red-transporte',
+    termino: 'Red de transporte',
+    alias: ['red de transporte', 'RdT'],
+    categoria: 'red',
+    definicion: 'La malla de alta tensión, 400 kV y 220 kV, que gestiona Red Eléctrica. Es la que se dibuja en el mapa de este sitio.',
+    matiz: 'La capa eléctrica es peninsular. Canarias y Baleares son sistemas eléctricamente independientes y Red Eléctrica no publica capacidad de acceso para ellos.',
+  },
+  {
+    id: 'red-distribucion',
+    termino: 'Red de distribución',
+    alias: ['red de distribución', 'distribuidora', 'distribuidoras'],
+    categoria: 'red',
+    definicion: 'Las redes por debajo de 220 kV, en manos de i-DE, e-distribución, UFD, Viesgo y un largo censo de empresas menores. Conceden acceso en su ámbito.',
+    matiz: 'Está peor que el transporte: AELEC cifraba en septiembre de 2025 que el 83,4 % de sus nudos ya estaban saturados.',
+  },
+  {
+    id: 'kv',
+    termino: 'kV',
+    alias: ['kV', 'kilovoltio', 'kilovoltios', 'nivel de tensión'],
+    categoria: 'red',
+    definicion: 'Kilovoltios, el nivel de tensión de una línea o un nudo. Cuanta más tensión, más potencia se mueve con menos pérdidas.',
+    matiz: 'Este mapa solo traza 220 y 400 kV. Un centro conectado en 66 kV no tiene línea visible debajo.',
+  },
+  {
+    id: 'zona-capacidad',
+    termino: 'Zona de capacidad',
+    alias: ['zona de capacidad', 'zonas de capacidad compartida', 'capacidad compartida'],
+    categoria: 'red',
+    definicion: 'Conjunto de nudos con interdependencia eléctrica: otorgar capacidad en uno reduce la de los demás.',
+    matiz: 'Es la razón técnica por la que las cifras de capacidad disponible no son aditivas. La CNMC lo advierte de forma expresa en sus mapas.',
+  },
+  {
+    id: 'criterio-estatico',
+    termino: 'Criterio estático',
+    alias: ['criterio estático', 'Est_Dem_Nudo', 'Est_Dem_Zona', 'estabilidad de la demanda'],
+    categoria: 'red',
+    definicion: 'La red no aguanta los flujos que traería el nuevo consumo. En el fichero de Red Eléctrica aparece como Est_Dem_Nudo o Est_Dem_Zona.',
+    matiz: 'Es la limitación que se resuelve con obra, y por tanto con años y con dinero.',
+  },
+  {
+    id: 'criterio-dinamico',
+    termino: 'Criterio dinámico',
+    alias: ['criterio dinámico', 'Din1_Zona', 'Din2_Zona'],
+    categoria: 'red',
+    definicion: 'Limitación por estabilidad del sistema ante perturbaciones, no por falta de capacidad térmica.',
+    matiz: 'Es la que Red Eléctrica señala como más susceptible de relajarse: espera aumentar de forma apreciable la capacidad otorgable en muchos nudos limitados por este criterio cuando se actualicen los requisitos de robustez.',
+  },
+  {
+    id: 'wscr',
+    termino: 'WSCR',
+    alias: ['WSCR', 'WSCR_Nudo', 'potencia de cortocircuito', 'relación de cortocircuito ponderada'],
+    categoria: 'red',
+    definicion: 'Relación de cortocircuito ponderada: mide si el nudo es eléctricamente lo bastante robusto. Solo limita a los consumos que se conectan a través de electrónica de potencia.',
+    matiz: 'Un nudo puede tener mucha capacidad para una fábrica y muy poca para un centro de datos, porque los rectificadores y los SAI cuentan como electrónica de potencia.',
+    enlace: '/red-electrica',
+  },
+  {
+    id: 'cep',
+    termino: 'CEP',
+    alias: ['CEP', 'electrónica de potencia'],
+    categoria: 'red',
+    definicion: 'Consumo con electrónica de potencia en la interfaz con la red. En la nomenclatura de Red Eléctrica, la categoría en la que cae un centro de datos.',
+    matiz: 'El fichero publica capacidad separada para CEP y para no CEP. Mirar la columna equivocada da una lectura equivocada.',
+  },
+  {
+    id: 'hueco-de-tension',
+    termino: 'Hueco de tensión',
+    alias: ['hueco de tensión', 'huecos de tensión', 'con hueco', 'sin hueco'],
+    categoria: 'red',
+    definicion: 'Caída breve de tensión ante una falta en la red. Red Eléctrica distingue las instalaciones capaces de soportarla, CH, de las que no, SH.',
+    matiz: 'Un centro diseñado para aguantar huecos accede en varios nudos a más capacidad que uno que no. Es una decisión de diseño con consecuencias de permiso.',
+  },
+  {
+    id: 'n-menos-uno',
+    termino: 'N-1',
+    alias: ['N-1', 'N-X'],
+    categoria: 'red',
+    definicion: 'Criterio de seguridad: la red debe seguir alimentando la demanda con un elemento fuera de servicio. N-X generaliza a varios.',
+  },
+  {
+    id: 'capacidad-firme',
+    termino: 'Capacidad firme',
+    alias: ['capacidad firme', 'acceso firme'],
+    categoria: 'red',
+    definicion: 'Capacidad con suministro garantizado todas las horas del año. Es el acceso ordinario, frente al flexible.',
+  },
+  {
+    id: 'gestor-red',
+    termino: 'Gestor de la red de transporte',
+    alias: ['gestor de la red de transporte', 'gestor de red', 'operador del sistema'],
+    categoria: 'red',
+    definicion: 'En España, Red Eléctrica: opera el sistema, concede acceso y conexión en la red de transporte y publica la capacidad por nudo.',
+  },
+  {
+    id: 'aguas-arriba',
+    termino: 'Aguas arriba',
+    alias: ['aguas arriba', 'aguas abajo'],
+    categoria: 'red',
+    definicion: 'Hacia la red de más tensión, aguas arriba, o hacia el consumidor, aguas abajo. Un consumo en distribución cuelga de un nudo de transporte que está aguas arriba.',
+  },
+  {
+    id: 'central-generacion',
+    termino: 'Central de generación',
+    alias: ['central de generación', 'centrales de generación'],
+    categoria: 'red',
+    definicion: 'Instalación que produce electricidad. La capa opcional del mapa las inventaría desde OpenStreetMap, con su potencia instalada.',
+    matiz: 'La potencia instalada y la generación real son magnitudes distintas y viajan en campos distintos. No se suman ni se convierten una en otra.',
+  },
+  {
+    id: 'ciclo-combinado',
+    termino: 'Ciclo combinado',
+    alias: ['ciclo combinado', 'ciclos combinados'],
+    categoria: 'red',
+    definicion: 'Central de gas con turbina de gas y turbina de vapor. Es gestionable, así que es la que suele cubrir el consumo plano cuando no hay sol ni viento.',
+  },
+
+  // ─── El centro de datos ──────────────────────────────────────────────────
+  {
+    id: 'cpd',
+    termino: 'CPD',
+    alias: ['CPD', 'centro de procesamiento de datos'],
+    categoria: 'centro',
+    definicion: 'Centro de procesamiento de datos. En este registro, un emplazamiento con su operador, su propietario y sus fases.',
+  },
+  {
+    id: 'hiperescalar',
+    termino: 'Hiperescalar',
+    alias: ['hiperescalar', 'hiperescalares', 'hiperescalador', 'hiperescaladores', 'hyperscale'],
+    categoria: 'centro',
+    definicion: 'El operador que construye para sí mismo a gran escala: Amazon Web Services, Microsoft, Google, Meta.',
+    matiz: 'Unos pocos hiperescaladores concentran la demanda de capacidad, y con ella el poder de negociación frente a quien la construye.',
+  },
+  {
+    id: 'colocation',
+    termino: 'Colocation',
+    alias: ['colocation', 'coubicación'],
+    categoria: 'centro',
+    definicion: 'El operador alquila espacio, potencia y refrigeración, y el cliente mete sus propios servidores.',
+    matiz: 'El hardware de un inquilino se atribuye al emplazamiento donde está, diciendo de quién es.',
+  },
+  {
+    id: 'mayorista',
+    termino: 'Mayorista',
+    alias: ['mayorista'],
+    categoria: 'centro',
+    definicion: 'Modelo de alquiler de salas o edificios completos a un solo cliente grande, en contratos de diez años o más.',
+  },
+  {
+    id: 'edge',
+    termino: 'Edge',
+    alias: ['edge'],
+    categoria: 'centro',
+    definicion: 'Instalación pequeña y distribuida, pegada al usuario para bajar la latencia. Nada que ver en tamaño con un campus hiperescalar.',
+  },
+  {
+    id: 'campus',
+    termino: 'Campus',
+    alias: ['campus'],
+    categoria: 'centro',
+    definicion: 'Varios edificios en la misma parcela, con una acometida eléctrica común y crecimiento por fases.',
+    matiz: 'Suele pedir la potencia de acceso del campus terminado años antes de instalar la primera fila de racks.',
+  },
+  {
+    id: 'fase',
+    termino: 'Fase',
+    alias: ['fase', 'fases'],
+    categoria: 'centro',
+    definicion: 'Cada tramo de construcción de un emplazamiento, con su potencia y su calendario propios.',
+    matiz: 'Las fuentes mezclan cifras acumuladas e incrementales. El registro guarda las dos lecturas cuando discrepan, en vez de elegir una.',
+  },
+  {
+    id: 'build-out',
+    termino: 'Build-out',
+    alias: ['build-out'],
+    categoria: 'centro',
+    definicion: 'El despliegue completo de un emplazamiento, con todas sus fases construidas y equipadas.',
+    matiz: 'Las cifras de build-out describen un edificio que casi nunca existe todavía. Compararlas con potencia operativa infla el mercado.',
+  },
+  {
+    id: 'prealquiler',
+    termino: 'Prealquiler',
+    alias: ['prealquiler', 'prealquilado', 'prealquilada', 'prealquilados', 'prealquila'],
+    categoria: 'centro',
+    definicion: 'Contrato firmado antes de que la capacidad esté construida. Reduce el riesgo comercial del promotor y no el de ejecución.',
+    matiz: 'Un MW prealquilado no es un MW cobrado: la renta empieza cuando el edificio se entrega y se energiza.',
+  },
+  {
+    id: 'pue',
+    termino: 'PUE',
+    alias: ['PUE'],
+    categoria: 'centro',
+    definicion: 'Power Usage Effectiveness: energía total del centro dividida por la que llega a los servidores. Un PUE de 1,2 significa un 20 % de consumo en refrigeración y pérdidas.',
+    matiz: 'El PUE de diseño no es el medido, y aquí no se usa para convertir MW de conexión en MW IT. Es el atajo que más contamina las cifras publicadas.',
+    enlace: '/metodologia',
+  },
+  {
+    id: 'sai',
+    termino: 'SAI',
+    alias: ['SAI'],
+    categoria: 'centro',
+    definicion: 'Sistema de alimentación ininterrumpida: baterías y electrónica que sostienen la carga los segundos que tardan en arrancar los grupos electrógenos.',
+    matiz: 'Cuenta como electrónica de potencia, lo que hace que a un centro de datos le aplique el criterio de cortocircuito WSCR.',
+  },
+  {
+    id: 'grupo-electrogeno',
+    termino: 'Grupo electrógeno',
+    alias: ['grupo electrógeno', 'grupos electrógenos'],
+    categoria: 'centro',
+    definicion: 'Motores diésel de emergencia, dimensionados para sostener el centro entero durante un corte de red.',
+    matiz: 'Su potencia aparece en las autorizaciones ambientales, a menudo como potencia térmica, y no se agrega con la del centro.',
+  },
+  {
+    id: 'disponibilidad',
+    termino: 'Compromiso de disponibilidad',
+    alias: ['compromiso de disponibilidad', 'SLA de disponibilidad', 'SLA'],
+    categoria: 'centro',
+    definicion: 'El porcentaje de tiempo que el operador garantiza el servicio por contrato, con penalización si no lo cumple.',
+    matiz: 'Es lo que choca de frente con el acceso flexible: aceptar interrupciones exige generación o baterías propias.',
+  },
+
+  // ─── Agua y refrigeración ────────────────────────────────────────────────
+  {
+    id: 'wue',
+    termino: 'WUE',
+    alias: ['WUE'],
+    categoria: 'agua',
+    definicion: 'Water Usage Effectiveness: litros de agua por kWh consumido por los servidores.',
+    matiz: 'Un WUE de 0,00 en material de proyecto es un objetivo de diseño, no una medición.',
+  },
+  {
+    id: 'circuito-cerrado',
+    termino: 'Circuito cerrado',
+    alias: ['circuito cerrado'],
+    categoria: 'agua',
+    definicion: 'El agua recircula y solo se repone la merma. Consume menos que un circuito abierto, aunque no cero.',
+  },
+  {
+    id: 'circuito-abierto',
+    termino: 'Circuito abierto',
+    alias: ['circuito abierto', 'refrigeración evaporativa', 'evaporativa'],
+    categoria: 'agua',
+    definicion: 'Refrigeración evaporativa: el agua se evapora y hay que reponerla entera. Es el sistema que más consume.',
+  },
+  {
+    id: 'circuito-hibrido',
+    termino: 'Circuito híbrido',
+    alias: ['circuito híbrido'],
+    categoria: 'agua',
+    definicion: 'Combina disipación seca y evaporativa según la temperatura exterior, así que el consumo se concentra en verano.',
+    matiz: 'Una media anual esconde justo el mes que importa para un acuífero.',
+  },
+  {
+    id: 'hm3',
+    termino: 'hm³',
+    alias: ['hm³', 'hectómetro cúbico'],
+    categoria: 'agua',
+    definicion: 'Hectómetro cúbico, un millón de metros cúbicos. La unidad en que se habla de embalses y concesiones.',
+    matiz: 'El consumo diario y el anual llegan de fuentes distintas y aquí no se convierten uno en otro: haría falta suponer los días a plena carga.',
+  },
+
+  // ─── Cómputo ─────────────────────────────────────────────────────────────
+  {
+    id: 'gpu',
+    termino: 'GPU',
+    alias: ['GPU', 'GPUs', 'acelerador', 'aceleradores'],
+    categoria: 'computo',
+    definicion: 'Acelerador de propósito general, el chip con el que se entrena y se sirve la mayor parte de la IA.',
+    matiz: 'Es hardware, no potencia eléctrica: el recuento de GPU no entra en ninguna cifra de MW.',
+  },
+  {
+    id: 'asic-ia',
+    termino: 'ASIC de IA',
+    alias: ['ASIC de IA', 'ASIC', 'silicio propio'],
+    categoria: 'computo',
+    definicion: 'Chip diseñado por el propio hiperescalar para sus modelos: Trainium de Amazon, TPU de Google, Maia de Microsoft.',
+  },
+  {
+    id: 'cpu-hpc',
+    termino: 'Cómputo de CPU',
+    alias: ['cómputo de CPU', 'CPU HPC', 'HPC'],
+    categoria: 'computo',
+    definicion: 'Cálculo científico de alto rendimiento sobre procesadores convencionales, medido en núcleos y en nodos.',
+  },
+  {
+    id: 'qpu',
+    termino: 'QPU',
+    alias: ['QPU', 'procesador cuántico'],
+    categoria: 'computo',
+    definicion: 'Procesador cuántico. Se mide en cúbits, y su cifra no es comparable con ningún FLOPS.',
+  },
+  {
+    id: 'cubit',
+    termino: 'Cúbit',
+    alias: ['cúbit', 'cúbits', 'qubit', 'qubits'],
+    categoria: 'computo',
+    definicion: 'La unidad de información cuántica. El recuento de cúbits no dice por sí solo qué problemas resuelve la máquina.',
+  },
+  {
+    id: 'flops',
+    termino: 'FLOPS',
+    alias: ['FLOPS', 'FLOP/s', 'TFlop/s', 'PFlop/s', 'EFlop/s'],
+    categoria: 'computo',
+    definicion: 'Operaciones de coma flotante por segundo. Se publica en tera, peta o exa.',
+    matiz: 'No se comparan entre precisiones distintas ni entre pico y medida. Sin esos dos calificativos, la cifra no significa nada.',
+  },
+  {
+    id: 'precision-numerica',
+    termino: 'Precisión',
+    alias: ['FP64', 'FP32', 'FP16', 'FP8', 'FP4', 'precisión numérica'],
+    categoria: 'computo',
+    definicion: 'Los bits con que se representa cada número. Bajar de FP64 a FP8 multiplica los FLOPS del mismo chip sin que haya cambiado el hardware.',
+    matiz: 'Por eso el registro guarda la precisión pegada a la cifra, y quien no la publica se queda sin cifra comparable.',
+  },
+  {
+    id: 'pico-vs-medido',
+    termino: 'Pico o medido',
+    alias: ['rendimiento pico', 'Linpack', 'Rmax'],
+    categoria: 'computo',
+    definicion: 'El pico es el máximo teórico del hardware. El Rmax de Linpack es lo que la máquina hizo de verdad en una prueba, y suele quedar bastante por debajo.',
+  },
+  {
+    id: 'particion',
+    termino: 'Partición',
+    alias: ['partición', 'particiones'],
+    categoria: 'computo',
+    definicion: 'Una parte de un sistema mayor, con su propio hardware y su propia cifra de rendimiento.',
+    matiz: 'Sumar particiones y sistema entero cuenta el mismo hardware dos veces. El registro marca cuál de las dos cosas describe cada cifra.',
+  },
+
+  // ─── Energía y contratos ─────────────────────────────────────────────────
+  {
+    id: 'ppa',
+    termino: 'PPA',
+    alias: ['PPA', 'PPA firmado', 'contrato de compra de energía'],
+    categoria: 'energia',
+    definicion: 'Power Purchase Agreement: contrato a largo plazo de compra de energía y de garantías de origen entre un generador y un consumidor.',
+    matiz: 'Un PPA no es un cable. El centro se alimenta de la red, no de la planta, y la planta puede estar a cientos de kilómetros y en otro nudo.',
+    enlace: '/renovables',
+  },
+  {
+    id: 'vppa',
+    termino: 'VPPA',
+    alias: ['VPPA', 'PPA virtual'],
+    categoria: 'energia',
+    definicion: 'PPA virtual: no hay entrega física al comprador. Es una liquidación financiera por diferencias más la transferencia de garantías de origen. El generador vende su energía al mercado como cualquier otro.',
+    matiz: 'Un VPPA anual sobre una cartera sin identificar no acredita coincidencia horaria, que es justo lo que exigiría el real decreto de agosto de 2026.',
+    enlace: '/renovables',
+  },
+  {
+    id: 'garantias-origen',
+    termino: 'Garantías de origen',
+    alias: ['garantías de origen', 'garantía de origen'],
+    categoria: 'energia',
+    definicion: 'El certificado de que un MWh se generó con renovables. Se compra y se vende por separado de la electricidad.',
+    matiz: 'Es lo que sostiene la mayoría de los «100 % renovable» corporativos, que compensan al año y no hora a hora.',
+  },
+  {
+    id: 'autoconsumo',
+    termino: 'Autoconsumo',
+    alias: ['autoconsumo'],
+    categoria: 'energia',
+    definicion: 'Generación en el propio emplazamiento o en su proximidad, conectada tras el punto de medida.',
+    matiz: 'Es el único vínculo entre planta y centro que sí es físico. En los centros de datos españoles documentados cubre una fracción pequeña del consumo.',
+  },
+  {
+    id: 'casacion-horaria',
+    termino: 'Coincidencia horaria',
+    alias: ['coincidencia horaria', 'casación horaria'],
+    categoria: 'energia',
+    definicion: 'Exigir que la energía renovable se produzca en la misma hora en que se consume, en vez de compensarse al final del año.',
+    matiz: 'El proyecto de real decreto de agosto de 2026 pide un 80 % horario. Si sale así, contrato financiero, entrega física y coincidencia horaria pasan a ser tres datos distintos.',
+    enlace: '/renovables',
+  },
+  {
+    id: 'adicionalidad',
+    termino: 'Adicionalidad',
+    alias: ['adicionalidad', 'renovables adicionales'],
+    categoria: 'energia',
+    definicion: 'Que cada nuevo MW de demanda venga acompañado de un MW nuevo de generación renovable, no de una planta que ya existía.',
+    matiz: 'El proyecto de real decreto la mide en los 18 meses anteriores a la entrada en funcionamiento.',
+  },
+  {
+    id: 'bess',
+    termino: 'BESS',
+    alias: ['BESS', 'almacenamiento en baterías'],
+    categoria: 'energia',
+    definicion: 'Battery Energy Storage System: almacenamiento en baterías, medido en MWh de capacidad y en MW de potencia.',
+    matiz: 'Mezclar MWh de batería con MW de planta o de centro es un error de unidades. Cuando la fuente no publica los MW, el campo queda vacío.',
+    enlace: '/renovables',
+  },
+  {
+    id: 'precios-negativos',
+    termino: 'Precios negativos',
+    alias: ['precios negativos', 'precio negativo'],
+    categoria: 'energia',
+    definicion: 'Horas en que el mercado paga por consumir porque hay más generación que demanda. En el primer trimestre de 2026 hubo 397 en España, casi todas en los picos solares.',
+    matiz: 'Ahí la cobertura de un PPA puede desaparecer y el generador seguir entregando energía sin cobrarla. El reparto de riesgo no es simétrico.',
+  },
+  {
+    id: 'mismo-nudo',
+    termino: 'Mismo nudo',
+    alias: ['mismo nudo', 'mismo nudo eléctrico'],
+    categoria: 'energia',
+    definicion: 'Vínculo débil que este registro admite: planta y centro comparten nudo de conexión, sin contrato documentado entre ellos.',
+  },
+  {
+    id: 'fotovoltaica',
+    termino: 'Fotovoltaica',
+    alias: ['fotovoltaica', 'FV'],
+    categoria: 'energia',
+    definicion: 'Generación solar por paneles. Produce en campana, con el máximo al mediodía y nada de noche.',
+    matiz: 'Un centro de datos consume plano las 24 horas. Sin almacenamiento, una solar no puede seguir esa curva.',
+  },
+
+  // ─── Inversión y mercado ─────────────────────────────────────────────────
+  {
+    id: 'epra-nta',
+    termino: 'EPRA NTA',
+    alias: ['EPRA NTA', 'NTA', 'valor neto de activos'],
+    categoria: 'mercado',
+    definicion: 'Net Tangible Assets según la norma europea de inmobiliarias cotizadas: el valor de los activos menos la deuda, por acción, con los ajustes que EPRA estandariza.',
+    matiz: 'Es una tasación, no un precio de venta. Si los tipos suben o el capex se desvía, el NTA baja antes de que el descuento se cierre.',
+  },
+  {
+    id: 'descuento-nta',
+    termino: 'Descuento a NTA',
+    alias: ['descuento a NTA', 'descuento a EPRA NTA'],
+    categoria: 'mercado',
+    definicion: 'Cuánto por debajo del valor neto de activos cotiza la acción. Con un NTA de €15,99 y un precio de €13,40, el descuento es del 16,2 %.',
+    matiz: 'Un descuento puede cerrarse subiendo el precio o bajando la tasación. No es lo mismo para el accionista.',
+  },
+  {
+    id: 'gav',
+    termino: 'GAV',
+    alias: ['GAV', 'valor bruto de activos'],
+    categoria: 'mercado',
+    definicion: 'Gross Asset Value: valor bruto de la cartera, antes de deuda.',
+  },
+  {
+    id: 'ffo',
+    termino: 'FFO',
+    alias: ['FFO', 'rentabilidad FFO', 'Precio / FFO'],
+    categoria: 'mercado',
+    definicion: 'Funds From Operations: el beneficio recurrente de una inmobiliaria una vez quitadas las revalorizaciones y las plusvalías de venta. Es el flujo con el que se paga el dividendo.',
+    matiz: 'La rentabilidad FFO es la inversa del múltiplo Precio / FFO. Con una cartera en construcción, el FFO de hoy describe muy mal el de 2030.',
+  },
+  {
+    id: 'ltv',
+    termino: 'LTV',
+    alias: ['LTV'],
+    categoria: 'mercado',
+    definicion: 'Loan to Value: deuda sobre el valor de los activos. Un 24,5 % significa que la cartera está financiada en su mayoría con capital propio.',
+    matiz: 'Un LTV bajo compra margen para invertir, pero puede haberse conseguido con una ampliación de capital que diluye al accionista.',
+  },
+  {
+    id: 'socimi',
+    termino: 'SOCIMI',
+    alias: ['SOCIMI', 'REIT'],
+    categoria: 'mercado',
+    definicion: 'Sociedad cotizada de inversión inmobiliaria, el equivalente español al REIT: no tributa por sociedades a cambio de distribuir la mayor parte del beneficio.',
+    matiz: 'Ese reparto obligatorio limita cuánta inversión puede financiar con caja propia.',
+  },
+  {
+    id: 'ebitda',
+    termino: 'EBITDA',
+    alias: ['EBITDA'],
+    categoria: 'mercado',
+    definicion: 'Resultado antes de intereses, impuestos, depreciación y amortización. Aproxima la caja que genera la explotación.',
+    matiz: 'Ignora justo lo que domina un negocio intensivo en capital: la amortización de los activos y el coste de la deuda.',
+  },
+  {
+    id: 'ebit',
+    termino: 'EBIT',
+    alias: ['EBIT'],
+    categoria: 'mercado',
+    definicion: 'Resultado antes de intereses e impuestos. El EBITDA menos la amortización.',
+  },
+  {
+    id: 'per',
+    termino: 'PER',
+    alias: ['PER'],
+    categoria: 'mercado',
+    definicion: 'Precio sobre beneficio por acción. Cuántos años de beneficio actual paga la cotización.',
+  },
+  {
+    id: 'ev-ebitda',
+    termino: 'EV / EBITDA',
+    alias: ['EV / EBITDA', 'EV/EBITDA'],
+    categoria: 'mercado',
+    definicion: 'Valor de empresa, capitalización más deuda neta, dividido por EBITDA. Compara compañías con endeudamientos distintos.',
+  },
+  {
+    id: 'deuda-neta-ebitda',
+    termino: 'Deuda neta / EBITDA',
+    alias: ['deuda neta / EBITDA', 'Deuda / EBITDA'],
+    categoria: 'mercado',
+    definicion: 'Cuántos años de EBITDA hacen falta para pagar la deuda neta. Es la medida rápida de apalancamiento.',
+  },
+  {
+    id: 'capex',
+    termino: 'Capex',
+    alias: ['capex', 'inversión de capital'],
+    categoria: 'mercado',
+    definicion: 'Inversión en activos: obra, equipo, red. Sale de la caja años antes de producir un ingreso.',
+    matiz: 'En un negocio regulado, el capex que no entra a tiempo en base regulada consume caja sin elevar el beneficio.',
+  },
+  {
+    id: 'yield-on-cost',
+    termino: 'Yield on cost',
+    alias: ['yield on cost', 'rentabilidad sobre coste'],
+    categoria: 'mercado',
+    definicion: 'Renta bruta estabilizada dividida por el coste total de desarrollo. Mide lo que rinde el activo terminado sobre lo que costó construirlo.',
+    matiz: 'La tesis vive del diferencial entre este número y el coste de capital. Si el segundo sube o la obra se retrasa, el margen desaparece.',
+  },
+  {
+    id: 'yield-salida',
+    termino: 'Yield de salida',
+    alias: ['yield de salida', 'yield de mercado'],
+    categoria: 'mercado',
+    definicion: 'La rentabilidad con que el mercado capitaliza una renta ya estabilizada. Es el divisor con que se convierte una renta anual en un valor de activo.',
+    matiz: 'Medio punto de yield mueve la valoración más que cualquier mejora operativa. Y lo fija el mercado, no el promotor.',
+  },
+  {
+    id: 'spread-desarrollo',
+    termino: 'Spread de desarrollo',
+    alias: ['spread de desarrollo'],
+    categoria: 'mercado',
+    definicion: 'La diferencia entre el yield on cost de lo que se construye y el yield de salida al que se valora. Es el margen que justifica desarrollar en vez de comprar hecho.',
+    matiz: 'En papel es amplio. Descontar seis años de obra y capital inmovilizado lo estrecha bastante.',
+  },
+  {
+    id: 'gri',
+    termino: 'GRI',
+    alias: ['GRI', 'renta bruta', 'renta estabilizada'],
+    categoria: 'mercado',
+    definicion: 'Gross Rental Income: la renta bruta anual que produce un activo alquilado, antes de gastos.',
+  },
+  {
+    id: 'estabilizacion',
+    termino: 'Estabilización',
+    alias: ['estabilización', 'estabilizado', 'estabilizada'],
+    categoria: 'mercado',
+    definicion: 'El año en que un activo alcanza su ocupación y su renta de régimen. Hasta entonces la renta contable va muy por detrás del valor tasado.',
+  },
+  {
+    id: 'tir',
+    termino: 'TIR',
+    alias: ['TIR'],
+    categoria: 'mercado',
+    definicion: 'Tasa interna de retorno: la rentabilidad anual implícita en una serie de flujos.',
+    matiz: 'Es muy sensible al calendario. Un retraso de dos años en la primera renta la hunde sin cambiar ni un euro del total.',
+  },
+  {
+    id: 'punto-basico',
+    termino: 'Punto básico',
+    alias: ['punto básico', 'puntos básicos'],
+    categoria: 'mercado',
+    definicion: 'Una centésima de punto porcentual. Cien puntos básicos son un 1 %.',
+  },
+  {
+    id: 'punto-porcentual',
+    termino: 'Punto porcentual',
+    alias: ['p.p.', 'puntos porcentuales'],
+    categoria: 'mercado',
+    definicion: 'La diferencia aritmética entre dos porcentajes. Pasar del 4 % al 5 % son un punto porcentual, no un 1 % de subida.',
+  },
+  {
+    id: 'ytd',
+    termino: 'En el año',
+    alias: ['YTD', 'en el año'],
+    categoria: 'mercado',
+    definicion: 'Year to date: la variación acumulada desde el último cierre del año anterior.',
+    matiz: 'Las rentabilidades de estas páginas son por precio, sin dividendos, para que la comparación con el índice sea homogénea.',
+  },
+  {
+    id: 'ticker',
+    termino: 'Ticker',
+    alias: ['ticker'],
+    categoria: 'mercado',
+    definicion: 'El código con que cotiza una acción en un mercado concreto: MRL en BME, DBRG en Nueva York.',
+  },
+  {
+    id: 'bme',
+    termino: 'BME',
+    alias: ['BME'],
+    categoria: 'mercado',
+    definicion: 'Bolsas y Mercados Españoles, el mercado donde cotizan las compañías del IBEX.',
+  },
+  {
+    id: 'ibex-35',
+    termino: 'IBEX 35',
+    alias: ['IBEX 35', 'IBEX'],
+    categoria: 'mercado',
+    definicion: 'El índice de las 35 mayores cotizadas españolas. Se usa aquí como referencia para saber si una acción sube por lo suyo o con el mercado.',
+  },
+  {
+    id: 'capitalizacion',
+    termino: 'Capitalización',
+    alias: ['capitalización'],
+    categoria: 'mercado',
+    definicion: 'Precio por acción multiplicado por el número de acciones. Lo que el mercado pone hoy sobre el capital de la compañía.',
+  },
+  {
+    id: 'rentabilidad-dividendo',
+    termino: 'Rentabilidad por dividendo',
+    alias: ['rentabilidad por dividendo', 'rentabilidad dividendo'],
+    categoria: 'mercado',
+    definicion: 'Dividendo anual por acción sobre el precio. Un 5,2 % sale de €0,80 sobre €15,28.',
+    matiz: 'Un dividendo alto sostenido con más deuda no es rentabilidad, es devolución de capital.',
+  },
+  {
+    id: 'base-regulada',
+    termino: 'Base regulada',
+    alias: ['base regulada', 'base de activos regulados', 'RAB'],
+    categoria: 'mercado',
+    definicion: 'El valor de los activos que el regulador reconoce y remunera. En una red, es la magnitud que determina el ingreso.',
+    matiz: 'La inversión solo cuenta cuando entra en base regulada. Ahí está el desfase que puede tensionar la caja de un plan récord.',
+  },
+  {
+    id: 'retribucion-financiera',
+    termino: 'Retribución financiera',
+    alias: ['retribución financiera', 'tasa de retribución'],
+    categoria: 'mercado',
+    definicion: 'La tasa que la CNMC reconoce sobre la base regulada. Para 2026 a 2031 la fijó en el 6,58 %, cien puntos básicos más que en el periodo anterior.',
+  },
+  {
+    id: 'ampliacion-capital',
+    termino: 'Ampliación de capital',
+    alias: ['ampliación de capital', 'ampliar capital'],
+    categoria: 'mercado',
+    definicion: 'Emitir acciones nuevas para financiar inversión. Baja el apalancamiento y reparte el beneficio futuro entre más títulos.',
+  },
+  {
+    id: 'dilucion',
+    termino: 'Dilución',
+    alias: ['dilución', 'diluyen'],
+    categoria: 'mercado',
+    definicion: 'La pérdida de participación y de beneficio por acción que sufre el accionista cuando se emiten títulos nuevos.',
+  },
+  {
+    id: 'jv',
+    termino: 'Sociedad conjunta',
+    alias: ['sociedad conjunta', 'joint venture', 'JV'],
+    categoria: 'mercado',
+    definicion: 'Vehículo compartido entre dos socios para un proyecto. Aporta capital y reparte tanto el riesgo como el resultado.',
+    matiz: 'Cambia lo que llega al accionista de la cotizada: la mitad de un campus grande puede pesar menos que un proyecto propio pequeño.',
+  },
+  {
+    id: 'cnmv',
+    termino: 'CNMV',
+    alias: ['CNMV'],
+    categoria: 'mercado',
+    definicion: 'Comisión Nacional del Mercado de Valores, el supervisor bursátil español. Publica las participaciones significativas y la información regulada de las cotizadas.',
+  },
+
+  // ─── Normas, organismos y fuentes ────────────────────────────────────────
+  {
+    id: 'red-electrica-empresa',
+    termino: 'Red Eléctrica',
+    alias: ['Red Eléctrica', 'REE'],
+    categoria: 'norma',
+    definicion: 'El gestor de la red de transporte española, filial de Redeia. Opera el sistema, concede acceso en 400 y 220 kV y publica el fichero mensual de capacidad por nudo.',
+    matiz: 'El trazado que se dibuja en este mapa viene de OpenStreetMap, no de Red Eléctrica. No es cartografía oficial.',
+  },
+  {
+    id: 'cnmc',
+    termino: 'CNMC',
+    alias: ['CNMC'],
+    categoria: 'norma',
+    definicion: 'Comisión Nacional de los Mercados y la Competencia. Fija la metodología de acceso, la tasa de retribución de las redes y obliga a publicar la capacidad por nudo.',
+    matiz: 'Es quien denegó a Red Eléctrica la prórroga y fijó el 20 de febrero de 2026 como fecha de publicación de la capacidad de demanda.',
+  },
+  {
+    id: 'miteco',
+    termino: 'MITECO',
+    alias: ['MITECO'],
+    categoria: 'norma',
+    definicion: 'Ministerio para la Transición Ecológica y el Reto Demográfico. De él salen la planificación de la red y el proyecto de real decreto de centros de datos.',
+  },
+  {
+    id: 'see',
+    termino: 'Secretaría de Estado de Energía',
+    alias: ['Secretaría de Estado de Energía'],
+    categoria: 'norma',
+    definicion: 'Convoca y resuelve los concursos de capacidad de demanda.',
+  },
+  {
+    id: 'boe',
+    termino: 'BOE',
+    alias: ['BOE'],
+    categoria: 'norma',
+    definicion: 'Boletín Oficial del Estado. Donde se publican los reales decretos, las circulares de la CNMC y las resoluciones de concurso.',
+  },
+  {
+    id: 'boa',
+    termino: 'BOA',
+    alias: ['BOA'],
+    categoria: 'norma',
+    definicion: 'Boletín Oficial de Aragón. Fuente primaria de buena parte de los expedientes ambientales de los centros de datos aragoneses.',
+  },
+  {
+    id: 'dia',
+    termino: 'DIA',
+    alias: ['DIA', 'declaración de impacto ambiental'],
+    categoria: 'norma',
+    definicion: 'Declaración de impacto ambiental: el pronunciamiento que cierra la evaluación ambiental de un proyecto.',
+    matiz: 'Suele ser la única fuente pública con potencia, consumo de agua y superficie en el mismo documento.',
+  },
+  {
+    id: 'aai',
+    termino: 'AAI',
+    alias: ['AAI', 'autorización ambiental integrada'],
+    categoria: 'norma',
+    definicion: 'Autorización ambiental integrada: el permiso que fija las condiciones de emisiones, vertidos y residuos de una instalación.',
+    matiz: 'De ahí salen casi todas las cifras de grupos electrógenos, expresadas a menudo en potencia térmica.',
+  },
+  {
+    id: 'audiencia-publica',
+    termino: 'Audiencia pública',
+    alias: ['audiencia pública', 'información pública'],
+    categoria: 'norma',
+    definicion: 'El periodo en que un proyecto de norma o de instalación se somete a alegaciones. Es cuando el expediente se hace consultable.',
+  },
+  {
+    id: 'rd-1183-2020',
+    termino: 'RD 1183/2020',
+    alias: ['RD 1183/2020', 'Real Decreto 1183/2020'],
+    categoria: 'norma',
+    definicion: 'El marco general de acceso y conexión a las redes de transporte y distribución.',
+  },
+  {
+    id: 'circular-1-2024',
+    termino: 'Circular 1/2024',
+    alias: ['Circular 1/2024'],
+    categoria: 'norma',
+    definicion: 'Circular de la CNMC que concreta la metodología de acceso para instalaciones de demanda y obliga a publicar la capacidad por nudo, con actualización mensual.',
+  },
+  {
+    id: 'rdl-7-2026',
+    termino: 'RDL 7/2026',
+    alias: ['RDL 7/2026', 'Real Decreto-ley 7/2026'],
+    categoria: 'norma',
+    definicion: 'La reforma de marzo de 2026: deroga los avales, crea la prestación por reserva de capacidad, introduce los proyectos de alta prioridad y obliga a declarar el CNAE.',
+    matiz: 'Su exposición de motivos llama al problema por su nombre: especulación y acaparamiento de capacidad.',
+  },
+  {
+    id: 'reglamento-delegado-1364',
+    termino: 'Reglamento Delegado (UE) 2024/1364',
+    alias: ['Reglamento Delegado (UE) 2024/1364'],
+    categoria: 'norma',
+    definicion: 'La norma europea que fija el esquema común de calificación de la sostenibilidad de los centros de datos. De su artículo 2 sale la definición de potencia de tecnología de la información.',
+  },
+  {
+    id: 'entso-e',
+    termino: 'ENTSO-E',
+    alias: ['ENTSO-E'],
+    categoria: 'norma',
+    definicion: 'La red europea de gestores de transporte. Su plataforma de transparencia publica la generación real por unidad.',
+    matiz: 'El documento 16.1.A cubre nucleares, ciclos combinados, grandes hidráulicas y carbón. No cubre parques eólicos ni plantas solares individuales, así que la mayoría de las centrales del mapa no tendrá nunca cifra de generación.',
+  },
+  {
+    id: 'eic',
+    termino: 'Código EIC',
+    alias: ['código EIC', 'EIC'],
+    categoria: 'norma',
+    definicion: 'Energy Identification Code, el identificador con que ENTSO-E nombra cada unidad de generación.',
+    matiz: 'No coincide con el nombre de OpenStreetMap, así que la correspondencia se escribe a mano y la decide una persona.',
+  },
+  {
+    id: 'openstreetmap',
+    termino: 'OpenStreetMap',
+    alias: ['OpenStreetMap', 'OSM'],
+    categoria: 'norma',
+    definicion: 'La base cartográfica colaborativa de la que salen el trazado de 220 y 400 kV y el inventario de centrales.',
+    matiz: 'Completitud variable. Sitúa los emplazamientos respecto a la red, no sirve para análisis de red.',
+  },
+  {
+    id: 'odbl',
+    termino: 'ODbL',
+    alias: ['ODbL'],
+    categoria: 'norma',
+    definicion: 'Open Database License, la licencia de OpenStreetMap. Obliga a citar y a compartir en las mismas condiciones lo que derive de esos datos.',
+  },
+  {
+    id: 'cc-by',
+    termino: 'CC BY 4.0',
+    alias: ['CC BY 4.0', 'CC BY'],
+    categoria: 'norma',
+    definicion: 'La licencia de los datos originales de este registro: se pueden reutilizar citando la fuente.',
+  },
+  {
+    id: 'aelec',
+    termino: 'AELEC',
+    alias: ['AELEC'],
+    categoria: 'norma',
+    definicion: 'La asociación de las eléctricas con red de distribución. Publica sus propios mapas de saturación.',
+  },
+
+  // ─── El registro y su método ─────────────────────────────────────────────
+  {
+    id: 'confianza',
+    termino: 'Nivel de confianza',
+    alias: ['nivel de confianza', 'confianza alta', 'confianza media', 'confianza baja'],
+    categoria: 'registro',
+    definicion: 'Califica el respaldo de los datos centrales de una ficha: dónde está, qué es y cuánta potencia tiene.',
+    matiz: 'No cuenta fuentes. Una ficha con seis referencias sigue en baja si ninguna publica la potencia.',
+    enlace: '/metodologia',
+  },
+  {
+    id: 'precision-coordenadas',
+    termino: 'Precisión de coordenadas',
+    alias: ['precisión de coordenadas', 'coordenadas aproximadas', 'centro del municipio'],
+    categoria: 'registro',
+    definicion: 'Si el punto del mapa es la parcela, una aproximación o el centroide del municipio. Los situados en el centro del municipio se dibujan atenuados.',
+  },
+  {
+    id: 'incertidumbre',
+    termino: 'Incertidumbre',
+    alias: ['incertidumbre', 'incertidumbres'],
+    categoria: 'registro',
+    definicion: 'Una contradicción entre fuentes fiables, registrada en la ficha en vez de resuelta a dedo. Las dos lecturas se conservan.',
+    enlace: '/incertidumbres',
+  },
+  {
+    id: 'cita-literal',
+    termino: 'Cita literal',
+    alias: ['cita literal'],
+    categoria: 'registro',
+    definicion: 'El fragmento de la fuente que sostiene la cifra. La comprobación más exigente del conjunto verifica que cada cifra de potencia aparezca en alguna de sus citas.',
+    matiz: 'Hoy falla en una parte de los registros, y esa proporción se publica en lugar de guardarse.',
+    enlace: '/datos',
+  },
+  {
+    id: 'alias-registro',
+    termino: 'Alias',
+    alias: ['alias'],
+    categoria: 'registro',
+    definicion: 'Los nombres anteriores de un emplazamiento renombrado por adquisición. Se reconcilian con alias para no duplicar el registro.',
+  },
+  {
+    id: 'ultima-verificacion',
+    termino: 'Última verificación',
+    alias: ['última verificación', 'fecha de verificación'],
+    categoria: 'registro',
+    definicion: 'La fecha en que se releyeron todas las fuentes de una ficha sin encontrar cambios. Envejece a la vista.',
+    matiz: 'Solo se actualiza cuando la comprobación automática relee las fuentes con éxito, así que la fecha dice algo en vez de ser un sello uniforme.',
+    enlace: '/fuentes',
+  },
+  {
+    id: 'propuesta',
+    termino: 'Propuesta',
+    alias: ['propuesta', 'propuestas'],
+    categoria: 'registro',
+    definicion: 'Un cambio pendiente de integrar. Si el campo estaba vacío, se aplica. Si tenía otro valor, queda como conflicto y no se sobrescribe nunca.',
+    enlace: '/datos',
+  },
+]
+
+export const POR_ID = new Map(TERMINOS.map((t) => [t.id, t]))
+
+// El mismo término puede aparecer varias veces en una página y cada globo
+// necesita un identificador propio, porque el botón lo invoca por id. Un
+// contador da ids estables entre construcciones; con un número al azar, cada
+// build reescribiría todas las páginas sin haber cambiado nada.
+let instancias = 0
+export const idDeGlobo = (id) => `glosa-${id}-${++instancias}`
+
+/** Los términos de una categoría, en el orden en que están escritos. */
+export const porCategoria = (categoria) => TERMINOS.filter((t) => t.categoria === categoria)
+
+// Índice de alias para el marcado automático. Se ordena de más largo a más
+// corto para que «potencia de acceso» gane a «acceso» y «MW IT» a «MW».
+const INDICE = TERMINOS.flatMap((t) => [t.termino, ...(t.alias ?? [])].map((a) => [a, t.id]))
+  .sort((a, b) => b[0].length - a[0].length)
+
+const escapar = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+
+// Delimitadores por si la palabra va pegada a puntuación. No se puede usar \b:
+// falla con acentos y con «³», y dejaría fuera «hm³» o «prealquilada».
+const ANTES = '(?<![\\p{L}\\p{N}_])'
+const DESPUES = '(?![\\p{L}\\p{N}_])'
+
+const PATRON = new RegExp(
+  `${ANTES}(${INDICE.map(([a]) => escapar(a)).join('|')})${DESPUES}`,
+  'giu',
+)
+
+const POR_ALIAS = new Map(INDICE.map(([a, id]) => [a.toLowerCase(), id]))
+
+/**
+ * Parte un texto en trozos, marcando los términos del glosario que aparecen.
+ * Devuelve `[{ texto }]` y `[{ texto, id }]` para los que hay que glosar.
+ *
+ * Solo marca la primera aparición de cada término en el texto: dos globos
+ * seguidos con la misma explicación no explican el doble, molestan el doble.
+ */
+export function trocear(texto) {
+  const cadena = String(texto ?? '')
+  if (!cadena) return []
+
+  const trozos = []
+  const vistos = new Set()
+  let ultimo = 0
+
+  for (const encaje of cadena.matchAll(PATRON)) {
+    const id = POR_ALIAS.get(encaje[1].toLowerCase())
+    if (!id || vistos.has(id)) continue
+    vistos.add(id)
+    if (encaje.index > ultimo) trozos.push({ texto: cadena.slice(ultimo, encaje.index) })
+    trozos.push({ texto: encaje[1], id })
+    ultimo = encaje.index + encaje[1].length
+  }
+  if (ultimo < cadena.length) trozos.push({ texto: cadena.slice(ultimo) })
+
+  return trozos
+}
+
+// Correspondencia entre los valores del conjunto de datos y su término. Sirve
+// para glosar una etiqueta ya traducida sin repetir el texto en cada plantilla.
+export const GLOSARIO_POTENCIA = {
+  it: 'mw-it',
+  conexion_red: 'potencia-acceso',
+  instalada_total: 'potencia-instalada-edificio',
+  termica_respaldo: 'termica-respaldo',
+  generacion_asociada: 'generacion-asociada',
+  no_especificado: 'mw-sin-tipificar',
+}
+
+export const GLOSARIO_CIRCUITO = {
+  cerrado: 'circuito-cerrado',
+  abierto: 'circuito-abierto',
+  hibrido: 'circuito-hibrido',
+}
+
+export const GLOSARIO_COMPUTO = {
+  gpu: 'gpu',
+  asic_ia: 'asic-ia',
+  cpu_hpc: 'cpu-hpc',
+  qpu: 'qpu',
+}
+
+export const GLOSARIO_VINCULO = {
+  ppa: 'ppa',
+  autoconsumo: 'autoconsumo',
+  mismo_nudo: 'mismo-nudo',
+}
+
+export const GLOSARIO_MODELO = {
+  hyperscale: 'hiperescalar',
+  colocation: 'colocation',
+  mayorista: 'mayorista',
+  edge: 'edge',
+}

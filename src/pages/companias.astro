@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro'
 import companias from '../data/companias.json'
 import { ESTADO_ETIQUETA, ORDEN_ESTADOS, numero } from '../lib/etiquetas.js'
+import Termino from '../components/Termino.astro'
 ---
 
 <Base
@@ -29,7 +30,7 @@ import { ESTADO_ETIQUETA, ORDEN_ESTADOS, numero } from '../lib/etiquetas.js'
             <th>Compañía</th>
             <th class="num">Emplazamientos</th>
             <th>Reparto por estado</th>
-            <th class="num">MW IT sumados</th>
+            <th class="num"><Termino id="mw-it">MW IT</Termino> sumados</th>
             <th class="num">Cobertura</th>
             <th>Comunidades</th>
           </tr>

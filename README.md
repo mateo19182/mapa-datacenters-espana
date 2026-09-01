@@ -54,6 +54,20 @@ publicados, con su procedencia y su fecha de verificación.
 
 `docs/ESQUEMA.md` desarrolla el modelo de datos campo a campo.
 
+## Glosario
+
+Casi todo el vocabulario de este registro es una trampa de unidades: solicitado,
+otorgado y contratado son tres números distintos, y entre MW IT y MW de conexión
+hay casi el doble. `src/lib/glosario.js` reúne los términos con su definición y,
+cuando la hay, con el error frecuente que provocan. Se editan a mano, como los
+YAML: no los genera ningún paso del build.
+
+En el sitio, los términos aparecen subrayados con puntos y se explican al pasar
+el cursor por encima. El componente `Termino` marca uno concreto y `Glosa`
+localiza los que haya en un texto que viene del propio conjunto de datos, donde
+el marcado no se puede escribir a mano. La lista completa se publica en
+`/glosario`.
+
 ## Arquitectura
 
 Deliberadamente simple, y en un solo sentido:
