@@ -1,6 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro'
-import { TESIS_ESTADO, tesisPublicadas, proximasTesis, tesisPendientes } from '../../lib/inversion.js'
+import { TESIS_ESTADO, tesisPublicadas, proximasTesis } from '../../lib/inversion.js'
 
 const relaciones = (empresa) => [
   ...(empresa.operadores ?? []).map((operador) => ({ ...operador, href: `/compania/${operador.slug}` })),
@@ -22,11 +22,6 @@ const relaciones = (empresa) => [
           del registro físico, pero añade cuentas, valoración, estructura de capital y una opinión.
         </p>
       </div>
-      <dl class="resumen-seccion">
-        <div><dt>Publicadas</dt><dd>{tesisPublicadas.length}</dd></div>
-        <div><dt>Siguientes</dt><dd>{proximasTesis.length}</dd></div>
-        <div><dt>En lista</dt><dd>{tesisPendientes.length}</dd></div>
-      </dl>
     </header>
 
     <p class="nota pequeno">
@@ -89,49 +84,6 @@ const relaciones = (empresa) => [
     </section>
     )}
 
-    <section>
-      <div class="seccion-cabecera">
-        <div><span class="numero-seccion">02</span><h2>Segunda ronda</h2></div>
-        <p>Exposiciones válidas, pero menos directas o todavía pequeñas dentro del grupo cotizado.</p>
-      </div>
-      <div class="rejilla pendientes">
-        {tesisPendientes.map((empresa) => (
-          <article class="tarjeta">
-            <div class="tarjeta-cabecera"><h3>{empresa.nombre}</h3><span>{empresa.ticker}</span></div>
-            <p>{empresa.resumen}</p>
-            <p class="pregunta">{empresa.pregunta}</p>
-            <p class="relaciones">
-              {relaciones(empresa).length ? relaciones(empresa).map((relacion, i) => <>{i > 0 && ' · '}<a href={relacion.href}>{relacion.nombre}</a></>) : <span class="silencio">Sin operador propio en la tabla de compañías</span>}
-            </p>
-          </article>
-        ))}
-      </div>
-    </section>
-
-    <section class="universo">
-      <div class="seccion-cabecera">
-        <div><span class="numero-seccion">03</span><h2>Qué no priorizaría</h2></div>
-      </div>
-      <div class="dos-bloques">
-        <div>
-          <h3>Hiperescalares</h3>
-          <p>
-            Amazon, Microsoft y Meta explican la demanda, pero España pesa poco en sus cuentas
-            globales. Son mejores como análisis de contraparte y disciplina de capex que como tesis
-            española independiente.
-          </p>
-        </div>
-        <div>
-          <h3>Proveedores globales</h3>
-          <p>
-            Schneider Electric, Vertiv, Eaton, Legrand y Siemens Energy se benefician del gasto en
-            equipos. El vínculo con España es difícil de aislar. Los incorporaría después de cubrir
-            propietarios, energía y construcción cotizados con activos identificables aquí.
-          </p>
-        </div>
-      </div>
-    </section>
-
     <section class="metodo-inversion">
       <h2>Método de cada tesis</h2>
       <ol>
@@ -150,11 +102,7 @@ const relaciones = (empresa) => [
 
 <style>
   .inversion-indice { padding-top: 1px; }
-  .cabecera-pagina { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3rem; align-items: end; margin-bottom: 1.5rem; }
-  .resumen-seccion { display: grid; grid-template-columns: repeat(3, auto); margin: 0; border: 1px solid var(--borde); background: var(--borde); gap: 1px; }
-  .resumen-seccion div { background: var(--papel); min-width: 6rem; padding: .65rem .8rem; }
-  .resumen-seccion dt { color: var(--tinta-3); font-size: .68rem; text-transform: uppercase; letter-spacing: .05em; }
-  .resumen-seccion dd { margin: .15rem 0 0; font: 600 1.35rem var(--serif); }
+  .cabecera-pagina { margin-bottom: 1.5rem; }
   section { margin-top: 3.2rem; }
   .seccion-cabecera { display: flex; justify-content: space-between; gap: 2rem; align-items: baseline; border-bottom: 1px solid var(--borde-fuerte); margin-bottom: 1rem; }
   .seccion-cabecera > div { display: flex; gap: .8rem; align-items: baseline; }
@@ -177,26 +125,11 @@ const relaciones = (empresa) => [
   .candidatas small { color: var(--tinta-3); }
   .prioridad { font: 600 .82rem var(--mono); color: var(--acento); }
   .fuente-candidata { color: var(--tinta-3); font-size: .7rem; }
-  .pendientes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .tarjeta-cabecera { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; }
-  .tarjeta-cabecera h3 { margin: 0; }
-  .tarjeta-cabecera span { color: var(--tinta-3); font: .68rem var(--mono); }
-  .pendientes .tarjeta > p { font-size: .8rem; }
-  .pregunta { color: var(--tinta-2); font-family: var(--serif); }
-  .relaciones { padding-top: .6rem; border-top: 1px solid var(--borde); margin-bottom: 0; }
-  .dos-bloques { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  .dos-bloques > div { background: var(--papel-2); border: 1px solid var(--borde); padding: 1rem 1.1rem; }
-  .dos-bloques h3 { margin-top: 0; }
-  .dos-bloques p { font-size: .84rem; margin-bottom: 0; }
   .metodo-inversion { max-width: 48rem; margin-bottom: 4rem; }
   .metodo-inversion ol { padding-left: 1.2rem; }
   .metodo-inversion li { margin: .55rem 0; }
   @media (max-width: 760px) {
-    .cabecera-pagina { grid-template-columns: 1fr; gap: 1rem; }
-    .resumen-seccion { width: 100%; }
-    .resumen-seccion div { min-width: 0; }
     .seccion-cabecera { display: block; }
-    .tesis-publicada, .pendientes, .dos-bloques { grid-template-columns: 1fr; }
-    .tesis-publicada { gap: 1rem; }
+    .tesis-publicada { grid-template-columns: 1fr; gap: 1rem; }
   }
 </style>

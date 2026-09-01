@@ -147,4 +147,3 @@ export const exposicionesInversion = [
 
 export const tesisPublicadas = exposicionesInversion.filter((empresa) => empresa.estado === 'publicada')
 export const proximasTesis = exposicionesInversion.filter((empresa) => empresa.estado === 'siguiente')
-export const tesisPendientes = exposicionesInversion.filter((empresa) => empresa.estado === 'pendiente')
