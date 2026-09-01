@@ -1,0 +1,121 @@
+id: reglamento-delegado-2024-1364
+titulo: "Reglamento Delegado (UE) 2024/1364, del régimen común de evaluación de centros de datos"
+titulo_oficial: "Reglamento Delegado (UE) 2024/1364 de la Comisión, de 14 de marzo de 2024, relativo a la primera fase del establecimiento de un régimen de evaluación común de la Unión para centros de datos"
+ambito: europeo
+rango: reglamento_delegado_ue
+estado: en_vigor
+estado_detalle: >-
+  En vigor y de aplicación directa desde el 6 de junio de 2024. Es la «primera fase»: el
+  etiquetado propiamente dicho es un segundo reglamento delegado que la Comisión aún está
+  elaborando y cuya aplicación se prevé para agosto de 2027.
+boletin: DOUE
+referencia: "DOUE-L-2024-80715"
+url_oficial: "https://eur-lex.europa.eu/eli/reg_del/2024/1364/oj"
+fecha_aprobacion: "2024-03-14"
+fecha_publicacion: "2024-05-17"
+fecha_entrada_vigor: "2024-06-06"
+materias: [eficiencia, agua, transparencia]
+resumen: >-
+  Fija qué información e indicadores debe comunicar cada centro de datos de 500 kW de
+  potencia de TI o más a la base de datos europea, y con qué metodología de medición. De
+  su artículo 2 sale la definición de potencia de tecnología de la información que este
+  registro usa.
+por_que_importa: >-
+  Es la fuente de las definiciones. PUE y WUE se calculan según su anexo III, y la clase
+  «A» que exigirá el real decreto español se mide en su escala. También clasifica los
+  centros por tamaño, lo que permite comparar el registro con las estadísticas europeas
+  sin inventar equivalencias.
+obligaciones:
+  - quien: "Operadores de centros de datos notificantes"
+    que: >-
+      Comunicar a la base de datos europea ReportENER la información y los indicadores
+      clave de rendimiento de los anexos I y II, referidos al año natural anterior. En
+      España la comunicación se hace a través del sistema nacional cuando exista.
+    umbral: "≥ 500 kW de potencia de tecnología de la información instalada"
+    plazo: "15 de septiembre de 2024 y, después, cada 15 de mayo"
+    fuentes: [src-eurlex, src-miteco-faq]
+hitos:
+  - fecha: "2024-05-17"
+    hito: "Publicación en el Diario Oficial de la Unión Europea"
+    fuentes: [src-boe-doue]
+  - fecha: "2024-06-06"
+    hito: "Entrada en vigor, a los veinte días de su publicación"
+    fuentes: [src-boe-doue]
+  - fecha: "2024-09-15"
+    hito: "Primer plazo de comunicación, sobre el que la Comisión dio flexibilidad"
+    fuentes: [src-miteco-faq]
+  - fecha: "2027-08-01"
+    previsto: true
+    hito: >-
+      Fecha prevista de aplicación del sistema europeo de etiquetado que desarrollará la
+      segunda fase
+    fuentes: [src-miteco-prensa]
+actores:
+  - nombre: "Comisión Europea"
+    rol: promotor
+    postura: sin_constar
+    resumen: "Dicta el reglamento delegado y elabora la segunda fase, la del etiquetado."
+    fuentes: [src-eurlex]
+  - nombre: "Ministerio para la Transición Ecológica y el Reto Demográfico"
+    rol: competente
+    postura: sin_constar
+    resumen: "Recibiría la comunicación española a través de la Dirección General de Planificación y Coordinación Energética."
+    fuentes: [src-miteco-faq]
+afecta:
+  - tipo: registro
+    ref: null
+    como: >-
+      Aporta la definición de potencia de tecnología de la información y las metodologías
+      de PUE y WUE con las que se leen los datos de las fichas.
+    fuentes: [src-eurlex]
+relacionadas: [directiva-2023-1791, prd-centros-datos-sostenibles]
+incertidumbres:
+  - campo: obligaciones
+    descripcion: >-
+      Lo comunicado se publica de forma agregada por Estado miembro y a nivel de la Unión,
+      no por centro. Que un emplazamiento cumpla esta obligación no significa que sus datos
+      sean consultables uno a uno.
+    fuentes: [src-eurlex]
+ultima_verificacion: "2026-09-01"
+fuentes:
+  - id: src-eurlex
+    url: "https://eur-lex.europa.eu/eli/reg_del/2024/1364/oj"
+    titulo: "Commission Delegated Regulation (EU) 2024/1364 on the first phase of the establishment of a common Union rating scheme for data centres"
+    editor: "EUR-Lex"
+    tipo: oficial
+    fecha_publicacion: "2024-05-17"
+    fecha_consulta: "2026-09-01"
+    cita: >-
+      By 15 September 2024, then by 15 May 2025, and every year thereafter, reporting data
+      centre operators shall communicate to the European database the information and key
+      performance indicators set out in Annex I and Annex II regarding the data centre they
+      operate.
+  - id: src-boe-doue
+    url: "https://www.boe.es/buscar/doc.php?id=DOUE-L-2024-80715"
+    titulo: "Reglamento Delegado (UE) 2024/1364 de la Comisión, de 14 de marzo de 2024"
+    editor: "BOE (referencia DOUE)"
+    tipo: oficial
+    fecha_publicacion: "2024-05-17"
+    fecha_consulta: "2026-09-01"
+    cita: "Fecha de entrada en vigor: 06/06/2024"
+  - id: src-miteco-faq
+    url: "https://www.miteco.gob.es/es/energia/eficiencia/centros-de-datos/preguntas-frecuentes.html"
+    titulo: "Centros de datos: preguntas frecuentes"
+    editor: "MITECO"
+    tipo: oficial
+    fecha_publicacion: null
+    fecha_consulta: "2026-09-01"
+    cita: >-
+      Los operadores de centros de datos con una demanda de potencia eléctrica de los
+      sistemas de tecnologías de la información instalados de 500 kW como mínimo deben
+      comunicar a la base de datos europea ReportENER.
+  - id: src-miteco-prensa
+    url: "https://www.miteco.gob.es/es/prensa/ultimas-noticias/2026/agosto/-el-gobierno-plantea-impulsar-los-centros-de-datos-sostenibles--.html"
+    titulo: "El Gobierno plantea impulsar los centros de datos sostenibles"
+    editor: "MITECO"
+    tipo: oficial
+    fecha_publicacion: "2026-08-27"
+    fecha_consulta: "2026-09-01"
+    cita: >-
+      Dicho etiquetado se incluye en el Reglamento Delegado (UE) 2024/1364, cuya entrada en
+      vigor está prevista para agosto de 2027.

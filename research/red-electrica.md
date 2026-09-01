@@ -433,6 +433,11 @@ Vasco). El detalle nudo a nudo está en `data/red/capacidad.yaml`.
 
 ## 6. Cambios normativos recientes (2024-2026)
 
+Esta cronología es un resumen. Cada una de estas normas tiene ficha propia en
+[la sección de normativa](/normativa), con lo que obliga, en qué fase está y a
+qué parte del registro afecta.
+
+
 Cronología de lo que ha cambiado el terreno de juego, de más antiguo a más reciente:
 
 | Fecha | Norma | Qué cambia |

@@ -1,0 +1,94 @@
+id: cataluna-acuerdo-gov-64-2025
+titulo: "Acuerdo GOV/64/2025: marco estratégico de centros de datos en Cataluña"
+titulo_oficial: "Acuerdo GOV/64/2025, de 18 de marzo, por el que se aprueba el Marco estratégico de impulso de la implantación y el desarrollo de centros de datos en Cataluña"
+ambito: autonomico
+ccaa: [Cataluña]
+rango: acuerdo_gobierno
+estado: en_vigor
+estado_detalle: "Publicado en el DOGC núm. 9375, de 20 de marzo de 2025, con vigencia desde el 9 de abril de 2025."
+boletin: DOGC
+referencia: "GOV/64/2025"
+url_oficial: "https://noticias.juridicas.com/base_datos/CCAA/951617-acuerdo-gov-64-2025-de-18-mar-ca-cataluna-marco-estrategico-de-impulso-de.html"
+fecha_aprobacion: "2025-03-18"
+fecha_publicacion: "2025-03-20"
+fecha_entrada_vigor: "2025-04-09"
+materias: [suelo, energia, soberania_digital]
+resumen: >-
+  Aprueba un marco estratégico con tres ejes —ecosistema digital, territorio y energía— y
+  habilita al Govern a declarar de interés general superior los proyectos que contribuyan a
+  él, con la tramitación urbanística especial de la disposición adicional vigesimosexta de
+  la Ley de urbanismo catalana.
+por_que_importa: >-
+  Es el equivalente catalán de la maquinaria aragonesa de interés autonómico: la vía por la
+  que un centro de datos puede saltarse el planeamiento municipal ordinario mediante un plan
+  director urbanístico de interés general superior.
+obligaciones:
+  - quien: "Govern de la Generalitat"
+    que: >-
+      Declarar de interés general superior los proyectos que contribuyan al marco
+      estratégico, conforme a la disposición adicional vigesimosexta del texto refundido de
+      la Ley de urbanismo, y aprobar disposiciones de facilitación, coordinación y
+      simplificación administrativa.
+    umbral: null
+    plazo: null
+    fuentes: [src-gov64]
+hitos:
+  - fecha: "2025-03-20"
+    hito: "Publicación en el DOGC"
+    fuentes: [src-gov64]
+  - fecha: "2025-04-09"
+    hito: "Entrada en vigor"
+    fuentes: [src-gov64]
+  - fecha: "2026-04-14"
+    hito: "El Govern identifica 26 posibles proyectos de centros de datos"
+    fuentes: [src-expansion-cat]
+actores:
+  - nombre: "Generalitat de Catalunya"
+    rol: promotor
+    postura: favorable
+    resumen: >-
+      Aprueba el marco a propuesta del Departamento de la Presidencia y designa proyectos
+      estratégicos.
+    cita: >-
+      El Gobierno podrá declarar de interés general superior los proyectos que contribuyan al
+      Marco estratégico de impulso de la implantación y el desarrollo de centros de datos en
+      Cataluña, vistas la importancia estratégica y las razones de especial relevancia y
+      repercusión territorial, social y económica.
+    fuentes: [src-gov64]
+afecta:
+  - tipo: region
+    ref: "Cataluña"
+    como: >-
+      Habilita la tramitación urbanística acelerada de los centros de datos catalanes, que en
+      este registro se concentran en el eje Barcelona-Cerdanyola.
+    fuentes: [src-gov64]
+relacionadas: [aragon-decreto-ley-1-2008, prd-centros-datos-sostenibles]
+incertidumbres:
+  - campo: afecta
+    descripcion: >-
+      No consta qué emplazamientos concretos del registro han sido declarados de interés
+      general superior al amparo de este marco. La cifra de 26 proyectos identificados
+      procede de prensa y no de una relación oficial publicada.
+    fuentes: [src-expansion-cat]
+ultima_verificacion: "2026-09-01"
+fuentes:
+  - id: src-gov64
+    url: "https://noticias.juridicas.com/base_datos/CCAA/951617-acuerdo-gov-64-2025-de-18-mar-ca-cataluna-marco-estrategico-de-impulso-de.html"
+    titulo: "Acuerdo GOV/64/2025, de 18 de marzo, por el que se aprueba el Marco estratégico de impulso de la implantación y el desarrollo de centros de datos en Cataluña"
+    editor: "Noticias Jurídicas (texto del DOGC)"
+    tipo: otro
+    fecha_publicacion: "2025-03-20"
+    fecha_consulta: "2026-09-01"
+    cita: >-
+      El Gobierno podrá declarar de interés general superior los proyectos que contribuyan al
+      Marco estratégico de impulso de la implantación y el desarrollo de centros de datos en
+      Cataluña, de acuerdo con lo que establece la disposición adicional vigesimosexta del
+      texto refundido de la Ley de urbanismo.
+  - id: src-expansion-cat
+    url: "https://www.expansion.com/catalunya/2026/04/14/69de99dde5fdea095a8b456e.html"
+    titulo: "El Govern identifica 26 potenciales proyectos de centros de datos"
+    editor: "Expansión"
+    tipo: prensa_general
+    fecha_publicacion: "2026-04-14"
+    fecha_consulta: "2026-09-01"
+    cita: null

@@ -303,6 +303,18 @@ hr {
 .estado-cancelado { color: var(--cancelado); }
 .estado-desconocido { color: var(--desconocido); }
 
+/* Estados de una norma. La escala va de lo que todavía puede cambiar —y por
+   tanto no obliga— a lo que ya obliga: cuanto más abierto el texto, más se
+   parece el color al de un proyecto sin permisos. */
+.estado-norma-en_vigor { color: var(--op); }
+.estado-norma-en_vigor_en_tramitacion { color: var(--parcial); }
+.estado-norma-aprobada_no_aplicable { color: var(--permisos); }
+.estado-norma-audiencia_publica { color: var(--construccion); }
+.estado-norma-en_tramitacion { color: var(--tramitacion); }
+.estado-norma-propuesta { color: var(--anunciado); }
+.estado-norma-derogada,
+.estado-norma-decaida { color: var(--paralizado); }
+
 .confianza-alta { color: var(--op); }
 .confianza-media { color: var(--permisos); }
 .confianza-baja { color: var(--cancelado); }

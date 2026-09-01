@@ -37,6 +37,11 @@ publicados, con su procedencia y su fecha de verificación.
   emplazamiento donde está, diciendo de quién es.
 - Generación renovable y baterías con vínculo documentado a un centro concreto.
 - Trazado de la red de transporte derivado de OpenStreetMap.
+- **La normativa que condiciona todo lo anterior**: normas europeas, estatales y
+  autonómicas con lo que obligan, en qué fase de tramitación están y a qué
+  proyecto, región o nudo del mapa afectan. Un borrador en audiencia pública y
+  una norma en vigor se distinguen en cada listado, porque solo una de las dos
+  obliga.
 - **Capa opcional de centrales de generación**, apagada por defecto: potencia
   instalada por central y, cuando hay instantánea cargada, generación real por
   unidad de ENTSO-E. Son dos magnitudes distintas y viajan en campos distintos.
@@ -78,10 +83,10 @@ data/**.yaml  ──▶  validación  ──▶  SQLite  ──▶  JSON/GeoJSON
                                                    public/datos)       MapLibre)
 ```
 
-La fuente de verdad son ficheros YAML legibles, uno por emplazamiento, pensados
-para revisarse a mano en un *pull request*. Todo lo demás se regenera y no se
-edita: `build/`, `src/data/`, `public/datos/` y `src/contenido/` están fuera del
-control de versiones.
+La fuente de verdad son ficheros YAML legibles —uno por emplazamiento y uno por
+norma— pensados para revisarse a mano en un *pull request*. Todo lo demás se
+regenera y no se edita: `build/`, `src/data/`, `public/datos/` y
+`src/contenido/` están fuera del control de versiones.
 
 El sitio publicado es estático. No consulta ninguna base de datos en ejecución,
 no hace raspado en vivo y no necesita claves de API: la cartografía base es de
@@ -167,6 +172,33 @@ que es donde están las cifras capaces de sostener una ficha. Encontrar la pági
 no cambia ninguna regla: se registra la página, con su URL, su editor y su fecha,
 nunca el resumen que el buscador haga de ella.
 
+## Normativa
+
+`data/normativa/*.yaml`, un fichero por norma, con el mismo trato que un
+emplazamiento: esquema propio, validación, fuentes obligatorias y fecha de
+verificación. La sección contesta dos preguntas y no una tercera:
+
+- **Qué se está moviendo ahora**: estado de tramitación, cronología de hitos y
+  un calendario con las fechas comprometidas que aún no han vencido. No hay
+  ninguna previsión propia en ese calendario.
+- **Qué condiciona del mapa**: cada norma declara en `afecta[]` a qué proyecto,
+  región o nudo alcanza, y ese vínculo se ve desde los dos lados —en la ficha de
+  la norma y en la del emplazamiento.
+
+Cada ficha separa lo que dice la norma (obligaciones con umbral, plazo y cita),
+dónde está (hitos con fecha), quién la empuja y quién alega en contra (actores
+con rol, postura y cita literal) y, aparte y marcado como tal, **la lectura**:
+qué cambia en la práctica. Los hechos llevan fuente; la lectura se firma y se
+puede discutir sin que se caiga ningún dato de la ficha. Vive en
+`research/normativa/<id>.md` y se edita a mano, como los YAML.
+
+`npm run refresh` vigila también las fuentes de las normas, con dos reglas
+propias: una norma con el texto abierto caduca a los 30 días en lugar de a los
+180, y un hito previsto cuya fecha ya ha pasado aparece en la cola de revisión
+para que alguien lo convierta en hecho o lo corrija.
+
+`docs/ESQUEMA.md` desarrolla el modelo campo a campo.
+
 ## Centrales de generación
 
 La capa es opcional y arranca apagada. Combina dos fuentes que responden a
@@ -244,6 +276,7 @@ compañía como los informes que genera la tubería:
 | `auditoria-datos.md` | Verificación independiente de los datos de mayor impacto |
 | `red-electrica.md` | Cómo se reparte el acceso a la red (se publica en el sitio) |
 | `renovables.md` | Contratos de energía vinculados a centros de datos (se publica) |
+| `normativa/<id>.md` | Lectura de una norma: qué cambia en la práctica (se publica en su ficha) |
 | `informe-generacion.md` | Cola de cotejo entre unidades de ENTSO-E y centrales de OSM |
 
 ## Calidad conocida

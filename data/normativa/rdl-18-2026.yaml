@@ -1,0 +1,100 @@
+id: rdl-18-2026
+titulo: "Real Decreto-ley 18/2026, de ajuste del Plan Integral de Respuesta a la Crisis en Oriente Medio"
+titulo_oficial: "Real Decreto-ley 18/2026, de 29 de junio, por el que se adoptan determinadas medidas en el marco del Plan Integral de Respuesta a la Crisis en Oriente Medio"
+ambito: estatal
+rango: real_decreto_ley
+estado: en_vigor
+estado_detalle: "En vigor desde el 1 de julio de 2026 y convalidado por el Congreso el 23 de julio de 2026."
+boletin: BOE
+referencia: "BOE-A-2026-14112"
+url_oficial: "https://www.boe.es/eli/es/rdl/2026/06/29/18/con"
+fecha_aprobacion: "2026-06-29"
+fecha_publicacion: "2026-06-30"
+fecha_entrada_vigor: "2026-07-01"
+materias: [acceso_a_red, energia]
+resumen: >-
+  Retoca el RDL 7/2026 tres meses después de su entrada en vigor: endurece el umbral de
+  impago que hace caducar automáticamente un permiso de acceso —del 10 % anual al 10 %
+  trimestral— y aclara que el plazo de cuatro años para formalizar el contrato de acceso
+  se cuenta desde el 22 de marzo de 2026, no desde que se obtuvo el permiso.
+por_que_importa: >-
+  Afecta a la mecánica por la que un permiso de acceso muere. La aclaración del plazo de
+  cuatro años da aire a los permisos antiguos que arrastra el registro; el cambio a
+  cómputo trimestral acorta el margen de un promotor que deje de pagar la prestación.
+obligaciones:
+  - quien: "Titular de un permiso de acceso de demanda sujeto a la prestación por reserva de capacidad"
+    que: >-
+      Mantenerse al corriente de pago: un impago superior al 10 % de la cuantía trimestral,
+      acumulando lo debido desde el inicio, provoca la caducidad automática del permiso de
+      acceso y conexión y la pérdida del derecho a devolución de lo ya pagado.
+    umbral: "> 10 % de la cuantía de un trimestre natural"
+    plazo: "Trimestral"
+    fuentes: [src-boe-rdl18, src-gap]
+  - quien: "Titular de permisos de demanda anteriores al RDL 7/2026 sin contrato de acceso firmado"
+    que: "Formalizar el contrato técnico de acceso dentro de un plazo de cuatro años."
+    umbral: null
+    plazo: "Cuatro años desde el 22 de marzo de 2026"
+    fuentes: [src-gap, src-oc]
+hitos:
+  - fecha: "2026-06-29"
+    hito: "Aprobado en Consejo de Ministros"
+    fuentes: [src-boe-rdl18]
+  - fecha: "2026-07-01"
+    hito: "Entrada en vigor"
+    fuentes: [src-boe-rdl18]
+  - fecha: "2026-07-23"
+    hito: "El Congreso acuerda su convalidación"
+    fuentes: [src-gap]
+actores:
+  - nombre: "Congreso de los Diputados"
+    rol: competente
+    postura: favorable
+    resumen: "Convalida la norma el 23 de julio de 2026."
+    cita: >-
+      El 23 de julio de 2026 el Congreso de los Diputados ha acordado la convalidación del
+      Real Decreto-ley 18/2026, de 29 de junio, en vigor desde el 1 de julio de 2026.
+    fuentes: [src-gap]
+afecta:
+  - tipo: registro
+    ref: null
+    como: >-
+      Cambia cuándo caduca un permiso de acceso de demanda, que es el dato que separa en
+      este registro un proyecto vivo de uno que solo conserva un anuncio.
+    fuentes: [src-oc]
+relacionadas: [rdl-7-2026, rd-1183-2020]
+ultima_verificacion: "2026-09-01"
+fuentes:
+  - id: src-boe-rdl18
+    url: "https://www.boe.es/eli/es/rdl/2026/06/29/18/con"
+    titulo: "Real Decreto-ley 18/2026, de 29 de junio, por el que se adoptan determinadas medidas en el marco del Plan Integral de Respuesta a la Crisis en Oriente Medio"
+    editor: "BOE"
+    tipo: oficial
+    fecha_publicacion: "2026-06-30"
+    fecha_consulta: "2026-09-01"
+    cita: >-
+      Se procederá a la caducidad automática de dichos permisos cuando el incumplimiento
+      del pago sea, en un trimestre natural, superior al 10 por ciento de la cuantía que se
+      deba abonar en dicho trimestre.
+  - id: src-gap
+    url: "https://ga-p.com/wp-content/uploads/2026/07/RDL_18_2026_Medidas_Sector_electrico.pdf"
+    titulo: "Análisis del Real Decreto-ley 18/2026: medidas en el sector eléctrico"
+    editor: "Gómez-Acebo & Pombo"
+    tipo: otro
+    fecha_publicacion: "2026-07-24"
+    fecha_consulta: "2026-09-01"
+    cita: >-
+      La modificación se refiere al incumplimiento de pago de dicha prestación que supondrá
+      la caducidad automática del permiso de acceso y conexión cuando dicho impago sea
+      superior al 10% en un trimestre natural (anteriormente, el RD-L 7/2026 preveía que el
+      incumplimiento de pago fuese del 10% anual).
+  - id: src-oc
+    url: "https://www.osborneclarke.com/es/insights/el-real-decreto-ley-182026-de-29-de-junio-cambios-en-el-marco-regulatorio-del-sector"
+    titulo: "El Real Decreto-ley 18/2026, de 29 de junio: cambios en el marco regulatorio del sector energético"
+    editor: "Osborne Clarke"
+    tipo: otro
+    fecha_publicacion: "2026-07-02"
+    fecha_consulta: "2026-09-01"
+    cita: >-
+      Proyectos con permisos obtenidos años atrás no ven acortado su plazo por el tiempo ya
+      transcurrido, sino que disponen de cuatro años completos contados desde el 22 de
+      marzo de 2026.

@@ -4,12 +4,20 @@ import { readdirSync, readFileSync, existsSync } from 'node:fs'
 import { join, basename } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import YAML from 'yaml'
-import { zSitio, normalizarSitio, revisarCoherencia } from './schema.mjs'
+import {
+  zSitio,
+  normalizarSitio,
+  revisarCoherencia,
+  zNorma,
+  normalizarNorma,
+  revisarCoherenciaNorma,
+} from './schema.mjs'
 
 export const RAIZ = fileURLToPath(new URL('..', import.meta.url))
 export const DIR_SITIOS = join(RAIZ, 'data/sites')
 export const DIR_RED = join(RAIZ, 'data/red')
 export const DIR_RENOVABLES = join(RAIZ, 'data/renovables')
+export const DIR_NORMATIVA = join(RAIZ, 'data/normativa')
 
 const listarYaml = (dir) =>
   existsSync(dir)
@@ -160,6 +168,62 @@ export function distanciaKm(a, b) {
   return 2 * R * Math.asin(Math.sqrt(h))
 }
 
+/**
+ * Carga data/normativa/*.yaml. Un fichero, una norma, igual que con los
+ * emplazamientos: se revisa a mano en un pull request y no se genera.
+ */
+export function cargarNormativa() {
+  const normas = []
+  const incidencias = []
+
+  for (const ruta of listarYaml(DIR_NORMATIVA)) {
+    const fichero = basename(ruta)
+    let crudo
+    try {
+      crudo = leerYaml(ruta)
+    } catch (e) {
+      incidencias.push({ fichero, nivel: 'error', msg: `YAML ilegible: ${e.message}` })
+      continue
+    }
+    if (!crudo || typeof crudo !== 'object' || Array.isArray(crudo)) {
+      incidencias.push({ fichero, nivel: 'error', msg: 'un fichero = una norma' })
+      continue
+    }
+
+    const res = zNorma.safeParse(normalizarNorma(crudo))
+    if (!res.success) {
+      for (const e of res.error.issues) {
+        incidencias.push({ fichero, nivel: 'error', msg: `${e.path.join('.') || '(raíz)'}: ${e.message}` })
+      }
+      continue
+    }
+    const norma = res.data
+    norma.ccaa = norma.ccaa.map((c) => normalizarCcaa(c))
+    if (norma.id !== fichero.replace(/\.ya?ml$/i, '')) {
+      incidencias.push({ fichero, nivel: 'aviso', msg: `el id «${norma.id}» no coincide con el nombre del fichero` })
+    }
+    for (const p of revisarCoherenciaNorma(norma)) incidencias.push({ fichero, ...p })
+    normas.push(norma)
+  }
+
+  const vistos = new Set()
+  for (const n of normas) {
+    if (vistos.has(n.id)) incidencias.push({ fichero: `${n.id}.yaml`, nivel: 'error', msg: 'id repetido' })
+    vistos.add(n.id)
+  }
+  // `relacionadas` apunta dentro del propio conjunto: si el destino no existe,
+  // la ficha enlazaría a un vacío.
+  for (const n of normas) {
+    for (const rel of n.relacionadas) {
+      if (!vistos.has(rel)) {
+        incidencias.push({ fichero: `${n.id}.yaml`, nivel: 'aviso', msg: `«relacionadas» apunta a la norma inexistente «${rel}»` })
+      }
+    }
+  }
+
+  return { normas, incidencias }
+}
+
 /** Ficheros de red y renovables: listas de objetos, validación ligera. */
 export function cargarListas(dir, etiqueta) {
   const items = []
@@ -234,6 +298,7 @@ export function cargarTodo() {
   const sitios = cargarSitios()
   const red = cargarListas(DIR_RED, 'nodo de red')
   const renovables = cargarListas(DIR_RENOVABLES, 'activo renovable')
+  const normativa = cargarNormativa()
 
   // En data/red conviven tres entidades distintas: los emplazamientos físicos
   // (subestaciones), las actuaciones planificadas y los datos de capacidad de
@@ -262,10 +327,12 @@ export function cargarTodo() {
     actuaciones,
     capacidad,
     renovables: renovables.items,
+    normativa: normativa.normas,
     incidencias: [
       ...sitios.incidencias,
       ...red.incidencias.map((i) => ({ ...i, fichero: `red/${i.fichero}` })),
       ...renovables.incidencias.map((i) => ({ ...i, fichero: `renovables/${i.fichero}` })),
+      ...normativa.incidencias.map((i) => ({ ...i, fichero: `normativa/${i.fichero}` })),
     ],
   }
 }

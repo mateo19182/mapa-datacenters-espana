@@ -1,0 +1,111 @@
+id: rd-1183-2020
+titulo: "Real Decreto 1183/2020, de acceso y conexión a las redes eléctricas"
+titulo_oficial: "Real Decreto 1183/2020, de 29 de diciembre, de acceso y conexión a las redes de transporte y distribución de energía eléctrica"
+ambito: estatal
+rango: real_decreto
+estado: en_vigor
+estado_detalle: >-
+  En vigor y modificado varias veces. El RDL 8/2023 le añadió los concursos de capacidad
+  de demanda (arts. 20 bis a 20 quáter) y el régimen de garantías del art. 23 bis; ese
+  artículo 23 bis quedó derogado el 22 de marzo de 2026 por el RDL 7/2026.
+boletin: BOE
+referencia: "BOE-A-2020-17278"
+url_oficial: "https://www.boe.es/buscar/act.php?id=BOE-A-2020-17278"
+fecha_aprobacion: "2020-12-29"
+fecha_publicacion: "2020-12-30"
+materias: [acceso_a_red]
+resumen: >-
+  El marco general de los dos permisos que hacen falta para enchufar un consumo grande a
+  la red: acceso, que dice si el sistema puede suministrar esa potencia en ese punto, y
+  conexión, que dice si físicamente cabe. Fija la prelación temporal como criterio de
+  reparto y regula los concursos cuando en un nudo no caben todos.
+por_que_importa: >-
+  Es la norma bajo la que se han pedido y otorgado los permisos de acceso de casi todo el
+  registro. Los MW de conexión que figuran en las fichas son los de este procedimiento, y
+  no son ni MW IT ni potencia instalada.
+obligaciones:
+  - quien: "Promotor de una instalación de demanda"
+    que: >-
+      Obtener permiso de acceso y permiso de conexión antes de conectarse. El criterio
+      general de reparto es la prelación temporal desde la admisión a trámite de la
+      solicitud completa.
+    umbral: null
+    plazo: null
+    fuentes: [src-boe-rd1183]
+  - quien: "Gestor de la red de distribución"
+    que: >-
+      Solicitar informe de aceptabilidad al gestor de la red de transporte cuando la
+      petición pueda afectar aguas arriba, y denegar el acceso si ese informe es
+      desfavorable.
+    umbral: null
+    plazo: null
+    fuentes: [src-boe-circular]
+hitos:
+  - fecha: "2020-12-30"
+    hito: "Publicación en el BOE"
+    fuentes: [src-boe-rd1183]
+  - fecha: "2023-12-27"
+    hito: >-
+      El RDL 8/2023 introduce los concursos de capacidad de demanda y el régimen de
+      garantías del artículo 23 bis
+    fuentes: [src-boe-rdl7]
+  - fecha: "2026-03-22"
+    hito: "El RDL 7/2026 deroga el artículo 23 bis y sustituye los avales por la prestación por reserva de capacidad"
+    fuentes: [src-boe-rdl7]
+actores:
+  - nombre: "Red Eléctrica de España"
+    rol: competente
+    postura: sin_constar
+    resumen: "Gestor de la red de transporte: concede acceso y conexión en los nudos de 400 y 220 kV."
+    fuentes: [src-ree-csv]
+  - nombre: "Comisión Nacional de los Mercados y la Competencia"
+    rol: supervisor
+    postura: sin_constar
+    resumen: "Resuelve los conflictos de acceso y fija la metodología mediante circular."
+    fuentes: [src-boe-circular]
+afecta:
+  - tipo: registro
+    ref: null
+    como: >-
+      Define qué significan los MW de conexión que este registro guarda en un campo aparte
+      de los MW IT.
+    fuentes: [src-boe-rd1183]
+relacionadas: [rdl-7-2026, rdl-18-2026, circular-1-2024-cnmc, prd-centros-datos-sostenibles]
+ultima_verificacion: "2026-09-01"
+fuentes:
+  - id: src-boe-rd1183
+    url: "https://www.boe.es/buscar/act.php?id=BOE-A-2020-17278"
+    titulo: "Real Decreto 1183/2020, de 29 de diciembre, de acceso y conexión a las redes de transporte y distribución de energía eléctrica"
+    editor: "BOE"
+    tipo: oficial
+    fecha_publicacion: "2020-12-30"
+    fecha_consulta: "2026-09-01"
+    cita: null
+  - id: src-boe-rdl7
+    url: "https://www.boe.es/buscar/act.php?id=BOE-A-2026-6544"
+    titulo: "Real Decreto-ley 7/2026, de 20 de marzo, por el que se aprueba el Plan Integral de Respuesta a la Crisis en Oriente Medio"
+    editor: "BOE"
+    tipo: oficial
+    fecha_publicacion: "2026-03-21"
+    fecha_consulta: "2026-09-01"
+    cita: >-
+      La implementación de esta medida supone una superación del régimen de garantías
+      inicialmente concebido para los permisos de acceso y conexión de demanda e
+      introducido en el Real Decreto-ley 8/2023. Por ello, por medio de este real
+      decreto-ley se deroga dicho régimen de garantías.
+  - id: src-boe-circular
+    url: "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2024-20760"
+    titulo: "Circular 1/2024, de 27 de septiembre, de la Comisión Nacional de los Mercados y la Competencia"
+    editor: "BOE"
+    tipo: oficial
+    fecha_publicacion: "2024-10-01"
+    fecha_consulta: "2026-09-01"
+    cita: null
+  - id: src-ree-csv
+    url: "https://www.ree.es/sites/default/files/12_CLIENTES/Documentos/2026_08_03_GRT_demanda.csv"
+    titulo: "Capacidad de acceso de demanda en la red de transporte (2026_08_03_GRT_demanda)"
+    editor: "Red Eléctrica de España"
+    tipo: oficial
+    fecha_publicacion: "2026-08-03"
+    fecha_consulta: "2026-08-29"
+    cita: "Fecha de publicación: 3 de agosto 2026 — Dirección General de Operación."

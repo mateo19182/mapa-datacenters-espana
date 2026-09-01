@@ -16,6 +16,7 @@ const descargas = [
   ['/datos/lineas.geojson', 'lineas.geojson', 'Trazado de la red de 220/400 kV derivado de OpenStreetMap (ODbL).'],
   ['/datos/renovables.json', 'renovables.json', 'Generación y almacenamiento con vínculo documentado a centros de datos.'],
   ['/datos/centrales.geojson', 'centrales.geojson', 'Centrales de generación con su potencia instalada, derivadas de OpenStreetMap (ODbL).'],
+  ['/datos/normativa.json', 'normativa.json', 'Normas europeas, estatales y autonómicas con sus obligaciones, hitos, actores y vínculos con el registro.'],
   ['/datos/companias.json', 'companias.json', 'Carteras agregadas por operador.'],
   ['/datos/regiones.json', 'regiones.json', 'Carteras agregadas por comunidad autónoma.'],
   ['/datos/fuentes.json', 'fuentes.json', 'Todas las referencias con los emplazamientos que documentan.'],
@@ -59,6 +60,10 @@ const avisos = parte.filter((l) => l.includes('aviso:')).length
       <div class="cifra">
         <dt>Renovables y BESS</dt>
         <dd>{numero(resumen.activos_renovables)}<small>con vínculo documentado</small></dd>
+      </div>
+      <div class="cifra">
+        <dt>Normas</dt>
+        <dd>{numero(resumen.normas)}<small>{resumen.normas_en_tramitacion} con el texto todavía abierto</small></dd>
       </div>
     </dl>
 

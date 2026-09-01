@@ -1,0 +1,175 @@
+id: aragon-decreto-ley-1-2008
+titulo: "Decreto-ley 1/2008 de Aragón: inversiones de interés autonómico (DIGA y PIGA)"
+titulo_oficial: "Decreto-ley 1/2008, de 30 de octubre, del Gobierno de Aragón, de medidas administrativas urgentes para facilitar la actividad económica en Aragón"
+ambito: autonomico
+ccaa: [Aragón]
+rango: decreto_ley_autonomico
+estado: en_vigor
+estado_detalle: >-
+  En vigor. Sus artículos 6 y 7 bis fueron modificados por la disposición final primera de
+  la Ley 5/2024, de 19 de diciembre.
+boletin: BOA
+referencia: "Decreto-ley 1/2008"
+url_oficial: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1394676100707"
+fecha_aprobacion: "2008-10-30"
+materias: [suelo, medio_ambiente]
+resumen: >-
+  Crea las dos figuras con las que Aragón acelera la implantación de grandes inversiones:
+  la declaración de inversión de interés autonómico (artículo 6) y la declaración de
+  interés autonómico con interés general (artículo 7 bis), que abre la puerta a tramitar
+  un plan o proyecto de interés general de Aragón, el PIGA.
+por_que_importa: >-
+  Es la maquinaria por la que los campus de Amazon y de Microsoft en Aragón se han
+  urbanizado sin pasar por el planeamiento municipal ordinario. Cuando una ficha del
+  registro dice «declarado de interés autonómico», está diciendo que se tramita por aquí.
+obligaciones:
+  - quien: "Gobierno de Aragón"
+    que: >-
+      Declarar como inversiones de interés autonómico los proyectos con especial relevancia
+      para el desarrollo económico, social y territorial de Aragón, previo informe de la
+      Dirección General de Política Económica.
+    umbral: null
+    plazo: null
+    fuentes: [src-orden-pej521]
+  - quien: "Promotor declarado de interés autonómico con interés general"
+    que: >-
+      Presentar el plan o proyecto de interés general de Aragón para su tramitación
+      urbanística y ambiental, asumiendo la condición de promotor definitivo de la
+      actuación.
+    umbral: null
+    plazo: null
+    fuentes: [src-piga-msft]
+hitos:
+  - fecha: "2019-12-27"
+    hito: >-
+      Aprobación inicial del PIGA de Amazon Data Services Spain para tres centros de datos
+      en Huesca, Villanueva de Gállego y El Burgo de Ebro
+    fuentes: [src-piga-aws]
+  - fecha: "2020-07-30"
+    hito: "Aprobación definitiva del PIGA de Amazon"
+    fuentes: [src-piga-aws]
+  - fecha: "2023-12-20"
+    hito: "Declaración de interés autonómico con interés general del campus de Microsoft en La Muela"
+    fuentes: [src-piga-msft]
+  - fecha: "2024-07-03"
+    hito: "Declaración del campus de Microsoft en Villamayor de Gállego"
+    fuentes: [src-piga-msft]
+  - fecha: "2025-02-28"
+    hito: "Declaración del campus de Microsoft en Zaragoza"
+    fuentes: [src-piga-msft]
+  - fecha: "2025-11-14"
+    hito: "Aprobación inicial del PIGA «Región MSFT», que agrupa los tres campus"
+    fuentes: [src-piga-msft]
+  - fecha: "2026-08-29"
+    hito: >-
+      Diez promotores esperan declaración; el Gobierno de Aragón mantiene el calendario pese
+      al real decreto estatal en audiencia pública
+    fuentes: [src-heraldo]
+actores:
+  - nombre: "Gobierno de Aragón"
+    rol: competente
+    postura: favorable
+    resumen: >-
+      Declara las inversiones y tramita los planes. Mantiene el ritmo de declaraciones
+      mientras alega contra el real decreto estatal.
+    cita: >-
+      La DGA ha decidido mantener su calendario administrativo pese a que los exigentes
+      requisitos que va a imponer el Ministerio para la Transición Ecológica ponen en riesgo
+      su viabilidad.
+    fuentes: [src-heraldo]
+  - nombre: "Instituto Aragonés de Gestión Ambiental (INAGA)"
+    rol: competente
+    postura: sin_constar
+    resumen: >-
+      Formula las declaraciones de impacto ambiental y otorga las autorizaciones ambientales
+      integradas de estos proyectos. Sus resoluciones son la fuente primaria de buena parte
+      de las cifras aragonesas del registro.
+    fuentes: [src-piga-aws]
+afecta:
+  - tipo: region
+    ref: "Aragón"
+    como: >-
+      Es la vía por la que se tramitan los grandes campus aragoneses: suelo, urbanización y
+      utilidad pública al margen del planeamiento municipal ordinario.
+    fuentes: [src-piga-msft]
+  - tipo: proyecto
+    ref: microsoft-la-muela-centrovia
+    como: "Declarado inversión de interés autonómico con interés general el 20 de diciembre de 2023."
+    fuentes: [src-piga-msft]
+  - tipo: proyecto
+    ref: microsoft-villamayor-de-gallego
+    como: "Declarado inversión de interés autonómico con interés general el 3 de julio de 2024."
+    fuentes: [src-piga-msft]
+  - tipo: proyecto
+    ref: microsoft-zaragoza-puerto-venecia
+    como: "Declarado inversión de interés autonómico con interés general el 28 de febrero de 2025."
+    fuentes: [src-piga-msft]
+  - tipo: proyecto
+    ref: aws-el-burgo-de-ebro-bde
+    como: "Incluido en el PIGA de Amazon aprobado definitivamente el 30 de julio de 2020."
+    fuentes: [src-piga-aws]
+  - tipo: proyecto
+    ref: aws-villanueva-de-gallego-vdg1
+    como: "Incluido en el PIGA de Amazon aprobado definitivamente el 30 de julio de 2020."
+    fuentes: [src-piga-aws]
+  - tipo: proyecto
+    ref: aws-huesca-plhus
+    como: "Incluido en el PIGA de Amazon, en la Plataforma Logística de Huesca Sur."
+    fuentes: [src-piga-aws]
+relacionadas: [aragon-ley-5-2024, prd-centros-datos-sostenibles]
+incertidumbres:
+  - campo: hitos
+    descripcion: >-
+      Las declaraciones y los PIGA son actos administrativos distintos y con fechas
+      distintas: la declaración de interés autonómico no urbaniza nada por sí sola. Confundir
+      una con la aprobación definitiva del plan adelanta años el calendario real de un
+      proyecto.
+    fuentes: [src-piga-msft]
+ultima_verificacion: "2026-09-01"
+fuentes:
+  - id: src-orden-pej521
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1394676100707"
+    titulo: "ORDEN PEJ/521/2025, de 8 de mayo, sobre declaración de proyecto prioritario con generación renovable asociada"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2025-05-08"
+    fecha_consulta: "2026-09-01"
+    cita: >-
+      Las inversiones de interés autonómico se definen en el artículo 6 del Decreto Ley
+      1/2008, de 30 de octubre, del Gobierno de Aragón, como las declaradas por el Gobierno
+      de Aragón por tener una especial relevancia para el desarrollo económico, social y
+      territorial en Aragón.
+  - id: src-piga-msft
+    url: "https://www.aragon.es/-/piga-microsoft"
+    titulo: "Plan de Interés General de Aragón «Región MSFT»"
+    editor: "Gobierno de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2026-06-14"
+    fecha_consulta: "2026-09-01"
+    cita: >-
+      Se atribuyó a la mercantil Microsoft 7724 Spain, S.L.U. la condición de promotora
+      definitiva de la actuación, así como de los procedimientos de ordenación territorial y
+      urbanísticos que se requieran, en aplicación de lo dispuesto en el artículo 7 bis) del
+      Decreto-ley 1/2008, de 30 de octubre.
+  - id: src-piga-aws
+    url: "https://www.aragon.es/-/proyecto-de-interes-general-de-aragon-sobre-la-implantacion-de-centros-de-datos-en-la-comunidad-autonoma-de-aragon-a-propuesta-de-amazon-data-services-spain"
+    titulo: "Proyecto de Interés General de Aragón para la implantación de centros de datos a propuesta de Amazon Data Services Spain"
+    editor: "Gobierno de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2026-06-09"
+    fecha_consulta: "2026-09-01"
+    cita: >-
+      Orden VMV/684/2020, de 30 de julio, por la que se aprueba de forma definitiva el
+      Proyecto de Interés General de Aragón para la implantación de tres centros de datos en
+      la Comunidad Autónoma de Aragón, promovido por Amazon Data Services Spain, S.L.
+  - id: src-heraldo
+    url: "https://www.heraldo.es/noticias/aragon/2026/08/29/aragon-mantiene-tramitacion-prioritaria-centros-datos-pese-regulacion-estatal-10-promotores-esperan-su-piga-2047955.html"
+    titulo: "Aragón mantiene la tramitación prioritaria de centros de datos pese a la regulación estatal: 10 promotores esperan su PIGA"
+    editor: "Heraldo de Aragón"
+    tipo: prensa_general
+    fecha_publicacion: "2026-08-29"
+    fecha_consulta: "2026-09-01"
+    cita: >-
+      La regulación de los centros de datos que ha anunciado el Gobierno central no frenará
+      las declaraciones y proyectos de interés general de Aragón (DIGA y PIGA) que se
+      encuentran en tramitación.

@@ -868,3 +868,231 @@ export function revisarCoherencia(sitio) {
 
   return problemas
 }
+
+// ---------------------------------------------------------------------------
+// NORMATIVA
+//
+// Una norma no es un emplazamiento y no se le parece: no tiene coordenadas, no
+// tiene potencia y su hecho central no es un número sino una fecha. Lo que sí
+// comparte con el resto del registro es la regla: nada sin fuente, y lo que no
+// consta se queda vacío.
+//
+// Se registran tres cosas distintas que conviene no confundir:
+//   · lo que la norma DICE          → `obligaciones[]`, con su umbral y su plazo
+//   · dónde está la norma AHORA     → `estado` y `hitos[]`
+//   · quién la empuja y quién no    → `actores[]`, con postura y cita
+// ---------------------------------------------------------------------------
+
+export const AMBITOS_NORMA = ['europeo', 'estatal', 'autonomico']
+
+// El rango importa porque determina quién puede cambiarla y con qué facilidad:
+// un proyecto de real decreto se reescribe en una tarde de audiencia pública;
+// una ley, no.
+export const RANGOS_NORMA = [
+  'reglamento_ue',
+  'reglamento_delegado_ue',
+  'directiva_ue',
+  'propuesta_reglamento_ue',
+  'ley',
+  'real_decreto_ley',
+  'real_decreto',
+  'orden_ministerial',
+  'circular',
+  'proyecto_real_decreto',
+  'proyecto_ley',
+  'anteproyecto_ley',
+  'ley_autonomica',
+  'decreto_ley_autonomico',
+  'decreto_autonomico',
+  'acuerdo_gobierno',
+]
+
+// `en_vigor` y `aplicable` no son lo mismo: un reglamento europeo puede estar en
+// vigor y no ser todavía exigible. Y una norma en vigor puede estar además
+// tramitándose como proyecto de ley, que es el caso del RDL 7/2026.
+export const ESTADOS_NORMA = [
+  'en_vigor',
+  'en_vigor_en_tramitacion',
+  'audiencia_publica',
+  'en_tramitacion',
+  'propuesta',
+  'aprobada_no_aplicable',
+  'derogada',
+  'decaida',
+]
+
+export const MATERIAS_NORMA = [
+  'acceso_a_red',
+  'energia',
+  'renovables',
+  'eficiencia',
+  'agua',
+  'suelo',
+  'medio_ambiente',
+  'soberania_digital',
+  'transparencia',
+  'fiscalidad',
+]
+
+// El papel de cada actor en esta norma concreta, no en abstracto: el Gobierno de
+// Aragón es autoridad competente en su territorio y a la vez parte alegante en
+// el real decreto estatal.
+export const ROLES_ACTOR = [
+  'promotor',
+  'competente',
+  'supervisor',
+  'consultado',
+  'alegante',
+  'destinatario',
+]
+
+export const POSTURAS_ACTOR = ['favorable', 'critica', 'contraria', 'neutral', 'sin_constar']
+
+// A qué parte del registro afecta la norma. Es lo que permite ir de una ficha de
+// proyecto a la norma que explica su estado, y al revés.
+export const VINCULOS_NORMA = ['registro', 'proyecto', 'region', 'nudo']
+
+const zHito = z.object({
+  fecha: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'la fecha del hito debe ser AAAA-MM-DD'),
+  // Un hito futuro es una fecha comprometida en un boletín o en un anuncio
+  // oficial, nunca una previsión propia.
+  previsto: z.boolean().default(false),
+  hito: z.string().min(1),
+  fuentes: z.array(z.string()).default([]),
+})
+
+const zObligacion = z.object({
+  quien: z.string().min(1),
+  que: z.string().min(1),
+  // El umbral se copia tal como lo expresa la norma. 1 MW de potencia de acceso
+  // y 500 kW de potencia de TI son dos umbrales distintos que no se traducen
+  // uno al otro, igual que no se convierten los MW del registro.
+  umbral: z.string().nullable().optional(),
+  plazo: z.string().nullable().optional(),
+  fuentes: z.array(z.string()).default([]),
+})
+
+const zActor = z.object({
+  nombre: z.string().min(1),
+  rol: z.enum(ROLES_ACTOR),
+  postura: z.enum(POSTURAS_ACTOR).default('sin_constar'),
+  // Quién habla dentro de la organización, cuando la fuente lo identifica.
+  voz: z.string().nullable().optional(),
+  resumen: z.string().nullable().optional(),
+  cita: z.string().nullable().optional(),
+  fuentes: z.array(z.string()).default([]),
+})
+
+const zVinculo = z.object({
+  tipo: z.enum(VINCULOS_NORMA),
+  // Identificador dentro del registro: id de emplazamiento, nombre de comunidad
+  // o nombre de nudo. Vacío cuando el vínculo es con el registro entero.
+  ref: z.string().nullable().optional(),
+  como: z.string().min(1),
+  fuentes: z.array(z.string()).default([]),
+})
+
+export const zNorma = z.object({
+  id: z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/, 'el id debe ser kebab-case'),
+  // Nombre corto para listas y navegación; `titulo_oficial` es el del boletín.
+  titulo: z.string().min(1),
+  titulo_oficial: z.string().nullable().optional(),
+  ambito: z.enum(AMBITOS_NORMA),
+  ccaa: z.array(z.string()).default([]),
+  rango: z.enum(RANGOS_NORMA),
+  estado: z.enum(ESTADOS_NORMA),
+  estado_detalle: z.string().nullable().optional(),
+  boletin: z.string().nullable().optional(),
+  referencia: z.string().nullable().optional(),
+  url_oficial: z.string().url().nullable().optional(),
+  fecha_aprobacion: z.string().nullable().optional(),
+  fecha_publicacion: z.string().nullable().optional(),
+  fecha_entrada_vigor: z.string().nullable().optional(),
+  materias: z.array(z.enum(MATERIAS_NORMA)).default([]),
+  resumen: z.string().min(1),
+  // Qué cambia esto en el mapa. Es la única frase de la ficha que interpreta, y
+  // por eso va en un campo aparte y no mezclada con lo que dice la norma.
+  por_que_importa: z.string().nullable().optional(),
+  obligaciones: z.array(zObligacion).default([]),
+  hitos: z.array(zHito).default([]),
+  actores: z.array(zActor).default([]),
+  afecta: z.array(zVinculo).default([]),
+  // Otras normas de este mismo registro: la que habilita, la que desarrolla, la
+  // que transpone.
+  relacionadas: z.array(z.string()).default([]),
+  incertidumbres: z.array(zIncertidumbre).default([]),
+  ultima_verificacion: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+  fuentes: z.array(zFuente).min(1, 'toda norma necesita al menos una fuente'),
+})
+
+const lista = (v) => (v == null ? [] : Array.isArray(v) ? v : [v])
+
+/** Igual que `normalizarSitio`: arregla forma, nunca completa hechos. */
+export function normalizarNorma(crudo) {
+  const d = { ...crudo }
+  d.ccaa = lista(d.ccaa)
+  d.materias = lista(d.materias)
+  d.relacionadas = lista(d.relacionadas)
+  for (const campo of ['obligaciones', 'hitos', 'actores', 'afecta', 'incertidumbres', 'fuentes']) {
+    d[campo] = lista(d[campo])
+  }
+  d.hitos = d.hitos.map((h) => ({ ...h, fuentes: lista(h.fuentes) }))
+  d.obligaciones = d.obligaciones.map((o) => ({ ...o, fuentes: lista(o.fuentes) }))
+  d.actores = d.actores.map((a) => ({ ...a, fuentes: lista(a.fuentes) }))
+  d.afecta = d.afecta.map((v) => ({ ...v, fuentes: lista(v.fuentes) }))
+  d.incertidumbres = d.incertidumbres.map((u) => ({ ...u, fuentes: lista(u.fuentes) }))
+  return d
+}
+
+/** Comprobaciones que el esquema no puede hacer solo. */
+export function revisarCoherenciaNorma(norma) {
+  const problemas = []
+  const ids = new Set(norma.fuentes.map((f) => f.id))
+
+  const refs = [
+    ...norma.hitos.map((h, i) => [`hitos[${i}]`, h.fuentes]),
+    ...norma.obligaciones.map((o, i) => [`obligaciones[${i}]`, o.fuentes]),
+    ...norma.actores.map((a, i) => [`actores[${i}]`, a.fuentes]),
+    ...norma.afecta.map((v, i) => [`afecta[${i}]`, v.fuentes]),
+    ...norma.incertidumbres.map((u, i) => [`incertidumbres[${i}]`, u.fuentes]),
+  ]
+  for (const [campo, usadas] of refs) {
+    for (const f of usadas) {
+      if (!ids.has(f)) problemas.push({ nivel: 'error', msg: `${campo} cita la fuente inexistente «${f}»` })
+    }
+  }
+
+  // Una postura atribuida a alguien sin cita literal es un resumen de un
+  // periodista, no una declaración. Se admite, pero se señala.
+  for (const a of norma.actores) {
+    if (a.postura !== 'sin_constar' && !a.cita) {
+      problemas.push({ nivel: 'aviso', msg: `la postura de «${a.nombre}» no tiene cita literal que la sostenga` })
+    }
+    if (!a.fuentes.length) {
+      problemas.push({ nivel: 'aviso', msg: `el actor «${a.nombre}» no cita ninguna fuente` })
+    }
+  }
+
+  // Un proyecto de norma que ya tiene fecha de entrada en vigor está mal
+  // clasificado, o la fecha es una previsión que no debería estar ahí.
+  const enProyecto = ['audiencia_publica', 'en_tramitacion', 'propuesta']
+  if (enProyecto.includes(norma.estado) && norma.fecha_entrada_vigor) {
+    problemas.push({ nivel: 'aviso', msg: 'está en tramitación pero declara fecha de entrada en vigor' })
+  }
+  if (norma.estado.startsWith('en_vigor') && !norma.fecha_publicacion) {
+    problemas.push({ nivel: 'aviso', msg: 'consta en vigor pero no tiene fecha de publicación' })
+  }
+  if (norma.ambito === 'autonomico' && norma.ccaa.length === 0) {
+    problemas.push({ nivel: 'error', msg: 'una norma autonómica tiene que decir de qué comunidad es' })
+  }
+  if (norma.ambito !== 'autonomico' && norma.ccaa.length > 0) {
+    problemas.push({ nivel: 'aviso', msg: 'declara comunidad autónoma sin ser una norma autonómica' })
+  }
+
+  const huerfanas = norma.fuentes.filter((f) => !refs.some(([, l]) => l.includes(f.id)))
+  for (const f of huerfanas) {
+    problemas.push({ nivel: 'aviso', msg: `la fuente «${f.id}» no respalda ningún campo concreto` })
+  }
+
+  return problemas
+}

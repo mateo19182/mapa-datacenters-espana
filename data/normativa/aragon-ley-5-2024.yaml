@@ -1,0 +1,111 @@
+id: aragon-ley-5-2024
+titulo: "Ley 5/2024 de Aragón, de comunidades energéticas y autoconsumo industrial"
+titulo_oficial: "Ley 5/2024, de 19 de diciembre, de medidas de fomento de comunidades energéticas y autoconsumo industrial en Aragón"
+ambito: autonomico
+ccaa: [Aragón]
+rango: ley_autonomica
+estado: en_vigor
+boletin: BOA
+referencia: "BOE-A-2025-1392"
+url_oficial: "https://www.boe.es/buscar/act.php?id=BOE-A-2025-1392"
+fecha_aprobacion: "2024-12-19"
+fecha_publicacion: "2024-12-31"
+materias: [renovables, suelo, energia]
+resumen: >-
+  Crea la figura del proyecto o inversión prioritario con generación renovable asociada:
+  una modalidad especial de inversión de interés autonómico para actuaciones que incorporen
+  plantas de generación renovable radicadas en Aragón y concebidas para suministrarles
+  energía. Modifica además los artículos 6 y 7 bis del Decreto-ley 1/2008.
+por_que_importa: >-
+  Es la vía por la que un centro de datos aragonés obtiene tramitación prioritaria a cambio
+  de traerse generación renovable pegada al proyecto. Anticipa, en clave autonómica y como
+  incentivo, la misma idea de adicionalidad que el borrador estatal impone como requisito.
+obligaciones:
+  - quien: "Promotor que busque la declaración de proyecto prioritario"
+    que: >-
+      Incorporar, como uno de sus elementos o de la planificación territorial o urbanística,
+      plantas de generación renovable radicadas en Aragón y concebidas para suministrar
+      energía al proyecto.
+    umbral: null
+    plazo: null
+    fuentes: [src-boe-ley5]
+  - quien: "Gobierno de Aragón"
+    que: >-
+      Impulsar un procedimiento participativo para aprobar un plan energético de Aragón que
+      sustituya al Plan Energético 2013-2020 e incorpore la ordenación territorial de las
+      renovables.
+    umbral: null
+    plazo: "Sin plazo fijado"
+    fuentes: [src-boe-ley5]
+hitos:
+  - fecha: "2024-12-19"
+    hito: "Aprobación por las Cortes de Aragón"
+    fuentes: [src-boe-ley5]
+  - fecha: "2025-05-08"
+    hito: >-
+      Primera aplicación documentada de la figura de proyecto prioritario con generación
+      renovable asociada, sobre el proyecto «Royal» de ICT Ibérica
+    fuentes: [src-orden-pej521]
+actores:
+  - nombre: "Cortes de Aragón"
+    rol: promotor
+    postura: favorable
+    resumen: >-
+      Aprueban la ley recogiendo recomendaciones adoptadas por unanimidad de los grupos en
+      su comisión de investigación sobre renovables.
+    cita: >-
+      En coherencia con estas recomendaciones aprobadas por unanimidad de los grupos
+      parlamentarios en el seno de la Comisión de investigación de las Cortes de Aragón, la
+      ley encomienda al Gobierno de Aragón el impulso de un plan energético de Aragón.
+    fuentes: [src-boe-ley5]
+  - nombre: "Dirección General de Energía y Minas del Gobierno de Aragón"
+    rol: competente
+    postura: sin_constar
+    resumen: "Informa sobre si procede declarar prioritario un proyecto conforme a los artículos 40 y siguientes."
+    fuentes: [src-orden-pej521]
+afecta:
+  - tipo: region
+    ref: "Aragón"
+    como: >-
+      Vincula la tramitación prioritaria de una inversión a que traiga generación renovable
+      propia, que es la forma autonómica del debate sobre adicionalidad.
+    fuentes: [src-boe-ley5]
+  - tipo: proyecto
+    ref: forestalia-magallon-dcm-data
+    como: >-
+      La ficha registra que se tramita como proyecto prioritario con generación renovable
+      asociada al amparo de esta ley.
+    fuentes: [src-boe-ley5]
+relacionadas: [aragon-decreto-ley-1-2008, prd-centros-datos-sostenibles]
+incertidumbres:
+  - campo: afecta
+    descripcion: >-
+      La ley no menciona los centros de datos: es una norma de renovables y autoconsumo
+      industrial que resulta aplicable a cualquier inversión productiva. Su uso para
+      tramitar centros de datos es un efecto, no un objeto declarado.
+    fuentes: [src-boe-ley5]
+ultima_verificacion: "2026-09-01"
+fuentes:
+  - id: src-boe-ley5
+    url: "https://www.boe.es/buscar/act.php?id=BOE-A-2025-1392"
+    titulo: "Ley 5/2024, de 19 de diciembre, de medidas de fomento de comunidades energéticas y autoconsumo industrial en Aragón"
+    editor: "BOE"
+    tipo: oficial
+    fecha_publicacion: "2024-12-31"
+    fecha_consulta: "2026-09-01"
+    cita: >-
+      El capítulo quinto incluye la regulación de los proyectos e inversiones prioritarios
+      con generación renovable asociada, configurados como una modalidad especial de planes y
+      proyectos de interés general de Aragón declarados inversión de interés autonómico.
+  - id: src-orden-pej521
+    url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1394676100707"
+    titulo: "ORDEN PEJ/521/2025, de 8 de mayo, sobre declaración de proyecto prioritario con generación renovable asociada"
+    editor: "Boletín Oficial de Aragón"
+    tipo: oficial
+    fecha_publicacion: "2025-05-08"
+    fecha_consulta: "2026-09-01"
+    cita: >-
+      Son proyectos o inversiones con generación renovable asociada aquellos que incorporen,
+      como uno de sus elementos o de la planificación territorial o urbanística, plantas de
+      generación asociadas radicadas en el territorio de la Comunidad Autónoma de Aragón y
+      concebidas para suministrarles energía.

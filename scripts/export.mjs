@@ -269,6 +269,7 @@ const red = q('SELECT datos FROM red_nodos').map((r) => JSON.parse(r.datos))
 const actuaciones = q('SELECT datos FROM red_actuaciones').map((r) => JSON.parse(r.datos))
 const capacidad = q('SELECT datos FROM red_capacidad').map((r) => JSON.parse(r.datos))
 const renovables = q('SELECT datos FROM renovables').map((r) => JSON.parse(r.datos))
+const normativa = q('SELECT datos FROM normativa').map((r) => JSON.parse(r.datos))
 
 const geojson = (items, propiedades) => ({
   type: 'FeatureCollection',
@@ -464,6 +465,10 @@ const resumen = {
   actuaciones_red: actuaciones.length,
   nudos_con_capacidad: capacidad.length,
   activos_renovables: renovables.length,
+  normas: normativa.length,
+  normas_en_tramitacion: normativa.filter((n) =>
+    ['audiencia_publica', 'en_tramitacion', 'propuesta', 'en_vigor_en_tramitacion'].includes(n.estado),
+  ).length,
   centrales_generacion: centrales.features.length,
   centrales_con_potencia: centrales.features.filter((f) => f.properties.potencia_mw != null).length,
   centrales_con_generacion: conGeneracion,
@@ -490,6 +495,7 @@ escribir('red.json', red)
 escribir('actuaciones.json', actuaciones)
 escribir('capacidad.json', capacidad)
 escribir('renovables.json', renovables)
+escribir('normativa.json', normativa)
 escribir('fuentes.json', [...todasLasFuentes.values()].sort((a, b) => b.usos.length - a.usos.length))
 escribir('resumen.json', resumen)
 escribir('pendientes.json', pendientes)
@@ -558,6 +564,25 @@ for (const doc of ['red-electrica', 'renovables', 'cobertura']) {
   )
 }
 
+// Las lecturas de cada norma —lo que cambia en la práctica, que es lo único
+// interpretado de la sección— se escriben a mano en research/normativa/ y se
+// copian junto al resto del contenido. Una norma sin lectura se publica igual:
+// la ficha muestra los hechos y calla.
+const CONTENIDO_NORMATIVA = join(CONTENIDO, 'normativa')
+mkdirSync(CONTENIDO_NORMATIVA, { recursive: true })
+const ORIGEN_NORMATIVA = join(RAIZ, 'research/normativa')
+let lecturas = 0
+for (const n of normativa) {
+  const origen = join(ORIGEN_NORMATIVA, `${n.id}.md`)
+  if (!existsSync(origen)) continue
+  copyFileSync(origen, join(CONTENIDO_NORMATIVA, `${n.id}.md`))
+  lecturas++
+}
+// Astro necesita al menos un fichero para que el glob de la ficha compile.
+if (!lecturas) {
+  writeFileSync(join(CONTENIDO_NORMATIVA, '_vacio.md'), 'Sin lecturas.\n', 'utf8')
+}
+
 // El informe de validación viaja al sitio para poder publicarlo tal cual.
 const informe = join(RAIZ, 'research/informe-validacion.md')
 writeFileSync(
@@ -569,6 +594,7 @@ writeFileSync(
 console.log(
   `Exportado a src/data: ${sitios.length} emplazamientos, ${companias.length} compañías, ` +
     `${regiones.length} regiones, ${red.length} nodos de red, ${renovables.length} renovables, ` +
+    `${normativa.length} normas (${lecturas} con lectura), ` +
     `${todasLasFuentes.size} fuentes distintas`,
 )
 db.close()

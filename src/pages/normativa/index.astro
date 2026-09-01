@@ -1,0 +1,235 @@
+---
+import Base from '../../layouts/Base.astro'
+import normativa from '../../data/normativa.json'
+import { fechaLegible } from '../../lib/etiquetas.js'
+import {
+  AMBITO_ETIQUETA,
+  RANGO_ETIQUETA,
+  ESTADO_NORMA_ETIQUETA,
+  ESTADO_NORMA_DESCRIPCION,
+  MATERIA_ETIQUETA,
+  ordenarNormas,
+  proximoHito,
+} from '../../lib/normativa.js'
+import Glosa from '../../components/Glosa.astro'
+
+const hoy = new Date().toISOString().slice(0, 10)
+const normas = ordenarNormas(normativa)
+
+// Lo que se mueve ahora: todo lo que no es un texto cerrado y quieto.
+const ABIERTOS = ['audiencia_publica', 'en_tramitacion', 'propuesta', 'en_vigor_en_tramitacion']
+const enMovimiento = normas.filter((n) => ABIERTOS.includes(n.estado))
+const cerradas = normas.filter((n) => !ABIERTOS.includes(n.estado))
+
+// Calendario: todo hito con fecha futura de cualquier norma, junto.
+const calendario = normas
+  .flatMap((n) => (n.hitos ?? []).filter((h) => h.fecha >= hoy).map((h) => ({ ...h, norma: n })))
+  .sort((a, b) => a.fecha.localeCompare(b.fecha))
+
+const porAmbito = ['estatal', 'autonomico', 'europeo'].map((a) => ({
+  ambito: a,
+  normas: normas.filter((n) => n.ambito === a),
+}))
+
+const actoresDistintos = new Set(normas.flatMap((n) => (n.actores ?? []).map((a) => a.nombre)))
+const conVinculo = normas.filter((n) => (n.afecta ?? []).length > 0)
+---
+
+<Base
+  titulo="Normativa"
+  descripcion="Registro de la normativa europea, estatal y autonómica que condiciona los centros de datos en España: qué obliga, en qué fase está y a qué parte del mapa afecta."
+>
+  <div class="contenedor">
+    <h1>Normativa</h1>
+    <p class="sumario">
+      Qué norma decide qué en el despliegue de centros de datos, en qué fase está hoy y a qué
+      parte de este mapa afecta. Se registran normas europeas, estatales y autonómicas: lo que
+      dicen, con su cita; en qué punto de su tramitación están, con la fecha; y quién las
+      empuja y quién alega en contra, con la cita de cada uno.
+    </p>
+
+    <dl class="cifras">
+      <div class="cifra">
+        <dt>Normas registradas</dt>
+        <dd>{normas.length}</dd>
+      </div>
+      <div class="cifra">
+        <dt>Con el texto abierto</dt>
+        <dd>{enMovimiento.length}<small>en audiencia, tramitación o propuesta</small></dd>
+      </div>
+      <div class="cifra">
+        <dt>Fechas por delante</dt>
+        <dd>{calendario.length}<small>hitos comprometidos aún no vencidos</small></dd>
+      </div>
+      <div class="cifra">
+        <dt>Actores citados</dt>
+        <dd>{actoresDistintos.size}<small>con rol y postura documentada</small></dd>
+      </div>
+      <div class="cifra">
+        <dt>Con vínculo al mapa</dt>
+        <dd>{conVinculo.length} <small>de {normas.length} enlazan con un proyecto, región o nudo</small></dd>
+      </div>
+    </dl>
+
+    <p class="nota">
+      <strong>Una norma en audiencia pública no obliga a nadie.</strong> Esta sección distingue
+      cuatro cosas que se confunden a diario: un borrador sometido a alegaciones, un texto
+      aprobado que aún no es exigible, una norma en vigor y una norma en vigor cuyo articulado
+      sigue abierto en las Cortes. El estado de cada ficha dice en cuál de las cuatro está.
+    </p>
+
+    <h2>Lo que se está moviendo</h2>
+    <p class="pequeno silencio">
+      Normas cuyo texto todavía puede cambiar. Ordenadas por lo que queda más cerca de cerrarse.
+    </p>
+
+    <div class="rejilla">
+      {enMovimiento.map((n) => {
+        const prox = proximoHito(n, hoy)
+        return (
+          <article class="tarjeta norma">
+            <p class="cabecera-norma">
+              <span class={`etiqueta estado-norma-${n.estado}`} title={ESTADO_NORMA_DESCRIPCION[n.estado]}>
+                <span class="punto" aria-hidden="true"></span>{ESTADO_NORMA_ETIQUETA[n.estado]}
+              </span>
+              <span class="silencio pequeno">
+                {AMBITO_ETIQUETA[n.ambito]}{n.ccaa.length > 0 && ` · ${n.ccaa.join(', ')}`}
+              </span>
+            </p>
+            <h3><a href={`/normativa/${n.id}`}>{n.titulo}</a></h3>
+            <p class="pequeno"><Glosa texto={n.resumen} /></p>
+            {prox && (
+              <p class="pequeno proximo">
+                <strong>{fechaLegible(prox.fecha)}</strong> · {prox.hito}
+              </p>
+            )}
+          </article>
+        )
+      })}
+    </div>
+
+    {calendario.length > 0 && (
+      <>
+        <h2>Calendario</h2>
+        <p class="pequeno silencio">
+          Fechas comprometidas en un boletín o en un anuncio oficial. No hay ninguna previsión
+          propia en esta tabla: lo que no tiene fecha publicada no aparece.
+        </p>
+        <div class="tabla-envoltorio">
+          <table>
+            <thead>
+              <tr><th>Fecha</th><th>Qué ocurre</th><th>Norma</th></tr>
+            </thead>
+            <tbody>
+              {calendario.map((h) => (
+                <tr>
+                  <td><strong>{fechaLegible(h.fecha)}</strong></td>
+                  <td>{h.hito}</td>
+                  <td><a href={`/normativa/${h.norma.id}`}>{h.norma.titulo}</a></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </>
+    )}
+
+    <h2>Todas las normas</h2>
+    {porAmbito.map(({ ambito, normas: lista }) => lista.length > 0 && (
+      <>
+        <h3>{AMBITO_ETIQUETA[ambito]}</h3>
+        <div class="tabla-envoltorio">
+          <table>
+            <thead>
+              <tr><th>Norma</th><th>Rango</th><th>Estado</th><th>Materias</th><th>Verificada</th></tr>
+            </thead>
+            <tbody>
+              {lista.map((n) => (
+                <tr>
+                  <td data-etiqueta="Norma">
+                    <a href={`/normativa/${n.id}`}>{n.titulo}</a>
+                    {n.ccaa.length > 0 && <><br /><span class="pequeno silencio">{n.ccaa.join(', ')}</span></>}
+                  </td>
+                  <td data-etiqueta="Rango" class="pequeno">{RANGO_ETIQUETA[n.rango] ?? n.rango}</td>
+                  <td data-etiqueta="Estado">
+                    <span class={`etiqueta estado-norma-${n.estado}`} title={ESTADO_NORMA_DESCRIPCION[n.estado]}>
+                      <span class="punto" aria-hidden="true"></span>{ESTADO_NORMA_ETIQUETA[n.estado]}
+                    </span>
+                  </td>
+                  <td data-etiqueta="Materias" class="pequeno silencio">
+                    {n.materias.map((m) => MATERIA_ETIQUETA[m] ?? m).join(' · ') || '—'}
+                  </td>
+                  <td data-etiqueta="Verificada" class="pequeno silencio">{fechaLegible(n.ultima_verificacion)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </>
+    ))}
+
+    <h2>Qué no cubre esta sección</h2>
+    <ul class="pequeno">
+      <li>
+        <strong>La normativa municipal.</strong> Ordenanzas, licencias de actividad y
+        planeamiento general quedan fuera: son cientos de expedientes y se documentan, cuando
+        constan, en la ficha del emplazamiento que les afecta.
+      </li>
+      <li>
+        <strong>Las resoluciones singulares.</strong> Una declaración de impacto ambiental o la
+        resolución de un concurso de capacidad aplican una norma a un proyecto concreto; viven
+        en la ficha de ese proyecto, no aquí.
+      </li>
+      <li>
+        <strong>El pronóstico.</strong> No se dice qué va a aprobarse ni cuándo. Solo se
+        registran las fechas que alguien con competencia para fijarlas ya ha publicado.
+      </li>
+    </ul>
+  </div>
+</Base>
+
+<style>
+  h2 {
+    margin-top: 2.75rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--borde);
+  }
+
+  h3 {
+    font-size: 1rem;
+    margin-top: 1.6rem;
+  }
+
+  .rejilla {
+    margin: 1.25rem 0 0;
+    align-items: start;
+  }
+
+  .norma h3 {
+    margin: 0.5rem 0 0.4rem;
+    font-size: 1rem;
+    line-height: 1.35;
+  }
+
+  .norma p {
+    margin: 0;
+  }
+
+  .cabecera-norma {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .proximo {
+    margin-top: 0.6rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--borde);
+    color: var(--tinta-2);
+  }
+
+  ul.pequeno li {
+    margin-bottom: 0.5em;
+  }
+</style>

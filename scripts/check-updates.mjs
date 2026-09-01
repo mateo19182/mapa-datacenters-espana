@@ -13,7 +13,7 @@
 import { createHash } from 'node:crypto'
 import { readFileSync, writeFileSync, existsSync } from 'node:fs'
 import { join } from 'node:path'
-import { cargarTodo, RAIZ, DIR_SITIOS } from './load.mjs'
+import { cargarTodo, RAIZ, DIR_SITIOS, DIR_NORMATIVA } from './load.mjs'
 
 const args = process.argv.slice(2)
 const opcion = (nombre, porDefecto) => {
@@ -35,7 +35,7 @@ const huellas = existsSync(RUTA_HUELLAS) ? JSON.parse(readFileSync(RUTA_HUELLAS,
 const hoy = new Date().toISOString().slice(0, 10)
 const diasDesde = (iso) => Math.floor((Date.parse(hoy) - Date.parse(iso)) / 86400000)
 
-const { sitios, red, renovables } = cargarTodo()
+const { sitios, red, renovables, normativa } = cargarTodo()
 
 // --- inventario de URLs a vigilar -------------------------------------------
 
@@ -50,6 +50,10 @@ for (const s of sitios) for (const f of s.fuentes) anotar(f.url, s.id)
 for (const n of [...red, ...renovables]) {
   for (const f of n.fuentes ?? []) anotar(typeof f === 'string' ? f : f.url, n.id)
 }
+// Las fuentes de una norma cambian con la norma: un texto que pasa de borrador a
+// BOE cambia de URL y de contenido. Vigilarlas es la mitad de lo que hace la
+// sección de normativa.
+for (const n of normativa) for (const f of n.fuentes) anotar(f.url, n.id)
 
 // --- caducidad ---------------------------------------------------------------
 
@@ -57,6 +61,30 @@ const caducados = sitios
   .map((s) => ({ id: s.id, nombre: s.nombre, dias: diasDesde(s.ultima_verificacion), confianza: s.confianza }))
   .filter((s) => s.dias >= DIAS_CADUCIDAD)
   .sort((a, b) => b.dias - a.dias)
+
+// Una norma en tramitación envejece mucho más deprisa que una en vigor: entre
+// que sale a audiencia y se aprueba pueden pasar semanas, y la ficha se queda
+// describiendo un borrador que ya no existe.
+const ABIERTAS = ['audiencia_publica', 'en_tramitacion', 'propuesta', 'en_vigor_en_tramitacion']
+const DIAS_CADUCIDAD_NORMA_ABIERTA = 30
+const normasCaducadas = normativa
+  .map((n) => ({
+    id: n.id,
+    titulo: n.titulo,
+    estado: n.estado,
+    abierta: ABIERTAS.includes(n.estado),
+    dias: diasDesde(n.ultima_verificacion),
+  }))
+  .filter((n) => n.dias >= (n.abierta ? DIAS_CADUCIDAD_NORMA_ABIERTA : DIAS_CADUCIDAD))
+  .sort((a, b) => b.dias - a.dias)
+
+// Hitos futuros que ya han vencido: la ficha prometía una fecha y esa fecha ha
+// pasado sin que nadie haya vuelto a mirarla.
+const hitosVencidos = normativa.flatMap((n) =>
+  (n.hitos ?? [])
+    .filter((h) => h.previsto && h.fecha < hoy)
+    .map((h) => ({ id: n.id, titulo: n.titulo, fecha: h.fecha, hito: h.hito })),
+).sort((a, b) => a.fecha.localeCompare(b.fecha))
 
 // --- comprobación de fuentes -------------------------------------------------
 
@@ -186,11 +214,28 @@ if (SELLAR && !SOLO_CADUCADOS) {
       selladas.push(s.id)
     }
   }
+
+  // Las normas se sellan igual, y con la misma condición: todas sus fuentes
+  // releídas hoy y ninguna cambiada.
+  for (const n of normativa) {
+    const suyas = n.fuentes.map((f) => f.url)
+    if (!suyas.length || !suyas.every((u) => estadoUrl.get(u) === 'ok')) continue
+    if (suyas.some((u) => cambiadaUrl.has(u))) continue
+    if (n.ultima_verificacion === hoy) continue
+
+    const ruta = join(DIR_NORMATIVA, `${n.id}.yaml`)
+    const texto = readFileSync(ruta, 'utf8')
+    const nuevo = texto.replace(/^ultima_verificacion:.*$/m, `ultima_verificacion: "${hoy}"`)
+    if (nuevo !== texto) {
+      writeFileSync(ruta, nuevo, 'utf8')
+      selladas.push(n.id)
+    }
+  }
 }
 
 // --- informe -----------------------------------------------------------------
 
-const nombreDe = new Map(sitios.map((s) => [s.id, s.nombre]))
+const nombreDe = new Map([...sitios.map((s) => [s.id, s.nombre]), ...normativa.map((n) => [n.id, n.titulo])])
 const referidos = (ids) => ids.map((i) => nombreDe.get(i) ?? i).join(', ')
 
 // Un cambio pequeño suele ser publicidad o un contador; uno grande, contenido.
@@ -206,6 +251,8 @@ l.push(`- Enlaces rotos: **${rotas.length}**`)
 l.push(`- Bloqueadas a la comprobación automática: **${bloqueadas.length}** (siguen abriéndose en un navegador)`)
 l.push(`- Vistas por primera vez: **${nuevas.length}**`)
 l.push(`- Fichas sin verificar desde hace ${DIAS_CADUCIDAD} días o más: **${caducados.length}**`)
+l.push(`- Normas sin verificar en plazo: **${normasCaducadas.length}** de ${normativa.length}`)
+l.push(`- Hitos previstos ya vencidos: **${hitosVencidos.length}**`)
 if (SELLAR) {
   l.push(`- Fichas con fecha de verificación actualizada hoy: **${selladas.length}**`)
   l.push('  (todas sus fuentes se releyeron con éxito y ninguna había cambiado)')
@@ -216,7 +263,7 @@ if (cambiadas.length) {
   l.push('## Fuentes cuyo contenido ha cambiado', '')
   l.push('Revisar si el cambio afecta a algún dato registrado. Un cambio de pocos caracteres')
   l.push('suele ser un elemento dinámico de la página, no información nueva.', '')
-  l.push('| Fuente | Emplazamientos | Variación | Última huella |')
+  l.push('| Fuente | Registros que la citan | Variación | Última huella |')
   l.push('|---|---|---:|---|')
   for (const c of cambiadas.sort((a, b) => Math.abs(b.delta) - Math.abs(a.delta))) {
     const marca = relevante(c) ? '**' : ''
@@ -225,11 +272,30 @@ if (cambiadas.length) {
   l.push('')
 }
 
+if (hitosVencidos.length) {
+  l.push('## Hitos previstos que ya han vencido', '')
+  l.push('La ficha anunciaba una fecha y esa fecha ha pasado. Hay que comprobar qué ocurrió y')
+  l.push('convertir la previsión en un hecho, o corregirla.', '')
+  l.push('| Fecha | Qué debía ocurrir | Norma |')
+  l.push('|---|---|---|')
+  for (const h of hitosVencidos) l.push(`| ${h.fecha} | ${h.hito} | ${h.titulo} |`)
+  l.push('')
+}
+
+if (normasCaducadas.length) {
+  l.push('## Normas sin verificar', '')
+  l.push(`Las normas con el texto abierto caducan a los ${DIAS_CADUCIDAD_NORMA_ABIERTA} días; el resto, a los ${DIAS_CADUCIDAD}.`, '')
+  l.push('| Norma | Estado | Días |')
+  l.push('|---|---|---:|')
+  for (const n of normasCaducadas) l.push(`| ${n.titulo} | ${n.estado}${n.abierta ? ' (abierta)' : ''} | ${n.dias} |`)
+  l.push('')
+}
+
 if (rotas.length) {
   l.push('## Enlaces rotos', '')
   l.push('Un enlace roto no invalida el dato, pero sí su verificabilidad. Buscar copia en archivo')
   l.push('web o sustituir por una fuente equivalente antes de dar el dato por bueno.', '')
-  l.push('| Fuente | Emplazamientos | Motivo |')
+  l.push('| Fuente | Registros que la citan | Motivo |')
   l.push('|---|---|---|')
   for (const r of rotas) l.push(`| ${r.url} | ${referidos(r.quien)} | ${r.motivo} |`)
   l.push('')
@@ -240,7 +306,7 @@ if (bloqueadas.length) {
   l.push('Devuelven 403, 429 o agotan el tiempo ante un cliente automatizado, normalmente por')
   l.push('protección antibot. **No son enlaces rotos**: se abren con normalidad en un navegador.')
   l.push('No hay nada que corregir; se listan para que no se confundan con los rotos.', '')
-  l.push('| Fuente | Emplazamientos | Respuesta |')
+  l.push('| Fuente | Registros que la citan | Respuesta |')
   l.push('|---|---|---|')
   for (const r of bloqueadas) l.push(`| ${r.url} | ${referidos(r.quien)} | ${r.motivo} |`)
   l.push('')

@@ -370,3 +370,79 @@ líneas de 220/400 kV se cachea en `data/red/lineas.geojson` desde OpenStreetMap
 `data/renovables/*.yaml` solo recoge activos con vínculo documentado a un cluster
 o a un CPD concreto (PPA firmado, misma promotora, conexión al mismo nudo). No es
 un inventario general de renovables en España.
+
+## Normativa
+
+`data/normativa/*.yaml`, un fichero por norma, validado por `zNorma`
+(`scripts/schema.mjs`). Una norma no se parece a un emplazamiento: no tiene
+coordenadas ni potencia, y su hecho central no es un número sino una fecha. Lo
+que sí comparte es la regla del conjunto: nada sin fuente, y lo que no consta se
+queda vacío.
+
+La ficha separa tres cosas que se confunden constantemente:
+
+| Bloque | Pregunta que contesta |
+|---|---|
+| `obligaciones[]` | Qué dice la norma: quién, qué, con qué umbral y en qué plazo |
+| `estado` y `hitos[]` | En qué punto está: qué se ha aprobado, qué se ha votado, qué fecha queda |
+| `actores[]` | Quién la empuja y quién no, con rol, postura y cita literal |
+
+```yaml
+id: prd-centros-datos-sostenibles     # kebab-case, igual que el nombre del fichero
+titulo: "…"                           # nombre corto, el que se lee en listas
+titulo_oficial: "…"                   # el del boletín, entero
+ambito: estatal                       # europeo | estatal | autonomico
+ccaa: [Aragón]                        # obligatorio si y solo si es autonómica
+rango: proyecto_real_decreto          # ver RANGOS_NORMA
+estado: audiencia_publica             # ver ESTADOS_NORMA
+boletin: BOE
+referencia: "BOE-A-2026-6544"
+url_oficial: "https://…"
+fecha_aprobacion / fecha_publicacion / fecha_entrada_vigor
+materias: [acceso_a_red, agua]
+resumen: "…"                          # qué hace la norma, sin valorarla
+por_que_importa: "…"                  # la única frase interpretada del bloque de hechos
+obligaciones: [{quien, que, umbral, plazo, fuentes}]
+hitos: [{fecha, previsto, hito, fuentes}]
+actores: [{nombre, rol, postura, voz, resumen, cita, fuentes}]
+afecta: [{tipo, ref, como, fuentes}]  # registro | proyecto | region | nudo
+relacionadas: [rdl-7-2026]            # otras normas de este mismo conjunto
+incertidumbres: [{campo, descripcion, fuentes}]
+ultima_verificacion: "2026-09-01"
+fuentes: [...]                        # misma forma que en un emplazamiento
+```
+
+**Los estados no son intercambiables.** `audiencia_publica` es un borrador que no
+obliga a nadie; `aprobada_no_aplicable` es un texto cerrado con la exigibilidad
+diferida; `en_vigor` obliga hoy; y `en_vigor_en_tramitacion` obliga hoy con el
+articulado todavía abierto en las Cortes, que es la situación del RDL 7/2026.
+Confundir el primero con el tercero es el error más común al leer prensa
+regulatoria, y por eso el estado se muestra en cada tarjeta y en cada tabla.
+
+**Los umbrales se copian, no se convierten.** 1 MW de potencia de acceso y 500 kW
+de potencia de tecnología de la información son magnitudes distintas y la norma
+que las usa no las traduce entre sí: aquí tampoco. Es la misma regla que impide
+sumar MW IT con MW de conexión.
+
+**`afecta[]` es lo que une la sección con el mapa.** El vínculo lo declara la
+norma, no se deduce de la ubicación de un proyecto: por eso la ficha de un
+emplazamiento solo muestra las normas que lo nombran a él o a su comunidad. Un
+`ref` de tipo `proyecto` debe existir en `data/sites/`.
+
+**Un hito futuro es una fecha publicada por quien tiene competencia para
+fijarla**, marcada con `previsto: true`. No se registran previsiones propias.
+Cuando esa fecha vence sin que la ficha se haya revisado, `npm run refresh` lo
+lista en la cola de revisión.
+
+`revisarCoherenciaNorma` avisa, además, de la postura atribuida a un actor sin
+cita literal que la sostenga, de la norma autonómica que no dice de qué comunidad
+es, del proyecto en tramitación que declara fecha de entrada en vigor y de la
+fuente que no respalda ningún campo concreto.
+
+### La lectura
+
+Lo interpretado va aparte y se firma como tal. `research/normativa/<id>.md`
+contiene, cuando la hay, la lectura de esa norma —qué cambia en la práctica—, y
+`npm run export` la copia a `src/contenido/normativa/`. Una norma sin lectura se
+publica igual, solo con hechos. En la ficha aparecen en secciones distintas y con
+un aviso explícito de cuál es cuál.

@@ -1,0 +1,68 @@
+id: rd-640-2026
+titulo: "Real Decreto 640/2026, de planes de inversión de las redes eléctricas"
+titulo_oficial: "Real Decreto 640/2026, de 29 de julio, por el que se regulan los planes de inversión de las redes de transporte y distribución de energía eléctrica"
+ambito: estatal
+rango: real_decreto
+estado: en_vigor
+estado_detalle: "Aprobado en Consejo de Ministros el 28 de julio de 2026 y publicado en el BOE el 31 de julio de 2026."
+boletin: BOE
+referencia: "BOE-A-2026-16661"
+url_oficial: "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-16661"
+fecha_aprobacion: "2026-07-29"
+fecha_publicacion: "2026-07-31"
+materias: [acceso_a_red, energia]
+resumen: >-
+  Regula cómo se aprueban y ejecutan los planes de inversión de transportistas y
+  distribuidoras. Habilita inversión adicional en redes hasta 2030 por 17.900 millones de
+  euros: 10.200 en distribución y 7.700 adicionales en transporte.
+por_que_importa: >-
+  No planifica actuaciones concretas y por eso no dice qué nudo se refuerza: regula el
+  vehículo por el que se decide. Es la respuesta de fondo al cuello de botella que
+  bloquea la mitad del pipeline del registro, pero su efecto en el mapa llegará años
+  después de su publicación.
+obligaciones:
+  - quien: "Transportistas y distribuidoras de energía eléctrica"
+    que: "Elaborar y someter a aprobación sus planes de inversión conforme al procedimiento que regula."
+    umbral: null
+    plazo: "Horizonte 2027-2030"
+    fuentes: [src-boe-rd640]
+hitos:
+  - fecha: "2026-07-28"
+    hito: "Aprobado por el Consejo de Ministros"
+    fuentes: [src-boe-rd640]
+  - fecha: "2026-07-31"
+    hito: "Publicación en el BOE"
+    fuentes: [src-boe-rd640]
+actores:
+  - nombre: "Ministerio para la Transición Ecológica y el Reto Demográfico"
+    rol: promotor
+    postura: sin_constar
+    resumen: "Departamento proponente."
+    fuentes: [src-boe-rd640]
+afecta:
+  - tipo: registro
+    ref: null
+    como: >-
+      Condiciona el ritmo al que se levanta la restricción real del sector, que en este
+      registro no es el capital sino el acceso a red.
+    fuentes: [src-boe-rd640]
+relacionadas: [rd-1183-2020, rdl-7-2026]
+incertidumbres:
+  - campo: resumen
+    descripcion: >-
+      El desglose de los 17.900 millones procede de la referencia del Consejo de Ministros
+      de 28 de julio de 2026, no de un anexo tabulado del propio real decreto. La norma
+      regula planes de inversión: no contiene el listado de actuaciones que financiarán.
+    fuentes: [src-boe-rd640]
+ultima_verificacion: "2026-09-01"
+fuentes:
+  - id: src-boe-rd640
+    url: "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-16661"
+    titulo: "Real Decreto 640/2026, de 29 de julio, por el que se regulan los planes de inversión de las redes de transporte y distribución de energía eléctrica"
+    editor: "BOE"
+    tipo: oficial
+    fecha_publicacion: "2026-07-31"
+    fecha_consulta: "2026-08-29"
+    cita: >-
+      Real Decreto por el que se regulan los planes de inversión de las redes de transporte
+      y distribución de energía eléctrica.

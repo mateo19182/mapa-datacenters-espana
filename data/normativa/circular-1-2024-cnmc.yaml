@@ -1,0 +1,109 @@
+id: circular-1-2024-cnmc
+titulo: "Circular 1/2024 de la CNMC, de acceso y conexión de la demanda"
+titulo_oficial: "Circular 1/2024, de 27 de septiembre, de la Comisión Nacional de los Mercados y la Competencia, por la que se establece la metodología y condiciones del acceso y de la conexión a las redes de transporte y distribución de las instalaciones de demanda"
+ambito: estatal
+rango: circular
+estado: en_vigor
+boletin: BOE
+referencia: "BOE-A-2024-20760"
+url_oficial: "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2024-20760"
+fecha_aprobacion: "2024-09-27"
+fecha_publicacion: "2024-10-01"
+materias: [acceso_a_red, transparencia]
+resumen: >-
+  Concreta cómo se calcula y se reparte la capacidad de acceso para instalaciones de
+  demanda, introduce la capacidad de acceso flexible y obliga a los gestores de red a
+  publicar mensualmente la capacidad disponible nudo a nudo.
+por_que_importa: >-
+  Es la norma por la que existe la capa de capacidad de este mapa. Sin su artículo 16 no
+  habría fichero público mensual de Red Eléctrica, y la comparación entre lo solicitado,
+  lo otorgado y lo disponible en cada nudo no se podría hacer.
+obligaciones:
+  - quien: "Gestores de las redes de transporte y distribución"
+    que: >-
+      Publicar la capacidad de acceso disponible por nudo y por posición, con
+      actualización mensual.
+    umbral: null
+    plazo: "Mensual"
+    fuentes: [src-boe-circular, src-ree-csv]
+  - quien: "Gestor de la red de distribución"
+    que: >-
+      Denegar el acceso cuando el informe de aceptabilidad del gestor de transporte sea
+      desfavorable, aunque la red de distribución tenga margen.
+    umbral: null
+    plazo: null
+    fuentes: [src-boe-circular]
+hitos:
+  - fecha: "2024-10-01"
+    hito: "Publicación en el BOE"
+    fuentes: [src-boe-circular]
+  - fecha: "2026-02-20"
+    hito: "Red Eléctrica publica por primera vez las capacidades de acceso de demanda de la red de transporte"
+    fuentes: [src-ree-pr]
+  - fecha: "2026-04-15"
+    hito: "La CNMC publica mapas interactivos mensuales de capacidad de demanda y de generación"
+    fuentes: [src-cnmc-mapas]
+actores:
+  - nombre: "Comisión Nacional de los Mercados y la Competencia"
+    rol: promotor
+    postura: sin_constar
+    resumen: "Dicta la circular en ejercicio de su competencia sobre metodología de acceso y conexión."
+    fuentes: [src-boe-circular]
+  - nombre: "Red Eléctrica de España"
+    rol: destinatario
+    postura: sin_constar
+    resumen: >-
+      Obligada a publicar el fichero mensual de capacidad. En febrero de 2026 solo había
+      acuerdo sobre valores de referencia en el 45 % de las interfaces transporte-distribución.
+    cita: null
+    fuentes: [src-ree-pr]
+afecta:
+  - tipo: registro
+    ref: null
+    como: >-
+      De su obligación de publicación sale el fichero que alimenta `data/red/capacidad.yaml`
+      y, con él, toda la capa de nudos del mapa.
+    fuentes: [src-ree-csv]
+relacionadas: [rd-1183-2020, rdl-7-2026]
+incertidumbres:
+  - campo: obligaciones
+    descripcion: >-
+      La publicación obligatoria es nudo a nudo, no proyecto a proyecto: dice cuánta
+      capacidad se ha otorgado en un nudo, nunca a quién. Ese hueco es la razón de que la
+      correspondencia entre emplazamiento y permiso haya que reconstruirla a mano en este
+      registro.
+    fuentes: [src-ree-csv]
+ultima_verificacion: "2026-09-01"
+fuentes:
+  - id: src-boe-circular
+    url: "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2024-20760"
+    titulo: "Circular 1/2024, de 27 de septiembre, de la Comisión Nacional de los Mercados y la Competencia"
+    editor: "BOE"
+    tipo: oficial
+    fecha_publicacion: "2024-10-01"
+    fecha_consulta: "2026-09-01"
+    cita: null
+  - id: src-ree-csv
+    url: "https://www.ree.es/sites/default/files/12_CLIENTES/Documentos/2026_08_03_GRT_demanda.csv"
+    titulo: "Capacidad de acceso de demanda en la red de transporte (2026_08_03_GRT_demanda)"
+    editor: "Red Eléctrica de España"
+    tipo: oficial
+    fecha_publicacion: "2026-08-03"
+    fecha_consulta: "2026-08-29"
+    cita: "Fecha de publicación: 3 de agosto 2026 — Dirección General de Operación."
+  - id: src-ree-pr
+    url: "https://www.ree.es/sites/default/files/2026-03/PR_demand_access_capacities.pdf"
+    titulo: "Nota de prensa sobre la publicación de capacidades de acceso de demanda"
+    editor: "Red Eléctrica de España"
+    tipo: oficial
+    fecha_publicacion: "2026-02-20"
+    fecha_consulta: "2026-08-29"
+    cita: null
+  - id: src-cnmc-mapas
+    url: "https://www.cnmc.es/prensa/mapas-capacidad-redes-electricas-20260415"
+    titulo: "La CNMC publica los mapas de capacidad de las redes eléctricas"
+    editor: "CNMC"
+    tipo: oficial
+    fecha_publicacion: "2026-04-15"
+    fecha_consulta: "2026-08-29"
+    cita: null

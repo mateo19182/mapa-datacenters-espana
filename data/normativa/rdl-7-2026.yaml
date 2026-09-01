@@ -1,0 +1,229 @@
+id: rdl-7-2026
+titulo: "Real Decreto-ley 7/2026, del Plan Integral de Respuesta a la Crisis en Oriente Medio"
+titulo_oficial: "Real Decreto-ley 7/2026, de 20 de marzo, por el que se aprueba el Plan Integral de Respuesta a la Crisis en Oriente Medio"
+ambito: estatal
+rango: real_decreto_ley
+estado: en_vigor_en_tramitacion
+estado_detalle: >-
+  En vigor desde el 22 de marzo de 2026. El Congreso lo convalidó el 26 de marzo por
+  175 votos a favor, 33 en contra y 141 abstenciones, y en la misma sesión acordó
+  —por 346 votos— tramitarlo como proyecto de ley por el procedimiento de urgencia.
+  Esa tramitación sigue abierta: el articulado que hoy está en vigor puede cambiar
+  en sede parlamentaria.
+boletin: BOE
+referencia: "BOE-A-2026-6544"
+url_oficial: "https://www.boe.es/buscar/act.php?id=BOE-A-2026-6544"
+fecha_aprobacion: "2026-03-20"
+fecha_publicacion: "2026-03-21"
+fecha_entrada_vigor: "2026-03-22"
+materias: [acceso_a_red, energia, renovables, transparencia]
+resumen: >-
+  Un decreto de crisis energética que acabó siendo la reforma de fondo del acceso a la
+  red. Deroga el régimen de avales de demanda, crea una prestación mensual por reservar
+  capacidad, endurece los hitos de caducidad de los permisos y ordena al Gobierno
+  aprobar por real decreto los requisitos de sostenibilidad de los centros de datos.
+por_que_importa: >-
+  Es la norma que cambia el precio de estar en la cola. Hasta marzo de 2026 acaparar
+  capacidad de red costaba un aval; desde entonces cuesta un pago mensual creciente que
+  no se recupera si el proyecto no se construye. De su disposición adicional primera
+  cuelga, además, todo el régimen específico de centros de datos que hoy está en
+  audiencia pública.
+obligaciones:
+  - quien: "Titular de un permiso de acceso de demanda en un punto de tensión igual o superior a 1 kV"
+    que: >-
+      Pagar todos los meses la prestación por reserva de capacidad de acceso, desde que
+      obtiene el permiso hasta que inicia la actividad. Se calcula sobre el término de
+      potencia del peaje en P1, modulado por nivel de tensión y por el tiempo que lleve
+      sin construir. Tiene la consideración de pago anticipado de peajes.
+    umbral: "≥ 1 kV"
+    plazo: "Mensual, desde el otorgamiento del permiso hasta la firma del contrato ATR"
+    fuentes: [src-boe-rdl7, src-hsf]
+  - quien: "Gobierno (Consejo de Ministros)"
+    que: >-
+      Aprobar por real decreto los requisitos de sostenibilidad energética,
+      medioambiental, de resiliencia y soberanía digital aplicables a los centros de
+      datos que se conecten a las redes de transporte y distribución, pudiendo incluir
+      adicionalidad, correlación horaria, eficiencia energética y sostenibilidad
+      en el uso del agua.
+    umbral: null
+    plazo: "Sin plazo fijado en la norma"
+    fuentes: [src-prd-cpd]
+  - quien: "Operador del sistema y gestores de red"
+    que: >-
+      Reforzar la transparencia sobre los permisos concedidos, para que las
+      administraciones y la ciudadanía conozcan el estado real de la capacidad
+      disponible por nudo.
+    umbral: null
+    plazo: null
+    fuentes: [src-boe-rdl7]
+hitos:
+  - fecha: "2026-03-20"
+    hito: "Aprobado en Consejo de Ministros extraordinario"
+    fuentes: [src-boe-rdl7, src-er]
+  - fecha: "2026-03-22"
+    hito: "Entrada en vigor, al día siguiente de su publicación en el BOE"
+    fuentes: [src-congreso-nota]
+  - fecha: "2026-03-26"
+    hito: >-
+      El Pleno del Congreso lo convalida (175 sí, 33 no, 141 abstenciones) y acuerda
+      tramitarlo como proyecto de ley por urgencia (346 sí)
+    fuentes: [src-congreso-nota, src-congreso-ds]
+  - fecha: "2026-06-29"
+    hito: "El RDL 18/2026 modifica su artículo 11.7 y su disposición transitoria cuarta"
+    fuentes: [src-boe-rdl18]
+  - fecha: "2026-08-27"
+    hito: >-
+      Sale a audiencia pública el real decreto de centros de datos que ordena su
+      disposición adicional primera
+    fuentes: [src-miteco-prensa]
+actores:
+  - nombre: "Ministerio para la Transición Ecológica y el Reto Demográfico"
+    rol: promotor
+    postura: favorable
+    resumen: "Departamento proponente de las medidas energéticas del título I."
+    cita: >-
+      Se maximiza el aprovechamiento de redes existentes, agilizando así la necesaria y
+      urgente electrificación, al tiempo que se desincentiva la especulación y el
+      acaparamiento de capacidad.
+    fuentes: [src-boe-rdl7]
+  - nombre: "Congreso de los Diputados"
+    rol: competente
+    postura: favorable
+    resumen: >-
+      Lo convalida con la abstención del PP y de Podemos y el voto en contra de Vox, y
+      abre su tramitación como proyecto de ley.
+    cita: >-
+      Sometida a votación su tramitación como proyecto de ley por el procedimiento de
+      urgencia, se aprueba por 346 votos a favor.
+    fuentes: [src-congreso-ds]
+  - nombre: "Vox"
+    rol: destinatario
+    postura: contraria
+    resumen: "Único grupo que vota en contra de la convalidación."
+    cita: >-
+      El Pleno del Congreso ha convalidado este jueves, con el único voto en contra de
+      Vox, la abstención del PP y Podemos, y el apoyo del resto del hemiciclo.
+    fuentes: [src-er]
+afecta:
+  - tipo: registro
+    ref: null
+    como: >-
+      Cambia el coste de mantener un permiso de acceso sin construir, que es la
+      situación en la que está la mayor parte del pipeline anunciado del registro.
+    fuentes: [src-boe-rdl7]
+  - tipo: nudo
+    ref: "TABERNAS 220"
+    como: >-
+      Red Eléctrica marca su capacidad y su posición como no otorgables por estar
+      reservadas por la disposición transitoria tercera de este real decreto-ley.
+    fuentes: [src-ree-csv]
+relacionadas: [prd-centros-datos-sostenibles, rdl-18-2026, rd-1183-2020, circular-1-2024-cnmc]
+incertidumbres:
+  - campo: estado
+    descripcion: >-
+      Se tramita como proyecto de ley por urgencia desde marzo de 2026 y no consta
+      fuente que documente en qué fase parlamentaria está esa tramitación a fecha de
+      hoy. Lo que está en vigor es el texto del decreto-ley; lo que salga de las Cortes
+      puede no coincidir.
+    fuentes: [src-congreso-nota]
+ultima_verificacion: "2026-09-01"
+fuentes:
+  - id: src-boe-rdl7
+    url: "https://www.boe.es/buscar/act.php?id=BOE-A-2026-6544"
+    titulo: "Real Decreto-ley 7/2026, de 20 de marzo, por el que se aprueba el Plan Integral de Respuesta a la Crisis en Oriente Medio"
+    editor: "BOE"
+    tipo: oficial
+    fecha_publicacion: "2026-03-21"
+    fecha_consulta: "2026-09-01"
+    cita: >-
+      Se establece una prestación por reserva de capacidad de acceso, exigible desde la
+      obtención de los permisos de demanda para puntos de conexión de tensión igual o
+      superior a 1 kV y hasta el inicio de la actividad.
+  - id: src-congreso-nota
+    url: "https://www.congreso.es/es/notas-de-prensa?_notasprensa_mvcPath=detalle&_notasprensa_notaId=51199"
+    titulo: "El Congreso convalida el Real Decreto-ley de medidas para responder a la crisis en Oriente Medio"
+    editor: "Congreso de los Diputados"
+    tipo: oficial
+    fecha_publicacion: "2026-03-26"
+    fecha_consulta: "2026-09-01"
+    cita: >-
+      La norma ha sido convalidada por 175 votos a favor, 33 en contra y 141
+      abstenciones. Y, se ha acordado por 346 votos a favor su tramitación como proyecto
+      de ley por el procedimiento de urgencia.
+  - id: src-congreso-ds
+    url: "https://www.congreso.es/public_oficiales/L15/CONG/DS/PL/DSCD-15-PL-176.PDF"
+    titulo: "Diario de Sesiones del Pleno, sesión de convalidación del Real Decreto-ley 7/2026"
+    editor: "Congreso de los Diputados"
+    tipo: oficial
+    fecha_publicacion: "2026-03-26"
+    fecha_consulta: "2026-09-01"
+    cita: >-
+      Sometida a votación la convalidación del Real Decreto Ley 7/2026, de 20 de marzo,
+      se aprueba por 175 votos a favor, 33 en contra y 141 abstenciones. Sometida a
+      votación su tramitación como proyecto de ley por el procedimiento de urgencia, se
+      aprueba por 346 votos a favor.
+  - id: src-hsf
+    url: "https://www.lexology.com/library/detail.aspx?g=1265e9e5-af24-49e9-b353-962a9f17d0db"
+    titulo: "Medidas energéticas del Real Decreto-ley 7/2026 que aprueba el plan de respuesta a la crisis en Oriente Medio"
+    editor: "Herbert Smith Freehills Kramer, vía Lexology"
+    tipo: otro
+    fecha_publicacion: "2026-03-30"
+    fecha_consulta: "2026-09-01"
+    cita: >-
+      Además de incluir ciertas medidas coyunturales, introduce reformas de carácter
+      estructural, en muy distintos ámbitos: acceso y conexión de la demanda,
+      tramitación y repotenciación de instalaciones de generación, autoconsumo,
+      planificación eléctrica, almacenamiento de energía, eficiencia energética y
+      biometano.
+  - id: src-er
+    url: "https://www.renewableenergymagazine.com/panorama/el-gobierno-saca-adelante-el-plan-anticrisis-20260326"
+    titulo: "El Gobierno saca adelante el plan anticrisis con la abstención del PP"
+    editor: "Energías Renovables"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-03-26"
+    fecha_consulta: "2026-09-01"
+    cita: >-
+      El Pleno del Congreso ha convalidado este jueves, con el único voto en contra de
+      Vox, la abstención del PP y Podemos, y el apoyo del resto del hemiciclo.
+  - id: src-boe-rdl18
+    url: "https://www.boe.es/eli/es/rdl/2026/06/29/18/con"
+    titulo: "Real Decreto-ley 18/2026, de 29 de junio, por el que se adoptan determinadas medidas en el marco del Plan Integral de Respuesta a la Crisis en Oriente Medio"
+    editor: "BOE"
+    tipo: oficial
+    fecha_publicacion: "2026-06-30"
+    fecha_consulta: "2026-09-01"
+    cita: >-
+      Se procederá a la caducidad automática de dichos permisos cuando el incumplimiento
+      del pago sea, en un trimestre natural, superior al 10 por ciento de la cuantía que
+      se deba abonar en dicho trimestre.
+  - id: src-prd-cpd
+    url: "https://www.miteco.gob.es/content/dam/miteco/es/energia/files-1/es-ES/Participacion/Documents/anexos/aeip-rd-cpds-sostenibles/PRD%20CPDs%20audiencia%20publica.pdf"
+    titulo: "Proyecto de Real Decreto por el que se regulan los requisitos de sostenibilidad energética, medioambiental y de resiliencia y soberanía digital aplicables a los centros de datos"
+    editor: "MITECO"
+    tipo: oficial
+    fecha_publicacion: "2026-08-27"
+    fecha_consulta: "2026-09-01"
+    cita: >-
+      La disposición adicional primera del Real Decreto-ley establece que, mediante real
+      decreto del Consejo de Ministros, se aprobarán los requisitos de sostenibilidad
+      energética, medioambiental, de resiliencia y soberanía digital que se aplicarán a
+      los centros de datos que se conecten a las redes de transporte y distribución de
+      energía eléctrica.
+  - id: src-miteco-prensa
+    url: "https://www.miteco.gob.es/es/prensa/ultimas-noticias/2026/agosto/-el-gobierno-plantea-impulsar-los-centros-de-datos-sostenibles--.html"
+    titulo: "El Gobierno plantea impulsar los centros de datos sostenibles"
+    editor: "MITECO"
+    tipo: oficial
+    fecha_publicacion: "2026-08-27"
+    fecha_consulta: "2026-09-01"
+    cita: >-
+      El futuro real decreto cumple uno de los mandatos del Real Decreto-ley 7/2026, que
+      aprueba el Plan Integral de Respuesta a la Crisis en Oriente Medio.
+  - id: src-ree-csv
+    url: "https://www.ree.es/sites/default/files/12_CLIENTES/Documentos/2026_08_03_GRT_demanda.csv"
+    titulo: "Capacidad de acceso de demanda en la red de transporte (2026_08_03_GRT_demanda)"
+    editor: "Red Eléctrica de España"
+    tipo: oficial
+    fecha_publicacion: "2026-08-03"
+    fecha_consulta: "2026-08-29"
+    cita: "Capacidad y posición reservada por disposición transitoria tercera del Real Decreto-ley 7/2026"

@@ -1,0 +1,429 @@
+id: prd-centros-datos-sostenibles
+titulo: "Proyecto de Real Decreto de sostenibilidad, resiliencia y soberanía digital de los centros de datos"
+titulo_oficial: "Proyecto de Real Decreto por el que se regulan los requisitos de sostenibilidad energética, medioambiental y de resiliencia y soberanía digital aplicables a los centros de datos"
+ambito: estatal
+rango: proyecto_real_decreto
+estado: audiencia_publica
+estado_detalle: >-
+  Borrador en audiencia e información pública por la vía de urgencia entre el 27 de
+  agosto y el 4 de septiembre de 2026: ocho días naturales. No está aprobado, no está
+  en vigor y su texto puede cambiar entero. Un borrador anterior, de agosto de 2025,
+  ya pasó por audiencia pública con otro contenido.
+boletin: null
+referencia: null
+url_oficial: "https://www.miteco.gob.es/es/energia/participacion/2026/detalle-participacion-publica-k-851.html"
+fecha_aprobacion: null
+fecha_publicacion: null
+materias: [acceso_a_red, renovables, eficiencia, agua, soberania_digital, transparencia]
+resumen: >-
+  Condiciona el permiso de acceso a la red de todo centro de datos de 1 MW o más al
+  cumplimiento de tres bloques de requisitos: soberanía digital, eficiencia energética e
+  hídrica de clase «A» europea, y cobertura renovable con adicionalidad y correlación
+  horaria. Quien incumpla paga recargos sobre peajes y cargos, y puede perder los
+  permisos.
+por_que_importa: >-
+  Es la norma que decide qué parte del pipeline anunciado llega a existir. Se aplica a
+  las solicitudes aún no resueltas y a los proyectos con permiso otorgado que todavía no
+  se han conectado —es decir, a casi todo lo que este registro clasifica como anunciado,
+  en tramitación o en construcción— y les da tres o seis meses para acreditar requisitos
+  que no existían cuando se diseñaron.
+obligaciones:
+  - quien: "Entidad operadora o titular de un centro de datos"
+    que: >-
+      Presentar ante el Ministerio para la Transformación Digital y de la Función Pública
+      una declaración responsable de cumplimiento de los requisitos de soberanía digital:
+      establecimiento en la Unión Europea, permanencia en ella de los datos, metadatos y
+      registros bajo su control, control y trazabilidad del soporte desde terceros países,
+      supervisión de subcontratistas directos y medidas frente a accesos requeridos por
+      autoridades de terceros países. Sin acreditar esa presentación, el gestor de red no
+      puede firmar el contrato ATR.
+    umbral: "≥ 1 MW de potencia de acceso"
+    plazo: "Antes de la puesta en explotación; y en la propia solicitud de acceso, como compromiso"
+    fuentes: [src-prd]
+  - quien: "Entidad operadora o titular de un centro de datos"
+    que: >-
+      Acreditar niveles de eficiencia energética e hídrica de clase «A» de la etiqueta
+      europea. Hasta que ese etiquetado se aplique —previsto para agosto de 2027— rigen
+      un PUE máximo de 1,15 y un WUE máximo de 0,1, calculados según el anexo III del
+      Reglamento Delegado (UE) 2024/1364. Estar en clase «B» o peor dos años seguidos es
+      incumplimiento grave.
+    umbral: "≥ 1 MW de potencia de acceso"
+    plazo: "Con la solicitud de acceso y, después, cada año antes del 15 de octubre"
+    fuentes: [src-prd]
+  - quien: "Entidad operadora o titular de un centro de datos"
+    que: >-
+      Cubrir el 80 % de su consumo total con autoconsumo o con contratos de compra de
+      electricidad renovable a plazo de instalaciones ubicadas en España, cuya acta de
+      puesta en servicio no sea anterior en más de dieciocho meses a la entrada en
+      funcionamiento del centro. Es el requisito de adicionalidad.
+    umbral: "≥ 1 MW de potencia de acceso"
+    plazo: "Verificación anual por el gestor de red"
+    fuentes: [src-prd, src-miteco-prensa]
+  - quien: "Entidad operadora o titular de un centro de datos"
+    que: >-
+      Garantizar que la energía consumida en cada hora está respaldada al menos en un
+      80 % por electricidad renovable generada en esa misma hora. Es el requisito de
+      correlación horaria.
+    umbral: "≥ 1 MW de potencia de acceso"
+    plazo: "Verificación mensual a efectos de recargos"
+    fuentes: [src-prd, src-miteco-prensa]
+  - quien: "Entidad operadora o titular de un centro de datos"
+    que: >-
+      Remitir cada año, antes del 15 de mayo, a la Dirección General de Planificación y
+      Coordinación Energética la información y los indicadores de los anexos I y II del
+      Reglamento Delegado (UE) 2024/1364, que se publicarán en el portal del MITECO.
+    umbral: "≥ 500 kW de potencia de tecnología de la información"
+    plazo: "Anual, antes del 15 de mayo"
+    fuentes: [src-prd]
+  - quien: "Entidad operadora o titular de un centro de datos"
+    que: >-
+      Comunicar si tiene en cuenta las mejores prácticas del código de conducta europeo
+      sobre eficiencia energética de los centros de datos y de qué manera; y justificarlo
+      cuando no las aplique.
+    umbral: "≥ 1 MW de potencia de tecnología de la información"
+    plazo: "Anual, antes del 15 de mayo"
+    fuentes: [src-prd, src-miteco-prensa]
+  - quien: "Proyectos con permisos otorgados y no conectados a la red"
+    que: >-
+      Acreditar el cumplimiento de todos los requisitos o los permisos de acceso y
+      conexión caducan, con ejecución de las garantías depositadas. Cabe renunciar sin
+      ejecución de garantías dentro del mismo plazo.
+    umbral: null
+    plazo: "Seis meses desde la entrada en vigor"
+    fuentes: [src-prd, src-ejeprime]
+  - quien: "Solicitudes de acceso presentadas y no resueltas favorablemente"
+    que: "Acreditar los requisitos o la solicitud se deniega, previo requerimiento de subsanación y audiencia."
+    umbral: null
+    plazo: "Tres meses desde la entrada en vigor"
+    fuentes: [src-prd]
+hitos:
+  - fecha: "2025-08-08"
+    hito: "Audiencia pública de un primer borrador, distinto de este, hasta el 15 de septiembre de 2025"
+    fuentes: [src-borrador-2025]
+  - fecha: "2026-03-20"
+    hito: "El RDL 7/2026 ordena aprobar estos requisitos por real decreto (disposición adicional primera)"
+    fuentes: [src-prd]
+  - fecha: "2026-08-25"
+    hito: "El Consejo de Ministros acuerda tramitarlo por la vía de urgencia"
+    fuentes: [src-ecoz]
+  - fecha: "2026-08-27"
+    hito: "Se abre la audiencia e información pública del texto, elaborado por tres ministerios"
+    fuentes: [src-miteco-participacion, src-miteco-prensa]
+  - fecha: "2026-09-04"
+    previsto: true
+    hito: "Cierre del plazo de alegaciones, salvo que se amplíe"
+    fuentes: [src-miteco-participacion]
+actores:
+  - nombre: "Ministerio para la Transición Ecológica y el Reto Demográfico"
+    rol: promotor
+    postura: favorable
+    voz: "Sara Aagesen, vicepresidenta tercera"
+    resumen: >-
+      Departamento que recibe las alegaciones, a través de la Dirección General de
+      Política Energética y Minas. Defiende que la norma evita que el consumo de los
+      centros de datos encarezca la electricidad al resto.
+    cita: >-
+      Los Ministerios para la Transición Ecológica y el Reto Demográfico, Economía,
+      Comercio y Empresa, y Transformación Digital y Función Pública avanzan en un
+      desarrollo ordenado y eficiente de los centros de datos.
+    fuentes: [src-miteco-prensa]
+  - nombre: "Ministerio para la Transformación Digital y de la Función Pública"
+    rol: competente
+    postura: favorable
+    resumen: >-
+      Recibe las declaraciones responsables de soberanía digital y ejerce su control
+      posterior.
+    cita: >-
+      La entidad operadora presentará ante el Ministerio para la Transformación Digital y
+      de la Función Pública una declaración responsable en la que manifieste que cumple
+      los requisitos de soberanía digital.
+    fuentes: [src-prd]
+  - nombre: "Ministerio de Economía, Comercio y Empresa"
+    rol: promotor
+    postura: favorable
+    resumen: "Tercer departamento proponente del texto."
+    cita: "El proyecto ha sido desarrollado por los Ministerios para la Transición Ecológica y el Reto Demográfico; Economía, Comercio y Empresa; y Transformación Digital y Función Pública."
+    fuentes: [src-europapress]
+  - nombre: "Spain DC (Asociación Española de Centros de Datos)"
+    rol: alegante
+    postura: contraria
+    voz: "Emilio Díaz, presidente; Begoña Villacís, directora ejecutiva"
+    resumen: >-
+      Presentará alegaciones y pide cambios sustanciales, ampliación del plazo de
+      audiencia y una mesa técnica. Cifra en un 80 %-90 % la nueva inversión en riesgo y
+      sostiene que España pasaría a tener el marco más restrictivo de la Unión Europea.
+      Comparte, en cambio, el objetivo de combatir la especulación con los permisos.
+    cita: >-
+      Las reglas pueden cambiar, pero cambiar de forma estructural las condiciones de esas
+      inversiones y conceder apenas seis meses para adaptarse plantea un problema muy
+      serio de seguridad jurídica y proporcionalidad.
+    fuentes: [src-expansion, src-eleconomista, src-ejeprime]
+  - nombre: "Templus"
+    rol: alegante
+    postura: contraria
+    voz: "Nacho Velilla, consejero delegado"
+    resumen: "Operador con varios emplazamientos en el registro; anuncia alegaciones propias."
+    cita: >-
+      Habría que preguntarse a quién beneficia realmente este decreto y por qué el
+      Gobierno deja al sector en España a los pies de los caballos, en clara desventaja
+      competitiva con nuestros vecinos europeos.
+    fuentes: [src-cincodias]
+  - nombre: "Gobierno de Aragón"
+    rol: alegante
+    postura: contraria
+    voz: "Eva Valle, consejera de Economía, Competitividad y Empleo"
+    resumen: >-
+      Alegará ante los tres ministerios. Denuncia inseguridad jurídica para los proyectos
+      en tramitación y el plazo de ocho días para alegar. Mantiene, aun así, el calendario
+      de sus declaraciones de interés general.
+    cita: >-
+      Este proyecto es especialmente dañino para la comunidad de Aragón y parece diseñado
+      para hundir el programa de inversiones en nuestro territorio.
+    fuentes: [src-periodico-aragon, src-eldiario-aragon]
+  - nombre: "Junta de Extremadura"
+    rol: alegante
+    postura: contraria
+    voz: "Mercedes Morán, consejera de Industria, Energía, Ciencia y Territorio"
+    resumen: >-
+      Alega contra el reparto competencial: que sean tres ministerios los que valoren la
+      madurez de los proyectos deja fuera a las comunidades autónomas.
+    cita: >-
+      No decimos que no se regule, lo que decimos es que para regularse tendrá que contar
+      con los territorios, tendrá que contar con las comunidades autónomas.
+    fuentes: [src-extremadura]
+  - nombre: "Delegación del Gobierno en Aragón"
+    rol: destinatario
+    postura: favorable
+    voz: "Fernando Beltrán, delegado del Gobierno"
+    resumen: "Defiende la norma frente al Ejecutivo autonómico."
+    cita: >-
+      Esta norma busca que el gran consumo de electricidad de los centros de datos no
+      cause un incremento en la factura de la luz de todos los aragoneses y aragonesas.
+    fuentes: [src-eldiario-aragon]
+  - nombre: "Comisión Nacional de los Mercados y la Competencia"
+    rol: supervisor
+    postura: sin_constar
+    resumen: >-
+      Resolvería los conflictos de acceso contra las denegaciones fundadas en este real
+      decreto, pero sin revisar la valoración material de los requisitos de soberanía
+      digital: solo los presupuestos formales.
+    cita: >-
+      La Comisión Nacional de los Mercados y la Competencia, al resolver los conflictos
+      relativos al permiso de acceso, no revisará la valoración material realizada por el
+      órgano competente conforme al artículo 5.
+    fuentes: [src-prd]
+afecta:
+  - tipo: registro
+    ref: null
+    como: >-
+      Alcanza a todo emplazamiento de 1 MW de potencia de acceso o más que no esté ya
+      conectado, y a todo emplazamiento de 500 kW de potencia de TI o más en materia de
+      publicación de datos. En la práctica, a casi todo el registro salvo lo ya operativo.
+    fuentes: [src-prd]
+  - tipo: proyecto
+    ref: acs-alcala-de-henares-campus
+    como: >-
+      Proyecto en construcción sin conexión acreditada: entraría en el plazo de seis meses
+      para acreditar requisitos so pena de caducidad de los permisos.
+    fuentes: [src-prd]
+  - tipo: proyecto
+    ref: acs-la-puebla-de-alfinden-centro-datos
+    como: >-
+      Proyecto en tramitación con capacidad concedida en Peñaflor: quedaría sujeto a los
+      requisitos antes de que se resuelva su acceso.
+    fuentes: [src-prd]
+  - tipo: region
+    ref: "Aragón"
+    como: >-
+      Diez promotores esperaban su declaración de interés general cuando salió el
+      borrador; el Gobierno autonómico mantiene el calendario y confía en que se adapten.
+    fuentes: [src-heraldo]
+  - tipo: region
+    ref: "Extremadura"
+    como: >-
+      La Junta sitúa Río Caya y el proyecto de Merlin en Navalmoral entre los más
+      avanzados y teme que la valoración estatal de madurez decida su suministro.
+    fuentes: [src-extremadura]
+relacionadas:
+  - rdl-7-2026
+  - reglamento-delegado-2024-1364
+  - directiva-2023-1791
+  - rd-1183-2020
+  - propuesta-cada-2026
+incertidumbres:
+  - campo: estado
+    descripcion: >-
+      El texto está en audiencia pública, no aprobado. Todas las cifras de esta ficha
+      —el 80 %, los dieciocho meses, el PUE de 1,15, los plazos de tres y seis meses—
+      son las del borrador de 27 de agosto de 2026 y pueden cambiar antes de su
+      aprobación. La disposición adicional tercera permite además modificar por
+      resolución varios de esos umbrales una vez en vigor.
+    fuentes: [src-prd]
+  - campo: obligaciones
+    descripcion: >-
+      El umbral de 1 MW se expresa en potencia de acceso y el de 500 kW en potencia de
+      tecnología de la información. Son dos magnitudes distintas y la norma no las
+      convierte una en otra: un mismo centro puede estar dentro de una obligación y
+      fuera de la otra.
+    fuentes: [src-prd]
+  - campo: actores
+    descripcion: >-
+      Las cifras de inversión en riesgo —entre el 80 % y el 90 % de la nueva inversión,
+      66.900 millones acumulados 2026-2030— proceden de la patronal del sector y de su
+      propio informe anual. Son estimaciones de parte interesada en la tramitación, no
+      un dato contrastado.
+    fuentes: [src-eleconomista, src-ejeprime]
+ultima_verificacion: "2026-09-01"
+fuentes:
+  - id: src-prd
+    url: "https://www.miteco.gob.es/content/dam/miteco/es/energia/files-1/es-ES/Participacion/Documents/anexos/aeip-rd-cpds-sostenibles/PRD%20CPDs%20audiencia%20publica.pdf"
+    titulo: "Proyecto de Real Decreto por el que se regulan los requisitos de sostenibilidad energética, medioambiental y de resiliencia y soberanía digital aplicables a los centros de datos"
+    editor: "MITECO"
+    tipo: oficial
+    fecha_publicacion: "2026-08-27"
+    fecha_consulta: "2026-09-01"
+    cita: >-
+      Las obligaciones de este real decreto se aplican a los centros de datos cuya
+      potencia de acceso sea igual o superior a 1 MW. Las obligaciones de comunicación y
+      publicidad del artículo 14 se fijan, en cambio, en 500 kW de potencia de tecnología
+      de la información.
+  - id: src-miteco-participacion
+    url: "https://www.miteco.gob.es/es/energia/participacion/2026/detalle-participacion-publica-k-851.html"
+    titulo: "Audiencia e información pública sobre el proyecto de Real Decreto de requisitos aplicables a los centros de datos"
+    editor: "MITECO"
+    tipo: oficial
+    fecha_publicacion: "2026-08-27"
+    fecha_consulta: "2026-09-01"
+    cita: >-
+      Plazo para presentar documentación desde el jueves, 27 de agosto de 2026 hasta el
+      viernes, 04 de septiembre de 2026.
+  - id: src-miteco-prensa
+    url: "https://www.miteco.gob.es/es/prensa/ultimas-noticias/2026/agosto/-el-gobierno-plantea-impulsar-los-centros-de-datos-sostenibles--.html"
+    titulo: "El Gobierno plantea impulsar los centros de datos sostenibles"
+    editor: "MITECO"
+    tipo: oficial
+    fecha_publicacion: "2026-08-27"
+    fecha_consulta: "2026-09-01"
+    cita: >-
+      Cada nuevo megavatio consumido deberá venir acompañado de un nuevo megavatio
+      renovable instalado en los 18 meses anteriores a la entrada en funcionamiento del
+      centro. En cada hora de funcionamiento, al menos el 80% de la electricidad
+      consumida deberá ser energía renovable generada esa misma hora.
+  - id: src-borrador-2025
+    url: "https://www.miteco.gob.es/content/dam/miteco/es/energia/files-1/es-ES/Participacion/Documents/anexos/aeip-rd-cpds/20250807_RD-CD.pdf"
+    titulo: "Borrador de agosto de 2025 del real decreto de centros de datos"
+    editor: "MITECO"
+    tipo: oficial
+    fecha_publicacion: "2025-08-07"
+    fecha_consulta: "2026-09-01"
+    cita: null
+  - id: src-europapress
+    url: "https://www.europapress.es/economia/noticia-spain-dc-pide-regulacion-centros-datos-proporcionada-no-reste-competitividad-espana-20260827130613.html"
+    titulo: "Spain DC pide una regulación para los centros de datos «proporcionada» que no reste competitividad a España"
+    editor: "Europa Press"
+    tipo: prensa_general
+    fecha_publicacion: "2026-08-27"
+    fecha_consulta: "2026-09-01"
+    cita: >-
+      El proyecto ha sido desarrollado por los Ministerios para la Transición Ecológica y
+      el Reto Demográfico; Economía, Comercio y Empresa; y Transformación Digital y
+      Función Pública.
+  - id: src-cincodias
+    url: "https://cincodias.elpais.com/companias/2026-08-27/el-sector-de-los-centros-de-datos-carga-contra-el-real-decreto-del-gobierno-nos-deja-a-los-pies-de-los-caballos.html"
+    titulo: "El sector de los centros de datos carga contra el real decreto del Gobierno"
+    editor: "Cinco Días"
+    tipo: prensa_general
+    fecha_publicacion: "2026-08-27"
+    fecha_consulta: "2026-09-01"
+    cita: >-
+      Habría que preguntarse a quién beneficia realmente este decreto y por qué el
+      Gobierno deja al sector en España a los pies de los caballos, en clara desventaja
+      competitiva con nuestros vecinos europeos.
+  - id: src-expansion
+    url: "https://www.expansion.com/empresas/2026/08/31/6a954b3e468aebec358b458d.html"
+    titulo: "Los centros de datos advierten de que la nueva ley puede espantar hasta el 90% de las nuevas inversiones"
+    editor: "Expansión"
+    tipo: prensa_general
+    fecha_publicacion: "2026-08-31"
+    fecha_consulta: "2026-09-01"
+    cita: >-
+      El Gobierno nos manifestó que quería trabajar de la mano del sector. Sin embargo,
+      hemos recibido un texto extremadamente desarrollado, con consecuencias muy
+      relevantes para inversiones ya en marcha y futuras, y un margen extraordinariamente
+      reducido para analizarlo.
+  - id: src-eleconomista
+    url: "https://www.eleconomista.es/energia/noticias/14010749/08/26/spaindc-avisa-al-gobierno-su-decreto-sobre-centros-de-datos-pone-en-jaque-hasta-60000-millones-de-inversion.html"
+    titulo: "SpainDC avisa al Gobierno: su decreto sobre centros de datos pone en jaque hasta 60.000 millones de inversión"
+    editor: "El Economista"
+    tipo: prensa_general
+    fecha_publicacion: "2026-08-31"
+    fecha_consulta: "2026-09-01"
+    cita: >-
+      Las reglas pueden cambiar, pero cambiar de forma estructural las condiciones de esas
+      inversiones y conceder apenas seis meses para adaptarse plantea un problema muy
+      serio de seguridad jurídica y proporcionalidad.
+  - id: src-ejeprime
+    url: "https://www.ejeprime.com/industrial/la-patronal-de-centros-de-datos-presentara-alegaciones-al-nuevo-real-decreto-de-sostenibilidad"
+    titulo: "La patronal de centros de datos presentará alegaciones al nuevo Real Decreto del Gobierno"
+    editor: "EjePrime"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-08-31"
+    fecha_consulta: "2026-09-01"
+    cita: >-
+      El Real Decreto concederá un total de seis meses de plazo para que todos los
+      desarrollos se adapten a las nuevas condiciones, un periodo insuficiente según la
+      asociación.
+  - id: src-periodico-aragon
+    url: "https://www.elperiodicodearagon.com/aragon/2026/08/27/gobierno-aragon-alegara-decreto-busca-133703656.html"
+    titulo: "El Gobierno de Aragón alegará contra el decreto que busca cribar los centros de datos"
+    editor: "El Periódico de Aragón"
+    tipo: prensa_general
+    fecha_publicacion: "2026-08-27"
+    fecha_consulta: "2026-09-01"
+    cita: >-
+      Ahora solo tenemos ocho días para presentar alegaciones a un Real Decreto que cambia
+      radicalmente las reglas del juego y que contradice las propuestas normativas
+      anteriores.
+  - id: src-eldiario-aragon
+    url: "https://www.eldiario.es/aragon/economia/gobierno-azcon-cree-decreto-centros-datos-disenado-hundir-inversiones-aragon_1_13471260.html"
+    titulo: "El Gobierno de Azcón cree que el decreto de centros de datos está «diseñado para hundir» las inversiones en Aragón"
+    editor: "elDiario.es Aragón"
+    tipo: prensa_general
+    fecha_publicacion: "2026-08-27"
+    fecha_consulta: "2026-09-01"
+    cita: >-
+      Esta norma busca que el gran consumo de electricidad de los centros de datos no cause
+      un incremento en la factura de la luz de todos los aragoneses y aragonesas.
+  - id: src-extremadura
+    url: "https://elperiodicodelaenergia.com/extremadura-alegara-para-que-la-concesion-energetica-a-centros-de-datos-no-dependa-del-gobierno-central/"
+    titulo: "Extremadura alegará para que la concesión energética a centros de datos no dependa del Gobierno central"
+    editor: "El Periódico de la Energía"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-08-27"
+    fecha_consulta: "2026-09-01"
+    cita: >-
+      No decimos que no se regule, lo que decimos es que para regularse tendrá que contar
+      con los territorios, tendrá que contar con las comunidades autónomas, tendrá que
+      contar con Extremadura, no hacerlo por las bravas.
+  - id: src-heraldo
+    url: "https://www.heraldo.es/noticias/aragon/2026/08/29/aragon-mantiene-tramitacion-prioritaria-centros-datos-pese-regulacion-estatal-10-promotores-esperan-su-piga-2047955.html"
+    titulo: "Aragón mantiene la tramitación prioritaria de centros de datos pese a la regulación estatal: 10 promotores esperan su PIGA"
+    editor: "Heraldo de Aragón"
+    tipo: prensa_general
+    fecha_publicacion: "2026-08-29"
+    fecha_consulta: "2026-09-01"
+    cita: >-
+      La DGA ha decidido mantener su calendario administrativo pese a que los exigentes
+      requisitos que va a imponer el Ministerio para la Transición Ecológica ponen en
+      riesgo su viabilidad.
+  - id: src-ecoz
+    url: "https://ecodezaragoza.tv/el-gobierno-impone-requisitos-urgentes-a-los-centros-de-datos-y-aragon-alerta-del-riesgo-para-sus-inversiones/"
+    titulo: "El Gobierno impone requisitos urgentes a los centros de datos y Aragón alerta del riesgo para sus inversiones"
+    editor: "Eco de Zaragoza"
+    tipo: prensa_general
+    fecha_publicacion: "2026-08-26"
+    fecha_consulta: "2026-09-01"
+    cita: >-
+      El Gobierno central aprobó este martes en Consejo de Ministros tramitar por vía de
+      urgencia un real decreto que endurece drásticamente las exigencias energéticas para
+      los nuevos centros de datos de más de 1 MW.

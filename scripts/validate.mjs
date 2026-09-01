@@ -5,7 +5,7 @@ import { join } from 'node:path'
 import { cargarTodo, RAIZ } from './load.mjs'
 
 const estricto = process.argv.includes('--strict')
-const { sitios, red, renovables, incidencias } = cargarTodo()
+const { sitios, red, renovables, normativa, incidencias } = cargarTodo()
 
 const errores = incidencias.filter((i) => i.nivel === 'error')
 const avisos = incidencias.filter((i) => i.nivel === 'aviso')
@@ -22,6 +22,7 @@ lineas.push(`Generado el ${new Date().toISOString().slice(0, 10)} por \`npm run 
 lineas.push(`- Emplazamientos cargados: **${sitios.length}**`)
 lineas.push(`- Nodos de red: **${red.length}**`)
 lineas.push(`- Activos renovables/BESS: **${renovables.length}**`)
+lineas.push(`- Normas registradas: **${normativa.length}**`)
 lineas.push(`- Errores: **${errores.length}** · Avisos: **${avisos.length}**`, '')
 
 if (incidencias.length) {
@@ -57,6 +58,10 @@ writeFileSync(
       cifras_sin_tipificar: sinTipificar,
       emplazamientos_sin_coordenadas: sitios.filter((s) => s.ubicacion.lat == null).length,
       emplazamientos_sin_potencia: sitios.filter((s) => s.potencia.length === 0).length,
+      normas: normativa.length,
+      // Una norma sin ningún vínculo con el registro está catalogada pero no
+      // conectada: aparece en la sección y no explica nada del mapa.
+      normas_sin_vinculo: normativa.filter((n) => n.afecta.length === 0).length,
     },
     null,
     1,
@@ -68,6 +73,7 @@ for (const i of errores.slice(0, 60)) console.error(`ERROR  ${i.fichero}: ${i.ms
 if (errores.length > 60) console.error(`… y ${errores.length - 60} errores más`)
 console.log(
   `\n${sitios.length} emplazamientos · ${red.length} nodos de red · ${renovables.length} renovables` +
+    ` · ${normativa.length} normas` +
     `\n${errores.length} errores · ${avisos.length} avisos → research/informe-validacion.md`,
 )
 

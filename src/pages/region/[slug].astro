@@ -5,8 +5,10 @@ import regiones from '../../data/regiones.json'
 import sitios from '../../data/sitios.json'
 import red from '../../data/red.json'
 import renovables from '../../data/renovables.json'
+import normativa from '../../data/normativa.json'
 import { ESTADO_ETIQUETA, ORDEN_ESTADOS, numero, slug as aSlug } from '../../lib/etiquetas.js'
 import Termino from '../../components/Termino.astro'
+import { ESTADO_NORMA_ETIQUETA, ordenarNormas, normasQueAfectanA } from '../../lib/normativa.js'
 
 export function getStaticPaths() {
   return regiones.map((r) => ({ params: { slug: r.slug }, props: { region: r } }))
@@ -16,6 +18,14 @@ const { region: r } = Astro.props
 const propios = sitios
   .filter((s) => r.sitios.includes(s.id))
   .sort((a, b) => ORDEN_ESTADOS.indexOf(a.estado) - ORDEN_ESTADOS.indexOf(b.estado))
+
+// Normativa propia de la comunidad y normativa estatal o europea que la nombra
+// expresamente. La normativa de alcance general no se repite en cada región.
+const normasPropias = normativa.filter((n) => n.ambito === 'autonomico' && n.ccaa.includes(r.nombre))
+const normasQueLaNombran = normasQueAfectanA(normativa, 'region', r.nombre)
+  .map((x) => x.norma)
+  .filter((n) => !normasPropias.some((p) => p.id === n.id))
+const normasRegion = ordenarNormas([...normasPropias, ...normasQueLaNombran])
 
 const nodos = red.filter((n) => n.ccaa === r.nombre)
 const activos = renovables.filter((a) => a.ccaa === r.nombre)
@@ -178,6 +188,29 @@ const centro = (() => {
       </>
     )}
 
+    {normasRegion.length > 0 && (
+      <>
+        <h2>Normativa</h2>
+        <p class="pequeno silencio">
+          Normas autonómicas de {r.nombre} y normas de otro ámbito que la nombran expresamente.
+          Lo que aplica a toda España está en <a href="/normativa">la sección de normativa</a>.
+        </p>
+        <ul class="normas-region">
+          {normasRegion.map((n) => (
+            <li>
+              <p class="cabecera-norma">
+                <a href={`/normativa/${n.id}`}>{n.titulo}</a>
+                <span class={`etiqueta estado-norma-${n.estado}`}>
+                  <span class="punto" aria-hidden="true"></span>{ESTADO_NORMA_ETIQUETA[n.estado]}
+                </span>
+              </p>
+              <p class="pequeno">{n.resumen}</p>
+            </li>
+          ))}
+        </ul>
+      </>
+    )}
+
     <p class="pequeno" style="margin:2rem 0 3rem">
       <a href={`/?r=${encodeURIComponent(r.nombre)}`}>Ver {r.nombre} en el mapa →</a>
     </p>
@@ -230,5 +263,32 @@ const centro = (() => {
     text-align: right;
     font-variant-numeric: tabular-nums;
     color: var(--tinta-3);
+  }
+
+  .normas-region {
+    list-style: none;
+    padding: 0;
+    max-width: 46rem;
+  }
+
+  .normas-region li {
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--borde);
+  }
+
+  .normas-region li:last-child {
+    border-bottom: 0;
+  }
+
+  .normas-region p {
+    margin: 0.3rem 0 0;
+  }
+
+  .normas-region .cabecera-norma {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    margin: 0;
   }
 </style>

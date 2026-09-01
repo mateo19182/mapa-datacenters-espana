@@ -1,0 +1,129 @@
+id: propuesta-cada-2026
+titulo: "Propuesta de Reglamento europeo de desarrollo de la nube y la inteligencia artificial (CADA)"
+titulo_oficial: "Propuesta de Reglamento del Parlamento Europeo y del Consejo por el que se establece un marco de medidas para reforzar el ecosistema europeo de nube e inteligencia artificial (Cloud and AI Development Act)"
+ambito: europeo
+rango: propuesta_reglamento_ue
+estado: propuesta
+estado_detalle: >-
+  Propuesta adoptada por la Comisión el 3 de junio de 2026 y remitida a los colegisladores.
+  No es derecho vigente: en el tren legislativo del Parlamento figura como «anunciada», sin
+  comisión asignada ni ponentes nombrados, y ni Parlamento ni Consejo han fijado posición.
+boletin: null
+referencia: "COM(2026) 502"
+url_oficial: "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=COM%3A2026%3A502%3AFIN"
+fecha_aprobacion: "2026-06-03"
+fecha_publicacion: "2026-06-03"
+materias: [soberania_digital, suelo, eficiencia]
+resumen: >-
+  Quiere triplicar la capacidad de centros de datos de la Unión en cinco a siete años.
+  Obligaría a cada Estado a designar al menos una zona de aceleración de centros de datos
+  con permisos facilitados, permitiría a la Comisión declarar proyectos estratégicos y
+  crearía un marco de soberanía de la nube con cuatro niveles de garantía.
+por_que_importa: >-
+  Empuja en dirección contraria a la del borrador español: donde el real decreto de agosto
+  filtra el acceso a la red, la propuesta europea acelera permisos y designa zonas. El
+  borrador español cita expresamente su nivel 1 como referencia para la localización de los
+  datos del sector público.
+obligaciones:
+  - quien: "Estados miembros"
+    que: >-
+      Designar al menos una zona de aceleración de centros de datos, con procedimientos
+      administrativos y de permisos facilitados, y un punto único de contacto al que el
+      promotor pueda pedir asistencia.
+    umbral: null
+    plazo: "Sin fijar: depende del texto que se apruebe"
+    fuentes: [src-ep-train]
+  - quien: "Proveedores de servicios de computación en nube"
+    que: >-
+      Someterse a autoevaluación de conformidad para el nivel 1 del esquema de garantía y a
+      auditoría independiente de tercero para los niveles 2, 3 y 4.
+    umbral: null
+    plazo: "Sin fijar"
+    fuentes: [src-ep-train]
+hitos:
+  - fecha: "2026-06-03"
+    hito: "La Comisión adopta la propuesta, dentro del Tech Sovereignty Package"
+    fuentes: [src-comision, src-eurlex-proc]
+  - fecha: "2026-08-01"
+    hito: >-
+      Circula en prensa sectorial que el reglamento entraría en vigor el 4 de agosto de
+      2026; el tren legislativo del Parlamento lo desmiente
+    fuentes: [src-yeandel]
+actores:
+  - nombre: "Comisión Europea"
+    rol: promotor
+    postura: favorable
+    voz: "Henna Virkkunen, vicepresidenta ejecutiva"
+    resumen: "Autora de la propuesta, presentada junto al Chips Act 2.0 y la estrategia de código abierto."
+    cita: >-
+      The CADA will reinforce energy-efficient data centre capacity, while complementing the
+      Apply AI strategy to boost the adoption of artificial intelligence and cloud across
+      Europe.
+    fuentes: [src-comision]
+  - nombre: "Parlamento Europeo"
+    rol: competente
+    postura: sin_constar
+    resumen: >-
+      En enero de 2026 aprobó un informe de iniciativa propia que pedía precisamente esta
+      norma. El expediente aún no tiene comisión ni ponente.
+    cita: >-
+      The next steps for the EP are the allocation of the file to one or several committees
+      and the appointment of one or several rapporteurs.
+    fuentes: [src-ep-train]
+afecta:
+  - tipo: registro
+    ref: null
+    como: >-
+      Si prospera, obligaría a España a designar zonas de aceleración: emplazamientos con
+      tramitación privilegiada que este registro tendría que distinguir del resto.
+    fuentes: [src-ep-train]
+relacionadas: [prd-centros-datos-sostenibles]
+incertidumbres:
+  - campo: estado
+    descripcion: >-
+      Hay coberturas que dan por aprobado el paquete de soberanía tecnológica y sitúan la
+      entrada en vigor del CADA el 4 de agosto de 2026. No consta tal cosa: el tren
+      legislativo del Parlamento mantiene el expediente en estado «anunciado». Se conservan
+      las dos lecturas y se señala cuál está respaldada por fuente institucional.
+    fuentes: [src-ep-train, src-yeandel]
+ultima_verificacion: "2026-09-01"
+fuentes:
+  - id: src-comision
+    url: "https://digital-strategy.ec.europa.eu/en/library/proposal-cloud-and-ai-development-act-cada"
+    titulo: "Proposal for the Cloud and AI Development Act (CADA)"
+    editor: "Comisión Europea"
+    tipo: oficial
+    fecha_publicacion: "2026-06-03"
+    fecha_consulta: "2026-09-01"
+    cita: >-
+      The Commission has adopted a proposal for the Cloud and AI Development Act (CADA) with
+      the aim of strengthening the EU's cloud and AI ecosystem, investment and infrastructure.
+  - id: src-eurlex-proc
+    url: "https://eur-lex.europa.eu/procedure/EN/2026_138"
+    titulo: "Procedimiento 2026/138 (COD) — COM(2026) 502"
+    editor: "EUR-Lex"
+    tipo: oficial
+    fecha_publicacion: "2026-06-03"
+    fecha_consulta: "2026-09-01"
+    cita: "Type: Ordinary legislative procedure (COD)"
+  - id: src-ep-train
+    url: "https://www.europarl.europa.eu/legislative-train/theme-a-new-plan-for-europe-s-sustainable-prosperity-and-competitiveness/file-cloud-and-ai-development-act"
+    titulo: "Cloud and AI development act — Legislative Train Schedule"
+    editor: "Parlamento Europeo"
+    tipo: oficial
+    fecha_publicacion: null
+    fecha_consulta: "2026-09-01"
+    cita: >-
+      The CADA would require each Member State to designate at least one data centre
+      acceleration zone where administrative and permit-granting processes would be
+      facilitated by national, regional, and local authorities.
+  - id: src-yeandel
+    url: "https://www.yeandel.co.uk/22-q3-2026-updates/cada-not-law-on-tuesday.html"
+    titulo: "CADA is not law: EU Cloud and AI Development Act real status"
+    editor: "Yeandel"
+    tipo: otro
+    fecha_publicacion: "2026-08-01"
+    fecha_consulta: "2026-09-01"
+    cita: >-
+      CADA's recorded status is «Announced». A file that has not yet been given to a
+      committee has not been amended, voted, negotiated or adopted by anybody.

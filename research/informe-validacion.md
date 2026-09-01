@@ -5,7 +5,8 @@ Generado el 2026-09-01 por `npm run validate`.
 - Emplazamientos cargados: **203**
 - Nodos de red: **133**
 - Activos renovables/BESS: **22**
-- Errores: **0** · Avisos: **272**
+- Normas registradas: **12**
+- Errores: **0** · Avisos: **273**
 
 ## Incidencias por fichero
 
@@ -531,6 +532,10 @@ Generado el 2026-09-01 por `npm run validate`.
 
 - aviso: potencia[0] («Capacidad del emplazamiento (site capacity end-state)») no distingue el tipo de MW
 - aviso: potencia[1] («Ficha del directorio OCOLO») no distingue el tipo de MW
+
+### `normativa/aragon-decreto-ley-1-2008.yaml`
+
+- aviso: consta en vigor pero no tiene fecha de publicación
 
 ### `nostrum-pinto.yaml`
 

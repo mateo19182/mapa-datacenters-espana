@@ -1,0 +1,491 @@
+---
+import Base from '../../layouts/Base.astro'
+import Fuente from '../../components/Fuente.astro'
+import Glosa from '../../components/Glosa.astro'
+import normativa from '../../data/normativa.json'
+import sitios from '../../data/sitios.json'
+import { fechaLegible, slug } from '../../lib/etiquetas.js'
+import {
+  AMBITO_ETIQUETA,
+  RANGO_ETIQUETA,
+  ESTADO_NORMA_ETIQUETA,
+  ESTADO_NORMA_DESCRIPCION,
+  MATERIA_ETIQUETA,
+  ROL_ETIQUETA,
+  POSTURA_ETIQUETA,
+  VINCULO_NORMA_ETIQUETA,
+} from '../../lib/normativa.js'
+
+export function getStaticPaths() {
+  return normativa.map((n) => ({ params: { id: n.id }, props: { norma: n } }))
+}
+
+const { norma: n } = Astro.props
+const hoy = new Date().toISOString().slice(0, 10)
+
+// Índice de fuentes, igual que en la ficha de un emplazamiento: cada afirmación
+// del cuerpo apunta al número de la fuente que la sostiene.
+const indice = new Map(n.fuentes.map((f, i) => [f.id, i + 1]))
+const refs = (ids) =>
+  (ids ?? [])
+    .map((id) => indice.get(id))
+    .filter(Boolean)
+    .sort((a, b) => a - b)
+
+// La lectura es la única parte interpretada de la ficha y se escribe a mano en
+// research/normativa/. Una norma sin lectura se publica igual, solo con hechos.
+const lecturas = import.meta.glob('../../contenido/normativa/*.md', { eager: true })
+const lectura = lecturas[`../../contenido/normativa/${n.id}.md`]
+const Lectura = lectura?.Content
+
+const hitos = [...(n.hitos ?? [])].sort((a, b) => a.fecha.localeCompare(b.fecha))
+const relacionadas = (n.relacionadas ?? [])
+  .map((id) => normativa.find((o) => o.id === id))
+  .filter(Boolean)
+
+const porId = new Map(sitios.map((s) => [s.id, s]))
+const vinculo = (v) => {
+  if (v.tipo === 'proyecto') {
+    const s = porId.get(v.ref)
+    return s ? { texto: s.nombre, href: `/proyecto/${s.id}` } : { texto: v.ref, href: null }
+  }
+  if (v.tipo === 'region') return { texto: v.ref, href: `/region/${slug(v.ref)}` }
+  if (v.tipo === 'nudo') return { texto: v.ref, href: '/red-electrica' }
+  // El vínculo con el registro entero ya lo dice la etiqueta: repetirlo al lado
+  // no añade nada.
+  return { texto: null, href: null }
+}
+---
+
+<Base titulo={n.titulo} descripcion={n.resumen}>
+  <div class="contenedor">
+    <p class="migas"><a href="/normativa">Normativa</a> · {AMBITO_ETIQUETA[n.ambito]}</p>
+
+    <h1>{n.titulo}</h1>
+    {n.titulo_oficial && <p class="oficial">{n.titulo_oficial}</p>}
+
+    <p class="etiquetas">
+      <span class={`etiqueta estado-norma-${n.estado}`}>
+        <span class="punto" aria-hidden="true"></span>{ESTADO_NORMA_ETIQUETA[n.estado]}
+      </span>
+      <span class="etiqueta silencio">{RANGO_ETIQUETA[n.rango] ?? n.rango}</span>
+      {n.ccaa.map((c) => <a class="etiqueta silencio" href={`/region/${slug(c)}`}>{c}</a>)}
+      {n.materias.map((m) => <span class="etiqueta silencio">{MATERIA_ETIQUETA[m] ?? m}</span>)}
+    </p>
+
+    <p class="sumario"><Glosa texto={n.resumen} /></p>
+
+    <dl class="ficha">
+      <div><dt>Estado</dt><dd>{ESTADO_NORMA_DESCRIPCION[n.estado]}</dd></div>
+      {n.boletin && <div><dt>Boletín</dt><dd>{n.boletin}{n.referencia && <> · <span class="ref">{n.referencia}</span></>}</dd></div>}
+      {n.fecha_aprobacion && <div><dt>Aprobación</dt><dd>{fechaLegible(n.fecha_aprobacion)}</dd></div>}
+      {n.fecha_publicacion && <div><dt>Publicación</dt><dd>{fechaLegible(n.fecha_publicacion)}</dd></div>}
+      {n.fecha_entrada_vigor && <div><dt>Entrada en vigor</dt><dd>{fechaLegible(n.fecha_entrada_vigor)}</dd></div>}
+      {n.url_oficial && (
+        <div>
+          <dt>Texto</dt>
+          <dd><a href={n.url_oficial} rel="noopener nofollow" target="_blank">Documento original</a></dd>
+        </div>
+      )}
+      <div><dt>Última verificación</dt><dd>{fechaLegible(n.ultima_verificacion)}</dd></div>
+    </dl>
+
+    {n.estado_detalle && <p class="detalle"><Glosa texto={n.estado_detalle} /></p>}
+
+    {n.obligaciones.length > 0 && (
+      <section>
+        <h2 id="dice">Lo que dice la norma</h2>
+        <p class="pequeno silencio">
+          Obligaciones tal como las expresa el texto, con su umbral y su plazo. Los umbrales se
+          copian en la unidad en que están escritos y no se convierten entre sí.
+        </p>
+        <div class="tabla-envoltorio">
+          <table>
+            <thead>
+              <tr><th>Quién</th><th>Qué</th><th>Umbral</th><th>Plazo</th><th class="num">Fuente</th></tr>
+            </thead>
+            <tbody>
+              {n.obligaciones.map((o) => (
+                <tr>
+                  <td data-etiqueta="Quién">{o.quien}</td>
+                  <td data-etiqueta="Qué"><Glosa texto={o.que} /></td>
+                  <td data-etiqueta="Umbral" class="pequeno">{o.umbral ?? <span class="silencio">—</span>}</td>
+                  <td data-etiqueta="Plazo" class="pequeno">{o.plazo ?? <span class="silencio">—</span>}</td>
+                  <td data-etiqueta="Fuente" class="num">
+                    {refs(o.fuentes).map((r, i) => (
+                      <>{i > 0 && ', '}<a href={`#fuente-${n.fuentes[r - 1].id}`}>{r}</a></>
+                    ))}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    )}
+
+    {hitos.length > 0 && (
+      <section>
+        <h2 id="hitos">En qué punto está</h2>
+        <ol class="hitos">
+          {hitos.map((h) => (
+            <li class:list={['hito', h.fecha > hoy && 'futuro']}>
+              <p class="fecha">
+                {fechaLegible(h.fecha)}
+                {h.fecha > hoy && <span class="por-venir">por venir</span>}
+              </p>
+              <p>
+                {h.hito}
+                {refs(h.fuentes).length > 0 && (
+                  <sup>{refs(h.fuentes).map((r, i) => (
+                    <>{i > 0 && ','}<a href={`#fuente-${n.fuentes[r - 1].id}`}>{r}</a></>
+                  ))}</sup>
+                )}
+              </p>
+            </li>
+          ))}
+        </ol>
+      </section>
+    )}
+
+    {n.actores.length > 0 && (
+      <section>
+        <h2 id="actores">Quién la empuja y quién no</h2>
+        <p class="pequeno silencio">
+          Rol de cada actor en esta norma concreta y postura documentada. Una postura sin cita
+          literal es el resumen de un tercero, no una declaración: se marca como tal en el
+          parte de validación.
+        </p>
+        <div class="actores">
+          {n.actores.map((a) => (
+            <article class="tarjeta actor">
+              <p class="cabecera-actor">
+                <strong>{a.nombre}</strong>
+                <span class={`etiqueta postura-${a.postura}`}>{POSTURA_ETIQUETA[a.postura]}</span>
+                <span class="pequeno silencio">{ROL_ETIQUETA[a.rol] ?? a.rol}</span>
+              </p>
+              {a.voz && <p class="pequeno silencio voz">{a.voz}</p>}
+              {a.resumen && <p class="pequeno">{a.resumen}</p>}
+              {a.cita && <blockquote>{a.cita}</blockquote>}
+              {refs(a.fuentes).length > 0 && (
+                <p class="pequeno silencio">
+                  Fuente{refs(a.fuentes).length > 1 && 's'}{' '}
+                  {refs(a.fuentes).map((r, i) => (
+                    <>{i > 0 && ', '}<a href={`#fuente-${n.fuentes[r - 1].id}`}>{r}</a></>
+                  ))}
+                </p>
+              )}
+            </article>
+          ))}
+        </div>
+      </section>
+    )}
+
+    {n.afecta.length > 0 && (
+      <section>
+        <h2 id="afecta">Qué condiciona del mapa</h2>
+        <ul class="vinculos">
+          {n.afecta.map((v) => {
+            const d = vinculo(v)
+            return (
+              <li>
+                <p class="cabecera-vinculo">
+                  <span class="etiqueta silencio">{VINCULO_NORMA_ETIQUETA[v.tipo]}</span>
+                  {d.href ? <a href={d.href}>{d.texto}</a> : d.texto && <strong>{d.texto}</strong>}
+                </p>
+                <p class="pequeno">
+                  <Glosa texto={v.como} />
+                  {refs(v.fuentes).length > 0 && (
+                    <sup>{refs(v.fuentes).map((r, i) => (
+                      <>{i > 0 && ','}<a href={`#fuente-${n.fuentes[r - 1].id}`}>{r}</a></>
+                    ))}</sup>
+                  )}
+                </p>
+              </li>
+            )
+          })}
+        </ul>
+      </section>
+    )}
+
+    {(n.por_que_importa || Lectura) && (
+      <section>
+        <h2 id="lectura">Lo que cambia en la práctica</h2>
+        <p class="pequeno silencio aviso-lectura">
+          Todo lo anterior son hechos con fuente. Esto es una lectura: se firma como tal y se
+          puede discutir sin que se caiga ningún dato de la ficha.
+        </p>
+        {n.por_que_importa && <p class="importa"><Glosa texto={n.por_que_importa} /></p>}
+        {Lectura && <div class="prosa"><Lectura /></div>}
+      </section>
+    )}
+
+    {n.incertidumbres.length > 0 && (
+      <section>
+        <h2 id="incertidumbres">Incertidumbres</h2>
+        <p class="pequeno silencio">Lo que las fuentes no aclaran o en lo que se contradicen.</p>
+        <ul class="incertidumbres">
+          {n.incertidumbres.map((u) => (
+            <li>
+              <strong class="campo">{u.campo}</strong>
+              <p class="pequeno">
+                <Glosa texto={u.descripcion} />
+                {refs(u.fuentes).length > 0 && (
+                  <sup>{refs(u.fuentes).map((r, i) => (
+                    <>{i > 0 && ','}<a href={`#fuente-${n.fuentes[r - 1].id}`}>{r}</a></>
+                  ))}</sup>
+                )}
+              </p>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    {relacionadas.length > 0 && (
+      <section>
+        <h2 id="relacionadas">Normas relacionadas</h2>
+        <ul class="pequeno relacionadas">
+          {relacionadas.map((r) => (
+            <li>
+              <a href={`/normativa/${r.id}`}>{r.titulo}</a>{' '}
+              <span class="silencio">· {ESTADO_NORMA_ETIQUETA[r.estado]}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    <section>
+      <h2 id="fuentes">Fuentes</h2>
+      <ol class="fuentes">
+        {n.fuentes.map((f, i) => <Fuente fuente={f} numero={i + 1} />)}
+      </ol>
+    </section>
+  </div>
+</Base>
+
+<style>
+  h1 {
+    margin-bottom: 0.3rem;
+  }
+
+  .oficial {
+    font-size: 0.88rem;
+    color: var(--tinta-3);
+    margin: 0 0 0.9rem;
+    max-width: 46rem;
+  }
+
+  .etiquetas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 0 0 1rem;
+  }
+
+  a.etiqueta {
+    text-decoration: none;
+  }
+
+  .ficha {
+    display: grid;
+    gap: 1px;
+    grid-template-columns: repeat(auto-fit, minmax(min(13rem, 100%), 1fr));
+    background: var(--borde);
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    overflow: hidden;
+    margin: 1.5rem 0;
+  }
+
+  .ficha > div {
+    background: var(--papel);
+    padding: 0.7rem 0.9rem;
+  }
+
+  .ficha dt {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--tinta-3);
+    margin-bottom: 0.2rem;
+  }
+
+  .ficha dd {
+    margin: 0;
+    font-size: 0.88rem;
+  }
+
+  .ref {
+    font-family: var(--mono);
+    font-size: 0.9em;
+  }
+
+  .detalle {
+    font-size: 0.92rem;
+    color: var(--tinta-2);
+    max-width: 46rem;
+    border-left: 3px solid var(--borde-fuerte);
+    padding-left: 0.9rem;
+  }
+
+  section {
+    margin-top: 2.5rem;
+  }
+
+  h2 {
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--borde);
+  }
+
+  /* --- hitos --- */
+  .hitos {
+    list-style: none;
+    padding: 0;
+    margin: 1.2rem 0 0;
+    max-width: 46rem;
+  }
+
+  .hito {
+    display: grid;
+    grid-template-columns: 11rem 1fr;
+    gap: 1rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--borde);
+  }
+
+  .hito:last-child {
+    border-bottom: 0;
+  }
+
+  .hito p {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+
+  .hito .fecha {
+    color: var(--tinta-3);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .hito.futuro .fecha {
+    color: var(--construccion);
+    font-weight: 600;
+  }
+
+  .por-venir {
+    display: block;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+  }
+
+  @media (max-width: 32rem) {
+    .hito {
+      grid-template-columns: 1fr;
+      gap: 0.15rem;
+    }
+  }
+
+  /* --- actores --- */
+  .actores {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    margin-top: 1.2rem;
+    align-items: start;
+  }
+
+  .actor p {
+    margin: 0 0 0.4rem;
+  }
+
+  .cabecera-actor {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    align-items: baseline;
+  }
+
+  .voz {
+    margin-top: -0.2rem;
+  }
+
+  .postura-favorable { color: var(--op); }
+  .postura-critica { color: var(--permisos); }
+  .postura-contraria { color: var(--cancelado); }
+  .postura-neutral,
+  .postura-sin_constar { color: var(--tinta-3); }
+
+  .actor blockquote {
+    margin: 0.5rem 0;
+    padding-left: 0.8rem;
+    border-left: 2px solid var(--borde-fuerte);
+    color: var(--tinta-2);
+    font-size: 0.87rem;
+    line-height: 1.5;
+  }
+
+  /* --- vínculos e incertidumbres --- */
+  .vinculos,
+  .incertidumbres,
+  .relacionadas {
+    list-style: none;
+    padding: 0;
+    max-width: 46rem;
+  }
+
+  .vinculos li,
+  .incertidumbres li {
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--borde);
+  }
+
+  .vinculos li:last-child,
+  .incertidumbres li:last-child {
+    border-bottom: 0;
+  }
+
+  .vinculos p,
+  .incertidumbres p {
+    margin: 0.3rem 0 0;
+  }
+
+  .cabecera-vinculo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    margin: 0;
+  }
+
+  .campo {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: var(--tinta-3);
+  }
+
+  .relacionadas li {
+    margin-bottom: 0.35em;
+  }
+
+  /* --- lectura --- */
+  .aviso-lectura {
+    margin-bottom: 1rem;
+  }
+
+  .importa {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    max-width: 44rem;
+  }
+
+  .fuentes {
+    list-style: none;
+    padding: 0;
+    max-width: 52rem;
+  }
+</style>

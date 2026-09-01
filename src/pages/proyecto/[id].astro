@@ -3,6 +3,7 @@ import Base from '../../layouts/Base.astro'
 import Fuente from '../../components/Fuente.astro'
 import sitios from '../../data/sitios.json'
 import renovables from '../../data/renovables.json'
+import normativa from '../../data/normativa.json'
 import {
   ESTADO_ETIQUETA,
   POTENCIA_ETIQUETA,
@@ -33,12 +34,33 @@ import {
   GLOSARIO_MODELO,
 } from '../../lib/glosario.js'
 import Termino from '../../components/Termino.astro'
+import {
+  ESTADO_NORMA_ETIQUETA,
+  ordenarNormas,
+  normasQueAfectanA,
+} from '../../lib/normativa.js'
 
 export function getStaticPaths() {
   return sitios.map((s) => ({ params: { id: s.id }, props: { sitio: s } }))
 }
 
 const { sitio: s } = Astro.props
+
+// Normas que nombran este emplazamiento, y las que alcanzan a su comunidad. El
+// vínculo lo declara la propia norma en `afecta[]`: no se deduce aquí.
+const normasDelProyecto = normasQueAfectanA(normativa, 'proyecto', s.id)
+const normasDeLaRegion = s.ubicacion.ccaa
+  ? normasQueAfectanA(normativa, 'region', s.ubicacion.ccaa).filter(
+      (x) => !normasDelProyecto.some((y) => y.norma.id === x.norma.id),
+    )
+  : []
+const normasAplicables = ordenarNormas(
+  [...normasDelProyecto, ...normasDeLaRegion].map((x) => x.norma),
+).map((norma) => ({
+  norma,
+  vinculos: [...normasDelProyecto, ...normasDeLaRegion].find((x) => x.norma.id === norma.id).vinculos,
+  directa: normasDelProyecto.some((x) => x.norma.id === norma.id),
+}))
 
 // Índice de fuentes: cada dato del cuerpo apunta a su número de referencia.
 const indice = new Map(s.fuentes.map((f, i) => [f.id, i + 1]))
@@ -276,6 +298,30 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
                 </tbody>
               </table>
             </div>
+          </>
+        )}
+
+        {normasAplicables.length > 0 && (
+          <>
+            <h2 id="normativa">Normativa que le afecta</h2>
+            <p class="pequeno silencio">
+              Normas que nombran este emplazamiento o su comunidad. Cada vínculo lo declara la
+              propia ficha de la norma, con su fuente; no se deduce de la ubicación.
+            </p>
+            <ul class="normas-afectan">
+              {normasAplicables.map(({ norma, vinculos, directa }) => (
+                <li>
+                  <p class="cabecera-norma">
+                    <a href={`/normativa/${norma.id}`}>{norma.titulo}</a>
+                    <span class={`etiqueta estado-norma-${norma.estado}`}>
+                      <span class="punto" aria-hidden="true"></span>{ESTADO_NORMA_ETIQUETA[norma.estado]}
+                    </span>
+                    {!directa && <span class="pequeno silencio">alcance regional</span>}
+                  </p>
+                  {vinculos.map((v) => <p class="pequeno">{v.como}</p>)}
+                </li>
+              ))}
+            </ul>
           </>
         )}
 
@@ -679,5 +725,32 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
     .pares dt:first-of-type {
       margin-top: 0;
     }
+  }
+
+  .normas-afectan {
+    list-style: none;
+    padding: 0;
+    max-width: 46rem;
+  }
+
+  .normas-afectan li {
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--borde);
+  }
+
+  .normas-afectan li:last-child {
+    border-bottom: 0;
+  }
+
+  .normas-afectan p {
+    margin: 0.3rem 0 0;
+  }
+
+  .normas-afectan .cabecera-norma {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    margin: 0;
   }
 </style>

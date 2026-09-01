@@ -85,6 +85,9 @@ CREATE TABLE red_nodos (id TEXT PRIMARY KEY, datos TEXT);
 CREATE TABLE red_actuaciones (id TEXT PRIMARY KEY, datos TEXT);
 CREATE TABLE red_capacidad (id TEXT PRIMARY KEY, subestacion_id TEXT, datos TEXT);
 CREATE TABLE renovables (id TEXT PRIMARY KEY, datos TEXT);
+-- La normativa viaja entera en un JSON, como red y renovables: sus listas
+-- (hitos, obligaciones, actores) se consultan desde el sitio, no con SQL.
+CREATE TABLE normativa (id TEXT PRIMARY KEY, ambito TEXT, estado TEXT, datos TEXT);
 
 CREATE INDEX idx_sitios_ccaa ON sitios(ccaa);
 CREATE INDEX idx_sitios_operador ON sitios(operador);
@@ -94,7 +97,7 @@ CREATE INDEX idx_fuentes_sitio ON fuentes(sitio_id);
 CREATE INDEX idx_respaldos_sitio ON respaldos(sitio_id);
 `)
 
-const { sitios, red, actuaciones, capacidad, renovables, incidencias } = cargarTodo()
+const { sitios, red, actuaciones, capacidad, renovables, normativa, incidencias } = cargarTodo()
 
 const insSitio = db.prepare(`INSERT INTO sitios VALUES (
   @id,@nombre,@tipo,@operador,@propietario,@cliente_ancla,@modelo,@municipio,@provincia,@ccaa,
@@ -117,6 +120,7 @@ const insRed = db.prepare('INSERT INTO red_nodos VALUES (?,?)')
 const insRen = db.prepare('INSERT INTO renovables VALUES (?,?)')
 const insAct = db.prepare('INSERT INTO red_actuaciones VALUES (?,?)')
 const insCap = db.prepare('INSERT INTO red_capacidad VALUES (?,?,?)')
+const insNorma = db.prepare('INSERT INTO normativa VALUES (?,?,?,?)')
 
 const cargar = db.transaction(() => {
   for (const s of sitios) {
@@ -203,9 +207,10 @@ const cargar = db.transaction(() => {
   for (const a of actuaciones) insAct.run(a.id, JSON.stringify(a))
   for (const c of capacidad) insCap.run(c.id, c.subestacion_id ?? null, JSON.stringify(c))
   for (const r of renovables) insRen.run(r.id, JSON.stringify(r))
+  for (const n of normativa) insNorma.run(n.id, n.ambito, n.estado, JSON.stringify(n))
 })
 cargar()
 
 const errores = incidencias.filter((i) => i.nivel === 'error').length
-console.log(`SQLite escrito en build/datacenters.db — ${sitios.length} emplazamientos, ${red.length} subestaciones, ${actuaciones.length} actuaciones, ${capacidad.length} nudos con capacidad, ${renovables.length} renovables (${errores} ficheros con errores quedaron fuera)`)
+console.log(`SQLite escrito en build/datacenters.db — ${sitios.length} emplazamientos, ${red.length} subestaciones, ${actuaciones.length} actuaciones, ${capacidad.length} nudos con capacidad, ${renovables.length} renovables, ${normativa.length} normas (${errores} ficheros con errores quedaron fuera)`)
 db.close()
