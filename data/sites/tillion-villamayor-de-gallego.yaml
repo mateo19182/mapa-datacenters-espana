@@ -137,7 +137,15 @@ incertidumbres:
       TI de potencia de conexión, por lo que los 75 MW por edificio y los 300 MW del campus
       se registran como no especificados. Solo los 150 MW asegurados pueden clasificarse con
       seguridad como potencia de acceso a la red.
-    fuentes: [src-1]
+
+      Dos periódicos que cubren la misma documentación el mismo día leen los 300 MW de forma
+      incompatible: El Periódico de Aragón los llama "300 megavatios informáticos (MW IT)" y
+      añade que eso "indica la potencia instalada de los procesadores"; El Español habla de
+      "una demanda total de 300 MW, a dividir a partes iguales entre los cuatro edificios".
+      Son los dos extremos de la magnitud —carga TI frente a demanda del campus— y de cuál sea
+      depende que la cifra de consumo de esta ficha sea posible o no (ver la incertidumbre sobre
+      `energia`). El tipo se mantiene sin especificar mientras el desacuerdo siga abierto.
+    fuentes: [src-1, src-7, src-8]
   - campo: inversion_anunciada_eur
     descripcion: >-
       La cifra de 2.360 millones procede de la documentación ambiental del PIGA publicada en
@@ -146,6 +154,21 @@ incertidumbres:
       con la ampliación. No se ha podido leer el documento ambiental original para
       contrastar la cifra.
     fuentes: [src-5]
+  - campo: energia
+    descripcion: >-
+      Los 2.628 GWh/año son exactamente los 300 MW del campus funcionando las 8.760 horas del
+      año (300 x 8.760 = 2.628.000 MWh), de modo que la cifra no es una previsión de consumo
+      sino el techo aritmético que resulta de suponer la potencia máxima sostenida todo el año.
+      Eso obliga a leerla con dos cautelas. Si los 300 MW son demanda total del campus, el
+      consumo implica un factor de carga del 100 %, que ninguna instalación alcanza. Y si son
+      carga TI, como sostiene El Periódico de Aragón, entonces el consumo total tendría que ser
+      mayor que 2.628 GWh —un PUE de 1,0 no existe— y la cifra estaría subestimada en la
+      proporción que marque el rendimiento de la refrigeración.
+
+      No se corrige ni se deriva ninguna cifra: no se ha podido leer el estudio de impacto
+      ambiental original, que es el documento donde constaría si el consumo se calculó así o si
+      la coincidencia es casual.
+    fuentes: [src-5, src-7, src-8]
   - campo: agua
     descripcion: >-
       La memoria del PIGA no cuantifica el consumo de agua; los 6.066 m³/año proceden del
@@ -208,3 +231,25 @@ fuentes:
     tipo: oficial
     fecha_consulta: "2026-08-31"
     cita: "Se estima la creación de una media de 1.308 empleos anuales durante la vida útil del Proyecto (1.773 en el caso de 300 MW). Se crearán puestos de trabajo en las distintas etapas de construcción y operación."
+  - id: src-7
+    url: "https://www.elperiodicodearagon.com/aragon/2026/07/08/centro-datos-azora-villamayor-inversiones-aragon-medio-ambiente-132219108.html"
+    titulo: "Azora consumirá con su centro de datos un 25% de la luz que gasta hoy el conjunto de Aragón"
+    editor: "El Periódico de Aragón"
+    tipo: prensa_general
+    fecha_publicacion: "2026-07-08"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El proyecto Tillion Aragón [...] un plan con el que quiere levantar cuatro edificios de
+      centros de datos en dos fases que sumarán una potencia de 300 megavatios informáticos
+      (MW IT; indica la potencia instalada de los procesadores).
+  - id: src-8
+    url: "https://www.elespanol.com/aragon/economia/20260708/centro-datos-azora-villamayor-gallego-consumira-energia-ciudad-zaragoza/1003744313561_0.html"
+    titulo: "El centro de datos de Azora en Villamayor de Gállego consumirá casi tanta energía como la ciudad de Zaragoza"
+    editor: "El Español — Aragón"
+    tipo: prensa_general
+    fecha_publicacion: "2026-07-08"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Tal y como refleja la documentación, Azora prevé una demanda total de 300 MW, a dividir a
+      partes iguales entre los cuatro edificios, de los cuales ya se encuentran asegurados
+      150 MW, con ampliación solicitada hasta completar el total.
