@@ -59,9 +59,10 @@ const relaciones = (empresa) => [
       </div>
     </section>
 
+    {proximasTesis.length > 0 && (
     <section>
       <div class="seccion-cabecera">
-        <div><span class="numero-seccion">02</span><h2>Qué investigar después</h2></div>
+        <div><span class="numero-seccion">02</span><h2>Próximas tesis</h2></div>
         <p>Orden propuesto. Prima la exposición material y la pregunta que el mercado aún no resuelve bien.</p>
       </div>
       <div class="tabla-envoltorio">
@@ -86,10 +87,11 @@ const relaciones = (empresa) => [
         </table>
       </div>
     </section>
+    )}
 
     <section>
       <div class="seccion-cabecera">
-        <div><span class="numero-seccion">03</span><h2>Segunda ronda</h2></div>
+        <div><span class="numero-seccion">02</span><h2>Segunda ronda</h2></div>
         <p>Exposiciones válidas, pero menos directas o todavía pequeñas dentro del grupo cotizado.</p>
       </div>
       <div class="rejilla pendientes">
@@ -108,7 +110,7 @@ const relaciones = (empresa) => [
 
     <section class="universo">
       <div class="seccion-cabecera">
-        <div><span class="numero-seccion">04</span><h2>Qué no priorizaría</h2></div>
+        <div><span class="numero-seccion">03</span><h2>Qué no priorizaría</h2></div>
       </div>
       <div class="dos-bloques">
         <div>

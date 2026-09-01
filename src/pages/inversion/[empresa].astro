@@ -1,0 +1,15 @@
+---
+import TesisInversion from '../../components/TesisInversion.astro'
+import { tesisEmpresas } from '../../lib/tesis-inversion/index.js'
+
+export function getStaticPaths() {
+  return Object.entries(tesisEmpresas).map(([empresa, tesis]) => ({
+    params: { empresa },
+    props: { tesis },
+  }))
+}
+
+const { tesis } = Astro.props
+---
+
+<TesisInversion tesis={tesis} />
