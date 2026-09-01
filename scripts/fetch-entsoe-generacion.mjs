@@ -141,8 +141,16 @@ async function descargar(dia, token) {
   const r = await fetch(`${API}?${params}`)
   const texto = await r.text()
   // La plataforma responde 400 con el motivo dentro del cuerpo; conviene leerlo.
-  if (!r.ok && !texto.includes('<Reason')) throw new Error(`HTTP ${r.status}`)
-  return texto
+  if (r.ok || texto.includes('<Reason')) return texto
+  // Durante las paradas de mantenimiento devuelve un 503 con una página HTML.
+  // Sin este aviso, un corte de la plataforma se confunde con un token caducado.
+  if (r.status === 503) {
+    throw new Error(
+      'ENTSO-E está en mantenimiento (HTTP 503): la plataforma no sirve la API ahora ' +
+      'mismo. No es problema del token. Se reintenta más tarde.',
+    )
+  }
+  throw new Error(`HTTP ${r.status}`)
 }
 
 // --- cotejo con el inventario de centrales ----------------------------------
