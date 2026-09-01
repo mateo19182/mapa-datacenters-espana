@@ -2,7 +2,6 @@ export default {
   id: 'solaria', nombre: 'Solaria', ticker: 'BME: SLR',
   categoria: 'Renovables, conexión y almacenamiento', fecha: '1 septiembre 2026',
   sobrelinea: 'Contratos digitales capaces de cambiar una compañía pequeña',
-  titulo: 'Solaria como inversión',
   descripcion: 'Tesis técnica de Solaria: acuerdos con Merlin, PPA, BESS, balance, valoración y cotización.',
   tesisCorta: 'Solaria vende acceso, infraestructura eléctrica, energía y almacenamiento a Merlin. La duración contractual es atractiva. La financiación y la calidad del beneficio son bastante menos cómodas.',
   lectura: 'Especulativa',

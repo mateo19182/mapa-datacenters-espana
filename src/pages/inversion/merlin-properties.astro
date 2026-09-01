@@ -68,22 +68,22 @@ const matriz = [0.75, 0.9, 1].map((captura) => ({
 ---
 
 <Base
-  titulo="MERLIN Properties como inversión"
+  titulo="MERLIN Properties · Tesis de inversión"
   descripcion="Análisis técnico de MERLIN Properties: valoración, Plan MEGA, cartera española de centros de datos, financiación, riesgos y sensibilidad."
 >
   <article class="informe-merlin">
     <header class="portada">
       <div class="portada-interior">
         <p class="migas"><a href="/inversion">Tesis de inversión</a> · MERLIN Properties</p>
-        <div class="portada-meta">
-          <span class="terminal">BME: MRL</span>
-          <span>Nota de inversión</span>
-          <span>31 agosto 2026</span>
-        </div>
         <div class="portada-grid">
-          <div>
-            <p class="sobrelinea">Infraestructura digital dentro de una <Termino id="socimi">SOCIMI</Termino> diversificada</p>
-            <h1>MERLIN Properties<br /><span>como inversión</span></h1>
+          <div class="portada-texto">
+            <div class="portada-meta">
+              <span class="terminal">BME: MRL</span>
+              <span>Nota de inversión</span>
+              <span>31 agosto 2026</span>
+            </div>
+            <h1>MERLIN Properties</h1>
+            <p class="titular">Infraestructura digital dentro de una <Termino id="socimi">SOCIMI</Termino> diversificada</p>
             <p class="tesis-corta">
               El mercado ya reconoce parte del giro hacia centros de datos, pero no paga todavía el{' '}
               <Termino id="epra-nta">EPRA NTA</Termino>. La oportunidad existe. También el riesgo de un plan con €7.800 millones de
@@ -91,15 +91,17 @@ const matriz = [0.75, 0.9, 1].map((captura) => ({
             </p>
           </div>
           <aside class="veredicto" aria-label="Conclusión de inversión">
-            <span class="veredicto-etiqueta">Lectura</span>
-            <strong>Selectiva</strong>
-            <p>
+            <p class="veredicto-cabecera">
+              <span class="veredicto-etiqueta">Lectura</span>
+              <strong>Selectiva</strong>
+            </p>
+            <p class="veredicto-texto">
               Activos y balance sólidos. Precio razonable frente a <Termino id="epra-nta">NTA</Termino>,
               exigente frente a <Termino id="ffo">FFO</Termino> actual.
               La tesis depende de ejecutar, energizar y alquilar la Fase II y la Fase III.
             </p>
             <dl>
-            <div><dt>Precio de referencia</dt><dd>€{decimal(precio, 2)}</dd></div>
+              <div><dt>Precio de referencia</dt><dd>€{decimal(precio, 2)}</dd></div>
               <div><dt><Termino id="epra-nta">EPRA NTA</Termino></dt><dd>€{decimal(nta, 2)}</dd></div>
               <div><dt>Horizonte</dt><dd>2027–2032</dd></div>
             </dl>
@@ -522,14 +524,14 @@ const matriz = [0.75, 0.9, 1].map((captura) => ({
   .portada-interior { position: relative; z-index: 1; width: min(1180px, calc(100% - 40px)); margin: auto; padding: 32px 0 64px; }
   .portada-meta { display: flex; align-items: center; gap: 16px; color: #91a8aa; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; }
   .terminal { color: var(--m-verde); border: 1px solid rgb(184 243 74 / .45); padding: 4px 8px; }
-  .portada-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(280px, .7fr); gap: 70px; align-items: end; margin-top: 76px; }
-  .sobrelinea { color: var(--m-cian); text-transform: uppercase; letter-spacing: .13em; font-size: .72rem; font-weight: 700; }
+  .portada-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(280px, .7fr); gap: 70px; align-items: start; }
+  .titular { color: #c3d0d0; font: 1.15rem/1.4 var(--serif); }
   .portada h1 { color: white; font: 500 clamp(3.4rem, 8.4vw, 7.4rem)/.84 var(--serif); letter-spacing: -.055em; margin: 20px 0 32px; }
-  .portada h1 span { color: #93a9aa; }
   .tesis-corta { max-width: 700px; font-size: 1.08rem; color: #c3d0d0; margin: 0; }
   .veredicto { border-top: 3px solid var(--m-verde); background: #0c252e; padding: 24px; box-shadow: 0 28px 70px rgb(0 0 0 / .22); }
+  .veredicto-cabecera { display: flex; flex-direction: column; gap: 4px; margin: 0 0 12px; }
   .veredicto-etiqueta { color: #8fa4a6; text-transform: uppercase; font-size: .68rem; letter-spacing: .14em; }
-  .veredicto > strong { display: block; color: white; font: 500 2.1rem var(--serif); margin: 4px 0 12px; }
+  .veredicto-cabecera strong { color: white; font: 500 2.1rem var(--serif); }
   .veredicto p { color: #b9c8c8; font-size: .88rem; }
   .veredicto dl { margin: 20px 0 0; border-top: 1px solid #26414a; }
   .veredicto dl div { display: flex; justify-content: space-between; border-bottom: 1px solid #26414a; padding: 8px 0; gap: 12px; }
@@ -723,20 +725,24 @@ const matriz = [0.75, 0.9, 1].map((captura) => ({
   .portada { color: var(--tinta); background: var(--papel); border-bottom: 1px solid var(--borde); overflow: visible; }
   .portada::before, .portada::after { display: none; }
   .portada-interior { padding-top: 1px; padding-bottom: 2rem; }
-  .portada .migas { margin-top: 1.25rem; }
-  .portada-grid { grid-template-columns: minmax(0, 1.5fr) minmax(17rem, .7fr); gap: 3rem; margin-top: 1rem; align-items: end; }
-  .portada-meta { color: var(--tinta-3); gap: .8rem; font-size: .7rem; letter-spacing: .06em; }
+  .portada .migas { margin-top: 1.25rem; margin-bottom: 1.4rem; }
+  .portada-grid { grid-template-columns: minmax(0, 1.5fr) minmax(16rem, .7fr); gap: 1.6rem 3rem; margin-top: 0; align-items: start; }
+  .portada-texto { max-width: 46rem; }
+  .portada-meta { color: var(--tinta-3); gap: .35rem 1.2rem; flex-wrap: wrap; font: .7rem var(--mono); letter-spacing: .04em; }
   .terminal { color: var(--acento); border-color: var(--borde-fuerte); padding: .1rem .45rem; }
-  .sobrelinea { color: var(--tinta-3); letter-spacing: .07em; font-size: .7rem; }
-  .portada h1 { color: var(--tinta); font: 600 clamp(1.8rem, 1.35rem + 1.8vw, 2.6rem)/1.15 var(--serif); letter-spacing: -.02em; margin: .45rem 0 .75rem; }
-  .portada h1 br { display: none; }
-  .portada h1 span { color: var(--tinta); }
-  .portada h1 span::before { content: ' '; }
-  .tesis-corta { color: var(--tinta-2); max-width: 46rem; font-size: 1rem; }
-  .veredicto { background: var(--papel-2); border: 1px solid var(--borde); border-top: 3px solid var(--acento); box-shadow: none; padding: 1rem 1.1rem; }
-  .veredicto-etiqueta, .veredicto p, .veredicto dt { color: var(--tinta-3); }
-  .veredicto > strong, .veredicto dd { color: var(--tinta); }
-  .veredicto > strong { font-size: 1.45rem; }
+  .portada h1 { color: var(--tinta); font: 600 clamp(2rem, 1.5rem + 2vw, 3rem)/1.08 var(--serif); letter-spacing: -.02em; margin: .5rem 0 0; }
+  .titular { color: var(--tinta-2); font: 1.15rem/1.4 var(--serif); margin: .5rem 0 0; max-width: 44ch; text-wrap: balance; }
+  .tesis-corta { color: var(--tinta-2); max-width: 46rem; font-size: .92rem; line-height: 1.6; margin-top: 1.1rem; padding-top: .9rem; border-top: 1px solid var(--borde); }
+  .veredicto { background: var(--papel-2); border: 1px solid var(--borde); border-top: 3px solid var(--acento); box-shadow: none; padding: .9rem 1rem 1rem; align-self: start; }
+  .veredicto-etiqueta, .veredicto dt { color: var(--tinta-3); }
+  .veredicto-cabecera { gap: .2rem; margin: 0 0 .5rem; }
+  .veredicto-cabecera strong, .veredicto dd { color: var(--tinta); }
+  .veredicto-cabecera strong { font: 600 1.15rem/1.25 var(--serif); }
+  .veredicto-etiqueta { font: .66rem var(--mono); letter-spacing: .06em; }
+  .veredicto p.veredicto-texto { color: var(--tinta-2); font-size: .8rem; line-height: 1.5; margin: 0; }
+  .veredicto dl { margin-top: .85rem; }
+  .veredicto dl div { padding: .35rem 0; font-size: .72rem; }
+  .veredicto dd { font: .74rem var(--mono); }
   .veredicto dl, .veredicto dl div { border-color: var(--borde); }
   .indice { position: static; background: var(--papel-2); border-top: 0; border-bottom: 1px solid var(--borde); }
   .indice a { color: var(--tinta-2); padding-top: .6rem; padding-bottom: .6rem; text-transform: none; letter-spacing: 0; font-size: .78rem; }
@@ -758,7 +764,8 @@ const matriz = [0.75, 0.9, 1].map((captura) => ({
   .conclusion-regla { border-color: var(--borde-fuerte); }
   .fuentes-informe { padding-top: 2.5rem; }
   @media (max-width: 950px) {
-    .portada-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+    .portada-grid { grid-template-columns: 1fr; gap: 1.25rem; margin-top: 0; }
+    .veredicto { max-width: 34rem; }
     .seccion-dos { grid-template-columns: 9rem minmax(0, 1fr); gap: 2rem; }
     .conclusion { margin-left: 0; }
   }

@@ -2,7 +2,6 @@ export default {
   id: 'acs', nombre: 'ACS', ticker: 'BME: ACS',
   categoria: 'Construcción, promoción y capital digital', fecha: '1 septiembre 2026',
   sobrelinea: 'Tres formas de cobrar el mismo ciclo de inversión',
-  titulo: 'ACS como inversión',
   descripcion: 'Tesis técnica de ACS: Turner, Coravel, desarrollo de centros de datos, cuentas, valoración y cotización.',
   tesisCorta: 'ACS construye centros para terceros, desarrolla activos propios y comparte capital con GIP de BlackRock. La exposición es amplia. También lo es el precio que la bolsa ya paga por ella.',
   lectura: 'Calidad alta, valoración exigente',

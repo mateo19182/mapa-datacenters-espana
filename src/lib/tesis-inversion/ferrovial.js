@@ -5,7 +5,6 @@ export default {
   categoria: 'Construcción y desarrollo digital',
   fecha: '1 septiembre 2026',
   sobrelinea: 'Una opción digital dentro de una cartera global de infraestructuras',
-  titulo: 'Ferrovial como inversión',
   descripcion: 'Tesis técnica de Ferrovial: centros de datos, Powernet, Alcobendas, cuentas, valoración, cotización y riesgos.',
   tesisCorta: 'Ferrovial combina obra para terceros, capacidad técnica y promoción propia. Alcobendas probará si esa integración crea valor de desarrollo o solo mueve margen de construcción dentro del grupo.',
   lectura: 'Opcionalidad, todavía pequeña',

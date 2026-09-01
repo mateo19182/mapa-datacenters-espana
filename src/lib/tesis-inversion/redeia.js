@@ -2,7 +2,6 @@ export default {
   id: 'redeia', nombre: 'Redeia', ticker: 'BME: RED',
   categoria: 'Red de transporte regulada', fecha: '1 septiembre 2026',
   sobrelinea: 'El cuello de botella eléctrico, comprado a través de una utility regulada',
-  titulo: 'Redeia como inversión',
   descripcion: 'Tesis técnica de Redeia: red eléctrica, demanda de centros de datos, regulación, capex, valoración y cotización.',
   tesisCorta: 'Redeia no cobra por servidores. Cobra por la red reconocida que permite conectarlos. La tesis depende de convertir un plan inversor récord en base regulada y caja, con el apagón todavía como riesgo.',
   lectura: 'Defensiva con crecimiento regulado',

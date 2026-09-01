@@ -5,7 +5,6 @@ export default {
   categoria: 'Redes, energía y suelo electrificado',
   fecha: '1 septiembre 2026',
   sobrelinea: 'Electrificación con una opción sobre infraestructura digital',
-  titulo: 'Iberdrola como inversión',
   descripcion: 'Tesis técnica de Iberdrola: Echelon, suelo electrificado, conexiones, suministro, cuentas, valoración y cotización.',
   tesisCorta: 'Iberdrola no necesita poseer todo el edificio. Puede cobrar por suelo, conexión, infraestructura eléctrica y energía, además de conservar un 20% del vehículo con Echelon.',
   lectura: 'Sólida, pero poco pura',
