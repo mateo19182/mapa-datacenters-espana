@@ -39,6 +39,78 @@ refrigeracion: "Climatización de precisión con enfriadoras aire-agua con free-
 enlaces_proyecto:
   - "https://www.nasertic.es/es/infraestructuras/centros-de-proceso-de-datos-cpd"
 
+computo:
+  - tipo: cpu_hpc
+    sistema: "Urederra — partición Skylake"
+    modelo: "Intel Xeon Platinum 8160 a 2,10 GHz, 2 por nodo (6.816 núcleos)"
+    unidades: 142
+    tipo_unidad: nodo
+    rendimiento: 458
+    rendimiento_unidad: tflops
+    rendimiento_tipo: pico
+    rendimiento_precision: fp64
+    estado: operativo
+    fecha_dato: "2026-08-31"
+    fuentes: [src-hpc]
+    nota: >-
+      La ficha del nodo en la RES da 487 TFlop/s para el conjunto de CPU, coherente con la suma
+      de esta partición y la Broadwell.
+  - tipo: cpu_hpc
+    sistema: "Urederra — partición Broadwell"
+    modelo: "Intel Xeon E5-2640 v4 a 2,40 GHz, 2 por nodo (740 núcleos)"
+    unidades: 37
+    tipo_unidad: nodo
+    rendimiento: 29
+    rendimiento_unidad: tflops
+    rendimiento_tipo: pico
+    rendimiento_precision: fp64
+    estado: operativo
+    fecha_dato: "2026-08-31"
+    fuentes: [src-hpc]
+    nota: null
+  - tipo: gpu
+    sistema: "Urederra — partición acelerada de IA"
+    modelo: "NVIDIA H100 SXM5, 4 por nodo en 4 nodos Intel Sapphire Rapids"
+    unidades: 16
+    tipo_unidad: acelerador
+    nodos: 4
+    rendimiento: 544
+    rendimiento_unidad: tflops
+    rendimiento_tipo: pico
+    rendimiento_precision: fp64
+    estado: operativo
+    fecha_dato: "2026-08-31"
+    fuentes: [src-hpc]
+    nota: "1.280 GB de memoria HBM3 y 270.336 núcleos CUDA."
+  - tipo: gpu
+    sistema: "Urederra — partición acelerada de IA"
+    modelo: "NVIDIA A100 de 80 GB HBM2e"
+    unidades: 2
+    tipo_unidad: acelerador
+    nodos: 1
+    rendimiento: 19.5
+    rendimiento_unidad: tflops
+    rendimiento_tipo: pico
+    rendimiento_precision: fp64
+    estado: operativo
+    fecha_dato: "2026-08-31"
+    fuentes: [src-hpc]
+    nota: null
+  - tipo: gpu
+    sistema: "Urederra — partición acelerada de IA"
+    modelo: "NVIDIA V100 SXM2, en un nodo IBM Power9"
+    unidades: 2
+    tipo_unidad: acelerador
+    nodos: 1
+    rendimiento: 15.6
+    rendimiento_unidad: tflops
+    rendimiento_tipo: pico
+    rendimiento_precision: fp64
+    estado: operativo
+    fecha_dato: "2026-08-31"
+    fuentes: [src-hpc]
+    nota: null
+
 incertidumbres:
   - campo: potencia
     descripcion: >-
@@ -100,3 +172,17 @@ fuentes:
     tipo: oficial
     fecha_consulta: "2026-08-31"
     cita: "Sede Central C/ Orkoien, s/n 31011 Pamplona (Navarra), España"
+  - id: src-hpc
+    url: "https://www.nasertic.es/es/infraestructuras/supercomputacion-hpc"
+    titulo: "Supercomputación (HPC)"
+    editor: "Nasertic — Navarra de Servicios y Tecnologías"
+    tipo: oficial
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      2 particiones de cómputo general: 142 nodos Intel SkyLake: 2x Intel Xeon Platinum 8160 @
+      2.10 GHz (6.816 cores) y 13.632 GB de RAM | 458 TFLOPS; 37 nodos Intel Broadwell: 2x Intel
+      Xeon CPU E5-2640 v4 @ 2.40 GHz (740 cores) y 4.736 GB de RAM | 29 TFLOPS. 3 particiones de
+      cómputo acelerada (IA): 4 nodos Intel Sapphire Rapids: 16 GPUs NVIDIA H100 SXM5, 1.280 GB
+      de memoria HBM3 y 270.336 CUDA cores | 544 TFLOPS; 1 nodo Intel Ice Lake: 2 GPU NVIDIA
+      A100, 80 GB de memoria HBM2e y 13.824 CUDA cores | 19,5 TFLOPS; 1 nodo IBM Power9: 2 GPU
+      NVIDIA V100 SXM2, 32 GB de memoria HBM y 10.240 CUDA cores | 15,6 TFLOPS.

@@ -39,6 +39,92 @@ estado_fuentes: [src-1, src-4, src-5]
 
 potencia: []
 
+computo:
+  - tipo: cpu_hpc
+    sistema: "MareNostrum 5 GPP (partición de propósito general)"
+    modelo: "Intel Xeon Platinum 8480+ (56 núcleos cada uno)"
+    unidades: 12960
+    tipo_unidad: procesador
+    rendimiento: 54
+    rendimiento_unidad: pflops
+    rendimiento_tipo: pico
+    rendimiento_precision: fp64
+    estado: operativo
+    fecha_dato: "2026-08-31"
+    fuentes: [src-6]
+    nota: >-
+      La ficha técnica de MareNostrum 5 da 45,9 PFlops de pico para esta misma partición
+      (6.480 nodos). La discrepancia queda anotada en `incertidumbres[]` y no se resuelve.
+  - tipo: gpu
+    sistema: "MareNostrum 5 ACC (partición acelerada)"
+    modelo: "NVIDIA H100 de 64 GB HBM2 (Hopper), 4 por nodo"
+    unidades: 4480
+    tipo_unidad: acelerador
+    nodos: 1120
+    rendimiento: 260
+    rendimiento_unidad: pflops
+    rendimiento_tipo: pico
+    rendimiento_precision: fp64
+    estado: operativo
+    fecha_dato: "2026-08-31"
+    fuentes: [src-6]
+    nota: >-
+      Medida con Linpack, la misma partición da 175,30 PFlop/s (Rmax) frente a 249,44 PFlop/s
+      de pico según TOP500, con 663.040 núcleos. Pico y medida no se comparan ni se sustituyen:
+      la cifra medida se deja aquí y no genera un segundo registro para no duplicar el
+      recuento de aceleradores.
+  - tipo: cpu_hpc
+    sistema: "MareNostrum 5 GPP-NextGen (partición de nueva generación)"
+    modelo: "NVIDIA Grace CPU"
+    unidades: 802
+    tipo_unidad: procesador
+    rendimiento: 5.7
+    rendimiento_unidad: pflops
+    rendimiento_tipo: pico
+    rendimiento_precision: fp64
+    estado: operativo
+    fecha_dato: "2026-08-31"
+    fuentes: [src-6]
+    nota: null
+  - tipo: gpu
+    sistema: "MareNostrum 5 AI Upgrade (partición de IA, BSC AI Factory)"
+    modelo: "NVIDIA Blackwell y Blackwell Ultra"
+    unidades: 1920
+    tipo_unidad: acelerador
+    rendimiento: 19
+    rendimiento_unidad: eflops
+    rendimiento_tipo: pico
+    rendimiento_precision: fp4
+    estado: operativo
+    fecha_dato: "2026-08-31"
+    fuentes: [src-6, src-8]
+    nota: >-
+      Los 19 EFlop/s son en FP4 y no se comparan con los PFlops en FP64 de las otras
+      particiones: son precisiones distintas. La ampliación se adjudicó en enero de 2026 al
+      consorcio liderado por Fsas Technologies (Fujitsu) y Telefónica por 129 millones de euros
+      y se reparte entre el centro de datos del BSC y la capilla de Torre Girona.
+  - tipo: qpu
+    sistema: "MareNostrum Ona (partición cuántica, digital)"
+    modelo: "Procesador de cúbits superconductores tipo transmon, de Qilimanjaro y GMV"
+    unidades: 35
+    tipo_unidad: qubit
+    estado: operativo
+    fecha_dato: "2026-08-31"
+    fuentes: [src-5]
+    nota: >-
+      Es el último de los procesadores incorporados: el sistema pasó de 5 a 35 cúbits. No es
+      capacidad de centro de datos y no aporta ninguna cifra a `potencia[]`.
+  - tipo: qpu
+    sistema: "EuroQCS-Spain (cuántico analógico)"
+    modelo: "Cúbits superconductores tipo fluxonium, de Qilimanjaro Quantum Tech"
+    estado: operativo
+    fecha_dato: "2026-05-28"
+    fuentes: [src-4]
+    nota: >-
+      Ninguna fuente publica el número de cúbits de este sistema, así que el recuento queda
+      vacío. Codificación analógica de la información, complementaria a los dos sistemas
+      digitales del mismo emplazamiento.
+
 incertidumbres:
   - campo: potencia
     descripcion: >-
@@ -53,6 +139,15 @@ incertidumbres:
       con los MW de un CPD comercial daría una cifra falsa. Las cifras de 1,3 MW
       que circulan corresponden a MareNostrum 4, no al sistema actual.
     fuentes: [src-1, src-3]
+  - campo: computo
+    descripcion: >-
+      Las dos páginas del propio BSC discrepan sobre el pico de la partición de propósito
+      general: la ficha general de MareNostrum habla de 54 PFlop/s y la ficha técnica de
+      MareNostrum 5 de «45,9 PFlops peak» para 6.480 nodos. Se registra la primera y se
+      conserva el choque. La ficha técnica describe además la partición acelerada de nueva
+      generación como «not fully defined», anterior a que se concretara como la partición de IA
+      con aceleradores Blackwell.
+    fuentes: [src-1, src-6]
   - campo: ubicacion
     descripcion: >-
       Las coordenadas corresponden al edificio principal del BSC. La capilla de
@@ -120,3 +215,41 @@ fuentes:
       investigadora, pública y empresarial, a través de la Red Española de Supercomputación
       [...] El desarrollo del sistema se enmarca en la iniciativa Quantum Spain, impulsada por
       el Ministerio para la Transformación Digital y de la Función Pública.
+  - id: src-6
+    url: "https://www.bsc.es/marenostrum/marenostrum/technical-information"
+    titulo: "MareNostrum — Technical information"
+    editor: "Barcelona Supercomputing Center"
+    tipo: oficial
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      MareNostrum5 is the current flagship supercomputer at BSC. It has been operation since
+      mid-2024, reaching a peak performance above 314 PFlop/s. [...] A large CPU-based partition
+      with a peak performance of 54 PFlop/s. It is composed by 12.960 Intel Xeon Platinum 8480+
+      processors (56 cores each) - A large GPU-based partition with a peak performance of 260
+      PFlop/s. It is ranked TOP8 globally, and is made by 4.480 NVIDIA Hopper GPUs. - A
+      next-generation partition with 802 NVIDIA GRACE processors, reaching a peak performance of
+      5.7 PFlop/s. - A large IA-oriented partition with a peak performance of 19 EFlop/s in FP4,
+      integrating 1.920 NVIDIA Blackwell and Blackwell Ultra GPUs.
+  - id: src-7
+    url: "https://www.top500.org/system/180238/"
+    titulo: "MareNostrum 5 ACC — BullSequana XH3000, Xeon Platinum 8460Y+ 32C 2.3GHz, NVIDIA H100 64GB, Infiniband NDR"
+    editor: "TOP500"
+    tipo: otro
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Site: EuroHPC/BSC | Cores: 663,040 | Interconnect: Infiniband NDR | Installation Year:
+      2023 | Linpack Performance (Rmax) 175.30 PFlop/s | Theoretical Peak (Rpeak) 249.44
+      PFlop/s | Power: 4,158.90 kW
+  - id: src-8
+    url: "https://www.eurohpc-ju.europa.eu/contract-signed-boost-marenostrum-5s-ai-capabilities-2026-01-26_en"
+    titulo: "Contract Signed to Boost MareNostrum 5's AI Capabilities"
+    editor: "EuroHPC Joint Undertaking"
+    tipo: oficial
+    fecha_publicacion: "2026-01-26"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      The European High Performance Computing Joint Undertaking (EuroHPC JU) has signed a
+      procurement contract with the selected consortium, led by FSAS Technologies and
+      Telefonica, to upgrade MareNostrum 5 as part of the BSC AI Factory initiative. [...] The
+      BSC AI Factory [...] will be co-funded with a total budget of around EUR 129 000 000 for
+      the acquisition, delivery, installation and maintenance of the system.

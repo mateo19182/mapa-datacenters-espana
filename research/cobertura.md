@@ -1,16 +1,19 @@
 # Detalle de la cobertura
 
-Cifras contadas sobre `src/data/*.json` el 31 de agosto de 2026, con 191 fichas.
+Cifras contadas sobre `src/data/*.json` el 31 de agosto de 2026, con 201 fichas.
 
 El registro cubre bien quién promueve centros de datos en España y dónde, siempre que el
 proyecto sea grande y tenga prensa. Cubre mal cuánta potencia hay, y muy mal cómo se
 conecta esa potencia a la red.
 
-- 70 de 191 fichas (37 %) publican alguna cifra de MW con el tipo declarado. En el resto no
-  hay potencia (53 fichas) o la hay sin saber a qué magnitud corresponde (45 fichas).
-- 77 de 191 (40 %) citan al menos una fuente oficial. De las 213 citas oficiales del
-  conjunto, 102 son del Boletín Oficial de Aragón y 117 de alguna administración aragonesa.
-- 51 de 191 (27 %) tienen bloque `conexion_electrica`. Solo 15 tienen MW concedidos.
+- 78 de 201 fichas (39 %) publican alguna cifra de MW con el tipo declarado. En el resto no
+  hay potencia (63 fichas) o la hay sin saber a qué magnitud corresponde (45 fichas).
+- 87 de 201 (43 %) citan al menos una fuente oficial. De las 253 citas oficiales del
+  conjunto, 105 son del Boletín Oficial de Aragón.
+- 51 de 201 (25 %) tienen bloque `conexion_electrica`. Solo 15 tienen MW concedidos.
+- 21 de 201 (10 %) publican qué cómputo alojan. Diecisiete de esas veintiuna son
+  infraestructura pública de supercomputación o de cuántica: el sector comercial casi nunca
+  publica su hardware. Detalle en `computo.md`.
 
 ---
 
@@ -18,26 +21,43 @@ conecta esa potencia a la red.
 
 | Comunidad | Total | Operativo | Parcial. oper. | Ampl. en constr. | En constr. | Permisos conc. | En tramitación | Anunciado | Paralizado | Cancelado | Desconocido |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| Comunidad de Madrid | 42 | 19 | 2 | 4 | 8 | 2 | 1 | 5 | 0 | 0 | 1 |
-| Cataluña | 35 | 19 | 1 | 0 | 5 | 0 | 2 | 8 | 0 | 0 | 0 |
-| Aragón | 27 | 3 | 0 | 0 | 0 | 4 | 8 | 8 | 2 | 2 | 0 |
-| Andalucía | 18 | 8 | 0 | 2 | 2 | 0 | 4 | 1 | 0 | 0 | 1 |
-| Comunidad Valenciana | 18 | 9 | 0 | 1 | 1 | 0 | 3 | 1 | 0 | 3 | 0 |
+| Comunidad de Madrid | 44 | 21 | 2 | 4 | 8 | 2 | 1 | 5 | 0 | 0 | 1 |
+| Cataluña | 36 | 20 | 1 | 0 | 5 | 0 | 2 | 8 | 0 | 0 | 0 |
+| Aragón | 28 | 4 | 0 | 0 | 0 | 4 | 8 | 8 | 2 | 2 | 0 |
+| Andalucía | 19 | 9 | 0 | 2 | 2 | 0 | 4 | 1 | 0 | 0 | 1 |
+| Comunidad Valenciana | 19 | 10 | 0 | 1 | 1 | 0 | 3 | 1 | 0 | 3 | 0 |
 | País Vasco | 9 | 5 | 1 | 0 | 1 | 1 | 1 | 0 | 0 | 0 | 0 |
+| Galicia | 8 | 6 | 0 | 0 | 1 | 1 | 0 | 0 | 0 | 0 | 0 |
 | Castilla-La Mancha | 8 | 2 | 0 | 0 | 0 | 1 | 1 | 3 | 1 | 0 | 0 |
+| Extremadura | 7 | 1 | 0 | 0 | 0 | 0 | 3 | 3 | 0 | 0 | 0 |
 | Castilla y León | 6 | 1 | 0 | 0 | 2 | 0 | 2 | 1 | 0 | 0 | 0 |
-| Extremadura | 6 | 0 | 0 | 0 | 0 | 0 | 3 | 3 | 0 | 0 | 0 |
-| Galicia | 5 | 3 | 0 | 0 | 1 | 1 | 0 | 0 | 0 | 0 | 0 |
 | Cantabria | 4 | 1 | 0 | 0 | 0 | 0 | 1 | 2 | 0 | 0 | 0 |
 | Región de Murcia | 4 | 2 | 0 | 0 | 0 | 0 | 0 | 2 | 0 | 0 | 0 |
 | Asturias | 3 | 1 | 0 | 0 | 1 | 0 | 0 | 1 | 0 | 0 | 0 |
 | Navarra | 3 | 1 | 0 | 0 | 0 | 0 | 0 | 1 | 1 | 0 | 0 |
 | La Rioja | 2 | 1 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 |
 | Sin comunidad asignada | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 |
-| **Total** | **191** | **75** | **4** | **7** | **21** | **9** | **27** | **37** | **4** | **5** | **2** |
+| **Total** | **201** | **85** | **4** | **7** | **21** | **9** | **27** | **37** | **4** | **5** | **2** |
 
-Baleares, Canarias, Ceuta y Melilla no tienen ficha: el encargo era peninsular. Quedan
-fuera los aterrajes de cable canarios y el nodo de Baleares.
+**La regla de alcance peninsular se retiró el 1 de septiembre de 2026.** El criterio
+geográfico es ahora la nacionalidad del territorio: península, Baleares, Canarias, Ceuta y
+Melilla. Se cambió al ver lo que excluía —el nodo LaPalma de la RES, el centro neutro D-ALiX
+de Tenerife y las estaciones de cable canarias y baleares—, y las dos primeras fichas
+canarias entraron ese mismo día. Quedan pendientes de fichar las estaciones de cable de
+Canalink en Tenerife y Gran Canaria, la de IslaLink en Palma de Mallorca e Ibiza y el centro
+de Vodafone en Marratxí. Ver `computo.md`.
+
+La **capa eléctrica sigue siendo peninsular**, y no es un hueco por rellenar: Red Eléctrica
+publica capacidad de acceso para el sistema peninsular, y los sistemas canario y balear son
+eléctricamente independientes. Un emplazamiento insular tiene ficha y no tiene red debajo.
+La ventana inicial del mapa también está centrada en la península, así que las fichas
+canarias existen pero no se ven al cargar sin desplazar la vista.
+
+El salto de 191 a 201 fichas es el barrido de infraestructura de cómputo público de agosto de
+2026: se incorporaron los siete nodos peninsulares de la RES que faltaban (Picasso, Tirant,
+Agustina, Magerit, Cibeles, LUSITANIA III y el PIC), el CPD del CITIC en A Coruña y las dos
+instalaciones cuánticas y de comunicación óptica de la Universidade de Vigo. Galicia pasó de
+5 a 8 fichas y Extremadura y Madrid ganaron una cada una.
 
 La ficha sin comunidad es `echelon-iberdrola-madrid-sur`, que tampoco tiene municipio ni
 coordenadas. Nadie ha publicado dónde está.
@@ -46,14 +66,14 @@ coordenadas. Nadie ha publicado dónde está.
 
 ## Potencia
 
-| | Fichas | % de 191 |
+| | Fichas | % de 201 |
 |---|---:|---:|
-| Sin ninguna cifra de potencia | 53 | 28 % |
-| Con alguna cifra | 138 | 72 % |
-| Con al menos un valor de **MW IT** | 50 | 26 % |
-| Con al menos un valor de **MW de conexión** | 38 | 20 % |
-| Con al menos un valor tipado (IT o conexión) | **70** | **37 %** |
-| Solo con MW sin tipificar | 45 | 24 % |
+| Sin ninguna cifra de potencia | 63 | 31 % |
+| Con alguna cifra | 138 | 69 % |
+| Con al menos un valor de **MW IT** | 50 | 25 % |
+| Con al menos un valor de **MW de conexión** | 38 | 19 % |
+| Con al menos un valor tipado (IT o conexión) | **78** | **39 %** |
+| Solo con MW sin tipificar | 45 | 22 % |
 
 328 registros individuales de potencia, repartidos así. Las sumas no deben publicarse como
 totales: las magnitudes no son comparables entre sí y varias fichas dan varias lecturas de
@@ -158,14 +178,14 @@ permiso a nadie: se arregla escribiendo un raspador por boletín. Está detallad
 
 | | Fichas |
 |---|---:|
-| Con bloque `conexion_electrica` | 51 (27 %) |
+| Con bloque `conexion_electrica` | 51 (25 %) |
 | Con subestación nombrada | 45 |
 | Con tensión declarada | 33 |
 | Con titular de red identificado | 23 |
 | Con **MW concedidos** | **15** |
 | Con **MW solicitados** | **8** |
 
-Quince fichas sobre 191 tienen MW de acceso concedidos. Todo lo demás que se diga sobre
+Quince fichas sobre 201 tienen MW de acceso concedidos. Todo lo demás que se diga sobre
 potencia de conexión sale de declaraciones de promotor, no de resoluciones. El contraste con
 el dato sectorial es el titular del conjunto: SpainDC calcula que solo uno de cada cuatro MW
 de acceso solicitados en España ha sido concedido, así que el pipeline en MW que publica la
@@ -215,12 +235,12 @@ anuncia un PPA sin decir dónde están las plantas, y solo 4 de 22 tienen
 
 ## Contradicciones abiertas
 
-625 incertidumbres, al menos una en cada una de las 191 fichas, 3,3 de media.
+655 incertidumbres, al menos una en cada una de las 201 fichas, 3,3 de media.
 
 | Campo en disputa | Incertidumbres |
 |---|---:|
-| Potencia | 180 |
-| Ubicación | 108 |
+| Potencia | 190 |
+| Ubicación | 115 |
 | Estado del proyecto | 69 |
 | Inversión anunciada | 49 |
 | Operador o propietario | 46 |
@@ -315,13 +335,13 @@ dirección.
    en siete polos, y de esa lista el mapa recoge una fracción.
 
 2. **Que una comunidad tenga pocas fichas no significa que tenga poca actividad.**
-   Andalucía tiene 18 emplazamientos. Endesa, gestora de las solicitudes de acceso desde
+   Andalucía tiene 19 emplazamientos. Endesa, gestora de las solicitudes de acceso desde
    2022, publica una cola de 305 solicitudes, 5.133 MW, en 75 municipios andaluces. Jaén
    tiene cero fichas y cinco solicitudes de acceso. Que la mayoría de esas solicitudes sean
    anónimas o especulativas es el punto: no se pueden fichar, pero tampoco se pueden
    ignorar al interpretar el vacío.
 
-3. **Que haya 191 emplazamientos no significa que haya 191 centros de datos.** Hay campus
+3. **Que haya 201 emplazamientos no significa que haya 201 centros de datos.** Hay campus
    con varios edificios en una sola ficha (Digital Realty Julián Camarillo agrupa cinco,
    Equinix Alcobendas cuatro, Iron Mountain San Fernando ocho). El recuento de fichas es una
    unidad editorial, no física.
@@ -373,6 +393,6 @@ dirección.
    València no son centros de datos de colocation. O se separan en una capa propia, o se
    explica en la leyenda.
 8. **Conseguir consumo de agua y de electricidad.** 16 fichas con consumo hídrico anual y 13
-   con consumo eléctrico, sobre 191, es demasiado poco para decir nada agregado. Las
+   con consumo eléctrico, sobre 201, es demasiado poco para decir nada agregado. Las
    declaraciones de impacto ambiental son la vía: publican caudales punta y volúmenes
    anuales que ninguna nota de prensa da.

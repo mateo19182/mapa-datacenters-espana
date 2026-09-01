@@ -1,0 +1,92 @@
+id: uvigo-vigo-estacion-optica-terrena
+nombre: "Estación óptica terrena Antonia Ferrín Moreiras — Universidade de Vigo"
+alias:
+  - "Estación óptica terrena del VQCC"
+  - "Estación terrena de comunicaciones cuánticas de Vigo"
+tipo: edificio
+operador: "Vigo Quantum Communication Center (VQCC), centro atlanTTic de la Universidade de Vigo"
+propietario: "Universidade de Vigo"
+cliente_ancla: null
+modelo: corporativo
+
+ubicacion:
+  municipio: "Vigo"
+  provincia: "Pontevedra"
+  ccaa: "Galicia"
+  direccion: "Entorno de la Facultade de Filoloxía e Tradución, campus As Lagoas-Marcosende, 36310 Vigo"
+  lat: 42.1693554
+  lon: -8.6772822
+  precision: aproximada
+  fuentes: [src-uvigo, src-osm]
+
+estado: operativo
+estado_detalle: >-
+  No es un centro de datos ni una instalación de cómputo: es infraestructura de comunicaciones,
+  del mismo género que las estaciones de aterraje de cable submarino ya registradas, y se
+  incluye por esa analogía. La Universidade de Vigo la inauguró en abril de 2026 como la mayor
+  estación óptica terrena de España para comunicaciones cuánticas vía satélite, con el nombre de
+  la astrónoma ourensana Antonia Ferrín Moreiras. Se sitúa en el entorno de la Facultade de
+  Filoloxía e Tradución por ser el punto del campus con menos turbulencia del canal atmosférico.
+  Consiste en un telescopio de 80 centímetros de diámetro dentro de una cúpula y varios equipos
+  de medida alojados en un contenedor conectado al telescopio por fibra óptica. Se destinará a
+  distribución cuántica de claves criptográficas y permitirá conectar con las misiones europeas
+  Eagle-I y SAGA de la Agencia Espacial Europea, en cuyo consorcio ya participa la universidad.
+  Solo existe en España otra estación óptica similar, en el Instituto de Tecnologías Físicas y
+  de la Información Leonardo Torres Quevedo del CSIC, de menor tamaño.
+estado_fuentes: [src-uvigo]
+fecha_puesta_en_servicio: "2026-04"
+
+potencia: []
+
+inversion_anunciada_eur: 1500000
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      La instalación no publica ninguna magnitud eléctrica, y por su naturaleza —un telescopio y
+      equipos de medida en un contenedor— tampoco sería comparable con la de un centro de datos.
+      Campo de potencia vacío.
+    fuentes: [src-uvigo]
+  - campo: tipo
+    descripcion: >-
+      La ficha describe una estación terrena de comunicaciones ópticas, no un centro de proceso
+      de datos. Entra en el registro por coherencia con las estaciones de aterraje de cable
+      submarino ya fichadas, que tampoco son centros de datos y sí infraestructura de
+      comunicaciones. Se registra aparte del VQCC, en el mismo campus, porque es una instalación
+      física distinta.
+    fuentes: [src-uvigo]
+  - campo: ubicacion
+    descripcion: >-
+      Las coordenadas son las de la Facultade de Filoloxía e Tradución, junto a la cual la
+      fuente sitúa la estación. No hay coordenadas publicadas de la cúpula.
+    fuentes: [src-uvigo, src-osm]
+
+confianza: media
+ultima_verificacion: "2026-08-31"
+
+fuentes:
+  - id: src-uvigo
+    url: "https://vigotecnoloxico.uvigo.es/vqcc-estrena-la-mayor-estacion-terrena-de-espana-para-comunicaciones-cuanticas/"
+    titulo: "VQCC estrena la mayor estación terrena de España para comunicaciones cuánticas"
+    editor: "Vigo Tecnolóxico (Universidade de Vigo)"
+    tipo: oficial
+    fecha_publicacion: "2026-04-20"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      La Universidade de Vigo inauguró el pasado jueves la mayor estación óptica terrena de
+      España, con la que consolida su liderazgo en comunicaciones cuánticas vía satélite. Fue
+      bautizada con el nombre de Antonia Ferrín Moreiras [...] Está situada en el entorno de la
+      Facultad de Filología y Traducción, por ser el mejor lugar de todo el campus para evitar
+      turbulencias del canal atmosférico, y la inversión total asociada fue de 1,5 millones de
+      euros. [...] La instalación consiste esencialmente en un telescopio de 80 centímetros de
+      diámetro dentro de una gran cúpula y varios equipos de medida situados en un contenedor
+      conectado al telescopio por fibra óptica.
+  - id: src-osm
+    url: "https://nominatim.openstreetmap.org/search?q=Facultade+de+Filoloxia+e+Traducion%2C+Vigo&format=json&limit=2"
+    titulo: "Nominatim — geocodificación de la Facultade de Filoloxía e Tradución, Vigo"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Facultade de Filoloxía e Tradución, Rúa da Cumieira, Zamáns, Vigo, Pontevedra, Galicia,
+      España — lat 42.1693554, lon -8.6772822

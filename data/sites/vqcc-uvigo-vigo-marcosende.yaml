@@ -1,0 +1,152 @@
+id: vqcc-uvigo-vigo-marcosende
+nombre: "Vigo Quantum Communication Center (VQCC) — Campus de Marcosende, Universidade de Vigo"
+alias:
+  - "VQCC"
+  - "Quantum Optical Computing Lab"
+  - "Laboratorio cuántico de la Universidade de Vigo"
+tipo: edificio
+operador: "Vigo Quantum Communication Center (VQCC), centro atlanTTic de la Universidade de Vigo"
+propietario: "Universidade de Vigo"
+cliente_ancla: null
+modelo: corporativo
+
+ubicacion:
+  municipio: "Vigo"
+  provincia: "Pontevedra"
+  ccaa: "Galicia"
+  direccion: "Estrada de Marcosende 10, campus universitario As Lagoas-Marcosende, 36310 Vigo"
+  lat: 42.1639694
+  lon: -8.6883003
+  precision: aproximada
+  fuentes: [src-vqcc-contacto, src-osm]
+
+estado: operativo
+estado_detalle: >-
+  Se incluye en el mapa como instalación de cómputo cuántico, con la advertencia que la regla
+  del esquema exige: no es un centro de datos, su carga no se mide en megavatios y no aporta
+  ninguna cifra a `potencia[]`. El VQCC es el centro de comunicaciones cuánticas de la
+  Universidade de Vigo, adscrito al centro de investigación atlanTTic y financiado con
+  7.689.349 euros dentro de los Planes Complementarios en Comunicaciones Cuánticas. El 15 de
+  enero de 2026 la UVigo y el CESGA firmaron el convenio del Quantum Optical Computing Lab, un
+  laboratorio compartido de computación cuántica óptica con 2,4 millones de inversión y un
+  modelo de gobernanza conjunta, cofinanciado por el PERTE Chip y la Consellería de Ciencia. En
+  marzo de 2026 el Consorcio de la Zona Franca de Vigo y la UVigo crearon además una cátedra de
+  Computación de Óptica Cuántica dotada con 240.000 euros anuales para consolidar ese
+  laboratorio. A 31 de agosto de 2026 el procesador no existe: el objetivo declarado es
+  desarrollarlo en un plazo de tres a cinco años.
+estado_fuentes: [src-vqcc, src-uvigo, src-boe, src-atlanttic]
+
+potencia: []
+
+computo:
+  - tipo: qpu
+    ambito: sistema
+    sistema: "Quantum Optical Computing Lab"
+    operador_computo: "atlanTTic (Universidade de Vigo) y CESGA, en gobernanza compartida"
+    modelo: "Procesador cuántico óptico de tecnología fotónica; máquina de Ising coherente óptica"
+    tipo_unidad: qubit
+    estado: anunciado
+    fecha_dato: "2026-01-15"
+    fuentes: [src-vqcc, src-uvigo]
+    nota: >-
+      Sin recuento: el procesador está por desarrollar, no instalado, y ninguna fuente publica
+      un número de cúbits objetivo. El laboratorio se decantó por tecnología fotónica frente a
+      superconductores, iones atrapados o átomos neutros, entre otras razones porque el resto de
+      laboratorios experimentales del VQCC también son fotónicos. Duración inicial de cuatro
+      años, prorrogable.
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      Ninguna fuente publica consumo ni potencia eléctrica del VQCC ni del laboratorio de
+      computación óptica. Como en el resto de instalaciones cuánticas del registro, el campo de
+      potencia queda vacío y el orden de magnitud no se estima.
+    fuentes: [src-vqcc]
+  - campo: computo
+    descripcion: >-
+      El registro documenta un laboratorio en construcción, no una máquina en servicio. La nota
+      de la propia UVigo de enero de 2026 dice que el VQCC «acollerá proximamente» el
+      laboratorio, y el objetivo del procesador se sitúa a tres o cinco años vista. Si el
+      procesador llega a existir, el recuento de cúbits se registrará entonces.
+    fuentes: [src-vqcc, src-uvigo]
+  - campo: ubicacion
+    descripcion: >-
+      Las coordenadas son las de la Estrada de Marcosende, dirección de contacto publicada por
+      el VQCC, y no las del edificio concreto dentro del campus. En 2021 se anunció que el
+      laboratorio cuántico de la UVigo se instalaría en el antiguo centro informático de
+      Caixanova de la calle López Mora, hoy propiedad de la Zona Franca y en obras como VgoTIC
+      Global HUB; las fuentes de 2026 sitúan la actividad en el campus. No consta cuál será la
+      sede definitiva.
+    fuentes: [src-vqcc-contacto, src-osm]
+
+confianza: media
+ultima_verificacion: "2026-08-31"
+
+fuentes:
+  - id: src-vqcc
+    url: "https://vqcc.uvigo.es/a-new-optical-quantum-computing-facility-at-the-vqcc/"
+    titulo: "A new optical quantum computing facility at the VQCC"
+    editor: "Vigo Quantum Communication Center (Universidade de Vigo)"
+    tipo: oficial
+    fecha_publicacion: "2026-01-15"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      The Vigo Quantum Communication Center (VQCC) will soon host the Quantum Optical Computing
+      Lab, a shared laboratory specialized in optical quantum computing. The new facility will
+      involve an investment of €2.4 million and will focus on the development of a
+      next-generation optical quantum processor. [...] The agreement between the Galicia
+      Supercomputing Center (CESGA) and atlanTTic [...] establishes a shared governance model
+      [...] The Quantum Optical Computing Lab will have an initial duration of four years, with
+      the possibility of extension.
+  - id: src-uvigo
+    url: "https://www.uvigo.gal/en/university/communication/duvi/uvigo-zona-franca-impulsan-creacion-transferencia-conecemento-computacion-cuantica-tecnoloxia"
+    titulo: "UVigo e Zona Franca impulsan a creación e transferencia do coñecemento en computación cuántica con tecnoloxía fotónica a través dunha cátedra"
+    editor: "Universidade de Vigo"
+    tipo: oficial
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Con esta Cátedra apoiarase a actividade do laboratorio experimental en computación cuántica
+      creado recentemente no Vigo Quantum Communication Center da UVigo (VQCC) en colaboración co
+      Centro de Supercomputación de Galicia (Cesga) e que terá como primeiro obxectivo nos
+      tres-cinco próximos anos o desenvolvemento de procesadores cuánticos [...] Nós decantámonos
+      por tecnoloxía fotónica [...] A Cátedra terá unha dotación anual de 240.000 euros que
+      achegarán ao 50% UVigo e Zona Franca.
+  - id: src-boe
+    url: "https://boe.es/boe/dias/2026/03/30/pdfs/BOE-A-2026-7268.pdf"
+    titulo: "Resolución de 24 de marzo de 2026 del Consorcio de la Zona Franca de Vigo por la que se publica el Convenio con la Universidad de Vigo en computación de óptica cuántica"
+    editor: "Boletín Oficial del Estado"
+    tipo: oficial
+    fecha_publicacion: "2026-03-30"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Convenio entre el Consorcio de la Zona Franca de Vigo y la Universidade de Vigo para la
+      innovación, transferencia y difusión en el campo de las tecnologías cuánticas a través de
+      la Cátedra Consorcio de la Zona Franca de Vigo en Computación de Óptica Cuántica [...]
+      Consolidación del Laboratorio experimental de Computación de Óptica Cuántica [...]
+      aportaciones cuantificadas con un importe total de 240.000 euros por año.
+  - id: src-atlanttic
+    url: "https://atlanttic.uvigo.es/es/investigacion/iniciativas-singulares/"
+    titulo: "Iniciativas singulares — atlanTTic"
+    editor: "atlanTTic (Universidade de Vigo)"
+    tipo: oficial
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El Vigo Quantum Communication Center (VQCC) adscrito a atlanTTic en el seno de la
+      Universidade de Vigo está financiado a través de los Planes Complementarios en
+      Comunicaciones Cuánticas [...] Presupuesto del centro: 7.689.349 €
+  - id: src-vqcc-contacto
+    url: "https://vqcc.uvigo.es/contact/"
+    titulo: "Contact — Vigo Quantum Communication Center"
+    editor: "Vigo Quantum Communication Center (Universidade de Vigo)"
+    tipo: oficial
+    fecha_consulta: "2026-08-31"
+    cita: "Location: Estrada de Marcosende, 109 36310 Vigo, Pontevedra"
+  - id: src-osm
+    url: "https://nominatim.openstreetmap.org/search?q=Estrada+de+Marcosende+10%2C+Vigo&format=json&limit=1"
+    titulo: "Nominatim — geocodificación de la Estrada de Marcosende, Vigo"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Estrada de Marcosende, Marcosende, Zamáns, Vigo, Pontevedra, Galicia, 36310, España — lat
+      42.1639694, lon -8.6883003

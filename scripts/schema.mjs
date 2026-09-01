@@ -65,7 +65,10 @@ export const TIPOS_COMPUTO = [
   'qpu', // procesador cuántico
   'no_especificado',
 ]
-export const UNIDADES_COMPUTO = ['acelerador', 'procesador', 'qubit', 'nodo', 'no_especificado']
+export const UNIDADES_COMPUTO = ['acelerador', 'procesador', 'nucleo', 'qubit', 'nodo', 'no_especificado']
+// Igual que en `potencia`, una cifra de ámbito `sistema` manda sobre cualquier
+// suma de particiones: se entiende que el dato global ya las incluye.
+export const AMBITOS_COMPUTO = ['sistema', 'particion']
 // Los FLOPS no se comparan entre precisiones ni entre pico y medida: un EFlop/s
 // en FP4 no es mil PFlop/s en FP64. Por eso las tres cosas viajan por separado.
 export const UNIDADES_RENDIMIENTO = ['tflops', 'pflops', 'eflops']
@@ -176,6 +179,9 @@ const SINONIMOS_UNIDAD_COMPUTO = {
   cpus: 'procesador',
   qubits: 'qubit',
   cubit: 'qubit',
+  core: 'nucleo',
+  cores: 'nucleo',
+  nucleos: 'nucleo',
   cubits: 'qubit',
   nodos: 'nodo',
   servidores: 'nodo',
@@ -304,13 +310,34 @@ const zFase = z.object({
   fuentes: z.array(z.string()).default([]),
 })
 
+// Ámbito territorial: todo el territorio español. Se comprueba contra una caja
+// por territorio y no contra una sola envolvente, porque una caja que abarcara
+// desde Canarias hasta Cataluña metería dentro media Marruecos y Argelia, y una
+// coordenada mal transcrita caería en zona válida sin que nadie se enterase.
+// El orden importa: los territorios pequeños van antes que la península, cuya
+// caja se solapa con la balear por el este. Así el nombre devuelto es el útil.
+export const CAJAS_ES = [
+  { nombre: 'Ceuta', sur: 35.8, norte: 35.95, oeste: -5.42, este: -5.25 },
+  { nombre: 'Melilla', sur: 35.24, norte: 35.34, oeste: -3.0, este: -2.9 },
+  { nombre: 'Canarias', sur: 27.5, norte: 29.5, oeste: -18.3, este: -13.3 },
+  { nombre: 'Baleares', sur: 38.5, norte: 40.2, oeste: 1.1, este: 4.4 },
+  { nombre: 'península', sur: 35.9, norte: 43.9, oeste: -9.4, este: 3.4 },
+]
+
+/** ¿Cae el punto en alguno de los territorios españoles? */
+export function territorioDe(lat, lon) {
+  if (lat == null || lon == null) return null
+  const c = CAJAS_ES.find((c) => lat >= c.sur && lat <= c.norte && lon >= c.oeste && lon <= c.este)
+  return c ? c.nombre : null
+}
+
 const zUbicacion = z.object({
   municipio: z.string().nullable().optional(),
   provincia: z.string().nullable().optional(),
   ccaa: z.string().nullable().optional(),
   direccion: z.string().nullable().optional(),
-  lat: z.number().min(35.9).max(43.9).nullable(),
-  lon: z.number().min(-9.4).max(3.4).nullable(),
+  lat: z.number().min(27.5).max(43.9).nullable(),
+  lon: z.number().min(-18.3).max(4.4).nullable(),
   precision: z.enum(PRECISIONES),
   // Veta situar el punto en el centroide municipal. Se marca cuando la fuente
   // dice que el emplazamiento NO está en el casco urbano: colocarlo ahí sería
@@ -381,6 +408,7 @@ const zEnergia = z.object({
 // rendimiento entre precisiones ni entre pico y medida.
 const zComputo = z.object({
   tipo: z.enum(TIPOS_COMPUTO),
+  ambito: z.enum(AMBITOS_COMPUTO).default('particion'),
   sistema: z.string().nullable().optional(),
   // Quién opera el hardware. Se rellena cuando no es el operador del CPD: el
   // caso del inquilino de un centro mayorista (CoreWeave en Zona Franca).
@@ -531,6 +559,7 @@ export function normalizarSitio(crudo) {
 
   d.computo = arr(d.computo).map((c) => ({
     tipo: mapear(c.tipo, SINONIMOS_COMPUTO, TIPOS_COMPUTO, 'no_especificado'),
+    ambito: AMBITOS_COMPUTO.includes(slug(c.ambito)) ? slug(c.ambito) : 'particion',
     sistema: c.sistema ?? null,
     operador_computo: c.operador_computo ?? null,
     modelo: c.modelo ?? null,
@@ -793,6 +822,16 @@ export function revisarCoherencia(sitio) {
   }
 
   if (sitio.ubicacion.lat == null) problemas.push({ nivel: 'aviso', msg: 'sin coordenadas: no aparecerá en el mapa' })
+  else if (territorioDe(sitio.ubicacion.lat, sitio.ubicacion.lon) == null) {
+    // La caja del esquema es holgada por fuerza: abarca de Canarias a Cataluña, y
+    // media Marruecos con ella. Esta comprobación descarta lo que cae fuera de
+    // todos los territorios. No distingue tierra de mar —ninguna caja puede—, así
+    // que caza el error de país o de signo, no el de pocos kilómetros.
+    problemas.push({
+      nivel: 'error',
+      msg: `las coordenadas (${sitio.ubicacion.lat}, ${sitio.ubicacion.lon}) no caen en ningún territorio español`,
+    })
+  }
   // Que no se sepa dónde está es un hecho registrable, no un fallo de forma:
   // omitir un proyecto grande por eso sería un hueco peor que el propio hueco.
   if (!sitio.ubicacion.ccaa) {

@@ -2,9 +2,15 @@
 
 **https://datacenters.m19182.dev**
 
-Mapa público de los centros de datos de España peninsular y su relación con la
-infraestructura eléctrica de transporte. Cada dato lleva su fuente; los huecos y
-las contradicciones se muestran en lugar de rellenarse.
+Mapa público de los centros de datos de España —península, Baleares, Canarias,
+Ceuta y Melilla— y su relación con la infraestructura eléctrica de transporte.
+Cada dato lleva su fuente; los huecos y las contradicciones se muestran en lugar
+de rellenarse.
+
+La **capa eléctrica sigue siendo peninsular**, y no por descuido: Red Eléctrica
+publica capacidad de acceso para el sistema peninsular, y los sistemas canario y
+balear son eléctricamente independientes. Un emplazamiento insular tiene ficha,
+pero no tiene red debajo.
 
 No es un análisis de mercado ni de inversión: es un registro de hechos
 publicados, con su procedencia y su fecha de verificación.
@@ -24,6 +30,11 @@ publicados, con su procedencia y su fecha de verificación.
   sin contrastar con ningún registro.
 - **Consumo eléctrico anual en GWh**, en un campo aparte de la potencia. Energía
   y potencia no se comparan ni se suman.
+- **Cómputo instalado** cuando consta: aceleradores de IA, particiones de CPU y
+  procesadores cuánticos, con modelo, recuento y rendimiento. Es hardware, no
+  potencia: no entra en ninguna cifra de MW, y los FLOPS no se comparan entre
+  precisiones distintas. El hardware de un inquilino se atribuye al
+  emplazamiento donde está, diciendo de quién es.
 - Generación renovable y baterías con vínculo documentado a un centro concreto.
 - Trazado de la red de transporte derivado de OpenStreetMap.
 - **Capa opcional de centrales de generación**, apagada por defecto: potencia
@@ -213,6 +224,7 @@ compañía como los informes que genera la tubería:
 | `informe-reconciliacion.md` | Variantes de nombre, duplicados, incoherencias |
 | `informe-actualizacion.md` | Cola de revisión de fuentes |
 | `cobertura.md` | Huecos, contradicciones y nivel de cobertura |
+| `computo.md` | Qué hardware de cálculo hay dentro: GPU, ASIC de IA, HPC y cuántica |
 | `estado-del-arte.md` | Quién más ha mapeado esto y en qué queda por detrás este registro |
 | `acceso-a-fuentes.md` | Qué documentos no se pueden consultar y por qué, con lo que puede hacer una persona |
 | `auditoria-datos.md` | Verificación independiente de los datos de mayor impacto |

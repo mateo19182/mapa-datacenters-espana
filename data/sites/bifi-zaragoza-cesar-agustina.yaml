@@ -1,0 +1,122 @@
+id: bifi-zaragoza-cesar-agustina
+nombre: "BIFI — Laboratorio de Supercomputación del Centro de Supercomputación de Aragón (Agustina)"
+alias:
+  - "CESAR — Centro de Supercomputación de Aragón"
+  - "Supercomputador Agustina"
+  - "Nodo Agustina de la RES"
+  - "Caesaraugusta"
+tipo: edificio
+operador: "Instituto de Biocomputación y Física de Sistemas Complejos (BIFI), Universidad de Zaragoza"
+propietario: "Universidad de Zaragoza"
+cliente_ancla: null
+modelo: corporativo
+
+ubicacion:
+  municipio: "Zaragoza"
+  provincia: "Zaragoza"
+  ccaa: "Aragón"
+  direccion: "Edificio I+D, calle Mariano Esquillor s/n, Campus Río Ebro, 50018 Zaragoza"
+  lat: 41.6841640
+  lon: -0.8892559
+  precision: aproximada
+  fuentes: [src-bifi, src-osm]
+
+estado: operativo
+estado_detalle: >-
+  Se incluye en el mapa por su condición de infraestructura de cómputo público, no como centro
+  de datos comercial. El BIFI aloja el Centro de Supercomputación de Aragón (CESAR), que tiene
+  dos sedes: el Laboratorio de Supercomputación (LSC), que es el centro de proceso de datos del
+  Edificio I+D del Campus Río Ebro, y el Laboratorio de Innovación Abierta del edificio Etopía,
+  de actividad ciudadana. El cómputo registrado aquí está en el LSC. El BIFI opera además las
+  máquinas dedicadas JANUS I y JANUS II, de cálculo en ciencia de materiales, y más de 10.000
+  núcleos de computación voluntaria del proyecto Ibercivis. Es el nodo aragonés de la RES, con
+  un 36 % de Agustina y un 50 % de Mequinenza destinados a la red.
+estado_fuentes: [src-res, src-bifi]
+
+potencia: []
+
+computo:
+  - tipo: cpu_hpc
+    sistema: "Agustina"
+    modelo: "AMD Epyc 7513A a 2,6 GHz, 2 por nodo (6.144 núcleos)"
+    unidades: 96
+    tipo_unidad: nodo
+    rendimiento: 537
+    rendimiento_unidad: tflops
+    rendimiento_tipo: pico
+    rendimiento_precision: fp64
+    estado: operativo
+    fecha_dato: "2026-08-31"
+    fuentes: [src-res]
+    nota: >-
+      93 nodos delgados de 256 GB de RAM y 3 nodos gruesos de 512 GB, con 500 TB de disco e
+      Infiniband de 100 Gbps.
+  - tipo: cpu_hpc
+    sistema: "Mequinenza"
+    modelo: "Intel Xeon Platinum 8160 a 2,1 GHz, 2 por nodo (6.912 núcleos)"
+    unidades: 144
+    tipo_unidad: nodo
+    rendimiento: 464.5
+    rendimiento_unidad: tflops
+    rendimiento_tipo: pico
+    rendimiento_precision: fp64
+    estado: operativo
+    fecha_dato: "2026-08-31"
+    fuentes: [src-res]
+    nota: >-
+      Configuración idéntica a las particiones que recibieron Lusitania, Cibeles 4 y Tirant 4:
+      es hardware de la generación de MareNostrum 4 repartido entre nodos de la RES.
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      Ni la RES ni el BIFI publican potencia eléctrica, carga TI ni superficie del Laboratorio
+      de Supercomputación. Campo de potencia vacío.
+    fuentes: [src-res, src-bifi]
+  - campo: computo
+    descripcion: >-
+      La página de equipamiento del propio BIFI sigue describiendo como nodo aragonés de la RES
+      a Caesaraugusta, «un superordenador con 3.072 núcleos y 25 TFLOPs», mientras que la ficha
+      del nodo en la RES describe Agustina y Mequinenza, muy superiores. La página del BIFI está
+      desactualizada; se registra la de la RES y se conserva la discrepancia.
+    fuentes: [src-res, src-bifi]
+
+confianza: media
+ultima_verificacion: "2026-08-31"
+
+fuentes:
+  - id: src-res
+    url: "https://www.res.es/en/about-res/nodes/agustina-bifi"
+    titulo: "Agustina - BIFI"
+    editor: "Red Española de Supercomputación"
+    tipo: oficial
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Node location BIFI - Universidad de Zaragoza, Zaragoza [...] BIFI hosts the Aragon
+      Supercomputing Center (CESAR) [...] Machine name Agustina | % of the machine destined to
+      RES 36% | Peak performance 537 TFlop/s | Number of nodes and cores 96 nodes (6 144 cores)
+      | Main nodes characteristics 2x AMD Epyc 7513A 2.6 GHz 93 nodes thin: 256 GB RAM 3 nodes
+      FAT: 512 GB RAM [...] Machine name Mequinenza | % of the machine destined to RES 50% |
+      Peak performance 464.5 TFlop/s | Number of nodes and cores 144 nodes (6 912 cores) | Main
+      nodes characteristics 2x Intel Xeon Platinum 8160 2.1 GHz and 96GB of RAM
+  - id: src-bifi
+    url: "https://bifi.es/es/equipamiento-cientifico/"
+    titulo: "Equipamiento científico — BIFI"
+    editor: "Instituto de Biocomputación y Física de Sistemas Complejos (Universidad de Zaragoza)"
+    tipo: oficial
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El BIFI opera Caesaraugusta, una superordenador con 3.072 núcleos y 25 TFLOPs, que es el
+      nodo actual de Aragón en la RES. [...] El centro cuenta con dos sedes físicas: el
+      Laboratorio de Supercomputación (LSC), un centro de proceso de datos (CPD) ubicado en el
+      Edificio I+D del Campus Río Ebro; y el Laboratorio de Innovación Abierta (LIA), situado en
+      el edificio Etopia donde se desarrolla la actividad ciudadana.
+  - id: src-osm
+    url: "https://nominatim.openstreetmap.org/search?q=Mariano+Esquillor+G%C3%B3mez%2C+Zaragoza&format=json&limit=2"
+    titulo: "Nominatim — geocodificación de la calle Mariano Esquillor Gómez, Zaragoza"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Calle Mariano Esquillor Gómez, Parque Goya, Actur-Rey Fernando, Zaragoza, Aragón, 50018,
+      España — lat 41.6841640, lon -0.8892559

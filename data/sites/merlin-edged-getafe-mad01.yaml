@@ -87,6 +87,21 @@ enlaces_proyecto:
   - "https://www.edged.es/madrid-getafe"
   - "https://www.merlinproperties.com/en/assets/data-center-madrid-getafe/"
 
+computo:
+  - tipo: gpu
+    ambito: sistema
+    sistema: "Infraestructura de IA de Nebius en Madrid"
+    operador_computo: "Nebius"
+    tipo_unidad: acelerador
+    estado: operativo
+    fecha_dato: "2026-08-11"
+    fuentes: [src-nebius]
+    nota: >-
+      Nebius contrató 18 MW de capacidad en este edificio —la mayor parte de sus 20 MW— para
+      despliegues de GPU de alta densidad, su primera instalación en España. Ni Nebius ni Edged
+      publican modelo ni número de aceleradores, así que el registro consta sin recuento: lo
+      documentado es la contratación de potencia para cómputo de IA, no el hardware.
+
 incertidumbres:
   - campo: cliente_ancla
     descripcion: >-
@@ -164,3 +179,15 @@ fuentes:
     tipo: empresa
     fecha_consulta: "2026-08-31"
     cita: "20 MW Capacidad de carga crítica 1,15 PUE ... Sistema avanzado de refrigeración sin agua - Eficacia del uso del agua (WUE) 0,00 litros/kWh de refrigeración - Redundancia N+1 - Transferencia de calor con glicol con enfriadoras de techo refrigeradas por aire - Los evaporadores de circuito cerrado proporcionan refrigeración secundaria - Capacidad de 500 kW por pasillo caliente (modular)"
+  - id: src-nebius
+    url: "https://www.datacenterdynamics.com/en/news/nebius-signs-18mw-lease-with-merlin-properties-at-spain-data-center-report/"
+    titulo: "Nebius signs 18MW lease with Merlin Properties and Edged for Spain data center"
+    editor: "DatacenterDynamics"
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-08-11"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Edged has confirmed to DCD that Nebius has signed on for 18MW of capacity at the Madrid
+      Getafe site. [...] "Our Madrid-Getafe facility is built to support high-density GPU
+      deployments, with advanced cooling architecture that is efficient and consumes zero water,
+      giving Nebius the performance and reliability it needs to run AI workloads at scale."

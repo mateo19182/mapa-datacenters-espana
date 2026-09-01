@@ -78,6 +78,24 @@ conexion_electrica:
 enlaces_proyecto:
   - "https://actualidad.asturias.es/-/ciencia-conf%C3%ADa-en-que-el-centro-de-datos-del-principado-en-el-pozo-san-jorge-atraiga-empresas-del-sector-a-la-comunidad"
 
+computo:
+  - tipo: cpu_hpc
+    ambito: sistema
+    sistema: "Asturcón"
+    operador_computo: "Universidad de Oviedo"
+    modelo: "Dos armarios rack con servidores procedentes del supercomputador MareNostrum 4 del BSC"
+    nodos: 2
+    tipo_unidad: nodo
+    estado: anunciado
+    fecha_dato: "2026-07-03"
+    fuentes: [src-asturcon]
+    nota: >-
+      El cómputo todavía no está aquí: Asturcón se instala primero en el centro de proceso de
+      datos del Principado por razones de capacidad técnica, y el objetivo declarado es
+      trasladarlo en una segunda fase al pozo San Jorge. Ninguna fuente publica núcleos,
+      rendimiento ni aceleradores del equipo. Los «dos armarios rack» se registran como nodos a
+      falta de una unidad mejor en el esquema; no son nodos de cómputo en el sentido habitual.
+
 incertidumbres:
   - campo: potencia
     descripcion: >-
@@ -143,3 +161,16 @@ fuentes:
       proyecto para ubicar un gran centro de datos en el pozo San Jorge, en Aller. El
       responsable regional aseguró que solo falta un trámite administrativo en la
       CUOTA [...] El proyecto cuenta con un presupuesto de más de 3 millones de euros.
+  - id: src-asturcon
+    url: "https://www.lne.es/asturias/2026/07/03/primer-supercomputador-asturias-permitira-universidad-132082995.html"
+    titulo: "Por qué es tan importante el primer supercomputador que estrena Asturias"
+    editor: "La Nueva España"
+    tipo: prensa_general
+    fecha_publicacion: "2026-07-03"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      La infraestructura, Asturcón, se ubicará en el centro de procesamiento de datos del
+      Principado [...] Aunque en un primer momento Asturcón se ubicará en el actual centro de
+      procesamiento de datos del Principado, desde la Consejería de Ciencia, la idea es
+      trasladarlo posteriormene al centro de datos del pozo San Jorge, en Aller. [...] Asturias
+      reutilizará dos módulos de una versión anterior del proyecto catalán MareNostrum.

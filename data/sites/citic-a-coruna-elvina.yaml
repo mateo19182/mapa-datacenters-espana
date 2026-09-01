@@ -1,0 +1,144 @@
+id: citic-a-coruna-elvina
+nombre: "CITIC — Centro de Investigación en TIC de la Universidade da Coruña (Campus de Elviña)"
+alias:
+  - "Centro de Investigación en Tecnoloxías da Información e as Comunicacións"
+  - "CITIC-UDC"
+  - "CPD del CITIC"
+tipo: edificio
+operador: "Centro de Investigación en Tecnoloxías da Información e as Comunicacións (CITIC)"
+propietario: "Universidade da Coruña"
+cliente_ancla: null
+modelo: corporativo
+
+ubicacion:
+  municipio: "A Coruña"
+  provincia: "A Coruña"
+  ccaa: "Galicia"
+  direccion: "Campus de Elviña s/n, 15071 A Coruña"
+  lat: 43.3325834
+  lon: -8.4079677
+  precision: exacta
+  fuentes: [src-contacto, src-osm]
+
+estado: operativo
+estado_detalle: >-
+  Se incluye en el mapa por su condición de infraestructura de cómputo público, no como centro
+  de datos comercial, y con una advertencia de escala: su CPD es un centro de proceso de datos
+  de laboratorio, para pruebas, pilotos, demostradores y despliegues pre-comerciales, no una
+  instalación de servicio comparable con los nodos de la Red Española de Supercomputación. El
+  CITIC es un centro de investigación creado en 2008 e impulsado por la Universidade da Coruña,
+  integrado en la Red CIGUS y reconocido como Centro de Excelencia por la Xunta de Galicia. Ocupa
+  dos edificios modulares con 3.200 m² en el Campus de Elviña. Una de sus cuatro áreas de
+  investigación es la computación de altas prestaciones. En 2025 creó una Comisión de
+  Infraestructuras para supervisar el CPD y reforzó su capacidad de cálculo.
+estado_fuentes: [src-instalaciones, src-memoria, src-presentacion]
+
+potencia: []
+
+superficie_construida_m2: 3200
+
+computo:
+  - tipo: gpu
+    ambito: sistema
+    sistema: "CPD del CITIC"
+    modelo: "NVIDIA H100 de 80 GB"
+    tipo_unidad: acelerador
+    estado: operativo
+    fecha_dato: "2025"
+    fuentes: [src-memoria]
+    nota: >-
+      La memoria de actividades de 2025 registra la adquisición sin decir cuántas unidades, así
+      que el recuento queda vacío. Su finalidad declarada es reforzar la capacidad de cálculo del
+      CPD en inteligencia artificial, computación de altas prestaciones y aprendizaje profundo.
+  - tipo: gpu
+    sistema: "CPD del CITIC — computación embebida"
+    modelo: "Kits de desarrollo NVIDIA Jetson AGX Orin de 64 GB y NVIDIA Jetson AGX Thor"
+    tipo_unidad: acelerador
+    estado: operativo
+    fecha_dato: "2025"
+    fuentes: [src-memoria]
+    nota: >-
+      No son aceleradores de centro de datos: son módulos de desarrollo para inteligencia
+      artificial embebida y robótica avanzada. Se registran porque la fuente los presenta como
+      ampliación de las capacidades de computación de altas prestaciones del centro, y sin
+      recuento porque no lo publica.
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      El CITIC no publica potencia eléctrica, carga TI, número de racks ni superficie del CPD.
+      La única magnitud del emplazamiento es la superficie construida de los dos edificios, que
+      no es la de la sala técnica. Campo de potencia vacío.
+    fuentes: [src-instalaciones, src-memoria]
+  - campo: computo
+    descripcion: >-
+      Ninguna de las adquisiciones de 2025 lleva recuento en la memoria: ni las H100, ni los
+      kits Jetson, ni los servidores del clúster VMware. Se registra qué hay, no cuánto.
+    fuentes: [src-memoria]
+  - campo: tipo
+    descripcion: >-
+      La ficha describe un centro de investigación con CPD propio, no un centro de datos. Entra
+      en el registro por coherencia con el resto de la infraestructura de cómputo público
+      fichada, y su escala es un orden de magnitud inferior a la de cualquier nodo de la RES.
+    fuentes: [src-instalaciones]
+
+confianza: baja
+ultima_verificacion: "2026-08-31"
+
+fuentes:
+  - id: src-instalaciones
+    url: "https://citic.udc.es/instalaciones-2/"
+    titulo: "Instalaciones — CITIC"
+    editor: "Centro de Investigación en TIC (Universidade da Coruña)"
+    tipo: oficial
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El CITIC cuenta con dos edificios modulares e inteligentes con una superficie de 3.200 m2
+      distribuidos en plantas diáfanas configurables para el desarrollo de actividades de I+D+i
+      en el ámbito TIC. [...] Centro de Proceso de Datos (CPD): Dispone de equipamiento
+      actualizado y heterogéneo tanto a nivel hardware como software sobre el que se realizan
+      pruebas, pilotos, demostradores y despliegues pre-comerciales.
+  - id: src-memoria
+    url: "https://citic.udc.es/wp-content/uploads/2026/05/CITIC_memoria_2025_digital-comprimido.pdf"
+    titulo: "Memoria de actividades 2025 — CITIC"
+    editor: "Centro de Investigación en TIC (Universidade da Coruña)"
+    tipo: oficial
+    fecha_publicacion: "2026-05"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      La Comisión de Infraestructuras fue creada por el CITIC en el año 2025 con el objetivo de
+      supervisar la infraestructura del CPD [...] Kits de desarrollo NVIDIA Jetson AGX Orin 64GB
+      y NVIDIA Jetson AGX Thor: adquirido con la finalidad de aumentar las capacidades del CITIC
+      en materia de computación de altas prestaciones, especialmente orientadas a inteligencia
+      artificial embebida y robótica avanzada. [...] GPU NVIDIA H100 80GB: tiene como finalidad
+      reforzar de manera significativa la capacidad de cálculo del CPD del CITIC en ámbitos de
+      inteligencia artificial, computación de altas prestaciones y aprendizaje profundo.
+  - id: src-presentacion
+    url: "https://citic.udc.es/presentacion/"
+    titulo: "Presentación — CITIC"
+    editor: "Centro de Investigación en TIC (Universidade da Coruña)"
+    tipo: oficial
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El CITIC es un Centro de Investigación creado en 2008 que potencia el avance y la
+      excelencia en I+D+i aplicada a las TIC. Impulsado por la Universidade da Coruña, el CITIC
+      es un punto de encuentro entre la Universidad y la empresa.
+  - id: src-contacto
+    url: "https://citic.udc.es/contacto/"
+    titulo: "Contacto — CITIC"
+    editor: "Centro de Investigación en TIC (Universidade da Coruña)"
+    tipo: oficial
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Centro de investigación TIC. Campus de Elviña s/n 15071 A Coruña – España. El CITIC está
+      situado en el Campus de Elviña de la Universidade da Coruña, en la entrada de la ciudad
+      desde la autopista AP-9.
+  - id: src-osm
+    url: "https://nominatim.openstreetmap.org/search?q=CITIC%2C+Campus+de+Elvi%C3%B1a%2C+A+Coru%C3%B1a&format=json&limit=1"
+    titulo: "Nominatim — geocodificación del CITIC, Campus de Elviña"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Centro de Investigación en Tecnoloxías da Información e das Comunicacións - CITIC - UDC,
+      56, Campus de Elviña, A Coruña, Galicia, 15008, España — lat 43.3325834, lon -8.4079677

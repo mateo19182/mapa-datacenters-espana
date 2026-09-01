@@ -13,8 +13,10 @@ import { join } from 'node:path'
 const ORIGEN =
   'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_50m_admin_0_countries.geojson'
 const PAISES = new Set(['ESP', 'PRT', 'FRA', 'AND', 'MAR', 'DZA'])
-// Ventana que cubre la península y su entorno visible al zoom inicial.
-const VENTANA = { oeste: -13, este: 8, sur: 31, norte: 48 }
+// Ventana que cubre todo el territorio español y su entorno visible: desde El
+// Hierro por el oeste hasta Menorca por el este, y bajando lo suficiente para
+// que Canarias entre completa.
+const VENTANA = { oeste: -19.5, este: 8, sur: 26, norte: 48 }
 const DESTINO = join(new URL('..', import.meta.url).pathname, 'data/geo/contorno.geojson')
 
 const red = (n) => Math.round(n * 1000) / 1000

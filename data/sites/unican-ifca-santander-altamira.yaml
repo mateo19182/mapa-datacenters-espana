@@ -34,6 +34,52 @@ estado_detalle: >-
   Científico Técnica Singular (ICTS).
 estado_fuentes: [src-1, src-2, src-3, src-4]
 
+computo:
+  - tipo: cpu_hpc
+    ambito: sistema
+    sistema: "Altamira / servicio HPC del IFCA"
+    modelo: "Intel Xeon Platinum 8160 y 8358, Intel Xeon Gold 6230 y 6430, AMD EPYC (10.770 núcleos en total)"
+    unidades: 115
+    tipo_unidad: nodo
+    estado: operativo
+    fecha_dato: "2026-08-31"
+    fuentes: [src-hpc]
+    nota: >-
+      El sistema de propósito general del IFCA. La ficha del nodo en la RES cifra en 325
+      TFlop/s el rendimiento de la parte destinada a la Red Española de Supercomputación, que no
+      es el conjunto de la máquina; por eso no se registra aquí como rendimiento del sistema.
+  - tipo: gpu
+    sistema: "Altamira — partición wngpu"
+    modelo: "NVIDIA H200 NVL, 4 en un nodo AMD EPYC 9355"
+    unidades: 4
+    tipo_unidad: acelerador
+    nodos: 1
+    estado: operativo
+    fecha_dato: "2026-08-31"
+    fuentes: [src-hpc]
+    nota: null
+  - tipo: gpu
+    sistema: "Altamira — partición wngpu"
+    modelo: "NVIDIA A30, 8 en un nodo Intel Xeon Gold 6338"
+    unidades: 8
+    tipo_unidad: acelerador
+    nodos: 1
+    estado: operativo
+    fecha_dato: "2026-08-31"
+    fuentes: [src-hpc]
+    nota: null
+  - tipo: gpu
+    sistema: "Altamira — partición wngpu"
+    modelo: "NVIDIA V100, 2 por nodo en 5 nodos Intel Xeon Gold 6230"
+    nodos: 5
+    tipo_unidad: acelerador
+    estado: operativo
+    fecha_dato: "2026-08-31"
+    fuentes: [src-hpc]
+    nota: >-
+      La tabla da dos V100 por nodo en cinco nodos y no publica el total. El recuento queda
+      vacío en vez de multiplicarse.
+
 enlaces_proyecto:
   - "https://www.res.es/es/sobre-la-res/nodos"
 
@@ -97,3 +143,15 @@ fuentes:
       del Marenostrum 3 [...] uno de los 14 nodos de la Red Española de
       Supercomputación (RES), coordinada por BSC, y por tanto, integrado como una
       Infraestructura Científico Técnica Singular (ICTS).
+  - id: src-hpc
+    url: "https://confluence.ifca.es/spaces/IC/pages/380272672/IFCA+HPC+Userguide"
+    titulo: "IFCA HPC Userguide"
+    editor: "Instituto de Física de Cantabria (IFCA, CSIC-UC)"
+    tipo: oficial
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      The IFCA HPC general purpose system, houses 115 nodes based on different architectures
+      that results in 10.770 processor cores as arranged in the table below. [...] wngpu |
+      Intel(R) Xeon(R) Gold 6230 CPU @ 2.10GHz / AMD EPYC 9355 32-Core Processor / Intel(R)
+      Xeon(R) Gold 6338 CPU @ 2.00GHz | 5 / 1 / 1 | GPU 2x Nvidia V100 / 4xNVIDIA H200 NVL /
+      8xNvidia A30

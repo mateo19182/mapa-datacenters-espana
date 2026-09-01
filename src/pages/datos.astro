@@ -46,7 +46,7 @@ const avisos = parte.filter((l) => l.includes('aviso:')).length
     <dl class="cifras">
       <div class="cifra">
         <dt>Emplazamientos</dt>
-        <dd>{numero(resumen.total_emplazamientos)}<small>{resumen.coordenadas_exactas} con coordenadas exactas · {resumen.coordenadas_derivadas} situados en el centro de su municipio</small></dd>
+        <dd>{numero(resumen.total_emplazamientos)}<small>{resumen.por_precision.exacta} con coordenadas exactas · {resumen.por_precision.aproximada} aproximadas · {resumen.por_precision.municipio} situados en su municipio ({resumen.coordenadas_derivadas} de ellos calculados al construir) · {resumen.por_precision.desconocida} sin situar</small></dd>
       </div>
       <div class="cifra">
         <dt>Fuentes</dt>
@@ -135,7 +135,7 @@ scripts/
     <p>
       Cada construcción genera un parte de validación y lo publica aquí. Comprueba el esquema, que
       toda fuente referida exista, que no haya identificadores repetidos, que las coordenadas caigan
-      en España peninsular, que ningún emplazamiento figure dos veces con nombres distintos y que
+      en España, que ningún emplazamiento figure dos veces con nombres distintos y que
       cada cifra de potencia aparezca en la cita que la sostiene.
     </p>
 

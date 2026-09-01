@@ -82,6 +82,23 @@ empleo:
       primera fase. Es una previsión de 2024 sobre un proyecto que en enero de
       2026 estaba parado.
 
+computo:
+  - tipo: gpu
+    ambito: sistema
+    sistema: "Centro de datos de IA de Puertollano (fase 1)"
+    operador_computo: "Data Section"
+    modelo: "GPU NVIDIA de última generación en racks de Super Micro"
+    tipo_unidad: acelerador
+    estado: anunciado
+    fecha_dato: "2024-09-03"
+    fuentes: [src-solaria, src-eldiario]
+    nota: >-
+      No hay recuento: ni Solaria ni Data Section publican modelo concreto ni número de
+      aceleradores. Data Section se encarga de garantizar el suministro de GPU y servidores de
+      IA a través de sus socios Foxconn y Super Micro. A enero de 2026 no se había instalado
+      ningún servidor en las salas blancas, así que el registro documenta un anuncio, no
+      hardware en funcionamiento.
+
 incertidumbres:
   - campo: estado
     descripcion: >-

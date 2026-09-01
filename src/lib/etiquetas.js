@@ -160,6 +160,59 @@ export const EMPLEO_ETIQUETA = {
   no_especificado: 'Empleo sin tipificar',
 }
 
+export const COMPUTO_ETIQUETA = {
+  gpu: 'Aceleradores GPU',
+  asic_ia: 'Aceleradores propios de IA',
+  cpu_hpc: 'Cómputo de CPU',
+  qpu: 'Procesador cuántico',
+  no_especificado: 'Cómputo sin tipificar',
+}
+
+export const UNIDAD_COMPUTO_ETIQUETA = {
+  acelerador: ['acelerador', 'aceleradores'],
+  procesador: ['procesador', 'procesadores'],
+  nucleo: ['núcleo de CPU', 'núcleos de CPU'],
+  qubit: ['cúbit', 'cúbits'],
+  nodo: ['nodo', 'nodos'],
+  no_especificado: ['unidad', 'unidades'],
+}
+
+const RENDIMIENTO_UNIDAD = { tflops: 'TFlop/s', pflops: 'PFlop/s', eflops: 'EFlop/s' }
+const RENDIMIENTO_TIPO = {
+  pico: 'pico',
+  linpack_rmax: 'medido con Linpack',
+  no_especificado: 'sin especificar si es pico o medido',
+}
+const RENDIMIENTO_PRECISION = {
+  fp64: 'FP64',
+  fp32: 'FP32',
+  fp16: 'FP16',
+  fp8: 'FP8',
+  fp4: 'FP4',
+  no_especificado: 'precisión no publicada',
+}
+
+/** Recuento de piezas de cómputo, con su unidad en singular o plural. */
+export function unidadesComputo(n, tipoUnidad) {
+  if (n == null) return null
+  const [sing, plur] = UNIDAD_COMPUTO_ETIQUETA[tipoUnidad] ?? UNIDAD_COMPUTO_ETIQUETA.no_especificado
+  return `${numero(n)} ${n === 1 ? sing : plur}`
+}
+
+/**
+ * Rendimiento en FLOPS. La precisión y el «pico o medido» viajan pegados a la
+ * cifra a propósito: sin ellos no se puede comparar con ninguna otra.
+ */
+export function rendimientoComputo(c) {
+  if (c?.rendimiento == null || !c.rendimiento_unidad) return null
+  const cifra = `${numero(c.rendimiento, 2)} ${RENDIMIENTO_UNIDAD[c.rendimiento_unidad] ?? c.rendimiento_unidad}`
+  const matices = [
+    RENDIMIENTO_TIPO[c.rendimiento_tipo] ?? null,
+    RENDIMIENTO_PRECISION[c.rendimiento_precision] ?? null,
+  ].filter(Boolean)
+  return matices.length > 0 ? `${cifra} (${matices.join(', ')})` : cifra
+}
+
 /** Energía anual. Se guarda en GWh; por debajo de 1 GWh se enseña en MWh. */
 export function energia(n) {
   if (n == null) return null
@@ -188,6 +241,7 @@ export const CAMPO_ETIQUETA = {
   agua: 'Consumo de agua',
   empleo: 'Empleo',
   energia: 'Consumo eléctrico',
+  computo: 'Cómputo instalado',
   refrigeracion_agua: 'Agua y refrigeración',
   inversion_anunciada_eur: 'Inversión anunciada',
   inversion: 'Inversión anunciada',

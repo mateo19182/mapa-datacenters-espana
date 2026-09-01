@@ -15,6 +15,9 @@ import {
   CIRCUITO_ETIQUETA,
   CIRCUITO_DESCRIPCION,
   EMPLEO_ETIQUETA,
+  COMPUTO_ETIQUETA,
+  unidadesComputo,
+  rendimientoComputo,
   energia as energiaLegible,
   volumen,
   campoLegible,
@@ -393,6 +396,39 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
             <p class="pequeno silencio">
               Energía consumida al año, no potencia. No se compara ni se suma con las cifras de
               MW, que miden cosas distintas.
+            </p>
+          </div>
+        )}
+
+        {(s.computo ?? []).length > 0 && (
+          <div class="tarjeta">
+            <h3 class="titulo-lateral">Cómputo instalado</h3>
+            <dl class="pares">
+              {s.computo.map((c) => (
+                <>
+                  <dt>{COMPUTO_ETIQUETA[c.tipo] ?? c.tipo}</dt>
+                  <dd>
+                    {unidadesComputo(c.unidades, c.tipo_unidad) ?? 'Recuento no publicado'}
+                    {c.sistema && <span class="pequeno silencio"><br />{c.sistema}</span>}
+                    {c.modelo && <span class="pequeno"><br />{c.modelo}</span>}
+                    {c.nodos != null && c.unidades == null && (
+                      <span class="pequeno silencio"><br />{numero(c.nodos)} {c.nodos === 1 ? 'nodo' : 'nodos'}</span>
+                    )}
+                    {rendimientoComputo(c) && <span class="pequeno"><br />{rendimientoComputo(c)}</span>}
+                    {c.operador_computo && (
+                      <span class="pequeno silencio"><br />Hardware operado por {c.operador_computo}</span>
+                    )}
+                    {c.nota && <span class="pequeno silencio"><br />{c.nota}</span>}
+                    {refs(c.fuentes).length > 0 && (
+                      <sup>{refs(c.fuentes).map((n, i) => <>{i > 0 && ','}<a href={`#fuente-${s.fuentes[n - 1].id}`}>{n}</a></>)}</sup>
+                    )}
+                  </dd>
+                </>
+              ))}
+            </dl>
+            <p class="pequeno silencio">
+              Hardware instalado, no potencia eléctrica: nada de este bloque entra en las cifras
+              de MW. Los FLOPS no se comparan entre precisiones distintas ni entre pico y medida.
             </p>
           </div>
         )}

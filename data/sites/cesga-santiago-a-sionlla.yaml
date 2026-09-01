@@ -63,7 +63,75 @@ refrigeracion: >-
 enlaces_proyecto:
   - "https://www.xunta.gal/es/notas-de-prensa/-/nova/015782/construccion-del-nuevo-cesga-sera-primero-proyecto-estrategico-investigacion"
 
+computo:
+  - tipo: cpu_hpc
+    ambito: sistema
+    sistema: "FinisTerrae III"
+    modelo: "Intel Xeon Ice Lake 8352Y de 32 núcleos a 2,2 GHz (22.656 núcleos en total)"
+    unidades: 354
+    tipo_unidad: nodo
+    rendimiento: 4
+    rendimiento_unidad: pflops
+    rendimiento_tipo: pico
+    rendimiento_precision: fp64
+    estado: operativo
+    fecha_dato: "2026-08-31"
+    fuentes: [src-computo]
+    nota: >-
+      Equipo Bull ATOS bullx instalado en 2021 y en producción desde 2022, repartido en 13
+      armarios, con 118 TB de memoria y 5 PB de almacenamiento Lustre.
+  - tipo: gpu
+    sistema: "FinisTerrae III"
+    modelo: "NVIDIA A100"
+    unidades: 128
+    tipo_unidad: acelerador
+    estado: operativo
+    fecha_dato: "2026-08-31"
+    fuentes: [src-computo]
+    nota: >-
+      La documentación técnica del propio CESGA da otra cifra —141 A100, 157 GPU en total— para
+      el mismo equipo. La discrepancia queda registrada en `incertidumbres[]` y no se resuelve.
+  - tipo: gpu
+    sistema: "FinisTerrae III"
+    modelo: "NVIDIA T4"
+    unidades: 16
+    tipo_unidad: acelerador
+    estado: operativo
+    fecha_dato: "2026-08-31"
+    fuentes: [src-computo]
+    nota: null
+  - tipo: qpu
+    sistema: "Qmio"
+    modelo: "QPU de cúbits superconductores tipo coaxmon, fabricada por Oxford Quantum Circuits"
+    unidades: 32
+    tipo_unidad: qubit
+    estado: operativo
+    fecha_dato: "2026-08-31"
+    fuentes: [src-cuantica]
+    nota: >-
+      Desplegado en 2023 y abierto a investigadores en 2024. No es capacidad de centro de datos
+      y no aporta ninguna cifra a `potencia[]`. Va acompañado de un sistema HPC conectado a la
+      QPU y de emuladores clásicos (Qaptiva, CUNQA, Qiskit AER).
+  - tipo: no_especificado
+    sistema: "Superordenador de la fábrica de IA 1HealthAI"
+    estado: anunciado
+    fecha_dato: "2025-10-10"
+    fuentes: [src-aif]
+    nota: >-
+      La Comisión Europea seleccionó al CESGA en octubre de 2025 para albergar la segunda AI
+      Factory de España, con 82 millones de euros de dotación. Ninguna fuente publica todavía
+      arquitectura, número de aceleradores ni rendimiento del superordenador que se adquirirá,
+      así que el registro queda sin recuento: consta la existencia del proyecto, no su tamaño.
+
 incertidumbres:
+  - campo: computo
+    descripcion: >-
+      El propio CESGA publica dos recuentos incompatibles de las GPU del FinisTerrae III. La
+      página de infraestructuras da «128 GPUs Nvidia A100 y 16 Nvidia T4» y 354 nodos; la
+      documentación técnica del usuario y una presentación institucional dan «157 GPUs: 141
+      Nvidia A100 and 16 Nvidia T4», 357 nodos y 4,36 PFlops. Se registra la primera, que es la
+      página institucional del centro, y se conserva el choque sin resolver.
+    fuentes: [src-computo, src-docs]
   - campo: potencia
     descripcion: >-
       Los 3,2 MW IT proceden de la ficha de proyecto de Dominion, adjudicataria de
@@ -115,3 +183,52 @@ fuentes:
       tecnologías emergentes en supercomputación, almacenamiento masivo y
       computación cuántica [...] integramos soluciones de refrigeración líquida
       directa, cableado estructurado redundante y un sistema de gestión BMS
+  - id: src-computo
+    url: "https://www.cesga.es/infraestructuras/computacion/"
+    titulo: "Computación — Centro de Supercomputación de Galicia"
+    editor: "CESGA"
+    tipo: oficial
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El equipo actualmente en servicio, el FinisTerrae III fue instalado en el año 2021 y
+      puesto en producción en el año 2022. Es un equipo Bull ATOS bullx distribuído en 13 racks
+      o armarios y que cuenta con 354 nodos de computación, 22.656 cores Intel Xeon Ice Lake
+      8352Y, 128 GPUs Nvidia A100 y 16 Nvidia T4, 118 TB de memoria y 5.000 TB de almacenamiento
+      de altas prestaciones Lustre. [...] La capacidad de cómputo pico del equipo es de 4
+      PetaFlops.
+  - id: src-cuantica
+    url: "https://www.cesga.es/infraestructuras/cuantica/"
+    titulo: "Cuántica — Centro de Supercomputación de Galicia"
+    editor: "CESGA"
+    tipo: oficial
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Un entorno de investigación en computación cuántica: QMIO. Este entorno fue desplegado en
+      CESGA en 2023 y abierto a investigadores en 2024. Está compuesto por: 1. Una unidad de
+      procesamiento cuántico (Quantum Processing Unit) de 32 cúbits superconductores tipo
+      coaxmon.
+  - id: src-aif
+    url: "https://www.ciencia.gob.es/Noticias/2025/octubre/instalacion-fabrica-IA-salud-Galicia.html"
+    titulo: "El Gobierno de España contribuye con 24 millones a la instalación de una fábrica de IA de salud en el Centro de Supercomputación de Galicia"
+    editor: "Ministerio de Ciencia, Innovación y Universidades"
+    tipo: oficial
+    fecha_publicacion: "2025-10-10"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      La Empresa Común Europea de Computación de Alto Rendimiento (EuroHPC JU) ha anunciado hoy
+      que el Centro de Supercomputación de Galicia [...] albergará una nueva fábrica europea de
+      inteligencia artificial (European One-Health -1Health AI), centrada en el ámbito de la
+      salud. [...] Gracias a esta fábrica, se podrá adquirir un superordenador específico para
+      inteligencia artificial y una plataforma de supercomputación avanzada optimizada para IA
+      experimental.
+  - id: src-docs
+    url: "https://cesga-docs.gitlab.io/ft3-user-guide/overview.html"
+    titulo: "Overview — CESGA Technical Documentation"
+    editor: "CESGA"
+    tipo: oficial
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      FinisTerrae III, with a total computing power of 4,36 PetaFLOPS, is made up of 357 nodes
+      interconnected via an Infiniband HDR network. There are 714 latest generation Intel Xeon
+      Ice Lake 8352Y processors with 32 cores at 2.2Ghz (22.848 cores) and 157 GPUs (141 Nvidia
+      A100 and 16 Nvidia T4).

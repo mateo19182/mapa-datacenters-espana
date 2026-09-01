@@ -6,7 +6,7 @@ import YAML from 'yaml'
 import Database from 'better-sqlite3'
 import { RAIZ } from './load.mjs'
 import { resumirPotencia, sumarCartera } from './potencia.mjs'
-import { ESTADOS, TIPOS_CAPACIDAD } from './schema.mjs'
+import { ESTADOS, TIPOS_CAPACIDAD, PRECISIONES } from './schema.mjs'
 
 // src/data alimenta las páginas en tiempo de build; public/datos se sirve tal
 // cual al navegador (mapa) y es además la descarga de datos abiertos.
@@ -155,6 +155,7 @@ const sitios = q('SELECT * FROM sitios ORDER BY nombre').map((s) => {
     })),
     computo: (computos.get(s.id) ?? []).map((c) => ({
       tipo: c.tipo,
+      ambito: c.ambito,
       sistema: c.sistema,
       operador_computo: c.operador_computo,
       modelo: c.modelo,
@@ -435,6 +436,13 @@ const resumen = {
   con_coordenadas: sitios.filter((s) => s.ubicacion.lat != null).length,
   coordenadas_exactas: sitios.filter((s) => s.ubicacion.precision === 'exacta').length,
   coordenadas_derivadas: sitios.filter((s) => s.ubicacion.coordenada_derivada).length,
+  // `coordenadas_exactas` y `coordenadas_derivadas` describen los dos extremos y
+  // dejaban sin explicar el resto. Este desglose suma el total, y junto a
+  // `calidad.emplazamientos_sin_coordenadas` —las fichas que no traen coordenada en
+  // el YAML, de las que 21 reciben el centroide de su municipio— cierra la cuenta.
+  por_precision: Object.fromEntries(
+    PRECISIONES.map((p) => [p, sitios.filter((s) => s.ubicacion.precision === p).length]),
+  ),
   por_confianza: Object.fromEntries(
     ['alta', 'media', 'baja'].map((c) => [c, sitios.filter((s) => s.confianza === c).length]),
   ),

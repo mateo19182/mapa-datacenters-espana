@@ -1,0 +1,153 @@
+id: d-alix-granadilla-de-abona
+nombre: "D-ALiX — centro de datos neutro y estación de cables submarinos (Granadilla de Abona, Tenerife)"
+alias:
+  - "D-ALiX"
+  - "NAP de África Occidental-Islas Canarias"
+  - "Datacenter para ALiX"
+  - "ALiX"
+tipo: edificio
+operador: "NAP de África Occidental-Islas Canarias, S.A. (D-ALiX)"
+propietario: "Grupo ITER — Instituto Tecnológico y de Energías Renovables (Cabildo de Tenerife)"
+cliente_ancla: null
+modelo: colocation
+
+ubicacion:
+  municipio: "Granadilla de Abona"
+  provincia: "Santa Cruz de Tenerife"
+  ccaa: "Canarias"
+  direccion: "Polígono Industrial de Granadilla s/n, 38600 Granadilla de Abona, Santa Cruz de Tenerife"
+  lat: 28.0693750
+  lon: -16.5113378
+  precision: exacta
+  fuentes: [src-catalogo, src-osm]
+
+estado: operativo
+estado_detalle: >-
+  Centro de datos neutro de colocación y, a la vez, estación de amarre de cables submarinos:
+  la propia compañía lo presenta como la primera estación de cables submarinos neutra del
+  mundo. Está en los terrenos del Instituto Tecnológico y de Energías Renovables (ITER),
+  sociedad del Cabildo de Tenerife, junto al Parque Científico y Tecnológico de Granadilla, y
+  dentro del parque eólico del propio ITER. Se monta dentro de una nave industrial reforzada
+  bajo el concepto de «búnker dentro de búnker», con crecimiento modular en horizontal en vez
+  de planta a planta. Ofrece bastidores en sala compartida, jaulas de superficie a medida y
+  salas privadas con cuadro eléctrico, refrigeración y control de acceso propios. Da
+  conectividad directa con la península a través de los cables de Canalink —con derivación
+  hacia Marruecos— y con Gran Canaria y La Palma, más acceso a los sistemas internacionales
+  ACE, WACS, MST, SAT-3, Atlantis-2 y SAT-2 de la costa occidental de África. Entra en el
+  registro en septiembre de 2026, con el cambio de la regla de alcance peninsular.
+estado_fuentes: [src-catalogo, src-iter, src-canalink]
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 5
+    ambito: edificio
+    referencia: "Capacidad atribuida al centro por el directorio Data Center Map"
+    estado_asociado: operativo
+    fecha_dato: "2026-09-01"
+    fuentes: [src-dcmap]
+    nota: >-
+      No es una cifra del operador: D-ALiX no publica ninguna magnitud eléctrica. La aporta un
+      directorio sectorial de terceros, sin decir si son MW TI, de conexión o instalados, así
+      que se registra como no especificada y no se compara con las de otros emplazamientos.
+
+superficie_construida_m2: 2000
+
+refrigeracion: >-
+  Doble acometida eléctrica, grupos electrógenos redundantes (2N), alimentación ininterrumpida
+  (2N+1) y centro de transformación (2N), con 48 horas de autonomía a plena carga. Instalación
+  clasificada TIER III+, y TIER IV en la infraestructura eléctrica.
+
+computo: []
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      El operador describe su infraestructura eléctrica con detalle —redundancias 2N y 2N+1,
+      autonomía de 48 horas, clasificación TIER IV— y no publica ni un vatio. La única cifra
+      localizada, 5 MW, procede del directorio Data Center Map y no de la compañía; se registra
+      como no especificada precisamente por eso. Los 400 kW fotovoltaicos de la cubierta son
+      generación propia, no capacidad del centro, y por eso no entran en `potencia[]` como
+      carga.
+    fuentes: [src-catalogo, src-dcmap]
+  - campo: superficie_construida_m2
+    descripcion: >-
+      Los 2.000 m² son los que Canalink y el catálogo de servicios atribuyen al espacio
+      dedicado a alojamiento de alta disponibilidad, no la superficie construida de la nave que
+      lo contiene. Se registran como superficie construida a falta de otra cifra, con la
+      salvedad anotada.
+    fuentes: [src-canalink, src-catalogo]
+  - campo: tipo
+    descripcion: >-
+      La ficha describe a la vez un centro de colocación y una estación de aterraje de cable
+      submarino. El registro tiene nueve estaciones de aterraje que no son centros de datos y
+      este es el caso inverso: las dos funciones en el mismo edificio. Se clasifica como
+      colocation porque el alojamiento de terceros es la actividad que factura, y la condición
+      de estación de cables queda en el detalle de estado.
+    fuentes: [src-iter, src-canalink]
+
+confianza: media
+ultima_verificacion: "2026-09-01"
+
+fuentes:
+  - id: src-catalogo
+    url: "https://www.iter.es/wp-content/uploads/2025/03/Catalogo-de-servicios.pdf"
+    titulo: "Catálogo de servicios D-ALiX"
+    editor: "NAP de África Occidental-Islas Canarias, S.A. / ITER"
+    tipo: empresa
+    fecha_publicacion: "2025-03"
+    fecha_consulta: "2026-09-01"
+    cita: >-
+      El centro de procesamiento de datos neutral D-ALiX (NAP de África Occidental-Islas
+      Canarias S.A.) se encuentra ubicado en las instalaciones del Instituto Tecnológico y de
+      Energías Renovables (ITER) en la isla de Tenerife. [...] siendo categorizadas como TIER
+      III+ debido a sus altísimos niveles de confiabilidad. Además, D-ALiX obtiene la
+      configuración TIER IV en su infraestructura eléctrica gracias a su redundancia. [...] La
+      infraestructura está comprendida por una doble acometida eléctrica, un sistema redundante
+      de grupos electrógenos (2N), sistemas de alimentación ininterrumpida (2N+1) y centro de
+      transformación (2N). Todo ello para proporcionar una autonomía de 48 horas a plena carga
+      [...] El centro de datos incorpora directamente en su cubierta 400 kW de producción
+      fotovoltaica. [...] Polígono Industrial de Granadilla, s/n 38600 – Granadilla de Abona
+  - id: src-iter
+    url: "https://www.iter.es/d-alix/"
+    titulo: "D-ALIX — Datacenter para ALiX"
+    editor: "Instituto Tecnológico y de Energías Renovables (ITER)"
+    tipo: empresa
+    fecha_publicacion: "2025-03-03"
+    fecha_consulta: "2026-09-01"
+    cita: >-
+      Su marcado carácter neutral proporciona a nuestros clientes la posibilidad de elegir a su
+      proveedor de conectividad libremente. Esta característica, junto a las instalaciones que
+      sirven de estación de amarre de cables submarinos, convierte a D-ALiX en la primera
+      estación de cables submarinos neutra del mundo. [...] D-ALiX está instalado en el interior
+      de una nave industrial reforzada, bajo el concepto de «bunker dentro de bunker».
+  - id: src-canalink
+    url: "https://www.canalink.tel/servicio/housing/"
+    titulo: "Housing — Canalink"
+    editor: "Canalink"
+    tipo: empresa
+    fecha_consulta: "2026-09-01"
+    cita: >-
+      Nuestro centro principal se encuentra en el Parque Científico y Tecnológico de Granadilla
+      (Tenerife). Se trata del Data Center neutro D-ALiX, una infraestructura pionera en su tipo:
+      Primera estación neutral de cables submarinos del mundo. Categoría TIER III+, cumpliendo
+      con los estándares internacionales. Nodo de interconexión entre redes terrestres y
+      submarinas. 2.000 m² dedicados a servicios de alojamiento de alta disponibilidad.
+  - id: src-dcmap
+    url: "https://www.datacentermap.com/spain/santa-cruz-de-tenerife/d-alix/"
+    titulo: "D-ALiX Datacenter in Santa Cruz de Tenerife (5 MW)"
+    editor: "Data Center Map"
+    tipo: consultora
+    fecha_consulta: "2026-09-01"
+    cita: >-
+      D-ALiX Datacenter in Santa Cruz de Tenerife (5 MW). D-ALiX Polígono Ind. de Granadilla
+      S/N 38600 Granadilla de Abona, Islas Canarias, Spain. D-ALiX: Tier III+ datacenter with
+      over 2000 sq mt for collocation.
+  - id: src-osm
+    url: "https://nominatim.openstreetmap.org/search?q=D-ALiX%2C+Granadilla+de+Abona%2C+Tenerife&format=json&limit=2"
+    titulo: "Nominatim — geocodificación de D-ALiX, Granadilla de Abona"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-09-01"
+    cita: >-
+      D-ALiX, ITER, Granadilla de Abona, Santa Cruz de Tenerife, Canarias, 38619, España — lat
+      28.0693750, lon -16.5113378

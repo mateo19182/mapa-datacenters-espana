@@ -7,6 +7,28 @@ van **dentro** del fichero del emplazamiento, nunca como ficheros sueltos.
 La fuente de verdad son estos YAML. El build los valida, los carga en SQLite
 (`build/datacenters.db`) y exporta JSON/GeoJSON para el sitio estático.
 
+## Ámbito territorial
+
+El registro cubre **todo el territorio español**: península, Baleares, Canarias,
+Ceuta y Melilla. La nacionalidad del territorio es el único criterio geográfico;
+la insularidad no excluye.
+
+Hasta septiembre de 2026 el alcance era solo peninsular, y la regla se cambió al
+comprobar lo que dejaba fuera: el nodo LaPalma del Instituto de Astrofísica de
+Canarias —uno de los catorce de la Red Española de Supercomputación—, el centro
+neutro D-ALiX de Tenerife y las estaciones de cable submarino canarias y
+baleares. Excluir infraestructura española por estar en una isla era un criterio
+que no se sostenía en cuanto se enunciaba en voz alta.
+
+**La capa eléctrica es la excepción, y es deliberada.** `data/red/` cubre el
+sistema peninsular porque es el ámbito para el que Red Eléctrica publica
+capacidad de acceso por nudo; los sistemas canario y balear son eléctricamente
+independientes y no tienen equivalente publicado. La geometría de líneas de OSM y
+la instantánea de generación de ENTSO-E siguen la misma frontera. Consecuencia
+práctica: un emplazamiento insular tiene ficha, y no tiene red debajo. Eso no es
+un hueco por rellenar con datos peninsulares, es una asimetría real de las
+fuentes.
+
 ## Principios
 
 1. **Nada sin fuente.** Todo dato relevante (potencia, estado, coordenadas,
@@ -100,6 +122,24 @@ energia:                              # consumo eléctrico anual, no potencia
     referencia: "Campus a plena capacidad"
     fecha_dato: "2025-07"
     fuentes: [src-4]
+    nota: null
+
+computo:                              # hardware instalado; ver «Cómputo instalado»
+  - tipo: gpu                         # gpu | asic_ia | cpu_hpc | qpu | no_especificado
+    ambito: particion                 # sistema | particion
+    sistema: "MareNostrum 5 ACC"      # nombre del sistema o de la partición
+    operador_computo: null            # quién opera el hardware, si no es el operador del CPD
+    modelo: "NVIDIA H100 de 64 GB"    # tal como lo publica la fuente
+    unidades: 4480
+    tipo_unidad: acelerador           # acelerador | procesador | nucleo | qubit | nodo
+    nodos: 1120                       # si la fuente lo da
+    rendimiento: 260
+    rendimiento_unidad: pflops        # tflops | pflops | eflops
+    rendimiento_tipo: pico            # pico | linpack_rmax | no_especificado
+    rendimiento_precision: fp64       # fp64 | fp32 | fp16 | fp8 | fp4 | no_especificado
+    estado: operativo
+    fecha_dato: "2026-08-31"
+    fuentes: [src-1]
     nota: null
 
 empleo:                               # cifras anunciadas, no verificadas
@@ -236,6 +276,53 @@ por una cita que diga «739.900 MWh/año».
 
 Es un array porque un mismo emplazamiento suele tener varias lecturas, por fase o
 por escenario, y aquí las contradicciones se conservan como en todo lo demás.
+
+## Cómputo instalado
+
+`computo[]` registra el hardware de cálculo que hay dentro: aceleradores de IA,
+particiones de CPU y procesadores cuánticos. Es la pregunta que la potencia no
+responde —un centro de 15 MW puede tener 10.000 GPU o ninguna— y la que peor se
+publica fuera del ámbito académico.
+
+**Cómputo no es potencia.** Nada de este bloque entra en `potencia[]`, no
+dimensiona el punto en el mapa y no se convierte en MW por ninguna regla de
+densidad. Que un emplazamiento tenga cómputo registrado no cambia ni una cifra
+eléctrica de su ficha.
+
+| campo | qué es |
+|---|---|
+| `tipo` | `gpu` (acelerador de propósito general), `asic_ia` (silicio propio de un hyperscaler: Trainium, TPU, Maia), `cpu_hpc` (partición de cálculo de CPU), `qpu` (procesador cuántico), `no_especificado`. |
+| `ambito` | `sistema` si la cifra describe la máquina entera, `particion` si describe una parte. |
+| `sistema` | Nombre del sistema o de la partición, tal como lo nombra la fuente. |
+| `operador_computo` | Quién opera el hardware, cuando no es el operador del centro. |
+| `modelo` | Modelo del chip, literal de la fuente. |
+| `unidades` + `tipo_unidad` | El recuento y de qué: aceleradores, procesadores, núcleos de CPU, cúbits o nodos. |
+| `rendimiento` + `_unidad` + `_tipo` + `_precision` | La cifra de FLOPS con sus tres calificadores. |
+
+### Cinco reglas
+
+1. **El recuento solo se registra si la fuente lo publica.** Si da 29 nodos con
+   dos GPU cada uno y no da el total, `unidades` queda vacío y el detalle va en
+   `modelo` y `nodos`. Multiplicar sería deducir una cifra que nadie ha
+   publicado, y este conjunto no deduce cifras.
+2. **Los FLOPS no se comparan entre precisiones.** 19 EFlop/s en FP4 no son mil
+   veces 260 PFlop/s en FP64: miden cosas distintas. Por eso la precisión viaja
+   pegada a la cifra y el validador avisa cuando la fuente no la publica.
+3. **Pico y medida tampoco.** `pico` es el máximo teórico y `linpack_rmax` lo que
+   la máquina alcanzó en un *benchmark*. No se sustituyen ni se promedian.
+4. **Cómo se suman los registros.** Uno de ámbito `sistema` manda sobre cualquier
+   suma, igual que `campus` en `potencia`. Entre registros de ámbito `particion`,
+   solo se suman los que difieren en `sistema` o en `modelo`: dos registros con
+   el mismo par son lecturas rivales del mismo hardware, no dos máquinas.
+5. **El cómputo del inquilino se atribuye al emplazamiento donde está**, con
+   `operador_computo` diciendo de quién es. Es la regla «un emplazamiento, un
+   registro» aplicada al caso de un centro mayorista cuyo hardware es de un
+   tercero. Omitirlo perdería el mayor clúster de GPU documentado del país.
+
+La regla de las instalaciones cuánticas no cambia: siguen sin generar ficha
+propia si están dentro de un emplazamiento ya fichado, y siguen sin aportar
+ninguna cifra a `potencia[]`. Lo único que añade `computo[]` es que ahora sus
+cúbits se registran en un campo en vez de en la prosa del `estado_detalle`.
 
 ## Empleo e inversión
 

@@ -104,6 +104,22 @@ refrigeracion: >-
   Sistema de refrigeración por aire en circuito cerrado con consumo de agua
   próximo a cero, según la información del proyecto.
 
+computo:
+  - tipo: no_especificado
+    ambito: sistema
+    sistema: "Gigafactoría de IA de la candidatura española a InvestAI"
+    estado: en_tramitacion
+    fecha_dato: "2026-07-22"
+    fuentes: [src-prtr]
+    nota: >-
+      Ninguna fuente publica hardware de este emplazamiento, porque la candidatura no está
+      resuelta: el plazo de la convocatoria de EuroHPC cierra el 12 de noviembre de 2026 y los
+      proyectos seleccionados se conocerán a comienzos de 2027. La única magnitud de cómputo
+      publicada es el umbral del programa, no una cifra de este sitio: el Reglamento EuroHPC
+      modificado exige que una gigafactoría cuente con «más de 100.000 chips avanzados de IA»,
+      frente a los 25.000 de los mayores superordenadores de las fábricas de IA. Se registra
+      como contexto y no como recuento del emplazamiento.
+
 incertidumbres:
   - campo: potencia
     descripcion: >-
@@ -221,3 +237,17 @@ fuentes:
       d'Ebre). El projecte ... proposa situar la instal·lació en un solar
       propietat de l'Institut Català del Sòl (Incasòl) ... amb una inversió
       prevista d'entre 3.000 i 5.000 milions d'euros
+  - id: src-prtr
+    url: "https://planderecuperacion.gob.es/noticias/conoce-proyecto-espanol-acoger-primeras-gigafactorias-IA-europa-prtr"
+    titulo: "Conoce el proyecto español para acoger una de las primeras gigafactorías de IA de Europa con el apoyo del Plan de Recuperación"
+    editor: "Plan de Recuperación, Transformación y Resiliencia — Gobierno de España"
+    tipo: oficial
+    fecha_publicacion: "2026-07-22"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      La diferencia con las fábricas de IA (AI Factories) ya en funcionamiento es, sobre todo,
+      de escala. Según el Reglamento EuroHPC modificado, las gigafactorías contarán con más de
+      100.000 chips avanzados de IA, frente a los 25.000 de los superordenadores más grandes de
+      las fábricas de IA. [...] La candidatura es multisede e incluye las ubicaciones de Móra la
+      Nova (Tarragona) y San Fernando de Henares (Madrid) para alojar la infraestructura
+      tecnológica.

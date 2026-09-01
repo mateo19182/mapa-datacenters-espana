@@ -1,0 +1,117 @@
+id: scbi-uma-malaga-picasso
+nombre: "SCBI — Centro de Supercomputación y Bioinnovación de la Universidad de Málaga (Picasso)"
+alias:
+  - "Supercomputador Picasso"
+  - "Centro de Supercomputación y Bioinformática de la UMA"
+  - "Nodo Picasso de la RES"
+tipo: edificio
+operador: "Centro de Supercomputación y Bioinnovación de la Universidad de Málaga (SCBI)"
+propietario: "Universidad de Málaga"
+cliente_ancla: null
+modelo: corporativo
+
+ubicacion:
+  municipio: "Málaga"
+  provincia: "Málaga"
+  ccaa: "Andalucía"
+  direccion: "Edificio de Bioinnovación, calle Severo Ochoa 34, Parque Tecnológico de Andalucía, 29590 Málaga"
+  lat: 36.7375120
+  lon: -4.5566958
+  precision: aproximada
+  fuentes: [src-scbi, src-osm]
+
+estado: operativo
+estado_detalle: >-
+  Se incluye en el mapa por su condición de infraestructura de cómputo público, no como centro
+  de datos comercial. El SCBI presta soporte y recursos a la Universidad de Málaga, a la
+  Plataforma Andaluza de Bioinformática (PAB) y a la Red Española de Supercomputación, y opera
+  el supercomputador Picasso. La UMA arrastra tradición en supercomputación desde los años
+  noventa: el primer Picasso, un SGI Origin 2000, se instaló en 1997 y se ha ido renovando
+  desde entonces. El 24 % de la máquina está destinado a la RES. El centro ocupa el Edificio de
+  Bioinnovación, en el Parque Tecnológico de Andalucía.
+estado_fuentes: [src-res, src-scbi]
+
+potencia: []
+
+computo:
+  - tipo: cpu_hpc
+    ambito: sistema
+    sistema: "Picasso"
+    modelo: "Intel Xeon Gold 6230R y AMD EPYC 7H12 y 9754 (38.296 núcleos en total)"
+    unidades: 344
+    tipo_unidad: nodo
+    rendimiento: 4.34
+    rendimiento_unidad: pflops
+    rendimiento_tipo: pico
+    rendimiento_precision: fp64
+    estado: operativo
+    fecha_dato: "2026-08-31"
+    fuentes: [src-res]
+    nota: >-
+      Cifra global de la máquina, con 182 TB de memoria y 885 TB de almacenamiento neto,
+      interconectada con Infiniband HDR de hasta 400 Gbps.
+  - tipo: gpu
+    sistema: "Picasso — nodos NVIDIA DGX"
+    modelo: "NVIDIA A100, 8 por nodo en 4 nodos DGX"
+    nodos: 4
+    tipo_unidad: acelerador
+    estado: operativo
+    fecha_dato: "2026-08-31"
+    fuentes: [src-res]
+    nota: >-
+      La ficha del nodo da cuatro nodos DGX con ocho A100 cada uno y no publica el total, así
+      que el recuento queda vacío en vez de multiplicarse.
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      Ni la RES ni el SCBI publican potencia eléctrica, carga TI ni superficie de la sala
+      técnica del Edificio de Bioinnovación. La ficha del nodo detalla nodos, núcleos, memoria,
+      almacenamiento y rendimiento, pero ninguna magnitud eléctrica. Campo de potencia vacío.
+    fuentes: [src-res, src-scbi]
+  - campo: computo
+    descripcion: >-
+      La ficha del nodo en la RES contiene un error de unidad evidente al describir 24 nodos
+      BULL R282-Z90 con «2048 TB of RAM», que serían gigabytes. No se registra ninguna cifra de
+      memoria por nodo para no arrastrarlo.
+    fuentes: [src-res]
+  - campo: ubicacion
+    descripcion: >-
+      Las coordenadas corresponden a la calle Severo Ochoa del Parque Tecnológico de Andalucía,
+      no al portal exacto del Edificio de Bioinnovación.
+    fuentes: [src-osm]
+
+confianza: media
+ultima_verificacion: "2026-08-31"
+
+fuentes:
+  - id: src-res
+    url: "https://www.res.es/en/about-res/nodes/picasso-uma"
+    titulo: "Picasso - UMA"
+    editor: "Red Española de Supercomputación"
+    tipo: oficial
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Node location Centro de Supercomputación y Bioinnovación de la Universidad de Málaga,
+      Málaga [...] Machine name Picasso | % of the machine destined to RES 24 % | Peak
+      performance 4.34 PFlop/s | Main memory 182 TB | Number of nodes and cores 344 nodes (38
+      296 cores) [...] Additional nodes 4 NVIDIA DGX nodes: 8x NVIDIA A100 GPU | Disk storage
+      885 TB of net capacity | Interconnection network Infiniband HDR up to 400 Gbps
+  - id: src-scbi
+    url: "https://www.scbi.uma.es/web/es/contacto/"
+    titulo: "Contacto — Centro de Supercomputación y Bioinnovación"
+    editor: "Universidad de Málaga"
+    tipo: oficial
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Centro de Supercomputación y Bioinnovación. Edificio de Bioinnovación C/ Severo Ochoa 34
+      Parque Tecnológico de Andalucía 29590 Málaga, Spain
+  - id: src-osm
+    url: "https://nominatim.openstreetmap.org/search?q=Calle+Severo+Ochoa%2C+Campanillas%2C+M%C3%A1laga&format=json&limit=2"
+    titulo: "Nominatim — geocodificación de la calle Severo Ochoa, Parque Tecnológico de Andalucía"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Calle Severo Ochoa, Parque Técnológico de Andalucía, Santa Rosalía-Maqueda, Campanillas,
+      Málaga, Andalucía, España — lat 36.7375120, lon -4.5566958

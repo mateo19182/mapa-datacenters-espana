@@ -1,0 +1,144 @@
+id: cesvima-upm-pozuelo-magerit
+nombre: "CeSViMa — Centro de Supercomputación y Visualización de Madrid (Magerit)"
+alias:
+  - "Supercomputador Magerit"
+  - "Magerit-3"
+  - "Nodo Magerit de la RES"
+tipo: edificio
+operador: "Centro de Supercomputación y Visualización de Madrid (CeSViMa)"
+propietario: "Universidad Politécnica de Madrid"
+cliente_ancla: null
+modelo: corporativo
+
+ubicacion:
+  municipio: "Pozuelo de Alarcón"
+  provincia: "Madrid"
+  ccaa: "Comunidad de Madrid"
+  direccion: "Parque Científico-Tecnológico de la UPM, Campus de Montegancedo, 28223 Pozuelo de Alarcón"
+  lat: 40.4043633
+  lon: -3.8345959
+  precision: exacta
+  fuentes: [src-cesvima-contacto, src-osm]
+
+estado: operativo
+estado_detalle: >-
+  Se incluye en el mapa por su condición de infraestructura de cómputo público, no como centro
+  de datos comercial. CeSViMa se creó a finales de 2004 en el Campus de Montegancedo de la
+  Universidad Politécnica de Madrid para atender las necesidades de cálculo intensivo de la
+  universidad, y opera el supercomputador Magerit. Fue uno de los nodos fundadores de la Red
+  Española de Supercomputación en 2007, la abandonó en diciembre de 2018 tras más de una década
+  y volvió a incorporarse en abril de 2026, aportando 370,5 TFlop/s a las convocatorias
+  competitivas de la red. El 38,72 % de la máquina se destina a la RES.
+estado_fuentes: [src-res, src-cesvima-magerit]
+fecha_puesta_en_servicio: "2004"
+
+potencia: []
+
+computo:
+  - tipo: cpu_hpc
+    ambito: sistema
+    sistema: "Magerit-3"
+    modelo: "Intel Xeon Gold 6230 y 6240R, 2 por nodo, en nodos Lenovo ThinkSystem SD530"
+    unidades: 5024
+    tipo_unidad: nucleo
+    nodos: 120
+    rendimiento: 575.8
+    rendimiento_unidad: tflops
+    rendimiento_tipo: pico
+    rendimiento_precision: fp64
+    estado: operativo
+    fecha_dato: "2026-08-31"
+    fuentes: [src-cesvima-magerit]
+    nota: >-
+      Cifras del propio CeSViMa. La ficha del nodo en la RES da otras distintas para la misma
+      máquina —120 nodos, 5.184 núcleos y 370,5 TFlop/s— y la discrepancia queda registrada en
+      `incertidumbres[]`. Almacenamiento compartido BeeGFS de 112 TiB en NVMe.
+  - tipo: gpu
+    sistema: "Magerit-3 — nodos acelerados ThinkSystem SR670"
+    modelo: "NVIDIA A100, 4 por nodo en 4 nodos Intel Xeon Gold 6240R"
+    nodos: 4
+    tipo_unidad: acelerador
+    estado: operativo
+    fecha_dato: "2026-08-31"
+    fuentes: [src-cesvima-magerit]
+    nota: "CeSViMa no publica el total de aceleradores, solo nodos y tarjetas por nodo."
+  - tipo: gpu
+    sistema: "Magerit-3 — nodos acelerados ThinkSystem SR670"
+    modelo: "NVIDIA V100, 2 por nodo en 2 nodos Intel Xeon Gold 6230"
+    nodos: 2
+    tipo_unidad: acelerador
+    estado: operativo
+    fecha_dato: "2026-08-31"
+    fuentes: [src-cesvima-magerit]
+    nota: null
+  - tipo: gpu
+    sistema: "Magerit-3 — nodos acelerados ThinkSystem SR675 V3"
+    modelo: "NVIDIA L40S, 4 por nodo en 5 nodos AMD EPYC 9554"
+    nodos: 5
+    tipo_unidad: acelerador
+    estado: operativo
+    fecha_dato: "2026-08-31"
+    fuentes: [src-cesvima-magerit]
+    nota: null
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      Ni la RES ni CeSViMa publican potencia eléctrica, carga TI ni superficie de la sala
+      técnica. Campo de potencia vacío.
+    fuentes: [src-res, src-cesvima-magerit]
+  - campo: computo
+    descripcion: >-
+      Las dos fuentes discrepan sobre la misma máquina. CeSViMa publica 5.024 núcleos y 575,80
+      TFLOPS de Rpeak; la ficha del nodo en la RES, 120 nodos con 5.184 núcleos y 370,5 TFlop/s
+      de pico. La diferencia de rendimiento no se explica por el porcentaje cedido a la red, que
+      la propia ficha da aparte. Se registra la cifra del centro y se conserva el choque.
+    fuentes: [src-res, src-cesvima-magerit]
+
+confianza: media
+ultima_verificacion: "2026-08-31"
+
+fuentes:
+  - id: src-res
+    url: "https://www.res.es/en/about-res/nodes/magerit-upm"
+    titulo: "Magerit - UPM"
+    editor: "Red Española de Supercomputación"
+    tipo: oficial
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      CeSViMa was one of the founding nodes of the Spanish Supercomputing Network (RES) when it
+      was established in 2007, leaving the network in December 2018 [...] In April 2026, Magerit
+      node rejoined the RES, bringing a computing capacity of 370.5 TFlop/s [...] Machine name
+      Magerit | % of the machine destined to RES 38.72% | Peak performance 370.5 TFlop/s |
+      Number of nodes and cores 120 nodes (5 184 cores) | Disk storage 224 TB shared via BeeGFS
+  - id: src-cesvima-magerit
+    url: "https://www.cesvima.upm.es/infrastructure/magerit"
+    titulo: "Magerit-3"
+    editor: "Centro de Supercomputación y Visualización de Madrid (UPM)"
+    tipo: oficial
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Magerit es un clúster compuesto por 72 nodos Lenovo ThinkSystem SD530 [...] y 48 nodos
+      Lenovo ThinkSystem SD530 [...] # Procesadores: 5.024 cores | Memoria: 49.920 GiB |
+      Potencia (Rpeak) Total: 575,80 TFLOPS. Adicionalmente, se dispone de nodos ThinkSystem
+      SR670 y ThinkSystem SR675 V3 con aceleradores (GPU) específicos: 4 nodos [...] 4 × NVIDIA
+      A100; 2 nodos [...] 2 × NVIDIA V100; 5 nodos [...] 4 × NVIDIA L40S. [...] almacenamiento
+      compartido basado en BeeGFS con una capacidad neta de 112 TiB (NVMe)
+  - id: src-cesvima-contacto
+    url: "https://www.cesvima.upm.es/about/contact"
+    titulo: "Contacto — CeSViMa"
+    editor: "Centro de Supercomputación y Visualización de Madrid (UPM)"
+    tipo: oficial
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      CeSViMa – Parque Científico–Tecnológico de la UPM. Campus de Montegancedo 28223, Pozuelo
+      de Alarcón, Madrid (España) [...] N 40° 24′ 15.65″, W 3° 50′ 4.75″
+  - id: src-osm
+    url: "https://nominatim.openstreetmap.org/search?q=CeSViMa&format=json&limit=2"
+    titulo: "Nominatim — geocodificación de CeSViMa"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      CeDInt/CeSViMa, M-40, Retamares, Pozuelo de Alarcón, Comunidad de Madrid, España — lat
+      40.4043633, lon -3.8345959

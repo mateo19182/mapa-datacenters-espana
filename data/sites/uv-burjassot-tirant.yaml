@@ -1,0 +1,133 @@
+id: uv-burjassot-tirant
+nombre: "Universitat de València — CPD del Servei d'Informàtica (Tirant)"
+alias:
+  - "Supercomputador Tirant"
+  - "Nodo Tirant de la RES"
+  - "SIUV — Campus de Burjassot"
+tipo: edificio
+operador: "Servei d'Informàtica de la Universitat de València (SIUV)"
+propietario: "Universitat de València"
+cliente_ancla: null
+modelo: corporativo
+
+ubicacion:
+  municipio: "Burjassot"
+  provincia: "Valencia"
+  ccaa: "Comunidad Valenciana"
+  direccion: "Carrer del Doctor Moliner 50, Campus de Burjassot, 46100 Burjassot"
+  lat: 39.5072329
+  lon: -0.4209134
+  precision: aproximada
+  fuentes: [src-mincyt, src-osm]
+
+estado: operativo
+estado_detalle: >-
+  Se incluye en el mapa por su condición de infraestructura de cómputo público, no como centro
+  de datos comercial. La Universitat de València aloja el supercomputador Tirant en el campus
+  de Burjassot, gestionado por el Servei d'Informàtica, que declara disponer de un centro de
+  procesado de datos «con una gran capacidad eléctrica y frigorífica» sin publicar ninguna
+  cifra. Tirant se inauguró en enero de 2008 y va por su cuarta generación; el SIUV construyó
+  un nuevo CPD y trasladó la máquina a una nueva ubicación, lo que obligó a cambiar el
+  programa de visitas. El 50 % de Tirant 4 se destina a la RES.
+estado_fuentes: [src-res, src-mincyt, src-visitas]
+
+potencia: []
+
+computo:
+  - tipo: cpu_hpc
+    sistema: "Tirant 4"
+    modelo: "Intel Xeon Platinum 8160 a 2,1 GHz, 2 por nodo (13.824 núcleos)"
+    unidades: 288
+    tipo_unidad: nodo
+    rendimiento: 929
+    rendimiento_unidad: tflops
+    rendimiento_tipo: pico
+    rendimiento_precision: fp64
+    estado: operativo
+    fecha_dato: "2026-08-31"
+    fuentes: [src-res]
+    nota: >-
+      Misma generación de hardware que las particiones repartidas desde MareNostrum 4 a otros
+      nodos de la RES. Almacenamiento de 2 PB en Lustre e interconexión OmniPath de 100 Gbps.
+  - tipo: cpu_hpc
+    sistema: "Lluís Vives 2"
+    modelo: "Intel Xeon Skylake Gold de 18 núcleos a 3,0 GHz, 2 por nodo (2.520 núcleos)"
+    unidades: 70
+    tipo_unidad: nodo
+    rendimiento: 241.9
+    rendimiento_unidad: tflops
+    rendimiento_tipo: pico
+    rendimiento_precision: fp64
+    estado: operativo
+    fecha_dato: "2026-08-31"
+    fuentes: [src-res]
+    nota: "El 24 % de esta máquina se destina a la RES."
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      El SIUV afirma que su CPD tiene «una gran capacidad eléctrica y frigorífica», pero ni la
+      universidad ni la RES publican ninguna cifra: ni potencia, ni carga TI, ni superficie.
+      Campo de potencia vacío pese a ser el único emplazamiento del registro cuya propia fuente
+      presume de capacidad eléctrica sin cuantificarla.
+    fuentes: [src-res]
+  - campo: computo
+    descripcion: >-
+      La ficha del nodo en la RES da «Main memory 27 648 TB» para Tirant 4, cifra imposible que
+      corresponde a 27,648 TB leídos con separador decimal español. No se registra memoria.
+    fuentes: [src-res]
+  - campo: ubicacion
+    descripcion: >-
+      Las coordenadas son las del número 50 de la calle Doctor Moliner, dirección postal del
+      SIUV. La máquina se trasladó a un CPD de nueva construcción dentro del mismo campus y
+      ninguna fuente publica en qué edificio concreto está ahora.
+    fuentes: [src-visitas, src-osm]
+
+confianza: media
+ultima_verificacion: "2026-08-31"
+
+fuentes:
+  - id: src-res
+    url: "https://www.res.es/en/about-res/nodes/tirant-uv"
+    titulo: "Tirant - UV"
+    editor: "Red Española de Supercomputación"
+    tipo: oficial
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Universitat de València (UV) houses the Tirant supercomputer, which is located on the
+      Burjassot campus and managed by the IT Service (SIUV) [...] has a data processing center
+      with high electrical and cooling capacity. [...] Machine name Tirant 4 | % of the machine
+      destined to RES 50% | Peak performance 929 TFlop/s | Number of nodes and cores 288 nodos
+      (13 824 cores) | Main nodes characteristics 2x Intel Xeon Platinum 8160 2.1 GHz y 96GB de
+      RAM | Disk storage 2 PB Lustre [...] Machine name Lluís Vives 2 | Peak performance 241,9
+      TFlop/s | Number of nodes and cores 70 nodos (2 520 cores)
+  - id: src-mincyt
+    url: "https://www.ciencia.gob.es/Organismos-y-Centros/ICTS/TecnologiasCiencia/RES/Tirant.html"
+    titulo: "Tirant — Red Española de Supercomputación (ICTS)"
+    editor: "Ministerio de Ciencia, Innovación y Universidades"
+    tipo: oficial
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      La Universidad de Valencia (UV) alberga el supercomputador Tirant, que está instalado en
+      el campus de Burjassot y es gestionado por el Servei d'Informàtica (SIUV) de la UV. [...]
+      El supercomputador Tirant fue inaugurado en enero de 2008. [...] RES - Tirant (UV) Calle
+      Dr. Moliner, 50 - Campus de Burjassot 46100. Burjassot, Valencia.
+  - id: src-visitas
+    url: "https://uveg.atlassian.net/wiki/spaces/STU/pages/13090790/VA+SUPERCOMPUTACI+UV+Visites+guiades"
+    titulo: "Supercomputació UV: visites guiades"
+    editor: "Servei d'Informàtica de la Universitat de València"
+    tipo: oficial
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      A causa de la recent construcció del nou Centre de Processament de Dades (CPD) de la
+      Universitat de València, hem traslladat el supercomputador Tirant a una nova ubicació el
+      que ens força a fer alguns canvis en les visites.
+  - id: src-osm
+    url: "https://nominatim.openstreetmap.org/search?q=Carrer+del+Doctor+Moliner+50%2C+Burjassot%2C+Valencia&format=json&limit=1"
+    titulo: "Nominatim — geocodificación del carrer del Doctor Moliner 50, Burjassot"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      50, Carrer del Doctor Moliner, Burjassot, l'Horta Nord, València / Valencia, Comunitat
+      Valenciana, 46100, España — lat 39.5072329, lon -0.4209134

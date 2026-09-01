@@ -39,6 +39,79 @@ refrigeracion: "Uno de los frentes principales de la obra son los sistemas de re
 enlaces_proyecto:
   - "https://www.scayle.es/infraestructuras/"
 
+computo:
+  - tipo: cpu_hpc
+    ambito: sistema
+    sistema: "Caléndula"
+    modelo: "Varias arquitecturas (Intel Xeon Platinum 8462Y y 8358, AMD EPYC 9374F, NVIDIA Grace)"
+    unidades: 300
+    tipo_unidad: nodo
+    rendimiento: 6.7
+    rendimiento_unidad: pflops
+    rendimiento_tipo: pico
+    rendimiento_precision: fp64
+    estado: operativo
+    fecha_dato: "2026-08-31"
+    fuentes: [src-manual]
+    nota: >-
+      Cifra global del supercomputador, con 308 TB de memoria RAM. Manda sobre la suma de las
+      particiones registradas abajo. El equipo está hoy en el Campus de Vegazana y migra a esta
+      sede, así que la cifra describe la máquina, no todavía el edificio.
+  - tipo: gpu
+    ambito: sistema
+    sistema: "Caléndula"
+    unidades: 181
+    tipo_unidad: acelerador
+    estado: operativo
+    fecha_dato: "2026-08-31"
+    fuentes: [src-scayle]
+    nota: >-
+      Recuento agregado que publica SCAYLE para el clúster actual, sin desglose por modelo, junto
+      a 18.000 núcleos y 7 PFlop/s. Es la cifra de ámbito sistema; las particiones de abajo la
+      detallan parcialmente y no se suman a ella.
+  - tipo: gpu
+    sistema: "Caléndula — arquitectura AMD Genoa"
+    modelo: "NVIDIA H100 SXM5 de 80 GB, 4 por servidor en 35 servidores AMD EPYC 9374F"
+    unidades: 140
+    tipo_unidad: acelerador
+    nodos: 35
+    estado: operativo
+    fecha_dato: "2026-08-31"
+    fuentes: [src-manual]
+    nota: >-
+      Es el núcleo del servicio avanzado de IA del centro: soporta entrenamiento distribuido y
+      cargas intensivas de inferencia de modelos de lenguaje abiertos.
+  - tipo: gpu
+    sistema: "Caléndula — arquitectura Intel Ice Lake"
+    modelo: "NVIDIA Tesla A100 de 40 GB, 1 por servidor en 26 servidores Intel Xeon Platinum 8358"
+    nodos: 26
+    tipo_unidad: acelerador
+    estado: operativo
+    fecha_dato: "2026-08-31"
+    fuentes: [src-manual]
+    nota: >-
+      El recuento total no lo publica la fuente, que solo da servidores y tarjetas por servidor.
+      Este equipamiento previo se ha reorientado a formación y pruebas de concepto.
+  - tipo: gpu
+    sistema: "Caléndula — arquitectura Intel Cascade Lake y Broadwell"
+    modelo: "NVIDIA Tesla V100: 1 por servidor en 7 servidores Cascade Lake y 8 NVLink en un servidor Broadwell"
+    nodos: 8
+    tipo_unidad: acelerador
+    estado: operativo
+    fecha_dato: "2026-08-31"
+    fuentes: [src-manual]
+    nota: "La fuente no publica el total de tarjetas V100 y aquí no se deduce."
+  - tipo: cpu_hpc
+    sistema: "Caléndula — arquitectura NVIDIA Grace"
+    modelo: "NVIDIA Grace CPU Superchip de 144 núcleos"
+    unidades: 1
+    tipo_unidad: procesador
+    nodos: 1
+    estado: operativo
+    fecha_dato: "2026-08-31"
+    fuentes: [src-manual]
+    nota: null
+
 incertidumbres:
   - campo: potencia
     descripcion: >-
@@ -128,3 +201,29 @@ fuentes:
     tipo: otro
     fecha_consulta: "2026-08-31"
     cita: "León, Castilla y León, España — lat 42.6341451, lon -5.9714151"
+  - id: src-manual
+    url: "https://apps.scayle.es/manual/es/hpc/infraestructura"
+    titulo: "Infraestructura — Documentación SCAYLE"
+    editor: "Fundación Centro de Supercomputación de Castilla y León (SCAYLE)"
+    tipo: oficial
+    fecha_publicacion: "2026-04-16"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      En total, Caléndula cuenta con: 300 servidores, 308TB de memoria RAM, 6.7 PetaFLOPS
+      (Rpeak). [...] Arquitectura NVIDIA Grace: 1 servidor con 1 procesador NVIDIA Grace CPU
+      Superchip, con 144 Cores. [...] Arquitectura AMD Genoa | GPUs NVidia H100: 35 servidores
+      [...] 4 tarjetas GPU NVIDIA H100 SXM5 80G en cada equipo. [...] Estos equipos suman un
+      total de 2240 cores y 140 tarjetas GPUs H100. [...] 26 servidores [...] Cada uno de estos
+      servidores tiene instalada 1 tarjeta GPU NVidia Tesla A100 40GB. [...] 7 de estos
+      servidores tienen 1 GPU NVidia Tesla V100 cada uno. [...] Cuenta con 8 tarjetas NVidia
+      Tesla V100 NVLink.
+  - id: src-scayle
+    url: "https://www.scayle.es/sobre-scayle/"
+    titulo: "Sobre SCAYLE"
+    editor: "Fundación Centro de Supercomputación de Castilla y León (SCAYLE)"
+    tipo: oficial
+    fecha_publicacion: "2026-01-19"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      18.000 unidades de procesamiento (núcleos), 181 tarjetas GPU, Rendimiento: 7 PFlop/s,
+      Almacenamiento total: +15 PB.

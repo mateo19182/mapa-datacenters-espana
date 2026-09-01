@@ -21,6 +21,7 @@ const precisiones = ['exacta', 'aproximada', 'municipio', 'desconocida'].map((p)
 
 const conPotencia = (tipo) => sitios.filter((s) => s.resumen_potencia[tipo]).length
 const conEnergia = sitios.filter((s) => (s.energia ?? []).length).length
+const conComputo = sitios.filter((s) => (s.computo ?? []).length).length
 ---
 
 <Base
@@ -189,6 +190,15 @@ const conEnergia = sitios.filter((s) => (s.energia ?? []).length).length
         <strong>No es análisis de mercado ni de inversión.</strong> No hay valoraciones ni
         rentabilidades. Las cifras de inversión son las anunciadas, citadas como declaración y no
         como hecho verificado.
+      </li>
+      <li>
+        <strong>No dice qué hay dentro, salvo cuando alguien lo publica.</strong> La potencia no
+        responde a cuánto cómputo hay: un centro de 15 MW puede alojar diez mil aceleradores de IA
+        o ninguno. Cuando la cifra existe se registra en un bloque aparte —modelo, recuento y
+        rendimiento, con su precisión— que nunca se convierte en MW. Hoy lo publican {conComputo}
+        {' '}emplazamientos de los {numero(resumen.total_emplazamientos)}, y cuatro de cada cinco
+        son infraestructura pública de supercomputación o de cuántica: el sector comercial casi
+        nunca publica qué hardware aloja.
       </li>
       <li>
         <strong>No mide consumo real.</strong> La potencia no es energía consumida. Cuando alguien

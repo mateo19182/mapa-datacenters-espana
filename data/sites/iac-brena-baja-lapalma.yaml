@@ -1,0 +1,137 @@
+id: iac-brena-baja-lapalma
+nombre: "IAC — Centro de Astrofísica de La Palma Francisco Sánchez (supercomputador LaPalma)"
+alias:
+  - "Supercomputador LaPalma"
+  - "Nodo LaPalma de la RES"
+  - "CALP"
+  - "Centro de Astrofísica en La Palma"
+tipo: edificio
+operador: "Instituto de Astrofísica de Canarias (IAC)"
+propietario: "Instituto de Astrofísica de Canarias (IAC)"
+cliente_ancla: null
+modelo: corporativo
+
+ubicacion:
+  municipio: "Breña Baja"
+  provincia: "Santa Cruz de Tenerife"
+  ccaa: "Canarias"
+  direccion: "Cuesta de San José s/n, 38712 Breña Baja, La Palma"
+  lat: 28.6304235
+  lon: -17.7904002
+  precision: municipio
+  fuentes: [src-iac-sede, src-osm]
+
+estado: operativo
+estado_detalle: >-
+  Se incluye en el mapa por su condición de infraestructura de cómputo público, no como centro
+  de datos comercial. Es el nodo canario de la Red Española de Supercomputación y el
+  decimocuarto de sus nodos: hasta septiembre de 2026 quedaba fuera del registro por la regla
+  de alcance peninsular, que se cambió precisamente al ver lo que excluía. El supercomputador
+  LaPalma está en el Centro de Astrofísica en La Palma, sede del IAC en la isla, que aloja
+  también las oficinas del Gran Telescopio CANARIAS y de la colaboración MAGIC. Su instalación
+  responde a una decisión estratégica: apoyar la actividad observacional del Observatorio del
+  Roque de los Muchachos y reforzar las telecomunicaciones de la isla. La máquina está
+  conectada con la sede del IAC en Tenerife por cable submarino a 10 Gbit/s. El 50 % de su
+  capacidad se destina a la RES, y el nodo presta además servicio de datos.
+estado_fuentes: [src-res, src-iac-super]
+
+potencia: []
+
+refrigeracion: >-
+  La sala dispone de sistemas alternativos de suministro eléctrico y de frío, con funciones
+  avanzadas de climatización, seguridad, monitorización y protección contra incendios. El
+  supercomputador se mantiene a 24 °C. El suelo técnico resiste 2.000 kg por metro cuadrado.
+
+computo:
+  - tipo: cpu_hpc
+    ambito: sistema
+    sistema: "LaPalma"
+    modelo: "Intel Xeon Platinum 8160 a 2,1 GHz, 2 por nodo (13.824 núcleos)"
+    unidades: 288
+    tipo_unidad: nodo
+    rendimiento: 929
+    rendimiento_unidad: tflops
+    rendimiento_tipo: pico
+    rendimiento_precision: fp64
+    estado: operativo
+    fecha_dato: "2026-09-01"
+    fuentes: [src-res]
+    nota: >-
+      Configuración idéntica a Tirant 4 (Universitat de València): es hardware de la generación
+      de MareNostrum 4 repartido entre nodos de la RES, y el propio IAC lo describe como «parte
+      de los antiguos equipos» del supercomputador del BSC. Almacenamiento de 2 PB en Lustre e
+      interconexión OmniPath de 100 Gbps, más 900 TB del nodo de datos.
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      Ni la RES ni el IAC publican potencia eléctrica, carga TI ni superficie de la sala. El IAC
+      describe la sala con detalle inusual —capacidad de carga del suelo técnico, temperatura de
+      consigna, redundancia eléctrica y de frío— y no da ninguna cifra en vatios. Campo de
+      potencia vacío.
+    fuentes: [src-res, src-iac-super]
+  - campo: computo
+    descripcion: >-
+      La ficha del nodo en la RES da «Main memory 27 648 TB», cifra imposible que corresponde a
+      27,648 TB leídos con separador decimal español; es el mismo error que arrastra la ficha de
+      Tirant, que describe la misma máquina. No se registra memoria. Las páginas del IAC
+      discrepan además sobre el tamaño de la red: una dice que LaPalma es «uno de los siete
+      nodos» de la RES y otra «uno de los catorce». La cifra vigente es catorce.
+    fuentes: [src-res, src-iac-sede, src-iac-super]
+  - campo: ubicacion
+    descripcion: >-
+      Nominatim no resuelve la Cuesta de San José ni el Centro de Astrofísica. Las coordenadas
+      son el centroide del municipio de Breña Baja, no la ubicación del edificio.
+    fuentes: [src-osm]
+
+confianza: media
+ultima_verificacion: "2026-09-01"
+
+fuentes:
+  - id: src-res
+    url: "https://www.res.es/en/about-res/nodes/lapalma-iac"
+    titulo: "LaPalma - IAC"
+    editor: "Red Española de Supercomputación"
+    tipo: oficial
+    fecha_consulta: "2026-09-01"
+    cita: >-
+      Node location Centro de Astrofísica de la Palma, IAC, Canarias | Available services HPC,
+      DATA [...] Machine name La Palma | % of the machine destined to RES 50% | Peak performance
+      929 TFlop/s | Number of nodes and cores 288 nodes (13 824 cores) | Main nodes
+      characteristics 2x Intel Xeon Platinum 8160 2.1 GHz and 96GB of RAM | Disk storage 2 PB
+      Lustre | Interconnection network OmniPath 100 Gbps [...] Available storage space 900 TB
+  - id: src-iac-super
+    url: "https://www.iac.es/es/ciencia-y-tecnologia/tecnologia/medios-tecnicos/superordenador-lapalma"
+    titulo: "Superordenador LaPalma"
+    editor: "Instituto de Astrofísica de Canarias"
+    tipo: oficial
+    fecha_consulta: "2026-09-01"
+    cita: >-
+      El superordenador LaPalma es uno de los catorce nodos de la Red Española de
+      Supercomputación (RES) [...] El nodo LaPalma está ubicado en el Centro de Astrofísica en
+      La Palma (CALP), en Breña Baja. [...] Además, el superordenador está conectado a la sede
+      del IAC en Tenerife por cable submarino con un ancho de banda de 10 Gigabit/s. [...] La
+      sala que acoge al supercomputador dispone de un suelo técnico capaz de resistir un peso de
+      2000 kg por metro cuadrado. Cuenta además con sistemas alternativos para garantizar el
+      suministro eléctrico y de frío [...] LaPalma se mantiene en la sala a una temperatura de 24
+      grados centígrados.
+  - id: src-iac-sede
+    url: "https://iac.es/es/observatorios-de-canarias/centro-de-astrofisica-en-la-palma-francisco-sanchez"
+    titulo: "Centro de Astrofísica de La Palma Francisco Sánchez"
+    editor: "Instituto de Astrofísica de Canarias"
+    tipo: oficial
+    fecha_consulta: "2026-09-01"
+    cita: >-
+      Es la sede del IAC en La Palma [...] Cuenta con facilidades informáticas y de
+      telecomunicaciones, así como con talleres, laboratorios y almacenes [...] También alberga
+      el superordenador LaPalma, uno de los siete nodos de la Red Española de Supercomputación
+      (RES), así como las oficinas de algunas de las instituciones científicas con telescopios en
+      el ORM, como el Gran Telescopio CANARIAS y la Colaboración MAGIC. [...] Apartado de Correos
+      50 C/ Cuesta de San José, s/n E-38712 - Breña Baja - La Palma España
+  - id: src-osm
+    url: "https://nominatim.openstreetmap.org/search?q=Brena+Baja%2C+Santa+Cruz+de+Tenerife&format=json&limit=2"
+    titulo: "Nominatim — geocodificación del municipio de Breña Baja"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-09-01"
+    cita: "Breña Baja, Santa Cruz de Tenerife, Canarias, España — lat 28.6304235, lon -17.7904002"

@@ -1,0 +1,125 @@
+id: ccc-uam-madrid-cibeles
+nombre: "CCC-UAM — Centro de Computación Científica de la Universidad Autónoma de Madrid (Cibeles)"
+alias:
+  - "Supercomputador Cibeles"
+  - "Nodo Cibeles de la RES"
+  - "Centro de Computación Científica UAM"
+tipo: edificio
+operador: "Centro de Computación Científica de la Universidad Autónoma de Madrid (CCC-UAM)"
+propietario: "Universidad Autónoma de Madrid"
+cliente_ancla: null
+modelo: corporativo
+
+ubicacion:
+  municipio: "Madrid"
+  provincia: "Madrid"
+  ccaa: "Comunidad de Madrid"
+  direccion: "Centro de Computación Científica, Ciudad Universitaria de Cantoblanco, 28049 Madrid"
+  lat: 40.5453765
+  lon: -3.6949578
+  precision: aproximada
+  fuentes: [src-mincyt, src-osm]
+
+estado: operativo
+estado_detalle: >-
+  Se incluye en el mapa por su condición de infraestructura de cómputo público, no como centro
+  de datos comercial. El CCC-UAM da soporte centralizado de computación al campus de la
+  Universidad Autónoma de Madrid, que junto con diez centros del CSIC situados en el mismo
+  campus y dos institutos IMDEA forma el Campus de Excelencia Internacional UAM+CSIC. Además de
+  sus propios sistemas, el centro presta servicios de alojamiento de equipos de cómputo de
+  terceros y de almacenamiento como servicio, lo que lo acerca en función —aunque no en escala—
+  a un centro de datos de colocación académico. Es el nodo Cibeles de la RES, con el 100 % de
+  Cibeles 3 y el 50 % de Cibeles 4 destinados a la red.
+estado_fuentes: [src-res, src-uam]
+
+potencia: []
+
+computo:
+  - tipo: cpu_hpc
+    sistema: "Cibeles 3"
+    modelo: "Intel Xeon Gold 6330 a 2,0 GHz, 2 por nodo (1.568 núcleos)"
+    unidades: 28
+    tipo_unidad: nodo
+    rendimiento: 100
+    rendimiento_unidad: tflops
+    rendimiento_tipo: pico
+    rendimiento_precision: fp64
+    estado: operativo
+    fecha_dato: "2026-08-31"
+    fuentes: [src-res]
+    nota: "1 PB de almacenamiento Lustre e Infiniband HDR de 200 Gbps."
+  - tipo: cpu_hpc
+    sistema: "Cibeles 4"
+    modelo: "Intel Xeon Platinum 8160 a 2,1 GHz, 2 por nodo (6.912 núcleos)"
+    unidades: 144
+    tipo_unidad: nodo
+    rendimiento: 464.5
+    rendimiento_unidad: tflops
+    rendimiento_tipo: pico
+    rendimiento_precision: fp64
+    estado: operativo
+    fecha_dato: "2026-08-31"
+    fuentes: [src-res]
+    nota: >-
+      Configuración idéntica a Mequinenza (BIFI), Lusitania (COMPUTAEX) y Tirant 4 (UV): es
+      hardware de la generación de MareNostrum 4 repartido entre nodos de la RES.
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      Ni la RES ni la UAM publican potencia eléctrica, carga TI, número de racks ni superficie
+      de la sala del CCC. El centro ofrece alojamiento de equipos de terceros sin publicar
+      ninguna magnitud de la instalación que lo permite. Campo de potencia vacío.
+    fuentes: [src-res, src-uam]
+  - campo: ubicacion
+    descripcion: >-
+      Las coordenadas corresponden al campus de Cantoblanco de la UAM, no al edificio concreto
+      del Centro de Computación Científica, que ninguna fuente consultada identifica.
+    fuentes: [src-mincyt, src-osm]
+
+confianza: media
+ultima_verificacion: "2026-08-31"
+
+fuentes:
+  - id: src-res
+    url: "https://www.res.es/en/about-res/nodes/cibeles-uam"
+    titulo: "Cibeles - UAM"
+    editor: "Red Española de Supercomputación"
+    tipo: oficial
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      The Cibeles node [...] is hosted by the Scientific Computing Center (CCC-UAM) [...]
+      Machine name Cibeles3 | % of the machine destined to RES 100% | Peak performance 100
+      TFlop/s | Number of nodes and cores 28 nodes (1 568 cores) | Main nodes characteristics 2x
+      Intel Xeon Gold 6330 2.0 GHz and 512 GB of RAM [...] Cibeles4 | Rendimiento máximo 464.5
+      TFlop/s | Número de nodos y cores 144 nodes (6 912 cores) | 2x Intel Xeon Platinum 8160
+      2.1 GHz and 96GB of RAM
+  - id: src-uam
+    url: "https://www.uam.es/uam/centro-computacion-cientifica-uam"
+    titulo: "Centro de Computación Científica-UAM (CCC)"
+    editor: "Universidad Autónoma de Madrid"
+    tipo: oficial
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Servicios centrales de computación aplicada a la investigación. Hosting de equipos
+      computacionales. Laboratorio de simulación computacional. Almacenamiento de datos como
+      servicio.
+  - id: src-mincyt
+    url: "https://www.ciencia.gob.es/Organismos-y-Centros/ICTS/TecnologiasCiencia/RES/Cibeles.html"
+    titulo: "Cibeles — Red Española de Supercomputación (ICTS)"
+    editor: "Ministerio de Ciencia, Innovación y Universidades"
+    tipo: oficial
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El nodo Cibeles está albergado por el Centro de Computación Científica (CCC-UAM) [...]
+      Centro de Computación Científica Universidad Autónoma de Madrid Ciudad Universitaria de
+      Cantoblanco. 28049 Madrid.
+  - id: src-osm
+    url: "https://nominatim.openstreetmap.org/search?q=Universidad+Autonoma+de+Madrid%2C+Madrid&format=json&limit=3"
+    titulo: "Nominatim — geocodificación de la Universidad Autónoma de Madrid"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Universidad Autónoma de Madrid (U.A.M.) Campus de Cantoblanco, Fuencarral-El Pardo,
+      Madrid, España — lat 40.5453765, lon -3.6949578

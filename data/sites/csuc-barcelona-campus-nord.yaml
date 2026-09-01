@@ -32,6 +32,40 @@ estado_fuentes: [src-1, src-2, src-3]
 
 potencia: []
 
+computo:
+  - tipo: cpu_hpc
+    sistema: "Pirineus III"
+    modelo: "AMD Epyc 9654 a 2,4 GHz, 2 por nodo (11.136 núcleos en total)"
+    unidades: 58
+    tipo_unidad: nodo
+    rendimiento: 427
+    rendimiento_unidad: tflops
+    rendimiento_tipo: pico
+    rendimiento_precision: fp64
+    estado: operativo
+    fecha_dato: "2026-08-31"
+    fuentes: [src-res]
+    nota: >-
+      Bloque de propósito general y de memoria ampliada. El CSUC cifra el rendimiento pico del
+      conjunto de Pirineus III en 2,2 PFlop/s, que no es la suma de los dos bloques registrados
+      aquí; se conserva sin conciliar.
+  - tipo: gpu
+    sistema: "Pirineus III — bloque GPU"
+    modelo: "NVIDIA H100 de 80 GB HBM, 2 por nodo"
+    nodos: 29
+    tipo_unidad: acelerador
+    rendimiento: 1.59
+    rendimiento_unidad: pflops
+    rendimiento_tipo: pico
+    rendimiento_precision: fp64
+    estado: operativo
+    fecha_dato: "2026-08-31"
+    fuentes: [src-res]
+    nota: >-
+      El recuento total de aceleradores queda vacío a propósito: ni la RES ni el CSUC publican
+      la cifra agregada, solo 29 nodos con dos H100 cada uno. Multiplicarlas sería deducir un
+      dato que ninguna fuente da.
+
 incertidumbres:
   - campo: potencia
     descripcion: >-
@@ -94,3 +128,16 @@ fuentes:
     cita: >-
       Infraestructura al núvol i CPD 22 Centre de Processament de Dades (CPD) 23
       ... Allotjament CPD extern 60.000 €
+  - id: src-res
+    url: "https://www.res.es/en/about-res/nodes/pirineus-csuc"
+    titulo: "Pirineus III - CSUC"
+    editor: "Red Española de Supercomputación"
+    tipo: oficial
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Machine name Pirineus III | Peak performance 427 TFlop/s | Main memory 43 TB | Number of
+      nodes and cores 58 nodes (11 136 cores) | Main nodes characteristics 50 nodes: 2x AMD Epyc
+      9654 2.4 GHz 8 nodes: 2x AMD Epyc 9654 2.4 GHz AND 3TB of RAM [...] Machine name Pirineus
+      III - GPU | Peak performance 1.59 PFlop/s | Main memory 11 TB | Number of nodes and cores
+      29 nodes (1 856 cores + GPU) | Main nodes characteristics 2x AMD Epyc 9334 2.7 GHz 2x
+      NVIDIA H100 80 GB HBM

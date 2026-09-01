@@ -1,0 +1,123 @@
+id: computaex-caceres-lusitania
+nombre: "CénitS — Centro de Supercomputación de Extremadura (LUSITANIA III)"
+alias:
+  - "COMPUTAEX"
+  - "Supercomputador LUSITANIA III"
+  - "Centro Extremeño de Investigación, Innovación Tecnológica y Supercomputación"
+  - "Nodo Lusitania de la RES"
+tipo: edificio
+operador: "Fundación Computación y Tecnologías Avanzadas de Extremadura (COMPUTAEX) — CénitS"
+propietario: "Fundación COMPUTAEX"
+cliente_ancla: null
+modelo: corporativo
+
+ubicacion:
+  municipio: "Cáceres"
+  provincia: "Cáceres"
+  ccaa: "Extremadura"
+  direccion: "Carretera Nacional 521, km 41,8, 10071 Cáceres"
+  lat: 39.4745175
+  lon: -6.3716761
+  precision: municipio
+  fuentes: [src-mincyt, src-osm]
+
+estado: operativo
+estado_detalle: >-
+  Se incluye en el mapa por su condición de infraestructura de cómputo público, no como centro
+  de datos comercial. La Fundación COMPUTAEX gestiona desde 2009 el Centro de Supercomputación
+  de Extremadura, que aloja el supercomputador LUSITANIA. Desde principios de 2020 opera
+  LUSITANIA III, financiado con fondos FEDER gestionados por la Junta de Extremadura. En julio
+  de 2026 la fundación amplió la capacidad de almacenamiento con una nueva infraestructura
+  Lustre de alto rendimiento. El 50 % de la máquina se destina a la RES. Es el único nodo de la
+  RES en Extremadura y el único emplazamiento del registro en la provincia de Cáceres que no es
+  un proyecto de centro de datos comercial.
+estado_fuentes: [src-res, src-computaex]
+
+potencia: []
+
+computo:
+  - tipo: cpu_hpc
+    ambito: sistema
+    sistema: "LUSITANIA III"
+    modelo: "Intel Xeon Platinum 8160 a 2,1 GHz, 2 por nodo (6.912 núcleos)"
+    unidades: 144
+    tipo_unidad: nodo
+    rendimiento: 464.5
+    rendimiento_unidad: tflops
+    rendimiento_tipo: pico
+    rendimiento_precision: fp64
+    estado: operativo
+    fecha_dato: "2026-08-31"
+    fuentes: [src-res]
+    nota: >-
+      COMPUTAEX cifra la capacidad de LUSITANIA III en 313 TFlops, distinta de la que publica la
+      ficha del nodo. La discrepancia queda en `incertidumbres[]`. La configuración es idéntica
+      a la de Mequinenza, Cibeles 4 y Tirant 4: hardware de la generación de MareNostrum 4
+      repartido entre nodos de la RES.
+
+incertidumbres:
+  - campo: computo
+    descripcion: >-
+      Las dos fuentes discrepan sobre la misma máquina. COMPUTAEX afirma que LUSITANIA III
+      «alcanza una capacidad de cómputo de 313 TFlops»; la ficha del nodo en la RES da 464,5
+      TFlop/s de pico para 144 nodos. Se registra la de la RES, que detalla la configuración, y
+      se conserva el choque. La misma ficha da además «420 PB Lustre» de almacenamiento, cifra
+      inverosímil que no se registra.
+    fuentes: [src-res, src-computaex]
+  - campo: potencia
+    descripcion: >-
+      Ni la RES ni COMPUTAEX publican potencia eléctrica, carga TI ni superficie de la sala.
+      Campo de potencia vacío.
+    fuentes: [src-res, src-computaex]
+  - campo: ubicacion
+    descripcion: >-
+      La dirección oficial es un punto kilométrico de la N-521, la carretera de Cáceres a
+      Trujillo, que Nominatim no resuelve. Las coordenadas son el centroide del municipio de
+      Cáceres, no la ubicación del edificio.
+    fuentes: [src-osm]
+
+confianza: media
+ultima_verificacion: "2026-08-31"
+
+fuentes:
+  - id: src-res
+    url: "https://www.res.es/en/about-res/nodes/lusitania-cenits"
+    titulo: "LUSITANIA III - COMPUTAEX"
+    editor: "Red Española de Supercomputación"
+    tipo: oficial
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Node location Centro de Supercomputación de Extremadura, Cáceres [...] Since early 2020,
+      the Supercomputing Center of Extremadura has been operating with the LUSITANIA III
+      supercomputer, which reaches a computing capacity of 313 TFlops. [...] Machine name
+      Lusitania | % of the machine destined to RES 50% | Peak performance 464.5 TFlop/s | Number
+      of nodes and cores 144 nodes (6 912 cores) | Main nodes characteristics 2x Intel Xeon
+      Platinum 8160 2.1 GHz and 96GB of RAM
+  - id: src-computaex
+    url: "https://web.computaex.es/lusitania-III"
+    titulo: "Supercomputador LUSITANIA III"
+    editor: "CénitS - COMPUTAEX"
+    tipo: oficial
+    fecha_publicacion: "2020-02-18"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Desde principios de 2020, Extremadura cuenta con el Supercomputador LUSITANIA III, alojado
+      en Cáceres. [...] Fundación Computación y Tecnologías Avanzadas de Extremadura Carretera
+      Nacional 521, Km 41,8 - 10.071 - Cáceres (España)
+  - id: src-mincyt
+    url: "https://www.ciencia.gob.es/Organismos-y-Centros/ICTS/TecnologiasCiencia/RES/Lusitania.html"
+    titulo: "Lusitania — Red Española de Supercomputación (ICTS)"
+    editor: "Ministerio de Ciencia, Innovación y Universidades"
+    tipo: oficial
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El nodo Lusitania está albergado en CénitS, el Centro Extremeño de investigación,
+      Innovación Tecnológica y Supercomputación. [...] Carretera Nacional 521, Km 41,8 - 10071 -
+      Cáceres.
+  - id: src-osm
+    url: "https://nominatim.openstreetmap.org/search?q=Caceres%2C+Extremadura&format=json&limit=3"
+    titulo: "Nominatim — geocodificación del municipio de Cáceres"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-08-31"
+    cita: "Cáceres, Extremadura, España — lat 39.4745175, lon -6.3716761"

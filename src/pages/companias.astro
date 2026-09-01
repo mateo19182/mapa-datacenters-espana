@@ -6,13 +6,20 @@ import { ESTADO_ETIQUETA, ORDEN_ESTADOS, numero } from '../lib/etiquetas.js'
 
 <Base
   titulo="Compañías"
-  descripcion="Operadores de centros de datos con presencia registrada en España peninsular, con su cartera de emplazamientos por estado."
+  descripcion="Operadores de centros de datos con presencia registrada en España, con su cartera de emplazamientos por estado."
 >
   <div class="contenedor">
     <h1>Compañías</h1>
     <p class="sumario">
       {numero(companias.length)} operadores con al menos un emplazamiento registrado. La columna de
       MW IT suma solo los que publican esa magnitud; la de cobertura dice cuántos son.
+    </p>
+
+    <p class="nota pequeno">
+      <strong>Operador no significa grupo cotizado.</strong> La tabla conserva la marca que opera cada
+      instalación. Por eso un mismo grupo puede aparecer con más de un nombre, y propietarios como
+      Blackstone o Iberdrola pueden no aparecer aquí como operador. La sección de{' '}
+      <a href="/inversion">tesis de inversión</a> reconstruye esas relaciones corporativas.
     </p>
 
     <div class="tabla-envoltorio">

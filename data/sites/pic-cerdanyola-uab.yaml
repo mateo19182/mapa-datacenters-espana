@@ -1,0 +1,173 @@
+id: pic-cerdanyola-uab
+nombre: "Port d'Informació Científica (PIC) — Campus UAB, Cerdanyola del Vallès"
+alias:
+  - "PIC"
+  - "Puerto de Información Científica"
+  - "Centro Tier-1 del LHC en España"
+  - "Nodo PIC de la RES"
+tipo: edificio
+operador: "Port d'Informació Científica (PIC)"
+propietario: "Convenio de colaboración entre el Institut de Física d'Altes Energies (IFAE) y el CIEMAT, con apoyo de la UAB"
+cliente_ancla: null
+modelo: corporativo
+
+ubicacion:
+  municipio: "Cerdanyola del Vallès"
+  provincia: "Barcelona"
+  ccaa: "Cataluña"
+  direccion: "Edifici D, carrer de l'Albareda s/n, Campus de la UAB, 08193 Bellaterra (Cerdanyola del Vallès)"
+  lat: 41.5017019
+  lon: 2.1097495
+  precision: aproximada
+  fuentes: [src-res, src-osm]
+
+estado: operativo
+estado_detalle: >-
+  Centro de procesado de datos científicos creado en 2003 y operado mediante convenio entre el
+  IFAE y el CIEMAT, con apoyo de la Universitat Autònoma de Barcelona. Es uno de los trece
+  centros principales (Tier-1) del sistema de procesado de datos del colisionador LHC del CERN,
+  el centro de datos principal de los telescopios MAGIC y de la cámara PAUcam del Observatorio
+  del Roque de los Muchachos, uno de los centros de datos científicos de la misión Euclid de la
+  Agencia Espacial Europea y centro del futuro observatorio de rayos gamma CTA. A diferencia del
+  resto de nodos de la RES, presta el servicio de DATOS y no el de HPC. Está alojado en el
+  edificio de Serveis Informàtics de la UAB y es uno de los centros con mayor transferencia de
+  datos de la red científica española, con unos 100 PB de entrada y salida al año. Se incluye en
+  el mapa como infraestructura de cómputo y datos de titularidad pública, no como centro de
+  datos comercial.
+estado_fuentes: [src-res, src-pic, src-ifae]
+fecha_puesta_en_servicio: "2003"
+
+potencia: []
+
+fases:
+  - nombre: "Sala principal"
+    estado: operativo
+    superficie_m2: 150
+    fuentes: [src-pic]
+    nota: >-
+      Climatizada con freecooling adiabático, renovada entre 2014 y 2016. Aloja equipos de
+      disco, de cinta y nodos de procesamiento.
+  - nombre: "Sala de refrigeración por inmersión"
+    estado: operativo
+    fecha_puesta_en_servicio: "2016"
+    superficie_m2: 25
+    fuentes: [src-pic]
+    nota: "Refrigeración por inmersión en líquido, dedicada a nodos de procesamiento."
+
+superficie_construida_m2: 200
+
+refrigeracion: >-
+  Sala principal de 150 m² con freecooling adiabático, renovada entre 2014 y 2016, y 25 m² con
+  refrigeración por inmersión en líquido desde 2016.
+
+agua:
+  circuito: hibrido
+  sistema: "Freecooling adiabático en la sala principal."
+  origen: null
+  nota: >-
+    La fuente describe el sistema como «freecooling adiabático», que funciona en seco o con
+    aporte de agua según la temperatura; la clasificación como circuito híbrido es lectura de
+    esa descripción, no un término de la fuente. No se publica ninguna cifra de consumo.
+  fuentes: [src-pic]
+
+computo:
+  - tipo: cpu_hpc
+    ambito: sistema
+    sistema: "PIC — procesado en lotes (HTCondor)"
+    unidades: 12000
+    tipo_unidad: nucleo
+    estado: operativo
+    fecha_dato: "2023"
+    fuentes: [src-pic]
+    nota: >-
+      Recuento de núcleos de CPU del sistema de procesado en lotes, gestionado con HTCondor
+      para trabajos de grid (LHC, CTA) y de usuarios locales. La fuente no publica rendimiento
+      en FLOPS, así que ese campo queda vacío.
+  - tipo: gpu
+    ambito: sistema
+    sistema: "PIC — procesado en lotes (HTCondor)"
+    unidades: 18
+    tipo_unidad: acelerador
+    estado: operativo
+    fecha_dato: "2023"
+    fuentes: [src-pic]
+    nota: >-
+      La fuente da el recuento pero no el modelo de los aceleradores, así que el campo `modelo`
+      queda vacío en vez de suponerlo.
+
+incertidumbres:
+  - campo: potencia
+    descripcion: >-
+      El PIC publica superficie, número de racks, núcleos, aceleradores y petabytes, pero
+      ninguna magnitud eléctrica: ni potencia contratada, ni carga TI, ni PUE. Es el
+      emplazamiento del registro con la descripción física más detallada y sin una sola cifra de
+      MW. Campo de potencia vacío.
+    fuentes: [src-pic, src-ifae]
+  - campo: computo
+    descripcion: >-
+      Las cifras de cómputo proceden de una presentación de 2023 en las Jornadas Técnicas de
+      RedIRIS y no se han vuelto a publicar actualizadas. El informe anual del IFAE de 2021 da
+      magnitudes de servicio, no de inventario: 86 millones de horas de CPU entregadas, 7,9 PB
+      de disco y 27,2 PB de cinta para el Tier-1, que no son comparables con el recuento de
+      núcleos y no se registran como cómputo instalado.
+    fuentes: [src-pic, src-ifae]
+  - campo: ubicacion
+    descripcion: >-
+      Las coordenadas corresponden al carrer de l'Albareda del campus de la UAB, dirección
+      social del PIC. La instalación está en el edificio de Serveis Informàtics de la
+      universidad, que ninguna fuente sitúa con coordenadas propias.
+    fuentes: [src-pic, src-osm]
+
+confianza: media
+ultima_verificacion: "2026-08-31"
+
+fuentes:
+  - id: src-res
+    url: "https://www.res.es/en/about-res/nodes/pic-uab"
+    titulo: "Port d'Informació Científica - PIC/UAB"
+    editor: "Red Española de Supercomputación"
+    tipo: oficial
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Node location Port d'Informació Científica, UAB, Cerdanyola del Vallès | Available
+      services DATA, Visits [...] The Port d'Informació Científica (PIC) is a high-performance
+      scientific data processing center operated through a collaboration agreement between the
+      Institut de Física d'Altes Energies (IFAE) and the Centro de Investigaciones Energéticas,
+      Medioambientales y Tecnológicas (CIEMAT), located on the campus of the Universitat
+      Autònoma de Barcelona (UAB). It is one of the Tier-1 data centers for the experiments of
+      the LHC particle collider at CERN [...] Available storage space 10 980 TB
+  - id: src-pic
+    url: "https://rediris.es/jt/jt2023/programa/ponencias/?id=jt2023-jt--a21b2c1.02+PIC.pdf"
+    titulo: "Servicios para el análisis de datos científicos en el PIC"
+    editor: "Port d'Informació Científica / RedIRIS (Jornadas Técnicas 2023)"
+    tipo: otro
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      El PIC es uno de los 13 centros principales del sistema de procesamiento de datos del
+      colisionador de partículas LHC del CERN [...] Ubicado en el edificio de Serveis Informàtics
+      UAB. Sala principal de 150 m2 climatizada con freecooling adiabático (renovado 2014-2016)
+      [...] 25 m2 liquid immersion cooling desde 2016 [...] 200 Gbps de conectividad a la red
+      científica a través de CSUC-RedIRIS [...] Uno de los centros con mayor transferencia de
+      datos de la red científica con 100PB in+out por año [...] Batch processing: 12000 CPU
+      cores, 18 GPUs [...] Cinta: 63 PB cinta (Enstore). Disco: 20PB (dCache), 500TB (NFS), 3PB
+      (Ceph)
+  - id: src-ifae
+    url: "https://annualreport.ifae.es/2021/scientific-activities/pic/"
+    titulo: "IFAE Annual Report 2021 — PIC: Port d'Informació Científica"
+    editor: "Institut de Física d'Altes Energies (IFAE)"
+    tipo: oficial
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      PIC's data center is located at the UAB's IT services building and contains more than 40
+      racks in 200m2. PIC's WAN connectivity was increased to 200Gbps during 2021 [...] At the
+      end of 2021, the PIC Tier-1 delivered 86 million cpu hours, 7.9 PB of disk storage space,
+      and 27.2 PB of tape storage space, with measured reliability above 99%.
+  - id: src-osm
+    url: "https://nominatim.openstreetmap.org/search?q=Carrer+de+l%27Albareda%2C+Bellaterra%2C+Cerdanyola+del+Valles&format=json&limit=3"
+    titulo: "Nominatim — geocodificación del carrer de l'Albareda, Bellaterra"
+    editor: "OpenStreetMap / Nominatim"
+    tipo: otro
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      Carrer de l'Albareda, Bellaterra, Cerdanyola del Vallès, Vallès Occidental, Barcelona,
+      Catalunya, 08193, España — lat 41.5017019, lon 2.1097495

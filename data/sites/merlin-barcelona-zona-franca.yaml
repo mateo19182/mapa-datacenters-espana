@@ -88,6 +88,23 @@ empleo:
 enlaces_proyecto:
   - "https://www.merlinproperties.com/activos/data-center-barcelona/"
 
+computo:
+  - tipo: gpu
+    ambito: sistema
+    sistema: "Clúster de IA de CoreWeave en Barcelona (fase 1)"
+    operador_computo: "CoreWeave"
+    modelo: "NVIDIA H200 Tensor Core, con interconexión InfiniBand"
+    unidades: 10224
+    tipo_unidad: acelerador
+    estado: operativo
+    fecha_dato: "2026-05-21"
+    fuentes: [src-2, src-5]
+    nota: >-
+      El hardware no es del operador del centro: MERLIN Edged aporta el inmueble y los 15 MW, y
+      CoreWeave despliega y opera los aceleradores como inquilino. Es el mayor recuento de GPU
+      documentado en un centro de datos comercial en España. Para una segunda fase se anuncian
+      aceleradores Blackwell, sin cifra ni fecha firme.
+
 incertidumbres:
   - campo: potencia
     descripcion: >-

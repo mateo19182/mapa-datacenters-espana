@@ -1,11 +1,11 @@
 # Parte de validación del dataset
 
-Generado el 2026-08-31 por `npm run validate`.
+Generado el 2026-09-01 por `npm run validate`.
 
-- Emplazamientos cargados: **191**
+- Emplazamientos cargados: **203**
 - Nodos de red: **133**
 - Activos renovables/BESS: **22**
-- Errores: **0** · Avisos: **257**
+- Errores: **0** · Avisos: **272**
 
 ## Incidencias por fichero
 
@@ -121,6 +121,10 @@ Generado el 2026-08-31 por `npm run validate`.
 
 - aviso: sin coordenadas: no aparecerá en el mapa
 
+### `bifi-zaragoza-cesar-agustina.yaml`
+
+- aviso: sin ningún dato de potencia
+
 ### `box2bit-carinena-ebro.yaml`
 
 - aviso: sin ningún dato de potencia
@@ -136,8 +140,29 @@ Generado el 2026-08-31 por `npm run validate`.
 ### `bsc-barcelona-marenostrum.yaml`
 
 - aviso: sin ningún dato de potencia
+- aviso: la fuente «src-7» no respalda ningún campo concreto
 
 ### `cartagena-data-green-escombreras.yaml`
+
+- aviso: sin ningún dato de potencia
+
+### `ccc-uam-madrid-cibeles.yaml`
+
+- aviso: sin ningún dato de potencia
+
+### `cesga-santiago-a-sionlla.yaml`
+
+- aviso: computo[4] («Superordenador de la fábrica de IA 1HealthAI») no distingue el tipo de cómputo
+
+### `cesvima-upm-pozuelo-magerit.yaml`
+
+- aviso: sin ningún dato de potencia
+
+### `citic-a-coruna-elvina.yaml`
+
+- aviso: sin ningún dato de potencia
+
+### `computaex-caceres-lusitania.yaml`
 
 - aviso: sin ningún dato de potencia
 
@@ -153,6 +178,10 @@ Generado el 2026-08-31 por `npm run validate`.
 ### `csuc-barcelona-campus-nord.yaml`
 
 - aviso: sin ningún dato de potencia
+
+### `d-alix-granadilla-de-abona.yaml`
+
+- aviso: potencia[0] («Capacidad atribuida al centro por el directorio Data Center Map») no distingue el tipo de MW
 
 ### `data4-alcobendas-mad01.yaml`
 
@@ -307,6 +336,7 @@ Generado el 2026-08-31 por `npm run validate`.
 - aviso: potencia[0] («Capacidad inicial de la instalación») no distingue el tipo de MW
 - aviso: potencia[1] («Capacidad máxima ampliable») no distingue el tipo de MW
 - aviso: potencia[2] («Potencia atribuida al proyecto por CGT y Ecologistes en Acció») no distingue el tipo de MW
+- aviso: computo[0] («Gigafactoría de IA de la candidatura española a InvestAI») no distingue el tipo de cómputo
 - aviso: sin coordenadas: no aparecerá en el mapa
 
 ### `giss-soria-los-royales.yaml`
@@ -353,6 +383,10 @@ Generado el 2026-08-31 por `npm run validate`.
 ### `iaas-datacenter-madrid-maraton.yaml`
 
 - aviso: potencia[0] («Potencia declarada por el operador al abrir el edificio») no distingue el tipo de MW
+
+### `iac-brena-baja-lapalma.yaml`
+
+- aviso: sin ningún dato de potencia
 
 ### `ibercom-madrid-maria-tubau.yaml`
 
@@ -533,6 +567,10 @@ Generado el 2026-08-31 por `npm run validate`.
 - aviso: potencia[2] («Fase 1 (DC01)») no distingue el tipo de MW
 - aviso: potencia[4] («Fase 2 (DC02)») no distingue el tipo de MW
 
+### `pic-cerdanyola-uab.yaml`
+
+- aviso: sin ningún dato de potencia
+
 ### `plexval-paterna-ciudad-de-sevilla.yaml`
 
 - aviso: sin ningún dato de potencia
@@ -586,6 +624,10 @@ Generado el 2026-08-31 por `npm run validate`.
 - aviso: potencia[1] («Capacidad máxima de escalado del edificio») no distingue el tipo de MW
 
 ### `scayle-leon-gaspar-morocho.yaml`
+
+- aviso: sin ningún dato de potencia
+
+### `scbi-uma-malaga-picasso.yaml`
 
 - aviso: sin ningún dato de potencia
 
@@ -706,6 +748,14 @@ Generado el 2026-08-31 por `npm run validate`.
 
 - aviso: sin ningún dato de potencia
 
+### `uv-burjassot-tirant.yaml`
+
+- aviso: sin ningún dato de potencia
+
+### `uvigo-vigo-estacion-optica-terrena.yaml`
+
+- aviso: sin ningún dato de potencia
+
 ### `vantage-villanueva-de-gallego-el-olivar.yaml`
 
 - aviso: potencia[0] («Concesión de potencia asociada a la fase 1 según la tabla de inversión del proyecto») no distingue el tipo de MW
@@ -717,6 +767,10 @@ Generado el 2026-08-31 por `npm run validate`.
 ### `vdpc-sagunto-barracuda.yaml`
 
 - aviso: potencia[0] («Potencia eléctrica inicial del data center («10 MW pico»)») no distingue el tipo de MW
+
+### `vqcc-uvigo-vigo-marcosende.yaml`
+
+- aviso: sin ningún dato de potencia
 
 ### `walhalla-castellon-espaitec.yaml`
 

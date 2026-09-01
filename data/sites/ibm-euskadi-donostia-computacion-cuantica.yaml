@@ -70,6 +70,22 @@ inversion_anunciada_eur: null
 enlaces_proyecto:
   - "https://www.basquequantum.eus/"
 
+computo:
+  - tipo: qpu
+    ambito: sistema
+    sistema: "IBM Quantum System Two (IBM_BasqueCountry)"
+    operador_computo: "IBM"
+    modelo: "Procesador IBM Quantum Heron, cúbits superconductores"
+    unidades: 156
+    tipo_unidad: qubit
+    estado: operativo
+    fecha_dato: "2025-10-14"
+    fuentes: [src-1, src-ibm]
+    nota: >-
+      Primer IBM Quantum System Two operativo de Europa y tercero del mundo. No es capacidad de
+      centro de datos: el sistema opera en el orden de los kilovatios y no aporta ninguna cifra
+      a `potencia[]`. Está diseñado para escalar e integrar varios procesadores en el futuro.
+
 incertidumbres:
   - campo: potencia
     descripcion: >-
@@ -167,3 +183,16 @@ fuentes:
       6.000 m² construidos, distribuidos en 5 plantas sobre superficie y una planta sótano, con
       cerca de 1.100 m² por planta. [...] El coste asciende a 12 millones de euros financiados por
       el Departamento de Educación del Gobierno Vasco.
+  - id: src-ibm
+    url: "https://newsroom.ibm.com/2025-10-14-the-basque-government-and-ibm-inaugurate-europes-first-ibm-quantum-system-two-in-donostia-san-sebastian"
+    titulo: "The Basque Government and IBM Inaugurate Europe's first IBM Quantum System Two in Donostia-San Sebastián"
+    editor: "IBM"
+    tipo: empresa
+    fecha_publicacion: "2025-10-14"
+    fecha_consulta: "2026-08-31"
+    cita: >-
+      This IBM Quantum System Two installation is only the second such deployment outside the
+      US. It is powered by a 156-qubit IBM Quantum Heron processor, one of the best performing
+      quantum processors developed by the company, to date. Designed to be scalable and
+      integrate multiple processors in the future, this system marks a technological milestone
+      by enabling the execution of utility-scale algorithms.
