@@ -1,0 +1,769 @@
+---
+import Base from '../../layouts/Base.astro'
+import sitios from '../../data/sitios.json'
+
+const idsMerlin = [
+  'merlin-edged-getafe-mad01',
+  'merlin-edged-getafe-2',
+  'merlin-edged-tres-cantos',
+  'merlin-barcelona-zona-franca',
+  'merlin-edged-ribera-baja-arasur',
+  'merlin-botorrita-zaragoza-wind',
+  'merlin-edged-navalmoral-de-la-mata',
+  'merlin-edged-valdecaballeros',
+]
+
+const sitiosMerlin = idsMerlin.map((id) => sitios.find((sitio) => sitio.id === id)).filter(Boolean)
+const porId = new Map(sitiosMerlin.map((sitio) => [sitio.id, sitio]))
+
+const estado = {
+  operativo: 'Operativo',
+  parcialmente_operativo: 'Operativo parcial',
+  en_construccion: 'En construcción',
+  permisos_concedidos: 'Con permisos',
+  en_tramitacion: 'En tramitación',
+  anunciado: 'Anunciado',
+}
+
+const activos = [
+  { id: 'merlin-edged-getafe-mad01', corto: 'Getafe 1', mw: '20', capa: 'Fase I', certeza: 'alta' },
+  { id: 'merlin-barcelona-zona-franca', corto: 'Barcelona', mw: '15 / 22', capa: 'Fase I', certeza: 'alta' },
+  { id: 'merlin-edged-ribera-baja-arasur', corto: 'Arasur', mw: '118 / 300', capa: 'Fases I–III', certeza: 'media' },
+  { id: 'merlin-edged-getafe-2', corto: 'Getafe 2', mw: '20 / 48', capa: 'Fase II', certeza: 'media' },
+  { id: 'merlin-edged-tres-cantos', corto: 'Tres Cantos', mw: 's/d', capa: 'Fase II', certeza: 'media' },
+  { id: 'merlin-botorrita-zaragoza-wind', corto: 'Zaragoza WIND', mw: '144', capa: 'Fase III', certeza: 'alta' },
+  { id: 'merlin-edged-navalmoral-de-la-mata', corto: 'Navalmoral', mw: '20 / hasta 1.400', capa: 'Opción', certeza: 'baja' },
+  { id: 'merlin-edged-valdecaballeros', corto: 'Valdecaballeros', mw: 'hasta 1.000', capa: 'Opción', certeza: 'baja' },
+].map((activo) => ({ ...activo, sitio: porId.get(activo.id) }))
+
+const precio = 13.40
+const nta = 15.99
+const ffo = 0.55
+const dividendo = 0.42
+const descuentoNta = ((nta - precio) / nta) * 100
+const pFfo = precio / ffo
+const rentabilidadFfo = (ffo / precio) * 100
+const rentabilidadDividendo = (dividendo / precio) * 100
+const decimal = (valor, decimales = 1) => valor.toLocaleString('es-ES', {
+  minimumFractionDigits: decimales,
+  maximumFractionDigits: decimales,
+})
+
+const fases = [
+  { nombre: 'Fase I', mw: 64, inversion: 614, gri: 97, estabilizacion: '2027', color: 'var(--m-verde)' },
+  { nombre: 'Fase II', mw: 254, inversion: 2756, gri: 397, estabilizacion: '2030', color: 'var(--m-cian)' },
+  { nombre: 'Fase III', mw: 406, inversion: 4406, gri: 646, estabilizacion: '2032', color: 'var(--m-ambar)' },
+]
+
+const totalMw = fases.reduce((total, fase) => total + fase.mw, 0)
+const totalInversion = fases.reduce((total, fase) => total + fase.inversion, 0)
+const totalGri = fases.reduce((total, fase) => total + fase.gri, 0)
+const ycTotal = (totalGri / totalInversion) * 100
+
+const matriz = [0.75, 0.9, 1].map((captura) => ({
+  captura,
+  valores: [0.055, 0.0625, 0.07].map((yieldSalida) => (ycTotal * captura) / (yieldSalida * 100)),
+}))
+---
+
+<Base
+  titulo="MERLIN Properties como inversión"
+  descripcion="Análisis técnico de MERLIN Properties: valoración, Plan MEGA, cartera española de centros de datos, financiación, riesgos y sensibilidad."
+>
+  <article class="informe-merlin">
+    <header class="portada">
+      <div class="portada-interior">
+        <p class="migas"><a href="/inversion">Tesis de inversión</a> · MERLIN Properties</p>
+        <div class="portada-meta">
+          <span class="terminal">BME: MRL</span>
+          <span>Nota de inversión</span>
+          <span>31 agosto 2026</span>
+        </div>
+        <div class="portada-grid">
+          <div>
+            <p class="sobrelinea">Infraestructura digital dentro de una SOCIMI diversificada</p>
+            <h1>MERLIN Properties<br /><span>como inversión</span></h1>
+            <p class="tesis-corta">
+              El mercado ya reconoce parte del giro hacia centros de datos, pero no paga todavía el
+              EPRA NTA. La oportunidad existe. También el riesgo de un plan con €7.800 millones de
+              inversión total mientras la mayor parte de la renta aún no ha llegado a caja.
+            </p>
+          </div>
+          <aside class="veredicto" aria-label="Conclusión de inversión">
+            <span class="veredicto-etiqueta">Lectura</span>
+            <strong>Selectiva</strong>
+            <p>
+              Activos y balance sólidos. Precio razonable frente a NTA, exigente frente a FFO actual.
+              La tesis depende de ejecutar, energizar y alquilar la Fase II y la Fase III.
+            </p>
+            <dl>
+            <div><dt>Precio de referencia</dt><dd>€{decimal(precio, 2)}</dd></div>
+              <div><dt>EPRA NTA</dt><dd>€{decimal(nta, 2)}</dd></div>
+              <div><dt>Horizonte</dt><dd>2027–2032</dd></div>
+            </dl>
+          </aside>
+        </div>
+      </div>
+    </header>
+
+    <nav class="indice" aria-label="Índice del informe">
+      <div class="pagina">
+        <a href="#tesis">Tesis</a>
+        <a href="#valoracion">Valoración</a>
+        <a href="#mega">Plan MEGA</a>
+        <a href="#activos">Activos</a>
+        <a href="#tecnica">Técnica</a>
+        <a href="#riesgos">Riesgos</a>
+        <a href="#fuentes">Fuentes</a>
+      </div>
+    </nav>
+
+    <div class="pagina cuerpo">
+      <section class="panel-metricas" aria-label="Indicadores principales">
+        <div class="metrica metrica-principal">
+          <span>Descuento a EPRA NTA</span>
+          <strong>{decimal(descuentoNta)}%</strong>
+          <small>€{decimal(precio, 2)} frente a €{decimal(nta, 2)} por acción</small>
+        </div>
+        <div class="metrica">
+          <span>Precio / FFO 2026e</span>
+          <strong>{decimal(pFfo)}×</strong>
+          <small>Guía de €{decimal(ffo, 2)} por acción</small>
+        </div>
+        <div class="metrica">
+          <span>Rentabilidad FFO</span>
+          <strong>{decimal(rentabilidadFfo)}%</strong>
+          <small>Inversa del múltiplo anterior</small>
+        </div>
+        <div class="metrica">
+          <span>Distribución 2025</span>
+          <strong>{decimal(rentabilidadDividendo)}%</strong>
+          <small>€{decimal(dividendo, 2)} por acción sobre el precio</small>
+        </div>
+        <div class="metrica">
+          <span>LTV</span>
+          <strong>24,5%</strong>
+          <small>Después de ampliar capital</small>
+        </div>
+      </section>
+
+      <p class="corte-datos">
+        Precio de cierre del 31 de agosto de 2026. Datos financieros a 30 de junio de 2026. Las
+        cifras de emplazamientos proceden del registro de este proyecto, verificado hasta el 31 de
+        agosto de 2026. Esto es análisis, no asesoramiento financiero.
+      </p>
+
+      <section id="tesis" class="seccion seccion-dos">
+        <div class="titulo-lateral">
+          <span>01</span>
+          <h2>La tesis en una página</h2>
+        </div>
+        <div class="contenido">
+          <p class="entradilla">
+            MERLIN ya no es solo una cartera de oficinas, centros comerciales y logística. Los data
+            centers representan €2.103 millones de GAV, un 15,6% del total, y explicaron cerca del
+            80% de la creación de valor del primer semestre. Sin embargo, el negocio digital aportó
+            solo €28,1 millones de rentas brutas en esos seis meses. El valor se ha adelantado al flujo.
+          </p>
+
+          <div class="tesis-grid">
+            <div class="caso caso-favor">
+              <p class="caso-titulo">Qué tiene que salir bien</p>
+              <ul>
+                <li>La Fase I alcanza €97 millones de renta estabilizada en 2027.</li>
+                <li>Los 160 MW alquilados o prealquilados se entregan en calendario.</li>
+                <li>La potencia concedida en Arasur y Zaragoza se convierte en edificios operativos.</li>
+                <li>El coste de capital queda muy por debajo del 14,4%–15,8% de yield on cost bruto.</li>
+              </ul>
+            </div>
+            <div class="caso caso-contra">
+              <p class="caso-titulo">Qué puede romperla</p>
+              <ul>
+                <li>Retrasos en red, licencias o equipos desplazan rentas y reducen la TIR.</li>
+                <li>Más ampliaciones de capital diluyen el FFO por acción antes de estabilizar rentas.</li>
+                <li>Unos pocos hiperescaladores concentran capacidad y poder de negociación.</li>
+                <li>Las opciones extremeñas de 1 GW se valoran como proyecto firme cuando aún no lo son.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="lectura-clave">
+            <span>Mi lectura</span>
+            <p>
+              A €13,40, la acción ofrece un margen razonable frente al valor neto de activos, pero no
+              frente al beneficio recurrente de 2026. Comprarla exige creer que el FFO de 2030 se
+              parecerá mucho menos al de hoy. Ese es el contrato implícito con el accionista.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="valoracion" class="seccion seccion-dos">
+        <div class="titulo-lateral">
+          <span>02</span>
+          <h2>Dos valoraciones que cuentan historias distintas</h2>
+        </div>
+        <div class="contenido">
+          <div class="valoracion-comparada">
+            <div>
+              <span class="kicker">Balance</span>
+              <strong>0,84× NTA</strong>
+              <p>
+                El precio descuenta un 16,2% sobre €15,99 de EPRA NTA por acción. Si la tasación es
+                conservadora y el desarrollo crea valor, el descuento protege. Si los yields de salida
+                suben o el capex se desvía, el NTA puede bajar antes de que el descuento cierre.
+              </p>
+            </div>
+            <div>
+              <span class="kicker">Caja</span>
+              <strong>24,4× FFO</strong>
+              <p>
+                La guía de €340 millones equivale a €0,55 por acción. No es un múltiplo bajo para una
+                inmobiliaria. El mercado está pagando renta futura. Además, el FFO total subió 8,0%
+                en el semestre, pero cayó 1,8% por acción tras la ampliación de capital.
+              </p>
+            </div>
+          </div>
+
+          <div class="puente" aria-label="Puente entre precio y NTA">
+            <div class="puente-escala"><span>€0</span><span>€8</span><span>€16</span></div>
+            <div class="puente-fila">
+              <span>Precio</span>
+              <div><i style={`width:${(precio / 16) * 100}%`}></i><b>€{decimal(precio, 2)}</b></div>
+            </div>
+            <div class="puente-fila nta">
+              <span>EPRA NTA</span>
+              <div><i style={`width:${(nta / 16) * 100}%`}></i><b>€{decimal(nta, 2)}</b></div>
+            </div>
+          </div>
+
+          <h3>Balance para financiar la obra</h3>
+          <div class="balance-grid">
+            <dl>
+              <div><dt>GAV total</dt><dd>€13.508m</dd></div>
+              <div><dt>Deuda neta</dt><dd>€3.394m</dd></div>
+              <div><dt>Liquidez</dt><dd>€2.571m</dd></div>
+            </dl>
+            <dl>
+              <div><dt>Coste medio de deuda</dt><dd>2,71%</dd></div>
+              <div><dt>Deuda a tipo fijo</dt><dd>99,8%</dd></div>
+              <div><dt>Vencimiento medio</dt><dd>4,0 años</dd></div>
+            </dl>
+          </div>
+          <p class="nota-analista">
+            El LTV bajo es una ventaja real, pero se logró en parte con €768 millones de capital nuevo.
+            Las acciones pasaron de unos 564 a 620 millones, cerca de un 10% más. El balance soporta
+            capex; el accionista soporta la dilución.
+          </p>
+        </div>
+      </section>
+
+      <section id="mega" class="seccion seccion-dos">
+        <div class="titulo-lateral">
+          <span>03</span>
+          <h2>La máquina económica del Plan MEGA</h2>
+        </div>
+        <div class="contenido">
+          <p class="entradilla">
+            Las tres fases suman {totalMw} MW IT, €{decimal(totalInversion / 1000)} mil millones de
+            inversión y €{decimal(totalGri / 1000, 2)} mil millones de renta bruta estabilizada. No son
+            magnitudes actuales. Son el objetivo corporativo una vez construida y alquilada la cartera.
+          </p>
+
+          <div class="fases" aria-label="Fases del Plan MEGA">
+            {fases.map((fase) => (
+              <article style={`--fase:${fase.color}`}>
+                <div class="fase-cabecera"><span>{fase.nombre}</span><b>{fase.estabilizacion}</b></div>
+                <strong>{fase.mw} MW</strong>
+                <div class="fase-barra"><i style={`width:${(fase.mw / 406) * 100}%`}></i></div>
+                <dl>
+                  <div><dt>Inversión</dt><dd>€{fase.inversion.toLocaleString('es-ES')}m</dd></div>
+                  <div><dt>GRI estabilizado</dt><dd>€{fase.gri}m</dd></div>
+                  <div><dt>YoC bruto</dt><dd>{decimal((fase.gri / fase.inversion) * 100)}%</dd></div>
+                </dl>
+              </article>
+            ))}
+          </div>
+
+          <h3>Sensibilidad de valor sobre coste</h3>
+          <p>
+            Esta matriz divide el yield on cost bruto del plan, {decimal(ycTotal)}%, por un yield de
+            salida. Ajusta antes la renta efectivamente capturada. Un resultado de 2,1× significa que
+            el valor bruto estabilizado sería 2,1 veces el coste, antes de financiación, impuestos,
+            retrasos y valor temporal del dinero. No es un precio objetivo.
+          </p>
+          <div class="matriz-envoltorio">
+            <table class="matriz">
+              <thead>
+                <tr><th>Renta capturada</th><th>Yield 5,5%</th><th>Yield 6,25%</th><th>Yield 7,0%</th></tr>
+              </thead>
+              <tbody>
+                {matriz.map((fila) => (
+                  <tr>
+                    <th>{Math.round(fila.captura * 100)}%</th>
+                    {fila.valores.map((valor) => <td class:list={[valor >= 2.2 && 'alto', valor < 1.8 && 'bajo']}>{decimal(valor, 2)}×</td>)}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p class="nota-analista">
+            El spread de desarrollo es amplio en papel. El tiempo importa: la Fase III no estabiliza
+            hasta 2032. Seis años de obra, comercialización y capital inmovilizado reducen mucho una
+            comparación directa entre yield on cost y yield de salida.
+          </p>
+        </div>
+      </section>
+
+      <section id="activos" class="seccion seccion-dos">
+        <div class="titulo-lateral">
+          <span>04</span>
+          <h2>Qué existe en España y qué sigue siendo opcional</h2>
+        </div>
+        <div class="contenido">
+          <p class="entradilla">
+            El registro del proyecto identifica ocho emplazamientos vinculados a MERLIN en España.
+            La tabla conserva cifras rivales cuando las fuentes no permiten reconciliarlas. “Hasta 1 GW”
+            describe una capacidad aspiracional de campus, no MW operativos ni renta contratada.
+          </p>
+          <div class="activos-tabla-envoltorio">
+            <table class="activos-tabla">
+              <thead>
+                <tr><th>Emplazamiento</th><th>Estado</th><th>MW publicados</th><th>Capa</th><th>Lectura</th></tr>
+              </thead>
+              <tbody>
+                {activos.map((activo) => (
+                  <tr>
+                    <td><a href={`/proyecto/${activo.id}`}>{activo.corto}</a><small>{activo.sitio?.ubicacion?.provincia}</small></td>
+                    <td><span class={`estado estado-${activo.sitio?.estado}`}>{estado[activo.sitio?.estado] ?? activo.sitio?.estado}</span></td>
+                    <td class="numero">{activo.mw}</td>
+                    <td>{activo.capa}</td>
+                    <td><span class={`certeza certeza-${activo.certeza}`}>{activo.certeza}</span></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <div class="no-sumar">
+            <div class="no-sumar-signo">≠</div>
+            <div>
+              <h3>Las cifras que no se deben sumar</h3>
+              <p>
+                En Arasur, 118 MW de capacidad crítica publicada y 300 MW de capacidad potencial son
+                dos vistas del mismo campus. En Barcelona, 15 MW de potencia del centro y 22 MW de
+                capacidad eléctrica total miden cosas distintas. En Botorrita, 227,4 MW de demanda
+                garantizada no son los 144 MW IT del edificio. Sumarlas infla la cartera.
+              </p>
+            </div>
+          </div>
+
+          <h3>Prueba de calidad del pipeline</h3>
+          <div class="calidad">
+            <div><span>Renta visible</span><strong>160 MW</strong><p>Alquilados o prealquilados a julio de 2026.</p></div>
+            <div><span>Obra corporativa</span><strong>724 MW</strong><p>Plan MEGA, fases I a III en Iberia.</p></div>
+            <div><span>Opcionalidad</span><strong>2,4 GW</strong><p>Máximos publicados para Navalmoral y Valdecaballeros. No incluidos en MEGA.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tecnica" class="seccion seccion-dos">
+        <div class="titulo-lateral">
+          <span>05</span>
+          <h2>La ventaja técnica, y dónde termina</h2>
+        </div>
+        <div class="contenido">
+          <div class="diagrama" aria-label="Cadena física y económica del centro de datos">
+            <div><span>Red 220/400 kV</span><small>Permiso y subestación</small></div>
+            <b>→</b>
+            <div><span>Edificio</span><small>Transformación y respaldo</small></div>
+            <b>→</b>
+            <div><span>Sala IT</span><small>MW críticos y refrigeración</small></div>
+            <b>→</b>
+            <div><span>Inquilino</span><small>Contrato y renta por MW</small></div>
+          </div>
+
+          <div class="tecnica-grid">
+            <article>
+              <span>01 / potencia</span>
+              <h3>La conexión es el activo escaso</h3>
+              <p>
+                Un edificio sin energía no produce renta. Getafe 1 está equipado y alquilado, pero
+                espera conexiones para generar flujo completo en el cuarto trimestre de 2026. Red
+                Eléctrica evalúa capacidad nodal y zonal por criterios estáticos, dinámicos y de
+                cortocircuito. Tener suelo no equivale a tener acceso.
+              </p>
+            </article>
+            <article>
+              <span>02 / refrigeración</span>
+              <h3>PUE 1,15 y WUE 0,00 son objetivos de diseño</h3>
+              <p>
+                Edged usa circuitos con glicol, enfriadoras de aire y refrigeración secundaria cerrada.
+                El sistema admite hasta 500 kW por pasillo caliente y, en Getafe, hasta 200 kW por rack
+                con refrigeración líquida. La base documental recoge las declaraciones del operador,
+                no mediciones independientes anuales.
+              </p>
+            </article>
+            <article>
+              <span>03 / densidad</span>
+              <h3>La IA aumenta renta y concentración</h3>
+              <p>
+                Barcelona aloja 10.224 GPU NVIDIA H200 de CoreWeave. Nebius contrató 18 MW en Getafe.
+                Las cargas de alta densidad favorecen edificios preparados para líquido, pero atan
+                grandes bloques de capacidad a pocos clientes con ciclos tecnológicos cortos.
+              </p>
+            </article>
+            <article>
+              <span>04 / mercado</span>
+              <h3>Pipeline no significa oferta entregada</h3>
+              <p>
+                Colliers estima 385 MW IT operativos en Iberia y más de 2.900 MW en pipeline hasta 2030.
+                La diferencia es el punto: licencias, red y equipos deciden quién llega a tiempo. Merlin
+                tiene contratos y potencia en varios nodos, una posición mejor que un mero banco de suelo.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="riesgos" class="seccion seccion-dos">
+        <div class="titulo-lateral">
+          <span>06</span>
+          <h2>Registro de riesgos para el accionista</h2>
+        </div>
+        <div class="contenido">
+          <div class="riesgos">
+            <article><span class="impacto impacto-alto">Alto</span><h3>Financiación y dilución</h3><p>El programa de €7.776 millones equivale a cerca del 94% de la capitalización bursátil actual. La ampliación de marzo cubrió parte de la Fase III, no convierte todo el plan en capex financiado. La señal a vigilar es FFO por acción, no solo FFO total.</p></article>
+            <article><span class="impacto impacto-alto">Alto</span><h3>Ejecución eléctrica</h3><p>Potencia concedida, infraestructura ejecutada y conexión energizada son hitos distintos. Cada trimestre de retraso difiere renta y aumenta el coste financiero sin cambiar el MW anunciado.</p></article>
+            <article><span class="impacto impacto-medio">Medio</span><h3>Concentración de clientes</h3><p>Contratos de 48 MW reducen el riesgo de vacío, pero crean exposiciones grandes a un inquilino. La calidad del crédito, garantías, duración, escaladores y opciones de salida importan más que el porcentaje prealquilado aislado.</p></article>
+            <article><span class="impacto impacto-medio">Medio</span><h3>Yield de salida</h3><p>Los data centers en operación se tasan con yield bruto del 6,2%. Una expansión de 100 puntos básicos reduce en torno a un 14% el valor capitalizado de una renta constante.</p></article>
+            <article><span class="impacto impacto-medio">Medio</span><h3>Activos tradicionales</h3><p>El 84% del GAV no es digital. Oficinas, retail y logística siguen determinando ocupación, renta y deuda. La tesis Merlin no es una inversión pura en data centers.</p></article>
+            <article><span class="impacto impacto-bajo">Vigilar</span><h3>Promesas de eficiencia</h3><p>PUE y WUE de diseño ayudan en permisos y costes, pero no sustituyen series operativas. El inversor debería pedir consumo medido, disponibilidad y coste de mantenimiento por instalación.</p></article>
+          </div>
+
+          <div class="monitor">
+            <h3>Cuadro de mando trimestral</h3>
+            <ol>
+              <li><span>MW energizados</span><b>frente a MW equipados y alquilados</b></li>
+              <li><span>FFO por acción</span><b>frente a crecimiento de FFO total</b></li>
+              <li><span>Capex acumulado</span><b>frente a presupuesto por fase</b></li>
+              <li><span>GRI digital</span><b>frente a €97m / €397m / €646m estabilizados</b></li>
+              <li><span>Deuda y capital</span><b>LTV, coste y nuevas acciones</b></li>
+              <li><span>Contratos</span><b>MW, contraparte, fecha RFS y garantías</b></li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <section class="conclusion">
+        <span>Conclusión</span>
+        <h2>Buen activo. Precio incompleto. Ejecución obligatoria.</h2>
+        <p>
+          MERLIN ofrece una forma cotizada y diversificada de participar en infraestructura digital
+          ibérica. El balance es conservador y la Fase I ya prueba demanda real. Aun así, €13,40 no es
+          una ganga sobre el flujo de 2026. Es una entrada con descuento sobre activos para quien acepte
+          seis años de construcción, más capital y una dependencia alta de potencia y grandes clientes.
+        </p>
+        <div class="conclusion-regla">
+          <div><small>Más atractiva por debajo de</small><strong>NTA</strong><span>con FFO por acción creciendo</span></div>
+          <div><small>Menos atractiva si</small><strong>sube el múltiplo</strong><span>sin entregar MW ni renta</span></div>
+        </div>
+      </section>
+
+      <section id="fuentes" class="fuentes-informe">
+        <h2>Fuentes y método</h2>
+        <p>
+          Las cuentas y objetivos corporativos proceden de MERLIN y la CNMV. Los datos físicos de cada
+          emplazamiento proceden de las fichas documentales de este proyecto, que separan MW IT, potencia
+          total y acceso a red. Los cálculos de descuento, múltiplos y sensibilidad son propios.
+        </p>
+        <ol>
+          <li><a href="https://ir.merlinproperties.com/wp-content/uploads/2026/07/Informe-de-resultados-6M26-1.pdf" rel="noopener">MERLIN, informe de resultados 6M 2026</a>. GAV, NTA, FFO, balance, rentas y Plan MEGA.</li>
+          <li><a href="https://www.merlinproperties.com/prensa/merlin-incrementa-ingresos-y-ebitda-un-11-7-gracias-a-la-division-de-data-centers-que-alcanza-160-mw-alquilados/" rel="noopener">MERLIN, resultados del primer semestre de 2026</a>. 160 MW alquilados o prealquilados y estado de las fases.</li>
+          <li><a href="https://www.cnmv.es/webservices/verdocumento/ver?t=%7Bc44b40c9-67cb-41db-8f93-e2d14acfbb67%7D" rel="noopener">CNMV, resultados 3M 2026</a>. Ampliación de capital de €768 millones.</li>
+          <li><a href="https://www.ree.es/es/clientes/consumidor/acceso-conexion/conoce-la-capacidad-de-acceso" rel="noopener">Red Eléctrica, capacidad de acceso de demanda</a>. Metodología nodal y zonal actualizada a agosto de 2026.</li>
+          <li><a href="https://www.colliers.com/es-es/research/data-center-snapshot-iberian-region-oct-2025-mar-2026" rel="noopener">Colliers, Iberian Data Center Snapshot</a>. Capacidad operativa y pipeline ibérico.</li>
+          <li><a href="https://stockanalysis.com/quote/bme/MRL/history/" rel="noopener">BME:MRL, histórico de cotización</a>. Cierre de €13,40 a 31 de agosto de 2026.</li>
+          <li><a href="/metodologia">Metodología del registro</a> y <a href="/datos">descarga de datos</a>. Definiciones, cobertura y límites.</li>
+        </ol>
+        <p class="fecha-cierre">Corte del análisis: 31 de agosto de 2026 · Versión 1.0</p>
+      </section>
+    </div>
+  </article>
+</Base>
+
+<style>
+  :global(body) { background: #f1f3ef; }
+  .informe-merlin {
+    --m-noche: #071a22;
+    --m-noche-2: #0d2832;
+    --m-tinta: #10252b;
+    --m-gris: #607077;
+    --m-linea: #ccd4d1;
+    --m-verde: #b8f34a;
+    --m-cian: #37c5c9;
+    --m-ambar: #efad47;
+    --m-rojo: #d85c4a;
+    --m-papel: #f7f8f4;
+    color: var(--m-tinta);
+    font-family: var(--sans);
+    line-height: 1.55;
+  }
+  .pagina { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+  .portada { color: #eef4ef; background: var(--m-noche); position: relative; overflow: hidden; }
+  .portada::before {
+    content: ''; position: absolute; inset: 0; opacity: .19;
+    background-image: linear-gradient(#8aa0a5 1px, transparent 1px), linear-gradient(90deg, #8aa0a5 1px, transparent 1px);
+    background-size: 46px 46px; mask-image: linear-gradient(90deg, transparent, black 30%, black);
+  }
+  .portada::after { content: ''; position: absolute; width: 560px; height: 560px; right: -190px; top: -310px; border: 1px solid #7b9799; border-radius: 50%; box-shadow: 0 0 0 70px rgb(55 197 201 / .04), 0 0 0 140px rgb(55 197 201 / .03); }
+  .portada-interior { position: relative; z-index: 1; width: min(1180px, calc(100% - 40px)); margin: auto; padding: 32px 0 64px; }
+  .portada-meta { display: flex; align-items: center; gap: 16px; color: #91a8aa; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; }
+  .terminal { color: var(--m-verde); border: 1px solid rgb(184 243 74 / .45); padding: 4px 8px; }
+  .portada-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(280px, .7fr); gap: 70px; align-items: end; margin-top: 76px; }
+  .sobrelinea { color: var(--m-cian); text-transform: uppercase; letter-spacing: .13em; font-size: .72rem; font-weight: 700; }
+  .portada h1 { color: white; font: 500 clamp(3.4rem, 8.4vw, 7.4rem)/.84 var(--serif); letter-spacing: -.055em; margin: 20px 0 32px; }
+  .portada h1 span { color: #93a9aa; }
+  .tesis-corta { max-width: 700px; font-size: 1.08rem; color: #c3d0d0; margin: 0; }
+  .veredicto { border-top: 3px solid var(--m-verde); background: #0c252e; padding: 24px; box-shadow: 0 28px 70px rgb(0 0 0 / .22); }
+  .veredicto-etiqueta { color: #8fa4a6; text-transform: uppercase; font-size: .68rem; letter-spacing: .14em; }
+  .veredicto > strong { display: block; color: white; font: 500 2.1rem var(--serif); margin: 4px 0 12px; }
+  .veredicto p { color: #b9c8c8; font-size: .88rem; }
+  .veredicto dl { margin: 20px 0 0; border-top: 1px solid #26414a; }
+  .veredicto dl div { display: flex; justify-content: space-between; border-bottom: 1px solid #26414a; padding: 8px 0; gap: 12px; }
+  .veredicto dt { color: #81979a; font-size: .73rem; }
+  .veredicto dd { margin: 0; color: white; font: 600 .86rem var(--mono); }
+  .indice { background: #0c252e; border-top: 1px solid #203b44; position: sticky; top: 47px; z-index: 20; }
+  .indice .pagina { display: flex; overflow-x: auto; }
+  .indice a { color: #a9b8b9; text-decoration: none; text-transform: uppercase; letter-spacing: .09em; font-size: .68rem; padding: 13px 18px 12px 0; margin-right: 20px; white-space: nowrap; }
+  .indice a:hover { color: var(--m-verde); }
+  .cuerpo { padding-top: 42px; }
+  .panel-metricas { display: grid; grid-template-columns: 1.35fr repeat(4, 1fr); border: 1px solid var(--m-linea); background: var(--m-linea); gap: 1px; }
+  .metrica { padding: 22px 18px; background: var(--m-papel); min-width: 0; }
+  .metrica span { display: block; color: var(--m-gris); font-size: .68rem; text-transform: uppercase; letter-spacing: .08em; }
+  .metrica strong { display: block; font: 500 2rem var(--serif); letter-spacing: -.04em; margin: 7px 0 3px; color: var(--m-tinta); }
+  .metrica small { color: #7d898c; font-size: .68rem; line-height: 1.3; display: block; }
+  .metrica-principal { background: var(--m-verde); }
+  .metrica-principal span, .metrica-principal small { color: #354920; }
+  .corte-datos { color: var(--m-gris); font-size: .7rem; max-width: 950px; margin: 12px 0 0; }
+  .seccion { border-top: 1px solid var(--m-linea); padding: 70px 0; scroll-margin-top: 100px; }
+  .seccion-dos { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 58px; }
+  .titulo-lateral > span { color: #95a19f; font: 600 .75rem var(--mono); }
+  .titulo-lateral h2 { color: var(--m-tinta); font: 500 1.55rem/1.16 var(--serif); margin: 8px 0; }
+  .contenido { min-width: 0; }
+  .contenido h3 { color: var(--m-tinta); font: 600 1.15rem var(--serif); margin: 38px 0 10px; }
+  .entradilla { font: 500 1.32rem/1.48 var(--serif); color: #233a3f; max-width: 850px; }
+  .tesis-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 34px 0; }
+  .caso { background: var(--m-papel); border: 1px solid var(--m-linea); padding: 22px 24px; }
+  .caso-favor { border-top: 3px solid #4c9c65; }
+  .caso-contra { border-top: 3px solid var(--m-rojo); }
+  .caso-titulo { font-size: .72rem; text-transform: uppercase; letter-spacing: .1em; font-weight: 700; color: var(--m-gris); }
+  .caso ul { padding-left: 19px; margin: 0; font-size: .87rem; }
+  .caso li { margin: 9px 0; }
+  .lectura-clave { background: var(--m-noche); color: #d8e1df; display: grid; grid-template-columns: 120px 1fr; gap: 24px; padding: 24px 28px; }
+  .lectura-clave span { color: var(--m-verde); text-transform: uppercase; font-size: .67rem; letter-spacing: .11em; font-weight: 700; }
+  .lectura-clave p { margin: 0; font-size: .92rem; }
+  .valoracion-comparada { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--m-linea); border: 1px solid var(--m-linea); }
+  .valoracion-comparada > div { background: var(--m-papel); padding: 27px; }
+  .kicker { color: var(--m-gris); font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; }
+  .valoracion-comparada strong { display: block; font: 500 2.5rem var(--serif); margin: 7px 0 12px; letter-spacing: -.04em; }
+  .valoracion-comparada p { font-size: .86rem; margin: 0; }
+  .puente { background: #e9ede9; padding: 24px; margin-top: 18px; }
+  .puente-escala { display: flex; justify-content: space-between; color: #82908f; font: .65rem var(--mono); margin-left: 100px; border-bottom: 1px solid #bac4c1; padding-bottom: 5px; }
+  .puente-fila { display: grid; grid-template-columns: 90px 1fr; gap: 10px; align-items: center; margin-top: 14px; color: var(--m-gris); font-size: .72rem; }
+  .puente-fila > div { height: 24px; position: relative; background-image: linear-gradient(90deg, #d3dad6 1px, transparent 1px); background-size: 25% 100%; }
+  .puente-fila i { display: block; height: 100%; background: var(--m-cian); }
+  .puente-fila.nta i { background: var(--m-noche-2); }
+  .puente-fila b { position: absolute; top: 3px; left: 10px; color: white; font: 600 .74rem var(--mono); }
+  .balance-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .balance-grid dl { margin: 0; border-top: 2px solid var(--m-tinta); }
+  .balance-grid dl div { display: flex; justify-content: space-between; gap: 15px; padding: 10px 0; border-bottom: 1px solid var(--m-linea); }
+  .balance-grid dt { color: var(--m-gris); font-size: .78rem; }
+  .balance-grid dd { margin: 0; font: 600 .8rem var(--mono); }
+  .nota-analista { border-left: 3px solid var(--m-ambar); padding: 13px 17px; background: #f6eee0; font-size: .82rem; margin-top: 22px; }
+  .fases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 30px 0; }
+  .fases article { border: 1px solid var(--m-linea); background: var(--m-papel); padding: 20px; }
+  .fase-cabecera { display: flex; justify-content: space-between; color: var(--m-gris); text-transform: uppercase; letter-spacing: .08em; font-size: .67rem; }
+  .fase-cabecera b { color: var(--m-tinta); font-family: var(--mono); }
+  .fases article > strong { display: block; font: 500 2rem var(--serif); margin: 13px 0 8px; }
+  .fase-barra { height: 5px; background: #dfe4e0; margin-bottom: 20px; }
+  .fase-barra i { display: block; height: 100%; background: var(--fase); }
+  .fases dl { margin: 0; }
+  .fases dl div { display: flex; justify-content: space-between; border-top: 1px solid #dde2df; padding: 7px 0; }
+  .fases dt { color: var(--m-gris); font-size: .69rem; }
+  .fases dd { margin: 0; font: 600 .72rem var(--mono); }
+  .matriz-envoltorio { overflow-x: auto; margin-top: 18px; }
+  .matriz { border-collapse: separate; border-spacing: 4px; min-width: 520px; }
+  .matriz th { background: transparent; color: var(--m-gris); position: static; }
+  .matriz tbody th { text-align: left; font-family: var(--mono); }
+  .matriz td { text-align: center; background: #dce9df; border: 0; font: 600 1rem var(--mono); padding: 14px; }
+  .matriz td.alto { background: #b8e8d1; }
+  .matriz td.bajo { background: #efd9cf; }
+  .activos-tabla-envoltorio { overflow-x: auto; border-top: 2px solid var(--m-tinta); }
+  .activos-tabla { min-width: 700px; }
+  .activos-tabla th { background: transparent; position: static; }
+  .activos-tabla td { border-color: var(--m-linea); vertical-align: middle; }
+  .activos-tabla td:first-child a { font-weight: 700; color: var(--m-tinta); }
+  .activos-tabla td:first-child small { display: block; color: var(--m-gris); }
+  .numero { font: 600 .78rem var(--mono); }
+  .estado, .certeza { display: inline-block; border-radius: 999px; padding: 3px 8px; font-size: .65rem; white-space: nowrap; }
+  .estado-operativo { background: #d6ebda; color: #28633b; }
+  .estado-parcialmente_operativo { background: #d7e8e8; color: #296166; }
+  .estado-en_construccion { background: #f1dfc5; color: #7c4b16; }
+  .estado-en_tramitacion, .estado-anunciado { background: #e3e2e8; color: #5b5870; }
+  .certeza { text-transform: uppercase; letter-spacing: .05em; border: 1px solid; }
+  .certeza-alta { color: #28713f; }.certeza-media { color: #906621; }.certeza-baja { color: #9b4438; }
+  .no-sumar { display: grid; grid-template-columns: 64px 1fr; gap: 20px; align-items: start; background: var(--m-noche); color: #cbd7d5; padding: 25px; margin: 22px 0; }
+  .no-sumar-signo { color: var(--m-ambar); font: 500 3.5rem/1 var(--serif); }
+  .no-sumar h3 { color: white; margin: 0 0 8px; }
+  .no-sumar p { margin: 0; font-size: .85rem; }
+  .calidad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .calidad > div { border-top: 3px solid var(--m-cian); padding: 15px 3px; }
+  .calidad span { display: block; color: var(--m-gris); text-transform: uppercase; font-size: .65rem; letter-spacing: .08em; }
+  .calidad strong { display: block; font: 500 2rem var(--serif); }
+  .calidad p { font-size: .72rem; color: var(--m-gris); margin: 3px 0; }
+  .diagrama { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr; gap: 12px; align-items: center; background: var(--m-noche); padding: 22px; color: white; }
+  .diagrama div { border-top: 2px solid var(--m-verde); padding-top: 10px; }
+  .diagrama span { display: block; font: 600 .78rem var(--mono); }
+  .diagrama small { display: block; color: #89a0a2; font-size: .65rem; }
+  .diagrama b { color: var(--m-cian); }
+  .tecnica-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--m-linea); border: 1px solid var(--m-linea); margin-top: 20px; }
+  .tecnica-grid article { background: var(--m-papel); padding: 24px; }
+  .tecnica-grid article > span { color: #7e8e8c; font: .65rem var(--mono); text-transform: uppercase; }
+  .tecnica-grid h3 { margin: 10px 0 8px; }
+  .tecnica-grid p { font-size: .82rem; margin: 0; }
+  .riesgos { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .riesgos article { background: var(--m-papel); border: 1px solid var(--m-linea); padding: 20px; }
+  .impacto { display: inline-block; font-size: .61rem; text-transform: uppercase; letter-spacing: .08em; padding: 3px 7px; color: white; }
+  .impacto-alto { background: var(--m-rojo); }.impacto-medio { background: #a87827; }.impacto-bajo { background: #587576; }
+  .riesgos h3 { margin: 12px 0 8px; }
+  .riesgos p { font-size: .8rem; margin: 0; }
+  .monitor { border-top: 3px solid var(--m-tinta); margin-top: 34px; }
+  .monitor ol { list-style: none; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0 30px; counter-reset: monitor; }
+  .monitor li { counter-increment: monitor; display: grid; grid-template-columns: 28px 1fr; border-top: 1px solid var(--m-linea); padding: 10px 0; font-size: .75rem; }
+  .monitor li::before { content: '0' counter(monitor); color: #96a29f; font-family: var(--mono); grid-row: span 2; }
+  .monitor li span { font-weight: 700; }.monitor li b { font-weight: 400; color: var(--m-gris); }
+  .conclusion { background: var(--m-verde); padding: 54px clamp(25px, 6vw, 72px); margin: 0 0 70px 278px; }
+  .conclusion > span { text-transform: uppercase; letter-spacing: .11em; font-size: .67rem; font-weight: 700; }
+  .conclusion h2 { font: 500 clamp(2.2rem, 5vw, 4.2rem)/.98 var(--serif); letter-spacing: -.045em; max-width: 800px; margin: 13px 0 24px; }
+  .conclusion > p { max-width: 790px; font-size: .94rem; }
+  .conclusion-regla { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; border-top: 1px solid #789e36; margin-top: 28px; padding-top: 20px; }
+  .conclusion-regla small, .conclusion-regla span { display: block; font-size: .67rem; }
+  .conclusion-regla strong { display: block; font: 600 1.15rem var(--serif); }
+  .fuentes-informe { border-top: 1px solid var(--m-linea); padding: 50px 0 70px; scroll-margin-top: 100px; }
+  .fuentes-informe h2 { font: 500 1.55rem var(--serif); }
+  .fuentes-informe > p, .fuentes-informe ol { max-width: 850px; font-size: .76rem; color: var(--m-gris); }
+  .fuentes-informe li { margin: 8px 0; padding-left: 6px; }
+  .fuentes-informe a { color: var(--m-tinta); }
+  .fecha-cierre { font-family: var(--mono); text-transform: uppercase; letter-spacing: .05em; margin-top: 30px; }
+
+  @media (max-width: 950px) {
+    .portada-grid { grid-template-columns: 1fr; gap: 35px; margin-top: 55px; }
+    .veredicto { max-width: 600px; }
+    .panel-metricas { grid-template-columns: repeat(3, 1fr); }
+    .metrica-principal { grid-column: span 2; }
+    .seccion-dos { grid-template-columns: 160px minmax(0, 1fr); gap: 35px; }
+    .fases { grid-template-columns: 1fr; }
+    .fases article { display: grid; grid-template-columns: 1fr 1fr; column-gap: 20px; }
+    .fase-cabecera, .fases article > strong, .fase-barra { grid-column: 1; }
+    .fases dl { grid-column: 2; grid-row: 1 / span 3; }
+    .conclusion { margin-left: 195px; }
+  }
+  @media (max-width: 700px) {
+    .pagina, .portada-interior { width: min(100% - 28px, 1180px); }
+    .portada h1 { font-size: clamp(3.1rem, 17vw, 5rem); }
+    .portada-meta { flex-wrap: wrap; gap: 9px 13px; }
+    .indice { top: 46px; }
+    .panel-metricas { grid-template-columns: 1fr 1fr; }
+    .metrica-principal { grid-column: span 2; }
+    .seccion { padding: 50px 0; }
+    .seccion-dos { display: block; }
+    .titulo-lateral { display: flex; gap: 12px; align-items: baseline; margin-bottom: 20px; }
+    .titulo-lateral h2 { font-size: 1.45rem; }
+    .tesis-grid, .valoracion-comparada, .balance-grid, .tecnica-grid, .riesgos, .calidad { grid-template-columns: 1fr; }
+    .lectura-clave { grid-template-columns: 1fr; gap: 8px; }
+    .fases article { display: block; }
+    .diagrama { grid-template-columns: 1fr; }
+    .diagrama b { transform: rotate(90deg); justify-self: center; }
+    .monitor ol { grid-template-columns: 1fr; }
+    .conclusion { margin-left: 0; padding: 38px 24px; }
+    .conclusion-regla { grid-template-columns: 1fr; }
+  }
+  @media print {
+    :global(.cabecera), :global(.pie), .indice { display: none; }
+    :global(body) { background: white; }
+    .portada { print-color-adjust: exact; }
+    .seccion { break-inside: avoid; }
+    .informe-merlin { font-size: 10pt; }
+  }
+</style>
+
+<!-- Esta segunda capa elimina el tratamiento de micrositio oscuro de la primera
+     versión. El informe conserva sus gráficos, pero usa la misma paleta, ancho,
+     ritmo y jerarquía tipográfica que el resto del registro. -->
+<style>
+  :global(body) { background: var(--papel); }
+  .informe-merlin {
+    --m-noche: var(--papel-2);
+    --m-noche-2: var(--acento);
+    --m-tinta: var(--tinta);
+    --m-gris: var(--tinta-3);
+    --m-linea: var(--borde);
+    --m-verde: var(--acento);
+    --m-cian: var(--acento);
+    --m-ambar: var(--aviso);
+    --m-rojo: var(--cancelado);
+    --m-papel: var(--papel);
+    color: var(--tinta);
+    line-height: 1.6;
+  }
+  .pagina, .portada-interior { max-width: var(--ancho); width: 100%; padding-left: 1.25rem; padding-right: 1.25rem; }
+  .portada { color: var(--tinta); background: var(--papel); border-bottom: 1px solid var(--borde); overflow: visible; }
+  .portada::before, .portada::after { display: none; }
+  .portada-interior { padding-top: 1px; padding-bottom: 2rem; }
+  .portada .migas { margin-top: 1.25rem; }
+  .portada-grid { grid-template-columns: minmax(0, 1.5fr) minmax(17rem, .7fr); gap: 3rem; margin-top: 1rem; align-items: end; }
+  .portada-meta { color: var(--tinta-3); gap: .8rem; font-size: .7rem; letter-spacing: .06em; }
+  .terminal { color: var(--acento); border-color: var(--borde-fuerte); padding: .1rem .45rem; }
+  .sobrelinea { color: var(--tinta-3); letter-spacing: .07em; font-size: .7rem; }
+  .portada h1 { color: var(--tinta); font: 600 clamp(1.8rem, 1.35rem + 1.8vw, 2.6rem)/1.15 var(--serif); letter-spacing: -.02em; margin: .45rem 0 .75rem; }
+  .portada h1 br { display: none; }
+  .portada h1 span { color: var(--tinta); }
+  .portada h1 span::before { content: ' '; }
+  .tesis-corta { color: var(--tinta-2); max-width: 46rem; font-size: 1rem; }
+  .veredicto { background: var(--papel-2); border: 1px solid var(--borde); border-top: 3px solid var(--acento); box-shadow: none; padding: 1rem 1.1rem; }
+  .veredicto-etiqueta, .veredicto p, .veredicto dt { color: var(--tinta-3); }
+  .veredicto > strong, .veredicto dd { color: var(--tinta); }
+  .veredicto > strong { font-size: 1.45rem; }
+  .veredicto dl, .veredicto dl div { border-color: var(--borde); }
+  .indice { position: static; background: var(--papel-2); border-top: 0; border-bottom: 1px solid var(--borde); }
+  .indice a { color: var(--tinta-2); padding-top: .6rem; padding-bottom: .6rem; text-transform: none; letter-spacing: 0; font-size: .78rem; }
+  .indice a:hover { color: var(--tinta); }
+  .cuerpo { padding-top: 1.5rem; }
+  .metrica-principal { background: var(--acento-suave); }
+  .metrica-principal span, .metrica-principal small { color: var(--tinta-2); }
+  .seccion { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+  .seccion-dos { grid-template-columns: 11rem minmax(0, 1fr); gap: 3rem; }
+  .titulo-lateral h2, .contenido h3, .entradilla { color: var(--tinta); }
+  .lectura-clave, .no-sumar, .diagrama { background: var(--papel-2); color: var(--tinta-2); border: 1px solid var(--borde); }
+  .lectura-clave span, .no-sumar-signo, .diagrama b { color: var(--acento); }
+  .no-sumar h3, .diagrama { color: var(--tinta); }
+  .diagrama div { border-color: var(--acento); }
+  .diagrama small { color: var(--tinta-3); }
+  .nota-analista { background: var(--aviso-fondo); }
+  .conclusion { background: var(--papel-2); border: 1px solid var(--borde); border-top: 3px solid var(--acento); padding: 1.5rem 1.7rem; margin: 0 0 4rem; }
+  .conclusion h2 { font: 600 1.55rem/1.25 var(--serif); letter-spacing: -.01em; margin: .45rem 0 .8rem; }
+  .conclusion-regla { border-color: var(--borde-fuerte); }
+  .fuentes-informe { padding-top: 2.5rem; }
+  @media (max-width: 950px) {
+    .portada-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+    .seccion-dos { grid-template-columns: 9rem minmax(0, 1fr); gap: 2rem; }
+    .conclusion { margin-left: 0; }
+  }
+  @media (max-width: 700px) {
+    .pagina, .portada-interior { width: 100%; }
+    .portada h1 { font-size: 1.9rem; }
+    .seccion-dos { display: block; }
+    .seccion { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+  }
+</style>

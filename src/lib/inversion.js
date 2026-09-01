@@ -1,0 +1,134 @@
+// Catálogo editorial de exposiciones cotizadas al despliegue de centros de
+// datos en España. No altera la taxonomía del registro: un operador, un
+// propietario legal y una acción cotizada responden a preguntas distintas.
+
+export const TESIS_ESTADO = {
+  publicada: 'Publicada',
+  siguiente: 'Siguiente',
+  pendiente: 'Por investigar',
+}
+
+export const exposicionesInversion = [
+  {
+    id: 'merlin-properties',
+    nombre: 'MERLIN Properties',
+    ticker: 'MRL · BME',
+    estado: 'publicada',
+    tipo: 'Propietario y desarrollador',
+    intensidad: 'directa',
+    resumen: 'La forma cotizada más directa de comprar capacidad ibérica ya operativa, prealquilada y en desarrollo.',
+    pregunta: '¿Compensa el descuento a NTA el riesgo de ejecución, financiación y concentración?',
+    href: '/inversion/merlin-properties',
+    operadores: [
+      { nombre: 'MERLIN Edged', slug: 'merlin-edged' },
+      { nombre: 'MERLIN Properties SOCIMI, S.A.', slug: 'merlin-properties-socimi-s-a' },
+    ],
+  },
+  {
+    id: 'acs',
+    nombre: 'ACS',
+    ticker: 'ACS · BME',
+    estado: 'siguiente',
+    tipo: 'Promotor, propietario y constructor',
+    intensidad: 'directa',
+    resumen: 'Combina desarrollo propio con Turner y una cartera global de construcción digital.',
+    pregunta: '¿Cuánto valor queda en ACS después de compartir su plataforma con GIP de BlackRock?',
+    fuente: 'https://pressroom.grupoacs.com/noticias/acs-net-profit-510-million-1h2026',
+    operadores: [
+      { nombre: 'ACS Digital & Energy', slug: 'acs-digital-energy' },
+      { nombre: 'ACS Digital Infrastructure Development', slug: 'acs-digital-infrastructure-development-s-l-grupo-acs' },
+    ],
+  },
+  {
+    id: 'iberdrola',
+    nombre: 'Iberdrola',
+    ticker: 'IBE · BME',
+    estado: 'siguiente',
+    tipo: 'Energía, suelo electrificado y participación',
+    intensidad: 'directa',
+    resumen: 'La expansión convierte la conexión eléctrica en producto inmobiliario y en demanda contratada de energía.',
+    pregunta: '¿La alianza con Echelon mueve el beneficio del grupo o solo aporta opcionalidad?',
+    fuente: 'https://www.iberdrola.com/documents/20125/41740/Iberdrola_factbook_2026.pdf',
+    operadores: [
+      { nombre: 'Echelon Iberdrola Digital Infra', slug: 'echelon-iberdrola-digital-infra' },
+      { nombre: 'Iberdrola', slug: 'iberdrola' },
+    ],
+  },
+  {
+    id: 'solaria',
+    nombre: 'Solaria',
+    ticker: 'SLR · BME',
+    estado: 'siguiente',
+    tipo: 'Promotor energético y plataforma digital',
+    intensidad: 'directa y especulativa',
+    resumen: 'Los acuerdos de data center y PPA pueden cambiar el perfil de una solar mucho más pequeña que Iberdrola.',
+    pregunta: '¿Los MW anunciados acabarán como activos propios, contratos de energía o ambos?',
+    fuente: 'https://solariaenergia.com/en/solaria-exceeds-forecasts-with-record-ebitda-of-e266-million-32-and-increases-its-net-profit-to-e137-million-55-in-2025/',
+    operadores: [{ nombre: 'DataSection', slug: 'data-section' }],
+  },
+  {
+    id: 'ferrovial',
+    nombre: 'Ferrovial',
+    ticker: 'FER · BME / Nasdaq',
+    estado: 'siguiente',
+    tipo: 'Desarrollador y constructor',
+    intensidad: 'directa',
+    resumen: 'Creó una división de infraestructura digital y ya promueve un campus en Alcobendas.',
+    pregunta: '¿Puede repetir en data centers el modelo de desarrollo y rotación de capital de otras infraestructuras?',
+    fuente: 'https://static.ferrovial.com/wp-content/uploads/2026/02/25231840/iai-2025-ferrovial.pdf',
+    operadores: [{ nombre: 'Ferrovial Digital Infrastructure', slug: 'ferrovial-digital-infrastructure' }],
+  },
+  {
+    id: 'acciona',
+    nombre: 'Acciona',
+    ticker: 'ANA · BME',
+    estado: 'pendiente',
+    tipo: 'Energía, construcción y coinversión',
+    intensidad: 'directa pero pequeña',
+    resumen: 'Tiene exposición mediante proyectos propios y una sociedad conjunta con IGNIS.',
+    pregunta: '¿La cartera digital es material frente al resto del grupo y quién aporta el capital?',
+    operadores: [],
+    sitios: [
+      { nombre: 'Acciona / IGNIS Segovia', id: 'acciona-ignis-segovia' },
+      { nombre: 'Valle de Elorz', id: 'acciona-valle-de-elorz-ciudad-del-transporte' },
+    ],
+  },
+  {
+    id: 'repsol',
+    nombre: 'Repsol',
+    ticker: 'REP · BME',
+    estado: 'pendiente',
+    tipo: 'Suelo, energía y acceso eléctrico',
+    intensidad: 'opcional',
+    resumen: 'Escatrón permite estudiar el valor de reconvertir infraestructura energética existente.',
+    pregunta: '¿Repsol será propietario, suministrador o vendedor del proyecto una vez desriesgado?',
+    operadores: [],
+    sitios: [{ nombre: 'Repsol Escatrón', id: 'repsol-escatron-campus-ia' }],
+  },
+  {
+    id: 'blackstone',
+    nombre: 'Blackstone',
+    ticker: 'BX · NYSE',
+    estado: 'pendiente',
+    tipo: 'Capital privado e infraestructura',
+    intensidad: 'indirecta',
+    resumen: 'La exposición española aparece bajo QTS y otros vehículos, no bajo el nombre de la cotizada.',
+    pregunta: '¿España puede ser material dentro de una plataforma global del tamaño de Blackstone?',
+    operadores: [{ nombre: 'QTS Data Centers', slug: 'qts-data-centers' }],
+  },
+  {
+    id: 'digitalbridge',
+    nombre: 'DigitalBridge',
+    ticker: 'DBRG · NYSE',
+    estado: 'pendiente',
+    tipo: 'Gestor de infraestructura digital',
+    intensidad: 'indirecta',
+    resumen: 'Vantage aporta la exposición física. La cotizada posee y gestiona una cartera global mucho más amplia.',
+    pregunta: '¿Qué parte del crecimiento español llega al accionista de DigitalBridge?',
+    operadores: [{ nombre: 'Vantage Data Centers', slug: 'vantage-data-centers-emea-f2-dino-properties-sarl' }],
+  },
+]
+
+export const tesisPublicadas = exposicionesInversion.filter((empresa) => empresa.estado === 'publicada')
+export const proximasTesis = exposicionesInversion.filter((empresa) => empresa.estado === 'siguiente')
+export const tesisPendientes = exposicionesInversion.filter((empresa) => empresa.estado === 'pendiente')
