@@ -119,7 +119,7 @@ incertidumbres:
     fuentes: [src-pic, src-osm]
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-09-07"
 
 fuentes:
   - id: src-res

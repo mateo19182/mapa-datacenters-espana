@@ -73,7 +73,7 @@ incertidumbres:
       correspondencia entre emplazamiento y permiso haya que reconstruirla a mano en este
       registro.
     fuentes: [src-ree-csv]
-ultima_verificacion: "2026-09-01"
+ultima_verificacion: "2026-09-07"
 fuentes:
   - id: src-boe-circular
     url: "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2024-20760"

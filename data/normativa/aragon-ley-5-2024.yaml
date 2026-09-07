@@ -84,7 +84,7 @@ incertidumbres:
       industrial que resulta aplicable a cualquier inversión productiva. Su uso para
       tramitar centros de datos es un efecto, no un objeto declarado.
     fuentes: [src-boe-ley5]
-ultima_verificacion: "2026-09-01"
+ultima_verificacion: "2026-09-07"
 fuentes:
   - id: src-boe-ley5
     url: "https://www.boe.es/buscar/act.php?id=BOE-A-2025-1392"

@@ -86,7 +86,7 @@ incertidumbres:
       legislativo del Parlamento mantiene el expediente en estado «anunciado». Se conservan
       las dos lecturas y se señala cuál está respaldada por fuente institucional.
     fuentes: [src-ep-train, src-yeandel]
-ultima_verificacion: "2026-09-01"
+ultima_verificacion: "2026-09-07"
 fuentes:
   - id: src-comision
     url: "https://digital-strategy.ec.europa.eu/en/library/proposal-cloud-and-ai-development-act-cada"

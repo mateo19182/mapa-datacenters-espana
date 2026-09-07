@@ -76,7 +76,7 @@ incertidumbres:
       no por centro. Que un emplazamiento cumpla esta obligación no significa que sus datos
       sean consultables uno a uno.
     fuentes: [src-eurlex]
-ultima_verificacion: "2026-09-01"
+ultima_verificacion: "2026-09-07"
 fuentes:
   - id: src-eurlex
     url: "https://eur-lex.europa.eu/eli/reg_del/2024/1364/oj"

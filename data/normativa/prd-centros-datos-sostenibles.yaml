@@ -273,7 +273,7 @@ incertidumbres:
       propio informe anual. Son estimaciones de parte interesada en la tramitación, no
       un dato contrastado.
     fuentes: [src-eleconomista, src-ejeprime]
-ultima_verificacion: "2026-09-01"
+ultima_verificacion: "2026-09-07"
 fuentes:
   - id: src-prd
     url: "https://www.miteco.gob.es/content/dam/miteco/es/energia/files-1/es-ES/Participacion/Documents/anexos/aeip-rd-cpds-sostenibles/PRD%20CPDs%20audiencia%20publica.pdf"
