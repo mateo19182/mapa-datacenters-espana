@@ -71,7 +71,7 @@ afecta:
       de los MW IT.
     fuentes: [src-boe-rd1183]
 relacionadas: [rdl-7-2026, rdl-18-2026, circular-1-2024-cnmc, prd-centros-datos-sostenibles]
-ultima_verificacion: "2026-09-01"
+ultima_verificacion: "2026-09-07"
 fuentes:
   - id: src-boe-rd1183
     url: "https://www.boe.es/buscar/act.php?id=BOE-A-2020-17278"

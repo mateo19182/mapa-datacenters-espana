@@ -125,7 +125,7 @@ incertidumbres:
       una con la aprobación definitiva del plan adelanta años el calendario real de un
       proyecto.
     fuentes: [src-piga-msft]
-ultima_verificacion: "2026-09-01"
+ultima_verificacion: "2026-09-07"
 fuentes:
   - id: src-orden-pej521
     url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1394676100707"

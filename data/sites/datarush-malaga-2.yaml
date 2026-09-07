@@ -47,7 +47,7 @@ incertidumbres:
     fuentes: [src-2, src-osm]
 
 confianza: baja
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-09-07"
 
 fuentes:
   - id: src-1
