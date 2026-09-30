@@ -108,6 +108,7 @@ npm run dev        # valida, reconcilia, construye los datos y levanta el sitio
 | `npm run data` | Los cuatro anteriores en orden |
 | `npm run build` | `data` + construcción del sitio en `dist/` |
 | `npm run refresh` | Comprueba las fuentes registradas y arma la cola de revisión |
+| `npm run refresh:ree` | Comprueba si REE ha publicado una edición nueva de capacidad de demanda |
 | `npm run refresh:sellar` | Igual, y actualiza la fecha de verificación de las fichas comprobadas |
 | `npm run propuestas` | Simula la integración de `data/propuestas/` y separa los conflictos |
 | `npm run grid:osm` | Recachea el trazado de 220/400 kV desde OpenStreetMap |
@@ -131,6 +132,11 @@ en `research/informe-actualizacion.md`: qué páginas han cambiado, cuáles se h
 roto, cuáles rechazan al comprobador automático sin estar rotas, y qué fichas
 llevan demasiado tiempo sin revisar. **No modifica ningún dato.**
 
+Una fuente cambiada queda pendiente en los siguientes barridos. La huella de
+referencia no se sustituye hasta que alguien revisa la página y ejecuta
+`npm run refresh -- --aceptar "URL"`. Si la página recupera el contenido anterior,
+el aviso se cierra solo. Una fuente vista por primera vez no sella la ficha.
+
 Con `--sellar` hace además una única escritura, que no toca ninguna afirmación:
 actualiza `ultima_verificacion` en las fichas cuyas fuentes se han releído todas
 con éxito y sin cambios. Así la fecha de verificación deja de ser un sello
@@ -151,8 +157,16 @@ siempre no es elegir uno, sino conservar ambos en `potencia[]` y documentar la
 discrepancia en `incertidumbres[]`.
 
 El flujo `.github/workflows/revision-fuentes.yml` ejecuta todo esto cada lunes y
-abre un *pull request* con los tres informes, para revisión humana antes de
+abre un *pull request* con los informes, para revisión humana antes de
 fusionar.
+
+El mismo flujo compara la fecha de `data/red/capacidad.yaml` con el CSV enlazado
+por REE y escribe `research/informe-ree.md`. Solo avisa: cambiar de edición exige
+reconciliar los valores de cada nudo, no solo sustituir la fecha.
+
+`docs/INVESTIGACION-PROGRAMADA.md` define la investigación semanal y mensual.
+Sus borradores van en `research/propuestas-revision/`, fuera de la carpeta de
+propuestas que el flujo puede integrar automáticamente.
 
 ## Búsqueda documental
 

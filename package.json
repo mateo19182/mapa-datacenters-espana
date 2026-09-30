@@ -14,6 +14,8 @@
     "preview": "astro preview",
     "grid:osm": "node scripts/fetch-osm-grid.mjs",
     "refresh": "node scripts/check-updates.mjs",
+    "refresh:ree": "node scripts/check-ree-release.mjs",
+    "test": "node --test scripts/*.test.mjs",
     "propuestas": "node scripts/apply-proposals.mjs",
     "propuestas:aplicar": "node scripts/apply-proposals.mjs --aplicar",
     "validate:strict": "node scripts/validate.mjs --strict",
