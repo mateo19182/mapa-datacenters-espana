@@ -30,6 +30,10 @@ jobs:
         continue-on-error: true
         run: node scripts/check-updates.mjs --sellar --dias "${{ inputs.dias || 180 }}"
 
+      - name: Comprobar publicación de REE
+        continue-on-error: true
+        run: npm run refresh:ree
+
       # Las propuestas pendientes se integran solo si no hay ningún conflicto.
       - name: Integrar propuestas sin conflicto
         id: propuestas
@@ -55,6 +59,7 @@ jobs:
             - `research/informe-actualizacion.md` — fuentes cambiadas, enlaces rotos y fichas caducadas
             - `research/informe-propuestas.md` — adiciones aplicadas y conflictos pendientes
             - `research/informe-validacion.md` — estado del esquema tras los cambios
+            - `research/informe-ree.md` — si REE ha publicado una edición posterior de capacidad de demanda
 
             Antes de fusionar: revisar los conflictos, editar los YAML afectados y actualizar
             su `ultima_verificacion`.

@@ -1,0 +1,8 @@
+[Unit]
+Description=Investigar novedades de centros de datos en España
+
+[Service]
+Type=oneshot
+WorkingDirectory=/home/mateo/projects/mapa-datacenters-espana
+ExecStart=/home/mateo/projects/mapa-datacenters-espana/scripts/run-research-agent.sh
+TimeoutStartSec=1h

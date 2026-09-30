@@ -14,6 +14,7 @@ import { createHash } from 'node:crypto'
 import { readFileSync, writeFileSync, existsSync } from 'node:fs'
 import { join } from 'node:path'
 import { cargarTodo, RAIZ, DIR_SITIOS, DIR_NORMATIVA } from './load.mjs'
+import { registrarLectura, aceptarPendiente } from './source-state.mjs'
 
 const args = process.argv.slice(2)
 const opcion = (nombre, porDefecto) => {
@@ -34,6 +35,16 @@ const huellas = existsSync(RUTA_HUELLAS) ? JSON.parse(readFileSync(RUTA_HUELLAS,
 
 const hoy = new Date().toISOString().slice(0, 10)
 const diasDesde = (iso) => Math.floor((Date.parse(hoy) - Date.parse(iso)) / 86400000)
+
+const indiceAceptar = args.indexOf('--aceptar')
+if (indiceAceptar >= 0) {
+  const url = args[indiceAceptar + 1]
+  if (!url || !huellas[url]?.pendiente) throw new Error('Indica una URL con un cambio pendiente')
+  huellas[url] = aceptarPendiente(huellas[url], hoy)
+  writeFileSync(RUTA_HUELLAS, JSON.stringify(huellas, null, 1), 'utf8')
+  console.log(`Cambio aceptado: ${url}`)
+  process.exit(0)
+}
 
 const { sitios, red, renovables, normativa } = cargarTodo()
 
@@ -165,15 +176,14 @@ if (!SOLO_CADUCADOS) {
           motivo,
           clase: esBloqueo(res) ? 'bloqueada' : 'rota',
         }
-      } else if (!previa?.hash) {
-        nuevas.push({ url, quien })
-        huellas[url] = { hash: res.hash, longitud: res.longitud, visto: hoy }
-      } else if (previa.hash !== res.hash) {
-        const delta = res.longitud - (previa.longitud ?? 0)
-        cambiadas.push({ url, quien, delta, desde: previa.visto ?? '—' })
-        huellas[url] = { hash: res.hash, longitud: res.longitud, visto: hoy, anterior: previa.hash }
       } else {
-        huellas[url] = { ...previa, visto: hoy }
+        const lectura = registrarLectura(previa, res, hoy)
+        huellas[url] = lectura.estado
+        if (lectura.resultado === 'nueva') nuevas.push({ url, quien })
+        if (lectura.resultado === 'cambiada') {
+          const delta = res.longitud - (previa.longitud ?? 0)
+          cambiadas.push({ url, quien, delta, desde: previa.pendiente?.detectado ?? hoy })
+        }
       }
 
       if (cola.length) await new Promise((r) => setTimeout(r, ESPERA_MS))
@@ -194,12 +204,13 @@ if (SELLAR && !SOLO_CADUCADOS) {
     estadoUrl.set(url, h.visto === hoy && !h.clase ? 'ok' : 'no')
   }
   const cambiadaUrl = new Set(cambiadas.map((c) => c.url))
+  const nuevaUrl = new Set(nuevas.map((n) => n.url))
 
   for (const s of sitios) {
     const urls = s.fuentes.map((f) => f.url)
     // Solo se sella si TODAS sus fuentes se releyeron hoy y ninguna cambió.
     const todasComprobadas = urls.length > 0 && urls.every((u) => estadoUrl.get(u) === 'ok')
-    const algunaCambio = urls.some((u) => cambiadaUrl.has(u))
+    const algunaCambio = urls.some((u) => cambiadaUrl.has(u) || nuevaUrl.has(u))
     if (!todasComprobadas || algunaCambio) continue
     if (s.ultima_verificacion === hoy) continue
 
@@ -220,7 +231,7 @@ if (SELLAR && !SOLO_CADUCADOS) {
   for (const n of normativa) {
     const suyas = n.fuentes.map((f) => f.url)
     if (!suyas.length || !suyas.every((u) => estadoUrl.get(u) === 'ok')) continue
-    if (suyas.some((u) => cambiadaUrl.has(u))) continue
+    if (suyas.some((u) => cambiadaUrl.has(u) || nuevaUrl.has(u))) continue
     if (n.ultima_verificacion === hoy) continue
 
     const ruta = join(DIR_NORMATIVA, `${n.id}.yaml`)
@@ -262,8 +273,9 @@ l.push('')
 if (cambiadas.length) {
   l.push('## Fuentes cuyo contenido ha cambiado', '')
   l.push('Revisar si el cambio afecta a algún dato registrado. Un cambio de pocos caracteres')
-  l.push('suele ser un elemento dinámico de la página, no información nueva.', '')
-  l.push('| Fuente | Registros que la citan | Variación | Última huella |')
+  l.push('suele ser un elemento dinámico de la página, no información nueva. El aviso')
+  l.push('permanece hasta aceptar el cambio o hasta que la página vuelve al contenido anterior.', '')
+  l.push('| Fuente | Registros que la citan | Variación | Detectado |')
   l.push('|---|---|---:|---|')
   for (const c of cambiadas.sort((a, b) => Math.abs(b.delta) - Math.abs(a.delta))) {
     const marca = relevante(c) ? '**' : ''
@@ -330,7 +342,8 @@ l.push('---', '')
 l.push('Para incorporar cambios: editar el YAML del emplazamiento, actualizar su')
 l.push('`ultima_verificacion` y ejecutar `npm run validate`. Si el dato nuevo contradice al')
 l.push('registrado, **no se sustituye**: se añade como entrada adicional en `potencia[]` y se')
-l.push('documenta el choque en `incertidumbres[]`.')
+l.push('documenta el choque en `incertidumbres[]`. Tras revisar una fuente cambiada, ejecutar')
+l.push('`npm run refresh -- --aceptar "URL"` para aceptar su nueva huella.')
 
 writeFileSync(join(RAIZ, 'research/informe-actualizacion.md'), l.join('\n'), 'utf8')
 

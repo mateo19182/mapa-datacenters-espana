@@ -15,6 +15,7 @@ jobs:
           node-version: '22'
           cache: npm
       - run: npm ci
+      - run: npm test
 
       # El esquema es la primera línea de defensa: un error bloquea la fusión.
       - name: Validar el conjunto de datos
