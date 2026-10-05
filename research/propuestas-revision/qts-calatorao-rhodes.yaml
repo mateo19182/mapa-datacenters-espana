@@ -1,0 +1,31 @@
+id: qts-calatorao-rhodes
+inversion_anunciada_eur: 13471000000
+empleo:
+  - tipo: total
+    valor: 3400
+    referencia: "Empleo anunciado cuando el Proyecto Rhodes esté completamente desarrollado"
+    fecha_dato: "2026-09-30"
+    fuentes: [src-aragonhoy-20260930]
+    nota: "La nota no desglosa los 3.400 puestos por tipo ni permite sumarlos a las cifras anteriores."
+incertidumbres:
+  - campo: estado
+    descripcion: >-
+      Aragón Hoy comunica la aprobación definitiva del PIGA el 30 de septiembre de 2026.
+      Falta contrastar el acuerdo publicado y el alcance de los permisos sectoriales.
+      Este hito no acredita por sí solo licencia de obras ni inicio de construcción.
+    fuentes: [src-aragonhoy-20260930]
+  - campo: inversion_anunciada_eur
+    descripcion: >-
+      El anuncio oficial de septiembre de 2026 eleva la inversión potencial a hasta
+      13.471 millones de euros. La ficha conserva 11.805.195.141 euros de la tabla
+      del PIGA inicial. Revisar alcance y fases antes de sustituir la cifra anterior.
+    fuentes: [src-1, src-aragonhoy-20260930]
+fuentes:
+  - id: src-aragonhoy-20260930
+    url: "https://pro.aragonhoy.es/presidencia-de-gobierno/gobierno-aragon-aprueba-piga-proyecto-rhodes-qts-106554"
+    titulo: 'Jorge Azcón: "El desarrollo completo del Proyecto Rhodes generará hasta 3.400 empleos y aportará a Calatorao más de un millón de euros en impuestos al año"'
+    editor: "Gobierno de Aragón, Aragón Hoy"
+    tipo: oficial
+    fecha_publicacion: "2026-09-30"
+    fecha_consulta: "2026-10-05"
+    cita: "Se estima una inversión de hasta 13.471 millones de euros y podrá generar 3.400 puestos de trabajo cuando esté completamente desarrollado"
