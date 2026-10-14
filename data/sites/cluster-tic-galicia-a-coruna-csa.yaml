@@ -1,0 +1,187 @@
+# CPD-CSA, incorporado tras revisión documental del 14 de octubre de 2026.
+
+id: cluster-tic-galicia-a-coruna-csa
+nombre: "Clúster TIC Galicia - CPD del Centro de Servicios Avanzados, Cidade das TIC"
+alias:
+  - "CPD-CSA"
+  - "Centro de Procesamiento de Datos del CSA"
+  - "CPD de la Cidade das TIC"
+tipo: edificio
+operador: "Clúster TIC Galicia"
+propietario: null
+cliente_ancla: null
+modelo: desconocido
+
+ubicacion:
+  municipio: "A Coruña"
+  provincia: "A Coruña"
+  ccaa: "Galicia"
+  direccion: "Centro de Servicios Avanzados, Cidade das TIC, Avenida de Pedralonga"
+  lat: 43.3322539
+  lon: -8.3948295
+  precision: aproximada
+  no_derivar: true
+  fuentes: [src-servicios, src-cidade, src-osm]
+
+estado: operativo
+estado_detalle: >-
+  El Clúster TIC Galicia anunció el 5 de junio de 2026 la puesta en marcha de los servicios de su
+  CPD en el Centro de Servicios Avanzados de la Cidade das TIC, en A Coruña. Ofrece máquinas
+  virtuales y recursos para IA, computación avanzada y procesamiento multimedia con pago por uso. El
+  dosier de servicios de 2026 describe una infraestructura con NVIDIA L4 y procesadores AMD EPYC
+  7763, 1.280 vCPU y 2.560 GB de RAM. Las vCPU son recursos virtuales publicados y no se registran
+  como recuento de procesadores o núcleos físicos. El dosier orienta el servicio al desarrollo y
+  advierte que no ofrece servicio continuo 24x7 ni durante los fines de semana. La nota anuncia
+  también acceso a NVIDIA A40 de 48 GB y H200 de 141 GB, sin recuento de GPU. El catálogo técnico
+  enlazado desde la web del CSA sí documenta servidores A40 en la instalación; no se ha confirmado
+  el despliegue físico de las H200. Es un emplazamiento distinto del CITIC del Campus de Elviña.
+estado_fuentes: [src-servicios, src-dosier, src-servicios-csa, src-catalogo]
+
+potencia: []
+
+computo:
+  - tipo: gpu
+    ambito: particion
+    sistema: "CPD-CSA, recursos NVIDIA L4"
+    modelo: "NVIDIA L4 de 24 GB GDDR6"
+    unidades: 15
+    tipo_unidad: acelerador
+    estado: operativo
+    fecha_dato: "2026"
+    fuentes: [src-dosier]
+    nota: >-
+      Recuento explícito del dosier de servicios, página 3. La nota del 5 de junio dice más de 15
+      L4. Se conserva esa discrepancia en incertidumbres y no se deduce un total de 16 ni una
+      ampliación entre documentos. Las A40 y H200 anunciadas como acceso disponible no se suman a
+      este inventario.
+  - tipo: gpu
+    ambito: particion
+    sistema: CPD-CSA, servidores L4 IA del catálogo técnico
+    modelo: NVIDIA Ada L4 de 24 GB GDDR6
+    nodos: 6
+    tipo_unidad: acelerador
+    estado: operativo
+    fuentes:
+      - src-catalogo
+    nota: "El catálogo sin fecha publica seis servidores AMD EPYC Genoa 9534 y una máquina virtual
+      máxima de tres GPU por servidor. No se calcula un total de tarjetas ni se suma este inventario
+      al dosier de 2026: no consta que sean inventarios independientes."
+  - tipo: gpu
+    ambito: particion
+    sistema: CPD-CSA, servidores L4 MEDIA del catálogo técnico
+    modelo: NVIDIA L4 PCIe
+    nodos: 5
+    tipo_unidad: acelerador
+    estado: operativo
+    fuentes:
+      - src-catalogo
+    nota: Cinco servidores PowerEdge R7525 con AMD 7763; el catálogo describe una máquina virtual máxima
+      de tres GPU. No se multiplica el número de servidores por esa configuración ni se suma al
+      recuento de 15 L4 del dosier.
+  - tipo: gpu
+    ambito: particion
+    sistema: CPD-CSA, servidores A40 IA del catálogo técnico
+    modelo: NVIDIA A40 de 48 GB GDDR6 PCIe 4.0
+    tipo_unidad: acelerador
+    estado: operativo
+    fuentes:
+      - src-catalogo
+    nota: El catálogo técnico documenta servidores A40 en el CPD. Su tabla tarifaria dice tres
+      servidores y la ficha técnica dice dos; cada máquina virtual máxima dispone de tres GPU. Se
+      omiten el número de nodos y el total de tarjetas hasta resolver la contradicción.
+
+enlaces_proyecto:
+  - "https://csa.mspfactory.com/"
+
+incertidumbres:
+  - campo: computo.unidades
+    descripcion: >-
+      El dosier de 2026 publica exactamente 15 L4; la nota de lanzamiento del 5 de junio publica más
+      de 15. No consta un inventario posterior que resuelva la diferencia. El recuento estructurado
+      reproduce solo el dosier, con su fuente.
+    fuentes: [src-dosier, src-servicios]
+  - campo: computo
+    descripcion: >-
+      El catálogo técnico confirma servidores A40, pero discrepa en su número: tres en tarifas y dos
+      en especificaciones. No está fechado y no se ha conciliado con el dosier de 2026 ni con las
+      particiones L4. La H200 de 141 GB solo aparece como acceso anunciado, sin cantidad ni
+      alojamiento físico acreditado. No se registra como hardware instalado.
+    fuentes:
+      - src-servicios
+      - src-dosier
+      - src-catalogo
+  - campo: ubicacion
+    descripcion: >-
+      El punto es la referencia aproximada del recinto Cidade das TIC de OpenStreetMap, no una
+      localización verificada de la sala del CPD. La fuente primaria sitúa el servicio en el CSA de
+      Avenida de Pedralonga. No se usa la sede del Clúster en Santiago de Compostela.
+    fuentes:
+      - src-servicios
+      - src-cidade
+      - src-osm
+  - campo: potencia
+    descripcion: >-
+      Las fuentes consultadas no publican carga IT ni potencia de conexión del CPD. No se deducen a
+      partir del número o modelo de GPU.
+    fuentes: [src-servicios, src-dosier]
+  - campo: estado_detalle
+    descripcion: El dosier de 2026 indica ausencia de servicio 24x7 y de fines de semana. El catálogo
+      sin fecha describe reservas especiales fuera de horario y sin SLA. Se conserva la diferencia
+      documental; no se ofrece una garantía de disponibilidad continua.
+    fuentes:
+      - src-dosier
+      - src-catalogo
+
+confianza: media
+
+fuentes:
+  - id: src-servicios
+    url: "https://clusterticgalicia.com/noticias/o-cluster-tic-galicia-lanza-os-servizos-do-centro-de-p\
+      rocesamento-de-datos-do-csa-con-descontos-para-socios-e-inquilinos/?lang=es"
+    titulo: "El Clúster TIC Galicia pone en marcha los servicios del CPD del CSA"
+    editor: "Clúster TIC Galicia"
+    tipo: asociacion
+    fecha_publicacion: "2026-06-05"
+    fecha_consulta: "2026-10-14"
+    cita: "más de 15 NVIDIA L4 de 24 GB [...] NVIDIA A40 de 48 GB y NVIDIA H200 de 141 GB"
+  - id: src-dosier
+    url: "https://media.timtul.com/media/web_clustertic/Tarifas_CPD_CSA_20260605122026.pdf"
+    titulo: "Dosier de servicios CPD-CSA 2026, página 3"
+    editor: "Clúster TIC Galicia / Centro de Servicios Avanzados"
+    tipo: asociacion
+    fecha_publicacion: "2026"
+    fecha_consulta: "2026-10-14"
+    cita: "1280 VCPUS [...] AMD EPYC 7763 [...] 2560 GB RAM [...] 15X NVIDIA L4 [...] 24 GB de memoria
+      GDDR6"
+  - id: src-cidade
+    url: "https://www.cidadedastic.gal/"
+    titulo: "Cidade das TIC, localización y Centro de Servicios Avanzados"
+    editor: "Cidade das TIC"
+    tipo: oficial
+    fecha_consulta: "2026-10-14"
+    cita: "La Cidade das TIC se ubica en los terrenos de la antigua Fábrica de Armas, situados en la
+      Avenida de Pedralonga de A Coruña."
+  - id: src-catalogo
+    url: https://drive.google.com/file/d/1O_XVq95xOKOteeo6J__L-Ze9yuRtcXMg/view
+    titulo: "Catálogo de servicios del CSA: servidores especializados IA y Media, páginas 2 y 3"
+    editor: Clúster TIC Galicia / Centro de Servicios Avanzados
+    tipo: asociacion
+    cita: "Número de servidores A40 IA: 3 [...] Disponibles 2 servidores [...] Disponibles 6 servidores
+      [...] Disponibles 5 servidores"
+    fecha_consulta: 2026-10-14
+  - id: src-servicios-csa
+    url: https://www.cidadedastic.gal/centro-de-servicios-avanzados/servicios-centro-de-servicios-avanzados-csa/
+    titulo: Servicios del CSA y enlace al catálogo técnico del CPD
+    editor: Cidade das TIC
+    tipo: oficial
+    cita: Acceso a servidores especializados, situados en el CPD de la instalación, para el
+      entrenamiento de modelos
+    fecha_consulta: 2026-10-14
+  - id: src-osm
+    url: https://nominatim.openstreetmap.org/search?q=Cidade%20das%20TIC&format=json&limit=3
+    titulo: OpenStreetMap / Nominatim, recinto Cidade das TIC, way 158972808
+    editor: OpenStreetMap / Nominatim
+    tipo: otro
+    cita: Cidade das TIC, A Coruña, Galicia, España. lat 43.3322539, lon -8.3948295. landuse commercial.
+    fecha_consulta: 2026-10-14
+ultima_verificacion: 2026-10-14

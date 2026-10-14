@@ -16,8 +16,9 @@
 # otras porque la fuente se contradice, otras porque resultaron no ser centros
 # de datos. Que una pista no prospere también es un resultado.
 
-fecha: "2026-08-31"
-origen: "Auditoría de cobertura (research/cobertura.md, sección 3) y barrido documental del 31 de agosto de 2026"
+fecha: "2026-10-14"
+origen: "Auditoría de cobertura (research/cobertura.md, sección 3) y barrido documental del 31 de
+  agosto de 2026; revisión de investigaciones semanales del 14 de octubre de 2026"
 
 proyectos:
   # --- la fuente se contradice o no basta -----------------------------------
@@ -28,11 +29,11 @@ proyectos:
     potencia_citada: null
     prioridad: baja
     nota: >-
-      La fuente se contradice consigo misma. DataRush anunció en 2024 un centro en Granada
-      «para finales de este año», pero su ficha de proveedor en Baxtel dice en prosa que
-      opera tres centros —dos en Málaga y uno en Granada— mientras su propio listado muestra
-      solo los dos de Málaga, ambos ya fichados. Sin dirección, sin fecha de apertura y sin
-      confirmación de la compañía.
+      La fuente se contradice consigo misma. DataRush anunció en 2024 un centro en Granada «para
+      finales de este año», pero su ficha de proveedor en Baxtel dice en prosa que opera tres
+      centros —dos en Málaga y uno en Granada— mientras su propio listado muestra solo los dos de
+      Málaga, ambos ya fichados. Sin dirección, sin fecha de apertura y sin confirmación de la
+      compañía.
   - municipio: Velilla del Río Carrión
     provincia: Palencia
     ccaa: Castilla y León
@@ -40,12 +41,12 @@ proyectos:
     potencia_citada: null
     prioridad: media
     nota: >-
-      Sigue sin fuente primaria tras dos barridos. La nota de Iberdrola de 26/11/2025 que
-      formaliza la empresa conjunta nombra solo Madrid Sur y habla de «más de 700 MW
-      asegurados cerca de Madrid». Velilla no aparece ahí, ni en la nota de julio de 2025, ni
-      en echelon-dc.com. La única mención es un reportaje de DCD que además sitúa mal la
-      central de Aceca. La térmica de Velilla existe y es de Iberdrola, pero está en
-      desmantelamiento desde 2020: que haya suelo y nudo no es prueba de proyecto.
+      Sigue sin fuente primaria tras dos barridos. La nota de Iberdrola de 26/11/2025 que formaliza
+      la empresa conjunta nombra solo Madrid Sur y habla de «más de 700 MW asegurados cerca de
+      Madrid». Velilla no aparece ahí, ni en la nota de julio de 2025, ni en echelon-dc.com. La
+      única mención es un reportaje de DCD que además sitúa mal la central de Aceca. La térmica de
+      Velilla existe y es de Iberdrola, pero está en desmantelamiento desde 2020: que haya suelo y
+      nudo no es prueba de proyecto.
   # --- huecos nuevos detectados en el barrido -------------------------------
   - municipio: Peralta
     provincia: Navarra
@@ -54,9 +55,9 @@ proyectos:
     potencia_citada: 132 MW
     prioridad: alta
     nota: >-
-      El mayor de los seis proyectos de la Ribera de Navarra y el único que faltaba en esta
-      lista. Sigue en tramitación, con nudo previsto en Castejón 400 kV. El Gobierno foral se
-      niega a identificar al promotor.
+      El mayor de los seis proyectos de la Ribera de Navarra y el único que faltaba en esta lista.
+      Sigue en tramitación, con nudo previsto en Castejón 400 kV. El Gobierno foral se niega a
+      identificar al promotor.
   - municipio: Barcelona (22@)
     provincia: Barcelona
     ccaa: Cataluña
@@ -64,9 +65,9 @@ proyectos:
     potencia_citada: null
     prioridad: media
     nota: >-
-      Hueco descubierto al corregir un error del Observatorio EDC. El código ODC2 no
-      corresponde al centro de Sant Fruitós de Bages, que es el tercero del operador y tiene
-      10 MW y no 8: ODC2 es un centro del 22@ de Barcelona que no tiene ficha.
+      Hueco descubierto al corregir un error del Observatorio EDC. El código ODC2 no corresponde al
+      centro de Sant Fruitós de Bages, que es el tercero del operador y tiene 10 MW y no 8: ODC2 es
+      un centro del 22@ de Barcelona que no tiene ficha.
   - municipio: Madrid
     provincia: Madrid
     ccaa: Comunidad de Madrid
@@ -74,10 +75,10 @@ proyectos:
     potencia_citada: null
     prioridad: baja
     nota: >-
-      Sustituye a la antigua entrada de Málaga, que estaba mal formulada. Lo que Unicaja
-      anunció el 04/06/2026 en su Plan Estratégico 2025-2027 son dos cosas distintas: un hub
-      tecnológico de oficinas en el Málaga TechPark, que no es un CPD, y un centro de datos
-      nuevo en Madrid para el proyecto Atlas. Sin ubicación publicada.
+      Sustituye a la antigua entrada de Málaga, que estaba mal formulada. Lo que Unicaja anunció el
+      04/06/2026 en su Plan Estratégico 2025-2027 son dos cosas distintas: un hub tecnológico de
+      oficinas en el Málaga TechPark, que no es un CPD, y un centro de datos nuevo en Madrid para el
+      proyecto Atlas. Sin ubicación publicada.
   - municipio: Cifuentes
     provincia: Guadalajara
     ccaa: Castilla-La Mancha
@@ -85,10 +86,10 @@ proyectos:
     potencia_citada: 50-100 MW
     prioridad: media
     nota: >-
-      Sin confirmación oficial ni expediente administrativo. Plataformas vecinales (Alcarria
-      es Patrimonio, ALIENTE, Ecologistas en Acción) alertan de que Solaria busca unas 20
-      hectáreas en el municipio, incluida una parcela municipal sacada a licitación. Solaria
-      no respondió a elDiario.es el 06/08/2026.
+      Sin confirmación oficial ni expediente administrativo. Plataformas vecinales (Alcarria es
+      Patrimonio, ALIENTE, Ecologistas en Acción) alertan de que Solaria busca unas 20 hectáreas en
+      el municipio, incluida una parcela municipal sacada a licitación. Solaria no respondió a
+      elDiario.es el 06/08/2026.
   - municipio: A Coruña
     provincia: A Coruña
     ccaa: Galicia
@@ -96,66 +97,76 @@ proyectos:
     potencia_citada: null
     prioridad: media
     nota: >-
-      Segundo CPD del banco, gemelo del de Pocomaco y situado en la sede de A Coruña. Dos
-      fuentes independientes confirman que existe, opera en paralelo y replica cada
-      operación. No tiene ficha porque no consta dirección ni ninguna magnitud.
+      Segundo CPD del banco, gemelo del de Pocomaco y situado en la sede de A Coruña. Dos fuentes
+      independientes confirman que existe, opera en paralelo y replica cada operación. No tiene
+      ficha porque no consta dirección ni ninguna magnitud.
+  - municipio: Méntrida
+    provincia: Toledo
+    ccaa: Castilla-La Mancha
+    compania: Operador del CPD sin identificar; Solaria es la peticionaria eléctrica
+    potencia_citada: null
+    prioridad: alta
+    nota: "BOE-B-2026-32678, de 8 de octubre, somete a información pública la línea directa y SE Venero
+      220/20 kV para un nuevo CPD, expediente Con-09. Las parcelas 57 y 58 del polígono 17 y los
+      5.745,2 m² son de la subestación, no del CPD. Falta localizar el centro, su titular y
+      operador. Los MVA de transformación no se convierten a MW IT. Fuente:
+      https://www.boe.es/diario_boe/txt.php?id=BOE-B-2026-32678"
 
 # Pistas abiertas: aquí falta el municipio, el promotor o ambos, así que no
 # pueden pasar ni a la tabla de arriba. Cada una dice qué le falta.
 pistas:
   - >-
     L14 REIS promueve el «Campus Logístico de Datos de Villena» sobre los 332.000 m² del área
-    industrial Casa del Padre (Alicante), con Plan Parcial aprobado y la promotora como
-    propietaria del 100 % del suelo y agente urbanizador. Se le abrió ficha el 31 de agosto de
-    2026 y se retiró el mismo día, por el mismo criterio que Ponentia: no hay operador de
-    centro de datos, y los «hasta 100 MW IT» son un techo de masterplan que publica la asesora
-    legal de la promotora, no potencia de una instalación. Es la más sólida de las pistas de
-    suelo, porque el Ayuntamiento la presentó oficialmente el 23 de septiembre de 2025.
+    industrial Casa del Padre (Alicante), con Plan Parcial aprobado y la promotora como propietaria
+    del 100 % del suelo y agente urbanizador. Se le abrió ficha el 31 de agosto de 2026 y se retiró
+    el mismo día, por el mismo criterio que Ponentia: no hay operador de centro de datos, y los
+    «hasta 100 MW IT» son un techo de masterplan que publica la asesora legal de la promotora, no
+    potencia de una instalación. Es la más sólida de las pistas de suelo, porque el Ayuntamiento la
+    presentó oficialmente el 23 de septiembre de 2025.
   - >-
-    Ponentia Logistics comercializa cuatro suelos para centros de datos —Lleida Nord,
-    L'Hospitalet de l'Infant, L'Espluga de Francolí (Tarragona) y La Melusa, en Tamarite de
-    Litera (Huesca)— sin operador conocido en ninguno. Se les llegó a abrir ficha el 31 de
-    agosto de 2026 y se retiraron el mismo día: este registro documenta centros de datos, no
-    ofertas de suelo, y ninguno tiene promotor de centro ni proyecto técnico. El de Tamarite
-    es el más avanzado, con un Plan de Interés General de Aragón cuya modificación sustancial
-    se aprobó inicialmente (Orden VFL/907/2026) y una línea de 132 kV en información pública.
-    Si alguno llega a tener operador, vuelve a la tabla de arriba.
+    Ponentia Logistics comercializa cuatro suelos para centros de datos —Lleida Nord, L'Hospitalet
+    de l'Infant, L'Espluga de Francolí (Tarragona) y La Melusa, en Tamarite de Litera (Huesca)— sin
+    operador conocido en ninguno. Se les llegó a abrir ficha el 31 de agosto de 2026 y se retiraron
+    el mismo día: este registro documenta centros de datos, no ofertas de suelo, y ninguno tiene
+    promotor de centro ni proyecto técnico. El de Tamarite es el más avanzado, con un Plan de
+    Interés General de Aragón cuya modificación sustancial se aprobó inicialmente (Orden
+    VFL/907/2026) y una línea de 132 kV en información pública. Si alguno llega a tener operador,
+    vuelve a la tabla de arriba.
   - >-
     Ribera de Navarra: seis proyectos y 382 MW, ahora desglosados gracias a la respuesta del
-    consejero Irujo de 15/11/2025. Son Peralta (132 MW), Valtierra I y II (50 cada uno),
-    Tudela I (50), Arguedas (50) y Ribaforada (50). Solo dos siguen en tramitación, Peralta y
-    uno de Valtierra; a los otros cuatro Industria les devolvió el aval por falta de acceso a
-    la red. Nudos previstos: Castejón 400 kV, La Serna 66, Tudela 66 y Quel 66. Los
-    promotores no se publican: una empresa navarra impulsa los de Ribaforada y Tudela, una
-    madrileña los de Valtierra y Arguedas, y el de Peralta va sin atribuir.
+    consejero Irujo de 15/11/2025. Son Peralta (132 MW), Valtierra I y II (50 cada uno), Tudela I
+    (50), Arguedas (50) y Ribaforada (50). Solo dos siguen en tramitación, Peralta y uno de
+    Valtierra; a los otros cuatro Industria les devolvió el aval por falta de acceso a la red. Nudos
+    previstos: Castejón 400 kV, La Serna 66, Tudela 66 y Quel 66. Los promotores no se publican: una
+    empresa navarra impulsa los de Ribaforada y Tudela, una madrileña los de Valtierra y Arguedas, y
+    el de Peralta va sin atribuir.
   - >-
-    Aprisco Group en Asturias: compañía catalana fundada en 2018. En marzo de 2026 ofreció
-    1.000 millones y 700-800 empleos y exigió al Principado 100.000 m² con alta potencia en
-    la zona central, con un plazo de siete días y la amenaza de irse a Galicia o Cantabria.
-    No consta desenlace ni terreno.
+    Aprisco Group en Asturias: compañía catalana fundada en 2018. En marzo de 2026 ofreció 1.000
+    millones y 700-800 empleos y exigió al Principado 100.000 m² con alta potencia en la zona
+    central, con un plazo de siete días y la amenaza de irse a Galicia o Cantabria. No consta
+    desenlace ni terreno.
   - >-
-    Segundo CPD del Gobierno de Navarra: Nasertic gestiona dos, y solo el principal, en la
-    calle Orkoien de Pamplona, tiene ficha. La ubicación del segundo no se publica.
+    Segundo CPD del Gobierno de Navarra: Nasertic gestiona dos, y solo el principal, en la calle
+    Orkoien de Pamplona, tiene ficha. La ubicación del segundo no se publica.
   - >-
-    CPD de la Comunidad de Madrid adjudicado a Telefónica en junio de 2025 por más de 24,5
-    millones a diez años: no es un emplazamiento nuevo sino un contrato de arrendamiento de
-    espacios técnicos, es decir, capacidad alojada en una instalación de terceros. Ficharlo
-    duplicaría MW ya contados bajo el anfitrión. Debe modelarse como inquilino cuando se
-    identifique dónde está. El expediente original, ECON/000182/2023, quedó desierto el
-    26/04/2024 pese a tres ofertas (Telefónica, Kyndryl y Data4); falta el expediente de la
-    relicitación de 2024-2025, que diría en qué instalación física se aloja.
+    CPD de la Comunidad de Madrid adjudicado a Telefónica en junio de 2025 por más de 24,5 millones
+    a diez años: no es un emplazamiento nuevo sino un contrato de arrendamiento de espacios
+    técnicos, es decir, capacidad alojada en una instalación de terceros. Ficharlo duplicaría MW ya
+    contados bajo el anfitrión. Debe modelarse como inquilino cuando se identifique dónde está. El
+    expediente original, ECON/000182/2023, quedó desierto el 26/04/2024 pese a tres ofertas
+    (Telefónica, Kyndryl y Data4); falta el expediente de la relicitación de 2024-2025, que diría en
+    qué instalación física se aloja.
   - >-
-    MasOrange: cerca de doce centros en España puestos en venta, con Templus, CVC DIF y
-    AtlasEdge como candidatos. Ninguna fuente publica el inventario de ubicaciones. El sitio
-    más probable donde estén listados es el Informe de Sostenibilidad 2025 de la compañía.
+    MasOrange: cerca de doce centros en España puestos en venta, con Templus, CVC DIF y AtlasEdge
+    como candidatos. Ninguna fuente publica el inventario de ubicaciones. El sitio más probable
+    donde estén listados es el Informe de Sostenibilidad 2025 de la compañía.
   - >-
-    Quetta (Azora): quedan tres emplazamientos por anunciar, no cuatro. El objetivo declarado
-    en 2024 eran seis centros y 60 MW en España y Portugal; hoy tiene fichados Tres Cantos y
-    Molins de Rei, y el tercero conocido es Lisboa, fuera del ámbito peninsular español.
+    Quetta (Azora): quedan tres emplazamientos por anunciar, no cuatro. El objetivo declarado en
+    2024 eran seis centros y 60 MW en España y Portugal; hoy tiene fichados Tres Cantos y Molins de
+    Rei, y el tercero conocido es Lisboa, fuera del ámbito peninsular español.
   - >-
-    Las dos zonas no publicadas de la región Google europe-southwest1: la documentación de
-    Google Cloud lista las tres zonas y a las tres les asigna la misma etiqueta genérica,
-    «Madrid, España». Google no publica direcciones de zona por política, así que la pista
-    solo es cerrable por vía indirecta: contratos de colocation, licencias municipales o
-    permisos de grupos electrógenos. La única de las tres atribuida es la de Alcalá de
-    Henares, herencia de Telefónica y hoy de Nabiax.
+    Las dos zonas no publicadas de la región Google europe-southwest1: la documentación de Google
+    Cloud lista las tres zonas y a las tres les asigna la misma etiqueta genérica, «Madrid, España».
+    Google no publica direcciones de zona por política, así que la pista solo es cerrable por vía
+    indirecta: contratos de colocation, licencias municipales o permisos de grupos electrógenos. La
+    única de las tres atribuida es la de Alcalá de Henares, herencia de Telefónica y hoy de Nabiax.

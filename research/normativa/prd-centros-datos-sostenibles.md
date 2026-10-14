@@ -1,51 +1,40 @@
-## Qué cambia en la práctica
+## Situación a 14 de octubre de 2026
 
-Hasta ahora, para conectar un centro de datos a la red bastaba con llegar antes que
-nadie y tener el dinero. El borrador de agosto de 2026 añade tres condiciones que se
-comprueban **antes** de otorgar el permiso, no después de construir. La cola deja de
-ordenarse solo por fecha.
+La audiencia está cerrada y el proyecto sigue en tramitación. La resolución de 2 de
+septiembre amplió el plazo inicial del 4 al 10 de septiembre, a las 17:00. El informe
+del Pleno de la CNMC está fechado el 22 de septiembre. No se ha localizado un texto
+definitivo aprobado en el BOE hasta el 14 de octubre. Los porcentajes y plazos del
+borrador de agosto siguen siendo propuestas.
 
-**El requisito que rompe el modelo actual es la correlación horaria.** La adicionalidad
-—un megavatio renovable nuevo por cada megavatio consumido, con acta de puesta en
-servicio de los dieciocho meses anteriores— es exigente pero se puede contratar. Lo que
-no se puede contratar con los instrumentos habituales es que en *cada hora* el 80 % del
-consumo esté respaldado por generación renovable de *esa misma hora*. Un PPA financiero
-anual sobre una cartera solar sin identificar no acredita eso. Un centro de datos tiene
-una curva de consumo plana y la solar no: la diferencia entre ambas curvas es, en la
-práctica, una factura de baterías que hoy no está en ningún plan de negocio publicado.
+## Qué aporta el informe de la CNMC
 
-**El segundo cambio es que el incumplimiento no se sanciona: se factura.** Los recargos
-del artículo 10 no son multas administrativas con procedimiento y recurso, sino un
-porcentaje aplicado a los peajes y cargos de la factura eléctrica, que emite el gestor de
-red mes a mes. Un centro con menos del 20 % de generación adicional pagaría un recargo
-del 500 % sobre peajes y cargos. Es un mecanismo mucho más rápido que una sanción, y
-mucho más difícil de discutir.
+La CNMC respalda que se ordene el despliegue para proteger la electrificación de otros
+usos y evitar costes innecesarios para los consumidores. Pide ajustar la adicionalidad
+y la correlación horaria a la operación del sistema, reconocer almacenamiento y
+flexibilidad de demanda, y dar más margen a proyectos avanzados. También recomienda
+revisar la aplicación conjunta de PUE y WUE y aclarar competencias, controles y recargos.
+Son recomendaciones consultivas. No prueban que el Gobierno haya cambiado el texto.
 
-**El tercero es de reparto de poder.** El artículo 13 dice que la CNMC, al resolver un
-conflicto de acceso contra una denegación fundada en esta norma, **no revisará la
-valoración material** hecha por el ministerio: solo comprobará los presupuestos formales.
-Es la pieza que explica por qué Aragón y Extremadura alegan por la vía competencial y no
-por la ambiental. Quien decide qué proyecto es viable pasa a ser el Estado, y la revisión
-de esa decisión queda acotada.
+El informe recoge unos 12 GW de acceso concedido, 27 GW en tramitación y más de 32 GW
+denegados, además de renuncias de 1,6 GW. Son magnitudes de acceso agregadas, con
+periodos y estados distintos. No describen carga TI instalada ni permiten identificar
+qué proyectos del mapa han renunciado. Tampoco debe atribuirse esa renuncia a las
+exigencias todavía no aprobadas de este proyecto de real decreto.
 
-## Lo que esta ficha no puede decirle
+## Qué podría cambiar para los proyectos del mapa
 
-Cuánto de esto sobrevivirá. El texto ha estado ocho días naturales en audiencia pública,
-la patronal ha pedido ampliación del plazo y una mesa técnica, y dos gobiernos autonómicos
-han anunciado alegaciones. Los borradores que se tramitan por urgencia con esta oposición
-rara vez se aprueban idénticos. La disposición adicional tercera permite, además, mover
-por simple resolución el porcentaje de cobertura, el plazo de los dieciocho meses y la
-resolución temporal de la correlación: es decir, las tres cifras que deciden si la norma
-es dura o inaplicable pueden cambiarse sin volver al Consejo de Ministros.
+El borrador condicionaría el acceso de los centros de al menos 1 MW de potencia de
+acceso a requisitos de soberanía digital, eficiencia y renovables. La adicionalidad y
+la correlación horaria del 80 % son exigencias diferentes: contratar una cantidad anual
+de energía renovable no acredita por sí solo su coincidencia con cada hora de consumo.
+La combinación de generación, almacenamiento y flexibilidad admitida por el texto final
+será relevante para evaluar el coste de cumplimiento.
 
-## Cómo leer las cifras del sector
+El umbral de información pública de 500 kW se expresa en potencia TI. No equivale al
+umbral de acceso de 1 MW. Los plazos de tres y seis meses del borrador se contarían
+desde una eventual entrada en vigor; no son plazos que ya estén corriendo.
 
-Los 66.900 millones de inversión y el 80-90 % en riesgo salen del informe anual de la
-patronal y de su lectura del borrador. Son cifras de una parte interesada en la
-tramitación, publicadas mientras el plazo de alegaciones seguía abierto, y conviene
-tratarlas como lo que son: un argumento, no una medición. Del otro lado, los 6 GW de
-capacidad concedida en transporte y otros 6 GW en distribución que cita la exposición de
-motivos también son del Gobierno, que tiene su propio interés en que la cifra parezca
-desmedida. Este registro documenta 439 MW instalados según la propia patronal, frente a
-10,5 GW anunciados según CBRE. Con esa distancia, ninguna de las dos partes necesita
-exagerar mucho para tener razón.
+La próxima actualización debe comprobar la publicación del texto definitivo y comparar
+su articulado con el de agosto, especialmente los porcentajes, la ventana de generación
+adicional, los proyectos con permisos otorgados y el reparto de competencias. Una
+declaración política sobre cuándo se espera aprobarlo no sustituye esa publicación.

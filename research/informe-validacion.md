@@ -1,12 +1,12 @@
 # Parte de validación del dataset
 
-Generado el 2026-09-01 por `npm run validate`.
+Generado el 2026-10-14 por `npm run validate`.
 
-- Emplazamientos cargados: **203**
+- Emplazamientos cargados: **204**
 - Nodos de red: **133**
 - Activos renovables/BESS: **22**
 - Normas registradas: **12**
-- Errores: **0** · Avisos: **273**
+- Errores: **0** · Avisos: **275**
 
 ## Incidencias por fichero
 
@@ -160,6 +160,10 @@ Generado el 2026-09-01 por `npm run validate`.
 - aviso: sin ningún dato de potencia
 
 ### `citic-a-coruna-elvina.yaml`
+
+- aviso: sin ningún dato de potencia
+
+### `cluster-tic-galicia-a-coruna-csa.yaml`
 
 - aviso: sin ningún dato de potencia
 
@@ -654,6 +658,7 @@ Generado el 2026-09-01 por `npm run validate`.
 
 - aviso: potencia[0] («Suministro máximo previsto en el acuerdo con Datasection») no distingue el tipo de MW
 - aviso: potencia[1] («Potencia de la primera fase, que ocuparía la totalidad de las salas blancas») no distingue el tipo de MW
+- aviso: potencia[2] («Nueva propuesta de Solaria de septiembre de 2026, primera fase») no distingue el tipo de MW
 
 ### `stackscale-talavera-de-la-reina.yaml`
 
