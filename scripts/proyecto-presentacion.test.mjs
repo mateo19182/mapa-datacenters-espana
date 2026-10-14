@@ -1,9 +1,9 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { readFileSync } from 'node:fs'
+import { cargarSitios } from './load.mjs'
 import { presentacionProyecto, vinculosEnergiaProyecto } from '../src/lib/proyecto-presentacion.js'
 
-const sitios = JSON.parse(readFileSync(new URL('../src/data/sitios.json', import.meta.url), 'utf8'))
+const { sitios } = cargarSitios()
 const ficha = (id) => sitios.find((sitio) => sitio.id === id)
 
 test('las presentaciones conservan referencias válidas y resúmenes breves', () => {
