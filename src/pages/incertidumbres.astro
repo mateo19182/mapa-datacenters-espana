@@ -1,156 +1,53 @@
 ---
 import Base from '../layouts/Base.astro'
+import Listado from '../components/Listado.astro'
 import sitios from '../data/sitios.json'
-import { CAMPO_ETIQUETA, campoLegible, ESTADO_ETIQUETA, numero, slug } from '../lib/etiquetas.js'
-
-// Todo lo que las fuentes no aclaran o en lo que se contradicen, reunido.
-const entradas = sitios.flatMap((s) =>
-  s.incertidumbres.map((u) => ({
-    sitio: s,
-    campo: u.campo,
-    etiqueta: campoLegible(u.campo),
-    descripcion: u.descripcion,
-    fuentes: u.fuentes.map((id) => s.fuentes.find((f) => f.id === id)).filter(Boolean),
-  })),
-)
-
-const grupos = [...new Set(entradas.map((e) => e.etiqueta))]
-  .map((etiqueta) => ({
-    etiqueta,
-    ancla: slug(etiqueta),
-    entradas: entradas
-      .filter((e) => e.etiqueta === etiqueta)
-      .sort((a, b) => a.sitio.nombre.localeCompare(b.sitio.nombre, 'es')),
-  }))
-  .sort((a, b) => b.entradas.length - a.entradas.length)
-
-// Emplazamientos donde dos fuentes dan cifras distintas para la misma magnitud.
-const conDiscrepanciaNumerica = sitios.filter((s) =>
-  Object.values(s.resumen_potencia).some((r) => r?.discrepancia),
-)
-
+import { campoLegible, ESTADO_ETIQUETA, ORDEN_ESTADOS, POTENCIA_ETIQUETA, numero, slug } from '../lib/etiquetas.js'
+const entradas = sitios.flatMap((s) => s.incertidumbres.map((u, i) => ({
+  sitio: s, campo: u.campo, etiqueta: campoLegible(u.campo), descripcion: u.descripcion,
+  id: `${s.id}-${slug(u.campo)}-${i + 1}`, fuentes: u.fuentes.map((id) => s.fuentes.find((f) => f.id === id)).filter(Boolean),
+})))
+const grupos = [...new Set(entradas.map((e) => e.etiqueta))].map((etiqueta) => ({ etiqueta, ancla: slug(etiqueta), n: entradas.filter((e) => e.etiqueta === etiqueta).length })).sort((a, b) => b.n - a.n)
 const afectados = new Set(entradas.map((e) => e.sitio.id)).size
+const discrepancias = sitios.flatMap((s) => Object.entries(s.resumen_potencia).filter(([, r]) => r?.discrepancia).map(([tipo, r]) => ({ sitio: s, tipo, ...r })))
+const filtros = [
+  { nombre: 'campo', etiqueta: 'Dato afectado', opciones: grupos.map((g) => ({ valor: g.ancla, etiqueta: `${g.etiqueta} (${g.n})` })) },
+  { nombre: 'estado', etiqueta: 'Estado del proyecto', opciones: ORDEN_ESTADOS.filter((e) => entradas.some((u) => u.sitio.estado === e)).map((e) => ({ valor: e, etiqueta: ESTADO_ETIQUETA[e] })) },
+]
+const ordenes = [{ valor: 'nombre', etiqueta: 'Proyecto' }, { valor: 'etiqueta', etiqueta: 'Dato afectado' }, { valor: 'verificacion', etiqueta: 'Verificación más reciente', direccion: 'desc' }]
 ---
-
-<Base
-  titulo="Incertidumbres"
-  descripcion="Todas las contradicciones y lagunas documentadas del registro, agrupadas por el campo al que afectan."
->
+<Base titulo="Incertidumbres" descripcion="Busca contradicciones y datos que faltan en los centros de datos registrados, con la explicación y las fuentes de cada caso.">
   <div class="contenedor">
     <h1>Incertidumbres</h1>
-    <p class="sumario">
-      {numero(entradas.length)} contradicciones y lagunas documentadas en {afectados} de los
-      {' '}{sitios.length} emplazamientos, agrupadas por el campo al que afectan. Ninguna está
-      resuelta.
-    </p>
-
-    <p class="pequeno">
-      Ir a: {grupos.map((g, i) => (
-        <>{i > 0 && ' · '}<a href={`#${g.ancla}`}>{g.etiqueta.toLowerCase()} ({g.entradas.length})</a></>
-      ))}
-    </p>
-
-    {conDiscrepanciaNumerica.length > 0 && (
-      <>
-        <h2>Cifras de potencia que no coinciden</h2>
-        <p class="pequeno silencio">
-          Dos o más lecturas distintas de la misma magnitud y el mismo ámbito. Se muestra el rango,
-          no una cifra única.
-        </p>
-        <div class="tabla-envoltorio">
-          <table class="tabla-fichas">
-            <thead>
-              <tr><th>Emplazamiento</th><th>Magnitud</th><th class="num">Rango observado</th><th class="num">Lecturas</th></tr>
-            </thead>
-            <tbody>
-              {conDiscrepanciaNumerica.flatMap((s) =>
-                Object.entries(s.resumen_potencia)
-                  .filter(([, r]) => r?.discrepancia)
-                  .map(([tipo, r]) => (
-                    <tr>
-                      <td><a href={`/proyecto/${s.id}`}>{s.nombre}</a></td>
-                      <td class="pequeno" data-etiqueta="Magnitud">{tipo}</td>
-                      <td class="num" data-etiqueta="Rango observado">{numero(r.minimo_observado, 1)} – {numero(r.maximo_observado, 1)} MW</td>
-                      <td class="num" data-etiqueta="Lecturas">{r.registros}</td>
-                    </tr>
-                  )),
-              )}
-            </tbody>
-          </table>
-        </div>
-      </>
-    )}
-
-    {grupos.map((g) => (
-      <section>
-        <h2 id={g.ancla}>{g.etiqueta} <span class="cuenta">{g.entradas.length}</span></h2>
-        <ul class="entradas">
-          {g.entradas.map((e) => (
-            <li>
-              <p class="cabecera-entrada">
-                <a href={`/proyecto/${e.sitio.id}`}>{e.sitio.nombre}</a>
-                <span class={`etiqueta estado-${e.sitio.estado}`}><span class="punto"></span>{ESTADO_ETIQUETA[e.sitio.estado]}</span>
-                {e.sitio.ubicacion.ccaa && (
-                  <span class="silencio pequeno">{e.sitio.ubicacion.ccaa}</span>
-                )}
-              </p>
-              <p class="descripcion">{e.descripcion}</p>
-              {e.fuentes.length > 0 && (
-                <p class="pequeno silencio">
-                  {e.fuentes.map((f, i) => (
-                    <>{i > 0 && ' · '}<a href={f.url} rel="noopener nofollow" target="_blank">{f.editor ?? f.titulo}</a></>
-                  ))}
-                </p>
-              )}
-            </li>
-          ))}
-        </ul>
-      </section>
-    ))}
+    <p class="sumario">{numero(entradas.length)} lagunas y contradicciones documentadas en {afectados} de {sitios.length} emplazamientos. Abre cada entrada para consultar el detalle y sus fuentes.</p>
+    {discrepancias.length > 0 && <details class="discrepancias"><summary>{discrepancias.length} magnitudes de potencia con cifras que no coinciden</summary>
+      <div class="tabla-envoltorio"><table class="tabla-fichas"><thead><tr><th>Proyecto</th><th>Magnitud</th><th>Rango observado</th></tr></thead><tbody>
+        {discrepancias.map((d) => <tr><td><a href={`/proyecto/${d.sitio.id}#potencia`}>{d.sitio.nombre}</a></td><td data-etiqueta="Magnitud">{POTENCIA_ETIQUETA[d.tipo] ?? d.tipo}</td><td data-etiqueta="Rango observado">{numero(d.minimo_observado, 1)} a {numero(d.maximo_observado, 1)} MW</td></tr>)}
+      </tbody></table></div>
+    </details>}
+    <nav class="grupos" aria-label="Tipos de incertidumbre">{grupos.map((g) => <a id={g.ancla} href={`?campo=${g.ancla}#listado`}>{g.etiqueta} <span class="silencio">{g.n}</span></a>)}</nav>
+    <Listado nombre="incertidumbres" filtros={filtros} ordenes={ordenes} porPagina={20}>
+      <ul class="entradas">{entradas.map((e) => <li id={e.id} data-list-item data-busca={`${e.sitio.nombre} ${e.sitio.operador ?? ''} ${e.sitio.ubicacion.ccaa ?? ''} ${e.etiqueta} ${e.descripcion}`}
+        data-nombre={e.sitio.nombre} data-etiqueta={e.etiqueta} data-campo={slug(e.etiqueta)} data-estado={e.sitio.estado} data-verificacion={e.sitio.ultima_verificacion ?? ''}>
+        <details><summary><span>{e.sitio.nombre}</span><span class="campo">{e.etiqueta}</span></summary>
+          <p class="descripcion">{e.descripcion}</p>
+          <p class="pequeno"><a href={`/proyecto/${e.sitio.id}#incertidumbres`}>Ver proyecto</a> · <a href={`#${e.id}`}>Enlace a esta entrada</a> · {ESTADO_ETIQUETA[e.sitio.estado]}</p>
+          {e.fuentes.length > 0 && <p class="pequeno silencio">Fuentes: {e.fuentes.map((f, i) => <>{i > 0 && ' · '}<a href={f.url} rel="noopener nofollow" target="_blank">{f.editor ?? f.titulo}</a></>)}</p>}
+        </details>
+      </li>)}</ul>
+    </Listado>
   </div>
 </Base>
-
 <style>
-  .entradas {
-    list-style: none;
-    padding: 0;
-    margin: 0.75rem 0 0;
-  }
-
-  .entradas li {
-    padding: 0.85rem 0;
-    border-bottom: 1px solid var(--borde);
-    max-width: 52rem;
-  }
-
-  .cabecera-entrada {
-    display: flex;
-    align-items: baseline;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin: 0 0 0.3rem;
-    font-size: 0.92rem;
-  }
-
-  .descripcion {
-    margin: 0 0 0.25rem;
-    font-size: 0.92rem;
-    color: var(--tinta-2);
-  }
-
-  .cuenta {
-    font-family: var(--sans);
-    font-size: 0.72rem;
-    font-weight: 600;
-    color: var(--tinta-3);
-    vertical-align: middle;
-    border: 1px solid var(--borde-fuerte);
-    border-radius: 999px;
-    padding: 0.05em 0.5em;
-    margin-left: 0.4rem;
-  }
-
-  section:last-of-type .entradas {
-    margin-bottom: 3rem;
-  }
+  .grupos { display: flex; flex-wrap: wrap; gap: .4rem 1rem; font-size: .76rem; margin: 1.2rem 0; }
+  .grupos a { scroll-margin-top: 6rem; }
+  .entradas { list-style: none; padding: 0; margin: 0; max-width: 60rem; }
+  .entradas li { border-bottom: 1px solid var(--borde); scroll-margin-top: 6rem; }
+  .entradas li:target { background: var(--acento-suave); }
+  .entradas summary { cursor: pointer; padding: .8rem 0; font-size: .92rem; }
+  .campo { color: var(--tinta-3); font-size: .75rem; margin-left: .65rem; }
+  .descripcion { color: var(--tinta-2); font-size: .91rem; margin: .2rem 0 .6rem; max-width: 54rem; }
+  .discrepancias { margin: 1.25rem 0; }
+  .discrepancias summary { cursor: pointer; font-size: .86rem; }
+  @media(max-width: 540px) { .campo { display: block; margin: .25rem 0 0 1rem; } }
 </style>

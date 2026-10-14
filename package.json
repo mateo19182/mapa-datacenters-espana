@@ -25,7 +25,8 @@
     "contorno": "node scripts/fetch-contorno.mjs",
     "centrales:osm": "node scripts/fetch-osm-centrales.mjs",
     "generacion:entsoe": "node scripts/fetch-entsoe-generacion.mjs",
-    "exa": "node scripts/exa.mjs"
+    "exa": "node scripts/exa.mjs",
+    "test:ui": "node scripts/check-ui.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
@@ -34,5 +35,8 @@
     "maplibre-gl": "^5.24.0",
     "yaml": "^2.9.0",
     "zod": "^4.5.2"
+  },
+  "devDependencies": {
+    "playwright": "1.63.0"
   }
 }

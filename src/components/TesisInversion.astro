@@ -17,11 +17,9 @@ const claseRetorno = (valor) => valor > 0 ? 'positivo' : valor < 0 ? 'negativo' 
             <div class="portada-meta">
               <span class="ticker">{tesis.ticker}</span>
               <span>{tesis.categoria}</span>
-              <span>{tesis.fecha}</span>
+              <span>Análisis del {tesis.fecha}</span>
             </div>
             <h1>{tesis.nombre}</h1>
-            <p class="titular"><Glosa texto={tesis.sobrelinea} /></p>
-            <p class="tesis-corta"><Glosa texto={tesis.tesisCorta} /></p>
           </div>
           <aside class="veredicto" aria-label="Conclusión de inversión">
             <p class="veredicto-cabecera">
@@ -29,11 +27,6 @@ const claseRetorno = (valor) => valor > 0 ? 'positivo' : valor < 0 ? 'negativo' 
               <strong>{tesis.lectura}</strong>
             </p>
             <p class="veredicto-texto"><Glosa texto={tesis.veredicto} /></p>
-            <dl>
-              <div><dt>Precio de referencia</dt><dd>{tesis.mercado.precio}</dd></div>
-              <div><dt>Cierre</dt><dd>{tesis.mercado.fecha}</dd></div>
-              <div><dt>Horizonte</dt><dd>{tesis.horizonte}</dd></div>
-            </dl>
           </aside>
         </div>
       </div>
@@ -41,14 +34,14 @@ const claseRetorno = (valor) => valor > 0 ? 'positivo' : valor < 0 ? 'negativo' 
 
     <nav class="indice" aria-label="Índice del informe">
       <div class="pagina">
-        <a href="#tesis">Tesis</a>
+        <a href="#informe-completo">Tesis completa</a>
         <a href="#cotizacion">Cotización</a>
         <a href="#exposicion">Exposición</a>
-        <a href="#cuentas">Cuentas</a>
+        <a href="#cuentas">Resultados y balance</a>
         <a href="#valoracion">Valoración</a>
         <a href="#escenarios">Escenarios</a>
         <a href="#seguimiento">Seguimiento</a>
-        <a href="#fuentes">Fuentes</a>
+        <a href="#fuentes">Fuentes y limitaciones</a>
       </div>
     </nav>
 
@@ -64,159 +57,206 @@ const claseRetorno = (valor) => valor > 0 ? 'positivo' : valor < 0 ? 'negativo' 
       </section>
 
       <p class="corte-datos">
-        Precio al cierre del {tesis.mercado.fechaLarga}. Datos financieros con el corte indicado en
-        cada tabla. Rentabilidad bursátil sin dividendos. Esto es análisis, no asesoramiento financiero.
+        Fotografía de mercado al cierre del {tesis.mercado.fechaLarga}. Las cuentas conservan sus fechas de corte.
       </p>
 
-      <section id="tesis" class="seccion">
-        <div class="titulo-lateral"><span>01</span><h2>La tesis en una página</h2></div>
-        <div class="contenido">
-          <p class="entradilla"><Glosa texto={tesis.resumen} /></p>
-          <div class="tesis-grid">
-            <div class="caso favor">
-              <p class="caso-titulo">Qué tiene que salir bien</p>
-              <ul>{tesis.favor.map((punto) => <li><Glosa texto={punto} /></li>)}</ul>
-            </div>
-            <div class="caso contra">
-              <p class="caso-titulo">Qué puede romperla</p>
-              <ul>{tesis.contra.map((punto) => <li><Glosa texto={punto} /></li>)}</ul>
-            </div>
-          </div>
-          <div class="lectura-clave"><span>Mi lectura</span><p><Glosa texto={tesis.miLectura} /></p></div>
+      <section class="claves-resumen" aria-label="Supuestos y riesgos principales">
+        <div>
+          <h2>Qué sostiene la tesis</h2>
+          <ul>{tesis.favor.slice(0, 2).map((punto) => <li><Glosa texto={punto} /></li>)}</ul>
+        </div>
+        <div>
+          <h2>Riesgos principales</h2>
+          <ul>{tesis.contra.slice(0, 2).map((punto) => <li><Glosa texto={punto} /></li>)}</ul>
         </div>
       </section>
 
-      <section id="cotizacion" class="seccion">
-        <div class="titulo-lateral"><span>02</span><h2>Comportamiento bursátil reciente</h2></div>
-        <div class="contenido">
-          <p>{tesis.mercado.comentario}</p>
-          <div class="tabla-envoltorio">
-            <table class="rendimientos">
-              <thead><tr><th>Activo</th><th>Desde {tesis.mercado.inicioYtd}</th><th>Desde {tesis.mercado.inicioUnAno}</th><th>Cierre</th></tr></thead>
-              <tbody>
-                <tr>
-                  <td><strong>{tesis.nombre}</strong></td>
-                  <td class={claseRetorno(tesis.mercado.ytd)}>{signo(tesis.mercado.ytd)}</td>
-                  <td class={claseRetorno(tesis.mercado.unAno)}>{signo(tesis.mercado.unAno)}</td>
-                  <td>{tesis.mercado.precio}</td>
-                </tr>
-                <tr>
-                  <td>IBEX 35</td>
-                  <td class={claseRetorno(tesis.mercado.ibexYtd)}>{signo(tesis.mercado.ibexYtd)}</td>
-                  <td class={claseRetorno(tesis.mercado.ibexUnAno)}>{signo(tesis.mercado.ibexUnAno)}</td>
-                  <td>{tesis.mercado.ibexCierre}</td>
-                </tr>
-                <tr class="diferencial">
-                  <td>Diferencial</td>
-                  <td>{signo(tesis.mercado.ytd - tesis.mercado.ibexYtd)} p.p.</td>
-                  <td>{signo(tesis.mercado.unAno - tesis.mercado.ibexUnAno)} p.p.</td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <p class="metodo">{tesis.mercado.metodo}</p>
+      <details class="informe-completo" id="informe-completo">
+        <summary>Leer la tesis completa <span>Valoración, escenarios, seguimiento y fuentes</span></summary>
+        <div class="marco-tesis">
+            <p class="titular"><Glosa texto={tesis.sobrelinea} /></p>
+            <p class="tesis-corta"><Glosa texto={tesis.tesisCorta} /></p>
+            <dl>
+              <div><dt>Precio de referencia</dt><dd>{tesis.mercado.precio}</dd></div>
+              <div><dt>Fecha de cierre</dt><dd>{tesis.mercado.fecha}</dd></div>
+              <div><dt>Horizonte de inversión</dt><dd>{tesis.horizonte}</dd></div>
+            </dl>
+      <p class="corte-datos">
+        Precio al cierre del {tesis.mercado.fechaLarga}. Cada tabla indica la fecha de corte de los
+        datos financieros. La rentabilidad bursátil no incluye dividendos. Este documento es un análisis
+        y no asesoramiento financiero.
+      </p>
         </div>
-      </section>
 
-      <section id="exposicion" class="seccion">
-        <div class="titulo-lateral"><span>03</span><h2>Cómo llega al centro de datos</h2></div>
-        <div class="contenido">
-          <p class="entradilla"><Glosa texto={tesis.exposicion.intro} /></p>
-          <div class="cadena">
-            {tesis.exposicion.cadena.map((paso, indice) => (
-              <div><span>{String(indice + 1).padStart(2, '0')}</span><strong>{paso.titulo}</strong><p><Glosa texto={paso.texto} /></p></div>
-            ))}
+
+        <section id="tesis" class="seccion">
+          <div class="titulo-lateral"><span>01</span><h2>Resumen de la tesis</h2></div>
+          <div class="contenido">
+            <p class="entradilla"><Glosa texto={tesis.resumen} /></p>
+            <div class="tesis-grid">
+              <div class="caso favor">
+                <p class="caso-titulo">Qué debe cumplirse</p>
+                <ul>{tesis.favor.map((punto) => <li><Glosa texto={punto} /></li>)}</ul>
+              </div>
+              <div class="caso contra">
+                <p class="caso-titulo">Riesgos para la tesis</p>
+                <ul>{tesis.contra.map((punto) => <li><Glosa texto={punto} /></li>)}</ul>
+              </div>
+            </div>
+            <div class="lectura-clave"><span>Mi lectura</span><p><Glosa texto={tesis.miLectura} /></p></div>
           </div>
-          {tesis.exposicion.proyectos?.length > 0 && (
+        </section>
+
+        <section id="cotizacion" class="seccion">
+          <div class="titulo-lateral"><span>02</span><h2>Evolución bursátil reciente</h2></div>
+          <div class="contenido">
+            <p>{tesis.mercado.comentario}</p>
+            <div class="tabla-envoltorio">
+              <table class="rendimientos">
+                <thead><tr><th>Activo</th><th>Rentabilidad desde {tesis.mercado.inicioYtd}</th><th>Rentabilidad desde {tesis.mercado.inicioUnAno}</th><th>Precio de cierre</th></tr></thead>
+                <tbody>
+                  <tr>
+                    <td><strong>{tesis.nombre}</strong></td>
+                    <td class={claseRetorno(tesis.mercado.ytd)}>{signo(tesis.mercado.ytd)}</td>
+                    <td class={claseRetorno(tesis.mercado.unAno)}>{signo(tesis.mercado.unAno)}</td>
+                    <td>{tesis.mercado.precio}</td>
+                  </tr>
+                  <tr>
+                    <td>IBEX 35</td>
+                    <td class={claseRetorno(tesis.mercado.ibexYtd)}>{signo(tesis.mercado.ibexYtd)}</td>
+                    <td class={claseRetorno(tesis.mercado.ibexUnAno)}>{signo(tesis.mercado.ibexUnAno)}</td>
+                    <td>{tesis.mercado.ibexCierre}</td>
+                  </tr>
+                  <tr class="diferencial">
+                    <td>Diferencia frente al IBEX 35</td>
+                    <td>{signo(tesis.mercado.ytd - tesis.mercado.ibexYtd)} p.p.</td>
+                    <td>{signo(tesis.mercado.unAno - tesis.mercado.ibexUnAno)} p.p.</td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="metodo">{tesis.mercado.metodo}</p>
+          </div>
+        </section>
+
+        <section id="exposicion" class="seccion">
+          <div class="titulo-lateral"><span>03</span><h2>Relación con los centros de datos</h2></div>
+          <div class="contenido">
+            <p class="entradilla"><Glosa texto={tesis.exposicion.intro} /></p>
+            <div class="cadena">
+              {tesis.exposicion.cadena.map((paso, indice) => (
+                <div><span>{String(indice + 1).padStart(2, '0')}</span><strong>{paso.titulo}</strong><p><Glosa texto={paso.texto} /></p></div>
+              ))}
+            </div>
+            {tesis.exposicion.proyectos?.length > 0 && (
+              <div class="tabla-envoltorio">
+                <table>
+                  <thead><tr><th>Activo o vínculo</th><th>Estado</th><th>Implicación para el accionista</th></tr></thead>
+                  <tbody>{tesis.exposicion.proyectos.map((proyecto) => (
+                    <tr>
+                      <td>{proyecto.href ? <a href={proyecto.href}>{proyecto.nombre}</a> : proyecto.nombre}</td>
+                      <td>{proyecto.estado}</td>
+                      <td><Glosa texto={proyecto.lectura} /></td>
+                    </tr>
+                  ))}</tbody>
+                </table>
+              </div>
+            )}
+            {tesis.exposicion.nota && <p class="nota-analista"><Glosa texto={tesis.exposicion.nota} /></p>}
+          </div>
+        </section>
+
+        <section id="cuentas" class="seccion">
+          <div class="titulo-lateral"><span>04</span><h2>Resultados y balance</h2></div>
+          <div class="contenido">
+            <p>{tesis.finanzas.intro}</p>
+            <div class="bloques-cuentas">
+              {tesis.finanzas.bloques.map((bloque) => (
+                <div>
+                  <h3>{bloque.titulo}</h3>
+                  <dl>{bloque.filas.map((fila) => <div><dt><Glosa texto={fila[0]} /></dt><dd>{fila[1]}</dd></div>)}</dl>
+                </div>
+              ))}
+            </div>
+            <p class="nota-analista"><Glosa texto={tesis.finanzas.nota} /></p>
+          </div>
+        </section>
+
+        <section id="valoracion" class="seccion">
+          <div class="titulo-lateral"><span>05</span><h2>Valoración y materialidad</h2></div>
+          <div class="contenido">
+            <p class="entradilla"><Glosa texto={tesis.valoracion.intro} /></p>
+            <div class="valoracion-grid">
+              {tesis.valoracion.bloques.map((bloque) => (
+                <div><span><Glosa texto={bloque.etiqueta} /></span><strong>{bloque.valor}</strong><p><Glosa texto={bloque.texto} /></p></div>
+              ))}
+            </div>
+            <p class="nota-analista"><Glosa texto={tesis.valoracion.nota} /></p>
+          </div>
+        </section>
+
+        <section id="escenarios" class="seccion">
+            <div class="titulo-lateral"><span>06</span><h2>Escenarios y supuestos</h2></div>
+          <div class="contenido">
+            <div class="escenarios">
+              {tesis.escenarios.map((escenario) => (
+                <div><span>{escenario.nombre}</span><h3>{escenario.titulo}</h3><p><Glosa texto={escenario.texto} /></p></div>
+              ))}
+            </div>
+            <p class="metodo">Los escenarios muestran el efecto de los supuestos principales. No sustituyen un modelo financiero completo ni constituyen una estimación puntual de la cotización.</p>
+          </div>
+        </section>
+
+        <section id="seguimiento" class="seccion">
+          <div class="titulo-lateral"><span>07</span><h2>Indicadores de seguimiento</h2></div>
+          <div class="contenido">
             <div class="tabla-envoltorio">
               <table>
-                <thead><tr><th>Activo o relación</th><th>Estado</th><th>Lectura para el accionista</th></tr></thead>
-                <tbody>{tesis.exposicion.proyectos.map((proyecto) => (
-                  <tr>
-                    <td>{proyecto.href ? <a href={proyecto.href}>{proyecto.nombre}</a> : proyecto.nombre}</td>
-                    <td>{proyecto.estado}</td>
-                    <td><Glosa texto={proyecto.lectura} /></td>
-                  </tr>
+                <thead><tr><th>Indicador</th><th>Qué confirmaría la tesis</th><th>Señal de riesgo</th></tr></thead>
+                <tbody>{tesis.seguimiento.map((fila) => (
+                  <tr><td><strong><Glosa texto={fila.indicador} /></strong></td><td><Glosa texto={fila.confirma} /></td><td><Glosa texto={fila.alarma} /></td></tr>
                 ))}</tbody>
               </table>
             </div>
-          )}
-          {tesis.exposicion.nota && <p class="nota-analista"><Glosa texto={tesis.exposicion.nota} /></p>}
-        </div>
-      </section>
-
-      <section id="cuentas" class="seccion">
-        <div class="titulo-lateral"><span>04</span><h2>Las cuentas que financian la tesis</h2></div>
-        <div class="contenido">
-          <p>{tesis.finanzas.intro}</p>
-          <div class="bloques-cuentas">
-            {tesis.finanzas.bloques.map((bloque) => (
-              <div>
-                <h3>{bloque.titulo}</h3>
-                <dl>{bloque.filas.map((fila) => <div><dt><Glosa texto={fila[0]} /></dt><dd>{fila[1]}</dd></div>)}</dl>
-              </div>
-            ))}
           </div>
-          <p class="nota-analista"><Glosa texto={tesis.finanzas.nota} /></p>
-        </div>
-      </section>
+        </section>
 
-      <section id="valoracion" class="seccion">
-        <div class="titulo-lateral"><span>05</span><h2>Valoración y materialidad</h2></div>
-        <div class="contenido">
-          <p class="entradilla"><Glosa texto={tesis.valoracion.intro} /></p>
-          <div class="valoracion-grid">
-            {tesis.valoracion.bloques.map((bloque) => (
-              <div><span><Glosa texto={bloque.etiqueta} /></span><strong>{bloque.valor}</strong><p><Glosa texto={bloque.texto} /></p></div>
-            ))}
+        <section id="fuentes" class="seccion fuentes">
+          <div class="titulo-lateral"><span>08</span><h2>Fuentes y limitaciones</h2></div>
+          <div class="contenido">
+            <ol>{tesis.fuentes.map((fuente) => <li><a href={fuente.url} rel="noopener">{fuente.titulo}</a><span>{fuente.nota}</span></li>)}</ol>
+            <p><Glosa texto={tesis.limites} /></p>
           </div>
-          <p class="nota-analista"><Glosa texto={tesis.valoracion.nota} /></p>
-        </div>
-      </section>
-
-      <section id="escenarios" class="seccion">
-        <div class="titulo-lateral"><span>06</span><h2>Escenarios, no precio objetivo</h2></div>
-        <div class="contenido">
-          <div class="escenarios">
-            {tesis.escenarios.map((escenario) => (
-              <div><span>{escenario.nombre}</span><h3>{escenario.titulo}</h3><p><Glosa texto={escenario.texto} /></p></div>
-            ))}
-          </div>
-          <p class="metodo">Los escenarios aíslan los supuestos que importan. No sustituyen un modelo financiero completo ni estiman una cotización puntual.</p>
-        </div>
-      </section>
-
-      <section id="seguimiento" class="seccion">
-        <div class="titulo-lateral"><span>07</span><h2>Qué vigilar y cómo falsar la tesis</h2></div>
-        <div class="contenido">
-          <div class="tabla-envoltorio">
-            <table>
-              <thead><tr><th>Indicador</th><th>Qué confirmaría la tesis</th><th>Señal de alarma</th></tr></thead>
-              <tbody>{tesis.seguimiento.map((fila) => (
-                <tr><td><strong><Glosa texto={fila.indicador} /></strong></td><td><Glosa texto={fila.confirma} /></td><td><Glosa texto={fila.alarma} /></td></tr>
-              ))}</tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      <section id="fuentes" class="seccion fuentes">
-        <div class="titulo-lateral"><span>08</span><h2>Fuentes y límites</h2></div>
-        <div class="contenido">
-          <ol>{tesis.fuentes.map((fuente) => <li><a href={fuente.url} rel="noopener">{fuente.titulo}</a><span>{fuente.nota}</span></li>)}</ol>
-          <p><Glosa texto={tesis.limites} /></p>
-        </div>
-      </section>
+        </section>
+      </details>
     </div>
   </article>
 </Base>
 
 <style>
+  .claves-resumen { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 2rem; margin: 1.3rem 0; }
+  .claves-resumen h2 { font: 600 .85rem var(--sans); margin: 0 0 .4rem; }
+  .claves-resumen ul { margin: 0; padding-left: 1.1rem; color: var(--tinta-2); font-size: .82rem; }
+  .claves-resumen li + li { margin-top: .35rem; }
+  .informe-completo { margin: 1.5rem 0 3rem; border-top: 1px solid var(--borde-fuerte); scroll-margin-top: calc(var(--alto-cabecera, 3.1rem) + 3.5rem); }
+  .informe-completo > summary { padding: 1rem 0; font-size: .95rem; font-weight: 600; color: var(--acento); cursor: pointer; }
+  .informe-completo > summary span { display: block; font-size: .75rem; color: var(--tinta-3); font-weight: 400; margin-top: .2rem; }
+  .marco-tesis { max-width: 52rem; padding-top: .5rem; }
+  .marco-tesis dl { display: flex; flex-wrap: wrap; gap: .5rem 2rem; margin: 1rem 0; }
+  .marco-tesis dt { color: var(--tinta-3); font-size: .75rem; }
+  .marco-tesis dd { margin: 0; font-size: .82rem; }
+  @media (max-width: 620px) {
+    .claves-resumen { grid-template-columns: 1fr; gap: 1rem; }
+    .portada h1 { font-size: 1.9rem; }
+    .portada-grid { gap: .8rem; }
+    .veredicto { padding: .7rem .85rem; }
+  }
+
   .informe-inversion { --verde: #41684f; --rojo: #854840; }
   .pagina { width: min(var(--ancho), calc(100% - 2.5rem)); margin-inline: auto; }
-  .portada { border-bottom: 1px solid var(--borde-fuerte); padding: 1.1rem 0 2.2rem; background: var(--papel); }
-  .migas { color: var(--tinta-3); font-size: .76rem; margin-bottom: 1.4rem; }
+  .portada { border-bottom: 1px solid var(--borde-fuerte); padding: 1rem 0 1.1rem; background: var(--papel); }
+  .migas { color: var(--tinta-3); font-size: .76rem; margin-bottom: 0.8rem; }
   .portada-meta { display: flex; gap: .35rem 1.2rem; flex-wrap: wrap; color: var(--tinta-3); font: .7rem var(--mono); text-transform: uppercase; letter-spacing: .04em; }
   .ticker { color: var(--tinta); }
   .portada-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(16rem, .7fr); gap: 1.6rem 3rem; align-items: start; }
@@ -233,17 +273,17 @@ const claseRetorno = (valor) => valor > 0 ? 'positivo' : valor < 0 ? 'negativo' 
   .veredicto dl div { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; border-top: 1px solid var(--borde); padding: .35rem 0; font-size: .72rem; }
   .veredicto dt { color: var(--tinta-3); }
   .veredicto dd { margin: 0; text-align: right; font: .74rem var(--mono); color: var(--tinta); }
-  .indice { position: sticky; top: 3.1rem; z-index: 20; border-bottom: 1px solid var(--borde); background: color-mix(in srgb, var(--papel) 94%, transparent); backdrop-filter: blur(8px); }
+  .indice { position: sticky; top: var(--alto-cabecera, 3.1rem); z-index: 20; border-bottom: 1px solid var(--borde); background: color-mix(in srgb, var(--papel) 94%, transparent); backdrop-filter: blur(8px); }
   .indice .pagina { display: flex; gap: 1.2rem; overflow-x: auto; padding-block: .55rem; }
   .indice a { color: var(--tinta-3); font-size: .72rem; text-decoration: none; white-space: nowrap; }
-  .cuerpo { padding-top: 1.4rem; }
+  .cuerpo { padding-top: 1rem; }
   .panel-metricas { display: grid; grid-template-columns: repeat(5, 1fr); border: 1px solid var(--borde); background: var(--borde); gap: 1px; }
   .metrica { background: var(--papel); padding: .75rem; }
   .metrica span { display: block; color: var(--tinta-3); font-size: .68rem; text-transform: uppercase; }
   .metrica strong { display: block; font: 600 1.45rem var(--serif); margin: .2rem 0; }
   .metrica small { color: var(--tinta-3); font-size: .67rem; line-height: 1.35; display: block; }
   .corte-datos, .metodo { color: var(--tinta-3); font-size: .7rem; margin-top: .65rem; }
-  .seccion { display: grid; grid-template-columns: 12rem minmax(0, 1fr); gap: 2.2rem; border-top: 1px solid var(--borde-fuerte); padding-top: 1.2rem; margin-top: 3.8rem; scroll-margin-top: 7rem; }
+  .seccion { display: grid; grid-template-columns: 12rem minmax(0, 1fr); gap: 2.2rem; border-top: 1px solid var(--borde-fuerte); padding-top: 1.2rem; margin-top: 2rem; scroll-margin-top: calc(var(--alto-cabecera, 3.1rem) + 3.5rem); }
   .titulo-lateral { display: flex; gap: .65rem; align-items: baseline; }
   .titulo-lateral > span { color: var(--tinta-3); font: .7rem var(--mono); }
   .titulo-lateral h2 { margin: 0; font-size: 1.25rem; }
@@ -295,7 +335,7 @@ const claseRetorno = (valor) => valor > 0 ? 'positivo' : valor < 0 ? 'negativo' 
     .portada-grid, .seccion { grid-template-columns: 1fr; gap: 1.3rem; }
     .veredicto { max-width: 34rem; }
     .panel-metricas { grid-template-columns: repeat(2, 1fr); }
-    .indice { top: 0; }
+    .indice { top: var(--alto-cabecera, 0px); }
     .titulo-lateral { border-bottom: 1px solid var(--borde); padding-bottom: .5rem; }
   }
   @media (max-width: 620px) {

@@ -2,299 +2,59 @@
 import Base from '../layouts/Base.astro'
 import resumen from '../data/resumen.json'
 import sitios from '../data/sitios.json'
-import {
-  ESTADO_ETIQUETA,
-  ORDEN_ESTADOS,
-  POTENCIA_ETIQUETA,
-  POTENCIA_DESCRIPCION,
-  PRECISION_ETIQUETA,
-  CONFIANZA_ETIQUETA,
-  CONFIANZA_DESCRIPCION,
-  numero,
-} from '../lib/etiquetas.js'
-import { GLOSARIO_POTENCIA, TERMINOS } from '../lib/glosario.js'
+import { ESTADO_ETIQUETA, ORDEN_ESTADOS, PRECISION_ETIQUETA, CONFIANZA_ETIQUETA, CONFIANZA_DESCRIPCION } from '../lib/etiquetas.js'
 import Termino from '../components/Termino.astro'
-import { REPOSITORIO, REPO_INCIDENCIAS } from '../lib/enlaces.js'
-
-const precisiones = ['exacta', 'aproximada', 'municipio', 'desconocida'].map((p) => ({
-  clave: p,
-  n: sitios.filter((s) => s.ubicacion.precision === p).length,
-}))
-
-const conPotencia = (tipo) => sitios.filter((s) => s.resumen_potencia[tipo]).length
-const conEnergia = sitios.filter((s) => (s.energia ?? []).length).length
+import { REPO_INCIDENCIAS } from '../lib/enlaces.js'
 const conComputo = sitios.filter((s) => (s.computo ?? []).length).length
+const conEnergia = sitios.filter((s) => (s.energia ?? []).length).length
 ---
-
-<Base
-  titulo="Metodología"
-  descripcion="Cómo se construye este registro: reglas de datos, tipos de potencia, estados, niveles de confianza y limitaciones conocidas."
->
+<Base titulo="Metodología" descripcion="Criterios del registro: fuentes, magnitudes, estados, agregación, coordenadas y confianza.">
   <div class="contenedor-estrecho texto">
     <h1>Metodología</h1>
-    <p class="sumario">
-      Reglas de registro, tipos de potencia, estados, precisión de las coordenadas y niveles de
-      confianza.
-    </p>
-
-    <h2>Las cinco reglas</h2>
-    <ol class="reglas">
-      <li>
-        <strong>Nada sin fuente.</strong> Cada cifra, estado, coordenada y fecha lleva al menos una
-        referencia con URL, editor y, cuando se ha podido, la cita literal que la sostiene, enlazada
-        desde el dato.
-      </li>
-      <li>
-        <strong>No se rellenan huecos.</strong> Si una magnitud no consta, el campo queda vacío. Nada
-        se estima por analogía con proyectos parecidos ni se deduce de la parcela o de la inversión
-        anunciada.
-      </li>
-      <li>
-        <strong>No se mezclan tipos de potencia.</strong> Los <Termino id="mw-it">MW IT</Termino>,
-        los <Termino id="potencia-acceso">MW de conexión a red</Termino> y la{' '}
-        <Termino id="potencia-instalada-edificio">potencia instalada</Termino> son magnitudes
-        distintas. No se suman entre sí ni se convierten aplicando un{' '}
-        <Termino id="pue">PUE</Termino> supuesto.
-      </li>
-      <li>
-        <strong>Las contradicciones se conservan.</strong> Si dos fuentes fiables discrepan se
-        registran ambas y la ficha lo señala. Elegir una en silencio daría un dato limpio y falso.
-      </li>
-      <li>
-        <strong>Un emplazamiento, un registro.</strong> Un campus de varios edificios es una entrada
-        con sus fases dentro. Los renombrados por adquisición, como Interxion a Digital Realty o
-        Itconic a Equinix, se reconcilian con alias, no duplicando entradas.
-      </li>
-    </ol>
-
-    <h2>Tipos de potencia</h2>
-    <p>
-      «Un centro de datos de 200 MW» rara vez aclara a qué magnitud se refiere, y entre una lectura
-      y otra hay casi el doble. El <a href="/glosario">glosario</a> recoge estas seis magnitudes y
-      otros {TERMINOS.length - 6} términos, y las explica también al pasar el cursor por encima
-      allí donde aparecen.
-    </p>
-    <dl class="glosario">
-      {['it', 'conexion_red', 'instalada_total', 'no_especificado', 'termica_respaldo', 'generacion_asociada'].map((t) => (
-        <>
-          <dt><Termino id={GLOSARIO_POTENCIA[t]} sinEnlace>{POTENCIA_ETIQUETA[t]}</Termino></dt>
-          <dd>
-            {POTENCIA_DESCRIPCION[t]}
-            <span class="dato-glosario">
-              {conPotencia(t)} de {sitios.length} {conPotencia(t) === 1 ? 'emplazamientos la publica' : 'emplazamientos la publican'}
-            </span>
-          </dd>
-        </>
-      ))}
-    </dl>
-    <p>
-      Los totales por compañía y por región suman solo los que publican esa magnitud, e indican
-      cuántos son.
-    </p>
-    <p>
-      Las dos últimas no describen el centro de datos y quedan fuera de todos los totales. Aparecen
-      porque a veces son lo único numérico del expediente ambiental: varios campus de{' '}
-      <Termino id="hiperescalar">hiperescala</Termino> en España solo han publicado la potencia de sus{' '}
-      <Termino id="grupo-electrogeno">grupos electrógenos</Termino> de emergencia. Tomar esa
-      cifra por la capacidad del centro exagera su tamaño en un orden de magnitud.
-    </p>
-
-    <h2>Campus, edificio y fase</h2>
-    <p>
-      Cada cifra guarda su ámbito. Si hay cifra del conjunto, esa manda y no se le suman las fases,
-      que ya están dentro. Con los edificios la regla es más estricta: tres cifras de edificio pueden
-      ser tres edificios, y se suman, o tres lecturas del mismo, y sumarlas triplicaría la capacidad.
-      Como la fuente casi nunca lo aclara, si el dato no nombra el edificio concreto,
-      <strong>no se suma</strong>. Ante la duda, el conjunto se queda corto antes que inflado.
-    </p>
-
-    <h2>Estados</h2>
-    <p>Diez estados, del anuncio a la cancelación:</p>
-    <ul class="estados">
-      {ORDEN_ESTADOS.map((e) => (
-        <li>
-          <span class={`etiqueta estado-${e}`}><span class="punto"></span>{ESTADO_ETIQUETA[e]}</span>
-          <span class="silencio pequeno">{sitios.filter((s) => s.estado === e).length}</span>
-        </li>
-      ))}
+    <p class="sumario">Un emplazamiento por ficha. Datos publicados, fuentes visibles y huecos sin rellenar.</p>
+    <h2>Criterios de registro</h2>
+    <ul class="reglas">
+      <li>Cada cifra, estado y ubicación se vincula a una fuente. Cuando la cita está incompleta, queda señalado en la <a href="/datos">validación</a>.</li>
+      <li>Un dato no publicado queda vacío. No se estima a partir de la inversión, la parcela o proyectos parecidos.</li>
+      <li>Las fuentes que discrepan se conservan y la ficha explica la <a href="/incertidumbres">incertidumbre</a>.</li>
+      <li>Los campus reúnen sus edificios y fases en una ficha. Las adquisiciones y los cambios de nombre se registran como alias.</li>
     </ul>
-    <p>
-      Cada ficha añade un detalle en prosa: un proyecto puede tener a la vez una fase operativa,
-      otra en obras y una tercera solo anunciada.
-    </p>
-
-    <h2>Coordenadas</h2>
-    <p>
-      Cada ficha declara la precisión de su ubicación. Cuando solo consta el municipio, el punto
-      va al centro del término, con
-      centroides de OpenStreetMap cacheados, se dibuja atenuado y la ficha lo dice. Así se sitúan{' '}
-      {resumen.coordenadas_derivadas} de {resumen.total_emplazamientos}. Esa coordenada se calcula
-      al construir y nunca se escribe en el fichero, que sigue diciendo lo único cierto: el
-      municipio.
-    </p>
-    <div class="tabla-envoltorio">
-      <table>
-        <thead><tr><th>Precisión</th><th>Significado</th><th class="num">Emplazamientos</th></tr></thead>
-        <tbody>
-          {precisiones.map((p) => (
-            <tr>
-              <td>{p.clave}</td>
-              <td>{PRECISION_ETIQUETA[p.clave]}</td>
-              <td class="num">{p.n}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-
-    <h2>Confianza</h2>
-    <p>
-      Resume la calidad del respaldo documental, no la importancia del proyecto, y tampoco cuenta
-      fuentes: una ficha con seis referencias sigue en confianza baja si ninguna publica la
-      potencia. Cada ficha muestra en su panel de trazabilidad qué le falta en concreto, leído de
-      sus propios campos, en vez de esta definición general.
-    </p>
-    <dl class="glosario">
-      {['alta', 'media', 'baja'].map((c) => (
-        <>
-          <dt class={`confianza-${c}`}>{CONFIANZA_ETIQUETA[c]}</dt>
-          <dd>
-            {CONFIANZA_DESCRIPCION[c]}
-            <span class="dato-glosario">{resumen.por_confianza[c]} emplazamientos</span>
-          </dd>
-        </>
-      ))}
-    </dl>
-
-    <h2>Las capas del mapa</h2>
-    <p>
-      El trazado de 220 y 400 kV y el inventario de centrales vienen de OpenStreetMap (ODbL),
-      cacheados y de completitud variable: sitúan los emplazamientos respecto a la red y al parque
-      generador, no sirven para análisis de red. Las subestaciones, las actuaciones planificadas y
-      la capacidad de acceso para demanda se registran a mano desde fuentes oficiales, con su fecha.
-      La capacidad de acceso caduca en meses, así que sin fecha no significa nada. Los detalles, en{' '}
-      <a href="/red-electrica">red eléctrica</a>.
-    </p>
-    <p>
-      El mapa base lo sirve CARTO, lo único del sitio que depende de un servicio ajeno. Si no carga,
-      los datos se dibujan igual sobre un contorno de{' '}
-      <a href="https://www.naturalearthdata.com/" rel="noopener nofollow" target="_blank">Natural Earth</a>{' '}
-      y se avisa en pantalla. Sin WebGL no hay mapa, pero el buscador y los filtros siguen
-      funcionando.
-    </p>
-
-    <h2>Lo que este registro no es</h2>
-    <ul>
-      <li>
-        <strong>No es un censo completo.</strong> Recoge lo documentado públicamente; los CPD
-        corporativos pequeños y las salas técnicas quedan fuera.
-      </li>
-      <li>
-        <strong>No es una previsión.</strong> Lo anunciado se registra como anunciado. Una solicitud
-        de acceso a la red no es un centro de datos, y parte de lo anunciado no se construirá.
-      </li>
-      <li>
-        <strong>No es análisis de mercado ni de inversión.</strong> No hay valoraciones ni
-        rentabilidades. Las cifras de inversión son las anunciadas, citadas como declaración y no
-        como hecho verificado.
-      </li>
-      <li>
-        <strong>No dice qué hay dentro, salvo cuando alguien lo publica.</strong> La potencia no
-        responde a cuánto cómputo hay: un centro de 15 MW puede alojar diez mil aceleradores de IA
-        o ninguno. Cuando la cifra existe se registra en un bloque aparte —modelo, recuento y
-        rendimiento, con su precisión— que nunca se convierte en MW. Hoy lo publican {conComputo}
-        {' '}emplazamientos de los {numero(resumen.total_emplazamientos)}, y cuatro de cada cinco
-        son infraestructura pública de supercomputación o de cuántica: el sector comercial casi
-        nunca publica qué hardware aloja.
-      </li>
-      <li>
-        <strong>No mide consumo real.</strong> La potencia no es energía consumida. Cuando alguien
-        publica el consumo eléctrico anual se registra aparte, en GWh, y nunca se suma ni se compara
-        con los MW. Hoy lo publican {conEnergia} emplazamientos de los {numero(resumen.total_emplazamientos)}.
-      </li>
-    </ul>
-
-    <h2>Corregir un dato</h2>
-    <p>
-      El registro está entero en <a href={REPOSITORIO} rel="noopener">GitHub</a>: los YAML de
-      origen, el código que construye el sitio y el historial de cada cambio. Si un dato está mal,
-      lo que hace falta es la fuente. Una corrección con URL y fragmento literal se puede integrar;
-      una sin ella, no, porque la regla del conjunto es que nada entra sin cita que lo sostenga.
-      Las <a href={REPO_INCIDENCIAS} rel="noopener">incidencias</a> son el sitio para dejarla.
-    </p>
-
-    <h2>Actualización</h2>
-    <p>
-      Cada lunes un proceso relee las fuentes y deja en una cola de revisión lo que cambió, lo que
-      ya no responde y lo que lleva más de 180 días sin comprobar. Ningún dato existente se
-      sobrescribe solo. El proceso, paso a paso, en{' '}
-      <a href="/datos#actualizacion">la sección de datos</a>.
-    </p>
-    <p class="pequeno silencio">
-      Última generación del conjunto: {resumen.generado}. {numero(resumen.total_emplazamientos)} emplazamientos,
-      {' '}{numero(resumen.fuentes_distintas)} fuentes, {resumen.emplazamientos_con_incertidumbres} fichas con
-      incertidumbres documentadas.
-    </p>
+    <h2>Cómo leer las cifras</h2>
+    <p><Termino id="mw-it">MW IT</Termino>, <Termino id="potencia-acceso">MW de conexión</Termino> y <Termino id="mw-sin-tipificar">MW sin tipificar</Termino> son magnitudes distintas. Se presentan por separado y no se convierten con un <Termino id="pue">PUE</Termino> supuesto. Los MW de respaldo o generación asociada quedan fuera de los totales del centro.</p>
+    <p>Cada agregado indica cuántos emplazamientos aportan dato y permite consultar sus estados. Los proyectos cancelados quedan fuera de esos agregados; sus cifras históricas siguen en las fichas.</p>
+    <details><summary>Campus, edificios y fases</summary>
+      <p>La cifra de campus prevalece sobre las fases que ya contiene. Solo se suman edificios o fases cuando se identifican por separado y su ámbito es compatible. Varias lecturas del mismo edificio no se suman.</p>
+      <p>Una fase operativa y otra anunciada pueden convivir en el mismo emplazamiento. La ficha muestra ese reparto para que la capacidad futura no se confunda con capacidad operativa.</p>
+    </details>
+    <details><summary>Estados · recuento actual</summary>
+      <ul class="estados">{ORDEN_ESTADOS.map((e) => <li><span class={`etiqueta estado-${e}`}><span class="punto" aria-hidden="true"></span>{ESTADO_ETIQUETA[e]}</span><span>{sitios.filter((s) => s.estado === e).length}</span></li>)}</ul>
+      <p class="pequeno silencio">Recuento sobre {sitios.length} emplazamientos. Un permiso, una solicitud de acceso o un anuncio no acredita que hayan empezado las obras.</p>
+    </details>
+    <details><summary>Precisión de las coordenadas</summary>
+      <div class="tabla-envoltorio"><table><thead><tr><th>Precisión</th><th>Emplazamientos</th></tr></thead><tbody>{['exacta', 'aproximada', 'municipio', 'desconocida'].map((p) => <tr><td>{PRECISION_ETIQUETA[p]}</td><td>{sitios.filter((s) => s.ubicacion.precision === p).length} de {sitios.length}</td></tr>)}</tbody></table></div>
+      <p>Un punto municipal sitúa la localidad, no la parcela. {resumen.coordenadas_derivadas} de {sitios.length} fichas usan un centroide de OpenStreetMap al construir el mapa; el origen conserva la precisión municipal.</p>
+    </details>
+    <details><summary>Confianza documental</summary>
+      <p>La confianza valora el respaldo de los datos centrales. Tener muchas referencias no garantiza que estas publiquen la ubicación o la potencia.</p>
+      <dl>{['alta', 'media', 'baja'].map((c) => <><dt class={`confianza-${c}`}>{CONFIANZA_ETIQUETA[c]} · {sitios.filter((s) => s.confianza === c).length} de {sitios.length}</dt><dd>{CONFIANZA_DESCRIPCION[c]}</dd></>)}</dl>
+    </details>
+    <details id="capas"><summary>Cómputo, energía y capas del mapa</summary>
+      <p>{conComputo} de {sitios.length} emplazamientos publican datos de cómputo. Los modelos, recuentos y rendimientos se registran aparte, sin convertirlos en MW. {conEnergia} de {sitios.length} publican consumo eléctrico anual; los GWh tampoco se suman a los MW.</p>
+      <p>Las subestaciones, actuaciones y capacidades de acceso proceden de fuentes fechadas. El trazado de red y las centrales de OpenStreetMap tienen cobertura variable. La proximidad a una línea o una central no demuestra conexión ni suministro.</p>
+      <p>La cartografía de fondo procede de CARTO. Si falla, el mapa usa un contorno de Natural Earth. El inventario y sus filtros también se pueden consultar sin WebGL.</p>
+    </details>
+    <h2>Alcance</h2>
+    <p>Es un registro documental abierto, con <a href="/cobertura">cobertura incompleta</a>. Los anuncios mantienen su estado y las inversiones mantienen su carácter de cifras declaradas. La potencia publicada no mide consumo real ni permite deducir qué hardware está instalado.</p>
+    <p class="pequeno"><a href="/glosario">Definiciones de términos</a> · <a href="/datos#actualizacion">Proceso de actualización</a> · <a href={REPO_INCIDENCIAS} rel="noopener">Corregir un dato con su fuente</a></p>
   </div>
 </Base>
-
 <style>
-  .texto {
-    padding-bottom: 3rem;
-  }
-
-  .texto p,
-  .texto li {
-    max-width: 42rem;
-  }
-
-  .reglas {
-    padding-left: 1.2rem;
-  }
-
-  .reglas li {
-    margin-bottom: 0.8rem;
-  }
-
-  .glosario {
-    margin: 1rem 0 1.5rem;
-  }
-
-  .glosario dt {
-    font-weight: 600;
-    font-size: 0.92rem;
-    margin-top: 0.9rem;
-  }
-
-  .glosario dd {
-    margin: 0.15rem 0 0;
-    color: var(--tinta-2);
-    font-size: 0.93rem;
-    max-width: 42rem;
-  }
-
-  .dato-glosario {
-    display: block;
-    font-size: 0.8rem;
-    color: var(--tinta-3);
-    margin-top: 0.2rem;
-  }
-
-  .estados {
-    list-style: none;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
-    gap: 0.35rem 1rem;
-    margin: 1rem 0 1.5rem;
-  }
-
-  .estados li {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.5rem;
-    border-bottom: 1px solid var(--borde);
-    padding-bottom: 0.25rem;
-  }
+  .texto { padding-bottom: 3rem; }
+  .texto p, .texto li { max-width: 45rem; }
+  .reglas { padding-left: 1.2rem; }.reglas li { margin-bottom: .55rem; }
+  details { border-top: 1px solid var(--borde); padding: .85rem 0; }summary { cursor: pointer; font-weight: 600; font-size: .94rem; }
+  details p, details dd { font-size: .9rem; color: var(--tinta-2); }
+  dt { margin-top: .8rem; font-weight: 600; font-size: .88rem; }dd { margin: .3rem 0 .8rem; }
+  .estados { padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: .4rem 1rem; }
+  .estados li { display: flex; justify-content: space-between; align-items: center; gap: .5rem; padding-bottom: .3rem; border-bottom: 1px solid var(--borde); }
 </style>

@@ -1,0 +1,92 @@
+# Novedades revisadas para publicación. fecha es la incorporación al registro;
+# fecha_hecho es el hito documentado. Una comprobación de enlaces no es novedad.
+- id: csa-gpu-20261014
+  fecha: 2026-10-14
+  fecha_hecho: 2026-06-05
+  tipo: nuevo
+  titulo: Cidade das TIC entra en el mapa
+  resumen: El CSA de A Coruña ofrece recursos con NVIDIA L4 y A40. El dosier enumera 15 L4; la nota anuncia más de 15. Las H200 se ofrecen como acceso, con instalación física sin confirmar.
+  enlaces:
+    - texto: Ver emplazamiento y hardware
+      href: /proyecto/cluster-tic-galicia-a-coruna-csa
+  fuentes:
+    - proyecto: cluster-tic-galicia-a-coruna-csa
+      fuente: src-dosier
+    - proyecto: cluster-tic-galicia-a-coruna-csa
+      fuente: src-catalogo
+    - proyecto: cluster-tic-galicia-a-coruna-csa
+      fuente: src-servicios
+- id: prd-cnmc-20261014
+  fecha: 2026-10-14
+  fecha_hecho: 2026-09-22
+  tipo: normativa
+  titulo: La CNMC informa el decreto de centros de datos
+  resumen: Recomienda ajustar los requisitos renovables, reconocer almacenamiento y flexibilidad, y ampliar la transición. La consulta cerró el 10 de septiembre. No se ha identificado un texto definitivo aprobado a 14 de octubre.
+  enlaces:
+    - texto: Estado del proyecto de decreto
+      href: /normativa/prd-centros-datos-sostenibles
+  fuentes:
+    - norma: prd-centros-datos-sostenibles
+      fuente: src-cnmc-informe
+    - norma: prd-centros-datos-sostenibles
+      fuente: src-ampliacion
+    - norma: prd-centros-datos-sostenibles
+      fuente: src-consejo-20261013
+- id: qts-rhodes-20261014
+  fecha: 2026-10-14
+  fecha_hecho: 2026-09-28
+  tipo: permisos
+  titulo: Aprobación parcial del PIGA de QTS Rhodes
+  resumen: Aragón aprueba la documentación urbanística, reparcelación y urbanización. Los restantes proyectos requieren trámites adicionales para ser ejecutables. El centro continúa en tramitación.
+  enlaces:
+    - texto: Ver QTS Calatorao
+      href: /proyecto/qts-calatorao-rhodes
+  fuentes:
+    - proyecto: qts-calatorao-rhodes
+      fuente: src-boa-20260930
+- id: puertollano-20261014
+  fecha: 2026-10-14
+  fecha_hecho: 2026-09-24
+  tipo: proyecto
+  titulo: Solaria retoma Puertollano con otro alcance
+  resumen: La propuesta de La Nava II anuncia 40 MW sin tipo especificado, 150 millones de euros y 90 empleos de operación. Cuenta con conformidad municipal; el operador sigue sin identificar. El proyecto de 2024 se conserva como antecedente paralizado.
+  enlaces:
+    - texto: Ver propuesta y antecedentes
+      href: /proyecto/solaria-datasection-puertollano
+  fuentes:
+    - proyecto: solaria-datasection-puertollano
+      fuente: src-ayto-20260924
+    - proyecto: solaria-datasection-puertollano
+      fuente: src-ayto-20260921
+    - proyecto: solaria-datasection-puertollano
+      fuente: src-ser
+- id: ree-octubre-20261014
+  fecha: 2026-10-14
+  fecha_hecho: 2026-10-01
+  tipo: red
+  titulo: Capacidad de REE actualizada a octubre
+  resumen: La edición del 1 de octubre sustituye la de agosto en los 548 nudos ya registrados. Cambian cifras o motivos principales en 140 nudos. Los valores no publicados se mantienen diferenciados de cero.
+  enlaces:
+    - texto: Explorar capacidad de demanda
+      href: /red-electrica
+  fuentes:
+    - url: https://www.ree.es/sites/default/files/12_CLIENTES/Documentos/2026_10_01_GRT_demanda.csv
+      titulo: REE, capacidad de demanda de octubre de 2026
+    - url: https://github.com/mateo19182/mapa-datacenters-espana/blob/main/research/informe-ree.md
+      titulo: Reconciliación de los 548 nudos del registro
+- id: aws-fibra-20261014
+  fecha: 2026-10-14
+  fecha_hecho: 2026-10-08
+  tipo: permisos
+  titulo: AWS tramita reparcelación y nuevos enlaces de fibra
+  resumen: El BOA publica la aprobación inicial de la modificación de reparcelación y los enlaces de fibra entre La Cartuja y El Burgo de Ebro. Estos trámites no acreditan un inicio de obras de los centros.
+  enlaces:
+    - texto: La Cartuja
+      href: /proyecto/aws-zaragoza-la-cartuja-car
+    - texto: El Burgo de Ebro
+      href: /proyecto/aws-el-burgo-de-ebro-bde
+  fuentes:
+    - proyecto: aws-el-burgo-de-ebro-bde
+      fuente: src-boa-20261008017
+    - proyecto: aws-el-burgo-de-ebro-bde
+      fuente: src-boa-20261008021

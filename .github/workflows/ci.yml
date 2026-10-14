@@ -24,6 +24,19 @@ jobs:
       - name: Construir el sitio
         run: npm run build
 
+      - name: Instalar navegador de pruebas
+        run: npx playwright install --with-deps chromium
+
+      - name: Comprobar navegación e interacción
+        run: npm run test:ui
+
+      - name: Publicar pruebas de interfaz
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pruebas-de-interfaz
+          path: build/ui/
+
       - name: Publicar el parte de validación
         if: always()
         uses: actions/upload-artifact@v4

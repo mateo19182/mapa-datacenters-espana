@@ -1,0 +1,80 @@
+---
+import Listado from './Listado.astro'
+import Termino from './Termino.astro'
+import { ESTADO_ETIQUETA, ORDEN_ESTADOS, CONFIANZA_ETIQUETA, MODELO_ETIQUETA, fechaLegible, numero, slug } from '../lib/etiquetas.js'
+const { sitios, mostrarOperador = true, mostrarRegion = true } = Astro.props
+const regiones = [...new Set(sitios.map((s) => s.ubicacion.ccaa).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'es'))
+const filtros = [
+  { nombre: 'estado', parametro: 'e', varios: true, etiqueta: 'Estado', opciones: ORDEN_ESTADOS.filter((e) => sitios.some((s) => s.estado === e)).map((e) => ({ valor: e, etiqueta: ESTADO_ETIQUETA[e] })) },
+  ...(mostrarRegion ? [{ nombre: 'region', parametro: 'r', etiqueta: 'Comunidad', opciones: regiones.map((r) => ({ valor: r, etiqueta: r })) }] : []),
+  ...(mostrarOperador ? [{ nombre: 'operador', parametro: 'o', etiqueta: 'Operador', avanzado: true, opciones: [...new Set(sitios.map((s) => s.operador).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'es')).map((o) => ({ valor: o, etiqueta: o })) }] : []),
+  { nombre: 'modelo', parametro: 't', etiqueta: 'Modelo', avanzado: true, opciones: [...new Set(sitios.map((s) => s.modelo).filter(Boolean))].map((m) => ({ valor: m, etiqueta: MODELO_ETIQUETA[m] ?? m })) },
+  { nombre: 'confianza', parametro: 'c', etiqueta: 'Confianza', avanzado: true, opciones: ['alta', 'media', 'baja'].map((c) => ({ valor: c, etiqueta: CONFIANZA_ETIQUETA[c] })) },
+]
+const ordenes = [
+  { valor: 'estado', campo: 'ordenestado', etiqueta: 'Estado', numerico: true },
+  { valor: 'nombre', etiqueta: 'Nombre' },
+  { valor: 'it', etiqueta: 'MW IT, mayor primero', numerico: true, direccion: 'desc' },
+  { valor: 'conexion', etiqueta: 'MW conexión, mayor primero', numerico: true, direccion: 'desc' },
+  { valor: 'verificacion', etiqueta: 'Verificación más reciente', direccion: 'desc' },
+]
+---
+<Listado nombre="proyectos" filtros={filtros} ordenes={ordenes} porPagina={25} mapa>
+  <div class="tabla-envoltorio">
+    <table class="tabla-fichas inventario">
+      <thead><tr>
+        <th>Emplazamiento</th>{mostrarOperador && <th>Operador</th>}<th>Ubicación</th><th>Estado</th>
+        <th class="num"><Termino id="mw-it">MW IT</Termino></th>
+        <th class="num"><Termino id="potencia-acceso">MW conexión</Termino></th>
+        <th class="num"><Termino id="mw-sin-tipificar">MW sin tipificar</Termino></th>
+        <th>Detalles</th>
+      </tr></thead>
+      <tbody>
+        {sitios.map((s) => (
+          <tr data-list-item data-busca={[s.nombre, s.operador, s.ubicacion.municipio, s.ubicacion.ccaa, ...s.alias].filter(Boolean).join(' ')}
+            data-operador={s.operador ?? ''} data-modelo={s.modelo ?? ''} data-confianza={s.confianza} data-nombre={s.nombre} data-estado={s.estado} data-region={s.ubicacion.ccaa ?? ''}
+            data-ordenestado={ORDEN_ESTADOS.indexOf(s.estado)} data-it={s.resumen_potencia.it?.valor_mw ?? ''}
+            data-sintipo={s.resumen_potencia.no_especificado?.valor_mw ?? ''} data-conexion={s.resumen_potencia.conexion_red?.valor_mw ?? ''} data-verificacion={s.ultima_verificacion ?? ''}>
+            <td><a href={`/proyecto/${s.id}`}>{s.nombre}</a></td>
+            {mostrarOperador && <td class="operador" data-etiqueta="Operador">{s.operador ? <a href={`/compania/${slug(s.operador)}`}>{s.operador}</a> : <span class="silencio">No publicado</span>}</td>}
+            <td data-etiqueta="Ubicación">{s.ubicacion.municipio ?? 'Sin determinar'}{mostrarRegion && <span class="pequeno silencio"><br />{s.ubicacion.ccaa}</span>}</td>
+            <td data-etiqueta="Estado"><span class={`etiqueta estado-${s.estado}`}><span class="punto" aria-hidden="true"></span>{ESTADO_ETIQUETA[s.estado]}</span></td>
+            {['it', 'conexion_red', 'no_especificado'].map((t, i) => <td class="num potencia" data-etiqueta={['MW IT', 'MW conexión', 'MW sin tipificar'][i]} data-vacia={s.resumen_potencia[t] ? 'no' : 'si'}>
+              {numero(s.resumen_potencia[t]?.valor_mw, 1) ?? <span class="silencio">—</span>}
+              {s.resumen_potencia[t]?.discrepancia && <span class="advertencia" title="Las fuentes discrepan. El rango y las lecturas están en la ficha."> *</span>}
+            </td>)}
+            <td class="ampliacion" data-etiqueta="Detalles"><details>
+              <summary>Verificación y datos</summary>
+              <dl><dt>Verificado</dt><dd>{fechaLegible(s.ultima_verificacion) ?? 'Sin fecha'}</dd>
+                <dt>Confianza</dt><dd>{CONFIANZA_ETIQUETA[s.confianza].replace('Confianza ', '')}</dd>
+                <dt>Fases</dt><dd>{s.fases.length || 'No publicadas'}</dd>
+                <dt>Incertidumbres</dt><dd>{s.incertidumbres.length ? <a href={`/proyecto/${s.id}#incertidumbres`}>{s.incertidumbres.length} documentadas</a> : 'Ninguna documentada'}</dd>
+              </dl>
+              {!s.resumen_potencia.it && !s.resumen_potencia.conexion_red && !s.resumen_potencia.no_especificado && <p class="pequeno silencio">{s.resumen_potencia.termica_respaldo || s.resumen_potencia.generacion_asociada ? 'Solo se publica potencia de respaldo o generación asociada.' : 'Potencia del centro no publicada.'}</p>}
+            </details></td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <p class="pequeno silencio lectura">Las tres magnitudes se leen por separado. «—» significa dato no publicado. Las cifras incluyen proyectos en distintos estados; el estado figura en cada fila.</p>
+</Listado>
+<style>
+  .inventario th { white-space: nowrap; }
+  .inventario td:first-child { min-width: 13rem; }
+  .ampliacion { min-width: 10rem; font-size: .78rem; }
+  .ampliacion summary { cursor: pointer; color: var(--tinta-3); }
+  .ampliacion dl { display: grid; grid-template-columns: auto 1fr; gap: .2rem .6rem; margin: .6rem 0; }
+  .ampliacion dt { color: var(--tinta-3); }
+  .ampliacion dd { margin: 0; }
+  .lectura { margin: .65rem 0 0; max-width: 54rem; }
+  .advertencia { color: var(--aviso); }
+  @media(max-width: 760px) {
+    .inventario td:first-child { min-width: 0; padding-bottom: .3rem; }
+    .inventario td.operador { font-size: .8rem; }
+    .inventario td.ampliacion { padding-left: 0; border-top: 1px solid var(--borde); margin-top: .35rem; padding-top: .4rem; }
+    .inventario td.ampliacion::before { content: none; }
+    .inventario td.potencia:not([data-vacia='si']) { display: inline-block; position: static; padding: .25rem .65rem .25rem 0; margin-right: .45rem; }
+    .inventario td.potencia::before { position: static; display: inline; width: auto; font-size: .65rem; margin-right: .35rem; }
+  }
+</style>

@@ -1,6 +1,10 @@
-# Detalle de los activos renovables
+# Guía de renovables y almacenamiento
 
-*Última revisión: 2026-08-29. Los ficheros están en `data/renovables/*.yaml`.*
+*Inventario y fuentes consultados hasta el 29 de agosto de 2026. Revisión editorial del 14 de octubre de 2026.*
+
+Las tablas y los recuentos siguientes conservan el inventario de aquella revisión. Los
+registros mantenidos, sus estados y fechas están en [Renovables](/renovables). El estado del
+proyecto de decreto se consulta en [Normativa](/normativa/prd-centros-datos-sostenibles).
 
 ## Qué activos se pueden situar
 
@@ -102,9 +106,9 @@ CPD produce sumas sin sentido.
 
 Aparecen juntos por una razón física. Un centro de datos consume plano las 24
 horas y la fotovoltaica produce en campana. Sin almacenamiento, un PPA solar
-cubre bien las horas centrales y nada la noche. El requisito de casación horaria
-del nuevo Real Decreto (ver abajo) convierte eso en un problema regulatorio, no
-solo económico. pv magazine recoge además el argumento técnico de que los picos
+cubre las horas centrales y no produce por la noche. La correlación horaria que propone
+el borrador de real decreto convertiría esa diferencia en una condición regulatoria si se
+aprobase en esos términos. El borrador no está en vigor. pv magazine recoge además el argumento técnico de que los picos
 sincronizados de las GPU exigen respuesta casi instantánea, que las baterías se
 degradan con ciclos muy frecuentes y que solar más almacenamiento no basta como
 solución aislada
@@ -157,25 +161,24 @@ cobrarla. En el primer trimestre de 2026 hubo 397 horas de precios negativos en
 España, la mayoría en los picos solares. El PPA existe, los megavatios existen, y
 aun así el reparto de riesgo entre las partes es cualquier cosa menos simétrico.
 
-## El Real Decreto de agosto de 2026 cambia las reglas
+## El proyecto de decreto y los requisitos renovables
 
-El Consejo de Ministros aprobó el 25 de agosto de 2026, por vía de urgencia, un
-proyecto de Real Decreto que afecta a todo centro de datos desde 1 MW
-([pv magazine, 2026-08-26](https://www.pv-magazine.es/2026/08/26/espana-exigira-a-los-centros-de-datos-un-80-de-renovables-adicionales-y-datos-bajo-control-europeo/)):
+El texto de agosto de 2026 es un proyecto de real decreto. El 25 de agosto se acordó su
+tramitación urgente, no la aprobación de una norma definitiva. La audiencia terminó el
+10 de septiembre, tras una ampliación, y la CNMC emitió su informe el 22 de septiembre.
+En la revisión del 14 de octubre no se había localizado un texto definitivo aprobado.
 
-- Al menos el 80 % de la electricidad consumida debe ser renovable, hasta que la
-  generación renovable supere el 90 % del mix.
-- Cada nuevo MW de demanda debe ir acompañado de un nuevo MW de generación
-  renovable instalado en los 18 meses anteriores a la entrada en funcionamiento.
-- La nueva capacidad puede venir de autoconsumo o de PPA a largo plazo.
-- En cada hora de funcionamiento, al menos el 80 % del consumo debe estar
-  respaldado por generación renovable producida esa misma hora.
+El borrador propone que los centros de al menos 1 MW de potencia de acceso cubran el
+80 % de su consumo con autoconsumo o PPA de instalaciones renovables en España, con una
+ventana de dieciocho meses para la adicionalidad. También propone un respaldo renovable
+del 80 % del consumo de cada hora. Son requisitos sobre energía y coincidencia temporal;
+no una regla de instalar un MW renovable por cada MW de demanda.
 
-La casación horaria es lo que rompe el modelo actual: un VPPA anual sobre una
-cartera solar sin identificar no acredita el 80 % horario. Si la norma sale como
-está, contrato financiero, entrega física y coincidencia horaria pasan a ser tres
-datos distintos, y previsiblemente aparecerá mucho más almacenamiento pegado a
-los campus.
+La CNMC recomienda flexibilizar esos requisitos y reconocer el almacenamiento y la gestión
+de demanda. Su informe es consultivo; no modifica por sí mismo el borrador. Los porcentajes,
+los plazos y sus fuentes se mantienen en
+[la ficha normativa](/normativa/prd-centros-datos-sostenibles), que debe consultarse antes
+de tratar cualquier requisito propuesto como una obligación vigente.
 
 ## Casos descartados
 

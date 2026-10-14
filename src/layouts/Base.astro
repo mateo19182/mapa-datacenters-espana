@@ -9,25 +9,19 @@ const { titulo, descripcion, sinPie = false, pantallaCompleta = false } = Astro.
 const ruta = Astro.url.pathname.replace(/\/$/, '') || '/'
 const activo = (href) => (ruta === href || (href !== '/' && ruta.startsWith(href)) ? 'page' : undefined)
 
-// El registro y, aparte, su aparato crítico: cómo está hecho y qué no cubre.
-const enlaces = [
-  ['/', 'Mapa'],
-  ['/proyectos', 'Proyectos'],
-  ['/companias', 'Compañías'],
-  ['/regiones', 'Regiones'],
-  ['/red-electrica', 'Red eléctrica'],
-  ['/renovables', 'Renovables'],
-  ['/normativa', 'Normativa'],
-  ['/inversion', 'Inversión'],
+const grupos = [
+  { titulo: 'Proyectos', enlaces: [['/proyectos', 'Todos los proyectos'], ['/companias', 'Compañías'], ['/regiones', 'Regiones']] },
+  { titulo: 'Energía', enlaces: [['/red-electrica', 'Red eléctrica'], ['/renovables', 'Renovables y almacenamiento'], ['/guias/red-electrica', 'Guía de acceso a la red'], ['/guias/renovables', 'Guía de contratos y energía']] },
 ]
-const enlacesCriticos = [
-  ['/glosario', 'Glosario'],
+const referencias = [
+  ['/actualizaciones', 'Últimos cambios'],
+  ['/cobertura', 'Cobertura del registro'],
   ['/incertidumbres', 'Incertidumbres'],
-  ['/cobertura', 'Cobertura'],
   ['/fuentes', 'Fuentes'],
+  ['/glosario', 'Glosario'],
   ['/metodologia', 'Metodología'],
-  ['/datos', 'Datos'],
 ]
+
 ---
 
 <!doctype html>
@@ -44,61 +38,56 @@ const enlacesCriticos = [
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   </head>
   <body class:list={[pantallaCompleta && 'pantalla-completa']}>
+    <a class="saltar-contenido" href="#contenido">Saltar al contenido</a>
     <header class="cabecera">
       <div class="cabecera-fila">
         <a class="marca" href="/">Centros de datos en España</a>
         <button id="abrir-menu" class="boton-menu" type="button" aria-expanded="false" aria-controls="menu">
           Secciones
         </button>
-        <nav id="menu" class="nav">
-          {enlaces.map(([href, texto]) => <a href={href} aria-current={activo(href)}>{texto}</a>)}
-          <span class="nav-separador" aria-hidden="true"></span>
-          {enlacesCriticos.map(([href, texto]) => (
-            <a class="nav-critico" href={href} aria-current={activo(href)}>{texto}</a>
+        <nav id="menu" class="nav" aria-label="Navegación principal">
+          <a href="/" aria-current={activo('/')}>Mapa</a>
+          {grupos.map((grupo) => (
+            <details class="nav-grupo" data-activo={grupo.enlaces.some(([href]) => activo(href)) || undefined}>
+              <summary>{grupo.titulo}</summary>
+              <div class="nav-desplegable">
+                {grupo.enlaces.map(([href, texto]) => <a href={href} aria-current={activo(href)}>{texto}</a>)}
+              </div>
+            </details>
           ))}
-          <span class="nav-separador" aria-hidden="true"></span>
-          <a class="nav-externo" href={REPOSITORIO} rel="noopener" title="Código, datos de origen e historial de cambios">
-            GitHub
-          </a>
+          <a href="/normativa" aria-current={activo('/normativa')}>Normativa</a>
+          <a href="/inversion" aria-current={activo('/inversion')}>Inversión</a>
+          <details class="nav-grupo" data-activo={referencias.some(([href]) => activo(href)) || undefined}>
+            <summary>Más</summary>
+            <div class="nav-desplegable">
+              {referencias.map(([href, texto]) => <a href={href} aria-current={activo(href)}>{texto}</a>)}
+              <a href={REPOSITORIO} class="nav-externo" rel="noopener">GitHub</a>
+            </div>
+          </details>
+          <a class="nav-datos" href="/datos" aria-current={activo('/datos')}>Descargar datos</a>
         </nav>
       </div>
     </header>
 
-    <main>
+    <main id="contenido" tabindex="-1">
       <slot />
     </main>
 
     <script>
-      // El menú se pliega en pantallas estrechas. Sin JS la navegación sigue
-      // siendo visible, porque el CSS solo la oculta cuando hay botón.
-      const boton = document.getElementById('abrir-menu')
-      const menu = document.getElementById('menu')
-      document.body.classList.add('con-menu-plegable')
-      boton?.addEventListener('click', () => {
-        const abierto = menu.classList.toggle('abierto')
-        boton.setAttribute('aria-expanded', String(abierto))
-      })
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && menu?.classList.contains('abierto')) {
-          menu.classList.remove('abierto')
-          boton.setAttribute('aria-expanded', 'false')
-          boton.focus()
-        }
-      })
+      import { iniciarNavegacion } from '../scripts/navegacion.js'
+      iniciarNavegacion()
     </script>
 
     {!sinPie && (
       <footer class="pie">
         <div class="contenedor">
-          <p>
-            Centros de datos en España peninsular y la red de transporte que los alimenta. Cada
-            dato lleva su fuente.
-          </p>
-          <p>
-            {resumen.total_emplazamientos} emplazamientos y {resumen.fuentes_distintas} fuentes.
-            Conjunto generado el {resumen.generado}.
-            <a href="/metodologia">Metodología</a> · <a href="/datos">datos abiertos</a> ·
-            <a href={REPOSITORIO} rel="noopener">código y datos en GitHub</a>.
+          <p>{resumen.total_emplazamientos} emplazamientos · {resumen.fuentes_distintas} fuentes · Datos del {resumen.generado}.</p>
+          <p class="pie-enlaces">
+            <a href="/actualizaciones">Últimos cambios</a>
+            <a href="/metodologia">Metodología</a>
+            <a href="/cobertura">Cobertura</a>
+            <a href="/datos">Datos abiertos</a>
+            <a href={REPOSITORIO} rel="noopener">GitHub</a>
           </p>
           <p>
             Cartografía base © <a href="https://www.openstreetmap.org/copyright" rel="noopener">colaboradores de OpenStreetMap</a> y ©

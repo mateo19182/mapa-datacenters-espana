@@ -1,13 +1,13 @@
 ---
 import Base from '../../layouts/Base.astro'
 import Cartera from '../../components/Cartera.astro'
+import InventarioProyectos from '../../components/InventarioProyectos.astro'
 import regiones from '../../data/regiones.json'
 import sitios from '../../data/sitios.json'
 import red from '../../data/red.json'
 import renovables from '../../data/renovables.json'
 import normativa from '../../data/normativa.json'
 import { ESTADO_ETIQUETA, ORDEN_ESTADOS, numero, slug as aSlug } from '../../lib/etiquetas.js'
-import Termino from '../../components/Termino.astro'
 import { ESTADO_NORMA_ETIQUETA, ordenarNormas, normasQueAfectanA } from '../../lib/normativa.js'
 
 export function getStaticPaths() {
@@ -38,13 +38,7 @@ const porOperador = [...new Set(propios.map((s) => s.operador).filter(Boolean))]
   .map((o) => ({ nombre: o, n: propios.filter((s) => s.operador === o).length }))
   .sort((a, b) => b.n - a.n)
 
-const centro = (() => {
-  const conCoord = propios.filter((s) => s.ubicacion.lat != null)
-  if (!conCoord.length) return null
-  const lat = conCoord.reduce((a, s) => a + s.ubicacion.lat, 0) / conCoord.length
-  const lon = conCoord.reduce((a, s) => a + s.ubicacion.lon, 0) / conCoord.length
-  return { lat, lon }
-})()
+
 ---
 
 <Base
@@ -62,6 +56,9 @@ const centro = (() => {
 
     <Cartera cartera={r} />
 
+    <h2>Emplazamientos</h2>
+    <InventarioProyectos sitios={propios} mostrarRegion={false} />
+    <details class="detalle-region"><summary>Distribución por provincia y operador</summary>
     <div class="columnas">
       <section>
         <h2>Por provincia</h2>
@@ -91,7 +88,7 @@ const centro = (() => {
             <li>
               <span class="etiqueta-barra"><a href={`/compania/${aSlug(o.nombre)}`}>{o.nombre}</a></span>
               <span class="pista">
-                <span class="segmento estado-operativo" style={`flex:${o.n}`}></span>
+                <span class="segmento operador" style={`flex:${o.n}`}></span>
                 <span style={`flex:${Math.max(porOperador[0].n - o.n, 0)}`}></span>
               </span>
               <span class="num-barra">{o.n}</span>
@@ -101,39 +98,11 @@ const centro = (() => {
       </section>
     </div>
 
-    <h2>Emplazamientos</h2>
-    <div class="tabla-envoltorio">
-      <table class="tabla-fichas">
-        <thead>
-          <tr>
-            <th>Emplazamiento</th>
-            <th>Operador</th>
-            <th>Municipio</th>
-            <th>Estado</th>
-            <th class="num"><Termino id="mw-it">MW IT</Termino></th>
-            <th class="num">MW conexión</th>
-            <th class="num">MW s/tipo</th>
-          </tr>
-        </thead>
-        <tbody>
-          {propios.map((s) => (
-            <tr>
-              <td><a href={`/proyecto/${s.id}`}>{s.nombre}</a></td>
-              <td data-etiqueta="Operador">{s.operador ? <a href={`/compania/${aSlug(s.operador)}`}>{s.operador}</a> : <span class="silencio">—</span>}</td>
-              <td data-etiqueta="Municipio">{s.ubicacion.municipio ?? <span class="silencio">sin determinar</span>}</td>
-              <td data-etiqueta="Estado"><span class={`etiqueta estado-${s.estado}`}><span class="punto"></span>{ESTADO_ETIQUETA[s.estado]}</span></td>
-              <td class="num" data-etiqueta="MW IT" data-vacia={s.resumen_potencia.it ? 'no' : 'si'}>{numero(s.resumen_potencia.it?.valor_mw, 1) ?? '—'}</td>
-              <td class="num" data-etiqueta="MW conexión" data-vacia={s.resumen_potencia.conexion_red ? 'no' : 'si'}>{numero(s.resumen_potencia.conexion_red?.valor_mw, 1) ?? '—'}</td>
-              <td class="num" data-etiqueta="MW sin tipificar" data-vacia={s.resumen_potencia.no_especificado ? 'no' : 'si'}>{numero(s.resumen_potencia.no_especificado?.valor_mw, 1) ?? '—'}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+    </details>
 
     {nodos.length > 0 && (
-      <>
-        <h2>Infraestructura eléctrica registrada</h2>
+      <details class="detalle-region">
+        <summary>Infraestructura eléctrica registrada · {nodos.length} nudos</summary>
         <div class="tabla-envoltorio">
           <table class="tabla-fichas">
             <thead>
@@ -160,12 +129,12 @@ const centro = (() => {
           La capacidad de acceso para demanda que publica Red Eléctrica caduca deprisa; véase la
           fecha del dato en <a href="/red-electrica">la sección de red eléctrica</a>.
         </p>
-      </>
+      </details>
     )}
 
     {activos.length > 0 && (
-      <>
-        <h2>Generación y almacenamiento vinculados</h2>
+      <details class="detalle-region">
+        <summary>Generación y almacenamiento vinculados · {activos.length} activos</summary>
         <div class="tabla-envoltorio">
           <table class="tabla-fichas">
             <thead>
@@ -185,7 +154,7 @@ const centro = (() => {
             </tbody>
           </table>
         </div>
-      </>
+      </details>
     )}
 
     {normasRegion.length > 0 && (
@@ -218,6 +187,8 @@ const centro = (() => {
 </Base>
 
 <style>
+  .detalle-region { margin: 1rem 0; }
+  .detalle-region > summary { cursor: pointer; font-size: .95rem; }
   .columnas {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
@@ -254,6 +225,7 @@ const centro = (() => {
     overflow: hidden;
   }
 
+  .segmento.operador { color: var(--acento); }
   .segmento {
     background: currentColor;
     min-width: 2px;

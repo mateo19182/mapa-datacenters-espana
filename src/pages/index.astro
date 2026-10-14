@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro'
 import sitios from '../data/sitios.json'
 import resumen from '../data/resumen.json'
+import UltimosCambios from '../components/UltimosCambios.astro'
 import { ESTADO_ETIQUETA, ORDEN_ESTADOS, MODELO_ETIQUETA, numero } from '../lib/etiquetas.js'
 
 const ccaas = [...new Set(sitios.map((s) => s.ubicacion.ccaa).filter(Boolean))].sort((a, b) =>
@@ -20,142 +21,55 @@ const modelosPresentes = Object.keys(MODELO_ETIQUETA).filter((m) => sitios.some(
   sinPie
   pantallaCompleta
 >
+  <div class="barra-exploracion">
+    <label class="buscar-mapa" for="filtro-texto"><span class="solo-lectores">Buscar emplazamientos</span><input id="filtro-texto" type="search" placeholder="Proyecto, operador, municipio…" autocomplete="off" /></label>
+    <div class="estados-rapidos" aria-label="Filtrar por estado">
+      <button type="button" data-grupo-estado="todos" aria-pressed="true">Todos</button>
+      <button type="button" data-grupo-estado="operativos" aria-pressed="false">Operativos</button>
+      <button type="button" data-grupo-estado="construccion" aria-pressed="false">En obras</button>
+      <button type="button" data-grupo-estado="proyectos" aria-pressed="false">En proyecto</button>
+    </div>
+    <div class="vistas-mapa"><button id="alternar-panel" type="button" aria-expanded="false" aria-controls="panel-filtros">Lista y filtros</button><a href="/proyectos" id="ver-listado">Tabla</a><a class="novedades-movil" href="/actualizaciones">Cambios</a></div>
+  </div>
   <div class="disposicion">
-    <aside id="panel-filtros" class="panel">
+    <aside id="panel-filtros" class="panel" aria-label="Resultados y filtros del mapa">
       <div class="panel-cabecera">
-        <div>
-          <p id="recuento" class="recuento">{numero(sitios.length)} emplazamientos</p>
-          <p id="fuera-mapa" class="pequeno silencio"></p>
-          <p id="suma" class="pequeno"></p>
-        </div>
+        <div><p id="recuento" class="recuento" aria-live="polite">{numero(sitios.length)} emplazamientos</p><p id="fuera-mapa" class="pequeno silencio"></p></div>
         <button id="limpiar-filtros" type="button">Limpiar</button>
       </div>
-
-      <div class="grupo">
-        <label class="etiqueta-campo" for="filtro-texto">Buscar</label>
-        <input
-          id="filtro-texto"
-          type="search"
-          placeholder="Proyecto, operador, municipio…"
-          autocomplete="off"
-        />
+      <div class="filtros-principales">
+        <label><span class="etiqueta-campo">Comunidad</span><select id="filtro-ccaa" data-filtro="ccaa"><option value="">Todas</option>{ccaas.map((c) => <option value={c}>{c}</option>)}</select></label>
+        <label><span class="etiqueta-campo">Tamaño del círculo</span><select id="filtro-metrica"><option value="mw_it">MW IT</option><option value="mw_conexion">MW conexión</option><option value="mw_sin_tipo">MW sin tipificar</option></select></label>
       </div>
-
-      <div class="grupo">
-        <label class="etiqueta-campo" for="filtro-metrica">Magnitud representada</label>
-        <select id="filtro-metrica">
-          <option value="mw_it">MW IT (carga TI)</option>
-          <option value="mw_conexion">MW de conexión a red</option>
-          <option value="mw_sin_tipo">MW sin tipificar</option>
-        </select>
-        <p class="ayuda">
-          El círculo crece con la magnitud. Los emplazamientos que no la publican salen huecos.
-        </p>
-      </div>
-
-      <div class="grupo">
-        <label class="etiqueta-campo" for="filtro-minimo">
-          Mínimo de <span id="etiqueta-minimo-metrica">MW IT</span>
-          <span class="silencio"> · <span id="valor-minimo">sin mínimo</span></span>
-        </label>
-        <input id="filtro-minimo" type="range" min="0" max="200" step="5" value="0" />
-        <label class="casilla pequeno">
-          <input id="filtro-solo-con-metrica" type="checkbox" />
-          Solo los que publican esta magnitud
-        </label>
-      </div>
-
-      <fieldset class="grupo">
-        <legend class="etiqueta-campo">Estado</legend>
-        {estadosPresentes.map((e) => (
-          <label class={`casilla estado-${e}`}>
-            <input type="checkbox" data-estado={e} />
-            <span class="punto"></span>
-            <span class="casilla-texto">{ESTADO_ETIQUETA[e]}</span>
-            <span class="silencio pequeno">{sitios.filter((s) => s.estado === e).length}</span>
-          </label>
-        ))}
-      </fieldset>
-
-      <div class="grupo">
-        <label class="etiqueta-campo" for="filtro-ccaa">Comunidad autónoma</label>
-        <select id="filtro-ccaa" data-filtro="ccaa">
-          <option value="">Todas</option>
-          {ccaas.map((c) => <option value={c}>{c}</option>)}
-        </select>
-      </div>
-
-      <div class="grupo">
-        <label class="etiqueta-campo" for="filtro-operador">Operador</label>
-        <select id="filtro-operador" data-filtro="operador">
-          <option value="">Todos</option>
-          {operadores.map((o) => <option value={o}>{o}</option>)}
-        </select>
-      </div>
-
-      <div class="grupo">
-        <label class="etiqueta-campo" for="filtro-modelo">Modelo</label>
-        <select id="filtro-modelo" data-filtro="modelo">
-          <option value="">Todos</option>
-          {modelosPresentes.map((m) => <option value={m}>{MODELO_ETIQUETA[m]}</option>)}
-        </select>
-      </div>
-
-      <div class="grupo">
-        <label class="etiqueta-campo" for="filtro-confianza">Confianza del registro</label>
-        <select id="filtro-confianza" data-filtro="confianza">
-          <option value="">Cualquiera</option>
-          <option value="alta">Alta</option>
-          <option value="media">Media</option>
-          <option value="baja">Baja</option>
-        </select>
-      </div>
-
-      <fieldset class="grupo">
-        <legend class="etiqueta-campo">Capas eléctricas</legend>
-        <label class="casilla">
-          <input type="checkbox" data-capa="lineas" />
-          <span class="casilla-texto">Red de transporte 220/400 kV</span>
-        </label>
-        <label class="casilla">
-          <input type="checkbox" data-capa="subestaciones" />
-          <span class="casilla-texto">Subestaciones y nudos ({resumen.nodos_red})</span>
-        </label>
-        <label class="casilla">
-          <input type="checkbox" data-capa="renovables" />
-          <span class="casilla-texto">Renovables y BESS vinculados ({resumen.activos_renovables})</span>
-        </label>
-        <label class="casilla">
-          <input type="checkbox" data-capa="centrales" />
-          <span class="casilla-texto">Centrales de generación ({resumen.centrales_generacion.toLocaleString('es-ES')})</span>
-        </label>
-        <p class="ayuda">
-          Trazado y centrales de OpenStreetMap, de completitud variable. No es cartografía
-          oficial. {resumen.centrales_con_potencia.toLocaleString('es-ES')} de las
-          {resumen.centrales_generacion.toLocaleString('es-ES')} centrales declaran potencia;
-          el resto se dibuja hueco.
-          {resumen.generacion_dia
-            ? ` Generación real por unidad del ${resumen.generacion_dia}, solo para unidades de 100 MW o más.`
-            : ' Sin instantánea de generación real cargada.'}
-        </p>
-      </fieldset>
-
-      <p class="ayuda pie-panel">
-        Los círculos atenuados se sitúan en el centro del municipio: la fuente no publica la
-        parcela. <a href="/metodologia">Metodología</a>.
-      </p>
-
-      <ol id="lista-resultados" class="lista"></ol>
+      <details id="filtros-avanzados" class="filtros-avanzados">
+        <summary>Más filtros y capas <span id="filtros-activos"></span></summary>
+        <fieldset class="grupo">
+          <legend class="etiqueta-campo">Estado detallado</legend>
+          {estadosPresentes.map((e) => <label class={`casilla estado-${e}`}><input type="checkbox" data-estado={e} /><span class="punto"></span><span class="casilla-texto">{ESTADO_ETIQUETA[e]}</span><span class="silencio pequeno">{sitios.filter((s) => s.estado === e).length}</span></label>)}
+        </fieldset>
+        <div class="grupo"><label class="etiqueta-campo" for="filtro-operador">Operador</label><select id="filtro-operador" data-filtro="operador"><option value="">Todos</option>{operadores.map((o) => <option value={o}>{o}</option>)}</select></div>
+        <div class="grupo"><label class="etiqueta-campo" for="filtro-modelo">Modelo</label><select id="filtro-modelo" data-filtro="modelo"><option value="">Todos</option>{modelosPresentes.map((m) => <option value={m}>{MODELO_ETIQUETA[m]}</option>)}</select></div>
+        <div class="grupo"><label class="etiqueta-campo" for="filtro-confianza">Confianza</label><select id="filtro-confianza" data-filtro="confianza"><option value="">Cualquiera</option><option value="alta">Alta</option><option value="media">Media</option><option value="baja">Baja</option></select></div>
+        <div class="grupo"><label class="etiqueta-campo" for="filtro-minimo">Mínimo de <span id="etiqueta-minimo-metrica">MW IT</span> · <span id="valor-minimo">sin mínimo</span></label><input id="filtro-minimo" type="range" min="0" max="200" step="5" value="0" /><label class="casilla pequeno"><input id="filtro-solo-con-metrica" type="checkbox" />Solo con potencia publicada</label></div>
+        <fieldset class="grupo">
+          <legend class="etiqueta-campo">Capas eléctricas</legend>
+          <label class="casilla"><input type="checkbox" data-capa="lineas" /><span class="casilla-texto">Transporte 220/400 kV</span></label>
+          <label class="casilla"><input type="checkbox" data-capa="subestaciones" /><span class="casilla-texto">Subestaciones y nudos · {resumen.nodos_red}</span></label>
+          <label class="casilla"><input type="checkbox" data-capa="renovables" /><span class="casilla-texto">Renovables y BESS vinculados · {resumen.activos_renovables}</span></label>
+          <label class="casilla"><input type="checkbox" data-capa="centrales" /><span class="casilla-texto">Centrales de generación · {numero(resumen.centrales_generacion)}</span></label>
+          <p class="ayuda">Trazado y centrales de OpenStreetMap. {numero(resumen.centrales_con_potencia)} centrales publican potencia instalada. {resumen.generacion_dia ? `Generación medida del ${resumen.generacion_dia}.` : 'Sin datos de generación real cargados.'} <a href="/metodologia#capas">Cómo leer las capas</a>.</p>
+        </fieldset>
+      </details>
+      <details class="lectura-mapa"><summary>Capacidad documentada y leyenda</summary><p id="suma" class="pequeno"></p><p class="ayuda">Círculo hueco: magnitud no publicada. Atenuado: ubicación aproximada. Los estados incluyen centros operativos y proyectos.</p><a class="pequeno" href="/metodologia">Metodología</a></details>
+      <ol id="lista-resultados" class="lista"><li class="sin-js"><a href="/proyectos">Abrir el listado de proyectos</a></li></ol>
     </aside>
-
     <div class="zona-mapa">
-      <button id="alternar-panel" type="button" aria-expanded="false">Filtros</button>
-      <div id="mapa"></div>
+      <p id="cargando-mapa" class="cargando-mapa" role="status" hidden>Cargando cartografía…</p>
+      <div id="mapa" role="region" aria-label="Mapa interactivo de centros de datos"></div>
       <aside id="panel-detalle" class="detalle-flotante" hidden></aside>
-      <div class="leyenda">
-        {ORDEN_ESTADOS.filter((e) => sitios.some((s) => s.estado === e)).map((e) => (
-          <span class={`leyenda-item estado-${e}`}><span class="punto"></span>{ESTADO_ETIQUETA[e]}</span>
-        ))}
+      <details class="novedades-mapa" open><summary>Últimos cambios</summary><UltimosCambios compacto mostrarTitulo={false} /></details>
+      <div class="leyenda" aria-label="Leyenda del mapa">
+        {estadosPresentes.map((e) => <span class={`leyenda-item estado-${e}`}><span class="punto"></span>{ESTADO_ETIQUETA[e]}</span>)}
         <span id="leyenda-capas" class="leyenda-capas" hidden></span>
       </div>
     </div>
@@ -319,6 +233,9 @@ const modelosPresentes = Object.keys(MODELO_ETIQUETA).filter((m) => sitios.some(
     color: var(--tinta-3);
     font-size: 0.72rem;
   }
+
+  .cargando-mapa { position: absolute; z-index: 2; left: 50%; top: 45%; transform: translate(-50%, -50%); padding: .55rem 1rem; background: var(--papel); border: 1px solid var(--borde); font-size: .85rem; }
+  .cargando-mapa[hidden] { display: none; }
 
   .zona-mapa {
     position: relative;
@@ -583,49 +500,47 @@ const modelosPresentes = Object.keys(MODELO_ETIQUETA).filter((m) => sitios.some(
     filter: invert(0.88);
   }
 
+  .barra-exploracion { display: flex; align-items: center; gap: .75rem; flex-wrap: wrap; padding: .65rem 1rem; border-bottom: 1px solid var(--borde); }
+  .buscar-mapa { flex: 1 1 18rem; max-width: 29rem; }
+  .buscar-mapa input { width: 100%; }
+  .solo-lectores { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .estados-rapidos, .vistas-mapa { display: flex; align-items: center; gap: .35rem; }
+  .estados-rapidos button { padding: .35rem .65rem; font-size: .76rem; background: transparent; border-color: transparent; }
+  .estados-rapidos [aria-pressed='true'] { background: var(--acento-suave); color: var(--acento); border-color: var(--borde); }
+  .vistas-mapa { margin-left: auto; font-size: .8rem; gap: .8rem; }
+  .novedades-movil { display: none; }
+  .filtros-principales { display: grid; grid-template-columns: 1fr 1fr; gap: .65rem; padding: .8rem 1rem; border-bottom: 1px solid var(--borde); }
+  .filtros-principales label { min-width: 0; }
+  .filtros-principales select { width: 100%; font-size: .78rem; }
+  .filtros-principales .etiqueta-campo { font-size: .64rem; }
+  .filtros-avanzados { border-bottom: 1px solid var(--borde); }
+  .filtros-avanzados > summary, .lectura-mapa > summary { padding: .55rem 1rem; font-size: .79rem; margin: 0 !important; }
+  .lectura-mapa { border-bottom: 1px solid var(--borde); }
+  .lectura-mapa p, .lectura-mapa > a { margin: 0 1rem .55rem; }
+  .panel-cabecera { position: static; padding: .7rem 1rem; }
+  .panel-cabecera #fuera-mapa { font-size: .72rem; }
+  #limpiar-filtros { font-size: .74rem; }
+  .novedades-mapa { position: absolute; z-index: 3; top: .75rem; right: 3.4rem; width: min(20rem, calc(100% - 5rem)); background: color-mix(in srgb, var(--papel) 96%, transparent); padding: 0 .85rem; border: 1px solid var(--borde); box-shadow: 0 2px 6px rgb(0 0 0 / .04); border-radius: var(--radio); }
+  .novedades-mapa > summary { font-family: var(--serif); font-weight: 600; font-size: .95rem; margin: 0 !important; }
+  .novedades-mapa[open] { padding-bottom: .55rem; }
+  .zona-mapa:has(.detalle-flotante:not([hidden])) .novedades-mapa { display: none; }
+  .sin-js, .sin-resultados { padding: 1rem; font-size: .85rem; }
+  @media (max-width: 1050px) { .estados-rapidos { order: 3; flex-basis: 100%; } }
   @media (max-width: 900px) {
-    .disposicion {
-      grid-template-columns: 1fr;
-    }
-
-    .panel {
-      position: absolute;
-      z-index: 20;
-      inset: 0 0 auto 0;
-      max-height: 78%;
-      border-right: 0;
-      border-bottom: 1px solid var(--borde-fuerte);
-      transform: translateY(-100%);
-      transition: transform 0.2s ease;
-      box-shadow: 0 8px 20px rgb(0 0 0 / 0.15);
-    }
-
-    .panel.abierto {
-      transform: none;
-    }
-
-    #alternar-panel {
-      display: block;
-      position: absolute;
-      z-index: 21;
-      top: 0.6rem;
-      left: 0.6rem;
-      background: var(--papel);
-      border: 1px solid var(--borde-fuerte);
-    }
-
-    /* El botón de filtros flota sobre el panel: se le deja sitio. */
-    .panel-cabecera {
-      padding-left: 6rem;
-    }
-
-    /* El botón de filtros ocupa la esquina: el aviso baja para no taparlo. */
-    .zona-mapa :global(.aviso-mapa) {
-      top: 3.2rem;
-    }
-
-    .leyenda {
-      display: none;
-    }
+    .barra-exploracion { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .5rem; padding: .55rem .75rem; }
+    .buscar-mapa { flex-basis: calc(100% - 7.5rem); min-width: 0; }
+    .estados-rapidos { order: 3; grid-column: 1 / -1; overflow-x: auto; flex-wrap: nowrap; }
+    .estados-rapidos button { white-space: nowrap; flex: none; }
+    .vistas-mapa { gap: .5rem; margin-left: 0; }
+    .vistas-mapa #ver-listado { display: none; }
+    .novedades-movil { display: inline; font-size: .72rem; }
+    #alternar-panel { display: block; font-size: .72rem; padding: .4rem .5rem; }
+    .disposicion { grid-template-columns: 1fr; }
+    .panel { position: absolute; z-index: 20; inset: 0; border-right: 0; visibility: hidden; pointer-events: none; transform: translateX(-100%); transition: transform .2s ease; }
+    .panel.abierto { transform: none; visibility: visible; pointer-events: auto; }
+    .novedades-mapa { display: none; }
+    .leyenda { display: none; }
+    .detalle-flotante { top: .75rem; right: 3.4rem; width: calc(100% - 4.2rem); }
+    .zona-mapa :global(.aviso-mapa) { top: .6rem; }
   }
 </style>

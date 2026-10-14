@@ -1,0 +1,35 @@
+---
+import actualizaciones from '../data/actualizaciones.json'
+import { fechaLegible } from '../lib/etiquetas.js'
+const { limite = 3, compacto = false, mostrarTitulo = true } = Astro.props
+const entradas = actualizaciones.slice(0, limite)
+---
+<section class:list={['ultimos-cambios', compacto && 'compacto']} aria-label="Últimos cambios">
+  {mostrarTitulo && <div class="cambios-cabecera">
+    <h2>Últimos cambios</h2>
+    <a href="/actualizaciones">Ver todos</a>
+  </div>}
+  <ul>
+    {entradas.map((entrada) => (
+      <li>
+        <time datetime={entrada.fecha}>{fechaLegible(entrada.fecha)}</time>
+        <a href={`/actualizaciones#${entrada.id}`}>{entrada.titulo}</a>
+      </li>
+    ))}
+  </ul>
+  {!mostrarTitulo && <a class="ver-todos" href="/actualizaciones">Todas las novedades →</a>}
+</section>
+<style>
+  .ver-todos { display: block; font-size: .74rem; margin-top: .4rem; }
+  .ultimos-cambios { min-width: 0; }
+  .cambios-cabecera { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
+  h2 { font-size: 1rem; margin: 0; }
+  .cambios-cabecera > a { font-size: .75rem; white-space: nowrap; }
+  ul { list-style: none; padding: 0; margin: .5rem 0 0; }
+  li { display: grid; grid-template-columns: 8.5rem 1fr; gap: .6rem; padding: .45rem 0; border-top: 1px solid var(--borde); font-size: .82rem; line-height: 1.4; }
+  time { font-size: .7rem; color: var(--tinta-3); }
+  .compacto li { grid-template-columns: 1fr; gap: .12rem; padding: .45rem 0; }
+  .compacto li > a { text-decoration: none; }
+  .compacto li > a:hover { text-decoration: underline; }
+  @media (max-width: 600px) { li { grid-template-columns: 1fr; gap: .15rem; } }
+</style>

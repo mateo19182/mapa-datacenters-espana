@@ -1,10 +1,10 @@
 ---
 import Base from '../../layouts/Base.astro'
 import Cartera from '../../components/Cartera.astro'
+import InventarioProyectos from '../../components/InventarioProyectos.astro'
 import companias from '../../data/companias.json'
 import sitios from '../../data/sitios.json'
-import { ESTADO_ETIQUETA, ORDEN_ESTADOS, numero, fechaLegible, slug as aSlug } from '../../lib/etiquetas.js'
-import Termino from '../../components/Termino.astro'
+import { ORDEN_ESTADOS, fechaLegible } from '../../lib/etiquetas.js'
 
 export function getStaticPaths() {
   return companias.map((c) => ({ params: { slug: c.slug }, props: { compania: c } }))
@@ -33,54 +33,13 @@ const ultima = propios.map((s) => s.ultima_verificacion).sort().at(-1)
   <div class="contenedor">
     <p class="migas"><a href="/companias">Compañías</a></p>
     <h1>{c.nombre}</h1>
-    <p class="sumario">
-      {c.emplazamientos} {c.emplazamientos === 1 ? 'emplazamiento registrado' : 'emplazamientos registrados'} en
-      {c.ccaas.length === 1 ? ' ' : ' '}{c.ccaas.join(', ')}. Documentados con {fuentesTotales} fuentes
-      distintas; última verificación el {fechaLegible(ultima)}.
-    </p>
+    <p class="sumario">{c.emplazamientos} {c.emplazamientos === 1 ? 'emplazamiento registrado' : 'emplazamientos registrados'} en {c.ccaas.length} {c.ccaas.length === 1 ? 'comunidad' : 'comunidades'}.</p>
+    <p class="pequeno silencio">{fuentesTotales} fuentes distintas · Última verificación: {fechaLegible(ultima)}</p>
 
     <Cartera cartera={c} />
 
-    <p class="nota pequeno">
-      <strong>Sobre estas sumas.</strong> Solo agregan los emplazamientos que publican cada
-      magnitud, y nunca mezclan MW IT, de conexión y sin tipificar. No son la capacidad total de la
-      compañía en España, sino su parte documentada.
-    </p>
-
     <h2>Emplazamientos</h2>
-    <div class="tabla-envoltorio">
-      <table class="tabla-fichas">
-        <thead>
-          <tr>
-            <th>Emplazamiento</th>
-            <th>Ubicación</th>
-            <th>Estado</th>
-            <th class="num"><Termino id="mw-it">MW IT</Termino></th>
-            <th class="num">MW conexión</th>
-            <th class="num">MW s/tipo</th>
-            <th>Fases</th>
-          </tr>
-        </thead>
-        <tbody>
-          {propios.map((s) => (
-            <tr>
-              <td><a href={`/proyecto/${s.id}`}>{s.nombre}</a></td>
-              <td data-etiqueta="Ubicación">
-                <span>
-                  {s.ubicacion.municipio}
-                  <span class="pequeno silencio"><br /><a href={`/region/${aSlug(s.ubicacion.ccaa)}`}>{s.ubicacion.ccaa}</a></span>
-                </span>
-              </td>
-              <td data-etiqueta="Estado"><span class={`etiqueta estado-${s.estado}`}><span class="punto"></span>{ESTADO_ETIQUETA[s.estado]}</span></td>
-              <td class="num" data-etiqueta="MW IT" data-vacia={s.resumen_potencia.it ? 'no' : 'si'}>{numero(s.resumen_potencia.it?.valor_mw, 1) ?? '—'}</td>
-              <td class="num" data-etiqueta="MW conexión" data-vacia={s.resumen_potencia.conexion_red ? 'no' : 'si'}>{numero(s.resumen_potencia.conexion_red?.valor_mw, 1) ?? '—'}</td>
-              <td class="num" data-etiqueta="MW sin tipificar" data-vacia={s.resumen_potencia.no_especificado ? 'no' : 'si'}>{numero(s.resumen_potencia.no_especificado?.valor_mw, 1) ?? '—'}</td>
-              <td class="num" data-etiqueta="Fases" data-vacia={s.fases.length ? 'no' : 'si'}>{s.fases.length || '—'}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <InventarioProyectos sitios={propios} mostrarOperador={false} />
 
     {relacionados.length > 0 && (
       <>
@@ -103,19 +62,16 @@ const ultima = propios.map((s) => s.ultima_verificacion).sort().at(-1)
     )}
 
     {conIncertidumbre.length > 0 && (
-      <>
-        <h2>Incertidumbres abiertas</h2>
+      <details class="incertidumbres-compania">
+        <summary>Incertidumbres en {conIncertidumbre.length} de {propios.length} emplazamientos</summary>
         <ul class="lista-simple">
-          {conIncertidumbre.map((s) =>
-            s.incertidumbres.map((u) => (
-              <li>
-                <a href={`/proyecto/${s.id}#fuentes`}>{s.nombre}</a>
-                <span class="silencio"> · {u.descripcion}</span>
-              </li>
-            )),
-          )}
+          {conIncertidumbre.map((s) => <li>
+            <a href={`/proyecto/${s.id}#incertidumbres`}>{s.nombre}</a>
+            <span class="silencio pequeno"> · {s.incertidumbres.length} entradas documentadas</span>
+          </li>)}
         </ul>
-      </>
+        <p class="pequeno"><a href={`/incertidumbres?q=${encodeURIComponent(c.nombre)}`}>Buscar las incertidumbres de {c.nombre}</a></p>
+      </details>
     )}
 
     <p class="pequeno" style="margin:2rem 0 3rem">
@@ -125,6 +81,8 @@ const ultima = propios.map((s) => s.ultima_verificacion).sort().at(-1)
 </Base>
 
 <style>
+  .incertidumbres-compania { margin: 1.5rem 0; }
+  .incertidumbres-compania summary { cursor: pointer; }
   .lista-simple {
     list-style: none;
     padding: 0;

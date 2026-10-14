@@ -1,0 +1,18 @@
+---
+import Base from '../../layouts/Base.astro'
+import { Content as Documento } from '../../contenido/renovables.md'
+import normativa from '../../data/normativa.json'
+import { fechaLegible } from '../../lib/etiquetas.js'
+import { ESTADO_NORMA_ETIQUETA } from '../../lib/normativa.js'
+const decreto = normativa.find((n) => n.id === 'prd-centros-datos-sostenibles')
+---
+<Base titulo="Guía de renovables y almacenamiento" descripcion="Cómo leer los PPA, la adicionalidad y el almacenamiento asociados a centros de datos y qué límites tienen las fuentes públicas.">
+  <div class="contenedor-estrecho">
+    <p class="migas"><a href="/renovables">Renovables</a> · Guía</p>
+    <p class="nota pequeno">El <a href="/renovables">explorador de activos</a> reúne los registros mantenidos y sus fechas. Las tablas de esta guía conservan el inventario de agosto de 2026.</p>
+    {decreto && <p class="pequeno silencio">Proyecto de decreto: <a href={`/normativa/${decreto.id}`}>{ESTADO_NORMA_ETIQUETA[decreto.estado]}</a> · Verificado el {fechaLegible(decreto.ultima_verificacion)}.</p>}
+    <article class="prosa"><Documento /></article>
+    <p class="volver"><a href="/renovables">Volver a los activos</a></p>
+  </div>
+</Base>
+<style>.volver { margin: 2rem 0 3rem; } .prosa { overflow-wrap: anywhere; }</style>

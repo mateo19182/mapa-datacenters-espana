@@ -7,6 +7,7 @@ import Database from 'better-sqlite3'
 import { RAIZ } from './load.mjs'
 import { resumirPotencia, sumarCartera } from './potencia.mjs'
 import { ESTADOS, TIPOS_CAPACIDAD, PRECISIONES } from './schema.mjs'
+import { prepararActualizaciones } from './actualizaciones.mjs'
 
 // src/data alimenta las páginas en tiempo de build; public/datos se sirve tal
 // cual al navegador (mapa) y es además la descarga de datos abiertos.
@@ -562,6 +563,15 @@ for (const doc of ['red-electrica', 'renovables', 'cobertura']) {
     existsSync(origen) ? readFileSync(origen, 'utf8') : `# ${doc}\n\nDocumento pendiente.\n`,
     'utf8',
   )
+}
+
+// Solo se publican novedades revisadas, con destinos y fuentes comprobados.
+const actualizaciones = prepararActualizaciones(
+  YAML.parse(readFileSync(join(RAIZ, 'data/actualizaciones.yaml'), 'utf8')),
+  { sitios, normativa },
+)
+for (const carpeta of [SALIDA, PUBLICO]) {
+  writeFileSync(join(carpeta, 'actualizaciones.json'), JSON.stringify(actualizaciones, null, 2) + '\n')
 }
 
 // Las lecturas de cada norma —lo que cambia en la práctica, que es lo único

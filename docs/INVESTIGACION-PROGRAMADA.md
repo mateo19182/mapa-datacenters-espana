@@ -34,6 +34,15 @@ campo afectado, dato anterior, dato propuesto, fragmento de evidencia y decisió
 pendiente. Separa los resultados sin fuente primaria y los hallazgos descartados.
 Incluye búsquedas realizadas y el periodo examinado para que se vean los huecos.
 
+Añade al informe una sección «Candidatas a Últimos cambios», con un título breve,
+fecha del hecho, identificador afectado y fuente primaria para cada novedad que
+merezca publicarse. Distingue el día del hecho del día de incorporación al mapa.
+Las comprobaciones de enlaces y las pistas sin confirmar no son novedades.
+Después de revisar e integrar los datos, la publicación añade las entradas
+aprobadas a `data/actualizaciones.yaml`. La construcción valida fechas, destinos
+y referencias y genera `/actualizaciones` y `/datos/actualizaciones.json`.
+El trabajo semanal sigue limitado a material para revisión y no escribe ese YAML.
+
 Si hay evidencia suficiente, crea propuestas parciales en
 `research/propuestas-revision/<id>.yaml` con la forma de `data/propuestas/`.
 No escribas en `data/propuestas/`, `data/sites/` ni `data/red/`: el flujo semanal

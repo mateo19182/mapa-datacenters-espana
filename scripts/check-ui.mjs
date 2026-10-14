@@ -1,0 +1,168 @@
+// Prueba el sitio construido, sin depender de servicios cartográficos externos.
+import { createServer } from 'node:http'
+import { readFile, mkdir, writeFile, stat } from 'node:fs/promises'
+import { resolve, extname, join, sep } from 'node:path'
+import assert from 'node:assert/strict'
+import { chromium } from 'playwright'
+
+const raiz = resolve('dist')
+await stat(join(raiz, 'index.html')).catch(() => { throw new Error('Construye el sitio con npm run build antes de ejecutar test:ui.') })
+const tipos = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.geojson': 'application/geo+json', '.svg': 'image/svg+xml', '.png': 'image/png', '.woff2': 'font/woff2' }
+const servidor = createServer(async (req, res) => {
+  try {
+    let ruta = resolve(raiz, `.${decodeURIComponent(new URL(req.url, 'http://localhost').pathname)}`)
+    if (ruta !== raiz && !ruta.startsWith(raiz + sep)) { res.writeHead(403).end(); return }
+    const archivo = await stat(ruta).catch(() => null)
+    if (archivo?.isDirectory()) ruta = join(ruta, 'index.html')
+    const contenido = await readFile(ruta)
+    res.writeHead(200, { 'Content-Type': tipos[extname(ruta)] ?? 'application/octet-stream' }).end(contenido)
+  } catch { res.writeHead(404).end('No encontrado') }
+})
+await new Promise((ok) => servidor.listen(0, '127.0.0.1', ok))
+const origen = `http://127.0.0.1:${servidor.address().port}`
+const artefactos = resolve('build/ui')
+await mkdir(artefactos, { recursive: true })
+let navegador
+const resultados = []
+try {
+  navegador = await chromium.launch({
+    ...(process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH ? { executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH } : {}),
+    args: ['--no-sandbox', '--disable-dev-shm-usage'],
+  })
+  const contexto = await navegador.newContext({ viewport: { width: 1440, height: 900 }, colorScheme: 'light' })
+  const pagina = await contexto.newPage()
+  const errores = []
+  pagina.on('pageerror', (error) => errores.push(error.message))
+  const ir = async (ruta) => {
+    const respuesta = await pagina.goto(origen + ruta, { waitUntil: 'networkidle' })
+    if (respuesta) assert.equal(respuesta.status(), 200, ruta)
+    else await pagina.evaluate(() => new Promise((ok) => requestAnimationFrame(() => requestAnimationFrame(ok))))
+  }
+  const comprobar = async (nombre, prueba) => {
+    await prueba()
+    resultados.push(nombre)
+    console.log(`✓ ${nombre}`)
+  }
+  await comprobar('Fuentes: paginación, búsqueda, vacío y restablecer', async () => {
+    await ir('/fuentes/')
+    assert.equal(await pagina.locator('[data-list-item]:visible').count(), 25)
+    await pagina.locator('[data-siguiente]').click()
+    assert.equal(new URL(pagina.url()).searchParams.get('pagina'), '2')
+    await pagina.locator('input[name=q]').fill('fuente-inexistente-zzzz')
+    assert.equal(await pagina.locator('[data-list-item]:visible').count(), 0)
+    assert.equal(await pagina.locator('[data-vacio]').isVisible(), true)
+    await pagina.getByRole('button', { name: 'Limpiar', exact: true }).click()
+    assert.equal(await pagina.locator('[data-list-item]:visible').count(), 25)
+  })
+  await comprobar('Referencias: un enlace revela su página y su cita', async () => {
+    const id = await pagina.locator('[data-list-item][hidden]').last().getAttribute('id')
+    await ir(`/fuentes/#${id}`)
+    assert.equal(await pagina.locator(`#${id}`).isVisible(), true)
+    assert.equal(await pagina.locator(`#${id} details`).first().evaluate((e) => e.open), true)
+    await pagina.reload({ waitUntil: 'networkidle' })
+    assert.equal(await pagina.locator(`#${id}`).isVisible(), true)
+  })
+  await comprobar('Mapa y tabla conservan estados, región y potencia conocida', async () => {
+    await ir('/proyectos/?e=operativo,parcialmente_operativo&r=Comunidad+de+Madrid&con=1&min=5')
+    const filas = await pagina.locator('[data-list-item]:visible').evaluateAll((rows) => rows.map((e) => ({ estado: e.dataset.estado, region: e.dataset.region, it: e.dataset.it })))
+    assert(filas.length > 0)
+    for (const fila of filas) {
+      assert(['operativo', 'parcialmente_operativo'].includes(fila.estado))
+      assert.equal(fila.region, 'Comunidad de Madrid')
+      assert(fila.it !== '' && Number(fila.it) >= 5)
+    }
+  })
+  await comprobar('REE: cero y dato no publicado son filtros diferentes', async () => {
+    await ir('/red-electrica/')
+    await pagina.locator('select[name=ccaa]').selectOption('Comunidad de Madrid')
+    await pagina.locator('select[name=margen]').selectOption('con_margen')
+    assert.equal(await pagina.locator('[data-list-item]:visible').count(), 0)
+    await pagina.locator('select[name=margen]').selectOption('no_publicado')
+    assert(await pagina.locator('[data-list-item]:visible').count() > 0)
+    assert((await pagina.locator('[data-list-item]:visible').first().innerText()).includes('No publicado'))
+  })
+  await comprobar('Proyecto: hardware con sus matices y fuentes accesibles', async () => {
+    await ir('/proyecto/cluster-tic-galicia-a-coruna-csa/')
+    const texto = await pagina.locator('main').innerText()
+    assert(texto.includes('15 GPU'))
+    assert(texto.includes('NVIDIA A40'))
+    assert(texto.includes('Instalación física sin confirmar'))
+    assert.equal(await pagina.locator('#fuentes').evaluate((e) => e.open), false)
+    await ir('/proyecto/cluster-tic-galicia-a-coruna-csa/#fuente-src-catalogo')
+    assert.equal(await pagina.locator('#fuentes').evaluate((e) => e.open), true)
+    assert.equal(await pagina.locator('#fuente-src-catalogo').isVisible(), true)
+  })
+  await comprobar('Cronología: los hitos administrativos no son aperturas', async () => {
+    await ir('/proyecto/meta-talavera-de-la-reina-torrehierro/')
+    const cronologia = await pagina.locator('.cronologia-proyecto').innerText()
+    assert(cronologia.includes('Publicación'))
+    assert(!cronologia.includes('Puesta en servicio · Declaración'))
+  })
+  await comprobar('Inversión: fecha de corte y tesis completa bajo demanda', async () => {
+    await ir('/inversion/merlin-properties/')
+    assert.equal(await pagina.locator('#informe-completo').evaluate((e) => e.open), false)
+    assert((await pagina.locator('main').innerText()).includes('31 de agosto de 2026'))
+    await ir('/inversion/merlin-properties/#valoracion')
+    assert.equal(await pagina.locator('#informe-completo').evaluate((e) => e.open), true)
+    assert.equal(await pagina.locator('#valoracion').isVisible(), true)
+  })
+  await comprobar('Últimos cambios: destinos válidos y dos fechas diferenciadas', async () => {
+    await ir('/actualizaciones/')
+    const feed = await (await fetch(origen + '/datos/actualizaciones.json')).json()
+    assert(feed.length > 0)
+    assert.equal(await pagina.locator('.historial-cambios > li').count(), feed.length)
+    for (const entrada of feed) {
+      assert(entrada.fecha && entrada.fecha_hecho)
+      for (const enlace of entrada.enlaces) assert.equal((await fetch(origen + enlace.href)).status, 200)
+    }
+  })
+  await comprobar('Navegación: Escape devuelve el foco al menú abierto', async () => {
+    await pagina.locator('.nav-grupo > summary').filter({ hasText: 'Proyectos' }).click()
+    await pagina.locator('#menu a[href="/companias"]').focus()
+    await pagina.keyboard.press('Escape')
+    assert.equal(await pagina.evaluate(() => document.activeElement.tagName), 'SUMMARY')
+  })
+  await comprobar('Móvil: datos principales visibles y sin desbordamiento', async () => {
+    await pagina.setViewportSize({ width: 390, height: 844 })
+    for (const ruta of ['/proyectos/', '/red-electrica/', '/normativa/', '/proyecto/cluster-tic-galicia-a-coruna-csa/', '/inversion/merlin-properties/', '/datos/']) {
+      await ir(ruta)
+      assert.equal(await pagina.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, ruta)
+    }
+    await pagina.screenshot({ path: join(artefactos, 'inversion-movil.png') })
+  })
+  await comprobar('Mapa sin WebGL: búsqueda, lista, foco y enlaces compartidos siguen disponibles', async () => {
+    await pagina.addInitScript(() => {
+      const original = HTMLCanvasElement.prototype.getContext
+      HTMLCanvasElement.prototype.getContext = function (tipo, ...args) { return String(tipo).includes('webgl') ? null : original.call(this, tipo, ...args) }
+    })
+    await ir('/?min=500')
+    await pagina.locator('#alternar-panel').click()
+    await pagina.locator('#filtros-avanzados > summary').click()
+    assert.equal(await pagina.locator('#filtro-minimo').inputValue(), '500')
+    await pagina.locator('#limpiar-filtros').click()
+    await pagina.locator('#filtro-texto').fill('coruna cidade')
+    await pagina.waitForTimeout(250)
+    assert.equal(await pagina.locator('.fila-sitio').count(), 1)
+    await pagina.locator('.fila-sitio').click()
+    assert.equal(await pagina.locator('#panel-detalle').isVisible(), true)
+    assert.equal(await pagina.locator('#panel-detalle .cerrar').evaluate((e) => e === document.activeElement), true)
+    await pagina.keyboard.press('Escape')
+    assert.equal(await pagina.locator('#alternar-panel').evaluate((e) => e === document.activeElement), true)
+    await pagina.screenshot({ path: join(artefactos, 'mapa-respaldo-movil.png') })
+  })
+  assert.deepEqual(errores, [])
+  await contexto.close()
+  const sinJS = await navegador.newContext({ javaScriptEnabled: false })
+  const paginaSinJS = await sinJS.newPage()
+  await paginaSinJS.goto(origen + '/fuentes/')
+  const fuentes = await (await fetch(origen + '/datos/fuentes.json')).json()
+  assert.equal(await paginaSinJS.locator('[data-list-item]:visible').count(), fuentes.length)
+  resultados.push('Sin JavaScript: todas las fuentes siguen disponibles')
+  await sinJS.close()
+  await writeFile(join(artefactos, 'resultados.json'), JSON.stringify({ comprobaciones: resultados, errores }, null, 2) + '\n')
+  console.log(`${resultados.length} comprobaciones de interfaz superadas.`)
+} finally {
+  await navegador?.close()
+  servidor.closeAllConnections()
+  await new Promise((ok) => servidor.close(ok))
+}

@@ -1,0 +1,74 @@
+---
+const { id = 'listado', nombre = 'resultados', filtros = [], ordenes = [], porPagina = 0, mapa = false, placeholder = null } = Astro.props
+---
+<section id={id} class="listado" data-listado data-nombre={nombre} data-por-pagina={porPagina} data-mapa={mapa ? 'si' : undefined}>
+  <form class="herramientas" data-herramientas hidden role="search" aria-label={`Buscar ${nombre}`}>
+    <label class="busqueda">Buscar
+      <input type="search" name="q" placeholder={placeholder ?? `Buscar ${nombre}…`} autocomplete="off" />
+    </label>
+    {filtros.filter((f) => !f.avanzado).map((f) => (
+      <label>{f.etiqueta}
+        <select name={f.nombre} data-filtro data-parametro={f.parametro} data-varios={f.varios ? 'si' : undefined}>
+          <option value="">{f.todos ?? 'Todos'}</option>
+          {f.opciones.map((o) => <option value={o.valor}>{o.etiqueta}</option>)}
+        </select>
+      </label>
+    ))}
+    {ordenes.length > 0 && <label>Ordenar
+      <select name="orden" data-orden>
+        {ordenes.map((o) => <option value={o.valor} data-campo={o.campo ?? o.valor} data-numerico={o.numerico ? 'si' : 'no'} data-direccion={o.direccion ?? 'asc'}>{o.etiqueta}</option>)}
+      </select>
+    </label>}
+    <button type="reset" class="restablecer">Limpiar</button>
+    {mapa && <details class="avanzados"><summary>Más filtros</summary><div class="campos-avanzados">
+      {filtros.filter((f) => f.avanzado).map((f) => <label>{f.etiqueta}<select name={f.nombre} data-filtro data-parametro={f.parametro}><option value="">{f.todos ?? 'Todos'}</option>{f.opciones.map((o) => <option value={o.valor}>{o.etiqueta}</option>)}</select></label>)}
+      <label>Magnitud<select name="m"><option value="mw_it">MW IT</option><option value="mw_conexion">MW conexión</option><option value="mw_sin_tipo">MW sin tipificar</option></select></label>
+      <label>Mínimo de MW<input name="min" type="number" min="0" step="any" placeholder="Sin mínimo" /></label>
+      <label class="con-dato"><input type="checkbox" name="con" />Solo con potencia publicada</label>
+    </div></details>}
+
+  </form>
+  <p class="resultado-lista pequeno silencio" data-contador role="status" aria-live="polite" aria-atomic="true" hidden></p>
+  <slot />
+  <p class="lista-vacia" data-vacio hidden>No hay {nombre} con estos filtros. Prueba otra búsqueda o pulsa «Limpiar».</p>
+  {porPagina > 0 && <nav class="paginacion" data-paginacion aria-label={`Páginas de ${nombre}`} hidden>
+    <button type="button" data-anterior>Anterior</button>
+    <span class="pequeno" data-pagina></span>
+    <button type="button" data-siguiente>Siguiente</button>
+    <label class="pequeno">Por página
+      <select data-tamano aria-label={`Número de ${nombre} por página`}>
+        {[...new Set([porPagina, 50, 100])].sort((a, b) => a - b).map((n) => <option value={n}>{n}</option>)}
+        <option value="0">Todos</option>
+      </select>
+    </label>
+  </nav>}
+  <noscript><p class="pequeno silencio">Se muestra el listado completo. Activa JavaScript para buscar, ordenar y paginar.</p></noscript>
+</section>
+
+<script>
+  import '../scripts/listados.js'
+</script>
+
+<style>
+  :global([data-list-item][hidden]) { display: none !important; }
+  .listado { margin: 1.5rem 0 3rem; min-width: 0; }
+  .herramientas { display: flex; flex-wrap: wrap; gap: .65rem; align-items: end; margin-bottom: .75rem; }
+  .herramientas[hidden], [data-contador][hidden], [data-vacio][hidden], .paginacion[hidden] { display: none; }
+  label { display: flex; flex-direction: column; gap: .25rem; font-size: .72rem; color: var(--tinta-3); }
+  .busqueda { flex: 1 1 16rem; max-width: 27rem; }
+  input, select { width: 100%; min-width: 0; }
+  .herramientas > label:not(.busqueda) { flex: 0 1 12rem; min-width: 8rem; }
+  .avanzados { flex-basis: 100%; }
+  .avanzados summary { cursor: pointer; font-size: .78rem; color: var(--tinta-3); }
+  .campos-avanzados { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: .6rem; align-items: end; }
+  .campos-avanzados label { flex: 1 1 10rem; max-width: 15rem; }
+  .campos-avanzados .con-dato { display: flex; flex-direction: row; align-items: center; gap: .4rem; font-size: .78rem; padding: .5rem 0; }
+  .con-dato input { width: auto; }
+  .restablecer { font-size: .8rem; }
+  .resultado-lista { margin: .3rem 0 .75rem; }
+  .paginacion { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; margin-top: 1rem; }
+  .paginacion label { flex-direction: row; align-items: center; gap: .5rem; margin-left: auto; }
+  .paginacion select { width: auto; }
+  .lista-vacia { padding: 1rem; background: var(--papel-2); border: 1px solid var(--borde); border-radius: var(--radio); }
+  @media(max-width: 540px) { .busqueda { flex-basis: 100%; max-width: none; } .herramientas > label:not(.busqueda) { flex: 1 1 8rem; } }
+</style>
