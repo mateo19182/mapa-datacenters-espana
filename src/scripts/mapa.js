@@ -843,9 +843,11 @@ async function montarVista(opciones = {}) {
   if (opciones.operador) estado.operador = opciones.operador
 
   // Los datos se piden primero: son de este dominio y no dependen del mapa.
+  // Revalidar evita mezclar el código recién publicado con un inventario de
+  // una edición anterior que el navegador aún conserve durante su hora de caché.
   const [geo, lista] = await Promise.all([
-    fetch('/datos/sitios.geojson').then((r) => r.json()),
-    fetch('/datos/sitios-lista.json').then((r) => r.json()),
+    fetch('/datos/sitios.geojson', { cache: 'no-cache' }).then((r) => r.json()),
+    fetch('/datos/sitios-lista.json', { cache: 'no-cache' }).then((r) => r.json()),
   ])
   sitios = geo
   inventario = lista
