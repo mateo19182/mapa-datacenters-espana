@@ -16,14 +16,21 @@ alcance peninsular. El conjunto pasó de 191 a 203 fichas.
 
 ## Resultado en una línea
 
-De 203 emplazamientos, **22 tienen cómputo documentado con fuente**. Dieciocho
-de esos veintidós son infraestructura pública de supercomputación o de cuántica.
-Solo **dos son centros comerciales con recuento publicado**, y ambos lo son
-porque lo anunció el inquilino, no el operador del centro.
+El barrido inicial documentó cómputo en 22 de 203 emplazamientos, dieciocho de
+ellos de supercomputación pública o cuántica. Dos centros comerciales tenían
+recuento publicado por sus inquilinos.
 
-El sector comercial español no publica qué hardware aloja. Esto no es una laguna
-de la búsqueda: es la práctica del sector, y es la razón de que la potencia
-eléctrica siga siendo el único denominador común entre estos emplazamientos.
+La revisión del 14 de octubre de 2026 añade el CPD-CSA de Cidade das TIC y deja
+**23 de 204 emplazamientos con cómputo documentado**. En este caso el propio
+operador publica inventarios. El dosier de 2026 dice 15 L4 y la nota de lanzamiento
+dice más de 15. El catálogo técnico, sin fecha, describe seis servidores L4 IA,
+cinco L4 MEDIA y servidores A40, con dos o tres según la sección. No se multiplican
+ni suman esos datos para obtener un total de GPU. La H200 aparece como acceso
+anunciado, sin instalación física confirmada. Las fuentes y discrepancias están
+en [la ficha del CSA](../data/sites/cluster-tic-galicia-a-coruna-csa.yaml).
+
+La mayoría de los operadores comerciales no publica el hardware alojado. Los
+inventarios disponibles no permiten deducir aceleradores a partir de los MW.
 
 ## Los recuentos publicados, de mayor a menor
 
