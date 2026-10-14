@@ -1,151 +1,94 @@
 ---
 import Base from '../layouts/Base.astro'
-import { Content as Documento } from '../contenido/renovables.md'
 import renovables from '../data/renovables.json'
-import { VINCULO_ETIQUETA, numero } from '../lib/etiquetas.js'
-import { GLOSARIO_VINCULO } from '../lib/glosario.js'
+import normativa from '../data/normativa.json'
+import { ESTADO_ETIQUETA, VINCULO_ETIQUETA, numero, fechaLegible } from '../lib/etiquetas.js'
+import { ESTADO_NORMA_ETIQUETA } from '../lib/normativa.js'
+import { tituloNorma } from '../lib/normativa-presentacion.js'
+import ExploradorEnergia from '../components/ExploradorEnergia.astro'
 import Termino from '../components/Termino.astro'
 
-const porTipo = [...new Set(renovables.map((r) => r.tipo).filter(Boolean))].map((t) => ({
-  tipo: t,
-  n: renovables.filter((r) => r.tipo === t).length,
-  mw: renovables.filter((r) => r.tipo === t).reduce((a, r) => a + (r.potencia_mw ?? 0), 0),
-}))
-
-const conPotencia = renovables.filter((r) => r.potencia_mw != null)
-const totalMw = conPotencia.reduce((a, r) => a + r.potencia_mw, 0)
-const almacenamiento = renovables.filter((r) => r.capacidad_mwh != null)
-
-const contrapartes = [...new Set(renovables.map((r) => r.contraparte_ppa).filter(Boolean))]
-  .map((c) => {
-    const lista = renovables.filter((r) => r.contraparte_ppa === c)
-    return {
-      nombre: c,
-      n: lista.length,
-      mw: lista.reduce((a, r) => a + (r.potencia_mw ?? 0), 0),
-      conDato: lista.filter((r) => r.potencia_mw != null).length,
-    }
-  })
-  .sort((a, b) => b.mw - a.mw)
+const tipoEtiqueta = { fotovoltaica: 'Fotovoltaica', eolica: 'Eólica', hibrida: 'Híbrida', bess: 'Baterías' }
+const potenciaEtiqueta = { contratada_ppa: 'Contratada en PPA', instalada_total: 'Cartera instalada', nominal: 'Nominal', pico: 'Pico', no_especificado: 'Tipo no especificado' }
+const opciones = (campo, etiquetas) => [...new Set(renovables.map((r) => r[campo]).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'es')).map((v) => ({ valor: v, etiqueta: etiquetas?.[v] ?? v }))
+const filtros = [
+  { clave: 'tipo', etiqueta: 'Tecnología', opciones: opciones('tipo', tipoEtiqueta) },
+  { clave: 'vinculo', etiqueta: 'Vínculo', opciones: opciones('tipo_vinculo', VINCULO_ETIQUETA) },
+  { clave: 'contraparte', etiqueta: 'Contraparte', opciones: opciones('contraparte_ppa') },
+  { clave: 'estado', etiqueta: 'Estado', opciones: opciones('estado', ESTADO_ETIQUETA) },
+]
+const ordenes = [
+  { clave: 'nombre', etiqueta: 'Nombre' },
+  { clave: 'potencia', etiqueta: 'Mayor potencia publicada', tipo: 'numero', desc: true },
+  { clave: 'fecha', etiqueta: 'Verificación más reciente', desc: true },
+]
+const fechaVerificacion = [...new Set(renovables.map((r) => r.ultima_verificacion).filter(Boolean))].sort().at(-1)
+const contrapartes = opciones('contraparte_ppa').map(({ valor: nombre }) => ({ nombre, contratos: renovables.filter((r) => r.contraparte_ppa === nombre && r.tipo_vinculo === 'ppa').length }))
+const decreto = normativa.find((n) => n.id === 'prd-centros-datos-sostenibles')
+const ultimoHitoDecreto = [...(decreto?.hitos ?? [])].filter((h) => !h.previsto && h.fecha <= (decreto?.ultima_verificacion ?? '')).sort((a, b) => b.fecha.localeCompare(a.fecha))[0]
 ---
 
-<Base
-  titulo="Renovables y almacenamiento"
-  descripcion="Generación renovable y baterías con vínculo documentado a centros de datos en España: contratos de compra de energía, autoconsumo y proyectos en el mismo nudo."
->
+<Base titulo="Renovables y almacenamiento" descripcion="Consulta activos renovables y baterías con vínculos documentados a centros de datos en España, con sus fuentes y fecha de verificación.">
   <div class="contenedor">
     <h1>Renovables y almacenamiento</h1>
-    <p class="sumario">
-      Generación renovable y baterías con vínculo documentado a un centro de datos concreto:{' '}
-      <Termino id="ppa">PPA</Termino> firmado, <Termino id="autoconsumo">generación en el propio
-      emplazamiento</Termino> o conexión al <Termino id="mismo-nudo">mismo nudo</Termino>.
-    </p>
+    <p class="sumario">Contratos de energía, generación asociada y baterías con vínculo documentado al sector.</p>
+    <p class="pequeno silencio">{renovables.length} registros · {renovables.filter((r) => r.tipo_vinculo === 'ppa').length} PPA · Última verificación: {fechaLegible(fechaVerificacion)} · <a href="/datos/renovables.json" download>Descargar JSON</a></p>
+    <p class="nota pequeno">Un <Termino id="ppa">PPA</Termino> es un contrato de compra de energía. No acredita suministro directo ni identifica siempre un CPD concreto. Las carteras pueden solaparse con acuerdos individuales; no se suman en un total.</p>
 
-    <div class="nota">
-      <strong>Un <Termino id="ppa">PPA</Termino> no es un cable.</strong> Es un contrato de compra
-      de energía y de <Termino id="garantias-origen">garantías de origen</Termino>. El centro se
-      alimenta de la red, no de la planta.
-    </div>
-
-    <dl class="cifras">
-      <div class="cifra">
-        <dt>Activos registrados</dt>
-        <dd>{renovables.length}<small>con vínculo documentado</small></dd>
-      </div>
-      <div class="cifra">
-        <dt>Potencia contratada</dt>
-        <dd>{numero(totalMw)} MW<small>en {conPotencia.length} de {renovables.length} activos; el resto no publica la cifra</small></dd>
-      </div>
-      <div class="cifra">
-        <dt><Termino id="bess">Almacenamiento</Termino></dt>
-        <dd>
-          {almacenamiento.length ? `${numero(almacenamiento.reduce((a, r) => a + r.capacidad_mwh, 0))} MWh` : '—'}
-          <small>{almacenamiento.length} {almacenamiento.length === 1 ? 'proyecto de baterías' : 'proyectos de baterías'}</small>
-        </dd>
-      </div>
-      <div class="cifra">
-        <dt>Contrapartes</dt>
-        <dd>{contrapartes.length}<small>operadores con contrato firmado</small></dd>
-      </div>
-    </dl>
-
-    <p class="pequeno silencio">
-      Los <Termino id="generacion-asociada">MW de generación</Termino> y los de un centro de datos
-      no son comparables: la producción es <Termino id="fotovoltaica">intermitente</Termino> y el
-      consumo, continuo.
-    </p>
-
-    <h2>Por contraparte</h2>
-    <div class="tabla-envoltorio">
-      <table class="tabla-fichas">
-        <thead>
-          <tr><th>Contraparte</th><th class="num">Activos</th><th class="num">MW contratados</th><th class="num">Con cifra publicada</th></tr>
-        </thead>
-        <tbody>
-          {contrapartes.map((c) => (
-            <tr>
-              <td>{c.nombre}</td>
-              <td class="num" data-etiqueta="Activos">{c.n}</td>
-              <td class="num" data-etiqueta="MW contratados">{c.mw ? `${numero(c.mw)} MW` : <span class="silencio">—</span>}</td>
-              <td class="num pequeno silencio" data-etiqueta="Con cifra">{c.conDato}/{c.n}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-
-    <h2>Todos los activos</h2>
-    <div class="tabla-envoltorio">
-      <table class="tabla-fichas">
-        <thead>
-          <tr>
-            <th>Activo</th>
-            <th>Tipo</th>
-            <th class="num">Potencia</th>
-            <th>Promotor</th>
-            <th>Vínculo</th>
-            <th>Estado</th>
-            <th>Ubicación</th>
+    <h2 id="activos">Consultar activos</h2>
+    <ExploradorEnergia id="explorador-renovables" nombre="activos" pagina={20} filtros={filtros} ordenes={ordenes} busqueda="Activo, promotor, contraparte o ubicación…">
+      <div class="tabla-envoltorio"><table class="tabla-fichas">
+        <thead><tr><th>Activo</th><th>Potencia o energía</th><th>Vínculo</th><th>Estado</th><th>Ubicación</th></tr></thead>
+        <tbody>{[...renovables].sort((a, b) => a.nombre.localeCompare(b.nombre, 'es')).map((r) => (
+          <tr id={`activo-${r.id}`} data-registro data-list-item data-busca={[r.nombre, r.promotor, r.contraparte_ppa, r.municipio, r.ccaa, r.provincia].filter(Boolean).join(' ')} data-tipo={r.tipo} data-vinculo={r.tipo_vinculo} data-contraparte={r.contraparte_ppa ?? ''} data-estado={r.estado} data-nombre={r.nombre} data-potencia={r.potencia_mw} data-fecha={r.ultima_verificacion}>
+            <td>
+              <strong>{r.nombre}</strong><span class="pequeno silencio"><br />{tipoEtiqueta[r.tipo] ?? r.tipo}{r.promotor && ` · ${r.promotor}`}</span>
+              <details class="detalle-activo"><summary>Detalle y fuentes</summary>
+                <p>Verificado el {fechaLegible(r.ultima_verificacion)}.</p>
+                {r.estado_detalle && <p>{r.estado_detalle}</p>}
+                {r.capacidad_nota && <p>{r.capacidad_nota}</p>}
+                {r.incertidumbres?.length > 0 && <ul>{r.incertidumbres.map((u) => <li>{u.descripcion}</li>)}</ul>}
+                <ul class="fuentes-activo">{r.fuentes.map((f) => <li><a href={f.url} target="_blank" rel="noopener nofollow">{f.titulo ?? f.medio ?? f.url}</a>{f.fecha_publicacion && ` · ${fechaLegible(f.fecha_publicacion)}`}</li>)}</ul>
+              </details>
+            </td>
+            <td data-etiqueta="Potencia o energía">
+              {r.potencia_mw != null ? <>{numero(r.potencia_mw, 1)} {r.tipo_potencia === 'pico' ? 'MWp' : 'MW'}<span class="pequeno silencio"><br />{potenciaEtiqueta[r.tipo_potencia] ?? r.tipo_potencia}</span></> : r.capacidad_mwh == null && <span class="silencio">No publicada</span>}
+              {r.capacidad_mwh != null && <>{numero(r.capacidad_mwh)} MWh<span class="pequeno silencio"><br />Energía almacenable; MW no publicados</span></>}
+            </td>
+            <td class="pequeno" data-etiqueta="Vínculo">{VINCULO_ETIQUETA[r.tipo_vinculo] ?? r.tipo_vinculo}{r.contraparte_ppa && <><br />{r.contraparte_ppa}</>}</td>
+            <td class="pequeno" data-etiqueta="Estado"><span class={`etiqueta estado-${r.estado}`}>{ESTADO_ETIQUETA[r.estado] ?? r.estado}</span></td>
+            <td class="pequeno" data-etiqueta="Ubicación">{r.municipio || (r.municipios ?? []).join(', ') || 'Municipio no publicado'}{r.ccaa && <span class="silencio"><br />{r.ccaa}</span>}</td>
           </tr>
-        </thead>
-        <tbody>
-          {[...renovables]
-            .sort((a, b) => (b.potencia_mw ?? -1) - (a.potencia_mw ?? -1))
-            .map((r) => (
-              <tr>
-                <td>{r.nombre}</td>
-                <td class="pequeno" data-etiqueta="Tipo">{r.tipo}</td>
-                <td class="num" data-etiqueta="Potencia">
-                  {r.potencia_mw != null ? `${numero(r.potencia_mw, 1)} MW` : <span class="silencio">—</span>}
-                  {r.capacidad_mwh != null && <span class="pequeno silencio"><br />{numero(r.capacidad_mwh)} MWh</span>}
-                </td>
-                <td class="pequeno" data-etiqueta="Promotor">{r.promotor ?? <span class="silencio">—</span>}</td>
-                <td class="pequeno" data-etiqueta="Vínculo">
-                  {GLOSARIO_VINCULO[r.tipo_vinculo]
-                    ? <Termino id={GLOSARIO_VINCULO[r.tipo_vinculo]}>{VINCULO_ETIQUETA[r.tipo_vinculo]}</Termino>
-                    : (VINCULO_ETIQUETA[r.tipo_vinculo] ?? r.tipo_vinculo)}
-                  {r.contraparte_ppa && <span class="pequeno silencio"><br />{r.contraparte_ppa}</span>}
-                </td>
-                <td class="pequeno" data-etiqueta="Estado">{r.estado}</td>
-                <td class="pequeno" data-etiqueta="Ubicación">
-                  {r.municipio ?? (r.municipios ?? []).join(', ') ?? '—'}
-                  <span class="silencio"><br />{r.ccaa}</span>
-                </td>
-              </tr>
-            ))}
-        </tbody>
-      </table>
-    </div>
+        ))}</tbody>
+      </table></div>
+    </ExploradorEnergia>
+    <p class="pequeno silencio">La potencia nominal, la potencia pico y los MW contratados describen magnitudes distintas. Los MW de generación tampoco equivalen a MW IT. El estado refleja la fuente en la fecha de verificación.</p>
 
-    <hr />
+    {decreto && <aside class="normativa tarjeta"><h2>Estado del decreto de centros de datos</h2>
+      <p class="pequeno"><a href={`/normativa/${decreto.id}`}>{tituloNorma(decreto)}</a> · {ESTADO_NORMA_ETIQUETA[decreto.estado]} · Verificado el {fechaLegible(decreto.ultima_verificacion)}.</p>
+      {ultimoHitoDecreto && <p class="pequeno silencio">{fechaLegible(ultimoHitoDecreto.fecha)} · {ultimoHitoDecreto.hito}.</p>}
+      <p class="pequeno">{decreto.estado === 'en_tramitacion' || decreto.estado === 'audiencia_publica' || decreto.estado === 'propuesta' ? 'Los requisitos renovables del borrador no están en vigor. Consulta el estado y el texto propuesto en su ficha.' : 'Consulta en su ficha las obligaciones, los umbrales y las fechas de aplicación.'}</p>
+    </aside>}
 
-    <article class="prosa">
-      <Documento />
-    </article>
-
-    <p class="pequeno silencio" style="margin-bottom:3rem">
-      Se pueden ver <a href="/?capas=renovables">sobre el mapa</a>. Casi ninguno publica
-      coordenadas: se sitúan en el centro de su municipio y se dibujan atenuados.
-    </p>
+    <details class="bloque"><summary>Contratos por contraparte</summary>
+      <div class="tabla-envoltorio"><table><thead><tr><th>Contraparte</th><th class="num">PPA registrados</th></tr></thead><tbody>{contrapartes.filter((c) => c.contratos > 0).map((c) => <tr><td>{c.nombre}</td><td class="num">{c.contratos}</td></tr>)}</tbody></table></div>
+    </details>
+    <aside class="guia tarjeta"><h2>Entender los contratos y sus límites</h2><p class="pequeno">PPA físicos y financieros, adicionalidad, almacenamiento y huecos de información.</p><a href="/guias/renovables">Leer la guía</a><span class="silencio"> · </span><a href="/?capas=renovables">Ver activos situables en el mapa</a></aside>
   </div>
 </Base>
+
+<style>
+  .detalle-activo { margin-top: 0.4rem; font-size: 0.78rem; font-weight: 400; }
+  .detalle-activo summary { cursor: pointer; color: var(--acento); }
+  .detalle-activo p, .detalle-activo ul { max-width: 35rem; margin: 0.6rem 0; }
+  .detalle-activo ul { padding-left: 1.2rem; }
+  .fuentes-activo li { margin-bottom: 0.4rem; overflow-wrap: anywhere; }
+  .normativa, .guia { margin: 2rem 0; }
+  .normativa h2, .guia h2 { margin-top: 0; font-size: 1.15rem; }
+  .normativa p:last-child { margin-bottom: 0; }
+  .guia { margin-bottom: 3rem; }
+  .guia p { margin-bottom: 0.5rem; }
+  .bloque { border-top: 1px solid var(--borde); padding: 1rem 0; }
+  .bloque summary { cursor: pointer; font-family: var(--serif); font-size: 1.1rem; }
+  .bloque[open] summary { margin-bottom: 1rem; }
+</style>

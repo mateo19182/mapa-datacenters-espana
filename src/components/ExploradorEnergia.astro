@@ -1,0 +1,17 @@
+---
+import Listado from './Listado.astro'
+
+const { id, nombre = 'registros', filtros = [], ordenes = [], pagina = 25, busqueda } = Astro.props
+const filtrosListado = filtros.map(({ clave, ...filtro }) => ({ ...filtro, nombre: clave }))
+const ordenesListado = ordenes.map(({ clave, tipo, desc, ...orden }) => ({
+  ...orden,
+  valor: clave,
+  campo: clave,
+  numerico: tipo === 'numero',
+  direccion: desc ? 'desc' : 'asc',
+}))
+---
+
+<Listado id={id} nombre={nombre} filtros={filtrosListado} ordenes={ordenesListado} porPagina={pagina} placeholder={busqueda}>
+  <slot />
+</Listado>

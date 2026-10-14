@@ -1,6 +1,10 @@
-# El acceso a la red, en detalle
+# Guía del acceso a la red
 
-*Última verificación: 29 de agosto de 2026.*
+*Marco y fuentes consultados hasta el 29 de agosto de 2026. Revisión editorial del 14 de octubre de 2026.*
+
+Los recuentos de agosto que conserva esta guía son históricos. La edición vigente de REE,
+su fecha y los nudos registrados están en [Red eléctrica](/red-electrica). El estado actual
+del proyecto de decreto se mantiene en [su ficha normativa](/normativa/prd-centros-datos-sostenibles).
 
 ## 1. Cómo funciona el acceso y la conexión a la red para demanda
 
@@ -35,7 +39,7 @@ demanda, la metodología concreta la fija la
 
 Ese acoplamiento se materializa en el «valor de referencia»: la porción de capacidad
 del nudo de transporte que se reserva para alimentar los consumos que se conecten aguas
-abajo en distribución. Es una novedad de 2025-2026 y todavía está a medio pactar: el 20
+abajo en distribución. El grado de acuerdo cambia con cada edición. El 20
 de febrero de 2026 Red Eléctrica reconocía acuerdos sobre valores de referencia en solo
 el 45 % de las interfaces transporte-distribución, equivalentes a 33,1 GW
 ([nota de prensa de REE, 20-02-2026](https://www.ree.es/sites/default/files/2026-03/PR_demand_access_capacities.pdf)).
@@ -149,8 +153,9 @@ firmar el contrato técnico de acceso (plazo modificado por el RDL 18/2026, de 2
 
 ## 2. Por qué «MW de conexión» ≠ «MW IT»
 
-Desde agosto de 2026 las dos magnitudes tienen definición legal. El proyecto de real decreto de centros de datos sometido a audiencia
-pública el 27 de agosto de 2026 define las dos magnitudes por separado (art. 3):
+El proyecto de real decreto de centros de datos sometido a audiencia pública el 27 de
+agosto de 2026 propone definir las dos magnitudes por separado en su artículo 3. Es un
+borrador sin aprobar, no una definición legal ya vigente:
 
 > «f) Potencia de acceso: la potencia eléctrica que figure en los permisos de acceso
 > y conexión otorgados al centro de datos o, cuando resulte superior, la potencia
@@ -222,13 +227,15 @@ Y:
 > «The published figures show that the transmission grid still has capacity for new demand
 > at 25 % of its nodes.»
 
-Es decir, el 75 % de los nudos de transporte están copados para nueva demanda. En
+En aquella publicación de febrero, el 75 % de los nudos de transporte no tenían
+capacidad disponible para nueva demanda por el criterio publicado. En
 distribución la situación es peor: AELEC cifraba en septiembre de 2025 que
 [«el 83,4 % de los nudos de la red de distribución ya están saturados»](https://aelec.es/mapas-de-capacidad-saturacion-de-la-red/).
 
-### 3.3 Recuento propio sobre el fichero de REE de 3 de agosto de 2026
+### 3.3 Archivo: recuento sobre el fichero de REE de 3 de agosto de 2026
 
-Descargando el fichero `2026_08_03_GRT_demanda.csv` y contando nudos con capacidad
+Este recuento histórico no es el conjunto de nudos de la edición vigente del mapa. Se
+calculó descargando el fichero `2026_08_03_GRT_demanda.csv` y contando nudos con capacidad
 disponible para solicitudes por criterio general > 0 MW (tomando el máximo entre las
 columnas CEP-CH, CEP-SH y NO CEP):
 
@@ -283,8 +290,8 @@ es estructural o disolvible:
 > increase the capacity that can be granted at many nodes** where the current value is
 > limited by the dynamic criterion.»
 
-De ahí que el fichero distinga CH («con hueco») y SH («sin hueco»): instalaciones
-capaces o no de soportar huecos de tensión. Un CPD que se diseñe para aguantar huecos
+De ahí que el fichero distinga CH, con cumplimiento de huecos de tensión, y SH, sin
+cumplimiento de ese requisito. Un CPD que se diseñe para aguantar huecos
 podrá acceder, en varios nudos, a más capacidad que uno que no.
 
 ### 3.5 Permisos de acceso flexible: la vía nueva
@@ -455,45 +462,26 @@ Cronología de lo que ha cambiado el terreno de juego, de más antiguo a más re
 | 29-06-2026 | RDL 18/2026 | Ajusta plazos de caducidad de la DT 4.ª del RDL 7/2026. |
 | 28/29-07-2026 | [RD 640/2026](https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-16661) y tercera MAP | Planes de inversión de redes (habilita 17.900 M€ adicionales hasta 2030) y tercera modificación de aspectos puntuales de la planificación H2026 (+615 M€). |
 | 31-07-2026 | [Resolución CNMC](https://www.boe.es/buscar/act.php?id=BOE-A-2026-17571) | Establece los **permisos de acceso flexible de la demanda**. |
-| 27-08-2026 | [Proyecto de RD de centros de datos](https://www.miteco.gob.es/es/energia/participacion/2026/detalle-participacion-publica-k-851.html) | En audiencia pública hasta el 4 de septiembre de 2026. Ver abajo. |
+| 27-08-2026 | [Proyecto de RD de centros de datos](https://www.miteco.gob.es/es/energia/participacion/2026/detalle-participacion-publica-k-851.html) | Apertura de audiencia. El cierre inicial del 4 de septiembre se amplió al 10. El informe de la CNMC es del 22 de septiembre. A 14 de octubre no se ha localizado un texto definitivo aprobado. |
 
 ### 6.1 El proyecto de real decreto de centros de datos (agosto de 2026)
 
-Estado a 29-08-2026: **borrador en audiencia e información pública, abierta del 27 de
-agosto al 4 de septiembre de 2026**. No está aprobado. Contenido:
+La audiencia se cerró el 10 de septiembre de 2026 tras ampliar el plazo inicial. La CNMC
+emitió su informe el 22 de septiembre. En la revisión del 14 de octubre no se había localizado
+un texto definitivo aprobado. Los requisitos del borrador no están en vigor.
 
-- **Ámbito**: centros de datos con potencia de acceso ≥ 1 MW. Obligaciones de
-  publicidad a partir de 500 kW de potencia de TI.
-- **Condición para obtener el permiso de acceso** (art. 4): declaración responsable de
-  resiliencia y soberanía digital; declaración de eficiencia energética e hídrica; y
-  cumplimiento de los requisitos de energía renovable.
-- **Adicionalidad** (art. 8): cubrir el 80 % del consumo total con autoconsumo o con
-  PPA con instalaciones renovables ubicadas en España, cuyas actas de puesta en servicio
-  no sean anteriores en más de 18 meses a la entrada en funcionamiento del CPD.
-- **Correlación horaria** (art. 9): que cada hora el consumo esté respaldado al menos
-  en un 80 % por generación renovable de esa misma hora.
-- **Eficiencia**: hasta que se aplique el etiquetado europeo (previsto para agosto de
-  2027), PUE ≤ 1,15 y WUE ≤ 0,1, calculados según el anexo III del Reglamento
-  Delegado (UE) 2024/1364.
-- **Soberanía digital**: establecimiento en la UE, permanencia de los datos operativos en
-  la UE, control y trazabilidad del soporte prestado desde terceros países, supervisión de
-  subcontratistas y medidas frente a requerimientos de datos de autoridades extranjeras.
-- **Consecuencias**: recargos sobre peajes y cargos, y en última instancia **pérdida de
-  los permisos de acceso y conexión**.
-- **Transitorias**: los proyectos con permiso otorgado y no conectados tienen seis meses
-  para acreditar cumplimiento, so pena de caducidad con ejecución de garantías; y se abre
-  una ventana de seis meses para renunciar sin ejecución de avales.
-- **Efecto sobre los concursos** (DA 1.ª): las solicitudes que no acrediten estos
-  requisitos no se tendrán en cuenta para activar un concurso de demanda ni para abrir
-  el mes de publicidad del art. 20 quater.
+El borrador distingue potencia de acceso, con un umbral de 1 MW para sus requisitos generales,
+y potencia IT, con 500 kW para la información anual. Propone condiciones de renovables,
+eficiencia y soberanía digital, y plazos de adaptación a contar desde una eventual entrada en
+vigor. Esos plazos no han comenzado por publicarse el borrador.
 
-Si se aprueba en estos términos, cambia por completo la economía de un proyecto de CPD en
-España: la conexión deja de ser un trámite de red y pasa a exigir un portafolio renovable
-nuevo, casado hora a hora, en territorio español.
+Los requisitos, las recomendaciones de la CNMC y sus fuentes se mantienen en
+[la ficha del proyecto](/normativa/prd-centros-datos-sostenibles). Esa ficha evita duplicar
+aquí un estado que puede cambiar con el texto definitivo.
 
 ---
 
-## 7. Planificación de red: qué está vigente y qué no
+## 7. Planificación de red: estado documentado en agosto de 2026
 
 Detalle en `data/red/actuaciones.yaml`.
 

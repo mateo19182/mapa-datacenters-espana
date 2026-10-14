@@ -1,136 +1,119 @@
 ---
 import Base from '../../layouts/Base.astro'
 import Glosa from '../../components/Glosa.astro'
-import { TESIS_ESTADO, tesisPublicadas, proximasTesis } from '../../lib/inversion.js'
+import { tesisPublicadas, proximasTesis } from '../../lib/inversion.js'
+import { tesisEmpresas } from '../../lib/tesis-inversion/index.js'
 
 const relaciones = (empresa) => [
   ...(empresa.operadores ?? []).map((operador) => ({ ...operador, href: `/compania/${operador.slug}` })),
   ...(empresa.sitios ?? []).map((sitio) => ({ ...sitio, href: `/proyecto/${sitio.id}` })),
 ]
+const fechaAnalisis = (empresa) => tesisEmpresas[empresa.id]?.fecha ?? '31 agosto 2026'
 ---
 
 <Base
   titulo="Tesis de inversión"
-  descripcion="Análisis de compañías cotizadas expuestas a la expansión de centros de datos en España, conectados con el registro documental de proyectos."
+  descripcion="Análisis fechados de compañías cotizadas expuestas a los centros de datos en España."
 >
   <div class="contenedor inversion-indice">
     <p class="migas"><a href="/">Inicio</a></p>
     <header class="cabecera-pagina">
       <div>
         <h1>Tesis de inversión</h1>
-        <p class="sumario">
-          Compañías cotizadas expuestas al despliegue de centros de datos en España. Cada tesis parte
-          del registro físico, pero añade cuentas, valoración, estructura de capital y una opinión.
-        </p>
+        <p class="sumario">{tesisPublicadas.length} exposiciones cotizadas, con precios de cierre del 31 de agosto de 2026.</p>
       </div>
     </header>
 
-    <p class="nota pequeno">
-      <strong>Una capa distinta del registro.</strong> La pestaña <a href="/companias">Compañías</a>{' '}
-      agrupa operadores. Esta sección agrupa exposiciones cotizadas. Un mismo grupo puede aparecer
-      bajo varias marcas operativas, y un propietario cotizado puede no operar ningún centro.
-    </p>
-
-    <section>
-      <div class="seccion-cabecera">
-        <div><span class="numero-seccion">01</span><h2>Publicadas</h2></div>
-        <p>Análisis completos, fechados y con fuentes.</p>
-      </div>
-      <div class="publicadas">
+    <section aria-label="Tesis publicadas">
+      <ul class="publicadas">
         {tesisPublicadas.map((empresa) => (
-          <article class="tesis-publicada">
-            <div>
-              <span class="etiqueta">{TESIS_ESTADO[empresa.estado]}</span>
-              <h3><a href={empresa.href}>{empresa.nombre}</a></h3>
-              <p><Glosa texto={empresa.resumen} /></p>
+          <li class="tesis-publicada">
+            <div class="empresa">
+              <h2><a href={empresa.href}>{empresa.nombre}</a></h2>
+              <span class="ticker">{empresa.ticker}</span>
             </div>
-            <dl>
-              <div><dt>Cotización</dt><dd>{empresa.ticker}</dd></div>
-              <div><dt>Exposición</dt><dd>{empresa.intensidad}</dd></div>
-              <div><dt>Papel</dt><dd>{empresa.tipo}</dd></div>
-            </dl>
-            <a class="enlace-tesis" href={empresa.href}>Leer la tesis →</a>
-          </article>
+            <div class="exposicion">
+              <span class="intensidad">Exposición {empresa.intensidad}</span>
+              <span>{empresa.tipo}</span>
+            </div>
+            <div class="fecha"><span>Análisis</span><span>{fechaAnalisis(empresa)}</span></div>
+            <a class="enlace-tesis" href={empresa.href}>Leer tesis <span class="sr-only">de {empresa.nombre}</span> →</a>
+            <details class="contexto">
+              <summary>Contexto y pregunta</summary>
+              <p><Glosa texto={empresa.resumen} /></p>
+              <p><Glosa texto={empresa.pregunta} /></p>
+            </details>
+          </li>
         ))}
-      </div>
+      </ul>
     </section>
 
     {proximasTesis.length > 0 && (
-    <section>
-      <div class="seccion-cabecera">
-        <div><span class="numero-seccion">02</span><h2>Próximas tesis</h2></div>
-        <p>Orden propuesto. Prima la exposición material y la pregunta que el mercado aún no resuelve bien.</p>
-      </div>
-      <div class="tabla-envoltorio">
-        <table class="candidatas">
-          <thead>
-            <tr><th>Prioridad</th><th>Compañía</th><th>Por qué merece una tesis</th><th>Pregunta central</th><th>En el registro</th></tr>
-          </thead>
-          <tbody>
-            {proximasTesis.map((empresa, indice) => (
+      <details class="metodo-inversion">
+        <summary>Próximas tesis <span>{proximasTesis.length}</span></summary>
+        <p class="pequeno silencio">Orden propuesto. Prima la exposición material y la pregunta que el mercado aún no resuelve bien.</p>
+        <div class="tabla-envoltorio">
+          <table>
+            <thead><tr><th>Prioridad</th><th>Compañía</th><th>Por qué merece una tesis</th><th>Pregunta central</th><th>En el registro</th></tr></thead>
+            <tbody>{proximasTesis.map((empresa, indice) => (
               <tr>
-                <td class="prioridad" data-etiqueta="Prioridad">0{indice + 1}</td>
-                <td data-etiqueta="Compañía"><strong>{empresa.nombre}</strong><small>{empresa.ticker}<br />{empresa.tipo}</small></td>
-                <td data-etiqueta="Por qué"><Glosa texto={empresa.resumen} /></td>
-                <td data-etiqueta="Pregunta"><Glosa texto={empresa.pregunta} /></td>
-                <td data-etiqueta="Registro">
+                <td>{indice + 1}</td>
+                <td><strong>{empresa.nombre}</strong><br />{empresa.ticker}<br />{empresa.tipo}</td>
+                <td><Glosa texto={empresa.resumen} /></td>
+                <td><Glosa texto={empresa.pregunta} /></td>
+                <td>
                   {relaciones(empresa).map((relacion, i) => <>{i > 0 && ' · '}<a href={relacion.href}>{relacion.nombre}</a></>)}
-                  {empresa.fuente && <><br /><a class="fuente-candidata" href={empresa.fuente} rel="noopener">fuente corporativa ↗</a></>}
+                  {empresa.fuente && <><br /><a href={empresa.fuente} rel="noopener">Fuente corporativa</a></>}
                 </td>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </section>
+            ))}</tbody>
+          </table>
+        </div>
+      </details>
     )}
 
-    <section class="metodo-inversion">
-      <h2>Método de cada tesis</h2>
+    <details class="metodo-inversion" id="metodo">
+      <summary>Método y alcance</summary>
+      <p>Compañías cotizadas expuestas al despliegue de centros de datos en España. Cada tesis parte del registro físico, pero añade cuentas, valoración, estructura de capital y una opinión.</p>
+      <p class="pequeno">La sección <a href="/companias">Compañías</a> agrupa operadores; esta sección, exposiciones cotizadas. Un mismo grupo puede aparecer bajo varias marcas operativas y un propietario cotizado puede no operar ningún centro.</p>
       <ol>
-        <li><strong>Exposición física.</strong> Qué emplazamientos, MW y permisos pertenecen de verdad a la compañía.</li>
+        <li><strong>Exposición física.</strong> Qué emplazamientos, MW y permisos pertenecen a la compañía.</li>
         <li><strong>Traducción financiera.</strong> <Glosa texto="Capex, rentas, contratos, financiación y materialidad dentro del grupo." /></li>
         <li><strong>Valoración.</strong> Qué descuenta la cotización y qué supuestos exige.</li>
-        <li><strong>Falsación.</strong> Qué datos trimestrales demostrarían que la tesis estaba equivocada.</li>
+        <li><strong>Seguimiento.</strong> Qué datos trimestrales demostrarían que la tesis estaba equivocada.</li>
       </ol>
-      <p class="pequeno silencio">
-        No son recomendaciones personalizadas. Las tesis están fechadas porque precio, cuentas y
-        permisos cambian; las fichas del registro conservan sus propias fechas de verificación.
-      </p>
-    </section>
+      <p class="pequeno silencio">No son recomendaciones personalizadas. Las tesis están fechadas porque precio, cuentas y permisos cambian; las fichas del registro conservan sus propias fechas de verificación.</p>
+    </details>
   </div>
 </Base>
 
 <style>
-  .inversion-indice { padding-top: 1px; }
-  .cabecera-pagina { margin-bottom: 1.5rem; }
-  section { margin-top: 3.2rem; }
-  .seccion-cabecera { display: flex; justify-content: space-between; gap: 2rem; align-items: baseline; border-bottom: 1px solid var(--borde-fuerte); margin-bottom: 1rem; }
-  .seccion-cabecera > div { display: flex; gap: .8rem; align-items: baseline; }
-  .seccion-cabecera h2 { margin: 0 0 .45rem; }
-  .seccion-cabecera p { max-width: 36rem; margin: 0 0 .55rem; color: var(--tinta-3); font-size: .78rem; }
-  .numero-seccion { color: var(--tinta-3); font: .72rem var(--mono); }
-  .tesis-publicada { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(16rem, .8fr); gap: 1.5rem 3rem; border: 1px solid var(--borde); border-top: 3px solid var(--acento); padding: 1.4rem; background: var(--papel); }
-  .tesis-publicada h3 { font-size: 1.55rem; margin: .7rem 0 .35rem; }
-  .tesis-publicada h3 a { color: var(--tinta); }
-  .tesis-publicada p { color: var(--tinta-2); max-width: 42rem; }
-  .tesis-publicada dl { margin: 0; }
-  .tesis-publicada dl div { display: flex; justify-content: space-between; gap: 1rem; border-bottom: 1px solid var(--borde); padding: .45rem 0; }
-  .tesis-publicada dt { color: var(--tinta-3); font-size: .75rem; }
-  .tesis-publicada dd { margin: 0; text-align: right; font-size: .78rem; }
-  .enlace-tesis { grid-column: 1 / -1; font-size: .82rem; }
-  .candidatas { min-width: 900px; }
-  .candidatas td { font-size: .8rem; }
-  .candidatas td:nth-child(3), .candidatas td:nth-child(4) { max-width: 18rem; }
-  .candidatas strong { display: block; }
-  .candidatas small { color: var(--tinta-3); }
-  .prioridad { font: 600 .82rem var(--mono); color: var(--acento); }
-  .fuente-candidata { color: var(--tinta-3); font-size: .7rem; }
-  .metodo-inversion { max-width: 48rem; margin-bottom: 4rem; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .inversion-indice { padding-top: 1px; padding-bottom: 3rem; }
+  .cabecera-pagina { margin-bottom: 1.2rem; }
+  .publicadas { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--borde-fuerte); }
+  .tesis-publicada { display: grid; grid-template-columns: minmax(9rem, 1fr) minmax(10rem, 1.4fr) minmax(7rem, .8fr) auto; gap: .4rem 1.5rem; padding: .9rem 0; border-bottom: 1px solid var(--borde); align-items: center; }
+  .empresa h2 { margin: 0 0 .15rem; font-size: 1.12rem; }
+  .empresa h2 a { color: var(--tinta); }
+  .ticker { color: var(--tinta-3); font: .7rem var(--mono); }
+  .exposicion { display: grid; font-size: .78rem; color: var(--tinta-3); }
+  .intensidad { color: var(--tinta-2); margin-bottom: .15rem; }
+  .fecha { display: grid; font-size: .75rem; color: var(--tinta-2); }
+  .fecha > span { font-size: .7rem; color: var(--tinta-3); }
+  .enlace-tesis { font-size: .8rem; white-space: nowrap; }
+  .contexto { grid-column: 1 / -1; }
+  .contexto summary { cursor: pointer; color: var(--tinta-3); font-size: .72rem; }
+  .contexto p { max-width: 50rem; font-size: .83rem; margin: .6rem 0 0; color: var(--tinta-2); }
+  .metodo-inversion { max-width: 54rem; margin: 1.2rem 0 0; border-top: 1px solid var(--borde); }
+  .metodo-inversion > summary { cursor: pointer; font-weight: 600; padding: .8rem 0; font-size: .9rem; }
+  .metodo-inversion p, .metodo-inversion li { font-size: .85rem; }
   .metodo-inversion ol { padding-left: 1.2rem; }
-  .metodo-inversion li { margin: .55rem 0; }
-  @media (max-width: 760px) {
-    .seccion-cabecera { display: block; }
-    .tesis-publicada { grid-template-columns: 1fr; gap: 1rem; }
+  .metodo-inversion li + li { margin-top: .5rem; }
+  @media (max-width: 700px) {
+    .tesis-publicada { grid-template-columns: minmax(0, 1fr) auto; gap: .4rem 1rem; }
+    .empresa { grid-column: 1; grid-row: 1; }
+    .enlace-tesis { grid-column: 2; grid-row: 1; }
+    .exposicion { grid-column: 1; }
+    .fecha { grid-column: 2; font-size: .7rem; text-align: right; }
   }
 </style>

@@ -12,8 +12,8 @@ publica capacidad de acceso para el sistema peninsular, y los sistemas canario y
 balear son eléctricamente independientes. Un emplazamiento insular tiene ficha,
 pero no tiene red debajo.
 
-No es un análisis de mercado ni de inversión: es un registro de hechos
-publicados, con su procedencia y su fecha de verificación.
+El registro reúne hechos publicados, con su procedencia y fecha de verificación.
+La sección de inversión añade análisis fechados, separados de las fichas documentales.
 
 ## Qué contiene
 
@@ -73,6 +73,19 @@ localiza los que haya en un texto que viene del propio conjunto de datos, donde
 el marcado no se puede escribir a mano. La lista completa se publica en
 `/glosario`.
 
+## Lectura y novedades
+
+Las fichas muestran primero los datos principales y conservan el expediente,
+las lecturas completas y las citas en secciones desplegables. Las referencias
+abren automáticamente la sección que las contiene. Las cronologías distinguen
+hechos, fechas de publicación y previsiones, con su fuente en cada hito.
+
+`data/actualizaciones.yaml` contiene las novedades revisadas. La fecha del hecho
+se distingue de la incorporación al registro; los destinos y las referencias se
+validan al construir. El resultado se publica en `/actualizaciones` y se descarga
+en `/datos/actualizaciones.json`. El trabajo semanal propone novedades en su
+informe; la revisión decide qué entra en ese archivo.
+
 ## Arquitectura
 
 Deliberadamente simple, y en un solo sentido:
@@ -92,6 +105,11 @@ El sitio publicado es estático. No consulta ninguna base de datos en ejecución
 no hace raspado en vivo y no necesita claves de API: la cartografía base es de
 CARTO y OpenStreetMap.
 
+Las comprobaciones de interfaz necesitan `npx playwright install chromium`.
+En entornos con Chrome ya instalado puede indicarse su ejecutable mediante
+`PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH`. Los resultados y capturas quedan en
+`build/ui/`. CI ejecuta estas comprobaciones después de construir el sitio.
+
 ## Puesta en marcha
 
 ```bash
@@ -101,6 +119,7 @@ npm run dev        # valida, reconcilia, construye los datos y levanta el sitio
 
 | Comando | Qué hace |
 |---|---|
+| `npm run test:ui` | Comprueba el sitio construido con Chromium: filtros, enlaces, fuentes, móvil y acceso sin JavaScript |
 | `npm run validate` | Valida el esquema y la integridad de las referencias a fuentes |
 | `npm run reconcile` | Detecta variantes de nombre, duplicados e incoherencias de potencia |
 | `npm run db` | Vuelca los YAML a `build/datacenters.db` |

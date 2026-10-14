@@ -1,42 +1,40 @@
 ---
-import { POTENCIA_ETIQUETA, numero } from '../lib/etiquetas.js'
+import { POTENCIA_ETIQUETA, ESTADO_ETIQUETA, ORDEN_ESTADOS, numero } from '../lib/etiquetas.js'
 import { GLOSARIO_POTENCIA } from '../lib/glosario.js'
+import sitios from '../data/sitios.json'
 import Termino from './Termino.astro'
-
-// Resumen de potencia de un conjunto de emplazamientos. Cada tipo se muestra por
-// separado y siempre acompañado de su cobertura: cuántos emplazamientos aportan
-// realmente ese dato. Un total sin cobertura engaña.
 const { cartera, titulo } = Astro.props
 const cancelados = cartera.por_estado?.cancelado ?? 0
-const tipos = ['it', 'conexion_red', 'no_especificado', 'instalada_total'].filter(
-  (t) => cartera.potencia[t]?.sitios_con_dato > 0,
-)
+const denominador = cartera.emplazamientos_en_potencia ?? cartera.emplazamientos
+const tipos = ['it', 'conexion_red', 'no_especificado', 'instalada_total'].filter((t) => cartera.potencia[t]?.sitios_con_dato > 0)
+const propios = sitios.filter((s) => cartera.sitios?.includes(s.id) && s.estado !== 'cancelado')
+const porEstado = ORDEN_ESTADOS.filter((e) => propios.some((s) => s.estado === e)).map((estado) => ({
+  estado,
+  sitios: propios.filter((s) => s.estado === estado),
+  potencias: Object.fromEntries(tipos.map((t) => {
+    const conDato = propios.filter((s) => s.estado === estado && s.resumen_potencia[t])
+    return [t, { n: conDato.length, mw: conDato.reduce((total, s) => total + s.resumen_potencia[t].valor_mw, 0) }]
+  })),
+}))
 ---
-
 {titulo && <h3>{titulo}</h3>}
-
-{tipos.length === 0 ? (
-  <p class="silencio pequeno">Ningún emplazamiento de este conjunto publica cifras de potencia.</p>
-) : (
-  <dl class="cifras">
-    {tipos.map((t) => (
-      <div class="cifra">
-        <dt><Termino id={GLOSARIO_POTENCIA[t]}>{POTENCIA_ETIQUETA[t]}</Termino></dt>
-        <dd>
-          {numero(cartera.potencia[t].total_mw)} MW
-          <small>
-            de {cartera.potencia[t].sitios_con_dato} de {cartera.emplazamientos_en_potencia ?? cartera.emplazamientos} emplazamientos
-            ({cartera.potencia[t].cobertura} % de cobertura)
-          </small>
-        </dd>
-      </div>
-    ))}
-  </dl>
-)}
-
-{cancelados > 0 && (
-  <p class="pequeno silencio">
-    {cancelados === 1 ? 'Un emplazamiento cancelado queda' : `${cancelados} emplazamientos cancelados quedan`} fuera
-    de estos totales. Sus cifras siguen en su ficha como lectura histórica.
-  </p>
-)}
+{tipos.length === 0 ? <p class="silencio pequeno">Potencia no publicada para los {cartera.emplazamientos} emplazamientos.</p> : <>
+  <dl class="cifras">{tipos.map((t) => <div class="cifra">
+    <dt><Termino id={GLOSARIO_POTENCIA[t]}>{POTENCIA_ETIQUETA[t]}</Termino> publicados</dt>
+    <dd>{numero(cartera.potencia[t].total_mw)} MW<small>{cartera.potencia[t].sitios_con_dato}/{denominador} emplazamientos con dato</small></dd>
+  </div>)}</dl>
+  <p class="pequeno silencio alcance">Totales documentados de estados distintos. Cada magnitud se lee por separado.{cancelados > 0 && ` Se excluyen ${cancelados} emplazamientos cancelados.`}</p>
+  {porEstado.length > 0 && <details class="desglose"><summary>Potencia publicada por estado</summary>
+    <div class="tabla-envoltorio"><table><thead><tr><th>Estado</th>{tipos.map((t) => <th class="num">{POTENCIA_ETIQUETA[t]}</th>)}</tr></thead><tbody>{porEstado.map((e) => <tr>
+      <td>{ESTADO_ETIQUETA[e.estado]} <span class="pequeno silencio">· {e.sitios.length} empl.</span></td>
+      {tipos.map((t) => <td class="num">{e.potencias[t].n ? <>{numero(e.potencias[t].mw)} MW <span class="pequeno silencio">· {e.potencias[t].n}/{e.sitios.length} con dato</span></> : <span class="silencio">No publicado</span>}</td>)}
+    </tr>)}</tbody></table></div>
+  </details>}
+</>}
+<style>
+  .alcance { margin: -.25rem 0 .65rem; }
+  .desglose { margin: .75rem 0 1.5rem; }
+  .desglose summary { cursor: pointer; font-size: .82rem; color: var(--tinta-3); }
+  .desglose .tabla-envoltorio { margin-top: .6rem; }
+  .desglose td .silencio { display: block; }
+</style>

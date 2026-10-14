@@ -1,0 +1,43 @@
+---
+import { fechaLegible } from '../lib/etiquetas.js'
+const { eventos, fuentes } = Astro.props
+const indice = new Map(fuentes.map((fuente, i) => [fuente.id, i + 1]))
+---
+
+{eventos.length > 0 && (
+  <section class="cronologia-proyecto" aria-labelledby="cronologia">
+    <h2 id="cronologia">Cronología</h2>
+    <ol>
+      {eventos.map((evento) => (
+        <li>
+          <time datetime={evento.fecha}>{fechaLegible(evento.fecha)}</time>
+          <details>
+            <summary>{evento.titulo}{evento.prevista && <span class="prevista">previsión</span>}</summary>
+            {evento.detalle && <p>{evento.detalle}</p>}
+            <p class="referencias">Fuentes:{' '}{evento.fuentes.map((id, i) => (
+              <>{i > 0 && ', '}<a href={`#fuente-${id}`}>{indice.get(id)}</a></>
+            ))}</p>
+          </details>
+        </li>
+      ))}
+    </ol>
+  </section>
+)}
+
+<style>
+  .cronologia-proyecto { margin: 1.8rem 0; }
+  h2 { font-size: 1.15rem; margin: 0 0 0.8rem; }
+  ol { list-style: none; padding: 0; margin: 0; }
+  li { position: relative; display: grid; grid-template-columns: 7.2rem minmax(0, 1fr); gap: 0.8rem; padding: 0.7rem 0 0.7rem 1rem; border-left: 1px solid var(--borde-fuerte); }
+  li::before { position: absolute; left: -0.22rem; top: 1.15rem; content: ''; width: 0.4rem; height: 0.4rem; border-radius: 50%; background: var(--acento); }
+  time { font-size: 0.78rem; color: var(--tinta-3); padding-top: 0.15rem; font-variant-numeric: tabular-nums; }
+  details { min-width: 0; }
+  summary { cursor: pointer; font-size: 0.9rem; font-weight: 600; line-height: 1.45; }
+  p { margin: 0.5rem 0 0; font-size: 0.85rem; color: var(--tinta-2); }
+  .referencias { font-size: 0.78rem; }
+  .prevista { font-size: 0.72rem; color: var(--aviso); margin-left: 0.5rem; font-weight: 400; }
+  @media (max-width: 560px) {
+    li { grid-template-columns: minmax(0, 1fr); gap: 0.2rem; }
+    li::before { top: 1.1rem; }
+  }
+</style>

@@ -6,6 +6,7 @@ import { numero } from '../lib/etiquetas.js'
 import { REPOSITORIO, REPO_DATOS, REPO_ESQUEMA, REPO_INCIDENCIAS } from '../lib/enlaces.js'
 
 const descargas = [
+  ['/datos/actualizaciones.json', 'actualizaciones.json', 'Cambios verificados, con fecha del hecho y fecha de publicación en el registro.'],
   ['/datos/sitios.json', 'sitios.json', 'Emplazamientos completos, con potencias, fases, incertidumbres y fuentes.'],
   ['/datos/sitios.geojson', 'sitios.geojson', 'Puntos de los emplazamientos con las propiedades del mapa.'],
   ['/datos/sitios-lista.json', 'sitios-lista.json', 'Inventario plano, incluidos los emplazamientos sin coordenadas.'],
@@ -38,35 +39,7 @@ const avisos = parte.filter((l) => l.includes('aviso:')).length
 >
   <div class="contenedor-estrecho texto">
     <h1>Datos</h1>
-    <p class="sumario">
-      El conjunto completo en formatos abiertos, su estructura y el parte de validación. El sitio no
-      usa ningún dato que no esté en estos ficheros, y todos ellos, más el código que los construye,
-      están en <a href={REPOSITORIO} rel="noopener">GitHub</a>.
-    </p>
-
-    <dl class="cifras">
-      <div class="cifra">
-        <dt>Emplazamientos</dt>
-        <dd>{numero(resumen.total_emplazamientos)}<small>{resumen.por_precision.exacta} con coordenadas exactas · {resumen.por_precision.aproximada} aproximadas · {resumen.por_precision.municipio} situados en su municipio ({resumen.coordenadas_derivadas} de ellos calculados al construir) · {resumen.por_precision.desconocida} sin situar</small></dd>
-      </div>
-      <div class="cifra">
-        <dt>Fuentes</dt>
-        <dd>{numero(resumen.fuentes_distintas)}<small>referencias distintas</small></dd>
-      </div>
-      <div class="cifra">
-        <dt>Nudos de red</dt>
-        <dd>{numero(resumen.nodos_red)}<small>subestaciones y actuaciones</small></dd>
-      </div>
-      <div class="cifra">
-        <dt>Renovables y BESS</dt>
-        <dd>{numero(resumen.activos_renovables)}<small>con vínculo documentado</small></dd>
-      </div>
-      <div class="cifra">
-        <dt>Normas</dt>
-        <dd>{numero(resumen.normas)}<small>{resumen.normas_en_tramitacion} con el texto todavía abierto</small></dd>
-      </div>
-    </dl>
-
+    <p class="sumario">Inventario abierto, fuentes y cartografía para descargar. Edición del {resumen.generado}.</p>
     <h2>Descargas</h2>
     <div class="tabla-envoltorio">
       <table>
@@ -82,32 +55,19 @@ const avisos = parte.filter((l) => l.includes('aviso:')).length
       </table>
     </div>
 
-    <h2>Repositorio</h2>
-    <p>
-      El proyecto entero es público: los YAML de origen, los scripts de construcción, el esquema y
-      el historial de cada cambio con su motivo. Descargar los JSON de arriba sirve para reutilizar
-      los datos; el repositorio sirve para auditarlos, porque en él se ve quién cambió qué cifra,
-      cuándo y con qué fuente.
-    </p>
-    <ul class="enlaces-repo">
-      <li><a href={REPOSITORIO} rel="noopener">mateo19182/mapa-datacenters-espana</a> — código, datos e historial.</li>
-      <li><a href={REPO_DATOS} rel="noopener">data/</a> — los YAML de origen, uno por emplazamiento.</li>
-      <li><a href={REPO_ESQUEMA} rel="noopener">docs/ESQUEMA.md</a> — qué significa cada campo y qué reglas se aplican.</li>
-      <li><a href={REPO_INCIDENCIAS} rel="noopener">Incidencias</a> — para corregir un dato o aportar una fuente.</li>
-    </ul>
-    <div class="nota">
-      <strong>Si un dato está mal, dígalo con la fuente.</strong> Una corrección sin referencia no se
-      puede integrar: la regla del conjunto es que nada entra sin cita literal que lo sostenga. Con la
-      URL y el fragmento, entra.
-    </div>
-
-    <h2>Estructura</h2>
-    <p>
-      La fuente de verdad son ficheros YAML, uno por emplazamiento, para revisarse a mano. La
-      construcción los valida contra un esquema, los carga en SQLite y exporta los JSON y GeoJSON
-      del sitio. El <code>.db</code> trae una tabla <code>respaldos</code> con qué fuente sostiene
-      cada campo: trazabilidad por dato, no solo por ficha.
-    </p>
+    <p class="pequeno">{numero(resumen.total_emplazamientos)} emplazamientos · {numero(resumen.fuentes_distintas)} referencias · {numero(resumen.nodos_red)} nudos de red · {numero(resumen.activos_renovables)} activos renovables y BESS · {numero(resumen.normas)} normas.</p>
+    <h2>Licencia y atribución</h2>
+    <p>Datos originales bajo <a href="https://creativecommons.org/licenses/by/4.0/deed.es" rel="noopener">CC BY 4.0</a>, citando este registro. La red y las centrales derivadas de OpenStreetMap conservan su licencia <a href="https://opendatacommons.org/licenses/odbl/" rel="noopener">ODbL</a>. Las citas pertenecen a sus editores; la cartografía base procede de OpenStreetMap y CARTO.</p>
+    <details class="documentacion"><summary>Repositorio y correcciones</summary>
+      <ul class="enlaces-repo">
+        <li><a href={REPOSITORIO} rel="noopener">Código, datos e historial</a></li>
+        <li><a href={REPO_DATOS} rel="noopener">YAML de origen</a></li>
+        <li><a href={REPO_ESQUEMA} rel="noopener">Esquema y definición de campos</a></li>
+        <li><a href={REPO_INCIDENCIAS} rel="noopener">Aportar una corrección</a>, con URL y fragmento que respalde el dato.</li>
+      </ul>
+    </details>
+    <details class="documentacion"><summary>Estructura de los ficheros y construcción</summary>
+    <p>Los YAML se validan y exportan a SQLite, JSON y GeoJSON. En SQLite, la tabla <code>respaldos</code> enlaza cada campo con sus fuentes.</p>
 
     <pre class="arbol"><code>{`data/
   sites/<id>.yaml        un emplazamiento por fichero, con fases y fuentes
@@ -136,13 +96,9 @@ scripts/
   fetch-contorno.mjs     cachea el contorno de costa de reserva
   exa.mjs                buscador documental para localizar fuentes primarias`}</code></pre>
 
-    <h2>Control de calidad</h2>
-    <p>
-      Cada construcción genera un parte de validación y lo publica aquí. Comprueba el esquema, que
-      toda fuente referida exista, que no haya identificadores repetidos, que las coordenadas caigan
-      en España, que ningún emplazamiento figure dos veces con nombres distintos y que
-      cada cifra de potencia aparezca en la cita que la sostiene.
-    </p>
+    </details>
+    <details class="documentacion"><summary>Control de calidad · {errores} errores y {avisos} avisos</summary>
+    <p>La validación comprueba el esquema, las referencias, las coordenadas, los identificadores y el respaldo de las cifras. Los avisos señalan datos incompletos o citas pendientes de mejorar.</p>
 
     {resumen.calidad && (
       <dl class="cifras">
@@ -155,7 +111,7 @@ scripts/
           <dd>
             {numero(resumen.calidad.cifras_sin_cita_que_las_sostenga)}
             <small>
-              {Math.round((resumen.calidad.cifras_sin_cita_que_las_sostenga / resumen.calidad.registros_potencia) * 100)} %
+              {Math.round((resumen.calidad.cifras_sin_cita_que_las_sostenga / (resumen.calidad.registros_potencia || 1)) * 100)} %
               · la fuente existe, pero el fragmento citado no contiene el número
             </small>
           </dd>
@@ -171,76 +127,24 @@ scripts/
       </dl>
     )}
 
-    <div class="nota">
-      <strong>Citas incompletas.</strong> En parte de los registros la fuente respalda el dato, pero
-      el fragmento citado no incluye la cifra. Queda sustituir esas citas por el fragmento que sí la
-      contiene.
-    </div>
-
-    <p class="pequeno">
-      Último parte: <strong>{errores}</strong> {errores === 1 ? 'error' : 'errores'} y
-      {' '}<strong>{avisos}</strong> {avisos === 1 ? 'aviso' : 'avisos'}.
-    </p>
-
-    <h2 id="actualizacion">Actualización</h2>
-    <p>
-      Nada se descarga en tiempo real. Cada lunes, un flujo de GitHub Actions da estos cuatro
-      pasos, que también se pueden lanzar a mano.
-    </p>
-    <ol class="pasos">
-      <li>
-        <strong>Releer las fuentes.</strong> <code>check-updates.mjs</code> compara una huella del
-        texto de cada URL con la guardada. Distingue el enlace muerto del bloqueado, porque un 403
-        anti-robots no es una fuente desaparecida, y marca lo que lleva más de 180 días sin
-        comprobar. Produce una cola de revisión, no un cambio de datos.
-      </li>
-      <li>
-        <strong>Sellar lo verificado.</strong> Si todas las fuentes de una ficha se releen sin
-        cambios, se actualiza su <code>ultima_verificacion</code>. Es la única escritura automática
-        que existe y no toca ningún dato.
-      </li>
-      <li>
-        <strong>Integrar propuestas.</strong> Un YAML parcial en <code>data/propuestas/</code> con
-        los campos que cambian. El nuevo se añade; el idéntico se ignora; el distinto es{' '}
-        <strong> conflicto y no se sobrescribe nunca</strong>: se decide a mano, casi siempre
-        conservando ambas versiones y documentando la discrepancia.
-      </li>
-      <li>
-        <strong>Abrir una propuesta de cambio.</strong> El flujo revalida el esquema y abre un pull
-        request con los tres partes. Se fusiona a mano; al fusionar, el sitio se reconstruye y se
-        publica.
-      </li>
-    </ol>
-    <p>
-      Redactar las propuestas sigue siendo manual: detectar que una fuente cambió es mecánico;
-      decidir qué cifra registrar, no.
-    </p>
-
-    <h2>Licencia y atribución</h2>
-    <p>
-      Los datos originales, bajo{' '}
-      <a href="https://creativecommons.org/licenses/by/4.0/deed.es" rel="noopener"> CC BY 4.0</a>,
-      reutilizables citando la procedencia. El trazado de la red y el inventario de centrales
-      derivan de OpenStreetMap y se rigen por la{' '}
-      <a href="https://opendatacommons.org/licenses/odbl/" rel="noopener"> ODbL</a>; la cartografía
-      base es de OpenStreetMap y CARTO. Las citas pertenecen a sus editores y se reproducen como
-      fragmento breve para poder verificar el dato.
-    </p>
+    </details>
+    <details class="documentacion" id="actualizacion"><summary>Cómo se actualiza</summary>
+      <p>La revisión semanal detecta cambios, enlaces rotos y fuentes antiguas. La investigación prepara propuestas; cada dato se contrasta antes de integrarlo. Al publicar una revisión, se reconstruyen los ficheros y el sitio.</p>
+      <p>La fecha de verificación indica cuándo se revisó una ficha. La fecha de publicación de la fuente se conserva por separado.</p>
+      <p><a href="/actualizaciones">Ver los últimos cambios publicados</a> · <a href={REPOSITORIO} rel="noopener">Consultar el historial completo</a></p>
+    </details>
   </div>
 </Base>
 
 <style>
+  .documentacion { margin: .75rem 0; border-top: 1px solid var(--borde); padding-top: .75rem; }
+  .documentacion summary { cursor: pointer; font-weight: 600; }
   .texto {
     padding-bottom: 3rem;
   }
 
   .texto p {
     max-width: 42rem;
-  }
-
-  .pasos {
-    max-width: 42rem;
-    padding-left: 1.2rem;
   }
 
   .enlaces-repo {
@@ -251,10 +155,6 @@ scripts/
 
   .enlaces-repo li {
     margin-bottom: 0.3rem;
-  }
-
-  .pasos li {
-    margin-bottom: 0.7rem;
   }
 
   .mono {

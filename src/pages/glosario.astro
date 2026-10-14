@@ -1,34 +1,22 @@
 ---
 import Base from '../layouts/Base.astro'
 import { CATEGORIAS, TERMINOS, porCategoria } from '../lib/glosario.js'
-
-const conMatiz = TERMINOS.filter((t) => t.matiz).length
 ---
 
 <Base
   titulo="Glosario"
-  descripcion="Vocabulario del registro: potencia, acceso a la red, refrigeración, cómputo, contratos de energía e indicadores de inversión, con la trampa de cada término."
+  descripcion="Vocabulario del registro: potencia, acceso a la red, refrigeración, cómputo, contratos de energía e indicadores de inversión, con definiciones y errores frecuentes."
 >
   <div class="contenedor">
     <h1>Glosario</h1>
-    <p class="sumario">
-      Las {TERMINOS.length} palabras que hacen falta para leer estas cifras sin confundirlas. En el
-      resto del sitio están subrayadas con puntos: al pasar el cursor por encima se explican sin
-      salir de la página.
-    </p>
+    <p class="sumario">{TERMINOS.length} términos para interpretar las cifras del registro. Los términos subrayados con puntos también se explican donde aparecen.</p>
 
-    <div class="nota">
-      <strong>Casi todo el vocabulario eléctrico es una trampa de unidades.</strong> Solicitado,
-      otorgado y contratado son tres números distintos. Potencia y energía no se suman. MW IT y MW
-      de conexión difieren en casi el doble. {conMatiz} de estos {TERMINOS.length} términos llevan
-      anotado dónde está el error frecuente.
+    <div class="controles" data-controles-glosario hidden>
+      <label for="busca-termino">Buscar término o definición</label>
+      <input id="busca-termino" type="search" placeholder="Por ejemplo, MW IT o PPA" autocomplete="off" />
+      <span id="contador-termino" class="pequeno silencio" role="status" aria-live="polite" aria-atomic="true"></span>
     </div>
-
-    <div class="controles">
-      <input id="busca-termino" type="search" placeholder="Filtrar término o definición…" autocomplete="off" />
-      <span id="contador-termino" class="pequeno silencio"></span>
-    </div>
-
+    <p id="vacio-glosario" class="pequeno" hidden>No hay términos con esa búsqueda. Prueba otra palabra.</p>
     <nav class="atajos" aria-label="Secciones del glosario">
       {CATEGORIAS.map(([id, nombre]) => (
         <a href={`#${id}`}>{nombre} <span class="silencio">{porCategoria(id).length}</span></a>
@@ -55,7 +43,7 @@ const conMatiz = TERMINOS.filter((t) => t.matiz).length
               </dt>
               <dd>
                 <p>{t.definicion}</p>
-                {t.matiz && <p class="matiz">{t.matiz}</p>}
+                {t.matiz && <details class="matiz"><summary>Error frecuente</summary><p>{t.matiz}</p></details>}
                 {t.enlace && (
                   <p class="pequeno"><a href={t.enlace}>Dónde se usa</a></p>
                 )}
@@ -79,30 +67,52 @@ const conMatiz = TERMINOS.filter((t) => t.matiz).length
   const contador = document.getElementById('contador-termino')
   const fichas = [...document.querySelectorAll('.termino[data-busca]')]
   const bloques = [...document.querySelectorAll('[data-bloque]')]
-
-  const actualizar = () => {
-    const t = entrada.value.trim().toLowerCase()
+  const normalizar = (texto) => String(texto).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('es')
+  document.querySelector('[data-controles-glosario]').hidden = false
+  const actualizar = (guardar = true) => {
+    const palabras = normalizar(entrada.value.trim()).split(/\s+/).filter(Boolean)
     let visibles = 0
     for (const ficha of fichas) {
-      const encaja = !t || ficha.dataset.busca.includes(t)
+      const encaja = palabras.every((p) => normalizar(ficha.dataset.busca).includes(p))
       ficha.hidden = !encaja
       if (encaja) visibles++
     }
-    for (const bloque of bloques) {
-      bloque.hidden = ![...bloque.querySelectorAll('.termino')].some((f) => !f.hidden)
+    for (const bloque of bloques) bloque.hidden = ![...bloque.querySelectorAll('.termino')].some((f) => !f.hidden)
+    contador.textContent = `${visibles} de ${fichas.length} términos`
+    document.getElementById('vacio-glosario').hidden = visibles > 0
+    if (guardar) {
+      const url = new URL(location.href)
+      if (entrada.value.trim()) url.searchParams.set('q', entrada.value.trim())
+      else url.searchParams.delete('q')
+      history.replaceState(null, '', url)
     }
-    contador.textContent = t ? `${visibles} de ${fichas.length} términos` : `${fichas.length} términos`
   }
-
-  entrada?.addEventListener('input', actualizar)
-  actualizar()
+  const revelar = () => {
+    if (!location.hash) return
+    let destino
+    try { destino = document.getElementById(decodeURIComponent(location.hash.slice(1))) } catch { return }
+    if (destino?.closest('[data-bloque]') && (destino.hidden || destino.closest('[data-bloque]').hidden)) {
+      entrada.value = ''
+      actualizar()
+      requestAnimationFrame(() => destino.scrollIntoView({ block: 'start' }))
+    }
+  }
+  entrada.addEventListener('input', () => actualizar())
+  window.addEventListener('popstate', () => { entrada.value = new URL(location.href).searchParams.get('q') ?? ''; actualizar(false); revelar() })
+  window.addEventListener('hashchange', revelar)
+  entrada.value = new URL(location.href).searchParams.get('q') ?? ''
+  actualizar(false)
+  revelar()
 </script>
 
 <style>
+  .controles[hidden] { display: none; }
+  .controles label { font-size: .76rem; color: var(--tinta-3); }
   .controles {
     display: flex;
     align-items: center;
-    gap: 0.9rem;
+    gap: .5rem .9rem;
+    flex-wrap: wrap;
     margin: 1.4rem 0 1.2rem;
   }
 
@@ -174,6 +184,8 @@ const conMatiz = TERMINOS.filter((t) => t.matiz).length
     font-size: 0.88rem;
   }
 
+  .matiz summary { cursor: pointer; font-size: .76rem; color: var(--tinta-3); }
+  .matiz p { margin-top: .4rem; }
   .matiz {
     margin-top: 0.4rem;
     padding-left: 0.7rem;

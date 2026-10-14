@@ -1,107 +1,31 @@
 ---
 import Base from '../layouts/Base.astro'
+import Listado from '../components/Listado.astro'
 import regiones from '../data/regiones.json'
-import sitios from '../data/sitios.json'
-import { ESTADO_ETIQUETA, ORDEN_ESTADOS, numero } from '../lib/etiquetas.js'
+import { numero } from '../lib/etiquetas.js'
+const ordenes = [{ valor: 'nombre', etiqueta: 'Comunidad' }, { valor: 'emplazamientos', etiqueta: 'Más emplazamientos', numerico: true, direccion: 'desc' }, { valor: 'it', etiqueta: 'Más MW IT publicados', numerico: true, direccion: 'desc' }]
 ---
-
-<Base
-  titulo="Regiones"
-  descripcion="Distribución territorial de los centros de datos registrados en España, por comunidad autónoma."
->
+<Base titulo="Regiones" descripcion="Centros de datos documentados por comunidad autónoma, con operadores y cobertura de los MW IT publicados.">
   <div class="contenedor">
     <h1>Regiones</h1>
-    <p class="sumario">
-      Emplazamientos por comunidad autónoma, con su reparto por estado y los MW IT publicados. La
-      cobertura de cada una depende de lo accesible que sea su boletín oficial;
-      véase <a href="/cobertura">cobertura</a>.
-    </p>
-
-    <div class="rejilla">
-      {regiones.map((r) => (
-        <article class="tarjeta region">
-          <h2><a href={`/region/${r.slug}`}>{r.nombre}</a></h2>
-          <p class="cifra-grande">
-            {r.emplazamientos}
-            <small>{r.emplazamientos === 1 ? 'emplazamiento' : 'emplazamientos'}</small>
-          </p>
-          <span class="barra">
-            {ORDEN_ESTADOS.filter((e) => r.por_estado[e]).map((e) => (
-              <span
-                class={`segmento estado-${e}`}
-                style={`flex:${r.por_estado[e]}`}
-                title={`${r.por_estado[e]} ${ESTADO_ETIQUETA[e]}`}
-              ></span>
-            ))}
-          </span>
-          <dl class="mini">
-            <dt>MW IT sumados</dt>
-            <dd>
-              {r.potencia.it.sitios_con_dato
-                ? <>{numero(r.potencia.it.total_mw)} MW <span class="silencio pequeno">({r.potencia.it.cobertura} % cobertura)</span></>
-                : <span class="silencio">sin datos publicados</span>}
-            </dd>
-            <dt>Operadores</dt>
-            <dd>{r.operadores.length}</dd>
-          </dl>
-        </article>
-      ))}
-    </div>
-
+    <p class="sumario">{regiones.length} comunidades con emplazamientos registrados. El recuento refleja la documentación disponible; consulta la <a href="/cobertura">cobertura</a>.</p>
+    <Listado nombre="regiones" ordenes={ordenes}>
+      <div class="rejilla">{regiones.map((r) => <article class="tarjeta region" data-list-item data-busca={`${r.nombre} ${r.operadores.join(' ')}`} data-nombre={r.nombre} data-emplazamientos={r.emplazamientos} data-it={r.potencia.it.sitios_con_dato ? r.potencia.it.total_mw : ''}>
+        <h2><a href={`/region/${r.slug}`}>{r.nombre}</a></h2>
+        <p class="cifra-grande">{r.emplazamientos}<small>{r.emplazamientos === 1 ? 'emplazamiento' : 'emplazamientos'}</small></p>
+        <dl class="mini"><dt>MW IT publicados</dt><dd>{r.potencia.it.sitios_con_dato ? `${numero(r.potencia.it.total_mw)} MW` : 'No publicados'}</dd>
+          <dt>Con dato IT</dt><dd>{r.potencia.it.sitios_con_dato}/{r.emplazamientos_en_potencia ?? r.emplazamientos} emplazamientos</dd>
+          <dt>Operadores</dt><dd>{r.operadores.length}</dd>
+        </dl>
+      </article>)}</div>
+      <p class="pequeno silencio">Los MW IT incluyen estados distintos y excluyen cancelados. Cada región ofrece el desglose por estado.</p>
+    </Listado>
   </div>
 </Base>
-
 <style>
-  .rejilla {
-    margin: 1.75rem 0 3rem;
-  }
-
-  .region h2 {
-    font-size: 1.1rem;
-    margin: 0 0 0.35rem;
-  }
-
-  .cifra-grande {
-    font-family: var(--serif);
-    font-size: 2rem;
-    line-height: 1;
-    margin: 0 0 0.6rem;
-  }
-
-  .cifra-grande small {
-    font-family: var(--sans);
-    font-size: 0.78rem;
-    color: var(--tinta-3);
-    margin-left: 0.4rem;
-  }
-
-  .barra {
-    display: flex;
-    gap: 1px;
-    height: 0.5rem;
-    border-radius: 2px;
-    overflow: hidden;
-    margin-bottom: 0.8rem;
-  }
-
-  .segmento {
-    background: currentColor;
-    min-width: 2px;
-  }
-
-  .mini {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 0.2rem 0.7rem;
-    margin: 0;
-    font-size: 0.85rem;
-  }
-
-  .mini dt {
-    color: var(--tinta-3);
-  }
-
-  .mini dd {
-    margin: 0;
-  }
+  .region h2 { font-size: 1.1rem; margin: 0 0 .5rem; }
+  .cifra-grande { font-family: var(--serif); font-size: 2rem; line-height: 1; margin: 0 0 .8rem; }
+  .cifra-grande small { font-family: var(--sans); font-size: .78rem; color: var(--tinta-3); margin-left: .4rem; }
+  .mini { display: grid; grid-template-columns: auto 1fr; gap: .3rem .7rem; margin: 0; font-size: .82rem; }
+  .mini dt { color: var(--tinta-3); }.mini dd { margin: 0; }
 </style>

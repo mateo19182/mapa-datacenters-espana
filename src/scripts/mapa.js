@@ -4,6 +4,7 @@
 // `Map` se renombra para no pisar el Map nativo que usa este módulo.
 import { Map as MapaGL, NavigationControl, AttributionControl, ScaleControl } from 'maplibre-gl'
 import 'maplibre-gl/dist/maplibre-gl.css'
+import { coincideBusqueda } from '../lib/busqueda.js'
 
 // El mapa se alimenta de ficheros estáticos servidos desde /datos.
 // Las capas pesadas (red de transporte) se piden solo al activarlas.
@@ -101,7 +102,14 @@ const estado = {
   capas: { lineas: false, subestaciones: false, renovables: false, centrales: false },
 }
 
+const GRUPOS_ESTADO = {
+  todos: [],
+  operativos: ['operativo', 'ampliacion_en_construccion', 'parcialmente_operativo'],
+  construccion: ['en_construccion'],
+  proyectos: ['permisos_concedidos', 'en_tramitacion', 'anunciado'],
+}
 let mapa
+let capasListas = false
 // Si el estilo base no carga, el mapa de reserva no trae glifos y los rótulos
 // de texto no pueden pintarse.
 let conRotulos = true
@@ -167,6 +175,7 @@ const radioPorPotencia = [
 
 function filtroMapLibre() {
   const f = ['all']
+  if (estado.texto) f.push(['in', ['get', 'id'], ['literal', inventario.filter((p) => coincideTexto(p, indiceAlias)).map((p) => p.id)]])
   if (estado.estados.size) f.push(['in', ['get', 'estado'], ['literal', [...estado.estados]]])
   if (estado.ccaa) f.push(['==', ['get', 'ccaa'], estado.ccaa])
   if (estado.operador) f.push(['==', ['get', 'operador'], estado.operador])
@@ -179,10 +188,8 @@ function filtroMapLibre() {
 
 // El texto se filtra en JS porque hay que mirar también los alias.
 function coincideTexto(p, indiceAlias) {
-  if (!estado.texto) return true
-  const t = estado.texto
-  const campos = [p.nombre, p.operador, p.municipio, p.ccaa, indiceAlias.get(p.id) ?? '']
-  return campos.some((c) => String(c ?? '').toLowerCase().includes(t))
+  const campos = [p.nombre, p.operador, p.municipio, p.ccaa, indiceAlias.get(p.id)]
+  return coincideBusqueda(estado.texto, campos.filter(Boolean).join(' '))
 }
 
 // --- interfaz ----------------------------------------------------------------
@@ -217,16 +224,28 @@ function pintarLista() {
   const fuera = $('#fuera-mapa')
   if (fuera) {
     fuera.textContent = sinCoordenadas
-      ? `${sinCoordenadas} sin coordenadas publicadas, fuera del mapa`
+      ? `${sinCoordenadas} sin coordenadas`
       : ''
   }
 
   const conMetrica = visibles.filter((p) => p[estado.metrica] != null)
-  const suma = conMetrica.reduce((a, p) => a + p[estado.metrica], 0)
+  const porEstado = new Map()
+  for (const p of conMetrica) {
+    const fila = porEstado.get(p.estado) ?? { total: 0, conDato: 0 }
+    fila.total += p[estado.metrica]
+    fila.conDato++
+    porEstado.set(p.estado, fila)
+  }
   $('#suma').innerHTML = conMetrica.length
-    ? `Suma de ${METRICAS[estado.metrica]}: <strong>${suma.toLocaleString('es-ES', { maximumFractionDigits: 0 })} MW</strong>
-       <span class="silencio">· en ${conMetrica.length} de ${visibles.length} emplazamientos; el resto no publica esta magnitud</span>`
-    : `<span class="silencio">Ningún emplazamiento del filtro publica ${METRICAS[estado.metrica]}.</span>`
+    ? `<strong>${METRICAS[estado.metrica]}</strong> · ${conMetrica.length} de ${visibles.length} publican esta magnitud.<br>${[...porEstado].map(([e, f]) => `${ETIQUETA_ESTADO[e]}: ${f.total.toLocaleString('es-ES', { maximumFractionDigits: 1 })} MW · ${f.conDato} fichas`).join('<br>')}`
+    : `Sin ${METRICAS[estado.metrica]} publicados para este filtro.`
+  const activos = ['operador', 'modelo', 'confianza'].filter((k) => estado[k]).length + Number(estado.estados.size > 0) + Number(estado.minimo > 0) + Number(estado.soloConMetrica) + Object.values(estado.capas).filter(Boolean).length
+  const contadorFiltros = $('#filtros-activos')
+  if (contadorFiltros) contadorFiltros.textContent = activos ? `· ${activos} activos` : ''
+  for (const boton of $$('[data-grupo-estado]')) {
+    const grupo = GRUPOS_ESTADO[boton.dataset.grupoEstado]
+    boton.setAttribute('aria-pressed', String(grupo.length === estado.estados.size && grupo.every((e) => estado.estados.has(e))))
+  }
 
   cont.innerHTML = visibles
     .slice(0, 300)
@@ -244,6 +263,7 @@ function pintarLista() {
       </li>`
     })
     .join('')
+  if (!visibles.length) cont.innerHTML = '<li class="sin-resultados">Sin resultados. Prueba otro nombre o limpia los filtros.</li>'
 
   if (visibles.length > 300) {
     cont.insertAdjacentHTML(
@@ -254,23 +274,40 @@ function pintarLista() {
 
   $$('.fila-sitio', cont).forEach((b) =>
     b.addEventListener('click', () => {
-      if (b.dataset.lat) {
+      if (mapa && b.dataset.lat) {
         mapa.flyTo({ center: [Number(b.dataset.lon), Number(b.dataset.lat)], zoom: 12, duration: 800 })
+      }
+      if (window.matchMedia('(max-width: 900px)').matches) {
+        $('#panel-filtros')?.classList.remove('abierto')
+        const panel = $('#panel-filtros')
+        if (panel) panel.inert = true
+        $('#alternar-panel')?.setAttribute('aria-expanded', 'false')
+        if ($('#alternar-panel')) $('#alternar-panel').textContent = 'Lista y filtros'
       }
       abrirFicha(b.dataset.id)
     }),
   )
 }
 
+function pintarMinimo() {
+  const minimo = $('#filtro-minimo')
+  if (!minimo) return
+  minimo.max = String(Math.max(200, Math.ceil(Math.max(estado.minimo, ...inventario.map((p) => p[estado.metrica] ?? 0)) / 50) * 50))
+  minimo.value = String(estado.minimo)
+  minimo.style.setProperty('--relleno', `${(estado.minimo / Number(minimo.max)) * 100}%`)
+  $('#valor-minimo').textContent = estado.minimo ? `${estado.minimo} MW` : 'sin mínimo'
+}
+
 function aplicar() {
+  pintarMinimo()
   const filtro = filtroMapLibre()
   // `mapa?` y no `mapa`: si el lienzo no ha podido crearse, el panel y la lista
   // siguen funcionando como buscador. Los filtros no dependen del mapa.
   for (const capa of ['sitios-circulo', 'sitios-borde', 'sitios-etiqueta']) {
-    if (mapa?.getLayer(capa)) mapa.setFilter(capa, filtro)
+    if (capasListas && mapa?.getLayer(capa)) mapa.setFilter(capa, filtro)
   }
   for (const capa of ['sitios-circulo', 'sitios-borde']) {
-    if (mapa?.getLayer(capa)) mapa.setPaintProperty(capa, 'circle-radius', radioPorMetrica(estado.metrica))
+    if (capasListas && mapa?.getLayer(capa)) mapa.setPaintProperty(capa, 'circle-radius', radioPorMetrica(estado.metrica))
   }
   pintarLista()
   guardarEnUrl()
@@ -316,10 +353,13 @@ function guardarEnUrl() {
   if (estado.modelo) q.set('t', estado.modelo)
   if (estado.confianza) q.set('c', estado.confianza)
   if (estado.minimo) q.set('min', String(estado.minimo))
+  if (estado.soloConMetrica) q.set('con', '1')
   const capas = Object.entries(estado.capas).filter(([, v]) => v).map(([k]) => k)
   if (capas.length) q.set('capas', capas.join(','))
   const s = q.toString()
   history.replaceState(null, '', s ? `?${s}` : location.pathname)
+  const enlace = $('#ver-listado')
+  if (enlace) enlace.href = `/proyectos${s ? `?${s}` : ''}`
 }
 
 function leerDeUrl() {
@@ -331,7 +371,9 @@ function leerDeUrl() {
   estado.operador = q.get('o') ?? ''
   estado.modelo = q.get('t') ?? ''
   estado.confianza = q.get('c') ?? ''
-  estado.minimo = Number(q.get('min') ?? 0) || 0
+  const minimoSolicitado = Number(q.get('min') ?? 0)
+  estado.minimo = Number.isFinite(minimoSolicitado) ? Math.max(0, minimoSolicitado) : 0
+  estado.soloConMetrica = q.get('con') === '1'
   for (const c of (q.get('capas') ?? '').split(',').filter(Boolean)) {
     if (c in estado.capas) estado.capas[c] = true
   }
@@ -493,9 +535,23 @@ async function cargarCapa(nombre) {
 
 const panelHtml = (contenido) => {
   const panel = $('#panel-detalle')
-  panel.innerHTML = `<button class="cerrar" aria-label="Cerrar">×</button>${contenido}`
+  const origen = document.activeElement
+  panel.innerHTML = `<button class="cerrar" aria-label="Cerrar detalles">×</button>${contenido}`
   panel.hidden = false
-  $('.cerrar', panel).addEventListener('click', () => (panel.hidden = true))
+  panel.setAttribute('role', 'dialog')
+  const titulo = $('h2', panel)
+  if (titulo) { titulo.id = 'titulo-detalle-mapa'; panel.setAttribute('aria-labelledby', titulo.id) }
+  const cerrar = () => {
+    panel.hidden = true
+    const movil = window.matchMedia('(max-width: 900px)').matches
+    const destino = movil ? $('#alternar-panel') : origen?.isConnected && origen !== document.body ? origen : $('#filtro-texto')
+    destino?.focus()
+  }
+  $('.cerrar', panel).addEventListener('click', cerrar)
+  panel.onkeydown = (evento) => {
+    if (evento.key === 'Escape') { evento.stopPropagation(); cerrar() }
+  }
+  $('.cerrar', panel).focus({ preventScroll: true })
 }
 
 const mw = (v) => (v == null ? null : `${Number(v).toLocaleString('es-ES', { maximumFractionDigits: 1 })} MW`)
@@ -614,6 +670,7 @@ function abrirCentral(id) {
 
 function alternarCapa(nombre, activa) {
   estado.capas[nombre] = activa
+  if (!capasListas) { guardarEnUrl(); return }
   const capas = {
     lineas: ['lineas-trazado'],
     subestaciones: ['subestaciones-simbolo'],
@@ -762,6 +819,8 @@ function esperarEstilo(limite = 9000) {
  * envoltorio es un mapa que se quedaba en blanco sin decir por qué.
  */
 export async function iniciarMapa(opciones = {}) {
+  const carga = $('#cargando-mapa')
+  if (carga) carga.hidden = false
   try {
     await montarVista(opciones)
   } catch (e) {
@@ -770,6 +829,8 @@ export async function iniciarMapa(opciones = {}) {
       titulo: 'El mapa no ha podido montarse',
       texto: `Ha fallado la carga de la vista cartográfica (${String(e?.message ?? e).slice(0, 140)}). El registro completo sigue disponible en <a href="/proyectos">la lista de proyectos</a>.`,
     })
+  } finally {
+    if (carga) carga.hidden = true
   }
 }
 
@@ -807,6 +868,7 @@ async function montarVista(opciones = {}) {
     maxZoom: 17,
     attributionControl: false,
   })
+  if (!opciones.centro && !opciones.zoom) mapa.fitBounds([[-9.6, 35.8], [3.5, 43.9]], { padding: { top: 35, bottom: 45, left: 20, right: 20 }, duration: 0 })
   mapa.addControl(new NavigationControl({ showCompass: false }), 'top-right')
   mapa.addControl(
     new AttributionControl({
@@ -816,6 +878,12 @@ async function montarVista(opciones = {}) {
     'bottom-right',
   )
   mapa.addControl(new ScaleControl({ unit: 'metric' }), 'bottom-left')
+
+  // Buscar y consultar resultados no espera al proveedor de cartografía.
+  conectarControles()
+  pintarLista()
+  guardarEnUrl()
+  $$('[data-capa]').forEach((control) => { control.disabled = true })
 
   if (await esperarEstilo()) {
     conRotulos = true
@@ -833,7 +901,8 @@ async function montarVista(opciones = {}) {
   }
 
   montarCapas()
-  conectarControles()
+  capasListas = true
+  $$('[data-capa]').forEach((control) => { control.disabled = false })
   for (const [nombre, activa] of Object.entries(estado.capas)) if (activa) alternarCapa(nombre, true)
   aplicar()
 }
@@ -852,6 +921,7 @@ async function reintentarMapaBase() {
 }
 
 async function intentarMapaBase() {
+  capasListas = false
   mapa.setStyle(ESTILO())
   cargadas.clear()
   if (await esperarEstilo()) {
@@ -867,6 +937,7 @@ async function intentarMapaBase() {
     })
   }
   montarCapas()
+  capasListas = true
   for (const [nombre, activa] of Object.entries(estado.capas)) if (activa) alternarCapa(nombre, true)
   aplicar()
 }
@@ -980,6 +1051,35 @@ function actualizarLeyenda() {
 }
 
 function conectarControles() {
+  const panel = $('#panel-filtros')
+  const alternarPanel = $('#alternar-panel')
+  const movil = window.matchMedia('(max-width: 900px)')
+  const sincronizarPanel = () => {
+    if (!panel) return
+    panel.inert = movil.matches && !panel.classList.contains('abierto')
+    alternarPanel?.setAttribute('aria-expanded', String(movil.matches && panel.classList.contains('abierto')))
+    if (alternarPanel) alternarPanel.textContent = panel.classList.contains('abierto') ? 'Ver mapa' : 'Lista y filtros'
+  }
+  movil.addEventListener('change', sincronizarPanel)
+  sincronizarPanel()
+  alternarPanel?.addEventListener('click', () => {
+    panel?.classList.toggle('abierto')
+    sincronizarPanel()
+  })
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && panel?.classList.contains('abierto')) {
+      panel.classList.remove('abierto')
+      sincronizarPanel()
+      alternarPanel?.focus()
+    }
+  })
+  for (const boton of $$('[data-grupo-estado]')) boton.addEventListener('click', () => {
+    estado.estados = new Set(GRUPOS_ESTADO[boton.dataset.grupoEstado])
+    $$('[data-estado]').forEach((el) => { el.checked = estado.estados.has(el.dataset.estado) })
+    aplicar()
+  })
+  const detalles = $('#filtros-avanzados')
+  if (detalles && (estado.operador || estado.modelo || estado.confianza || estado.minimo || estado.soloConMetrica || Object.values(estado.capas).some(Boolean))) detalles.open = true
   const buscador = $('#filtro-texto')
   if (buscador) {
     buscador.value = estado.texto
@@ -1024,18 +1124,9 @@ function conectarControles() {
 
   const minimo = $('#filtro-minimo')
   if (minimo) {
-    // El carril del deslizador se pinta con un degradado hasta --relleno: es la
-    // única forma de teñir la parte recorrida en todos los navegadores.
-    const pintarCarril = () => {
-      const tope = Number(minimo.max) || 1
-      minimo.style.setProperty('--relleno', `${(Number(minimo.value) / tope) * 100}%`)
-      $('#valor-minimo').textContent = estado.minimo ? `${estado.minimo} MW` : 'sin mínimo'
-    }
-    minimo.value = String(estado.minimo)
-    pintarCarril()
+    pintarMinimo()
     minimo.addEventListener('input', () => {
       estado.minimo = Number(minimo.value)
-      pintarCarril()
       aplicar()
     })
   }
@@ -1085,12 +1176,4 @@ function conectarControles() {
     })
   }
 
-  const alternarPanel = $('#alternar-panel')
-  if (alternarPanel) {
-    alternarPanel.addEventListener('click', () => {
-      const p = $('#panel-filtros')
-      const abierto = p.classList.toggle('abierto')
-      alternarPanel.setAttribute('aria-expanded', String(abierto))
-    })
-  }
 }

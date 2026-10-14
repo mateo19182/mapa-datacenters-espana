@@ -80,25 +80,21 @@ const matriz = [0.75, 0.9, 1].map((captura) => ({
             <div class="portada-meta">
               <span class="terminal">BME: MRL</span>
               <span>Nota de inversión</span>
-              <span>31 agosto 2026</span>
+              <span>Análisis del 31 agosto 2026</span>
             </div>
             <h1>MERLIN Properties</h1>
-            <p class="titular">Infraestructura digital dentro de una <Termino id="socimi">SOCIMI</Termino> diversificada</p>
-            <p class="tesis-corta">
-              El mercado ya reconoce parte del giro hacia centros de datos, pero no paga todavía el{' '}
-              <Termino id="epra-nta">EPRA NTA</Termino>. La oportunidad existe. También el riesgo de un plan con €7.800 millones de
-              inversión total mientras la mayor parte de la renta aún no ha llegado a caja.
-            </p>
+            <p class="titular">Exposición a infraestructura digital dentro de una <Termino id="socimi">SOCIMI</Termino> diversificada</p>
+
           </div>
           <aside class="veredicto" aria-label="Conclusión de inversión">
             <p class="veredicto-cabecera">
-              <span class="veredicto-etiqueta">Lectura</span>
+              <span class="veredicto-etiqueta">Evaluación</span>
               <strong>Selectiva</strong>
             </p>
             <p class="veredicto-texto">
-              Activos y balance sólidos. Precio razonable frente a <Termino id="epra-nta">NTA</Termino>,
-              exigente frente a <Termino id="ffo">FFO</Termino> actual.
-              La tesis depende de ejecutar, energizar y alquilar la Fase II y la Fase III.
+              La cartera está diversificada y el balance presenta un <Termino id="ltv">LTV</Termino> bajo. La acción cotiza a un precio razonable frente a la{' '}
+              <Termino id="epra-nta">NTA</Termino>, pero exigente frente al <Termino id="ffo">FFO</Termino> actual.
+              La tesis requiere ejecutar, energizar y alquilar la Fase II y la Fase III.
             </p>
             <dl>
               <div><dt>Precio de referencia</dt><dd>€{decimal(precio, 2)}</dd></div>
@@ -112,7 +108,7 @@ const matriz = [0.75, 0.9, 1].map((captura) => ({
 
     <nav class="indice" aria-label="Índice del informe">
       <div class="pagina">
-        <a href="#tesis">Tesis</a>
+        <a href="#informe-completo">Tesis completa</a>
         <a href="#valoracion">Valoración</a>
         <a href="#mega">Plan MEGA</a>
         <a href="#activos">Activos</a>
@@ -137,7 +133,7 @@ const matriz = [0.75, 0.9, 1].map((captura) => ({
         <div class="metrica">
           <span><Termino id="ffo">Rentabilidad FFO</Termino></span>
           <strong>{decimal(rentabilidadFfo)}%</strong>
-          <small>Inversa del múltiplo anterior</small>
+          <small>Es la inversa del múltiplo anterior</small>
         </div>
         <div class="metrica">
           <span>Distribución 2025</span>
@@ -147,351 +143,379 @@ const matriz = [0.75, 0.9, 1].map((captura) => ({
         <div class="metrica">
           <span><Termino id="ltv">LTV</Termino></span>
           <strong>24,5%</strong>
-          <small>Después de ampliar capital</small>
+          <small>Tras la ampliación de capital</small>
         </div>
       </section>
 
       <p class="corte-datos">
-        Precio de cierre del 31 de agosto de 2026. Datos financieros a 30 de junio de 2026. Las
-        cifras de emplazamientos proceden del registro de este proyecto, verificado hasta el 31 de
-        agosto de 2026. Esto es análisis, no asesoramiento financiero.
+        Fotografía de mercado del 31 de agosto de 2026. Cuentas a 30 de junio de 2026.
+        Las fichas de proyecto enlazadas conservan su propia fecha de verificación.
       </p>
 
-      <section id="tesis" class="seccion seccion-dos">
-        <div class="titulo-lateral">
-          <span>01</span>
-          <h2>La tesis en una página</h2>
+      <section class="claves-resumen" aria-label="Supuestos y riesgos principales">
+        <div>
+          <h2>Qué debe cumplirse</h2>
+          <ul>
+            <li>Alcanzar €97 millones de renta estabilizada en la Fase I en 2027.</li>
+            <li>Entregar en calendario los 160 MW alquilados o prealquilados.</li>
+          </ul>
         </div>
-        <div class="contenido">
-          <p class="entradilla">
-            MERLIN ya no es solo una cartera de oficinas, centros comerciales y logística. Los data
-            centers representan €2.103 millones de <Termino id="gav">GAV</Termino>, un 15,6% del total, y explicaron cerca del
-            80% de la creación de valor del primer semestre. Sin embargo, el negocio digital aportó
-            solo €28,1 millones de rentas brutas en esos seis meses. El valor se ha adelantado al flujo.
-          </p>
+        <div>
+          <h2>Riesgos principales</h2>
+          <ul>
+            <li>Retrasos en red, licencias o equipos que desplazan rentas.</li>
+            <li>Nuevas ampliaciones de capital que diluyen el FFO por acción.</li>
+          </ul>
+        </div>
+      </section>
 
-          <div class="tesis-grid">
-            <div class="caso caso-favor">
-              <p class="caso-titulo">Qué tiene que salir bien</p>
-              <ul>
-                <li>La Fase I alcanza €97 millones de renta estabilizada en 2027.</li>
-                <li>Los 160 MW alquilados o prealquilados se entregan en calendario.</li>
-                <li>La potencia concedida en Arasur y Zaragoza se convierte en edificios operativos.</li>
-                <li>El coste de capital queda muy por debajo del 14,4%–15,8% de <Termino id="yield-on-cost">yield on cost</Termino> bruto.</li>
-              </ul>
+      <details class="informe-completo" id="informe-completo">
+        <summary>Leer la tesis completa <span>Plan MEGA, valoración, activos, riesgos y fuentes</span></summary>
+        <div class="marco-tesis">
+            <p class="tesis-corta">
+              La cotización ya incorpora parte de la expansión del negocio de centros de datos, pero sigue por debajo del{' '}
+              <Termino id="epra-nta">EPRA NTA</Termino>. El descuento no elimina el riesgo: el plan contempla €7.800 millones de
+              inversión total y la mayor parte de la renta prevista todavía no se ha convertido en caja.
+            </p>
+          <p class="corte-datos">Precio de cierre del 31 de agosto de 2026. Datos financieros a 30 de junio de 2026. Análisis, no asesoramiento financiero.</p>
+        </div>
+
+
+        <section id="tesis" class="seccion seccion-dos">
+          <div class="titulo-lateral">
+            <span>01</span>
+            <h2>Resumen de la tesis</h2>
+          </div>
+          <div class="contenido">
+            <p class="entradilla">
+              MERLIN combina oficinas, centros comerciales, logística y data centers. Estos últimos representan €2.103 millones de{' '}
+              <Termino id="gav">GAV</Termino>, un 15,6% del total, y explicaron cerca del 80% de la creación de valor del primer semestre.
+              El negocio digital aportó solo €28,1 millones de rentas brutas en esos seis meses. La valoración ha anticipado el flujo.
+            </p>
+
+            <div class="tesis-grid">
+              <div class="caso caso-favor">
+                <p class="caso-titulo">Supuestos que sostienen la tesis</p>
+                <ul>
+                  <li>El plan tendría que llevar la Fase I a €97 millones de renta estabilizada en 2027.</li>
+                  <li>MERLIN tendría que entregar en calendario los 160 MW alquilados o prealquilados.</li>
+                  <li>La potencia concedida en Arasur y Zaragoza tendría que convertirse en edificios operativos.</li>
+                  <li>El coste de capital tendría que quedar muy por debajo del 14,4%–15,8% de <Termino id="yield-on-cost">yield on cost</Termino> bruto.</li>
+                </ul>
+              </div>
+              <div class="caso caso-contra">
+                <p class="caso-titulo">Riesgos que invalidarían la tesis</p>
+                <ul>
+                  <li>Retrasos en red, licencias o equipos desplazan rentas y reducen la <Termino id="tir">TIR</Termino>.</li>
+                  <li>Más <Termino id="ampliacion-capital">ampliaciones de capital</Termino> diluyen el FFO por acción antes de estabilizar rentas.</li>
+                  <li>Unos pocos <Termino id="hiperescalar">hiperescaladores</Termino> concentran capacidad y poder de negociación.</li>
+                  <li>Las opciones extremeñas de 1 GW se valoran como proyecto firme cuando aún no lo son.</li>
+                </ul>
+              </div>
             </div>
-            <div class="caso caso-contra">
-              <p class="caso-titulo">Qué puede romperla</p>
-              <ul>
-                <li>Retrasos en red, licencias o equipos desplazan rentas y reducen la <Termino id="tir">TIR</Termino>.</li>
-                <li>Más <Termino id="ampliacion-capital">ampliaciones de capital</Termino> diluyen el FFO por acción antes de estabilizar rentas.</li>
-                <li>Unos pocos <Termino id="hiperescalar">hiperescaladores</Termino> concentran capacidad y poder de negociación.</li>
-                <li>Las opciones extremeñas de 1 GW se valoran como proyecto firme cuando aún no lo son.</li>
-              </ul>
+
+            <div class="lectura-clave">
+              <span>Análisis</span>
+              <p>
+                A €13,40, la acción ofrece un margen razonable frente al valor neto de activos, pero no
+                frente al beneficio recurrente de 2026. La valoración exige asumir una diferencia sustancial
+                entre el FFO de 2030 y el actual. La cotización anticipa un cambio que todavía no aparece en el flujo.
+              </p>
             </div>
           </div>
+        </section>
 
-          <div class="lectura-clave">
-            <span>Mi lectura</span>
-            <p>
-              A €13,40, la acción ofrece un margen razonable frente al valor neto de activos, pero no
-              frente al beneficio recurrente de 2026. Comprarla exige creer que el FFO de 2030 se
-              parecerá mucho menos al de hoy. Ese es el contrato implícito con el accionista.
+        <section id="valoracion" class="seccion seccion-dos">
+          <div class="titulo-lateral">
+            <span>02</span>
+            <h2>Valoración: descuento sobre NTA, prima sobre FFO</h2>
+          </div>
+          <div class="contenido">
+            <div class="valoracion-comparada">
+              <div>
+                <span class="kicker">Balance</span>
+                <strong>0,84× NTA</strong>
+                <p>
+                  La acción cotiza con un descuento del 16,2% frente a €15,99 de EPRA NTA por acción. Ese
+                  descuento solo protege si la tasación es conservadora y el desarrollo crea valor. Si los
+                  yields de salida suben o el capex se desvía, el NTA puede bajar antes de que el descuento cierre.
+                </p>
+              </div>
+              <div>
+                <span class="kicker">Caja</span>
+                <strong>24,4× FFO</strong>
+                <p>
+                  La guía de €340 millones equivale a €0,55 por acción. El múltiplo no es bajo para una
+                  inmobiliaria. La cotización incorpora renta futura. En el semestre, el FFO total subió 8,0%,
+                  pero cayó 1,8% por acción tras la ampliación de capital.
+                </p>
+              </div>
+            </div>
+
+            <div class="puente" aria-label="Puente entre precio y NTA">
+              <div class="puente-escala"><span>€0</span><span>€8</span><span>€16</span></div>
+              <div class="puente-fila">
+                <span>Precio</span>
+                <div><i style={`width:${(precio / 16) * 100}%`}></i><b>€{decimal(precio, 2)}</b></div>
+              </div>
+              <div class="puente-fila nta">
+                <span>EPRA NTA</span>
+                <div><i style={`width:${(nta / 16) * 100}%`}></i><b>€{decimal(nta, 2)}</b></div>
+              </div>
+            </div>
+
+            <h3>Capacidad del balance para financiar la inversión</h3>
+            <div class="balance-grid">
+              <dl>
+                <div><dt><Termino id="gav">GAV</Termino> total</dt><dd>€13.508m</dd></div>
+                <div><dt>Deuda neta</dt><dd>€3.394m</dd></div>
+                <div><dt>Liquidez</dt><dd>€2.571m</dd></div>
+              </dl>
+              <dl>
+                <div><dt>Coste medio de deuda</dt><dd>2,71%</dd></div>
+                <div><dt>Deuda a tipo fijo</dt><dd>99,8%</dd></div>
+                <div><dt>Vencimiento medio</dt><dd>4,0 años</dd></div>
+              </dl>
+            </div>
+            <p class="nota-analista">
+              El <Termino id="ltv">LTV</Termino> bajo es una ventaja real, pero se logró en parte con €768 millones de capital nuevo.
+              Las acciones pasaron de unos 564 a 620 millones, cerca de un 10% más. El balance puede absorber{' '}
+              <Termino id="capex">capex</Termino>; el accionista asume la <Termino id="dilucion">dilución</Termino>.
             </p>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section id="valoracion" class="seccion seccion-dos">
-        <div class="titulo-lateral">
-          <span>02</span>
-          <h2>Dos valoraciones que cuentan historias distintas</h2>
-        </div>
-        <div class="contenido">
-          <div class="valoracion-comparada">
-            <div>
-              <span class="kicker">Balance</span>
-              <strong>0,84× NTA</strong>
-              <p>
-                El precio descuenta un 16,2% sobre €15,99 de EPRA NTA por acción. Si la tasación es
-                conservadora y el desarrollo crea valor, el descuento protege. Si los yields de salida
-                suben o el capex se desvía, el NTA puede bajar antes de que el descuento cierre.
-              </p>
+        <section id="mega" class="seccion seccion-dos">
+          <div class="titulo-lateral">
+            <span>03</span>
+            <h2>Plan MEGA: inversión, capacidad y renta prevista</h2>
+          </div>
+          <div class="contenido">
+            <p class="entradilla">
+              Las tres fases suman {totalMw} <Termino id="mw-it">MW IT</Termino>, €{decimal(totalInversion / 1000)} mil millones de
+              inversión y €{decimal(totalGri / 1000, 2)} mil millones de renta bruta estabilizada. Estas no son
+              magnitudes actuales, sino objetivos corporativos condicionados a construir y alquilar la cartera.
+            </p>
+
+            <div class="fases" aria-label="Fases del Plan MEGA">
+              {fases.map((fase) => (
+                <article style={`--fase:${fase.color}`}>
+                  <div class="fase-cabecera"><span>{fase.nombre}</span><b>{fase.estabilizacion}</b></div>
+                  <strong>{fase.mw} MW</strong>
+                  <div class="fase-barra"><i style={`width:${(fase.mw / 406) * 100}%`}></i></div>
+                  <dl>
+                    <div><dt>Inversión</dt><dd>€{fase.inversion.toLocaleString('es-ES')}m</dd></div>
+                    <div><dt><Termino id="gri">GRI</Termino> estabilizado</dt><dd>€{fase.gri}m</dd></div>
+                    <div><dt><Termino id="yield-on-cost">YoC</Termino> bruto</dt><dd>{decimal((fase.gri / fase.inversion) * 100)}%</dd></div>
+                  </dl>
+                </article>
+              ))}
             </div>
-            <div>
-              <span class="kicker">Caja</span>
-              <strong>24,4× FFO</strong>
-              <p>
-                La guía de €340 millones equivale a €0,55 por acción. No es un múltiplo bajo para una
-                inmobiliaria. El mercado está pagando renta futura. Además, el FFO total subió 8,0%
-                en el semestre, pero cayó 1,8% por acción tras la ampliación de capital.
-              </p>
+
+            <h3>Sensibilidad del valor al coste y a la renta capturada</h3>
+            <p>
+              La matriz calcula la relación entre el <Termino id="yield-on-cost">yield on cost</Termino> bruto del plan,
+              {decimal(ycTotal)}%, y un <Termino id="yield-salida">yield de salida</Termino>. Después ajusta el resultado por el porcentaje de renta efectivamente capturada.
+              Un resultado de 2,1× significa que el valor bruto estabilizado sería 2,1 veces el coste,
+              antes de financiación, impuestos, retrasos y valor temporal del dinero. No es un precio objetivo.
+            </p>
+            <div class="matriz-envoltorio">
+              <table class="matriz">
+                <thead>
+                  <tr><th>Renta capturada</th><th>Yield 5,5%</th><th>Yield 6,25%</th><th>Yield 7,0%</th></tr>
+                </thead>
+                <tbody>
+                  {matriz.map((fila) => (
+                    <tr>
+                      <th>{Math.round(fila.captura * 100)}%</th>
+                      {fila.valores.map((valor) => <td class:list={[valor >= 2.2 && 'alto', valor < 1.8 && 'bajo']}>{decimal(valor, 2)}×</td>)}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p class="nota-analista">
+              El <Termino id="spread-desarrollo">spread de desarrollo</Termino> es amplio en papel, pero la Fase III no estabiliza
+              hasta 2032. Seis años de obra, comercialización y capital inmovilizado reducen el valor de
+              comparar directamente el yield on cost con el yield de salida.
+            </p>
+          </div>
+        </section>
+
+        <section id="activos" class="seccion seccion-dos">
+          <div class="titulo-lateral">
+            <span>04</span>
+            <h2>Activos en España: operativos, en desarrollo y opcionales</h2>
+          </div>
+          <div class="contenido">
+            <p class="entradilla">
+              El registro del proyecto identifica ocho emplazamientos vinculados a MERLIN en España.
+              La tabla mantiene cifras discrepantes cuando las fuentes no permiten reconciliarlas. "Hasta 1 GW"
+              describe el máximo publicado para un campus, no MW operativos ni renta contratada.
+            </p>
+            <div class="activos-tabla-envoltorio">
+              <table class="activos-tabla">
+                <thead>
+                  <tr><th>Emplazamiento</th><th>Estado</th><th>MW publicados</th><th>Capa</th><th>Lectura</th></tr>
+                </thead>
+                <tbody>
+                  {activos.map((activo) => (
+                    <tr>
+                      <td><a href={`/proyecto/${activo.id}`}>{activo.corto}</a><small>{activo.sitio?.ubicacion?.provincia}</small></td>
+                      <td><span class={`estado estado-${activo.sitio?.estado}`}>{estado[activo.sitio?.estado] ?? activo.sitio?.estado}</span></td>
+                      <td class="numero">{activo.mw}</td>
+                      <td>{activo.capa}</td>
+                      <td><span class={`certeza certeza-${activo.certeza}`}>{activo.certeza}</span></td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <div class="no-sumar">
+              <div class="no-sumar-signo">≠</div>
+              <div>
+                <h3>Magnitudes que no deben sumarse</h3>
+                <p>
+                  En Arasur, 118 MW de capacidad crítica publicada y 300 MW de capacidad potencial son
+                  dos vistas del mismo campus. En Barcelona, 15 MW de potencia del centro y 22 MW de
+                  capacidad eléctrica total miden cosas distintas. En Botorrita, 227,4 MW de demanda
+                  garantizada no son los 144 MW IT del edificio. Sumarlas inflaría la cartera.
+                </p>
+              </div>
+            </div>
+
+            <h3>Composición de la cartera</h3>
+            <div class="calidad">
+              <div><span>Renta visible</span><strong>160 MW</strong><p>Alquilados o prealquilados en julio de 2026.</p></div>
+              <div><span>Obra corporativa</span><strong>724 MW</strong><p>Plan MEGA, fases I a III en Iberia.</p></div>
+              <div><span>Opcionalidad</span><strong>2,4 GW</strong><p>Máximos publicados para Navalmoral y Valdecaballeros. No forman parte de MEGA.</p></div>
             </div>
           </div>
+        </section>
 
-          <div class="puente" aria-label="Puente entre precio y NTA">
-            <div class="puente-escala"><span>€0</span><span>€8</span><span>€16</span></div>
-            <div class="puente-fila">
-              <span>Precio</span>
-              <div><i style={`width:${(precio / 16) * 100}%`}></i><b>€{decimal(precio, 2)}</b></div>
-            </div>
-            <div class="puente-fila nta">
-              <span>EPRA NTA</span>
-              <div><i style={`width:${(nta / 16) * 100}%`}></i><b>€{decimal(nta, 2)}</b></div>
-            </div>
+        <section id="tecnica" class="seccion seccion-dos">
+          <div class="titulo-lateral">
+            <span>05</span>
+            <h2>Infraestructura y ejecución</h2>
           </div>
+          <div class="contenido">
+            <div class="diagrama" aria-label="Cadena física y económica del centro de datos">
+              <div><span>Red 220/400 kV</span><small>Permiso y subestación</small></div>
+              <b>→</b>
+              <div><span>Edificio</span><small>Transformación y respaldo</small></div>
+              <b>→</b>
+              <div><span>Sala IT</span><small>MW críticos y refrigeración</small></div>
+              <b>→</b>
+              <div><span>Inquilino</span><small>Contrato y renta por MW</small></div>
+            </div>
 
-          <h3>Balance para financiar la obra</h3>
-          <div class="balance-grid">
-            <dl>
-              <div><dt><Termino id="gav">GAV</Termino> total</dt><dd>€13.508m</dd></div>
-              <div><dt>Deuda neta</dt><dd>€3.394m</dd></div>
-              <div><dt>Liquidez</dt><dd>€2.571m</dd></div>
-            </dl>
-            <dl>
-              <div><dt>Coste medio de deuda</dt><dd>2,71%</dd></div>
-              <div><dt>Deuda a tipo fijo</dt><dd>99,8%</dd></div>
-              <div><dt>Vencimiento medio</dt><dd>4,0 años</dd></div>
-            </dl>
-          </div>
-          <p class="nota-analista">
-            El <Termino id="ltv">LTV</Termino> bajo es una ventaja real, pero se logró en parte con €768 millones de capital nuevo.
-            Las acciones pasaron de unos 564 a 620 millones, cerca de un 10% más. El balance soporta{' '}
-            <Termino id="capex">capex</Termino>; el accionista soporta la <Termino id="dilucion">dilución</Termino>.
-          </p>
-        </div>
-      </section>
-
-      <section id="mega" class="seccion seccion-dos">
-        <div class="titulo-lateral">
-          <span>03</span>
-          <h2>La máquina económica del Plan MEGA</h2>
-        </div>
-        <div class="contenido">
-          <p class="entradilla">
-            Las tres fases suman {totalMw} <Termino id="mw-it">MW IT</Termino>, €{decimal(totalInversion / 1000)} mil millones de
-            inversión y €{decimal(totalGri / 1000, 2)} mil millones de renta bruta estabilizada. No son
-            magnitudes actuales. Son el objetivo corporativo una vez construida y alquilada la cartera.
-          </p>
-
-          <div class="fases" aria-label="Fases del Plan MEGA">
-            {fases.map((fase) => (
-              <article style={`--fase:${fase.color}`}>
-                <div class="fase-cabecera"><span>{fase.nombre}</span><b>{fase.estabilizacion}</b></div>
-                <strong>{fase.mw} MW</strong>
-                <div class="fase-barra"><i style={`width:${(fase.mw / 406) * 100}%`}></i></div>
-                <dl>
-                  <div><dt>Inversión</dt><dd>€{fase.inversion.toLocaleString('es-ES')}m</dd></div>
-                  <div><dt><Termino id="gri">GRI</Termino> estabilizado</dt><dd>€{fase.gri}m</dd></div>
-                  <div><dt><Termino id="yield-on-cost">YoC</Termino> bruto</dt><dd>{decimal((fase.gri / fase.inversion) * 100)}%</dd></div>
-                </dl>
+            <div class="tecnica-grid">
+              <article>
+                <span>01 / potencia</span>
+                <h3>La conexión eléctrica limita el proyecto</h3>
+                <p>
+                  Sin energía, un edificio no genera renta. Getafe 1 está equipado y alquilado, pero
+                  espera conexiones para generar flujo completo en el cuarto trimestre de 2026. Red
+                  Eléctrica evalúa la capacidad nodal y zonal con criterios estáticos, dinámicos y de
+                  cortocircuito. Disponer de suelo no equivale a tener acceso.
+                </p>
               </article>
-            ))}
-          </div>
-
-          <h3>Sensibilidad de valor sobre coste</h3>
-          <p>
-            Esta matriz divide el <Termino id="yield-on-cost">yield on cost</Termino> bruto del plan,
-            {decimal(ycTotal)}%, por un <Termino id="yield-salida">yield de salida</Termino>. Ajusta antes la renta efectivamente capturada. Un resultado de 2,1× significa que
-            el valor bruto estabilizado sería 2,1 veces el coste, antes de financiación, impuestos,
-            retrasos y valor temporal del dinero. No es un precio objetivo.
-          </p>
-          <div class="matriz-envoltorio">
-            <table class="matriz">
-              <thead>
-                <tr><th>Renta capturada</th><th>Yield 5,5%</th><th>Yield 6,25%</th><th>Yield 7,0%</th></tr>
-              </thead>
-              <tbody>
-                {matriz.map((fila) => (
-                  <tr>
-                    <th>{Math.round(fila.captura * 100)}%</th>
-                    {fila.valores.map((valor) => <td class:list={[valor >= 2.2 && 'alto', valor < 1.8 && 'bajo']}>{decimal(valor, 2)}×</td>)}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <p class="nota-analista">
-            El <Termino id="spread-desarrollo">spread de desarrollo</Termino> es amplio en papel. El tiempo importa: la Fase III no estabiliza
-            hasta 2032. Seis años de obra, comercialización y capital inmovilizado reducen mucho una
-            comparación directa entre yield on cost y yield de salida.
-          </p>
-        </div>
-      </section>
-
-      <section id="activos" class="seccion seccion-dos">
-        <div class="titulo-lateral">
-          <span>04</span>
-          <h2>Qué existe en España y qué sigue siendo opcional</h2>
-        </div>
-        <div class="contenido">
-          <p class="entradilla">
-            El registro del proyecto identifica ocho emplazamientos vinculados a MERLIN en España.
-            La tabla conserva cifras rivales cuando las fuentes no permiten reconciliarlas. “Hasta 1 GW”
-            describe una capacidad aspiracional de campus, no MW operativos ni renta contratada.
-          </p>
-          <div class="activos-tabla-envoltorio">
-            <table class="activos-tabla">
-              <thead>
-                <tr><th>Emplazamiento</th><th>Estado</th><th>MW publicados</th><th>Capa</th><th>Lectura</th></tr>
-              </thead>
-              <tbody>
-                {activos.map((activo) => (
-                  <tr>
-                    <td><a href={`/proyecto/${activo.id}`}>{activo.corto}</a><small>{activo.sitio?.ubicacion?.provincia}</small></td>
-                    <td><span class={`estado estado-${activo.sitio?.estado}`}>{estado[activo.sitio?.estado] ?? activo.sitio?.estado}</span></td>
-                    <td class="numero">{activo.mw}</td>
-                    <td>{activo.capa}</td>
-                    <td><span class={`certeza certeza-${activo.certeza}`}>{activo.certeza}</span></td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          <div class="no-sumar">
-            <div class="no-sumar-signo">≠</div>
-            <div>
-              <h3>Las cifras que no se deben sumar</h3>
-              <p>
-                En Arasur, 118 MW de capacidad crítica publicada y 300 MW de capacidad potencial son
-                dos vistas del mismo campus. En Barcelona, 15 MW de potencia del centro y 22 MW de
-                capacidad eléctrica total miden cosas distintas. En Botorrita, 227,4 MW de demanda
-                garantizada no son los 144 MW IT del edificio. Sumarlas infla la cartera.
-              </p>
+              <article>
+                <span>02 / refrigeración</span>
+                <h3><Termino id="pue">PUE</Termino> 1,15 y <Termino id="wue">WUE</Termino> 0,00 son objetivos de diseño</h3>
+                <p>
+                  Edged usa circuitos con glicol, enfriadoras de aire y refrigeración secundaria cerrada.
+                  El sistema admite hasta 500 kW por pasillo caliente y, en Getafe, hasta 200 kW por rack
+                  con refrigeración líquida. La documentación recoge las declaraciones del operador,
+                  no mediciones independientes anuales.
+                </p>
+              </article>
+              <article>
+                <span>03 / densidad</span>
+                <h3>La IA eleva la densidad y la concentración</h3>
+                <p>
+                  Barcelona aloja 10.224 GPU NVIDIA H200 de CoreWeave. Nebius contrató 18 MW en Getafe.
+                  Las cargas de alta densidad favorecen los edificios preparados para líquido, pero
+                  concentran grandes bloques de capacidad en pocos clientes con ciclos tecnológicos cortos.
+                </p>
+              </article>
+              <article>
+                <span>04 / mercado</span>
+                <h3>La cartera anunciada no es oferta entregada</h3>
+                <p>
+                  Colliers estima 385 MW IT operativos en Iberia y más de 2.900 MW en proyectos anunciados hasta 2030.
+                  El paso de una categoría a otra depende de licencias, red y equipos. MERLIN
+                  tiene contratos y potencia en varios nodos, una posición mejor que la de un banco de suelo.
+                </p>
+              </article>
             </div>
           </div>
+        </section>
 
-          <h3>Prueba de calidad del pipeline</h3>
-          <div class="calidad">
-            <div><span>Renta visible</span><strong>160 MW</strong><p>Alquilados o prealquilados a julio de 2026.</p></div>
-            <div><span>Obra corporativa</span><strong>724 MW</strong><p>Plan MEGA, fases I a III en Iberia.</p></div>
-            <div><span>Opcionalidad</span><strong>2,4 GW</strong><p>Máximos publicados para Navalmoral y Valdecaballeros. No incluidos en MEGA.</p></div>
+        <section id="riesgos" class="seccion seccion-dos">
+          <div class="titulo-lateral">
+            <span>06</span>
+            <h2>Registro de riesgos para el accionista</h2>
           </div>
-        </div>
-      </section>
+          <div class="contenido">
+            <div class="riesgos">
+              <article><span class="impacto impacto-alto">Alto</span><h3>Financiación y dilución</h3><p>El programa de €7.776 millones equivale a cerca del 94% de la capitalización bursátil actual. La ampliación de marzo cubrió parte de la Fase III. No cubre la financiación de todo el plan. El indicador a vigilar es el FFO por acción, no solo el FFO total.</p></article>
+              <article><span class="impacto impacto-alto">Alto</span><h3>Ejecución eléctrica</h3><p>La potencia concedida, la infraestructura ejecutada y la conexión energizada son hitos distintos. Cada trimestre de retraso aplaza renta y aumenta el coste financiero sin cambiar el MW anunciado.</p></article>
+              <article><span class="impacto impacto-medio">Medio</span><h3>Concentración de clientes</h3><p>Los contratos de 48 MW reducen el riesgo de vacío, pero concentran una exposición importante en un inquilino. La calidad del crédito, las garantías, la duración, los escaladores y las opciones de salida importan más que el porcentaje prealquilado por sí solo.</p></article>
+              <article><span class="impacto impacto-medio">Medio</span><h3>Yield de salida</h3><p>Los data centers en operación se tasan con un yield bruto del 6,2%. Si sube 100 puntos básicos, el valor capitalizado de una renta constante se reduce en torno a un 14%.</p></article>
+              <article><span class="impacto impacto-medio">Medio</span><h3>Activos tradicionales</h3><p>El 84% del GAV no es digital. Oficinas, retail y logística siguen determinando ocupación, renta y deuda. La tesis sobre MERLIN no es una inversión pura en data centers.</p></article>
+              <article><span class="impacto impacto-bajo">Vigilar</span><h3>Promesas de eficiencia</h3><p>Los <Termino id="pue">PUE</Termino> y <Termino id="wue">WUE</Termino> de diseño pueden ayudar en permisos y costes, pero no sustituyen series operativas. El inversor debería exigir consumo medido, disponibilidad y coste de mantenimiento por instalación.</p></article>
+            </div>
 
-      <section id="tecnica" class="seccion seccion-dos">
-        <div class="titulo-lateral">
-          <span>05</span>
-          <h2>La ventaja técnica, y dónde termina</h2>
-        </div>
-        <div class="contenido">
-          <div class="diagrama" aria-label="Cadena física y económica del centro de datos">
-            <div><span>Red 220/400 kV</span><small>Permiso y subestación</small></div>
-            <b>→</b>
-            <div><span>Edificio</span><small>Transformación y respaldo</small></div>
-            <b>→</b>
-            <div><span>Sala IT</span><small>MW críticos y refrigeración</small></div>
-            <b>→</b>
-            <div><span>Inquilino</span><small>Contrato y renta por MW</small></div>
+            <div class="monitor">
+              <h3>Cuadro de mando trimestral</h3>
+              <ol>
+                <li><span>MW energizados</span><b>frente a MW equipados y alquilados</b></li>
+                <li><span>FFO por acción</span><b>frente a crecimiento de FFO total</b></li>
+                <li><span><Termino id="capex">Capex</Termino> acumulado</span><b>frente a presupuesto por fase</b></li>
+                <li><span>GRI digital</span><b>frente a €97m / €397m / €646m estabilizados</b></li>
+                <li><span>Deuda y capital</span><b>LTV, coste y nuevas acciones</b></li>
+                <li><span>Contratos</span><b>MW, contraparte, fecha RFS y garantías</b></li>
+              </ol>
+            </div>
           </div>
+        </section>
 
-          <div class="tecnica-grid">
-            <article>
-              <span>01 / potencia</span>
-              <h3>La conexión es el activo escaso</h3>
-              <p>
-                Un edificio sin energía no produce renta. Getafe 1 está equipado y alquilado, pero
-                espera conexiones para generar flujo completo en el cuarto trimestre de 2026. Red
-                Eléctrica evalúa capacidad nodal y zonal por criterios estáticos, dinámicos y de
-                cortocircuito. Tener suelo no equivale a tener acceso.
-              </p>
-            </article>
-            <article>
-              <span>02 / refrigeración</span>
-              <h3><Termino id="pue">PUE</Termino> 1,15 y <Termino id="wue">WUE</Termino> 0,00 son objetivos de diseño</h3>
-              <p>
-                Edged usa circuitos con glicol, enfriadoras de aire y refrigeración secundaria cerrada.
-                El sistema admite hasta 500 kW por pasillo caliente y, en Getafe, hasta 200 kW por rack
-                con refrigeración líquida. La base documental recoge las declaraciones del operador,
-                no mediciones independientes anuales.
-              </p>
-            </article>
-            <article>
-              <span>03 / densidad</span>
-              <h3>La IA aumenta renta y concentración</h3>
-              <p>
-                Barcelona aloja 10.224 GPU NVIDIA H200 de CoreWeave. Nebius contrató 18 MW en Getafe.
-                Las cargas de alta densidad favorecen edificios preparados para líquido, pero atan
-                grandes bloques de capacidad a pocos clientes con ciclos tecnológicos cortos.
-              </p>
-            </article>
-            <article>
-              <span>04 / mercado</span>
-              <h3>Pipeline no significa oferta entregada</h3>
-              <p>
-                Colliers estima 385 MW IT operativos en Iberia y más de 2.900 MW en pipeline hasta 2030.
-                La diferencia es el punto: licencias, red y equipos deciden quién llega a tiempo. Merlin
-                tiene contratos y potencia en varios nodos, una posición mejor que un mero banco de suelo.
-              </p>
-            </article>
+        <section class="conclusion">
+          <span>Conclusión</span>
+          <h2>La tesis depende de rentas futuras y ejecución</h2>
+          <p>
+            MERLIN ofrece exposición cotizada y diversificada a la infraestructura digital ibérica. El
+            balance es conservador y la Fase I ya prueba demanda real. A €13,40, la acción no es barata
+            respecto al flujo de 2026. La tesis exige aceptar seis años de construcción, más capital y
+            una dependencia alta de la potencia y de grandes clientes.
+          </p>
+          <div class="conclusion-regla">
+            <div><small>Escenario favorable</small><strong>Precio bajo NTA</strong><span>con FFO por acción creciente</span></div>
+            <div><small>Escenario adverso</small><strong>múltiplo al alza</strong><span>sin entregar MW ni renta</span></div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section id="riesgos" class="seccion seccion-dos">
-        <div class="titulo-lateral">
-          <span>06</span>
-          <h2>Registro de riesgos para el accionista</h2>
-        </div>
-        <div class="contenido">
-          <div class="riesgos">
-            <article><span class="impacto impacto-alto">Alto</span><h3>Financiación y dilución</h3><p>El programa de €7.776 millones equivale a cerca del 94% de la capitalización bursátil actual. La ampliación de marzo cubrió parte de la Fase III, no convierte todo el plan en capex financiado. La señal a vigilar es FFO por acción, no solo FFO total.</p></article>
-            <article><span class="impacto impacto-alto">Alto</span><h3>Ejecución eléctrica</h3><p>Potencia concedida, infraestructura ejecutada y conexión energizada son hitos distintos. Cada trimestre de retraso difiere renta y aumenta el coste financiero sin cambiar el MW anunciado.</p></article>
-            <article><span class="impacto impacto-medio">Medio</span><h3>Concentración de clientes</h3><p>Contratos de 48 MW reducen el riesgo de vacío, pero crean exposiciones grandes a un inquilino. La calidad del crédito, garantías, duración, escaladores y opciones de salida importan más que el porcentaje prealquilado aislado.</p></article>
-            <article><span class="impacto impacto-medio">Medio</span><h3>Yield de salida</h3><p>Los data centers en operación se tasan con yield bruto del 6,2%. Una expansión de 100 puntos básicos reduce en torno a un 14% el valor capitalizado de una renta constante.</p></article>
-            <article><span class="impacto impacto-medio">Medio</span><h3>Activos tradicionales</h3><p>El 84% del GAV no es digital. Oficinas, retail y logística siguen determinando ocupación, renta y deuda. La tesis Merlin no es una inversión pura en data centers.</p></article>
-            <article><span class="impacto impacto-bajo">Vigilar</span><h3>Promesas de eficiencia</h3><p><Termino id="pue">PUE</Termino> y <Termino id="wue">WUE</Termino> de diseño ayudan en permisos y costes, pero no sustituyen series operativas. El inversor debería pedir consumo medido, disponibilidad y coste de mantenimiento por instalación.</p></article>
-          </div>
-
-          <div class="monitor">
-            <h3>Cuadro de mando trimestral</h3>
-            <ol>
-              <li><span>MW energizados</span><b>frente a MW equipados y alquilados</b></li>
-              <li><span>FFO por acción</span><b>frente a crecimiento de FFO total</b></li>
-              <li><span><Termino id="capex">Capex</Termino> acumulado</span><b>frente a presupuesto por fase</b></li>
-              <li><span>GRI digital</span><b>frente a €97m / €397m / €646m estabilizados</b></li>
-              <li><span>Deuda y capital</span><b>LTV, coste y nuevas acciones</b></li>
-              <li><span>Contratos</span><b>MW, contraparte, fecha RFS y garantías</b></li>
-            </ol>
-          </div>
-        </div>
-      </section>
-
-      <section class="conclusion">
-        <span>Conclusión</span>
-        <h2>Buen activo. Precio incompleto. Ejecución obligatoria.</h2>
-        <p>
-          MERLIN ofrece una forma cotizada y diversificada de participar en infraestructura digital
-          ibérica. El balance es conservador y la Fase I ya prueba demanda real. Aun así, €13,40 no es
-          una ganga sobre el flujo de 2026. Es una entrada con descuento sobre activos para quien acepte
-          seis años de construcción, más capital y una dependencia alta de potencia y grandes clientes.
-        </p>
-        <div class="conclusion-regla">
-          <div><small>Más atractiva por debajo de</small><strong>NTA</strong><span>con FFO por acción creciendo</span></div>
-          <div><small>Menos atractiva si</small><strong>sube el múltiplo</strong><span>sin entregar MW ni renta</span></div>
-        </div>
-      </section>
-
-      <section id="fuentes" class="fuentes-informe">
-        <h2>Fuentes y método</h2>
-        <p>
-          Las cuentas y objetivos corporativos proceden de MERLIN y la CNMV. Los datos físicos de cada
-          emplazamiento proceden de las fichas documentales de este proyecto, que separan MW IT, potencia
-          total y acceso a red. Los cálculos de descuento, múltiplos y sensibilidad son propios.
-        </p>
-        <ol>
-          <li><a href="https://ir.merlinproperties.com/wp-content/uploads/2026/07/Informe-de-resultados-6M26-1.pdf" rel="noopener">MERLIN, informe de resultados 6M 2026</a>. GAV, NTA, FFO, balance, rentas y Plan MEGA.</li>
-          <li><a href="https://www.merlinproperties.com/prensa/merlin-incrementa-ingresos-y-ebitda-un-11-7-gracias-a-la-division-de-data-centers-que-alcanza-160-mw-alquilados/" rel="noopener">MERLIN, resultados del primer semestre de 2026</a>. 160 MW alquilados o prealquilados y estado de las fases.</li>
-          <li><a href="https://www.cnmv.es/webservices/verdocumento/ver?t=%7Bc44b40c9-67cb-41db-8f93-e2d14acfbb67%7D" rel="noopener">CNMV, resultados 3M 2026</a>. Ampliación de capital de €768 millones.</li>
-          <li><a href="https://www.ree.es/es/clientes/consumidor/acceso-conexion/conoce-la-capacidad-de-acceso" rel="noopener">Red Eléctrica, capacidad de acceso de demanda</a>. Metodología nodal y zonal actualizada a agosto de 2026.</li>
-          <li><a href="https://www.colliers.com/es-es/research/data-center-snapshot-iberian-region-oct-2025-mar-2026" rel="noopener">Colliers, Iberian Data Center Snapshot</a>. Capacidad operativa y pipeline ibérico.</li>
-          <li><a href="https://stockanalysis.com/quote/bme/MRL/history/" rel="noopener">BME:MRL, histórico de cotización</a>. Cierre de €13,40 a 31 de agosto de 2026.</li>
-          <li><a href="/metodologia">Metodología del registro</a> y <a href="/datos">descarga de datos</a>. Definiciones, cobertura y límites.</li>
-        </ol>
-        <p class="fecha-cierre">Corte del análisis: 31 de agosto de 2026 · Versión 1.0</p>
-      </section>
+        <section id="fuentes" class="fuentes-informe">
+          <h2>Fuentes y método</h2>
+          <p>
+            Las cuentas y objetivos corporativos proceden de MERLIN y la CNMV. Los datos físicos de cada
+            emplazamiento proceden de las fichas documentales de este proyecto, que separan MW IT, potencia
+            total y acceso a red. Los cálculos de descuento, múltiplos y sensibilidad son propios.
+          </p>
+          <ol>
+            <li><a href="https://ir.merlinproperties.com/wp-content/uploads/2026/07/Informe-de-resultados-6M26-1.pdf" rel="noopener">MERLIN, informe de resultados 6M 2026</a>. GAV, NTA, FFO, balance, rentas y Plan MEGA.</li>
+            <li><a href="https://www.merlinproperties.com/prensa/merlin-incrementa-ingresos-y-ebitda-un-11-7-gracias-a-la-division-de-data-centers-que-alcanza-160-mw-alquilados/" rel="noopener">MERLIN, resultados del primer semestre de 2026</a>. 160 MW alquilados o prealquilados y estado de las fases.</li>
+            <li><a href="https://www.cnmv.es/webservices/verdocumento/ver?t=%7Bc44b40c9-67cb-41db-8f93-e2d14acfbb67%7D" rel="noopener">CNMV, resultados 3M 2026</a>. Ampliación de capital de €768 millones.</li>
+            <li><a href="https://www.ree.es/es/clientes/consumidor/acceso-conexion/conoce-la-capacidad-de-acceso" rel="noopener">Red Eléctrica, capacidad de acceso de demanda</a>. Metodología nodal y zonal actualizada a agosto de 2026.</li>
+            <li><a href="https://www.colliers.com/es-es/research/data-center-snapshot-iberian-region-oct-2025-mar-2026" rel="noopener">Colliers, Iberian Data Center Snapshot</a>. Capacidad operativa y pipeline ibérico.</li>
+            <li><a href="https://stockanalysis.com/quote/bme/MRL/history/" rel="noopener">BME:MRL, histórico de cotización</a>. Cierre de €13,40 a 31 de agosto de 2026.</li>
+            <li><a href="/metodologia">Metodología del registro</a> y <a href="/datos">descarga de datos</a>. Definiciones, cobertura y límites.</li>
+          </ol>
+          <p class="fecha-cierre">Corte del análisis: 31 de agosto de 2026 · Versión 1.0</p>
+        </section>
+      </details>
     </div>
   </article>
 </Base>
@@ -550,7 +574,7 @@ const matriz = [0.75, 0.9, 1].map((captura) => ({
   .metrica-principal { background: var(--m-verde); }
   .metrica-principal span, .metrica-principal small { color: #354920; }
   .corte-datos { color: var(--m-gris); font-size: .7rem; max-width: 950px; margin: 12px 0 0; }
-  .seccion { border-top: 1px solid var(--m-linea); padding: 70px 0; scroll-margin-top: 100px; }
+  .seccion { border-top: 1px solid var(--m-linea); padding: 70px 0; scroll-margin-top: calc(var(--alto-cabecera, 3rem) + 3.5rem); }
   .seccion-dos { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 58px; }
   .titulo-lateral > span { color: #95a19f; font: 600 .75rem var(--mono); }
   .titulo-lateral h2 { color: var(--m-tinta); font: 500 1.55rem/1.16 var(--serif); margin: 8px 0; }
@@ -654,7 +678,7 @@ const matriz = [0.75, 0.9, 1].map((captura) => ({
   .conclusion-regla { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; border-top: 1px solid #789e36; margin-top: 28px; padding-top: 20px; }
   .conclusion-regla small, .conclusion-regla span { display: block; font-size: .67rem; }
   .conclusion-regla strong { display: block; font: 600 1.15rem var(--serif); }
-  .fuentes-informe { border-top: 1px solid var(--m-linea); padding: 50px 0 70px; scroll-margin-top: 100px; }
+  .fuentes-informe { border-top: 1px solid var(--m-linea); padding: 50px 0 70px; scroll-margin-top: calc(var(--alto-cabecera, 3rem) + 3.5rem); }
   .fuentes-informe h2 { font: 500 1.55rem var(--serif); }
   .fuentes-informe > p, .fuentes-informe ol { max-width: 850px; font-size: .76rem; color: var(--m-gris); }
   .fuentes-informe li { margin: 8px 0; padding-left: 6px; }
@@ -677,7 +701,7 @@ const matriz = [0.75, 0.9, 1].map((captura) => ({
     .pagina, .portada-interior { width: min(100% - 28px, 1180px); }
     .portada h1 { font-size: clamp(3.1rem, 17vw, 5rem); }
     .portada-meta { flex-wrap: wrap; gap: 9px 13px; }
-    .indice { top: 46px; }
+    .indice { top: var(--alto-cabecera, 3rem); }
     .panel-metricas { grid-template-columns: 1fr 1fr; }
     .metrica-principal { grid-column: span 2; }
     .seccion { padding: 50px 0; }
@@ -724,8 +748,8 @@ const matriz = [0.75, 0.9, 1].map((captura) => ({
   .pagina, .portada-interior { max-width: var(--ancho); width: 100%; padding-left: 1.25rem; padding-right: 1.25rem; }
   .portada { color: var(--tinta); background: var(--papel); border-bottom: 1px solid var(--borde); overflow: visible; }
   .portada::before, .portada::after { display: none; }
-  .portada-interior { padding-top: 1px; padding-bottom: 2rem; }
-  .portada .migas { margin-top: 1.25rem; margin-bottom: 1.4rem; }
+  .portada-interior { padding-top: 1px; padding-bottom: 1rem; }
+  .portada .migas { margin-top: 1rem; margin-bottom: .8rem; }
   .portada-grid { grid-template-columns: minmax(0, 1.5fr) minmax(16rem, .7fr); gap: 1.6rem 3rem; margin-top: 0; align-items: start; }
   .portada-texto { max-width: 46rem; }
   .portada-meta { color: var(--tinta-3); gap: .35rem 1.2rem; flex-wrap: wrap; font: .7rem var(--mono); letter-spacing: .04em; }
@@ -744,13 +768,13 @@ const matriz = [0.75, 0.9, 1].map((captura) => ({
   .veredicto dl div { padding: .35rem 0; font-size: .72rem; }
   .veredicto dd { font: .74rem var(--mono); }
   .veredicto dl, .veredicto dl div { border-color: var(--borde); }
-  .indice { position: static; background: var(--papel-2); border-top: 0; border-bottom: 1px solid var(--borde); }
+  .indice { position: sticky; top: var(--alto-cabecera, 3rem); background: var(--papel-2); border-top: 0; border-bottom: 1px solid var(--borde); }
   .indice a { color: var(--tinta-2); padding-top: .6rem; padding-bottom: .6rem; text-transform: none; letter-spacing: 0; font-size: .78rem; }
   .indice a:hover { color: var(--tinta); }
-  .cuerpo { padding-top: 1.5rem; }
+  .cuerpo { padding-top: 1rem; }
   .metrica-principal { background: var(--acento-suave); }
   .metrica-principal span, .metrica-principal small { color: var(--tinta-2); }
-  .seccion { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+  .seccion { padding-top: 2rem; padding-bottom: 2rem; }
   .seccion-dos { grid-template-columns: 11rem minmax(0, 1fr); gap: 3rem; }
   .titulo-lateral h2, .contenido h3, .entradilla { color: var(--tinta); }
   .lectura-clave, .no-sumar, .diagrama { background: var(--papel-2); color: var(--tinta-2); border: 1px solid var(--borde); }
@@ -762,7 +786,16 @@ const matriz = [0.75, 0.9, 1].map((captura) => ({
   .conclusion { background: var(--papel-2); border: 1px solid var(--borde); border-top: 3px solid var(--acento); padding: 1.5rem 1.7rem; margin: 0 0 4rem; }
   .conclusion h2 { font: 600 1.55rem/1.25 var(--serif); letter-spacing: -.01em; margin: .45rem 0 .8rem; }
   .conclusion-regla { border-color: var(--borde-fuerte); }
-  .fuentes-informe { padding-top: 2.5rem; }
+  .fuentes-informe { padding-top: 2rem; }
+  .claves-resumen { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 2rem; margin: 1.3rem 0; }
+  .claves-resumen h2 { font: 600 .85rem var(--sans); margin: 0 0 .4rem; }
+  .claves-resumen ul { margin: 0; padding-left: 1.1rem; color: var(--tinta-2); font-size: .82rem; }
+  .claves-resumen li + li { margin-top: .35rem; }
+  .informe-completo { margin: 1.5rem 0 3rem; border-top: 1px solid var(--borde-fuerte); scroll-margin-top: calc(var(--alto-cabecera, 3rem) + 3.5rem); }
+  .informe-completo > summary { padding: 1rem 0; font-size: .95rem; font-weight: 600; color: var(--acento); cursor: pointer; }
+  .informe-completo > summary span { display: block; font-size: .75rem; color: var(--tinta-3); font-weight: 400; margin-top: .2rem; }
+  .marco-tesis { max-width: 52rem; }
+  .marco-tesis .tesis-corta { margin-top: 0; border: 0; padding-top: .5rem; }
   @media (max-width: 950px) {
     .portada-grid { grid-template-columns: 1fr; gap: 1.25rem; margin-top: 0; }
     .veredicto { max-width: 34rem; }
@@ -772,6 +805,9 @@ const matriz = [0.75, 0.9, 1].map((captura) => ({
   @media (max-width: 700px) {
     .pagina, .portada-interior { width: 100%; }
     .portada h1 { font-size: 1.9rem; }
+    .portada-grid { gap: .8rem; }
+    .veredicto { padding: .7rem .85rem; }
+    .claves-resumen { grid-template-columns: 1fr; }
     .seccion-dos { display: block; }
     .seccion { padding-top: 2.5rem; padding-bottom: 2.5rem; }
   }
