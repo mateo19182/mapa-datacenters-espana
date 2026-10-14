@@ -1,10 +1,11 @@
 id: solaria-datasection-puertollano
-nombre: "Centro de datos de IA de Solaria y Data Section — Puertollano"
+nombre: "Centro de datos de Solaria - Puertollano, La Nava II"
 alias:
   - "Data center de IA de Puertollano"
   - "Solaria Data Center Puertollano"
+  - Centro de datos de IA de Solaria y Data Section — Puertollano
 tipo: edificio
-operador: "Data Section"
+operador: null
 propietario: "Solaria Energía y Medio Ambiente"
 modelo: hyperscale
 
@@ -12,64 +13,82 @@ ubicacion:
   municipio: "Puertollano"
   provincia: "Ciudad Real"
   ccaa: "Castilla-La Mancha"
-  direccion: "Instalaciones industriales de Solaria en el polígono La Nava — antiguas salas blancas de fabricación de células fotovoltaicas"
+  direccion: "Instalaciones industriales de Solaria en el polígono La Nava — antiguas salas blancas de
+    fabricación de células fotovoltaicas"
   lat: 38.6852161
   lon: -4.1111749
   precision: municipio
   fuentes: [src-eldiario, src-solaria, src-osm]
 
-estado: paralizado
+estado: en_tramitacion
 estado_detalle: >-
-  Acuerdo entre Solaria y la japonesa Datasection presentado el 17 de septiembre
-  de 2024 en Puertollano, con presencia del presidente de Castilla-La Mancha y del
-  alcalde, para reutilizar las antiguas salas blancas de Solaria. El objetivo
-  declarado era empezar a funcionar en 2025. El 16 de enero de 2026 la Cadena SER
-  informó de que el proyecto estaba "en vía muerta" tras el abandono de
-  Datasection: no se había instalado ningún servidor ni ejecutado las
-  instalaciones eléctricas de gran capacidad, y Solaria seguía interesada en el
-  emplazamiento pero "sin socio, sin plazos y sin inversión". No se ha localizado
-  información posterior que acredite la reactivación del proyecto.
-estado_fuentes: [src-eldiario, src-solaria, src-ser]
+  El acuerdo con Datasection de septiembre de 2024 para reutilizar las salas blancas quedó
+  paralizado según la información de enero de 2026. El Ayuntamiento anunció el 21 de septiembre de
+  2026 una nueva propuesta de Solaria en sus instalaciones de La Nava y el Pleno manifestó por
+  unanimidad su conformidad el 24 de septiembre al proyecto de 40 MW en La Nava II. La nota
+  municipal cita una superficie aproximada de 41.456 m², una inversión de 150 millones de euros y 90
+  empleos directos durante la operación. El anuncio previo situaba el posible inicio de actividad a
+  finales de 2027 y mencionaba una segunda fase de 100 MW. La conformidad municipal no acredita por
+  sí sola autorización ambiental integrada concedida ni inicio de obras. No consta el operador de
+  esta nueva propuesta ni un contrato con Alibaba.
+estado_fuentes: [src-eldiario, src-solaria, src-ser, src-ayto-20260921, src-ayto-20260924]
 
 potencia:
   - tipo: no_especificado
     valor_mw: 200
     ambito: edificio
     referencia: "Suministro máximo previsto en el acuerdo con Datasection"
-    estado_asociado: anunciado
+    estado_asociado: paralizado
     fecha_dato: "2024-09-17"
     fuentes: [src-solaria]
     nota: >-
-      La nota de la propia Solaria dice "El acuerdo prevé la consecución de un
-      suministro de hasta 200 MW de energía". Es un suministro comprometido por el
-      propio generador, no un permiso de acceso a la red ni una carga TI
-      declarada, así que no se tipifica.
+      La nota de la propia Solaria dice "El acuerdo prevé la consecución de un suministro de hasta
+      200 MW de energía". Es un suministro comprometido por el propio generador, no un permiso de
+      acceso a la red ni una carga TI declarada, así que no se tipifica.
   - tipo: no_especificado
     valor_mw: 40
     ambito: edificio
     referencia: "Potencia de la primera fase, que ocuparía la totalidad de las salas blancas"
-    estado_asociado: anunciado
+    estado_asociado: paralizado
     fecha_dato: "2024-09"
     fuentes: [src-solaria, src-eldiario]
     nota: >-
-      Solaria dice "En una primera fase contará con 40 MW de potencia y ocupará la
-      totalidad de la superficie de las salas blancas". La declaración pública
-      recogida por elDiario.es habla en cambio de "más de 40 megavatios de
-      potencia" para el conjunto del centro. Se registra como lectura rival de los
-      200 MW, no como una fase que se sume a ellos.
+      Solaria dice "En una primera fase contará con 40 MW de potencia y ocupará la totalidad de la
+      superficie de las salas blancas". La declaración pública recogida por elDiario.es habla en
+      cambio de "más de 40 megavatios de potencia" para el conjunto del centro. Se registra como
+      lectura rival de los 200 MW, no como una fase que se sume a ellos.
+  - tipo: no_especificado
+    valor_mw: 40
+    ambito: edificio
+    referencia: Nueva propuesta de Solaria de septiembre de 2026, primera fase
+    estado_asociado: en_tramitacion
+    fecha_dato: 2026-09-24
+    fuentes:
+      - src-ayto-20260924
+    nota: El Ayuntamiento no distingue MW IT, conexión o potencia instalada. No se suma a los 40 y 200
+      MW del acuerdo de 2024 ni a la ampliación de 100 MW anunciada sin aclarar si es incremental o
+      acumulada.
 
 fases:
   - nombre: "Primera fase — reconversión de las salas blancas"
     estado: paralizado
     superficie_m2: 100000
     nota: >-
-      Ocuparía la totalidad de las salas blancas y hasta 100.000 m2 de las
-      instalaciones industriales de Solaria, con racks de Super Micro y GPU de
-      NVIDIA. A enero de 2026 no se había instalado ningún servidor.
+      Ocuparía la totalidad de las salas blancas y hasta 100.000 m2 de las instalaciones
+      industriales de Solaria, con racks de Super Micro y GPU de NVIDIA. A enero de 2026 no se había
+      instalado ningún servidor. Corresponde al acuerdo de 2024; no describe el alcance de la
+      propuesta de septiembre de 2026.
     fuentes: [src-solaria, src-ser]
+  - nombre: Propuesta Solaria de septiembre de 2026, primera fase
+    estado: en_tramitacion
+    nota: 40 MW sin tipo publicado. Posible inicio de actividad a finales de 2027 según anuncio
+      municipal; sin puesta en servicio ni comienzo de obras acreditados.
+    fuentes:
+      - src-ayto-20260921
+      - src-ayto-20260924
 
-superficie_construida_m2: 100000
-inversion_anunciada_eur: 500000000
+superficie_construida_m2: null
+inversion_anunciada_eur: 150000000
 
 empleo:
   - tipo: directo
@@ -78,9 +97,15 @@ empleo:
     fecha_dato: "2024-09-17"
     fuentes: [src-solaria, src-eldiario]
     nota: >-
-      La nota de Solaria habla de "la creación de más de 100 empleos" en la
-      primera fase. Es una previsión de 2024 sobre un proyecto que en enero de
-      2026 estaba parado.
+      La nota de Solaria habla de "la creación de más de 100 empleos" en la primera fase. Es una
+      previsión de 2024 sobre un proyecto que en enero de 2026 estaba parado.
+  - tipo: directo
+    valor: 90
+    referencia: Operación de la propuesta municipal de septiembre de 2026
+    fecha_dato: 2026-09-24
+    fuentes:
+      - src-ayto-20260924
+    nota: Escenario distinto de los más de 100 empleos del anuncio de 2024. No se suman.
 
 computo:
   - tipo: gpu
@@ -89,94 +114,108 @@ computo:
     operador_computo: "Data Section"
     modelo: "GPU NVIDIA de última generación en racks de Super Micro"
     tipo_unidad: acelerador
-    estado: anunciado
+    estado: paralizado
     fecha_dato: "2024-09-03"
     fuentes: [src-solaria, src-eldiario]
     nota: >-
       No hay recuento: ni Solaria ni Data Section publican modelo concreto ni número de
-      aceleradores. Data Section se encarga de garantizar el suministro de GPU y servidores de
-      IA a través de sus socios Foxconn y Super Micro. A enero de 2026 no se había instalado
-      ningún servidor en las salas blancas, así que el registro documenta un anuncio, no
-      hardware en funcionamiento.
+      aceleradores. Data Section se encarga de garantizar el suministro de GPU y servidores de IA a
+      través de sus socios Foxconn y Super Micro. A enero de 2026 no se había instalado ningún
+      servidor en las salas blancas, así que el registro documenta un anuncio, no hardware en
+      funcionamiento. Este hardware se anunció para el acuerdo de 2024, no para la propuesta de
+      septiembre de 2026. La nueva documentación consultada no publica GPU instaladas.
 
 incertidumbres:
   - campo: estado
     descripcion: >-
-      El proyecto se registra como paralizado sobre la base de una única
-      información periodística de enero de 2026, que cita fuentes no
-      identificadas y atribuye el parón al abandono de Datasection. Ni Solaria ni
-      Datasection lo han confirmado ni desmentido públicamente, y Solaria ha
-      seguido comunicando en 2026 su crecimiento en "infraestructura digital" sin
-      mencionar Puertollano. No se ha localizado ninguna comunicación de la
-      compañía que cancele formalmente el acuerdo.
-    fuentes: [src-ser, src-solaria]
+      La paralización de Datasection de enero de 2026 y la nueva propuesta municipal de septiembre
+      son hechos distintos. Se actualiza el emplazamiento de Solaria en La Nava sin atribuirle un
+      operador no publicado. Queda por conciliar la continuidad del alcance físico y contractual de
+      ambos proyectos.
+    fuentes: [src-ser, src-ayto-20260924]
   - campo: potencia
     descripcion: >-
-      Conviven dos cifras que no son la misma magnitud pero que las fuentes usan
-      indistintamente: un suministro de hasta 200 MW previsto en el acuerdo y una
-      primera fase de 40 MW. La declaración pública citada por elDiario.es dice
-      "más de 40 megavatios" refiriéndose al centro entero, lo que confunde la fase
-      con el conjunto. Ninguna fuente distingue carga TI de potencia de conexión.
+      Conviven dos cifras que no son la misma magnitud pero que las fuentes usan indistintamente: un
+      suministro de hasta 200 MW previsto en el acuerdo y una primera fase de 40 MW. La declaración
+      pública citada por elDiario.es dice "más de 40 megavatios" refiriéndose al centro entero, lo
+      que confunde la fase con el conjunto. Ninguna fuente distingue carga TI de potencia de
+      conexión.
     fuentes: [src-eldiario, src-solaria]
   - campo: operador
     descripcion: >-
-      Data Section (Datasection) figura como socio tecnológico del acuerdo de 2024,
-      pero la información de enero de 2026 sostiene que abandonó el proyecto. Si
-      así fuera, el operador registrado ya no lo sería. Se conserva a falta de
-      confirmación de las partes.
+      Data Section (Datasection) figura como socio tecnológico del acuerdo de 2024, pero la
+      información de enero de 2026 sostiene que abandonó el proyecto. Si así fuera, el operador
+      registrado ya no lo sería. Se conserva a falta de confirmación de las partes.
     fuentes: [src-solaria, src-ser]
+  - campo: inversion_anunciada_eur
+    descripcion: El anuncio municipal de septiembre de 2026 cifra la propuesta en 150 millones de euros,
+      frente a 500 millones del acuerdo de 2024. Se conserva el anuncio histórico en sus fuentes,
+      sin sumarlo al nuevo.
+    fuentes:
+      - src-solaria
+      - src-ayto-20260924
+  - campo: superficie_parcela_m2
+    descripcion: Los 41.456 m² aproximados de la propuesta de 2026 no equivalen a superficie construida.
+      El anuncio de 2024 hablaba de hasta 100.000 m² de instalaciones y salas blancas, hoy
+      conservados solo como alcance histórico de aquella fase.
+    fuentes:
+      - src-solaria
+      - src-ayto-20260924
 
 confianza: baja
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-14"
 
 fuentes:
   - id: src-solaria
-    url: "https://solariaenergia.com/solaria-presenta-en-puertollano-su-acuerdo-con-la-japonesa-datasection-para-desarrollar-un-centro-de-datos-apoyado-por-el-gobierno-de-castilla-la-mancha/"
-    titulo: "Solaria presenta en Puertollano su acuerdo con la japonesa Datasection para desarrollar un centro de datos apoyado por el gobierno de Castilla-La Mancha"
+    url: "https://solariaenergia.com/solaria-presenta-en-puertollano-su-acuerdo-con-la-japonesa-datasec\
+      tion-para-desarrollar-un-centro-de-datos-apoyado-por-el-gobierno-de-castilla-la-mancha/"
+    titulo: "Solaria presenta en Puertollano su acuerdo con la japonesa Datasection para desarrollar un
+      centro de datos apoyado por el gobierno de Castilla-La Mancha"
     editor: "Solaria Energía y Medio Ambiente"
     tipo: empresa
     fecha_publicacion: "2024-09-17"
     fecha_consulta: "2026-08-31"
     cita: >-
-      El acuerdo prevé la consecución de un suministro de hasta 200 MW de energía y
-      el uso de las propias instalaciones que la compañía española tiene en la
-      localidad. En una primera fase contará con 40 MW de potencia. - Gracias a
-      este proyecto se crearán más de 100 empleos y contará con una inversión
-      inicial cercana a los 500 millones de euros. [...] el uso de hasta 100.000 m2
-      de superficie en las propias instalaciones industriales de Solaria en
-      Puertollano, que cuenta con las denominadas «salas blancas» [...] que en los
-      próximos meses albergarán los racks de la empresa Súper Micro y los micro
-      chips de última generación de NVIDIA [...] En una primera fase contará con 40
-      MW de potencia y ocupará la totalidad de la superficie de las salas blancas.
+      El acuerdo prevé la consecución de un suministro de hasta 200 MW de energía y el uso de las
+      propias instalaciones que la compañía española tiene en la localidad. En una primera fase
+      contará con 40 MW de potencia. - Gracias a este proyecto se crearán más de 100 empleos y
+      contará con una inversión inicial cercana a los 500 millones de euros. [...] el uso de hasta
+      100.000 m2 de superficie en las propias instalaciones industriales de Solaria en Puertollano,
+      que cuenta con las denominadas «salas blancas» [...] que en los próximos meses albergarán los
+      racks de la empresa Súper Micro y los micro chips de última generación de NVIDIA [...] En una
+      primera fase contará con 40 MW de potencia y ocupará la totalidad de la superficie de las
+      salas blancas.
   - id: src-ser
-    url: "https://cadenaser.com/castillalamancha/2026/01/16/en-via-muerta-un-proyecto-de-quinientos-millones-de-euros-unico-en-europa-y-que-iba-a-crear-cien-empleos-en-puertollano-ser-ciudad-real/"
-    titulo: "En vía muerta un proyecto de quinientos millones de euros único en Europa y que iba a crear cien empleos en Puertollano"
+    url: "https://cadenaser.com/castillalamancha/2026/01/16/en-via-muerta-un-proyecto-de-quinientos-mil\
+      lones-de-euros-unico-en-europa-y-que-iba-a-crear-cien-empleos-en-puertollano-ser-ciudad-real/"
+    titulo: "En vía muerta un proyecto de quinientos millones de euros único en Europa y que iba a crear
+      cien empleos en Puertollano"
     editor: "Cadena SER Ciudad Real"
     tipo: prensa_general
     fecha_publicacion: "2026-01-16"
     fecha_consulta: "2026-08-31"
     cita: >-
-      según puede confirmar la SER, la gran nave de Solaria que en su día albergase
-      una planta de producción de placas solares y que iba a albergar el primer
-      centro de datos para IA de España sigue esencialmente como estaba: después de
-      la presentación oficial y firma del convenio no se llegó a instalar ni un
-      solo servidor ni se realizaron las instalaciones eléctricas de gran capacidad
-      que un centro así necesita [...] Fuentes consultadas por la SER confirman que
-      el proyecto está en vía muerta por el abandono del mismo de la compañía
-      japonesa Datasection [...] pero también que Solaria sigue muy interesada en
-      crear su primer centro de datos del país en Puertollano, aunque de momento...
-      sin socio, sin plazos y sin inversión
+      según puede confirmar la SER, la gran nave de Solaria que en su día albergase una planta de
+      producción de placas solares y que iba a albergar el primer centro de datos para IA de España
+      sigue esencialmente como estaba: después de la presentación oficial y firma del convenio no se
+      llegó a instalar ni un solo servidor ni se realizaron las instalaciones eléctricas de gran
+      capacidad que un centro así necesita [...] Fuentes consultadas por la SER confirman que el
+      proyecto está en vía muerta por el abandono del mismo de la compañía japonesa Datasection
+      [...] pero también que Solaria sigue muy interesada en crear su primer centro de datos del
+      país en Puertollano, aunque de momento... sin socio, sin plazos y sin inversión
   - id: src-eldiario
-    url: "https://www.eldiario.es/castilla-la-mancha/social/data-center-inteligencia-artificial-puertollano-preve-100-empleos-inversion-500-millones_1_11659102.html"
-    titulo: "El 'data center' de inteligencia artificial de Puertollano prevé 100 empleos y una inversión de 500 millones"
+    url: "https://www.eldiario.es/castilla-la-mancha/social/data-center-inteligencia-artificial-puertol\
+      lano-preve-100-empleos-inversion-500-millones_1_11659102.html"
+    titulo: "El 'data center' de inteligencia artificial de Puertollano prevé 100 empleos y una
+      inversión de 500 millones"
     editor: "elDiario.es Castilla-La Mancha"
     tipo: prensa_general
     fecha_publicacion: "2024-09"
     fecha_consulta: "2026-08-29"
     cita: >-
-      Ahora instalaremos el mayor centro de datos de inteligencia artificial de
-      Europa, con más de 40 megavatios de potencia, que permitirá crear más de
-      100 empleos con una inversión de 500 millones de euros.
+      Ahora instalaremos el mayor centro de datos de inteligencia artificial de Europa, con más de
+      40 megavatios de potencia, que permitirá crear más de 100 empleos con una inversión de 500
+      millones de euros.
   - id: src-osm
     url: "https://nominatim.openstreetmap.org/search?q=Puertollano%2C+Ciudad+Real&format=json&limit=1"
     titulo: "Nominatim — Puertollano, Ciudad Real"
@@ -184,3 +223,21 @@ fuentes:
     tipo: otro
     fecha_consulta: "2026-08-29"
     cita: "Puertollano, Ciudad Real, Castilla-La Mancha, 13500, España — lat 38.6852161, lon -4.1111749"
+  - id: src-ayto-20260921
+    url: https://www.puertollano.es/solaria-invertira-150-millones-en-un-centro-de-datos-en-la-nava-que-creara-90-puestos-de-trabajo/
+    titulo: Solaria invertirá 150 millones en un centro de datos en La Nava
+    editor: Ayuntamiento de Puertollano
+    tipo: oficial
+    fecha_publicacion: 2026-09-21
+    fecha_consulta: 2026-10-14
+    cita: comenzaría su actividad a finales del 2027 [...] una segunda fase de 100 mw
+  - id: src-ayto-20260924
+    url: https://www.puertollano.es/el-pleno-impulsa-los-proyectos-empresariales-del-centro-de-datos-de-solaria-y-la-aceria-verde-de-hydnum-steel/
+    titulo: El Pleno impulsa el Centro de Datos de Solaria
+    editor: Ayuntamiento de Puertollano
+    tipo: oficial
+    fecha_publicacion: 2026-09-24
+    fecha_consulta: 2026-10-14
+    cita: 40 megawatios [...] 41.456 metros cuadrados [...] 150 millones de euros [...] 90 puestos de
+      trabajo directos durante la fase de operación
+superficie_parcela_m2: 41456

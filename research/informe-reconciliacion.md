@@ -1,6 +1,6 @@
 # Informe de reconciliación
 
-Generado el 2026-09-01 por `npm run reconcile` sobre 203 emplazamientos.
+Generado el 2026-10-14 por `npm run reconcile` sobre 204 emplazamientos.
 
 Nada de lo que sigue se corrige automáticamente: son propuestas para decidir a mano.
 
@@ -9,7 +9,7 @@ Nada de lo que sigue se corrige automáticamente: son propuestas para decidir a 
 - Potencias de fase que superan la cifra global: **0**
 - Estados en conflicto con sus fases: **0**
 - Fechas posteriores a hoy: **0**
-- Editores que no cuadran con el dominio: **2**
+- Editores que no cuadran con el dominio: **4**
 
 ## Variantes del nombre de operador
 
@@ -35,5 +35,7 @@ Suele ser una cita de segunda mano: el contenido es de un medio pero el enlace a
 
 | Emplazamiento | Fuente | Editor declarado | Dominio |
 |---|---|---|---|
+| `cluster-tic-galicia-a-coruna-csa` | src-dosier | Clúster TIC Galicia / Centro de Servicios Avanzados | media.timtul.com |
+| `cluster-tic-galicia-a-coruna-csa` | src-catalogo | Clúster TIC Galicia / Centro de Servicios Avanzados | drive.google.com |
 | `edgnex-madrid-vicalvaro` | src-1 | EDGNEX Data Centers by DAMAC (nota de prensa) | zawya.com |
 | `nxn-valencia-vara-de-quart-nx01` | src-7 | InfraRed Capital Partners | ircp.com |
