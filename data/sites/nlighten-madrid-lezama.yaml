@@ -27,17 +27,24 @@ potencia:
     valor_mw: 1.5
     ambito: edificio
     referencia: "Capacidad del emplazamiento (site capacity end-state)"
-    estado_asociado: operativo
+    estado_asociado: desconocido
     fecha_dato: "2026-08-29"
     fuentes: [src-1]
-    nota: "\"1,500 kW of power\" / \"Site capacity end-state – 1,500 kW\"."
+    nota: >-
+      La compañía rotula la cifra como «site capacity (end-state)». Describe la
+      capacidad final del diseño, sin desglosar qué parte está entregada. El centro
+      está operativo, pero esta cifra no acredita 1,5 MW en operación.
   - tipo: no_especificado
     valor_mw: 2
     ambito: edificio
     referencia: "Ficha del directorio OCOLO"
-    estado_asociado: operativo
+    estado_asociado: desconocido
     fecha_dato: "2026-08-29"
     fuentes: [src-3]
+    nota: >-
+      El directorio no distingue capacidad entregada y de diseño. Coincide con la
+      cifra de la hoja de datos antigua del operador. Se conserva sin confirmar
+      etapa y no entra en el total operativo.
 
 superficie_construida_m2: 3300
 refrigeracion: "PUE de diseño 1,29; densidad estándar 2-7 kW por armario (hasta 15 kW) y alta densidad bajo petición."
@@ -52,11 +59,12 @@ incertidumbres:
       documental: la hoja de datos que nLighten publicó en enero de 2025 encabezaba «3,300 m
       2,000 kW» y la de diciembre de 2025 la rebajó a «3,300 m 1,500 kW» para el mismo centro,
       de modo que el directorio parece arrastrar la cifra antigua. La compañía no explica la
-      revisión.
+      revisión ni confirma cuántos MW del diseño final están entregados. Ninguna
+      de estas dos lecturas entra en el agregado operativo.
     fuentes: [src-1, src-3, src-4, src-5]
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-14"
 
 fuentes:
   - id: src-1
@@ -64,8 +72,8 @@ fuentes:
     titulo: "Madrid Data Center & Colocation Services | nLighten"
     editor: "nLighten"
     tipo: empresa
-    fecha_consulta: "2026-08-29"
-    cita: "The nLighten edge data center in Madrid is a high availability and secure facility with 3,300 m² of dedicated colocation space and 1,500 kW of power ... Design Power Usage Effectiveness (PUE) – 1.29 ... Tier III design target"
+    fecha_consulta: "2026-10-14"
+    cita: "1,500 kW site capacity (end-state) ... Site capacity end-state – 1,500 kW ... Design Power Usage Effectiveness (PUE) – 1.29"
   - id: src-2
     url: "https://www.peeringdb.com/fac/3082"
     titulo: "nLighten Madrid MAD1"

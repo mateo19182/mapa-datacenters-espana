@@ -26,33 +26,39 @@ estado_detalle: >-
   (Grupo Vantage Data Centers EMEA) como promotora del Proyecto de Interés General y futura
   operadora. En marzo de 2026 INAGA tramitaba las consultas previas para el documento de
   alcance del estudio ambiental estratégico del PIGA.
-estado_fuentes: [src-1, src-4]
+estado_fuentes: [src-1, src-4, src-renuncia]
 
 potencia:
   - tipo: no_especificado
     valor_mw: 90
     ambito: fase
     referencia: "Concesión de potencia asociada a la fase 1 según la tabla de inversión del proyecto"
-    estado_asociado: en_tramitacion
+    estado_asociado: paralizado
     fecha_dato: "2025-09-10"
-    fuentes: [src-1, src-7]
+    fuentes: [src-1, src-7, src-renuncia]
     nota: >-
       La tabla de fases del acuerdo indica como fuente de alimentación de la fase 1
       "Concesión de 90 MW"; las fases 3, 4 y 5 figuran "En proceso". No se precisa si son
-      MW de carga TI o de acceso a red.
+      MW de carga TI o de acceso a red. Se conserva como lectura histórica del diseño:
+      la ficha registra este emplazamiento paralizado por la renuncia publicada en julio
+      de 2026. No acredita 90 MW de un proyecto actualmente en tramitación en El Olivar.
 
 fases:
   - nombre: "Fase 1"
-    estado: en_tramitacion
-    fuentes: [src-1]
+    estado: paralizado
+    fuentes: [src-1, src-renuncia]
     nota: >-
       Urbanización de todo el sector (a cargo de Desarrollos Ecoindustriales La Cartuja),
       construcción del edificio 1 y de la subestación (a cargo de Vantage). Años 1-2.
-      Inversión en urbanización estimada en 13.600.000 €.
+      Inversión en urbanización estimada en 13.600.000 €. Calendario del diseño original,
+      sin previsión vigente para este emplazamiento tras la renuncia recogida en julio de 2026.
   - nombre: "Fases 2 a 5"
-    estado: anunciado
-    fuentes: [src-1]
-    nota: "Construcción del resto de edificios del centro de datos y de la subestación, años 2 a 10."
+    estado: paralizado
+    fuentes: [src-1, src-renuncia]
+    nota: >-
+      Construcción del resto de edificios del centro de datos y de la subestación, años 2 a 10.
+      Calendario del diseño original, sin previsión vigente para este emplazamiento tras la
+      renuncia recogida en julio de 2026. La declaración autonómica no consta revocada.
 
 conexion_electrica:
   subestacion: "Subestación propia dentro del campus (construcción incluida en la fase 1)"

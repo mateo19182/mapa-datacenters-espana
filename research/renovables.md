@@ -180,6 +180,11 @@ los plazos y sus fuentes se mantienen en
 [la ficha normativa](/normativa/prd-centros-datos-sostenibles), que debe consultarse antes
 de tratar cualquier requisito propuesto como una obligación vigente.
 
+El [acto europeo de etiquetado de septiembre de 2026](/normativa/reglamento-etiquetado-centros-datos-2026)
+sigue bajo control institucional. Sus clases de PUE y WUE no imponen por sí solas que todos
+los centros sean de clase A. La [consulta europea sobre estándares mínimos](/normativa/consulta-estandares-minimos-centros-datos-2026)
+es otro procedimiento, abierto hasta el 14 de diciembre, sin mínimos aplicables todavía.
+
 ## Casos descartados
 
 - Comunidad energética del CPI La Cabañeta, El Burgo de Ebro (Zaragoza), 17,64

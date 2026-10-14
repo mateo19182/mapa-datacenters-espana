@@ -13,7 +13,8 @@
 //     nunca se infla: sumar exige que la fuente diga que son cosas distintas.
 //  3. Cuando hay varios registros del mismo ámbito y tipo (fuentes que discrepan),
 //     se toma el más reciente por `fecha_dato` y se marca `discrepancia: true`
-//     conservando el rango observado.
+//     conservando el rango observado. Al sumar edificios independientes, el
+//     intervalo del total suma los mínimos y máximos de cada edificio.
 //  4. `no_especificado` no se compara ni se mezcla con nada: solo se muestra.
 //  4b. `discrepancia` solo puede ver los choques DENTRO de un mismo tipo y
 //     ámbito, porque es lo único que la regla 1 permite comparar. Pero en este
@@ -28,6 +29,7 @@
 //     datos. Se registran y se muestran, pero no entran en ninguna suma.
 
 import { TIPOS_POTENCIA } from './schema.mjs'
+import { ETAPAS_CAPACIDAD, etapaCapacidad } from '../src/lib/capacidad.js'
 
 const masReciente = (a, b) => {
   const fa = a.fecha_dato ?? ''
@@ -75,12 +77,15 @@ function agregarTipo(registros) {
     const lecturas = [...porUnidad.values()].map(elegirLectura).filter((l) => l.valor != null)
     if (!lecturas.length) return null
     const valor = lecturas.reduce((a, l) => a + l.valor, 0)
-    const todos = lecturas.flatMap((l) => l.valores)
+    const limites = [
+      lecturas.reduce((total, l) => total + Math.min(...l.valores), 0),
+      lecturas.reduce((total, l) => total + Math.max(...l.valores), 0),
+    ]
     return construir(
       valor,
       porUnidad.size > 1 ? 'suma_de_edificios' : 'edificio',
       lecturas.some((l) => l.discrepancia),
-      todos,
+      limites,
       edificios.length,
       [...edificios].sort(masReciente)[0].fecha_dato ?? null,
     )
@@ -95,21 +100,25 @@ function agregarTipo(registros) {
     valor,
     acumuladas.length ? 'maximo_acumulado' : 'suma_de_fases',
     false,
-    valores,
+    // Las fases independientes forman un único total, no un intervalo entre
+    // tamaños de fase. Los hitos acumulados conservan las lecturas históricas.
+    acumuladas.length ? valores : [valor],
     usadas.length,
     [...usadas].sort(masReciente)[0].fecha_dato ?? null,
   )
 }
 
+const redondearMW = (valor) => Math.round(valor * 1000) / 1000
+
 const construir = (valor, base, discrepancia, valores, registros, fecha, disputada = false) => ({
-  valor_mw: Math.round(valor * 100) / 100,
+  valor_mw: redondearMW(valor),
   base,
   discrepancia,
   // Contradicción declarada en la ficha, aunque las lecturas de este tipo
   // concreto coincidan entre sí. Ver la regla 4b.
   disputada,
-  minimo_observado: Math.min(...valores),
-  maximo_observado: Math.max(...valores),
+  minimo_observado: redondearMW(Math.min(...valores)),
+  maximo_observado: redondearMW(Math.max(...valores)),
   registros,
   fecha_dato: fecha,
 })
@@ -131,16 +140,25 @@ export function resumirPotencia(potencias, { disputada = false } = {}) {
   )
 }
 
+// Cada grupo es una lectura independiente. Un techo futuro de campus puede
+// incluir fases que ya funcionan: nunca se suman los grupos entre sí.
+export function resumirPorEtapa(potencias, opciones = {}) {
+  return Object.fromEntries(Object.keys(ETAPAS_CAPACIDAD).map((etapa) => [
+    etapa,
+    resumirPotencia(potencias.filter((p) => etapaCapacidad(p.estado_asociado) === etapa), opciones),
+  ]))
+}
+
 /**
  * Suma de una cartera respetando las reglas: solo se suman sitios que tengan el
  * tipo pedido, y se informa de cuántos quedan fuera por no tener ese dato.
  */
-export function sumarCartera(sitios, tipo) {
+export function sumarCartera(sitios, tipo, etapa = 'operativa') {
   let total = 0
   let conDato = 0
   const sinDato = []
   for (const s of sitios) {
-    const r = s.resumen_potencia?.[tipo]
+    const r = s.potencia_por_etapa?.[etapa]?.[tipo] ?? (etapa === 'operativa' && s.etapa_resumen_potencia === 'operativa' ? s.resumen_potencia?.[tipo] : null)
     if (r?.valor_mw != null) {
       total += r.valor_mw
       conDato++
@@ -149,7 +167,7 @@ export function sumarCartera(sitios, tipo) {
     }
   }
   return {
-    total_mw: Math.round(total * 10) / 10,
+    total_mw: Math.round(total * 1000) / 1000,
     sitios_con_dato: conDato,
     sitios_sin_dato: sinDato.length,
     cobertura: sitios.length ? Math.round((conDato / sitios.length) * 100) : 0,

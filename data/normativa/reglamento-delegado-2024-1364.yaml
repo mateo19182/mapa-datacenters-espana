@@ -5,9 +5,10 @@ ambito: europeo
 rango: reglamento_delegado_ue
 estado: en_vigor
 estado_detalle: >-
-  En vigor y de aplicación directa desde el 6 de junio de 2024. Es la «primera fase»: el
-  etiquetado propiamente dicho es un segundo reglamento delegado que la Comisión aún está
-  elaborando y cuya aplicación se prevé para agosto de 2027.
+  En vigor y de aplicación directa desde el 6 de junio de 2024. Es la primera fase de información.
+  La Comisión adoptó el 21 de septiembre de 2026 un acto delegado de etiquetado, C(2026) 3472 final,
+  que lo modificaría. El Parlamento amplió el control el 6 de octubre; el nuevo acto no está todavía
+  en vigor.
 boletin: DOUE
 referencia: "DOUE-L-2024-80715"
 url_oficial: "https://eur-lex.europa.eu/eli/reg_del/2024/1364/oj"
@@ -36,32 +37,44 @@ obligaciones:
     plazo: "15 de septiembre de 2024 y, después, cada 15 de mayo"
     fuentes: [src-eurlex, src-miteco-faq]
 hitos:
-  - fecha: "2024-05-17"
-    hito: "Publicación en el Diario Oficial de la Unión Europea"
-    fuentes: [src-boe-doue]
-  - fecha: "2024-06-06"
-    hito: "Entrada en vigor, a los veinte días de su publicación"
-    fuentes: [src-boe-doue]
-  - fecha: "2024-09-15"
-    hito: "Primer plazo de comunicación, sobre el que la Comisión dio flexibilidad"
-    fuentes: [src-miteco-faq]
-  - fecha: "2027-08-01"
+  - fecha: 2024-05-17
+    hito: Publicación en el Diario Oficial de la Unión Europea
+    fuentes:
+      - src-boe-doue
+  - fecha: 2024-06-06
+    hito: Entrada en vigor, a los veinte días de su publicación
+    fuentes:
+      - src-boe-doue
+  - fecha: 2024-09-15
+    hito: Primer plazo de comunicación, sobre el que la Comisión dio flexibilidad
+    fuentes:
+      - src-miteco-faq
+  - fecha: 2026-09-21
+    hito: La Comisión adopta C(2026) 3472 final sobre etiquetas y modificación de este reglamento; no
+      entra en vigor por su sola adopción
+    fuentes:
+      - src-etiquetado
+  - fecha: 2027-08-15
     previsto: true
-    hito: >-
-      Fecha prevista de aplicación del sistema europeo de etiquetado que desarrollará la
-      segunda fase
-    fuentes: [src-miteco-prensa]
+    hito: Primera emisión de etiquetas prevista en C(2026) 3472, sujeta a su entrada en vigor
+    fuentes:
+      - src-etiquetado
 actores:
-  - nombre: "Comisión Europea"
+  - nombre: Comisión Europea
     rol: promotor
     postura: sin_constar
-    resumen: "Dicta el reglamento delegado y elabora la segunda fase, la del etiquetado."
-    fuentes: [src-eurlex]
-  - nombre: "Ministerio para la Transición Ecológica y el Reto Demográfico"
+    resumen: Dictó la primera fase y adoptó el acto de etiquetado de septiembre de 2026, todavía bajo
+      control institucional.
+    fuentes:
+      - src-eurlex
+      - src-procedimiento-etiquetado
+  - nombre: Ministerio para la Transición Ecológica y el Reto Demográfico
     rol: competente
     postura: sin_constar
-    resumen: "Recibiría la comunicación española a través de la Dirección General de Planificación y Coordinación Energética."
-    fuentes: [src-miteco-faq]
+    resumen: Recibiría la comunicación española a través de la Dirección General de Planificación y
+      Coordinación Energética.
+    fuentes:
+      - src-miteco-faq
 afecta:
   - tipo: registro
     ref: null
@@ -69,54 +82,80 @@ afecta:
       Aporta la definición de potencia de tecnología de la información y las metodologías
       de PUE y WUE con las que se leen los datos de las fichas.
     fuentes: [src-eurlex]
-relacionadas: [directiva-2023-1791, prd-centros-datos-sostenibles]
+relacionadas:
+  - directiva-2023-1791
+  - prd-centros-datos-sostenibles
+  - reglamento-etiquetado-centros-datos-2026
 incertidumbres:
   - campo: obligaciones
-    descripcion: >-
-      Lo comunicado se publica de forma agregada por Estado miembro y a nivel de la Unión,
-      no por centro. Que un emplazamiento cumpla esta obligación no significa que sus datos
-      sean consultables uno a uno.
-    fuentes: [src-eurlex]
-ultima_verificacion: "2026-09-01"
+    descripcion: La publicación del régimen de 2024 es agregada. El acto adoptado en septiembre prevé
+      etiquetas públicas por centro y cambios de indicadores, incluida agua dulce, pero sus
+      modificaciones no deben aplicarse retroactivamente como si ya estuvieran en vigor.
+    fuentes:
+      - src-eurlex
+      - src-etiquetado
+  - campo: fecha_entrada_vigor
+    descripcion: La nota de prensa española de agosto asociaba el etiquetado a 2024/1364 y a agosto de
+      2027. Ese reglamento ya rige desde 2024; la fecha posterior corresponde a la segunda fase. El
+      acto adoptado ahora precisa el 15 de agosto de 2027 para las primeras etiquetas, condicionado
+      a su entrada en vigor.
+    fuentes:
+      - src-miteco-prensa
+      - src-boe-doue
+      - src-etiquetado
+ultima_verificacion: "2026-10-14"
 fuentes:
   - id: src-eurlex
-    url: "https://eur-lex.europa.eu/eli/reg_del/2024/1364/oj"
-    titulo: "Commission Delegated Regulation (EU) 2024/1364 on the first phase of the establishment of a common Union rating scheme for data centres"
-    editor: "EUR-Lex"
+    url: https://eur-lex.europa.eu/eli/reg_del/2024/1364/oj
+    titulo: Commission Delegated Regulation (EU) 2024/1364 on the first phase of the establishment of a
+      common Union rating scheme for data centres
+    editor: EUR-Lex
     tipo: oficial
-    fecha_publicacion: "2024-05-17"
-    fecha_consulta: "2026-09-01"
-    cita: >-
-      By 15 September 2024, then by 15 May 2025, and every year thereafter, reporting data
-      centre operators shall communicate to the European database the information and key
-      performance indicators set out in Annex I and Annex II regarding the data centre they
-      operate.
+    fecha_publicacion: 2024-05-17
+    fecha_consulta: 2026-09-01
+    cita: By 15 September 2024, then by 15 May 2025, and every year thereafter, reporting data centre
+      operators shall communicate to the European database the information and key performance
+      indicators set out in Annex I and Annex II regarding the data centre they operate.
   - id: src-boe-doue
-    url: "https://www.boe.es/buscar/doc.php?id=DOUE-L-2024-80715"
-    titulo: "Reglamento Delegado (UE) 2024/1364 de la Comisión, de 14 de marzo de 2024"
-    editor: "BOE (referencia DOUE)"
+    url: https://www.boe.es/buscar/doc.php?id=DOUE-L-2024-80715
+    titulo: Reglamento Delegado (UE) 2024/1364 de la Comisión, de 14 de marzo de 2024
+    editor: BOE (referencia DOUE)
     tipo: oficial
-    fecha_publicacion: "2024-05-17"
-    fecha_consulta: "2026-09-01"
+    fecha_publicacion: 2024-05-17
+    fecha_consulta: 2026-09-01
     cita: "Fecha de entrada en vigor: 06/06/2024"
   - id: src-miteco-faq
-    url: "https://www.miteco.gob.es/es/energia/eficiencia/centros-de-datos/preguntas-frecuentes.html"
+    url: https://www.miteco.gob.es/es/energia/eficiencia/centros-de-datos/preguntas-frecuentes.html
     titulo: "Centros de datos: preguntas frecuentes"
-    editor: "MITECO"
+    editor: MITECO
     tipo: oficial
     fecha_publicacion: null
-    fecha_consulta: "2026-09-01"
-    cita: >-
-      Los operadores de centros de datos con una demanda de potencia eléctrica de los
-      sistemas de tecnologías de la información instalados de 500 kW como mínimo deben
-      comunicar a la base de datos europea ReportENER.
+    fecha_consulta: 2026-09-01
+    cita: Los operadores de centros de datos con una demanda de potencia eléctrica de los sistemas de
+      tecnologías de la información instalados de 500 kW como mínimo deben comunicar a la base de
+      datos europea ReportENER.
   - id: src-miteco-prensa
-    url: "https://www.miteco.gob.es/es/prensa/ultimas-noticias/2026/agosto/-el-gobierno-plantea-impulsar-los-centros-de-datos-sostenibles--.html"
-    titulo: "El Gobierno plantea impulsar los centros de datos sostenibles"
-    editor: "MITECO"
+    url: https://www.miteco.gob.es/es/prensa/ultimas-noticias/2026/agosto/-el-gobierno-plantea-impulsar-los-centros-de-datos-sostenibles--.html
+    titulo: El Gobierno plantea impulsar los centros de datos sostenibles
+    editor: MITECO
     tipo: oficial
-    fecha_publicacion: "2026-08-27"
-    fecha_consulta: "2026-09-01"
-    cita: >-
-      Dicho etiquetado se incluye en el Reglamento Delegado (UE) 2024/1364, cuya entrada en
-      vigor está prevista para agosto de 2027.
+    fecha_publicacion: 2026-08-27
+    fecha_consulta: 2026-09-01
+    cita: Dicho etiquetado se incluye en el Reglamento Delegado (UE) 2024/1364, cuya entrada en vigor
+      está prevista para agosto de 2027.
+  - id: src-etiquetado
+    url: https://data.consilium.europa.eu/doc/document/ST-13444-2026-INIT/en/pdf
+    titulo: C(2026) 3472 final, artículos 3, 5 y 7
+    editor: Consejo de la Unión Europea, documento de la Comisión
+    tipo: oficial
+    fecha_publicacion: 2026-09-21
+    fecha_consulta: 2026-10-14
+    cita: By 15 August 2027 and every year thereafter, an electronic label
+  - id: src-procedimiento-etiquetado
+    url: https://oeil.europarl.europa.eu/oeil/en/procedure-file?reference=2026/2895(DEA)
+    titulo: Procedimiento 2026/2895(DEA), control del etiquetado
+    editor: Parlamento Europeo
+    tipo: oficial
+    fecha_publicacion: null
+    fecha_consulta: 2026-10-14
+    cita: Awaiting committee decision

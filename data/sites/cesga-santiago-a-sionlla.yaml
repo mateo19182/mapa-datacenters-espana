@@ -16,18 +16,24 @@ ubicacion:
   lat: 42.9300
   lon: -8.5000
   precision: aproximada
-  fuentes: [src-1]
+  fuentes: [ src-1 ]
 
 estado: en_construccion
 estado_detalle: >-
-  Primer «proyecto estratégico de investigación pública» declarado por la Xunta.
-  Obras iniciadas en octubre de 2025 con previsión de finalizar en verano de 2026.
-  Albergará el supercomputador FinisTerrae IV, un sistema de almacenamiento y un
-  ordenador cuántico de 54 cúbits de la finlandesa IQM suministrado por Telefónica.
-  Fsas Technologies (Fujitsu) es el adjudicatario del equipamiento. En octubre de
-  2025 se anunció que el CESGA acogerá además una fábrica europea de IA orientada
-  a salud.
-estado_fuentes: [src-1, src-2]
+  Primer «proyecto estratégico de investigación pública» declarado por la Xunta. Obras iniciadas en
+  octubre de 2025 con previsión de finalizar en verano de 2026. Albergará el supercomputador
+  FinisTerrae IV, un sistema de almacenamiento y un ordenador cuántico de 54 cúbits de la finlandesa
+  IQM suministrado por Telefónica. Fsas Technologies (Fujitsu) es el adjudicatario del equipamiento.
+  En octubre de 2025 se anunció que el CESGA acogerá además una fábrica europea de IA orientada a
+  salud. La Xunta adjudicó FinisTerrae IV y almacenamiento a Fsas el 3 de marzo de 2026. El CESGA
+  presentó para el 12 de junio dos equipos IQM, Radiance de 54 cúbits y Spark de 5. La presentación
+  y adjudicación no acreditan por sí solas puesta en servicio ni traslado de FinisTerrae III/Qmio al
+  nuevo edificio.
+estado_fuentes:
+  - src-1
+  - src-2
+  - src-adjudicacion-ft4
+  - src-presentacion-20260612
 
 potencia:
   - tipo: it
@@ -36,32 +42,32 @@ potencia:
     referencia: "Potencia IT máxima para la que está preparado el nuevo edificio"
     estado_asociado: en_construccion
     fecha_dato: null
-    fuentes: [src-3]
+    fuentes: [ src-3 ]
     nota: >-
-      Dominion, autora del proyecto y constructora del edificio junto a Copasa, dice
-      que «el nuevo centro está preparado para operar con potencias IT de hasta 3,2
-      MW». Ni la Xunta ni el CESGA publican la cifra. La página de Dominion no lleva
-      fecha, así que no consta desde cuándo es cierta: `fecha_dato` queda vacío en
-      lugar de repetir la fecha de consulta, que no es lo que ese campo mide.
+      Dominion, autora del proyecto y constructora del edificio junto a Copasa, dice que «el nuevo
+      centro está preparado para operar con potencias IT de hasta 3,2 MW». Ni la Xunta ni el CESGA
+      publican la cifra. La página de Dominion no lleva fecha, así que no consta desde cuándo es
+      cierta: `fecha_dato` queda vacío en lugar de repetir la fecha de consulta, que no es lo que
+      ese campo mide.
 
 fases:
   - nombre: "Edificio y equipamiento (FinisTerrae IV + cuántico)"
     estado: en_construccion
     fecha_puesta_en_servicio: "2026"
     superficie_m2: 2700
-    fuentes: [src-1]
+    fuentes: [ src-1 ]
 
 superficie_parcela_m2: 9100
 superficie_construida_m2: 2700
 inversion_anunciada_eur: 56000000
 refrigeracion: >-
-  Soluciones de refrigeración líquida directa, según la empresa que redactó el
-  proyecto y construye el edificio; diseño compatible con certificación Tier III.
-  La nota de la Xunta habla de «sistemas de climatización de alta adecuación
-  técnica» y paneles fotovoltaicos.
+  Soluciones de refrigeración líquida directa, según la empresa que redactó el proyecto y construye
+  el edificio; diseño compatible con certificación Tier III. La nota de la Xunta habla de «sistemas
+  de climatización de alta adecuación técnica» y paneles fotovoltaicos.
 
 enlaces_proyecto:
-  - "https://www.xunta.gal/es/notas-de-prensa/-/nova/015782/construccion-del-nuevo-cesga-sera-primero-proyecto-estrategico-investigacion"
+  - "https://www.xunta.gal/es/notas-de-prensa/-/nova/015782/construccion-del-nuevo-cesga-sera-prime\
+    ro-proyecto-estrategico-investigacion"
 
 computo:
   - tipo: cpu_hpc
@@ -76,10 +82,11 @@ computo:
     rendimiento_precision: fp64
     estado: operativo
     fecha_dato: "2026-08-31"
-    fuentes: [src-computo]
+    fuentes: [ src-computo ]
     nota: >-
-      Equipo Bull ATOS bullx instalado en 2021 y en producción desde 2022, repartido en 13
-      armarios, con 118 TB de memoria y 5 PB de almacenamiento Lustre.
+      Equipo Bull ATOS bullx instalado en 2021 y en producción desde 2022, repartido en 13 armarios,
+      con 118 TB de memoria y 5 PB de almacenamiento Lustre.
+    modalidad: sin_confirmar
   - tipo: gpu
     sistema: "FinisTerrae III"
     modelo: "NVIDIA A100"
@@ -87,10 +94,11 @@ computo:
     tipo_unidad: acelerador
     estado: operativo
     fecha_dato: "2026-08-31"
-    fuentes: [src-computo]
+    fuentes: [ src-computo ]
     nota: >-
-      La documentación técnica del propio CESGA da otra cifra —141 A100, 157 GPU en total— para
-      el mismo equipo. La discrepancia queda registrada en `incertidumbres[]` y no se resuelve.
+      La documentación técnica del propio CESGA da otra cifra —141 A100, 157 GPU en total— para el
+      mismo equipo. La discrepancia queda registrada en `incertidumbres[]` y no se resuelve.
+    modalidad: sin_confirmar
   - tipo: gpu
     sistema: "FinisTerrae III"
     modelo: "NVIDIA T4"
@@ -98,8 +106,9 @@ computo:
     tipo_unidad: acelerador
     estado: operativo
     fecha_dato: "2026-08-31"
-    fuentes: [src-computo]
+    fuentes: [ src-computo ]
     nota: null
+    modalidad: sin_confirmar
   - tipo: qpu
     sistema: "Qmio"
     modelo: "QPU de cúbits superconductores tipo coaxmon, fabricada por Oxford Quantum Circuits"
@@ -107,82 +116,146 @@ computo:
     tipo_unidad: qubit
     estado: operativo
     fecha_dato: "2026-08-31"
-    fuentes: [src-cuantica]
+    fuentes: [ src-cuantica ]
     nota: >-
-      Desplegado en 2023 y abierto a investigadores en 2024. No es capacidad de centro de datos
-      y no aporta ninguna cifra a `potencia[]`. Va acompañado de un sistema HPC conectado a la
-      QPU y de emuladores clásicos (Qaptiva, CUNQA, Qiskit AER).
+      Desplegado en 2023 y abierto a investigadores en 2024. No es capacidad de centro de datos y no
+      aporta ninguna cifra a `potencia[]`. Va acompañado de un sistema HPC conectado a la QPU y de
+      emuladores clásicos (Qaptiva, CUNQA, Qiskit AER).
+    modalidad: sin_confirmar
   - tipo: no_especificado
     sistema: "Superordenador de la fábrica de IA 1HealthAI"
     estado: anunciado
     fecha_dato: "2025-10-10"
-    fuentes: [src-aif]
+    fuentes: [ src-aif ]
     nota: >-
-      La Comisión Europea seleccionó al CESGA en octubre de 2025 para albergar la segunda AI
-      Factory de España, con 82 millones de euros de dotación. Ninguna fuente publica todavía
-      arquitectura, número de aceleradores ni rendimiento del superordenador que se adquirirá,
-      así que el registro queda sin recuento: consta la existencia del proyecto, no su tamaño.
+      La Comisión Europea seleccionó al CESGA en octubre de 2025 para albergar la segunda AI Factory
+      de España, con 82 millones de euros de dotación. Ninguna fuente publica todavía arquitectura,
+      número de aceleradores ni rendimiento del superordenador que se adquirirá, así que el registro
+      queda sin recuento: consta la existencia del proyecto, no su tamaño.
+    modalidad: previsto
+  - tipo: cpu_hpc
+    ambito: sistema
+    sistema: FinisTerrae IV
+    estado: anunciado
+    modalidad: previsto
+    fecha_dato: 2026-03-03
+    fuentes:
+      - src-adjudicacion-ft4
+    nota: Adjudicación a Fsas Technologies del supercomputador y almacenamiento por más de 25 millones
+      de euros. No se publican aquí un recuento de CPU/GPU ni una puesta en servicio confirmada. No
+      es el supercomputador separado de la futura factoría 1HealthAI.
+  - tipo: qpu
+    ambito: sistema
+    sistema: Nuevo sistema cuántico CESGA, IQM Radiance
+    modelo: IQM Radiance, cúbits superconductores
+    unidades: 54
+    tipo_unidad: qubit
+    estado: anunciado
+    modalidad: previsto
+    fuentes:
+      - src-presentacion-20260612
+      - src-presentacion-en-20260612
+    nota: Equipamiento anunciado para la nueva infraestructura del CESGA. El acto de presentación del 12
+      de junio no acredita por sí solo servicio científico abierto o ubicación definitiva de los
+      equipos.
+  - tipo: qpu
+    ambito: sistema
+    sistema: Nuevo sistema cuántico CESGA, IQM Spark
+    modelo: IQM Spark, equipo de formación y pruebas de algoritmos
+    unidades: 5
+    tipo_unidad: qubit
+    estado: anunciado
+    modalidad: previsto
+    fuentes:
+      - src-presentacion-en-20260612
+    nota: Segundo equipo anunciado para formación y pruebas. No se suma a Radiance o Qmio ni se da por
+      instalado sin confirmación.
 
 incertidumbres:
   - campo: computo
     descripcion: >-
-      El propio CESGA publica dos recuentos incompatibles de las GPU del FinisTerrae III. La
-      página de infraestructuras da «128 GPUs Nvidia A100 y 16 Nvidia T4» y 354 nodos; la
-      documentación técnica del usuario y una presentación institucional dan «157 GPUs: 141
-      Nvidia A100 and 16 Nvidia T4», 357 nodos y 4,36 PFlops. Se registra la primera, que es la
-      página institucional del centro, y se conserva el choque sin resolver.
-    fuentes: [src-computo, src-docs]
+      El propio CESGA publica dos recuentos incompatibles de las GPU del FinisTerrae III. La página
+      de infraestructuras da «128 GPUs Nvidia A100 y 16 Nvidia T4» y 354 nodos; la documentación
+      técnica del usuario y una presentación institucional dan «157 GPUs: 141 Nvidia A100 and 16
+      Nvidia T4», 357 nodos y 4,36 PFlops. Se registra la primera, que es la página institucional
+      del centro, y se conserva el choque sin resolver.
+    fuentes: [ src-computo, src-docs ]
   - campo: potencia
     descripcion: >-
-      Los 3,2 MW IT proceden de la ficha de proyecto de Dominion, adjudicataria de
-      la obra. La nota de prensa oficial de la Xunta no publica ninguna cifra de
-      potencia, de modo que el dato no está confirmado por el promotor público.
-    fuentes: [src-1, src-3]
+      Los 3,2 MW IT proceden de la ficha de proyecto de Dominion, adjudicataria de la obra. La nota
+      de prensa oficial de la Xunta no publica ninguna cifra de potencia, de modo que el dato no
+      está confirmado por el promotor público.
+    fuentes: [ src-1, src-3 ]
   - campo: superficie_construida_m2
     descripcion: >-
-      La Xunta y El Correo Gallego dan 2.700 m² para el edificio principal; Dominion
-      habla de «más de 2.400 m² construidos y más de 1.200 m² de espacio exterior
-      técnico». No se sustituye el valor registrado.
-    fuentes: [src-1, src-3]
+      La Xunta y El Correo Gallego dan 2.700 m² para el edificio principal; Dominion habla de «más
+      de 2.400 m² construidos y más de 1.200 m² de espacio exterior técnico». No se sustituye el
+      valor registrado.
+    fuentes: [ src-1, src-3 ]
   - campo: inversion_anunciada_eur
     descripcion: >-
-      Los 56 M€ son la inversión total; 13 M€ corresponden a la obra del edificio y
-      34 M€ al equipamiento licitado. No se suman a otras cifras.
-    fuentes: [src-1, src-2]
+      Los 56 M€ son la inversión total; 13 M€ corresponden a la obra del edificio y 34 M€ al
+      equipamiento licitado. No se suman a otras cifras.
+    fuentes: [ src-1, src-2 ]
+  - campo: computo
+    descripcion: Los inventarios operativos de FinisTerrae III y Qmio pertenecen al CESGA, cuya sede
+      pública sigue en Avenida de Vigo. No se ha verificado su traslado a A Sionlla. Se conservan
+      para no perder el inventario institucional, con modalidad sin_confirmar para este nuevo
+      emplazamiento; no acreditan que el edificio en obras esté operativo.
+    fuentes:
+      - src-computo
+      - src-cuantica
+      - src-contacto-sede
+      - src-1
+  - campo: computo
+    descripcion: FinisTerrae IV y los equipos IQM anunciados para la renovación son distintos del
+      proyecto 1HealthAI. Faltan confirmaciones de recepción y servicio. Los 54 y 5 cúbits son
+      especificaciones de dos sistemas y no un total sumable.
+    fuentes:
+      - src-adjudicacion-ft4
+      - src-presentacion-20260612
+      - src-presentacion-en-20260612
+      - src-aif
 
 confianza: alta
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-14"
 
 fuentes:
   - id: src-1
-    url: "https://www.xunta.gal/es/notas-de-prensa/-/nova/015782/construccion-del-nuevo-cesga-sera-primero-proyecto-estrategico-investigacion"
-    titulo: "La construcción del nuevo Cesga será el primer proyecto estratégico de investigación pública de Galicia"
+    url: "https://www.xunta.gal/es/notas-de-prensa/-/nova/015782/construccion-del-nuevo-cesga-sera-prim\
+      ero-proyecto-estrategico-investigacion"
+    titulo: "La construcción del nuevo Cesga será el primer proyecto estratégico de investigación
+      pública de Galicia"
     editor: "Xunta de Galicia"
     tipo: oficial
     fecha_publicacion: "2025-08-12"
     fecha_consulta: "2026-08-29"
-    cita: "Con una inversión total de 56 M€, las obras de construcción del edificio -por un importe de 13 M€"
+    cita: "Con una inversión total de 56 M€, las obras de construcción del edificio -por un importe de
+      13 M€"
   - id: src-2
-    url: "https://www.elcorreogallego.es/santiago/2026/03/03/supercomputador-cesga-xunta-multiplica-capacidad-127503141.html"
-    titulo: "El Cesga multiplica por 13 su capacidad con el Finisterrae IV, un supercomputador de más de 25 millones de euros"
+    url: "https://www.elcorreogallego.es/santiago/2026/03/03/supercomputador-cesga-xunta-multiplica-cap\
+      acidad-127503141.html"
+    titulo: "El Cesga multiplica por 13 su capacidad con el Finisterrae IV, un supercomputador de más de
+      25 millones de euros"
     editor: "El Correo Gallego"
     tipo: prensa_general
     fecha_publicacion: "2026-03-03"
     fecha_consulta: "2026-08-29"
     cita: "ordenador cuántico de 54 cúbits de la finlandesa IQM proveído por Telefónica"
   - id: src-3
-    url: "https://www.dominion-global.com/es/casos-de-exito/area-de-telecomunicaciones/proyectos-tecnologicos-sistemas-comunicacion/ampliacion-del-centro-tecnologico-de-supercomputacion-de-galicia-cesga"
+    url: "https://www.dominion-global.com/es/casos-de-exito/area-de-telecomunicaciones/proyectos-tecnol\
+      ogicos-sistemas-comunicacion/ampliacion-del-centro-tecnologico-de-supercomputacion-de-galicia\
+      -cesga"
     titulo: "Ampliación del Centro Tecnológico de Supercomputación de Galicia (CESGA)"
     editor: "Dominion Global"
     tipo: empresa
     fecha_consulta: "2026-08-31"
     cita: >-
-      Un edificio altamente tecnológico y energéticamente eficiente con más de 2.400
-      m² construidos y más de 1.200 m² de espacio exterior técnico. El nuevo centro
-      está preparado para operar con potencias IT de hasta 3,2 MW y para acoger
-      tecnologías emergentes en supercomputación, almacenamiento masivo y
-      computación cuántica [...] integramos soluciones de refrigeración líquida
-      directa, cableado estructurado redundante y un sistema de gestión BMS
+      Un edificio altamente tecnológico y energéticamente eficiente con más de 2.400 m² construidos
+      y más de 1.200 m² de espacio exterior técnico. El nuevo centro está preparado para operar con
+      potencias IT de hasta 3,2 MW y para acoger tecnologías emergentes en supercomputación,
+      almacenamiento masivo y computación cuántica [...] integramos soluciones de refrigeración
+      líquida directa, cableado estructurado redundante y un sistema de gestión BMS
   - id: src-computo
     url: "https://www.cesga.es/infraestructuras/computacion/"
     titulo: "Computación — Centro de Supercomputación de Galicia"
@@ -190,12 +263,11 @@ fuentes:
     tipo: oficial
     fecha_consulta: "2026-08-31"
     cita: >-
-      El equipo actualmente en servicio, el FinisTerrae III fue instalado en el año 2021 y
-      puesto en producción en el año 2022. Es un equipo Bull ATOS bullx distribuído en 13 racks
-      o armarios y que cuenta con 354 nodos de computación, 22.656 cores Intel Xeon Ice Lake
-      8352Y, 128 GPUs Nvidia A100 y 16 Nvidia T4, 118 TB de memoria y 5.000 TB de almacenamiento
-      de altas prestaciones Lustre. [...] La capacidad de cómputo pico del equipo es de 4
-      PetaFlops.
+      El equipo actualmente en servicio, el FinisTerrae III fue instalado en el año 2021 y puesto en
+      producción en el año 2022. Es un equipo Bull ATOS bullx distribuído en 13 racks o armarios y
+      que cuenta con 354 nodos de computación, 22.656 cores Intel Xeon Ice Lake 8352Y, 128 GPUs
+      Nvidia A100 y 16 Nvidia T4, 118 TB de memoria y 5.000 TB de almacenamiento de altas
+      prestaciones Lustre. [...] La capacidad de cómputo pico del equipo es de 4 PetaFlops.
   - id: src-cuantica
     url: "https://www.cesga.es/infraestructuras/cuantica/"
     titulo: "Cuántica — Centro de Supercomputación de Galicia"
@@ -205,22 +277,21 @@ fuentes:
     cita: >-
       Un entorno de investigación en computación cuántica: QMIO. Este entorno fue desplegado en
       CESGA en 2023 y abierto a investigadores en 2024. Está compuesto por: 1. Una unidad de
-      procesamiento cuántico (Quantum Processing Unit) de 32 cúbits superconductores tipo
-      coaxmon.
+      procesamiento cuántico (Quantum Processing Unit) de 32 cúbits superconductores tipo coaxmon.
   - id: src-aif
     url: "https://www.ciencia.gob.es/Noticias/2025/octubre/instalacion-fabrica-IA-salud-Galicia.html"
-    titulo: "El Gobierno de España contribuye con 24 millones a la instalación de una fábrica de IA de salud en el Centro de Supercomputación de Galicia"
+    titulo: "El Gobierno de España contribuye con 24 millones a la instalación de una fábrica de IA de
+      salud en el Centro de Supercomputación de Galicia"
     editor: "Ministerio de Ciencia, Innovación y Universidades"
     tipo: oficial
     fecha_publicacion: "2025-10-10"
     fecha_consulta: "2026-08-31"
     cita: >-
-      La Empresa Común Europea de Computación de Alto Rendimiento (EuroHPC JU) ha anunciado hoy
-      que el Centro de Supercomputación de Galicia [...] albergará una nueva fábrica europea de
-      inteligencia artificial (European One-Health -1Health AI), centrada en el ámbito de la
-      salud. [...] Gracias a esta fábrica, se podrá adquirir un superordenador específico para
-      inteligencia artificial y una plataforma de supercomputación avanzada optimizada para IA
-      experimental.
+      La Empresa Común Europea de Computación de Alto Rendimiento (EuroHPC JU) ha anunciado hoy que
+      el Centro de Supercomputación de Galicia [...] albergará una nueva fábrica europea de
+      inteligencia artificial (European One-Health -1Health AI), centrada en el ámbito de la salud.
+      [...] Gracias a esta fábrica, se podrá adquirir un superordenador específico para inteligencia
+      artificial y una plataforma de supercomputación avanzada optimizada para IA experimental.
   - id: src-docs
     url: "https://cesga-docs.gitlab.io/ft3-user-guide/overview.html"
     titulo: "Overview — CESGA Technical Documentation"
@@ -229,6 +300,38 @@ fuentes:
     fecha_consulta: "2026-08-31"
     cita: >-
       FinisTerrae III, with a total computing power of 4,36 PetaFLOPS, is made up of 357 nodes
-      interconnected via an Infiniband HDR network. There are 714 latest generation Intel Xeon
-      Ice Lake 8352Y processors with 32 cores at 2.2Ghz (22.848 cores) and 157 GPUs (141 Nvidia
-      A100 and 16 Nvidia T4).
+      interconnected via an Infiniband HDR network. There are 714 latest generation Intel Xeon Ice
+      Lake 8352Y processors with 32 cores at 2.2Ghz (22.848 cores) and 157 GPUs (141 Nvidia A100 and
+      16 Nvidia T4).
+  - id: src-adjudicacion-ft4
+    url: https://www.xunta.gal/es/notas-de-prensa/-/nova/022035/xunta-adjudica-fsas-technologies-adquisicion-del-nuevo-supercomputador-del-cesga
+    titulo: La Xunta adjudica a Fsas Technologies el nuevo supercomputador del Cesga
+    editor: Xunta de Galicia
+    tipo: oficial
+    fecha_publicacion: 2026-03-03
+    fecha_consulta: 2026-10-14
+    cita: adjudicar la adquisición del nuevo supercomputador Finisterrae IV y un sistema de
+      almacenamiento
+  - id: src-presentacion-20260612
+    url: https://www.cesga.es/presentacion-nueva-infraestructura-cesga/
+    titulo: Presentación de la nueva infraestructura del CESGA
+    editor: CESGA
+    tipo: oficial
+    fecha_publicacion: 2026-06-08
+    fecha_consulta: 2026-10-14
+    cita: Dos unidades de computación cuántica [...] Radiance de 54 cúbits superconductores
+  - id: src-presentacion-en-20260612
+    url: https://www.cesga.es/en/presentation-event-cesga-new-infrastructure/
+    titulo: Presentation event for CESGA’s new infrastructure
+    editor: CESGA
+    tipo: oficial
+    fecha_publicacion: 2026-06-08
+    fecha_consulta: 2026-10-14
+    cita: a 5-qubit Spark model for training and algorithm testing
+  - id: src-contacto-sede
+    url: https://www.cesga.es/contacto/
+    titulo: Contacto — CESGA, sede de Avenida de Vigo
+    editor: CESGA
+    tipo: oficial
+    fecha_consulta: 2026-10-14
+    cita: Avenida de Vigo, s/n Campus Sur

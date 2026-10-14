@@ -109,6 +109,7 @@ empleo:
 
 computo:
   - tipo: gpu
+    modalidad: previsto
     ambito: sistema
     sistema: "Centro de datos de IA de Puertollano (fase 1)"
     operador_computo: "Data Section"

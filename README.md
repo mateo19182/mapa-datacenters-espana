@@ -7,10 +7,11 @@ Ceuta y Melilla— y su relación con la infraestructura eléctrica de transport
 Cada dato lleva su fuente; los huecos y las contradicciones se muestran en lugar
 de rellenarse.
 
-La **capa eléctrica sigue siendo peninsular**, y no por descuido: Red Eléctrica
-publica capacidad de acceso para el sistema peninsular, y los sistemas canario y
-balear son eléctricamente independientes. Un emplazamiento insular tiene ficha,
-pero no tiene red debajo.
+La capacidad de acceso de REE cubre los 937 nudos publicados el 1 de octubre de
+2026, incluidos los de Baleares, Canarias y Ceuta. El inventario documental y
+la cartografía tienen coberturas distintas: los nuevos nudos no reciben una
+coordenada ni un vínculo con un CPD sin fuente. El trazado de OSM sigue limitado
+a la red peninsular de 220 y 400 kV.
 
 El registro reúne hechos publicados, con su procedencia y fecha de verificación.
 La sección de inversión añade análisis fechados, separados de las fichas documentales.
@@ -86,6 +87,19 @@ validan al construir. El resultado se publica en `/actualizaciones` y se descarg
 en `/datos/actualizaciones.json`. El trabajo semanal propone novedades en su
 informe; la revisión decide qué entra en ese archivo.
 
+## Capacidad y hardware
+
+El mapa y los listados muestran capacidad operativa por defecto. Cada cifra se
+clasifica por su propio `estado_asociado`, no por el estado del campus. Los grupos
+operativo, en construcción, previsto, sin desglose e histórico se consultan por
+separado. Un techo de campus futuro puede incluir fases abiertas: los grupos no
+se suman entre sí. El export declara `etapa_resumen_potencia: operativa` y conserva
+el antiguo resumen de todas las lecturas como `resumen_potencia_documentada`.
+
+`/computo` reúne hardware y fuentes por sistema. La modalidad distingue instalación
+física, adquisición, despliegue previsto, acceso contratado y ubicación sin
+confirmar. No convierte recuentos en MW ni suma modelos, particiones o precisiones.
+
 ## Arquitectura
 
 Deliberadamente simple, y en un solo sentido:
@@ -128,7 +142,7 @@ npm run dev        # valida, reconcilia, construye los datos y levanta el sitio
 | `npm run build` | `data` + construcción del sitio en `dist/` |
 | `npm run refresh` | Comprueba las fuentes registradas y arma la cola de revisión |
 | `npm run refresh:ree` | Comprueba si REE ha publicado una edición nueva de capacidad de demanda |
-| `npm run refresh:sellar` | Igual, y actualiza la fecha de verificación de las fichas comprobadas |
+| `npm run refresh:sellar` | Compatibilidad con `--sellar`; conserva las fechas de revisión factual |
 | `npm run propuestas` | Simula la integración de `data/propuestas/` y separa los conflictos |
 | `npm run grid:osm` | Recachea el trazado de 220/400 kV desde OpenStreetMap |
 | `npm run centrales:osm` | Recachea el inventario de centrales de generación desde OpenStreetMap |
@@ -156,10 +170,10 @@ referencia no se sustituye hasta que alguien revisa la página y ejecuta
 `npm run refresh -- --aceptar "URL"`. Si la página recupera el contenido anterior,
 el aviso se cierra solo. Una fuente vista por primera vez no sella la ficha.
 
-Con `--sellar` hace además una única escritura, que no toca ninguna afirmación:
-actualiza `ultima_verificacion` en las fichas cuyas fuentes se han releído todas
-con éxito y sin cambios. Así la fecha de verificación deja de ser un sello
-uniforme y pasa a decir algo: qué se ha comprobado hace poco y qué arrastra.
+Las comprobaciones automáticas actualizan la fecha de observación de cada fuente,
+no `ultima_verificacion`. Esta última es una revisión factual de la ficha y se
+mantiene mediante revisión editorial. `--sellar` se acepta por compatibilidad,
+pero ya no cambia fechas factuales.
 
 Las modificaciones entran como propuestas en `data/propuestas/<id>.yaml`, con la
 misma forma que el emplazamiento y solo los campos que cambian.

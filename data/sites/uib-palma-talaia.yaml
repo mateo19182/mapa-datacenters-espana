@@ -1,0 +1,135 @@
+id: uib-palma-talaia
+nombre: UIB — Centro de Supercomputación e IA de las Islas Baleares, TalaIA
+alias:
+  - TalaIA
+  - Talaia
+  - BSAI
+  - Balearic Islands Center for Supercomputing and Artificial Intelligence
+tipo: edificio
+operador: Universitat de les Illes Balears (BSAI)
+propietario: Universitat de les Illes Balears
+modelo: corporativo
+ubicacion:
+  municipio: Palma
+  provincia: Illes Balears
+  ccaa: Illes Balears
+  direccion: Complex Balear de Recerca, ParcBit
+  lat: null
+  lon: null
+  precision: desconocida
+  no_derivar: true
+  fuentes:
+    - src-uib
+    - src-goib
+estado: operativo
+estado_detalle: La UIB documentó en julio de 2026 la instalación de los equipos de TalaIA durante el
+  primer semestre. El BSAI ofrece acceso por proyectos y ejecución de trabajos con Slurm; la RES
+  publica sus recursos HPC. No se conoce una fecha exacta de apertura del servicio. Se incluye como
+  infraestructura pública de cómputo, sin capacidad eléctrica publicada.
+estado_fuentes:
+  - src-uib
+  - src-acceso
+  - src-res
+potencia: []
+computo:
+  - tipo: cpu_hpc
+    ambito: particion
+    sistema: TalaIA, recursos HPC publicados por la RES
+    modelo: AMD EPYC 9655 Turin; 9.984 núcleos publicados
+    unidades: 52
+    tipo_unidad: nodo
+    rendimiento: 974.48
+    rendimiento_unidad: tflops
+    rendimiento_tipo: pico
+    rendimiento_precision: no_especificado
+    estado: operativo
+    modalidad: instalado
+    fuentes:
+      - src-res
+    nota: La RES publica 43,008 TB de memoria y 2 PB compartidos con las otras particiones. No se deduce
+      un inventario GPU ni se convierte el rendimiento a MW eléctricos.
+  - tipo: gpu
+    ambito: particion
+    sistema: TalaIA, recursos GPGPU
+    tipo_unidad: acelerador
+    estado: operativo
+    modalidad: instalado
+    fuentes:
+      - src-bsai
+      - src-acceso
+    nota: El operador confirma cómputo GPGPU y proporciona ejemplos de uso; no se ha localizado un
+      modelo ni un total público de tarjetas.
+enlaces_proyecto:
+  - https://bsai.uib.cat/
+  - https://bsai.uib.eu/acces-al-cluster-i-us
+incertidumbres:
+  - campo: ubicacion
+    descripcion: La UIB sitúa la infraestructura en el Complex Balear de Recerca del ParcBit. No se ha
+      verificado el edificio o sala concretos ni sus coordenadas; no se usa el centroide de Palma
+      como ubicación del CPD.
+    fuentes:
+      - src-uib
+      - src-goib
+  - campo: estado
+    descripcion: La instalación durante el primer semestre de 2026 y la guía de acceso del operador
+      respaldan la existencia y el servicio. No se registra un día de inauguración o puesta en
+      servicio que las fuentes no precisan.
+    fuentes:
+      - src-uib
+      - src-acceso
+  - campo: computo
+    descripcion: Hay recursos GPGPU, pero faltan modelo, número de GPU y fecha de corte del inventario.
+      Los 52 nodos de la ficha RES corresponden al apartado HPC; no se atribuyen al conjunto de
+      tarjetas.
+    fuentes:
+      - src-res
+      - src-bsai
+      - src-acceso
+  - campo: potencia
+    descripcion: No constan MW IT, permiso de acceso eléctrico ni consumo de agua. El rendimiento de
+      cálculo no permite deducirlos.
+    fuentes:
+      - src-res
+      - src-uib
+confianza: media
+ultima_verificacion: 2026-10-14
+fuentes:
+  - id: src-uib
+    url: https://www.uib.cat/w/supercomputador?redirect=%2F&title_redirect=UIB
+    titulo: El BSAI posa les Illes Balears en el mapa de la supercomputació
+    editor: Universitat de les Illes Balears
+    tipo: oficial
+    fecha_publicacion: 2026-07-16
+    fecha_consulta: 2026-10-14
+    cita: Durant el primer semestre de 2026 s’han completat l’adquisició i la instal·lació de
+      l’equipament restant
+  - id: src-res
+    url: https://www.res.es/es/sobre-la-res/nodos/talaia-uib
+    titulo: TalaIA - UIB
+    editor: Red Española de Supercomputación
+    tipo: oficial
+    fecha_publicacion: 2026-05-07
+    fecha_consulta: 2026-10-14
+    cita: 52 nodos (9 984 núcleos) [...] 974,48 TFlop/s
+  - id: src-acceso
+    url: https://bsai.uib.eu/acces-al-cluster-i-us
+    titulo: Cluster access and use — TalaIA
+    editor: Universitat de les Illes Balears, BSAI
+    tipo: oficial
+    fecha_consulta: 2026-10-14
+    cita: jobs on Talaia are submitted to a workload manager called Slurm
+  - id: src-bsai
+    url: https://bsai.uib.cat/
+    titulo: Centre de Supercomputació i Intel·ligència Artificial de les Illes Balears
+    editor: Universitat de les Illes Balears, BSAI
+    tipo: oficial
+    fecha_consulta: 2026-10-14
+    cita: els processadors específics consisteixen en dispositius GPGPU
+  - id: src-goib
+    url: https://www.caib.es/pidip2front/ficha_convocatoria.xhtml?lang=ca&urlSemantica=talaia-el-nom-guanyador-per-al-supercomputador-de-les-illes-balears
+    titulo: Talaia, el nom guanyador per al supercomputador de les Illes Balears
+    editor: Govern de les Illes Balears
+    tipo: oficial
+    fecha_publicacion: 2026-03-03
+    fecha_consulta: 2026-10-14
+    cita: El supercomputador Talaia se situarà al Complex de Recerca del ParcBit

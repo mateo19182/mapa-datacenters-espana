@@ -70,7 +70,12 @@ afecta:
       Define qué significan los MW de conexión que este registro guarda en un campo aparte
       de los MW IT.
     fuentes: [src-boe-rd1183]
-relacionadas: [rdl-7-2026, rdl-18-2026, circular-1-2024-cnmc, prd-centros-datos-sostenibles]
+relacionadas:
+  - rdl-7-2026
+  - rdl-18-2026
+  - circular-1-2024-cnmc
+  - prd-centros-datos-sostenibles
+  - resolucion-acceso-flexible-demanda-2026
 ultima_verificacion: "2026-09-01"
 fuentes:
   - id: src-boe-rd1183

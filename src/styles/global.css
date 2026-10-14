@@ -309,6 +309,8 @@ hr {
 .estado-norma-en_vigor_en_tramitacion { color: var(--parcial); }
 .estado-norma-aprobada_no_aplicable { color: var(--permisos); }
 .estado-norma-audiencia_publica { color: var(--construccion); }
+.estado-norma-consulta_previa { color: var(--construccion); }
+.estado-norma-adoptada_en_control { color: var(--permisos); }
 .estado-norma-en_tramitacion { color: var(--tramitacion); }
 .estado-norma-propuesta { color: var(--anunciado); }
 .estado-norma-derogada,

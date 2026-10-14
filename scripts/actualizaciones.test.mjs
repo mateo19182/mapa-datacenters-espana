@@ -17,3 +17,10 @@ test('se rechazan novedades sin respaldo, fechas falsas o destinos inexistentes'
   ]) assert.throws(() => prepararActualizaciones([{ ...entrada, ...cambio }], contexto))
   assert.throws(() => prepararActualizaciones([entrada, entrada], contexto), /duplicada/)
 })
+
+test('un inventario sin fecha de hecho conserva solo la fecha de incorporación', () => {
+  const { fecha_hecho, ...sinFecha } = entrada
+  const [salida] = prepararActualizaciones([sinFecha], contexto)
+  assert.equal(salida.fecha, '2026-10-14')
+  assert.equal(salida.fecha_hecho, undefined)
+})

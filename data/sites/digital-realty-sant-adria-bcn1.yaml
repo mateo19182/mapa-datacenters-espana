@@ -24,7 +24,7 @@ estado_detalle: >-
   2023 sobre suelo previamente descontaminado de la antigua fábrica de Henkel.
   Apertura anunciada por la compañía el 18 de mayo de 2026. Conectado a la
   Barcelona Cable Landing Station de Sant Adrià.
-estado_fuentes: [src-1, src-2]
+estado_fuentes: [src-1, src-2, src-5]
 fecha_puesta_en_servicio: "2026-05"
 
 potencia:
@@ -32,14 +32,16 @@ potencia:
     valor_mw: 14
     ambito: edificio
     referencia: "Capacidad total planificada del edificio BCN1"
-    estado_asociado: operativo
+    estado_asociado: anunciado
     fecha_dato: "2026-05-18"
     fuentes: [src-2, src-5]
     nota: >-
       Las fuentes hablan de "14 MW of total planned capacity" / "una capacidad de
       14 MW" sin precisar si son MW TI o potencia instalada. La nota de la propia
       Digital Realty confirma el valor con la misma imprecisión: "with 14 MW of
-      total planned capacity".
+      total planned capacity". La apertura del edificio no acredita que los 14 MW
+      estén entregados. Se conserva como capacidad prevista, sin cifra operativa
+      desglosada.
   - tipo: no_especificado
     valor_mw: 20
     ambito: edificio
@@ -53,7 +55,7 @@ fases:
   - nombre: "Fase 1"
     estado: operativo
     fecha_puesta_en_servicio: "2026-05"
-    fuentes: [src-2]
+    fuentes: [src-2, src-5]
   - nombre: "Fase 2 (ampliación a 20 MW)"
     estado: anunciado
     fuentes: [src-1]
@@ -86,8 +88,9 @@ incertidumbres:
     descripcion: >-
       Ninguna de las fuentes localizadas especifica si los 14 MW son carga TI,
       potencia de conexión o potencia instalada. No se ha localizado la
-      autorización administrativa de la instalación eléctrica.
-    fuentes: [src-1, src-2]
+      autorización administrativa de la instalación eléctrica. La compañía los
+      llama capacidad total planificada; no se conoce qué parte funcionaba al abrir.
+    fuentes: [src-1, src-2, src-5]
   - campo: fecha_puesta_en_servicio
     descripcion: >-
       En septiembre de 2025 la prensa local anunciaba apertura operativa "a
@@ -96,7 +99,7 @@ incertidumbres:
     fuentes: [src-1, src-2]
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-14"
 
 fuentes:
   - id: src-1
@@ -145,11 +148,10 @@ fuentes:
     editor: "Digital Realty Trust"
     tipo: empresa
     fecha_publicacion: "2026-05-18"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-14"
     cita: >-
-      The new data center, with 14 MW of total planned capacity, is designed to
-      support connectivity with a broad range of network providers ... back-up
-      generators fuelled by HVO100 — a biodiesel of renewable origin
+      today announced the opening of its first data center in Barcelona, BCN1 ...
+      14 MW of total planned capacity
   - id: src-6
     url: "https://www.digitalrealty.com/data-centers/emea/barcelona/bcn1"
     titulo: "BCN1 Data Center | Av. del Maresme, 43"

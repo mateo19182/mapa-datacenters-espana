@@ -13,11 +13,13 @@ export const RANGO_ETIQUETA = {
   reglamento_delegado_ue: 'Reglamento delegado (UE)',
   directiva_ue: 'Directiva (UE)',
   propuesta_reglamento_ue: 'Propuesta de reglamento (UE)',
+  iniciativa_ue: 'Iniciativa normativa de la UE',
   ley: 'Ley',
   real_decreto_ley: 'Real decreto-ley',
   real_decreto: 'Real decreto',
   orden_ministerial: 'Orden ministerial',
   circular: 'Circular',
+  resolucion: 'Resolución',
   proyecto_real_decreto: 'Proyecto de real decreto',
   proyecto_ley: 'Proyecto de ley',
   anteproyecto_ley: 'Anteproyecto de ley',
@@ -31,6 +33,8 @@ export const ESTADO_NORMA_ETIQUETA = {
   en_vigor: 'En vigor',
   en_vigor_en_tramitacion: 'En vigor y en tramitación',
   audiencia_publica: 'En audiencia pública',
+  consulta_previa: 'Consulta previa abierta',
+  adoptada_en_control: 'Adoptada, bajo control institucional',
   en_tramitacion: 'En tramitación',
   propuesta: 'Propuesta',
   aprobada_no_aplicable: 'Aprobada, todavía no aplicable',
@@ -46,6 +50,8 @@ export const ESTADO_NORMA_DESCRIPCION = {
     'Obliga hoy, pero su texto sigue abierto: se tramita como proyecto de ley y las Cortes pueden modificarlo.',
   audiencia_publica:
     'Borrador sometido a alegaciones. No obliga a nadie y su contenido puede cambiar entero.',
+  consulta_previa: 'Consulta sobre una futura iniciativa normativa. Todavía no hay una propuesta articulada ni requisitos aplicables.',
+  adoptada_en_control: 'Acto adoptado por la Comisión Europea, pendiente del control de los colegisladores y de su publicación. No está en vigor.',
   en_tramitacion: 'En curso parlamentario o administrativo, sin aprobar.',
   propuesta: 'Presentada por quien tiene la iniciativa; sin posición de los órganos que la aprueban.',
   aprobada_no_aplicable: 'Aprobada y publicada, pero con la exigibilidad diferida a una fecha posterior.',
@@ -56,7 +62,9 @@ export const ESTADO_NORMA_DESCRIPCION = {
 // Lo que todavía puede cambiar se mira primero. Dentro de cada grupo, la ficha
 // se ordena por la fecha del hito más reciente.
 export const ORDEN_ESTADOS_NORMA = [
+  'consulta_previa',
   'audiencia_publica',
+  'adoptada_en_control',
   'en_tramitacion',
   'propuesta',
   'en_vigor_en_tramitacion',

@@ -41,6 +41,7 @@ enlaces_proyecto:
 
 computo:
   - tipo: cpu_hpc
+    modalidad: instalado
     sistema: "Urederra — partición Skylake"
     modelo: "Intel Xeon Platinum 8160 a 2,10 GHz, 2 por nodo (6.816 núcleos)"
     unidades: 142
@@ -56,6 +57,7 @@ computo:
       La ficha del nodo en la RES da 487 TFlop/s para el conjunto de CPU, coherente con la suma
       de esta partición y la Broadwell.
   - tipo: cpu_hpc
+    modalidad: instalado
     sistema: "Urederra — partición Broadwell"
     modelo: "Intel Xeon E5-2640 v4 a 2,40 GHz, 2 por nodo (740 núcleos)"
     unidades: 37
@@ -69,6 +71,7 @@ computo:
     fuentes: [src-hpc]
     nota: null
   - tipo: gpu
+    modalidad: instalado
     sistema: "Urederra — partición acelerada de IA"
     modelo: "NVIDIA H100 SXM5, 4 por nodo en 4 nodos Intel Sapphire Rapids"
     unidades: 16
@@ -83,6 +86,7 @@ computo:
     fuentes: [src-hpc]
     nota: "1.280 GB de memoria HBM3 y 270.336 núcleos CUDA."
   - tipo: gpu
+    modalidad: instalado
     sistema: "Urederra — partición acelerada de IA"
     modelo: "NVIDIA A100 de 80 GB HBM2e"
     unidades: 2
@@ -97,6 +101,7 @@ computo:
     fuentes: [src-hpc]
     nota: null
   - tipo: gpu
+    modalidad: instalado
     sistema: "Urederra — partición acelerada de IA"
     modelo: "NVIDIA V100 SXM2, en un nodo IBM Power9"
     unidades: 2

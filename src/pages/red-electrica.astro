@@ -28,9 +28,12 @@ const porCcaa = comunidades.map((ccaa) => {
   }
 })
 const conConexion = sitios.filter((s) => s.conexion_electrica?.subestacion)
+const subestacionesSituadas = red.filter((s) => s.lat != null && s.lon != null)
+const ambitos = { peninsular: 'Península', baleares: 'Baleares', canarias: 'Canarias', ceuta: 'Ceuta', melilla: 'Melilla' }
 const fechaDato = [...new Set(capacidad.map((n) => n.fecha_publicacion_dato).filter(Boolean))].sort().at(-1)
 const filtros = [
   { clave: 'ccaa', etiqueta: 'Comunidad', todos: 'Todas', opciones: comunidades.map((c) => ({ valor: c, etiqueta: c })) },
+  { clave: 'ambito', etiqueta: 'Territorio eléctrico', todos: 'Todos', opciones: Object.entries(ambitos).filter(([valor]) => nudos.some((n) => n.ambito_electrico === valor)).map(([valor, etiqueta]) => ({ valor, etiqueta })) },
   { clave: 'margen', etiqueta: 'Margen publicado', opciones: [
     { valor: 'con_margen', etiqueta: 'Mayor que cero' }, { valor: 'cero', etiqueta: 'Cero en criterios publicados' }, { valor: 'no_publicado', etiqueta: 'Sin dato publicado' },
   ] },
@@ -52,10 +55,11 @@ const mw = (v) => v == null ? 'No publicado' : `${numero(v)} MW`
     <h1>Red eléctrica</h1>
     <p class="sumario">Capacidad de acceso para demanda en la red de transporte. Filtra por comunidad, tensión y margen publicado.</p>
     <p class="pequeno silencio metadatos">
-      Edición REE: {fechaLegible(fechaDato)} · {numero(nudos.length)} nudos registrados ·{' '}
+      Edición REE: {fechaLegible(fechaDato)} · {numero(nudos.length)} nudos publicados ·{' '}
       <a href="https://www.ree.es/es/clientes/consumidor/acceso-conexion/conoce-la-capacidad-de-acceso" target="_blank" rel="noopener">Fuente oficial</a> · <a href="/datos/capacidad.json" download>Descargar JSON</a>
     </p>
     <p class="nota pequeno">MW de acceso, no MW IT. El margen de distintos nudos <Termino id="zona-capacidad">no se puede sumar</Termino>. Consulta el criterio técnico aplicable a tu consumo.</p>
+    <p class="pequeno silencio">La tabla cubre todos los territorios del CSV. El mapa contiene {subestacionesSituadas.length} subestaciones situadas con fuentes propias. Un nudo sin coordenadas o sin vínculo documentado con una subestación conserva sus datos en esta tabla.</p>
 
     <h2 id="nudos">Consultar nudos</h2>
     <details class="ayuda-criterios"><summary>Cómo leer los tres criterios de capacidad</summary><p class="pequeno silencio">CEP CH: electrónica de potencia con cumplimiento de huecos de tensión. CEP SH: sin cumplimiento. No CEP: consumo sin electrónica de potencia. Orden inicial por el mayor de los tres valores publicados.</p></details>
@@ -65,8 +69,8 @@ const mw = (v) => v == null ? 'No publicado' : `${numero(v)} MW`
           <thead><tr><th>Nudo</th><th>Comunidad</th><th class="num">CEP CH</th><th class="num">CEP SH</th><th class="num">No CEP</th><th class="num">Otorgada</th><th class="num">En curso</th></tr></thead>
           <tbody>
             {[...nudos].sort((a, b) => (b.maximo ?? -1) - (a.maximo ?? -1)).map((n) => (
-              <tr id={`nudo-${n.id}`} data-registro data-list-item data-busca={`${n.nudo} ${n.ccaa ?? ''}`} data-ccaa={n.ccaa ?? ''} data-margen={n.margen} data-tension={String(n.tension_kv ?? '')} data-nombre={n.nudo} data-maximo={n.maximo} data-otorgada={n.otorgada_demanda_rdt_mw} data-solicitada={n.solicitada_en_curso_demanda_rdt_mw}>
-                <td><strong>{n.nudo}</strong><span class="pequeno silencio"><br />{n.tension_kv} kV</span><details class="detalle-nudo"><summary>Limitación</summary><p>{limitante(n)}</p>{n.nudo_de_concurso && <p>Capacidad sujeta a concurso.</p>}</details></td>
+              <tr id={`nudo-${n.id}`} data-registro data-list-item data-busca={`${n.nudo} ${n.ccaa ?? ''} ${ambitos[n.ambito_electrico] ?? ''}`} data-ccaa={n.ccaa ?? ''} data-ambito={n.ambito_electrico ?? ''} data-margen={n.margen} data-tension={String(n.tension_kv ?? '')} data-nombre={n.nudo} data-maximo={n.maximo} data-otorgada={n.otorgada_demanda_rdt_mw} data-solicitada={n.solicitada_en_curso_demanda_rdt_mw}>
+                <td><strong>{n.nudo}</strong><span class="pequeno silencio"><br />{n.tension_kv} kV · {ambitos[n.ambito_electrico] ?? 'Territorio sin clasificar'}</span><details class="detalle-nudo"><summary>Limitación y procedencia</summary><p>{limitante(n)}</p>{n.nudo_de_concurso && <p>Capacidad sujeta a concurso.</p>}{n.ambito_electrico === 'canarias' && !n.sistema_electrico && <p>Territorio canario; el sistema insular concreto no está documentado en esta ficha.</p>}<p>{n.subestacion_id ? `Vínculo documentado: ${n.subestacion_id}.` : 'Sin vínculo documentado con una subestación del mapa.'}</p><p>Código REE: {n.codigo_subestacion_ree}. Fila lógica {n.fila_csv_ree} del CSV original.</p></details></td>
                 <td class="pequeno" data-etiqueta="Comunidad">{n.ccaa ?? 'No publicada'}</td>
                 <td class="num" data-etiqueta="CEP CH">{mw(n.disponible_criterio_general_demanda_mw?.cep_ch)}</td>
                 <td class="num" data-etiqueta="CEP SH">{mw(n.disponible_criterio_general_demanda_mw?.cep_sh)}</td>

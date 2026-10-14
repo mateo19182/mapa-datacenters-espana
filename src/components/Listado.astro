@@ -1,7 +1,8 @@
 ---
-const { id = 'listado', nombre = 'resultados', filtros = [], ordenes = [], porPagina = 0, mapa = false, placeholder = null } = Astro.props
+import { ETAPAS_CAPACIDAD } from '../lib/capacidad.js'
+const { id = 'listado', nombre = 'resultados', filtros = [], ordenes = [], porPagina = 0, mapa = false, placeholder = null, remoto = null } = Astro.props
 ---
-<section id={id} class="listado" data-listado data-nombre={nombre} data-por-pagina={porPagina} data-mapa={mapa ? 'si' : undefined}>
+<section id={id} class="listado" data-listado data-nombre={nombre} data-por-pagina={porPagina} data-mapa={mapa ? 'si' : undefined} data-remoto={remoto ? JSON.stringify(remoto) : undefined}>
   <form class="herramientas" data-herramientas hidden role="search" aria-label={`Buscar ${nombre}`}>
     <label class="busqueda">Buscar
       <input type="search" name="q" placeholder={placeholder ?? `Buscar ${nombre}…`} autocomplete="off" />
@@ -14,17 +15,19 @@ const { id = 'listado', nombre = 'resultados', filtros = [], ordenes = [], porPa
         </select>
       </label>
     ))}
+    {mapa && <label>Etapa de la capacidad<select name="etapa">{Object.entries(ETAPAS_CAPACIDAD).map(([valor, etiqueta]) => <option value={valor}>{etiqueta}</option>)}</select></label>}
     {ordenes.length > 0 && <label>Ordenar
       <select name="orden" data-orden>
         {ordenes.map((o) => <option value={o.valor} data-campo={o.campo ?? o.valor} data-numerico={o.numerico ? 'si' : 'no'} data-direccion={o.direccion ?? 'asc'}>{o.etiqueta}</option>)}
       </select>
     </label>}
     <button type="reset" class="restablecer">Limpiar</button>
-    {mapa && <details class="avanzados"><summary>Más filtros</summary><div class="campos-avanzados">
+    {remoto && <button type="button" data-imprimir>Imprimir resultados</button>}
+    {(mapa || filtros.some((f) => f.avanzado)) && <details class="avanzados"><summary>Más filtros</summary><div class="campos-avanzados">
       {filtros.filter((f) => f.avanzado).map((f) => <label>{f.etiqueta}<select name={f.nombre} data-filtro data-parametro={f.parametro}><option value="">{f.todos ?? 'Todos'}</option>{f.opciones.map((o) => <option value={o.valor}>{o.etiqueta}</option>)}</select></label>)}
-      <label>Magnitud<select name="m"><option value="mw_it">MW IT</option><option value="mw_conexion">MW conexión</option><option value="mw_sin_tipo">MW sin tipificar</option></select></label>
+      {mapa && <><label>Magnitud<select name="m"><option value="mw_it">MW IT</option><option value="mw_conexion">MW conexión</option><option value="mw_sin_tipo">MW sin tipificar</option></select></label>
       <label>Mínimo de MW<input name="min" type="number" min="0" step="any" placeholder="Sin mínimo" /></label>
-      <label class="con-dato"><input type="checkbox" name="con" />Solo con potencia publicada</label>
+      <label class="con-dato"><input type="checkbox" name="con" />Solo con potencia publicada</label></>}
     </div></details>}
 
   </form>
@@ -42,7 +45,7 @@ const { id = 'listado', nombre = 'resultados', filtros = [], ordenes = [], porPa
       </select>
     </label>
   </nav>}
-  <noscript><p class="pequeno silencio">Se muestra el listado completo. Activa JavaScript para buscar, ordenar y paginar.</p></noscript>
+  <noscript><p class="pequeno silencio">{remoto ? 'Recorre las páginas para consultar todas las entradas. Activa JavaScript para buscar y ordenar el conjunto.' : 'Se muestra el listado completo. Activa JavaScript para buscar, ordenar y paginar.'}</p></noscript>
 </section>
 
 <script>

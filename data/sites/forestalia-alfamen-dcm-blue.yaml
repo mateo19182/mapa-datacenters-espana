@@ -44,39 +44,46 @@ potencia:
     valor_mw: 146.5
     ambito: campus
     referencia: "Potencia para el suministro de energía desde la red de transporte concedida por REE en el nudo Los Vientos 220 kV"
-    estado_asociado: anunciado
+    estado_asociado: cancelado
     fecha_dato: "2025-11-12"
-    fuentes: [src-1]
+    fuentes: [src-1, src-5, src-8, src-10]
     nota: >-
       El acuerdo describe la suma de las tres potencias (70 + 81 + 146,5 = 297,5 MW) como
       "demanda IT suministrada por la red de transporte", pero se trata de la potencia
-      concedida por REE en el punto de conexión.
+      concedida por REE en el punto de conexión. Lectura histórica del anuncio de 2025:
+      los derechos de Los Vientos se vendieron a MERLIN y se integran en Zaragoza-WIND.
+      Este proyecto cancelado no aporta capacidad prevista adicional.
   - tipo: it
     valor_mw: 450
     ambito: campus
     referencia: "Consumo eléctrico final previsto con escalabilidad"
-    estado_asociado: anunciado
+    estado_asociado: cancelado
     fecha_dato: "2025-11-12"
-    fuentes: [src-1, src-4]
+    fuentes: [src-1, src-4, src-5, src-8, src-10]
     nota: >-
       "se plantea una situación final de consumo eléctrico para los tres centros de datos
       con una escalabilidad hasta 450 MW IT para el \"DCM Blue\"". Requiere sobredimensionar
-      la generación renovable asociada.
+      la generación renovable asociada. Objetivo histórico del proyecto original, superado
+      por la venta de los derechos de acceso a MERLIN. No es una previsión vigente de Alfamén.
 
 fases:
   - nombre: "Fase 1"
-    estado: anunciado
+    estado: cancelado
     fecha_puesta_en_servicio: "2028"
-    fuentes: [src-1]
+    fuentes: [src-1, src-5, src-8, src-10]
     nota: >-
       Urbanización y construcción del centro de datos, con demanda garantizada por la red de
       transporte y 146.5 MW de generación renovable eólica y fotovoltaica asociada en
-      régimen de autoconsumo con excedentes.
+      régimen de autoconsumo con excedentes. El año 2028 es el calendario original de 2025,
+      retirado para este emplazamiento tras la venta de los derechos a MERLIN.
   - nombre: "Fase 2"
-    estado: anunciado
+    estado: cancelado
     fecha_puesta_en_servicio: "2029"
-    fuentes: [src-1]
-    nota: "Ampliación de la generación renovable asociada e integración de almacenamiento."
+    fuentes: [src-1, src-5, src-8, src-10]
+    nota: >-
+      Ampliación de la generación renovable asociada e integración de almacenamiento.
+      El año 2029 es el calendario original de 2025; no es una apertura prevista vigente
+      del proyecto cancelado tras la venta de los derechos a MERLIN.
 
 conexion_electrica:
   subestacion: "SE Los Vientos 220 kV (Red Eléctrica de España)"

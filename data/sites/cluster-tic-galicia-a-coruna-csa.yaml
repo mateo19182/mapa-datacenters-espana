@@ -21,7 +21,7 @@ ubicacion:
   lon: -8.3948295
   precision: aproximada
   no_derivar: true
-  fuentes: [src-servicios, src-cidade, src-osm]
+  fuentes: [ src-servicios, src-cidade, src-osm ]
 
 estado: operativo
 estado_detalle: >-
@@ -35,7 +35,7 @@ estado_detalle: >-
   también acceso a NVIDIA A40 de 48 GB y H200 de 141 GB, sin recuento de GPU. El catálogo técnico
   enlazado desde la web del CSA sí documenta servidores A40 en la instalación; no se ha confirmado
   el despliegue físico de las H200. Es un emplazamiento distinto del CITIC del Campus de Elviña.
-estado_fuentes: [src-servicios, src-dosier, src-servicios-csa, src-catalogo]
+estado_fuentes: [ src-servicios, src-dosier, src-servicios-csa, src-catalogo ]
 
 potencia: []
 
@@ -48,12 +48,13 @@ computo:
     tipo_unidad: acelerador
     estado: operativo
     fecha_dato: "2026"
-    fuentes: [src-dosier]
+    fuentes: [ src-dosier ]
     nota: >-
       Recuento explícito del dosier de servicios, página 3. La nota del 5 de junio dice más de 15
       L4. Se conserva esa discrepancia en incertidumbres y no se deduce un total de 16 ni una
       ampliación entre documentos. Las A40 y H200 anunciadas como acceso disponible no se suman a
       este inventario.
+    modalidad: instalado
   - tipo: gpu
     ambito: particion
     sistema: CPD-CSA, servidores L4 IA del catálogo técnico
@@ -66,6 +67,7 @@ computo:
     nota: "El catálogo sin fecha publica seis servidores AMD EPYC Genoa 9534 y una máquina virtual
       máxima de tres GPU por servidor. No se calcula un total de tarjetas ni se suma este inventario
       al dosier de 2026: no consta que sean inventarios independientes."
+    modalidad: instalado
   - tipo: gpu
     ambito: particion
     sistema: CPD-CSA, servidores L4 MEDIA del catálogo técnico
@@ -78,6 +80,7 @@ computo:
     nota: Cinco servidores PowerEdge R7525 con AMD 7763; el catálogo describe una máquina virtual máxima
       de tres GPU. No se multiplica el número de servidores por esa configuración ni se suma al
       recuento de 15 L4 del dosier.
+    modalidad: instalado
   - tipo: gpu
     ambito: particion
     sistema: CPD-CSA, servidores A40 IA del catálogo técnico
@@ -89,6 +92,20 @@ computo:
     nota: El catálogo técnico documenta servidores A40 en el CPD. Su tabla tarifaria dice tres
       servidores y la ficha técnica dice dos; cada máquina virtual máxima dispone de tres GPU. Se
       omiten el número de nodos y el total de tarjetas hasta resolver la contradicción.
+    modalidad: instalado
+  - tipo: gpu
+    ambito: particion
+    sistema: Acceso a NVIDIA H200 anunciado por el CPD-CSA
+    modelo: NVIDIA H200 de 141 GB
+    tipo_unidad: acelerador
+    estado: operativo
+    modalidad: acceso
+    fecha_dato: 2026-06-05
+    fuentes:
+      - src-servicios
+    nota: El Clúster anuncia acceso mediante su servicio. No publica cantidad, servidor ni prueba de
+      alojamiento físico de las H200 en el CSA; esta entrada no forma parte del inventario de GPU
+      instaladas.
 
 enlaces_proyecto:
   - "https://csa.mspfactory.com/"
@@ -99,7 +116,7 @@ incertidumbres:
       El dosier de 2026 publica exactamente 15 L4; la nota de lanzamiento del 5 de junio publica más
       de 15. No consta un inventario posterior que resuelva la diferencia. El recuento estructurado
       reproduce solo el dosier, con su fuente.
-    fuentes: [src-dosier, src-servicios]
+    fuentes: [ src-dosier, src-servicios ]
   - campo: computo
     descripcion: >-
       El catálogo técnico confirma servidores A40, pero discrepa en su número: tres en tarifas y dos
@@ -123,7 +140,7 @@ incertidumbres:
     descripcion: >-
       Las fuentes consultadas no publican carga IT ni potencia de conexión del CPD. No se deducen a
       partir del número o modelo de GPU.
-    fuentes: [src-servicios, src-dosier]
+    fuentes: [ src-servicios, src-dosier ]
   - campo: estado_detalle
     descripcion: El dosier de 2026 indica ausencia de servicio 24x7 y de fines de semana. El catálogo
       sin fecha describe reservas especiales fuera de horario y sin SLA. Se conserva la diferencia

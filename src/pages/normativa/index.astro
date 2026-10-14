@@ -9,7 +9,7 @@ import ExploradorEnergia from '../../components/ExploradorEnergia.astro'
 
 const hoy = new Date().toISOString().slice(0, 10)
 const normas = ordenarNormas(normativa)
-const abiertas = ['audiencia_publica', 'en_tramitacion', 'propuesta', 'en_vigor_en_tramitacion']
+const abiertas = ['consulta_previa', 'audiencia_publica', 'adoptada_en_control', 'en_tramitacion', 'propuesta', 'en_vigor_en_tramitacion']
 const enMovimiento = normas.filter((n) => abiertas.includes(n.estado))
 const calendario = normas.flatMap((n) => (n.hitos ?? []).filter((h) => h.fecha > hoy).map((h) => ({ ...h, norma: n }))).sort((a, b) => a.fecha.localeCompare(b.fecha))
 const primero = (texto) => texto?.split(/(?<=[.!?])\s+/)[0] ?? ''
@@ -40,7 +40,7 @@ const ordenes = [
           <h3><a href={`/normativa/${n.id}`}>{tituloNorma(n)}</a></h3>
           <p class="pequeno"><Glosa texto={primero(n.resumen)} /></p>
           {ultimo && <p class="pequeno novedad"><time datetime={ultimo.fecha}>{fechaLegible(ultimo.fecha)}</time> · {ultimo.hito}</p>}
-          <p class="pequeno silencio aplicacion">{n.estado === 'en_vigor_en_tramitacion' ? 'Está en vigor; su texto sigue abierto a cambios.' : 'Sin aprobar. Sus requisitos propuestos no están en vigor.'}</p>
+          <p class="pequeno silencio aplicacion">{n.estado === 'en_vigor_en_tramitacion' ? 'Está en vigor; su texto sigue abierto a cambios.' : n.estado === 'adoptada_en_control' ? 'Adoptada por la Comisión. Bajo control de Parlamento y Consejo; todavía no está en vigor.' : n.estado === 'consulta_previa' ? 'Consulta sobre una futura iniciativa. Todavía no hay requisitos aplicables.' : 'Sin aprobar. Sus requisitos propuestos no están en vigor.'}</p>
           <p class="pequeno silencio verificacion">Verificada el {fechaLegible(n.ultima_verificacion)}</p>
         </article>
       })}
@@ -76,6 +76,7 @@ const ordenes = [
   .novedad { border-top: 1px solid var(--borde); padding-top: 0.6rem; }
   .novedad time { font-weight: 600; }
   .aplicacion { color: var(--aviso); }
+  .tabla-fichas .etiqueta { white-space: normal; }
   .bloque { margin: 0.8rem 0; border-top: 1px solid var(--borde); padding: 1rem 0; }
   .bloque:last-child { margin-bottom: 3rem; }
   .bloque summary { cursor: pointer; font-family: var(--serif); font-size: 1.1rem; }

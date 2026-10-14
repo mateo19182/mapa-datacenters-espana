@@ -18,15 +18,15 @@ ubicacion:
   lat: 42.7268
   lon: -2.9175
   precision: aproximada
-  fuentes: [src-2, src-3]
+  fuentes: [ src-2, src-3 ]
 
 estado: parcialmente_operativo
 estado_detalle: >-
-  Primer edificio (DC3 / BIL03) inaugurado el 3 de diciembre de 2024. El campus
-  se compone de tres edificios de centro de datos y uno administrativo. En agosto
-  de 2026 el operador inició la tramitación del permiso ambiental de un cuarto y
-  un quinto edificio, con entrada en operación prevista para 2030 y 2031.
-estado_fuentes: [src-1, src-2, src-4, src-5]
+  Primer edificio (DC3 / BIL03) inaugurado el 3 de diciembre de 2024. El campus se compone de tres
+  edificios de centro de datos y uno administrativo. En agosto de 2026 el operador inició la
+  tramitación del permiso ambiental de un cuarto y un quinto edificio, con entrada en operación
+  prevista para 2030 y 2031.
+estado_fuentes: [ src-1, src-2, src-4, src-5 ]
 fecha_puesta_en_servicio: "2024-12"
 
 potencia:
@@ -36,7 +36,7 @@ potencia:
     referencia: "Capacidad potencial del campus una vez completado"
     estado_asociado: anunciado
     fecha_dato: "2024-12-03"
-    fuentes: [src-1, src-4]
+    fuentes: [ src-1, src-4 ]
     nota: "La nota de prensa de MERLIN dice literalmente '300 MW IT'."
   - tipo: it
     valor_mw: 118
@@ -44,28 +44,31 @@ potencia:
     referencia: "'118 MW of critical capacity' del campus según la ficha comercial de Edged"
     estado_asociado: en_construccion
     fecha_dato: "2026-08-29"
-    fuentes: [src-3, src-6]
+    fuentes: [ src-3, src-6 ]
     nota: >-
-      La ficha de Edged habla de 'critical capacity'. Crónica Vasca (enero de 2026)
-      atribuye los 118 MW a la suma de las fases 1 y 2, no al campus final.
+      La ficha de Edged habla de 'critical capacity'. Crónica Vasca (enero de 2026) atribuye los 118
+      MW a la suma de las fases 1 y 2, no al campus final.
   - tipo: it
     valor_mw: 48
     ambito: edificio
     referencia: "BIL01 (build-to-suit)"
     fecha_dato: "2026-08-29"
-    fuentes: [src-3]
+    fuentes: [ src-3 ]
+    estado_asociado: en_construccion
   - tipo: it
     valor_mw: 48
     ambito: edificio
     referencia: "BIL02 (build-to-suit)"
     fecha_dato: "2026-08-29"
-    fuentes: [src-3]
+    fuentes: [ src-3 ]
+    estado_asociado: en_construccion
   - tipo: it
     valor_mw: 22
     ambito: edificio
     referencia: "BIL03"
     fecha_dato: "2026-08-29"
-    fuentes: [src-3]
+    fuentes: [ src-3 ]
+    estado_asociado: operativo
   - tipo: it
     valor_mw: 80
     ambito: edificio
@@ -73,7 +76,7 @@ potencia:
     referencia: "Cuarto edificio, orientado a cargas de IA"
     estado_asociado: en_tramitacion
     fecha_dato: "2026-08-17"
-    fuentes: [src-8, src-9]
+    fuentes: [ src-8, src-9 ]
     nota: "Entrada en servicio prevista en el primer semestre de 2030."
   - tipo: it
     valor_mw: 70
@@ -82,7 +85,7 @@ potencia:
     referencia: "Quinto edificio, orientado a cargas de IA"
     estado_asociado: en_tramitacion
     fecha_dato: "2026-08-17"
-    fuentes: [src-8, src-9]
+    fuentes: [ src-8, src-9 ]
     nota: "Entrada en servicio prevista en el primer semestre de 2031."
   - tipo: it
     valor_mw: 12
@@ -91,68 +94,66 @@ potencia:
     referencia: "Repotenciación del edificio 1 prevista para principios de 2029"
     estado_asociado: anunciado
     fecha_dato: "2026-04-29"
-    fuentes: [src-8]
+    fuentes: [ src-8 ]
     nota: >-
-      Incremento de capacidad sobre un edificio ya proyectado, no un edificio nuevo.
-      No se suma a los 48 MW atribuidos a BIL01 por la ficha comercial de Edged
-      porque no consta que ambas cifras se refieran a la misma unidad ni al mismo
-      momento.
+      Incremento de capacidad sobre un edificio ya proyectado, no un edificio nuevo. No se suma a
+      los 48 MW atribuidos a BIL01 por la ficha comercial de Edged porque no consta que ambas cifras
+      se refieran a la misma unidad ni al mismo momento.
   - tipo: no_especificado
     valor_mw: 100
     ambito: campus
     referencia: "Capacidad final del campus según el proyecto presentado en la primera piedra (2022)"
     estado_asociado: anunciado
     fecha_dato: "2022-07-11"
-    fuentes: [src-7]
+    fuentes: [ src-7 ]
     nota: >-
-      Dato histórico, superado por el anuncio de 300 MW IT de diciembre de 2024. La
-      fuente de 2022 hablaba de un suministro inicial de 3 MW y de 22 MW al terminar
-      el primer edificio.
+      Dato histórico, superado por el anuncio de 300 MW IT de diciembre de 2024. La fuente de 2022
+      hablaba de un suministro inicial de 3 MW y de 22 MW al terminar el primer edificio.
 
 fases:
   - nombre: "Fase 1 — edificio DC3 / BIL03"
     estado: operativo
     fecha_puesta_en_servicio: "2024-12"
     superficie_m2: 24000
-    fuentes: [src-1, src-4]
+    fuentes: [ src-1, src-4 ]
   - nombre: "Fase 2 — dos edificios adicionales (BIL01 y BIL02)"
     estado: en_construccion
-    fuentes: [src-1, src-5]
+    fuentes: [ src-1, src-5 ]
   - nombre: "Fase 3 — tres edificios más"
     estado: anunciado
-    fuentes: [src-1]
+    fuentes: [ src-1 ]
   - nombre: "Edificio 4 — BIO-ARA 04 (80 MW IT)"
     estado: en_tramitacion
     fecha_puesta_en_servicio: "2030"
-    fuentes: [src-5, src-8, src-9]
+    fuentes: [ src-5, src-8, src-9 ]
   - nombre: "Edificio 5 — BIO-ARA 05 (70 MW IT)"
     estado: en_tramitacion
     fecha_puesta_en_servicio: "2031"
-    fuentes: [src-5, src-8, src-9]
+    fuentes: [ src-5, src-8, src-9 ]
 
 superficie_parcela_m2: 150000
 inversion_anunciada_eur: 1700000000
 refrigeracion: >-
-  Sistema sin consumo de agua ('Advanced Waterless Cooling System', WUE
-  0,00 l/kWh según Edged); PUE garantizado de 1,15. Los edificios 4 y 5 se proyectan
-  con los mismos objetivos: PUE de hasta 1,15 y WUE de 0,0.
+  Sistema sin consumo de agua ('Advanced Waterless Cooling System', WUE 0,00 l/kWh según Edged); PUE
+  garantizado de 1,15. Los edificios 4 y 5 se proyectan con los mismos objetivos: PUE de hasta 1,15
+  y WUE de 0,0.
 
 agua:
   circuito: sin_agua
   sistema: >-
-    Advanced Waterless Cooling System de Edged (ThermalWorks): transferencia de calor
-    por glicol con enfriadoras de aire en cubierta y evaporadores de circuito cerrado
-    como refrigeración secundaria, con capacidad de 500 kW por pasillo caliente y
-    redundancia N+1. Refrigeración sin consumo de agua según el operador.
+    Advanced Waterless Cooling System de Edged (ThermalWorks): transferencia de calor por glicol con
+    enfriadoras de aire en cubierta y evaporadores de circuito cerrado como refrigeración
+    secundaria, con capacidad de 500 kW por pasillo caliente y redundancia N+1. Refrigeración sin
+    consumo de agua según el operador.
   origen: null
   nota: >-
-    La ficha de Edged declara «Water Usage Effectiveness (WUE) 0.00 liters/kWh of
-    cooling» y MERLIN, un WUE de 0,0 l/kWh, es decir, refrigeración sin consumo
-    de agua. No se registra en el campo numérico porque ninguna fuente publica una
-    medición, solo un objetivo de diseño. La declaración procede del operador (ficha comercial de Edged y
-    planificación presentada por MERLIN a sus inversores), no de una autorización
-    ambiental. La documentación del expediente AAI00498 no se ha podido consultar.
-  fuentes: [src-3, src-8, src-9]
+    La ficha de Edged declara «Water Usage Effectiveness (WUE) 0.00 liters/kWh of cooling» y MERLIN,
+    un WUE de 0,0 l/kWh, es decir, refrigeración sin consumo de agua. No se registra en el campo
+    numérico porque ninguna fuente publica una medición, solo un objetivo de diseño. La declaración
+    procede del operador (ficha comercial de Edged y planificación presentada por MERLIN a sus
+    inversores), no de una autorización ambiental. La documentación del expediente AAI00498 no se ha
+    podido consultar.
+  fuentes: [ src-3, src-8, src-9 ]
 
 conexion_electrica:
   subestacion: null
@@ -161,66 +162,75 @@ conexion_electrica:
   mw_solicitados: null
   mw_concedidos: null
   nota: >-
-    MERLIN declara en su Capital Markets Day de 2026 que la fase III de Arasur cuenta
-    con «la potencia eléctrica totalmente concedida (Granted)», pero no publica ni el
-    nudo, ni la tensión, ni los MW del permiso de acceso. No se ha localizado la
-    resolución de acceso y conexión.
-  fuentes: [src-8]
+    MERLIN declara en su Capital Markets Day de 2026 que la fase III de Arasur cuenta con «la
+    potencia eléctrica totalmente concedida (Granted)», pero no publica ni el nudo, ni la tensión,
+    ni los MW del permiso de acceso. No se ha localizado la resolución de acceso y conexión.
+  fuentes: [ src-8 ]
 
 empleo:
   - tipo: directo
     valor: 480
     referencia: "Operación de los edificios 4 y 5, a tres turnos de unas 80 personas cada uno"
     fecha_dato: "2026-08-17"
-    fuentes: [src-5, src-9]
+    fuentes: [ src-5, src-9 ]
     nota: >-
-      Cifra tomada de la documentación presentada para la autorización ambiental,
-      según Crónica Vasca y DataCenterDynamics. No cubre los edificios 1, 2 y 3.
+      Cifra tomada de la documentación presentada para la autorización ambiental, según Crónica
+      Vasca y DataCenterDynamics. No cubre los edificios 1, 2 y 3.
 
 enlaces_proyecto:
   - "https://www.merlinproperties.com/activos/data-center-bilbao-arasur/"
   - "https://www.edged.es/bilbao-arasur"
-  - "https://www.euskadi.eus/anuncio-administrativo/aai00498_anuncio-del-director-administracion-ambiental-que-se-somete-informacion-publica-proyecto-tecnico-y-estudio-impacto-ambiental-presentado-empresa-merlin-edged-s-l-actividad-centro-procesamiento-datos-termino-municipal-ribabellosa-ribera-baja-alava/web01-tramite/es/"
+  - "https://www.euskadi.eus/anuncio-administrativo/aai00498_anuncio-del-director-administracion-am\
+    biental-que-se-somete-informacion-publica-proyecto-tecnico-y-estudio-impacto-ambiental-presenta\
+    do-empresa-merlin-edged-s-l-actividad-centro-procesamiento-datos-termino-municipal-ribabellosa-\
+    ribera-baja-alava/web01-tramite/es/"
 
 incertidumbres:
   - campo: potencia
     descripcion: >-
-      Conviven tres cifras: 300 MW IT como capacidad potencial del campus completo
-      (MERLIN, 2024), 118 MW de 'critical capacity' en la ficha comercial de Edged
-      para los tres edificios actuales, y '300 MW de capacidad repartidos en media
-      docena de edificios' en prensa de agosto de 2026, además de los 100 MW del
-      proyecto original de 2022. No se suman entre sí. A ello se añade que Material
-      Eléctrico, glosando el Capital Markets Day de 2026, eleva el campus «hasta los
-      350 MW» si se ejecuta un hipotético sexto edificio (BIO-ARA 06) de otros 70 MW,
-      que no se registra por ser una opción y no un proyecto en tramitación. La propia
-      ficha comercial de Edged muestra a agosto de 2026 dos rótulos contradictorios en
-      la misma página: «118 MW Campus Capacity» y «100 MW Campus Capacity».
-    fuentes: [src-1, src-3, src-5, src-6, src-7, src-8]
+      Conviven tres cifras: 300 MW IT como capacidad potencial del campus completo (MERLIN, 2024),
+      118 MW de 'critical capacity' en la ficha comercial de Edged para los tres edificios actuales,
+      y '300 MW de capacidad repartidos en media docena de edificios' en prensa de agosto de 2026,
+      además de los 100 MW del proyecto original de 2022. No se suman entre sí. A ello se añade que
+      Material Eléctrico, glosando el Capital Markets Day de 2026, eleva el campus «hasta los 350
+      MW» si se ejecuta un hipotético sexto edificio (BIO-ARA 06) de otros 70 MW, que no se registra
+      por ser una opción y no un proyecto en tramitación. La propia ficha comercial de Edged muestra
+      a agosto de 2026 dos rótulos contradictorios en la misma página: «118 MW Campus Capacity» y
+      «100 MW Campus Capacity».
+    fuentes: [ src-1, src-3, src-5, src-6, src-7, src-8 ]
   - campo: potencia
     descripcion: >-
-      Los edificios nuevos se nombran BIO-ARA 04 y BIO-ARA 05 en la documentación de
-      inversores, mientras la ficha comercial de Edged nombra BIL01, BIL02 y BIL03 a
-      los tres primeros. No se ha podido confirmar si «BIO-ARA 01» y «BIL01» son la
-      misma unidad, de modo que los 12 MW de repotenciación y los 48 MW de BIL01 no
-      se suman ni se tratan como lecturas rivales del mismo edificio.
-    fuentes: [src-3, src-8]
+      Los edificios nuevos se nombran BIO-ARA 04 y BIO-ARA 05 en la documentación de inversores,
+      mientras la ficha comercial de Edged nombra BIL01, BIL02 y BIL03 a los tres primeros. No se ha
+      podido confirmar si «BIO-ARA 01» y «BIL01» son la misma unidad, de modo que los 12 MW de
+      repotenciación y los 48 MW de BIL01 no se suman ni se tratan como lecturas rivales del mismo
+      edificio.
+    fuentes: [ src-3, src-8 ]
   - campo: inversion_anunciada_eur
     descripcion: >-
-      Los 1.700 M€ citados por Crónica Vasca corresponden solo a los edificios 4 y 5,
-      no al conjunto del campus.
-    fuentes: [src-5]
+      Los 1.700 M€ citados por Crónica Vasca corresponden solo a los edificios 4 y 5, no al conjunto
+      del campus.
+    fuentes: [ src-5 ]
   - campo: estado
     descripcion: >-
-      La prensa de agosto de 2026 indica que MERLIN descarta destinar el campus a una
-      de las gigafactorías europeas de IA, opción que se había planteado en enero de 2026.
-    fuentes: [src-5]
+      La prensa de agosto de 2026 indica que MERLIN descarta destinar el campus a una de las
+      gigafactorías europeas de IA, opción que se había planteado en enero de 2026.
+    fuentes: [ src-5 ]
+  - campo: potencia
+    descripcion: La página de Edged consultada el 14 de octubre de 2026 contiene simultáneamente 118 MW
+      y 100 MW como capacidad del campus, y dos fichas distintas de BIL01. Son bloques comerciales
+      inconsistentes. Se conserva el desglose anterior con sus fuentes; no se deduce capacidad
+      adicional ni entregada de esa duplicación.
+    fuentes:
+      - src-3
 
 confianza: alta
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-14"
 
 fuentes:
   - id: src-1
-    url: "https://www.merlinproperties.com/en/press/merlin-properties-inaugura-el-primer-edificio-del-bilbao-arasur-data-center-campus/"
+    url: "https://www.merlinproperties.com/en/press/merlin-properties-inaugura-el-primer-edificio-del-b\
+      ilbao-arasur-data-center-campus/"
     titulo: "MERLIN Properties inaugura el primer edificio del Bilbao-Arasur Data Center Campus"
     editor: "MERLIN Properties SOCIMI"
     tipo: empresa
@@ -233,20 +243,20 @@ fuentes:
     editor: "MERLIN Properties SOCIMI"
     tipo: empresa
     fecha_consulta: "2026-08-29"
-    cita: "Supermanzana 6, Plataforma Logística Arasur Avenida Ribera Baja S/N, 01213 Rivabellosa, Álava, España"
+    cita: "Supermanzana 6, Plataforma Logística Arasur Avenida Ribera Baja S/N, 01213 Rivabellosa,
+      Álava, España"
   - id: src-3
     url: "https://www.edged.es/bilbao-arasur"
     titulo: "Edged Spain | Bilbao-Arasur"
     editor: "Edged Energy"
     tipo: empresa
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-14"
     cita: >-
-      118 MW of critical capacity at the Arasur industrial/logistics hub South of
-      Bilbao, providing sustainable EV charging and IT infrastructure. - BIL03: 22 MW
-      - BIL02: 48 MW (BTS) - BIL01: 48 MW (BTS) [...] Adjacent to a planned 135 MW
-      solar farm [...] Advanced Waterless Cooling System - Water Usage Effectiveness
-      (WUE) 0.00 liters/kWh of cooling - N+1 redundancy - Glycol heat transfer with
-      rooftop air cooled chillers - Closed loop evaporators provide secondary cooling
+      118 MW of critical capacity at the Arasur industrial/logistics hub South of Bilbao, providing
+      sustainable EV charging and IT infrastructure. - BIL03: 22 MW - BIL02: 48 MW (BTS) - BIL01: 48
+      MW (BTS) [...] Adjacent to a planned 135 MW solar farm [...] Advanced Waterless Cooling System
+      - Water Usage Effectiveness (WUE) 0.00 liters/kWh of cooling - N+1 redundancy - Glycol heat
+      transfer with rooftop air cooled chillers - Closed loop evaporators provide secondary cooling
       - 500 kW capacity per hot aisle (modular)
   - id: src-4
     url: "https://www.krean.com/en/news/inauguration-first-merlin-edged-data-centre-arasur-araba"
@@ -257,7 +267,8 @@ fuentes:
     fecha_consulta: "2026-08-29"
     cita: "plot of land of more than 150,000 m2 in the Arasur Logistics Platform (Rivabellosa, Araba)"
   - id: src-5
-    url: "https://cronicavasca.elespanol.com/empresas/20260817/merlin-creara-empleos-nuevos-centros-datos-arasur/1003742781961_0.html"
+    url: "https://cronicavasca.elespanol.com/empresas/20260817/merlin-creara-empleos-nuevos-centros-dat\
+      os-arasur/1003742781961_0.html"
     titulo: "Merlin creará casi 500 empleos en sus dos nuevos centros de datos de Arasur"
     editor: "Crónica Vasca (El Español)"
     tipo: prensa_general
@@ -265,7 +276,8 @@ fuentes:
     fecha_consulta: "2026-08-29"
     cita: "Merlin acaba de iniciar la tramitación del permiso ambiental de estos dos nuevos edificios"
   - id: src-6
-    url: "https://cronicavasca.elespanol.com/empresas/20260110/euskadi-desbancar-aragon-tercera-potencia-nacional-centros/1003742721662_0.html"
+    url: "https://cronicavasca.elespanol.com/empresas/20260110/euskadi-desbancar-aragon-tercera-potenci\
+      a-nacional-centros/1003742721662_0.html"
     titulo: "Euskadi aspira a desbancar a Aragón como tercera potencia nacional en centros de datos"
     editor: "Crónica Vasca (El Español)"
     tipo: prensa_general
@@ -280,48 +292,47 @@ fuentes:
     fecha_publicacion: "2022-07-11"
     fecha_consulta: "2026-08-29"
     cita: >-
-      un centro de datos que tendrá una capacidad de 100 megavatios y que funcionará
-      al 100 % con energía renovable [...] es el de mayor capacidad de los cuatro
-      proyectados por la compañía en España y similar al que construirá en Lisboa
-      [...] En la fase inicial el suministro será de 3 megavatios, con la previsión de
-      que la construcción del primer edificio finalice en el segundo trimestre de
-      2023, lo que elevará la capacidad a 22 megavatios, hasta llegar a los 100
+      un centro de datos que tendrá una capacidad de 100 megavatios y que funcionará al 100 % con
+      energía renovable [...] es el de mayor capacidad de los cuatro proyectados por la compañía en
+      España y similar al que construirá en Lisboa [...] En la fase inicial el suministro será de 3
+      megavatios, con la previsión de que la construcción del primer edificio finalice en el segundo
+      trimestre de 2023, lo que elevará la capacidad a 22 megavatios, hasta llegar a los 100
       megavatios en tres salas de datos y un edificio administrativo.
   - id: src-8
-    url: "https://material-electrico.cdecomunicacion.es/centros-de-datos/204225/merlin-propeties-arasur-dos-nuevos-centros-de-datos"
-    titulo: "Merlin Properties pisa el acelerador en el norte con 150 MW adicionales en Arasur (Álava) para cargas de IA"
+    url: "https://material-electrico.cdecomunicacion.es/centros-de-datos/204225/merlin-propeties-arasur\
+      -dos-nuevos-centros-de-datos"
+    titulo: "Merlin Properties pisa el acelerador en el norte con 150 MW adicionales en Arasur (Álava)
+      para cargas de IA"
     editor: "Material Eléctrico (CdeComunicacion.es)"
     tipo: prensa_especializada
     fecha_publicacion: "2026-04-29"
     fecha_consulta: "2026-08-31"
     cita: >-
-      Según la información presentada por la compañía en su Capital Markets Day 2026,
-      estas nuevas instalaciones aportarán en conjunto cerca de 150 MW de capacidad IT
-      adicional [...] esta nueva fase en Arasur cuenta ya con el suelo en propiedad y,
-      lo más crítico, con la potencia eléctrica totalmente concedida (Granted). Según
-      los datos presentados, el despliegue se divide en dos grandes hitos: el edificio
-      BIO-ARA 04 (80 MW), que entrará en servicio en el primer semestre de 2030, y el
-      BIO-ARA 05 (70 MW), previsto para la primera mitad de 2031. Además, la compañía
-      optimizará las instalaciones actuales con una repotenciación de 12 MW en el
-      edificio BIO-ARA 01, cuya puesta en marcha se espera para principios de 2029
-      [...] el uso de tecnología de refrigeración avanzada con niveles de eficiencia
-      hasta PUE 1.15 y WUE 0.0 [...] el plan contempla un posible sexto edificio
-      (BIO-ARA 06) con otros 70 MW adicionales, elevando la capacidad total del campus
-      de Bilbao hasta los 350 MW
+      Según la información presentada por la compañía en su Capital Markets Day 2026, estas nuevas
+      instalaciones aportarán en conjunto cerca de 150 MW de capacidad IT adicional [...] esta nueva
+      fase en Arasur cuenta ya con el suelo en propiedad y, lo más crítico, con la potencia
+      eléctrica totalmente concedida (Granted). Según los datos presentados, el despliegue se divide
+      en dos grandes hitos: el edificio BIO-ARA 04 (80 MW), que entrará en servicio en el primer
+      semestre de 2030, y el BIO-ARA 05 (70 MW), previsto para la primera mitad de 2031. Además, la
+      compañía optimizará las instalaciones actuales con una repotenciación de 12 MW en el edificio
+      BIO-ARA 01, cuya puesta en marcha se espera para principios de 2029 [...] el uso de tecnología
+      de refrigeración avanzada con niveles de eficiencia hasta PUE 1.15 y WUE 0.0 [...] el plan
+      contempla un posible sexto edificio (BIO-ARA 06) con otros 70 MW adicionales, elevando la
+      capacidad total del campus de Bilbao hasta los 350 MW
   - id: src-9
-    url: "https://www.datacenterdynamics.com/es/noticias/merlin-activa-la-tramitaci%C3%B3n-de-sus-nuevos-data-centers-de-arasur/"
+    url: "https://www.datacenterdynamics.com/es/noticias/merlin-activa-la-tramitaci%C3%B3n-de-sus-nuevo\
+      s-data-centers-de-arasur/"
     titulo: "Merlin activa la tramitación de sus nuevos data centers de Arasur"
     editor: "DataCenterDynamics"
     tipo: prensa_especializada
     fecha_publicacion: "2026-08-17"
     fecha_consulta: "2026-08-31"
     cita: >-
-      Los edificios 4 y 5 aportarán conjuntamente alrededor de 150 MW de capacidad IT.
-      Según la hoja de ruta presentada por Merlin, el primero contará con unos 80 MW y
-      está previsto que entre en operación durante el primer semestre de 2030,
-      mientras que el segundo alcanzará aproximadamente 70 MW y tendría su puesta en
-      servicio durante la primera mitad de 2031 [...] los nuevos edificios incorporan
-      objetivos de eficiencia de hasta un PUE de 1,15 y un WUE de 0.0 [...] cada uno
-      de los dos nuevos edificios funcionará en tres turnos y requerirá alrededor de
-      80 trabajadores por turno. En conjunto, las instalaciones podrían generar unos
-      480 puestos de trabajo vinculados a su operación.
+      Los edificios 4 y 5 aportarán conjuntamente alrededor de 150 MW de capacidad IT. Según la hoja
+      de ruta presentada por Merlin, el primero contará con unos 80 MW y está previsto que entre en
+      operación durante el primer semestre de 2030, mientras que el segundo alcanzará
+      aproximadamente 70 MW y tendría su puesta en servicio durante la primera mitad de 2031 [...]
+      los nuevos edificios incorporan objetivos de eficiencia de hasta un PUE de 1,15 y un WUE de
+      0.0 [...] cada uno de los dos nuevos edificios funcionará en tres turnos y requerirá alrededor
+      de 80 trabajadores por turno. En conjunto, las instalaciones podrían generar unos 480 puestos
+      de trabajo vinculados a su operación.

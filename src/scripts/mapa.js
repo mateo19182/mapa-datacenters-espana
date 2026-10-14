@@ -1,3 +1,4 @@
+import { ETAPAS_CAPACIDAD, campoCapacidad } from '../lib/capacidad.js'
 // MapLibre 5: lleva su worker incorporado en el propio bundle. La rama 6 lo
 // emite como fichero aparte que el empaquetado estático no llega a publicar,
 // y el mapa se queda en blanco en producción.
@@ -91,6 +92,7 @@ const $$ = (sel, raiz = document) => [...raiz.querySelectorAll(sel)]
 
 const estado = {
   metrica: 'mw_it',
+  etapa: 'operativa',
   texto: '',
   estados: new Set(),
   ccaa: '',
@@ -181,8 +183,8 @@ function filtroMapLibre() {
   if (estado.operador) f.push(['==', ['get', 'operador'], estado.operador])
   if (estado.modelo) f.push(['==', ['get', 'modelo'], estado.modelo])
   if (estado.confianza) f.push(['==', ['get', 'confianza'], estado.confianza])
-  if (estado.soloConMetrica) f.push(['!=', ['get', estado.metrica], null])
-  if (estado.minimo > 0) f.push(['>=', ['coalesce', ['get', estado.metrica], -1], estado.minimo])
+  if (estado.soloConMetrica) f.push(['!=', ['get', campoCapacidad(estado.metrica, estado.etapa)], null])
+  if (estado.minimo > 0) f.push(['>=', ['coalesce', ['get', campoCapacidad(estado.metrica, estado.etapa)], -1], estado.minimo])
   return f.length > 1 ? f : null
 }
 
@@ -208,11 +210,11 @@ function pintarLista() {
       if (estado.operador && p.operador !== estado.operador) return false
       if (estado.modelo && p.modelo !== estado.modelo) return false
       if (estado.confianza && p.confianza !== estado.confianza) return false
-      if (estado.soloConMetrica && p[estado.metrica] == null) return false
-      if (estado.minimo > 0 && !(p[estado.metrica] >= estado.minimo)) return false
+      if (estado.soloConMetrica && p[campoCapacidad(estado.metrica, estado.etapa)] == null) return false
+      if (estado.minimo > 0 && !(p[campoCapacidad(estado.metrica, estado.etapa)] >= estado.minimo)) return false
       return true
     })
-    .sort((a, b) => (b[estado.metrica] ?? -1) - (a[estado.metrica] ?? -1))
+    .sort((a, b) => (b[campoCapacidad(estado.metrica, estado.etapa)] ?? -1) - (a[campoCapacidad(estado.metrica, estado.etapa)] ?? -1))
 
   const sinCoordenadas = visibles.filter((p) => p.lat == null).length
 
@@ -228,17 +230,17 @@ function pintarLista() {
       : ''
   }
 
-  const conMetrica = visibles.filter((p) => p[estado.metrica] != null)
+  const conMetrica = visibles.filter((p) => p[campoCapacidad(estado.metrica, estado.etapa)] != null)
   const porEstado = new Map()
   for (const p of conMetrica) {
     const fila = porEstado.get(p.estado) ?? { total: 0, conDato: 0 }
-    fila.total += p[estado.metrica]
+    fila.total += p[campoCapacidad(estado.metrica, estado.etapa)]
     fila.conDato++
     porEstado.set(p.estado, fila)
   }
   $('#suma').innerHTML = conMetrica.length
-    ? `<strong>${METRICAS[estado.metrica]}</strong> · ${conMetrica.length} de ${visibles.length} publican esta magnitud.<br>${[...porEstado].map(([e, f]) => `${ETIQUETA_ESTADO[e]}: ${f.total.toLocaleString('es-ES', { maximumFractionDigits: 1 })} MW · ${f.conDato} fichas`).join('<br>')}`
-    : `Sin ${METRICAS[estado.metrica]} publicados para este filtro.`
+    ? `<strong>${METRICAS[estado.metrica]} · ${ETAPAS_CAPACIDAD[estado.etapa]}</strong> · ${conMetrica.length} de ${visibles.length} publican esta magnitud.<br>${[...porEstado].map(([e, f]) => `${ETIQUETA_ESTADO[e]}: ${f.total.toLocaleString('es-ES', { maximumFractionDigits: 3 })} MW · ${f.conDato} fichas`).join('<br>')}`
+    : `Sin ${METRICAS[estado.metrica]} de capacidad ${ETAPAS_CAPACIDAD[estado.etapa].toLocaleLowerCase('es')} publicados para este filtro.`
   const activos = ['operador', 'modelo', 'confianza'].filter((k) => estado[k]).length + Number(estado.estados.size > 0) + Number(estado.minimo > 0) + Number(estado.soloConMetrica) + Object.values(estado.capas).filter(Boolean).length
   const contadorFiltros = $('#filtros-activos')
   if (contadorFiltros) contadorFiltros.textContent = activos ? `· ${activos} activos` : ''
@@ -250,7 +252,7 @@ function pintarLista() {
   cont.innerHTML = visibles
     .slice(0, 300)
     .map((p) => {
-      const v = p[estado.metrica]
+      const v = p[campoCapacidad(estado.metrica, estado.etapa)]
       return `<li>
         <button class="fila-sitio" data-id="${p.id}" data-lon="${p.lon ?? ''}" data-lat="${p.lat ?? ''}">
           <span class="fila-punto" style="background:${COLOR_ESTADO[p.estado] ?? COLOR_ESTADO.desconocido}"></span>
@@ -292,10 +294,10 @@ function pintarLista() {
 function pintarMinimo() {
   const minimo = $('#filtro-minimo')
   if (!minimo) return
-  minimo.max = String(Math.max(200, Math.ceil(Math.max(estado.minimo, ...inventario.map((p) => p[estado.metrica] ?? 0)) / 50) * 50))
+  minimo.max = String(Math.max(200, Math.ceil(Math.max(estado.minimo, ...inventario.map((p) => p[campoCapacidad(estado.metrica, estado.etapa)] ?? 0)) / 50) * 50))
   minimo.value = String(estado.minimo)
   minimo.style.setProperty('--relleno', `${(estado.minimo / Number(minimo.max)) * 100}%`)
-  $('#valor-minimo').textContent = estado.minimo ? `${estado.minimo} MW` : 'sin mínimo'
+  $('#valor-minimo').textContent = estado.minimo ? `${estado.minimo.toLocaleString('es-ES', { maximumFractionDigits: 3 })} MW` : 'sin mínimo'
 }
 
 function aplicar() {
@@ -307,8 +309,9 @@ function aplicar() {
     if (capasListas && mapa?.getLayer(capa)) mapa.setFilter(capa, filtro)
   }
   for (const capa of ['sitios-circulo', 'sitios-borde']) {
-    if (capasListas && mapa?.getLayer(capa)) mapa.setPaintProperty(capa, 'circle-radius', radioPorMetrica(estado.metrica))
+    if (capasListas && mapa?.getLayer(capa)) mapa.setPaintProperty(capa, 'circle-radius', radioPorMetrica(campoCapacidad(estado.metrica, estado.etapa)))
   }
+  if (capasListas && mapa?.getLayer('sitios-circulo')) mapa.setPaintProperty('sitios-circulo', 'circle-opacity', ['case', ['==', ['get', campoCapacidad(estado.metrica, estado.etapa)], null], 0.1, ['==', ['get', 'coordenada_derivada'], true], 0.28, 0.55])
   pintarLista()
   guardarEnUrl()
 }
@@ -319,9 +322,7 @@ function abrirFicha(id) {
   const filas = [
     ['Operador', p.operador],
     ['Ubicación', [p.municipio, p.ccaa].filter(Boolean).join(', ')],
-    ['MW IT', p.mw_it != null ? `${p.mw_it.toLocaleString('es-ES')} MW` : null],
-    ['MW de conexión', p.mw_conexion != null ? `${p.mw_conexion.toLocaleString('es-ES')} MW` : null],
-    ['MW sin tipificar', p.mw_sin_tipo != null ? `${p.mw_sin_tipo.toLocaleString('es-ES')} MW` : null],
+    ...Object.entries(METRICAS).map(([metrica, etiqueta]) => { const valor = p[campoCapacidad(metrica, estado.etapa)]; return [`${etiqueta} · ${ETAPAS_CAPACIDAD[estado.etapa]}`, valor != null ? `${valor.toLocaleString('es-ES')} MW` : null] }),
   ].filter(([, v]) => v)
 
   panelHtml(`
@@ -346,6 +347,7 @@ function abrirFicha(id) {
 function guardarEnUrl() {
   const q = new URLSearchParams()
   if (estado.metrica !== 'mw_it') q.set('m', estado.metrica)
+  if (estado.etapa !== 'operativa') q.set('etapa', estado.etapa)
   if (estado.texto) q.set('q', estado.texto)
   if (estado.estados.size) q.set('e', [...estado.estados].join(','))
   if (estado.ccaa) q.set('r', estado.ccaa)
@@ -364,7 +366,8 @@ function guardarEnUrl() {
 
 function leerDeUrl() {
   const q = new URLSearchParams(location.search)
-  if (q.get('m') in METRICAS) estado.metrica = q.get('m')
+  if (Object.hasOwn(METRICAS, q.get('m'))) estado.metrica = q.get('m')
+  estado.etapa = Object.hasOwn(ETAPAS_CAPACIDAD, q.get('etapa')) ? q.get('etapa') : 'operativa'
   estado.texto = (q.get('q') ?? '').toLowerCase()
   if (q.get('e')) estado.estados = new Set(q.get('e').split(','))
   estado.ccaa = q.get('r') ?? ''
@@ -375,7 +378,7 @@ function leerDeUrl() {
   estado.minimo = Number.isFinite(minimoSolicitado) ? Math.max(0, minimoSolicitado) : 0
   estado.soloConMetrica = q.get('con') === '1'
   for (const c of (q.get('capas') ?? '').split(',').filter(Boolean)) {
-    if (c in estado.capas) estado.capas[c] = true
+    if (Object.hasOwn(estado.capas, c)) estado.capas[c] = true
   }
 }
 
@@ -554,7 +557,7 @@ const panelHtml = (contenido) => {
   $('.cerrar', panel).focus({ preventScroll: true })
 }
 
-const mw = (v) => (v == null ? null : `${Number(v).toLocaleString('es-ES', { maximumFractionDigits: 1 })} MW`)
+const mw = (v) => (v == null ? null : `${Number(v).toLocaleString('es-ES', { maximumFractionDigits: 3 })} MW`)
 
 function abrirSubestacion(id) {
   const n = detalleRed.get(id)
@@ -881,6 +884,7 @@ async function montarVista(opciones = {}) {
 
   // Buscar y consultar resultados no espera al proveedor de cartografía.
   conectarControles()
+  if (capasListas && mapa?.getLayer('sitios-circulo')) mapa.setPaintProperty('sitios-circulo', 'circle-opacity', ['case', ['==', ['get', campoCapacidad(estado.metrica, estado.etapa)], null], 0.1, ['==', ['get', 'coordenada_derivada'], true], 0.28, 0.55])
   pintarLista()
   guardarEnUrl()
   $$('[data-capa]').forEach((control) => { control.disabled = true })
@@ -953,7 +957,7 @@ function montarCapas() {
     type: 'circle',
     source: 'sitios',
     paint: {
-      'circle-radius': radioPorMetrica(estado.metrica),
+      'circle-radius': radioPorMetrica(campoCapacidad(estado.metrica, estado.etapa)),
       'circle-color': 'transparent',
       'circle-stroke-width': 1,
       'circle-stroke-color': colorPorEstado,
@@ -965,14 +969,14 @@ function montarCapas() {
     type: 'circle',
     source: 'sitios',
     paint: {
-      'circle-radius': radioPorMetrica(estado.metrica),
+      'circle-radius': radioPorMetrica(campoCapacidad(estado.metrica, estado.etapa)),
       'circle-color': colorPorEstado,
       // Los emplazamientos sin la métrica elegida se dibujan huecos: no se
       // rellena visualmente un dato que no existe. Los situados en el centro de
       // su municipio se atenúan para que no se lean como una parcela concreta.
       'circle-opacity': [
         'case',
-        ['==', ['get', estado.metrica], null],
+        ['==', ['get', campoCapacidad(estado.metrica, estado.etapa)], null],
         0.1,
         ['==', ['get', 'coordenada_derivada'], true],
         0.28,
@@ -1122,6 +1126,12 @@ function conectarControles() {
     $('#etiqueta-minimo-metrica').textContent = METRICAS[estado.metrica]
   }
 
+  const selectorEtapa = $('#filtro-etapa')
+  if (selectorEtapa) {
+    selectorEtapa.value = estado.etapa
+    selectorEtapa.addEventListener('change', () => { estado.etapa = selectorEtapa.value; aplicar() })
+  }
+
   const minimo = $('#filtro-minimo')
   if (minimo) {
     pintarMinimo()
@@ -1156,6 +1166,8 @@ function conectarControles() {
   if (limpiar) {
     limpiar.addEventListener('click', () => {
       estado.texto = ''
+      estado.etapa = 'operativa'
+      if (selectorEtapa) selectorEtapa.value = estado.etapa
       estado.estados.clear()
       estado.ccaa = ''
       estado.operador = ''

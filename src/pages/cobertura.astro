@@ -25,7 +25,7 @@ const porRegion = [...regionesConFicha]
       total: lista.length,
       oficial: lista.filter((s) => s.fuentes.some((f) => f.tipo === 'oficial')).length,
       exactas: lista.filter((s) => s.ubicacion.precision === 'exacta').length,
-      tipada: lista.filter((s) => s.resumen_potencia.it || s.resumen_potencia.conexion_red).length,
+      tipada: lista.filter((s) => s.potencia.some((p) => ['it', 'conexion_red'].includes(p.tipo))).length,
       conexion: lista.filter((s) => s.conexion_electrica).length,
     }
   })

@@ -1,0 +1,66 @@
+id: consulta-estandares-minimos-centros-datos-2026
+titulo: "Consulta europea sobre estándares mínimos para centros de datos"
+titulo_oficial: "Consulta pública y solicitud de datos sobre el establecimiento de estándares mínimos de rendimiento para centros de datos en la Unión Europea"
+ambito: europeo
+rango: iniciativa_ue
+estado: consulta_previa
+estado_detalle: >-
+  Consulta pública abierta del 21 de septiembre al 14 de diciembre de 2026. Recaba aportaciones
+  para una propuesta legislativa prevista para el segundo trimestre de 2027. A 14 de octubre
+  no es una propuesta articulada aprobada ni establece requisitos mínimos aplicables.
+boletin: null
+referencia: null
+url_oficial: "https://energy.ec.europa.eu/news/minimum-performance-standards-data-centres-europe-public-consultation-launched-2026-09-21_en"
+fecha_aprobacion: null
+fecha_publicacion: null
+fecha_entrada_vigor: null
+materias: [eficiencia, agua, energia, medio_ambiente]
+resumen: >-
+  La Comisión consulta cómo establecer futuros estándares mínimos de rendimiento para centros
+  de datos. El plazo termina el 14 de diciembre de 2026 y todavía no hay requisitos aplicables.
+por_que_importa: >-
+  Es una vía regulatoria distinta del etiquetado europeo y del borrador español. Puede afectar
+  al rendimiento exigible en el futuro, pero sus umbrales y alcance siguen pendientes.
+obligaciones: []
+hitos:
+  - fecha: "2026-09-21"
+    hito: "Apertura de la consulta pública y de la solicitud de datos"
+    fuentes: [src-comision, src-miteco]
+  - fecha: "2026-12-14"
+    previsto: true
+    hito: "Fin del plazo publicado para presentar aportaciones"
+    fuentes: [src-comision, src-miteco]
+actores:
+  - nombre: "Comisión Europea"
+    rol: promotor
+    postura: sin_constar
+    resumen: "Prepara la iniciativa y solicita aportaciones antes de presentar una propuesta legislativa."
+    fuentes: [src-comision]
+afecta:
+  - tipo: registro
+    ref: null
+    como: "Añade un plazo de participación y una iniciativa a vigilar; no permite atribuir incumplimientos a los proyectos."
+    fuentes: [src-comision]
+relacionadas: [directiva-2023-1791, reglamento-delegado-2024-1364, reglamento-etiquetado-centros-datos-2026]
+incertidumbres:
+  - campo: obligaciones
+    descripcion: "No están fijados los estándares, los umbrales de aplicación ni la fecha en que podrían ser exigibles."
+    fuentes: [src-comision]
+ultima_verificacion: "2026-10-14"
+fuentes:
+  - id: src-comision
+    url: "https://energy.ec.europa.eu/news/minimum-performance-standards-data-centres-europe-public-consultation-launched-2026-09-21_en"
+    titulo: "Minimum performance standards for data centres in Europe: public consultation launched"
+    editor: "Comisión Europea, Dirección General de Energía"
+    tipo: oficial
+    fecha_publicacion: "2026-09-21"
+    fecha_consulta: "2026-10-14"
+    cita: "Interested parties are invited to submit their input by 14 December 2026."
+  - id: src-miteco
+    url: "https://www.miteco.gob.es/es/energia/eficiencia/centros-de-datos.html"
+    titulo: "Centros de datos: participación pública europea"
+    editor: "MITECO"
+    tipo: oficial
+    fecha_publicacion: null
+    fecha_consulta: "2026-10-14"
+    cita: "desde el 21 de septiembre de 2026 hasta el 14 de diciembre de 2026"

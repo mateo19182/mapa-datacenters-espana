@@ -72,6 +72,7 @@ enlaces_proyecto:
 
 computo:
   - tipo: qpu
+    modalidad: instalado
     ambito: sistema
     sistema: "IBM Quantum System Two (IBM_BasqueCountry)"
     operador_computo: "IBM"

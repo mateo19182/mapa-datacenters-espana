@@ -72,7 +72,7 @@ CREATE TABLE energia (
 CREATE TABLE computo (
   sitio_id TEXT, idx INTEGER, tipo TEXT, ambito TEXT, sistema TEXT, operador_computo TEXT, modelo TEXT,
   unidades REAL, tipo_unidad TEXT, nodos REAL, rendimiento REAL, rendimiento_unidad TEXT,
-  rendimiento_tipo TEXT, rendimiento_precision TEXT, estado TEXT, fecha_dato TEXT, nota TEXT
+  rendimiento_tipo TEXT, rendimiento_precision TEXT, estado TEXT, fecha_dato TEXT, nota TEXT, modalidad TEXT
 );
 CREATE TABLE incertidumbres (sitio_id TEXT, idx INTEGER, campo TEXT, descripcion TEXT);
 CREATE TABLE fuentes (
@@ -113,7 +113,7 @@ const insFase = db.prepare('INSERT INTO fases VALUES (?,?,?,?,?,?,?)')
 const insInc = db.prepare('INSERT INTO incertidumbres VALUES (?,?,?,?)')
 const insEmpleo = db.prepare('INSERT INTO empleo VALUES (?,?,?,?,?,?,?)')
 const insEnergia = db.prepare('INSERT INTO energia VALUES (?,?,?,?,?,?)')
-const insComputo = db.prepare('INSERT INTO computo VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)')
+const insComputo = db.prepare('INSERT INTO computo VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)')
 const insFuente = db.prepare('INSERT INTO fuentes VALUES (?,?,?,?,?,?,?,?,?)')
 const insResp = db.prepare('INSERT INTO respaldos VALUES (?,?,?)')
 const insRed = db.prepare('INSERT INTO red_nodos VALUES (?,?)')
@@ -191,7 +191,7 @@ const cargar = db.transaction(() => {
       insComputo.run(
         s.id, i, c.tipo, c.ambito, c.sistema, c.operador_computo, c.modelo, c.unidades, c.tipo_unidad,
         c.nodos, c.rendimiento, c.rendimiento_unidad, c.rendimiento_tipo, c.rendimiento_precision,
-        c.estado, c.fecha_dato, c.nota,
+        c.estado, c.fecha_dato, c.nota, c.modalidad,
       )
       for (const src of c.fuentes) insResp.run(s.id, `computo[${i}]`, src)
     }

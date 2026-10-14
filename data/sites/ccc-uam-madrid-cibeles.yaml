@@ -36,6 +36,7 @@ potencia: []
 
 computo:
   - tipo: cpu_hpc
+    modalidad: instalado
     sistema: "Cibeles 3"
     modelo: "Intel Xeon Gold 6330 a 2,0 GHz, 2 por nodo (1.568 núcleos)"
     unidades: 28
@@ -49,6 +50,7 @@ computo:
     fuentes: [src-res]
     nota: "1 PB de almacenamiento Lustre e Infiniband HDR de 200 Gbps."
   - tipo: cpu_hpc
+    modalidad: instalado
     sistema: "Cibeles 4"
     modelo: "Intel Xeon Platinum 8160 a 2,1 GHz, 2 por nodo (6.912 núcleos)"
     unidades: 144

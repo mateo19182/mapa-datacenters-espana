@@ -41,6 +41,7 @@ potencia: []
 
 computo:
   - tipo: cpu_hpc
+    modalidad: instalado
     sistema: "MareNostrum 5 GPP (partición de propósito general)"
     modelo: "Intel Xeon Platinum 8480+ (56 núcleos cada uno)"
     unidades: 12960
@@ -56,6 +57,7 @@ computo:
       La ficha técnica de MareNostrum 5 da 45,9 PFlops de pico para esta misma partición
       (6.480 nodos). La discrepancia queda anotada en `incertidumbres[]` y no se resuelve.
   - tipo: gpu
+    modalidad: instalado
     sistema: "MareNostrum 5 ACC (partición acelerada)"
     modelo: "NVIDIA H100 de 64 GB HBM2 (Hopper), 4 por nodo"
     unidades: 4480
@@ -74,6 +76,7 @@ computo:
       la cifra medida se deja aquí y no genera un segundo registro para no duplicar el
       recuento de aceleradores.
   - tipo: cpu_hpc
+    modalidad: instalado
     sistema: "MareNostrum 5 GPP-NextGen (partición de nueva generación)"
     modelo: "NVIDIA Grace CPU"
     unidades: 802
@@ -87,6 +90,7 @@ computo:
     fuentes: [src-6]
     nota: null
   - tipo: gpu
+    modalidad: instalado
     sistema: "MareNostrum 5 AI Upgrade (partición de IA, BSC AI Factory)"
     modelo: "NVIDIA Blackwell y Blackwell Ultra"
     unidades: 1920
@@ -104,6 +108,7 @@ computo:
       consorcio liderado por Fsas Technologies (Fujitsu) y Telefónica por 129 millones de euros
       y se reparte entre el centro de datos del BSC y la capilla de Torre Girona.
   - tipo: qpu
+    modalidad: instalado
     sistema: "MareNostrum Ona (partición cuántica, digital)"
     modelo: "Procesador de cúbits superconductores tipo transmon, de Qilimanjaro y GMV"
     unidades: 35
@@ -115,6 +120,7 @@ computo:
       Es el último de los procesadores incorporados: el sistema pasó de 5 a 35 cúbits. No es
       capacidad de centro de datos y no aporta ninguna cifra a `potencia[]`.
   - tipo: qpu
+    modalidad: instalado
     sistema: "EuroQCS-Spain (cuántico analógico)"
     modelo: "Cúbits superconductores tipo fluxonium, de Qilimanjaro Quantum Tech"
     estado: operativo

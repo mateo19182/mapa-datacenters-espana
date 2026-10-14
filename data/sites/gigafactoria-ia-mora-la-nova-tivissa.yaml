@@ -106,6 +106,7 @@ refrigeracion: >-
 
 computo:
   - tipo: no_especificado
+    modalidad: previsto
     ambito: sistema
     sistema: "Gigafactoría de IA de la candidatura española a InvestAI"
     estado: en_tramitacion

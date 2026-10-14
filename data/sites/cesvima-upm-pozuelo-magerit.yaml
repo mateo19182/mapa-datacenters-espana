@@ -36,6 +36,7 @@ potencia: []
 
 computo:
   - tipo: cpu_hpc
+    modalidad: instalado
     ambito: sistema
     sistema: "Magerit-3"
     modelo: "Intel Xeon Gold 6230 y 6240R, 2 por nodo, en nodos Lenovo ThinkSystem SD530"
@@ -54,6 +55,7 @@ computo:
       máquina —120 nodos, 5.184 núcleos y 370,5 TFlop/s— y la discrepancia queda registrada en
       `incertidumbres[]`. Almacenamiento compartido BeeGFS de 112 TiB en NVMe.
   - tipo: gpu
+    modalidad: instalado
     sistema: "Magerit-3 — nodos acelerados ThinkSystem SR670"
     modelo: "NVIDIA A100, 4 por nodo en 4 nodos Intel Xeon Gold 6240R"
     nodos: 4
@@ -63,6 +65,7 @@ computo:
     fuentes: [src-cesvima-magerit]
     nota: "CeSViMa no publica el total de aceleradores, solo nodos y tarjetas por nodo."
   - tipo: gpu
+    modalidad: instalado
     sistema: "Magerit-3 — nodos acelerados ThinkSystem SR670"
     modelo: "NVIDIA V100, 2 por nodo en 2 nodos Intel Xeon Gold 6230"
     nodos: 2
@@ -72,6 +75,7 @@ computo:
     fuentes: [src-cesvima-magerit]
     nota: null
   - tipo: gpu
+    modalidad: instalado
     sistema: "Magerit-3 — nodos acelerados ThinkSystem SR675 V3"
     modelo: "NVIDIA L40S, 4 por nodo en 5 nodos AMD EPYC 9554"
     nodos: 5

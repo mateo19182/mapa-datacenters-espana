@@ -1,0 +1,48 @@
+---
+import { ETAPAS_CAPACIDAD } from '../lib/capacidad.js'
+import { POTENCIA_ETIQUETA, numero } from '../lib/etiquetas.js'
+const { sitio } = Astro.props
+const grupos = sitio.potencia_por_etapa ?? { operativa: sitio.resumen_potencia }
+const tipos = ['it', 'conexion_red', 'instalada_total', 'no_especificado']
+const etapas = Object.keys(ETAPAS_CAPACIDAD).filter((etapa) => tipos.some((t) => grupos[etapa]?.[t]))
+const principal = etapas[0]
+const discrepancia = (lectura) => `Las fuentes discrepan. ${lectura.base === 'suma_de_edificios' ? 'El total resultante va' : 'Lecturas'} de ${numero(lectura.minimo_observado, 3)} a ${numero(lectura.maximo_observado, 3)} MW.`
+---
+{!principal ? <p class="sin-dato">Potencia del centro no publicada.{sitio.potencia.length > 0 && <> <a href="#detalle-potencia">Ver otras lecturas disponibles</a>.</>}</p> : <>
+  <p class="etapa-principal">Capacidad {ETAPAS_CAPACIDAD[principal].toLocaleLowerCase('es')}</p>
+  <dl class="potencias-breves">{tipos.filter((t) => grupos[principal][t]).map((tipo) => {
+    const lectura = grupos[principal][tipo]
+    return <div><dt>{POTENCIA_ETIQUETA[tipo]}</dt><dd><strong>{numero(lectura.valor_mw, 3)} MW</strong>
+      {tipo === 'no_especificado' && <span class="matiz-dato">Tipo sin publicar; no equivale a carga TI.</span>}
+      {lectura.discrepancia && <a class="matiz-dato advertencia" href="#detalle-potencia">{discrepancia(lectura)}</a>}
+      {lectura.disputada && <a class="matiz-dato" href="#incertidumbres">Interpretación disputada</a>}
+      <a class="procedencia-dato" href="#detalle-potencia">{lectura.base === 'global' ? 'Cifra de campus' : 'Alcance documentado'} · lecturas y fuentes</a>
+    </dd></div>
+  })}</dl>
+  {etapas.length > 1 && <details class="otras-etapas"><summary>Capacidad en otras etapas</summary>
+    <p class="pequeno silencio">Las cifras pueden solaparse. El objetivo del campus puede incluir la capacidad que ya funciona; las etapas no se suman.</p>
+    <div class="tabla-envoltorio"><table><thead><tr><th>Etapa de la cifra</th>{tipos.map((tipo) => <th class="num">{POTENCIA_ETIQUETA[tipo]}</th>)}</tr></thead><tbody>
+      {etapas.filter((e) => e !== principal).map((etapa) => <tr><th scope="row">{ETAPAS_CAPACIDAD[etapa]}</th>{tipos.map((tipo) => {
+        const lectura = grupos[etapa][tipo]
+        return <td class="num">{lectura ? <>
+          {numero(lectura.valor_mw, 3)} MW
+          {lectura.discrepancia && <a class="matiz-dato advertencia" href="#detalle-potencia">{discrepancia(lectura)}</a>}
+          {lectura.disputada && <a class="matiz-dato" href="#incertidumbres">Interpretación disputada</a>}
+        </> : 'No publicado'}</td>
+      })}</tr>)}
+    </tbody></table></div>
+    <a class="pequeno" href="#detalle-potencia">Ver todas las lecturas y sus fuentes</a>
+  </details>}
+</>}
+<style>
+  .etapa-principal { color: var(--tinta-3); font-size: .8rem; margin: 0 0 .5rem; }
+  .potencias-breves { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: .7rem; margin: 0; }
+  .potencias-breves > div { border: 1px solid var(--borde); background: var(--papel-2); padding: .7rem 1rem; }
+  dt { font-size: .8rem; color: var(--tinta-2); }
+  dd { margin: .1rem 0 0; }
+  dd strong { font-size: 1.5rem; font-weight: 600; }
+  .matiz-dato, .procedencia-dato { display: block; font-size: .72rem; margin-top: .2rem; }
+  td .matiz-dato { white-space: normal; min-width: 9rem; }
+  .otras-etapas { margin-top: .7rem; }
+  summary { cursor: pointer; font-size: .82rem; }
+</style>

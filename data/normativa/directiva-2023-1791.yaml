@@ -5,9 +5,10 @@ ambito: europeo
 rango: directiva_ue
 estado: en_vigor
 estado_detalle: >-
-  En vigor. Su artículo 12, el que se ocupa de los centros de datos, requiere
-  transposición y España aún no la ha completado: el proyecto de real decreto que la
-  incorpora está en audiencia pública.
+  En vigor. El artículo 12 requiere transposición nacional. MITECO sigue indicando su transposición
+  en curso; la segunda audiencia del proyecto español cerró el 10 de septiembre de 2026. El proyecto
+  de calor residual desarrolla otros contenidos de la directiva. Ninguna consulta cerrada acredita
+  por sí sola aprobación de su texto definitivo.
 boletin: DOUE
 referencia: "Directiva (UE) 2023/1791"
 url_oficial: "https://eur-lex.europa.eu/eli/dir/2023/1791/oj"
@@ -19,9 +20,9 @@ resumen: >-
   rendimiento energético, su huella hídrica y su flexibilidad de demanda, y a promover que
   apliquen el código de conducta europeo sobre eficiencia energética de centros de datos.
 por_que_importa: >-
-  Es el origen de la única obligación europea de publicar datos por centro. Pero la
-  publicación europea que de ella se deriva es agregada por Estado miembro, no
-  emplazamiento a emplazamiento: por eso este registro sigue haciendo falta.
+  Distingue la publicación nacional por centro y la base de datos europea inicialmente agregada. El
+  acto de etiquetado adoptado en septiembre de 2026 prevé etiquetas públicas por centro desde 2027,
+  todavía pendiente de control institucional y entrada en vigor.
 obligaciones:
   - quien: "Estados miembros"
     que: >-
@@ -39,14 +40,23 @@ obligaciones:
     plazo: null
     fuentes: [src-prd]
 hitos:
-  - fecha: "2023-09-20"
-    hito: "Publicación en el Diario Oficial de la Unión Europea"
-    fuentes: [src-eurlex-eed]
-  - fecha: "2026-08-27"
-    hito: >-
-      España saca a audiencia pública el real decreto que la transpone parcialmente, casi
-      tres años después
-    fuentes: [src-prd]
+  - fecha: 2023-09-20
+    hito: Publicación en el Diario Oficial de la Unión Europea
+    fuentes:
+      - src-eurlex-eed
+  - fecha: 2026-08-27
+    hito: España saca a audiencia pública el real decreto que la transpone parcialmente, casi tres años
+      después
+    fuentes:
+      - src-prd
+  - fecha: 2026-09-10
+    hito: Cierra la segunda audiencia española del proyecto que incorpora parcialmente el artículo 12
+    fuentes:
+      - src-miteco-estado
+  - fecha: 2026-09-21
+    hito: La Comisión adopta el acto delegado de etiquetado; pendiente del control institucional
+    fuentes:
+      - src-etiquetado
 actores:
   - nombre: "Ministerio para la Transición Ecológica y el Reto Demográfico"
     rol: competente
@@ -56,40 +66,60 @@ actores:
 afecta:
   - tipo: registro
     ref: null
-    como: >-
-      Si algún día la publicación derivada de esta directiva dejara de ser agregada y pasara
-      a ser por emplazamiento, buena parte del trabajo manual de este registro sobraría.
-    fuentes: [src-miteco-faq]
-relacionadas: [reglamento-delegado-2024-1364, prd-centros-datos-sostenibles]
-ultima_verificacion: "2026-09-01"
+    como: La información pública por centro y las futuras etiquetas pueden aportar datos verificables,
+      con su metodología y año. No se sustituyen huecos actuales por valores estimados.
+    fuentes:
+      - src-eurlex-eed
+      - src-etiquetado
+relacionadas:
+  - reglamento-delegado-2024-1364
+  - prd-centros-datos-sostenibles
+  - reglamento-etiquetado-centros-datos-2026
+  - consulta-estandares-minimos-centros-datos-2026
+  - prd-calor-residual-2026
+ultima_verificacion: "2026-10-14"
 fuentes:
   - id: src-eurlex-eed
-    url: "https://eur-lex.europa.eu/eli/dir/2023/1791/oj"
-    titulo: "Directiva (UE) 2023/1791 relativa a la eficiencia energética (versión refundida)"
-    editor: "Diario Oficial de la Unión Europea"
+    url: https://eur-lex.europa.eu/eli/dir/2023/1791/oj
+    titulo: Directiva (UE) 2023/1791 relativa a la eficiencia energética (versión refundida)
+    editor: Diario Oficial de la Unión Europea
     tipo: oficial
-    fecha_publicacion: "2023-09-20"
-    fecha_consulta: "2026-09-01"
+    fecha_publicacion: 2023-09-20
+    fecha_consulta: 2026-09-01
     cita: null
   - id: src-miteco-faq
-    url: "https://www.miteco.gob.es/es/energia/eficiencia/centros-de-datos/preguntas-frecuentes.html"
+    url: https://www.miteco.gob.es/es/energia/eficiencia/centros-de-datos/preguntas-frecuentes.html
     titulo: "Centros de datos: preguntas frecuentes"
-    editor: "MITECO"
+    editor: MITECO
     tipo: oficial
     fecha_publicacion: null
-    fecha_consulta: "2026-09-01"
-    cita: >-
-      El artículo 12 de la Directiva, el cual debe ser transpuesto a la legislación
-      española, obliga a poner a disposición del público el 15 de mayo de cada año la
-      información indicada en su anexo VII, excepto aquella sujeta al Derecho de la Unión y
-      al nacional en materia de protección de los secretos comerciales.
+    fecha_consulta: 2026-09-01
+    cita: El artículo 12 de la Directiva, el cual debe ser transpuesto a la legislación española, obliga
+      a poner a disposición del público el 15 de mayo de cada año la información indicada en su
+      anexo VII, excepto aquella sujeta al Derecho de la Unión y al nacional en materia de
+      protección de los secretos comerciales.
   - id: src-prd
-    url: "https://www.miteco.gob.es/content/dam/miteco/es/energia/files-1/es-ES/Participacion/Documents/anexos/aeip-rd-cpds-sostenibles/PRD%20CPDs%20audiencia%20publica.pdf"
-    titulo: "Proyecto de Real Decreto de requisitos aplicables a los centros de datos"
-    editor: "MITECO"
+    url: https://www.miteco.gob.es/content/dam/miteco/es/energia/files-1/es-ES/Participacion/Documents/anexos/aeip-rd-cpds-sostenibles/PRD%20CPDs%20audiencia%20publica.pdf
+    titulo: Proyecto de Real Decreto de requisitos aplicables a los centros de datos
+    editor: MITECO
     tipo: oficial
-    fecha_publicacion: "2026-08-27"
-    fecha_consulta: "2026-09-01"
-    cita: >-
-      Mediante este real decreto se incorpora parcialmente al ordenamiento jurídico español
-      el artículo 12 de la Directiva (UE) 2023/1791.
+    fecha_publicacion: 2026-08-27
+    fecha_consulta: 2026-09-01
+    cita: Mediante este real decreto se incorpora parcialmente al ordenamiento jurídico español el
+      artículo 12 de la Directiva (UE) 2023/1791.
+  - id: src-miteco-estado
+    url: https://www.miteco.gob.es/es/energia/eficiencia/centros-de-datos.html
+    titulo: "Centros de datos: estado de la transposición y consultas"
+    editor: MITECO
+    tipo: oficial
+    fecha_publicacion: null
+    fecha_consulta: 2026-10-14
+    cita: desde el jueves, 27 de agosto de 2026 hasta el jueves, 10 de septiembre de 2026
+  - id: src-etiquetado
+    url: https://data.consilium.europa.eu/doc/document/ST-13444-2026-INIT/en/pdf
+    titulo: "C(2026) 3472 final: artículos 3 y 7"
+    editor: Consejo de la Unión Europea, documento de la Comisión
+    tipo: oficial
+    fecha_publicacion: 2026-09-21
+    fecha_consulta: 2026-10-14
+    cita: Labels for data centres shall be publicly available in electronic form in the European database

@@ -1,6 +1,53 @@
 // Resúmenes editoriales. Las fechas son las de los hechos descritos, nunca la
 // consulta de la ficha ni la publicación de una fuente que relate otro día.
 const PRESENTACIONES = {
+  'upf-barcelona-correfoc': {
+    resumen: 'Correfoc está en servicio desde julio de 2026. La UPF publica 57 L40S y 67 nodos; los 24 nodos de la ficha RES son una partición y no se suman al total.',
+    fuentes: ['src-operacion', 'src-hardware', 'src-res'],
+    incluirFases: false,
+    cronologia: [
+      { fecha: '2026-07-01', titulo: 'Entrada en operación de Correfoc', detalle: 'Fecha de servicio explícita en el anuncio de la UPF, publicado el 9 de julio.', fuentes: ['src-operacion'] },
+    ],
+  },
+  'uib-palma-talaia': {
+    resumen: 'TalaIA publica 52 nodos CPU y acceso GPGPU en el ParcBit de Palma. La instalación terminó en el primer semestre de 2026. No se publican modelo ni cantidad de GPU.',
+    fuentes: ['src-uib', 'src-res', 'src-bsai', 'src-acceso'],
+    incluirFases: false,
+    cronologia: [
+      { fecha: '2026', titulo: 'Instalación completada en el primer semestre', detalle: 'La UIB confirma ese periodo en su noticia del 16 de julio. No da un día exacto de puesta en servicio; la guía del operador documenta acceso mediante Slurm.', fuentes: ['src-uib', 'src-acceso'] },
+    ],
+  },
+  'nxn-madrid-juan-carlos-i': {
+    resumen: 'NxN prepara un centro junto al Parque Juan Carlos I. La apertura sigue sin acreditar. Su nota discrepa entre 7,5 y 15 MW; las dos acometidas redundantes de 7,5 MW no se suman.',
+    fuentes: ['src-nota', 'src-web'],
+    incluirFases: false,
+    cronologia: [
+      { fecha: '2026-04-23', titulo: 'Anuncio del activo de Madrid y su modernización', detalle: 'NxN anuncia un activo existente, 8.500 m² de superficie total y 20 millones de euros de modernización, sin publicar dirección exacta.', fuentes: ['src-nota'] },
+      { fecha: '2026-09', titulo: 'Apertura prevista en la nota de abril', detalle: 'La fecha ha pasado sin confirmación de apertura. La web consultada en octubre mantiene una próxima inauguración en 2026.', prevista: true, fuentes: ['src-nota', 'src-web'] },
+    ],
+  },
+  'scbi-uma-malaga-picasso': {
+    resumen: 'Picasso publica 32 A100 y 16 B200 entre sus recursos disponibles. La UMA anunció la compra de las B200 en julio de 2026; el inventario técnico no fecha su puesta en producción.',
+    fuentes: ['src-hardware-20261014', 'src-ampliacion-20260710'],
+    cronologia: [
+      { fecha: '2026-07-10', titulo: 'Publicación de la adquisición de 16 B200', detalle: 'La UMA describe dos nuevos nodos adquiridos con financiación FEDER. No publica fecha de puesta en producción.', fuentes: ['src-ampliacion-20260710'] },
+    ],
+  },
+  'cesga-santiago-a-sionlla': {
+    resumen: 'A Sionlla albergará FinisTerrae IV y nueva computación cuántica. Están anunciados Radiance de 54 cúbits y Spark de 5. Falta confirmar servicio y traslado del inventario anterior a este edificio.',
+    fuentes: ['src-adjudicacion-ft4', 'src-presentacion-en-20260612', 'src-contacto-sede'],
+    cronologia: [
+      { fecha: '2026-03-03', titulo: 'Adjudicación de FinisTerrae IV y almacenamiento', detalle: 'La Xunta anuncia la adjudicación a Fsas Technologies. El contrato no acredita recepción ni puesta en servicio; es distinto de la futura factoría 1HealthAI.', fuentes: ['src-adjudicacion-ft4'] },
+      { fecha: '2026-06-12', titulo: 'Presentación programada de Radiance y Spark', detalle: 'El anuncio del CESGA convoca el acto para esa fecha. Describe equipos de 54 y 5 cúbits, sin acreditar servicio científico abierto ni instalación definitiva.', prevista: true, fuentes: ['src-presentacion-20260612', 'src-presentacion-en-20260612'] },
+    ],
+  },
+  'nabiax-alcala-de-henares-adc': {
+    resumen: 'Alcalá tiene 22,3 MW IT en servicio. ADC3 celebró su primera piedra en septiembre de 2026. Los 80 MW del nuevo edificio no están tipificados; los 100 MW IT son el objetivo del campus.',
+    fuentes: ['src-1', 'src-primera-piedra-20260918', 'src-nota-cm-20260918'],
+    cronologia: [
+      { fecha: '2026-09-18', titulo: 'Acto de primera piedra de ADC3', detalle: 'La agenda y la nota de la Comunidad de Madrid confirman el acto en el campus. Es un hito de lanzamiento de obra; no certifica avance físico, entrega de potencia ni operación del edificio.', fuentes: ['src-primera-piedra-20260918', 'src-nota-cm-20260918'] },
+    ],
+  },
   'cluster-tic-galicia-a-coruna-csa': {
     titulo: 'Cidade das TIC · CSA',
     resumen: 'El CPD del Clúster TIC Galicia ofrece recursos para IA y multimedia en A Coruña. L4 y A40 documentadas; la instalación de H200 sigue sin confirmar.',
@@ -104,8 +151,11 @@ export function vinculosEnergiaProyecto(sitio, activos) {
 export function presentacionProyecto(sitio) {
   const editada = PRESENTACIONES[sitio.id] ?? {}
   const fuentes = new Set(sitio.fuentes.map((f) => f.id))
-  const fases = (sitio.fases ?? [])
+  const fases = (editada.incluirFases === false ? [] : sitio.fases ?? [])
     .filter((fase) => fase.fecha_puesta_en_servicio && fase.fuentes?.length && fase.fuentes.every((id) => fuentes.has(id)))
+    // El calendario retirado sigue en las fases originales, sin anunciar una
+    // apertura vigente. Los actos administrativos históricos se conservan.
+    .filter((fase) => FASES_QUE_SON_HITOS.get(sitio.id)?.has(fase.nombre) || !['cancelado', 'paralizado'].includes(fase.estado))
     .map((fase) => {
       const hito = FASES_QUE_SON_HITOS.get(sitio.id)?.has(fase.nombre)
       const sinApertura = FASES_SIN_FECHA_DE_APERTURA.get(sitio.id)?.has(fase.nombre)

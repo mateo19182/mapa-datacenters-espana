@@ -1,0 +1,2 @@
+# Fuentes archivadas con checksum: conservar exactamente los bytes publicados.
+data/red/capacidad-ree-*.csv -text -diff

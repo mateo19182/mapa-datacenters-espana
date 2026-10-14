@@ -4,6 +4,23 @@ import { readFileSync, writeFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { resolve } from 'node:path'
 import YAML from 'yaml'
+import { createHash } from 'node:crypto'
+
+const comunidades = YAML.parse(readFileSync(new URL('../data/comunidades.yaml', import.meta.url), 'utf8'))
+const regiones = new Map(Object.entries(comunidades).flatMap(([nombre, alias]) =>
+  [nombre, ...(alias ?? [])].map((valor) => [valor.toLocaleLowerCase('es'), nombre]),
+))
+const region = (valor) => {
+  const literal = clean(valor)
+  const canonica = regiones.get(literal.toLocaleLowerCase('es'))
+  if (!canonica) throw new Error(`Comunidad REE desconocida: ${literal}`)
+  return canonica
+}
+const ambitoElectrico = (ccaa) => ({ Canarias: 'canarias', Baleares: 'baleares', Ceuta: 'ceuta', Melilla: 'melilla' }[ccaa] ?? 'peninsular')
+
+// REE usa códigos numéricos y prefijos de titular, por ejemplo UFD-50078 y
+// VS-7061. Un identificador nuevo con otra forma exige revisión, nunca omisión.
+const codigoValido = (valor) => /^(?:\d{1,12}|[A-Z]{2,8}-\d{1,12})$/.test(valor)
 
 export function parseCsv(text) {
   const rows = []
@@ -35,7 +52,7 @@ const missing = (s) => clean(s) || null
 const key = (name, code) => `${clean(code)}|${clean(name)}`
 
 export function reconcileCapacity(current, text, date) {
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(date) || date < current.fecha_publicacion_dato) {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date) || Number.isNaN(Date.parse(date)) || new Date(date).toISOString().slice(0, 10) !== date || date < current.fecha_publicacion_dato) {
     throw new Error('Fecha inválida o anterior a la edición registrada')
   }
   const rows = parseCsv(text)
@@ -60,6 +77,7 @@ export function reconcileCapacity(current, text, date) {
   const indexes = {
     name: find('Nombre y tensión del nudo', '', '', ''),
     code: find('Código de subestación', '', '', ''),
+    region: find('Comunidad Autónoma', '', '', ''),
     existing: find('POSICIONES', 'Consumo a la red de transporte', '', 'E'),
     planned: find('POSICIONES', 'Consumo a la red de transporte', '', 'P'),
     granted: find('SITUACIÓN NUDO CAPACIDAD DE ACCESO OTORGADA', 'Capacidad de acceso otorgada demanda RdT', '', ''),
@@ -81,24 +99,50 @@ export function reconcileCapacity(current, text, date) {
     }
   }
   const sourceRows = new Map()
-  for (const row of rows.slice(4)) {
-    if (!/^(?:UFD-)?\d+$/.test(clean(row[indexes.code]))) continue
+  for (const [ordinal, row] of rows.slice(4).entries()) {
+    if (row.every((value) => !clean(value))) continue
     if (row.length !== paths.length) throw new Error(`Fila incompleta: ${row[0]}`)
+    const code = clean(row[indexes.code])
+    const name = clean(row[indexes.name])
+    if (!codigoValido(code)) throw new Error(`Código REE no reconocido en fila ${ordinal + 5}: ${code}`)
+    if (!/ \d+$/.test(name)) throw new Error(`Nombre o tensión REE no reconocidos: ${name}`)
     const id = key(row[indexes.name], row[indexes.code])
     if (sourceRows.has(id)) throw new Error(`Nudo repetido en CSV: ${id}`)
-    sourceRows.set(id, row)
+    sourceRows.set(id, { row, fila: ordinal + 5 })
+  }
+  if (!sourceRows.size) throw new Error('El CSV no contiene nudos')
+  const currentByKey = new Map()
+  for (const node of current.nudos) {
+    const id = key(node.nudo, node.codigo_subestacion_ree)
+    if (currentByKey.has(id)) throw new Error(`Nudo repetido en inventario: ${id}`)
+    if (!sourceRows.has(id)) throw new Error(`Sin correspondencia exacta por nombre, tensión y código: ${node.nudo}`)
+    if (!node.nudo.endsWith(` ${node.tension_kv}`)) throw new Error(`Tensión incoherente: ${node.nudo}`)
+    currentByKey.set(id, node)
   }
   const changes = []
-  const nodes = current.nudos.map((node) => {
-    const row = sourceRows.get(key(node.nudo, node.codigo_subestacion_ree))
-    if (!row) throw new Error(`Sin correspondencia exacta por nombre, tensión y código: ${node.nudo}`)
-    if (!node.nudo.endsWith(` ${node.tension_kv}`)) throw new Error(`Tensión incoherente: ${node.nudo}`)
+  const added = []
+  const orderedKeys = [...currentByKey.keys(), ...[...sourceRows.keys()].filter((id) => !currentByKey.has(id))]
+  const nodes = orderedKeys.map((id) => {
+    const { row, fila } = sourceRows.get(id)
+    const node = currentByKey.get(id) ?? {}
     const at = (field) => row[indexes[field]]
+    const name = clean(at('name'))
+    const ccaa = region(at('region'))
     const triple = (group, convert) => Object.fromEntries(['cep_ch', 'cep_sh', 'no_cep'].map((type) => [type, convert(at(`${group}.${type}`))]))
-    const contest = clean(at('contest'))
+    const contest = clean(at('contest')).toUpperCase()
     if (!['', 'SI', 'NO'].includes(contest)) throw new Error(`Valor de concurso desconocido: ${contest}`)
     const next = {
       ...node,
+      nudo: name,
+      tension_kv: Number(name.match(/ (\d+)$/)[1]),
+      codigo_subestacion_ree: clean(at('code')),
+      ccaa,
+      ccaa_ree: clean(at('region')),
+      // Ámbito territorial, no afirmación de que todas sus islas compartan red.
+      ambito_electrico: ambitoElectrico(ccaa),
+      sistema_electrico: node.sistema_electrico ?? null,
+      subestacion_id: node.subestacion_id ?? null,
+      fila_csv_ree: fila,
       posiciones_consumo_rdt: { existentes: number(at('existing')), previstas: number(at('planned')) },
       otorgada_demanda_rdt_mw: number(at('granted')),
       solicitada_en_curso_demanda_rdt_mw: number(at('pending')),
@@ -111,6 +155,7 @@ export function reconcileCapacity(current, text, date) {
       motivo_no_otorgable: missing(at('reason')),
       nudo_de_concurso: contest === 'SI',
       normativa_especifica: missing(at('rule')),
+      fuentes: [...new Set([...(node.fuentes ?? []), 'src-ree-csv'])],
       // null no significa cero. Se conserva además el marcador NA/N/A original.
       valores_no_publicados_ree: Object.fromEntries(Object.entries(indexes)
         .filter(([, i]) => /^N\/?A$/i.test(clean(row[i])))
@@ -118,10 +163,11 @@ export function reconcileCapacity(current, text, date) {
     }
     if (Object.keys(next.valores_no_publicados_ree).length === 0) delete next.valores_no_publicados_ree
     const fields = Object.keys(next).filter((field) => JSON.stringify(next[field]) !== JSON.stringify(node[field]))
-    if (fields.length) changes.push({ nudo: node.nudo, campos: fields })
+    if (fields.length) changes.push({ nudo: name, campos: fields })
+    if (!currentByKey.has(id)) added.push({ nudo: name, codigo: next.codigo_subestacion_ree, ccaa })
     return next
   })
-  return { nudos: nodes, cambios: changes, columnas: indexes, filas_csv: sourceRows.size }
+  return { nudos: nodes, cambios: changes, altas: added, columnas: indexes, filas_csv: sourceRows.size }
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
@@ -131,10 +177,10 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
   const doc = YAML.parseDocument(readFileSync(path, 'utf8'))
   const previousDate = doc.get('fecha_publicacion_dato')
   const result = reconcileCapacity(doc.toJS(), readFileSync(csv, 'utf8'), date)
-  console.log(JSON.stringify({ fecha: date, nudos: result.nudos.length, filas_csv: result.filas_csv, nudos_modificados: result.cambios.length, columnas: result.columnas }, null, 2))
+  console.log(JSON.stringify({ fecha: date, nudos: result.nudos.length, filas_csv: result.filas_csv, nudos_modificados: result.cambios.length, altas: result.altas.length, columnas: result.columnas }, null, 2))
   if (process.argv.includes('--aplicar')) {
     for (let i = 0; i < result.nudos.length; i++) {
-      if (!('valores_no_publicados_ree' in result.nudos[i])) doc.deleteIn(['nudos', i, 'valores_no_publicados_ree'])
+      if (doc.hasIn(['nudos', i]) && !('valores_no_publicados_ree' in result.nudos[i])) doc.deleteIn(['nudos', i, 'valores_no_publicados_ree'])
       for (const [field, value] of Object.entries(result.nudos[i])) {
         const location = ['nudos', i, field]
         if (JSON.stringify(doc.getIn(location)?.toJSON?.() ?? doc.getIn(location)) === JSON.stringify(value)) continue
@@ -152,6 +198,10 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
     source.set('fecha_publicacion', date)
     source.set('fecha_consulta', today)
     source.set('cita', 'Capacidad de acceso otorgada demanda RdT; Capacidad de acceso solicitada en curso y pendiente resolver demanda RdT')
+    const snapshot = `capacidad-ree-${date}.csv`
+    writeFileSync(new URL(`../data/red/${snapshot}`, import.meta.url), readFileSync(csv))
+    doc.set('archivo_original_ree', snapshot)
+    doc.set('sha256_csv_ree', createHash('sha256').update(readFileSync(csv)).digest('hex'))
     // Las referencias documentales de la cabecera deben acompañar a los valores.
     writeFileSync(path, doc.toString({ lineWidth: 0, flowCollectionPadding: false }).replaceAll(previousDate.replaceAll('-', '_'), date.replaceAll('-', '_')).replace(`#   fecha_publicacion_dato: ${previousDate}`, `#   fecha_publicacion_dato: ${date}`))
   }

@@ -37,6 +37,7 @@ potencia: []
 
 computo:
   - tipo: cpu_hpc
+    modalidad: instalado
     sistema: "Agustina"
     modelo: "AMD Epyc 7513A a 2,6 GHz, 2 por nodo (6.144 núcleos)"
     unidades: 96
@@ -52,6 +53,7 @@ computo:
       93 nodos delgados de 256 GB de RAM y 3 nodos gruesos de 512 GB, con 500 TB de disco e
       Infiniband de 100 Gbps.
   - tipo: cpu_hpc
+    modalidad: instalado
     sistema: "Mequinenza"
     modelo: "Intel Xeon Platinum 8160 a 2,1 GHz, 2 por nodo (6.912 núcleos)"
     unidades: 144

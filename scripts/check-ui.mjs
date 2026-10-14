@@ -47,20 +47,51 @@ try {
     await ir('/fuentes/')
     assert.equal(await pagina.locator('[data-list-item]:visible').count(), 25)
     await pagina.locator('[data-siguiente]').click()
-    assert.equal(new URL(pagina.url()).searchParams.get('pagina'), '2')
+    await pagina.waitForURL(/\/fuentes\/pagina\/2\/?$/)
+    assert.equal(await pagina.locator('[data-list-item]:visible').count(), 25)
     await pagina.locator('input[name=q]').fill('fuente-inexistente-zzzz')
+    await pagina.locator('[data-vacio]').waitFor({ state: 'visible' })
     assert.equal(await pagina.locator('[data-list-item]:visible').count(), 0)
     assert.equal(await pagina.locator('[data-vacio]').isVisible(), true)
     await pagina.getByRole('button', { name: 'Limpiar', exact: true }).click()
     assert.equal(await pagina.locator('[data-list-item]:visible').count(), 25)
   })
   await comprobar('Referencias: un enlace revela su página y su cita', async () => {
-    const id = await pagina.locator('[data-list-item][hidden]').last().getAttribute('id')
+    const indice = await (await fetch(origen + '/datos/indice-fuentes.json')).json()
+    const id = indice.items.at(-1).id
     await ir(`/fuentes/#${id}`)
+    await pagina.locator(`#${id}`).waitFor({ state: 'visible' })
     assert.equal(await pagina.locator(`#${id}`).isVisible(), true)
     assert.equal(await pagina.locator(`#${id} details`).first().evaluate((e) => e.open), true)
     await pagina.reload({ waitUntil: 'networkidle' })
     assert.equal(await pagina.locator(`#${id}`).isVisible(), true)
+  })
+  await comprobar('Referencias: la primera carga mantiene un tamaño y un DOM acotados', async () => {
+    for (const ruta of ['/fuentes/', '/incertidumbres/']) {
+      assert((await stat(join(raiz, ruta, 'index.html'))).size < 200_000, ruta)
+      await ir(ruta)
+      assert(await pagina.locator('*').count() < 1_500, ruta)
+    }
+  })
+  await comprobar('Capacidad: el estado de la cifra separa el edificio operativo del campus futuro', async () => {
+    await ir('/proyectos/?q=iron+mountain')
+    const fila = pagina.locator('[data-list-item]:visible').first()
+    assert.equal(await pagina.locator('select[name=etapa]').inputValue(), 'operativa')
+    assert.equal(await fila.getAttribute('data-it'), '3')
+    await pagina.locator('select[name=etapa]').selectOption('construccion')
+    assert.equal(await fila.getAttribute('data-it'), '79')
+    assert.equal(new URL(pagina.url()).searchParams.get('etapa'), 'construccion')
+    await pagina.reload({ waitUntil: 'networkidle' })
+    assert.equal(await pagina.locator('[data-list-item]:visible').first().getAttribute('data-it'), '79')
+  })
+  await comprobar('Cómputo: acceso a H200 no se muestra como instalación física', async () => {
+    await ir('/computo/?q=cidade')
+    await pagina.locator('select[name=modalidad]').selectOption('acceso')
+    assert(await pagina.locator('[data-list-item]:visible').count() > 0)
+    const filas = await pagina.locator('[data-list-item]:visible').innerText()
+    assert(filas.includes('H200'))
+    await pagina.locator('select[name=modalidad]').selectOption('instalado')
+    assert(!(await pagina.locator('[data-list-item]:visible td:first-child strong').allTextContents()).join(' ').includes('H200'))
   })
   await comprobar('Mapa y tabla conservan estados, región y potencia conocida', async () => {
     await ir('/proyectos/?e=operativo,parcialmente_operativo&r=Comunidad+de+Madrid&con=1&min=5')
@@ -112,9 +143,27 @@ try {
     assert(feed.length > 0)
     assert.equal(await pagina.locator('.historial-cambios > li').count(), feed.length)
     for (const entrada of feed) {
-      assert(entrada.fecha && entrada.fecha_hecho)
+      assert(entrada.fecha)
+      if (entrada.fecha_hecho) assert(entrada.fecha_hecho <= entrada.fecha)
       for (const enlace of entrada.enlaces) assert.equal((await fetch(origen + enlace.href)).status, 200)
     }
+  })
+  await comprobar('Revisión y RSS: las candidatas abiertas quedan fuera de las novedades publicadas', async () => {
+    const revision = await (await fetch(origen + '/datos/revision.json')).json()
+    const novedades = await (await fetch(origen + '/datos/actualizaciones.json')).json()
+    const xml = await (await fetch(origen + '/actualizaciones.xml')).text()
+    const rss = await pagina.evaluate((texto) => {
+      const doc = new DOMParser().parseFromString(texto, 'application/xml')
+      return { errores: doc.querySelectorAll('parsererror').length, ids: [...doc.querySelectorAll('item guid')].map((e) => e.textContent) }
+    }, xml)
+    assert.equal(rss.errores, 0)
+    assert.equal(rss.ids.length, novedades.length)
+    for (const entrada of novedades) assert(rss.ids.some((id) => id.endsWith(`#${entrada.id}`)), entrada.id)
+    for (const entrada of revision.hallazgos.filter((h) => !['published', 'discarded'].includes(h.estado))) {
+      assert(!novedades.some((n) => n.id === entrada.id), entrada.id)
+    }
+    await ir('/revision/?estado=awaiting_primary')
+    assert.equal(await pagina.locator('[data-list-item]:visible').count(), revision.hallazgos.filter((h) => h.estado === 'awaiting_primary').length)
   })
   await comprobar('Navegación: Escape devuelve el foco al menú abierto', async () => {
     await pagina.locator('.nav-grupo > summary').filter({ hasText: 'Proyectos' }).click()
@@ -124,7 +173,7 @@ try {
   })
   await comprobar('Móvil: datos principales visibles y sin desbordamiento', async () => {
     await pagina.setViewportSize({ width: 390, height: 844 })
-    for (const ruta of ['/proyectos/', '/red-electrica/', '/normativa/', '/proyecto/cluster-tic-galicia-a-coruna-csa/', '/inversion/merlin-properties/', '/datos/']) {
+    for (const ruta of ['/proyectos/', '/computo/', '/revision/', '/red-electrica/', '/normativa/', '/proyecto/cluster-tic-galicia-a-coruna-csa/', '/inversion/merlin-properties/', '/datos/']) {
       await ir(ruta)
       assert.equal(await pagina.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, ruta)
     }
@@ -155,9 +204,12 @@ try {
   const sinJS = await navegador.newContext({ javaScriptEnabled: false })
   const paginaSinJS = await sinJS.newPage()
   await paginaSinJS.goto(origen + '/fuentes/')
-  const fuentes = await (await fetch(origen + '/datos/fuentes.json')).json()
-  assert.equal(await paginaSinJS.locator('[data-list-item]:visible').count(), fuentes.length)
-  resultados.push('Sin JavaScript: todas las fuentes siguen disponibles')
+  assert.equal(await paginaSinJS.locator('[data-list-item]:visible').count(), 25)
+  const primera = await paginaSinJS.locator('[data-list-item]').first().getAttribute('id')
+  await paginaSinJS.locator('a[rel=next]').click()
+  assert.equal(await paginaSinJS.locator('[data-list-item]:visible').count(), 25)
+  assert.notEqual(await paginaSinJS.locator('[data-list-item]').first().getAttribute('id'), primera)
+  resultados.push('Sin JavaScript: las páginas estáticas permiten recorrer las fuentes')
   await sinJS.close()
   await writeFile(join(artefactos, 'resultados.json'), JSON.stringify({ comprobaciones: resultados, errores }, null, 2) + '\n')
   console.log(`${resultados.length} comprobaciones de interfaz superadas.`)

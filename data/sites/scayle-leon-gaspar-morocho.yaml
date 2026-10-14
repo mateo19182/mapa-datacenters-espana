@@ -13,29 +13,31 @@ ubicacion:
   municipio: "León"
   provincia: "León"
   ccaa: "Castilla y León"
-  direccion: "Calle Profesor Gaspar Morocho, junto al Centro Integrado de Formación Profesional Tecnológico Industrial y al Campus de Vegazana de la Universidad de León"
+  direccion: "Calle Profesor Gaspar Morocho, junto al Centro Integrado de Formación Profesional
+    Tecnológico Industrial y al Campus de Vegazana de la Universidad de León"
   lat: 42.6341451
   lon: -5.9714151
   precision: municipio
-  fuentes: [src-1, src-3, src-osm]
+  fuentes: [ src-1, src-3, src-osm ]
 
 estado: en_construccion
 estado_detalle: >-
-  SCAYLE es una entidad pública creada por la Junta de Castilla y León y la Universidad de
-  León que opera el supercomputador Caléndula, hoy alojado en el Campus de Vegazana. La
-  construcción de una nueva sede propia en la calle Profesor Gaspar Morocho se licitó en
-  diciembre de 2023 para albergar el centro de procesamiento de datos, el supercomputador y
-  las oficinas de gestión. La Junta situó el final de las obras en el último trimestre de
-  2025; en marzo de 2026 los trabajos estaban en fase final, centrados en los sistemas de
-  refrigeración, y la migración de los servicios de Caléndula había comenzado. La previsión
-  oficial es que el centro esté plenamente operativo en la nueva sede en el primer semestre de
-  2027, con una migración de aproximadamente un año presupuestada en 1,8 millones de euros.
-estado_fuentes: [src-1, src-2, src-3, src-4]
+  SCAYLE es una entidad pública creada por la Junta de Castilla y León y la Universidad de León que
+  opera el supercomputador Caléndula, hoy alojado en el Campus de Vegazana. La construcción de una
+  nueva sede propia en la calle Profesor Gaspar Morocho se licitó en diciembre de 2023 para albergar
+  el centro de procesamiento de datos, el supercomputador y las oficinas de gestión. La Junta situó
+  el final de las obras en el último trimestre de 2025; en marzo de 2026 los trabajos estaban en
+  fase final, centrados en los sistemas de refrigeración, y la migración de los servicios de
+  Caléndula había comenzado. La previsión oficial es que el centro esté plenamente operativo en la
+  nueva sede en el primer semestre de 2027, con una migración de aproximadamente un año
+  presupuestada en 1,8 millones de euros.
+estado_fuentes: [ src-1, src-2, src-3, src-4 ]
 
 potencia: []
 
 inversion_anunciada_eur: null
-refrigeracion: "Uno de los frentes principales de la obra son los sistemas de refrigeración necesarios para el supercomputador."
+refrigeracion: "Uno de los frentes principales de la obra son los sistemas de refrigeración
+  necesarios para el supercomputador."
 enlaces_proyecto:
   - "https://www.scayle.es/infraestructuras/"
 
@@ -52,11 +54,12 @@ computo:
     rendimiento_precision: fp64
     estado: operativo
     fecha_dato: "2026-08-31"
-    fuentes: [src-manual]
+    fuentes: [ src-manual ]
     nota: >-
       Cifra global del supercomputador, con 308 TB de memoria RAM. Manda sobre la suma de las
       particiones registradas abajo. El equipo está hoy en el Campus de Vegazana y migra a esta
       sede, así que la cifra describe la máquina, no todavía el edificio.
+    modalidad: sin_confirmar
   - tipo: gpu
     ambito: sistema
     sistema: "Caléndula"
@@ -64,11 +67,12 @@ computo:
     tipo_unidad: acelerador
     estado: operativo
     fecha_dato: "2026-08-31"
-    fuentes: [src-scayle]
+    fuentes: [ src-scayle ]
     nota: >-
-      Recuento agregado que publica SCAYLE para el clúster actual, sin desglose por modelo, junto
-      a 18.000 núcleos y 7 PFlop/s. Es la cifra de ámbito sistema; las particiones de abajo la
+      Recuento agregado que publica SCAYLE para el clúster actual, sin desglose por modelo, junto a
+      18.000 núcleos y 7 PFlop/s. Es la cifra de ámbito sistema; las particiones de abajo la
       detallan parcialmente y no se suman a ella.
+    modalidad: sin_confirmar
   - tipo: gpu
     sistema: "Caléndula — arquitectura AMD Genoa"
     modelo: "NVIDIA H100 SXM5 de 80 GB, 4 por servidor en 35 servidores AMD EPYC 9374F"
@@ -77,10 +81,11 @@ computo:
     nodos: 35
     estado: operativo
     fecha_dato: "2026-08-31"
-    fuentes: [src-manual]
+    fuentes: [ src-manual ]
     nota: >-
       Es el núcleo del servicio avanzado de IA del centro: soporta entrenamiento distribuido y
       cargas intensivas de inferencia de modelos de lenguaje abiertos.
+    modalidad: sin_confirmar
   - tipo: gpu
     sistema: "Caléndula — arquitectura Intel Ice Lake"
     modelo: "NVIDIA Tesla A100 de 40 GB, 1 por servidor en 26 servidores Intel Xeon Platinum 8358"
@@ -88,19 +93,22 @@ computo:
     tipo_unidad: acelerador
     estado: operativo
     fecha_dato: "2026-08-31"
-    fuentes: [src-manual]
+    fuentes: [ src-manual ]
     nota: >-
       El recuento total no lo publica la fuente, que solo da servidores y tarjetas por servidor.
       Este equipamiento previo se ha reorientado a formación y pruebas de concepto.
+    modalidad: sin_confirmar
   - tipo: gpu
     sistema: "Caléndula — arquitectura Intel Cascade Lake y Broadwell"
-    modelo: "NVIDIA Tesla V100: 1 por servidor en 7 servidores Cascade Lake y 8 NVLink en un servidor Broadwell"
+    modelo: "NVIDIA Tesla V100: 1 por servidor en 7 servidores Cascade Lake y 8 NVLink en un servidor
+      Broadwell"
     nodos: 8
     tipo_unidad: acelerador
     estado: operativo
     fecha_dato: "2026-08-31"
-    fuentes: [src-manual]
+    fuentes: [ src-manual ]
     nota: "La fuente no publica el total de tarjetas V100 y aquí no se deduce."
+    modalidad: sin_confirmar
   - tipo: cpu_hpc
     sistema: "Caléndula — arquitectura NVIDIA Grace"
     modelo: "NVIDIA Grace CPU Superchip de 144 núcleos"
@@ -109,8 +117,9 @@ computo:
     nodos: 1
     estado: operativo
     fecha_dato: "2026-08-31"
-    fuentes: [src-manual]
+    fuentes: [ src-manual ]
     nota: null
+    modalidad: sin_confirmar
 
 incertidumbres:
   - campo: potencia
@@ -118,20 +127,30 @@ incertidumbres:
       SCAYLE no publica potencia eléctrica, superficie de sala técnica ni número de racks de la
       nueva sede. La página de infraestructuras describe salas IT, racks de alta densidad y
       alimentación redundante sin ninguna cifra. Campo de potencia vacío.
-    fuentes: [src-5]
+    fuentes: [ src-5 ]
   - campo: inversion_anunciada_eur
     descripcion: >-
-      Las cifras publicadas del edificio no coinciden: la propia SCAYLE hablaba en diciembre de
-      2023 de una inversión prevista superior a 3,6 millones de euros, leonoticias de 3,1
-      millones en marzo de 2024 y la Junta de «cerca de 3 millones» en marzo de 2025. A ello se
-      suman 1,8 millones para la migración. No se registra ninguna como cifra única.
-    fuentes: [src-1, src-2, src-4]
+      Las cifras publicadas del edificio no coinciden: la propia SCAYLE hablaba en diciembre de 2023
+      de una inversión prevista superior a 3,6 millones de euros, leonoticias de 3,1 millones en
+      marzo de 2024 y la Junta de «cerca de 3 millones» en marzo de 2025. A ello se suman 1,8
+      millones para la migración. No se registra ninguna como cifra única.
+    fuentes: [ src-1, src-2, src-4 ]
   - campo: ubicacion
     descripcion: >-
-      El emplazamiento registrado es la nueva sede en construcción. Mientras dure la migración,
-      el equipamiento sigue en las instalaciones actuales del Campus de Vegazana, en el mismo
+      El emplazamiento registrado es la nueva sede en construcción. Mientras dure la migración, el
+      equipamiento sigue en las instalaciones actuales del Campus de Vegazana, en el mismo
       municipio. Las coordenadas son el centroide municipal de León.
-    fuentes: [src-3, src-osm]
+    fuentes: [ src-3, src-osm ]
+  - campo: computo
+    descripcion: El inventario de Caléndula describe equipamiento del servicio SCAYLE. La migración a
+      Gaspar Morocho sigue en curso y no se ha confirmado la ubicación de cada partición en el nuevo
+      edificio. Se conserva el inventario institucional con modalidad sin_confirmar para este
+      emplazamiento.
+    fuentes:
+      - src-manual
+      - src-scayle
+      - src-3
+      - src-4
 
 confianza: media
 ultima_verificacion: "2026-08-31"
@@ -145,14 +164,15 @@ fuentes:
     fecha_publicacion: "2023-12-11"
     fecha_consulta: "2026-08-31"
     cita: >-
-      El centro de Supercomputación de Castilla y León contará una nueva sede donde la
-      Consejería de Movilidad y Transformación Digital tiene prevista una inversión superior a
-      los 3,6 millones de euros y donde ya se ha lanzado la licitación. Se construirá en la calle
-      Profesor Gaspar Morocho, junto al Centro Integrado de Formación Profesional Tecnológico
-      Industrial de León. El nuevo edificio albergará el centro de procesamiento de datos, el
-      supercomputador Caléndula y las oficinas necesarias para su gestión.
+      El centro de Supercomputación de Castilla y León contará una nueva sede donde la Consejería de
+      Movilidad y Transformación Digital tiene prevista una inversión superior a los 3,6 millones de
+      euros y donde ya se ha lanzado la licitación. Se construirá en la calle Profesor Gaspar
+      Morocho, junto al Centro Integrado de Formación Profesional Tecnológico Industrial de León. El
+      nuevo edificio albergará el centro de procesamiento de datos, el supercomputador Caléndula y
+      las oficinas necesarias para su gestión.
   - id: src-2
-    url: "https://comunicacion.jcyl.es/web/jcyl/Comunicacion/es/Plantilla100Detalle/1284663638052/_/1285494321608/Comunicacion"
+    url: "https://comunicacion.jcyl.es/web/jcyl/Comunicacion/es/Plantilla100Detalle/1284663638052/_/128\
+      5494321608/Comunicacion"
     titulo: "Las obras de la nueva sede de Scayle concluirán en el último trimestre del 2025"
     editor: "Junta de Castilla y León"
     tipo: oficial
@@ -162,18 +182,20 @@ fuentes:
       El consejero de Movilidad y Transformación Digital comprueba el avance de los trabajos que
       cuentan con una inversión cercana a los 3 millones de euros.
   - id: src-3
-    url: "https://www.lanuevacronica.com/actualidad/obras-en-ampliacion-scayle-entran-en-su-fase-final_192119_102.html"
+    url: "https://www.lanuevacronica.com/actualidad/obras-en-ampliacion-scayle-entran-en-su-fase-final_\
+      192119_102.html"
     titulo: "Las obras en la ampliación de Scayle entran en su fase final"
     editor: "La Nueva Crónica"
     tipo: prensa_general
     fecha_publicacion: "2026-03-03"
     fecha_consulta: "2026-08-31"
     cita: >-
-      Uno de los principales frentes abiertos en los trabajos es la migración de los servicios
-      del supercomputador Caléndula [...] Estado actual de las obras en la nueva sede de Scayle,
-      junto al Campus de Vegazana de la ULE.
+      Uno de los principales frentes abiertos en los trabajos es la migración de los servicios del
+      supercomputador Caléndula [...] Estado actual de las obras en la nueva sede de Scayle, junto
+      al Campus de Vegazana de la ULE.
   - id: src-4
-    url: "https://cronicacastillayleon.es/el-centro-de-supercomputacion-de-castilla-y-leon-migrara-a-su-nueva-sede-en-2026-2027"
+    url: "https://cronicacastillayleon.es/el-centro-de-supercomputacion-de-castilla-y-leon-migrara-a-su\
+      -nueva-sede-en-2026-2027"
     titulo: "El Centro de Supercomputación de Castilla y León migrará a su nueva sede en 2026-2027"
     editor: "Crónica de Castilla y León"
     tipo: prensa_general
@@ -195,7 +217,8 @@ fuentes:
       garantizar alta disponibilidad, eficiencia energética y seguridad operativa [...] Salas IT
       especializadas [...] Racks de alta densidad [...] Alimentación redundante.
   - id: src-osm
-    url: "https://nominatim.openstreetmap.org/search?q=Le%C3%B3n%2C+Castilla+y+Le%C3%B3n&format=json&limit=1"
+    url: "https://nominatim.openstreetmap.org/search?q=Le%C3%B3n%2C+Castilla+y+Le%C3%B3n&format=json&li\
+      mit=1"
     titulo: "Nominatim — León, Castilla y León"
     editor: "OpenStreetMap / Nominatim"
     tipo: otro
@@ -209,14 +232,13 @@ fuentes:
     fecha_publicacion: "2026-04-16"
     fecha_consulta: "2026-08-31"
     cita: >-
-      En total, Caléndula cuenta con: 300 servidores, 308TB de memoria RAM, 6.7 PetaFLOPS
-      (Rpeak). [...] Arquitectura NVIDIA Grace: 1 servidor con 1 procesador NVIDIA Grace CPU
-      Superchip, con 144 Cores. [...] Arquitectura AMD Genoa | GPUs NVidia H100: 35 servidores
-      [...] 4 tarjetas GPU NVIDIA H100 SXM5 80G en cada equipo. [...] Estos equipos suman un
-      total de 2240 cores y 140 tarjetas GPUs H100. [...] 26 servidores [...] Cada uno de estos
-      servidores tiene instalada 1 tarjeta GPU NVidia Tesla A100 40GB. [...] 7 de estos
-      servidores tienen 1 GPU NVidia Tesla V100 cada uno. [...] Cuenta con 8 tarjetas NVidia
-      Tesla V100 NVLink.
+      En total, Caléndula cuenta con: 300 servidores, 308TB de memoria RAM, 6.7 PetaFLOPS (Rpeak).
+      [...] Arquitectura NVIDIA Grace: 1 servidor con 1 procesador NVIDIA Grace CPU Superchip, con
+      144 Cores. [...] Arquitectura AMD Genoa | GPUs NVidia H100: 35 servidores [...] 4 tarjetas GPU
+      NVIDIA H100 SXM5 80G en cada equipo. [...] Estos equipos suman un total de 2240 cores y 140
+      tarjetas GPUs H100. [...] 26 servidores [...] Cada uno de estos servidores tiene instalada 1
+      tarjeta GPU NVidia Tesla A100 40GB. [...] 7 de estos servidores tienen 1 GPU NVidia Tesla V100
+      cada uno. [...] Cuenta con 8 tarjetas NVidia Tesla V100 NVLink.
   - id: src-scayle
     url: "https://www.scayle.es/sobre-scayle/"
     titulo: "Sobre SCAYLE"

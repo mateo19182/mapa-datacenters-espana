@@ -1,6 +1,7 @@
 // Esquema canónico del dataset + normalización de las variantes que produce la
 // investigación manual. Ver docs/ESQUEMA.md para la documentación de cada campo.
 import { z } from 'zod'
+import { MODALIDAD_COMPUTO_ETIQUETA } from '../src/lib/computo.js'
 
 export const ESTADOS = [
   'anunciado',
@@ -408,6 +409,7 @@ const zEnergia = z.object({
 // rendimiento entre precisiones ni entre pico y medida.
 const zComputo = z.object({
   tipo: z.enum(TIPOS_COMPUTO),
+  modalidad: z.enum(Object.keys(MODALIDAD_COMPUTO_ETIQUETA)).default('sin_confirmar'),
   ambito: z.enum(AMBITOS_COMPUTO).default('particion'),
   sistema: z.string().nullable().optional(),
   // Quién opera el hardware. Se rellena cuando no es el operador del CPD: el
@@ -558,6 +560,7 @@ export function normalizarSitio(crudo) {
   }))
 
   d.computo = arr(d.computo).map((c) => ({
+    modalidad: c.modalidad ?? 'sin_confirmar',
     tipo: mapear(c.tipo, SINONIMOS_COMPUTO, TIPOS_COMPUTO, 'no_especificado'),
     ambito: AMBITOS_COMPUTO.includes(slug(c.ambito)) ? slug(c.ambito) : 'particion',
     sistema: c.sistema ?? null,
@@ -893,11 +896,13 @@ export const RANGOS_NORMA = [
   'reglamento_delegado_ue',
   'directiva_ue',
   'propuesta_reglamento_ue',
+  'iniciativa_ue',
   'ley',
   'real_decreto_ley',
   'real_decreto',
   'orden_ministerial',
   'circular',
+  'resolucion',
   'proyecto_real_decreto',
   'proyecto_ley',
   'anteproyecto_ley',
@@ -914,6 +919,8 @@ export const ESTADOS_NORMA = [
   'en_vigor',
   'en_vigor_en_tramitacion',
   'audiencia_publica',
+  'consulta_previa',
+  'adoptada_en_control',
   'en_tramitacion',
   'propuesta',
   'aprobada_no_aplicable',
@@ -1075,7 +1082,7 @@ export function revisarCoherenciaNorma(norma) {
 
   // Un proyecto de norma que ya tiene fecha de entrada en vigor está mal
   // clasificado, o la fecha es una previsión que no debería estar ahí.
-  const enProyecto = ['audiencia_publica', 'en_tramitacion', 'propuesta']
+  const enProyecto = ['consulta_previa', 'audiencia_publica', 'adoptada_en_control', 'en_tramitacion', 'propuesta']
   if (enProyecto.includes(norma.estado) && norma.fecha_entrada_vigor) {
     problemas.push({ nivel: 'aviso', msg: 'está en tramitación pero declara fecha de entrada en vigor' })
   }

@@ -1,0 +1,49 @@
+---
+import Base from '../layouts/Base.astro'
+import Listado from '../components/Listado.astro'
+import registros from '../data/computo.json'
+import { MODALIDAD_COMPUTO_ETIQUETA } from '../lib/computo.js'
+import { COMPUTO_ETIQUETA, ESTADO_ETIQUETA, unidadesComputo, rendimientoComputo, fechaLegible } from '../lib/etiquetas.js'
+const opciones = (campo, etiquetas = {}) => [...new Set(registros.map((r) => r[campo]).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'es')).map((valor) => ({ valor, etiqueta: etiquetas[valor] ?? valor }))
+const filtros = [
+  { nombre: 'tipo', etiqueta: 'Hardware', opciones: opciones('tipo', COMPUTO_ETIQUETA) },
+  { nombre: 'modalidad', etiqueta: 'Despliegue o acceso', opciones: opciones('modalidad', MODALIDAD_COMPUTO_ETIQUETA) },
+  { nombre: 'estado', etiqueta: 'Estado del recurso', opciones: opciones('estado', ESTADO_ETIQUETA) },
+  { nombre: 'region', parametro: 'r', etiqueta: 'Comunidad', opciones: opciones('ccaa') },
+  { nombre: 'modelo', etiqueta: 'Modelo', avanzado: true, opciones: opciones('modelo') },
+  { nombre: 'operador', etiqueta: 'Operador del hardware', avanzado: true, opciones: [...new Set(registros.map((r) => r.operador_hardware ?? r.operador_computo ?? r.operador_centro).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'es')).map((valor) => ({ valor, etiqueta: valor })) },
+  { nombre: 'recuento', etiqueta: 'Recuento de unidades', avanzado: true, opciones: [{ valor: 'publicado', etiqueta: 'Publicado' }, { valor: 'sin_dato', etiqueta: 'No publicado' }] },
+]
+const ordenes = [
+  { valor: 'proyecto', etiqueta: 'Emplazamiento' },
+  { valor: 'modelo', etiqueta: 'Modelo' },
+  { valor: 'fecha', etiqueta: 'Dato más reciente', direccion: 'desc' },
+]
+---
+<Base titulo="Cómputo y GPU" descripcion="Hardware documentado en España: GPU, CPU HPC, aceleradores de IA y procesadores cuánticos, con sus fuentes, alcance y estado de despliegue.">
+  <div class="contenedor computo">
+    <h1>Cómputo y GPU</h1>
+    <p class="sumario">{registros.length} registros de hardware en {new Set(registros.map((r) => r.proyecto)).size} emplazamientos. Cada fila conserva su alcance; los recuentos no se suman entre sí.</p>
+    <Listado nombre="registros de cómputo" filtros={filtros} ordenes={ordenes} porPagina={25} placeholder="L40S, B200, CESGA, Cidade das TIC…">
+      <div class="tabla-envoltorio"><table class="tabla-fichas"><thead><tr><th>Hardware</th><th>Emplazamiento</th><th>Recuento publicado</th><th>Despliegue y estado</th><th>Evidencia</th></tr></thead><tbody>
+        {registros.map((r) => <tr id={r.id} data-list-item data-busca={[r.modelo, r.sistema, r.nombre_proyecto, r.operador_centro, r.operador_computo, r.municipio, r.ccaa, COMPUTO_ETIQUETA[r.tipo]].filter(Boolean).join(' ')} data-tipo={r.tipo} data-modalidad={r.modalidad} data-estado={r.estado} data-region={r.ccaa ?? ''} data-operador={r.operador_hardware ?? r.operador_computo ?? r.operador_centro ?? ''} data-recuento={r.unidades == null ? 'sin_dato' : 'publicado'} data-proyecto={r.nombre_proyecto} data-modelo={r.modelo ?? ''} data-fecha={r.fecha_dato ?? ''}>
+          <td><strong>{r.modelo ?? r.sistema ?? 'Modelo sin publicar'}</strong><span class="pequeno silencio"><br />{COMPUTO_ETIQUETA[r.tipo]} · {r.ambito}</span></td>
+          <td data-etiqueta="Emplazamiento"><a href={`/proyecto/${r.proyecto}#detalle-computo`}>{r.nombre_proyecto}</a><span class="pequeno silencio"><br />{[r.municipio, r.ccaa].filter(Boolean).join(' · ')}{r.operador_computo && <><br />Hardware de {r.operador_computo}</>}</span></td>
+          <td data-etiqueta="Recuento">{unidadesComputo(r.unidades, r.tipo_unidad) ?? 'No publicado'}{r.nodos != null && <span class="pequeno silencio"><br />{r.nodos} nodos</span>}{rendimientoComputo(r) && <span class="pequeno silencio"><br />{rendimientoComputo(r)}</span>}</td>
+          <td data-etiqueta="Situación"><span>{MODALIDAD_COMPUTO_ETIQUETA[r.modalidad]}</span><span class="pequeno silencio"><br />{ESTADO_ETIQUETA[r.estado]}{r.fecha_dato && <> · {fechaLegible(r.fecha_dato)}</>}</span></td>
+          <td data-etiqueta="Evidencia"><details><summary>{r.fuentes.length} fuentes y alcance</summary>{r.nota && <p>{r.nota}</p>}<ul>{r.fuentes.map((f) => <li><a href={`/proyecto/${r.proyecto}#fuente-${f.id}`}>{f.titulo}</a></li>)}</ul><p class="silencio">Ficha revisada el {fechaLegible(r.ultima_verificacion)}.</p></details></td>
+        </tr>)}
+      </tbody></table></div>
+    </Listado>
+    <p class="pequeno silencio">El acceso contratado no acredita instalación física. Los FLOPS conservan su precisión y si son pico o medida. Unidades y rendimiento no se convierten en MW eléctricos.</p>
+    <p class="pequeno"><a href="/datos/computo.json" download>Descargar inventario JSON</a> · <a href="/glosario#gpu">Glosario</a></p>
+  </div>
+</Base>
+<style>
+  .computo { padding-block: 1.5rem 2rem; }
+  td:first-child { max-width: 23rem; }
+  td { max-width: 28rem; }
+  details { font-size: .78rem; min-width: 9rem; }
+  summary { cursor: pointer; }
+  details p, details ul { margin-top: .5rem; }
+</style>
