@@ -1,0 +1,109 @@
+id: reglamento-etiquetado-centros-datos-2026
+titulo: "Etiquetado europeo de centros de datos: acto adoptado de 2026"
+titulo_oficial: "Reglamento Delegado de la Comisión de 21 de septiembre de 2026 por el que se establece un régimen común de la Unión de evaluación de centros de datos y se modifica el Reglamento Delegado (UE) 2024/1364"
+ambito: europeo
+rango: reglamento_delegado_ue
+estado: adoptada_en_control
+estado_detalle: >-
+  La Comisión adoptó C(2026) 3472 final el 21 de septiembre. El Parlamento amplió su examen
+  dos meses el 6 de octubre y anunció la remisión a comisión el día 7. A 14 de octubre el
+  expediente figura pendiente de decisión de comisión. No se ha localizado publicación
+  definitiva en el DOUE ni entrada en vigor. La adopción por la Comisión no equivale a
+  una norma ya aplicable.
+boletin: null
+referencia: "C(2026) 3472 final; 2026/2895(DEA)"
+url_oficial: "https://oeil.europarl.europa.eu/oeil/en/procedure-file?reference=2026/2895(DEA)"
+fecha_aprobacion: "2026-09-21"
+fecha_publicacion: null
+fecha_entrada_vigor: null
+materias: [eficiencia, agua, transparencia, energia]
+resumen: >-
+  El acto adoptado establece etiquetas electrónicas públicas por centro, con clases separadas
+  de eficiencia energética y uso del agua. Sigue bajo control institucional y no está en vigor.
+por_que_importa: >-
+  Las etiquetas podrían aportar información por emplazamiento desde 2027. No imponen por sí
+  mismas que todos los centros alcancen la clase A ni sustituyen los requisitos del borrador español.
+obligaciones:
+  - quien: "Base de datos europea de centros de datos"
+    que: >-
+      Generar etiquetas electrónicas anuales para los centros que hayan comunicado los datos
+      requeridos y publicarlas en los idiomas oficiales de la Unión.
+    umbral: "Centros incluidos en el régimen de información de 2024/1364; vías voluntarias para otros centros según el acto"
+    plazo: "Primera emisión prevista, como máximo, el 15 de agosto de 2027; condicionada a la entrada en vigor del acto"
+    fuentes: [src-acto]
+  - quien: "Operadores de centros de datos"
+    que: "Facilitar a quien la solicite la etiqueta electrónica emitida; no producir etiquetas que la imiten."
+    umbral: null
+    plazo: "Cuando resulte aplicable el acto"
+    fuentes: [src-acto]
+  - quien: "Base de datos europea"
+    que: >-
+      Clasificar PUE y WUE por separado de A a G. La clase A corresponde a PUE de hasta 1,15
+      y WUE de hasta 0,1. La metodología de agua del anexo introduce agua dulce, no solo potable.
+    umbral: "Clases de indicadores, no mínimos generales exigidos a todo centro"
+    plazo: "Con la generación de etiquetas"
+    fuentes: [src-anexos]
+hitos:
+  - fecha: "2026-09-21"
+    hito: "La Comisión adopta C(2026) 3472 final y lo remite al control de los colegisladores"
+    fuentes: [src-acto, src-procedimiento]
+  - fecha: "2026-10-06"
+    hito: "El Parlamento solicita ampliar dos meses el periodo de examen"
+    fuentes: [src-procedimiento]
+  - fecha: "2026-10-07"
+    hito: "Anuncio de remisión a comisión en el Parlamento"
+    fuentes: [src-procedimiento]
+  - fecha: "2027-08-15"
+    previsto: true
+    hito: "Fecha prevista en el acto para la primera emisión de etiquetas, sujeta a su entrada en vigor"
+    fuentes: [src-acto]
+actores:
+  - nombre: "Comisión Europea"
+    rol: promotor
+    postura: sin_constar
+    resumen: "Adopta el acto delegado; la adopción queda sujeta al control de Parlamento y Consejo."
+    fuentes: [src-acto]
+  - nombre: "Parlamento Europeo"
+    rol: competente
+    postura: sin_constar
+    resumen: "Examina el acto a través de la comisión ITRE y ha ampliado el plazo de control."
+    fuentes: [src-procedimiento]
+afecta:
+  - tipo: registro
+    ref: null
+    como: "Preparar la identificación de etiquetas por centro, conservando indicador, metodología, año y estado de aplicación."
+    fuentes: [src-acto, src-anexos]
+relacionadas: [directiva-2023-1791, reglamento-delegado-2024-1364, prd-centros-datos-sostenibles, consulta-estandares-minimos-centros-datos-2026]
+incertidumbres:
+  - campo: estado
+    descripcion: >-
+      El texto conserva el número definitivo y la referencia de publicación abiertos. Una nota
+      interna menciona 2026/7000, que no se usa aquí como número definitivo. El artículo 7 prevé
+      entrada en vigor veinte días después de su publicación en el DOUE.
+    fuentes: [src-acto, src-procedimiento]
+ultima_verificacion: "2026-10-14"
+fuentes:
+  - id: src-acto
+    url: "https://data.consilium.europa.eu/doc/document/ST-13444-2026-INIT/en/pdf"
+    titulo: "C(2026) 3472 final, texto adoptado; artículos 1 a 7"
+    editor: "Consejo de la Unión Europea, documento de la Comisión"
+    tipo: oficial
+    fecha_publicacion: "2026-09-21"
+    fecha_consulta: "2026-10-14"
+    cita: "By 15 August 2027 and every year thereafter, an electronic label"
+  - id: src-anexos
+    url: "https://data.consilium.europa.eu/doc/document/ST-13444-2026-ADD-1/en/pdf"
+    titulo: "C(2026) 3472 final, anexos I a III"
+    editor: "Consejo de la Unión Europea, documento de la Comisión"
+    tipo: oficial
+    fecha_publicacion: "2026-09-21"
+    fecha_consulta: "2026-10-14"
+    cita: "Energy and water efficiency classes"
+  - id: src-procedimiento
+    url: "https://oeil.europarl.europa.eu/oeil/en/procedure-file?reference=2026/2895(DEA)"
+    titulo: "Procedimiento 2026/2895(DEA), control del acto delegado"
+    editor: "Parlamento Europeo"
+    tipo: oficial
+    fecha_publicacion: null
+    fecha_consulta: "2026-10-14"
+    cita: "06/10/2026: Initial period for examining delegated act extended at Parliament's request by 2 month(s)"

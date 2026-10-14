@@ -1,0 +1,122 @@
+id: nxn-madrid-juan-carlos-i
+nombre: NxN Data Centers — Madrid, entorno del Parque Juan Carlos I
+alias:
+  - NxN Madrid
+  - NxN segundo centro de datos en España
+tipo: edificio
+operador: NxN Data Centers
+propietario: null
+modelo: colocation
+ubicacion:
+  municipio: Madrid
+  provincia: Madrid
+  ccaa: Comunidad de Madrid
+  direccion: Entorno del Parque Juan Carlos I; dirección del activo no publicada
+  lat: null
+  lon: null
+  precision: desconocida
+  no_derivar: true
+  fuentes:
+    - src-nota
+estado: anunciado
+estado_detalle: NxN anunció el 23 de abril de 2026 la incorporación de un activo existente cerca del
+  Parque Juan Carlos I, con 8.500 m² y 20 millones de euros de modernización. Preveía comenzar a
+  operar en septiembre; su web todavía anuncia una próxima inauguración en 2026. No se ha acreditado
+  la apertura. La propia nota publica 7,5 y 15 MW con una arquitectura redundante 2N; no se
+  presentan como capacidad IT ni se suman las acometidas.
+estado_fuentes:
+  - src-nota
+  - src-web
+potencia:
+  - tipo: no_especificado
+    valor_mw: 7.5
+    ambito: edificio
+    referencia: Capacidad total anunciada en la primera página de la nota de NxN
+    estado_asociado: anunciado
+    fecha_dato: 2026-04-23
+    fuentes:
+      - src-nota
+    nota: La misma nota da 15 MW en otra página y describe dos acometidas independientes de 7,5 MW en
+      2N. No acredita carga IT ni permiso de acceso concedido.
+  - tipo: no_especificado
+    valor_mw: 15
+    ambito: edificio
+    referencia: Capacidad total anunciada en la segunda página de la nota y en la web
+    estado_asociado: anunciado
+    fecha_dato: 2026-04-23
+    fuentes:
+      - src-nota
+      - src-web
+    nota: Lectura rival de los 7,5 MW del mismo documento. Dos acometidas redundantes de 7,5 MW no
+      prueban 15 MW utilizables simultáneamente ni 15 MW IT.
+fases:
+  - nombre: Modernización y puesta en servicio anunciada por NxN
+    estado: anunciado
+    fecha_puesta_en_servicio: 2026-09
+    fuentes:
+      - src-nota
+    nota: Previsión de abril de 2026. El vencimiento del mes no confirma apertura; la web mantiene una
+      inauguración futura en 2026.
+conexion_electrica:
+  subestacion: null
+  tension_kv: null
+  titular_red: null
+  mw_solicitados: null
+  mw_concedidos: null
+  fuentes:
+    - src-nota
+  nota: NxN describe dos acometidas independientes de 7,5 MW bajo redundancia 2N. No se suman y no se
+    conocen los documentos de acceso y conexión.
+inversion_anunciada_eur: 20000000
+agua:
+  circuito: sin_agua
+  sistema: Renovación de climatización con objetivo de refrigeración sin consumo de agua, según NxN.
+  fuentes:
+    - src-nota
+  nota: Objetivo de modernización, sin mediciones publicadas de consumo o WUE y sin apertura acreditada.
+enlaces_proyecto:
+  - https://nxndata.com/
+incertidumbres:
+  - campo: potencia
+    descripcion: La nota del 23 de abril se contradice entre 7,5 MW en su primera página y 15 MW en la
+      segunda. Sus dos acometidas de 7,5 MW son redundantes 2N, no capacidad sumable. Ninguna cifra
+      está tipificada como carga IT.
+    fuentes:
+      - src-nota
+      - src-web
+  - campo: ubicacion
+    descripcion: No se publican calle, parcela ni coordenadas. Se conoce el entorno del Parque Juan
+      Carlos I. No se identifica con otro CPD ya fichado por mera proximidad o por sus 8.500 m²; el
+      propietario y el antiguo operador del activo quedan sin confirmar.
+    fuentes:
+      - src-nota
+  - campo: estado
+    descripcion: Septiembre de 2026 era una previsión de entrada en operación; la web aún anuncia
+      próxima inauguración en 2026. No se interpreta que haya abierto por haber pasado la fecha ni
+      por emplear lenguaje comercial de presente.
+    fuentes:
+      - src-nota
+      - src-web
+  - campo: superficie_construida_m2
+    descripcion: NxN publica 8.500 m² de superficie total, sin precisar parcela, superficie construida o
+      sala IT. Se conserva en el texto y no se rellena uno de esos campos por analogía.
+    fuentes:
+      - src-nota
+confianza: baja
+ultima_verificacion: 2026-10-14
+fuentes:
+  - id: src-nota
+    url: https://nxndata.com/downloads/NdP_NxN_Nuevo_centro_de_datos_Madrid.pdf
+    titulo: NxN invierte en Madrid su segundo centro de datos en España
+    editor: NxN Data Centers
+    tipo: empresa
+    fecha_publicacion: 2026-04-23
+    fecha_consulta: 2026-10-14
+    cita: capacidad total de 7,5 MW [...] capacidad total de 15 MW
+  - id: src-web
+    url: https://nxndata.com/
+    titulo: NxN Datacenters — Madrid y próxima inauguración en 2026
+    editor: NxN Data Centers
+    tipo: empresa
+    fecha_consulta: 2026-10-14
+    cita: Próxima inauguración en 2026 [...] dos acometidas eléctricas independientes de 7,5 MW cada una

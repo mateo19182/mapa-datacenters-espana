@@ -3,9 +3,9 @@ import Base from '../layouts/Base.astro'
 import Listado from '../components/Listado.astro'
 import regiones from '../data/regiones.json'
 import { numero } from '../lib/etiquetas.js'
-const ordenes = [{ valor: 'nombre', etiqueta: 'Comunidad' }, { valor: 'emplazamientos', etiqueta: 'Más emplazamientos', numerico: true, direccion: 'desc' }, { valor: 'it', etiqueta: 'Más MW IT publicados', numerico: true, direccion: 'desc' }]
+const ordenes = [{ valor: 'nombre', etiqueta: 'Comunidad' }, { valor: 'emplazamientos', etiqueta: 'Más emplazamientos', numerico: true, direccion: 'desc' }, { valor: 'it', etiqueta: 'Más MW IT operativos', numerico: true, direccion: 'desc' }]
 ---
-<Base titulo="Regiones" descripcion="Centros de datos documentados por comunidad autónoma, con operadores y cobertura de los MW IT publicados.">
+<Base titulo="Regiones" descripcion="Centros de datos documentados por comunidad autónoma, con operadores y cobertura de los MW IT operativos.">
   <div class="contenedor">
     <h1>Regiones</h1>
     <p class="sumario">{regiones.length} comunidades con emplazamientos registrados. El recuento refleja la documentación disponible; consulta la <a href="/cobertura">cobertura</a>.</p>
@@ -13,12 +13,12 @@ const ordenes = [{ valor: 'nombre', etiqueta: 'Comunidad' }, { valor: 'emplazami
       <div class="rejilla">{regiones.map((r) => <article class="tarjeta region" data-list-item data-busca={`${r.nombre} ${r.operadores.join(' ')}`} data-nombre={r.nombre} data-emplazamientos={r.emplazamientos} data-it={r.potencia.it.sitios_con_dato ? r.potencia.it.total_mw : ''}>
         <h2><a href={`/region/${r.slug}`}>{r.nombre}</a></h2>
         <p class="cifra-grande">{r.emplazamientos}<small>{r.emplazamientos === 1 ? 'emplazamiento' : 'emplazamientos'}</small></p>
-        <dl class="mini"><dt>MW IT publicados</dt><dd>{r.potencia.it.sitios_con_dato ? `${numero(r.potencia.it.total_mw)} MW` : 'No publicados'}</dd>
+        <dl class="mini"><dt>MW IT operativos</dt><dd>{r.potencia.it.sitios_con_dato ? `${numero(r.potencia.it.total_mw, 3)} MW` : 'No publicados'}</dd>
           <dt>Con dato IT</dt><dd>{r.potencia.it.sitios_con_dato}/{r.emplazamientos_en_potencia ?? r.emplazamientos} emplazamientos</dd>
           <dt>Operadores</dt><dd>{r.operadores.length}</dd>
         </dl>
       </article>)}</div>
-      <p class="pequeno silencio">Los MW IT incluyen estados distintos y excluyen cancelados. Cada región ofrece el desglose por estado.</p>
+      <p class="pequeno silencio">Solo se agregan cifras identificadas como operativas. Cada región muestra construcción y previsiones por separado.</p>
     </Listado>
   </div>
 </Base>

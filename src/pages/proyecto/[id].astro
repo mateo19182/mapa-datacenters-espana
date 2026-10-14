@@ -1,6 +1,8 @@
 ---
 import Base from '../../layouts/Base.astro'
 import Fuente from '../../components/Fuente.astro'
+import PotenciaProyecto from '../../components/PotenciaProyecto.astro'
+import { MODALIDAD_COMPUTO_ETIQUETA } from '../../lib/computo.js'
 import CronologiaProyecto from '../../components/CronologiaProyecto.astro'
 import { presentacionProyecto, vinculosEnergiaProyecto } from '../../lib/proyecto-presentacion.js'
 import sitios from '../../data/sitios.json'
@@ -77,15 +79,6 @@ const refs = (ids) =>
 // Lo que debilita el respaldo de esta ficha en concreto, leído de la propia ficha.
 const motivos = motivosConfianza(s)
 
-const r = s.resumen_potencia
-const tiposConDato = [
-  'it',
-  'conexion_red',
-  'instalada_total',
-  'no_especificado',
-  'termica_respaldo',
-  'generacion_asociada',
-].filter((t) => r[t])
 
 const { emplazamiento: vinculados, operador: ppaDelOperador } = vinculosEnergiaProyecto(s, renovables)
 
@@ -137,25 +130,7 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
 
     <section class="datos-clave" aria-labelledby="datos-clave" id="potencia">
       <h2 id="datos-clave">Datos clave</h2>
-      {tiposConDato.length === 0 ? (
-        <p class="sin-dato">Potencia eléctrica no publicada.</p>
-      ) : (
-        <dl class="potencias-breves">
-          {tiposConDato.map((t) => (
-            <div>
-              <dt><Termino id={GLOSARIO_POTENCIA[t]}>{POTENCIA_ETIQUETA[t]}</Termino></dt>
-              <dd>
-                <strong>{numero(r[t].valor_mw, 1)} MW</strong>
-                {t === 'no_especificado' && <span class="matiz-dato">Tipo sin publicar; no equivale a carga TI.</span>}
-                {t === 'termica_respaldo' && <span class="matiz-dato">Potencia térmica de respaldo; no es carga TI.</span>}
-                {r[t].discrepancia && <a class="matiz-dato" href="#detalle-potencia">Fuentes discrepantes: {numero(r[t].minimo_observado, 1)}–{numero(r[t].maximo_observado, 1)} MW</a>}
-                {r[t].disputada && <a class="matiz-dato" href="#incertidumbres">Interpretación disputada</a>}
-                <a class="procedencia-dato" href="#detalle-potencia">{{ global: 'Cifra global publicada', suma_de_fases: 'Suma de fases documentadas', suma_de_edificios: 'Suma de edificios documentados', edificio: 'Cifra del edificio', maximo_acumulado: 'Mayor hito acumulado publicado' }[r[t].base]} · ver lecturas y fuentes</a>
-              </dd>
-            </div>
-          ))}
-        </dl>
-      )}
+      <PotenciaProyecto sitio={s} />
       {(presentacion.hardware || s.computo.length > 0) && (
         <div class="hardware-breve">
           <h3>Hardware documentado</h3>
@@ -175,6 +150,7 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
                 <dd>
                   <strong>{unidadesComputo(c.unidades, c.tipo_unidad) ?? (c.nodos != null ? `${numero(c.nodos)} nodos; unidades sin publicar` : 'Recuento sin publicar')}</strong>
                   <span class={`etiqueta estado-${c.estado ?? 'desconocido'}`}>{ESTADO_ETIQUETA[c.estado ?? 'desconocido']}</span>
+                  <span class="procedencia-dato">{MODALIDAD_COMPUTO_ETIQUETA[c.modalidad ?? 'sin_confirmar']}</span>
                   {rendimientoComputo(c) && <span class="procedencia-dato">{rendimientoComputo(c)}</span>}
                   {computoConMatices && <a class="matiz-dato" href="#incertidumbres">Dato de cómputo con incertidumbres</a>}
                   <a class="procedencia-dato" href="#detalle-computo">Ver alcance y fuentes</a>
@@ -251,7 +227,7 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
                   </tbody>
                 </table>
               </div>
-              {r.no_especificado && (
+              {s.potencia.some((p) => p.tipo === 'no_especificado') && (
                 <p class="nota pequeno">
                   <strong>Cifras sin tipificar.</strong> Alguna fuente da MW sin aclarar si son carga
                   TI, potencia de conexión o potencia instalada. Se muestran aparte y no se suman con
@@ -571,6 +547,7 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
                   <dd>
                     {unidadesComputo(c.unidades, c.tipo_unidad) ?? 'Recuento no publicado'}
                     {c.estado && <span class={`etiqueta estado-${c.estado}`}>{ESTADO_ETIQUETA[c.estado]}</span>}
+                    <span class="pequeno silencio"><br />{MODALIDAD_COMPUTO_ETIQUETA[c.modalidad ?? 'sin_confirmar']}</span>
                     {c.sistema && <span class="pequeno silencio"><br />{c.sistema}</span>}
                     {c.modelo && <span class="pequeno"><br />{c.modelo}</span>}
                     {c.nodos != null && c.unidades == null && (

@@ -19,7 +19,7 @@ trap cleanup EXIT
 git -C "$repo_dir" fetch origin main
 git -C "$repo_dir" worktree add -b "$branch" "$checkout" origin/main
 
-prompt='Sigue docs/INVESTIGACION-PROGRAMADA.md y realiza el trabajo semanal para los últimos siete días. Limita la investigación a un máximo de 12 hallazgos relevantes. Escribe el informe y, si hay evidencia suficiente, borradores de propuestas en research/propuestas-revision/. No modifiques otros archivos, no hagas commits y no publiques nada. Trabaja sin pedir aclaraciones.'
+prompt='Sigue docs/INVESTIGACION-PROGRAMADA.md y realiza el trabajo semanal para los últimos siete días. Limita la investigación a un máximo de 12 hallazgos relevantes. Escribe el informe y, si hay evidencia suficiente, borradores de propuestas en research/propuestas-revision/. Lee también data/revision.yaml y research/hallazgos.yaml. Añade nuevas candidatas a research/hallazgos.yaml sin modificar ni borrar las anteriores, evitando identificadores ya registrados. No modifiques otros archivos, no hagas commits y no publiques nada. Trabaja sin pedir aclaraciones.'
 if (( 10#$(date +%d) <= 7 )); then
   prompt+=' Es el primer lunes del mes: realiza también el trabajo mensual y anótalo en el mismo informe.'
 fi
@@ -35,10 +35,14 @@ fi
 while IFS= read -r linea; do
   archivo="${linea:3}"
   case "$archivo" in
-    research/revision-semanal.md|research/propuestas-revision/*.yaml) ;;
+    research/revision-semanal.md|research/hallazgos.yaml|research/propuestas-revision/*.yaml) ;;
     *) echo "Cambio fuera del alcance: $archivo" >&2; exit 1 ;;
   esac
 done < <(git -C "$checkout" status --porcelain --untracked-files=all)
+
+if [[ -f "$checkout/research/hallazgos.yaml" ]]; then
+  (cd "$checkout" && node "$repo_dir/scripts/revision.mjs" --validar-borradores research/hallazgos.yaml)
+fi
 
 git -C "$checkout" add -A -- research/
 if git -C "$checkout" diff --cached --quiet; then

@@ -1,10 +1,15 @@
 # Guía del acceso a la red
 
-*Marco y fuentes consultados hasta el 29 de agosto de 2026. Revisión editorial del 14 de octubre de 2026.*
+*Marco y recuentos históricos consultados en agosto de 2026. Revisiones de acceso flexible y normativa contrastadas el 14 de octubre de 2026.*
 
 Los recuentos de agosto que conserva esta guía son históricos. La edición vigente de REE,
 su fecha y los nudos registrados están en [Red eléctrica](/red-electrica). El estado actual
 del proyecto de decreto se mantiene en [su ficha normativa](/normativa/prd-centros-datos-sostenibles).
+
+La tabla vigente incorpora los 937 registros del CSV de octubre, incluidos los territorios
+insulares y Ceuta. La geometría del mapa es parcial y no se completa con coordenadas
+supuestas. La [revisión del 14 de octubre](/actualizaciones) documenta esta ampliación.
+
 
 ## 1. Cómo funciona el acceso y la conexión a la red para demanda
 
@@ -308,9 +313,12 @@ en ningún caso ha de entenderse como un compromiso en la garantía de suministr
 gestores de distribución tienen hasta el 1 de enero de 2028 para disponer de las
 herramientas de desconexión preventiva o correctiva necesarias.
 
-Para un centro de datos, el acceso flexible es una vía real de conexión anticipada, pero
-implica aceptar interrumpibilidad: encaja mal con un SLA de disponibilidad salvo que se
-compense con generación o almacenamiento propios.
+La resolución tiene efectos generales desde el 1 de septiembre de 2026 y establece una
+implantación escalonada por modalidad y gestor. Excluye los suministros que deban estar
+garantizados y no acredita que cualquier CPD pueda solicitar cualquier tipo de acceso hoy.
+El [registro de acceso flexible](/normativa/resolucion-acceso-flexible-demanda-2026) recoge
+sus condiciones y plazos. La disponibilidad de baterías o respaldo no demuestra por sí
+sola la elegibilidad de un centro ni la concesión de un permiso.
 
 ---
 
@@ -478,6 +486,10 @@ vigor. Esos plazos no han comenzado por publicarse el borrador.
 Los requisitos, las recomendaciones de la CNMC y sus fuentes se mantienen en
 [la ficha del proyecto](/normativa/prd-centros-datos-sostenibles). Esa ficha evita duplicar
 aquí un estado que puede cambiar con el texto definitivo.
+
+También se mantienen por separado el [acto europeo de etiquetado adoptado el 21 de septiembre](/normativa/reglamento-etiquetado-centros-datos-2026), todavía bajo control institucional;
+la [consulta de estándares mínimos hasta el 14 de diciembre](/normativa/consulta-estandares-minimos-centros-datos-2026);
+y el [proyecto español sobre calor residual](/normativa/prd-calor-residual-2026). Ninguno sustituye al borrador español de acceso y renovables.
 
 ---
 

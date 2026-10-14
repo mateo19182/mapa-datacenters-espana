@@ -1,40 +1,30 @@
 ---
-import { POTENCIA_ETIQUETA, ESTADO_ETIQUETA, ORDEN_ESTADOS, numero } from '../lib/etiquetas.js'
+import { POTENCIA_ETIQUETA, numero } from '../lib/etiquetas.js'
+import { ETAPAS_CAPACIDAD } from '../lib/capacidad.js'
 import { GLOSARIO_POTENCIA } from '../lib/glosario.js'
-import sitios from '../data/sitios.json'
 import Termino from './Termino.astro'
 const { cartera, titulo } = Astro.props
-const cancelados = cartera.por_estado?.cancelado ?? 0
 const denominador = cartera.emplazamientos_en_potencia ?? cartera.emplazamientos
-const tipos = ['it', 'conexion_red', 'no_especificado', 'instalada_total'].filter((t) => cartera.potencia[t]?.sitios_con_dato > 0)
-const propios = sitios.filter((s) => cartera.sitios?.includes(s.id) && s.estado !== 'cancelado')
-const porEstado = ORDEN_ESTADOS.filter((e) => propios.some((s) => s.estado === e)).map((estado) => ({
-  estado,
-  sitios: propios.filter((s) => s.estado === estado),
-  potencias: Object.fromEntries(tipos.map((t) => {
-    const conDato = propios.filter((s) => s.estado === estado && s.resumen_potencia[t])
-    return [t, { n: conDato.length, mw: conDato.reduce((total, s) => total + s.resumen_potencia[t].valor_mw, 0) }]
-  })),
-}))
+const grupos = cartera.potencia_por_etapa ?? { operativa: cartera.potencia }
+const tipos = ['it', 'conexion_red', 'no_especificado', 'instalada_total']
+const operativos = tipos.filter((t) => grupos.operativa?.[t]?.sitios_con_dato > 0)
+const otras = Object.keys(ETAPAS_CAPACIDAD).filter((etapa) => etapa !== 'operativa' && tipos.some((t) => grupos[etapa]?.[t]?.sitios_con_dato > 0))
 ---
 {titulo && <h3>{titulo}</h3>}
-{tipos.length === 0 ? <p class="silencio pequeno">Potencia no publicada para los {cartera.emplazamientos} emplazamientos.</p> : <>
-  <dl class="cifras">{tipos.map((t) => <div class="cifra">
-    <dt><Termino id={GLOSARIO_POTENCIA[t]}>{POTENCIA_ETIQUETA[t]}</Termino> publicados</dt>
-    <dd>{numero(cartera.potencia[t].total_mw)} MW<small>{cartera.potencia[t].sitios_con_dato}/{denominador} emplazamientos con dato</small></dd>
-  </div>)}</dl>
-  <p class="pequeno silencio alcance">Totales documentados de estados distintos. Cada magnitud se lee por separado.{cancelados > 0 && ` Se excluyen ${cancelados} emplazamientos cancelados.`}</p>
-  {porEstado.length > 0 && <details class="desglose"><summary>Potencia publicada por estado</summary>
-    <div class="tabla-envoltorio"><table><thead><tr><th>Estado</th>{tipos.map((t) => <th class="num">{POTENCIA_ETIQUETA[t]}</th>)}</tr></thead><tbody>{porEstado.map((e) => <tr>
-      <td>{ESTADO_ETIQUETA[e.estado]} <span class="pequeno silencio">· {e.sitios.length} empl.</span></td>
-      {tipos.map((t) => <td class="num">{e.potencias[t].n ? <>{numero(e.potencias[t].mw)} MW <span class="pequeno silencio">· {e.potencias[t].n}/{e.sitios.length} con dato</span></> : <span class="silencio">No publicado</span>}</td>)}
-    </tr>)}</tbody></table></div>
-  </details>}
-</>}
+{operativos.length ? <dl class="cifras">{operativos.map((t) => <div class="cifra">
+  <dt><Termino id={GLOSARIO_POTENCIA[t]}>{POTENCIA_ETIQUETA[t]}</Termino> operativos</dt>
+  <dd>{numero(grupos.operativa[t].total_mw, 3)} MW<small>{grupos.operativa[t].sitios_con_dato}/{denominador} emplazamientos con dato</small></dd>
+</div>)}</dl> : <p class="pequeno silencio">Sin potencia operativa documentada para esta selección.</p>}
+<p class="pequeno silencio alcance">Solo cifras identificadas como operativas por sus fuentes. Las magnitudes se leen por separado; los huecos no equivalen a cero.</p>
+{otras.length > 0 && <details class="desglose"><summary>Construcción, previsiones y otras lecturas</summary>
+  <p class="pequeno silencio">Un techo de campus puede incluir fases ya abiertas. Las filas no se suman entre sí. Los proyectos cancelados quedan fuera de estas carteras.</p>
+  <div class="tabla-envoltorio"><table><thead><tr><th>Etapa de la cifra</th>{tipos.map((t) => <th class="num">{POTENCIA_ETIQUETA[t]}</th>)}</tr></thead>
+  <tbody>{otras.map((etapa) => <tr><th scope="row">{ETAPAS_CAPACIDAD[etapa]}</th>{tipos.map((t) => <td class="num">{grupos[etapa]?.[t]?.sitios_con_dato ? <>{numero(grupos[etapa][t].total_mw, 3)} MW <small>· {grupos[etapa][t].sitios_con_dato}/{denominador} con dato</small></> : <span class="silencio">No publicado</span>}</td>)}</tr>)}</tbody></table></div>
+</details>}
 <style>
-  .alcance { margin: -.25rem 0 .65rem; }
+  .alcance { margin: .4rem 0 .65rem; }
   .desglose { margin: .75rem 0 1.5rem; }
   .desglose summary { cursor: pointer; font-size: .82rem; color: var(--tinta-3); }
   .desglose .tabla-envoltorio { margin-top: .6rem; }
-  .desglose td .silencio { display: block; }
+  td small { display: block; color: var(--tinta-3); }
 </style>

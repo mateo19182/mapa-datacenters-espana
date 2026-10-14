@@ -18,73 +18,74 @@ ubicacion:
   lat: 41.3412624
   lon: 2.1287874
   precision: aproximada
-  fuentes: [src-1, src-4]
+  fuentes: [ src-1, src-4 ]
 
 estado: operativo
 estado_detalle: >-
-  Inaugurado el 13 de mayo de 2025 por el alcalde de Barcelona. Alberga el
-  clúster de IA de CoreWeave con 10.224 GPU NVIDIA H200. La propiedad anunció
-  ampliación con un supercomputador Blackwell en 2026.
-estado_fuentes: [src-2, src-3]
+  Centro inaugurado el 13 de mayo de 2025, con 15 MW IT según MERLIN y 22 MW de capacidad eléctrica
+  total según CoreWeave. El anuncio prevé 10.224 H200 y una ampliación Blackwell en 2026. La
+  documentación vigente de CoreWeave confirma servicio H200 en Barcelona, sin inventario completo
+  por edificio.
+estado_fuentes:
+  - src-2
+  - src-5
+  - src-regiones-20261014
 fecha_puesta_en_servicio: "2025-05"
 
 potencia:
-  - tipo: no_especificado
+  - tipo: it
     valor_mw: 15
     ambito: edificio
-    referencia: "Potencia del centro de datos en el momento de la inauguración"
+    referencia: "Capacidad IT del centro declarada por MERLIN en la inauguración"
     estado_asociado: operativo
     fecha_dato: "2025-05-13"
-    fuentes: [src-2, src-5]
+    fuentes:
+      - src-2
     nota: >-
-      La nota de MERLIN dice literalmente "una potencia de 15 MW" sin precisar si
-      es carga TI. Una nota de prensa de la propia compañía recogida por prensa
-      generalista la califica como "15 MW IT". La nota de CoreWeave habla de "The
-      15MW site".
+      La página vigente de MERLIN especifica 15 MW IT. Son la carga IT de este edificio, no
+      capacidad adicional a sus 22 MW eléctricos totales.
   - tipo: instalada_total
     valor_mw: 22
     ambito: edificio
     referencia: "Capacidad eléctrica total del edificio"
     estado_asociado: operativo
     fecha_dato: "2025-05-13"
-    fuentes: [src-3, src-5, src-6]
+    fuentes: [ src-3, src-5, src-6 ]
     nota: >-
-      La fuente dice 'capacidad eléctrica total de 22 megavatios'. La agencia EFE
-      la recoge como "una capacidad eléctrica de 22 megavatios" y la nota de
-      CoreWeave habla de "The 22 MW facility".
+      La fuente dice 'capacidad eléctrica total de 22 megavatios'. La agencia EFE la recoge como
+      "una capacidad eléctrica de 22 megavatios" y la nota de CoreWeave habla de "The 22 MW
+      facility".
 
 fases:
   - nombre: "Puesta en servicio inicial (CoreWeave H200)"
     estado: operativo
     fecha_puesta_en_servicio: "2025-05"
-    fuentes: [src-2]
+    fuentes: [ src-2 ]
   - nombre: "Ampliación con supercomputador Blackwell"
     estado: anunciado
-    fuentes: [src-2]
+    fuentes: [ src-2 ]
 
 inversion_anunciada_eur: 198000000
 refrigeracion: >-
-  Consumo nulo de agua según la propiedad; PUE declarado de 1,15 frente a la
-  media europea de 1,46.
+  Consumo nulo de agua según la propiedad; PUE declarado de 1,15 frente a la media europea de 1,46.
 
 agua:
   circuito: sin_agua
   sistema: >-
-    Diseño de MERLIN Edged con consumo cero de agua para la refrigeración, según
-    la propiedad y el cliente ancla.
+    Diseño de MERLIN Edged con consumo cero de agua para la refrigeración, según la propiedad y el
+    cliente ancla.
   origen: null
   nota: "No se publica ningún consumo residual ni WUE numérico."
-  fuentes: [src-5]
+  fuentes: [ src-5 ]
 
 empleo:
   - tipo: no_especificado
     valor: 60
     referencia: "Profesionales que emplea el centro en el momento de la inauguración"
     fecha_dato: "2025-05-13"
-    fuentes: [src-6]
+    fuentes: [ src-6 ]
     nota: >-
-      La agencia EFE dice "emplea a 60 profesionales" sin distinguir empleo
-      directo de subcontratado.
+      La agencia EFE dice "emplea a 60 profesionales" sin distinguir empleo directo de subcontratado.
 enlaces_proyecto:
   - "https://www.merlinproperties.com/activos/data-center-barcelona/"
 
@@ -96,31 +97,43 @@ computo:
     modelo: "NVIDIA H200 Tensor Core, con interconexión InfiniBand"
     unidades: 10224
     tipo_unidad: acelerador
-    estado: operativo
-    fecha_dato: "2026-05-21"
-    fuentes: [src-2, src-5]
+    estado: anunciado
+    fecha_dato: "2025-05-13"
+    fuentes: [ src-2, src-5 ]
     nota: >-
-      El hardware no es del operador del centro: MERLIN Edged aporta el inmueble y los 15 MW, y
-      CoreWeave despliega y opera los aceleradores como inquilino. Es el mayor recuento de GPU
-      documentado en un centro de datos comercial en España. Para una segunda fase se anuncian
-      aceleradores Blackwell, sin cifra ni fecha firme.
+      MERLIN y CoreWeave anuncian que el centro albergará 10.224 H200. No se ha localizado
+      confirmación del despliegue completo. CoreWeave sí ofrece H200 en su zona general EU-SOUTH-03B
+      de Barcelona, sin identificar inmueble ni cantidad; esto no verifica el inventario total
+      anunciado. Blackwell sigue anunciado sin recuento ni puesta en servicio del edificio
+      acreditada.
+    modalidad: previsto
 
 incertidumbres:
   - campo: potencia
     descripcion: >-
-      Coexisten tres cifras en fuentes de la propia compañía y prensa: 15 MW
-      (potencia del centro a la inauguración), 22 MW (capacidad eléctrica total)
-      y 24 MW (cifra que circuló en la fase de anuncio del proyecto). No se han
-      podido reconciliar ni se sabe con certeza cuáles son MW TI.
-    fuentes: [src-2, src-3]
+      La página vigente de MERLIN tipifica 15 MW como IT; CoreWeave mantiene 22 MW para la
+      instalación completa. Los 24 MW de anuncios anteriores quedan sin reconciliar. La inauguración
+      no acredita por sí sola entrega completa del inventario de 10.224 GPU.
+    fuentes:
+      - src-2
+      - src-3
+      - src-5
   - campo: cliente_ancla
     descripcion: >-
-      Según prensa económica CoreWeave tenía arrendado el 68% de la capacidad
-      total en el momento de la inauguración; no consta quién ocupa el resto.
-    fuentes: [src-3]
+      Según prensa económica CoreWeave tenía arrendado el 68% de la capacidad total en el momento de
+      la inauguración; no consta quién ocupa el resto.
+    fuentes: [ src-3 ]
+  - campo: computo
+    descripcion: La documentación de servicio confirma H200 disponibles en Barcelona, pero no publica un
+      recuento ni vincula las zonas EU-SOUTH-01A/03B con este edificio. Se conserva 10.224 como
+      previsión, sin convertir disponibilidad regional en inventario físico por emplazamiento.
+    fuentes:
+      - src-2
+      - src-5
+      - src-regiones-20261014
 
 confianza: alta
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-14"
 
 fuentes:
   - id: src-1
@@ -131,55 +144,68 @@ fuentes:
     fecha_consulta: "2026-08-29"
     cita: "Calle 25, nº6, Parc Logístic de la Zona Franca, 08040 Barcelona, España"
   - id: src-2
-    url: "https://www.merlinproperties.com/prensa/el-alcalde-de-barcelona-inaugura-el-data-center-que-aloja-el-hiperescalar-lider-en-ia-de-coreweave/"
-    titulo: "El Alcalde de Barcelona inaugura el Data Center que aloja el hiperescalar líder en IA de CoreWeave"
+    url: "https://www.merlinproperties.com/prensa/el-alcalde-de-barcelona-inaugura-el-data-center-que-a\
+      loja-el-hiperescalar-lider-en-ia-de-coreweave/"
+    titulo: "El Alcalde de Barcelona inaugura el Data Center que aloja el hiperescalar líder en IA de
+      CoreWeave"
     editor: "MERLIN Properties SOCIMI"
     tipo: empresa
-    fecha_publicacion: "2025-05-13"
-    fecha_consulta: "2026-08-29"
+    fecha_publicacion: "2025-06-03"
+    fecha_consulta: "2026-10-14"
     cita: >-
-      El centro de datos ubicado en la Zona Franca de Barcelona cuenta con una
-      potencia de 15 MW y albergará 10.224 GPU NVIDIA H200 Tensor Core con
-      conectividad InfiniBand.
+      El activo, que cuenta con 15 MW IT, albergará 10.224 GPU NVIDIA H200
   - id: src-3
-    url: "https://metropoliabierta.elespanol.com/vivir-en-barcelona/20250513/barcelona-inaugura-un-centro-de-datos-pionero-con-supercomputacion-para-reforzar-su-posicion-en-europa/1003742657180_0.html"
-    titulo: "Barcelona inaugura un centro de datos pionero con supercomputación para 'reforzar su posición' en Europa"
+    url: "https://metropoliabierta.elespanol.com/vivir-en-barcelona/20250513/barcelona-inaugura-un-cent\
+      ro-de-datos-pionero-con-supercomputacion-para-reforzar-su-posicion-en-europa/1003742657180_0.\
+      html"
+    titulo: "Barcelona inaugura un centro de datos pionero con supercomputación para 'reforzar su
+      posición' en Europa"
     editor: "Metrópoli Abierta (El Español)"
     tipo: prensa_general
     fecha_publicacion: "2025-05-13"
     fecha_consulta: "2026-08-29"
     cita: "Con una capacidad eléctrica total de 22 megavatios"
   - id: src-4
-    url: "https://nominatim.openstreetmap.org/search?q=Carrer+25%2C+6%2C+Parc+Logistic+Zona+Franca%2C+Barcelona&format=json&limit=3"
+    url: "https://nominatim.openstreetmap.org/search?q=Carrer+25%2C+6%2C+Parc+Logistic+Zona+Franca%2C+B\
+      arcelona&format=json&limit=3"
     titulo: "Nominatim — geocodificación de Carrer Número 25, Parc Logístic Zona Franca, Barcelona"
     editor: "OpenStreetMap / Nominatim"
     tipo: otro
     fecha_consulta: "2026-08-29"
     cita: >-
-      Carrer Número 25, Parc Logístic Zona Franca, la Marina del Prat Vermell,
-      Sants-Montjuïc, Barcelona, Barcelonès, Barcelona, Catalunya, 08040, España
-      — lat 41.3412624, lon 2.1287874
+      Carrer Número 25, Parc Logístic Zona Franca, la Marina del Prat Vermell, Sants-Montjuïc,
+      Barcelona, Barcelonès, Barcelona, Catalunya, 08040, España — lat 41.3412624, lon 2.1287874
   - id: src-5
-    url: "https://investors.coreweave.com/news/news-details/2025/The-Mayor-of-Barcelona-Jaume-Collboni-Inaugurates-Data-Center-Hosting-CoreWeaves-Leading-AI-Cloud-Platform-in-Partnership-with-MERLIN-Edged/default.aspx"
-    titulo: "The Mayor of Barcelona Jaume Collboni Inaugurates Data Center Hosting CoreWeave's Leading AI Cloud Platform, in Partnership with MERLIN Edged"
+    url: "https://investors.coreweave.com/news/news-details/2025/The-Mayor-of-Barcelona-Jaume-Collboni-\
+      Inaugurates-Data-Center-Hosting-CoreWeaves-Leading-AI-Cloud-Platform-in-Partnership-with-MERL\
+      IN-Edged/default.aspx"
+    titulo: "The Mayor of Barcelona Jaume Collboni Inaugurates Data Center Hosting CoreWeave's Leading
+      AI Cloud Platform, in Partnership with MERLIN Edged"
     editor: "CoreWeave"
     tipo: empresa
     fecha_publicacion: "2025-05-13"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-14"
     cita: >-
-      The 15MW site will host 10,224 NVIDIA H200 Tensor Core GPUs with InfiniBand
-      connectivity, with plans to extend capacity with a Blackwell supercomputer
-      in 2026 ... MERLIN Edged data centers are at the forefront of international
-      innovation in sustainability, with zero water consumption ... a Power Usage
-      Effectiveness (PUE) of 1.15, compared to the European average of 1.46
+      The 15MW site will host 10,224 NVIDIA H200 Tensor Core GPUs with InfiniBand connectivity
   - id: src-6
-    url: "https://www.infobae.com/espana/agencias/2025/05/13/merlin-invertira-198-millones-en-un-centro-de-datos-en-la-zona-franca-de-barcelona/"
+    url: "https://www.infobae.com/espana/agencias/2025/05/13/merlin-invertira-198-millones-en-un-centro\
+      -de-datos-en-la-zona-franca-de-barcelona/"
     titulo: "Merlin invertirá 198 millones en un centro de datos en la Zona Franca de Barcelona"
     editor: "Infobae / EFE"
     tipo: prensa_general
     fecha_publicacion: "2025-05-13"
     fecha_consulta: "2026-08-31"
     cita: >-
-      La socimi Merlin Properties invertirá un total de 198 millones de euros en
-      un centro de datos en la Zona Franca de Barcelona, que ofrece una capacidad
-      eléctrica de 22 megavatios y emplea a 60 profesionales.
+      La socimi Merlin Properties invertirá un total de 198 millones de euros en un centro de datos
+      en la Zona Franca de Barcelona, que ofrece una capacidad eléctrica de 22 megavatios y emplea a
+      60 profesionales.
+  - id: src-regiones-20261014
+    url: https://docs.coreweave.com/platform/regions/eu-south
+    titulo: EU-SOUTH, regiones y zonas de disponibilidad de CoreWeave
+    editor: CoreWeave
+    tipo: empresa
+    fecha_publicacion: 2026-05-01
+    fecha_consulta: 2026-10-14
+    cita: EU-SOUTH-03B [...] General Access [...] Barcelona, Spain [...] H200 (InfiniBand)
+    nota: La página indica Last modified on May 1, 2026; es fecha de actualización documental, no de
+      apertura del centro.

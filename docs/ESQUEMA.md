@@ -20,14 +20,17 @@ neutro D-ALiX de Tenerife y las estaciones de cable submarino canarias y
 baleares. Excluir infraestructura española por estar en una isla era un criterio
 que no se sostenía en cuanto se enunciaba en voz alta.
 
-**La capa eléctrica es la excepción, y es deliberada.** `data/red/` cubre el
-sistema peninsular porque es el ámbito para el que Red Eléctrica publica
-capacidad de acceso por nudo; los sistemas canario y balear son eléctricamente
-independientes y no tienen equivalente publicado. La geometría de líneas de OSM y
-la instantánea de generación de ENTSO-E siguen la misma frontera. Consecuencia
-práctica: un emplazamiento insular tiene ficha, y no tiene red debajo. Eso no es
-un hueco por rellenar con datos peninsulares, es una asimetría real de las
-fuentes.
+El inventario de capacidad de demanda de REE incluye los 937 nudos de la edición
+del 1 de octubre de 2026. Las islas y Ceuta sí tienen datos publicados. Se conserva
+la comunidad literal en `ccaa_ree` y la normalizada en `ccaa`; `ambito_electrico`
+indica el ámbito territorial. Canarias no representa un único sistema conectado.
+`subestacion_id` solo enlaza a una subestación cartográfica cuando está identificada;
+una fila documental no recibe coordenadas por su nombre. Los 389 nudos añadidos
+no amplían por sí solos la cartografía peninsular de 220/400 kV de OSM.
+
+El CSV oficial se archiva sin modificar sus bytes, con SHA-256 y procedencia de
+filas y cabeceras. El importador admite los identificadores numéricos, `UFD-` y
+`VS-`; rechaza filas desconocidas en lugar de perderlas silenciosamente.
 
 ## Principios
 
@@ -446,3 +449,25 @@ contiene, cuando la hay, la lectura de esa norma —qué cambia en la práctica�
 `npm run export` la copia a `src/contenido/normativa/`. Una norma sin lectura se
 publica igual, solo con hechos. En la ficha aparecen en secciones distintas y con
 un aviso explícito de cuál es cuál.
+
+## Vistas de capacidad por etapa
+
+`potencia[].estado_asociado` clasifica la cifra. Solo `operativo` entra en la vista
+`operativa`. `en_construccion` va a `construccion`; los anuncios, la tramitación y
+los permisos van a `prevista`. Los estados mixtos o desconocidos van a
+`sin_desglose`; paralizados y cancelados, a `historica`. No se deduce un reparto
+operativo de una cifra de campus parcialmente abierto.
+
+Cada grupo aplica las reglas de campus, edificios y acumulados por separado.
+Los grupos pueden solaparse y nunca se suman. Los JSON declaran
+`etapa_resumen_potencia: operativa`, `potencia_por_etapa` y un
+`resumen_potencia_documentada` de todas las lecturas. Las carteras declaran
+`etapa_potencia: operativa` y excluyen emplazamientos cancelados.
+
+## Modalidad del cómputo
+
+`computo[].modalidad` acepta `instalado`, `adquirido`, `previsto`, `acceso` o
+`sin_confirmar`. El valor por defecto es `sin_confirmar`: un servicio operativo no
+prueba dónde está el hardware. `adquirido` tampoco implica puesta en servicio.
+Los recuentos conservan su unidad y ámbito, sin sumar sistemas solapados. El
+inventario derivado se publica en `/datos/computo.json` y se explora en `/computo`.

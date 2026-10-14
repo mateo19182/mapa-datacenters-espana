@@ -5,3 +5,7 @@
 
 /_astro/*
   Cache-Control: public, max-age=31536000, immutable
+
+/actualizaciones.xml
+  Content-Type: application/rss+xml; charset=utf-8
+  Cache-Control: public, max-age=300

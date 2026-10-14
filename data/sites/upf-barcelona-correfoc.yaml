@@ -1,0 +1,136 @@
+id: upf-barcelona-correfoc
+nombre: UPF — Clúster de supercomputación Correfoc, Barcelona
+alias:
+  - Correfoc
+  - Nodo Correfoc de la RES
+  - Scientific Computing Core Facility UPF
+tipo: edificio
+operador: Universitat Pompeu Fabra (UPF)
+propietario: Universitat Pompeu Fabra (UPF)
+modelo: corporativo
+ubicacion:
+  municipio: Barcelona
+  provincia: Barcelona
+  ccaa: Catalunya
+  direccion: null
+  lat: null
+  lon: null
+  precision: desconocida
+  no_derivar: true
+  fuentes:
+    - src-res
+    - src-servicio
+estado: operativo
+estado_detalle: Correfoc entró en operación el 1 de julio de 2026, según la UPF. Sustituye
+  progresivamente a Marvin2 y ofrece particiones CPU y GPU. La universidad publica un inventario de
+  57 NVIDIA L40S. El registro identifica la infraestructura de cómputo, sin atribuirle una sala
+  física ni potencia eléctrica no publicadas.
+estado_fuentes:
+  - src-operacion
+  - src-hardware
+fecha_puesta_en_servicio: 2026-07-01
+potencia: []
+computo:
+  - tipo: cpu_hpc
+    ambito: sistema
+    sistema: Correfoc, inventario global
+    modelo: Intel Xeon E5, Gold y 6980P; 7.968 núcleos publicados
+    unidades: 67
+    tipo_unidad: nodo
+    estado: operativo
+    modalidad: instalado
+    fuentes:
+      - src-hardware
+    nota: Total de nodos del inventario del operador, que incluye grupos CPU y GPU. No se suma a la
+      partición CPU descrita por la RES.
+  - tipo: gpu
+    ambito: sistema
+    sistema: Correfoc, particiones std-gpu y high-gpu
+    modelo: NVIDIA L40S
+    unidades: 57
+    tipo_unidad: acelerador
+    estado: operativo
+    modalidad: instalado
+    fuentes:
+      - src-hardware
+    nota: Total explícito del operador. Sus configuraciones de una o cuatro GPU por nodo no se
+      multiplican para reconstruir el inventario.
+  - tipo: cpu_hpc
+    ambito: particion
+    sistema: Correfoc, partición CPU descrita por la RES
+    modelo: Intel Xeon 6980P; 6.144 núcleos publicados
+    unidades: 24
+    tipo_unidad: nodo
+    rendimiento: 393
+    rendimiento_unidad: tflops
+    rendimiento_tipo: pico
+    rendimiento_precision: no_especificado
+    estado: operativo
+    modalidad: instalado
+    fuentes:
+      - src-res
+    nota: La ficha de la RES describe 24 nodos y 36 TB. Es una partición del sistema, no capacidad
+      adicional al inventario global de la UPF. La precisión numérica no está indicada.
+fases:
+  - nombre: Entrada en operación de Correfoc
+    estado: operativo
+    fecha_puesta_en_servicio: 2026-07-01
+    fuentes:
+      - src-operacion
+    nota: Fecha de servicio explícita; el anuncio se publicó el 9 de julio.
+enlaces_proyecto:
+  - https://www.upf.edu/web/sct-sit/equipment
+incertidumbres:
+  - campo: ubicacion
+    descripcion: La RES sitúa el nodo en Barcelona. La dirección del servicio de la UPF en el PRBB es un
+      contacto institucional y no acredita por sí sola la sala de alojamiento. Se dejan las
+      coordenadas sin publicar.
+    fuentes:
+      - src-res
+      - src-servicio
+  - campo: potencia
+    descripcion: Las fuentes consultadas no publican MW IT, potencia de conexión concedida ni consumo de
+      agua del recinto.
+    fuentes:
+      - src-hardware
+      - src-res
+  - campo: computo
+    descripcion: El inventario global de la UPF y los 24 nodos descritos por la RES tienen alcances
+      distintos. No se suman. Ambas páginas carecen de fecha de corte del inventario; no se usa la
+      fecha de consulta como fecha del hardware.
+    fuentes:
+      - src-hardware
+      - src-res
+confianza: media
+ultima_verificacion: 2026-10-14
+fuentes:
+  - id: src-operacion
+    url: https://www.upf.edu/web/sct-sit/-/correfoc-the-new-upf-supercomputing-cluster-entered-into-operation-on-1-julycorrefoc-new-cluster-operation-1-july
+    titulo: Correfoc entered into operation on 1 July 2026
+    editor: Universitat Pompeu Fabra
+    tipo: oficial
+    fecha_publicacion: 2026-07-09
+    fecha_consulta: 2026-10-14
+    cita: The system entered into operation on 1 July
+  - id: src-hardware
+    url: https://www.upf.edu/web/sct-sit/equipment
+    titulo: Correfoc — Global hardware figures
+    editor: Universitat Pompeu Fabra
+    tipo: oficial
+    fecha_consulta: 2026-10-14
+    cita: 67 Compute nodes 7,968 CPU cores 68 TB Total RAM 57 NVIDIA L40S GPUs
+  - id: src-res
+    url: https://www.res.es/en/about-res/nodes/correfoc-upf
+    titulo: Correfoc - UPF
+    editor: Red Española de Supercomputación
+    tipo: oficial
+    fecha_publicacion: 2026-04-23
+    fecha_consulta: 2026-10-14
+    cita: 24 nodes (6 144 cores) [...] 393 TFlop/s
+  - id: src-servicio
+    url: https://www.upf.edu/web/sct-sit
+    titulo: Scientific Computing Core Facility
+    editor: Universitat Pompeu Fabra
+    tipo: oficial
+    fecha_consulta: 2026-10-14
+    cita: Edifici PRBB (campus del Mar) Doctor Aiguader, 88

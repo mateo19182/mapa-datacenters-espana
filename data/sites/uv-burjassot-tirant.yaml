@@ -35,6 +35,7 @@ potencia: []
 
 computo:
   - tipo: cpu_hpc
+    modalidad: instalado
     sistema: "Tirant 4"
     modelo: "Intel Xeon Platinum 8160 a 2,1 GHz, 2 por nodo (13.824 núcleos)"
     unidades: 288
@@ -50,6 +51,7 @@ computo:
       Misma generación de hardware que las particiones repartidas desde MareNostrum 4 a otros
       nodos de la RES. Almacenamiento de 2 PB en Lustre e interconexión OmniPath de 100 Gbps.
   - tipo: cpu_hpc
+    modalidad: instalado
     sistema: "Lluís Vives 2"
     modelo: "Intel Xeon Skylake Gold de 18 núcleos a 3,0 GHz, 2 por nodo (2.520 núcleos)"
     unidades: 70

@@ -10,11 +10,12 @@ const ruta = Astro.url.pathname.replace(/\/$/, '') || '/'
 const activo = (href) => (ruta === href || (href !== '/' && ruta.startsWith(href)) ? 'page' : undefined)
 
 const grupos = [
-  { titulo: 'Proyectos', enlaces: [['/proyectos', 'Todos los proyectos'], ['/companias', 'Compañías'], ['/regiones', 'Regiones']] },
+  { titulo: 'Proyectos', enlaces: [['/proyectos', 'Todos los proyectos'], ['/computo', 'Cómputo y GPU'], ['/companias', 'Compañías'], ['/regiones', 'Regiones']] },
   { titulo: 'Energía', enlaces: [['/red-electrica', 'Red eléctrica'], ['/renovables', 'Renovables y almacenamiento'], ['/guias/red-electrica', 'Guía de acceso a la red'], ['/guias/renovables', 'Guía de contratos y energía']] },
 ]
 const referencias = [
   ['/actualizaciones', 'Últimos cambios'],
+  ['/revision', 'Cola de revisión'],
   ['/cobertura', 'Cobertura del registro'],
   ['/incertidumbres', 'Incertidumbres'],
   ['/fuentes', 'Fuentes'],
@@ -30,12 +31,13 @@ const referencias = [
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{titulo ? `${titulo} · Centros de datos en España` : 'Centros de datos en España'}</title>
-    <meta name="description" content={descripcion ?? 'Registro documental de centros de datos en España peninsular y su relación con la red eléctrica de transporte.'} />
+    <meta name="description" content={descripcion ?? 'Registro documental de centros de datos en España y su relación con la red eléctrica de transporte.'} />
     <meta name="robots" content="index, follow" />
     <meta property="og:title" content={titulo ?? 'Centros de datos en España'} />
-    <meta property="og:description" content={descripcion ?? 'Registro documental de centros de datos en España peninsular y su relación con la red eléctrica.'} />
+    <meta property="og:description" content={descripcion ?? 'Registro documental de centros de datos en España y su relación con la red eléctrica.'} />
     <meta property="og:type" content="website" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="alternate" type="application/rss+xml" title="Últimos cambios · Centros de datos en España" href="/actualizaciones.xml" />
   </head>
   <body class:list={[pantallaCompleta && 'pantalla-completa']}>
     <a class="saltar-contenido" href="#contenido">Saltar al contenido</a>
@@ -81,7 +83,7 @@ const referencias = [
     {!sinPie && (
       <footer class="pie">
         <div class="contenedor">
-          <p>{resumen.total_emplazamientos} emplazamientos · {resumen.fuentes_distintas} fuentes · Datos del {resumen.generado}.</p>
+          <p>{resumen.total_emplazamientos} emplazamientos · {resumen.fuentes_distintas} fuentes · Edición generada el {resumen.generado}.</p>
           <p class="pie-enlaces">
             <a href="/actualizaciones">Últimos cambios</a>
             <a href="/metodologia">Metodología</a>

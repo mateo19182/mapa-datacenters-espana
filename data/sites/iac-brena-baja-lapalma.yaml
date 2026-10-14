@@ -44,6 +44,7 @@ refrigeracion: >-
 
 computo:
   - tipo: cpu_hpc
+    modalidad: instalado
     ambito: sistema
     sistema: "LaPalma"
     modelo: "Intel Xeon Platinum 8160 a 2,1 GHz, 2 por nodo (13.824 núcleos)"

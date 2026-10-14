@@ -1,7 +1,10 @@
 // The server renders every item. Filtering and pagination only enhance that list.
 import { normalizarBusqueda as normalizar } from '../lib/busqueda.js'
+import { ETAPAS_CAPACIDAD } from '../lib/capacidad.js'
+import { iniciarReferencias } from './referencias.js'
 
 for (const lista of document.querySelectorAll('[data-listado]')) {
+  if (lista.dataset.remoto) { iniciarReferencias(lista); continue }
   const form = lista.querySelector('[data-herramientas]')
   const items = [...lista.querySelectorAll('[data-list-item]')]
   if (!form || !items.length) continue
@@ -10,6 +13,7 @@ for (const lista of document.querySelectorAll('[data-listado]')) {
   const filtros = [...form.querySelectorAll('[data-filtro]')]
   const orden = form.querySelector('[data-orden]')
   const metrica = form.querySelector('[name=m]')
+  const etapa = form.querySelector('[name=etapa]')
   const minimo = form.querySelector('[name=min]')
   const conDato = form.querySelector('[name=con]')
   const contador = lista.querySelector('[data-contador]')
@@ -40,7 +44,9 @@ for (const lista of document.querySelectorAll('[data-listado]')) {
         filtro.value = validos.join(',')
       } else filtro.value = valor
     }
+    if (filtros.some((f) => f.value && f.closest('.avanzados'))) form.querySelector('.avanzados').open = true
     if (metrica) {
+      if (etapa) etapa.value = Object.hasOwn(ETAPAS_CAPACIDAD, params.get('etapa')) ? params.get('etapa') : 'operativa'
       metrica.value = params.get('m') ?? 'mw_it'
       if (metrica.selectedIndex < 0) metrica.value = 'mw_it'
       minimo.value = Math.max(0, Number(params.get('min')) || 0) || ''
@@ -70,6 +76,7 @@ for (const lista of document.querySelectorAll('[data-listado]')) {
       if (parametro !== filtro.name) url.searchParams.delete(filtro.name)
     }
     if (metrica) {
+      guardar('etapa', etapa?.value !== 'operativa' ? etapa?.value : '')
       guardar('m', metrica.value !== 'mw_it' ? metrica.value : '')
       guardar('min', Number(minimo.value) > 0 ? minimo.value : '')
       guardar('con', conDato.checked ? '1' : '')
@@ -88,6 +95,30 @@ for (const lista of document.querySelectorAll('[data-listado]')) {
   }
 
   const actualizar = (guardar = true) => {
+    if (etapa) {
+      for (const item of items) {
+        const grupo = JSON.parse(item.dataset.capacidades ?? '{}')[etapa.value] ?? {}
+        for (const campo of ['it', 'conexion', 'sintipo']) {
+          const [valor, disputada] = grupo[campo] ?? [null, false]
+          item.dataset[campo] = valor == null ? '' : String(valor)
+          const celda = item.querySelector(`[data-potencia-campo="${campo}"]`)
+          if (!celda) continue
+          celda.dataset.vacia = valor == null ? 'si' : 'no'
+          celda.textContent = valor == null ? '—' : valor.toLocaleString('es-ES', { maximumFractionDigits: 3 })
+          if (disputada) {
+            const aviso = document.createElement('span')
+            aviso.textContent = ' *'
+            aviso.className = 'advertencia'
+            aviso.title = 'Interpretación o lecturas disputadas. Consulta las fuentes de la ficha.'
+            celda.append(aviso)
+          }
+        }
+        const aviso = item.querySelector('[data-aviso-capacidad]')
+        if (aviso) { aviso.hidden = ['it', 'conexion', 'sintipo'].some((c) => item.dataset[c] !== ''); aviso.textContent = `Sin datos para «${ETAPAS_CAPACIDAD[etapa.value]}» en estas magnitudes.` }
+      }
+      const lectura = lista.querySelector('[data-etapa-lectura]')
+      if (lectura) lectura.textContent = `Capacidad ${ETAPAS_CAPACIDAD[etapa.value].toLocaleLowerCase('es')}.`
+    }
     visibles = items.filter(encaja)
     if (orden) {
       const opcion = orden.selectedOptions[0]
@@ -148,7 +179,7 @@ for (const lista of document.querySelectorAll('[data-listado]')) {
     entrada.value = ''
     for (const filtro of filtros) filtro.selectedIndex = 0
     if (orden) orden.selectedIndex = 0
-    if (metrica) { metrica.value = 'mw_it'; minimo.value = ''; conDato.checked = false }
+    if (metrica) { metrica.value = 'mw_it'; minimo.value = ''; conDato.checked = false; if (etapa) etapa.value = 'operativa' }
     pagina = 1
     actualizar()
   })

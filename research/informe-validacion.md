@@ -2,11 +2,11 @@
 
 Generado el 2026-10-14 por `npm run validate`.
 
-- Emplazamientos cargados: **204**
+- Emplazamientos cargados: **207**
 - Nodos de red: **133**
 - Activos renovables/BESS: **22**
-- Normas registradas: **12**
-- Errores: **0** · Avisos: **275**
+- Normas registradas: **16**
+- Errores: **0** · Avisos: **285**
 
 ## Incidencias por fichero
 
@@ -279,6 +279,7 @@ Generado el 2026-10-14 por `npm run validate`.
 
 - aviso: potencia[0] («MD6») no distingue el tipo de MW
 - aviso: potencia[2] («Capacidad prevista del campus una vez desplegado por completo») no distingue el tipo de MW
+- aviso: potencia[3] («MD5, capacidad disponible en la primera fase de arranque») no distingue el tipo de MW
 
 ### `equinix-barcelona-ba1.yaml`
 
@@ -465,7 +466,6 @@ Generado el 2026-10-14 por `npm run validate`.
 
 ### `merlin-barcelona-zona-franca.yaml`
 
-- aviso: potencia[0] («Potencia del centro de datos en el momento de la inauguración») no distingue el tipo de MW
 - aviso: empleo[0] no distingue entre empleo de obra y de explotación
 
 ### `merlin-edged-getafe-2.yaml`
@@ -519,6 +519,10 @@ Generado el 2026-10-14 por `npm run validate`.
 
 - aviso: potencia[1] («Objetivo de potencia por planta en segunda fase») no distingue el tipo de MW
 
+### `nabiax-alcala-de-henares-adc.yaml`
+
+- aviso: potencia[7] («Nuevo edificio ADC3 según la nota de la Comunidad de Madrid») no distingue el tipo de MW
+
 ### `nabiax-madrid-julian-camarillo.yaml`
 
 - aviso: sin coordenadas: no aparecerá en el mapa
@@ -557,6 +561,12 @@ Generado el 2026-10-14 por `npm run validate`.
 ### `nunsys-paterna-parque-tecnologico.yaml`
 
 - aviso: sin ningún dato de potencia
+
+### `nxn-madrid-juan-carlos-i.yaml`
+
+- aviso: potencia[0] («Capacidad total anunciada en la primera página de la nota de NxN») no distingue el tipo de MW
+- aviso: potencia[1] («Capacidad total anunciada en la segunda página de la nota y en la web») no distingue el tipo de MW
+- aviso: sin coordenadas: no aparecerá en el mapa
 
 ### `nxn-valencia-vara-de-quart-nx01.yaml`
 
@@ -750,6 +760,12 @@ Generado el 2026-10-14 por `npm run validate`.
 
 - aviso: sin ningún dato de potencia
 
+### `uib-palma-talaia.yaml`
+
+- aviso: sin ningún dato de potencia
+- aviso: computo[0] («TalaIA, recursos HPC publicados por la RES») da FLOPS sin precisión: no comparable con otras cifras
+- aviso: sin coordenadas: no aparecerá en el mapa
+
 ### `ungsc-quart-de-poblet-unictf.yaml`
 
 - aviso: sin ningún dato de potencia
@@ -757,6 +773,12 @@ Generado el 2026-10-14 por `npm run validate`.
 ### `unican-ifca-santander-altamira.yaml`
 
 - aviso: sin ningún dato de potencia
+
+### `upf-barcelona-correfoc.yaml`
+
+- aviso: sin ningún dato de potencia
+- aviso: computo[2] («Correfoc, partición CPU descrita por la RES») da FLOPS sin precisión: no comparable con otras cifras
+- aviso: sin coordenadas: no aparecerá en el mapa
 
 ### `uv-burjassot-tirant.yaml`
 

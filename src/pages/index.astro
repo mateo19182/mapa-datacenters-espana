@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro'
 import sitios from '../data/sitios.json'
 import resumen from '../data/resumen.json'
+import { ETAPAS_CAPACIDAD } from '../lib/capacidad.js'
 import UltimosCambios from '../components/UltimosCambios.astro'
 import { ESTADO_ETIQUETA, ORDEN_ESTADOS, MODELO_ETIQUETA, numero } from '../lib/etiquetas.js'
 
@@ -39,6 +40,7 @@ const modelosPresentes = Object.keys(MODELO_ETIQUETA).filter((m) => sitios.some(
       </div>
       <div class="filtros-principales">
         <label><span class="etiqueta-campo">Comunidad</span><select id="filtro-ccaa" data-filtro="ccaa"><option value="">Todas</option>{ccaas.map((c) => <option value={c}>{c}</option>)}</select></label>
+        <label><span class="etiqueta-campo">Etapa de la capacidad</span><select id="filtro-etapa">{Object.entries(ETAPAS_CAPACIDAD).map(([valor, etiqueta]) => <option value={valor}>{etiqueta}</option>)}</select></label>
         <label><span class="etiqueta-campo">Tamaño del círculo</span><select id="filtro-metrica"><option value="mw_it">MW IT</option><option value="mw_conexion">MW conexión</option><option value="mw_sin_tipo">MW sin tipificar</option></select></label>
       </div>
       <details id="filtros-avanzados" class="filtros-avanzados">
@@ -50,7 +52,7 @@ const modelosPresentes = Object.keys(MODELO_ETIQUETA).filter((m) => sitios.some(
         <div class="grupo"><label class="etiqueta-campo" for="filtro-operador">Operador</label><select id="filtro-operador" data-filtro="operador"><option value="">Todos</option>{operadores.map((o) => <option value={o}>{o}</option>)}</select></div>
         <div class="grupo"><label class="etiqueta-campo" for="filtro-modelo">Modelo</label><select id="filtro-modelo" data-filtro="modelo"><option value="">Todos</option>{modelosPresentes.map((m) => <option value={m}>{MODELO_ETIQUETA[m]}</option>)}</select></div>
         <div class="grupo"><label class="etiqueta-campo" for="filtro-confianza">Confianza</label><select id="filtro-confianza" data-filtro="confianza"><option value="">Cualquiera</option><option value="alta">Alta</option><option value="media">Media</option><option value="baja">Baja</option></select></div>
-        <div class="grupo"><label class="etiqueta-campo" for="filtro-minimo">Mínimo de <span id="etiqueta-minimo-metrica">MW IT</span> · <span id="valor-minimo">sin mínimo</span></label><input id="filtro-minimo" type="range" min="0" max="200" step="5" value="0" /><label class="casilla pequeno"><input id="filtro-solo-con-metrica" type="checkbox" />Solo con potencia publicada</label></div>
+        <div class="grupo"><label class="etiqueta-campo" for="filtro-minimo">Mínimo de <span id="etiqueta-minimo-metrica">MW IT</span> · <span id="valor-minimo">sin mínimo</span></label><input id="filtro-minimo" type="range" min="0" max="200" step="any" value="0" /><label class="casilla pequeno"><input id="filtro-solo-con-metrica" type="checkbox" />Solo con potencia publicada</label></div>
         <fieldset class="grupo">
           <legend class="etiqueta-campo">Capas eléctricas</legend>
           <label class="casilla"><input type="checkbox" data-capa="lineas" /><span class="casilla-texto">Transporte 220/400 kV</span></label>
@@ -60,7 +62,7 @@ const modelosPresentes = Object.keys(MODELO_ETIQUETA).filter((m) => sitios.some(
           <p class="ayuda">Trazado y centrales de OpenStreetMap. {numero(resumen.centrales_con_potencia)} centrales publican potencia instalada. {resumen.generacion_dia ? `Generación medida del ${resumen.generacion_dia}.` : 'Sin datos de generación real cargados.'} <a href="/metodologia#capas">Cómo leer las capas</a>.</p>
         </fieldset>
       </details>
-      <details class="lectura-mapa"><summary>Capacidad documentada y leyenda</summary><p id="suma" class="pequeno"></p><p class="ayuda">Círculo hueco: magnitud no publicada. Atenuado: ubicación aproximada. Los estados incluyen centros operativos y proyectos.</p><a class="pequeno" href="/metodologia">Metodología</a></details>
+      <details class="lectura-mapa"><summary>Capacidad documentada y leyenda</summary><p id="suma" class="pequeno"></p><p class="ayuda">Círculo hueco: magnitud no publicada para la etapa elegida. Atenuado: ubicación aproximada. Las etapas pueden solaparse y no se suman.</p><a class="pequeno" href="/metodologia">Metodología</a></details>
       <ol id="lista-resultados" class="lista"><li class="sin-js"><a href="/proyectos">Abrir el listado de proyectos</a></li></ol>
     </aside>
     <div class="zona-mapa">

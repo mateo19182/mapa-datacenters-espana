@@ -1,0 +1,95 @@
+id: resolucion-acceso-flexible-demanda-2026
+titulo: "Acceso flexible de demanda: resolución de julio de 2026"
+titulo_oficial: "Resolución de 31 de julio de 2026, de la CNMC, por la que se establecen los permisos de acceso flexibles de la demanda de energía eléctrica a la red de transporte y a las redes de distribución"
+ambito: estatal
+rango: resolucion
+estado: en_vigor
+estado_detalle: >-
+  Publicada el 11 de agosto y con efectos generales desde el 1 de septiembre de 2026.
+  La implementación de las modalidades es escalonada y depende de los medios del gestor.
+  La existencia de la resolución no acredita que cualquier consumidor pueda solicitar
+  cualquier modalidad en cualquier nudo desde esa fecha.
+boletin: BOE
+referencia: "BOE-A-2026-17571"
+url_oficial: "https://www.boe.es/buscar/doc.php?id=BOE-A-2026-17571"
+fecha_aprobacion: "2026-07-31"
+fecha_publicacion: "2026-08-11"
+fecha_entrada_vigor: "2026-09-01"
+materias: [acceso_a_red, energia]
+resumen: >-
+  Regula accesos de demanda que aceptan reducciones o desconexiones. Está en vigor con
+  implantación por modalidades; no garantiza suministro continuo ni sustituye un permiso firme.
+por_que_importa: >-
+  Puede abrir vías de conexión condicionada donde falta capacidad firme. La viabilidad de un
+  CPD depende de su modalidad, de las exclusiones legales y de su continuidad de servicio.
+obligaciones:
+  - quien: "Gestor de red y consumidor solicitante"
+    que: >-
+      Conceder acceso flexible a consumidores únicamente cuando no exista capacidad firme,
+      con la modalidad, patrón y solución técnica del permiso. Se excluyen suministros que
+      deban estar garantizados, esenciales y otros supuestos del resuelve primero.
+    umbral: "Ámbito y exclusiones de cada modalidad"
+    plazo: "Según habilitación de la modalidad y del gestor"
+    fuentes: [src-boe]
+  - quien: "Gestores de redes"
+    que: "Habilitar las solicitudes de tipos 0, 1 y 3 en el plazo de seis meses desde los efectos de la resolución."
+    umbral: null
+    plazo: "Seis meses desde el 1 de septiembre de 2026; no implica disponibilidad universal inmediata"
+    fuentes: [src-boe]
+  - quien: "Gestores de distribución"
+    que: "Habilitar el tipo 2 cuando dispongan de visibilidad y control; anunciar anticipadamente la apertura de solicitudes."
+    umbral: "En tipos 1 y 2, inicialmente al menos 30 kV, con reducción posterior condicionada"
+    plazo: "Tipo 2 no más tarde del 1 de enero de 2028"
+    fuentes: [src-boe]
+hitos:
+  - fecha: "2026-07-31"
+    hito: "La CNMC aprueba la resolución"
+    fuentes: [src-boe]
+  - fecha: "2026-08-11"
+    hito: "Publicación en el BOE"
+    fuentes: [src-boe, src-cnmc]
+  - fecha: "2026-09-01"
+    hito: "Comienzan los efectos generales; las modalidades conservan sus plazos específicos"
+    fuentes: [src-boe]
+  - fecha: "2028-01-01"
+    previsto: true
+    hito: "Límite publicado para habilitar el tipo 2 y disponer de herramientas de análisis y operación"
+    fuentes: [src-boe]
+  - fecha: "2029-01-01"
+    previsto: true
+    hito: "Termina la restricción transitoria del tipo 3 a posiciones de consumidor dedicadas y operadas por el transportista"
+    fuentes: [src-boe]
+actores:
+  - nombre: "Comisión Nacional de los Mercados y la Competencia"
+    rol: promotor
+    postura: sin_constar
+    resumen: "Aprueba las modalidades y el procedimiento de operación de distribución POD1."
+    fuentes: [src-boe, src-cnmc]
+afecta:
+  - tipo: registro
+    ref: null
+    como: "El margen publicado por criterio general no describe por sí solo una oferta de acceso flexible a un CPD."
+    fuentes: [src-boe]
+relacionadas: [circular-1-2024-cnmc, rd-1183-2020, rdl-7-2026]
+incertidumbres:
+  - campo: aplicacion
+    descripcion: "No se atribuye una modalidad flexible ni disponibilidad inmediata a ningún proyecto sin permiso o fuente específica."
+    fuentes: [src-boe]
+ultima_verificacion: "2026-10-14"
+fuentes:
+  - id: src-boe
+    url: "https://www.boe.es/buscar/doc.php?id=BOE-A-2026-17571"
+    titulo: "Resolución de 31 de julio de 2026, resuelves primero, sexto y undécimo"
+    editor: "BOE"
+    tipo: oficial
+    fecha_publicacion: "2026-08-11"
+    fecha_consulta: "2026-10-14"
+    cita: "La presente resolución surtirá efectos el 1 de septiembre de 2026 con las excepciones indicadas a continuación"
+  - id: src-cnmc
+    url: "https://cnmc.es/en/node/422002?back=news&page=1"
+    titulo: "La CNMC aprueba la regulación de permisos de acceso flexible"
+    editor: "CNMC"
+    tipo: oficial
+    fecha_publicacion: "2026-08-11"
+    fecha_consulta: "2026-10-14"
+    cita: "La tensión nominal inicial del punto de conexión deberá ser igual o superior a 30 kV"

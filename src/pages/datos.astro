@@ -2,15 +2,19 @@
 import Base from '../layouts/Base.astro'
 import resumen from '../data/resumen.json'
 import validacion from '../data/validacion.json'
-import { numero } from '../lib/etiquetas.js'
+import procedenciaCapacidad from '../data/capacidad-procedencia.json'
+import { numero, fechaLegible } from '../lib/etiquetas.js'
 import { REPOSITORIO, REPO_DATOS, REPO_ESQUEMA, REPO_INCIDENCIAS } from '../lib/enlaces.js'
 
 const descargas = [
+  ['/datos/revision.json', 'revision.json', 'Hallazgos pendientes, decisiones de revisión y comprobaciones automáticas diferenciadas.'],
+  ['/datos/computo.json', 'computo.json', 'Inventario de hardware por sistema, con modalidad de despliegue o acceso y fuentes.'],
   ['/datos/actualizaciones.json', 'actualizaciones.json', 'Cambios verificados, con fecha del hecho y fecha de publicación en el registro.'],
   ['/datos/sitios.json', 'sitios.json', 'Emplazamientos completos, con potencias, fases, incertidumbres y fuentes.'],
   ['/datos/sitios.geojson', 'sitios.geojson', 'Puntos de los emplazamientos con las propiedades del mapa.'],
   ['/datos/sitios-lista.json', 'sitios-lista.json', 'Inventario plano, incluidos los emplazamientos sin coordenadas.'],
   ['/datos/capacidad.json', 'capacidad.json', 'Capacidad de acceso para demanda por nudo de la red de transporte.'],
+  [`/datos/${procedenciaCapacidad.archivo_original_ree}`, procedenciaCapacidad.archivo_original_ree, `CSV original de REE, conservado sin modificar sus bytes. Edición del ${fechaLegible(procedenciaCapacidad.fecha_publicacion_dato)}.`],
   ['/datos/actuaciones.json', 'actuaciones.json', 'Actuaciones de red planificadas.'],
   ['/datos/red.json', 'red.json', 'Subestaciones, nudos y actuaciones de red registradas.'],
   ['/datos/red.geojson', 'red.geojson', 'Los mismos nudos en formato geoespacial.'],

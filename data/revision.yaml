@@ -1,0 +1,457 @@
+# Decisiones de revisión y seguimientos. published significa incorporado al registro.
+# La revisión de hechos y la comprobación automática de enlaces son procesos distintos.
+version: 1
+hallazgos:
+  - id: csa-gpu-20261014
+    titulo: Cidade das TIC entra en el mapa
+    tipo: proyecto
+    estado: published
+    prioridad: media
+    detectado: 2026-10-14
+    revisado: 2026-10-14
+    revisar_antes: null
+    motivo: Hecho contrastado e incorporado al registro; la novedad revisada enlaza con la ficha y sus fuentes.
+    siguiente_paso: null
+    enlaces:
+      - texto: Ver emplazamiento y hardware
+        href: /proyecto/cluster-tic-galicia-a-coruna-csa
+    fuentes:
+      - url: https://media.timtul.com/media/web_clustertic/Tarifas_CPD_CSA_20260605122026.pdf
+        titulo: Dosier de servicios CPD-CSA 2026, página 3
+        primaria: true
+      - url: https://drive.google.com/file/d/1O_XVq95xOKOteeo6J__L-Ze9yuRtcXMg/view
+        titulo: "Catálogo de servicios del CSA: servidores especializados IA y Media, páginas 2 y 3"
+        primaria: true
+      - url: https://clusterticgalicia.com/noticias/o-cluster-tic-galicia-lanza-os-servizos-do-centro-de-procesamento-de-datos-do-csa-con-descontos-para-socios-e-inquilinos/?lang=es
+        titulo: El Clúster TIC Galicia pone en marcha los servicios del CPD del CSA
+        primaria: false
+  - id: prd-cnmc-20261014
+    titulo: La CNMC informa el decreto de centros de datos
+    tipo: normativa
+    estado: published
+    prioridad: alta
+    detectado: 2026-10-14
+    revisado: 2026-10-14
+    revisar_antes: null
+    motivo: Hecho contrastado e incorporado al registro; la novedad revisada enlaza con la ficha y sus fuentes.
+    siguiente_paso: null
+    enlaces:
+      - texto: Estado del proyecto de decreto
+        href: /normativa/prd-centros-datos-sostenibles
+    fuentes:
+      - url: https://www.cnmc.es/sites/default/files/6855348.pdf?download=1
+        titulo: Informe IPN/CNMC/038/26 sobre el proyecto de real decreto de centros de datos, páginas 5, 6 y 32 a 34
+        primaria: true
+      - url: https://www.miteco.gob.es/content/dam/miteco/es/energia/files-1/es-ES/Participacion/Documents/anexos/aeip-rd-cpds-sostenibles/report_RESOLUCION%20DGPLACE%20CPDs%20ok.pdf
+        titulo: Resolución de 2 de septiembre de 2026 de ampliación de audiencia
+        primaria: true
+      - url: https://www.lamoncloa.gob.es/consejodeministros/referencias/Paginas/2026/20261013-referencia-rueda-de-prensa-ministros.aspx
+        titulo: Referencia del Consejo de Ministros de 13 de octubre de 2026
+        primaria: true
+  - id: qts-rhodes-20261014
+    titulo: Aprobación parcial del PIGA de QTS Rhodes
+    tipo: proyecto
+    estado: published
+    prioridad: media
+    detectado: 2026-10-14
+    revisado: 2026-10-14
+    revisar_antes: null
+    motivo: Hecho contrastado e incorporado al registro; la novedad revisada enlaza con la ficha y sus fuentes.
+    siguiente_paso: null
+    enlaces:
+      - texto: Ver QTS Calatorao
+        href: /proyecto/qts-calatorao-rhodes
+    fuentes:
+      - url: https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1468143560505
+        titulo: "Orden VFL/1400/2026: aprobación definitiva parcial del PIGA Proyecto Rhodes"
+        primaria: true
+  - id: puertollano-20261014
+    titulo: Solaria retoma Puertollano con otro alcance
+    tipo: proyecto
+    estado: published
+    prioridad: media
+    detectado: 2026-10-14
+    revisado: 2026-10-14
+    revisar_antes: null
+    motivo: Hecho contrastado e incorporado al registro; la novedad revisada enlaza con la ficha y sus fuentes.
+    siguiente_paso: null
+    enlaces:
+      - texto: Ver propuesta y antecedentes
+        href: /proyecto/solaria-datasection-puertollano
+    fuentes:
+      - url: https://www.puertollano.es/el-pleno-impulsa-los-proyectos-empresariales-del-centro-de-datos-de-solaria-y-la-aceria-verde-de-hydnum-steel/
+        titulo: El Pleno impulsa el Centro de Datos de Solaria
+        primaria: true
+      - url: https://www.puertollano.es/solaria-invertira-150-millones-en-un-centro-de-datos-en-la-nava-que-creara-90-puestos-de-trabajo/
+        titulo: Solaria invertirá 150 millones en un centro de datos en La Nava
+        primaria: true
+      - url: https://cadenaser.com/castillalamancha/2026/01/16/en-via-muerta-un-proyecto-de-quinientos-millones-de-euros-unico-en-europa-y-que-iba-a-crear-cien-empleos-en-puertollano-ser-ciudad-real/
+        titulo: En vía muerta un proyecto de quinientos millones de euros único en Europa y que iba a crear cien
+          empleos en Puertollano
+        primaria: false
+  - id: ree-octubre-20261014
+    titulo: Capacidad de REE actualizada a octubre
+    tipo: red
+    estado: published
+    prioridad: media
+    detectado: 2026-10-14
+    revisado: 2026-10-14
+    revisar_antes: null
+    motivo: Hecho contrastado e incorporado al registro; la novedad revisada enlaza con la ficha y sus fuentes.
+    siguiente_paso: null
+    enlaces:
+      - texto: Explorar capacidad de demanda
+        href: /red-electrica
+    fuentes:
+      - url: https://www.ree.es/sites/default/files/12_CLIENTES/Documentos/2026_10_01_GRT_demanda.csv
+        titulo: REE, capacidad de demanda de octubre de 2026
+        primaria: true
+      - url: https://github.com/mateo19182/mapa-datacenters-espana/blob/main/research/informe-ree.md
+        titulo: Reconciliación de los 548 nudos del registro
+        primaria: false
+  - id: aws-fibra-20261014
+    titulo: AWS tramita reparcelación y nuevos enlaces de fibra
+    tipo: proyecto
+    estado: published
+    prioridad: media
+    detectado: 2026-10-14
+    revisado: 2026-10-14
+    revisar_antes: null
+    motivo: Hecho contrastado e incorporado al registro; la novedad revisada enlaza con la ficha y sus fuentes.
+    siguiente_paso: null
+    enlaces:
+      - texto: La Cartuja
+        href: /proyecto/aws-zaragoza-la-cartuja-car
+      - texto: El Burgo de Ebro
+        href: /proyecto/aws-el-burgo-de-ebro-bde
+    fuentes:
+      - url: https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1469428650505
+        titulo: ORDEN VFL/1438/2026, de 5 de octubre, por la que se modifica la Orden FOM/1517/2024, de 4 de
+          diciembre, por la que se aprueba inicialmente Plan de Interés General de Aragón "Ampliación Región
+          AWS Aragón" promovido por la mercantil Amazon Data Services Spain, SL, al objeto de aprobar
+          inicialmente el proyecto de reparcelación del sector “Acampo del Marqués” y el proyecto de
+          interconexión con fibra óptica AWS (rutas 8 y 9).
+        primaria: true
+      - url: https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1469436730505
+        titulo: ANUNCIO de la Dirección General de Planificación Logística y Ordenación del Territorio, por el que se
+          someten a información y participación pública el Proyecto de reparcelación del sector “Acampo del
+          Marqués” y el proyecto de interconexión con fibra óptica AWS (rutas 8 y 9) incluidos en el Plan de
+          Interés General de Aragón “Expansión de la Región AWS en Aragón” promovido por la mercantil Amazon
+          Data Services Spain, SL.
+        primaria: true
+  - id: mentrida-venero-con09
+    titulo: Identificar el CPD de Méntrida asociado a SE Venero
+    tipo: proyecto
+    estado: awaiting_primary
+    prioridad: alta
+    detectado: 2026-10-12
+    revisado: 2026-10-14
+    revisar_antes: 2026-10-21
+    motivo: El BOE acredita una línea directa y subestación para un CPD, pero no identifica el emplazamiento ni al
+      operador del centro. Las parcelas y MVA corresponden a la infraestructura eléctrica.
+    siguiente_paso: Recuperar el proyecto Con-09 y contrastar la ubicación y titular del CPD antes de crear una ficha.
+    enlaces:
+      - href: /cobertura
+        texto: Cobertura pendiente
+    fuentes:
+      - url: https://www.boe.es/diario_boe/txt.php?id=BOE-B-2026-32678
+        titulo: BOE-B-2026-32678, expediente Con-09
+        primaria: true
+  - id: colliers-20261008-fases
+    titulo: Confirmar las fases y MW IT del informe de Colliers
+    tipo: proyecto
+    estado: awaiting_primary
+    prioridad: alta
+    detectado: 2026-10-12
+    revisado: 2026-10-14
+    revisar_antes: 2026-10-21
+    motivo: La consultora atribuye incrementos a Equinix MD5, Getafe, DATA4 y Templus sin reparto suficiente por
+      edificio o fase. Sus cifras no se suman a capacidades finales.
+    siguiente_paso: Buscar las publicaciones de cada operador y distinguir capacidad entregada, ampliada y máxima.
+    enlaces:
+      - href: /proyecto/equinix-alcobendas-campus
+        texto: Equinix Alcobendas
+      - href: /proyecto/merlin-edged-getafe-mad01
+        texto: MERLIN Getafe
+      - href: /proyecto/data4-alcobendas-mad01
+        texto: DATA4 Alcobendas
+    fuentes:
+      - url: https://www.colliers.com/es-es/news/data-centers-iberian-region-snapshot-septiembre-2026
+        titulo: Colliers, Iberian Region Snapshot, septiembre de 2026
+        primaria: false
+  - id: aws-iae-municipios-20261008
+    titulo: Verificar el compromiso fiscal atribuido a AWS
+    tipo: proyecto
+    estado: awaiting_primary
+    prioridad: media
+    detectado: 2026-10-12
+    revisado: 2026-10-14
+    revisar_antes: 2026-10-28
+    motivo: La prensa atribuye a AWS pagos municipales retroactivos. No se ha localizado un comunicado o acuerdo
+      municipal que permita registrar importes o pagos realizados.
+    siguiente_paso: Localizar acuerdos de los ayuntamientos o una comunicación de AWS.
+    enlaces:
+      - href: /compania/amazon-web-services
+        texto: Cartera AWS
+    fuentes:
+      - url: https://www.aragondigital.es/articulo/economia/amazon-da-marcha-atras-pagara-aragon-impuestos-centros-datos/202610081922051013725.html
+        titulo: Aragón Digital, compromiso sobre IAE de AWS
+        primaria: false
+  - id: csa-recuento-a40
+    titulo: Resolver el inventario físico de A40 y la oferta de H200 del CSA
+    tipo: calidad
+    estado: awaiting_primary
+    prioridad: media
+    detectado: 2026-10-14
+    revisado: 2026-10-14
+    revisar_antes: 2026-11-13
+    motivo: El catálogo del CSA contiene dos y tres servidores A40 en apartados distintos. El acceso a H200
+      anunciado no confirma instalación física. La ficha conserva ambas limitaciones.
+    siguiente_paso: Buscar un inventario fechado del CSA o una aclaración pública del Clúster.
+    enlaces:
+      - href: /proyecto/cluster-tic-galicia-a-coruna-csa
+        texto: Hardware y fuentes del CSA
+    fuentes:
+      - url: https://drive.google.com/file/d/1O_XVq95xOKOteeo6J__L-Ze9yuRtcXMg/view
+        titulo: Catálogo técnico de servicios del CSA
+        primaria: true
+      - url: https://www.cidadedastic.gal/centro-de-servicios-avanzados/servicios-centro-de-servicios-avanzados-csa/
+        titulo: Servicios del Centro de Servicios Avanzados
+        primaria: true
+  - id: masorange-inventario-centros
+    titulo: Localizar el inventario de centros de MasOrange
+    tipo: proyecto
+    estado: detected
+    prioridad: media
+    detectado: 2026-10-14
+    revisado: 2026-10-14
+    revisar_antes: 2026-11-13
+    motivo: La cola de cobertura recoge una cartera de centros sin inventario de ubicaciones suficiente. Una
+      operación corporativa no identifica por sí sola edificios ni evita duplicar al operador anfitrión.
+    siguiente_paso: Revisar la memoria corporativa y sus anexos de instalaciones; conservar los nombres anteriores
+      como alias cuando se documenten.
+    enlaces:
+      - href: /cobertura
+        texto: Pistas de cobertura
+    fuentes:
+      - url: https://masorange.es/wp-content/uploads/2026/04/ES_2025-Informe-de-Sostenibilidad-MasOrange_vdef.pdf
+        titulo: MasOrange, informe de sostenibilidad 2025, documento por revisar
+        primaria: true
+  - id: ree-cobertura-completa-20261014
+    titulo: "REE: cobertura completa de los nudos publicados"
+    tipo: red
+    estado: published
+    prioridad: media
+    detectado: 2026-10-14
+    revisado: 2026-10-14
+    revisar_antes: null
+    motivo: Hecho contrastado e incorporado al registro; la novedad revisada enlaza con la ficha y sus fuentes.
+    siguiente_paso: null
+    enlaces:
+      - texto: Explorar todos los nudos
+        href: /red-electrica
+    fuentes:
+      - url: https://www.ree.es/sites/default/files/12_CLIENTES/Documentos/2026_10_01_GRT_demanda.csv
+        titulo: REE, capacidad de demanda de octubre de 2026
+        primaria: true
+  - id: correfoc-20261014
+    titulo: "Correfoc: cómputo público de la UPF"
+    tipo: proyecto
+    estado: published
+    prioridad: media
+    detectado: 2026-10-14
+    revisado: 2026-10-14
+    revisar_antes: null
+    motivo: Hecho contrastado e incorporado al registro; la novedad revisada enlaza con la ficha y sus fuentes.
+    siguiente_paso: null
+    enlaces:
+      - texto: Ver hardware y alcance
+        href: /proyecto/upf-barcelona-correfoc
+    fuentes:
+      - url: https://www.upf.edu/web/sct-sit/-/correfoc-the-new-upf-supercomputing-cluster-entered-into-operation-on-1-julycorrefoc-new-cluster-operation-1-july
+        titulo: Correfoc entered into operation on 1 July 2026
+        primaria: true
+      - url: https://www.upf.edu/web/sct-sit/equipment
+        titulo: Correfoc — Global hardware figures
+        primaria: true
+  - id: talaia-20261014
+    titulo: TalaIA incorpora Baleares al inventario de cómputo
+    tipo: proyecto
+    estado: published
+    prioridad: media
+    detectado: 2026-10-14
+    revisado: 2026-10-14
+    revisar_antes: null
+    motivo: Hecho contrastado e incorporado al registro; la novedad revisada enlaza con la ficha y sus fuentes.
+    siguiente_paso: null
+    enlaces:
+      - texto: Ver TalaIA
+        href: /proyecto/uib-palma-talaia
+    fuentes:
+      - url: https://www.uib.cat/w/supercomputador?redirect=%2F&title_redirect=UIB
+        titulo: El BSAI posa les Illes Balears en el mapa de la supercomputació
+        primaria: true
+      - url: https://www.res.es/es/sobre-la-res/nodos/talaia-uib
+        titulo: TalaIA - UIB
+        primaria: true
+      - url: https://bsai.uib.eu/acces-al-cluster-i-us
+        titulo: Cluster access and use — TalaIA
+        primaria: true
+  - id: nxn-madrid-20261014
+    titulo: NxN Madrid entra en el registro con apertura por confirmar
+    tipo: proyecto
+    estado: published
+    prioridad: media
+    detectado: 2026-10-14
+    revisado: 2026-10-14
+    revisar_antes: null
+    motivo: Hecho contrastado e incorporado al registro; la novedad revisada enlaza con la ficha y sus fuentes.
+    siguiente_paso: null
+    enlaces:
+      - texto: Ver ficha
+        href: /proyecto/nxn-madrid-juan-carlos-i
+    fuentes:
+      - url: https://nxndata.com/downloads/NdP_NxN_Nuevo_centro_de_datos_Madrid.pdf
+        titulo: NxN invierte en Madrid su segundo centro de datos en España
+        primaria: true
+      - url: https://nxndata.com/
+        titulo: NxN Datacenters — Madrid y próxima inauguración en 2026
+        primaria: true
+  - id: picasso-gpu-20261014
+    titulo: "Picasso: el inventario confirma A100 y B200 disponibles"
+    tipo: proyecto
+    estado: published
+    prioridad: media
+    detectado: 2026-10-14
+    revisado: 2026-10-14
+    revisar_antes: null
+    motivo: Incorporado al registro. El inventario técnico consultado recoge 32 A100 y 16 B200 disponibles. No
+      publica la fecha de puesta en producción de las B200. El anuncio de adquisición del 10 de julio se
+      conserva como antecedente; no se usa como fecha de entrada en servicio.
+    siguiente_paso: null
+    enlaces:
+      - texto: Ver inventario de Picasso
+        href: /proyecto/scbi-uma-malaga-picasso
+    fuentes:
+      - url: https://www.scbi.uma.es/web/es/recursos/hardware/
+        titulo: Hardware — SCBI UMA
+        primaria: true
+      - url: https://www.uma.es/sala-de-prensa/noticias/la-uma-logra-una-financiacion-feder-de-32-millones-para-ampliar-la-capacidad-del-supercomputador-picasso/
+        titulo: La UMA logra financiación FEDER para ampliar el supercomputador Picasso
+        primaria: true
+  - id: nabiax-adc3-20261014
+    titulo: Primera piedra de ADC3 en Alcalá de Henares
+    tipo: proyecto
+    estado: published
+    prioridad: media
+    detectado: 2026-10-14
+    revisado: 2026-10-14
+    revisar_antes: null
+    motivo: Hecho contrastado e incorporado al registro; la novedad revisada enlaza con la ficha y sus fuentes.
+    siguiente_paso: null
+    enlaces:
+      - texto: Ver fase y fuentes
+        href: /proyecto/nabiax-alcala-de-henares-adc
+    fuentes:
+      - url: https://www.comunidad.madrid/transparencia/agenda/acto-colocacion-primera-piedra-del-nuevo-centro-datos-compania-nabiax
+        titulo: Colocación de la primera piedra del nuevo centro de datos de Nabiax
+        primaria: true
+      - url: https://www.comunidad.madrid/press-releases/download/119449
+        titulo: Primera piedra del centro de Nabiax en Alcalá de Henares, nota de prensa
+        primaria: true
+  - id: cesga-equipos-previstos-20261014
+    titulo: "CESGA: adquisición y equipos previstos por separado"
+    tipo: proyecto
+    estado: published
+    prioridad: media
+    detectado: 2026-10-14
+    revisado: 2026-10-14
+    revisar_antes: null
+    motivo: Incorporado al registro. Se incorpora la adjudicación de FinisTerrae IV del 3 de marzo y el anuncio de
+      junio sobre IQM Radiance de 54 qubits e IQM Spark de 5 qubits. Los anuncios no acreditan servicio ni
+      traslado de los sistemas actuales al nuevo edificio de A Sionlla.
+    siguiente_paso: null
+    enlaces:
+      - texto: Ver alcance de los anuncios
+        href: /proyecto/cesga-santiago-a-sionlla
+    fuentes:
+      - url: https://www.xunta.gal/es/notas-de-prensa/-/nova/022035/xunta-adjudica-fsas-technologies-adquisicion-del-nuevo-supercomputador-del-cesga
+        titulo: La Xunta adjudica a Fsas Technologies el nuevo supercomputador del Cesga
+        primaria: true
+      - url: https://www.cesga.es/en/presentation-event-cesga-new-infrastructure/
+        titulo: Presentation event for CESGA’s new infrastructure
+        primaria: true
+  - id: etiquetado-ue-20261014
+    titulo: La UE avanza en el etiquetado de centros de datos
+    tipo: normativa
+    estado: published
+    prioridad: alta
+    detectado: 2026-10-14
+    revisado: 2026-10-14
+    revisar_antes: null
+    motivo: Hecho contrastado e incorporado al registro; la novedad revisada enlaza con la ficha y sus fuentes.
+    siguiente_paso: null
+    enlaces:
+      - texto: Ver procedimiento
+        href: /normativa/reglamento-etiquetado-centros-datos-2026
+    fuentes:
+      - url: https://oeil.europarl.europa.eu/oeil/en/procedure-file?reference=2026/2895(DEA)
+        titulo: Procedimiento 2026/2895(DEA), control del acto delegado
+        primaria: true
+      - url: https://data.consilium.europa.eu/doc/document/ST-13444-2026-INIT/en/pdf
+        titulo: C(2026) 3472 final, texto adoptado; artículos 1 a 7
+        primaria: true
+  - id: estandares-ue-consulta-20261014
+    titulo: Consulta europea sobre estándares mínimos
+    tipo: normativa
+    estado: published
+    prioridad: alta
+    detectado: 2026-10-14
+    revisado: 2026-10-14
+    revisar_antes: null
+    motivo: Hecho contrastado e incorporado al registro; la novedad revisada enlaza con la ficha y sus fuentes.
+    siguiente_paso: null
+    enlaces:
+      - texto: Ver procedimiento
+        href: /normativa/consulta-estandares-minimos-centros-datos-2026
+    fuentes:
+      - url: https://energy.ec.europa.eu/news/minimum-performance-standards-data-centres-europe-public-consultation-launched-2026-09-21_en
+        titulo: "Minimum performance standards for data centres in Europe: public consultation launched"
+        primaria: true
+  - id: acceso-flexible-20261014
+    titulo: "Acceso flexible: resolución y calendario propios"
+    tipo: normativa
+    estado: published
+    prioridad: alta
+    detectado: 2026-10-14
+    revisado: 2026-10-14
+    revisar_antes: null
+    motivo: Hecho contrastado e incorporado al registro; la novedad revisada enlaza con la ficha y sus fuentes.
+    siguiente_paso: null
+    enlaces:
+      - texto: Ver procedimiento
+        href: /normativa/resolucion-acceso-flexible-demanda-2026
+    fuentes:
+      - url: https://www.boe.es/buscar/doc.php?id=BOE-A-2026-17571
+        titulo: Resolución de 31 de julio de 2026, resuelves primero, sexto y undécimo
+        primaria: true
+  - id: calor-residual-20261014
+    titulo: Se incorpora el proyecto sobre calor residual
+    tipo: normativa
+    estado: published
+    prioridad: alta
+    detectado: 2026-10-14
+    revisado: 2026-10-14
+    revisar_antes: null
+    motivo: Hecho contrastado e incorporado al registro; la novedad revisada enlaza con la ficha y sus fuentes.
+    siguiente_paso: null
+    enlaces:
+      - texto: Ver procedimiento
+        href: /normativa/prd-calor-residual-2026
+    fuentes:
+      - url: https://www.miteco.gob.es/es/energia/participacion/2026/detalle-participacion-publica-k-831.html
+        titulo: Segunda audiencia del proyecto de calefacción, refrigeración y calor residual
+        primaria: true
+      - url: https://www.miteco.gob.es/content/dam/miteco/es/energia/files-1/es-ES/Participacion/Documents/anexos/aeip-sucyr/Proyecto%20RD%20SUCYR.pdf
+        titulo: Proyecto de RD SUCYR, artículo 15, apartados 1.c y 6
+        primaria: true

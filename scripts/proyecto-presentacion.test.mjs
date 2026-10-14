@@ -61,6 +61,33 @@ test('las fases futuras se etiquetan como previsiones y no se inventan hitos des
   assert.match(cronologia[0].titulo, /prevista/)
 })
 
+test('los calendarios retirados de Forestalia y Vantage permanecen fuera de la cronología activa', () => {
+  for (const id of ['forestalia-alfamen-dcm-blue', 'forestalia-botorrita-dcm-dedalo', 'vantage-villanueva-de-gallego-el-olivar']) {
+    const sitio = ficha(id)
+    const fases = structuredClone(sitio.fases)
+    assert.ok(sitio.fases.length > 0)
+    assert.ok(sitio.fases.every((fase) => ['cancelado', 'paralizado'].includes(fase.estado)))
+    assert.deepEqual(presentacionProyecto(sitio).cronologia, [])
+    assert.deepEqual(sitio.fases, fases, 'el historial de fases se conserva íntegro')
+  }
+})
+
+test('se omiten previsiones de fase paralizadas sin ocultar aperturas reales ni previsiones activas', () => {
+  const sitio = {
+    id: 'ejemplo', nombre: 'Ejemplo', fuentes: [{ id: 'fuente' }],
+    fases: [
+      { nombre: 'Abierta', estado: 'operativo', fecha_puesta_en_servicio: '2025', fuentes: ['fuente'] },
+      { nombre: 'Activa', estado: 'en_construccion', fecha_puesta_en_servicio: '2027', fuentes: ['fuente'] },
+      { nombre: 'Retirada', estado: 'cancelado', fecha_puesta_en_servicio: '2028', fuentes: ['fuente'] },
+      { nombre: 'Suspendida', estado: 'paralizado', fecha_puesta_en_servicio: '2029', fuentes: ['fuente'] },
+    ],
+  }
+  const { cronologia } = presentacionProyecto(sitio)
+  assert.deepEqual(cronologia.map((e) => e.fecha), ['2027', '2025'])
+  assert.equal(cronologia[0].prevista, true)
+  assert.equal(cronologia[1].prevista, false)
+})
+
 
 test('los actos de Meta y el diseño de Nostrum no se presentan como aperturas', () => {
   const meta = presentacionProyecto(ficha('meta-talavera-de-la-reina-torrehierro'))
@@ -99,4 +126,33 @@ test('los PPA de operador se separan del vínculo físico y null no vincula acti
   const conOperador = vinculosEnergiaProyecto({ id: 'cpd', operador: 'Empresa' }, activos)
   assert.deepEqual(conOperador.emplazamiento.map((a) => a.id), ['planta-propia', 'ppa-asignado'])
   assert.deepEqual(conOperador.operador.map((a) => a.id), ['ppa-corporativo'])
+})
+
+test('Correfoc usa la fecha de servicio y TalaIA conserva el periodo sin inventar un día', () => {
+  const upf = presentacionProyecto(ficha('upf-barcelona-correfoc')).cronologia
+  assert.equal(upf.length, 1)
+  assert.equal(upf[0].fecha, '2026-07-01')
+  assert.match(upf[0].detalle, /publicado el 9 de julio/)
+  const uib = presentacionProyecto(ficha('uib-palma-talaia')).cronologia
+  assert.equal(uib.length, 1)
+  assert.equal(uib[0].fecha, '2026')
+  assert.match(uib[0].titulo, /primer semestre/)
+  assert.match(uib[0].detalle, /No da un día exacto/)
+})
+
+test('los nuevos hitos separan adquisiciones, actos y previsiones vencidas de operación', () => {
+  const nxn = presentacionProyecto(ficha('nxn-madrid-juan-carlos-i')).cronologia
+  assert.equal(nxn.find((e) => e.fecha === '2026-04-23').prevista, undefined)
+  const apertura = nxn.find((e) => e.fecha === '2026-09')
+  assert.equal(apertura.prevista, true)
+  assert.match(apertura.detalle, /sin confirmación de apertura/)
+  const adc = presentacionProyecto(ficha('nabiax-alcala-de-henares-adc')).cronologia.find((e) => e.fecha === '2026-09-18')
+  assert.match(adc.titulo, /Acto de primera piedra/)
+  assert.match(adc.detalle, /no certifica avance físico/)
+  const b200 = presentacionProyecto(ficha('scbi-uma-malaga-picasso')).cronologia.find((e) => e.fecha === '2026-07-10')
+  assert.match(b200.titulo, /Publicación de la adquisición/)
+  assert.match(b200.detalle, /No publica fecha de puesta en producción/)
+  const cesga = presentacionProyecto(ficha('cesga-santiago-a-sionlla')).cronologia
+  assert.match(cesga.find((e) => e.fecha === '2026-03-03').titulo, /Adjudicación/)
+  assert.equal(cesga.find((e) => e.fecha === '2026-06-12').prevista, true)
 })

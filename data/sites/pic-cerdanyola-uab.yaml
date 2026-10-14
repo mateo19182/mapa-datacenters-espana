@@ -72,6 +72,7 @@ agua:
 
 computo:
   - tipo: cpu_hpc
+    modalidad: instalado
     ambito: sistema
     sistema: "PIC — procesado en lotes (HTCondor)"
     unidades: 12000
@@ -84,6 +85,7 @@ computo:
       para trabajos de grid (LHC, CTA) y de usuarios locales. La fuente no publica rendimiento
       en FLOPS, así que ese campo queda vacío.
   - tipo: gpu
+    modalidad: instalado
     ambito: sistema
     sistema: "PIC — procesado en lotes (HTCondor)"
     unidades: 18

@@ -1,11 +1,182 @@
-# Novedades revisadas para publicación. fecha es la incorporación al registro;
-# fecha_hecho es el hito documentado. Una comprobación de enlaces no es novedad.
+# Novedades revisadas. La fecha de incorporación y la del hecho se conservan por separado.
+- id: ree-cobertura-completa-20261014
+  fecha: 2026-10-14
+  fecha_hecho: 2026-10-01
+  tipo: red
+  titulo: "REE: cobertura completa de los nudos publicados"
+  resumen: El registro pasa de 548 a 937 nudos de la edición de octubre. Se incorporan 389 filas, incluidas
+    las de Galicia, los archipiélagos y Ceuta. Los nuevos nudos sin coordenadas conservan sus datos en la
+    tabla; no se deducen conexiones con centros de datos.
+  enlaces:
+    - href: /red-electrica
+      texto: Explorar todos los nudos
+  fuentes:
+    - url: https://www.ree.es/sites/default/files/12_CLIENTES/Documentos/2026_10_01_GRT_demanda.csv
+      titulo: REE, capacidad de demanda de octubre de 2026
+- id: correfoc-20261014
+  fecha: 2026-10-14
+  fecha_hecho: 2026-07-01
+  tipo: nuevo
+  titulo: "Correfoc: cómputo público de la UPF"
+  resumen: El clúster entró en operación el 1 de julio. El inventario consultado recoge 57 NVIDIA L40S y 67
+    nodos; la fecha exacta de ese inventario no está publicada. No consta potencia eléctrica ni ubicación
+    precisa del equipo.
+  enlaces:
+    - href: /proyecto/upf-barcelona-correfoc
+      texto: Ver hardware y alcance
+  fuentes:
+    - proyecto: upf-barcelona-correfoc
+      fuente: src-operacion
+    - proyecto: upf-barcelona-correfoc
+      fuente: src-hardware
+- id: talaia-20261014
+  fecha: 2026-10-14
+  fecha_hecho: 2026-07-16
+  tipo: nuevo
+  titulo: TalaIA incorpora Baleares al inventario de cómputo
+  resumen: El sistema del BSAI y la UIB tiene 52 nodos CPU documentados y guía de acceso al servicio. El
+    modelo y número de GPU no están publicados. La ficha conserva la fecha de despliegue por periodos,
+    sin inventar un día de apertura.
+  enlaces:
+    - href: /proyecto/uib-palma-talaia
+      texto: Ver TalaIA
+  fuentes:
+    - proyecto: uib-palma-talaia
+      fuente: src-uib
+    - proyecto: uib-palma-talaia
+      fuente: src-res
+    - proyecto: uib-palma-talaia
+      fuente: src-acceso
+- id: nxn-madrid-20261014
+  fecha: 2026-10-14
+  fecha_hecho: 2026-04-23
+  tipo: nuevo
+  titulo: NxN Madrid entra en el registro con apertura por confirmar
+  resumen: La nota del operador sitúa el proyecto cerca del parque Juan Carlos I y anuncia dos acometidas
+    redundantes de 7,5 MW. El mismo PDF publica 7,5 y 15 MW de capacidad total sin tipificar. Se
+    conservan ambas lecturas y la apertura sigue sin confirmarse.
+  enlaces:
+    - href: /proyecto/nxn-madrid-juan-carlos-i
+      texto: Ver ficha
+  fuentes:
+    - proyecto: nxn-madrid-juan-carlos-i
+      fuente: src-nota
+    - proyecto: nxn-madrid-juan-carlos-i
+      fuente: src-web
+- id: picasso-gpu-20261014
+  fecha: 2026-10-14
+  tipo: proyecto
+  titulo: "Picasso: el inventario confirma A100 y B200 disponibles"
+  resumen: El inventario técnico consultado recoge 32 A100 y 16 B200 disponibles. No publica la fecha de
+    puesta en producción de las B200. El anuncio de adquisición del 10 de julio se conserva como
+    antecedente; no se usa como fecha de entrada en servicio.
+  enlaces:
+    - href: /proyecto/scbi-uma-malaga-picasso
+      texto: Ver inventario de Picasso
+  fuentes:
+    - proyecto: scbi-uma-malaga-picasso
+      fuente: src-hardware-20261014
+    - proyecto: scbi-uma-malaga-picasso
+      fuente: src-ampliacion-20260710
+- id: nabiax-adc3-20261014
+  fecha: 2026-10-14
+  fecha_hecho: 2026-09-18
+  tipo: proyecto
+  titulo: Primera piedra de ADC3 en Alcalá de Henares
+  resumen: La Comunidad de Madrid documenta el acto del 18 de septiembre. Se actualiza la fase ADC3 y su
+    cronología. Los 80 MW sin tipo de la nota regional y el objetivo de 100 MW IT del campus conservan su
+    distinto alcance. El acto no acredita capacidad operativa.
+  enlaces:
+    - href: /proyecto/nabiax-alcala-de-henares-adc
+      texto: Ver fase y fuentes
+  fuentes:
+    - proyecto: nabiax-alcala-de-henares-adc
+      fuente: src-primera-piedra-20260918
+    - proyecto: nabiax-alcala-de-henares-adc
+      fuente: src-nota-cm-20260918
+- id: cesga-equipos-previstos-20261014
+  fecha: 2026-10-14
+  fecha_hecho: 2026-06-08
+  tipo: proyecto
+  titulo: "CESGA: adquisición y equipos previstos por separado"
+  resumen: Se incorpora la adjudicación de FinisTerrae IV del 3 de marzo y el anuncio de junio sobre IQM
+    Radiance de 54 qubits e IQM Spark de 5 qubits. Los anuncios no acreditan servicio ni traslado de los
+    sistemas actuales al nuevo edificio de A Sionlla.
+  enlaces:
+    - href: /proyecto/cesga-santiago-a-sionlla
+      texto: Ver alcance de los anuncios
+  fuentes:
+    - proyecto: cesga-santiago-a-sionlla
+      fuente: src-adjudicacion-ft4
+    - proyecto: cesga-santiago-a-sionlla
+      fuente: src-presentacion-en-20260612
+- id: etiquetado-ue-20261014
+  fecha: 2026-10-14
+  fecha_hecho: 2026-10-07
+  tipo: normativa
+  titulo: La UE avanza en el etiquetado de centros de datos
+  resumen: La Comisión adoptó el acto delegado el 21 de septiembre. El Parlamento amplió el control el 6 de
+    octubre y anunció su remisión a comisión el día 7. El acto sigue bajo control; no se presenta como
+    norma en vigor.
+  enlaces:
+    - href: /normativa/reglamento-etiquetado-centros-datos-2026
+      texto: Ver procedimiento
+  fuentes:
+    - norma: reglamento-etiquetado-centros-datos-2026
+      fuente: src-procedimiento
+    - norma: reglamento-etiquetado-centros-datos-2026
+      fuente: src-acto
+- id: estandares-ue-consulta-20261014
+  fecha: 2026-10-14
+  fecha_hecho: 2026-09-21
+  tipo: normativa
+  titulo: Consulta europea sobre estándares mínimos
+  resumen: La consulta abierta el 21 de septiembre termina el 14 de diciembre de 2026. Es una fase previa a
+    una propuesta legislativa y no impone todavía estándares mínimos de rendimiento a cada centro.
+  enlaces:
+    - href: /normativa/consulta-estandares-minimos-centros-datos-2026
+      texto: Ver procedimiento
+  fuentes:
+    - norma: consulta-estandares-minimos-centros-datos-2026
+      fuente: src-comision
+- id: acceso-flexible-20261014
+  fecha: 2026-10-14
+  fecha_hecho: 2026-09-01
+  tipo: normativa
+  titulo: "Acceso flexible: resolución y calendario propios"
+  resumen: La resolución de julio entró en vigor el 1 de septiembre con implantación por fases. La ficha
+    distingue los tipos de permiso y las condiciones de red; no equivale a disponibilidad inmediata
+    universal de acceso flexible.
+  enlaces:
+    - href: /normativa/resolucion-acceso-flexible-demanda-2026
+      texto: Ver procedimiento
+  fuentes:
+    - norma: resolucion-acceso-flexible-demanda-2026
+      fuente: src-boe
+- id: calor-residual-20261014
+  fecha: 2026-10-14
+  fecha_hecho: 2026-06-17
+  tipo: normativa
+  titulo: Se incorpora el proyecto sobre calor residual
+  resumen: La segunda consulta del proyecto español de calefacción y refrigeración cerró el 17 de junio. El
+    texto propone análisis y aprovechamiento de calor en ciertos centros nuevos o renovados por encima de
+    1 MW de entrada energética nominal, sujeto a viabilidad. La propuesta permanece diferenciada del
+    decreto de sostenibilidad.
+  enlaces:
+    - href: /normativa/prd-calor-residual-2026
+      texto: Ver procedimiento
+  fuentes:
+    - norma: prd-calor-residual-2026
+      fuente: src-consulta
+    - norma: prd-calor-residual-2026
+      fuente: src-borrador
 - id: csa-gpu-20261014
   fecha: 2026-10-14
   fecha_hecho: 2026-06-05
   tipo: nuevo
   titulo: Cidade das TIC entra en el mapa
-  resumen: El CSA de A Coruña ofrece recursos con NVIDIA L4 y A40. El dosier enumera 15 L4; la nota anuncia más de 15. Las H200 se ofrecen como acceso, con instalación física sin confirmar.
+  resumen: El CSA de A Coruña ofrece recursos con NVIDIA L4 y A40. El dosier enumera 15 L4; la nota anuncia
+    más de 15. Las H200 se ofrecen como acceso, con instalación física sin confirmar.
   enlaces:
     - texto: Ver emplazamiento y hardware
       href: /proyecto/cluster-tic-galicia-a-coruna-csa
@@ -21,7 +192,9 @@
   fecha_hecho: 2026-09-22
   tipo: normativa
   titulo: La CNMC informa el decreto de centros de datos
-  resumen: Recomienda ajustar los requisitos renovables, reconocer almacenamiento y flexibilidad, y ampliar la transición. La consulta cerró el 10 de septiembre. No se ha identificado un texto definitivo aprobado a 14 de octubre.
+  resumen: Recomienda ajustar los requisitos renovables, reconocer almacenamiento y flexibilidad, y ampliar
+    la transición. La consulta cerró el 10 de septiembre. No se ha identificado un texto definitivo
+    aprobado a 14 de octubre.
   enlaces:
     - texto: Estado del proyecto de decreto
       href: /normativa/prd-centros-datos-sostenibles
@@ -37,7 +210,8 @@
   fecha_hecho: 2026-09-28
   tipo: permisos
   titulo: Aprobación parcial del PIGA de QTS Rhodes
-  resumen: Aragón aprueba la documentación urbanística, reparcelación y urbanización. Los restantes proyectos requieren trámites adicionales para ser ejecutables. El centro continúa en tramitación.
+  resumen: Aragón aprueba la documentación urbanística, reparcelación y urbanización. Los restantes
+    proyectos requieren trámites adicionales para ser ejecutables. El centro continúa en tramitación.
   enlaces:
     - texto: Ver QTS Calatorao
       href: /proyecto/qts-calatorao-rhodes
@@ -49,7 +223,9 @@
   fecha_hecho: 2026-09-24
   tipo: proyecto
   titulo: Solaria retoma Puertollano con otro alcance
-  resumen: La propuesta de La Nava II anuncia 40 MW sin tipo especificado, 150 millones de euros y 90 empleos de operación. Cuenta con conformidad municipal; el operador sigue sin identificar. El proyecto de 2024 se conserva como antecedente paralizado.
+  resumen: La propuesta de La Nava II anuncia 40 MW sin tipo especificado, 150 millones de euros y 90
+    empleos de operación. Cuenta con conformidad municipal; el operador sigue sin identificar. El
+    proyecto de 2024 se conserva como antecedente paralizado.
   enlaces:
     - texto: Ver propuesta y antecedentes
       href: /proyecto/solaria-datasection-puertollano
@@ -65,7 +241,9 @@
   fecha_hecho: 2026-10-01
   tipo: red
   titulo: Capacidad de REE actualizada a octubre
-  resumen: La edición del 1 de octubre sustituye la de agosto en los 548 nudos ya registrados. Cambian cifras o motivos principales en 140 nudos. Los valores no publicados se mantienen diferenciados de cero.
+  resumen: La edición del 1 de octubre sustituye la de agosto en los 548 nudos ya registrados. Cambian
+    cifras o motivos principales en 140 nudos. Los valores no publicados se mantienen diferenciados de
+    cero.
   enlaces:
     - texto: Explorar capacidad de demanda
       href: /red-electrica
@@ -79,7 +257,8 @@
   fecha_hecho: 2026-10-08
   tipo: permisos
   titulo: AWS tramita reparcelación y nuevos enlaces de fibra
-  resumen: El BOA publica la aprobación inicial de la modificación de reparcelación y los enlaces de fibra entre La Cartuja y El Burgo de Ebro. Estos trámites no acreditan un inicio de obras de los centros.
+  resumen: El BOA publica la aprobación inicial de la modificación de reparcelación y los enlaces de fibra
+    entre La Cartuja y El Burgo de Ebro. Estos trámites no acreditan un inicio de obras de los centros.
   enlaces:
     - texto: La Cartuja
       href: /proyecto/aws-zaragoza-la-cartuja-car

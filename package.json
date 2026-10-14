@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Mapa documental de centros de datos en España peninsular y su relación con la red eléctrica",
+  "description": "Mapa documental de centros de datos en España y su relación con la red eléctrica",
   "scripts": {
     "validate": "node scripts/validate.mjs",
     "db": "node scripts/build-db.mjs",

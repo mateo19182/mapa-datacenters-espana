@@ -5,9 +5,13 @@ import { join } from 'node:path'
 import YAML from 'yaml'
 import Database from 'better-sqlite3'
 import { RAIZ } from './load.mjs'
-import { resumirPotencia, sumarCartera } from './potencia.mjs'
+import { resumirPotencia, resumirPorEtapa, sumarCartera } from './potencia.mjs'
+import { ETAPAS_CAPACIDAD, propiedadesCapacidad } from '../src/lib/capacidad.js'
 import { ESTADOS, TIPOS_CAPACIDAD, PRECISIONES } from './schema.mjs'
 import { prepararActualizaciones } from './actualizaciones.mjs'
+import { inventarioComputo } from '../src/lib/computo.js'
+import { estadoFuente, prepararRevision } from './revision.mjs'
+import { createHash } from 'node:crypto'
 
 // src/data alimenta las páginas en tiempo de build; public/datos se sirve tal
 // cual al navegador (mapa) y es además la descarga de datos abiertos.
@@ -34,11 +38,7 @@ const huellas = existsSync(join(RAIZ, 'data/huellas.json'))
   ? JSON.parse(readFileSync(join(RAIZ, 'data/huellas.json'), 'utf8'))
   : {}
 const estadoEnlace = (url) => {
-  const h = huellas[url]
-  if (!h) return null
-  if (h.clase === 'rota') return { clase: 'rota', motivo: h.motivo, fecha: h.ultimo_fallo }
-  if (h.clase === 'bloqueada') return { clase: 'bloqueada', motivo: h.motivo, fecha: h.ultimo_fallo }
-  return { clase: 'viva', fecha: h.visto ?? null }
+  return estadoFuente(huellas[url])
 }
 
 const db = new Database(join(RAIZ, 'build/datacenters.db'), { readonly: true })
@@ -82,6 +82,8 @@ const sitios = q('SELECT * FROM sitios ORDER BY nombre').map((s) => {
   const respaldoDe = (campo) =>
     (respaldos.get(s.id) ?? []).filter((r) => r.campo === campo).map((r) => r.fuente_id)
 
+  const disputada = (incert.get(s.id) ?? []).some((u) => u.campo === 'potencia')
+  const potenciaPorEtapa = resumirPorEtapa(pot, { disputada })
   return {
     id: s.id,
     nombre: s.nombre,
@@ -110,9 +112,10 @@ const sitios = q('SELECT * FROM sitios ORDER BY nombre').map((s) => {
     // La marca `disputada` sale de las incertidumbres declaradas, no de las
     // cifras: es el único camino por el que un choque entre tipos de potencia
     // llega al agregado. Ver la regla 4b de potencia.mjs.
-    resumen_potencia: resumirPotencia(pot, {
-      disputada: (incert.get(s.id) ?? []).some((u) => u.campo === 'potencia'),
-    }),
+    resumen_potencia: potenciaPorEtapa.operativa,
+    etapa_resumen_potencia: 'operativa',
+    potencia_por_etapa: potenciaPorEtapa,
+    resumen_potencia_documentada: resumirPotencia(pot, { disputada }),
     fases: (fases.get(s.id) ?? []).map((f) => ({
       nombre: f.nombre,
       estado: f.estado,
@@ -156,6 +159,7 @@ const sitios = q('SELECT * FROM sitios ORDER BY nombre').map((s) => {
     })),
     computo: (computos.get(s.id) ?? []).map((c) => ({
       tipo: c.tipo,
+      modalidad: c.modalidad,
       ambito: c.ambito,
       sistema: c.sistema,
       operador_computo: c.operador_computo,
@@ -237,6 +241,10 @@ const carteraDe = (lista) => {
     // Solo se agregan las magnitudes que describen la capacidad del centro: los
     // grupos de respaldo y la generación asociada quedan fuera de todo total.
     potencia: Object.fromEntries(TIPOS_CAPACIDAD.map((t) => [t, sumarCartera(vigentes, t)])),
+    etapa_potencia: 'operativa',
+    potencia_por_etapa: Object.fromEntries(Object.keys(ETAPAS_CAPACIDAD).map((etapa) => [
+      etapa, Object.fromEntries(TIPOS_CAPACIDAD.map((t) => [t, sumarCartera(vigentes, t, etapa)])),
+    ])),
   }
 }
 
@@ -314,6 +322,7 @@ const sitiosGeo = geojson(
     mw_it: s.resumen_potencia.it?.valor_mw ?? null,
     mw_conexion: s.resumen_potencia.conexion_red?.valor_mw ?? null,
     mw_sin_tipo: s.resumen_potencia.no_especificado?.valor_mw ?? null,
+    ...propiedadesCapacidad(s),
   }),
 )
 
@@ -468,7 +477,7 @@ const resumen = {
   activos_renovables: renovables.length,
   normas: normativa.length,
   normas_en_tramitacion: normativa.filter((n) =>
-    ['audiencia_publica', 'en_tramitacion', 'propuesta', 'en_vigor_en_tramitacion'].includes(n.estado),
+    ['audiencia_publica', 'en_tramitacion', 'propuesta', 'en_vigor_en_tramitacion', 'consulta_previa', 'adoptada_en_control'].includes(n.estado),
   ).length,
   centrales_generacion: centrales.features.length,
   centrales_con_potencia: centrales.features.filter((f) => f.properties.potencia_mw != null).length,
@@ -499,6 +508,25 @@ escribir('renovables.json', renovables)
 escribir('normativa.json', normativa)
 escribir('fuentes.json', [...todasLasFuentes.values()].sort((a, b) => b.usos.length - a.usos.length))
 escribir('resumen.json', resumen)
+escribir('computo.json', inventarioComputo(sitios))
+escribir('revision.json', prepararRevision(
+  YAML.parse(readFileSync(join(RAIZ, 'data/revision.yaml'), 'utf8')),
+  {
+    sitios, normativa, red, renovables, huellas,
+    borradores: existsSync(join(RAIZ, 'research/hallazgos.yaml')) ? YAML.parse(readFileSync(join(RAIZ, 'research/hallazgos.yaml'), 'utf8')) : [],
+  },
+))
+const procedenciaCapacidad = YAML.parse(readFileSync(join(RAIZ, 'data/red/capacidad.yaml'), 'utf8'))
+const archivoCapacidad = procedenciaCapacidad.archivo_original_ree
+if (!/^capacidad-ree-\d{4}-\d{2}-\d{2}\.csv$/.test(archivoCapacidad ?? '')) throw new Error('Falta el archivo original de capacidad REE')
+const csvCapacidad = join(RAIZ, 'data/red', archivoCapacidad)
+if (createHash('sha256').update(readFileSync(csvCapacidad)).digest('hex') !== procedenciaCapacidad.sha256_csv_ree) throw new Error('El CSV de REE no coincide con su checksum')
+copyFileSync(csvCapacidad, join(PUBLICO, archivoCapacidad))
+escribir('capacidad-procedencia.json', {
+  fecha_publicacion_dato: procedenciaCapacidad.fecha_publicacion_dato,
+  archivo_original_ree: archivoCapacidad,
+  sha256_csv_ree: procedenciaCapacidad.sha256_csv_ree,
+})
 escribir('pendientes.json', pendientes)
 escribir('sitios.geojson', sitiosGeo)
 // Lista plana con TODOS los emplazamientos, también los que no tienen
@@ -522,6 +550,7 @@ escribir(
     mw_it: s.resumen_potencia.it?.valor_mw ?? null,
     mw_conexion: s.resumen_potencia.conexion_red?.valor_mw ?? null,
     mw_sin_tipo: s.resumen_potencia.no_especificado?.valor_mw ?? null,
+    ...propiedadesCapacidad(s),
   })),
 )
 // Índice de alias para que el buscador del mapa encuentre los nombres antiguos.

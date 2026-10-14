@@ -36,6 +36,7 @@ estado_fuentes: [src-1, src-2, src-3, src-4]
 
 computo:
   - tipo: cpu_hpc
+    modalidad: instalado
     ambito: sistema
     sistema: "Altamira / servicio HPC del IFCA"
     modelo: "Intel Xeon Platinum 8160 y 8358, Intel Xeon Gold 6230 y 6430, AMD EPYC (10.770 núcleos en total)"
@@ -49,6 +50,7 @@ computo:
       TFlop/s el rendimiento de la parte destinada a la Red Española de Supercomputación, que no
       es el conjunto de la máquina; por eso no se registra aquí como rendimiento del sistema.
   - tipo: gpu
+    modalidad: instalado
     sistema: "Altamira — partición wngpu"
     modelo: "NVIDIA H200 NVL, 4 en un nodo AMD EPYC 9355"
     unidades: 4
@@ -59,6 +61,7 @@ computo:
     fuentes: [src-hpc]
     nota: null
   - tipo: gpu
+    modalidad: instalado
     sistema: "Altamira — partición wngpu"
     modelo: "NVIDIA A30, 8 en un nodo Intel Xeon Gold 6338"
     unidades: 8
@@ -69,6 +72,7 @@ computo:
     fuentes: [src-hpc]
     nota: null
   - tipo: gpu
+    modalidad: instalado
     sistema: "Altamira — partición wngpu"
     modelo: "NVIDIA V100, 2 por nodo en 5 nodos Intel Xeon Gold 6230"
     nodos: 5

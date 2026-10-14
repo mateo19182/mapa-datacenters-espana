@@ -39,6 +39,7 @@ superficie_construida_m2: 3200
 
 computo:
   - tipo: gpu
+    modalidad: adquirido
     ambito: sistema
     sistema: "CPD del CITIC"
     modelo: "NVIDIA H100 de 80 GB"
@@ -51,6 +52,7 @@ computo:
       que el recuento queda vacío. Su finalidad declarada es reforzar la capacidad de cálculo del
       CPD en inteligencia artificial, computación de altas prestaciones y aprendizaje profundo.
   - tipo: gpu
+    modalidad: adquirido
     sistema: "CPD del CITIC — computación embebida"
     modelo: "Kits de desarrollo NVIDIA Jetson AGX Orin de 64 GB y NVIDIA Jetson AGX Thor"
     tipo_unidad: acelerador

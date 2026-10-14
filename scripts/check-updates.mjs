@@ -5,16 +5,17 @@
 // research/informe-actualizacion.md. La decisión de modificar un dato sigue
 // siendo humana: este script solo dice dónde mirar.
 //
-// Con --sellar actualiza `ultima_verificacion` en las fichas cuyas fuentes se
-// han vuelto a leer con éxito y sin cambios. Es la única escritura que hace, y
-// no toca ningún dato: solo certifica que ese día se comprobó.
+// La comprobación técnica actualiza solo huellas y observaciones. La revisión
+// factual se conserva aparte: una URL sin cambios no verifica de nuevo sus datos.
+// --sellar se admite por compatibilidad y ya no modifica ultima_verificacion.
 //
 // Uso: node scripts/check-updates.mjs [--limite N] [--dias N] [--solo-caducados] [--sellar]
 import { createHash } from 'node:crypto'
 import { readFileSync, writeFileSync, existsSync } from 'node:fs'
 import { join } from 'node:path'
-import { cargarTodo, RAIZ, DIR_SITIOS, DIR_NORMATIVA } from './load.mjs'
+import { cargarTodo, RAIZ } from './load.mjs'
 import { registrarLectura, aceptarPendiente } from './source-state.mjs'
+import { plazoRevision } from './revision.mjs'
 
 const args = process.argv.slice(2)
 const opcion = (nombre, porDefecto) => {
@@ -69,24 +70,23 @@ for (const n of normativa) for (const f of n.fuentes) anotar(f.url, n.id)
 // --- caducidad ---------------------------------------------------------------
 
 const caducados = sitios
-  .map((s) => ({ id: s.id, nombre: s.nombre, dias: diasDesde(s.ultima_verificacion), confianza: s.confianza }))
-  .filter((s) => s.dias >= DIAS_CADUCIDAD)
+  .map((s) => ({ id: s.id, nombre: s.nombre, dias: diasDesde(s.ultima_verificacion), confianza: s.confianza, plazo: Math.min(DIAS_CADUCIDAD, plazoRevision(s.estado)) }))
+  .filter((s) => s.dias >= s.plazo)
   .sort((a, b) => b.dias - a.dias)
 
 // Una norma en tramitación envejece mucho más deprisa que una en vigor: entre
 // que sale a audiencia y se aprueba pueden pasar semanas, y la ficha se queda
 // describiendo un borrador que ya no existe.
-const ABIERTAS = ['audiencia_publica', 'en_tramitacion', 'propuesta', 'en_vigor_en_tramitacion']
-const DIAS_CADUCIDAD_NORMA_ABIERTA = 30
 const normasCaducadas = normativa
   .map((n) => ({
     id: n.id,
     titulo: n.titulo,
     estado: n.estado,
-    abierta: ABIERTAS.includes(n.estado),
+    abierta: plazoRevision(n.estado, 'normativa') === 14,
+    plazo: Math.min(DIAS_CADUCIDAD, plazoRevision(n.estado, 'normativa')),
     dias: diasDesde(n.ultima_verificacion),
   }))
-  .filter((n) => n.dias >= (n.abierta ? DIAS_CADUCIDAD_NORMA_ABIERTA : DIAS_CADUCIDAD))
+  .filter((n) => n.dias >= n.plazo)
   .sort((a, b) => b.dias - a.dias)
 
 // Hitos futuros que ya han vencido: la ficha prometía una fecha y esa fecha ha
@@ -147,8 +147,7 @@ const rotas = []
 const bloqueadas = []
 const nuevas = []
 
-// Un 403 de Cloudflare no es un enlace muerto: la página funciona para una
-// persona. Mezclar ambos casos llenaría el informe semanal de falsas alarmas.
+// Un 403 de Cloudflare no basta para clasificar un enlace como muerto. Mezclar ambos casos llenaría el informe semanal de falsas alarmas.
 const CODIGOS_BLOQUEO = new Set([401, 403, 429, 503])
 const esBloqueo = (res) =>
   CODIGOS_BLOQUEO.has(res.codigo) || res.mensaje === 'tiempo agotado'
@@ -195,54 +194,9 @@ if (!SOLO_CADUCADOS) {
   writeFileSync(RUTA_HUELLAS, JSON.stringify(huellas, null, 1), 'utf8')
 }
 
-// --- sellado de la fecha de verificación -------------------------------------
-
-const selladas = []
-if (SELLAR && !SOLO_CADUCADOS) {
-  const estadoUrl = new Map()
-  for (const [url, h] of Object.entries(huellas)) {
-    estadoUrl.set(url, h.visto === hoy && !h.clase ? 'ok' : 'no')
-  }
-  const cambiadaUrl = new Set(cambiadas.map((c) => c.url))
-  const nuevaUrl = new Set(nuevas.map((n) => n.url))
-
-  for (const s of sitios) {
-    const urls = s.fuentes.map((f) => f.url)
-    // Solo se sella si TODAS sus fuentes se releyeron hoy y ninguna cambió.
-    const todasComprobadas = urls.length > 0 && urls.every((u) => estadoUrl.get(u) === 'ok')
-    const algunaCambio = urls.some((u) => cambiadaUrl.has(u) || nuevaUrl.has(u))
-    if (!todasComprobadas || algunaCambio) continue
-    if (s.ultima_verificacion === hoy) continue
-
-    const ruta = join(DIR_SITIOS, `${s.id}.yaml`)
-    const texto = readFileSync(ruta, 'utf8')
-    const nuevo = texto.replace(
-      /^ultima_verificacion:.*$/m,
-      `ultima_verificacion: "${hoy}"`,
-    )
-    if (nuevo !== texto) {
-      writeFileSync(ruta, nuevo, 'utf8')
-      selladas.push(s.id)
-    }
-  }
-
-  // Las normas se sellan igual, y con la misma condición: todas sus fuentes
-  // releídas hoy y ninguna cambiada.
-  for (const n of normativa) {
-    const suyas = n.fuentes.map((f) => f.url)
-    if (!suyas.length || !suyas.every((u) => estadoUrl.get(u) === 'ok')) continue
-    if (suyas.some((u) => cambiadaUrl.has(u) || nuevaUrl.has(u))) continue
-    if (n.ultima_verificacion === hoy) continue
-
-    const ruta = join(DIR_NORMATIVA, `${n.id}.yaml`)
-    const texto = readFileSync(ruta, 'utf8')
-    const nuevo = texto.replace(/^ultima_verificacion:.*$/m, `ultima_verificacion: "${hoy}"`)
-    if (nuevo !== texto) {
-      writeFileSync(ruta, nuevo, 'utf8')
-      selladas.push(n.id)
-    }
-  }
-}
+// La opción histórica no vuelve a fechar los hechos. Las observaciones ya
+// están en huellas; la cola pública calcula la revisión por actividad.
+if (SELLAR) console.log('--sellar: solo se comprueban fuentes; se conservan las fechas de revisión factual.')
 
 // --- informe -----------------------------------------------------------------
 
@@ -259,14 +213,13 @@ l.push('señala dónde han cambiado las fuentes para que una persona decida qué
 l.push(`- Fuentes comprobadas: **${comprobadas}** de ${urls.size} registradas`)
 l.push(`- Con contenido cambiado: **${cambiadas.length}** (${cambiadas.filter(relevante).length} con cambio apreciable)`)
 l.push(`- Enlaces rotos: **${rotas.length}**`)
-l.push(`- Bloqueadas a la comprobación automática: **${bloqueadas.length}** (siguen abriéndose en un navegador)`)
+l.push(`- Bloqueadas a la comprobación automática: **${bloqueadas.length}** (el bloqueo no acredita el estado en un navegador)`)
 l.push(`- Vistas por primera vez: **${nuevas.length}**`)
-l.push(`- Fichas sin verificar desde hace ${DIAS_CADUCIDAD} días o más: **${caducados.length}**`)
+l.push(`- Fichas pendientes de revisión según su actividad: **${caducados.length}**`)
 l.push(`- Normas sin verificar en plazo: **${normasCaducadas.length}** de ${normativa.length}`)
 l.push(`- Hitos previstos ya vencidos: **${hitosVencidos.length}**`)
 if (SELLAR) {
-  l.push(`- Fichas con fecha de verificación actualizada hoy: **${selladas.length}**`)
-  l.push('  (todas sus fuentes se releyeron con éxito y ninguna había cambiado)')
+  l.push('- Las comprobaciones técnicas no renuevan fechas de revisión factual.')
 }
 l.push('')
 
@@ -350,7 +303,7 @@ writeFileSync(join(RAIZ, 'research/informe-actualizacion.md'), l.join('\n'), 'ut
 console.log(
   `\n${comprobadas} fuentes comprobadas · ${cambiadas.length} cambiadas · ${rotas.length} rotas · ` +
     `${bloqueadas.length} bloqueadas (antibot) · ${caducados.length} fichas caducadas` +
-    (SELLAR ? ` · ${selladas.length} selladas` : '') +
+    (SELLAR ? ' · fechas factuales conservadas' : '') +
     '\n' +
     '→ research/informe-actualizacion.md',
 )

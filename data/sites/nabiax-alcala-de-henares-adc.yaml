@@ -18,15 +18,22 @@ ubicacion:
   lat: 40.519524
   lon: -3.341208
   precision: exacta
-  fuentes: [src-3]
+  fuentes: [ src-3 ]
 
 estado: ampliacion_en_construccion
 estado_detalle: >-
-  Dos edificios en servicio (ADC1 desde 2013, con certificación Tier IV de Uptime Institute;
-  ADC2 desde 2021, diseñado y construido bajo estándar Tier III). En mayo de 2024 Nabiax anunció
-  7,5 MW IT adicionales contratados por hiperescalares en este campus y un tercer edificio (ADC3)
-  para llevar el conjunto a más de 100 MW IT.
-estado_fuentes: [src-1, src-2]
+  Dos edificios en servicio (ADC1 desde 2013, con certificación Tier IV de Uptime Institute; ADC2
+  desde 2021, diseñado y construido bajo estándar Tier III). En mayo de 2024 Nabiax anunció 7,5 MW
+  IT adicionales contratados por hiperescalares en este campus y un tercer edificio (ADC3) para
+  llevar el conjunto a más de 100 MW IT. La Comunidad de Madrid documenta la primera piedra de ADC3
+  el 18 de septiembre de 2026 en Avenida Punto Com 23. Su nota atribuye 80 MW al nuevo proyecto, sin
+  tipificar, frente al objetivo de 100 MW IT del conjunto del campus publicado por Nabiax. No se
+  suman ni se consideran operativos.
+estado_fuentes:
+  - src-1
+  - src-2
+  - src-primera-piedra-20260918
+  - src-nota-cm-20260918
 fecha_puesta_en_servicio: "2013"
 
 potencia:
@@ -36,7 +43,7 @@ potencia:
     referencia: "Capacidad TI entregada por las dos primeras fases"
     estado_asociado: operativo
     fecha_dato: "2026-08-29"
-    fuentes: [src-1]
+    fuentes: [ src-1 ]
     nota: "\"it delivers 22,3 MW IT Power, scalable to 100 MW in the medium term\"."
   - tipo: it
     valor_mw: 100
@@ -44,14 +51,14 @@ potencia:
     referencia: "Objetivo de capacidad TI a medio plazo"
     estado_asociado: anunciado
     fecha_dato: "2024-05-07"
-    fuentes: [src-1, src-2]
+    fuentes: [ src-1, src-2 ]
   - tipo: instalada_total
     valor_mw: 135
     ambito: campus
     referencia: "Potencia total asociada a los 100 MW IT objetivo"
     estado_asociado: anunciado
     fecha_dato: "2024-05-07"
-    fuentes: [src-2]
+    fuentes: [ src-2 ]
     nota: "\"este campus de centros de datos alcanzará los 100 MW de potencia IT (135 MW totales)\"."
   - tipo: it
     valor_mw: 7.5
@@ -59,59 +66,77 @@ potencia:
     referencia: "Nueva capacidad contratada en Alcalá con hiperescalares (2024)"
     estado_asociado: en_construccion
     fecha_dato: "2024-05-07"
-    fuentes: [src-2]
+    fuentes: [ src-2 ]
   - tipo: it
     valor_mw: 14.4
     ambito: fase
     referencia: "ADC2, potencia declarada al describir sus seis salas técnicas"
     estado_asociado: operativo
     fecha_dato: "2026-08-16"
-    fuentes: [src-6]
+    fuentes: [ src-6 ]
     nota: >-
-      «El edificio ADC2 incorporó seis salas tecnológicas de 1.000 metros cuadrados y una
-      potencia de 14,4 megavatios». No cuadra por sí sola con los 22,3 MW IT que la compañía
-      atribuye al conjunto de ADC1 y ADC2, y la fuente no dice si es carga TI o total; se
-      registra como carga TI por coherencia con el resto de cifras del campus y se advierte de
-      la duda en incertidumbres.
+      «El edificio ADC2 incorporó seis salas tecnológicas de 1.000 metros cuadrados y una potencia
+      de 14,4 megavatios». No cuadra por sí sola con los 22,3 MW IT que la compañía atribuye al
+      conjunto de ADC1 y ADC2, y la fuente no dice si es carga TI o total; se registra como carga TI
+      por coherencia con el resto de cifras del campus y se advierte de la duda en incertidumbres.
   - tipo: conexion_red
     valor_mw: 110
     ambito: campus
     referencia: "Capacidad adicional solicitada para ampliaciones futuras del campus"
     estado_asociado: anunciado
     fecha_dato: "2026-08-17"
-    fuentes: [src-7]
+    fuentes: [ src-7 ]
     nota: >-
       La documentación del proyecto ADC3 habla de «hasta 100 MW de potencia IT asegurada en el
       campus, además de otros 110 MW solicitados pensando en necesidades futuras». Los 110 MW se
-      registran como potencia de acceso solicitada, que es lo que la fuente da a entender, y no
-      se suman a los 100 MW de carga TI.
+      registran como potencia de acceso solicitada, que es lo que la fuente da a entender, y no se
+      suman a los 100 MW de carga TI.
   - tipo: termica_respaldo
     valor_mw: 45.08
     ambito: campus
     referencia: "Potencia máxima de funcionamiento de los grupos electrógenos con la ampliación"
     estado_asociado: operativo
     fecha_dato: "2021-11-05"
-    fuentes: [src-5]
+    fuentes: [ src-5 ]
     nota: >-
-      Cifra de la resolución que extingue la autorización ambiental integrada: «potencia máxima
-      de funcionamiento total con ampliación de 45,08 MWt, inferior a los 50 MWt que marca el
-      límite» del epígrafe 1.1 del anejo I del Real Decreto Legislativo 1/2016. Es potencia
-      térmica de los grupos diésel de emergencia, no capacidad del centro de datos.
+      Cifra de la resolución que extingue la autorización ambiental integrada: «potencia máxima de
+      funcionamiento total con ampliación de 45,08 MWt, inferior a los 50 MWt que marca el límite»
+      del epígrafe 1.1 del anejo I del Real Decreto Legislativo 1/2016. Es potencia térmica de los
+      grupos diésel de emergencia, no capacidad del centro de datos.
+  - tipo: no_especificado
+    valor_mw: 80
+    ambito: edificio
+    edificio: ADC3
+    referencia: Nuevo edificio ADC3 según la nota de la Comunidad de Madrid
+    estado_asociado: en_construccion
+    fecha_dato: 2026-09-18
+    fuentes:
+      - src-nota-cm-20260918
+    nota: La administración no dice si son MW IT, de conexión o potencia instalada. Los 100 MW IT
+      corporativos corresponden al objetivo de todo el campus; no son otros 100 MW adicionales a
+      ADC3.
 
 fases:
   - nombre: "ADC1"
     estado: operativo
     fecha_puesta_en_servicio: "2013"
     superficie_m2: 4800
-    fuentes: [src-1]
+    fuentes: [ src-1 ]
   - nombre: "ADC2"
     estado: operativo
     fecha_puesta_en_servicio: "2021"
     superficie_m2: 6000
-    fuentes: [src-1]
+    fuentes: [ src-1 ]
   - nombre: "ADC3"
-    estado: anunciado
-    fuentes: [src-2, src-6, src-7]
+    estado: en_construccion
+    fuentes:
+      - src-2
+      - src-6
+      - src-7
+      - src-primera-piedra-20260918
+      - src-nota-cm-20260918
+    nota: Primera piedra colocada el 18 de septiembre de 2026 en Avenida Punto Com 23. El acto y la nota
+      regional documentan el arranque de la ampliación; no su puesta en servicio.
 
 superficie_construida_m2: 10800
 inversion_anunciada_eur: 800000000
@@ -124,32 +149,36 @@ agua:
   circuito: desconocido
   sistema: >-
     ADC1 y ADC2 se refrigeran con enfriadoras y unidades de tratamiento de aire redundantes. Para
-    ADC3, aún sin construir, Nabiax plantea un diseño con consumo de agua nulo para refrigeración
-    y hasta un 100% de refrigeración líquida.
+    ADC3, en construcción desde la primera piedra de septiembre de 2026, Nabiax plantea un diseño
+    con consumo de agua nulo para refrigeración y hasta un 100% de refrigeración líquida.
   origen: null
   consumo_m3_ano: null
   wue_l_kwh: null
   nota: >-
     La afirmación de consumo nulo se refiere solo al edificio proyectado ADC3; no hay dato de
-    consumo, WUE ni tipo de circuito para los dos edificios en servicio, por lo que el circuito
-    del campus se deja como desconocido.
-  fuentes: [src-7]
+    consumo, WUE ni tipo de circuito para los dos edificios en servicio, por lo que el circuito del
+    campus se deja como desconocido. La nota regional del 18 de septiembre describe un circuito que
+    conserva el mismo volumen de agua durante la vida útil de ADC3; es una descripción de diseño, no
+    una serie medida ni un dato aplicable a ADC1 y ADC2.
+  fuentes:
+    - src-7
+    - src-nota-cm-20260918
 
 empleo:
   - tipo: construccion
     valor: 1000
     referencia: "Obras de ADC3"
     fecha_dato: "2026-08"
-    fuentes: [src-6]
+    fuentes: [ src-6 ]
     nota: "«alrededor de 1.000 los puestos vinculados a la fase de construcción»."
   - tipo: total
     valor: 200
     referencia: "Empleo directo e indirecto estable en la zona una vez operativa la ampliación"
     fecha_dato: "2026-08"
-    fuentes: [src-6]
+    fuentes: [ src-6 ]
     nota: >-
-      La fuente dice «más de 200 los empleos directos e indirectos que permanecerían
-      posteriormente en la zona», de modo que 200 es un suelo y no una cifra cerrada.
+      La fuente dice «más de 200 los empleos directos e indirectos que permanecerían posteriormente
+      en la zona», de modo que 200 es un suelo y no una cifra cerrada.
 enlaces_proyecto:
   - "https://nabiax.com/en/our-data-centers/spain/alcala-data-center/"
 
@@ -157,24 +186,24 @@ incertidumbres:
   - campo: superficie_construida_m2
     descripcion: >-
       La ficha de Nabiax da 4.800 m² (ADC1) + 6.000 m² (ADC2) y "over 10,000 m² of IT space",
-      mientras que la nota de 2024 afirma que al completar la segunda fase el campus tendrá
-      22.000 m² dedicados a salas IT. Las dos cifras no son conciliables sin más información.
-    fuentes: [src-1, src-2]
+      mientras que la nota de 2024 afirma que al completar la segunda fase el campus tendrá 22.000
+      m² dedicados a salas IT. Las dos cifras no son conciliables sin más información.
+    fuentes: [ src-1, src-2 ]
   - campo: potencia
     descripcion: >-
       Un reportaje de prensa generalista de 2026 atribuye 50 MW a la instalación de Nabiax en
-      TecnoAlcalá, cifra que no coincide con los 22,3 MW IT que publica la compañía ni con los
-      100 MW objetivo.
-    fuentes: [src-1, src-4]
+      TecnoAlcalá, cifra que no coincide con los 22,3 MW IT que publica la compañía ni con los 100
+      MW objetivo.
+    fuentes: [ src-1, src-4 ]
   - campo: estado
     descripcion: >-
-      La resolución de extinción de la autorización ambiental integrada, de 5 de noviembre de
-      2021, tiene un desajuste interno: el título, la dirección, la baja en el PRTR y todo el
-      cuerpo del expediente sitúan la instalación en Alcalá de Henares, pero el punto segundo de
-      la parte dispositiva dice extinguir la autorización «para su centro de proceso de datos,
-      en el término municipal de Arganda del Rey (Madrid)». Se conserva la lectura de Alcalá de
-      Henares, que es la que sostiene el resto del documento, y se deja constancia del choque.
-    fuentes: [src-5]
+      La resolución de extinción de la autorización ambiental integrada, de 5 de noviembre de 2021,
+      tiene un desajuste interno: el título, la dirección, la baja en el PRTR y todo el cuerpo del
+      expediente sitúan la instalación en Alcalá de Henares, pero el punto segundo de la parte
+      dispositiva dice extinguir la autorización «para su centro de proceso de datos, en el término
+      municipal de Arganda del Rey (Madrid)». Se conserva la lectura de Alcalá de Henares, que es la
+      que sostiene el resto del documento, y se deja constancia del choque.
+    fuentes: [ src-5 ]
 
   - campo: potencia
     descripcion: >-
@@ -182,26 +211,34 @@ incertidumbres:
       declara para ADC1 y ADC2 juntos si se toma ADC1 con la capacidad que tenía al inaugurarse;
       ninguna fuente desglosa la capacidad por edificio, y la de ADC2 no dice si es carga TI o
       potencia total.
-    fuentes: [src-1, src-6]
+    fuentes: [ src-1, src-6 ]
   - campo: inversion_anunciada_eur
     descripcion: >-
       Los 800 millones de euros aparecen con dos alcances distintos en dos crónicas de la misma
-      semana: la prensa local los atribuye al desarrollo de ADC3 en Alcalá, mientras que la
-      prensa especializada los presenta como la inversión de toda la nueva etapa de crecimiento
-      de Nabiax, que incluye Julián Camarillo, Terrassa y posibles proyectos en el extranjero. Se
-      registra la cifra en la ficha del campus porque es donde una de las dos fuentes la sitúa,
-      pero puede no ser específica de este emplazamiento.
-    fuentes: [src-6, src-7]
+      semana: la prensa local los atribuye al desarrollo de ADC3 en Alcalá, mientras que la prensa
+      especializada los presenta como la inversión de toda la nueva etapa de crecimiento de Nabiax,
+      que incluye Julián Camarillo, Terrassa y posibles proyectos en el extranjero. Se registra la
+      cifra en la ficha del campus porque es donde una de las dos fuentes la sitúa, pero puede no
+      ser específica de este emplazamiento.
+    fuentes: [ src-6, src-7 ]
   - campo: potencia
     descripcion: >-
       La documentación de ADC3 mezcla tres magnitudes en la misma frase: 100 MW de potencia IT
-      asegurada para el campus, 110 MW adicionales solicitados y un objetivo global de compañía
-      de 140 MW IT. Los 100 MW coinciden con el objetivo de campus que Nabiax publica desde 2024,
-      de modo que probablemente sean la misma cifra vista dos veces y no capacidad nueva.
-    fuentes: [src-1, src-2, src-7]
+      asegurada para el campus, 110 MW adicionales solicitados y un objetivo global de compañía de
+      140 MW IT. Los 100 MW coinciden con el objetivo de campus que Nabiax publica desde 2024, de
+      modo que probablemente sean la misma cifra vista dos veces y no capacidad nueva.
+    fuentes: [ src-1, src-2, src-7 ]
+  - campo: potencia
+    descripcion: La nota oficial de septiembre atribuye 80 MW sin tipo a la nueva infraestructura.
+      Nabiax mantiene 22,3 MW IT actuales y hasta 100 MW IT para todo el campus. Las fuentes
+      difieren en ámbito y precisión de la unidad; no demuestran por sí solas una contradicción
+      entre dos cifras IT comparables ni permiten sumarlas.
+    fuentes:
+      - src-1
+      - src-nota-cm-20260918
 
 confianza: alta
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-14"
 
 fuentes:
   - id: src-1
@@ -210,7 +247,9 @@ fuentes:
     editor: "Nabiax"
     tipo: empresa
     fecha_consulta: "2026-08-29"
-    cita: "Having its two first phases built, it delivers 22,3 MW IT Power, scalable to 100 MW in the medium term ... ADC1 Start of operations: 2013 IT Rooms: 7 Surface: 4.800 m2 ... The first phase is Tier IV certified by Uptime Institute"
+    cita: "Having its two first phases built, it delivers 22,3 MW IT Power, scalable to 100 MW in the
+      medium term ... ADC1 Start of operations: 2013 IT Rooms: 7 Surface: 4.800 m2 ... The first
+      phase is Tier IV certified by Uptime Institute"
   - id: src-2
     url: "https://www.datacentermarket.es/news/nabiax-habilitara-10-mw-nuevos-para-dos-hiperescalares/"
     titulo: "Nabiax habilitará 10 MW nuevos para dos hiperescalares"
@@ -218,7 +257,9 @@ fuentes:
     tipo: prensa_especializada
     fecha_publicacion: "2024-05-07"
     fecha_consulta: "2026-08-29"
-    cita: "La nueva capacidad se desarrolla en los campus de data center ubicados en Alcalá de Henares (7,5 MW) y Julián Camarillo (2,5 MW) ... este campus de centros de datos alcanzará los 100 MW de potencia IT (135 MW totales)"
+    cita: "La nueva capacidad se desarrolla en los campus de data center ubicados en Alcalá de Henares
+      (7,5 MW) y Julián Camarillo (2,5 MW) ... este campus de centros de datos alcanzará los 100 MW
+      de potencia IT (135 MW totales)"
   - id: src-3
     url: "https://www.peeringdb.com/fac/7069"
     titulo: "TecnoAlcalá"
@@ -233,28 +274,81 @@ fuentes:
     tipo: prensa_general
     fecha_publicacion: "2026-08-03"
     fecha_consulta: "2026-08-29"
-    cita: "una instalación de 50 MW implicaría un consumo de energía de entre 490-530 gigavatios hora (GWh), y de agua entre 78.840 y 175.200 metros cúbicos al año"
+    cita: "una instalación de 50 MW implicaría un consumo de energía de entre 490-530 gigavatios hora
+      (GWh), y de agua entre 78.840 y 175.200 metros cúbicos al año"
   - id: src-5
-    url: "https://gestiona.comunidad.madrid/rlma_web/html/web/Descarga.icm?idDocumento=2&idLegislacion=5918"
-    titulo: "RESOLUCIÓN DE LA DIRECCIÓN GENERAL DE DESCARBONIZACIÓN Y TRANSICIÓN ENERGÉTICA DE LA COMUNIDAD DE MADRID POR LA QUE SE DECLARA LA EXTINCIÓN DE LA AUTORIZACIÓN AMBIENTAL INTEGRADA OTORGADA A LA EMPRESA DATA HOLDING FUTURE, S. L. U., CON CIF B-88333182, PARA UNA INSTALACIÓN DE CENTRO DE PROCESO DE DATOS, UBICADA EN EL TÉRMINO MUNICIPAL DE ALCALÁ DE HENARES"
+    url: "https://gestiona.comunidad.madrid/rlma_web/html/web/Descarga.icm?idDocumento=2&idLegislacion=\
+      5918"
+    titulo: "RESOLUCIÓN DE LA DIRECCIÓN GENERAL DE DESCARBONIZACIÓN Y TRANSICIÓN ENERGÉTICA DE LA
+      COMUNIDAD DE MADRID POR LA QUE SE DECLARA LA EXTINCIÓN DE LA AUTORIZACIÓN AMBIENTAL INTEGRADA
+      OTORGADA A LA EMPRESA DATA HOLDING FUTURE, S. L. U., CON CIF B-88333182, PARA UNA INSTALACIÓN
+      DE CENTRO DE PROCESO DE DATOS, UBICADA EN EL TÉRMINO MUNICIPAL DE ALCALÁ DE HENARES"
     editor: "Comunidad de Madrid — Consejería de Medio Ambiente, Vivienda y Agricultura"
     tipo: oficial
     fecha_publicacion: "2021-11-05"
     fecha_consulta: "2026-08-31"
-    cita: "la instalación está ubicada en la Avenida Punto Com, 23, en el Parque Científico Tecnológico “TecnoAlcalá”, del término municipal de Alcalá de Henares ... Con fecha 30 de diciembre de 2014, se emitió Resolución de la Dirección General del Medio Ambiente de la Comunidad de Madrid por la que se otorga Autorización Ambiental Integrada (AAI) y se emite Declaración de Impacto Ambiental favorable a la empresa TELEFÓNICA GLOBAL TECHNOLOGY, S.A.U. ... Mediante Resolución de la Dirección General de Sostenibilidad y Cambio Climático de fecha 12 de marzo de 2020, se cambia la titularidad de la AAI a favor de DATA HOLDING FUTURE S.L.U. ... el titular remite aclaraciones de los grupos electrógenos de emergencia instalados y los que se van a sumar a la instalación. Siendo la potencia máxima de funcionamiento total con ampliación de 45,08 MWt, inferior a los 50 MWt que marca el límite de las actividades industriales incluidas en epígrafe 1.1 del Anejo I del Real Decreto Legislativo 1/2016 ... La modificación solicitada consiste en la construcción de un nuevo CPD, vinculado al ya existente y operativo (Fase 1), y la instalación de dos nuevos grupos electrógenos de emergencia de potencias 332 kW y 3.240 kW, y dos tanques de gasóleo B ... Segundo. Extinguir la Autorización Ambiental Integrada otorgada a la empresa DATA HOLDING FUTURE, S. L. U. mediante Resolución de 30 de diciembre de 2014, para su centro de proceso de datos, en el término municipal de Arganda del Rey (Madrid)"
+    cita: "la instalación está ubicada en la Avenida Punto Com, 23, en el Parque Científico Tecnológico
+      “TecnoAlcalá”, del término municipal de Alcalá de Henares ... Con fecha 30 de diciembre de
+      2014, se emitió Resolución de la Dirección General del Medio Ambiente de la Comunidad de
+      Madrid por la que se otorga Autorización Ambiental Integrada (AAI) y se emite Declaración de
+      Impacto Ambiental favorable a la empresa TELEFÓNICA GLOBAL TECHNOLOGY, S.A.U. ... Mediante
+      Resolución de la Dirección General de Sostenibilidad y Cambio Climático de fecha 12 de marzo
+      de 2020, se cambia la titularidad de la AAI a favor de DATA HOLDING FUTURE S.L.U. ... el
+      titular remite aclaraciones de los grupos electrógenos de emergencia instalados y los que se
+      van a sumar a la instalación. Siendo la potencia máxima de funcionamiento total con ampliación
+      de 45,08 MWt, inferior a los 50 MWt que marca el límite de las actividades industriales
+      incluidas en epígrafe 1.1 del Anejo I del Real Decreto Legislativo 1/2016 ... La modificación
+      solicitada consiste en la construcción de un nuevo CPD, vinculado al ya existente y operativo
+      (Fase 1), y la instalación de dos nuevos grupos electrógenos de emergencia de potencias 332 kW
+      y 3.240 kW, y dos tanques de gasóleo B ... Segundo. Extinguir la Autorización Ambiental
+      Integrada otorgada a la empresa DATA HOLDING FUTURE, S. L. U. mediante Resolución de 30 de
+      diciembre de 2014, para su centro de proceso de datos, en el término municipal de Arganda del
+      Rey (Madrid)"
   - id: src-6
     url: "https://elcomplutense.com/nabiax-800-millones-data-center-alcala/"
-    titulo: "Nabiax prepara cerca de 800 millones para ampliar su campus de Alcalá y prevé más de 200 empleos estables"
+    titulo: "Nabiax prepara cerca de 800 millones para ampliar su campus de Alcalá y prevé más de 200
+      empleos estables"
     editor: "El Complutense"
     tipo: prensa_general
     fecha_publicacion: "2026-08-16"
     fecha_consulta: "2026-08-31"
-    cita: "El proyecto ADC3 añadirá un tercer edificio al campus alcalaíno y elevará el complejo por encima de 100 megavatios de capacidad tecnológica instalada. - La compañía estima alrededor de 1.000 empleos durante las obras y más de 200 puestos directos e indirectos estables en la zona de Alcalá ... Nabiax proyecta una inversión cercana a 800 millones de euros para desarrollar ADC3 ... El edificio ADC2 incorporó seis salas tecnológicas de 1.000 metros cuadrados y una potencia de 14,4 megavatios, dentro de una estrategia que desde sus primeras fases contemplaba superar a largo plazo los 100 megavatios."
+    cita: "El proyecto ADC3 añadirá un tercer edificio al campus alcalaíno y elevará el complejo por
+      encima de 100 megavatios de capacidad tecnológica instalada. - La compañía estima alrededor de
+      1.000 empleos durante las obras y más de 200 puestos directos e indirectos estables en la zona
+      de Alcalá ... Nabiax proyecta una inversión cercana a 800 millones de euros para desarrollar
+      ADC3 ... El edificio ADC2 incorporó seis salas tecnológicas de 1.000 metros cuadrados y una
+      potencia de 14,4 megavatios, dentro de una estrategia que desde sus primeras fases contemplaba
+      superar a largo plazo los 100 megavatios."
   - id: src-7
-    url: "https://revistacloud.com/nabiax-prepara-800-millones-para-llevar-su-capacidad-de-centros-de-datos-a-140-mw/"
+    url: "https://revistacloud.com/nabiax-prepara-800-millones-para-llevar-su-capacidad-de-centros-de-d\
+      atos-a-140-mw/"
     titulo: "Nabiax prepara 800 millones para llevar su capacidad de centros de datos a 140 MW"
     editor: "Revista Cloud"
     tipo: prensa_especializada
     fecha_publicacion: "2026-08-17"
     fecha_consulta: "2026-08-31"
-    cita: "Nabiax prepara una nueva etapa de crecimiento que contempla unos 800 millones de euros de inversión y el aumento de su capacidad desde los aproximadamente 35 MW actuales hasta 140 MW de potencia IT ... Entre sus características figura la posibilidad de disponer de hasta 100 MW de potencia IT asegurada en el campus, además de otros 110 MW solicitados pensando en necesidades futuras. Esto no significa que ADC3 vaya a incorporar inmediatamente toda esa capacidad ni que los 210 MW estén disponibles ... ADC3 también está diseñado para admitir hasta un 100 % de refrigeración líquida ... ADC3 tiene como objetivo un PUE de diseño de 1,2 ... Nabiax también plantea para el desarrollo electricidad procedente de fuentes renovables y un diseño con consumo de agua nulo para refrigeración."
+    cita: "Nabiax prepara una nueva etapa de crecimiento que contempla unos 800 millones de euros de
+      inversión y el aumento de su capacidad desde los aproximadamente 35 MW actuales hasta 140 MW
+      de potencia IT ... Entre sus características figura la posibilidad de disponer de hasta 100 MW
+      de potencia IT asegurada en el campus, además de otros 110 MW solicitados pensando en
+      necesidades futuras. Esto no significa que ADC3 vaya a incorporar inmediatamente toda esa
+      capacidad ni que los 210 MW estén disponibles ... ADC3 también está diseñado para admitir
+      hasta un 100 % de refrigeración líquida ... ADC3 tiene como objetivo un PUE de diseño de 1,2
+      ... Nabiax también plantea para el desarrollo electricidad procedente de fuentes renovables y
+      un diseño con consumo de agua nulo para refrigeración."
+  - id: src-primera-piedra-20260918
+    url: https://www.comunidad.madrid/transparencia/agenda/acto-colocacion-primera-piedra-del-nuevo-centro-datos-compania-nabiax
+    titulo: Colocación de la primera piedra del nuevo centro de datos de Nabiax
+    editor: Comunidad de Madrid
+    tipo: oficial
+    fecha_publicacion: 2026-09-18
+    fecha_consulta: 2026-10-14
+    cita: Viernes, 18/09/2026 - 11:00 [...] Avda. Punto Com, 23.
+  - id: src-nota-cm-20260918
+    url: https://www.comunidad.madrid/press-releases/download/119449
+    titulo: Primera piedra del centro de Nabiax en Alcalá de Henares, nota de prensa
+    editor: Comunidad de Madrid
+    tipo: oficial
+    fecha_publicacion: 2026-09-18
+    fecha_consulta: 2026-10-14
+    cita: Tendrá una capacidad de 80 megavatios (MW)

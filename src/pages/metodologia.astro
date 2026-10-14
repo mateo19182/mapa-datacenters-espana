@@ -21,7 +21,7 @@ const conEnergia = sitios.filter((s) => (s.energia ?? []).length).length
     </ul>
     <h2>Cómo leer las cifras</h2>
     <p><Termino id="mw-it">MW IT</Termino>, <Termino id="potencia-acceso">MW de conexión</Termino> y <Termino id="mw-sin-tipificar">MW sin tipificar</Termino> son magnitudes distintas. Se presentan por separado y no se convierten con un <Termino id="pue">PUE</Termino> supuesto. Los MW de respaldo o generación asociada quedan fuera de los totales del centro.</p>
-    <p>Cada agregado indica cuántos emplazamientos aportan dato y permite consultar sus estados. Los proyectos cancelados quedan fuera de esos agregados; sus cifras históricas siguen en las fichas.</p>
+    <p>El mapa y los listados muestran capacidad operativa por defecto. Cada cifra conserva su etapa, separada del estado del campus. Las etapas pueden solaparse y no se suman; cada agregado indica cuántos emplazamientos aportan dato. Los proyectos cancelados quedan fuera de esos agregados; sus cifras históricas siguen en las fichas.</p>
     <details><summary>Campus, edificios y fases</summary>
       <p>La cifra de campus prevalece sobre las fases que ya contiene. Solo se suman edificios o fases cuando se identifican por separado y su ámbito es compatible. Varias lecturas del mismo edificio no se suman.</p>
       <p>Una fase operativa y otra anunciada pueden convivir en el mismo emplazamiento. La ficha muestra ese reparto para que la capacidad futura no se confunda con capacidad operativa.</p>
@@ -39,7 +39,7 @@ const conEnergia = sitios.filter((s) => (s.energia ?? []).length).length
       <dl>{['alta', 'media', 'baja'].map((c) => <><dt class={`confianza-${c}`}>{CONFIANZA_ETIQUETA[c]} · {sitios.filter((s) => s.confianza === c).length} de {sitios.length}</dt><dd>{CONFIANZA_DESCRIPCION[c]}</dd></>)}</dl>
     </details>
     <details id="capas"><summary>Cómputo, energía y capas del mapa</summary>
-      <p>{conComputo} de {sitios.length} emplazamientos publican datos de cómputo. Los modelos, recuentos y rendimientos se registran aparte, sin convertirlos en MW. {conEnergia} de {sitios.length} publican consumo eléctrico anual; los GWh tampoco se suman a los MW.</p>
+      <p>{conComputo} de {sitios.length} emplazamientos publican datos de cómputo. Los modelos, recuentos y rendimientos se registran aparte, sin convertirlos en MW. El <a href="/computo">explorador de cómputo</a> distingue instalación física, adquisición, previsión y acceso contratado. {conEnergia} de {sitios.length} publican consumo eléctrico anual; los GWh tampoco se suman a los MW.</p>
       <p>Las subestaciones, actuaciones y capacidades de acceso proceden de fuentes fechadas. El trazado de red y las centrales de OpenStreetMap tienen cobertura variable. La proximidad a una línea o una central no demuestra conexión ni suministro.</p>
       <p>La cartografía de fondo procede de CARTO. Si falla, el mapa usa un contorno de Natural Earth. El inventario y sus filtros también se pueden consultar sin WebGL.</p>
     </details>

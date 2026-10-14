@@ -3,11 +3,12 @@ titulo: "Propuesta de Reglamento europeo de desarrollo de la nube y la inteligen
 titulo_oficial: "Propuesta de Reglamento del Parlamento Europeo y del Consejo por el que se establece un marco de medidas para reforzar el ecosistema europeo de nube e inteligencia artificial (Cloud and AI Development Act)"
 ambito: europeo
 rango: propuesta_reglamento_ue
-estado: propuesta
+estado: en_tramitacion
 estado_detalle: >-
-  Propuesta adoptada por la Comisión el 3 de junio de 2026 y remitida a los colegisladores.
-  No es derecho vigente: en el tren legislativo del Parlamento figura como «anunciada», sin
-  comisión asignada ni ponentes nombrados, y ni Parlamento ni Consejo han fijado posición.
+  Propuesta de la Comisión de 3 de junio de 2026, en primera lectura parlamentaria. El expediente
+  2026/0138(COD) identifica las comisiones responsables conjuntas ITRE e IMCO y los ponentes
+  nombrados el 24 de junio. La remisión a comisión se anunció el 17 de septiembre. A 14 de octubre
+  figura pendiente de decisión de comisión; no está en vigor.
 boletin: null
 referencia: "COM(2026) 502"
 url_oficial: "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=COM%3A2026%3A502%3AFIN"
@@ -41,35 +42,42 @@ obligaciones:
     plazo: "Sin fijar"
     fuentes: [src-ep-train]
 hitos:
-  - fecha: "2026-06-03"
-    hito: "La Comisión adopta la propuesta, dentro del Tech Sovereignty Package"
-    fuentes: [src-comision, src-eurlex-proc]
-  - fecha: "2026-08-01"
-    hito: >-
-      Circula en prensa sectorial que el reglamento entraría en vigor el 4 de agosto de
-      2026; el tren legislativo del Parlamento lo desmiente
-    fuentes: [src-yeandel]
+  - fecha: 2026-06-03
+    hito: La Comisión adopta la propuesta, dentro del Tech Sovereignty Package
+    fuentes:
+      - src-comision
+      - src-eurlex-proc
+  - fecha: 2026-08-01
+    hito: Circula en prensa sectorial que el reglamento entraría en vigor el 4 de agosto de 2026; el
+      tren legislativo del Parlamento lo desmiente
+    fuentes:
+      - src-yeandel
+  - fecha: 2026-06-24
+    hito: Nombramiento de Diego Solier y Reinier van Lanschot como ponentes de ITRE e IMCO
+    fuentes:
+      - src-oeil
+  - fecha: 2026-09-17
+    hito: Anuncio en el Parlamento de la remisión a comisión para primera lectura
+    fuentes:
+      - src-oeil
 actores:
-  - nombre: "Comisión Europea"
+  - nombre: Comisión Europea
     rol: promotor
     postura: favorable
-    voz: "Henna Virkkunen, vicepresidenta ejecutiva"
-    resumen: "Autora de la propuesta, presentada junto al Chips Act 2.0 y la estrategia de código abierto."
-    cita: >-
-      The CADA will reinforce energy-efficient data centre capacity, while complementing the
-      Apply AI strategy to boost the adoption of artificial intelligence and cloud across
-      Europe.
-    fuentes: [src-comision]
-  - nombre: "Parlamento Europeo"
+    voz: Henna Virkkunen, vicepresidenta ejecutiva
+    resumen: Autora de la propuesta, presentada junto al Chips Act 2.0 y la estrategia de código abierto.
+    cita: The CADA will reinforce energy-efficient data centre capacity, while complementing the Apply
+      AI strategy to boost the adoption of artificial intelligence and cloud across Europe.
+    fuentes:
+      - src-comision
+  - nombre: Parlamento Europeo
     rol: competente
     postura: sin_constar
-    resumen: >-
-      En enero de 2026 aprobó un informe de iniciativa propia que pedía precisamente esta
-      norma. El expediente aún no tiene comisión ni ponente.
-    cita: >-
-      The next steps for the EP are the allocation of the file to one or several committees
-      and the appointment of one or several rapporteurs.
-    fuentes: [src-ep-train]
+    resumen: Las comisiones ITRE e IMCO tramitan conjuntamente el expediente en primera lectura, con
+      ponentes nombrados el 24 de junio.
+    cita: Awaiting committee decision
+    fuentes:
+      - src-oeil
 afecta:
   - tipo: registro
     ref: null
@@ -80,50 +88,57 @@ afecta:
 relacionadas: [prd-centros-datos-sostenibles]
 incertidumbres:
   - campo: estado
-    descripcion: >-
-      Hay coberturas que dan por aprobado el paquete de soberanía tecnológica y sitúan la
-      entrada en vigor del CADA el 4 de agosto de 2026. No consta tal cosa: el tren
-      legislativo del Parlamento mantiene el expediente en estado «anunciado». Se conservan
-      las dos lecturas y se señala cuál está respaldada por fuente institucional.
-    fuentes: [src-ep-train, src-yeandel]
-ultima_verificacion: "2026-09-01"
+    descripcion: Se conserva la advertencia sectorial de agosto contra una supuesta entrada en vigor el
+      4 de agosto. La fase entonces descrita como anunciada ha avanzado a tramitación en comisión.
+      No se ha localizado adopción final; el estado actual se contrasta con el Observatorio
+      Legislativo del Parlamento.
+    fuentes:
+      - src-ep-train
+      - src-yeandel
+      - src-oeil
+ultima_verificacion: "2026-10-14"
 fuentes:
   - id: src-comision
-    url: "https://digital-strategy.ec.europa.eu/en/library/proposal-cloud-and-ai-development-act-cada"
-    titulo: "Proposal for the Cloud and AI Development Act (CADA)"
-    editor: "Comisión Europea"
+    url: https://digital-strategy.ec.europa.eu/en/library/proposal-cloud-and-ai-development-act-cada
+    titulo: Proposal for the Cloud and AI Development Act (CADA)
+    editor: Comisión Europea
     tipo: oficial
-    fecha_publicacion: "2026-06-03"
-    fecha_consulta: "2026-09-01"
-    cita: >-
-      The Commission has adopted a proposal for the Cloud and AI Development Act (CADA) with
-      the aim of strengthening the EU's cloud and AI ecosystem, investment and infrastructure.
+    fecha_publicacion: 2026-06-03
+    fecha_consulta: 2026-09-01
+    cita: The Commission has adopted a proposal for the Cloud and AI Development Act (CADA) with the aim
+      of strengthening the EU's cloud and AI ecosystem, investment and infrastructure.
   - id: src-eurlex-proc
-    url: "https://eur-lex.europa.eu/procedure/EN/2026_138"
-    titulo: "Procedimiento 2026/138 (COD) — COM(2026) 502"
-    editor: "EUR-Lex"
+    url: https://eur-lex.europa.eu/procedure/EN/2026_138
+    titulo: Procedimiento 2026/138 (COD) — COM(2026) 502
+    editor: EUR-Lex
     tipo: oficial
-    fecha_publicacion: "2026-06-03"
-    fecha_consulta: "2026-09-01"
+    fecha_publicacion: 2026-06-03
+    fecha_consulta: 2026-09-01
     cita: "Type: Ordinary legislative procedure (COD)"
   - id: src-ep-train
-    url: "https://www.europarl.europa.eu/legislative-train/theme-a-new-plan-for-europe-s-sustainable-prosperity-and-competitiveness/file-cloud-and-ai-development-act"
-    titulo: "Cloud and AI development act — Legislative Train Schedule"
-    editor: "Parlamento Europeo"
+    url: https://www.europarl.europa.eu/legislative-train/theme-a-new-plan-for-europe-s-sustainable-prosperity-and-competitiveness/file-cloud-and-ai-development-act
+    titulo: Cloud and AI development act — Legislative Train Schedule
+    editor: Parlamento Europeo
     tipo: oficial
     fecha_publicacion: null
-    fecha_consulta: "2026-09-01"
-    cita: >-
-      The CADA would require each Member State to designate at least one data centre
-      acceleration zone where administrative and permit-granting processes would be
-      facilitated by national, regional, and local authorities.
+    fecha_consulta: 2026-09-01
+    cita: The CADA would require each Member State to designate at least one data centre acceleration
+      zone where administrative and permit-granting processes would be facilitated by national,
+      regional, and local authorities.
   - id: src-yeandel
-    url: "https://www.yeandel.co.uk/22-q3-2026-updates/cada-not-law-on-tuesday.html"
+    url: https://www.yeandel.co.uk/22-q3-2026-updates/cada-not-law-on-tuesday.html
     titulo: "CADA is not law: EU Cloud and AI Development Act real status"
-    editor: "Yeandel"
+    editor: Yeandel
     tipo: otro
-    fecha_publicacion: "2026-08-01"
-    fecha_consulta: "2026-09-01"
-    cita: >-
-      CADA's recorded status is «Announced». A file that has not yet been given to a
-      committee has not been amended, voted, negotiated or adopted by anybody.
+    fecha_publicacion: 2026-08-01
+    fecha_consulta: 2026-09-01
+    cita: CADA's recorded status is «Announced». A file that has not yet been given to a committee has
+      not been amended, voted, negotiated or adopted by anybody.
+  - id: src-oeil
+    url: https://oeil.europarl.europa.eu/oeil/en/procedure-file?reference=2026/0138(COD)
+    titulo: Procedimiento 2026/0138(COD), Cloud and AI Development Act
+    editor: Parlamento Europeo
+    tipo: oficial
+    fecha_publicacion: null
+    fecha_consulta: 2026-10-14
+    cita: "17/09/2026: Committee referral announced in Parliament, 1st reading"

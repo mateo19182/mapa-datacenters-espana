@@ -18,13 +18,13 @@ ubicacion:
   lat: 40.310814
   lon: -3.692923
   precision: exacta
-  fuentes: [src-1, src-2, src-4]
+  fuentes: [ src-1, src-2, src-4 ]
 
 estado: operativo
 estado_detalle: >-
-  Edificio de nueva planta de tres alturas con dos muelles de carga. Edged lo marca como
-  "Now Open". MERLIN declaró 20 MW en operación ampliables a 27 MW en enero de 2025.
-estado_fuentes: [src-1, src-3]
+  Edificio de nueva planta de tres alturas con dos muelles de carga. Edged lo marca como "Now Open".
+  MERLIN declaró 20 MW en operación ampliables a 27 MW en enero de 2025.
+estado_fuentes: [ src-1, src-3 ]
 
 potencia:
   - tipo: no_especificado
@@ -33,7 +33,7 @@ potencia:
     referencia: "Critical Load Capacity"
     estado_asociado: operativo
     fecha_dato: "2026-08-29"
-    fuentes: [src-1]
+    fuentes: [ src-1 ]
     nota: "Edged lo denomina \"Critical Load Capacity\", sin equipararlo explícitamente a carga TI."
   - tipo: no_especificado
     valor_mw: 20
@@ -41,61 +41,64 @@ potencia:
     referencia: "Capacidad en operación (MERLIN, enero 2025)"
     estado_asociado: operativo
     fecha_dato: "2025-01-14"
-    fuentes: [src-3]
+    fuentes: [ src-3 ]
   - tipo: no_especificado
     valor_mw: 27
     ambito: edificio
     referencia: "Capacidad ampliable"
     estado_asociado: anunciado
     fecha_dato: "2025-01-14"
-    fuentes: [src-3]
+    fuentes: [ src-3 ]
   - tipo: it
     valor_mw: 20
     ambito: edificio
     referencia: "Potencia eléctrica instalada para uso IT según la ingeniería del proyecto"
     estado_asociado: operativo
     fecha_dato: "2024-10"
-    fuentes: [src-7]
+    fuentes: [ src-7 ]
     nota: >-
-      JG Ingenieros, autora del diseño y de la dirección de obra, dice «La potencia eléctrica
-      total instalada es de 20 MW para uso IT». Es la única fuente que tipifica los 20 MW como
-      carga TI; Edged y MERLIN los publican sin tipo. Se registra como lectura tipificada de la
-      misma cifra, no como capacidad adicional.
+      JG Ingenieros, autora del diseño y de la dirección de obra, dice «La potencia eléctrica total
+      instalada es de 20 MW para uso IT». Es la única fuente que tipifica los 20 MW como carga TI;
+      Edged y MERLIN los publican sin tipo. Se registra como lectura tipificada de la misma cifra,
+      no como capacidad adicional.
 
 refrigeracion: >-
   Sistema ThermalWorks sin consumo de agua (WUE 0,00 l/kWh); PUE anualizado de 1,15; plantas
   enfriadoras condensadas por aire con distribución de agua fría glicolada y evaporadores de
-  circuito cerrado; 500 kW por pasillo caliente, hasta 70 kW por rack en refrigeración por aire
-  y hasta 200 kW por rack si se pasa a refrigeración líquida.
+  circuito cerrado; 500 kW por pasillo caliente, hasta 70 kW por rack en refrigeración por aire y
+  hasta 200 kW por rack si se pasa a refrigeración líquida.
 
 agua:
   circuito: sin_agua
   sistema: >-
-    Refrigeración ThermalWorks con plantas enfriadoras condensadas por aire y distribución de
-    agua fría glicolada en circuito cerrado; los evaporadores de circuito cerrado dan la
-    refrigeración secundaria. La ingeniería del proyecto declara que el consumo de agua para
-    refrigeración es nulo.
+    Refrigeración ThermalWorks con plantas enfriadoras condensadas por aire y distribución de agua
+    fría glicolada en circuito cerrado; los evaporadores de circuito cerrado dan la refrigeración
+    secundaria. La ingeniería del proyecto declara que el consumo de agua para refrigeración es
+    nulo.
   origen: null
   consumo_m3_ano: null
   wue_l_kwh: 0
   nota: >-
-    JG Ingenieros cifra en unos 290 millones de litros al año el agua que se ahorra respecto a
-    una solución con torres de refrigeración; es un ahorro estimado frente a una alternativa, no
-    un consumo, y por eso no se registra como cifra de consumo.
-  fuentes: [src-7, src-8]
+    JG Ingenieros cifra en unos 290 millones de litros al año el agua que se ahorra respecto a una
+    solución con torres de refrigeración; es un ahorro estimado frente a una alternativa, no un
+    consumo, y por eso no se registra como cifra de consumo.
+  fuentes: [ src-7, src-8 ]
 enlaces_proyecto:
   - "https://www.edged.es/madrid-getafe"
   - "https://www.merlinproperties.com/en/assets/data-center-madrid-getafe/"
 
 computo:
   - tipo: gpu
+    modalidad: acceso
     ambito: sistema
     sistema: "Infraestructura de IA de Nebius en Madrid"
     operador_computo: "Nebius"
     tipo_unidad: acelerador
     estado: operativo
     fecha_dato: "2026-08-11"
-    fuentes: [src-nebius]
+    fuentes:
+      - src-nebius
+      - src-nebius-merlin
     nota: >-
       Nebius contrató 18 MW de capacidad en este edificio —la mayor parte de sus 20 MW— para
       despliegues de GPU de alta densidad, su primera instalación en España. Ni Nebius ni Edged
@@ -105,16 +108,16 @@ computo:
 incertidumbres:
   - campo: cliente_ancla
     descripcion: >-
-      La prensa especializada inmobiliaria atribuye a Meta la condición de cliente principal de
-      los tres centros españoles de MERLIN (Madrid, Barcelona y Álava). MERLIN no ha confirmado
+      La prensa especializada inmobiliaria atribuye a Meta la condición de cliente principal de los
+      tres centros españoles de MERLIN (Madrid, Barcelona y Álava). MERLIN no ha confirmado
       públicamente la identidad del inquilino; en 2022 declinó revelarla.
-    fuentes: [src-5, src-6]
+    fuentes: [ src-5, src-6 ]
   - campo: potencia
     descripcion: >-
-      Ni Edged ni MERLIN precisan si los 20 MW son carga TI o potencia total, por lo que sus
-      cifras se registran como no_especificado. La ingeniería del proyecto sí los llama «20 MW
-      para uso IT», de modo que hay una lectura tipificada y dos sin tipificar del mismo número.
-    fuentes: [src-1, src-3, src-7]
+      Ni Edged ni MERLIN precisan si los 20 MW son carga TI o potencia total, por lo que sus cifras
+      se registran como no_especificado. La ingeniería del proyecto sí los llama «20 MW para uso
+      IT», de modo que hay una lectura tipificada y dos sin tipificar del mismo número.
+    fuentes: [ src-1, src-3, src-7 ]
 
 confianza: alta
 ultima_verificacion: "2026-08-31"
@@ -126,7 +129,8 @@ fuentes:
     editor: "Edged (MERLIN Edged)"
     tipo: empresa
     fecha_consulta: "2026-08-29"
-    cita: "20 MW Critical Load Capacity ... Now Open ... Calle Fundidores nº 40 Polígono Industrial, Los Ángeles 28906; Getafe ... Water Usage Effectiveness (WUE) 0.00 liters/kWh of cooling"
+    cita: "20 MW Critical Load Capacity ... Now Open ... Calle Fundidores nº 40 Polígono Industrial, Los
+      Ángeles 28906; Getafe ... Water Usage Effectiveness (WUE) 0.00 liters/kWh of cooling"
   - id: src-2
     url: "https://www.merlinproperties.com/en/assets/data-center-madrid-getafe/"
     titulo: "Madrid-Getafe Data Center"
@@ -141,7 +145,8 @@ fuentes:
     tipo: empresa
     fecha_publicacion: "2025-01-14"
     fecha_consulta: "2026-08-29"
-    cita: "MERLIN-Edged has facilities in Spain and Portugal, with operations in Madrid-Getafe (MAD 01 with 20MW in operation, expandable to 27MW)"
+    cita: "MERLIN-Edged has facilities in Spain and Portugal, with operations in Madrid-Getafe (MAD 01
+      with 20MW in operation, expandable to 27MW)"
   - id: src-4
     url: "https://www.peeringdb.com/fac/15254"
     titulo: "MERLIN Edged MAD01 - Madrid-Getafe"
@@ -150,12 +155,14 @@ fuentes:
     fecha_consulta: "2026-08-29"
     cita: "MERLIN Edged MAD01 - Madrid-Getafe | Fundidores 40 | 28906 Getafe"
   - id: src-5
-    url: "https://www.iberian.property/news/logistics/merlin-properties-leases-its-data-centres-in-spain-to-meta/"
+    url: "https://www.iberian.property/news/logistics/merlin-properties-leases-its-data-centres-in-spai\
+      n-to-meta/"
     titulo: "Merlin Properties leases its data centres in Spain to Meta"
     editor: "Iberian Property"
     tipo: prensa_especializada
     fecha_consulta: "2026-08-29"
-    cita: "Meta, the parent company of Facebook, Instagram and WhatsApp, has become the main client for the company's three new data centres."
+    cita: "Meta, the parent company of Facebook, Instagram and WhatsApp, has become the main client for
+      the company's three new data centres."
   - id: src-6
     url: "https://brainsre.news/merlin-prealquila-primer-data-center/"
     titulo: "Merlin prealquila el primer data center que cuenta con licencia"
@@ -163,7 +170,8 @@ fuentes:
     tipo: prensa_general
     fecha_publicacion: "2022-05-04"
     fecha_consulta: "2026-08-29"
-    cita: "Por seguridad y confidencialidad, la cotizada ha declinado revelar en nuevo inquilino ... En Madrid, en concreto en Getafe, Merlin promoverá uno de 20mW."
+    cita: "Por seguridad y confidencialidad, la cotizada ha declinado revelar en nuevo inquilino ... En
+      Madrid, en concreto en Getafe, Merlin promoverá uno de 20mW."
   - id: src-7
     url: "https://www.jgingenieros.es/fileblog/proyectos/JG_Focus_72_Data_Center_Getafe.pdf"
     titulo: "Focus 72 · Octubre 2024 — MERLIN-EDGED DATA CENTER GETAFE, MADRID"
@@ -171,23 +179,43 @@ fuentes:
     tipo: empresa
     fecha_publicacion: "2024-10"
     fecha_consulta: "2026-08-31"
-    cita: "La potencia eléctrica total instalada es de 20 MW para uso IT, y el PUE anualizado (Power Usage Effectivenes - relación entre potencia total del edificio y potencia aplicada a IT) es un excelente 1,15 ... Plantas enfriadoras condensadas por aire de diseño propio (Thermalworks) y de muy alta eficiencia energética. El consumo de agua para refrigeración es nulo ... La capacidad de refrigeración es de 500 kW por pasillo caliente, lo que significa hasta 70 kW por rack en refrigeración por aire. Para potencias superiores se pasaría a refrigeración líquida, con una capacidad de hasta 200 kW por rack ... El utilizar plantas enfriadoras sin consumo de agua (condensadas por aire) significa un muy importante ahorro de agua de las torres de refrigeración: para el data center de Getafe son unos 290 millones de litros de agua al año."
+    cita: "La potencia eléctrica total instalada es de 20 MW para uso IT, y el PUE anualizado (Power
+      Usage Effectivenes - relación entre potencia total del edificio y potencia aplicada a IT) es
+      un excelente 1,15 ... Plantas enfriadoras condensadas por aire de diseño propio (Thermalworks)
+      y de muy alta eficiencia energética. El consumo de agua para refrigeración es nulo ... La
+      capacidad de refrigeración es de 500 kW por pasillo caliente, lo que significa hasta 70 kW por
+      rack en refrigeración por aire. Para potencias superiores se pasaría a refrigeración líquida,
+      con una capacidad de hasta 200 kW por rack ... El utilizar plantas enfriadoras sin consumo de
+      agua (condensadas por aire) significa un muy importante ahorro de agua de las torres de
+      refrigeración: para el data center de Getafe son unos 290 millones de litros de agua al año."
   - id: src-8
     url: "https://es.edged.es/madrid-getafe"
     titulo: "España | Madrid-Getafe"
     editor: "Edged (MERLIN Edged)"
     tipo: empresa
     fecha_consulta: "2026-08-31"
-    cita: "20 MW Capacidad de carga crítica 1,15 PUE ... Sistema avanzado de refrigeración sin agua - Eficacia del uso del agua (WUE) 0,00 litros/kWh de refrigeración - Redundancia N+1 - Transferencia de calor con glicol con enfriadoras de techo refrigeradas por aire - Los evaporadores de circuito cerrado proporcionan refrigeración secundaria - Capacidad de 500 kW por pasillo caliente (modular)"
+    cita: "20 MW Capacidad de carga crítica 1,15 PUE ... Sistema avanzado de refrigeración sin agua -
+      Eficacia del uso del agua (WUE) 0,00 litros/kWh de refrigeración - Redundancia N+1 -
+      Transferencia de calor con glicol con enfriadoras de techo refrigeradas por aire - Los
+      evaporadores de circuito cerrado proporcionan refrigeración secundaria - Capacidad de 500 kW
+      por pasillo caliente (modular)"
   - id: src-nebius
-    url: "https://www.datacenterdynamics.com/en/news/nebius-signs-18mw-lease-with-merlin-properties-at-spain-data-center-report/"
+    url: "https://www.datacenterdynamics.com/en/news/nebius-signs-18mw-lease-with-merlin-properties-at-\
+      spain-data-center-report/"
     titulo: "Nebius signs 18MW lease with Merlin Properties and Edged for Spain data center"
     editor: "DatacenterDynamics"
     tipo: prensa_especializada
     fecha_publicacion: "2026-08-11"
     fecha_consulta: "2026-08-31"
     cita: >-
-      Edged has confirmed to DCD that Nebius has signed on for 18MW of capacity at the Madrid
-      Getafe site. [...] "Our Madrid-Getafe facility is built to support high-density GPU
-      deployments, with advanced cooling architecture that is efficient and consumes zero water,
-      giving Nebius the performance and reliability it needs to run AI workloads at scale."
+      Edged has confirmed to DCD that Nebius has signed on for 18MW of capacity at the Madrid Getafe
+      site. [...] "Our Madrid-Getafe facility is built to support high-density GPU deployments, with
+      advanced cooling architecture that is efficient and consumes zero water, giving Nebius the
+      performance and reliability it needs to run AI workloads at scale."
+  - id: src-nebius-merlin
+    url: https://www.merlinproperties.com/dia-a-dia/firmamos-un-contrato-de-18-mw-con-nebius-para-nuestro-date-center-madrid-getafe/
+    titulo: Firma de un contrato de 18 MW con Nebius para Madrid-Getafe
+    editor: MERLIN Properties
+    tipo: empresa
+    fecha_consulta: 2026-10-14
+    cita: firma de un contrato de 18 MW con Nebius en nuestro data center MERLIN Edged Madrid-Getafe

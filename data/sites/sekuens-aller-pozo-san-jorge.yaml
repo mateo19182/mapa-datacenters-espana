@@ -80,6 +80,7 @@ enlaces_proyecto:
 
 computo:
   - tipo: cpu_hpc
+    modalidad: previsto
     ambito: sistema
     sistema: "Asturcón"
     operador_computo: "Universidad de Oviedo"

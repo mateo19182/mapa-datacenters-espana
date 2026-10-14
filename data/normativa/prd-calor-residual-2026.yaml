@@ -1,0 +1,83 @@
+id: prd-calor-residual-2026
+titulo: "Proyecto de decreto de calefacción, refrigeración y calor residual"
+titulo_oficial: "Proyecto de Real Decreto por el que se regulan los sistemas urbanos de calefacción y refrigeración, la evaluación y planificación de la calefacción y refrigeración y el aprovechamiento de calor residual"
+ambito: estatal
+rango: proyecto_real_decreto
+estado: en_tramitacion
+estado_detalle: >-
+  La segunda audiencia se celebró del 27 de mayo al 17 de junio de 2026 y figura cerrada.
+  Es un proyecto distinto del decreto de sostenibilidad de centros de datos. A 14 de octubre
+  no se ha localizado un texto definitivo aprobado en el BOE. Los requisitos registrados
+  corresponden al borrador publicado y no se presentan como obligaciones ya aplicables.
+boletin: null
+referencia: null
+url_oficial: "https://www.miteco.gob.es/es/energia/participacion/2026/detalle-participacion-publica-k-831.html"
+fecha_aprobacion: null
+fecha_publicacion: null
+fecha_entrada_vigor: null
+materias: [eficiencia, energia, medio_ambiente, transparencia]
+resumen: >-
+  El borrador prevé evaluar y aprovechar el calor residual de determinados centros de datos,
+  con excepciones por inviabilidad técnica o económica. La audiencia terminó en junio; sigue pendiente.
+por_que_importa: >-
+  Añade una cuestión que la potencia IT no resuelve: la recuperación de calor y la demanda
+  térmica cercana. No permite atribuir una red de calor ni ahorro energético a un proyecto sin fuente.
+obligaciones:
+  - quien: "Titular o promotor del centro de datos"
+    que: >-
+      Realizar un análisis de costes y beneficios cuando se proyecte por primera vez o se renueve
+      sustancialmente, considerando viabilidad, demanda local y conexión a redes térmicas u otras aplicaciones.
+    umbral: "> 1 MW de potencia energética nominal total; no equivale al umbral IT ni al de acceso"
+    plazo: "En el proyecto o renovación sustancial, si el texto llega a ser aplicable"
+    fuentes: [src-borrador]
+  - quien: "Titular o promotor del centro de datos"
+    que: >-
+      Garantizar el uso del calor residual u otras aplicaciones de recuperación, salvo inviabilidad
+      técnica o económica acreditada mediante el análisis de costes y beneficios.
+    umbral: "> 1 MW de potencia energética nominal total"
+    plazo: "Según el texto que finalmente se apruebe"
+    fuentes: [src-borrador]
+hitos:
+  - fecha: "2025-08-19"
+    hito: "Comienza la primera audiencia del proyecto, con cierre el 8 de septiembre de 2025"
+    fuentes: [src-consulta]
+  - fecha: "2026-05-27"
+    hito: "Apertura de la segunda audiencia tras ampliar el contenido del proyecto"
+    fuentes: [src-consulta]
+  - fecha: "2026-06-17"
+    hito: "Cierre del segundo plazo de audiencia e información pública"
+    fuentes: [src-consulta]
+actores:
+  - nombre: "Ministerio para la Transición Ecológica y el Reto Demográfico"
+    rol: promotor
+    postura: sin_constar
+    resumen: "Elabora el proyecto y organiza la audiencia."
+    fuentes: [src-consulta]
+afecta:
+  - tipo: registro
+    ref: null
+    como: "Vigilar requisitos de recuperación de calor para los centros que entren en el ámbito del texto definitivo."
+    fuentes: [src-borrador]
+relacionadas: [directiva-2023-1791, reglamento-etiquetado-centros-datos-2026, prd-centros-datos-sostenibles]
+incertidumbres:
+  - campo: estado
+    descripcion: "La consulta cerrada no acredita aprobación. Debe verificarse el texto definitivo y su régimen transitorio antes de asignar obligaciones a un centro."
+    fuentes: [src-consulta, src-borrador]
+ultima_verificacion: "2026-10-14"
+fuentes:
+  - id: src-consulta
+    url: "https://www.miteco.gob.es/es/energia/participacion/2026/detalle-participacion-publica-k-831.html"
+    titulo: "Segunda audiencia del proyecto de calefacción, refrigeración y calor residual"
+    editor: "MITECO"
+    tipo: oficial
+    fecha_publicacion: "2026-05-27"
+    fecha_consulta: "2026-10-14"
+    cita: "desde el miércoles, 27 de mayo de 2026 hasta el miércoles, 17 de junio de 2026"
+  - id: src-borrador
+    url: "https://www.miteco.gob.es/content/dam/miteco/es/energia/files-1/es-ES/Participacion/Documents/anexos/aeip-sucyr/Proyecto%20RD%20SUCYR.pdf"
+    titulo: "Proyecto de RD SUCYR, artículo 15, apartados 1.c y 6"
+    editor: "MITECO"
+    tipo: oficial
+    fecha_publicacion: null
+    fecha_consulta: "2026-10-14"
+    cita: "Los centros de datos cuya potencia energética nominal total sea superior a 1 MW"

@@ -1,6 +1,7 @@
 ---
 import Listado from './Listado.astro'
 import Termino from './Termino.astro'
+import { ETAPAS_CAPACIDAD } from '../lib/capacidad.js'
 import { ESTADO_ETIQUETA, ORDEN_ESTADOS, CONFIANZA_ETIQUETA, MODELO_ETIQUETA, fechaLegible, numero, slug } from '../lib/etiquetas.js'
 const { sitios, mostrarOperador = true, mostrarRegion = true } = Astro.props
 const regiones = [...new Set(sitios.map((s) => s.ubicacion.ccaa).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'es'))
@@ -34,14 +35,15 @@ const ordenes = [
           <tr data-list-item data-busca={[s.nombre, s.operador, s.ubicacion.municipio, s.ubicacion.ccaa, ...s.alias].filter(Boolean).join(' ')}
             data-operador={s.operador ?? ''} data-modelo={s.modelo ?? ''} data-confianza={s.confianza} data-nombre={s.nombre} data-estado={s.estado} data-region={s.ubicacion.ccaa ?? ''}
             data-ordenestado={ORDEN_ESTADOS.indexOf(s.estado)} data-it={s.resumen_potencia.it?.valor_mw ?? ''}
-            data-sintipo={s.resumen_potencia.no_especificado?.valor_mw ?? ''} data-conexion={s.resumen_potencia.conexion_red?.valor_mw ?? ''} data-verificacion={s.ultima_verificacion ?? ''}>
+            data-sintipo={s.resumen_potencia.no_especificado?.valor_mw ?? ''} data-conexion={s.resumen_potencia.conexion_red?.valor_mw ?? ''} data-verificacion={s.ultima_verificacion ?? ''}
+            data-capacidades={JSON.stringify(Object.fromEntries(Object.keys(ETAPAS_CAPACIDAD).map((etapa) => [etapa, Object.fromEntries([['it', 'it'], ['conexion', 'conexion_red'], ['sintipo', 'no_especificado']].map(([campo, tipo]) => { const r = s.potencia_por_etapa?.[etapa]?.[tipo]; return [campo, [r?.valor_mw ?? null, Boolean(r?.discrepancia || r?.disputada)]] }))])))}>
             <td><a href={`/proyecto/${s.id}`}>{s.nombre}</a></td>
             {mostrarOperador && <td class="operador" data-etiqueta="Operador">{s.operador ? <a href={`/compania/${slug(s.operador)}`}>{s.operador}</a> : <span class="silencio">No publicado</span>}</td>}
             <td data-etiqueta="Ubicación">{s.ubicacion.municipio ?? 'Sin determinar'}{mostrarRegion && <span class="pequeno silencio"><br />{s.ubicacion.ccaa}</span>}</td>
             <td data-etiqueta="Estado"><span class={`etiqueta estado-${s.estado}`}><span class="punto" aria-hidden="true"></span>{ESTADO_ETIQUETA[s.estado]}</span></td>
-            {['it', 'conexion_red', 'no_especificado'].map((t, i) => <td class="num potencia" data-etiqueta={['MW IT', 'MW conexión', 'MW sin tipificar'][i]} data-vacia={s.resumen_potencia[t] ? 'no' : 'si'}>
-              {numero(s.resumen_potencia[t]?.valor_mw, 1) ?? <span class="silencio">—</span>}
-              {s.resumen_potencia[t]?.discrepancia && <span class="advertencia" title="Las fuentes discrepan. El rango y las lecturas están en la ficha."> *</span>}
+            {['it', 'conexion_red', 'no_especificado'].map((t, i) => <td class="num potencia" data-potencia-campo={['it', 'conexion', 'sintipo'][i]} data-etiqueta={['MW IT', 'MW conexión', 'MW sin tipificar'][i]} data-vacia={s.resumen_potencia[t] ? 'no' : 'si'}>
+              {numero(s.resumen_potencia[t]?.valor_mw, 3) ?? <span class="silencio">—</span>}
+              {(s.resumen_potencia[t]?.discrepancia || s.resumen_potencia[t]?.disputada) && <span class="advertencia" title="Interpretación o lecturas disputadas. Consulta las fuentes de la ficha."> *</span>}
             </td>)}
             <td class="ampliacion" data-etiqueta="Detalles"><details>
               <summary>Verificación y datos</summary>
@@ -50,14 +52,14 @@ const ordenes = [
                 <dt>Fases</dt><dd>{s.fases.length || 'No publicadas'}</dd>
                 <dt>Incertidumbres</dt><dd>{s.incertidumbres.length ? <a href={`/proyecto/${s.id}#incertidumbres`}>{s.incertidumbres.length} documentadas</a> : 'Ninguna documentada'}</dd>
               </dl>
-              {!s.resumen_potencia.it && !s.resumen_potencia.conexion_red && !s.resumen_potencia.no_especificado && <p class="pequeno silencio">{s.resumen_potencia.termica_respaldo || s.resumen_potencia.generacion_asociada ? 'Solo se publica potencia de respaldo o generación asociada.' : 'Potencia del centro no publicada.'}</p>}
+              <p class="pequeno silencio" data-aviso-capacidad hidden={Boolean(s.resumen_potencia.it || s.resumen_potencia.conexion_red || s.resumen_potencia.no_especificado)}>Sin datos para «Operativa» en estas magnitudes.</p>
             </details></td>
           </tr>
         ))}
       </tbody>
     </table>
   </div>
-  <p class="pequeno silencio lectura">Las tres magnitudes se leen por separado. «—» significa dato no publicado. Las cifras incluyen proyectos en distintos estados; el estado figura en cada fila.</p>
+  <p class="pequeno silencio lectura"><span data-etapa-lectura>Capacidad operativa.</span> Las magnitudes se leen por separado. «—» significa dato no publicado. Las etapas pueden solaparse y no se suman.</p>
 </Listado>
 <style>
   .inventario th { white-space: nowrap; }

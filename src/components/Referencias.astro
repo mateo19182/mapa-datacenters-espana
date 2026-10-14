@@ -1,0 +1,62 @@
+---
+import Base from '../layouts/Base.astro'
+import Listado from './Listado.astro'
+import { datosReferencias, indiceReferencias, saludFuentes, coberturaIncertidumbres, gruposIncertidumbres, discrepanciasPotencia } from '../lib/referencias-data.js'
+import { numero } from '../lib/etiquetas.js'
+import { renderReferencia } from '../lib/referencias-render.js'
+const { tipo, pagina = 1 } = Astro.props
+const datos = datosReferencias(tipo)
+const indice = indiceReferencias(tipo)
+const total = datos.items.length
+const paginas = Math.ceil(total / datos.porPagina)
+const inicio = (pagina - 1) * datos.porPagina
+const items = datos.items.slice(inicio, inicio + datos.porPagina)
+const urlPagina = (n) => n === 1 ? `/${tipo}` : `/${tipo}/pagina/${n}`
+const remoto = { tipo, url: `/datos/indice-${tipo}.json?v=${indice.version}`, version: indice.version, pagina, total, base: `/${tipo}` }
+---
+<Base titulo={`${datos.titulo}${pagina > 1 ? ` · página ${pagina}` : ''}`} descripcion={datos.descripcion}>
+  <div class="contenedor referencias">
+    <h1>{datos.titulo}</h1>
+    {tipo === 'fuentes' ? <>
+      <p class="sumario">{total.toLocaleString('es-ES')} referencias distintas, enlazadas con los emplazamientos que documentan.</p>
+      <p class="pequeno silencio">{saludFuentes.comprobadas} de {saludFuentes.total} enlaces comprobados: {saludFuentes.rotas} rotos y {saludFuentes.bloqueadas} bloqueados para el comprobador. Un bloqueo automático no confirma que el enlace funcione en el navegador.</p>
+    </> : <>
+      <p class="sumario">{total} lagunas y contradicciones documentadas en {coberturaIncertidumbres.afectados} de {coberturaIncertidumbres.sitios} emplazamientos. Abre cada entrada para consultar el detalle y sus fuentes.</p>
+      {discrepanciasPotencia.length > 0 && <details class="discrepancias"><summary>{discrepanciasPotencia.length} magnitudes de potencia con cifras distintas</summary><div class="tabla-envoltorio"><table class="tabla-fichas"><thead><tr><th>Proyecto</th><th>Magnitud</th><th>Etapa</th><th>Rango observado</th></tr></thead><tbody>{discrepanciasPotencia.map((d) => <tr><td><a href={`/proyecto/${d.sitio}#potencia`}>{d.nombre}</a></td><td data-etiqueta="Magnitud">{d.tipo}</td><td data-etiqueta="Etapa">{d.etapa}</td><td data-etiqueta="Rango observado">{numero(d.minimo, 1)} a {numero(d.maximo, 1)} MW</td></tr>)}</tbody></table></div></details>}
+      <nav class="grupos" aria-label="Tipos de incertidumbre">{gruposIncertidumbres.map((g) => <a id={g.ancla} href={`/${tipo}?campo=${g.ancla}#listado`}>{g.etiqueta} <span class="silencio">{g.n}</span></a>)}</nav>
+    </>}
+    <Listado nombre={tipo} filtros={datos.filtros} ordenes={datos.ordenes} porPagina={datos.porPagina} remoto={remoto}>
+      <p class="pequeno silencio" data-resumen-estatico>{inicio + 1} a {Math.min(inicio + datos.porPagina, total)} de {total} · Página {pagina} de {paginas}</p>
+      {tipo === 'fuentes' ? <div class="tabla-envoltorio"><table class="tabla-fichas"><thead><tr><th>Referencia</th><th>Tipo y acceso</th><th>Publicado</th><th>Documenta</th></tr></thead><tbody data-contenido-referencias set:html={items.map((item) => renderReferencia(tipo, item)).join('')} /></table></div> : <ul class="entradas" data-contenido-referencias set:html={items.map((item) => renderReferencia(tipo, item)).join('')} />}
+      <p class="pequeno error-carga" data-error-carga role="alert" hidden>No se pudo cargar la búsqueda. Puedes recorrer las páginas del listado o volver a intentarlo.</p>
+      <nav class="paginas-estaticas" data-paginas-estaticas aria-label={`Todas las páginas de ${tipo}`}>
+        {pagina > 1 && <a href={urlPagina(pagina - 1)} rel="prev">Anterior</a>}
+        <ol>{Array.from({ length: paginas }, (_, i) => i + 1).map((n) => <li><a href={urlPagina(n)} aria-current={n === pagina ? 'page' : undefined} aria-label={`Página ${n}`}>{n}</a></li>)}</ol>
+        {pagina < paginas && <a href={urlPagina(pagina + 1)} rel="next">Siguiente</a>}
+      </nav>
+    </Listado>
+  </div>
+</Base>
+<style>
+  .referencias :global(td:first-child) { max-width: 37rem; }
+  .referencias :global(.editor) { display: block; margin-top: .2rem; }
+  .referencias :global(.respaldo) { margin-top: .4rem; font-size: .78rem; color: var(--tinta-3); }
+  .referencias :global(blockquote) { margin: .5rem 0; padding: .2rem 0 .2rem .75rem; border-left: 2px solid var(--borde); color: var(--tinta-2); }
+  .referencias :global(.acceso) { display: block; font-size: .7rem; color: var(--tinta-3); margin-top: .25rem; }
+  .referencias :global(.rota) { color: var(--cancelado); }
+  .referencias :global(td ul) { padding-left: 1.1rem; }
+  .referencias :global([data-list-item]:target) { background: var(--acento-suave); }
+  .grupos { display: flex; flex-wrap: wrap; gap: .4rem 1rem; font-size: .76rem; margin: 1.2rem 0; }
+  .entradas { list-style: none; padding: 0; margin: 0; max-width: 60rem; }
+  .referencias :global(.entradas > li) { border-bottom: 1px solid var(--borde); }
+  .referencias :global(.entradas summary) { cursor: pointer; padding: .8rem 0; font-size: .92rem; }
+  .referencias :global(.campo) { color: var(--tinta-3); font-size: .75rem; margin-left: .65rem; }
+  .referencias :global(.descripcion) { color: var(--tinta-2); font-size: .91rem; margin: .2rem 0 .6rem; max-width: 54rem; }
+  .paginas-estaticas { display: flex; flex-wrap: wrap; align-items: center; gap: .7rem; margin: 1rem 0; font-size: .8rem; }
+  .paginas-estaticas[hidden] { display: none; }
+  .paginas-estaticas ol { list-style: none; display: flex; flex-wrap: wrap; gap: .3rem; padding: 0; margin: 0; }
+  .paginas-estaticas a { display: inline-block; padding: .35rem .5rem; }
+  .paginas-estaticas [aria-current] { font-weight: 700; background: var(--acento-suave); }
+  .error-carga { color: var(--aviso); }
+  @media(max-width: 540px) { .referencias :global(.campo) { display: block; margin: .25rem 0 0 1rem; } }
+</style>
