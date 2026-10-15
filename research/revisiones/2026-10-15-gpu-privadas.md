@@ -100,9 +100,15 @@ La ausencia de evidencia encontrada no demuestra ausencia de GPU. Estas comproba
 4. **Blackfuel/MI355X en BCN1 como previsto**, sin contarlo como operativo.
 5. **Veinte seguimientos pendientes** en `data/revision.yaml`, incluidos GPU Solutions, Idoven, Arsys, ARQUIMEA, Gradiant/CESGA, el reparto de Genei, las compras CTIC y la puesta en servicio de Blackfuel. Los casos sin centro identificado no reciben puntos físicos.
 
-El registro resultante tiene **212 emplazamientos y 88 afirmaciones de cómputo en 32 emplazamientos**. Son 59 entradas instaladas, cuatro adquiridas, diez previstas, cinco de acceso y diez sin confirmar; no son cantidades de máquinas sumables. Se añaden siete novedades revisadas y resúmenes breves. Las cronologías identifican anuncios y licitaciones por su fecha, sin transformarlos en aperturas.
+El registro resultante tiene **212 emplazamientos y 88 afirmaciones de cómputo en 32 emplazamientos**. Son 59 entradas instaladas, cuatro adquiridas, diez previstas, cinco de acceso y diez sin confirmar; no son cantidades de máquinas sumables. Se añaden siete novedades de cómputo, una actualización cartográfica y resúmenes breves. Las cronologías identifican anuncios y licitaciones por su fecha, sin transformarlos en aperturas.
 
-TECNALIA conserva las coordenadas publicadas de su edificio. AIMEN, CTAG y CTIC quedan en el listado y en el explorador de cómputo, sin marcador cartográfico hasta verificar coordenadas de la instalación. No se usa el centro del municipio como si fuese el laboratorio.
+TECNALIA conserva las coordenadas publicadas de su edificio. Tras la comprobación cartográfica solicitada por el usuario, AIMEN, CTAG y CTIC también reciben marcadores aproximados, vinculados a la dirección documentada. Los puntos representan instalaciones o recintos, sin identificar salas GPU.
+
+| Instalación | Coordenadas del marcador | Vínculo cartográfico |
+| --- | --- | --- |
+| AIMEN AM Pilot Factory, Cataboi | 42.1420517, -8.6371783 | La [sede publicada por AIMEN](https://jornadalaser.aimen.es/en/lugar-de-celebracion/sede) da la misma dirección Cataboi SUR-PPI-2, sector 2, parcela 3 y enlaza el [pin Google Maps del Centro de Aplicaciones Láser](https://maps.app.goo.gl/16kth7fC5Fvr4ber9). Se usan las coordenadas del lugar, no el centro de la vista del mapa. |
+| CTAG HAARO, A Granxa | 42.102192, -8.6176734 | El [mapa incrustado por CTAG](https://ctag.com/contacto/) identifica su campus y CTAG-IDIADA en calle A, parcelas 249-250. El pin corresponde al campus; no localiza el laboratorio dentro del recinto. |
+| CTIC Cabueñes, Gijón | 43.5212, -5.6100 | El [mapa de sedes del operador](https://www.fundacionctic.org/es/contacto) identifica expresamente la sede principal de Gijón en Ada Byron 39. Es un marcador distinto del edificio IMPULSA y de CTIC RuralTech. |
 
 ## Recuperación y límites
 

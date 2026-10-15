@@ -14,11 +14,11 @@ ubicacion:
   provincia: Pontevedra
   ccaa: Galicia
   direccion: Campus CTAG, Polígono Industrial A Granxa, calle A, parcelas 249-250
-  lat: null
-  lon: null
-  precision: desconocida
+  lat: 42.102192
+  lon: -8.6176734
+  precision: aproximada
   no_derivar: true
-  fuentes: [src-haaro, src-presentacion-haaro, src-servicios]
+  fuentes: [src-haaro, src-presentacion-haaro, src-servicios, src-contacto, src-mapa-ctag]
 
 estado: operativo
 estado_detalle: >-
@@ -60,10 +60,12 @@ incertidumbres:
     fuentes: [src-presentacion-haaro]
   - campo: ubicacion
     descripcion: >-
-      El laboratorio pertenece al campus CTAG de A Granxa, en O Porriño. No se han verificado
-      las coordenadas ni la sala concreta. La referencia promocional a Vigo no cambia el municipio
-      y no se usa un centroide para colocar el punto.
-    fuentes: [src-presentacion-haaro, src-servicios]
+      El punto corresponde al campus CTAG de A Granxa, en O Porriño, identificado en el mapa
+      de Google Maps que el operador incrusta en su página de contacto para CTAG y CTAG-IDIADA,
+      junto a la dirección de calle A, parcelas 249-250. Google Maps rotula ese mismo pin como
+      Avenida Principal, 2. La precisión es aproximada: no identifica la sala concreta de HAARO.
+      La referencia promocional a Vigo no cambia el municipio.
+    fuentes: [src-presentacion-haaro, src-servicios, src-contacto, src-mapa-ctag]
   - campo: potencia
     descripcion: No constan MW IT, capacidad de acceso eléctrico ni consumo de agua del laboratorio.
     fuentes: [src-haaro, src-presentacion-haaro]
@@ -95,3 +97,19 @@ fuentes:
     fecha_publicacion: null
     fecha_consulta: 2026-10-15
     cita: HAARO-Lab [...] Polígono Industrial A Granxa Calle A, parcelas 249-250 36475 Porriño (Pontevedra) España
+  - id: src-contacto
+    url: https://ctag.com/contacto/
+    titulo: Contacto y localizaciones de CTAG
+    editor: Centro Tecnológico de Automoción de Galicia (CTAG)
+    tipo: asociacion
+    fecha_publicacion: null
+    fecha_consulta: 2026-10-15
+    cita: CTAG Y CTAG-IDIADA [...] Polígono Industrial A Granxa Calle A, parcelas 249-250 E-36475 Porriño (Pontevedra) España
+  - id: src-mapa-ctag
+    url: "https://www.google.com/maps/place/CTAG+Centro+Tecnol%C3%B3gico+de+Automoci%C3%B3n+de+Galicia/data=!4m5!3m4!1s0xd25850263374ba7:0x1b80790a7ba03324!8m2!3d42.102192!4d-8.6176734"
+    titulo: Pin de CTAG en el mapa incrustado por el operador
+    editor: Google Maps, mapa enlazado por CTAG
+    tipo: otro
+    fecha_publicacion: null
+    fecha_consulta: 2026-10-15
+    cita: CTAG Centro Tecnológico de Automoción de Galicia, Avenida Principal, 2, 36475 O Porriño, Pontevedra

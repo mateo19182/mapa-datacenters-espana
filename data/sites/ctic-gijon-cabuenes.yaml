@@ -14,11 +14,11 @@ ubicacion:
   provincia: Asturias
   ccaa: Principado de Asturias
   direccion: Calle Ada Byron 39, edificio Centros Tecnológicos, Parque Científico y Tecnológico de Cabueñes
-  lat: null
-  lon: null
-  precision: desconocida
+  lat: 43.5212
+  lon: -5.6100
+  precision: aproximada
   no_derivar: true
-  fuentes: [src-pcap-datahub, src-ppt-arqade]
+  fuentes: [src-pcap-datahub, src-ppt-arqade, src-mapa-contacto]
 
 estado: operativo
 estado_detalle: >-
@@ -99,8 +99,9 @@ incertidumbres:
   - campo: ubicacion
     descripcion: >-
       Los pliegos señalan el edificio CTIC de Ada Byron 39 en Cabueñes como destino del hardware.
-      No se han verificado coordenadas del recinto y no se usa el centro de Gijón como ubicación.
-    fuentes: [src-pcap-datahub, src-ppt-arqade]
+      Se usa el marcador de la sede principal en el mapa oficial de CTIC, con precisión aproximada
+      del edificio, sin situar la sala GPU. Es distinto del marcador del edificio IMPULSA.
+    fuentes: [src-pcap-datahub, src-ppt-arqade, src-mapa-contacto]
   - campo: potencia
     descripcion: >-
       Las fuentes no publican MW IT ni acceso eléctrico concedido del centro. La refrigeración
@@ -110,6 +111,13 @@ incertidumbres:
 confianza: media
 ultima_verificacion: 2026-10-15
 fuentes:
+  - id: src-mapa-contacto
+    url: https://www.fundacionctic.org/es/contacto
+    titulo: Contacto CTIC, mapa de sedes y marcador de la sede principal de Gijón
+    editor: Fundación CTIC Centro Tecnológico
+    tipo: empresa
+    fecha_consulta: 2026-10-15
+    cita: 'lat: 43.5212, lng: -5.6100, nombre: "Fundación CTIC Gijón (sede principal)"'
   - id: src-datahub
     url: https://www.fundacionctic.org/es/infraestructuras-singulares/datahub
     titulo: DataHub

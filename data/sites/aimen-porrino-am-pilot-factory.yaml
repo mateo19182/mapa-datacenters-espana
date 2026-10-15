@@ -13,11 +13,11 @@ ubicacion:
   provincia: Pontevedra
   ccaa: Galicia
   direccion: Polígono Industrial de Cataboi SUR-PPI-2, sector 2, parcela 3
-  lat: null
-  lon: null
-  precision: desconocida
+  lat: 42.1420517
+  lon: -8.6371783
+  precision: aproximada
   no_derivar: true
-  fuentes: [src-infraestructura, src-contacto]
+  fuentes: [src-infraestructura, src-contacto, src-sede-mapa, src-google-maps]
 
 estado: operativo
 estado_detalle: >-
@@ -104,9 +104,11 @@ incertidumbres:
     fuentes: [src-infraestructura]
   - campo: ubicacion
     descripcion: >-
-      La dirección procede de la página de contacto de la propia AM Pilot Factory. No se han
-      verificado coordenadas de la instalación; no se coloca en el centro de O Porriño.
-    fuentes: [src-contacto]
+      La dirección de AM Pilot Factory coincide con el Centro de Aplicaciones Láser de Cataboi
+      que AIMEN enlaza en Google Maps. Las coordenadas corresponden al pin de ese centro,
+      no al centro de la vista del mapa ni a una sala GPU verificada. Se conserva precisión aproximada
+      para el edificio o recinto; no se usa la otra sede de AIMEN en Torneiros.
+    fuentes: [src-contacto, src-sede-mapa, src-google-maps]
   - campo: potencia
     descripcion: No constan MW IT, acceso eléctrico concedido ni consumo de agua de la infraestructura HPC.
     fuentes: [src-infraestructura]
@@ -130,3 +132,19 @@ fuentes:
     fecha_publicacion: null
     fecha_consulta: 2026-10-15
     cita: AIMEN Technology Centre [...] Polígono Industrial de Cataboi SUR-PPI-2 (Sector 2), Parcela 3 [...] ES36418 Porriño - Pontevedra (Spain)
+  - id: src-sede-mapa
+    url: https://jornadalaser.aimen.es/en/lugar-de-celebracion/sede
+    titulo: AIMEN, Laser Applications Centre, sede de Cataboi y enlace a Google Maps
+    editor: AIMEN Centro Tecnológico
+    tipo: asociacion
+    fecha_publicacion: null
+    fecha_consulta: 2026-10-15
+    cita: AIMEN Technology Centre [...] Laser Applications Centre [...] Polígono Industrial de Cataboi SUR-PPI-2 (Sector 2), Parcela 3 [...] Google Maps
+  - id: src-google-maps
+    url: https://maps.app.goo.gl/16kth7fC5Fvr4ber9
+    titulo: Google Maps, AIMEN Centro de Aplicaciones Láser, Cataboi
+    editor: Google Maps
+    tipo: otro
+    fecha_publicacion: null
+    fecha_consulta: 2026-10-15
+    cita: AIMEN Centro de Aplicaciones Láser [...] !3d42.1420517!4d-8.6371783

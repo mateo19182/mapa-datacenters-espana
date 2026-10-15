@@ -1,4 +1,30 @@
 # Novedades revisadas. La fecha de incorporación y la del hecho se conservan por separado.
+- id: coordenadas-gpu-mapas-20261015
+  fecha: 2026-10-15
+  tipo: proyecto
+  titulo: AIMEN, CTAG y CTIC reciben coordenadas cartográficas
+  resumen: Se incorporan los pines de los mapas enlazados por AIMEN y CTAG y del mapa oficial de CTIC.
+    Coinciden con las instalaciones documentadas de Cataboi, A Granxa y Cabueñes. Se conserva
+    precisión aproximada del recinto o edificio, sin atribuir una sala GPU ni usar el centro del
+    municipio.
+  enlaces:
+    - href: /proyecto/aimen-porrino-am-pilot-factory
+      texto: AIMEN Cataboi
+    - href: /proyecto/ctag-porrino-haaro
+      texto: CTAG A Granxa
+    - href: /proyecto/ctic-gijon-cabuenes
+      texto: CTIC Cabueñes
+  fuentes:
+    - proyecto: aimen-porrino-am-pilot-factory
+      fuente: src-sede-mapa
+    - proyecto: aimen-porrino-am-pilot-factory
+      fuente: src-google-maps
+    - proyecto: ctag-porrino-haaro
+      fuente: src-contacto
+    - proyecto: ctag-porrino-haaro
+      fuente: src-mapa-ctag
+    - proyecto: ctic-gijon-cabuenes
+      fuente: src-mapa-contacto
 - id: hostealo-cogent-20261015
   fecha: 2026-10-15
   tipo: nuevo

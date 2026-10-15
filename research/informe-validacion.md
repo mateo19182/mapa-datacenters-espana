@@ -6,7 +6,7 @@ Generado el 2026-10-15 por `npm run validate`.
 - Nodos de red: **133**
 - Activos renovables/BESS: **22**
 - Normas registradas: **16**
-- Errores: **0** · Avisos: **293**
+- Errores: **0** · Avisos: **290**
 
 ## Incidencias por fichero
 
@@ -67,7 +67,6 @@ Generado el 2026-10-15 por `npm run validate`.
 ### `aimen-porrino-am-pilot-factory.yaml`
 
 - aviso: sin ningún dato de potencia
-- aviso: sin coordenadas: no aparecerá en el mapa
 
 ### `alme-almeria-aterraje-cables.yaml`
 
@@ -196,12 +195,10 @@ Generado el 2026-10-15 por `npm run validate`.
 ### `ctag-porrino-haaro.yaml`
 
 - aviso: sin ningún dato de potencia
-- aviso: sin coordenadas: no aparecerá en el mapa
 
 ### `ctic-gijon-cabuenes.yaml`
 
 - aviso: sin ningún dato de potencia
-- aviso: sin coordenadas: no aparecerá en el mapa
 
 ### `d-alix-granadilla-de-abona.yaml`
 

@@ -1036,3 +1036,39 @@ hallazgos:
         titulo: Blackfuel Emerges From Stealth with More Than $250 Million in Contracted Revenue to Build a
           Global AI Token Grid
         primaria: true
+  - id: coordenadas-gpu-mapas-20261015
+    titulo: AIMEN, CTAG y CTIC reciben coordenadas cartográficas
+    tipo: proyecto
+    estado: published
+    prioridad: media
+    detectado: 2026-10-15
+    revisado: 2026-10-15
+    revisar_antes: null
+    motivo: Se incorporan los pines de los mapas enlazados por AIMEN y CTAG y del mapa oficial de CTIC.
+      Coinciden con las instalaciones documentadas de Cataboi, A Granxa y Cabueñes. Se conserva
+      precisión aproximada del recinto o edificio, sin atribuir una sala GPU ni usar el centro del
+      municipio.
+    siguiente_paso: null
+    enlaces:
+      - href: /proyecto/aimen-porrino-am-pilot-factory
+        texto: AIMEN Cataboi
+      - href: /proyecto/ctag-porrino-haaro
+        texto: CTAG A Granxa
+      - href: /proyecto/ctic-gijon-cabuenes
+        texto: CTIC Cabueñes
+    fuentes:
+      - url: https://jornadalaser.aimen.es/en/lugar-de-celebracion/sede
+        titulo: AIMEN, Laser Applications Centre, sede de Cataboi y enlace a Google Maps
+        primaria: true
+      - url: https://maps.app.goo.gl/16kth7fC5Fvr4ber9
+        titulo: Google Maps, AIMEN Centro de Aplicaciones Láser, Cataboi
+        primaria: true
+      - url: https://ctag.com/contacto/
+        titulo: Contacto y localizaciones de CTAG
+        primaria: true
+      - url: https://www.google.com/maps/place/CTAG+Centro+Tecnol%C3%B3gico+de+Automoci%C3%B3n+de+Galicia/data=!4m5!3m4!1s0xd25850263374ba7:0x1b80790a7ba03324!8m2!3d42.102192!4d-8.6176734
+        titulo: Pin de CTAG en el mapa incrustado por el operador
+        primaria: true
+      - url: https://www.fundacionctic.org/es/contacto
+        titulo: Contacto CTIC, mapa de sedes y marcador de la sede principal de Gijón
+        primaria: true
