@@ -1,4 +1,119 @@
 # Novedades revisadas. La fecha de incorporación y la del hecho se conservan por separado.
+- id: hostealo-cogent-20261015
+  fecha: 2026-10-15
+  tipo: nuevo
+  titulo: "Hostealo: ocho GPU documentadas en Cogent Madrid"
+  resumen: Se incorpora el centro de Cogent en San Sebastián de los Reyes. Hostealo publica dos
+    servidores con cuatro RTX PRO 6000 Blackwell y cuatro RTX 6000 Ada. No constan fecha de
+    instalación ni MW.
+  enlaces:
+    - href: /proyecto/cogent-san-sebastian-de-los-reyes
+      texto: Ver ficha, hardware y fuentes
+  fuentes:
+    - proyecto: cogent-san-sebastian-de-los-reyes
+      fuente: src-cogent-centro
+    - proyecto: cogent-san-sebastian-de-los-reyes
+      fuente: src-hostealo-ia
+    - proyecto: cogent-san-sebastian-de-los-reyes
+      fuente: src-hostealo-colocation
+- id: easydatahost-data4-20261015
+  fecha: 2026-10-15
+  tipo: proyecto
+  titulo: "EasyDataHost: acceso GPU en DATA4 Alcobendas"
+  resumen: Se añaden las ofertas Blackwell, H200 y DGX Spark vinculadas por EasyDataHost al campus
+    DATA4 Alcobendas. Son servicios de acceso, sin cantidad instalada publicada ni edificio concreto
+    dentro del campus.
+  enlaces:
+    - href: /proyecto/data4-alcobendas-mad01
+      texto: Ver ficha, hardware y fuentes
+  fuentes:
+    - proyecto: data4-alcobendas-mad01
+      fuente: src-edh-gpu
+    - proyecto: data4-alcobendas-mad01
+      fuente: src-edh-spark
+    - proyecto: data4-alcobendas-mad01
+      fuente: src-edh-facility
+- id: tecnalia-derio-20261015
+  fecha: 2026-10-15
+  tipo: nuevo
+  titulo: TECNALIA Derio entra en el inventario de cómputo
+  resumen: El catálogo del centro de investigación identifica seis servidores GPU en el edificio 700
+    de Derio. Se conservan los modelos y la contradicción entre el total de 13 GPU y su desglose.
+    Inventario sin fecha.
+  enlaces:
+    - href: /proyecto/tecnalia-derio-deep-learning
+      texto: Ver ficha, hardware y fuentes
+  fuentes:
+    - proyecto: tecnalia-derio-deep-learning
+      fuente: src-infraestructura
+    - proyecto: tecnalia-derio-deep-learning
+      fuente: src-sede-derio
+- id: aimen-pilot-factory-20261015
+  fecha: 2026-10-15
+  tipo: nuevo
+  titulo: "AIMEN: servidores GPU en la AM Pilot Factory"
+  resumen: Se incorpora la instalación de Cataboi, O Porriño. El catálogo publica un servidor con dos
+    RTX 8000 de 48 GB y tres configuraciones RTX20XX de dos tarjetas cada una. No se calcula un
+    total global ni se inventa una fecha de instalación.
+  enlaces:
+    - href: /proyecto/aimen-porrino-am-pilot-factory
+      texto: Ver ficha, hardware y fuentes
+  fuentes:
+    - proyecto: aimen-porrino-am-pilot-factory
+      fuente: src-infraestructura
+    - proyecto: aimen-porrino-am-pilot-factory
+      fuente: src-contacto
+- id: ctag-haaro-20261015
+  fecha: 2026-10-15
+  fecha_hecho: 2026-05-28
+  tipo: nuevo
+  titulo: "CTAG HAARO: GPU para robótica en O Porriño"
+  resumen: Se incorpora el laboratorio HAARO del campus A Granxa, presentado en una nota de mayo. Su
+    catálogo documenta GPU, servidores y almacenamiento, sin modelos ni cantidades. La presentación
+    no fecha la entrega del hardware.
+  enlaces:
+    - href: /proyecto/ctag-porrino-haaro
+      texto: Ver ficha, hardware y fuentes
+  fuentes:
+    - proyecto: ctag-porrino-haaro
+      fuente: src-haaro
+    - proyecto: ctag-porrino-haaro
+      fuente: src-presentacion-haaro
+    - proyecto: ctag-porrino-haaro
+      fuente: src-servicios
+- id: ctic-datahub-20261015
+  fecha: 2026-10-15
+  tipo: nuevo
+  titulo: "CTIC DataHub: uso GPU y compras por separado"
+  resumen: Se incorpora CTIC Cabueñes, Gijón, con GPU en uso. Las compras adjudicadas A100 de 2021 y
+    Blackwell de 2026 se mantienen como adquiridas, sin recepción ni modelo instalado confirmados.
+    La referencia Blackwell admite equivalentes.
+  enlaces:
+    - href: /proyecto/ctic-gijon-cabuenes
+      texto: Ver ficha, hardware y fuentes
+  fuentes:
+    - proyecto: ctic-gijon-cabuenes
+      fuente: src-datahub
+    - proyecto: ctic-gijon-cabuenes
+      fuente: src-adjudicacion-datahub
+    - proyecto: ctic-gijon-cabuenes
+      fuente: src-adjudicacion-arqade
+- id: blackfuel-bcn1-20261015
+  fecha: 2026-10-15
+  fecha_hecho: 2026-09-30
+  tipo: proyecto
+  titulo: Blackfuel anuncia MI355X en Digital Realty BCN1
+  resumen: Los anuncios de septiembre vinculan el despliegue con BCN1 y concretan AMD Instinct MI355X.
+    Se registra como previsto, con entrega y servicio anunciados para 2026, sin cantidad de tarjetas
+    ni potencia numérica publicadas.
+  enlaces:
+    - href: /proyecto/digital-realty-sant-adria-bcn1
+      texto: Ver ficha, hardware y fuentes
+  fuentes:
+    - proyecto: digital-realty-sant-adria-bcn1
+      fuente: src-blackfuel-bcn1
+    - proyecto: digital-realty-sant-adria-bcn1
+      fuente: src-blackfuel-mi355x
 - id: ree-cobertura-completa-20261014
   fecha: 2026-10-14
   fecha_hecho: 2026-10-01

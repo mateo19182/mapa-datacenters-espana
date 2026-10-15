@@ -1,6 +1,6 @@
 # Informe de reconciliación
 
-Generado el 2026-10-14 por `npm run reconcile` sobre 207 emplazamientos.
+Generado el 2026-10-15 por `npm run reconcile` sobre 212 emplazamientos.
 
 Nada de lo que sigue se corrige automáticamente: son propuestas para decidir a mano.
 

@@ -1,0 +1,154 @@
+id: tecnalia-derio-deep-learning
+nombre: TECNALIA, infraestructura de deep learning de Derio
+alias:
+  - TECNALIA Derio, Astondo Bidea, edificio 700
+  - Infraestructura de servidores de alta capacidad de procesamiento para deep learning
+tipo: edificio
+operador: TECNALIA
+propietario: null
+modelo: corporativo
+
+ubicacion:
+  municipio: Derio
+  provincia: Bizkaia
+  ccaa: Euskadi
+  direccion: Parque Científico y Tecnológico de Bizkaia, Astondo Bidea, edificio 700
+  lat: 43.296778
+  lon: -2.870167
+  precision: aproximada
+  no_derivar: true
+  fuentes: [src-infraestructura, src-sede-derio]
+
+estado: operativo
+estado_detalle: >-
+  El catálogo de TECNALIA documenta seis servidores para deep learning en su sede de Derio,
+  edificio 700. Es infraestructura de un centro tecnológico de I+D. El inventario no lleva fecha
+  y su total declarado de 13 GPU contradice el desglose por modelos; se conservan ambas lecturas.
+estado_fuentes: [src-infraestructura]
+potencia: []
+
+computo:
+  - tipo: gpu
+    ambito: sistema
+    sistema: TECNALIA Derio, total declarado del clúster de deep learning
+    unidades: 13
+    tipo_unidad: acelerador
+    nodos: 6
+    estado: operativo
+    modalidad: instalado
+    fecha_dato: null
+    fuentes: [src-infraestructura]
+    nota: >-
+      Total declarado en conflicto con el desglose por modelos de la misma página. Incluye las
+      particiones descritas a continuación; no se suman a esta lectura ni se reconcilia el recuento.
+  - tipo: gpu
+    ambito: particion
+    sistema: TECNALIA Derio, desglose RTX 2080 Ti del clúster
+    modelo: GeForce RTX 2080 Ti
+    unidades: 3
+    tipo_unidad: acelerador
+    estado: operativo
+    modalidad: instalado
+    fecha_dato: null
+    fuentes: [src-infraestructura]
+    nota: Parte del desglose que contradice el total de 13 GPU. Inventario sin fecha de corte.
+  - tipo: gpu
+    ambito: particion
+    sistema: TECNALIA Derio, desglose Tesla V100 del clúster
+    modelo: Tesla V100
+    unidades: 4
+    tipo_unidad: acelerador
+    estado: operativo
+    modalidad: instalado
+    fecha_dato: null
+    fuentes: [src-infraestructura]
+    nota: Parte del desglose que contradice el total de 13 GPU. Inventario sin fecha de corte.
+  - tipo: gpu
+    ambito: particion
+    sistema: TECNALIA Derio, desglose Titan X CC6.1 del clúster
+    modelo: Titan X, CC6.1
+    unidades: 4
+    tipo_unidad: acelerador
+    estado: operativo
+    modalidad: instalado
+    fecha_dato: null
+    fuentes: [src-infraestructura]
+    nota: La fuente distingue esta denominación de GTX Titan X CC5.2. El total del clúster está en disputa.
+  - tipo: gpu
+    ambito: particion
+    sistema: TECNALIA Derio, desglose GTX 1080 Ti del clúster
+    modelo: GeForce GTX 1080 Ti
+    unidades: 1
+    tipo_unidad: acelerador
+    estado: operativo
+    modalidad: instalado
+    fecha_dato: null
+    fuentes: [src-infraestructura]
+    nota: Parte del desglose que contradice el total de 13 GPU. Inventario sin fecha de corte.
+  - tipo: gpu
+    ambito: particion
+    sistema: TECNALIA Derio, desglose GTX Titan X CC5.2 del clúster
+    modelo: GeForce GTX Titan X, CC5.2
+    unidades: 2
+    tipo_unidad: acelerador
+    estado: operativo
+    modalidad: instalado
+    fecha_dato: null
+    fuentes: [src-infraestructura]
+    nota: La fuente distingue esta denominación de Titan X CC6.1. El total del clúster está en disputa.
+  - tipo: gpu
+    ambito: particion
+    sistema: TECNALIA Derio, desglose Tesla K20 del clúster
+    modelo: Tesla K20
+    unidades: 1
+    tipo_unidad: acelerador
+    estado: operativo
+    modalidad: instalado
+    fecha_dato: null
+    fuentes: [src-infraestructura]
+    nota: Parte del desglose que contradice el total de 13 GPU. Inventario sin fecha de corte.
+
+enlaces_proyecto:
+  - https://www.tecnalia.com/infraestructuras/infraestructura-de-servidores-de-alta-capacidad-de-procesamiento-para-deep-learning
+
+incertidumbres:
+  - campo: computo.unidades
+    descripcion: >-
+      El catálogo declara 13 GPU, pero enumera 3 RTX 2080 Ti, 4 Tesla V100, 4 Titan X CC6.1,
+      1 GTX 1080 Ti, 2 GTX Titan X CC5.2 y 1 Tesla K20. No consta una corrección que concilie
+      las lecturas. Se conserva el total publicado junto a sus partidas, sin calcular otro total.
+    fuentes: [src-infraestructura]
+  - campo: computo.fecha_dato
+    descripcion: >-
+      La página describe el equipamiento como existente, pero carece de fecha del inventario y
+      de instalación. La consulta de 2026 no acredita una ampliación ni fecha esas generaciones de GPU.
+    fuentes: [src-infraestructura]
+  - campo: ubicacion
+    descripcion: >-
+      El catálogo enlaza expresamente a Derio, edificio 700. Las coordenadas son la referencia
+      de esa sede publicada por TECNALIA, no una posición verificada de la sala de servidores.
+      El domicilio de Donostia del pie general de la web no sitúa este clúster.
+    fuentes: [src-infraestructura, src-sede-derio]
+  - campo: potencia
+    descripcion: No constan MW IT, capacidad de acceso eléctrico ni consumo de agua de esta infraestructura.
+    fuentes: [src-infraestructura]
+
+confianza: baja
+ultima_verificacion: 2026-10-15
+fuentes:
+  - id: src-infraestructura
+    url: https://www.tecnalia.com/infraestructuras/infraestructura-de-servidores-de-alta-capacidad-de-procesamiento-para-deep-learning
+    titulo: Infraestructura de servidores de alta capacidad de procesamiento para deep learning
+    editor: TECNALIA
+    tipo: empresa
+    fecha_publicacion: null
+    fecha_consulta: 2026-10-15
+    cita: 6 servidores [...] 13 GPUs [...] 3x [...] 4x Tesla V100 [...] 2x GeForce GTX Titan X [...] 1x Tesla K20
+  - id: src-sede-derio
+    url: https://www.tecnalia.com/sedes/derio-astondo-bidea-edificio-700
+    titulo: Derio, Astondo Bidea, edificio 700
+    editor: TECNALIA
+    tipo: empresa
+    fecha_publicacion: null
+    fecha_consulta: 2026-10-15
+    cita: Astondo Bidea, Edificio 700. E-48160 Derio (Bizkaia) [...] Lat = 43.296778 Lon = -2.870167

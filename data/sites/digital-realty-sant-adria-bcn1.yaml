@@ -60,6 +60,25 @@ fases:
     estado: anunciado
     fuentes: [src-1]
 
+computo:
+  - tipo: gpu
+    modalidad: previsto
+    ambito: sistema
+    sistema: "Blackfuel, despliegue inicial de inferencia en BCN1"
+    operador_computo: "Blackfuel"
+    modelo: "AMD Instinct MI355X en servidores Dell PowerEdge XE9785L"
+    unidades: null
+    tipo_unidad: acelerador
+    estado: anunciado
+    fecha_dato: "2026-09-30"
+    fuentes: [src-blackfuel-bcn1, src-blackfuel-mi355x]
+    nota: >-
+      Digital Realty identifica BCN1 como centro elegido por Blackfuel. El comunicado de
+      Blackfuel concreta MI355X en sistemas Dell refrigerados por líquido y describe el clúster
+      en entrega, con entrada en servicio prevista en 2026. Los anuncios del 30 de septiembre no
+      acreditan puesta en producción ni publican cantidad de aceleradores. La descripción de
+      varios MW no permite registrar una potencia numérica. No se suma al inventario instalado.
+
 superficie_construida_m2: 15000
 refrigeracion: >-
   La compañía declara consumo cero de agua y energía 100% renovable; los grupos
@@ -97,9 +116,15 @@ incertidumbres:
       finales de marzo de 2026"; la compañía comunicó la apertura el 18 de mayo
       de 2026.
     fuentes: [src-1, src-2]
+  - campo: computo.estado
+    descripcion: >-
+      La apertura de BCN1 en mayo no acredita la puesta en servicio del despliegue de Blackfuel.
+      Los anuncios del 30 de septiembre prevén servicio durante 2026 y no publican cantidad de
+      tarjetas ni MW numéricos. El cómputo queda previsto hasta confirmar entrada en producción.
+    fuentes: [src-blackfuel-bcn1, src-blackfuel-mi355x]
 
 confianza: media
-ultima_verificacion: "2026-10-14"
+ultima_verificacion: "2026-10-15"
 
 fuentes:
   - id: src-1
@@ -162,3 +187,21 @@ fuentes:
       BCN1 Av. del Maresme, 43 – 08930 Sant Adrià de Besòs ... Total building
       size: 161,500 ft² (15,000 m²) ... UPS redundancy: N+1 ... Cooling
       redundancy: N+2 ... Certifications LEED Gold ... Renewable Energy % 100%
+  - id: src-blackfuel-bcn1
+    url: "https://investor.digitalrealty.com/news-releases/news-release-details/digital-realty-brings-native-ai-inference-platform"
+    titulo: "Digital Realty Brings Native AI Inference Platform on ServiceFabric with Blackfuel"
+    editor: "Digital Realty"
+    tipo: empresa
+    fecha_publicacion: "2026-09-30"
+    fecha_consulta: "2026-10-15"
+    cita: "Blackfuel has selected Digital Realty's BCN1 data center in Barcelona"
+  - id: src-blackfuel-mi355x
+    url: "https://www.blackfuel.ai/press.html"
+    titulo: "Blackfuel Emerges From Stealth with More Than $250 Million in Contracted Revenue to Build a Global AI Token Grid"
+    editor: "Blackfuel"
+    tipo: empresa
+    fecha_publicacion: "2026-09-30"
+    fecha_consulta: "2026-10-15"
+    cita: >-
+      First deployment scheduled to enter service in 2026 ... Dell PowerEdge XE9785L servers
+      with AMD Instinct™ MI355X accelerators

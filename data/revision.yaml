@@ -455,3 +455,584 @@ hallazgos:
       - url: https://www.miteco.gob.es/content/dam/miteco/es/energia/files-1/es-ES/Participacion/Documents/anexos/aeip-sucyr/Proyecto%20RD%20SUCYR.pdf
         titulo: Proyecto de RD SUCYR, artículo 15, apartados 1.c y 6
         primaria: true
+  - id: gpu-solutions-madrid-ubicacion
+    titulo: Identificar el centro madrileño de GPU Solutions
+    tipo: calidad
+    estado: awaiting_primary
+    prioridad: alta
+    detectado: 2026-10-15
+    revisado: 2026-10-15
+    revisar_antes: 2026-10-29
+    motivo: La empresa documenta infraestructura HGX B200 propia en Madrid, sin identificar el centro ni
+      el total instalado. La ampliación anunciada no acredita recepción.
+    siguiente_paso: Localizar una fuente que vincule el clúster con un centro nombrado y distinga
+      inventario actual de ampliación.
+    enlaces:
+      - &a1
+        href: /computo
+        texto: Explorar cómputo documentado
+    fuentes:
+      - url: https://gpusolutions.ai/en/infrastructure
+        titulo: GPU Solutions, infraestructura HGX B200 en Madrid
+        primaria: true
+  - id: arquimea-inventario-ubicacion
+    titulo: Localizar la flota GPU de ARQUIMEA por instalación
+    tipo: calidad
+    estado: awaiting_primary
+    prioridad: alta
+    detectado: 2026-10-15
+    revisado: 2026-10-15
+    revisar_antes: 2026-10-29
+    motivo: El caso de Valohai describe 22 GPU en siete máquinas, incluidas ocho A100 de 80 GB. No
+      identifica el edificio y menciona distintas redes y VPN.
+    siguiente_paso: Obtener distribución física por instalación antes de crear un punto en Tenerife o
+      atribuir el total a una sede.
+    enlaces:
+      - *a1
+    fuentes:
+      - url: https://valohai.com/success-stories/arquimea-gpu-utilization/
+        titulo: Valohai, caso de cliente ARQUIMEA Research Center
+        primaria: true
+  - id: idoven-telefonica-ubicacion
+    titulo: Identificar el centro que aloja los DGX H100 de Idoven
+    tipo: calidad
+    estado: awaiting_primary
+    prioridad: alta
+    detectado: 2026-10-15
+    revisado: 2026-10-15
+    revisar_antes: 2026-10-29
+    motivo: TSA documenta dos servidores DGX H100 alojados por Telefónica, sin nombre de centro. Dos
+      servidores no es un recuento publicado de tarjetas y la cronología de las páginas es
+      contradictoria.
+    siguiente_paso: Cerrar el edificio y el hito de entrega con una fuente primaria; no asignar por
+      defecto a Nabiax Alcalá.
+    enlaces:
+      - *a1
+    fuentes:
+      - url: https://www.telefonicaserviciosaudiovisuales.com/noticias/tsa-impulsa-innovadora-solucion-ia-medica-para-idoven-tecnologia-nvidia-ultima-generacion/
+        titulo: TSA, integración y alojamiento de los DGX H100 de Idoven
+        primaria: true
+      - url: https://es.idoven.ai/blog/idoven-acquires-nvidia-dgx-systems-to-advance-its-mission-of-revolutionizing-cardiovascular-disease-diagnosis-with-ai
+        titulo: Idoven, anuncio de adquisición y futura instalación
+        primaria: true
+  - id: arsys-gpu-ubicacion
+    titulo: Vincular las GPU de Arsys con una instalación concreta
+    tipo: calidad
+    estado: awaiting_primary
+    prioridad: alta
+    detectado: 2026-10-15
+    revisado: 2026-10-15
+    revisar_antes: 2026-10-29
+    motivo: Arsys ofrece A10 y RTX PRO 6000 Blackwell alojadas en España. Las páginas GPU no vinculan el
+      hardware expresamente con Logroño.
+    siguiente_paso: Encontrar el vínculo público hardware-centro; conservar cantidad y fecha de
+      instalación desconocidas.
+    enlaces:
+      - href: /proyecto/arsys-logrono
+        texto: Arsys Logroño
+    fuentes:
+      - url: https://www.arsys.es/servidores/gpu
+        titulo: Arsys, servidores GPU
+        primaria: true
+      - url: https://www.arsys.es/quienes-somos/prensa/ServidoresGPU
+        titulo: Arsys, lanzamiento del servicio GPU del 20 de febrero de 2025
+        primaria: true
+  - id: genei-asac-ubicacion
+    titulo: Determinar qué centro de ASAC aloja las GPU de Genei
+    tipo: calidad
+    estado: awaiting_primary
+    prioridad: media
+    detectado: 2026-10-15
+    revisado: 2026-10-15
+    revisar_antes: 2026-11-14
+    motivo: ASAC confirma el clúster alojado en Llanera y el CTO de Genei identifica L40S. ASAC tiene
+      dos centros allí; no está cerrado si corresponde al Data Center 1 del registro.
+    siguiente_paso: Identificar el centro concreto antes de incorporar hardware a la ficha de Data Center 1.
+    enlaces:
+      - href: /proyecto/asac-llanera-data-center-1
+        texto: ASAC Data Center 1
+    fuentes:
+      - url: https://www.asacti.es/actualidad/la-inteligencia-artificial-se-aloja-en-asac/
+        titulo: ASAC, clúster de Genei ya alojado en Llanera
+        primaria: true
+      - url: https://es.linkedin.com/posts/tornadijo_asac-activity-7422913596063379456-eUf-
+        titulo: CTO de Genei, uso de NVIDIA L40S
+        primaria: true
+  - id: gradiant-cesga-ubicacion
+    titulo: Identificar el edificio CESGA que aloja GPU de Gradiant
+    tipo: calidad
+    estado: awaiting_primary
+    prioridad: alta
+    detectado: 2026-10-15
+    revisado: 2026-10-15
+    revisar_antes: 2026-10-29
+    motivo: CDTI describe dos nodos propiedad de Gradiant alojados por CESGA. No distingue Campus Vida
+      del nuevo centro de A Sionlla; la ficha de este último sigue en construcción.
+    siguiente_paso: Localizar el documento de alojamiento con edificio e inventario. No registrar estas
+      GPU como instaladas en A Sionlla sin confirmar traslado.
+    enlaces:
+      - href: /proyecto/cesga-santiago-a-sionlla
+        texto: CESGA A Sionlla y límites de ubicación
+    fuentes:
+      - url: https://catalogogics.cdti.es/es/node/809
+        titulo: CDTI, equipos propios de Gradiant alojados en CESGA
+        primaria: true
+  - id: eurecat-cluster-ubicacion
+    titulo: Localizar el clúster GPU de Eurecat
+    tipo: calidad
+    estado: awaiting_primary
+    prioridad: media
+    detectado: 2026-10-15
+    revisado: 2026-10-15
+    revisar_antes: 2026-11-14
+    motivo: Eurecat confirma un clúster CPU/GPU implementado en junio, sin sede ni inventario. El
+      anuncio de QuantIA Lab de octubre describe implantación progresiva hasta 2027 y no identifica
+      GPU.
+    siguiente_paso: Obtener la correspondencia entre el clúster de junio y una instalación; no
+      fusionarlo con QuantIA por inferencia.
+    enlaces:
+      - *a1
+    fuentes:
+      - url: https://eurecat.org/els-premis-computing-2026-distingeixen-eurecat-pel-seu-cluster-dalta-computacio-i-intelligencia-artificial/
+        titulo: Eurecat, clúster implementado y premio Computing 2026
+        primaria: true
+      - url: https://eurecat.org/computacio-quantica-aplicada-a-la-industria/
+        titulo: Eurecat, QuantIA Lab y calendario de implantación
+        primaria: true
+  - id: dinahosting-gpu-reparto
+    titulo: Distribuir las GPU de Dinahosting entre sus centros
+    tipo: calidad
+    estado: awaiting_primary
+    prioridad: media
+    detectado: 2026-10-15
+    revisado: 2026-10-15
+    revisar_antes: 2026-11-14
+    motivo: Dinahosting ofrece GPU A2 y nombra Aire Networks y Global Switch en Madrid como anfitriones.
+      No publica asignación de GPU por centro.
+    siguiente_paso: Encontrar el reparto por instalación; no duplicar el mismo inventario en ambos anfitriones.
+    enlaces:
+      - *a1
+    fuentes:
+      - url: https://dinahosting.com/vps/vps-gpu
+        titulo: Dinahosting, servicio VPS GPU
+        primaria: true
+      - url: https://dinahosting.com/blog/atencion-al-cliente-dinahosting-2023/
+        titulo: Dinahosting, infraestructura en Aire Networks y Global Switch
+        primaria: true
+  - id: stackscale-aire-gpu-reparto
+    titulo: Localizar por centro las GPU de Stackscale y Aire
+    tipo: calidad
+    estado: awaiting_primary
+    prioridad: media
+    detectado: 2026-10-15
+    revisado: 2026-10-15
+    revisar_antes: 2026-11-14
+    motivo: Stackscale ofrece T4, L4 y L40S en infraestructura de Madrid y Ámsterdam, sin reparto. La
+      guía L4 de Aire tampoco identifica un centro físico.
+    siguiente_paso: Obtener vínculo modelo-centro y separar catálogo global de hardware alojado en España.
+    enlaces:
+      - *a1
+    fuentes:
+      - url: https://www.stackscale.com/es/bare-metal/servidores-gpu/
+        titulo: Stackscale, catálogo GPU y ubicaciones generales
+        primaria: true
+      - url: https://airetech.es/como-desplegar-ollama-con-nvidia-para-inteligencia-artificial/
+        titulo: Aire, guía de instancia L4
+        primaria: true
+  - id: cloud-gpu-instalaciones-espana
+    titulo: Vincular las regiones GPU españolas con centros físicos
+    tipo: calidad
+    estado: awaiting_primary
+    prioridad: media
+    detectado: 2026-10-15
+    revisado: 2026-10-15
+    revisar_antes: 2026-11-14
+    motivo: AWS, Azure y Oracle documentan disponibilidad regional GPU en España. Oracle nombra Digital
+      Realty Madrid, sin precisar edificio. No se asignan estos servicios a centros por proximidad.
+    siguiente_paso: Buscar correspondencias públicas entre SKU o plataforma y centro concreto. Conservar
+      recuentos por instancia separados de inventario físico.
+    enlaces:
+      - *a1
+    fuentes:
+      - url: https://aws.amazon.com/ec2/capacityblocks/pricing/
+        titulo: AWS, Capacity Blocks P5en H200 en Europe Spain
+        primaria: true
+      - url: https://pulse.microsoft.com/wp-content/uploads/2026/03/Spain-Central-Services-Roadmap-Customer-Ready.pdf
+        titulo: Microsoft, servicios Spain Central de marzo de 2026
+        primaria: true
+      - url: https://www.oracle.eu/faq/
+        titulo: Oracle EU Sovereign Cloud, hardware y colocation en Madrid
+        primaria: true
+  - id: nebius-madrid-modelo-ubicacion
+    titulo: Vincular RTX PRO 6000 de Nebius Madrid con su edificio
+    tipo: calidad
+    estado: awaiting_primary
+    prioridad: media
+    detectado: 2026-10-15
+    revisado: 2026-10-15
+    revisar_antes: 2026-11-14
+    motivo: La matriz de regiones ofrece RTX PRO 6000 en Madrid. El contrato de 18 MW de Getafe es
+      conocido, pero ninguna de las fuentes enlaza ese modelo con MAD01.
+    siguiente_paso: Confirmar si la región eu-south1 se sirve desde Getafe MAD01 antes de elevar acceso
+      contratado a instalación.
+    enlaces:
+      - href: /proyecto/merlin-edged-getafe-mad01
+        texto: Nebius en MERLIN Getafe
+    fuentes:
+      - url: https://docs.nebius.com/overview/regions
+        titulo: Nebius, matriz de modelos por región
+        primaria: true
+      - url: https://www.merlinproperties.com/dia-a-dia/firmamos-un-contrato-de-18-mw-con-nebius-para-nuestro-date-center-madrid-getafe/
+        titulo: MERLIN, contrato de Nebius en Getafe
+        primaria: true
+  - id: coreweave-alava-gpu-ubicacion
+    titulo: Identificar el edificio de CoreWeave EU-SOUTH-04A
+    tipo: calidad
+    estado: awaiting_primary
+    prioridad: media
+    detectado: 2026-10-15
+    revisado: 2026-10-15
+    revisar_antes: 2026-11-14
+    motivo: La documentación ofrece B200 y RTX PRO 6000 en Álava, sin edificio ni cantidad. Es una pista
+      anterior, todavía sin cierre físico.
+    siguiente_paso: Obtener vínculo explícito con un centro; no asignar al BIL03 de Arasur por
+      coincidencia provincial.
+    enlaces:
+      - href: /proyecto/merlin-edged-ribera-baja-arasur
+        texto: Campus Arasur y límites de atribución
+    fuentes:
+      - url: https://docs.coreweave.com/platform/regions/eu-south
+        titulo: CoreWeave, modelos y zonas EU-SOUTH
+        primaria: true
+  - id: trevenque-gpu-instalacion
+    titulo: Confirmar la instalación GPU de Trevenque Granada
+    tipo: calidad
+    estado: awaiting_primary
+    prioridad: media
+    detectado: 2026-10-15
+    revisado: 2026-10-15
+    revisar_antes: 2026-11-14
+    motivo: Un caso de prensa describe HPE Private Cloud AI desplegado en Granada. Falta verificar la
+      declaración primaria de instalación y el hardware; la configuración genérica HPE no cubre ese
+      hueco.
+    siguiente_paso: Recuperar la intervención del CTO o un anuncio primario con sede, estado y modelos.
+    enlaces:
+      - href: /proyecto/trevenque-granada-cloud-center-andalucia
+        texto: Trevenque Granada
+    fuentes:
+      - url: https://www.muycomputerpro.com/2026/09/22/trevenque-group-hpe-private-cloud-ai
+        titulo: Caso de prensa Trevenque HPE Private Cloud AI, 22 de septiembre de 2026
+        primaria: false
+  - id: occentus-nixval-gpu-instalacion
+    titulo: Confirmar hardware GPU de Occentus en NIXVAL
+    tipo: calidad
+    estado: awaiting_primary
+    prioridad: baja
+    detectado: 2026-10-15
+    revisado: 2026-10-15
+    revisar_antes: 2026-11-14
+    motivo: Occentus ofrece GPU como opción y documenta presencia en NIXVAL Paterna. La oferta no
+      publica modelo, inventario ni entrega.
+    siguiente_paso: Buscar prueba de hardware efectivamente instalado y vinculado al centro; evitar un
+      duplicado del anfitrión.
+    enlaces:
+      - href: /proyecto/nixval-paterna-fuente-del-jarro
+        texto: NIXVAL Paterna
+    fuentes:
+      - url: https://www.occentus.net/servidores/
+        titulo: Occentus, servidores con opción GPU
+        primaria: true
+      - url: https://www.occentus.net/inscripcion-evento/
+        titulo: Occentus, evento en CPD NIXVAL
+        primaria: true
+  - id: towinia-zamora-gpu-traslado
+    titulo: Confirmar apertura y traslado de GPU a TOWINIA Zamora
+    tipo: calidad
+    estado: awaiting_primary
+    prioridad: media
+    detectado: 2026-10-15
+    revisado: 2026-10-15
+    revisar_antes: 2026-11-14
+    motivo: La página declara 26 GPU y hardware operativo, pero conserva referencias a traslado desde
+      Barcelona y reservas previas a inauguración. No se conoce el reparto por modelo.
+    siguiente_paso: Confirmar apertura y traslado finalizado con un inventario local fechado antes de
+      crear un centro operativo.
+    enlaces:
+      - *a1
+    fuentes:
+      - url: https://towinia.es/centro-de-datos-soberano-en-zamora-con-cumplimiento-rgpd-ia-act-nis2-y-ens-servidores-dedicados-alquiler-gpu-e-inteligencia-artificial-hosting-almacenamiento-frio-alta-disponibilidad/
+        titulo: TOWINIA, centro Muralla de Zamora e inventario declarado
+        primaria: true
+  - id: paivotal-b300-despliegue
+    titulo: Identificar centro y entrega de las B300 de Paivotal
+    tipo: calidad
+    estado: awaiting_primary
+    prioridad: media
+    detectado: 2026-10-15
+    revisado: 2026-10-15
+    revisar_antes: 2026-11-14
+    motivo: El inversor anuncia un despliegue futuro de B300 en España con cuatro Scale Units. No
+      identifica el centro ni una cantidad de tarjetas. Cartagon AI cambió de nombre a Paivotal.
+    siguiente_paso: Localizar instalación y hito de entrega. No convertir Scale Units en tarjetas ni
+      vincular a centros Quetta sin fuente.
+    enlaces:
+      - *a1
+    fuentes:
+      - url: https://www.coretechcapital.eu/post/paivotal-ampl%C3%ADa-su-financiaci%C3%B3n-hasta-los-200-millones-de-euros-y-se-convierte-en-preferred-partner
+        titulo: Core Tech Capital, anuncio Paivotal del 14 de julio de 2026
+        primaria: true
+      - url: https://www.boe.es/diario_borme/txt.php?id=BORME-A-2026-145-28&lang=es
+        titulo: BORME, cambio de denominación Cartagon AI a Paivotal
+        primaria: true
+  - id: itg-celia-gpu-ubicacion
+    titulo: Identificar entrega y edificio de las V100 de ITG
+    tipo: calidad
+    estado: awaiting_primary
+    prioridad: baja
+    detectado: 2026-10-15
+    revisado: 2026-10-15
+    revisar_antes: 2026-11-14
+    motivo: La adjudicación CEL.IA de diciembre de 2021 documenta un servidor con dos V100 de 32 GB. No
+      se ha encontrado recepción ni edificio; el domicilio del comprador no localiza el equipo.
+    siguiente_paso: Obtener acta de recepción e inventario local antes de situarlo en Cantón Grande,
+      CITEXVI o Cidade das TIC.
+    enlaces:
+      - *a1
+    fuentes:
+      - url: https://itg.es/wp-content/uploads/Informe-Adjudicacion_signed_CELIA_SUMINISTROS_27dic.pdf
+        titulo: ITG, adjudicación CEL.IA del 27 de diciembre de 2021
+        primaria: true
+      - url: https://itg.es/wp-content/uploads/Pliego-Tecnico-CEL.IA_.pdf
+        titulo: ITG, especificaciones de servidor y V100
+        primaria: true
+  - id: tecnalia-gpu-recuento
+    titulo: Resolver el recuento GPU del catálogo TECNALIA Derio
+    tipo: calidad
+    estado: awaiting_primary
+    prioridad: media
+    detectado: 2026-10-15
+    revisado: 2026-10-15
+    revisar_antes: 2026-11-14
+    motivo: El catálogo publica 13 GPU y un desglose incompatible, con diferencias entre versiones
+      idiomáticas. La ficha conserva los modelos y la discrepancia sin reconciliar un total.
+    siguiente_paso: Localizar inventario fechado o corrección pública del catálogo; conservar las
+      lecturas anteriores con su alcance.
+    enlaces:
+      - href: /proyecto/tecnalia-derio-deep-learning
+        texto: TECNALIA Derio
+    fuentes:
+      - url: https://www.tecnalia.com/infraestructuras/infraestructura-de-servidores-de-alta-capacidad-de-procesamiento-para-deep-learning
+        titulo: TECNALIA, inventario de servidores de deep learning
+        primaria: true
+  - id: ctic-recepcion-gpu
+    titulo: Confirmar recepción de las compras GPU de CTIC
+    tipo: calidad
+    estado: awaiting_primary
+    prioridad: media
+    detectado: 2026-10-15
+    revisado: 2026-10-15
+    revisar_antes: 2026-11-14
+    motivo: DataHub documenta servicio GPU en uso. Las configuraciones adjudicadas A100 de 2021 y
+      Blackwell de 2026 se mantienen como adquiridas; falta recepción o inventario operativo que
+      confirme modelos.
+    siguiente_paso: Localizar actas de recepción y modelos entregados, incluida la posibilidad de
+      equivalente en ARQADE; evitar duplicar el servicio y sus compras.
+    enlaces:
+      - href: /proyecto/ctic-gijon-cabuenes
+        texto: CTIC Cabueñes
+    fuentes:
+      - url: https://fundacionctic.org/es/licitacion/infraestructura-para-la-investigacion-en-espacios-de-datos-compartidos-ctic-datahub
+        titulo: CTIC, adjudicación DataHub CT008/2021
+        primaria: true
+      - url: https://fundacionctic.org/es/licitacion/infraestructura-de-computacion-de-alto-rendimiento-arqade-alianza-de-centros
+        titulo: CTIC, adjudicación ARQADE CT004/2026
+        primaria: true
+  - id: blackfuel-bcn1-puesta-servicio
+    titulo: Confirmar puesta en servicio de Blackfuel en BCN1
+    tipo: calidad
+    estado: awaiting_primary
+    prioridad: media
+    detectado: 2026-10-15
+    revisado: 2026-10-15
+    revisar_antes: 2026-11-14
+    motivo: El anuncio del 30 de septiembre identifica BCN1 y MI355X. El despliegue sigue documentado
+      como entrega y puesta en servicio prevista en 2026, sin cantidad publicada.
+    siguiente_paso: Buscar un hito posterior de operación en BCN1 antes de cambiar la modalidad prevista a instalada.
+    enlaces:
+      - href: /proyecto/digital-realty-sant-adria-bcn1
+        texto: Blackfuel en BCN1
+    fuentes:
+      - url: https://investor.digitalrealty.com/news-releases/news-release-details/digital-realty-brings-native-ai-inference-platform
+        titulo: Digital Realty, Blackfuel en BCN1
+        primaria: true
+      - url: https://www.blackfuel.ai/press.html
+        titulo: Blackfuel, MI355X y calendario de despliegue
+        primaria: true
+  - id: hostealo-cogent-20261015
+    titulo: "Hostealo: ocho GPU documentadas en Cogent Madrid"
+    tipo: proyecto
+    estado: published
+    prioridad: media
+    detectado: 2026-10-15
+    revisado: 2026-10-15
+    revisar_antes: null
+    motivo: Se incorpora el centro de Cogent en San Sebastián de los Reyes. Hostealo publica dos
+      servidores con cuatro RTX PRO 6000 Blackwell y cuatro RTX 6000 Ada. No constan fecha de
+      instalación ni MW.
+    siguiente_paso: null
+    enlaces:
+      - href: /proyecto/cogent-san-sebastian-de-los-reyes
+        texto: Ver ficha, hardware y fuentes
+    fuentes:
+      - url: https://www.cogentco.com/es/cogent-spain
+        titulo: Cogent Spain
+        primaria: true
+      - url: https://hostealo.es/ia-privada
+        titulo: "IA privada en España: API compatible OpenAI y GPU NVIDIA"
+        primaria: true
+      - url: https://hostealo.es/colocation
+        titulo: Colocation en España y Alemania (Madrid y Mainhausen)
+        primaria: true
+  - id: easydatahost-data4-20261015
+    titulo: "EasyDataHost: acceso GPU en DATA4 Alcobendas"
+    tipo: proyecto
+    estado: published
+    prioridad: media
+    detectado: 2026-10-15
+    revisado: 2026-10-15
+    revisar_antes: null
+    motivo: Se añaden las ofertas Blackwell, H200 y DGX Spark vinculadas por EasyDataHost al campus
+      DATA4 Alcobendas. Son servicios de acceso, sin cantidad instalada publicada ni edificio concreto
+      dentro del campus.
+    siguiente_paso: null
+    enlaces:
+      - href: /proyecto/data4-alcobendas-mad01
+        texto: Ver ficha, hardware y fuentes
+    fuentes:
+      - url: https://easydatahost.com/gpu-servers
+        titulo: Servidores GPU NVIDIA para IA y HPC
+        primaria: true
+      - url: https://easydatahost.com/nvidia-dgx-spark
+        titulo: NVIDIA DGX Spark, supercomputador IA Grace Blackwell hospedado en Madrid
+        primaria: true
+      - url: https://easydatahost.com/facility
+        titulo: Nuestras instalaciones en Data4
+        primaria: true
+  - id: tecnalia-derio-20261015
+    titulo: TECNALIA Derio entra en el inventario de cómputo
+    tipo: proyecto
+    estado: published
+    prioridad: media
+    detectado: 2026-10-15
+    revisado: 2026-10-15
+    revisar_antes: null
+    motivo: El catálogo del centro de investigación identifica seis servidores GPU en el edificio 700 de
+      Derio. Se conservan los modelos y la contradicción entre el total de 13 GPU y su desglose.
+      Inventario sin fecha.
+    siguiente_paso: null
+    enlaces:
+      - href: /proyecto/tecnalia-derio-deep-learning
+        texto: Ver ficha, hardware y fuentes
+    fuentes:
+      - url: https://www.tecnalia.com/infraestructuras/infraestructura-de-servidores-de-alta-capacidad-de-procesamiento-para-deep-learning
+        titulo: Infraestructura de servidores de alta capacidad de procesamiento para deep learning
+        primaria: true
+      - url: https://www.tecnalia.com/sedes/derio-astondo-bidea-edificio-700
+        titulo: Derio, Astondo Bidea, edificio 700
+        primaria: true
+  - id: aimen-pilot-factory-20261015
+    titulo: "AIMEN: servidores GPU en la AM Pilot Factory"
+    tipo: proyecto
+    estado: published
+    prioridad: media
+    detectado: 2026-10-15
+    revisado: 2026-10-15
+    revisar_antes: null
+    motivo: Se incorpora la instalación de Cataboi, O Porriño. El catálogo publica un servidor con dos
+      RTX 8000 de 48 GB y tres configuraciones RTX20XX de dos tarjetas cada una. No se calcula un
+      total global ni se inventa una fecha de instalación.
+    siguiente_paso: null
+    enlaces:
+      - href: /proyecto/aimen-porrino-am-pilot-factory
+        texto: Ver ficha, hardware y fuentes
+    fuentes:
+      - url: https://ampilotfactory.aimen.es/infrastructure
+        titulo: AM Pilot Factory, Infrastructure
+        primaria: true
+      - url: https://ampilotfactory.aimen.es/contact
+        titulo: AM Pilot Factory, Contact
+        primaria: true
+  - id: ctag-haaro-20261015
+    titulo: "CTAG HAARO: GPU para robótica en O Porriño"
+    tipo: proyecto
+    estado: published
+    prioridad: media
+    detectado: 2026-10-15
+    revisado: 2026-10-15
+    revisar_antes: null
+    motivo: Se incorpora el laboratorio HAARO del campus A Granxa, presentado en una nota de mayo. Su
+      catálogo documenta GPU, servidores y almacenamiento, sin modelos ni cantidades. La presentación
+      no fecha la entrega del hardware.
+    siguiente_paso: null
+    enlaces:
+      - href: /proyecto/ctag-porrino-haaro
+        texto: Ver ficha, hardware y fuentes
+    fuentes:
+      - url: https://ctag.com/soluciones-y-servicios/fabricacion-avanzada/haaro-humanoides-y-robotica-avanzada/
+        titulo: HAARO Lab, Humanoides y Robótica avanzada
+        primaria: true
+      - url: https://ctag.com/ctag-impulsa-haaro-su-nuevo-laboratorio-de-humanoides-y-robotica-avanzada/
+        titulo: CTAG impulsa HAARO, su nuevo laboratorio de humanoides y robótica avanzada
+        primaria: true
+      - url: https://ctag.com/soluciones-y-servicios/
+        titulo: Soluciones y servicios, laboratorios CTAG
+        primaria: true
+  - id: ctic-datahub-20261015
+    titulo: "CTIC DataHub: uso GPU y compras por separado"
+    tipo: proyecto
+    estado: published
+    prioridad: media
+    detectado: 2026-10-15
+    revisado: 2026-10-15
+    revisar_antes: null
+    motivo: Se incorpora CTIC Cabueñes, Gijón, con GPU en uso. Las compras adjudicadas A100 de 2021 y
+      Blackwell de 2026 se mantienen como adquiridas, sin recepción ni modelo instalado confirmados.
+      La referencia Blackwell admite equivalentes.
+    siguiente_paso: null
+    enlaces:
+      - href: /proyecto/ctic-gijon-cabuenes
+        texto: Ver ficha, hardware y fuentes
+    fuentes:
+      - url: https://www.fundacionctic.org/es/infraestructuras-singulares/datahub
+        titulo: DataHub
+        primaria: true
+      - url: https://fundacionctic.org/es/licitacion/infraestructura-para-la-investigacion-en-espacios-de-datos-compartidos-ctic-datahub
+        titulo: Infraestructura para la investigación en Espacios de Datos Compartidos, CTIC-DATAHUB,
+          CT008/2021
+        primaria: true
+      - url: https://fundacionctic.org/es/licitacion/infraestructura-de-computacion-de-alto-rendimiento-arqade-alianza-de-centros
+        titulo: Infraestructura de computación de alto rendimiento ARQADE, CT004/2026
+        primaria: true
+  - id: blackfuel-bcn1-20261015
+    titulo: Blackfuel anuncia MI355X en Digital Realty BCN1
+    tipo: proyecto
+    estado: published
+    prioridad: media
+    detectado: 2026-10-15
+    revisado: 2026-10-15
+    revisar_antes: null
+    motivo: Los anuncios de septiembre vinculan el despliegue con BCN1 y concretan AMD Instinct MI355X.
+      Se registra como previsto, con entrega y servicio anunciados para 2026, sin cantidad de tarjetas
+      ni potencia numérica publicadas.
+    siguiente_paso: null
+    enlaces:
+      - href: /proyecto/digital-realty-sant-adria-bcn1
+        texto: Ver ficha, hardware y fuentes
+    fuentes:
+      - url: https://investor.digitalrealty.com/news-releases/news-release-details/digital-realty-brings-native-ai-inference-platform
+        titulo: Digital Realty Brings Native AI Inference Platform on ServiceFabric with Blackfuel
+        primaria: true
+      - url: https://www.blackfuel.ai/press.html
+        titulo: Blackfuel Emerges From Stealth with More Than $250 Million in Contracted Revenue to Build a
+          Global AI Token Grid
+        primaria: true

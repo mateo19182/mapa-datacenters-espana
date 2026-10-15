@@ -1,12 +1,12 @@
 # Parte de validación del dataset
 
-Generado el 2026-10-14 por `npm run validate`.
+Generado el 2026-10-15 por `npm run validate`.
 
-- Emplazamientos cargados: **207**
+- Emplazamientos cargados: **212**
 - Nodos de red: **133**
 - Activos renovables/BESS: **22**
 - Normas registradas: **16**
-- Errores: **0** · Avisos: **285**
+- Errores: **0** · Avisos: **293**
 
 ## Incidencias por fichero
 
@@ -63,6 +63,11 @@ Generado el 2026-10-14 por `npm run validate`.
 ### `afr-ix-barbate-medusa-zahara.yaml`
 
 - aviso: sin ningún dato de potencia
+
+### `aimen-porrino-am-pilot-factory.yaml`
+
+- aviso: sin ningún dato de potencia
+- aviso: sin coordenadas: no aparecerá en el mapa
 
 ### `alme-almeria-aterraje-cables.yaml`
 
@@ -167,6 +172,10 @@ Generado el 2026-10-14 por `npm run validate`.
 
 - aviso: sin ningún dato de potencia
 
+### `cogent-san-sebastian-de-los-reyes.yaml`
+
+- aviso: sin ningún dato de potencia
+
 ### `computaex-caceres-lusitania.yaml`
 
 - aviso: sin ningún dato de potencia
@@ -183,6 +192,16 @@ Generado el 2026-10-14 por `npm run validate`.
 ### `csuc-barcelona-campus-nord.yaml`
 
 - aviso: sin ningún dato de potencia
+
+### `ctag-porrino-haaro.yaml`
+
+- aviso: sin ningún dato de potencia
+- aviso: sin coordenadas: no aparecerá en el mapa
+
+### `ctic-gijon-cabuenes.yaml`
+
+- aviso: sin ningún dato de potencia
+- aviso: sin coordenadas: no aparecerá en el mapa
 
 ### `d-alix-granadilla-de-abona.yaml`
 
@@ -682,6 +701,10 @@ Generado el 2026-10-14 por `npm run validate`.
 - aviso: potencia[6] («Necesidad de potencia de la segunda fase, según el consejero de Industria») no distingue el tipo de MW
 
 ### `sys4net-alcantarilla-magalia.yaml`
+
+- aviso: sin ningún dato de potencia
+
+### `tecnalia-derio-deep-learning.yaml`
 
 - aviso: sin ningún dato de potencia
 

@@ -1,0 +1,122 @@
+id: cogent-san-sebastian-de-los-reyes
+nombre: "Cogent Madrid — San Sebastián de los Reyes, Majuelos Nuevos"
+alias:
+  - "Cogent Data Center - Madrid"
+  - "Cogent Madrid Data Center"
+tipo: edificio
+operador: "Cogent Communications"
+propietario: null
+cliente_ancla: null
+modelo: colocation
+
+ubicacion:
+  municipio: "San Sebastián de los Reyes"
+  provincia: "Madrid"
+  ccaa: "Comunidad de Madrid"
+  direccion: "Subestación Eléctrica de REE, PD Majuelos Nuevos, 28700 San Sebastián de los Reyes"
+  lat: 40.565558
+  lon: -3.605486
+  precision: aproximada
+  no_derivar: true
+  fuentes: [src-cogent-centro, src-hostealo-colocation, src-peeringdb-cogent]
+
+estado: operativo
+estado_detalle: >-
+  Centro de colocation de Cogent en la subestación eléctrica de REE de Majuelos Nuevos,
+  San Sebastián de los Reyes. Hostealo publica dos servidores de inferencia alojados aquí:
+  uno con cuatro NVIDIA RTX PRO 6000 Blackwell de 96 GB y otro con cuatro NVIDIA RTX 6000 Ada
+  de 48 GB. Las páginas consultadas no publican la fecha de instalación de estos equipos.
+estado_fuentes: [src-cogent-centro, src-hostealo-ia, src-hostealo-colocation]
+fecha_puesta_en_servicio: null
+
+potencia: []
+
+computo:
+  - tipo: gpu
+    modalidad: instalado
+    ambito: particion
+    sistema: "Hostealo, servidor 1 de IA privada"
+    operador_computo: "Hostealo"
+    modelo: "NVIDIA RTX PRO 6000 Blackwell de 96 GB"
+    unidades: 4
+    tipo_unidad: acelerador
+    nodos: 1
+    estado: operativo
+    fecha_dato: null
+    fuentes: [src-hostealo-ia, src-hostealo-colocation]
+    nota: >-
+      Inventario explícito de Hostealo: un servidor con cuatro tarjetas. Es hardware del cliente
+      alojado en Cogent, no un recuento de todas las GPU del centro de datos.
+  - tipo: gpu
+    modalidad: instalado
+    ambito: particion
+    sistema: "Hostealo, servidor 2 de IA privada"
+    operador_computo: "Hostealo"
+    modelo: "NVIDIA RTX 6000 Ada de 48 GB"
+    unidades: 4
+    tipo_unidad: acelerador
+    nodos: 1
+    estado: operativo
+    fecha_dato: null
+    fuentes: [src-hostealo-ia, src-hostealo-colocation]
+    nota: >-
+      Segundo servidor identificado por Hostealo, distinto del equipado con Blackwell.
+      Las cuatro tarjetas están publicadas expresamente, sin deducirlas de una configuración máxima.
+
+enlaces_proyecto:
+  - "https://www.cogentco.com/es/cogent-spain"
+  - "https://hostealo.es/ia-privada"
+
+incertidumbres:
+  - campo: ubicacion
+    descripcion: >-
+      Las coordenadas proceden de la ficha de PeeringDB de Cogent Madrid, registrada bajo la
+      organización Cogent Communications y con la misma dirección de Majuelos Nuevos que publica
+      el operador. Se conserva precisión aproximada: el punto declarado no acredita el contorno
+      de un edificio ni la sala de Hostealo. No corresponde a la oficina de Cogent en Madrid ni
+      al centro de Microsoft registrado en San Sebastián de los Reyes.
+    fuentes: [src-cogent-centro, src-hostealo-colocation, src-peeringdb-cogent]
+  - campo: potencia
+    descripcion: >-
+      Las fuentes consultadas no publican carga IT ni potencia de conexión del centro. Su dirección
+      en una subestación eléctrica no acredita una concesión de acceso ni una cifra de MW.
+    fuentes: [src-cogent-centro, src-hostealo-colocation]
+  - campo: computo.fecha_dato
+    descripcion: >-
+      Las páginas de Hostealo describen los dos servidores en servicio, pero carecen de fecha
+      editorial visible y no indican cuándo se instalaron. El 15 de octubre de 2026 es la fecha
+      de revisión documental, no la entrada en servicio del centro ni de las GPU.
+    fuentes: [src-hostealo-ia, src-hostealo-colocation]
+
+confianza: media
+ultima_verificacion: "2026-10-15"
+
+fuentes:
+  - id: src-cogent-centro
+    url: "https://www.cogentco.com/es/cogent-spain"
+    titulo: "Cogent Spain"
+    editor: "Cogent Communications"
+    tipo: empresa
+    fecha_consulta: "2026-10-15"
+    cita: "Madrid Data Center [...] Subestacion Electrica de Ree [...] PD Majuelos Nuevos [...] 28700 San Sebastian de los Reyes, Spain"
+  - id: src-hostealo-ia
+    url: "https://hostealo.es/ia-privada"
+    titulo: "IA privada en España: API compatible OpenAI y GPU NVIDIA"
+    editor: "Hostealo"
+    tipo: empresa
+    fecha_consulta: "2026-10-15"
+    cita: "4x NVIDIA RTX PRO 6000 Blackwell [...] VRAM por GPU 96 GB [...] 4x NVIDIA RTX 6000 Ada [...] VRAM por GPU 48 GB"
+  - id: src-hostealo-colocation
+    url: "https://hostealo.es/colocation"
+    titulo: "Colocation en España y Alemania (Madrid y Mainhausen)"
+    editor: "Hostealo"
+    tipo: empresa
+    fecha_consulta: "2026-10-15"
+    cita: "En Madrid operamos desde el datacenter de Cogent en la subestación eléctrica de San Sebastián de los Reyes"
+  - id: src-peeringdb-cogent
+    url: "https://www.peeringdb.com/fac/8285"
+    titulo: "Cogent Madrid — instalación 8285"
+    editor: "PeeringDB; ficha de Cogent Communications, Inc."
+    tipo: asociacion
+    fecha_consulta: "2026-10-15"
+    cita: "Cogent Madrid [...] Cogent Communications, Inc. [...] Subestacion Electrica de REE, PD Majuelos Nuevos [...] San Sebastian de los Reyes [...] 40.565558 -3.605486"

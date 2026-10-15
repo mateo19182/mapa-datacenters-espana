@@ -1,0 +1,132 @@
+id: aimen-porrino-am-pilot-factory
+nombre: AIMEN, infraestructura HPC de AM Pilot Factory, O Porriño
+alias:
+  - AIMEN AM Pilot Factory
+  - AM Pilot Factory, Cataboi
+tipo: edificio
+operador: AIMEN Centro Tecnológico
+propietario: null
+modelo: corporativo
+
+ubicacion:
+  municipio: O Porriño
+  provincia: Pontevedra
+  ccaa: Galicia
+  direccion: Polígono Industrial de Cataboi SUR-PPI-2, sector 2, parcela 3
+  lat: null
+  lon: null
+  precision: desconocida
+  no_derivar: true
+  fuentes: [src-infraestructura, src-contacto]
+
+estado: operativo
+estado_detalle: >-
+  AM Pilot Factory de AIMEN publica servidores GPU para investigación en IA y computación
+  distribuida en su instalación de Cataboi. El catálogo describe RTX 8000 y configuraciones
+  RTX20XX, sin precisar la fecha del inventario ni un total de GPU. El laboratorio edge es
+  equipamiento separado.
+estado_fuentes: [src-infraestructura]
+potencia: []
+
+computo:
+  - tipo: gpu
+    ambito: particion
+    sistema: AM Pilot Factory, configuración RTX 8000 con 768 GB de RAM
+    modelo: RTX 8000 de 48 GB
+    unidades: 2
+    tipo_unidad: acelerador
+    estado: operativo
+    modalidad: instalado
+    fecha_dato: null
+    fuentes: [src-infraestructura]
+    nota: >-
+      Dos GPU en la configuración que la fuente describe con CPU de 16 núcleos y 768 GB de RAM.
+      Es el recuento de esa configuración, no el total de GPU de AM Pilot Factory.
+  - tipo: gpu
+    ambito: particion
+    sistema: AM Pilot Factory, primera configuración RTX20XX con CPU de 16 núcleos
+    modelo: RTX20XX de 8 GB
+    unidades: 2
+    tipo_unidad: acelerador
+    estado: operativo
+    modalidad: instalado
+    fecha_dato: null
+    fuentes: [src-infraestructura]
+    nota: >-
+      Primera mención de CPU de 16 núcleos, 64 GB de RAM y dos RTX20XX. La fuente repite esta
+      configuración en otra posición; no se deduce un inventario global ni un modelo más preciso.
+  - tipo: gpu
+    ambito: particion
+    sistema: AM Pilot Factory, segunda configuración RTX20XX con CPU de 16 núcleos
+    modelo: RTX20XX de 8 GB
+    unidades: 2
+    tipo_unidad: acelerador
+    estado: operativo
+    modalidad: instalado
+    fecha_dato: null
+    fuentes: [src-infraestructura]
+    nota: >-
+      Segunda mención literal de CPU de 16 núcleos, 64 GB de RAM y dos RTX20XX, idéntica a la
+      anterior. Se conserva el alcance de configuración sin convertir la repetición en un total de flota.
+  - tipo: gpu
+    ambito: particion
+    sistema: AM Pilot Factory, configuración RTX20XX con CPU de 8 núcleos
+    modelo: RTX20XX de 8 GB
+    unidades: 2
+    tipo_unidad: acelerador
+    estado: operativo
+    modalidad: instalado
+    fecha_dato: null
+    fuentes: [src-infraestructura]
+    nota: >-
+      Configuración descrita con CPU de 8 núcleos, 64 GB de RAM y dos RTX20XX. La familia se
+      reproduce tal como aparece; no permite elegir una tarjeta RTX 20 concreta.
+
+enlaces_proyecto:
+  - https://ampilotfactory.aimen.es/infrastructure
+
+incertidumbres:
+  - campo: computo.unidades
+    descripcion: >-
+      La página lista una configuración con 2 RTX 8000 y tres configuraciones con 2 RTX20XX
+      cada una, dos de estas últimas idénticas. No publica un total de GPU ni aclara si la
+      repetición representa equipos distintos. Los recuentos se refieren a cada configuración;
+      no se suman ni se calcula un total de tarjetas a partir de la lista.
+    fuentes: [src-infraestructura]
+  - campo: computo.modelo
+    descripcion: >-
+      RTX20XX es la denominación incompleta que publica AIMEN. Los dos servidores Dell PowerEdge 740
+      del clúster adicional no se describen como otros servidores GPU. Jetson TX1, TX2 y Xavier,
+      FPGA Zynq-7000 y Coral pertenecen al laboratorio edge, no a un recuento de aceleradores del HPC.
+    fuentes: [src-infraestructura]
+  - campo: computo.fecha_dato
+    descripcion: No constan fecha de instalación ni fecha de corte del inventario; no se usa la consulta para fechar el hardware.
+    fuentes: [src-infraestructura]
+  - campo: ubicacion
+    descripcion: >-
+      La dirección procede de la página de contacto de la propia AM Pilot Factory. No se han
+      verificado coordenadas de la instalación; no se coloca en el centro de O Porriño.
+    fuentes: [src-contacto]
+  - campo: potencia
+    descripcion: No constan MW IT, acceso eléctrico concedido ni consumo de agua de la infraestructura HPC.
+    fuentes: [src-infraestructura]
+
+confianza: media
+ultima_verificacion: 2026-10-15
+fuentes:
+  - id: src-infraestructura
+    url: https://ampilotfactory.aimen.es/infrastructure
+    titulo: AM Pilot Factory, Infrastructure
+    editor: AIMEN Centro Tecnológico
+    tipo: asociacion
+    fecha_publicacion: null
+    fecha_consulta: 2026-10-15
+    cita: Multiple GPU servers [...] GPU 2xRTX 8000 48GB [...] GPU 2x RTX20XX 8GB
+  - id: src-contacto
+    url: https://ampilotfactory.aimen.es/contact
+    titulo: AM Pilot Factory, Contact
+    editor: AIMEN Centro Tecnológico
+    tipo: asociacion
+    fecha_publicacion: null
+    fecha_consulta: 2026-10-15
+    cita: AIMEN Technology Centre [...] Polígono Industrial de Cataboi SUR-PPI-2 (Sector 2), Parcela 3 [...] ES36418 Porriño - Pontevedra (Spain)
