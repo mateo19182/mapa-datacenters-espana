@@ -1,6 +1,63 @@
 // Resúmenes editoriales. Las fechas son las de los hechos descritos, nunca la
 // consulta de la ficha ni la publicación de una fuente que relate otro día.
 const PRESENTACIONES = {
+  'cogent-san-sebastian-de-los-reyes': {
+    titulo: 'Cogent Madrid · San Sebastián de los Reyes',
+    resumen: 'Cogent aloja dos servidores de Hostealo con cuatro RTX PRO 6000 Blackwell y cuatro RTX 6000 Ada. No se publica fecha de instalación ni potencia eléctrica.',
+    fuentes: ['src-cogent-centro', 'src-hostealo-ia', 'src-hostealo-colocation'],
+  },
+  'data4-alcobendas-mad01': {
+    resumen: 'Campus de colocation de DATA4 en Alcobendas. EasyDataHost ofrece aquí acceso a Blackwell, H200 y DGX Spark; no publica el tamaño de su flota instalada.',
+    fuentes: ['src-edh-gpu', 'src-edh-spark', 'src-edh-facility'],
+  },
+  'digital-realty-sant-adria-bcn1': {
+    resumen: 'BCN1 es el centro de Digital Realty en Sant Adrià de Besòs. Blackfuel anuncia un despliegue de AMD MI355X, todavía documentado como entrega y servicio previsto en 2026.',
+    fuentes: ['src-blackfuel-bcn1', 'src-blackfuel-mi355x'],
+    cronologia: [
+      { fecha: '2026-09-30', titulo: 'Anuncio del despliegue de Blackfuel en BCN1', detalle: 'Digital Realty identifica el centro y Blackfuel concreta AMD MI355X. Los comunicados no acreditan puesta en producción.', fuentes: ['src-blackfuel-bcn1', 'src-blackfuel-mi355x'] },
+      { fecha: '2026', titulo: 'Servicio de Blackfuel previsto durante 2026', detalle: 'El anuncio describe entrega del clúster y entrada en servicio prevista, sin día exacto ni cantidad publicada.', prevista: true, fuentes: ['src-blackfuel-mi355x'] },
+    ],
+  },
+  'tecnalia-derio-deep-learning': {
+    titulo: 'TECNALIA · Deep learning, Derio',
+    resumen: 'Infraestructura de I+D en el edificio 700 de Derio, con seis servidores GPU. El catálogo publica 13 GPU y un desglose incompatible; la fecha del inventario es desconocida.',
+    fuentes: ['src-infraestructura', 'src-sede-derio'],
+    hardware: [
+      { modelo: 'GPU NVIDIA', dato: 'Total publicado: 13 GPU', matiz: 'El desglose por modelo contradice el total. No se reconcilian las cifras.', fuentes: ['src-infraestructura'] },
+      { modelo: 'V100, RTX 2080 Ti, Titan X, GTX 1080 Ti y K20', dato: 'Modelos documentados en seis servidores', matiz: 'Catálogo sin fecha de inventario; se conserva el detalle en el expediente.', fuentes: ['src-infraestructura'] },
+    ],
+  },
+  'aimen-porrino-am-pilot-factory': {
+    titulo: 'AIMEN · AM Pilot Factory, O Porriño',
+    resumen: 'La instalación de Cataboi publica servidores GPU para investigación en fabricación. Documenta RTX 8000 y configuraciones RTX20XX, sin total global ni fecha del inventario.',
+    fuentes: ['src-infraestructura', 'src-contacto'],
+    hardware: [
+      { modelo: 'RTX 8000 · 48 GB', dato: '2 GPU en un servidor', matiz: 'Configuración explícita del catálogo de la instalación.', fuentes: ['src-infraestructura'] },
+      { modelo: 'RTX20XX · 8 GB', dato: 'Tres configuraciones de dos GPU cada una', matiz: 'Modelo incompleto en la fuente; no se calcula un total de flota.', fuentes: ['src-infraestructura'] },
+    ],
+  },
+  'ctag-porrino-haaro': {
+    titulo: 'CTAG · HAARO, O Porriño',
+    resumen: 'Laboratorio de humanoides y robótica avanzada en el campus A Granxa. CTAG documenta GPU y servidores para entrenamiento y simulación, sin modelos ni cantidades.',
+    fuentes: ['src-haaro', 'src-presentacion-haaro', 'src-servicios'],
+    cronologia: [
+      { fecha: '2026-05-28', titulo: 'CTAG anuncia el laboratorio HAARO', detalle: 'La nota describe instalaciones adaptadas y la presentación celebrada en CTAG. No fecha la entrega de las GPU.', fuentes: ['src-presentacion-haaro'] },
+    ],
+  },
+  'ctic-gijon-cabuenes': {
+    titulo: 'CTIC · DataHub, Gijón',
+    resumen: 'DataHub documenta GPU en uso en el centro de Cabueñes. Las compras adjudicadas de A100 y Blackwell se conservan por separado, sin recepción ni modelos instalados confirmados.',
+    fuentes: ['src-datahub', 'src-pcap-datahub', 'src-adjudicacion-datahub', 'src-adjudicacion-arqade'],
+    hardware: [
+      { modelo: 'DataHub · GPU', dato: 'Servicio en uso; modelo sin confirmar', matiz: 'El operador describe cargas y modelos de lenguaje que siguen funcionando.', fuentes: ['src-datahub'] },
+      { modelo: 'DGX A100 · 8 A100 de 40 GB', dato: 'Configuración de compra adjudicada', matiz: 'Expediente de 2021; recepción y modelo instalado sin confirmar.', fuentes: ['src-adjudicacion-datahub', 'src-ppt-datahub'] },
+      { modelo: '8 RTX PRO 6000 Blackwell · 96 GB', dato: 'Referencia de compra, admite equivalentes', matiz: 'Expediente ARQADE de 2026; recepción y modelo entregado sin confirmar.', fuentes: ['src-adjudicacion-arqade', 'src-ppt-arqade'] },
+    ],
+    cronologia: [
+      { fecha: '2021-11-02', titulo: 'Publicación de la licitación DataHub', detalle: 'CT008/2021 especifica un DGX A100. El perfil consultado identifica adjudicatario, sin acta de recepción localizada.', fuentes: ['src-adjudicacion-datahub', 'src-ppt-datahub'] },
+      { fecha: '2026-03-10', titulo: 'Publicación de la licitación ARQADE', detalle: 'CT004/2026 pide ocho RTX PRO 6000 Blackwell o equivalente. La publicación no es fecha de adjudicación, entrega ni puesta en servicio.', fuentes: ['src-adjudicacion-arqade', 'src-ppt-arqade'] },
+    ],
+  },
   'upf-barcelona-correfoc': {
     resumen: 'Correfoc está en servicio desde julio de 2026. La UPF publica 57 L40S y 67 nodos; los 24 nodos de la ficha RES son una partición y no se suman al total.',
     fuentes: ['src-operacion', 'src-hardware', 'src-res'],

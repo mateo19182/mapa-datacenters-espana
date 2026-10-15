@@ -1,0 +1,97 @@
+id: ctag-porrino-haaro
+nombre: CTAG, laboratorio HAARO de humanoides y robótica avanzada, O Porriño
+alias:
+  - HAARO Lab
+  - Humanoid and Advanced Robotics Laboratory, CTAG
+  - CTAG HAARO, A Granxa
+tipo: edificio
+operador: Centro Tecnológico de Automoción de Galicia (CTAG)
+propietario: null
+modelo: corporativo
+
+ubicacion:
+  municipio: O Porriño
+  provincia: Pontevedra
+  ccaa: Galicia
+  direccion: Campus CTAG, Polígono Industrial A Granxa, calle A, parcelas 249-250
+  lat: null
+  lon: null
+  precision: desconocida
+  no_derivar: true
+  fuentes: [src-haaro, src-presentacion-haaro, src-servicios]
+
+estado: operativo
+estado_detalle: >-
+  CTAG documenta GPU, servidores y almacenamiento para entrenar y simular humanoides en HAARO,
+  su laboratorio de I+D de A Granxa, O Porriño. La presentación se publicó el 28 de mayo de
+  2026. No constan modelo ni cantidad de GPU, ni una fecha de entrega de las tarjetas.
+estado_fuentes: [src-haaro, src-presentacion-haaro]
+potencia: []
+
+computo:
+  - tipo: gpu
+    ambito: sistema
+    sistema: HAARO Lab, infraestructura de entrenamiento y simulación
+    modelo: null
+    unidades: null
+    tipo_unidad: acelerador
+    estado: operativo
+    modalidad: instalado
+    fecha_dato: null
+    fuentes: [src-haaro]
+    nota: >-
+      El catálogo del laboratorio confirma GPU junto a servidores, almacenamiento y licencias.
+      No publica fabricante, modelo, cantidad ni fecha de instalación.
+
+enlaces_proyecto:
+  - https://ctag.com/soluciones-y-servicios/fabricacion-avanzada/haaro-humanoides-y-robotica-avanzada/
+
+incertidumbres:
+  - campo: computo
+    descripcion: >-
+      La existencia de GPU está documentada, pero faltan modelo, recuento y fecha del inventario.
+      La presentación del laboratorio no permite fechar la recepción del hardware.
+    fuentes: [src-haaro, src-presentacion-haaro]
+  - campo: estado
+    descripcion: >-
+      HAARO es el laboratorio presentado por CTAG con instalaciones adaptadas. El futuro Polo
+      Tecnológico de Humanoides que menciona la noticia tiene otro alcance; no se registra como
+      construido ni como una ampliación GPU ya entregada.
+    fuentes: [src-presentacion-haaro]
+  - campo: ubicacion
+    descripcion: >-
+      El laboratorio pertenece al campus CTAG de A Granxa, en O Porriño. No se han verificado
+      las coordenadas ni la sala concreta. La referencia promocional a Vigo no cambia el municipio
+      y no se usa un centroide para colocar el punto.
+    fuentes: [src-presentacion-haaro, src-servicios]
+  - campo: potencia
+    descripcion: No constan MW IT, capacidad de acceso eléctrico ni consumo de agua del laboratorio.
+    fuentes: [src-haaro, src-presentacion-haaro]
+
+confianza: media
+ultima_verificacion: 2026-10-15
+fuentes:
+  - id: src-haaro
+    url: https://ctag.com/soluciones-y-servicios/fabricacion-avanzada/haaro-humanoides-y-robotica-avanzada/
+    titulo: HAARO Lab, Humanoides y Robótica avanzada
+    editor: Centro Tecnológico de Automoción de Galicia (CTAG)
+    tipo: asociacion
+    fecha_publicacion: null
+    fecha_consulta: 2026-10-15
+    cita: HAARO integra todos los medios necesarios para este proceso, incluyendo GPUs, almacenamiento, servidores y licencias específicas.
+  - id: src-presentacion-haaro
+    url: https://ctag.com/ctag-impulsa-haaro-su-nuevo-laboratorio-de-humanoides-y-robotica-avanzada/
+    titulo: CTAG impulsa HAARO, su nuevo laboratorio de humanoides y robótica avanzada
+    editor: Centro Tecnológico de Automoción de Galicia (CTAG)
+    tipo: asociacion
+    fecha_publicacion: 2026-05-28
+    fecha_consulta: 2026-10-15
+    cita: CTAG ha adaptado sus instalaciones e integra medios físicos y digitales, como el gemelo digital
+  - id: src-servicios
+    url: https://ctag.com/soluciones-y-servicios/
+    titulo: Soluciones y servicios, laboratorios CTAG
+    editor: Centro Tecnológico de Automoción de Galicia (CTAG)
+    tipo: asociacion
+    fecha_publicacion: null
+    fecha_consulta: 2026-10-15
+    cita: HAARO-Lab [...] Polígono Industrial A Granxa Calle A, parcelas 249-250 36475 Porriño (Pontevedra) España

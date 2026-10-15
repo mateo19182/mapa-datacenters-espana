@@ -1,0 +1,160 @@
+id: ctic-gijon-cabuenes
+nombre: Fundación CTIC, DataHub y CPD de Cabueñes, Gijón
+alias:
+  - CTIC DataHub
+  - CTIC Centro Tecnológico, Ada Byron 39
+  - CPD CTIC, Parque Científico y Tecnológico de Gijón
+tipo: edificio
+operador: Fundación CTIC Centro Tecnológico
+propietario: null
+modelo: corporativo
+
+ubicacion:
+  municipio: Gijón
+  provincia: Asturias
+  ccaa: Principado de Asturias
+  direccion: Calle Ada Byron 39, edificio Centros Tecnológicos, Parque Científico y Tecnológico de Cabueñes
+  lat: null
+  lon: null
+  precision: desconocida
+  no_derivar: true
+  fuentes: [src-pcap-datahub, src-ppt-arqade]
+
+estado: operativo
+estado_detalle: >-
+  El DataHub de CTIC documenta uso GPU para proyectos de I+D en el edificio de Cabueñes, Gijón.
+  Hay suministros adjudicados con A100 y Blackwell, pero no se ha confirmado la recepción ni el
+  modelo instalado de esas compras. El servicio existente y las adjudicaciones se registran por separado.
+estado_fuentes: [src-datahub, src-pcap-datahub, src-ppt-arqade]
+potencia: []
+
+computo:
+  - tipo: gpu
+    ambito: sistema
+    sistema: CTIC DataHub, servicio GPU existente
+    modelo: null
+    unidades: null
+    tipo_unidad: acelerador
+    estado: operativo
+    modalidad: instalado
+    fecha_dato: null
+    fuentes: [src-datahub, src-pcap-datahub]
+    nota: >-
+      La página del servicio describe trabajos que usan GPU y modelos que siguen funcionando.
+      No identifica su modelo o recuento actual; no se añade a las compras como otra flota independiente.
+  - tipo: gpu
+    ambito: sistema
+    sistema: CTIC DataHub, suministro adjudicado CT008/2021
+    modelo: NVIDIA A100 de 40 GB, configuración DGX A100 320 GB del suministro
+    unidades: 8
+    tipo_unidad: acelerador
+    nodos: 1
+    estado: desconocido
+    modalidad: adquirido
+    fecha_dato: null
+    fuentes: [src-adjudicacion-datahub, src-ppt-datahub, src-pcap-datahub]
+    nota: >-
+      El expediente publicado el 2 de noviembre de 2021 figura adjudicado a Seidor Tech por
+      300.000 euros más IVA. El PPT pide un DGX con ocho A100 y entrega en CTIC Cabueñes.
+      No consta acta de recepción ni inventario operativo que confirme ese modelo instalado.
+  - tipo: gpu
+    ambito: sistema
+    sistema: ARQADE y QUTE, suministro adjudicado CT004/2026
+    modelo: NVIDIA RTX PRO 6000 Blackwell Server Edition de 96 GB, referencia que admite equivalentes
+    unidades: 8
+    tipo_unidad: acelerador
+    nodos: 1
+    estado: desconocido
+    modalidad: adquirido
+    fecha_dato: null
+    fuentes: [src-adjudicacion-arqade, src-ppt-arqade]
+    nota: >-
+      El expediente publicado el 10 de marzo de 2026 figura adjudicado a Convergencia de
+      Telecomunicaciones por 154.900 euros más IVA. El PPT usa un Supermicro AS-5126GS-TNRT2
+      como referencia y admite equivalentes. Recepción y modelo efectivamente instalado sin confirmar.
+
+enlaces_proyecto:
+  - https://www.fundacionctic.org/es/infraestructuras-singulares/datahub
+
+incertidumbres:
+  - campo: computo
+    descripcion: >-
+      El DataHub acredita uso GPU, sin inventario por modelo. Los contratos documentan compras
+      con destino físico identificado, pero no se localizaron actas de recepción. El servicio
+      genérico, el DGX A100 de CT008/2021 y el servidor de CT004/2026 no se suman como tres flotas
+      distintas. El contrato AI4ES CT007/2021 tiene otro alcance y no se incorpora sin inventario.
+    fuentes: [src-datahub, src-adjudicacion-datahub, src-ppt-datahub, src-adjudicacion-arqade, src-ppt-arqade]
+  - campo: computo.modelo
+    descripcion: >-
+      El modelo Blackwell y sus ocho GPU son la referencia del PPT, que admite equivalentes.
+      No constituyen prueba del modelo final entregado. RTX PRO 6000 Blackwell no se sustituye
+      por B200 y la simulación cuántica de QUTE no convierte el servidor GPU en una QPU.
+    fuentes: [src-ppt-arqade]
+  - campo: computo.fecha_dato
+    descripcion: >-
+      Las fechas 2 de noviembre de 2021 y 10 de marzo de 2026 corresponden a publicación de los
+      procedimientos, no a adjudicación, entrega ni servicio del hardware. La carpeta 2026-02 de
+      los PDF de DataHub no fecha la compra original. Las fechas del inventario quedan vacías.
+    fuentes: [src-adjudicacion-datahub, src-ppt-datahub, src-adjudicacion-arqade, src-ppt-arqade]
+  - campo: ubicacion
+    descripcion: >-
+      Los pliegos señalan el edificio CTIC de Ada Byron 39 en Cabueñes como destino del hardware.
+      No se han verificado coordenadas del recinto y no se usa el centro de Gijón como ubicación.
+    fuentes: [src-pcap-datahub, src-ppt-arqade]
+  - campo: potencia
+    descripcion: >-
+      Las fuentes no publican MW IT ni acceso eléctrico concedido del centro. La refrigeración
+      prevista en el suministro ARQADE no acredita por sí sola su instalación o consumo de agua actual.
+    fuentes: [src-datahub, src-ppt-arqade]
+
+confianza: media
+ultima_verificacion: 2026-10-15
+fuentes:
+  - id: src-datahub
+    url: https://www.fundacionctic.org/es/infraestructuras-singulares/datahub
+    titulo: DataHub
+    editor: Fundación CTIC Centro Tecnológico
+    tipo: asociacion
+    fecha_publicacion: null
+    fecha_consulta: 2026-10-15
+    cita: procesadores de cálculo CPU y GPU de forma combinada [...] se desarrollaron y siguen en funcionamiento
+  - id: src-adjudicacion-datahub
+    url: https://fundacionctic.org/es/licitacion/infraestructura-para-la-investigacion-en-espacios-de-datos-compartidos-ctic-datahub
+    titulo: Infraestructura para la investigación en Espacios de Datos Compartidos, CTIC-DATAHUB, CT008/2021
+    editor: Fundación CTIC Centro Tecnológico
+    tipo: asociacion
+    fecha_publicacion: 2021-11-02
+    fecha_consulta: 2026-10-15
+    cita: Entidad adjudicataria SEIDOR TECH S.A. [...] 300000.00 € + IVA
+  - id: src-ppt-datahub
+    url: https://fundacionctic.org/sites/default/files/2026-02/3%20PPT_DATAHUB.pdf
+    titulo: PPT CT008/2021, CTIC DataHub, página 4
+    editor: Fundación CTIC Centro Tecnológico
+    tipo: asociacion
+    fecha_publicacion: null
+    fecha_consulta: 2026-10-15
+    cita: 1 subsistema de computación GPU (NVIDIA DGX A100 320GB) [...] 8x NVIDIA A100 40 GB GPUs
+  - id: src-pcap-datahub
+    url: https://fundacionctic.org/sites/default/files/2026-02/1%20PCAP_DATAHUB.pdf
+    titulo: PCAP CT008/2021, lugar de entrega en CTIC, página 42
+    editor: Fundación CTIC Centro Tecnológico
+    tipo: asociacion
+    fecha_publicacion: null
+    fecha_consulta: 2026-10-15
+    cita: C/ Ada Byron, 39 – Edificio Centros Tecnológicos Parque Científico y Tecnológico de Gijón 33203 – Cabueñes – Gijón – Asturias
+  - id: src-adjudicacion-arqade
+    url: https://fundacionctic.org/es/licitacion/infraestructura-de-computacion-de-alto-rendimiento-arqade-alianza-de-centros
+    titulo: Infraestructura de computación de alto rendimiento ARQADE, CT004/2026
+    editor: Fundación CTIC Centro Tecnológico
+    tipo: asociacion
+    fecha_publicacion: 2026-03-10
+    fecha_consulta: 2026-10-15
+    cita: Entidad adjudicataria CONVERGENCIA DE TELECOMUNICACIONES S.L. [...] 154900.00 € + IVA
+  - id: src-ppt-arqade
+    url: https://fundacionctic.org/sites/default/files/2026-03/2-%20Pliego%20prescripciones%20tecnicas%20ARQADE.pdf
+    titulo: PPT CT004/2026 ARQADE, referencias de hardware y lugar de instalación, páginas 4 y 8-9
+    editor: Fundación CTIC Centro Tecnológico
+    tipo: asociacion
+    fecha_publicacion: 2026-03-10
+    fecha_consulta: 2026-10-15
+    cita: 8× NVIDIA RTX PRO 6000 Blackwell Server Edition 96GB GDDR7 ECC [...] Edificio CTIC Centro Tecnológico del Parque Científico Tecnológico de Cabueñes

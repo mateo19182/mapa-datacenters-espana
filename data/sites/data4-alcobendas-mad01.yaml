@@ -73,6 +73,53 @@ conexion_electrica:
   subestacion: "Sanchinarro (acometida principal); Alcobendas y Arroyo de la Vega (respaldo)"
   fuentes: [ src-1 ]
 
+computo:
+  - tipo: gpu
+    modalidad: acceso
+    ambito: sistema
+    sistema: "EasyDataHost, servicio de servidores GPU Blackwell"
+    operador_computo: "EasyDataHost"
+    modelo: "NVIDIA RTX 6000 Server Edition, 96 GB GDDR7 ECC, arquitectura Blackwell"
+    unidades: null
+    tipo_unidad: acelerador
+    estado: operativo
+    fuentes: [ src-edh-gpu, src-edh-facility ]
+    nota: >-
+      Oferta comercial publicada por EasyDataHost, que identifica el campus DATA4 Alcobendas
+      como alojamiento de sus servicios. Se conserva la denominación del proveedor. Las opciones
+      de dos, cuatro u ocho tarjetas son configuraciones de contratación, sin recuento de flota
+      instalada ni edificio o sala identificados dentro del campus. La página no fecha el dato.
+  - tipo: gpu
+    modalidad: acceso
+    ambito: sistema
+    sistema: "EasyDataHost, servicio de servidores NVIDIA H200"
+    operador_computo: "EasyDataHost"
+    modelo: "NVIDIA H200, 141 GB HBM3e, arquitectura Hopper"
+    unidades: null
+    tipo_unidad: acelerador
+    estado: operativo
+    fuentes: [ src-edh-gpu, src-edh-facility ]
+    nota: >-
+      La oferta enterprise anuncia acceso a H200, con precio a consultar. EasyDataHost sitúa sus
+      servidores GPU en su centro madrileño y sus servicios en el campus DATA4 Alcobendas. No
+      publica cantidad instalada, fecha de entrega ni edificio o sala dentro del campus; se
+      registra acceso comercial, sin inventario físico acreditado.
+  - tipo: gpu
+    modalidad: acceso
+    ambito: sistema
+    sistema: "EasyDataHost, servicio NVIDIA DGX Spark hospedado"
+    operador_computo: "EasyDataHost"
+    modelo: "NVIDIA DGX Spark, superchip Grace Blackwell GB10"
+    unidades: null
+    tipo_unidad: nodo
+    estado: operativo
+    fuentes: [ src-edh-spark, src-edh-facility ]
+    nota: >-
+      Servicio hospedado con acceso remoto que el proveedor ubica en su centro madrileño y,
+      mediante su página de instalaciones, en el campus DATA4 Alcobendas. GB10 integra CPU y GPU;
+      los 128 GB anunciados son memoria unificada, no memoria exclusiva de GPU. Los paquetes de
+      uno, dos o tres nodos no publican la flota instalada. Sin fecha del dato ni edificio o sala.
+
 superficie_parcela_m2: 40000
 enlaces_proyecto:
   - "https://www.data4group.com/es/centros-de-datos-en-espana-2/"
@@ -108,9 +155,15 @@ incertidumbres:
     fuentes:
       - src-1
       - src-4
+  - campo: computo
+    descripcion: >-
+      EasyDataHost vincula sus servicios al campus DATA4 Alcobendas, sin edificio o sala ni
+      cantidades instaladas. Su expresión "centro de datos propio" no acredita propiedad del
+      campus. Las páginas carecen de fecha editorial; la consulta no fecha instalación o apertura.
+    fuentes: [ src-edh-gpu, src-edh-spark, src-edh-facility ]
 
 confianza: media
-ultima_verificacion: "2026-10-14"
+ultima_verificacion: "2026-10-15"
 
 fuentes:
   - id: src-1
@@ -158,3 +211,28 @@ fuentes:
     fecha_consulta: "2026-08-31"
     cita: "DATA4 – MAD01, Alcobendas, Madrid Potencia IT: 14 MW Detalles del proyecto: - Promotor:
       Digital Realty - País: España - Año: 2024 - Cliente: WSP Spain - Constructora: Mercury"
+  - id: src-edh-gpu
+    url: "https://easydatahost.com/gpu-servers"
+    titulo: "Servidores GPU NVIDIA para IA y HPC"
+    editor: "EasyDataHost"
+    tipo: empresa
+    fecha_consulta: "2026-10-15"
+    cita: >-
+      NVIDIA RTX 6000 Server Edition (96GB GDDR7 ECC, arquitectura Blackwell) ...
+      NVIDIA H200 (141GB HBM3e, arquitectura Hopper)
+  - id: src-edh-spark
+    url: "https://easydatahost.com/nvidia-dgx-spark"
+    titulo: "NVIDIA DGX Spark, supercomputador IA Grace Blackwell hospedado en Madrid"
+    editor: "EasyDataHost"
+    tipo: empresa
+    fecha_consulta: "2026-10-15"
+    cita: >-
+      superchip GB10 con 128 GB de memoria unificada coherente. Hospedado en nuestro datacenter
+      Tier III+ Madrid
+  - id: src-edh-facility
+    url: "https://easydatahost.com/facility"
+    titulo: "Nuestras instalaciones en Data4"
+    editor: "EasyDataHost"
+    tipo: empresa
+    fecha_consulta: "2026-10-15"
+    cita: "Nuestros servicios se alojan en el campus Data4 de Alcobendas"

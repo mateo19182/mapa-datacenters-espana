@@ -1,8 +1,8 @@
 # Cómputo documentado en España
 
-Revisión del 14 de octubre de 2026. El registro contiene 207 emplazamientos; 25
-tienen información en `computo[]`, con 67 afirmaciones de hardware, particiones
-o servicios. No son 67 máquinas independientes ni un inventario físico completo
+Revisión del 15 de octubre de 2026. El registro contiene 212 emplazamientos; 32
+tienen información en `computo[]`, con 88 afirmaciones de hardware, particiones
+o servicios. No son 88 máquinas independientes ni un inventario físico completo
 del país. El [explorador de cómputo](https://datacenters.m19182.dev/computo/) y el
 [JSON generado](../src/data/computo.json) permiten consultar cada afirmación con
 sus fuentes y alcance.
@@ -16,10 +16,10 @@ la afirmación anterior de haber cerrado todo el universo de la RES.
 
 | Evidencia de despliegue o acceso | Entradas | Interpretación |
 | --- | ---: | --- |
-| Instalado | 44 | Una fuente documenta recursos físicos en el emplazamiento. No implica medición de uso ni inspección propia. |
-| Adquirido | 2 | Compra documentada; instalación o servicio sin confirmar. |
-| Previsto | 9 | Anuncio, adjudicación o despliegue futuro. No cuenta como instalación acreditada. |
-| Acceso | 2 | Servicio ofrecido o capacidad contratada, sin acreditar por ello hardware físico local. |
+| Instalado | 59 | Una fuente documenta recursos físicos en el emplazamiento. No implica medición de uso ni inspección propia. |
+| Adquirido | 4 | Compra documentada; instalación o servicio sin confirmar. |
+| Previsto | 10 | Anuncio, adjudicación o despliegue futuro. No cuenta como instalación acreditada. |
+| Acceso | 5 | Servicio ofrecido o capacidad contratada, sin acreditar por ello hardware físico local. |
 | Ubicación o despliegue sin confirmar | 10 | Inventario conservado, pero sin atribución física confirmada a la sede de la ficha. |
 
 La clasificación está en `modalidad`. El estado del recurso se conserva aparte:
@@ -39,7 +39,7 @@ instalación. Las [reglas del esquema](../docs/ESQUEMA.md) detallan estos campos
 | CSA de Cidade das TIC, A Coruña | El dosier de 2026 publica 15 L4; el catálogo técnico documenta L4 y A40 en la instalación. La oferta anuncia acceso a H200 de 141 GB. | El lanzamiento dice más de 15 L4. El catálogo discrepa entre 2 y 3 servidores A40; no se calcula un total. La H200 queda como acceso sin cantidad ni instalación física confirmada. [Ficha y fuentes primarias](../data/sites/cluster-tic-galicia-a-coruna-csa.yaml). |
 | CESGA, nueva sede de A Sionlla | FinisTerrae IV y almacenamiento adjudicados el 03/03/2026. Se anunciaron IQM Radiance de 54 cúbits y Spark de 5. | Son equipos previstos, distintos del futuro superordenador de 1HealthAI. La convocatoria de presentación del 12/06 no acredita recepción ni servicio. FinisTerrae III y Qmio se conservan con ubicación sin confirmar en el edificio nuevo. [Adjudicación Xunta](https://www.xunta.gal/es/notas-de-prensa/-/nova/022035/xunta-adjudica-fsas-technologies-adquisicion-del-nuevo-supercomputador-del-cesga), [convocatoria CESGA](https://www.cesga.es/en/presentation-event-cesga-new-infrastructure/), [ficha](../data/sites/cesga-santiago-a-sionlla.yaml). |
 | SCAYLE, nueva sede de Gaspar Morocho | Se conserva el inventario de Caléndula, incluido el total publicado de 181 GPU y la partición de 140 H100. | Son datos del servicio institucional. La migración desde Vegazana no permite afirmar qué particiones están ya en la nueva sede. Las seis entradas quedan con ubicación sin confirmar. [Ficha y fuentes](../data/sites/scayle-leon-gaspar-morocho.yaml). |
-| Nebius en MERLIN Edged Getafe | MERLIN confirma un contrato de 18 MW para Nebius. | Es capacidad contratada. Las fuentes consultadas no publican modelo ni número de GPU y no acreditan su instalación por ese contrato. [MERLIN](https://www.merlinproperties.com/dia-a-dia/firmamos-un-contrato-de-18-mw-con-nebius-para-nuestro-date-center-madrid-getafe/), [ficha](../data/sites/merlin-edged-getafe-mad01.yaml). |
+| Nebius en MERLIN Edged Getafe | MERLIN confirma un contrato de 18 MW para Nebius. | Es capacidad contratada. La documentación actual de Nebius ofrece RTX PRO 6000 en Madrid, pero no vincula esa región con este edificio. El contrato no acredita instalación física ni cantidad. [MERLIN](https://www.merlinproperties.com/dia-a-dia/firmamos-un-contrato-de-18-mw-con-nebius-para-nuestro-date-center-madrid-getafe/), [ficha](../data/sites/merlin-edged-getafe-mad01.yaml). |
 | CITIC, Campus de Elviña | La memoria documenta adquisición de H100 y kits Jetson AGX Orin/Thor sin recuento. | Se clasifica como adquirido, con servicio sin confirmar. Es un emplazamiento distinto del CSA. [Ficha y memoria](../data/sites/citic-a-coruna-elvina.yaml). |
 
 El resto de inventarios públicos del barrido anterior se conserva en sus fichas,
@@ -47,6 +47,24 @@ con sus fechas y discrepancias. Incluye BIFI, CCC-UAM, CeSViMa, COMPUTAEX, CSUC,
 IAC, NASERTIC, PIC, IFCA y la Universitat de València. La anotación de
 `modalidad` sobre fuentes ya citadas no supone renovar todas esas cifras a
 octubre de 2026.
+
+## Incorporaciones de GPU privadas e I+D del 15 de octubre
+
+| Emplazamiento | Evidencia incorporada | Límite |
+| --- | --- | --- |
+| [Cogent San Sebastián de los Reyes](../data/sites/cogent-san-sebastian-de-los-reyes.yaml) | Dos servidores de Hostealo con cuatro RTX PRO 6000 Blackwell y cuatro RTX 6000 Ada. | Cantidades explícitas del cliente; no inventario de todo Cogent. Fecha de instalación y MW desconocidos. |
+| [DATA4 Alcobendas](../data/sites/data4-alcobendas-mad01.yaml) | Acceso EasyDataHost a Blackwell, H200 y DGX Spark. | Ofertas comerciales vinculadas al campus, sin recuento instalado ni edificio interior. |
+| [TECNALIA Derio](../data/sites/tecnalia-derio-deep-learning.yaml) | Seis servidores GPU en el edificio 700. | El total publicado de 13 GPU contradice el desglose. No se reconcilia ni se fecha el inventario. |
+| [AIMEN AM Pilot Factory](../data/sites/aimen-porrino-am-pilot-factory.yaml) | Un servidor con dos RTX 8000 y tres configuraciones RTX20XX de dos tarjetas cada una. | Se conservan configuraciones y familia incompleta, sin calcular una flota total. |
+| [CTAG HAARO](../data/sites/ctag-porrino-haaro.yaml) | GPU documentadas en el laboratorio de A Granxa, O Porriño. | Modelo, cantidad y fecha de entrega desconocidos. |
+| [CTIC Cabueñes](../data/sites/ctic-gijon-cabuenes.yaml) | Servicio GPU en uso y dos compras adjudicadas separadas: A100 de 2021 y Blackwell de 2026. | El servicio no cierra modelos instalados. Las compras siguen adquiridas, sin recepción; Blackwell admite equivalentes. |
+| [Digital Realty BCN1](../data/sites/digital-realty-sant-adria-bcn1.yaml) | Blackfuel anuncia AMD MI355X con entrega y servicio previstos para 2026. | Modalidad prevista, sin recuento ni puesta en producción confirmada. |
+
+Los centros tecnológicos se describen como I+D, separados de proveedores comerciales.
+La [investigación completa](revisiones/2026-10-15-gpu-privadas.md) conserva las
+fuentes y los casos que aún no identifican un centro. Las pistas de GPU Solutions,
+ARQUIMEA, Idoven, Arsys, Gradiant/CESGA y los servicios regionales permanecen en
+la [cola de revisión](../data/revision.yaml), sin nuevos puntos físicos inferidos.
 
 ## Reglas para comparar sin fabricar totales
 
