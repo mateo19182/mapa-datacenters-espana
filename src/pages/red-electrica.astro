@@ -58,11 +58,11 @@ const mw = (v) => v == null ? 'No publicado' : `${numero(v)} MW`
       Edición REE: {fechaLegible(fechaDato)} · {numero(nudos.length)} nudos publicados ·{' '}
       <a href="https://www.ree.es/es/clientes/consumidor/acceso-conexion/conoce-la-capacidad-de-acceso" target="_blank" rel="noopener">Fuente oficial</a> · <a href="/datos/capacidad.json" download>Descargar JSON</a>
     </p>
-    <p class="nota pequeno">MW de acceso, no MW IT. El margen de distintos nudos <Termino id="zona-capacidad">no se puede sumar</Termino>. Consulta el criterio técnico aplicable a tu consumo.</p>
-    <p class="pequeno silencio">La tabla cubre todos los territorios del CSV. El mapa contiene {subestacionesSituadas.length} subestaciones situadas con fuentes propias. Un nudo sin coordenadas o sin vínculo documentado con una subestación conserva sus datos en esta tabla.</p>
+    <p class="nota pequeno">MW de acceso, no MW IT. Los márgenes de distintos nudos <Termino id="zona-capacidad">no se suman</Termino>.</p>
+    <p class="pequeno silencio">Todos los territorios del CSV; {subestacionesSituadas.length} subestaciones situadas en el mapa. Los nudos sin coordenadas se consultan en la tabla.</p>
 
     <h2 id="nudos">Consultar nudos</h2>
-    <details class="ayuda-criterios"><summary>Cómo leer los tres criterios de capacidad</summary><p class="pequeno silencio">CEP CH: electrónica de potencia con cumplimiento de huecos de tensión. CEP SH: sin cumplimiento. No CEP: consumo sin electrónica de potencia. Orden inicial por el mayor de los tres valores publicados.</p></details>
+    <details class="ayuda-criterios"><summary>Cómo interpretar la tabla</summary><p class="pequeno silencio">CEP CH: electrónica de potencia con cumplimiento de huecos de tensión. CEP SH: sin cumplimiento. No CEP: consumo sin electrónica de potencia. El orden inicial usa el mayor valor publicado; consulta el criterio aplicable al diseño del consumo.</p><p class="pequeno silencio">Otorgada: permiso concedido. En curso: solicitud pendiente. No acreditan una instalación construida. Un dato no publicado se distingue de cero.</p></details>
     <ExploradorEnergia id="explorador-nudos" nombre="nudos" filtros={filtros} ordenes={ordenes} busqueda="Nudo o comunidad…">
       <div class="tabla-envoltorio">
         <table class="tabla-fichas">
@@ -83,11 +83,10 @@ const mw = (v) => v == null ? 'No publicado' : `${numero(v)} MW`
         </table>
       </div>
     </ExploradorEnergia>
-    <p class="pequeno silencio">Otorgada: permiso concedido. En curso: solicitud pendiente. Ninguna de las dos acredita una instalación construida. Un dato no publicado se conserva separado de cero.</p>
 
     <details class="bloque" id="comunidades">
       <summary>Reparto por comunidad autónoma</summary>
-      <p class="pequeno silencio">Recuento de nudos y máximo de un solo nudo entre los tres criterios. No es capacidad agregada ni una estimación de capacidad para CPD.</p>
+      <p class="pequeno silencio">Recuento de nudos y máximo individual entre los tres criterios.</p>
       <div class="tabla-envoltorio"><table class="tabla-fichas">
         <thead><tr><th>Comunidad</th><th class="num">Nudos</th><th class="num">Con margen</th><th class="num">Cero publicado</th><th class="num">Sin dato</th><th class="num">Máximo de un nudo</th></tr></thead>
         <tbody>{porCcaa.map((c) => <tr><td>{c.ccaa}</td><td class="num" data-etiqueta="Nudos">{c.total}</td><td class="num" data-etiqueta="Con margen">{c.conMargen}</td><td class="num" data-etiqueta="Cero publicado">{c.cero}</td><td class="num" data-etiqueta="Sin dato">{c.sinDato}</td><td class="num" data-etiqueta="Máximo de un nudo">{mw(c.maximo)}</td></tr>)}</tbody>

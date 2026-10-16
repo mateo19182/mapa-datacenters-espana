@@ -1,18 +1,14 @@
 ---
 import Base from '../../layouts/Base.astro'
 import { Content as Documento } from '../../contenido/red-electrica.md'
-import normativa from '../../data/normativa.json'
-import { fechaLegible } from '../../lib/etiquetas.js'
-import { ESTADO_NORMA_ETIQUETA } from '../../lib/normativa.js'
-const decreto = normativa.find((n) => n.id === 'prd-centros-datos-sostenibles')
+import { REPOSITORIO } from '../../lib/enlaces.js'
 ---
 <Base titulo="Guía del acceso a la red" descripcion="Permisos de acceso y conexión, capacidad por criterio técnico, concursos y límites de los datos de la red eléctrica.">
   <div class="contenedor-estrecho">
     <p class="migas"><a href="/red-electrica">Red eléctrica</a> · Guía</p>
-    <p class="nota pequeno">Consulta los nudos y la edición vigente en <a href="/red-electrica">el explorador de red</a>. Esta guía conserva recuentos históricos identificados por fecha.</p>
-    {decreto && <p class="pequeno silencio">Proyecto de decreto: <a href={`/normativa/${decreto.id}`}>{ESTADO_NORMA_ETIQUETA[decreto.estado]}</a> · Verificado el {fechaLegible(decreto.ultima_verificacion)}.</p>}
     <article class="prosa"><Documento /></article>
+    <details class="archivo"><summary>Investigación histórica y fuentes</summary><p>Los recuentos de febrero y agosto de 2026, el análisis anterior y sus citas se conservan en el <a href={`${REPOSITORIO}/blob/main/research/revisiones/2026-10-16-archivo-red-electrica.md`}>archivo de investigación</a>. La fecha del archivo no renueva la verificación de esos datos.</p></details>
     <p class="volver"><a href="/red-electrica">Volver a los datos de red</a></p>
   </div>
 </Base>
-<style>.volver { margin: 2rem 0 3rem; } .prosa { overflow-wrap: anywhere; }</style>
+<style>.volver { margin: 2rem 0 3rem; } .prosa { overflow-wrap: anywhere; } .archivo { border-top: 1px solid var(--borde); padding-top: 1rem; margin-top: 2rem; font-size: .85rem; } .archivo summary { cursor: pointer; } .archivo p { color: var(--tinta-2); }</style>

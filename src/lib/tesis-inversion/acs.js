@@ -1,9 +1,7 @@
 export default {
   id: 'acs', nombre: 'ACS', ticker: 'BME: ACS',
   categoria: 'Construcción, promoción y capital digital', fecha: '1 septiembre 2026',
-  sobrelinea: 'Tres formas de cobrar el mismo ciclo de inversión',
   descripcion: 'Tesis técnica de ACS: Turner, Coravel, desarrollo de centros de datos, cuentas, valoración y cotización.',
-  tesisCorta: 'ACS construye centros para terceros, desarrolla activos propios y comparte capital con GIP de BlackRock. La exposición es amplia. También lo es el precio que la bolsa ya paga por ella.',
   lectura: 'Calidad alta, valoración exigente',
   veredicto: 'Turner convierte demanda en cartera y caja sin asumir todo el riesgo inmobiliario. El desarrollo añade upside, pero también conexión, prealquiler y financiación a una acción que ya ha subido un 58%.',
   horizonte: '2026 a 2030',
@@ -21,7 +19,7 @@ export default {
     { etiqueta: 'Turner, margen EBITDA', valor: '4,0%', nota: '+64 puntos básicos' },
     { etiqueta: 'Inversión DC LTM', valor: '€746m', nota: 'Desarrollo propio' },
   ],
-  resumen: 'ACS monetiza la expansión digital en varias capas. Turner y Dornan construyen; ACS Digital & Energy desarrolla y opera; Dragados ejecuta; Coravel, compartida al 50% con GIP, aporta capital y rotación. No se deben sumar cartera de obra, MW promovidos y valor de activos como si fueran la misma exposición económica.',
+  resumen: 'ACS monetiza la expansión digital en varias capas. Turner y Dornan construyen; ACS Digital & Energy desarrolla y opera; Dragados ejecuta; Coravel, compartida al 50% con GIP de BlackRock, aporta capital y rotación. No se deben sumar cartera de obra, MW promovidos y valor de activos como si fueran la misma exposición económica.',
   favor: [
     'Turner crece con baja intensidad de capital y una cartera de €46.096m.',
     'Coravel permite reciclar capital sin abandonar la operación de la plataforma.',

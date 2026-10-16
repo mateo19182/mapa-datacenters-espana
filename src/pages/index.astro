@@ -23,20 +23,20 @@ const modelosPresentes = Object.keys(MODELO_ETIQUETA).filter((m) => sitios.some(
   pantallaCompleta
 >
   <div class="barra-exploracion">
-    <label class="buscar-mapa" for="filtro-texto"><span class="solo-lectores">Buscar emplazamientos</span><input id="filtro-texto" type="search" placeholder="Proyecto, operador, municipio…" autocomplete="off" /></label>
+    <label class="buscar-mapa" for="filtro-texto"><span class="solo-lectores">Buscar emplazamientos</span><input id="filtro-texto" type="search" placeholder="Nombre, operador, municipio…" autocomplete="off" /></label>
     <div class="estados-rapidos" aria-label="Filtrar por estado">
       <button type="button" data-grupo-estado="todos" aria-pressed="true">Todos</button>
       <button type="button" data-grupo-estado="operativos" aria-pressed="false">Operativos</button>
-      <button type="button" data-grupo-estado="construccion" aria-pressed="false">En obras</button>
+      <button type="button" data-grupo-estado="construccion" aria-pressed="false">En construcción</button>
       <button type="button" data-grupo-estado="proyectos" aria-pressed="false">En proyecto</button>
     </div>
-    <div class="vistas-mapa"><button id="alternar-panel" type="button" aria-expanded="false" aria-controls="panel-filtros">Lista y filtros</button><a href="/proyectos" id="ver-listado">Tabla</a><a class="novedades-movil" href="/actualizaciones">Cambios</a></div>
+    <div class="vistas-mapa"><button id="alternar-panel" type="button" aria-expanded="false" aria-controls="panel-filtros">Lista y filtros</button><a href="/proyectos" id="ver-listado" data-ver-listado>Tabla</a><a class="novedades-movil" href="/actualizaciones">Cambios</a></div>
   </div>
   <div class="disposicion">
     <aside id="panel-filtros" class="panel" aria-label="Resultados y filtros del mapa">
       <div class="panel-cabecera">
         <div><p id="recuento" class="recuento" aria-live="polite">{numero(sitios.length)} emplazamientos</p><p id="fuera-mapa" class="pequeno silencio"></p></div>
-        <button id="limpiar-filtros" type="button">Limpiar</button>
+        <div class="panel-acciones"><a class="tabla-movil" href="/proyectos" data-ver-listado>Ver tabla</a><button id="limpiar-filtros" type="button">Limpiar</button></div>
       </div>
       <div class="filtros-principales">
         <label><span class="etiqueta-campo">Comunidad</span><select id="filtro-ccaa" data-filtro="ccaa"><option value="">Todas</option>{ccaas.map((c) => <option value={c}>{c}</option>)}</select></label>
@@ -59,11 +59,11 @@ const modelosPresentes = Object.keys(MODELO_ETIQUETA).filter((m) => sitios.some(
           <label class="casilla"><input type="checkbox" data-capa="subestaciones" /><span class="casilla-texto">Subestaciones y nudos · {resumen.nodos_red}</span></label>
           <label class="casilla"><input type="checkbox" data-capa="renovables" /><span class="casilla-texto">Renovables y BESS vinculados · {resumen.activos_renovables}</span></label>
           <label class="casilla"><input type="checkbox" data-capa="centrales" /><span class="casilla-texto">Centrales de generación · {numero(resumen.centrales_generacion)}</span></label>
-          <p class="ayuda">Trazado y centrales de OpenStreetMap. {numero(resumen.centrales_con_potencia)} centrales publican potencia instalada. {resumen.generacion_dia ? `Generación medida del ${resumen.generacion_dia}.` : 'Sin datos de generación real cargados.'} <a href="/metodologia#capas">Cómo leer las capas</a>.</p>
+          <p class="ayuda">Red y centrales de OpenStreetMap. Potencia instalada en {numero(resumen.centrales_con_potencia)} centrales. {resumen.generacion_dia ? `Generación medida del ${resumen.generacion_dia}.` : 'Sin generación medida.'} <a href="/metodologia#capas">Origen de las capas</a>.</p>
         </fieldset>
       </details>
-      <details class="lectura-mapa"><summary>Capacidad documentada y leyenda</summary><p id="suma" class="pequeno"></p><p class="ayuda">Círculo hueco: magnitud no publicada para la etapa elegida. Atenuado: ubicación aproximada. Las etapas pueden solaparse y no se suman.</p><a class="pequeno" href="/metodologia">Metodología</a></details>
-      <ol id="lista-resultados" class="lista"><li class="sin-js"><a href="/proyectos">Abrir el listado de proyectos</a></li></ol>
+      <details class="lectura-mapa"><summary>Capacidad y leyenda</summary><p id="suma" class="pequeno"></p><p class="ayuda">Círculo hueco: sin dato para la etapa elegida. Atenuado: ubicación municipal. Las etapas no se suman.</p><a class="pequeno" href="/metodologia">Metodología</a></details>
+      <ol id="lista-resultados" class="lista"><li class="sin-js"><a href="/proyectos">Ver emplazamientos</a></li></ol>
     </aside>
     <div class="zona-mapa">
       <p id="cargando-mapa" class="cargando-mapa" role="status" hidden>Cargando cartografía…</p>
@@ -125,6 +125,9 @@ const modelosPresentes = Object.keys(MODELO_ETIQUETA).filter((m) => sitios.some(
   .panel-cabecera p + p {
     margin: 0.15rem 0 0;
   }
+
+  .panel-acciones { display: flex; align-items: center; gap: .8rem; }
+  .tabla-movil { display: none; font-size: .74rem; white-space: nowrap; }
 
   .grupo {
     padding: 0.85rem 1rem;
@@ -535,6 +538,7 @@ const modelosPresentes = Object.keys(MODELO_ETIQUETA).filter((m) => sitios.some(
     .estados-rapidos button { white-space: nowrap; flex: none; }
     .vistas-mapa { gap: .5rem; margin-left: 0; }
     .vistas-mapa #ver-listado { display: none; }
+    .tabla-movil { display: inline; }
     .novedades-movil { display: inline; font-size: .72rem; }
     #alternar-panel { display: block; font-size: .72rem; padding: .4rem .5rem; }
     .disposicion { grid-template-columns: 1fr; }

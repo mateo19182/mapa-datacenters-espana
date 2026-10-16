@@ -57,8 +57,8 @@ export const CIRCUITOS_AGUA = ['cerrado', 'abierto', 'hibrido', 'sin_agua', 'des
 
 export const TIPOS_EMPLEO = ['directo', 'indirecto', 'construccion', 'total', 'no_especificado']
 
-// Cómputo instalado. Es hardware, no potencia eléctrica: nada de este bloque
-// entra en `potencia[]` ni dimensiona el punto en el mapa.
+// Cómputo documentado, con instalación, adquisición, previsión o acceso separados.
+// No entra en `potencia[]` ni dimensiona el punto en el mapa.
 export const TIPOS_COMPUTO = [
   'gpu', // acelerador gráfico de propósito general (NVIDIA, AMD, Intel)
   'asic_ia', // silicio propio de un hyperscaler: Trainium, TPU, Maia
@@ -67,8 +67,7 @@ export const TIPOS_COMPUTO = [
   'no_especificado',
 ]
 export const UNIDADES_COMPUTO = ['acelerador', 'procesador', 'nucleo', 'qubit', 'nodo', 'no_especificado']
-// Igual que en `potencia`, una cifra de ámbito `sistema` manda sobre cualquier
-// suma de particiones: se entiende que el dato global ya las incluye.
+// Un sistema y sus particiones pueden solaparse. Los recuentos no se agregan.
 export const AMBITOS_COMPUTO = ['sistema', 'particion']
 // Los FLOPS no se comparan entre precisiones ni entre pico y medida: un EFlop/s
 // en FP4 no es mil PFlop/s en FP64. Por eso las tres cosas viajan por separado.

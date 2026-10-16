@@ -4,15 +4,12 @@ import normativa from '../../data/normativa.json'
 import { fechaLegible } from '../../lib/etiquetas.js'
 import { AMBITO_ETIQUETA, ESTADO_NORMA_ETIQUETA, ESTADO_NORMA_DESCRIPCION, MATERIA_ETIQUETA, ordenarNormas } from '../../lib/normativa.js'
 import Glosa from '../../components/Glosa.astro'
-import { tituloNorma } from '../../lib/normativa-presentacion.js'
+import { tituloNorma, efectoNorma, etiquetaHitoNorma, calendarioNormas } from '../../lib/normativa-presentacion.js'
 import ExploradorEnergia from '../../components/ExploradorEnergia.astro'
 
 const hoy = new Date().toISOString().slice(0, 10)
 const normas = ordenarNormas(normativa)
-const abiertas = ['consulta_previa', 'audiencia_publica', 'adoptada_en_control', 'en_tramitacion', 'propuesta', 'en_vigor_en_tramitacion']
-const enMovimiento = normas.filter((n) => abiertas.includes(n.estado))
-const calendario = normas.flatMap((n) => (n.hitos ?? []).filter((h) => h.fecha > hoy).map((h) => ({ ...h, norma: n }))).sort((a, b) => a.fecha.localeCompare(b.fecha))
-const primero = (texto) => texto?.split(/(?<=[.!?])\s+/)[0] ?? ''
+const calendario = calendarioNormas(normas, hoy)
 const ultimoHito = (n) => [...(n.hitos ?? [])].filter((h) => !h.previsto && h.fecha <= hoy).sort((a, b) => b.fecha.localeCompare(a.fecha))[0]
 const opciones = (campo, etiquetas) => [...new Set(normas.map((n) => n[campo]).filter(Boolean))].map((v) => ({ valor: v, etiqueta: etiquetas[v] ?? v }))
 const filtros = [
@@ -20,7 +17,7 @@ const filtros = [
   { clave: 'ambito', etiqueta: 'Ámbito', opciones: opciones('ambito', AMBITO_ETIQUETA) },
 ]
 const ordenes = [
-  { clave: 'prioridad', etiqueta: 'En tramitación primero', tipo: 'numero' },
+  { clave: 'prioridad', etiqueta: 'Normas en seguimiento primero', tipo: 'numero' },
   { clave: 'fecha', etiqueta: 'Verificación más reciente', desc: true },
   { clave: 'nombre', etiqueta: 'Nombre' },
 ]
@@ -31,54 +28,41 @@ const ordenes = [
     <h1>Normativa</h1>
     <p class="sumario">Qué está en vigor, qué sigue en tramitación y cómo afecta a los proyectos.</p>
 
-    <h2 class="primer-titulo">En tramitación y propuestas</h2>
-    <div class="rejilla">
-      {enMovimiento.map((n) => {
-        const ultimo = ultimoHito(n)
-        return <article class="tarjeta norma">
-          <p class="cabecera-norma"><span class={`etiqueta estado-norma-${n.estado}`} title={ESTADO_NORMA_DESCRIPCION[n.estado]}><span class="punto" aria-hidden="true"></span>{ESTADO_NORMA_ETIQUETA[n.estado]}</span></p>
-          <h3><a href={`/normativa/${n.id}`}>{tituloNorma(n)}</a></h3>
-          <p class="pequeno"><Glosa texto={primero(n.resumen)} /></p>
-          {ultimo && <p class="pequeno novedad"><time datetime={ultimo.fecha}>{fechaLegible(ultimo.fecha)}</time> · {ultimo.hito}</p>}
-          <p class="pequeno silencio aplicacion">{n.estado === 'en_vigor_en_tramitacion' ? 'Está en vigor; su texto sigue abierto a cambios.' : n.estado === 'adoptada_en_control' ? 'Adoptada por la Comisión. Bajo control de Parlamento y Consejo; todavía no está en vigor.' : n.estado === 'consulta_previa' ? 'Consulta sobre una futura iniciativa. Todavía no hay requisitos aplicables.' : 'Sin aprobar. Sus requisitos propuestos no están en vigor.'}</p>
-          <p class="pequeno silencio verificacion">Verificada el {fechaLegible(n.ultima_verificacion)}</p>
-        </article>
-      })}
-    </div>
-
-    <h2 id="normas">Consultar todas las normas</h2>
+    <h2 id="normas">Consultar normas</h2>
     <ExploradorEnergia id="explorador-normativa" nombre="normas" filtros={filtros} ordenes={ordenes} busqueda="Norma, materia o comunidad…">
       <div class="tabla-envoltorio"><table class="tabla-fichas">
-        <thead><tr><th>Norma</th><th>Estado</th><th>Efecto práctico</th><th>Verificada</th></tr></thead>
-        <tbody>{normas.map((n, i) => <tr id={`norma-${n.id}`} data-registro data-list-item data-busca={[n.titulo, ...n.ccaa, ...n.materias.map((m) => MATERIA_ETIQUETA[m] ?? m)].join(' ')} data-estado={n.estado} data-ambito={n.ambito} data-prioridad={i} data-fecha={n.ultima_verificacion} data-nombre={n.titulo}>
+        <thead><tr><th>Norma</th><th>Estado</th><th>Efecto práctico</th><th>Último hito</th><th>Verificada</th></tr></thead>
+        <tbody>{normas.map((n, i) => { const ultimo = ultimoHito(n); return <tr id={`norma-${n.id}`} data-registro data-list-item data-busca={[n.titulo, ...n.ccaa, ...n.materias.map((m) => MATERIA_ETIQUETA[m] ?? m)].join(' ')} data-estado={n.estado} data-ambito={n.ambito} data-prioridad={i} data-fecha={n.ultima_verificacion} data-nombre={n.titulo}>
           <td><a href={`/normativa/${n.id}`}>{tituloNorma(n)}</a><span class="pequeno silencio"><br />{AMBITO_ETIQUETA[n.ambito]}{n.ccaa.length > 0 && ` · ${n.ccaa.join(', ')}`}</span></td>
           <td data-etiqueta="Estado"><span class={`etiqueta estado-norma-${n.estado}`} title={ESTADO_NORMA_DESCRIPCION[n.estado]}>{ESTADO_NORMA_ETIQUETA[n.estado]}</span></td>
-          <td class="pequeno" data-etiqueta="Efecto práctico"><Glosa texto={primero(n.por_que_importa || n.resumen)} /></td>
+          <td class="pequeno" data-etiqueta="Efecto práctico"><Glosa texto={efectoNorma(n)} /></td>
+          <td class="pequeno ultimo-hito" data-etiqueta="Último hito">{ultimo ? <><time datetime={ultimo.fecha}>{fechaLegible(ultimo.fecha)}</time><br /><a href={`/normativa/${n.id}#hitos`}>{etiquetaHitoNorma(n, ultimo)}</a></> : 'Sin hito publicado'}</td>
           <td class="pequeno silencio" data-etiqueta="Verificada">{fechaLegible(n.ultima_verificacion)}</td>
-        </tr>)}</tbody>
+        </tr> })}</tbody>
       </table></div>
     </ExploradorEnergia>
 
-    {calendario.length > 0 && <details class="bloque" id="calendario"><summary>Próximas fechas · {calendario.length}</summary>
-      <p class="pequeno silencio">Fechas publicadas en una fuente oficial. No se añaden previsiones propias.</p>
-      <div class="tabla-envoltorio"><table class="tabla-fichas"><thead><tr><th>Fecha</th><th>Hito</th><th>Norma</th></tr></thead><tbody>{calendario.map((h) => <tr><td>{fechaLegible(h.fecha)}</td><td data-etiqueta="Hito">{h.hito}</td><td data-etiqueta="Norma"><a href={`/normativa/${h.norma.id}`}>{tituloNorma(h.norma)}</a></td></tr>)}</tbody></table></div>
-    </details>}
-    <details class="bloque"><summary>Alcance del registro</summary><p class="pequeno">Normas europeas, estatales y autonómicas con efecto documentado en el sector. Las licencias municipales, declaraciones ambientales y otras resoluciones de proyectos concretos se recogen en sus fichas. Cada norma conserva el texto original y las fuentes de sus requisitos.</p></details>
+    {calendario.length > 0 && <section class="calendario" id="calendario" aria-labelledby="proximas-fechas"><h2 id="proximas-fechas">Próximas fechas publicadas</h2>
+      <ul class="fechas">{calendario.map((h) => <li><time datetime={h.fecha}>{fechaLegible(h.fecha)}</time><div><p>{h.etiqueta}</p><span class="normas-fecha">{h.normas.map((n, i) => <>{i > 0 && ' · '}<a href={`/normativa/${n.id}#hitos`}>{tituloNorma(n)}</a></>)}</span></div></li>)}</ul>
+    </section>}
+    <details class="bloque"><summary>Alcance del registro</summary><p class="pequeno">Normas europeas, estatales y autonómicas. Los permisos de proyectos concretos figuran en sus fichas.</p></details>
   </div>
 </Base>
 
 <style>
-  .primer-titulo { margin-top: 1.3rem; font-size: 1.05rem; }
-  .rejilla { margin: 1rem 0 2rem; align-items: stretch; }
-  .norma h3 { margin: 0.7rem 0; font-size: 1.1rem; line-height: 1.35; }
-  .norma p { margin-bottom: 0.6rem; }
-  .norma .cabecera-norma, .norma .verificacion { margin-bottom: 0; }
-  .novedad { border-top: 1px solid var(--borde); padding-top: 0.6rem; }
-  .novedad time { font-weight: 600; }
-  .aplicacion { color: var(--aviso); }
   .tabla-fichas .etiqueta { white-space: normal; }
+  .ultimo-hito { max-width: 21rem; }
+  .ultimo-hito time { color: var(--tinta-3); }
+  .calendario { margin: 2rem 0; }
+  .calendario h2 { font-size: 1.1rem; }
+  .fechas { list-style: none; padding: 0; max-width: 52rem; }
+  .fechas li { display: grid; grid-template-columns: 9rem 1fr; gap: 1rem; padding: .6rem 0; border-top: 1px solid var(--borde); font-size: .85rem; }
+  .fechas time { color: var(--tinta-3); }
+  .fechas p { margin: 0; color: var(--tinta-2); }
+  .normas-fecha { font-size: .75rem; }
   .bloque { margin: 0.8rem 0; border-top: 1px solid var(--borde); padding: 1rem 0; }
   .bloque:last-child { margin-bottom: 3rem; }
   .bloque summary { cursor: pointer; font-family: var(--serif); font-size: 1.1rem; }
   .bloque[open] summary { margin-bottom: 1rem; }
+  @media (max-width: 540px) { .fechas li { grid-template-columns: 1fr; gap: .2rem; } }
 </style>

@@ -2,9 +2,10 @@
 import Base from '../../layouts/Base.astro'
 import Fuente from '../../components/Fuente.astro'
 import PotenciaProyecto from '../../components/PotenciaProyecto.astro'
-import { MODALIDAD_COMPUTO_ETIQUETA } from '../../lib/computo.js'
+import { MODALIDAD_COMPUTO_ETIQUETA, MODALIDAD_COMPUTO_DESCRIPCION } from '../../lib/computo.js'
+import { alcanceComputo, avisoComputo, modeloComputo } from '../../lib/computo-presentacion.js'
 import CronologiaProyecto from '../../components/CronologiaProyecto.astro'
-import { presentacionProyecto, vinculosEnergiaProyecto } from '../../lib/proyecto-presentacion.js'
+import { etiquetaFechaServicio, presentacionProyecto, vinculosEnergiaProyecto } from '../../lib/proyecto-presentacion.js'
 import sitios from '../../data/sitios.json'
 import renovables from '../../data/renovables.json'
 import normativa from '../../data/normativa.json'
@@ -50,7 +51,7 @@ export function getStaticPaths() {
 
 const { sitio: s } = Astro.props
 const presentacion = presentacionProyecto(s)
-const computoConMatices = s.incertidumbres.some((u) => u.campo.startsWith('computo'))
+const computoVisible = s.computo.map((c) => ({ ...c, proyecto: s.id }))
 
 // Normas que nombran este emplazamiento, y las que alcanzan a su comunidad. El
 // vínculo lo declara la propia norma en `afecta[]`: no se deduce aquí.
@@ -144,16 +145,15 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
                   <sup>{refs(h.fuentes).map((n, i) => <>{i > 0 && ','}<a href={`#fuente-${s.fuentes[n - 1].id}`}>{n}</a></>)}</sup>
                 </dd>
               </div>
-            )) : s.computo.slice(0, 4).map((c) => (
+            )) : computoVisible.slice(0, 4).map((c) => (
               <div>
-                <dt>{c.modelo ?? c.sistema ?? COMPUTO_ETIQUETA[c.tipo] ?? c.tipo}</dt>
+                <dt>{modeloComputo(c)}{alcanceComputo(c) && <span class="procedencia-dato">{alcanceComputo(c)}</span>}</dt>
                 <dd>
                   <strong>{unidadesComputo(c.unidades, c.tipo_unidad) ?? (c.nodos != null ? `${numero(c.nodos)} nodos; unidades sin publicar` : 'Recuento sin publicar')}</strong>
-                  <span class={`etiqueta estado-${c.estado ?? 'desconocido'}`}>{ESTADO_ETIQUETA[c.estado ?? 'desconocido']}</span>
-                  <span class="procedencia-dato">{MODALIDAD_COMPUTO_ETIQUETA[c.modalidad ?? 'sin_confirmar']}</span>
+                  {c.estado !== 'desconocido' && <span class={`etiqueta estado-${c.estado}`}>{ESTADO_ETIQUETA[c.estado]}</span>}
+                  <span class="procedencia-dato" title={MODALIDAD_COMPUTO_DESCRIPCION[c.modalidad ?? 'sin_confirmar']}>{MODALIDAD_COMPUTO_ETIQUETA[c.modalidad ?? 'sin_confirmar']}</span>
                   {rendimientoComputo(c) && <span class="procedencia-dato">{rendimientoComputo(c)}</span>}
-                  {computoConMatices && <a class="matiz-dato" href="#incertidumbres">Dato de cómputo con incertidumbres</a>}
-                  <a class="procedencia-dato" href="#detalle-computo">Ver alcance y fuentes</a>
+                  {avisoComputo(c) && <a class="matiz-dato" href="#incertidumbres">{avisoComputo(c)}</a>}
                 </dd>
               </div>
             ))}
@@ -182,7 +182,7 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
         <CronologiaProyecto eventos={presentacion.cronologia} fuentes={s.fuentes} />
         {s.potencia.length > 0 && (
           <details class="seccion-plegable" id="detalle-potencia">
-            <summary>Lecturas de potencia <span>{s.potencia.length} registros</span></summary>
+            <summary>Lecturas de potencia <span>{s.potencia.length} {s.potencia.length === 1 ? 'registro' : 'registros'}</span></summary>
             <div class="contenido-plegable">
           {s.potencia.length === 0 ? (
             <p class="silencio">Ninguna fuente publica cifras de potencia.</p>
@@ -206,8 +206,8 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
                       <tr>
                         <td><Termino id={GLOSARIO_POTENCIA[p.tipo]}>{POTENCIA_ETIQUETA[p.tipo]}</Termino></td>
                         <td class="num" data-etiqueta="MW">
-                          {numero(p.valor_mw, 1) ?? (p.valor_mva ? `${numero(p.valor_mva, 1)} MVA` : '—')}
-                          {p.valor_mw_max && `–${numero(p.valor_mw_max, 1)}`}
+                          {numero(p.valor_mw, 3) ?? (p.valor_mva ? `${numero(p.valor_mva, 3)} MVA` : '—')}
+                          {p.valor_mw_max && `–${numero(p.valor_mw_max, 3)}`}
                         </td>
                         <td data-etiqueta="Ámbito">{p.ambito}</td>
                         <td data-etiqueta="Estado del dato">{p.estado_asociado ? ESTADO_ETIQUETA[p.estado_asociado] : 'Sin estado asociado'}</td>
@@ -251,7 +251,7 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
                   <tr>
                     <th>Fase</th>
                     <th>Estado</th>
-                    <th>Puesta en servicio</th>
+                    <th>Fecha</th>
                     <th class="num">Superficie</th>
                     <th>Fuente</th>
                   </tr>
@@ -270,7 +270,10 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
                           <span class="silencio">—</span>
                         )}
                       </td>
-                      <td data-etiqueta="Puesta en servicio" data-vacia={f.fecha_puesta_en_servicio ? 'no' : 'si'}>{fechaLegible(f.fecha_puesta_en_servicio) ?? '—'}</td>
+                      <td data-etiqueta="Fecha" data-vacia={f.fecha_puesta_en_servicio ? 'no' : 'si'}>
+                        {fechaLegible(f.fecha_puesta_en_servicio) ?? '—'}
+                        {f.fecha_puesta_en_servicio && etiquetaFechaServicio(f, undefined, s.id) !== 'Puesta en servicio' && <span class="pequeno silencio"><br />{etiquetaFechaServicio(f, undefined, s.id) === 'Puesta en servicio prevista' ? 'Servicio previsto' : etiquetaFechaServicio(f, undefined, s.id)}</span>}
+                      </td>
                       <td class="num" data-etiqueta="Superficie" data-vacia={f.superficie_m2 ? 'no' : 'si'}>{superficie(f.superficie_m2) ?? '—'}</td>
                       <td class="num" data-etiqueta="Fuente">
                         {refs(f.fuentes).map((n, i) => (
@@ -290,9 +293,6 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
           <details class="seccion-plegable" id="incertidumbres">
             <summary>Incertidumbres y contradicciones <span>{s.incertidumbres.length}</span></summary>
             <div class="contenido-plegable">
-            <p class="pequeno silencio">
-              Lo que las fuentes no aclaran o en lo que se contradicen.
-            </p>
             <ul class="incertidumbres">
               {s.incertidumbres.map((u) => (
                 <li>
@@ -314,10 +314,7 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
           <details class="seccion-plegable" id="generacion-vinculada">
             <summary>Generación y almacenamiento vinculados <span>{vinculados.length}</span></summary>
             <div class="contenido-plegable">
-            <p class="pequeno silencio">
-              Un PPA es un contrato de compra de energía. No implica que este centro se alimente
-              físicamente de esa planta.
-            </p>
+            {vinculados.some((a) => a.tipo_vinculo === 'ppa') && <p class="pequeno silencio">Los PPA no acreditan suministro físico directo.</p>}
             <div class="tabla-envoltorio">
               <table class="tabla-fichas">
                 <thead>
@@ -357,10 +354,6 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
           <details class="seccion-plegable" id="normativa">
             <summary>Normativa que le afecta <span>{normasAplicables.length}</span></summary>
             <div class="contenido-plegable">
-            <p class="pequeno silencio">
-              Normas que nombran este emplazamiento o su comunidad. Cada vínculo lo declara la
-              propia ficha de la norma, con su fuente; no se deduce de la ubicación.
-            </p>
             <ul class="normas-afectan">
               {normasAplicables.map(({ norma, vinculos, directa }) => (
                 <li>
@@ -537,22 +530,21 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
             <summary>Inventario de cómputo</summary>
             <div class="contenido-plegable">
             <dl class="pares">
-              {s.computo.map((c) => (
+              {computoVisible.map((c) => (
                 <>
                   <dt>
-                    {GLOSARIO_COMPUTO[c.tipo]
-                      ? <Termino id={GLOSARIO_COMPUTO[c.tipo]}>{COMPUTO_ETIQUETA[c.tipo] ?? c.tipo}</Termino>
-                      : (COMPUTO_ETIQUETA[c.tipo] ?? c.tipo)}
+                    {modeloComputo(c)}
                   </dt>
                   <dd>
                     {unidadesComputo(c.unidades, c.tipo_unidad) ?? 'Recuento no publicado'}
-                    {c.estado && <span class={`etiqueta estado-${c.estado}`}>{ESTADO_ETIQUETA[c.estado]}</span>}
-                    <span class="pequeno silencio"><br />{MODALIDAD_COMPUTO_ETIQUETA[c.modalidad ?? 'sin_confirmar']}</span>
-                    {c.sistema && <span class="pequeno silencio"><br />{c.sistema}</span>}
-                    {c.modelo && <span class="pequeno"><br />{c.modelo}</span>}
-                    {c.nodos != null && c.unidades == null && (
+                    {c.estado && c.estado !== 'desconocido' && <span class={`etiqueta estado-${c.estado}`}>{ESTADO_ETIQUETA[c.estado]}</span>}
+                    <span class="pequeno silencio" title={MODALIDAD_COMPUTO_DESCRIPCION[c.modalidad ?? 'sin_confirmar']}><br />{MODALIDAD_COMPUTO_ETIQUETA[c.modalidad ?? 'sin_confirmar']}</span>
+                    {alcanceComputo(c) && <span class="pequeno silencio"><br />{alcanceComputo(c)}</span>}
+                    <span class="pequeno silencio"><br />{GLOSARIO_COMPUTO[c.tipo] ? <Termino id={GLOSARIO_COMPUTO[c.tipo]}>{COMPUTO_ETIQUETA[c.tipo]}</Termino> : COMPUTO_ETIQUETA[c.tipo]}</span>
+                    {c.nodos != null && (
                       <span class="pequeno silencio"><br />{numero(c.nodos)} {c.nodos === 1 ? 'nodo' : 'nodos'}</span>
                     )}
+                    {c.fecha_dato && <span class="pequeno silencio"><br />Dato del {fechaLegible(c.fecha_dato)}</span>}
                     {rendimientoComputo(c) && <span class="pequeno"><br />{rendimientoComputo(c)}</span>}
                     {c.operador_computo && (
                       <span class="pequeno silencio"><br />Hardware operado por {c.operador_computo}</span>
@@ -607,7 +599,7 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
             <summary>Superficie, inversión y servicio</summary>
             <div class="contenido-plegable">
             <dl class="pares">
-              {s.fecha_puesta_en_servicio && (<><dt>Puesta en servicio</dt><dd>{fechaLegible(s.fecha_puesta_en_servicio)}</dd></>)}
+              {s.fecha_puesta_en_servicio && (<><dt>{etiquetaFechaServicio(s)}</dt><dd>{fechaLegible(s.fecha_puesta_en_servicio)}</dd></>)}
               {s.superficie_parcela_m2 && (<><dt>Parcela</dt><dd>{superficie(s.superficie_parcela_m2)}</dd></>)}
               {s.superficie_construida_m2 && (<><dt>Construido</dt><dd>{superficie(s.superficie_construida_m2)}</dd></>)}
               {s.inversion_anunciada_eur && (<><dt>Inversión anunciada</dt><dd>{euros(s.inversion_anunciada_eur)}<br /><span class="pequeno silencio">cifra anunciada públicamente, no verificada</span></dd></>)}
@@ -635,7 +627,7 @@ const ubicacionTexto = [s.ubicacion.municipio, s.ubicacion.provincia, s.ubicacio
                 <><br /><span class="pequeno silencio">
                   {s.confianza === 'alta'
                     ? 'Ubicación, potencia y estado con respaldo primario y sin contradicciones abiertas.'
-                    : <>Nada falta de forma mecánica: el motivo está en las <a href="#incertidumbres">incertidumbres</a>.</>}
+                    : s.incertidumbres.length > 0 && <a href="#incertidumbres">Ver incertidumbres</a>}
                 </span></>
               )}
             </dd>

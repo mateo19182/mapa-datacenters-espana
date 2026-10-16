@@ -1,8 +1,9 @@
+import { nombreProyecto } from './nombres.js'
+
 // Resúmenes editoriales. Las fechas son las de los hechos descritos, nunca la
 // consulta de la ficha ni la publicación de una fuente que relate otro día.
 const PRESENTACIONES = {
   'cogent-san-sebastian-de-los-reyes': {
-    titulo: 'Cogent Madrid · San Sebastián de los Reyes',
     resumen: 'Cogent aloja dos servidores de Hostealo con cuatro RTX PRO 6000 Blackwell y cuatro RTX 6000 Ada. No se publica fecha de instalación ni potencia eléctrica.',
     fuentes: ['src-cogent-centro', 'src-hostealo-ia', 'src-hostealo-colocation'],
   },
@@ -15,29 +16,26 @@ const PRESENTACIONES = {
     fuentes: ['src-blackfuel-bcn1', 'src-blackfuel-mi355x'],
     cronologia: [
       { fecha: '2026-09-30', titulo: 'Anuncio del despliegue de Blackfuel en BCN1', detalle: 'Digital Realty identifica el centro y Blackfuel concreta AMD MI355X. Los comunicados no acreditan puesta en producción.', fuentes: ['src-blackfuel-bcn1', 'src-blackfuel-mi355x'] },
-      { fecha: '2026', titulo: 'Servicio de Blackfuel previsto durante 2026', detalle: 'El anuncio describe entrega del clúster y entrada en servicio prevista, sin día exacto ni cantidad publicada.', prevista: true, fuentes: ['src-blackfuel-mi355x'] },
+      { fecha: '2026', titulo: 'Servicio de Blackfuel', detalle: 'El anuncio describe entrega del clúster y entrada en servicio prevista, sin día exacto ni cantidad publicada.', prevista: true, fuentes: ['src-blackfuel-mi355x'] },
     ],
   },
   'tecnalia-derio-deep-learning': {
-    titulo: 'TECNALIA · Deep learning, Derio',
-    resumen: 'Infraestructura de I+D en el edificio 700 de Derio, con seis servidores GPU. El catálogo publica 13 GPU y un desglose incompatible; la fecha del inventario es desconocida.',
+    resumen: 'Clúster de I+D con seis servidores en el edificio 700 de Derio. El inventario GPU no tiene fecha de corte y sus recuentos se contradicen.',
     fuentes: ['src-infraestructura', 'src-sede-derio'],
     hardware: [
-      { modelo: 'GPU NVIDIA', dato: 'Total publicado: 13 GPU', matiz: 'El desglose por modelo contradice el total. No se reconcilian las cifras.', fuentes: ['src-infraestructura'] },
-      { modelo: 'V100, RTX 2080 Ti, Titan X, GTX 1080 Ti y K20', dato: 'Modelos documentados en seis servidores', matiz: 'Catálogo sin fecha de inventario; se conserva el detalle en el expediente.', fuentes: ['src-infraestructura'] },
+      { modelo: 'GPU NVIDIA', dato: '13 GPU declaradas', matiz: 'Recuento en disputa: el desglose por modelos no coincide.', fuentes: ['src-infraestructura'] },
+      { modelo: 'V100, RTX 2080 Ti, Titan X, GTX 1080 Ti y K20', dato: 'Seis servidores', matiz: 'Inventario sin fecha de corte.', fuentes: ['src-infraestructura'] },
     ],
   },
   'aimen-porrino-am-pilot-factory': {
-    titulo: 'AIMEN · AM Pilot Factory, O Porriño',
-    resumen: 'La instalación de Cataboi publica servidores GPU para investigación en fabricación. Documenta RTX 8000 y configuraciones RTX20XX, sin total global ni fecha del inventario.',
+    resumen: 'Servidores GPU para investigación en fabricación en Cataboi. El catálogo describe configuraciones RTX 8000 y RTX20XX, sin total de flota ni fecha de inventario.',
     fuentes: ['src-infraestructura', 'src-contacto'],
     hardware: [
-      { modelo: 'RTX 8000 · 48 GB', dato: '2 GPU en un servidor', matiz: 'Configuración explícita del catálogo de la instalación.', fuentes: ['src-infraestructura'] },
-      { modelo: 'RTX20XX · 8 GB', dato: 'Tres configuraciones de dos GPU cada una', matiz: 'Modelo incompleto en la fuente; no se calcula un total de flota.', fuentes: ['src-infraestructura'] },
+      { modelo: 'RTX 8000 · 48 GB', dato: '2 GPU en un servidor', matiz: 'Cantidad de esta configuración; total de flota no publicado.', fuentes: ['src-infraestructura'] },
+      { modelo: 'RTX20XX · 8 GB', dato: 'Tres configuraciones de dos GPU cada una', matiz: 'Modelo incompleto; dos descripciones son idénticas y no se confirma que sean equipos distintos.', fuentes: ['src-infraestructura'] },
     ],
   },
   'ctag-porrino-haaro': {
-    titulo: 'CTAG · HAARO, O Porriño',
     resumen: 'Laboratorio de humanoides y robótica avanzada en el campus A Granxa. CTAG documenta GPU y servidores para entrenamiento y simulación, sin modelos ni cantidades.',
     fuentes: ['src-haaro', 'src-presentacion-haaro', 'src-servicios'],
     cronologia: [
@@ -45,11 +43,10 @@ const PRESENTACIONES = {
     ],
   },
   'ctic-gijon-cabuenes': {
-    titulo: 'CTIC · DataHub, Gijón',
-    resumen: 'DataHub documenta GPU en uso en el centro de Cabueñes. Las compras adjudicadas de A100 y Blackwell se conservan por separado, sin recepción ni modelos instalados confirmados.',
+    resumen: 'GPU en uso en Cabueñes, con modelo y cantidad sin publicar. Las compras adjudicadas de A100 y Blackwell tienen recepción sin confirmar.',
     fuentes: ['src-datahub', 'src-pcap-datahub', 'src-adjudicacion-datahub', 'src-adjudicacion-arqade'],
     hardware: [
-      { modelo: 'DataHub · GPU', dato: 'Servicio en uso; modelo sin confirmar', matiz: 'El operador describe cargas y modelos de lenguaje que siguen funcionando.', fuentes: ['src-datahub'] },
+      { modelo: 'DataHub · GPU', dato: 'Servicio en uso', matiz: 'Modelo y cantidad no publicados.', fuentes: ['src-datahub'] },
       { modelo: 'DGX A100 · 8 A100 de 40 GB', dato: 'Configuración de compra adjudicada', matiz: 'Expediente de 2021; recepción y modelo instalado sin confirmar.', fuentes: ['src-adjudicacion-datahub', 'src-ppt-datahub'] },
       { modelo: '8 RTX PRO 6000 Blackwell · 96 GB', dato: 'Referencia de compra, admite equivalentes', matiz: 'Expediente ARQADE de 2026; recepción y modelo entregado sin confirmar.', fuentes: ['src-adjudicacion-arqade', 'src-ppt-arqade'] },
     ],
@@ -80,7 +77,7 @@ const PRESENTACIONES = {
     incluirFases: false,
     cronologia: [
       { fecha: '2026-04-23', titulo: 'Anuncio del activo de Madrid y su modernización', detalle: 'NxN anuncia un activo existente, 8.500 m² de superficie total y 20 millones de euros de modernización, sin publicar dirección exacta.', fuentes: ['src-nota'] },
-      { fecha: '2026-09', titulo: 'Apertura prevista en la nota de abril', detalle: 'La fecha ha pasado sin confirmación de apertura. La web consultada en octubre mantiene una próxima inauguración en 2026.', prevista: true, fuentes: ['src-nota', 'src-web'] },
+      { fecha: '2026-09', titulo: 'Apertura anunciada en la nota de abril', detalle: 'La fecha ha pasado sin confirmación de apertura. La web consultada en octubre mantiene una próxima inauguración en 2026.', prevista: true, fuentes: ['src-nota', 'src-web'] },
     ],
   },
   'scbi-uma-malaga-picasso': {
@@ -93,9 +90,14 @@ const PRESENTACIONES = {
   'cesga-santiago-a-sionlla': {
     resumen: 'A Sionlla albergará FinisTerrae IV y nueva computación cuántica. Están anunciados Radiance de 54 cúbits y Spark de 5. Falta confirmar servicio y traslado del inventario anterior a este edificio.',
     fuentes: ['src-adjudicacion-ft4', 'src-presentacion-en-20260612', 'src-contacto-sede'],
+    hardware: [
+      { modelo: 'FinisTerrae IV', dato: 'Adjudicado; servicio sin confirmar', matiz: 'Supercomputador previsto para la nueva sede, distinto de la futura factoría 1HealthAI.', fuentes: ['src-adjudicacion-ft4'] },
+      { modelo: 'IQM Radiance y Spark', dato: '54 y 5 cúbits previstos', matiz: 'Dos equipos anunciados; instalación definitiva y servicio sin confirmar.', fuentes: ['src-presentacion-en-20260612'] },
+      { modelo: 'FinisTerrae III y Qmio', dato: 'Traslado a A Sionlla sin confirmar', matiz: 'Equipos operativos del CESGA; no acreditan que este edificio esté en servicio.', fuentes: ['src-computo', 'src-cuantica', 'src-contacto-sede'] },
+    ],
     cronologia: [
       { fecha: '2026-03-03', titulo: 'Adjudicación de FinisTerrae IV y almacenamiento', detalle: 'La Xunta anuncia la adjudicación a Fsas Technologies. El contrato no acredita recepción ni puesta en servicio; es distinto de la futura factoría 1HealthAI.', fuentes: ['src-adjudicacion-ft4'] },
-      { fecha: '2026-06-12', titulo: 'Presentación programada de Radiance y Spark', detalle: 'El anuncio del CESGA convoca el acto para esa fecha. Describe equipos de 54 y 5 cúbits, sin acreditar servicio científico abierto ni instalación definitiva.', prevista: true, fuentes: ['src-presentacion-20260612', 'src-presentacion-en-20260612'] },
+      { fecha: '2026-06-12', titulo: 'Presentación de Radiance y Spark', detalle: 'El anuncio del CESGA convoca el acto para esa fecha. Describe equipos de 54 y 5 cúbits, sin acreditar servicio científico abierto ni instalación definitiva.', prevista: true, fuentes: ['src-presentacion-20260612', 'src-presentacion-en-20260612'] },
     ],
   },
   'nabiax-alcala-de-henares-adc': {
@@ -106,7 +108,6 @@ const PRESENTACIONES = {
     ],
   },
   'cluster-tic-galicia-a-coruna-csa': {
-    titulo: 'Cidade das TIC · CSA',
     resumen: 'El CPD del Clúster TIC Galicia ofrece recursos para IA y multimedia en A Coruña. L4 y A40 documentadas; la instalación de H200 sigue sin confirmar.',
     fuentes: ['src-servicios', 'src-dosier', 'src-catalogo'],
     aviso: 'Servicio orientado al desarrollo. El dosier no ofrece disponibilidad 24×7 ni en fines de semana.',
@@ -121,7 +122,6 @@ const PRESENTACIONES = {
     ],
   },
   'qts-calatorao-rhodes': {
-    titulo: 'QTS · Proyecto Rhodes, Calatorao',
     resumen: 'Campus de QTS promovido por Calanza Inmuebles. Tiene aprobación urbanística definitiva parcial; la ejecución de los edificios aún requiere evaluación ambiental, proyectos ejecutivos y un acuerdo posterior.',
     fuentes: ['src-boa-20260930'],
     aviso: 'No consta inicio de obras del campus. Los 650 MW publicados corresponden a la subestación, no a carga TI.',
@@ -135,7 +135,6 @@ const PRESENTACIONES = {
     ],
   },
   'solaria-datasection-puertollano': {
-    titulo: 'Solaria · Puertollano, La Nava II',
     resumen: 'Solaria tramita una nueva propuesta de 40 MW y 150 millones de euros en La Nava II. El operador no está publicado. El anterior acuerdo con Datasection quedó paralizado.',
     fuentes: ['src-ayto-20260924', 'src-ser'],
     aviso: 'Los 40 MW no tienen tipo publicado. La conformidad municipal no acredita autorización ambiental ni comienzo de obras.',
@@ -147,7 +146,6 @@ const PRESENTACIONES = {
     ],
   },
   'aws-zaragoza-la-cartuja-car': {
-    titulo: 'AWS · Zaragoza La Cartuja, CAR',
     resumen: 'La Cartuja tiene urbanización e infraestructuras hidráulicas aprobadas. La documentación de reparcelación y fibra vuelve a información pública. No se acredita aprobación definitiva de la edificación ni inicio de obras.',
     fuentes: ['src-1', 'src-2', 'src-boa-20261008017', 'src-boa-20261008021'],
     cronologia: [
@@ -158,7 +156,6 @@ const PRESENTACIONES = {
     ],
   },
   'aws-el-burgo-de-ebro-bde': {
-    titulo: 'AWS · El Burgo de Ebro, BDE',
     resumen: 'AWS tiene aprobados el proyecto de edificación y urbanización interior de la fase 1 y su subestación. El nuevo trámite de fibra con La Cartuja no acredita inicio de obras.',
     fuentes: ['src-1', 'src-boa-20261008021'],
     aviso: 'La cifra térmica de los generadores de respaldo no es potencia TI ni potencia de conexión.',
@@ -205,6 +202,17 @@ export function vinculosEnergiaProyecto(sitio, activos) {
   return { emplazamiento, operador }
 }
 
+// La fecha del servicio puede ser una previsión incluso si su plazo ya pasó.
+// Las aperturas de un campus parcialmente operativo conservan su carácter real.
+export function etiquetaFechaServicio(entrada, fechaReferencia = new Date().toISOString().slice(0, 10), proyectoId = entrada.id) {
+  if (FASES_QUE_SON_HITOS.get(proyectoId)?.has(entrada.nombre)) return 'Hito administrativo'
+  if (FASES_SIN_FECHA_DE_APERTURA.get(proyectoId)?.has(entrada.nombre)) return 'Fecha del proyecto'
+  if (['cancelado', 'paralizado'].includes(entrada.estado)) return 'Previsión retirada'
+  const futura = entrada.fecha_puesta_en_servicio > fechaReferencia
+  const enServicio = ['operativo', 'parcialmente_operativo', 'ampliacion_en_construccion'].includes(entrada.estado)
+  return futura || !enServicio ? 'Puesta en servicio prevista' : 'Puesta en servicio'
+}
+
 export function presentacionProyecto(sitio) {
   const editada = PRESENTACIONES[sitio.id] ?? {}
   const fuentes = new Set(sitio.fuentes.map((f) => f.id))
@@ -219,9 +227,9 @@ export function presentacionProyecto(sitio) {
       const tituloHito = TITULOS_DE_PUBLICACION.get(sitio.id)?.get(fase.nombre) ?? fase.nombre
       return {
         fecha: fase.fecha_puesta_en_servicio,
-        titulo: hito || sinApertura ? tituloHito : `${fase.estado === 'operativo' ? 'Puesta en servicio' : 'Puesta en servicio prevista'} · ${fase.nombre}`,
+        titulo: hito || sinApertura ? tituloHito : `Puesta en servicio · ${fase.nombre}`,
         detalle: fase.nota ?? null,
-        prevista: !hito && fase.estado !== 'operativo',
+        prevista: !hito && (fase.estado !== 'operativo' || etiquetaFechaServicio(fase).endsWith('prevista')),
         fuentes: fase.fuentes,
       }
     })
@@ -235,5 +243,5 @@ export function presentacionProyecto(sitio) {
   for (const id of editada.avisoFuentes ?? []) {
     if (!fuentes.has(id)) throw new Error(`Fuente inexistente ${id} en el aviso de ${sitio.id}`)
   }
-  return { ...editada, titulo: editada.titulo ?? sitio.nombre, cronologia }
+  return { ...editada, titulo: nombreProyecto(sitio), cronologia }
 }

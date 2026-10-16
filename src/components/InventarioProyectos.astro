@@ -1,6 +1,7 @@
 ---
 import Listado from './Listado.astro'
 import Termino from './Termino.astro'
+import { nombreProyecto } from '../lib/nombres.js'
 import { ETAPAS_CAPACIDAD } from '../lib/capacidad.js'
 import { ESTADO_ETIQUETA, ORDEN_ESTADOS, CONFIANZA_ETIQUETA, MODELO_ETIQUETA, fechaLegible, numero, slug } from '../lib/etiquetas.js'
 const { sitios, mostrarOperador = true, mostrarRegion = true } = Astro.props
@@ -20,7 +21,7 @@ const ordenes = [
   { valor: 'verificacion', etiqueta: 'Verificación más reciente', direccion: 'desc' },
 ]
 ---
-<Listado nombre="proyectos" filtros={filtros} ordenes={ordenes} porPagina={25} mapa>
+<Listado nombre="emplazamientos" filtros={filtros} ordenes={ordenes} porPagina={25} mapa>
   <div class="tabla-envoltorio">
     <table class="tabla-fichas inventario">
       <thead><tr>
@@ -32,12 +33,12 @@ const ordenes = [
       </tr></thead>
       <tbody>
         {sitios.map((s) => (
-          <tr data-list-item data-busca={[s.nombre, s.operador, s.ubicacion.municipio, s.ubicacion.ccaa, ...s.alias].filter(Boolean).join(' ')}
-            data-operador={s.operador ?? ''} data-modelo={s.modelo ?? ''} data-confianza={s.confianza} data-nombre={s.nombre} data-estado={s.estado} data-region={s.ubicacion.ccaa ?? ''}
+          <tr data-list-item data-busca={[s.nombre, nombreProyecto(s), s.operador, s.ubicacion.municipio, s.ubicacion.ccaa, ...s.alias].filter(Boolean).join(' ')}
+            data-operador={s.operador ?? ''} data-modelo={s.modelo ?? ''} data-confianza={s.confianza} data-nombre={nombreProyecto(s)} data-estado={s.estado} data-region={s.ubicacion.ccaa ?? ''}
             data-ordenestado={ORDEN_ESTADOS.indexOf(s.estado)} data-it={s.resumen_potencia.it?.valor_mw ?? ''}
             data-sintipo={s.resumen_potencia.no_especificado?.valor_mw ?? ''} data-conexion={s.resumen_potencia.conexion_red?.valor_mw ?? ''} data-verificacion={s.ultima_verificacion ?? ''}
             data-capacidades={JSON.stringify(Object.fromEntries(Object.keys(ETAPAS_CAPACIDAD).map((etapa) => [etapa, Object.fromEntries([['it', 'it'], ['conexion', 'conexion_red'], ['sintipo', 'no_especificado']].map(([campo, tipo]) => { const r = s.potencia_por_etapa?.[etapa]?.[tipo]; return [campo, [r?.valor_mw ?? null, Boolean(r?.discrepancia || r?.disputada)]] }))])))}>
-            <td><a href={`/proyecto/${s.id}`}>{s.nombre}</a></td>
+            <td><a href={`/proyecto/${s.id}`}>{nombreProyecto(s)}</a></td>
             {mostrarOperador && <td class="operador" data-etiqueta="Operador">{s.operador ? <a href={`/compania/${slug(s.operador)}`}>{s.operador}</a> : <span class="silencio">No publicado</span>}</td>}
             <td data-etiqueta="Ubicación">{s.ubicacion.municipio ?? 'Sin determinar'}{mostrarRegion && <span class="pequeno silencio"><br />{s.ubicacion.ccaa}</span>}</td>
             <td data-etiqueta="Estado"><span class={`etiqueta estado-${s.estado}`}><span class="punto" aria-hidden="true"></span>{ESTADO_ETIQUETA[s.estado]}</span></td>
@@ -46,7 +47,7 @@ const ordenes = [
               {(s.resumen_potencia[t]?.discrepancia || s.resumen_potencia[t]?.disputada) && <span class="advertencia" title="Interpretación o lecturas disputadas. Consulta las fuentes de la ficha."> *</span>}
             </td>)}
             <td class="ampliacion" data-etiqueta="Detalles"><details>
-              <summary>Verificación y datos</summary>
+              <summary>Detalles</summary>
               <dl><dt>Verificado</dt><dd>{fechaLegible(s.ultima_verificacion) ?? 'Sin fecha'}</dd>
                 <dt>Confianza</dt><dd>{CONFIANZA_ETIQUETA[s.confianza].replace('Confianza ', '')}</dd>
                 <dt>Fases</dt><dd>{s.fases.length || 'No publicadas'}</dd>
@@ -59,7 +60,7 @@ const ordenes = [
       </tbody>
     </table>
   </div>
-  <p class="pequeno silencio lectura"><span data-etapa-lectura>Capacidad operativa.</span> Las magnitudes se leen por separado. «—» significa dato no publicado. Las etapas pueden solaparse y no se suman.</p>
+  <p class="pequeno silencio lectura"><span data-etapa-lectura>Capacidad operativa.</span> —: sin dato publicado. Las magnitudes y etapas no se suman.</p>
 </Listado>
 <style>
   .inventario th { white-space: nowrap; }

@@ -1,346 +1,139 @@
-# Centros de datos en España — registro documental
+# Centros de datos en España
 
-**https://datacenters.m19182.dev**
+[Mapa público](https://datacenters.m19182.dev) de instalaciones operativas y proyectos,
+con capacidad, hardware, conexiones eléctricas, energía y normativa. Cubre península,
+Baleares, Canarias, Ceuta y Melilla. Cada ficha conserva sus fuentes y fecha de revisión.
 
-Mapa público de los centros de datos de España —península, Baleares, Canarias,
-Ceuta y Melilla— y su relación con la infraestructura eléctrica de transporte.
-Cada dato lleva su fuente; los huecos y las contradicciones se muestran en lugar
-de rellenarse.
+- [Metodología](https://datacenters.m19182.dev/metodologia): criterios editoriales y agregación.
+- [Esquema](docs/ESQUEMA.md): campos, unidades, estados y referencias.
+- [Datos](https://datacenters.m19182.dev/datos): descargas, licencias y validación.
+- [Investigación programada](docs/INVESTIGACION-PROGRAMADA.md): tareas semanales y mensuales.
 
-La capacidad de acceso de REE cubre los 937 nudos publicados el 1 de octubre de
-2026, incluidos los de Baleares, Canarias y Ceuta. El inventario documental y
-la cartografía tienen coberturas distintas: los nuevos nudos no reciben una
-coordenada ni un vínculo con un CPD sin fuente. El trazado de OSM sigue limitado
-a la red peninsular de 220 y 400 kV.
-
-El registro reúne hechos publicados, con su procedencia y fecha de verificación.
-La sección de inversión añade análisis fechados, separados de las fichas documentales.
-
-## Qué contiene
-
-- Emplazamientos operativos y proyectados, con operador, propietario, estado,
-  fases y potencia.
-- **MW IT, MW de conexión a red y potencia instalada como magnitudes separadas**,
-  que nunca se suman entre sí ni se convierten aplicando un PUE supuesto.
-- Subestaciones de 220 y 400 kV, capacidad de acceso para demanda por nudo
-  publicada por Red Eléctrica, y actuaciones de red planificadas.
-- **Consumo de agua y tipo de circuito de refrigeración** cuando el expediente
-  lo publica. El consumo diario y el anual van en campos distintos y no se
-  convierten uno en otro.
-- Empleo e inversión anunciados, marcados como lo que son: cifras del promotor
-  sin contrastar con ningún registro.
-- **Consumo eléctrico anual en GWh**, en un campo aparte de la potencia. Energía
-  y potencia no se comparan ni se suman.
-- **Cómputo instalado** cuando consta: aceleradores de IA, particiones de CPU y
-  procesadores cuánticos, con modelo, recuento y rendimiento. Es hardware, no
-  potencia: no entra en ninguna cifra de MW, y los FLOPS no se comparan entre
-  precisiones distintas. El hardware de un inquilino se atribuye al
-  emplazamiento donde está, diciendo de quién es.
-- Generación renovable y baterías con vínculo documentado a un centro concreto.
-- Trazado de la red de transporte derivado de OpenStreetMap.
-- **La normativa que condiciona todo lo anterior**: normas europeas, estatales y
-  autonómicas con lo que obligan, en qué fase de tramitación están y a qué
-  proyecto, región o nudo del mapa afectan. Un borrador en audiencia pública y
-  una norma en vigor se distinguen en cada listado, porque solo una de las dos
-  obliga.
-- **Capa opcional de centrales de generación**, apagada por defecto: potencia
-  instalada por central y, cuando hay instantánea cargada, generación real por
-  unidad de ENTSO-E. Son dos magnitudes distintas y viajan en campos distintos.
-
-## Las reglas del conjunto
-
-1. **Nada sin fuente.** Cada cifra lleva URL, editor y, cuando ha sido posible,
-   la cita literal que la sostiene.
-2. **No se rellenan huecos.** Lo que no consta queda vacío y así se muestra.
-3. **No se mezclan tipos de potencia.**
-4. **Las contradicciones se conservan.** Cuando dos fuentes fiables discrepan, se
-   registran ambas y la discrepancia se hace visible en la ficha.
-5. **Un emplazamiento, un registro.** Los renombrados por adquisición se
-   reconcilian con alias, no duplicando entradas.
-
-`docs/ESQUEMA.md` desarrolla el modelo de datos campo a campo.
-
-## Glosario
-
-Casi todo el vocabulario de este registro es una trampa de unidades: solicitado,
-otorgado y contratado son tres números distintos, y entre MW IT y MW de conexión
-hay casi el doble. `src/lib/glosario.js` reúne los términos con su definición y,
-cuando la hay, con el error frecuente que provocan. Se editan a mano, como los
-YAML: no los genera ningún paso del build.
-
-En el sitio, los términos aparecen subrayados con puntos y se explican al pasar
-el cursor por encima. El componente `Termino` marca uno concreto y `Glosa`
-localiza los que haya en un texto que viene del propio conjunto de datos, donde
-el marcado no se puede escribir a mano. La lista completa se publica en
-`/glosario`.
-
-## Lectura y novedades
-
-Las fichas muestran primero los datos principales y conservan el expediente,
-las lecturas completas y las citas en secciones desplegables. Las referencias
-abren automáticamente la sección que las contiene. Las cronologías distinguen
-hechos, fechas de publicación y previsiones, con su fuente en cada hito.
-
-`data/actualizaciones.yaml` contiene las novedades revisadas. La fecha del hecho
-se distingue de la incorporación al registro; los destinos y las referencias se
-validan al construir. El resultado se publica en `/actualizaciones` y se descarga
-en `/datos/actualizaciones.json`. El trabajo semanal propone novedades en su
-informe; la revisión decide qué entra en ese archivo.
-
-## Capacidad y hardware
-
-El mapa y los listados muestran capacidad operativa por defecto. Cada cifra se
-clasifica por su propio `estado_asociado`, no por el estado del campus. Los grupos
-operativo, en construcción, previsto, sin desglose e histórico se consultan por
-separado. Un techo de campus futuro puede incluir fases abiertas: los grupos no
-se suman entre sí. El export declara `etapa_resumen_potencia: operativa` y conserva
-el antiguo resumen de todas las lecturas como `resumen_potencia_documentada`.
-
-`/computo` reúne hardware y fuentes por sistema. La modalidad distingue instalación
-física, adquisición, despliegue previsto, acceso contratado y ubicación sin
-confirmar. No convierte recuentos en MW ni suma modelos, particiones o precisiones.
-
-## Arquitectura
-
-Deliberadamente simple, y en un solo sentido:
-
-```
-data/**.yaml  ──▶  validación  ──▶  SQLite  ──▶  JSON/GeoJSON  ──▶  sitio estático
- (verdad)          (esquema)        (build/)      (src/data,          (Astro +
-                                                   public/datos)       MapLibre)
-```
-
-La fuente de verdad son ficheros YAML legibles —uno por emplazamiento y uno por
-norma— pensados para revisarse a mano en un *pull request*. Todo lo demás se
-regenera y no se edita: `build/`, `src/data/`, `public/datos/` y
-`src/contenido/` están fuera del control de versiones.
-
-El sitio publicado es estático. No consulta ninguna base de datos en ejecución,
-no hace raspado en vivo y no necesita claves de API: la cartografía base es de
-CARTO y OpenStreetMap.
-
-Las comprobaciones de interfaz necesitan `npx playwright install chromium`.
-En entornos con Chrome ya instalado puede indicarse su ejecutable mediante
-`PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH`. Los resultados y capturas quedan en
-`build/ui/`. CI ejecuta estas comprobaciones después de construir el sitio.
-
-## Puesta en marcha
+## Desarrollo
 
 ```bash
-npm install
-npm run dev        # valida, reconcilia, construye los datos y levanta el sitio
+npm ci
+npm run dev
 ```
 
-| Comando | Qué hace |
+El sitio usa Astro y MapLibre. Los YAML pasan por validación, reconciliación, SQLite y
+exportación a JSON y GeoJSON antes de construir el sitio estático. El navegador no
+consulta una base de datos ni necesita claves de API.
+
+| Origen mantenido | Contenido |
 |---|---|
-| `npm run test:ui` | Comprueba el sitio construido con Chromium: filtros, enlaces, fuentes, móvil y acceso sin JavaScript |
-| `npm run validate` | Valida el esquema y la integridad de las referencias a fuentes |
-| `npm run reconcile` | Detecta variantes de nombre, duplicados e incoherencias de potencia |
-| `npm run db` | Vuelca los YAML a `build/datacenters.db` |
-| `npm run export` | Genera los JSON y GeoJSON del sitio |
-| `npm run data` | Los cuatro anteriores en orden |
-| `npm run build` | `data` + construcción del sitio en `dist/` |
-| `npm run refresh` | Comprueba las fuentes registradas y arma la cola de revisión |
-| `npm run refresh:ree` | Comprueba si REE ha publicado una edición nueva de capacidad de demanda |
-| `npm run refresh:sellar` | Compatibilidad con `--sellar`; conserva las fechas de revisión factual |
-| `npm run propuestas` | Simula la integración de `data/propuestas/` y separa los conflictos |
-| `npm run grid:osm` | Recachea el trazado de 220/400 kV desde OpenStreetMap |
-| `npm run centrales:osm` | Recachea el inventario de centrales de generación desde OpenStreetMap |
-| `npm run generacion:entsoe` | Descarga una instantánea de generación real por unidad de ENTSO-E |
-| `npm run contorno` | Recachea el contorno de costa del mapa de reserva desde Natural Earth |
-| `npm run geo` | Recachea los centroides municipales |
+| `data/sites/*.yaml` | Una ficha por emplazamiento, con fases, cifras y fuentes |
+| `data/normativa/*.yaml` | Normas, requisitos, hitos y vínculos con las fichas |
+| `data/red/` | Nudos, capacidad de acceso, CSV original de REE y trazado de OSM |
+| `data/renovables/` y `data/generacion/` | Activos vinculados, centrales y unidades de generación |
+| `data/actualizaciones.yaml` | Cambios publicados, con fecha del hecho e incorporación separadas |
+| `data/revision.yaml` y `research/hallazgos.yaml` | Decisiones revisadas y candidatas de investigación |
+| `data/pendientes.yaml` | Pistas anteriores, integradas en la misma cola pública de revisión |
+| `src/lib/nombres.js` | Nombres breves compartidos por el mapa, las tablas y las fichas |
+| `src/lib/proyecto-presentacion.js` | Resúmenes y cronologías editoriales con referencias |
+| `src/lib/glosario.js` | Términos, alias y definiciones usados por la interfaz |
 
-`contorno` y `geo` son los únicos que salen a la red al construir; junto con
-`grid:osm`, `centrales:osm` y `generacion:entsoe` se ejecutan a mano y dejan su
-resultado cacheado en el repositorio.
+`build/`, `src/data/`, `public/datos/`, `src/contenido/` y `dist/` son resultados
+generados. No se editan a mano.
 
-## Actualización
-
-El conjunto no depende de ningún raspado en tiempo real y está pensado para
-envejecer de forma visible: cada ficha muestra su fecha de última verificación.
-
-`npm run refresh` recorre todas las fuentes registradas, compara una huella del
-contenido con la guardada en `data/huellas.json` y escribe una cola de revisión
-en `research/informe-actualizacion.md`: qué páginas han cambiado, cuáles se han
-roto, cuáles rechazan al comprobador automático sin estar rotas, y qué fichas
-llevan demasiado tiempo sin revisar. **No modifica ningún dato.**
-
-Una fuente cambiada queda pendiente en los siguientes barridos. La huella de
-referencia no se sustituye hasta que alguien revisa la página y ejecuta
-`npm run refresh -- --aceptar "URL"`. Si la página recupera el contenido anterior,
-el aviso se cierra solo. Una fuente vista por primera vez no sella la ficha.
-
-Las comprobaciones automáticas actualizan la fecha de observación de cada fuente,
-no `ultima_verificacion`. Esta última es una revisión factual de la ficha y se
-mantiene mediante revisión editorial. `--sellar` se acepta por compatibilidad,
-pero ya no cambia fechas factuales.
-
-Las modificaciones entran como propuestas en `data/propuestas/<id>.yaml`, con la
-misma forma que el emplazamiento y solo los campos que cambian.
-`npm run propuestas` las contrasta con lo registrado y aplica una política
-estricta:
-
-- campo que no existía → **adición**, se aplica;
-- campo idéntico → nada que hacer;
-- campo con valor distinto → **conflicto: no se sobrescribe nunca**.
-
-Los conflictos se listan en `research/informe-propuestas.md` para que una
-persona decida. Cuando un dato nuevo contradice al viejo, lo correcto casi
-siempre no es elegir uno, sino conservar ambos en `potencia[]` y documentar la
-discrepancia en `incertidumbres[]`.
-
-El flujo `.github/workflows/revision-fuentes.yml` ejecuta todo esto cada lunes y
-abre un *pull request* con los informes, para revisión humana antes de
-fusionar.
-
-El mismo flujo compara la fecha de `data/red/capacidad.yaml` con el CSV enlazado
-por REE y escribe `research/informe-ree.md`. Solo avisa: cambiar de edición exige
-reconciliar los valores de cada nudo, no solo sustituir la fecha.
-
-`docs/INVESTIGACION-PROGRAMADA.md` define la investigación semanal y mensual.
-Sus borradores van en `research/propuestas-revision/`, fuera de la carpeta de
-propuestas que el flujo puede integrar automáticamente.
-
-## Búsqueda documental
-
-`scripts/exa.mjs` consulta la API de Exa para localizar la fuente primaria de un
-dato y traerse el texto con el que rellenar la cita. No lo llama ningún paso del
-build y no escribe nada en `data/`.
+## Comprobaciones
 
 ```bash
-export EXA_API_KEY=…                                   # dashboard.exa.ai/api-keys
-npm run exa -- buscar "centro de datos Escatrón DayOne" --n 8
-npm run exa -- buscar "impacto ambiental centro de datos" --sitio boa.aragon.es --desde 2024-01-01
-npm run exa -- contenido https://… --max 8000
+npm test
+npm run validate:strict
+npm run build
+npx playwright install chromium
+npm run test:ui
 ```
 
-`buscar` marca con `[OFICIAL]` los resultados de boletines y administraciones,
-que es donde están las cifras capaces de sostener una ficha. Encontrar la página
-no cambia ninguna regla: se registra la página, con su URL, su editor y su fecha,
-nunca el resumen que el buscador haga de ella.
+CI ejecuta estas comprobaciones en los PR y en `main`. Las pruebas de interfaz cubren
+filtros, navegación, fuentes, móvil y lectura sin JavaScript. Guardan capturas en
+`build/ui/`. Para usar un Chrome existente, indica su ruta mediante
+`PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH`.
 
-## Normativa
+| Comando | Resultado |
+|---|---|
+| `npm run validate` | Valida esquema y referencias; escribe `research/informe-validacion.md` |
+| `npm run reconcile` | Detecta duplicados, nombres inconsistentes y discrepancias de potencia |
+| `npm run db` | Construye `build/datacenters.db` |
+| `npm run export` | Genera los JSON y GeoJSON |
+| `npm run data` | Ejecuta los cuatro pasos anteriores |
+| `npm run build` | Genera los datos y el sitio en `dist/` |
 
-`data/normativa/*.yaml`, un fichero por norma, con el mismo trato que un
-emplazamiento: esquema propio, validación, fuentes obligatorias y fecha de
-verificación. La sección contesta dos preguntas y no una tercera:
+## Actualizar los datos
 
-- **Qué se está moviendo ahora**: estado de tramitación, cronología de hitos y
-  un calendario con las fechas comprometidas que aún no han vencido. No hay
-  ninguna previsión propia en ese calendario.
-- **Qué condiciona del mapa**: cada norma declara en `afecta[]` a qué proyecto,
-  región o nudo alcanza, y ese vínculo se ve desde los dos lados —en la ficha de
-  la norma y en la del emplazamiento.
+Modifica los YAML de origen y contrasta cada cambio con su fuente. Los criterios sobre
+potencia, cómputo, campus y ubicaciones están en [el esquema](docs/ESQUEMA.md). El mapa y
+las tablas abren en capacidad operativa; la prevista tiene su propio selector.
 
-Cada ficha separa lo que dice la norma (obligaciones con umbral, plazo y cita),
-dónde está (hitos con fecha), quién la empuja y quién alega en contra (actores
-con rol, postura y cita literal) y, aparte y marcado como tal, **la lectura**:
-qué cambia en la práctica. Los hechos llevan fuente; la lectura se firma y se
-puede discutir sin que se caiga ningún dato de la ficha. Vive en
-`research/normativa/<id>.md` y se edita a mano, como los YAML.
-
-`npm run refresh` vigila también las fuentes de las normas, con dos reglas
-propias: una norma con el texto abierto caduca a los 30 días en lugar de a los
-180, y un hito previsto cuya fecha ya ha pasado aparece en la cola de revisión
-para que alguien lo convierta en hecho o lo corrija.
-
-`docs/ESQUEMA.md` desarrolla el modelo campo a campo.
-
-## Centrales de generación
-
-La capa es opcional y arranca apagada. Combina dos fuentes que responden a
-preguntas distintas y **nunca se suman ni se convierten una en otra**:
-
-| Magnitud | De dónde sale | Cobertura |
-|---|---|---|
-| Potencia instalada (MW) | OpenStreetMap, `power=plant` | 5.173 centrales, 2.052 con potencia legible |
-| Generación real (MWh/día) | ENTSO-E, documento 16.1.A | solo unidades de 100 MW o más |
+`npm run refresh` comprueba las URL registradas y compara su contenido con
+`data/huellas.json`. Escribe `research/informe-actualizacion.md`, sin cambiar hechos ni
+renovar `ultima_verificacion`. Una fuente cambiada sigue pendiente hasta revisarla y
+aceptar su nueva referencia:
 
 ```bash
-npm run centrales:osm                              # inventario y potencia
-ENTSOE_TOKEN=… npm run generacion:entsoe -- --sugerir   # instantánea + cotejo
+npm run refresh -- --aceptar "URL"
 ```
 
-El token de ENTSO-E es gratuito, pero no se obtiene en el momento. Son tres
-pasos: registrarse en la plataforma de transparencia; escribir a
-transparency@entsoe.eu con el asunto «RESTful API access» indicando en el cuerpo
-la dirección con la que uno se registró; y, una vez concedido el acceso —hasta
-tres días laborables—, generar el token desde *My Account Settings*. La
-plataforma lo enseña **una sola vez**, así que hay que copiarlo al generarlo. El
-correo solo desbloquea el permiso: el token se lo genera uno.
+`npm run refresh:sellar` conserva el argumento antiguo `--sellar`, pero tampoco modifica
+fechas de revisión factual. El flujo `.github/workflows/revision-fuentes.yml` ejecuta las
+comprobaciones cada lunes y abre un PR con los informes.
 
-**Sin token la capa funciona igual**, mostrando potencia instalada y dejando la
-generación vacía, que es como está ahora.
+Las propuestas parciales van en `data/propuestas/<id>.yaml`. `npm run propuestas` simula
+la integración; `npm run propuestas:aplicar` añade campos vacíos y conserva los valores
+existentes cuando hay conflicto. Los desacuerdos quedan en
+`research/informe-propuestas.md` para revisión.
 
-Dos avisos que condicionan lo que se puede afirmar con esto:
+Las decisiones y las pistas anteriores se consultan en
+[Pendientes de revisión](https://datacenters.m19182.dev/revision). Las entradas ya
+resueltas aparecen en el historial. Tras integrar una novedad factual, añade su entrada
+a `data/actualizaciones.yaml`; el sitio y el RSS conservan los mismos identificadores.
+Las comprobaciones de enlaces quedan en la cola técnica.
 
-1. **`plant:output:electricity` sin unidad son vatios**, no megavatios. Leerlo mal
-   multiplica por un millón: la solar española pasaba de ~25 GW a 1,3 TW, y ese
-   disparate fue justo lo que delató el error. Lo que no se puede leer se deja
-   vacío y se conserva el texto original en `potencia_bruta`.
-2. **16.1.A no cubre parques eólicos ni plantas solares individuales.** Cubre
-   nucleares, ciclos combinados, grandes hidráulicas y carbón. La mayoría de las
-   centrales del mapa no tendrá nunca cifra de generación, y así se dice en la
-   ficha en lugar de estimarla.
+## Investigación y cartografía
 
-ENTSO-E identifica cada unidad por su código EIC y un nombre comercial que no
-coincide con el de OpenStreetMap, así que la correspondencia se escribe a mano en
-`data/generacion/unidades.yaml`. Con `--sugerir`, el script propone candidatos por
-parecido de nombre en `research/informe-generacion.md` y no modifica nada: decide
-una persona, como con las propuestas de datos.
+Los informes territoriales y por operador viven en `research/`; las revisiones fechadas,
+en `research/revisiones/`. Las guías de red y renovables explican conceptos. El estado
+actual de cada norma procede de `data/normativa/`, y su análisis, de
+`research/normativa/<id>.md`.
 
-## Despliegue
+| Comando manual | Uso |
+|---|---|
+| `npm run refresh:ree` | Detecta una nueva edición de capacidad de demanda de REE |
+| `npm run grid:osm` | Actualiza el trazado de transporte de 220 y 400 kV |
+| `npm run centrales:osm` | Actualiza centrales y potencia instalada de OpenStreetMap |
+| `npm run generacion:entsoe` | Descarga una instantánea de generación por unidad |
+| `npm run contorno` | Actualiza el contorno de reserva de Natural Earth |
+| `npm run geo` | Actualiza centroides municipales |
+| `npm run exa -- buscar "consulta" --n 8` | Busca fuentes documentales con `EXA_API_KEY` |
+| `npm run exa -- contenido "URL" --max 8000` | Obtiene el texto de una fuente |
 
-Sitio estático en `dist/`, publicado en Cloudflare Pages sobre el proyecto
-`mapa-datacenters-espana` y servido en **datacenters.m19182.dev**.
+Estos comandos dejan datos cacheados; la construcción usa esas copias. Cambiar de
+edición REE exige reconciliar los valores de los nudos y conservar el CSV original.
+La cobertura de su inventario y la del trazado geográfico se describen por separado en
+el sitio.
 
-Cada push a `main` dispara `.github/workflows/despliegue.yml`, que valida el
-conjunto de datos con `--strict`, construye el sitio y lo sube. Si la validación
-falla, no se publica nada. Los secretos `CLOUDFLARE_API_TOKEN` y
-`CLOUDFLARE_ACCOUNT_ID` están configurados en el repositorio.
+La capa de centrales está apagada por defecto. La potencia instalada de OSM y la
+generación medida de ENTSO-E ocupan campos distintos. Para esta última se necesita
+`ENTSOE_TOKEN` y un cruce revisado de códigos EIC en `data/generacion/unidades.yaml`.
+Con `--sugerir`, el importador propone coincidencias en `research/informe-generacion.md`;
+no las acepta automáticamente. Sin token, se muestra únicamente la potencia publicada.
 
-Para publicar a mano:
+## Publicación
+
+Cada push a `main` ejecuta `.github/workflows/despliegue.yml`: valida con `--strict`,
+construye y publica `dist/` en Cloudflare Pages, proyecto `mapa-datacenters-espana`.
+El dominio público es **datacenters.m19182.dev**. El repositorio usa los secretos
+`CLOUDFLARE_API_TOKEN` y `CLOUDFLARE_ACCOUNT_ID`.
 
 ```bash
 npm run build
 npx wrangler pages deploy dist --project-name=mapa-datacenters-espana
 ```
 
-## Informes
-
-`research/` recoge tanto los dossieres de investigación por territorio y por
-compañía como los informes que genera la tubería:
-
-| Fichero | Contenido |
-|---|---|
-| `informe-validacion.md` | Errores y avisos del esquema |
-| `informe-reconciliacion.md` | Variantes de nombre, duplicados, incoherencias |
-| `informe-actualizacion.md` | Cola de revisión de fuentes |
-| `cobertura.md` | Huecos, contradicciones y nivel de cobertura |
-| `computo.md` | Qué hardware de cálculo hay dentro: GPU, ASIC de IA, HPC y cuántica |
-| `estado-del-arte.md` | Quién más ha mapeado esto y en qué queda por detrás este registro |
-| `acceso-a-fuentes.md` | Qué documentos no se pueden consultar y por qué, con lo que puede hacer una persona |
-| `auditoria-datos.md` | Verificación independiente de los datos de mayor impacto |
-| `red-electrica.md` | Cómo se reparte el acceso a la red (se publica en el sitio) |
-| `renovables.md` | Contratos de energía vinculados a centros de datos (se publica) |
-| `normativa/<id>.md` | Lectura de una norma: qué cambia en la práctica (se publica en su ficha) |
-| `informe-generacion.md` | Cola de cotejo entre unidades de ENTSO-E y centrales de OSM |
-
-## Calidad conocida
-
-El conjunto se audita a sí mismo y publica el resultado. La comprobación más
-exigente verifica que cada cifra de potencia aparezca literalmente en la cita de
-alguna de sus fuentes; hoy falla en una parte de los registros, y esa proporción
-se muestra en la sección de datos del sitio en lugar de guardarse. Un registro
-que oculta sus defectos no es más fiable, solo lo parece.
-
 ## Licencia
 
-Los datos originales de este registro, bajo
-[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.es). El trazado de
-la red eléctrica deriva de OpenStreetMap y se rige por la
-[ODbL](https://opendatacommons.org/licenses/odbl/), igual que el inventario de
-centrales de generación. Las cifras de generación real proceden de la plataforma
-de transparencia de ENTSO-E y se reutilizan citando la fuente. Las citas literales
-pertenecen a sus editores y se reproducen como fragmento breve a efectos de
-verificación.
+Los datos originales se publican bajo [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.es).
+El trazado y las centrales derivados de OpenStreetMap conservan su licencia
+[ODbL](https://opendatacommons.org/licenses/odbl/). Las cifras de ENTSO-E se reutilizan
+citando su plataforma de transparencia. Las citas breves pertenecen a sus editores.

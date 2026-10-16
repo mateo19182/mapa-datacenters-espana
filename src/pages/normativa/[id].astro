@@ -6,7 +6,7 @@ import normativa from '../../data/normativa.json'
 import sitios from '../../data/sitios.json'
 import { tituloNorma } from '../../lib/normativa-presentacion.js'
 import { fechaLegible, slug } from '../../lib/etiquetas.js'
-import { AMBITO_ETIQUETA, RANGO_ETIQUETA, ESTADO_NORMA_ETIQUETA, ESTADO_NORMA_DESCRIPCION, MATERIA_ETIQUETA, ROL_ETIQUETA, POSTURA_ETIQUETA, VINCULO_NORMA_ETIQUETA } from '../../lib/normativa.js'
+import { AMBITO_ETIQUETA, RANGO_ETIQUETA, ESTADO_NORMA_ETIQUETA, MATERIA_ETIQUETA, ROL_ETIQUETA, POSTURA_ETIQUETA, VINCULO_NORMA_ETIQUETA } from '../../lib/normativa.js'
 
 export function getStaticPaths() {
   return normativa.map((n) => ({ params: { id: n.id }, props: { norma: n } }))
@@ -18,6 +18,7 @@ const bajoControl = n.estado === 'adoptada_en_control'
 const indice = new Map(n.fuentes.map((f, i) => [f.id, i + 1]))
 const refs = (ids) => (ids ?? []).map((id) => indice.get(id)).filter(Boolean).sort((a, b) => a - b)
 const primero = (texto) => texto?.split(/(?<=[.!?])\s+/)[0] ?? ''
+const resto = (texto) => texto?.slice(primero(texto).length).trim() ?? ''
 const extracto = (texto, maximo = 160) => texto.length <= maximo ? texto : `${texto.slice(0, maximo).replace(/\s+\S*$/, '')}…`
 const lecturas = import.meta.glob('../../contenido/normativa/*.md', { eager: true })
 const Lectura = lecturas[`../../contenido/normativa/${n.id}.md`]?.Content
@@ -41,9 +42,9 @@ const vinculo = (v) => {
     <h1>{tituloNorma(n)}</h1>
     <p class="etiquetas"><span class={`etiqueta estado-norma-${n.estado}`}><span class="punto" aria-hidden="true"></span>{ESTADO_NORMA_ETIQUETA[n.estado]}</span><span class="pequeno silencio">Verificada el {fechaLegible(n.ultima_verificacion)}</span></p>
     <p class="sumario"><Glosa texto={primero(n.resumen)} /></p>
-    {pendiente && n.estado !== 'consulta_previa' && <p class="nota pequeno"><strong>Sin aprobar.</strong> Los requisitos de esta ficha son propuestas y no están en vigor. Los plazos ligados a una eventual entrada en vigor todavía no han comenzado.</p>}
-    {n.estado === 'consulta_previa' && <p class="nota pequeno"><strong>Consulta previa.</strong> Se recaban aportaciones para una futura iniciativa normativa. Todavía no hay una propuesta articulada ni requisitos aplicables.</p>}
-    {bajoControl && <p class="nota pequeno"><strong>Adoptada por la Comisión.</strong> Sigue bajo control de Parlamento y Consejo, pendiente de publicación y entrada en vigor. Los requisitos del acto adoptado todavía no son aplicables.</p>}
+    {pendiente && n.estado !== 'consulta_previa' && <p class="nota pequeno"><strong>Sin aprobar.</strong> Requisitos propuestos; los plazos ligados a la entrada en vigor no han comenzado.</p>}
+    {n.estado === 'consulta_previa' && <p class="nota pequeno"><strong>Consulta previa.</strong> Sin propuesta articulada ni requisitos aplicables.</p>}
+    {bajoControl && <p class="nota pequeno"><strong>Acto adoptado, sin entrar en vigor.</strong> Bajo control de Parlamento y Consejo; requisitos todavía no aplicables.</p>}
     {n.estado === 'aprobada_no_aplicable' && <p class="nota pequeno">Aprobada y publicada, con aplicación diferida. Consulta la fecha y el ámbito de cada requisito.</p>}
     {n.estado === 'en_vigor_en_tramitacion' && <p class="nota pequeno">La norma está en vigor. Su tramitación parlamentaria puede modificar el texto.</p>}
 
@@ -58,11 +59,10 @@ const vinculo = (v) => {
       <a href="#fuentes">Fuentes</a>
     </nav>
 
-    <details class="bloque" id="identificacion"><summary>Texto oficial y estado completo</summary>
+    <details class="bloque" id="identificacion"><summary>Identificación y antecedentes</summary>
       {n.titulo_oficial && <p class="pequeno">{n.titulo_oficial}</p>}
-      {n.resumen !== primero(n.resumen) && <p class="pequeno"><Glosa texto={n.resumen} /></p>}
+      {resto(n.resumen) && <p class="pequeno"><Glosa texto={resto(n.resumen)} /></p>}
       <dl class="ficha">
-        <div><dt>Estado</dt><dd>{ESTADO_NORMA_DESCRIPCION[n.estado]}</dd></div>
         <div><dt>Rango</dt><dd>{RANGO_ETIQUETA[n.rango] ?? n.rango}</dd></div>
         {n.boletin && <div><dt>Boletín</dt><dd>{n.boletin}{n.referencia && ` · ${n.referencia}`}</dd></div>}
         {n.fecha_aprobacion && <div><dt>Aprobación</dt><dd>{fechaLegible(n.fecha_aprobacion)}</dd></div>}
@@ -76,14 +76,13 @@ const vinculo = (v) => {
     </details>
 
     {n.obligaciones.length > 0 && <section id="dice"><h2>{pendiente ? 'Requisitos propuestos' : bajoControl ? 'Contenido del acto adoptado' : 'Requisitos y ámbito'}</h2>
-      <p class="pequeno silencio">{pendiente ? 'Borrador sin aprobar. Los umbrales y plazos pueden cambiar.' : bajoControl ? 'Acto adoptado por la Comisión, todavía sin entrar en vigor.' : 'Umbrales y plazos del texto registrado.'} Cada cifra conserva su unidad original.</p>
       <div class="tabla-envoltorio"><table class="tabla-fichas requisitos">
         <thead><tr><th>Destinatario</th><th>Requisito</th><th>Umbral</th><th>Plazo</th><th>Fuente</th></tr></thead>
         <tbody>{n.obligaciones.map((o) => <tr>
           <td class="pequeno" data-etiqueta="Destinatario">{o.quien}</td>
           <td data-etiqueta="Requisito">{o.que.length > 180 ? <details><summary>{extracto(o.que)}</summary><p class="pequeno"><Glosa texto={o.que} /></p></details> : <Glosa texto={o.que} />}</td>
-          <td class="pequeno" data-etiqueta="Umbral">{o.umbral ?? 'Sin umbral especificado'}</td>
-          <td class="pequeno" data-etiqueta="Plazo">{o.plazo ?? 'Sin plazo especificado'}</td>
+          <td class="pequeno" data-etiqueta="Umbral">{o.umbral ?? 'No indicado'}</td>
+          <td class="pequeno" data-etiqueta="Plazo">{o.plazo ?? 'No indicado'}</td>
           <td data-etiqueta="Fuente">{refs(o.fuentes).map((r, i) => <>{i > 0 && ', '}<a href={`#fuente-${n.fuentes[r - 1].id}`}>{r}</a></>)}</td>
         </tr>)}</tbody>
       </table></div>
@@ -98,9 +97,8 @@ const vinculo = (v) => {
       <ul class="incertidumbres">{n.incertidumbres.map((u) => <li><strong class="campo">{u.campo}</strong><p class="pequeno"><Glosa texto={u.descripcion} />{refs(u.fuentes).length > 0 && <sup>{refs(u.fuentes).map((r, i) => <>{i > 0 && ','}<a href={`#fuente-${n.fuentes[r - 1].id}`}>{r}</a></>)}</sup>}</p></li>)}</ul>
     </details>}
 
-    {(n.por_que_importa || Lectura) && <details class="bloque" id="lectura"><summary>Análisis y efecto práctico</summary>
-      <p class="pequeno silencio">Interpretación editorial a partir de las fuentes de la ficha.</p>
-      {n.por_que_importa && <p class="importa"><Glosa texto={n.por_que_importa} /></p>}
+    {(resto(n.por_que_importa) || Lectura) && <details class="bloque" id="lectura"><summary>Análisis editorial</summary>
+      {resto(n.por_que_importa) && <p class="importa"><Glosa texto={resto(n.por_que_importa)} /></p>}
       {Lectura && <div class="prosa"><Lectura /></div>}
     </details>}
 

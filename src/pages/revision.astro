@@ -3,36 +3,50 @@ import Base from '../layouts/Base.astro'
 import Listado from '../components/Listado.astro'
 import revision from '../data/revision.json'
 import { fechaLegible } from '../lib/etiquetas.js'
+import { colaRevision } from '../lib/revision-presentacion.js'
+import { REPOSITORIO } from '../lib/enlaces.js'
 const estados = { detected: 'Detectado', awaiting_primary: 'Falta fuente primaria', proposed: 'Propuesta documentada', published: 'Incorporado al registro', discarded: 'Descartado' }
 const tipos = { proyecto: 'Proyecto', normativa: 'Normativa', red: 'Red eléctrica', calidad: 'Calidad de datos' }
-const abiertos = revision.hallazgos.filter((h) => !['published', 'discarded'].includes(h.estado))
-const filtros = [ { nombre: 'estado', etiqueta: 'Decisión', opciones: Object.entries(estados).map(([valor, etiqueta]) => ({ valor, etiqueta })) }, { nombre: 'tipo', etiqueta: 'Asunto', opciones: Object.entries(tipos).map(([valor, etiqueta]) => ({ valor, etiqueta })) }, { nombre: 'prioridad', etiqueta: 'Prioridad', opciones: ['alta','media','baja'].map((p) => ({ valor:p, etiqueta:p })) } ]
+const entradas = colaRevision(revision)
+const abiertos = entradas.filter((h) => h.vista === 'pendientes')
+const filtros = [
+  { nombre: 'estado', etiqueta: 'Mostrar', varios: true, inicial: 'detected,awaiting_primary,proposed', opciones: [
+    { valor: 'detected,awaiting_primary,proposed', etiqueta: 'Pendientes' },
+    { valor: 'published,discarded', etiqueta: 'Historial' },
+    ...Object.entries(estados).map(([valor, etiqueta]) => ({ valor, etiqueta })),
+  ] },
+  { nombre: 'tipo', etiqueta: 'Asunto', opciones: Object.entries(tipos).map(([valor, etiqueta]) => ({ valor, etiqueta })) },
+  { nombre: 'prioridad', etiqueta: 'Prioridad', avanzado: true, opciones: ['alta','media','baja'].map((p) => ({ valor:p, etiqueta:p })) },
+]
 const ordenes = [{ valor:'revision', campo:'ordenrevision', etiqueta:'Orden de revisión', numerico:true }, { valor:'prioridad', campo:'ordenprioridad', etiqueta:'Prioridad', numerico:true }, { valor:'plazo', etiqueta:'Revisión más próxima' }, { valor:'detectado', etiqueta:'Detección más reciente', direccion:'desc' }]
 const tecnica = revision.comprobacion_automatica
 ---
-<Base titulo="Cola de revisión" descripcion="Seguimientos, propuestas y decisiones de la investigación. Fechas de revisión factual y comprobaciones técnicas por separado.">
+<Base titulo="Pendientes de revisión" descripcion="Investigaciones abiertas, pistas anteriores y decisiones del registro.">
   <div class="contenedor revision">
-    <h1>Cola de revisión</h1>
-    <p class="sumario">{abiertos.length} seguimientos abiertos y {revision.hallazgos.length - abiertos.length} decisiones registradas. Las candidatas pendientes de contraste quedan fuera de los datos del mapa.</p>
-    <p class="pequeno"><a href="/actualizaciones">Novedades verificadas</a> · <a href="/actualizaciones.xml">RSS</a> · <a href="/datos/revision.json" download>Descargar la cola</a></p>
-    <Listado nombre="seguimientos" filtros={filtros} ordenes={ordenes}>
-      <ul class="hallazgos">{revision.hallazgos.map((h, i) => <li data-list-item id={h.id} data-busca={`${h.titulo} ${h.motivo} ${h.siguiente_paso ?? ''}`} data-estado={h.estado} data-tipo={h.tipo} data-prioridad={h.prioridad} data-ordenrevision={i} data-ordenprioridad={{alta:0,media:1,baja:2}[h.prioridad]} data-plazo={h.revisar_antes ?? ''} data-detectado={h.detectado}>
+    <h1>Pendientes de revisión</h1>
+    <p class="sumario">{abiertos.length} asuntos abiertos. Las pistas sin verificar quedan fuera del mapa y sus totales.</p>
+    <p class="pequeno"><a href="/revision?estado=published,discarded">Historial de decisiones</a> · <a href="/actualizaciones">Últimos cambios</a> · <a href="/datos/revision.json" download>Descargar la cola</a></p>
+    <Listado nombre="seguimientos" filtros={filtros} ordenes={ordenes} porPagina={25}>
+      <ul class="hallazgos">{entradas.map((h, i) => <li data-list-item id={h.id} data-busca={`${h.titulo} ${h.motivo} ${h.siguiente_paso ?? ''} ${h.provincia ?? ''} ${h.ccaa ?? ''} ${h.potencia_citada ?? ''} ${h.antecedentes.map((p) => `${p.motivo} ${p.provincia ?? ''} ${p.ccaa ?? ''} ${p.potencia_citada ?? ''}`).join(' ')}`} data-estado={h.estado} data-tipo={h.tipo} data-prioridad={h.prioridad} data-ordenrevision={i} data-ordenprioridad={{alta:0,media:1,baja:2}[h.prioridad]} data-plazo={h.revisar_antes ?? ''} data-detectado={h.detectado ?? ''}>
         <div class="cabecera-hallazgo"><h2>{h.titulo}</h2><span class={`decision decision-${h.estado}`}>{estados[h.estado]}</span></div>
-        <p class="metadatos">{tipos[h.tipo]} · Prioridad {h.prioridad}{h.revisar_antes && ` · Revisar antes del ${fechaLegible(h.revisar_antes)}`}{h.vencido && <strong> · Revisión pendiente</strong>}{h.candidato && ' · Candidata de investigación'}</p>
+        <p class="metadatos">{h.origen === 'cobertura' ? 'Pista anterior' : tipos[h.tipo]} · Prioridad {h.prioridad}{h.revisar_antes && ` · Revisar antes del ${fechaLegible(h.revisar_antes)}`}{h.vencido && <strong> · Revisión pendiente</strong>}</p>
         {h.siguiente_paso && <p class="siguiente">{h.siguiente_paso}</p>}
-        <details><summary>Motivo y fuentes</summary><p>{h.motivo}</p><p class="pequeno silencio">Detectado el {fechaLegible(h.detectado)}. {h.revisado ? `Decisión revisada el ${fechaLegible(h.revisado)}.` : 'Sin decisión editorial revisada.'}</p>
-          <ul>{h.fuentes.map((f) => <li><a href={f.url} rel="noopener nofollow" target="_blank">{f.titulo}</a> <span class="silencio pequeno">{f.primaria ? '· Fuente primaria' : '· Pista o fuente secundaria'}</span></li>)}</ul>
+        <details><summary>Motivo y fuentes</summary><p>{h.motivo}</p>
+          {h.ccaa && <p class="pequeno silencio">Ubicación citada en la pista: {[h.provincia, h.ccaa].filter(Boolean).join(' · ')}{h.potencia_citada && ` · Potencia citada, sin verificar: ${h.potencia_citada}`}.</p>}
+          {h.detectado && <p class="pequeno silencio">Detectado el {fechaLegible(h.detectado)}{h.revisado && ` · Revisado el ${fechaLegible(h.revisado)}`}.</p>}
+          {h.antecedentes.map((pista) => <><p>{pista.motivo}</p>{pista.ccaa && <p class="pequeno silencio">{[pista.provincia, pista.ccaa].filter(Boolean).join(' · ')}{pista.potencia_citada && ` · Potencia citada, sin verificar: ${pista.potencia_citada}`}.</p>}</>)}
+          {h.fuentes.length > 0 ? <ul>{h.fuentes.map((f) => <li><a href={f.url} rel="noopener nofollow" target="_blank">{f.titulo}</a>{!f.primaria && <span class="silencio pequeno"> · Pista secundaria</span>}</li>)}</ul> : <p class="pequeno"><a href={`${REPOSITORIO}/blob/main/data/pendientes.yaml`} rel="noopener">Nota de investigación original</a></p>}
         </details>
         {h.enlaces.length > 0 && <p class="pequeno enlaces">{h.enlaces.map((e) => <a href={e.href}>{e.texto} →</a>)}</p>}
       </li>)}</ul>
     </Listado>
     <details class="bloque"><summary>Revisión de hechos · {revision.revision_factual.pendientes} fichas pendientes según actividad</summary>
-      <p class="pequeno">La lectura automática de una URL conserva la fecha de revisión de sus hechos. Los plazos de trabajo son 14 días para trámites y obras, 30 para anuncios, 90 para instalaciones operativas y normas vigentes, y 180 para proyectos paralizados o cancelados.</p>
+      <p class="pequeno">Plazos de revisión: 14 días para trámites y obras, 30 para anuncios, 90 para instalaciones operativas y normas vigentes, y 180 para proyectos paralizados o cancelados.</p>
       <div class="tabla-envoltorio"><table><thead><tr><th>Ficha</th><th>Última revisión registrada</th><th>Revisar antes de</th></tr></thead><tbody>{revision.revision_factual.registros.filter((r) => r.vencida).map((r) => <tr><td><a href={r.href}>{r.nombre}</a></td><td>{fechaLegible(r.ultima_revision_registrada) ?? 'Sin fecha'}</td><td>{fechaLegible(r.revisar_antes) ?? 'Pendiente'}</td></tr>)}</tbody></table></div>
     </details>
     <details class="bloque"><summary>Comprobación automática de fuentes · última observación {fechaLegible(tecnica.ultima_observacion) ?? 'sin fecha'}</summary>
       <p class="pequeno">{tecnica.con_observacion} de {tecnica.registradas} referencias tienen observaciones técnicas. {tecnica.rotas} enlaces rotos, {tecnica.bloqueadas} bloqueados para el comprobador y {tecnica.cambios_pendientes} cambios de contenido pendientes de revisión. Son referencias de proyectos, normativa, red y energía.</p>
-      <p class="pequeno">Un enlace que responde puede contener cambios aún sin aceptar. Un bloqueo automático no acredita cómo funciona en un navegador.</p>
+      <p class="pequeno">Estas observaciones técnicas no renuevan la fecha de revisión factual.</p>
       <p class="pequeno"><a href="/fuentes?enlace=rota">Consultar enlaces de proyectos rotos</a> · <a href="/fuentes?enlace=bloqueada">Bloqueados para el comprobador</a></p>
     </details>
     <details class="bloque"><summary>Fechas previstas pendientes de contraste · {revision.hitos_vencidos.length}</summary>

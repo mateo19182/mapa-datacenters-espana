@@ -512,7 +512,7 @@ escribir('computo.json', inventarioComputo(sitios))
 escribir('revision.json', prepararRevision(
   YAML.parse(readFileSync(join(RAIZ, 'data/revision.yaml'), 'utf8')),
   {
-    sitios, normativa, red, renovables, huellas,
+    sitios, normativa, red, renovables, huellas, pendientes,
     borradores: existsSync(join(RAIZ, 'research/hallazgos.yaml')) ? YAML.parse(readFileSync(join(RAIZ, 'research/hallazgos.yaml'), 'utf8')) : [],
   },
 ))

@@ -5,6 +5,7 @@ import InventarioProyectos from '../../components/InventarioProyectos.astro'
 import companias from '../../data/companias.json'
 import sitios from '../../data/sitios.json'
 import { ORDEN_ESTADOS, fechaLegible } from '../../lib/etiquetas.js'
+import { nombreProyecto } from '../../lib/nombres.js'
 
 export function getStaticPaths() {
   return companias.map((c) => ({ params: { slug: c.slug }, props: { compania: c } }))
@@ -31,10 +32,11 @@ const ultima = propios.map((s) => s.ultima_verificacion).sort().at(-1)
   descripcion={`Emplazamientos de ${c.nombre} registrados en España, con estado, potencia y fuentes.`}
 >
   <div class="contenedor">
-    <p class="migas"><a href="/companias">Compañías</a></p>
+    <p class="migas"><a href="/companias">Operadores</a></p>
     <h1>{c.nombre}</h1>
     <p class="sumario">{c.emplazamientos} {c.emplazamientos === 1 ? 'emplazamiento registrado' : 'emplazamientos registrados'} en {c.ccaas.length} {c.ccaas.length === 1 ? 'comunidad' : 'comunidades'}.</p>
-    <p class="pequeno silencio">{fuentesTotales} fuentes distintas · Última verificación: {fechaLegible(ultima)}</p>
+    <p class="pequeno silencio">{fuentesTotales} fuentes · Última ficha revisada: {fechaLegible(ultima)}</p>
+    <p class="pequeno"><a href={`/?o=${encodeURIComponent(c.nombre)}`}>Ver en el mapa →</a></p>
 
     <Cartera cartera={c} />
 
@@ -45,12 +47,12 @@ const ultima = propios.map((s) => s.ultima_verificacion).sort().at(-1)
       <>
         <h2>Otros emplazamientos vinculados</h2>
         <p class="pequeno silencio">
-          Operados por terceros, con {c.nombre} como propietario o cliente ancla según las fuentes.
+          Operados por terceros, con {c.nombre} como propietario o cliente ancla.
         </p>
         <ul class="lista-simple">
           {relacionados.map((s) => (
             <li>
-              <a href={`/proyecto/${s.id}`}>{s.nombre}</a>
+              <a href={`/proyecto/${s.id}`}>{nombreProyecto(s)}</a>
               <span class="silencio pequeno">
                 · operado por {s.operador}
                 {s.cliente_ancla === c.nombre ? ' · cliente ancla' : ' · propietario'}
@@ -66,17 +68,14 @@ const ultima = propios.map((s) => s.ultima_verificacion).sort().at(-1)
         <summary>Incertidumbres en {conIncertidumbre.length} de {propios.length} emplazamientos</summary>
         <ul class="lista-simple">
           {conIncertidumbre.map((s) => <li>
-            <a href={`/proyecto/${s.id}#incertidumbres`}>{s.nombre}</a>
-            <span class="silencio pequeno"> · {s.incertidumbres.length} entradas documentadas</span>
+            <a href={`/proyecto/${s.id}#incertidumbres`}>{nombreProyecto(s)}</a>
+            <span class="silencio pequeno"> · {s.incertidumbres.length} entradas</span>
           </li>)}
         </ul>
-        <p class="pequeno"><a href={`/incertidumbres?q=${encodeURIComponent(c.nombre)}`}>Buscar las incertidumbres de {c.nombre}</a></p>
+        <p class="pequeno"><a href={`/incertidumbres?q=${encodeURIComponent(c.nombre)}`}>Ver incertidumbres</a></p>
       </details>
     )}
 
-    <p class="pequeno" style="margin:2rem 0 3rem">
-      <a href={`/?o=${encodeURIComponent(c.nombre)}`}>Ver los emplazamientos de {c.nombre} en el mapa →</a>
-    </p>
   </div>
 </Base>
 

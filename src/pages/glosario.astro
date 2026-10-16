@@ -5,48 +5,34 @@ import { CATEGORIAS, TERMINOS, porCategoria } from '../lib/glosario.js'
 
 <Base
   titulo="Glosario"
-  descripcion="Vocabulario del registro: potencia, acceso a la red, refrigeración, cómputo, contratos de energía e indicadores de inversión, con definiciones y errores frecuentes."
+  descripcion="Definiciones de potencia, acceso a la red, refrigeración, cómputo, energía e inversión."
 >
   <div class="contenedor">
     <h1>Glosario</h1>
-    <p class="sumario">{TERMINOS.length} términos para interpretar las cifras del registro. Los términos subrayados con puntos también se explican donde aparecen.</p>
+    <p class="sumario">{TERMINOS.length} términos del registro.</p>
 
     <div class="controles" data-controles-glosario hidden>
       <label for="busca-termino">Buscar término o definición</label>
       <input id="busca-termino" type="search" placeholder="Por ejemplo, MW IT o PPA" autocomplete="off" />
       <span id="contador-termino" class="pequeno silencio" role="status" aria-live="polite" aria-atomic="true"></span>
     </div>
-    <p id="vacio-glosario" class="pequeno" hidden>No hay términos con esa búsqueda. Prueba otra palabra.</p>
+    <p id="vacio-glosario" class="pequeno" hidden>Sin resultados. Prueba otra palabra.</p>
     <nav class="atajos" aria-label="Secciones del glosario">
       {CATEGORIAS.map(([id, nombre]) => (
         <a href={`#${id}`}>{nombre} <span class="silencio">{porCategoria(id).length}</span></a>
       ))}
     </nav>
 
-    {CATEGORIAS.map(([id, nombre, entradilla]) => (
+    {CATEGORIAS.map(([id, nombre]) => (
       <section class="bloque" id={id} data-bloque>
         <h2>{nombre}</h2>
-        <p class="pequeno silencio">{entradilla}</p>
         <dl class="terminos">
           {porCategoria(id).map((t) => (
             <div class="termino" id={t.id} data-busca={`${t.termino} ${(t.alias ?? []).join(' ')} ${t.definicion} ${t.matiz ?? ''}`.toLowerCase()}>
-              <dt>
-                {t.termino}
-                {(t.alias ?? []).filter((a) => a.toLowerCase() !== t.termino.toLowerCase()).length > 0 && (
-                  <span class="alias">
-                    {(t.alias ?? [])
-                      .filter((a) => a.toLowerCase() !== t.termino.toLowerCase())
-                      .slice(0, 4)
-                      .join(' · ')}
-                  </span>
-                )}
-              </dt>
+              <dt>{t.termino}</dt>
               <dd>
                 <p>{t.definicion}</p>
-                {t.matiz && <details class="matiz"><summary>Error frecuente</summary><p>{t.matiz}</p></details>}
-                {t.enlace && (
-                  <p class="pequeno"><a href={t.enlace}>Dónde se usa</a></p>
-                )}
+                {t.matiz && <details class="matiz"><summary>Matiz</summary><p>{t.matiz}</p></details>}
               </dd>
             </div>
           ))}
@@ -54,11 +40,7 @@ import { CATEGORIAS, TERMINOS, porCategoria } from '../lib/glosario.js'
       </section>
     ))}
 
-    <p class="pequeno silencio" style="margin-bottom:3rem">
-      Las definiciones son propias. Cuando resumen una norma, la norma manda: el detalle está en{' '}
-      <a href="/red-electrica">red eléctrica</a>, <a href="/renovables">renovables</a> y{' '}
-      <a href="/metodologia">metodología</a>, con su cita y su enlace.
-    </p>
+    <p class="pequeno" style="margin-bottom:3rem"><a href="/red-electrica">Red eléctrica</a> · <a href="/renovables">Energía y contratos</a> · <a href="/metodologia">Metodología</a></p>
   </div>
 </Base>
 
@@ -106,6 +88,7 @@ import { CATEGORIAS, TERMINOS, porCategoria } from '../lib/glosario.js'
 </script>
 
 <style>
+  .termino[hidden], .bloque[hidden] { display: none; }
   .controles[hidden] { display: none; }
   .controles label { font-size: .76rem; color: var(--tinta-3); }
   .controles {
@@ -165,14 +148,6 @@ import { CATEGORIAS, TERMINOS, porCategoria } from '../lib/glosario.js'
     font-weight: 600;
   }
 
-  .alias {
-    display: block;
-    margin-top: 0.15rem;
-    color: var(--tinta-3);
-    font: 0.68rem/1.4 var(--mono);
-    font-weight: 400;
-  }
-
   dd {
     margin: 0;
     max-width: 46rem;
@@ -192,10 +167,6 @@ import { CATEGORIAS, TERMINOS, porCategoria } from '../lib/glosario.js'
     border-left: 2px solid var(--borde-fuerte);
     color: var(--tinta-3) !important;
     font-size: 0.84rem !important;
-  }
-
-  dd .pequeno {
-    margin-top: 0.35rem;
   }
 
   @media (max-width: 700px) {

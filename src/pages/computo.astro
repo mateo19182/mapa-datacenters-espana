@@ -2,12 +2,14 @@
 import Base from '../layouts/Base.astro'
 import Listado from '../components/Listado.astro'
 import registros from '../data/computo.json'
-import { MODALIDAD_COMPUTO_ETIQUETA } from '../lib/computo.js'
+import { AMBITO_COMPUTO_ETIQUETA, MODALIDAD_COMPUTO_ETIQUETA, MODALIDAD_COMPUTO_DESCRIPCION } from '../lib/computo.js'
+import { alcanceComputo, avisoComputo, estadoComplementarioComputo, modeloComputo } from '../lib/computo-presentacion.js'
+import { nombreProyecto } from '../lib/nombres.js'
 import { COMPUTO_ETIQUETA, ESTADO_ETIQUETA, unidadesComputo, rendimientoComputo, fechaLegible } from '../lib/etiquetas.js'
 const opciones = (campo, etiquetas = {}) => [...new Set(registros.map((r) => r[campo]).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'es')).map((valor) => ({ valor, etiqueta: etiquetas[valor] ?? valor }))
 const filtros = [
   { nombre: 'tipo', etiqueta: 'Hardware', opciones: opciones('tipo', COMPUTO_ETIQUETA) },
-  { nombre: 'modalidad', etiqueta: 'Despliegue o acceso', opciones: opciones('modalidad', MODALIDAD_COMPUTO_ETIQUETA) },
+  { nombre: 'modalidad', etiqueta: 'Situación', opciones: opciones('modalidad', MODALIDAD_COMPUTO_ETIQUETA) },
   { nombre: 'estado', etiqueta: 'Estado del recurso', opciones: opciones('estado', ESTADO_ETIQUETA) },
   { nombre: 'region', parametro: 'r', etiqueta: 'Comunidad', opciones: opciones('ccaa') },
   { nombre: 'modelo', etiqueta: 'Modelo', avanzado: true, opciones: opciones('modelo') },
@@ -19,23 +21,44 @@ const ordenes = [
   { valor: 'modelo', etiqueta: 'Modelo' },
   { valor: 'fecha', etiqueta: 'Dato más reciente', direccion: 'desc' },
 ]
+const filas = registros.map((r) => ({
+  ...r,
+  nombreCorto: nombreProyecto(r),
+  modeloVisible: modeloComputo(r),
+  alcanceVisible: alcanceComputo(r),
+  aviso: avisoComputo(r),
+  estadoVisible: estadoComplementarioComputo(r),
+}))
 ---
 <Base titulo="Cómputo y GPU" descripcion="Hardware documentado en España: GPU, CPU HPC, aceleradores de IA y procesadores cuánticos, con sus fuentes, alcance y estado de despliegue.">
   <div class="contenedor computo">
     <h1>Cómputo y GPU</h1>
-    <p class="sumario">{registros.length} registros de hardware en {new Set(registros.map((r) => r.proyecto)).size} emplazamientos. Cada fila conserva su alcance; los recuentos no se suman entre sí.</p>
+    <p class="sumario">{registros.length} registros en {new Set(registros.map((r) => r.proyecto)).size} emplazamientos: instalaciones, compras, previsiones y acceso.</p>
     <Listado nombre="registros de cómputo" filtros={filtros} ordenes={ordenes} porPagina={25} placeholder="L40S, B200, CESGA, Cidade das TIC…">
-      <div class="tabla-envoltorio"><table class="tabla-fichas"><thead><tr><th>Hardware</th><th>Emplazamiento</th><th>Recuento publicado</th><th>Despliegue y estado</th><th>Evidencia</th></tr></thead><tbody>
-        {registros.map((r) => <tr id={r.id} data-list-item data-busca={[r.modelo, r.sistema, r.nombre_proyecto, r.operador_centro, r.operador_computo, r.municipio, r.ccaa, COMPUTO_ETIQUETA[r.tipo]].filter(Boolean).join(' ')} data-tipo={r.tipo} data-modalidad={r.modalidad} data-estado={r.estado} data-region={r.ccaa ?? ''} data-operador={r.operador_hardware ?? r.operador_computo ?? r.operador_centro ?? ''} data-recuento={r.unidades == null ? 'sin_dato' : 'publicado'} data-proyecto={r.nombre_proyecto} data-modelo={r.modelo ?? ''} data-fecha={r.fecha_dato ?? ''}>
-          <td><strong>{r.modelo ?? r.sistema ?? 'Modelo sin publicar'}</strong><span class="pequeno silencio"><br />{COMPUTO_ETIQUETA[r.tipo]} · {r.ambito}</span></td>
-          <td data-etiqueta="Emplazamiento"><a href={`/proyecto/${r.proyecto}#detalle-computo`}>{r.nombre_proyecto}</a><span class="pequeno silencio"><br />{[r.municipio, r.ccaa].filter(Boolean).join(' · ')}{r.operador_computo && <><br />Hardware de {r.operador_computo}</>}</span></td>
-          <td data-etiqueta="Recuento">{unidadesComputo(r.unidades, r.tipo_unidad) ?? 'No publicado'}{r.nodos != null && <span class="pequeno silencio"><br />{r.nodos} nodos</span>}{rendimientoComputo(r) && <span class="pequeno silencio"><br />{rendimientoComputo(r)}</span>}</td>
-          <td data-etiqueta="Situación"><span>{MODALIDAD_COMPUTO_ETIQUETA[r.modalidad]}</span><span class="pequeno silencio"><br />{ESTADO_ETIQUETA[r.estado]}{r.fecha_dato && <> · {fechaLegible(r.fecha_dato)}</>}</span></td>
-          <td data-etiqueta="Evidencia"><details><summary>{r.fuentes.length} fuentes y alcance</summary>{r.nota && <p>{r.nota}</p>}<ul>{r.fuentes.map((f) => <li><a href={`/proyecto/${r.proyecto}#fuente-${f.id}`}>{f.titulo}</a></li>)}</ul><p class="silencio">Ficha revisada el {fechaLegible(r.ultima_verificacion)}.</p></details></td>
+      <div class="tabla-envoltorio"><table class="tabla-fichas"><thead><tr><th>Hardware y alcance</th><th>Emplazamiento</th><th>Recuento publicado</th><th>Situación</th><th>Evidencia</th></tr></thead><tbody>
+        {filas.map((r) => <tr id={r.id} data-list-item data-busca={[r.modelo, r.sistema, r.nombre_proyecto, r.nombreCorto, r.operador_centro, r.operador_computo, r.municipio, r.ccaa, COMPUTO_ETIQUETA[r.tipo]].filter(Boolean).join(' ')} data-tipo={r.tipo} data-modalidad={r.modalidad} data-estado={r.estado} data-region={r.ccaa ?? ''} data-operador={r.operador_hardware ?? r.operador_computo ?? r.operador_centro ?? ''} data-recuento={r.unidades == null ? 'sin_dato' : 'publicado'} data-proyecto={r.nombre_proyecto} data-modelo={r.modelo ?? ''} data-fecha={r.fecha_dato ?? ''}>
+          <td>
+            <strong>{r.modeloVisible}</strong>
+            {r.alcanceVisible && <span class="alcance">{r.alcanceVisible}</span>}
+            <span class="pequeno silencio"><br />{COMPUTO_ETIQUETA[r.tipo]} · {AMBITO_COMPUTO_ETIQUETA[r.ambito]}</span>
+          </td>
+          <td data-etiqueta="Emplazamiento"><a href={`/proyecto/${r.proyecto}#detalle-computo`}>{r.nombreCorto}</a><span class="pequeno silencio"><br />{[r.municipio, r.ccaa].filter(Boolean).join(' · ')}{r.operador_computo && <><br />Hardware de {r.operador_computo}</>}</span></td>
+          <td data-etiqueta="Recuento">
+            {unidadesComputo(r.unidades, r.tipo_unidad) ?? 'No publicado'}
+            {r.nodos != null && <span class="pequeno silencio"><br />{r.nodos} {r.nodos === 1 ? 'nodo' : 'nodos'}</span>}
+            {rendimientoComputo(r) && <span class="pequeno silencio"><br />{rendimientoComputo(r)}</span>}
+            {r.aviso && <a class="matiz" href={`/proyecto/${r.proyecto}#incertidumbres`}>{r.aviso}</a>}
+          </td>
+          <td data-etiqueta="Situación">
+            <span title={MODALIDAD_COMPUTO_DESCRIPCION[r.modalidad]}>{MODALIDAD_COMPUTO_ETIQUETA[r.modalidad]}</span>
+            {r.estadoVisible && <span class="pequeno silencio"><br />{ESTADO_ETIQUETA[r.estadoVisible]}</span>}
+            {r.fecha_dato && <span class="pequeno silencio"><br />{fechaLegible(r.fecha_dato)}</span>}
+          </td>
+          <td data-etiqueta="Evidencia"><details><summary>{r.fuentes.length} {r.fuentes.length === 1 ? 'fuente' : 'fuentes'}</summary><p>Sistema: {r.sistema}{r.modelo && <> · {r.modelo}</>}</p>{!r.fecha_dato && <p class="silencio">Fecha del dato no publicada.</p>}{r.nota && <p>{r.nota}</p>}<ul>{r.fuentes.map((f) => <li><a href={`/proyecto/${r.proyecto}#fuente-${f.id}`}>{f.titulo}</a></li>)}</ul><p class="silencio">Ficha revisada el {fechaLegible(r.ultima_verificacion)}.</p></details></td>
         </tr>)}
       </tbody></table></div>
     </Listado>
-    <p class="pequeno silencio">El acceso contratado no acredita instalación física. Los FLOPS conservan su precisión y si son pico o medida. Unidades y rendimiento no se convierten en MW eléctricos.</p>
+    <details class="metodo"><summary>Cómo leer el inventario</summary><p>Los sistemas y sus partes no se suman entre sí. El acceso contratado no acredita instalación física. Los FLOPS conservan su precisión y si son pico o medida; no se convierten en MW eléctricos.</p></details>
     <p class="pequeno"><a href="/datos/computo.json" download>Descargar inventario JSON</a> · <a href="/glosario#gpu">Glosario</a></p>
   </div>
 </Base>
@@ -46,4 +69,8 @@ const ordenes = [
   details { font-size: .78rem; min-width: 9rem; }
   summary { cursor: pointer; }
   details p, details ul { margin-top: .5rem; }
+  .alcance, .matiz { display: block; font-size: .75rem; line-height: 1.4; margin-top: .35rem; }
+  .alcance { color: var(--tinta-2); }
+  .matiz { color: var(--aviso); }
+  .metodo { margin-block: 1rem; max-width: 48rem; }
 </style>

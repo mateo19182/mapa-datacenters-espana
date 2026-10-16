@@ -74,33 +74,22 @@ const claseRetorno = (valor) => valor > 0 ? 'positivo' : valor < 0 ? 'negativo' 
       <details class="informe-completo" id="informe-completo">
         <summary>Leer la tesis completa <span>Valoración, escenarios, seguimiento y fuentes</span></summary>
         <div class="marco-tesis">
-            <p class="titular"><Glosa texto={tesis.sobrelinea} /></p>
-            <p class="tesis-corta"><Glosa texto={tesis.tesisCorta} /></p>
-            <dl>
-              <div><dt>Precio de referencia</dt><dd>{tesis.mercado.precio}</dd></div>
-              <div><dt>Fecha de cierre</dt><dd>{tesis.mercado.fecha}</dd></div>
-              <div><dt>Horizonte de inversión</dt><dd>{tesis.horizonte}</dd></div>
-            </dl>
-      <p class="corte-datos">
-        Precio al cierre del {tesis.mercado.fechaLarga}. Cada tabla indica la fecha de corte de los
-        datos financieros. La rentabilidad bursátil no incluye dividendos. Este documento es un análisis
-        y no asesoramiento financiero.
-      </p>
+          <p class="corte-datos">Horizonte: {tesis.horizonte}. Análisis, no asesoramiento financiero.</p>
         </div>
 
 
         <section id="tesis" class="seccion">
-          <div class="titulo-lateral"><span>01</span><h2>Resumen de la tesis</h2></div>
+          <div class="titulo-lateral"><span>01</span><h2>Negocio y supuestos</h2></div>
           <div class="contenido">
             <p class="entradilla"><Glosa texto={tesis.resumen} /></p>
             <div class="tesis-grid">
               <div class="caso favor">
-                <p class="caso-titulo">Qué debe cumplirse</p>
-                <ul>{tesis.favor.map((punto) => <li><Glosa texto={punto} /></li>)}</ul>
+                <p class="caso-titulo">Otros supuestos</p>
+                <ul>{tesis.favor.slice(2).map((punto) => <li><Glosa texto={punto} /></li>)}</ul>
               </div>
               <div class="caso contra">
-                <p class="caso-titulo">Riesgos para la tesis</p>
-                <ul>{tesis.contra.map((punto) => <li><Glosa texto={punto} /></li>)}</ul>
+                <p class="caso-titulo">Otros riesgos</p>
+                <ul>{tesis.contra.slice(2).map((punto) => <li><Glosa texto={punto} /></li>)}</ul>
               </div>
             </div>
             <div class="lectura-clave"><span>Mi lectura</span><p><Glosa texto={tesis.miLectura} /></p></div>

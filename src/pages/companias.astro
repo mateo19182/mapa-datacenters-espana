@@ -6,16 +6,16 @@ import { ESTADO_ETIQUETA, ORDEN_ESTADOS, numero } from '../lib/etiquetas.js'
 import Termino from '../components/Termino.astro'
 const regiones = [...new Set(companias.flatMap((c) => c.ccaas))].sort((a, b) => a.localeCompare(b, 'es'))
 const filtros = [{ nombre: 'region', etiqueta: 'Comunidad', opciones: regiones.map((r) => ({ valor: r, etiqueta: r })) }]
-const ordenes = [{ valor: 'nombre', etiqueta: 'Compañía' }, { valor: 'emplazamientos', etiqueta: 'Más emplazamientos', numerico: true, direccion: 'desc' }, { valor: 'it', etiqueta: 'Más MW IT operativos', numerico: true, direccion: 'desc' }]
+const ordenes = [{ valor: 'nombre', etiqueta: 'Operador' }, { valor: 'emplazamientos', etiqueta: 'Más emplazamientos', numerico: true, direccion: 'desc' }, { valor: 'it', etiqueta: 'Más MW IT operativos', numerico: true, direccion: 'desc' }]
 ---
-<Base titulo="Compañías" descripcion="Busca los operadores de centros de datos registrados en España y consulta su cartera por comunidad y estado.">
+<Base titulo="Operadores" descripcion="Operadores de centros de datos documentados en España, con sus emplazamientos y capacidad.">
   <div class="contenedor">
-    <h1>Compañías</h1>
-    <p class="sumario">{numero(companias.length)} operadores con emplazamientos registrados. Las cifras cubren la parte documentada de cada cartera.</p>
-    <p class="pequeno silencio">Se conserva la marca operadora. Las relaciones con propietarios y grupos cotizados están en <a href="/inversion">inversión</a>.</p>
-    <Listado nombre="compañías" filtros={filtros} ordenes={ordenes} porPagina={25}>
+    <h1>Operadores</h1>
+    <p class="sumario">{numero(companias.length)} operadores con emplazamientos documentados.</p>
+    <p class="pequeno"><a href="/inversion">Propietarios y grupos cotizados</a></p>
+    <Listado nombre="operadores" filtros={filtros} ordenes={ordenes} porPagina={25}>
       <div class="tabla-envoltorio"><table class="tabla-fichas">
-        <thead><tr><th>Compañía</th><th class="num">Emplazamientos</th><th>Por estado</th><th class="num"><Termino id="mw-it">MW IT</Termino> operativos</th><th class="num">Con dato IT</th><th>Comunidades</th></tr></thead>
+        <thead><tr><th>Operador</th><th class="num">Emplazamientos</th><th>Por estado</th><th class="num"><Termino id="mw-it">MW IT</Termino> operativos</th><th class="num">Con dato IT</th><th>Comunidades</th></tr></thead>
         <tbody>{companias.map((c) => <tr data-list-item data-busca={`${c.nombre} ${c.ccaas.join(' ')}`} data-nombre={c.nombre} data-emplazamientos={c.emplazamientos} data-it={c.potencia.it.sitios_con_dato ? c.potencia.it.total_mw : ''} data-region={c.ccaas.join('|')}>
           <td><a href={`/compania/${c.slug}`}>{c.nombre}</a></td>
           <td class="num" data-etiqueta="Emplazamientos">{c.emplazamientos}</td>
@@ -25,7 +25,7 @@ const ordenes = [{ valor: 'nombre', etiqueta: 'Compañía' }, { valor: 'emplazam
           <td class="pequeno" data-etiqueta="Comunidades">{c.ccaas.join(', ') || 'Sin determinar'}</td>
         </tr>)}</tbody>
       </table></div>
-      <p class="pequeno silencio">Solo se agregan cifras identificadas como operativas. La ficha de cada compañía muestra construcción y previsiones por separado.</p>
+      <p class="pequeno silencio">Capacidad operativa documentada. Consulta otras etapas en la ficha del operador.</p>
     </Listado>
   </div>
 </Base>

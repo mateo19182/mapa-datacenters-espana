@@ -3,24 +3,28 @@ import Base from '../layouts/Base.astro'
 import actualizaciones from '../data/actualizaciones.json'
 import { fechaLegible } from '../lib/etiquetas.js'
 const etiquetas = { nuevo: 'Nuevo emplazamiento', proyecto: 'Proyecto', permisos: 'Tramitación', normativa: 'Normativa', red: 'Red eléctrica' }
+const grupos = [...new Set(actualizaciones.map((entrada) => entrada.fecha))].map((fecha) => ({ fecha, entradas: actualizaciones.filter((entrada) => entrada.fecha === fecha) }))
 ---
 <Base titulo="Últimos cambios" descripcion="Novedades verificadas incorporadas al mapa, con fecha del hecho, fecha de publicación en el registro y fuentes.">
   <div class="contenedor-estrecho cambios">
     <h1>Últimos cambios</h1>
-    <p class="sumario">Novedades revisadas e incorporadas al registro. Cada entrada distingue el hecho de su fecha de incorporación.</p>
+    <p class="sumario">Cambios incorporados al registro, con la fecha del hecho cuando consta.</p>
+    {grupos.map((grupo) => <section aria-labelledby={`incorporados-${grupo.fecha}`}>
+    <h2 class="fecha-grupo" id={`incorporados-${grupo.fecha}`}>Incorporados el <time datetime={grupo.fecha}>{fechaLegible(grupo.fecha)}</time></h2>
     <ol class="historial-cambios">
-      {actualizaciones.map((entrada) => (
+      {grupo.entradas.map((entrada) => (
         <li id={entrada.id}>
-          <div class="fecha-cambio"><time datetime={entrada.fecha}>{fechaLegible(entrada.fecha)}</time><span>{etiquetas[entrada.tipo]}</span></div>
-          <h2>{entrada.titulo}</h2>
+          <div class="fecha-cambio"><span>{etiquetas[entrada.tipo]}</span></div>
+          <h3>{entrada.titulo}</h3>
           <p>{entrada.resumen}</p>
-          {entrada.fecha_hecho && <p class="fecha-hecho">Hecho documentado del <time datetime={entrada.fecha_hecho}>{fechaLegible(entrada.fecha_hecho)}</time>.</p>}
+          {entrada.fecha_hecho && <p class="fecha-hecho">Hecho del <time datetime={entrada.fecha_hecho}>{fechaLegible(entrada.fecha_hecho)}</time>.</p>}
           <div class="enlaces-cambio">{entrada.enlaces.map((enlace) => <a href={enlace.href}>{enlace.texto} →</a>)}</div>
           <details><summary>Fuentes · {entrada.fuentes.length}</summary><ul>{entrada.fuentes.map((fuente) => <li><a href={fuente.url} target="_blank" rel="noopener">{fuente.titulo}</a></li>)}</ul></details>
         </li>
       ))}
     </ol>
-    <p class="pequeno silencio">La comprobación de enlaces y las pistas pendientes de verificar no se publican como novedades. <a href="/cobertura">Ver cobertura y trabajo pendiente</a>.</p>
+    </section>)}
+    <p class="pequeno"><a href="/revision">Pendientes de revisión</a> · <a href="/actualizaciones.xml">RSS</a></p>
   </div>
 </Base>
 <style>
@@ -29,7 +33,8 @@ const etiquetas = { nuevo: 'Nuevo emplazamiento', proyecto: 'Proyecto', permisos
   .historial-cambios > li { position: relative; border-bottom: 1px solid var(--borde); padding: 0 0 1.25rem; margin: 0 0 1.35rem; }
   .historial-cambios > li::before { content: ''; position: absolute; width: .5rem; height: .5rem; border-radius: 50%; background: var(--acento); left: -1.62rem; top: .4rem; }
   .historial-cambios > li:target { background: var(--acento-suave); outline: .5rem solid var(--acento-suave); }
-  h2 { margin: .4rem 0 .5rem; font-size: 1.25rem; }
+  .fecha-grupo { margin: 2rem 0 1rem; font-size: 1.05rem; }
+  h3 { margin: .4rem 0 .5rem; font-size: 1.15rem; }
   .fecha-cambio { display: flex; flex-wrap: wrap; gap: .25rem 1rem; font-size: .74rem; color: var(--tinta-3); }
   .fecha-cambio > span { color: var(--acento); }
   p { font-size: .9rem; margin-bottom: .6rem; }

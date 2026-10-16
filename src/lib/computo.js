@@ -1,9 +1,22 @@
 export const MODALIDAD_COMPUTO_ETIQUETA = {
-  instalado: 'Instalación física documentada',
-  adquirido: 'Adquirido; servicio sin confirmar',
-  previsto: 'Despliegue previsto',
-  acceso: 'Acceso o capacidad contratada',
-  sin_confirmar: 'Ubicación o despliegue sin confirmar',
+  instalado: 'Instalado',
+  adquirido: 'Adquirido; instalación sin confirmar',
+  previsto: 'Previsto',
+  acceso: 'Acceso',
+  sin_confirmar: 'Ubicación o instalación sin confirmar',
+}
+
+export const MODALIDAD_COMPUTO_DESCRIPCION = {
+  instalado: 'Instalación física documentada en este emplazamiento.',
+  adquirido: 'Compra o adjudicación documentada, sin recepción o puesta en servicio confirmada.',
+  previsto: 'Despliegue anunciado, pendiente de instalación o servicio.',
+  acceso: 'Servicio ofertado o capacidad contratada; no acredita inventario físico instalado.',
+  sin_confirmar: 'Falta confirmar el emplazamiento físico o la instalación del equipo.',
+}
+
+export const AMBITO_COMPUTO_ETIQUETA = {
+  sistema: 'Sistema completo',
+  particion: 'Parte del sistema',
 }
 
 // Una fila por afirmación. No se agregan particiones, modelos ni precisiones,

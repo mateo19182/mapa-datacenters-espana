@@ -5,11 +5,11 @@ import InventarioProyectos from '../components/InventarioProyectos.astro'
 import { numero, ORDEN_ESTADOS } from '../lib/etiquetas.js'
 const ordenados = [...sitios].sort((a, b) => ORDEN_ESTADOS.indexOf(a.estado) - ORDEN_ESTADOS.indexOf(b.estado) || (b.resumen_potencia.it?.valor_mw ?? -1) - (a.resumen_potencia.it?.valor_mw ?? -1))
 ---
-<Base titulo="Todos los proyectos" descripcion="Busca centros de datos en España por nombre, operador, comunidad y estado. Compara las potencias publicadas con sus fuentes.">
+<Base titulo="Emplazamientos" descripcion="Busca centros de datos en España por nombre, operador, comunidad y estado.">
   <div class="contenedor">
-    <h1>Todos los proyectos</h1>
-    <p class="sumario">{numero(sitios.length)} emplazamientos documentados. Filtra por estado y comunidad para comparar proyectos.</p>
-    <p class="pequeno"><a href="/actualizaciones">Últimos cambios</a> · <a href="/datos">Descargar el inventario</a> · <a href="/cobertura">Cobertura del registro</a></p>
+    <h1>Emplazamientos</h1>
+    <p class="sumario">{numero(sitios.length)} emplazamientos documentados.</p>
+    <p class="pequeno"><a href="/actualizaciones">Últimos cambios</a> · <a href="/datos">Descargar datos</a> · <a href="/cobertura">Cobertura</a></p>
     <InventarioProyectos sitios={ordenados} />
   </div>
 </Base>

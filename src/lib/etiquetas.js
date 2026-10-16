@@ -40,9 +40,9 @@ export const POTENCIA_ETIQUETA = {
 export const TIPOS_CAPACIDAD = ['it', 'conexion_red', 'instalada_total', 'no_especificado']
 
 export const POTENCIA_DESCRIPCION = {
-  it: 'La potencia que consumen los servidores. Es la única magnitud que permite comparar centros entre sí.',
+  it: 'Potencia de los servidores, el almacenamiento y el equipo de red.',
   conexion_red:
-    'Potencia solicitada o concedida en el punto de conexión con la red. Siempre mayor que la carga TI, porque incluye refrigeración y pérdidas.',
+    'Potencia solicitada, concedida o contratada en la conexión a red. Su ámbito y fecha pueden diferir de los MW IT.',
   instalada_total: 'Potencia eléctrica instalada del edificio, incluidos climatización y servicios auxiliares.',
   termica_respaldo:
     'Potencia de los grupos electrógenos de emergencia, según las autorizaciones ambientales, a menudo expresada como potencia térmica. Mide los motores diésel, no el centro de datos. No se agrega con nada.',
@@ -70,12 +70,20 @@ export const CONFIANZA_ETIQUETA = {
 // baja si ninguna publica la potencia. El recuento de fuentes se muestra aparte, y
 // `motivosConfianza` dice qué falla en cada ficha concreta.
 export const CONFIANZA_DESCRIPCION = {
-  alta: 'Ubicación, estado y potencia respaldados por fuente oficial o de la propia compañía, sin contradicciones abiertas.',
+  alta: 'Ubicación, estado y potencia con respaldo oficial o del operador o propietario, sin contradicciones abiertas.',
   media: 'Emplazamiento identificado y situado, pero con datos centrales incompletos o sostenidos solo por prensa especializada o consultora.',
   baja: 'Faltan datos centrales, la ubicación es imprecisa o quedan contradicciones sin resolver entre las fuentes.',
 }
 
 const PRIMARIAS = new Set(['oficial', 'empresa'])
+
+const normalizarAutor = (valor) => String(valor ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('es').replace(/[^a-z0-9]+/g, ' ').trim()
+
+export function esFuentePrimaria(fuente, sitio) {
+  if (PRIMARIAS.has(fuente.tipo)) return true
+  const editor = normalizarAutor(fuente.editor)
+  return Boolean(editor && [sitio.operador, sitio.propietario].some((autor) => normalizarAutor(autor) === editor))
+}
 
 /**
  * Qué debilita, en concreto, el respaldo de esta ficha. Se lee de la propia
@@ -89,15 +97,15 @@ export function motivosConfianza(s) {
   const potencia = s.potencia ?? []
 
   if (fuentes.length === 1) motivos.push('una sola fuente')
-  else if (!fuentes.some((f) => PRIMARIAS.has(f.tipo)))
-    motivos.push('ninguna fuente oficial ni de la propia compañía')
+  else if (!fuentes.some((f) => esFuentePrimaria(f, s)))
+    motivos.push('sin fuente oficial ni del operador o propietario')
 
   if (potencia.length === 0) {
     motivos.push('sin ninguna cifra de potencia')
   } else {
     const respaldos = new Set(potencia.flatMap((p) => p.fuentes ?? []))
-    const primaria = fuentes.some((f) => PRIMARIAS.has(f.tipo) && respaldos.has(f.id))
-    if (!primaria) motivos.push('la potencia no la publica ni la compañía ni un organismo oficial')
+    const primaria = fuentes.some((f) => esFuentePrimaria(f, s) && respaldos.has(f.id))
+    if (!primaria) motivos.push('potencia sin respaldo oficial ni del operador o propietario')
     else if (potencia.every((p) => p.tipo === 'no_especificado'))
       motivos.push('la potencia publicada no dice de qué magnitud es')
   }
@@ -112,7 +120,7 @@ export function motivosConfianza(s) {
 export const FUENTE_ETIQUETA = {
   oficial: 'Oficial',
   empresa: 'Compañía',
-  asociacion: 'Asociación sectorial',
+  asociacion: 'Asociación o fundación',
   prensa_especializada: 'Prensa especializada',
   consultora: 'Consultora',
   prensa_general: 'Prensa general',
@@ -241,7 +249,12 @@ export const CAMPO_ETIQUETA = {
   agua: 'Consumo de agua',
   empleo: 'Empleo',
   energia: 'Consumo eléctrico',
-  computo: 'Cómputo instalado',
+  computo: 'Cómputo y hardware',
+  'computo.unidades': 'Recuento de hardware',
+  'computo.modelo': 'Modelo de hardware',
+  'computo.ubicacion': 'Ubicación del hardware',
+  'computo.estado': 'Estado del hardware',
+  'computo.fecha_dato': 'Fecha del inventario de hardware',
   refrigeracion_agua: 'Agua y refrigeración',
   inversion_anunciada_eur: 'Inversión anunciada',
   inversion: 'Inversión anunciada',
@@ -256,7 +269,7 @@ export const CAMPO_ETIQUETA = {
 }
 
 export const campoLegible = (campo) =>
-  CAMPO_ETIQUETA[campo] ??
+  CAMPO_ETIQUETA[String(campo ?? '').toLocaleLowerCase('es')] ??
   String(campo ?? '')
     .replace(/_(eur|m2|mw|kv)$/i, '')
     .replace(/_/g, ' ')

@@ -5,11 +5,11 @@ import regiones from '../data/regiones.json'
 import { numero } from '../lib/etiquetas.js'
 const ordenes = [{ valor: 'nombre', etiqueta: 'Comunidad' }, { valor: 'emplazamientos', etiqueta: 'Más emplazamientos', numerico: true, direccion: 'desc' }, { valor: 'it', etiqueta: 'Más MW IT operativos', numerico: true, direccion: 'desc' }]
 ---
-<Base titulo="Regiones" descripcion="Centros de datos documentados por comunidad autónoma, con operadores y cobertura de los MW IT operativos.">
+<Base titulo="Comunidades" descripcion="Centros de datos documentados por comunidad autónoma, con operadores y cobertura de los MW IT operativos.">
   <div class="contenedor">
-    <h1>Regiones</h1>
-    <p class="sumario">{regiones.length} comunidades con emplazamientos registrados. El recuento refleja la documentación disponible; consulta la <a href="/cobertura">cobertura</a>.</p>
-    <Listado nombre="regiones" ordenes={ordenes}>
+    <h1>Comunidades</h1>
+    <p class="sumario">{regiones.length} comunidades con emplazamientos documentados. <a href="/cobertura">Ver cobertura</a>.</p>
+    <Listado nombre="comunidades" ordenes={ordenes}>
       <div class="rejilla">{regiones.map((r) => <article class="tarjeta region" data-list-item data-busca={`${r.nombre} ${r.operadores.join(' ')}`} data-nombre={r.nombre} data-emplazamientos={r.emplazamientos} data-it={r.potencia.it.sitios_con_dato ? r.potencia.it.total_mw : ''}>
         <h2><a href={`/region/${r.slug}`}>{r.nombre}</a></h2>
         <p class="cifra-grande">{r.emplazamientos}<small>{r.emplazamientos === 1 ? 'emplazamiento' : 'emplazamientos'}</small></p>
@@ -18,7 +18,7 @@ const ordenes = [{ valor: 'nombre', etiqueta: 'Comunidad' }, { valor: 'emplazami
           <dt>Operadores</dt><dd>{r.operadores.length}</dd>
         </dl>
       </article>)}</div>
-      <p class="pequeno silencio">Solo se agregan cifras identificadas como operativas. Cada región muestra construcción y previsiones por separado.</p>
+      <p class="pequeno silencio">Capacidad operativa documentada. Consulta otras etapas en la ficha de cada comunidad.</p>
     </Listado>
   </div>
 </Base>
