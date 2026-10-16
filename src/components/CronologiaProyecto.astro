@@ -12,7 +12,7 @@ const indice = new Map(fuentes.map((fuente, i) => [fuente.id, i + 1]))
         <li>
           <time datetime={evento.fecha}>{fechaLegible(evento.fecha)}</time>
           <details>
-            <summary>{evento.titulo}{evento.prevista && <span class="prevista">previsión</span>}</summary>
+            <summary>{evento.titulo}{evento.prevista && <span class="prevista">Prevista</span>}</summary>
             {evento.detalle && <p>{evento.detalle}</p>}
             <p class="referencias">Fuentes:{' '}{evento.fuentes.map((id, i) => (
               <>{i > 0 && ', '}<a href={`#fuente-${id}`}>{indice.get(id)}</a></>

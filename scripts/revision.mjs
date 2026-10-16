@@ -7,6 +7,7 @@ import { resolve } from 'node:path'
 import YAML from 'yaml'
 import { z } from 'zod'
 import { presentacionProyecto } from '../src/lib/proyecto-presentacion.js'
+import { pistasRevision } from '../src/lib/revision-presentacion.js'
 
 const fecha = z.string().regex(/^\d{4}-\d{2}-\d{2}$/).refine((s) => !Number.isNaN(Date.parse(s)) && new Date(s).toISOString().slice(0, 10) === s, 'Fecha inválida')
 const hallazgo = z.object({
@@ -89,7 +90,7 @@ export function finPeriodo(iso) {
   const [a, m, d] = iso.split('-').map(Number)
   return new Date(Date.UTC(a, d ? m - 1 : m || 12, d || 0)).toISOString().slice(0, 10)
 }
-export function prepararRevision(documento, { borradores = [], sitios = [], normativa = [], red = [], renovables = [], huellas = {}, hoy = new Date().toISOString().slice(0, 10) } = {}) {
+export function prepararRevision(documento, { borradores = [], pendientes = {}, sitios = [], normativa = [], red = [], renovables = [], huellas = {}, hoy = new Date().toISOString().slice(0, 10) } = {}) {
   fecha.parse(hoy)
   const revisados = validarHallazgos(documento), candidatos = validarHallazgos(borradores)
   const ids = new Set(revisados.map((x) => x.id))
@@ -118,7 +119,7 @@ export function prepararRevision(documento, { borradores = [], sitios = [], norm
     for (const h of previsiones) hitos.push({ id: s.id, nombre: s.nombre, href: `/proyecto/${s.id}#cronologia`, fecha: h.fecha, hito: h.titulo, tipo: 'proyecto' })
     if (!['operativo', 'ampliacion_en_construccion', 'parcialmente_operativo', 'cancelado', 'paralizado'].includes(s.estado) && s.fecha_puesta_en_servicio && finPeriodo(s.fecha_puesta_en_servicio) < hoy && !previsiones.some((h) => h.fecha === s.fecha_puesta_en_servicio)) hitos.push({ id: s.id, nombre: s.nombre, href: `/proyecto/${s.id}#cronologia`, fecha: s.fecha_puesta_en_servicio, hito: 'Puesta en servicio prevista en la ficha', tipo: 'proyecto' })
   }
-  return { generado: hoy, hallazgos, revision_factual: { registros, pendientes: registros.filter((r) => r.vencida).length }, comprobacion_automatica: { fuentes, registradas: fuentes.length, con_observacion: fuentes.filter((f) => f.comprobada).length, ultima_observacion: fuentes.map((f) => f.fecha).filter(Boolean).sort().at(-1) ?? null, rotas: fuentes.filter((f) => f.clase === 'rota').length, bloqueadas: fuentes.filter((f) => f.clase === 'bloqueada').length, cambios_pendientes: fuentes.filter((f) => f.cambio_pendiente).length }, hitos_vencidos: hitos.sort((a, b) => a.fecha.localeCompare(b.fecha)) }
+  return { generado: hoy, hallazgos, pistas: pistasRevision(pendientes), revision_factual: { registros, pendientes: registros.filter((r) => r.vencida).length }, comprobacion_automatica: { fuentes, registradas: fuentes.length, con_observacion: fuentes.filter((f) => f.comprobada).length, ultima_observacion: fuentes.map((f) => f.fecha).filter(Boolean).sort().at(-1) ?? null, rotas: fuentes.filter((f) => f.clase === 'rota').length, bloqueadas: fuentes.filter((f) => f.clase === 'bloqueada').length, cambios_pendientes: fuentes.filter((f) => f.cambio_pendiente).length }, hitos_vencidos: hitos.sort((a, b) => a.fecha.localeCompare(b.fecha)) }
 }
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   if (process.argv[2] !== '--validar-borradores') throw new Error('Uso: revision.mjs --validar-borradores research/hallazgos.yaml')

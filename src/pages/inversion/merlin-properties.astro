@@ -97,8 +97,6 @@ const matriz = [0.75, 0.9, 1].map((captura) => ({
               La tesis requiere ejecutar, energizar y alquilar la Fase II y la Fase III.
             </p>
             <dl>
-              <div><dt>Precio de referencia</dt><dd>€{decimal(precio, 2)}</dd></div>
-              <div><dt><Termino id="epra-nta">EPRA NTA</Termino></dt><dd>€{decimal(nta, 2)}</dd></div>
               <div><dt>Horizonte</dt><dd>2027–2032</dd></div>
             </dl>
           </aside>
@@ -163,8 +161,8 @@ const matriz = [0.75, 0.9, 1].map((captura) => ({
         <div>
           <h2>Riesgos principales</h2>
           <ul>
-            <li>Retrasos en red, licencias o equipos que desplazan rentas.</li>
-            <li>Nuevas ampliaciones de capital que diluyen el FFO por acción.</li>
+            <li>Retrasos en red, licencias o equipos que desplazan rentas y reducen la <Termino id="tir">TIR</Termino>.</li>
+            <li>Nuevas ampliaciones de capital que diluyen el FFO por acción antes de estabilizar rentas.</li>
           </ul>
         </div>
       </section>
@@ -172,19 +170,14 @@ const matriz = [0.75, 0.9, 1].map((captura) => ({
       <details class="informe-completo" id="informe-completo">
         <summary>Leer la tesis completa <span>Plan MEGA, valoración, activos, riesgos y fuentes</span></summary>
         <div class="marco-tesis">
-            <p class="tesis-corta">
-              La cotización ya incorpora parte de la expansión del negocio de centros de datos, pero sigue por debajo del{' '}
-              <Termino id="epra-nta">EPRA NTA</Termino>. El descuento no elimina el riesgo: el plan contempla €7.800 millones de
-              inversión total y la mayor parte de la renta prevista todavía no se ha convertido en caja.
-            </p>
-          <p class="corte-datos">Precio de cierre del 31 de agosto de 2026. Datos financieros a 30 de junio de 2026. Análisis, no asesoramiento financiero.</p>
+          <p class="corte-datos">Análisis, no asesoramiento financiero.</p>
         </div>
 
 
         <section id="tesis" class="seccion seccion-dos">
           <div class="titulo-lateral">
             <span>01</span>
-            <h2>Resumen de la tesis</h2>
+            <h2>Negocio y supuestos</h2>
           </div>
           <div class="contenido">
             <p class="entradilla">
@@ -195,19 +188,15 @@ const matriz = [0.75, 0.9, 1].map((captura) => ({
 
             <div class="tesis-grid">
               <div class="caso caso-favor">
-                <p class="caso-titulo">Supuestos que sostienen la tesis</p>
+                <p class="caso-titulo">Otros supuestos</p>
                 <ul>
-                  <li>El plan tendría que llevar la Fase I a €97 millones de renta estabilizada en 2027.</li>
-                  <li>MERLIN tendría que entregar en calendario los 160 MW alquilados o prealquilados.</li>
                   <li>La potencia concedida en Arasur y Zaragoza tendría que convertirse en edificios operativos.</li>
                   <li>El coste de capital tendría que quedar muy por debajo del 14,4%–15,8% de <Termino id="yield-on-cost">yield on cost</Termino> bruto.</li>
                 </ul>
               </div>
               <div class="caso caso-contra">
-                <p class="caso-titulo">Riesgos que invalidarían la tesis</p>
+                <p class="caso-titulo">Otros riesgos</p>
                 <ul>
-                  <li>Retrasos en red, licencias o equipos desplazan rentas y reducen la <Termino id="tir">TIR</Termino>.</li>
-                  <li>Más <Termino id="ampliacion-capital">ampliaciones de capital</Termino> diluyen el FFO por acción antes de estabilizar rentas.</li>
                   <li>Unos pocos <Termino id="hiperescalar">hiperescaladores</Termino> concentran capacidad y poder de negociación.</li>
                   <li>Las opciones extremeñas de 1 GW se valoran como proyecto firme cuando aún no lo son.</li>
                 </ul>

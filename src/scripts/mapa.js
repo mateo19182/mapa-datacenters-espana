@@ -6,6 +6,7 @@ import { ETAPAS_CAPACIDAD, campoCapacidad } from '../lib/capacidad.js'
 import { Map as MapaGL, NavigationControl, AttributionControl, ScaleControl } from 'maplibre-gl'
 import 'maplibre-gl/dist/maplibre-gl.css'
 import { coincideBusqueda } from '../lib/busqueda.js'
+import { nombreProyecto } from '../lib/nombres.js'
 
 // El mapa se alimenta de ficheros estáticos servidos desde /datos.
 // Las capas pesadas (red de transporte) se piden solo al activarlas.
@@ -107,7 +108,7 @@ const estado = {
 const GRUPOS_ESTADO = {
   todos: [],
   operativos: ['operativo', 'ampliacion_en_construccion', 'parcialmente_operativo'],
-  construccion: ['en_construccion'],
+  construccion: ['en_construccion', 'ampliacion_en_construccion'],
   proyectos: ['permisos_concedidos', 'en_tramitacion', 'anunciado'],
 }
 let mapa
@@ -190,7 +191,7 @@ function filtroMapLibre() {
 
 // El texto se filtra en JS porque hay que mirar también los alias.
 function coincideTexto(p, indiceAlias) {
-  const campos = [p.nombre, p.operador, p.municipio, p.ccaa, indiceAlias.get(p.id)]
+  const campos = [p.nombre, nombreProyecto(p), p.operador, p.municipio, p.ccaa, indiceAlias.get(p.id)]
   return coincideBusqueda(estado.texto, campos.filter(Boolean).join(' '))
 }
 
@@ -257,7 +258,7 @@ function pintarLista() {
         <button class="fila-sitio" data-id="${p.id}" data-lon="${p.lon ?? ''}" data-lat="${p.lat ?? ''}">
           <span class="fila-punto" style="background:${COLOR_ESTADO[p.estado] ?? COLOR_ESTADO.desconocido}"></span>
           <span class="fila-texto">
-            <strong>${p.nombre}</strong>
+            <strong>${nombreProyecto(p)}</strong>
             <span class="silencio pequeno">${[p.operador, p.municipio, p.lat == null ? 'sin ubicar' : null].filter(Boolean).join(' · ')}</span>
           </span>
           <span class="fila-mw">${v != null ? `${v.toLocaleString('es-ES')}<small> MW</small>` : '<span class="silencio">—</span>'}</span>
@@ -327,18 +328,18 @@ function abrirFicha(id) {
 
   panelHtml(`
     <span class="etiqueta estado-${p.estado}"><span class="punto"></span>${ETIQUETA_ESTADO[p.estado] ?? p.estado}</span>
-    <h2>${p.nombre}</h2>
+    <h2>${nombreProyecto(p)}</h2>
     <dl class="detalle">
       ${filas.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('')}
     </dl>
     ${
       p.coordenada_derivada
-        ? '<p class="pequeno silencio">Situado en el centro de su municipio: la fuente no publica la parcela.</p>'
+        ? '<p class="pequeno silencio">Ubicación municipal; parcela sin confirmar.</p>'
         : p.precision !== 'exacta'
-          ? `<p class="pequeno silencio">Ubicación con precisión «${p.precision}».</p>`
+          ? `<p class="pequeno silencio">${p.precision === 'desconocida' ? 'Sin coordenadas.' : 'Ubicación aproximada.'}</p>`
           : ''
     }
-    <a class="boton-ficha" href="/proyecto/${p.id}">Ver ficha completa con fuentes →</a>
+    <a class="boton-ficha" href="/proyecto/${p.id}">Ver ficha →</a>
   `)
 }
 
@@ -360,8 +361,7 @@ function guardarEnUrl() {
   if (capas.length) q.set('capas', capas.join(','))
   const s = q.toString()
   history.replaceState(null, '', s ? `?${s}` : location.pathname)
-  const enlace = $('#ver-listado')
-  if (enlace) enlace.href = `/proyectos${s ? `?${s}` : ''}`
+  for (const enlace of $$('[data-ver-listado]')) enlace.href = `/proyectos${s ? `?${s}` : ''}`
 }
 
 function leerDeUrl() {
@@ -829,8 +829,8 @@ export async function iniciarMapa(opciones = {}) {
   } catch (e) {
     console.error('mapa:', e)
     avisarEnMapa({
-      titulo: 'El mapa no ha podido montarse',
-      texto: `Ha fallado la carga de la vista cartográfica (${String(e?.message ?? e).slice(0, 140)}). El registro completo sigue disponible en <a href="/proyectos">la lista de proyectos</a>.`,
+      titulo: 'No se pudo cargar el mapa',
+      texto: 'Consulta los <a href="/proyectos">emplazamientos en la tabla</a>.',
     })
   } finally {
     if (carga) carga.hidden = true
@@ -849,15 +849,15 @@ async function montarVista(opciones = {}) {
     fetch('/datos/sitios.geojson', { cache: 'no-cache' }).then((r) => r.json()),
     fetch('/datos/sitios-lista.json', { cache: 'no-cache' }).then((r) => r.json()),
   ])
-  sitios = geo
+  sitios = { ...geo, features: geo.features.map((feature) => ({ ...feature, properties: { ...feature.properties, nombre_corto: nombreProyecto(feature.properties) } })) }
   inventario = lista
   for (const s of lista) if (s.alias?.length) indiceAlias.set(s.id, s.alias.join(' '))
 
   if (!soportaWebgl()) {
     avisarEnMapa({
-      titulo: 'Este navegador no puede dibujar el mapa',
+      titulo: 'Mapa no disponible en este navegador',
       texto:
-        'El mapa necesita WebGL, desactivado o no disponible aquí. El buscador y los filtros del panel siguen funcionando; el registro completo está en <a href="/proyectos">la lista de proyectos</a>.',
+        'Puedes usar la lista y los filtros o abrir <a href="/proyectos">la tabla de emplazamientos</a>.',
     })
     conectarControles()
     aplicar()
@@ -901,7 +901,7 @@ async function montarVista(opciones = {}) {
     avisarEnMapa({
       titulo: 'Sin mapa base',
       texto:
-        'No carga la cartografía de fondo (CARTO), casi siempre por un bloqueador de contenidos o un filtro de red. Los datos se dibujan igual, sobre un contorno de costa mínimo.',
+        'La cartografía de CARTO no responde. Se muestran los datos sobre un contorno de costa.',
       accion: { texto: 'Reintentar', hacer: reintentarMapaBase },
     })
   }
@@ -920,8 +920,8 @@ async function reintentarMapaBase() {
   } catch (e) {
     console.error('mapa (reintento):', e)
     avisarEnMapa({
-      titulo: 'El reintento ha fallado',
-      texto: `No se ha podido rehacer la vista (${String(e?.message ?? e).slice(0, 140)}). Recargar la página debería dejarla como estaba.`,
+      titulo: 'No se pudo recargar el mapa',
+      texto: 'Recarga la página para volver a intentarlo.',
     })
   }
 }
@@ -939,7 +939,7 @@ async function intentarMapaBase() {
     await new Promise((r) => mapa.once('styledata', r))
     avisarEnMapa({
       titulo: 'Sigue sin cargar el mapa base',
-      texto: 'El fondo cartográfico continúa inaccesible desde esta red. Los datos no se ven afectados.',
+      texto: 'Los datos siguen disponibles sobre el contorno de costa.',
     })
   }
   montarCapas()
@@ -994,7 +994,7 @@ function montarCapas() {
       source: 'sitios',
       minzoom: 9,
       layout: {
-        'text-field': ['get', 'nombre'],
+        'text-field': ['get', 'nombre_corto'],
         'text-size': 11,
         'text-offset': [0, 1.3],
         'text-anchor': 'top',

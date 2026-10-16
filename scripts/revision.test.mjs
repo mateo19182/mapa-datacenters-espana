@@ -4,6 +4,7 @@ import { readFileSync } from 'node:fs'
 import YAML from 'yaml'
 import { fusionarHuellas, estadoFuente, validarBorradoresAnadidos, prepararRevision, finPeriodo, plazoRevision } from './revision.mjs'
 import { generarRss } from '../src/lib/rss.js'
+import { pistasRevision, colaRevision } from '../src/lib/revision-presentacion.js'
 const candidato = (extra = {}) => ({ id:'caso-prueba', titulo:'Hallazgo de prueba', tipo:'proyecto', estado:'detected', prioridad:'alta', detectado:'2026-10-12', revisar_antes:'2026-10-13', motivo:'Se necesita una fuente para identificar el edificio.', siguiente_paso:'Localizar la fuente original.', enlaces:[], fuentes:[{url:'https://example.org/nota',titulo:'Una pista',primaria:false}], ...extra })
 test('merging observations preserves accepted fingerprints and unresolved evidence', () => {
   const base = { 'https://a':{hash:'aceptada',longitud:10,visto:'2026-08-31',pendiente:{hash:'cambio',longitud:12,detectado:'2026-09-01',visto:'2026-09-10'}} }
@@ -64,4 +65,25 @@ test('RSS escapes XML and contains only supplied reviewed entries with stable pe
   assert.ok(!xml.includes('\u0001'))
   assert.equal((xml.match(/<item>/g)??[]).length,1)
   assert.equal((generarRss([]).match(/<item>/g)??[]).length,0)
+})
+
+test('la cola incorpora las pistas anteriores una vez y conserva los antecedentes de seguimientos existentes', () => {
+  const pendientes = {
+    proyectos: [{ municipio: 'Méntrida', compania: null, prioridad: 'alta', nota: 'Antecedente eléctrico sin operador del centro.' }, { municipio: 'Granada', provincia: 'Granada', ccaa: 'Andalucía', compania: 'DataRush', potencia_citada: '20 MW sin verificar', prioridad: 'baja', nota: 'Edificio sin localizar.' }],
+    pistas: ['MasOrange: inventario de centros sin localizar.'],
+  }
+  const pistas = pistasRevision(pendientes)
+  const hallazgos = [candidato({ id: 'mentrida-venero-con09' }), candidato({ id: 'masorange-inventario-centros', estado: 'published' })]
+  const cola = colaRevision({ hallazgos, pistas })
+  assert.equal(pistas.length, 3)
+  assert.equal(cola.length, 3)
+  assert.equal(cola.filter((h) => h.vista === 'pendientes').length, 2)
+  assert.equal(cola.find((h) => h.id === 'mentrida-venero-con09').antecedentes[0].motivo, pendientes.proyectos[0].nota)
+  assert.equal(cola.find((h) => h.id === 'masorange-inventario-centros').vista, 'historial')
+  const antigua = cola.find((h) => h.origen === 'cobertura')
+  assert.equal(antigua.detectado, undefined, 'no se inventa una fecha de detección')
+  assert.deepEqual(antigua.fuentes, [], 'una pista sin cita no se convierte en fuente primaria')
+  assert.equal(antigua.ccaa, 'Andalucía')
+  assert.equal(antigua.potencia_citada, '20 MW sin verificar')
+  assert.equal(hallazgos[0].antecedentes, undefined, 'se conservan las decisiones de origen')
 })

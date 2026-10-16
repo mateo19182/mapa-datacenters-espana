@@ -25,15 +25,14 @@ const ordenes = [
 const fechaVerificacion = [...new Set(renovables.map((r) => r.ultima_verificacion).filter(Boolean))].sort().at(-1)
 const contrapartes = opciones('contraparte_ppa').map(({ valor: nombre }) => ({ nombre, contratos: renovables.filter((r) => r.contraparte_ppa === nombre && r.tipo_vinculo === 'ppa').length }))
 const decreto = normativa.find((n) => n.id === 'prd-centros-datos-sostenibles')
-const ultimoHitoDecreto = [...(decreto?.hitos ?? [])].filter((h) => !h.previsto && h.fecha <= (decreto?.ultima_verificacion ?? '')).sort((a, b) => b.fecha.localeCompare(a.fecha))[0]
 ---
 
 <Base titulo="Renovables y almacenamiento" descripcion="Consulta activos renovables y baterías con vínculos documentados a centros de datos en España, con sus fuentes y fecha de verificación.">
   <div class="contenedor">
     <h1>Renovables y almacenamiento</h1>
     <p class="sumario">Contratos de energía, generación asociada y baterías con vínculo documentado al sector.</p>
-    <p class="pequeno silencio">{renovables.length} registros · {renovables.filter((r) => r.tipo_vinculo === 'ppa').length} PPA · Última verificación: {fechaLegible(fechaVerificacion)} · <a href="/datos/renovables.json" download>Descargar JSON</a></p>
-    <p class="nota pequeno">Un <Termino id="ppa">PPA</Termino> es un contrato de compra de energía. No acredita suministro directo ni identifica siempre un CPD concreto. Las carteras pueden solaparse con acuerdos individuales; no se suman en un total.</p>
+    <p class="pequeno silencio">{renovables.length} registros · {renovables.filter((r) => r.tipo_vinculo === 'ppa').length} PPA · Verificación más reciente: {fechaLegible(fechaVerificacion)} · <a href="/datos/renovables.json" download>Descargar JSON</a></p>
+    <p class="nota pequeno">Un <Termino id="ppa">PPA</Termino> no acredita conexión directa a un CPD. Carteras y contratos pueden solaparse; se consultan por separado.</p>
 
     <h2 id="activos">Consultar activos</h2>
     <ExploradorEnergia id="explorador-renovables" nombre="activos" pagina={20} filtros={filtros} ordenes={ordenes} busqueda="Activo, promotor, contraparte o ubicación…">
@@ -62,12 +61,10 @@ const ultimoHitoDecreto = [...(decreto?.hitos ?? [])].filter((h) => !h.previsto 
         ))}</tbody>
       </table></div>
     </ExploradorEnergia>
-    <p class="pequeno silencio">La potencia nominal, la potencia pico y los MW contratados describen magnitudes distintas. Los MW de generación tampoco equivalen a MW IT. El estado refleja la fuente en la fecha de verificación.</p>
+    <details class="bloque"><summary>Cómo interpretar las magnitudes y el estado</summary><p class="pequeno silencio">MW nominales, MWp y MW contratados describen magnitudes distintas. Los MW de generación no equivalen a MW IT. El estado refleja la fuente en su fecha de verificación.</p></details>
 
-    {decreto && <aside class="normativa tarjeta"><h2>Estado del decreto de centros de datos</h2>
-      <p class="pequeno"><a href={`/normativa/${decreto.id}`}>{tituloNorma(decreto)}</a> · {ESTADO_NORMA_ETIQUETA[decreto.estado]} · Verificado el {fechaLegible(decreto.ultima_verificacion)}.</p>
-      {ultimoHitoDecreto && <p class="pequeno silencio">{fechaLegible(ultimoHitoDecreto.fecha)} · {ultimoHitoDecreto.hito}.</p>}
-      <p class="pequeno">{decreto.estado === 'en_tramitacion' || decreto.estado === 'audiencia_publica' || decreto.estado === 'propuesta' ? 'Los requisitos renovables del borrador no están en vigor. Consulta el estado y el texto propuesto en su ficha.' : 'Consulta en su ficha las obligaciones, los umbrales y las fechas de aplicación.'}</p>
+    {decreto && <aside class="normativa tarjeta"><h2>Normativa relacionada</h2>
+      <p class="pequeno"><a href={`/normativa/${decreto.id}`}>{tituloNorma(decreto)}</a> · {ESTADO_NORMA_ETIQUETA[decreto.estado]}. <span class="silencio">Requisitos y plazos en su ficha.</span></p>
     </aside>}
 
     <details class="bloque"><summary>Contratos por contraparte</summary>

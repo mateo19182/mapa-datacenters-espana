@@ -9,7 +9,7 @@ const { id = 'listado', nombre = 'resultados', filtros = [], ordenes = [], porPa
     </label>
     {filtros.filter((f) => !f.avanzado).map((f) => (
       <label>{f.etiqueta}
-        <select name={f.nombre} data-filtro data-parametro={f.parametro} data-varios={f.varios ? 'si' : undefined}>
+        <select name={f.nombre} data-filtro data-parametro={f.parametro} data-varios={f.varios ? 'si' : undefined} data-inicial={f.inicial}>
           <option value="">{f.todos ?? 'Todos'}</option>
           {f.opciones.map((o) => <option value={o.valor}>{o.etiqueta}</option>)}
         </select>
@@ -24,7 +24,7 @@ const { id = 'listado', nombre = 'resultados', filtros = [], ordenes = [], porPa
     <button type="reset" class="restablecer">Limpiar</button>
     {remoto && <button type="button" data-imprimir>Imprimir resultados</button>}
     {(mapa || filtros.some((f) => f.avanzado)) && <details class="avanzados"><summary>Más filtros</summary><div class="campos-avanzados">
-      {filtros.filter((f) => f.avanzado).map((f) => <label>{f.etiqueta}<select name={f.nombre} data-filtro data-parametro={f.parametro}><option value="">{f.todos ?? 'Todos'}</option>{f.opciones.map((o) => <option value={o.valor}>{o.etiqueta}</option>)}</select></label>)}
+      {filtros.filter((f) => f.avanzado).map((f) => <label>{f.etiqueta}<select name={f.nombre} data-filtro data-parametro={f.parametro} data-inicial={f.inicial}><option value="">{f.todos ?? 'Todos'}</option>{f.opciones.map((o) => <option value={o.valor}>{o.etiqueta}</option>)}</select></label>)}
       {mapa && <><label>Magnitud<select name="m"><option value="mw_it">MW IT</option><option value="mw_conexion">MW conexión</option><option value="mw_sin_tipo">MW sin tipificar</option></select></label>
       <label>Mínimo de MW<input name="min" type="number" min="0" step="any" placeholder="Sin mínimo" /></label>
       <label class="con-dato"><input type="checkbox" name="con" />Solo con potencia publicada</label></>}
@@ -33,7 +33,7 @@ const { id = 'listado', nombre = 'resultados', filtros = [], ordenes = [], porPa
   </form>
   <p class="resultado-lista pequeno silencio" data-contador role="status" aria-live="polite" aria-atomic="true" hidden></p>
   <slot />
-  <p class="lista-vacia" data-vacio hidden>No hay {nombre} con estos filtros. Prueba otra búsqueda o pulsa «Limpiar».</p>
+  <p class="lista-vacia" data-vacio hidden>Sin resultados. Cambia los filtros o pulsa «Limpiar».</p>
   {porPagina > 0 && <nav class="paginacion" data-paginacion aria-label={`Páginas de ${nombre}`} hidden>
     <button type="button" data-anterior>Anterior</button>
     <span class="pequeno" data-pagina></span>
@@ -45,7 +45,7 @@ const { id = 'listado', nombre = 'resultados', filtros = [], ordenes = [], porPa
       </select>
     </label>
   </nav>}
-  <noscript><p class="pequeno silencio">{remoto ? 'Recorre las páginas para consultar todas las entradas. Activa JavaScript para buscar y ordenar el conjunto.' : 'Se muestra el listado completo. Activa JavaScript para buscar, ordenar y paginar.'}</p></noscript>
+  <noscript><p class="pequeno silencio">{remoto ? 'Listado por páginas. La búsqueda requiere JavaScript.' : 'Listado completo. La búsqueda requiere JavaScript.'}</p></noscript>
 </section>
 
 <script>

@@ -1,9 +1,7 @@
 export default {
   id: 'redeia', nombre: 'Redeia', ticker: 'BME: RED',
   categoria: 'Red de transporte regulada', fecha: '1 septiembre 2026',
-  sobrelinea: 'El cuello de botella eléctrico, comprado a través de una utility regulada',
   descripcion: 'Tesis técnica de Redeia: red eléctrica, demanda de centros de datos, regulación, capex, valoración y cotización.',
-  tesisCorta: 'Redeia no cobra por servidores. Cobra por la red reconocida que permite conectarlos. La tesis depende de convertir un plan inversor récord en base regulada y caja, con el apagón todavía como riesgo.',
   lectura: 'Defensiva con crecimiento regulado',
   veredicto: 'Es el contraste más limpio con Merlin. Menos riesgo comercial y más riesgo regulatorio. El precio ofrece dividendo, pero la deuda y la ejecución del plan impiden tratarla como un bono.',
   horizonte: '2026 a 2029',
@@ -21,7 +19,7 @@ export default {
     { etiqueta: 'Capex 2026 a 2029', valor: '€6.500m', nota: '€6.000m para Red Eléctrica' },
     { etiqueta: 'Retribución financiera', valor: '6,58%', nota: 'Periodo regulatorio 2026 a 2031' },
   ],
-  resumen: 'El registro documenta 548 nudos. Solo 104 publican margen de demanda y 444 no lo hacen. Hay 35.690 MW disponibles, 13.882 MW otorgados y 18.941 MW en curso. Es evidencia de congestión sistémica, no de que toda la cola pertenezca a centros de datos. Redeia captura el ciclo cuando la inversión se aprueba, entra en servicio y aumenta la base de activos regulados.',
+  resumen: 'La instantánea de agosto del registro documentaba 548 nudos, 104 con margen de demanda publicado y 444 sin él; también recogía 13.882 MW otorgados y 18.941 MW en curso. Es evidencia de congestión sistémica, no de que toda la cola pertenezca a centros de datos. Redeia captura el ciclo cuando la inversión se aprueba, entra en servicio y aumenta la base de activos regulados.',
   favor: [
     'La retribución financiera sube al 6,58%, cien puntos básicos más que en el periodo anterior.',
     'El plan destina unos €1.500m anuales a Red Eléctrica y busca una base regulada de €12.000m en 2029.',

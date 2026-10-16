@@ -51,7 +51,7 @@ const fechaAnalisis = (empresa) => tesisEmpresas[empresa.id]?.fecha ?? '31 agost
     {proximasTesis.length > 0 && (
       <details class="metodo-inversion">
         <summary>Próximas tesis <span>{proximasTesis.length}</span></summary>
-        <p class="pequeno silencio">Orden propuesto. Prima la exposición material y la pregunta que el mercado aún no resuelve bien.</p>
+        <p class="pequeno silencio">Orden propuesto, pendiente de investigación.</p>
         <div class="tabla-envoltorio">
           <table>
             <thead><tr><th>Prioridad</th><th>Compañía</th><th>Por qué merece una tesis</th><th>Pregunta central</th><th>En el registro</th></tr></thead>
@@ -74,15 +74,15 @@ const fechaAnalisis = (empresa) => tesisEmpresas[empresa.id]?.fecha ?? '31 agost
 
     <details class="metodo-inversion" id="metodo">
       <summary>Método y alcance</summary>
-      <p>Compañías cotizadas expuestas al despliegue de centros de datos en España. Cada tesis parte del registro físico, pero añade cuentas, valoración, estructura de capital y una opinión.</p>
-      <p class="pequeno">La sección <a href="/companias">Compañías</a> agrupa operadores; esta sección, exposiciones cotizadas. Un mismo grupo puede aparecer bajo varias marcas operativas y un propietario cotizado puede no operar ningún centro.</p>
+      <p>Las tesis relacionan los proyectos documentados con las cuentas, financiación y valoración de cada grupo cotizado.</p>
+      <p class="pequeno">El directorio de <a href="/companias">Operadores</a> agrupa marcas operativas. Un propietario cotizado puede no operar ningún centro.</p>
       <ol>
         <li><strong>Exposición física.</strong> Qué emplazamientos, MW y permisos pertenecen a la compañía.</li>
         <li><strong>Traducción financiera.</strong> <Glosa texto="Capex, rentas, contratos, financiación y materialidad dentro del grupo." /></li>
         <li><strong>Valoración.</strong> Qué descuenta la cotización y qué supuestos exige.</li>
         <li><strong>Seguimiento.</strong> Qué datos trimestrales demostrarían que la tesis estaba equivocada.</li>
       </ol>
-      <p class="pequeno silencio">No son recomendaciones personalizadas. Las tesis están fechadas porque precio, cuentas y permisos cambian; las fichas del registro conservan sus propias fechas de verificación.</p>
+      <p class="pequeno silencio">Análisis fechados, no recomendaciones personalizadas. Las fichas de proyecto conservan sus propias fechas de verificación.</p>
     </details>
   </div>
 </Base>

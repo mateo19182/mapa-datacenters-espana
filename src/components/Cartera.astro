@@ -14,15 +14,13 @@ const otras = Object.keys(ETAPAS_CAPACIDAD).filter((etapa) => etapa !== 'operati
 {operativos.length ? <dl class="cifras">{operativos.map((t) => <div class="cifra">
   <dt><Termino id={GLOSARIO_POTENCIA[t]}>{POTENCIA_ETIQUETA[t]}</Termino> operativos</dt>
   <dd>{numero(grupos.operativa[t].total_mw, 3)} MW<small>{grupos.operativa[t].sitios_con_dato}/{denominador} emplazamientos con dato</small></dd>
-</div>)}</dl> : <p class="pequeno silencio">Sin potencia operativa documentada para esta selección.</p>}
-<p class="pequeno silencio alcance">Solo cifras identificadas como operativas por sus fuentes. Las magnitudes se leen por separado; los huecos no equivalen a cero.</p>
-{otras.length > 0 && <details class="desglose"><summary>Construcción, previsiones y otras lecturas</summary>
-  <p class="pequeno silencio">Un techo de campus puede incluir fases ya abiertas. Las filas no se suman entre sí. Los proyectos cancelados quedan fuera de estas carteras.</p>
+</div>)}</dl> : <p class="pequeno silencio">Sin capacidad operativa documentada.</p>}
+{otras.length > 0 && <details class="desglose"><summary>Otras etapas de capacidad</summary>
+  <p class="pequeno silencio">Un techo de campus puede incluir fases abiertas. Las etapas no se suman.</p>
   <div class="tabla-envoltorio"><table><thead><tr><th>Etapa de la cifra</th>{tipos.map((t) => <th class="num">{POTENCIA_ETIQUETA[t]}</th>)}</tr></thead>
   <tbody>{otras.map((etapa) => <tr><th scope="row">{ETAPAS_CAPACIDAD[etapa]}</th>{tipos.map((t) => <td class="num">{grupos[etapa]?.[t]?.sitios_con_dato ? <>{numero(grupos[etapa][t].total_mw, 3)} MW <small>· {grupos[etapa][t].sitios_con_dato}/{denominador} con dato</small></> : <span class="silencio">No publicado</span>}</td>)}</tr>)}</tbody></table></div>
 </details>}
 <style>
-  .alcance { margin: .4rem 0 .65rem; }
   .desglose { margin: .75rem 0 1.5rem; }
   .desglose summary { cursor: pointer; font-size: .82rem; color: var(--tinta-3); }
   .desglose .tabla-envoltorio { margin-top: .6rem; }

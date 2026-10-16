@@ -1,7 +1,7 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import { cargarSitios } from './load.mjs'
-import { presentacionProyecto, vinculosEnergiaProyecto } from '../src/lib/proyecto-presentacion.js'
+import { etiquetaFechaServicio, presentacionProyecto, vinculosEnergiaProyecto } from '../src/lib/proyecto-presentacion.js'
 
 const { sitios } = cargarSitios()
 const ficha = (id) => sitios.find((sitio) => sitio.id === id)
@@ -58,7 +58,8 @@ test('las fases futuras se etiquetan como previsiones y no se inventan hitos des
   assert.equal(cronologia.length, 1)
   assert.equal(cronologia[0].fecha, '2027')
   assert.equal(cronologia[0].prevista, true)
-  assert.match(cronologia[0].titulo, /prevista/)
+  assert.equal(cronologia[0].titulo, 'Puesta en servicio · Primera fase')
+  assert.doesNotMatch(cronologia[0].titulo, /prevista|previsión/)
 })
 
 test('los calendarios retirados de Forestalia y Vantage permanecen fuera de la cronología activa', () => {
@@ -155,4 +156,25 @@ test('los nuevos hitos separan adquisiciones, actos y previsiones vencidas de op
   const cesga = presentacionProyecto(ficha('cesga-santiago-a-sionlla')).cronologia
   assert.match(cesga.find((e) => e.fecha === '2026-03-03').titulo, /Adjudicación/)
   assert.equal(cesga.find((e) => e.fecha === '2026-06-12').prevista, true)
+})
+
+test('CESGA muestra primero los equipos de la nueva sede sin atribuirle el inventario anterior', () => {
+  const { hardware } = presentacionProyecto(ficha('cesga-santiago-a-sionlla'))
+  assert.equal(hardware[0].modelo, 'FinisTerrae IV')
+  assert.match(hardware[0].dato, /servicio sin confirmar/)
+  assert.match(hardware[1].dato, /54 y 5 cúbits previstos/)
+  assert.match(hardware[2].dato, /Traslado a A Sionlla sin confirmar/)
+  assert.ok(hardware.every((h) => h.fuentes.length > 0))
+})
+
+test('las fechas futuras o no confirmadas se llaman previsiones y las aperturas reales se conservan', () => {
+  const corte = '2026-10-16'
+  assert.equal(etiquetaFechaServicio(ficha('cartagena-data-green-escombreras'), corte), 'Puesta en servicio prevista')
+  assert.equal(etiquetaFechaServicio(ficha('nxn-valencia-vara-de-quart-nx01'), corte), 'Puesta en servicio prevista')
+  assert.equal(etiquetaFechaServicio(ficha('merlin-edged-ribera-baja-arasur'), corte), 'Puesta en servicio')
+  assert.equal(etiquetaFechaServicio({ estado: 'anunciado', fecha_puesta_en_servicio: '2025' }, corte), 'Puesta en servicio prevista')
+  assert.equal(etiquetaFechaServicio({ estado: 'cancelado', fecha_puesta_en_servicio: '2028' }, corte), 'Previsión retirada')
+  const meta = ficha('meta-talavera-de-la-reina-torrehierro')
+  const dia = meta.fases.find((f) => f.nombre === 'Declaración de Impacto Ambiental')
+  assert.equal(etiquetaFechaServicio(dia, corte, meta.id), 'Hito administrativo')
 })

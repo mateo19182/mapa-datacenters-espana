@@ -127,7 +127,7 @@ energia:                              # consumo eléctrico anual, no potencia
     fuentes: [src-4]
     nota: null
 
-computo:                              # hardware instalado; ver «Cómputo instalado»
+computo:                              # hardware o servicio documentado; ver «Cómputo documentado»
   - tipo: gpu                         # gpu | asic_ia | cpu_hpc | qpu | no_especificado
     ambito: particion                 # sistema | particion
     sistema: "MareNostrum 5 ACC"      # nombre del sistema o de la partición
@@ -182,7 +182,7 @@ potencia tiene—, **no cuántas fuentes hay**. Una ficha con seis referencias s
 en `baja` si ninguna publica la potencia.
 
 - **alta** — potencia, ubicación y estado respaldados por fuente oficial o de la
-  propia compañía, sin contradicciones abiertas.
+  propio operador o propietario, sin contradicciones abiertas.
 - **media** — emplazamiento identificado y situado, pero con datos centrales
   incompletos o sostenidos solo por prensa especializada o consultora.
 - **baja** — faltan datos centrales, la ubicación es imprecisa o quedan
@@ -199,7 +199,7 @@ del nivel está escrito en `incertidumbres`.
 | tipo | significado |
 |---|---|
 | `it` | Carga TI / capacidad de servidor. Lo que se usa para comparar CPDs. |
-| `conexion_red` | Potencia de acceso solicitada o concedida en el punto de conexión. Siempre mayor que la TI. |
+| `conexion_red` | Potencia de acceso solicitada o concedida en el punto de conexión. Puede corresponder a otro horizonte de despliegue que la carga TI. |
 | `instalada_total` | Potencia eléctrica instalada del edificio (incluye clima, pérdidas). |
 | `no_especificado` | La fuente da «MW» sin decir de qué tipo. Se registra tal cual y **no** se compara con los anteriores. |
 | `termica_respaldo` | Potencia de los grupos electrógenos de emergencia, tal como la declaran las autorizaciones ambientales (a menudo en MW térmicos). **No es capacidad del centro de datos.** |
@@ -217,9 +217,6 @@ MVA, se usa `valor_mva` y `valor_mw` queda a `null`.
 
 ## Cómo se agregan las cifras de un mismo emplazamiento
 
-Es la decisión metodológica más delicada del conjunto, porque sumar mal produce
-cifras falsas con aspecto de rigor.
-
 1. Una cifra de ámbito `campus` **manda** sobre cualquier suma: se entiende que
    el dato global ya incluye edificios y fases.
 2. Las cifras de ámbito `edificio` **solo se suman entre sí cuando nombran
@@ -227,18 +224,14 @@ cifras falsas con aspecto de rigor.
    como lecturas rivales del mismo edificio y se toma la más reciente.
 3. Las de ámbito `fase` se suman, salvo las marcadas `acumulado`.
 
-El punto 2 es deliberadamente conservador. Una ficha puede tener tres cifras de
-ámbito `edificio` porque describe tres edificios (y hay que sumarlas) o porque
-tres fuentes dan tres lecturas del mismo (y sumarlas triplicaría la capacidad).
-El texto de `referencia` no permite distinguir un caso del otro, así que la
-diferencia se declara: **sin `edificio`, no se suma**.
+El campo `edificio` distingue unidades físicas de lecturas rivales. El texto de
+`referencia` no basta para justificar la suma.
 
 ## Fases acumuladas frente a incrementales
 
 Muchas fuentes dan la capacidad **acumulada** a cada hito («10 MW en 2026, 25 MW a
 cierre de 2027, 45 MW en 2028»). Esas cifras no se suman entre sí: se marca cada
-registro con `acumulado: true` y la agregación toma la mayor. Sumarlas produciría
-un total inflado con aspecto de rigor, que es justo lo que este proyecto evita.
+registro con `acumulado: true` y la agregación toma la mayor.
 
 ## Agua
 
@@ -280,17 +273,20 @@ por una cita que diga «739.900 MWh/año».
 Es un array porque un mismo emplazamiento suele tener varias lecturas, por fase o
 por escenario, y aquí las contradicciones se conservan como en todo lo demás.
 
-## Cómputo instalado
+## Cómputo documentado
 
-`computo[]` registra el hardware de cálculo que hay dentro: aceleradores de IA,
-particiones de CPU y procesadores cuánticos. Es la pregunta que la potencia no
-responde —un centro de 15 MW puede tener 10.000 GPU o ninguna— y la que peor se
-publica fuera del ámbito académico.
+`computo[]` recoge afirmaciones sobre hardware o servicios de cómputo vinculados
+al emplazamiento. Incluye GPU, CPU HPC, aceleradores de IA y procesadores cuánticos.
+No modifica `potencia[]` ni el tamaño del punto en el mapa; recuentos y rendimientos
+no se convierten en MW. Se publica una fila por afirmación, sin total de flota.
 
-**Cómputo no es potencia.** Nada de este bloque entra en `potencia[]`, no
-dimensiona el punto en el mapa y no se convierte en MW por ninguna regla de
-densidad. Que un emplazamiento tenga cómputo registrado no cambia ni una cifra
-eléctrica de su ficha.
+### Modalidad del cómputo
+
+`modalidad` distingue `instalado`, `adquirido`, `previsto`, `acceso` y
+`sin_confirmar`. Este último es el valor por defecto. Una oferta comercial o una
+compra no acreditan instalación física. El estado del recurso se conserva aparte;
+un servicio puede estar operativo sin confirmar su hardware en ese edificio.
+La fecha de consulta tampoco se usa como fecha de instalación.
 
 | campo | qué es |
 |---|---|
@@ -300,32 +296,29 @@ eléctrica de su ficha.
 | `operador_computo` | Quién opera el hardware, cuando no es el operador del centro. |
 | `modelo` | Modelo del chip, literal de la fuente. |
 | `unidades` + `tipo_unidad` | El recuento y de qué: aceleradores, procesadores, núcleos de CPU, cúbits o nodos. |
+| `nodos` | Número publicado de nodos, separado del recuento de aceleradores. |
 | `rendimiento` + `_unidad` + `_tipo` + `_precision` | La cifra de FLOPS con sus tres calificadores. |
+| `fecha_dato` | Fecha del inventario, compra o anuncio que respalda la afirmación, cuando consta. |
 
 ### Cinco reglas
 
 1. **El recuento solo se registra si la fuente lo publica.** Si da 29 nodos con
    dos GPU cada uno y no da el total, `unidades` queda vacío y el detalle va en
-   `modelo` y `nodos`. Multiplicar sería deducir una cifra que nadie ha
-   publicado, y este conjunto no deduce cifras.
+   `modelo` y `nodos`.
 2. **Los FLOPS no se comparan entre precisiones.** 19 EFlop/s en FP4 no son mil
    veces 260 PFlop/s en FP64: miden cosas distintas. Por eso la precisión viaja
    pegada a la cifra y el validador avisa cuando la fuente no la publica.
 3. **Pico y medida tampoco.** `pico` es el máximo teórico y `linpack_rmax` lo que
    la máquina alcanzó en un *benchmark*. No se sustituyen ni se promedian.
-4. **Cómo se suman los registros.** Uno de ámbito `sistema` manda sobre cualquier
-   suma, igual que `campus` en `potencia`. Entre registros de ámbito `particion`,
-   solo se suman los que difieren en `sistema` o en `modelo`: dos registros con
-   el mismo par son lecturas rivales del mismo hardware, no dos máquinas.
-5. **El cómputo del inquilino se atribuye al emplazamiento donde está**, con
-   `operador_computo` diciendo de quién es. Es la regla «un emplazamiento, un
-   registro» aplicada al caso de un centro mayorista cuyo hardware es de un
-   tercero. Omitirlo perdería el mayor clúster de GPU documentado del país.
+4. **Sistemas y particiones conservan su alcance.** Un total puede contener las
+   particiones descritas en otras filas. Modelos distintos tampoco demuestran
+   flotas independientes. No se suman inventarios, ofertas y previsiones.
+5. **El hardware del inquilino va en la ficha del anfitrión**, identificando al
+   operador de cómputo. La fuente debe respaldar la ubicación; una región cloud
+   no basta para elegir edificio. Si solo identifica el campus, se conserva ese
+   alcance. El mismo criterio se aplica a la computación cuántica.
 
-La regla de las instalaciones cuánticas no cambia: siguen sin generar ficha
-propia si están dentro de un emplazamiento ya fichado, y siguen sin aportar
-ninguna cifra a `potencia[]`. Lo único que añade `computo[]` es que ahora sus
-cúbits se registran en un campo en vez de en la prosa del `estado_detalle`.
+El inventario derivado se publica en `/datos/computo.json` y se explora en `/computo`.
 
 ## Empleo e inversión
 
@@ -444,11 +437,9 @@ fuente que no respalda ningún campo concreto.
 
 ### La lectura
 
-Lo interpretado va aparte y se firma como tal. `research/normativa/<id>.md`
-contiene, cuando la hay, la lectura de esa norma —qué cambia en la práctica—, y
-`npm run export` la copia a `src/contenido/normativa/`. Una norma sin lectura se
-publica igual, solo con hechos. En la ficha aparecen en secciones distintas y con
-un aviso explícito de cuál es cuál.
+`research/normativa/<id>.md` contiene el análisis editorial, cuando lo hay.
+`npm run export` lo copia a `src/contenido/normativa/`. Una norma sin análisis se
+publica igual, solo con hechos. La ficha identifica la sección de análisis editorial.
 
 ## Vistas de capacidad por etapa
 
@@ -463,11 +454,3 @@ Los grupos pueden solaparse y nunca se suman. Los JSON declaran
 `etapa_resumen_potencia: operativa`, `potencia_por_etapa` y un
 `resumen_potencia_documentada` de todas las lecturas. Las carteras declaran
 `etapa_potencia: operativa` y excluyen emplazamientos cancelados.
-
-## Modalidad del cómputo
-
-`computo[].modalidad` acepta `instalado`, `adquirido`, `previsto`, `acceso` o
-`sin_confirmar`. El valor por defecto es `sin_confirmar`: un servicio operativo no
-prueba dónde está el hardware. `adquirido` tampoco implica puesta en servicio.
-Los recuentos conservan su unidad y ámbito, sin sumar sistemas solapados. El
-inventario derivado se publica en `/datos/computo.json` y se explora en `/computo`.

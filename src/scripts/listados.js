@@ -32,7 +32,7 @@ for (const lista of document.querySelectorAll('[data-listado]')) {
     const params = new URL(location.href).searchParams
     entrada.value = params.get('q') ?? ''
     for (const filtro of filtros) {
-      const valor = params.get(filtro.dataset.parametro ?? filtro.name) ?? params.get(filtro.name) ?? ''
+      const valor = params.get(filtro.dataset.parametro ?? filtro.name) ?? params.get(filtro.name) ?? filtro.dataset.inicial ?? ''
       if (filtro.dataset.varios === 'si' && valor.includes(',')) {
         const validos = valor.split(',').filter((v) => [...filtro.options].some((o) => o.value === v))
         if (validos.length > 1 && ![...filtro.options].some((o) => o.value === validos.join(','))) {
@@ -72,7 +72,8 @@ for (const lista of document.querySelectorAll('[data-listado]')) {
     guardar('q', entrada.value.trim())
     for (const filtro of filtros) {
       const parametro = filtro.dataset.parametro ?? filtro.name
-      guardar(parametro, filtro.value)
+      if (filtro.dataset.inicial && filtro.value === '') url.searchParams.set(parametro, '')
+      else guardar(parametro, filtro.value !== (filtro.dataset.inicial ?? '') ? filtro.value : '')
       if (parametro !== filtro.name) url.searchParams.delete(filtro.name)
     }
     if (metrica) {
@@ -177,7 +178,7 @@ for (const lista of document.querySelectorAll('[data-listado]')) {
   form.addEventListener('reset', (event) => {
     event.preventDefault()
     entrada.value = ''
-    for (const filtro of filtros) filtro.selectedIndex = 0
+    for (const filtro of filtros) filtro.value = filtro.dataset.inicial ?? ''
     if (orden) orden.selectedIndex = 0
     if (metrica) { metrica.value = 'mw_it'; minimo.value = ''; conDato.checked = false; if (etapa) etapa.value = 'operativa' }
     pagina = 1

@@ -1,17 +1,8 @@
 ---
 import Base from '../layouts/Base.astro'
-import pendientes from '../data/pendientes.json'
 import sitios from '../data/sitios.json'
 import { numero, slug } from '../lib/etiquetas.js'
 import Termino from '../components/Termino.astro'
-
-const proyectos = pendientes.proyectos ?? []
-const pistas = pendientes.pistas ?? []
-
-const ORDEN = { alta: 0, media: 1, baja: 2 }
-const ordenados = [...proyectos].sort(
-  (a, b) => (ORDEN[a.prioridad] ?? 3) - (ORDEN[b.prioridad] ?? 3) || a.municipio.localeCompare(b.municipio, 'es'),
-)
 
 const regionesConFicha = new Set(sitios.map((s) => s.ubicacion.ccaa).filter(Boolean))
 
@@ -36,12 +27,12 @@ const pct = (n, total) => (total ? Math.round((n / total) * 100) : 0)
 
 <Base
   titulo="Cobertura"
-  descripcion="Qué cubre este registro, qué le falta, qué contradicciones quedan abiertas y qué no debe concluirse de él."
+  descripcion="Cobertura documental por comunidad y datos pendientes."
 >
   <div class="contenedor">
     <h1>Cobertura</h1>
     <p class="sumario">
-      {numero(sitios.length)} emplazamientos documentados. Cobertura por comunidad y proyectos pendientes de verificar.
+      {numero(sitios.length)} emplazamientos documentados. Cobertura documental por comunidad.
     </p>
 
     <p class="pequeno silencio">La accesibilidad de las fuentes cambia por territorio. Estos recuentos miden documentación, no cuota de mercado ni número total de centros existentes.</p>
@@ -49,7 +40,6 @@ const pct = (n, total) => (total ? Math.round((n / total) * 100) : 0)
       <div class="cifra"><dt>Con fuente oficial</dt><dd>{sitios.filter((s) => s.fuentes.some((f) => f.tipo === 'oficial')).length}<small>de {sitios.length} emplazamientos</small></dd></div>
       <div class="cifra"><dt>Con incertidumbres</dt><dd>{sitios.filter((s) => s.incertidumbres.length).length}<small>de {sitios.length} · <a href="/incertidumbres">consultar</a></small></dd></div>
       <div class="cifra"><dt>Sin coordenadas</dt><dd>{sitios.filter((s) => s.ubicacion.lat == null || s.ubicacion.lon == null).length}<small>de {sitios.length} emplazamientos</small></dd></div>
-      <div class="cifra"><dt>Pendientes de ficha</dt><dd>{proyectos.length}<small>fuera del inventario</small></dd></div>
     </dl>
 
     <h2>Cobertura por comunidad</h2>
@@ -86,84 +76,12 @@ const pct = (n, total) => (total ? Math.round((n / total) * 100) : 0)
       identifican <Termino id="subestacion">subestación</Termino> o potencia de acceso.
     </p>
 
-    <h2>Cola de investigación</h2>
-    <p>
-      {numero(proyectos.length)} proyectos pendientes de ficha y {pistas.length} pistas abiertas. Faltan datos o verificación primaria; quedan fuera del mapa y sus totales.
-    </p>
+    <p><a href="/revision">Pendientes de revisión</a> reúne las investigaciones y pistas que aún no permiten completar una ficha.</p>
 
-    <details class="pendientes"><summary>{proyectos.length} proyectos pendientes de ficha</summary>
-    <div class="tabla-envoltorio">
-      <table class="tabla-fichas">
-        <thead>
-          <tr><th>Municipio</th><th>Comunidad</th><th>Compañía</th><th>Potencia citada</th><th>Prioridad</th></tr>
-        </thead>
-        <tbody>
-          {ordenados.map((p) => (
-            <tr>
-              <td>
-                {p.municipio}
-                <span class="pequeno silencio"><br />{p.provincia}</span>
-              </td>
-              <td class="pequeno" data-etiqueta="Comunidad">{p.ccaa}</td>
-              <td data-etiqueta="Compañía">
-                {p.compania ?? <span class="silencio">sin promotor identificado</span>}
-                {p.nota && <details class="detalle-pista"><summary>Qué falta verificar</summary><p class="pequeno silencio">{p.nota}</p>{(p.nota.match(/https?:\/\/[^\s]+/g) ?? []).map((url) => <p class="pequeno"><a href={url} rel="noopener nofollow" target="_blank">Fuente de la pista</a></p>)}</details>}
-              </td>
-              <td class="pequeno" data-etiqueta="Potencia citada">{p.potencia_citada ?? <span class="silencio">sin cifra</span>}</td>
-              <td data-etiqueta="Prioridad"><span class={`prioridad prioridad-${p.prioridad}`}>{p.prioridad}</span></td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-
-    </details>
-    <details class="pendientes"><summary>{pistas.length} pistas abiertas</summary>
-    <p class="pequeno silencio">
-      A estas les falta el municipio, el promotor o ambos.
-    </p>
-    <ul class="pistas">
-      {pistas.map((t) => <li>{t}</li>)}
-    </ul>
-
-    </details>
     <p class="pequeno"><a href="/metodologia">Criterios de registro</a> · <a href="/datos">Datos y validación</a> · <a href="/actualizaciones">Últimos cambios</a></p>
   </div>
 </Base>
 
 <style>
-  .pendientes { margin: 1rem 0; }
-  .pendientes summary, .detalle-pista summary { cursor: pointer; }
-  .detalle-pista { margin-top: .35rem; font-size: .78rem; }
-  .prioridad {
-    font-size: 0.72rem;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    padding: 0.1em 0.5em;
-    border-radius: 999px;
-    border: 1px solid currentColor;
-  }
-
-  .prioridad-alta {
-    color: var(--cancelado);
-  }
-
-  .prioridad-media {
-    color: var(--permisos);
-  }
-
-  .prioridad-baja {
-    color: var(--tinta-3);
-  }
-
-  .pistas {
-    font-size: 0.9rem;
-    color: var(--tinta-2);
-    max-width: 46rem;
-    padding-left: 1.1rem;
-  }
-
-  .pistas li {
-    margin-bottom: 0.35em;
-  }
+  .contenedor { padding-bottom: 3rem; }
 </style>

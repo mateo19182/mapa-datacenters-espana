@@ -1,9 +1,7 @@
 export default {
   id: 'solaria', nombre: 'Solaria', ticker: 'BME: SLR',
   categoria: 'Renovables, conexión y almacenamiento', fecha: '1 septiembre 2026',
-  sobrelinea: 'Contratos digitales capaces de cambiar una compañía pequeña',
   descripcion: 'Tesis técnica de Solaria: acuerdos con Merlin, PPA, BESS, balance, valoración y cotización.',
-  tesisCorta: 'Solaria vende acceso, infraestructura eléctrica, energía y almacenamiento a Merlin. La duración contractual es atractiva. La financiación y la calidad del beneficio son bastante menos cómodas.',
   lectura: 'Especulativa',
   veredicto: 'La exposición digital es material y el castigo bursátil ha sido severo. Todavía hace falta convertir contratos en obras, cobros recurrentes y menor deuda antes de llamar barata a la acción.',
   horizonte: '2026 a 2030',
@@ -21,7 +19,7 @@ export default {
     { etiqueta: 'Segundo acuerdo', valor: '213 MW', nota: 'Demanda del centro' },
     { etiqueta: 'PPA y batería', valor: '426 MWp + 600 MWh', nota: 'Magnitudes no sumables' },
   ],
-  resumen: 'Solaria puede cobrar por acceso, obra eléctrica, un PPA solar de 40 años y almacenamiento durante 10 años. Esa combinación puede cambiar la duración de sus flujos. No significa que posea el centro de datos. Tampoco permite sumar 213 MW de demanda, 426 MWp solares y 600 MWh de energía almacenada.',
+  resumen: 'Los contratos con Merlin permiten a Solaria cobrar por acceso, obra eléctrica, un PPA solar de 40 años y almacenamiento durante 10 años. Esa combinación puede cambiar la duración de sus flujos. No significa que posea el centro de datos. Tampoco permite sumar 213 MW de demanda, 426 MWp solares y 600 MWh de energía almacenada.',
   favor: [
     'Los acuerdos con Merlin tienen duración y escala relevantes frente al tamaño de Solaria.',
     'Acceso, infraestructura, PPA y BESS crean varias fuentes posibles de margen.',

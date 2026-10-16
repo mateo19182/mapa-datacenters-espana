@@ -10,12 +10,12 @@ const ruta = Astro.url.pathname.replace(/\/$/, '') || '/'
 const activo = (href) => (ruta === href || (href !== '/' && ruta.startsWith(href)) ? 'page' : undefined)
 
 const grupos = [
-  { titulo: 'Proyectos', enlaces: [['/proyectos', 'Todos los proyectos'], ['/computo', 'Cómputo y GPU'], ['/companias', 'Compañías'], ['/regiones', 'Regiones']] },
+  { titulo: 'Explorar', enlaces: [['/proyectos', 'Emplazamientos'], ['/computo', 'Cómputo y GPU'], ['/companias', 'Operadores'], ['/regiones', 'Comunidades']] },
   { titulo: 'Energía', enlaces: [['/red-electrica', 'Red eléctrica'], ['/renovables', 'Renovables y almacenamiento'], ['/guias/red-electrica', 'Guía de acceso a la red'], ['/guias/renovables', 'Guía de contratos y energía']] },
 ]
 const referencias = [
   ['/actualizaciones', 'Últimos cambios'],
-  ['/revision', 'Cola de revisión'],
+  ['/revision', 'Pendientes de revisión'],
   ['/cobertura', 'Cobertura del registro'],
   ['/incertidumbres', 'Incertidumbres'],
   ['/fuentes', 'Fuentes'],
@@ -60,7 +60,7 @@ const referencias = [
           <a href="/normativa" aria-current={activo('/normativa')}>Normativa</a>
           <a href="/inversion" aria-current={activo('/inversion')}>Inversión</a>
           <details class="nav-grupo" data-activo={referencias.some(([href]) => activo(href)) || undefined}>
-            <summary>Más</summary>
+            <summary>Sobre los datos</summary>
             <div class="nav-desplegable">
               {referencias.map(([href, texto]) => <a href={href} aria-current={activo(href)}>{texto}</a>)}
               <a href={REPOSITORIO} class="nav-externo" rel="noopener">GitHub</a>
@@ -83,7 +83,7 @@ const referencias = [
     {!sinPie && (
       <footer class="pie">
         <div class="contenedor">
-          <p>{resumen.total_emplazamientos} emplazamientos · {resumen.fuentes_distintas} fuentes · Edición generada el {resumen.generado}.</p>
+          <p>{resumen.total_emplazamientos} emplazamientos · {resumen.fuentes_distintas} fuentes · Edición del {resumen.generado}.</p>
           <p class="pie-enlaces">
             <a href="/actualizaciones">Últimos cambios</a>
             <a href="/metodologia">Metodología</a>
@@ -92,9 +92,9 @@ const referencias = [
             <a href={REPOSITORIO} rel="noopener">GitHub</a>
           </p>
           <p>
-            Cartografía base © <a href="https://www.openstreetmap.org/copyright" rel="noopener">colaboradores de OpenStreetMap</a> y ©
-            <a href="https://carto.com/attributions" rel="noopener">CARTO</a>. Trazado de la red derivado de
-            OpenStreetMap (ODbL); no es cartografía oficial de Red Eléctrica.
+            Cartografía © <a href="https://www.openstreetmap.org/copyright" rel="noopener">colaboradores de OpenStreetMap</a> y ©
+            <a href="https://carto.com/attributions" rel="noopener">CARTO</a>.
+            <a href="/metodologia#capas">Origen y licencia de las capas</a>.
           </p>
         </div>
       </footer>

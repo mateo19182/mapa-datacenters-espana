@@ -46,13 +46,14 @@ const porOperador = [...new Set(propios.map((s) => s.operador).filter(Boolean))]
   descripcion={`Centros de datos registrados en ${r.nombre}: emplazamientos, potencia declarada e infraestructura eléctrica asociada.`}
 >
   <div class="contenedor">
-    <p class="migas"><a href="/regiones">Regiones</a></p>
+    <p class="migas"><a href="/regiones">Comunidades</a></p>
     <h1>{r.nombre}</h1>
     <p class="sumario">
-      {r.emplazamientos} {r.emplazamientos === 1 ? 'emplazamiento registrado' : 'emplazamientos registrados'},
-      de {porOperador.length} {porOperador.length === 1 ? 'operador' : 'operadores'} distintos, repartidos
-      por {porProvincia.length} {porProvincia.length === 1 ? 'provincia' : 'provincias'}.
+      {r.emplazamientos} {r.emplazamientos === 1 ? 'emplazamiento' : 'emplazamientos'} ·
+      {porOperador.length} {porOperador.length === 1 ? 'operador' : 'operadores'} ·
+      {porProvincia.length} {porProvincia.length === 1 ? 'provincia' : 'provincias'}.
     </p>
+    <p class="pequeno"><a href={`/?r=${encodeURIComponent(r.nombre)}`}>Ver en el mapa →</a></p>
 
     <Cartera cartera={r} />
 
@@ -126,8 +127,7 @@ const porOperador = [...new Set(propios.map((s) => s.operador).filter(Boolean))]
           </table>
         </div>
         <p class="pequeno silencio">
-          La capacidad de acceso para demanda que publica Red Eléctrica caduca deprisa; véase la
-          fecha del dato en <a href="/red-electrica">la sección de red eléctrica</a>.
+          Consulta la fecha de los datos en <a href="/red-electrica">Red eléctrica</a>.
         </p>
       </details>
     )}
@@ -161,8 +161,7 @@ const porOperador = [...new Set(propios.map((s) => s.operador).filter(Boolean))]
       <>
         <h2>Normativa</h2>
         <p class="pequeno silencio">
-          Normas autonómicas de {r.nombre} y normas de otro ámbito que la nombran expresamente.
-          Lo que aplica a toda España está en <a href="/normativa">la sección de normativa</a>.
+          Normativa autonómica y normas que citan esta comunidad. <a href="/normativa">Ver normativa general</a>.
         </p>
         <ul class="normas-region">
           {normasRegion.map((n) => (
@@ -180,9 +179,6 @@ const porOperador = [...new Set(propios.map((s) => s.operador).filter(Boolean))]
       </>
     )}
 
-    <p class="pequeno" style="margin:2rem 0 3rem">
-      <a href={`/?r=${encodeURIComponent(r.nombre)}`}>Ver {r.nombre} en el mapa →</a>
-    </p>
   </div>
 </Base>
 
