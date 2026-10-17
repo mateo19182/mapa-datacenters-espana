@@ -111,7 +111,19 @@ Hallazgos y propuestas documentales para revisión humana. No se han aceptado he
 Revisar fuentes, duplicados, fechas y límites de cada afirmación antes de trasladar cambios a `data/`.
 BODY
 if [[ -n "$pr_url" ]]; then
-  "$gh_bin" pr edit "$pr_url" --repo "$github_repo" --body-file "$run_dir/pr-body.md" >> "$run_dir/publicacion.log" 2>&1
+  # REST avoids the obsolete Projects (classic) query made by older gh pr edit.
+  pr_number="$(node --input-type=module -e '
+    import fs from "node:fs";
+    const [url, repo, bodyPath, inputPath] = process.argv.slice(1);
+    const prefix = `https://github.com/${repo}/pull/`;
+    const number = url.slice(prefix.length);
+    if (!/^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/.test(repo) || !url.startsWith(prefix) || !/^[1-9][0-9]*$/.test(number) || !Number.isSafeInteger(Number(number))) {
+      throw new Error("El PR existente no tiene una URL válida del repositorio esperado");
+    }
+    fs.writeFileSync(inputPath, JSON.stringify({ body: fs.readFileSync(bodyPath, "utf8") }));
+    console.log(number);
+  ' "$pr_url" "$github_repo" "$run_dir/pr-body.md" "$run_dir/pr-update.json" 2>> "$run_dir/publicacion.log")"
+  "$gh_bin" api --method PATCH "repos/$github_repo/pulls/$pr_number" --input "$run_dir/pr-update.json" >> "$run_dir/publicacion.log" 2>&1
 else
   pr_url="$("$gh_bin" pr create --repo "$github_repo" --base main --head "$branch" --title 'Investigación semanal pendiente de revisión' --body-file "$run_dir/pr-body.md" 2>> "$run_dir/publicacion.log")"
 fi

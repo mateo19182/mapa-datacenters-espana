@@ -19,7 +19,9 @@ primera observación guardada, aunque su base aceptada siga usando tamaño.
 
 Las instantáneas completas permanecen en `build/fuentes-cache/`, con hasta tres
 versiones por URL y 200.000 caracteres por extracción. El sitio publica como máximo
-24 palabras de extractos por comparación. Una extracción truncada no permite afirmar
+24 palabras de extractos por comparación, con un máximo de 240 caracteres por versión.
+El JSON se ordena y presenta por campos para distinguir cambios de valores y de orden.
+Una extracción truncada no permite afirmar
 que todo el texto sigue igual.
 
 ## Ejecución real

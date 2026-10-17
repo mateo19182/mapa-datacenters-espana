@@ -187,7 +187,7 @@ fs.mkdirSync(p+'/research/propuestas-revision',{recursive:true});fs.writeFileSyn
   assert.ok(existsSync(join(state, last.run_id, 'checkout')))
 })
 
-test('shell runner creates one PR, recovers its drafts and updates it without duplicate PRs', (t) => {
+test('shell runner reuses one PR through REST and preserves evidence if the update fails', (t) => {
   const p = fixture(t), origin = join(p, 'origin.git'), tools = join(p, 'bin'), state = join(p, 'runs')
   mkdirSync(tools); mkdirSync(join(p, 'scripts'))
   writeFileSync(join(p, 'scripts/research-agent.mjs'), `import{execFileSync}from'node:child_process';execFileSync(process.execPath,[${JSON.stringify(resolve('scripts/research-agent.mjs'))},...process.argv.slice(2)],{stdio:'inherit'});\n`)
@@ -198,12 +198,20 @@ const fs=require('node:fs'),a=process.argv.slice(2),s=process.env.MAPA_RESEARCH_
 fs.appendFileSync(s+'/gh-calls.txt',a.slice(0,2).join(' ')+'\\n');
 if(a[1]==='list')console.log(fs.existsSync(s+'/open-pr.json')?fs.readFileSync(s+'/open-pr.json','utf8'):'[]');
 if(a[1]==='create'){fs.writeFileSync(s+'/open-pr.json',JSON.stringify([{headRefName:'research/semanal',url:'https://github.com/example/repo/pull/1'}]));console.log('https://github.com/example/repo/pull/1');}
+if(a[0]==='api'){
+  const assert=require('node:assert/strict'),path=require('node:path');
+  assert.equal(a[a.indexOf('--method')+1],'PATCH');assert.ok(a.includes('repos/example/repo/pulls/1'));
+  const input=a[a.indexOf('--input')+1],body=JSON.parse(fs.readFileSync(input,'utf8'));
+  assert.equal(body.body,fs.readFileSync(path.join(path.dirname(input),'pr-body.md'),'utf8'));
+  fs.writeFileSync(s+'/rest-body.json',JSON.stringify(body));
+  if(process.env.MAPA_STUB_API_FAIL){console.error('Simulated REST update failure');process.exit(23);}
+}
 `, { mode: 0o755 })
   writeFileSync(join(tools, 'codex'), `#!/usr/bin/env node
 const fs=require('node:fs'),a=process.argv.slice(2),p=a[a.indexOf('-C')+1];
 fs.writeFileSync(p+'/research/revision-semanal.md',process.env.MAPA_STUB_REPORT);
 `, { mode: 0o755 })
-  const env = { ...process.env, MAPA_RESEARCH_REPO: p, MAPA_RESEARCH_STATE_DIR: state, MAPA_RESEARCH_CODEX_BIN: join(tools, 'codex'), MAPA_RESEARCH_GH_BIN: join(tools, 'gh'), MAPA_STUB_REPORT: '# Weekly report\nNo new primary evidence. Prior unsuccessful search remains open.\n' }
+  const env = { ...process.env, MAPA_RESEARCH_REPO: p, MAPA_RESEARCH_STATE_DIR: state, MAPA_RESEARCH_CODEX_BIN: join(tools, 'codex'), MAPA_RESEARCH_GH_BIN: join(tools, 'gh'), MAPA_RESEARCH_GITHUB_REPO: 'example/repo', MAPA_STUB_REPORT: '# Weekly report\nNo new primary evidence. Prior unsuccessful search remains open.\n' }
   const run = () => spawnSync('bash', [resolve('scripts/run-research-agent.sh')], { encoding: 'utf8', timeout: 15000, env })
   let result = run(); assert.equal(result.status, 0, result.stderr)
   const first = git(p, 'ls-remote', '--heads', 'origin', 'research/semanal')
@@ -213,6 +221,29 @@ fs.writeFileSync(p+'/research/revision-semanal.md',process.env.MAPA_STUB_REPORT)
   result = run(); assert.equal(result.status, 0, result.stderr)
   const calls = readFileSync(join(state, 'gh-calls.txt'), 'utf8')
   assert.equal(calls.match(/pr create/g)?.length, 1)
-  assert.equal(calls.match(/pr edit/g)?.length, 1)
+  assert.equal(calls.match(/api --method/g)?.length, 1)
+  assert.doesNotMatch(calls, /pr edit/)
+  assert.match(JSON.parse(readFileSync(join(state, 'rest-body.json'))).body, /\n\n- `research\/revision-semanal.md`/)
   assert.equal(JSON.parse(readFileSync(join(state, 'history.json'))).length, 3)
+  const beforeFailure = git(p, 'ls-remote', '--heads', 'origin', 'research/semanal')
+  env.MAPA_STUB_REPORT += 'Evidence from a run whose REST request fails.\n'
+  env.MAPA_STUB_API_FAIL = '1'
+  result = run(); assert.equal(result.status, 23, result.stderr)
+  const last = JSON.parse(readFileSync(join(state, 'history.json'))).at(-1)
+  assert.equal(last.status, 'failed'); assert.equal(last.failure.stage, 'publicacion-pr')
+  assert.equal(last.archive_status, 'ok')
+  assert.equal(readFileSync(join(state, last.run_id, 'entrega/research/revision-semanal.md'), 'utf8'), env.MAPA_STUB_REPORT)
+  assert.match(readFileSync(join(state, last.run_id, 'publicacion.log'), 'utf8'), /Simulated REST update failure/)
+  assert.notEqual(git(p, 'ls-remote', '--heads', 'origin', 'research/semanal'), beforeFailure)
+  git(p, 'fetch', 'origin', 'research/semanal')
+  assert.equal(git(p, 'show', 'FETCH_HEAD:research/revision-semanal.md'), env.MAPA_STUB_REPORT)
+  // A foreign repository, invalid number or URL suffix must never become an API target.
+  const beforeInvalid = readFileSync(join(state, 'gh-calls.txt'), 'utf8').match(/api --method/g).length
+  delete env.MAPA_STUB_API_FAIL
+  for (const url of ['https://github.com/other/repo/pull/1', 'https://github.com/example/repo/pull/0', 'https://github.com/example/repo/pull/1?x=1']) {
+    writeFileSync(join(state, 'open-pr.json'), JSON.stringify([{ headRefName: 'research/semanal', url }]))
+    env.MAPA_STUB_REPORT += `Rejected PR URL: ${url}\n`
+    result = run(); assert.notEqual(result.status, 0, result.stderr)
+  }
+  assert.equal(readFileSync(join(state, 'gh-calls.txt'), 'utf8').match(/api --method/g).length, beforeInvalid)
 })

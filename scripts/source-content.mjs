@@ -52,7 +52,13 @@ export function extraerContenido(contenido, tipo, { ejecutarPdf = spawnSync } = 
     return { formato: 'pdf', texto: texto.slice(0, LIMITE_TEXTO), principal: null, truncada: texto.length > LIMITE_TEXTO }
   }
   if (/text|xml|json/i.test(tipo)) {
-    const texto = lineas(contenido.toString('utf8'))
+    let original = contenido.toString('utf8')
+    if (/json/i.test(tipo)) {
+      const ordenar = (v) => Array.isArray(v) ? v.map(ordenar) : v && typeof v === 'object'
+        ? Object.fromEntries(Object.keys(v).sort().map((k) => [k, ordenar(v[k])])) : v
+      try { original = JSON.stringify(ordenar(JSON.parse(original)), null, 2) } catch { /* Keep malformed responses readable without inventing structure. */ }
+    }
+    const texto = lineas(original)
     return { formato: 'texto', texto: texto.slice(0, LIMITE_TEXTO), principal: null, truncada: texto.length > LIMITE_TEXTO }
   }
   return null
@@ -65,7 +71,7 @@ export function primerCambio(antes, despues) {
   let inicio = 0, finA = a.length, finB = b.length
   while (inicio < finA && inicio < finB && a[inicio] === b[inicio]) inicio++
   while (finA > inicio && finB > inicio && a[finA - 1] === b[finB - 1]) { finA--; finB-- }
-  const acotar = (partes, fin) => partes.slice(inicio, Math.min(fin, inicio + 12)).join(' ')
+  const acotar = (partes, fin) => partes.slice(inicio, Math.min(fin, inicio + 12)).join(' ').slice(0, 240)
   return { antes: acotar(a, finA), despues: acotar(b, finB), palabras_antes: finA - inicio, palabras_despues: finB - inicio }
 }
 

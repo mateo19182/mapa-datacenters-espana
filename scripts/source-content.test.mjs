@@ -55,6 +55,19 @@ test('public excerpts retain at most 24 source words across both versions', () =
   assert.equal(c.palabras_antes, 200)
   assert.equal(c.palabras_despues, 200)
   assert.equal((c.antes + ' ' + c.despues).split(/\s+/).length, 24)
+  const denso = primerCambio('a'.repeat(10000), 'b'.repeat(10000))
+  assert.equal(denso.antes.length, 240)
+  assert.equal(denso.despues.length, 240)
+})
+
+test('minified JSON exposes the changed field while property-order changes remain formatting hints', () => {
+  const extraerJson = (dato) => extraerContenido(Buffer.from(JSON.stringify(dato)), 'application/json')
+  const a = extraerJson({ id: 2983, phase: 'SCRUTINY', celex: null })
+  const ordenado = extraerJson({ celex: null, phase: 'SCRUTINY', id: 2983 })
+  assert.equal(compararContenido(a, ordenado).clase, 'formato')
+  const c = compararContenido(a, extraerJson({ id: 2983, phase: 'PUBLISHED', celex: null }))
+  assert.match(c.antes, /SCRUTINY/)
+  assert.match(c.despues, /PUBLISHED/)
 })
 
 test('snapshots cannot manufacture historical text and never accept a pending fingerprint', (t) => {

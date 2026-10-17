@@ -14,6 +14,9 @@ un informe largo. Incluye también las últimas revisiones normativas y sus mati
 tramitación. No trata esos informes como fuentes primarias ni reabre asuntos por defecto.
 
 Se reutiliza un PR de investigación abierto en lugar de crear otro cada semana.
+Su descripción se actualiza por REST: el `gh` instalado falla al editarla mediante
+la consulta antigua de Projects (classic). Se valida la URL del repositorio y se
+conservan rama y entrega si la actualización falla.
 La recuperación conserva las candidatas de `main` y del PR, sin importar sus cambios
 factuales. Las versiones incompatibles se detienen antes del push y permanecen en sus
 ramas. Un lease impide sobrescribir cambios remotos ocurridos durante la investigación.
