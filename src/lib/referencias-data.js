@@ -9,7 +9,7 @@ const dominio = (url) => { try { return new URL(url).hostname.replace(/^www\./, 
 const fuentesItems = fuentes.map((f) => ({
   id: `fuente-${createHash('sha256').update(f.url).digest('hex').slice(0, 16)}`,
   dataset: { busca: `${f.titulo} ${f.editor ?? ''} ${dominio(f.url)} ${f.usos.map((id) => nombres.get(id) ?? id).join(' ')}`, titulo: f.titulo, tipo: f.tipo, enlace: f.enlace?.clase ?? 'sin-comprobar', publicacion: f.fecha_publicacion ?? '', consulta: f.fecha_consulta ?? '', editor: f.editor ?? dominio(f.url) },
-  contenido: { url: f.url, titulo: f.titulo, editor: f.editor, dominio: dominio(f.url), consulta: f.fecha_consulta, publicacion: f.fecha_publicacion, cita: f.cita, tipo: FUENTE_ETIQUETA[f.tipo], acceso: { rota: 'Enlace roto', bloqueada: 'Bloquea al comprobador', 'sin-comprobar': 'Sin comprobar' }[f.enlace?.clase ?? 'sin-comprobar'], usos: f.usos.map((id) => ({ id, nombre: nombres.get(id) ?? id })) },
+  contenido: { url: f.url, titulo: f.titulo, editor: f.editor, dominio: dominio(f.url), consulta: f.fecha_consulta, publicacion: f.fecha_publicacion, cita: f.cita, tipo: FUENTE_ETIQUETA[f.tipo], acceso: { viva: 'Responde', rota: 'HTTP 404 o 410', bloqueada: 'Bloquea al comprobador', error: 'Comprobación sin resultado', 'sin-comprobar': 'Sin comprobar' }[f.enlace?.clase ?? 'sin-comprobar'], usos: f.usos.map((id) => ({ id, nombre: nombres.get(id) ?? id })) },
 }))
 const entradas = sitios.flatMap((s) => s.incertidumbres.map((u, i) => ({
   id: `${s.id}-${slug(u.campo)}-${i + 1}`,
@@ -20,7 +20,7 @@ export const gruposIncertidumbres = [...new Set(entradas.map((e) => e.dataset.et
 const configuraciones = {
   fuentes: {
     titulo: 'Fuentes', descripcion: 'Busca las referencias del registro por título, editor, dominio, tipo y estado del enlace.', porPagina: 25, items: ordenarReferencias(fuentesItems, 'titulo'),
-    filtros: [{ nombre: 'tipo', etiqueta: 'Tipo de fuente', opciones: Object.entries(FUENTE_ETIQUETA).filter(([t]) => fuentes.some((f) => f.tipo === t)).map(([valor, etiqueta]) => ({ valor, etiqueta })) }, { nombre: 'enlace', etiqueta: 'Estado del enlace', opciones: [{ valor: 'viva', etiqueta: 'Responde' }, { valor: 'rota', etiqueta: 'Enlace roto' }, { valor: 'bloqueada', etiqueta: 'Bloquea al comprobador' }, { valor: 'sin-comprobar', etiqueta: 'Sin comprobar' }] }],
+    filtros: [{ nombre: 'tipo', etiqueta: 'Tipo de fuente', opciones: Object.entries(FUENTE_ETIQUETA).filter(([t]) => fuentes.some((f) => f.tipo === t)).map(([valor, etiqueta]) => ({ valor, etiqueta })) }, { nombre: 'enlace', etiqueta: 'Estado del enlace', opciones: [{ valor: 'viva', etiqueta: 'Responde' }, { valor: 'rota', etiqueta: 'HTTP 404 o 410' }, { valor: 'bloqueada', etiqueta: 'Bloquea al comprobador' }, { valor: 'error', etiqueta: 'Comprobación sin resultado' }, { valor: 'sin-comprobar', etiqueta: 'Sin comprobar' }] }],
     ordenes: [{ valor: 'titulo', etiqueta: 'Título' }, { valor: 'publicacion', etiqueta: 'Publicación más reciente', direccion: 'desc' }, { valor: 'consulta', etiqueta: 'Consulta más reciente', direccion: 'desc' }, { valor: 'editor', etiqueta: 'Editor' }],
   },
   incertidumbres: {
@@ -39,7 +39,7 @@ export const indiceReferencias = (tipo) => {
   })
   return { tipo, version: createHash('sha256').update(JSON.stringify(items)).digest('hex').slice(0, 16), items }
 }
-export const saludFuentes = { total: fuentes.length, comprobadas: fuentes.filter((f) => f.enlace).length, rotas: fuentes.filter((f) => f.enlace?.clase === 'rota').length, bloqueadas: fuentes.filter((f) => f.enlace?.clase === 'bloqueada').length }
+export const saludFuentes = { total: fuentes.length, comprobadas: fuentes.filter((f) => f.enlace).length, rotas: fuentes.filter((f) => f.enlace?.clase === 'rota').length, bloqueadas: fuentes.filter((f) => f.enlace?.clase === 'bloqueada').length, errores: fuentes.filter((f) => f.enlace?.clase === 'error').length }
 export const coberturaIncertidumbres = { sitios: sitios.length, afectados: new Set(entradas.map((e) => e.contenido.sitio)).size }
 
 export const discrepanciasPotencia = sitios.flatMap((s) => Object.entries(s.potencia_por_etapa ?? { publicada: s.resumen_potencia }).flatMap(([etapa, potencias]) => Object.entries(potencias).filter(([, r]) => r?.discrepancia).map(([tipo, r]) => ({ sitio: s.id, nombre: s.nombre, etapa: ETAPAS_CAPACIDAD[etapa] ?? 'Publicada sin desglose', tipo: POTENCIA_ETIQUETA[tipo] ?? tipo, minimo: r.minimo_observado, maximo: r.maximo_observado }))))

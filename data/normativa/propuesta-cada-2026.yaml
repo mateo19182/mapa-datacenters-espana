@@ -5,10 +5,10 @@ ambito: europeo
 rango: propuesta_reglamento_ue
 estado: en_tramitacion
 estado_detalle: >-
-  Propuesta de la Comisión de 3 de junio de 2026, en primera lectura parlamentaria. El expediente
-  2026/0138(COD) identifica las comisiones responsables conjuntas ITRE e IMCO y los ponentes
-  nombrados el 24 de junio. La remisión a comisión se anunció el 17 de septiembre. A 14 de octubre
-  figura pendiente de decisión de comisión; no está en vigor.
+  Propuesta de la Comisión de 3 de junio de 2026, en primera lectura parlamentaria. OEIL mantiene a
+  17 de octubre el expediente 2026/0138(COD) pendiente de decisión de las comisiones conjuntas ITRE
+  e IMCO, con ponentes nombrados el 24 de junio y remisión anunciada el 17 de septiembre. No está en
+  vigor.
 boletin: null
 referencia: "COM(2026) 502"
 url_oficial: "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=COM%3A2026%3A502%3AFIN"
@@ -21,10 +21,10 @@ resumen: >-
   con permisos facilitados, permitiría a la Comisión declarar proyectos estratégicos y
   crearía un marco de soberanía de la nube con cuatro niveles de garantía.
 por_que_importa: >-
-  Empuja en dirección contraria a la del borrador español: donde el real decreto de agosto
-  filtra el acceso a la red, la propuesta europea acelera permisos y designa zonas. El
-  borrador español cita expresamente su nivel 1 como referencia para la localización de los
-  datos del sector público.
+  La propuesta europea facilitaría permisos y designaría zonas de aceleración. El borrador español
+  condicionaría el acceso eléctrico y cita el nivel 1 del esquema de garantía propuesto por CADA
+  para los datos del sector público. Ambos textos siguen pendientes y sus efectos deben evaluarse
+  por separado.
 obligaciones:
   - quien: "Estados miembros"
     que: >-
@@ -96,7 +96,7 @@ incertidumbres:
       - src-ep-train
       - src-yeandel
       - src-oeil
-ultima_verificacion: "2026-10-14"
+ultima_verificacion: "2026-10-17"
 fuentes:
   - id: src-comision
     url: https://digital-strategy.ec.europa.eu/en/library/proposal-cloud-and-ai-development-act-cada
@@ -140,5 +140,5 @@ fuentes:
     editor: Parlamento Europeo
     tipo: oficial
     fecha_publicacion: null
-    fecha_consulta: 2026-10-14
+    fecha_consulta: "2026-10-17"
     cita: "17/09/2026: Committee referral announced in Parliament, 1st reading"

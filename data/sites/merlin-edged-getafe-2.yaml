@@ -12,33 +12,68 @@ ubicacion:
   provincia: "Madrid"
   ccaa: "Comunidad de Madrid"
   direccion: "Calle Fundidores 2, Polígono Industrial Los Ángeles, 28906 Getafe"
-  lat: null
-  lon: null
+  lat: 40.311373
+  lon: -3.70676
   precision: aproximada
-  fuentes: [src-1]
+  fuentes:
+    - src-1
+    - src-spec-mad02
+    - src-mapa
 
-estado: operativo
+estado: en_tramitacion
 estado_detalle: >-
-  Segundo edificio de MERLIN Edged en el Polígono Los Ángeles de Getafe, de dos alturas y cuatro
-  muelles de carga. Edged lo marca como "Now Open" con espacio disponible.
-estado_fuentes: [src-1]
+  Segundo edificio, MAD-GET 02, previsto en Fundidores 2. MERLIN documentaba en julio de 2026
+  demolición preparatoria en curso, evaluación ambiental obtenida y licencia de construcción
+  solicitada, con servicio previsto en el segundo semestre de 2029. La web de Edged repite un bloque
+  "Now Open" y 20 MW que contradice tanto su ficha técnica como el informe del propietario. No se
+  acredita apertura ni capacidad operativa.
+estado_fuentes:
+  - src-1
+  - src-spec-mad02
+  - src-merlin-6m26
 
 potencia:
   - tipo: no_especificado
     valor_mw: 48
     ambito: edificio
     referencia: "Critical Load Capacity (encabezado de la ficha)"
-    estado_asociado: operativo
+    estado_asociado: en_tramitacion
     fecha_dato: "2026-08-31"
-    fuentes: [src-1, src-3]
+    fuentes: [ src-1, src-3, src-merlin-6m26 ]
+    nota: 'Cifra de la ficha comercial. No acredita capacidad entregada: el informe 6M26 sitúa MAD-GET
+      02 en demolición preparatoria, con licencia de construcción solicitada. La página repite un
+      bloque de 20 MW y "Now Open" incompatible con ese estado.'
   - tipo: no_especificado
     valor_mw: 20
     ambito: edificio
     referencia: "Critical Load Capacity (segundo bloque de la misma ficha)"
-    estado_asociado: operativo
+    estado_asociado: en_tramitacion
     fecha_dato: "2026-08-31"
-    fuentes: [src-1, src-3]
-    nota: "La misma página de Edged muestra dos cifras distintas para el mismo edificio."
+    fuentes: [ src-1, src-3, src-merlin-6m26 ]
+    nota: "Cifra de la ficha comercial. No acredita capacidad entregada: el informe 6M26 sitúa MAD-GET
+      02 en demolición preparatoria, con licencia de construcción solicitada. La página repite un
+      bloque de 20 MW y \"Now Open\" incompatible con ese estado."
+  - tipo: it
+    valor_mw: 48
+    ambito: edificio
+    referencia: MAD-GET 02, capacidad IT prevista en el informe 6M26
+    estado_asociado: en_tramitacion
+    fecha_dato: 2026-06-30
+    fuentes:
+      - src-merlin-6m26
+    nota: Capacidad futura del segundo edificio, no ampliación operativa de MAD01. La tabla indica
+      demolición en curso, licencia solicitada y servicio previsto en el segundo semestre de 2029.
+  - tipo: conexion_red
+    valor_mw: 70
+    ambito: edificio
+    referencia: MAD-GET 02, suministro previsto al completar la construcción
+    estado_asociado: en_tramitacion
+    fecha_dato: 2026-06-30
+    fuentes:
+      - src-merlin-6m26
+    nota: La tabla publica 70 MW como Power supply y supplied upon construction. Es suministro futuro
+      declarado por la compañía; no se registra como resolución de acceso concedido ni se convierte
+      en MW IT.
 
 refrigeracion: >-
   Sistema ThermalWorks sin consumo de agua (WUE 0,00 l/kWh); PUE de diseño de cartera 1,15;
@@ -71,13 +106,30 @@ incertidumbres:
     fuentes: [src-1, src-3]
   - campo: estado
     descripcion: >-
-      La nota de prensa de MERLIN de enero de 2025 solo menciona MAD 01 en Getafe (20 MW
-      ampliables a 27 MW) y no recoge un segundo edificio, por lo que no se puede datar la
-      puesta en servicio de Getafe 2 ni confirmar su capacidad energizada.
-    fuentes: [src-1, src-2]
+      La ficha web de Edged muestra "Now Open", pero la ficha técnica enlazada identifica MAD02 en
+      diseño y el informe del propietario de julio de 2026 solo acredita demolición preparatoria,
+      con licencia de construcción solicitada. El servicio del CPD figura previsto para el segundo
+      semestre de 2029. No se confirma apertura.
+    fuentes:
+      - src-1
+      - src-spec-mad02
+      - src-merlin-6m26
+  - campo: ubicacion
+    descripcion: El pin de Google Maps enlazado por el operador y las coordenadas impresas en su ficha
+      MAD02 coinciden. Identifican el emplazamiento previsto, con precisión aproximada, sin
+      acreditar el estado de las obras.
+    fuentes:
+      - src-mapa
+      - src-spec-mad02
+  - campo: potencia
+    descripcion: Los 16 MW IT adicionales que Colliers atribuye a Getafe no identifican MAD02. No se
+      usan para acreditar la apertura del segundo edificio.
+    fuentes:
+      - src-colliers-20261008
+      - src-merlin-6m26
 
 confianza: baja
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
   - id: src-1
@@ -85,7 +137,7 @@ fuentes:
     titulo: "Edged Madrid-Getafe 2"
     editor: "Edged (MERLIN Edged)"
     tipo: empresa
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "48 MW Critical Load Capacity ... Now Open ... Calle Fundidores, nº 2 Polígono Industrial, Los Ángeles, 28906 Getafe, Spain ... This building is two stories with four loading dock bays"
   - id: src-2
     url: "https://ir.merlinproperties.com/en/new-opportunity-in-data-centers/"
@@ -100,5 +152,44 @@ fuentes:
     titulo: "Madrid-Getafe 2"
     editor: "Edged (MERLIN Edged)"
     tipo: empresa
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: "48 MW Capacidad de carga crítica 1,15 PUE PUE Diseño de carteras PUE ... 20 MW Capacidad de carga crítica 1.15 PUE garantizado Abierto Espacio disponible ... Centro de datos madrid-getafe 2 Calle Fundidores, nº 2 Polígono Industrial, Los Ángeles, 28906 Getafe, España ... Sistema avanzado de refrigeración sin agua - Eficacia del uso del agua (WUE) 0,00 litros/kWh de refrigeración - Redundancia N+1 - Transferencia de calor con glicol con enfriadoras de techo refrigeradas por aire - Los evaporadores de circuito cerrado proporcionan refrigeración secundaria"
+  - id: src-merlin-6m26
+    url: https://www.cnmv.es/webservices/verdocumento/ver?t=%7B5e11756a-f13c-4928-91cf-cc6f01589e61%7D
+    titulo: MERLIN Properties · resultados 6M26, 27 de julio de 2026
+    editor: MERLIN Properties / CNMV
+    tipo: empresa
+    fecha_publicacion: 2026-07-27
+    fecha_consulta: 2026-10-17
+    cita: MAD-GET II [...] IT capacity 48 MW [...] Power supply 70 MW [...] 2H29
+  - id: src-spec-mad02
+    url: https://cdn.prod.website-files.com/612d5118cc3229538b508294/68bf2b6a1186eb51f6c433e8_MAD02_Spec%20Sheet_250730_Digital.pdf
+    titulo: MAD02 · ficha técnica enlazada por Edged
+    editor: Edged (MERLIN Edged)
+    tipo: empresa
+    fecha_consulta: 2026-10-17
+    cita: "MAD02 [...] Site Coordinates: 40.311373, -3.706760 [...] 48 MW CRITICAL CAPACITY [...] Status
+      Design Stage [...] Construction starts Q2 2026"
+  - id: src-mapa
+    url: https://maps.app.goo.gl/JdzJb9eSPuFwbL7R6
+    titulo: Google Maps · pin enlazado por Edged para Madrid-Getafe 2
+    editor: Google Maps / enlace de Edged
+    tipo: otro
+    fecha_consulta: 2026-10-17
+    cita: 40.311373, -3.706760
+  - id: src-colliers-20261008
+    url: https://www.colliers.com/es-es/news/data-centers-iberian-region-snapshot-septiembre-2026
+    titulo: Data Centers Iberian Region Snapshot · septiembre de 2026
+    editor: Colliers
+    tipo: consultora
+    fecha_publicacion: 2026-10-08
+    fecha_consulta: 2026-10-17
+fases:
+  - nombre: Desarrollo MAD-GET 02
+    estado: en_tramitacion
+    fecha_puesta_en_servicio: "2029"
+    fuentes:
+      - src-merlin-6m26
+    nota: Servicio previsto para el segundo semestre de 2029. Demolición preparatoria en curso y
+      licencia de construcción solicitada al corte del informe 6M26; no se inventa día ni mes de
+      apertura.

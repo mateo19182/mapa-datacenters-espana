@@ -7,12 +7,11 @@ ambito: estatal
 rango: proyecto_real_decreto
 estado: en_tramitacion
 estado_detalle: >-
-  La audiencia e información pública se celebró del 27 de agosto al 10 de septiembre de 2026. La
-  resolución de 2 de septiembre amplió el cierre inicial del día 4 hasta el día 10 a las 17:00. El
-  Pleno de la CNMC emitió su informe IPN/CNMC/038/26 el 22 de septiembre. A 14 de octubre no se ha
-  localizado aprobación ni publicación de un texto definitivo en el BOE; el borrador consultado
-  sigue siendo el de agosto. Sus requisitos propuestos no están en vigor. La referencia del Consejo
-  de Ministros de 13 de octubre no recoge su aprobación.
+  Audiencia cerrada el 10 de septiembre de 2026 a las 17:00, tras la ampliación acordada el día 2.
+  El Pleno de la CNMC emitió su informe el 22 de septiembre. La revisión de MITECO, CNMC, Moncloa y
+  BOE a 17 de octubre no ha localizado aprobación ni publicación de un texto definitivo. El Plan
+  IA360 anunciaba su aprobación en octubre; es una previsión política, no una entrada en vigor. Los
+  requisitos registrados corresponden al borrador de agosto.
 boletin: null
 referencia: null
 url_oficial: "https://www.miteco.gob.es/es/energia/participacion/2026/detalle-participacion-publica-k-851.html"
@@ -44,29 +43,29 @@ obligaciones:
     fuentes: [src-prd]
   - quien: "Entidad operadora o titular de un centro de datos"
     que: >-
-      Acreditar niveles de eficiencia energética e hídrica de clase «A» de la etiqueta europea.
-      Hasta que ese etiquetado se aplique —previsto para agosto de 2027— rigen un PUE máximo de 1,15
-      y un WUE máximo de 0,1, calculados según el anexo III del Reglamento Delegado (UE) 2024/1364.
-      Estar en clase «B» o peor dos años seguidos es incumplimiento grave.
+      Acreditar eficiencia energética e hídrica de clase A de la etiqueta europea. Hasta que se
+      aplique ese etiquetado, el borrador usaría PUE máximo de 1,15 y WUE máximo de 0,1, calculados
+      según el anexo III de 2024/1364. Dos años consecutivos en clase B o inferior constituirían
+      incumplimiento grave.
     umbral: "≥ 1 MW de potencia de acceso"
     plazo: "Con la solicitud de acceso y, después, cada año antes del 15 de octubre"
-    fuentes: [src-prd]
+    fuentes: [ src-prd ]
   - quien: "Entidad operadora o titular de un centro de datos"
     que: >-
-      Cubrir el 80 % de su consumo total con autoconsumo o con contratos de compra de electricidad
-      renovable a plazo de instalaciones ubicadas en España, cuya acta de puesta en servicio no sea
-      anterior en más de dieciocho meses a la entrada en funcionamiento del centro. Es el requisito
-      de adicionalidad.
+      Fuera de la vía alternativa del artículo 7, cubrir el 80 % del consumo total con autoconsumo o
+      contratos de compra de electricidad renovable a plazo de instalaciones en España. Su puesta en
+      servicio no podría preceder en más de dieciocho meses al funcionamiento del centro o al primer
+      uso de esa energía.
     umbral: "≥ 1 MW de potencia de acceso"
     plazo: "Verificación anual por el gestor de red"
-    fuentes: [src-prd, src-miteco-prensa]
+    fuentes: [ src-prd, src-miteco-prensa ]
   - quien: "Entidad operadora o titular de un centro de datos"
     que: >-
-      Garantizar que la energía consumida en cada hora está respaldada al menos en un 80 % por
-      electricidad renovable generada en esa misma hora. Es el requisito de correlación horaria.
+      Fuera de la vía alternativa del artículo 7, acreditar que al menos el 80 % de la energía
+      consumida en cada hora procede de electricidad renovable generada en esa misma hora.
     umbral: "≥ 1 MW de potencia de acceso"
     plazo: "Verificación mensual a efectos de recargos"
-    fuentes: [src-prd, src-miteco-prensa]
+    fuentes: [ src-prd, src-miteco-prensa ]
   - quien: "Entidad operadora o titular de un centro de datos"
     que: >-
       Remitir cada año, antes del 15 de mayo, a la Dirección General de Planificación y Coordinación
@@ -97,6 +96,15 @@ obligaciones:
     umbral: null
     plazo: "Tres meses desde la entrada en vigor"
     fuentes: [src-prd]
+  - quien: Solicitantes de acceso que se acojan al artículo 7 del borrador
+    que: Considerar cumplidos los requisitos renovables cuando la cuota nacional de generación renovable
+      del año n−2 haya superado el 90 %, con el régimen de mantenimiento y cese previsto en el
+      artículo. El permiso quedaría condicionado a un máximo anual de horas de consumo. Sin la
+      resolución anual que publique cuota y horas, la cuota se consideraría inferior al 90 %.
+    umbral: ≥ 1 MW de potencia de acceso; vía alternativa a adicionalidad y correlación horaria
+    plazo: Si llega a aprobarse; resolución de cuota y horas al menos dos meses antes del año n
+    fuentes:
+      - src-prd
 hitos:
   - fecha: "2025-08-08"
     hito: "Audiencia pública de un primer borrador, distinto de este, hasta el 15 de septiembre de 2025"
@@ -129,6 +137,10 @@ hitos:
     fuentes:
       - src-cnmc-expediente
       - src-cnmc-informe
+  - fecha: 2026-09-21
+    hito: El Plan IA360 anuncia como objetivo aprobar el decreto en octubre; no acredita aprobación
+    fuentes:
+      - src-plan-ia360
 actores:
   - nombre: "Ministerio para la Transición Ecológica y el Reto Demográfico"
     rol: promotor
@@ -231,10 +243,10 @@ afecta:
   - tipo: registro
     ref: null
     como: >-
-      Alcanza a todo emplazamiento de 1 MW de potencia de acceso o más que no esté ya conectado, y a
-      todo emplazamiento de 500 kW de potencia de TI o más en materia de publicación de datos. En la
-      práctica, a casi todo el registro salvo lo ya operativo.
-    fuentes: [src-prd]
+      El borrador distingue los requisitos de acceso para centros de al menos 1 MW no conectados a
+      su entrada en vigor y la información pública desde 500 kW de potencia TI. No basta el estado
+      del emplazamiento en el registro para determinar qué obligaciones le corresponderían.
+    fuentes: [ src-prd ]
   - tipo: proyecto
     ref: acs-alcala-de-henares-campus
     como: >-
@@ -270,16 +282,22 @@ relacionadas:
 incertidumbres:
   - campo: estado
     descripcion: >-
-      La audiencia está cerrada y el proyecto continúa en tramitación, sin texto definitivo aprobado
-      identificado a 14 de octubre. El 80 %, los dieciocho meses y los plazos de tres y seis meses
-      son propuestas del borrador. No se han sustituido por las recomendaciones de la CNMC.
-    fuentes: [src-prd, src-cnmc-expediente, src-consejo-20261013]
+      No se ha localizado texto definitivo aprobado a 17 de octubre. El 80 %, los dieciocho meses y
+      los plazos de tres y seis meses siguen siendo propuestas del borrador. El informe de la CNMC
+      no las modifica por sí mismo. Los plazos de adaptación empezarían con la eventual entrada en
+      vigor, prevista en el borrador a los veinte días de publicarse.
+    fuentes:
+      - src-prd
+      - src-cnmc-expediente
+      - src-consejo-20261013
+      - src-boe-sumario-20261017
   - campo: obligaciones
     descripcion: >-
-      El umbral de 1 MW se expresa en potencia de acceso y el de 500 kW en potencia de tecnología de
-      la información. Son dos magnitudes distintas y la norma no las convierte una en otra: un mismo
-      centro puede estar dentro de una obligación y fuera de la otra.
-    fuentes: [src-prd]
+      El umbral general de 1 MW es de acceso e incluye grupos de centros en una misma ubicación y
+      titularidad que lo alcancen agregadamente. El de información de 500 kW es de potencia TI. Se
+      excluyen los centros destinados exclusivamente a defensa, protección civil y seguridad
+      pública. Ningún umbral permite convertir MW de acceso en MW TI.
+    fuentes: [ src-prd ]
   - campo: actores
     descripcion: >-
       Las cifras de inversión en riesgo —entre el 80 % y el 90 % de la nueva inversión, 66.900
@@ -293,7 +311,7 @@ incertidumbres:
       asignan a fichas ni se restan automáticamente del CSV de REE.
     fuentes:
       - src-cnmc-informe
-ultima_verificacion: "2026-10-14"
+ultima_verificacion: "2026-10-17"
 fuentes:
   - id: src-prd
     url: "https://www.miteco.gob.es/content/dam/miteco/es/energia/files-1/es-ES/Participacion/Documents\
@@ -303,11 +321,9 @@ fuentes:
     editor: "MITECO"
     tipo: oficial
     fecha_publicacion: "2026-08-27"
-    fecha_consulta: "2026-10-14"
+    fecha_consulta: "2026-10-17"
     cita: >-
-      Las obligaciones de este real decreto se aplican a los centros de datos cuya potencia de
-      acceso sea igual o superior a 1 MW. Las obligaciones de comunicación y publicidad del artículo
-      14 se fijan, en cambio, en 500 kW de potencia de tecnología de la información.
+      cuya potencia de acceso sea igual o superior a 1 MW
   - id: src-miteco-participacion
     url: "https://www.miteco.gob.es/es/energia/participacion/2026/detalle-participacion-publica-k-851.h\
       tml"
@@ -316,10 +332,10 @@ fuentes:
     editor: "MITECO"
     tipo: oficial
     fecha_publicacion: "2026-08-27"
-    fecha_consulta: "2026-10-14"
+    fecha_consulta: "2026-10-17"
     cita: >-
-      Plazo para presentar documentación desde el jueves, 27 de agosto de 2026 hasta el viernes, 04
-      de septiembre de 2026.
+      Plazo para presentar documentación desde el jueves, 27 de agosto de 2026 hasta el jueves, 10
+      de septiembre de 2026
   - id: src-miteco-prensa
     url: "https://www.miteco.gob.es/es/prensa/ultimas-noticias/2026/agosto/-el-gobierno-plantea-impulsa\
       r-los-centros-de-datos-sostenibles--.html"
@@ -470,7 +486,7 @@ fuentes:
     tipo: oficial
     fecha_publicacion: 2026-09-02
     cita: hasta el 10 de septiembre de 2026 a las 17:00, inclusive
-    fecha_consulta: 2026-10-14
+    fecha_consulta: "2026-10-17"
   - id: src-cnmc-expediente
     url: https://www.cnmc.es/expedientes/ipncnmc03826
     titulo: "Expediente IPN/CNMC/038/26: informe del Consejo de 22 de septiembre"
@@ -478,7 +494,7 @@ fuentes:
     tipo: oficial
     fecha_publicacion: 2026-09-22
     cita: 22 Sep 2026. Informe del Consejo
-    fecha_consulta: 2026-10-14
+    fecha_consulta: "2026-10-17"
   - id: src-cnmc-informe
     url: https://www.cnmc.es/sites/default/files/6855348.pdf?download=1
     titulo: Informe IPN/CNMC/038/26 sobre el proyecto de real decreto de centros de datos, páginas 5, 6
@@ -487,11 +503,26 @@ fuentes:
     tipo: oficial
     fecha_publicacion: 2026-09-22
     cita: introducir mayor flexibilidad temporal en la aplicación de los requisitos
-    fecha_consulta: 2026-10-14
+    fecha_consulta: "2026-10-17"
   - id: src-consejo-20261013
     url: https://www.lamoncloa.gob.es/consejodeministros/referencias/Paginas/2026/20261013-referencia-rueda-de-prensa-ministros.aspx
     titulo: Referencia del Consejo de Ministros de 13 de octubre de 2026
     editor: La Moncloa
     tipo: oficial
     fecha_publicacion: 2026-10-13
-    fecha_consulta: 2026-10-14
+    fecha_consulta: "2026-10-17"
+  - id: src-plan-ia360
+    url: https://www.lamoncloa.gob.es/presidente/actividades/Documents/2026/20260920%20Plan%20IA360.pdf
+    titulo: Plan IA360, apartado de nueva regulación de centros de datos, página 5
+    editor: La Moncloa
+    tipo: oficial
+    fecha_publicacion: 2026-09-21
+    fecha_consulta: 2026-10-17
+    cita: "Hitos: aprobación en el mes de octubre 2026."
+  - id: src-boe-sumario-20261017
+    url: https://www.boe.es/boe/dias/2026/10/17/
+    titulo: Sumario del BOE de 17 de octubre de 2026, consulta de publicación definitiva
+    editor: BOE
+    tipo: oficial
+    fecha_publicacion: 2026-10-17
+    fecha_consulta: 2026-10-17

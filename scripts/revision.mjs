@@ -8,6 +8,7 @@ import YAML from 'yaml'
 import { z } from 'zod'
 import { presentacionProyecto } from '../src/lib/proyecto-presentacion.js'
 import { pistasRevision } from '../src/lib/revision-presentacion.js'
+import { claseFallo } from './source-state.mjs'
 
 const fecha = z.string().regex(/^\d{4}-\d{2}-\d{2}$/).refine((s) => !Number.isNaN(Date.parse(s)) && new Date(s).toISOString().slice(0, 10) === s, 'Fecha inválida')
 const hallazgo = z.object({
@@ -40,27 +41,53 @@ export function estadoFuente(h) {
   if (!h) return null
   const exito = [h.visto, h.pendiente?.visto].filter(Boolean).sort().at(-1)
   const falloActual = h.clase && h.ultimo_fallo && (!exito || h.ultimo_fallo >= exito)
-  return { clase: falloActual ? h.clase : 'viva', fecha: ultimaObservacion(h), ...(falloActual ? { motivo: h.motivo } : {}), ...(h.pendiente ? { cambio_pendiente: true } : {}) }
+  const clase = falloActual ? (h.motivo ? claseFallo({ mensaje: h.motivo }) : h.clase) : 'viva'
+  return { clase, fecha: ultimaObservacion(h), ...(falloActual ? { motivo: h.motivo } : {}), ...(h.pendiente ? { cambio_pendiente: true } : {}) }
 }
 export function fusionarHuellas(base, entrantes) {
   const resultado = structuredClone(base)
   for (const [url, nueva] of Object.entries(entrantes)) {
-    const previa = resultado[url]
-    if (!previa) { resultado[url] = structuredClone(nueva); continue }
-    if ((ultimaObservacion(nueva) ?? '') < (ultimaObservacion(previa) ?? '')) continue
+    const previa = resultado[url] ?? {}
     const siguiente = { ...previa }
+
+    // The main branch owns the baseline. A branch can supply its first observed
+    // fingerprint when none exists, but cannot accept a different one for it.
     if (!previa.hash && nueva.hash) {
       siguiente.hash = nueva.hash; siguiente.longitud = nueva.longitud; siguiente.visto = nueva.visto
-    } else if (previa.hash === nueva.hash && nueva.visto) {
-      siguiente.visto = [previa.visto, nueva.visto].filter(Boolean).sort().at(-1)
     }
-    const candidata = nueva.pendiente ?? (nueva.hash && previa.hash && nueva.hash !== previa.hash ? { hash: nueva.hash, longitud: nueva.longitud, detectado: nueva.visto, visto: nueva.visto } : null)
-    if (candidata && candidata.hash !== siguiente.hash && (candidata.visto ?? '') >= (siguiente.pendiente?.visto ?? '')) siguiente.pendiente = { ...candidata, detectado: siguiente.pendiente?.hash === candidata.hash ? [siguiente.pendiente.detectado, candidata.detectado].filter(Boolean).sort()[0] : candidata.detectado }
-    // A later observation of the accepted content is a reversion, not acceptance.
-    if (!nueva.pendiente && nueva.hash === siguiente.hash && nueva.visto && nueva.visto >= (siguiente.pendiente?.visto ?? '9999')) delete siguiente.pendiente
+
+    const lecturas = [previa, nueva].flatMap((h) => [
+      h.hash ? { hash: h.hash, longitud: h.longitud, visto: h.visto } : null,
+      h.pendiente?.hash ? { ...h.pendiente, visto: h.pendiente.visto ?? h.pendiente.detectado } : null,
+    ]).filter(Boolean)
+    const aceptadas = lecturas.filter((l) => l.hash === siguiente.hash)
+      .sort((a, b) => (b.visto ?? '').localeCompare(a.visto ?? ''))
+    if (aceptadas.length) {
+      siguiente.visto = aceptadas[0].visto
+      if (aceptadas[0].longitud != null) siguiente.longitud = aceptadas[0].longitud
+    }
+
+    // A newer failure does not invalidate a successful content observation.
+    // Date-only ties cannot establish a reversion, so keep unresolved evidence.
+    const candidatas = lecturas.filter((l) => l.hash !== siguiente.hash)
+      .sort((a, b) => (b.visto ?? '').localeCompare(a.visto ?? ''))
+    const candidata = candidatas[0]
+    if (candidata && (candidata.visto ?? '') >= (siguiente.visto ?? '')) {
+      const detecciones = candidatas.filter((l) => l.hash === candidata.hash)
+        .map((l) => l.detectado ?? l.visto).filter(Boolean).sort()
+      siguiente.pendiente = {
+        hash: candidata.hash, longitud: candidata.longitud,
+        detectado: detecciones[0], visto: candidata.visto,
+      }
+    } else delete siguiente.pendiente
+
+    const fallo = [previa, nueva].filter((h) => h.clase && h.ultimo_fallo)
+      .sort((a, b) => b.ultimo_fallo.localeCompare(a.ultimo_fallo))[0]
+    const ultimoExito = [siguiente.visto, siguiente.pendiente?.visto].filter(Boolean).sort().at(-1)
     for (const k of ['clase', 'motivo', 'ultimo_fallo']) delete siguiente[k]
-    const salud = estadoFuente(nueva)
-    if (salud?.clase !== 'viva') for (const k of ['clase', 'motivo', 'ultimo_fallo']) if (nueva[k] != null) siguiente[k] = nueva[k]
+    if (fallo && (!ultimoExito || fallo.ultimo_fallo >= ultimoExito)) {
+      for (const k of ['clase', 'motivo', 'ultimo_fallo']) if (fallo[k] != null) siguiente[k] = fallo[k]
+    }
     resultado[url] = siguiente
   }
   return resultado
@@ -119,7 +146,7 @@ export function prepararRevision(documento, { borradores = [], pendientes = {}, 
     for (const h of previsiones) hitos.push({ id: s.id, nombre: s.nombre, href: `/proyecto/${s.id}#cronologia`, fecha: h.fecha, hito: h.titulo, tipo: 'proyecto' })
     if (!['operativo', 'ampliacion_en_construccion', 'parcialmente_operativo', 'cancelado', 'paralizado'].includes(s.estado) && s.fecha_puesta_en_servicio && finPeriodo(s.fecha_puesta_en_servicio) < hoy && !previsiones.some((h) => h.fecha === s.fecha_puesta_en_servicio)) hitos.push({ id: s.id, nombre: s.nombre, href: `/proyecto/${s.id}#cronologia`, fecha: s.fecha_puesta_en_servicio, hito: 'Puesta en servicio prevista en la ficha', tipo: 'proyecto' })
   }
-  return { generado: hoy, hallazgos, pistas: pistasRevision(pendientes), revision_factual: { registros, pendientes: registros.filter((r) => r.vencida).length }, comprobacion_automatica: { fuentes, registradas: fuentes.length, con_observacion: fuentes.filter((f) => f.comprobada).length, ultima_observacion: fuentes.map((f) => f.fecha).filter(Boolean).sort().at(-1) ?? null, rotas: fuentes.filter((f) => f.clase === 'rota').length, bloqueadas: fuentes.filter((f) => f.clase === 'bloqueada').length, cambios_pendientes: fuentes.filter((f) => f.cambio_pendiente).length }, hitos_vencidos: hitos.sort((a, b) => a.fecha.localeCompare(b.fecha)) }
+  return { generado: hoy, hallazgos, pistas: pistasRevision(pendientes), revision_factual: { registros, pendientes: registros.filter((r) => r.vencida).length }, comprobacion_automatica: { fuentes, registradas: fuentes.length, con_observacion: fuentes.filter((f) => f.comprobada).length, ultima_observacion: fuentes.map((f) => f.fecha).filter(Boolean).sort().at(-1) ?? null, rotas: fuentes.filter((f) => f.clase === 'rota').length, bloqueadas: fuentes.filter((f) => f.clase === 'bloqueada').length, errores: fuentes.filter((f) => f.clase === 'error').length, cambios_pendientes: fuentes.filter((f) => f.cambio_pendiente).length }, hitos_vencidos: hitos.sort((a, b) => a.fecha.localeCompare(b.fecha)) }
 }
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   if (process.argv[2] !== '--validar-borradores') throw new Error('Uso: revision.mjs --validar-borradores research/hallazgos.yaml')

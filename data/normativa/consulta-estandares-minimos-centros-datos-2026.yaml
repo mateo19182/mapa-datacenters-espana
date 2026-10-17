@@ -5,9 +5,9 @@ ambito: europeo
 rango: iniciativa_ue
 estado: consulta_previa
 estado_detalle: >-
-  Consulta pública abierta del 21 de septiembre al 14 de diciembre de 2026. Recaba aportaciones
-  para una propuesta legislativa prevista para el segundo trimestre de 2027. A 14 de octubre
-  no es una propuesta articulada aprobada ni establece requisitos mínimos aplicables.
+  Consulta pública abierta del 21 de septiembre al 14 de diciembre de 2026. La Comisión mantiene a
+  17 de octubre la preparación de una propuesta legislativa para el segundo trimestre de 2027. La
+  consulta no establece requisitos mínimos aplicables ni fija una entrada en vigor.
 boletin: null
 referencia: null
 url_oficial: "https://energy.ec.europa.eu/news/minimum-performance-standards-data-centres-europe-public-consultation-launched-2026-09-21_en"
@@ -46,7 +46,7 @@ incertidumbres:
   - campo: obligaciones
     descripcion: "No están fijados los estándares, los umbrales de aplicación ni la fecha en que podrían ser exigibles."
     fuentes: [src-comision]
-ultima_verificacion: "2026-10-14"
+ultima_verificacion: "2026-10-17"
 fuentes:
   - id: src-comision
     url: "https://energy.ec.europa.eu/news/minimum-performance-standards-data-centres-europe-public-consultation-launched-2026-09-21_en"
@@ -54,7 +54,7 @@ fuentes:
     editor: "Comisión Europea, Dirección General de Energía"
     tipo: oficial
     fecha_publicacion: "2026-09-21"
-    fecha_consulta: "2026-10-14"
+    fecha_consulta: "2026-10-17"
     cita: "Interested parties are invited to submit their input by 14 December 2026."
   - id: src-miteco
     url: "https://www.miteco.gob.es/es/energia/eficiencia/centros-de-datos.html"
@@ -62,5 +62,5 @@ fuentes:
     editor: "MITECO"
     tipo: oficial
     fecha_publicacion: null
-    fecha_consulta: "2026-10-14"
+    fecha_consulta: "2026-10-17"
     cita: "desde el 21 de septiembre de 2026 hasta el 14 de diciembre de 2026"

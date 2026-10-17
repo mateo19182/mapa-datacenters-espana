@@ -5,10 +5,6 @@ on:
     # Lunes a las 05:20 UTC. Semanal basta: estos proyectos se mueven en meses.
     - cron: '20 5 * * 1'
   workflow_dispatch:
-    inputs:
-      dias:
-        description: 'Días tras los cuales una ficha se considera pendiente de revisar'
-        default: '180'
 
 jobs:
   revisar:
@@ -24,24 +20,66 @@ jobs:
           cache: npm
       - run: npm ci
 
+      - name: Conservar observaciones del PR semanal pendiente
+        run: |
+          referencia=$(git ls-remote --heads origin refs/heads/revision/fuentes)
+          if [ -n "$referencia" ]; then
+            git fetch --no-tags origin refs/heads/revision/fuentes
+            git show FETCH_HEAD:data/huellas.json > "$RUNNER_TEMP/huellas-pendientes.json"
+            node scripts/check-updates.mjs --fusionar "$RUNNER_TEMP/huellas-pendientes.json" --informe
+          fi
+
       # Nunca modifica datos: solo recalcula huellas y arma la cola de revisión.
       - name: Comprobar las fuentes registradas
         id: revision
         continue-on-error: true
-        run: node scripts/check-updates.mjs --dias "${{ inputs.dias || 180 }}"
+        run: |
+          resultado=0
+          node scripts/check-updates.mjs || resultado=$?
+          if [ "$resultado" -ne 0 ] && [ "$resultado" -ne 10 ]; then
+            exit "$resultado"
+          fi
 
       - name: Comprobar publicación de REE
+        id: ree
         continue-on-error: true
-        run: npm run refresh:ree
+        run: |
+          resultado=0
+          npm run refresh:ree || resultado=$?
+          if [ "$resultado" -ne 0 ] && [ "$resultado" -ne 10 ]; then
+            exit "$resultado"
+          fi
 
-      # Las propuestas pendientes se integran solo si no hay ningún conflicto.
+      # Integra adiciones y conserva los valores que requieren decisión.
       - name: Integrar propuestas sin conflicto
         id: propuestas
         continue-on-error: true
-        run: node scripts/apply-proposals.mjs --aplicar
+        run: |
+          resultado=0
+          node scripts/apply-proposals.mjs --aplicar || resultado=$?
+          if [ "$resultado" -ne 0 ] && [ "$resultado" -ne 11 ]; then
+            exit "$resultado"
+          fi
 
-      - name: Revalidar tras la integración
-        run: npm run validate
+      - name: Generar datos e informe desde la misma instantánea
+        run: npm run data
+
+      - name: Informar de fallos del comprobador
+        if: always()
+        env:
+          RESULTADO_FUENTES: ${{ steps.revision.outcome }}
+          RESULTADO_REE: ${{ steps.ree.outcome }}
+          RESULTADO_PROPUESTAS: ${{ steps.propuestas.outcome }}
+        run: |
+          if [ "$RESULTADO_FUENTES" = failure ]; then
+            echo 'El comprobador de fuentes falló. Las observaciones conservan su fecha anterior.' >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ "$RESULTADO_REE" = failure ]; then
+            echo 'No se pudo comprobar la publicación de REE. Consultar el informe antes de afirmar que no hay novedades.' >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ "$RESULTADO_PROPUESTAS" = failure ]; then
+            echo 'La integración de propuestas falló. Revisar el error y el diff antes de fusionar.' >> "$GITHUB_STEP_SUMMARY"
+          fi
 
       - name: Abrir propuesta de actualización
         uses: peter-evans/create-pull-request@v6
@@ -66,3 +104,14 @@ jobs:
           add-paths: |
             data/**
             research/**
+
+      - name: Señalar comprobaciones incompletas
+        if: always()
+        env:
+          RESULTADO_FUENTES: ${{ steps.revision.outcome }}
+          RESULTADO_REE: ${{ steps.ree.outcome }}
+          RESULTADO_PROPUESTAS: ${{ steps.propuestas.outcome }}
+        run: |
+          if [ "$RESULTADO_FUENTES" = failure ] || [ "$RESULTADO_REE" = failure ] || [ "$RESULTADO_PROPUESTAS" = failure ]; then
+            exit 1
+          fi

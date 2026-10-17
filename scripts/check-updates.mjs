@@ -1,312 +1,81 @@
-// Detecta cambios en las fuentes registradas SIN tocar el dataset.
-//
-// Compara una huella del contenido de cada URL con la guardada en
-// data/huellas.json y produce una cola de revisión en
-// research/informe-actualizacion.md. La decisión de modificar un dato sigue
-// siendo humana: este script solo dice dónde mirar.
-//
-// La comprobación técnica actualiza solo huellas y observaciones. La revisión
-// factual se conserva aparte: una URL sin cambios no verifica de nuevo sus datos.
-// --sellar se admite por compatibilidad y ya no modifica ultima_verificacion.
-//
-// Uso: node scripts/check-updates.mjs [--limite N] [--dias N] [--solo-caducados] [--sellar]
-import { createHash } from 'node:crypto'
+// Technical observations never renew factual review dates or accept changes.
 import { readFileSync, writeFileSync, existsSync } from 'node:fs'
 import { join } from 'node:path'
 import { cargarTodo, RAIZ } from './load.mjs'
-import { registrarLectura, aceptarPendiente } from './source-state.mjs'
-import { plazoRevision } from './revision.mjs'
+import { registrarLectura, aceptarPendiente, claseFallo } from './source-state.mjs'
+import { comprobarFuente } from './source-check.mjs'
+import { prepararRevision, fusionarHuellas } from './revision.mjs'
+import { informeFuentes, requiereRevision } from './source-report.mjs'
 
 const args = process.argv.slice(2)
-const opcion = (nombre, porDefecto) => {
-  const i = args.indexOf(nombre)
-  return i >= 0 && args[i + 1] ? Number(args[i + 1]) : porDefecto
+const permitidos = new Set(['--limite', '--dias', '--solo-caducados', '--sellar', '--aceptar', '--informe', '--fusionar'])
+for (let i = 0; i < args.length; i++) {
+  const arg = args[i]
+  if (!permitidos.has(arg)) throw new Error(`Opción desconocida: ${arg}`)
+  if (['--limite', '--dias', '--aceptar', '--fusionar'].includes(arg)) {
+    const valor = args[++i]
+    if (!valor || valor.startsWith('--')) throw new Error(`Falta el valor de ${arg}`)
+    if (['--limite', '--dias'].includes(arg) && (!/^\d+$/.test(valor) || (arg === '--dias' && Number(valor) < 1))) throw new Error(`Valor inválido para ${arg}`)
+    if (arg === '--dias' && valor !== '180') throw new Error('Los plazos dependen de la actividad. --dias 180 se admite por compatibilidad; usa /revision para consultar cada plazo.')
+  }
 }
-
-const LIMITE = opcion('--limite', Infinity)
-const DIAS_CADUCIDAD = opcion('--dias', 180)
-const SOLO_CADUCADOS = args.includes('--solo-caducados')
-const SELLAR = args.includes('--sellar')
-const CONCURRENCIA = 4
-const ESPERA_MS = 400
-const TIEMPO_LIMITE_MS = 25000
-
-const RUTA_HUELLAS = join(RAIZ, 'data/huellas.json')
-const huellas = existsSync(RUTA_HUELLAS) ? JSON.parse(readFileSync(RUTA_HUELLAS, 'utf8')) : {}
-
+const indiceLimite = args.indexOf('--limite')
+const limite = indiceLimite < 0 ? Infinity : Number(args[indiceLimite + 1])
+const rutaHuellas = join(RAIZ, 'data/huellas.json')
+let huellas = existsSync(rutaHuellas) ? JSON.parse(readFileSync(rutaHuellas, 'utf8')) : {}
 const hoy = new Date().toISOString().slice(0, 10)
-const diasDesde = (iso) => Math.floor((Date.parse(hoy) - Date.parse(iso)) / 86400000)
-
+const indiceFusionar = args.indexOf('--fusionar')
+if (indiceFusionar >= 0) {
+  huellas = fusionarHuellas(huellas, JSON.parse(readFileSync(args[indiceFusionar + 1], 'utf8')))
+  writeFileSync(rutaHuellas, JSON.stringify(huellas, null, 1), 'utf8')
+  console.log('Observaciones anteriores fusionadas; se conserva la huella aceptada en main.')
+}
 const indiceAceptar = args.indexOf('--aceptar')
 if (indiceAceptar >= 0) {
   const url = args[indiceAceptar + 1]
-  if (!url || !huellas[url]?.pendiente) throw new Error('Indica una URL con un cambio pendiente')
   huellas[url] = aceptarPendiente(huellas[url], hoy)
-  writeFileSync(RUTA_HUELLAS, JSON.stringify(huellas, null, 1), 'utf8')
+  writeFileSync(rutaHuellas, JSON.stringify(huellas, null, 1), 'utf8')
   console.log(`Cambio aceptado: ${url}`)
-  process.exit(0)
 }
 
-const { sitios, red, renovables, normativa } = cargarTodo()
-
-// --- inventario de URLs a vigilar -------------------------------------------
-
-const urls = new Map()
-const anotar = (url, quien) => {
-  if (!/^https?:\/\//.test(url ?? '')) return
-  if (!urls.has(url)) urls.set(url, new Set())
-  urls.get(url).add(quien)
-}
-
-for (const s of sitios) for (const f of s.fuentes) anotar(f.url, s.id)
-for (const n of [...red, ...renovables]) {
-  for (const f of n.fuentes ?? []) anotar(typeof f === 'string' ? f : f.url, n.id)
-}
-// Las fuentes de una norma cambian con la norma: un texto que pasa de borrador a
-// BOE cambia de URL y de contenido. Vigilarlas es la mitad de lo que hace la
-// sección de normativa.
-for (const n of normativa) for (const f of n.fuentes) anotar(f.url, n.id)
-
-// --- caducidad ---------------------------------------------------------------
-
-const caducados = sitios
-  .map((s) => ({ id: s.id, nombre: s.nombre, dias: diasDesde(s.ultima_verificacion), confianza: s.confianza, plazo: Math.min(DIAS_CADUCIDAD, plazoRevision(s.estado)) }))
-  .filter((s) => s.dias >= s.plazo)
-  .sort((a, b) => b.dias - a.dias)
-
-// Una norma en tramitación envejece mucho más deprisa que una en vigor: entre
-// que sale a audiencia y se aprueba pueden pasar semanas, y la ficha se queda
-// describiendo un borrador que ya no existe.
-const normasCaducadas = normativa
-  .map((n) => ({
-    id: n.id,
-    titulo: n.titulo,
-    estado: n.estado,
-    abierta: plazoRevision(n.estado, 'normativa') === 14,
-    plazo: Math.min(DIAS_CADUCIDAD, plazoRevision(n.estado, 'normativa')),
-    dias: diasDesde(n.ultima_verificacion),
-  }))
-  .filter((n) => n.dias >= n.plazo)
-  .sort((a, b) => b.dias - a.dias)
-
-// Hitos futuros que ya han vencido: la ficha prometía una fecha y esa fecha ha
-// pasado sin que nadie haya vuelto a mirarla.
-const hitosVencidos = normativa.flatMap((n) =>
-  (n.hitos ?? [])
-    .filter((h) => h.previsto && h.fecha < hoy)
-    .map((h) => ({ id: n.id, titulo: n.titulo, fecha: h.fecha, hito: h.hito })),
-).sort((a, b) => a.fecha.localeCompare(b.fecha))
-
-// --- comprobación de fuentes -------------------------------------------------
-
-/** Reduce el HTML a texto para que la huella no cambie por cabeceras dinámicas. */
-function huellaDe(html) {
-  const texto = html
-    .replace(/<script[\s\S]*?<\/script>/gi, ' ')
-    .replace(/<style[\s\S]*?<\/style>/gi, ' ')
-    .replace(/<!--[\s\S]*?-->/g, ' ')
-    .replace(/<[^>]+>/g, ' ')
-    .replace(/&[a-z#0-9]+;/gi, ' ')
-    .replace(/\s+/g, ' ')
-    .trim()
-    .toLowerCase()
-  return { hash: createHash('sha256').update(texto).digest('hex').slice(0, 16), longitud: texto.length }
-}
-
-async function comprobar(url) {
-  const control = new AbortController()
-  const temporizador = setTimeout(() => control.abort(), TIEMPO_LIMITE_MS)
-  try {
-    const r = await fetch(url, {
-      redirect: 'follow',
-      signal: control.signal,
-      headers: {
-        'User-Agent':
-          'mapa-datacenters-espana/0.1 (revisión periódica de fuentes; contacto en el repositorio)',
-        Accept: 'text/html,application/xhtml+xml,application/pdf;q=0.8,*/*;q=0.5',
-      },
-    })
-    if (!r.ok) return { estado: 'http', codigo: r.status }
-
-    const tipo = r.headers.get('content-type') ?? ''
-    if (!/text|html|xml|json/.test(tipo)) {
-      // PDF y demás binarios: nos quedamos con el tamaño declarado.
-      return { estado: 'ok', hash: `bin:${r.headers.get('content-length') ?? '?'}`, longitud: 0, tipo }
-    }
-    const html = await r.text()
-    return { estado: 'ok', ...huellaDe(html), tipo }
-  } catch (e) {
-    return { estado: 'error', mensaje: e.name === 'AbortError' ? 'tiempo agotado' : e.message }
-  } finally {
-    clearTimeout(temporizador)
-  }
-}
-
-const cambiadas = []
-const rotas = []
-const bloqueadas = []
-const nuevas = []
-
-// Un 403 de Cloudflare no basta para clasificar un enlace como muerto. Mezclar ambos casos llenaría el informe semanal de falsas alarmas.
-const CODIGOS_BLOQUEO = new Set([401, 403, 429, 503])
-const esBloqueo = (res) =>
-  CODIGOS_BLOQUEO.has(res.codigo) || res.mensaje === 'tiempo agotado'
+const datos = cargarTodo()
+const errores = datos.incidencias.filter((i) => i.nivel === 'error')
+if (errores.length) throw new Error(`Datos inválidos: ${errores.map((e) => `${e.fichero}: ${e.msg}`).join('; ')}`)
+let revision = prepararRevision([], { ...datos, huellas, hoy })
 let comprobadas = 0
-
-if (!SOLO_CADUCADOS) {
-  const lista = [...urls.keys()].slice(0, LIMITE)
-  const cola = [...lista]
-
+if (indiceAceptar < 0 && !args.includes('--informe') && !args.includes('--solo-caducados')) {
+  const cola = revision.comprobacion_automatica.fuentes.map((f) => f.url).slice(0, limite)
+  const total = cola.length
+  console.log(`Comprobando ${total} fuentes…`)
   const trabajador = async () => {
     while (cola.length) {
       const url = cola.shift()
-      const res = await comprobar(url)
-      comprobadas++
-      const previa = huellas[url]
-      const quien = [...urls.get(url)]
-
-      if (res.estado !== 'ok') {
-        const motivo = res.codigo ? `HTTP ${res.codigo}` : res.mensaje
-        const destino = esBloqueo(res) ? bloqueadas : rotas
-        destino.push({ url, quien, motivo })
+      const lectura = await comprobarFuente(url)
+      if (lectura.estado === 'ok') huellas[url] = registrarLectura(huellas[url], lectura, hoy).estado
+      else {
         huellas[url] = {
-          ...(previa ?? {}),
-          ultimo_fallo: hoy,
-          motivo,
-          clase: esBloqueo(res) ? 'bloqueada' : 'rota',
-        }
-      } else {
-        const lectura = registrarLectura(previa, res, hoy)
-        huellas[url] = lectura.estado
-        if (lectura.resultado === 'nueva') nuevas.push({ url, quien })
-        if (lectura.resultado === 'cambiada') {
-          const delta = res.longitud - (previa.longitud ?? 0)
-          cambiadas.push({ url, quien, delta, desde: previa.pendiente?.detectado ?? hoy })
+          ...huellas[url], ultimo_fallo: hoy,
+          clase: lectura.estado === 'bloqueada' ? 'bloqueada' : claseFallo(lectura),
+          motivo: lectura.codigo ? `HTTP ${lectura.codigo}` : lectura.mensaje,
         }
       }
-
-      if (cola.length) await new Promise((r) => setTimeout(r, ESPERA_MS))
+      comprobadas++
+      if (comprobadas % 50 === 0 || comprobadas === total) {
+        writeFileSync(rutaHuellas, JSON.stringify(huellas, null, 1), 'utf8')
+        console.log(`${comprobadas}/${total} fuentes observadas`)
+      }
+      if (cola.length) await new Promise((resolve) => setTimeout(resolve, 400))
     }
   }
-
-  process.stdout.write(`Comprobando ${lista.length} fuentes…\n`)
-  await Promise.all(Array.from({ length: CONCURRENCIA }, trabajador))
-  writeFileSync(RUTA_HUELLAS, JSON.stringify(huellas, null, 1), 'utf8')
+  await Promise.all(Array.from({ length: 4 }, trabajador))
+  writeFileSync(rutaHuellas, JSON.stringify(huellas, null, 1), 'utf8')
+  revision = prepararRevision([], { ...datos, huellas, hoy })
 }
-
-// La opción histórica no vuelve a fechar los hechos. Las observaciones ya
-// están en huellas; la cola pública calcula la revisión por actividad.
-if (SELLAR) console.log('--sellar: solo se comprueban fuentes; se conservan las fechas de revisión factual.')
-
-// --- informe -----------------------------------------------------------------
-
-const nombreDe = new Map([...sitios.map((s) => [s.id, s.nombre]), ...normativa.map((n) => [n.id, n.titulo])])
-const referidos = (ids) => ids.map((i) => nombreDe.get(i) ?? i).join(', ')
-
-// Un cambio pequeño suele ser publicidad o un contador; uno grande, contenido.
-const relevante = (c) => Math.abs(c.delta) > 120
-
-const l = []
-l.push('# Cola de revisión de fuentes', '')
-l.push(`Generado el ${hoy} por \`npm run refresh\`. Este informe **no modifica ningún dato**:`)
-l.push('señala dónde han cambiado las fuentes para que una persona decida qué hacer.', '')
-l.push(`- Fuentes comprobadas: **${comprobadas}** de ${urls.size} registradas`)
-l.push(`- Con contenido cambiado: **${cambiadas.length}** (${cambiadas.filter(relevante).length} con cambio apreciable)`)
-l.push(`- Enlaces rotos: **${rotas.length}**`)
-l.push(`- Bloqueadas a la comprobación automática: **${bloqueadas.length}** (el bloqueo no acredita el estado en un navegador)`)
-l.push(`- Vistas por primera vez: **${nuevas.length}**`)
-l.push(`- Fichas pendientes de revisión según su actividad: **${caducados.length}**`)
-l.push(`- Normas sin verificar en plazo: **${normasCaducadas.length}** de ${normativa.length}`)
-l.push(`- Hitos previstos ya vencidos: **${hitosVencidos.length}**`)
-if (SELLAR) {
-  l.push('- Las comprobaciones técnicas no renuevan fechas de revisión factual.')
-}
-l.push('')
-
-if (cambiadas.length) {
-  l.push('## Fuentes cuyo contenido ha cambiado', '')
-  l.push('Revisar si el cambio afecta a algún dato registrado. Un cambio de pocos caracteres')
-  l.push('suele ser un elemento dinámico de la página, no información nueva. El aviso')
-  l.push('permanece hasta aceptar el cambio o hasta que la página vuelve al contenido anterior.', '')
-  l.push('| Fuente | Registros que la citan | Variación | Detectado |')
-  l.push('|---|---|---:|---|')
-  for (const c of cambiadas.sort((a, b) => Math.abs(b.delta) - Math.abs(a.delta))) {
-    const marca = relevante(c) ? '**' : ''
-    l.push(`| ${marca}${c.url}${marca} | ${referidos(c.quien)} | ${c.delta > 0 ? '+' : ''}${c.delta} car. | ${c.desde} |`)
-  }
-  l.push('')
-}
-
-if (hitosVencidos.length) {
-  l.push('## Hitos previstos que ya han vencido', '')
-  l.push('La ficha anunciaba una fecha y esa fecha ha pasado. Hay que comprobar qué ocurrió y')
-  l.push('convertir la previsión en un hecho, o corregirla.', '')
-  l.push('| Fecha | Qué debía ocurrir | Norma |')
-  l.push('|---|---|---|')
-  for (const h of hitosVencidos) l.push(`| ${h.fecha} | ${h.hito} | ${h.titulo} |`)
-  l.push('')
-}
-
-if (normasCaducadas.length) {
-  l.push('## Normas sin verificar', '')
-  l.push(`Las normas con el texto abierto caducan a los ${DIAS_CADUCIDAD_NORMA_ABIERTA} días; el resto, a los ${DIAS_CADUCIDAD}.`, '')
-  l.push('| Norma | Estado | Días |')
-  l.push('|---|---|---:|')
-  for (const n of normasCaducadas) l.push(`| ${n.titulo} | ${n.estado}${n.abierta ? ' (abierta)' : ''} | ${n.dias} |`)
-  l.push('')
-}
-
-if (rotas.length) {
-  l.push('## Enlaces rotos', '')
-  l.push('Un enlace roto no invalida el dato, pero sí su verificabilidad. Buscar copia en archivo')
-  l.push('web o sustituir por una fuente equivalente antes de dar el dato por bueno.', '')
-  l.push('| Fuente | Registros que la citan | Motivo |')
-  l.push('|---|---|---|')
-  for (const r of rotas) l.push(`| ${r.url} | ${referidos(r.quien)} | ${r.motivo} |`)
-  l.push('')
-}
-
-if (bloqueadas.length) {
-  l.push('## Bloqueadas a la comprobación automática', '')
-  l.push('Devuelven 403, 429 o agotan el tiempo ante un cliente automatizado, normalmente por')
-  l.push('protección antibot. **No son enlaces rotos**: se abren con normalidad en un navegador.')
-  l.push('No hay nada que corregir; se listan para que no se confundan con los rotos.', '')
-  l.push('| Fuente | Registros que la citan | Respuesta |')
-  l.push('|---|---|---|')
-  for (const r of bloqueadas) l.push(`| ${r.url} | ${referidos(r.quien)} | ${r.motivo} |`)
-  l.push('')
-}
-
-if (caducados.length) {
-  l.push('## Fichas que tocan revisar', '')
-  l.push('| Emplazamiento | Días desde la última verificación | Confianza |')
-  l.push('|---|---:|---|')
-  for (const c of caducados) l.push(`| ${c.nombre} (\`${c.id}\`) | ${c.dias} | ${c.confianza} |`)
-  l.push('')
-}
-
-if (nuevas.length) {
-  l.push('## Fuentes vigiladas por primera vez', '')
-  for (const n of nuevas) l.push(`- ${n.url} — ${referidos(n.quien)}`)
-  l.push('')
-}
-
-l.push('---', '')
-l.push('Para incorporar cambios: editar el YAML del emplazamiento, actualizar su')
-l.push('`ultima_verificacion` y ejecutar `npm run validate`. Si el dato nuevo contradice al')
-l.push('registrado, **no se sustituye**: se añade como entrada adicional en `potencia[]` y se')
-l.push('documenta el choque en `incertidumbres[]`. Tras revisar una fuente cambiada, ejecutar')
-l.push('`npm run refresh -- --aceptar "URL"` para aceptar su nueva huella.')
-
-writeFileSync(join(RAIZ, 'research/informe-actualizacion.md'), l.join('\n'), 'utf8')
-
-console.log(
-  `\n${comprobadas} fuentes comprobadas · ${cambiadas.length} cambiadas · ${rotas.length} rotas · ` +
-    `${bloqueadas.length} bloqueadas (antibot) · ${caducados.length} fichas caducadas` +
-    (SELLAR ? ' · fechas factuales conservadas' : '') +
-    '\n' +
-    '→ research/informe-actualizacion.md',
-)
-
-// Señal para el flujo de CI: 10 = hay algo que revisar.
-if (cambiadas.filter(relevante).length || rotas.length || caducados.length) process.exit(10)
+if (args.includes('--sellar')) console.log('--sellar conserva las fechas de revisión factual.')
+writeFileSync(join(RAIZ, 'research/informe-actualizacion.md'), informeFuentes(revision, { huellas }))
+const tecnica = revision.comprobacion_automatica
+console.log(`${comprobadas} fuentes comprobadas en esta ejecución; ${tecnica.con_observacion}/${tecnica.registradas} con observación guardada.`)
+console.log(`${tecnica.cambios_pendientes} cambios pendientes; ${tecnica.rotas} respuestas 404/410; ${tecnica.bloqueadas} bloqueadas; ${tecnica.errores} fallos sin resultado.`)
+console.log(`→ research/informe-actualizacion.md; ${revision.revision_factual.pendientes} revisiones factuales pendientes.`)
+// 10 means review is needed, 1 is an execution failure, 0 has no pending work.
+if (indiceAceptar < 0 && !args.includes('--informe') && requiereRevision(revision)) process.exitCode = 10

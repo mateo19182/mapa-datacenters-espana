@@ -19,7 +19,7 @@ const remoto = { tipo, url: `/datos/indice-${tipo}.json?v=${indice.version}`, ve
     <h1>{datos.titulo}</h1>
     {tipo === 'fuentes' ? <>
       <p class="sumario">{total.toLocaleString('es-ES')} referencias distintas, enlazadas con los emplazamientos que documentan.</p>
-      <p class="pequeno silencio">{saludFuentes.comprobadas} de {saludFuentes.total} enlaces comprobados: {saludFuentes.rotas} rotos y {saludFuentes.bloqueadas} bloqueados para el comprobador. Un bloqueo automático no confirma que el enlace funcione en el navegador.</p>
+      <p class="pequeno silencio">{saludFuentes.comprobadas} de {saludFuentes.total} enlaces con observación: {saludFuentes.rotas} respuestas 404 o 410, {saludFuentes.bloqueadas} bloqueados y {saludFuentes.errores} fallos de comprobación. Un bloqueo o fallo de red no demuestra que la página haya desaparecido.</p>
     </> : <>
       <p class="sumario">{total} lagunas y contradicciones documentadas en {coberturaIncertidumbres.afectados} de {coberturaIncertidumbres.sitios} emplazamientos. Abre cada entrada para consultar el detalle y sus fuentes.</p>
       {discrepanciasPotencia.length > 0 && <details class="discrepancias"><summary>{discrepanciasPotencia.length} magnitudes de potencia con cifras distintas</summary><div class="tabla-envoltorio"><table class="tabla-fichas"><thead><tr><th>Proyecto</th><th>Magnitud</th><th>Etapa</th><th>Rango observado</th></tr></thead><tbody>{discrepanciasPotencia.map((d) => <tr><td><a href={`/proyecto/${d.sitio}#potencia`}>{d.nombre}</a></td><td data-etiqueta="Magnitud">{d.tipo}</td><td data-etiqueta="Etapa">{d.etapa}</td><td data-etiqueta="Rango observado">{numero(d.minimo, 1)} a {numero(d.maximo, 1)} MW</td></tr>)}</tbody></table></div></details>}

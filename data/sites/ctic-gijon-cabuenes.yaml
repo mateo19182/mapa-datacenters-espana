@@ -45,18 +45,20 @@ computo:
   - tipo: gpu
     ambito: sistema
     sistema: CTIC DataHub, suministro adjudicado CT008/2021
-    modelo: NVIDIA A100 de 40 GB, configuración DGX A100 320 GB del suministro
+    modelo: NVIDIA A100 de 40 GB, referencia DGX A100 320 GB del pliego
     unidades: 8
     tipo_unidad: acelerador
     nodos: 1
     estado: desconocido
     modalidad: adquirido
     fecha_dato: null
-    fuentes: [src-adjudicacion-datahub, src-ppt-datahub, src-pcap-datahub]
+    fuentes: [src-adjudicacion-datahub, src-ppt-datahub, src-pcap-datahub, src-cuentas-2024]
     nota: >-
       El expediente publicado el 2 de noviembre de 2021 figura adjudicado a Seidor Tech por
       300.000 euros más IVA. El PPT pide un DGX con ocho A100 y entrega en CTIC Cabueñes.
-      No consta acta de recepción ni inventario operativo que confirme ese modelo instalado.
+      Las cuentas de 2024 incluyen el activo DataHub, con adquisición contable de 29 de diciembre
+      de 2021 y valor de 300.000 euros, sin identificar GPU. No consta acta de recepción ni
+      inventario operativo que confirme el modelo del pliego como instalado.
   - tipo: gpu
     ambito: sistema
     sistema: ARQADE y QUTE, suministro adjudicado CT004/2026
@@ -83,7 +85,9 @@ incertidumbres:
       con destino físico identificado, pero no se localizaron actas de recepción. El servicio
       genérico, el DGX A100 de CT008/2021 y el servidor de CT004/2026 no se suman como tres flotas
       distintas. El contrato AI4ES CT007/2021 tiene otro alcance y no se incorpora sin inventario.
-    fuentes: [src-datahub, src-adjudicacion-datahub, src-ppt-datahub, src-adjudicacion-arqade, src-ppt-arqade]
+      El inventario contable de 2024 registra DataHub y otro equipo GPU sin modelo; no permite
+      atribuir a esas partidas las GPU pedidas en los pliegos.
+    fuentes: [src-datahub, src-adjudicacion-datahub, src-ppt-datahub, src-adjudicacion-arqade, src-ppt-arqade, src-cuentas-2024]
   - campo: computo.modelo
     descripcion: >-
       El modelo Blackwell y sus ocho GPU son la referencia del PPT, que admite equivalentes.
@@ -94,8 +98,9 @@ incertidumbres:
     descripcion: >-
       Las fechas 2 de noviembre de 2021 y 10 de marzo de 2026 corresponden a publicación de los
       procedimientos, no a adjudicación, entrega ni servicio del hardware. La carpeta 2026-02 de
-      los PDF de DataHub no fecha la compra original. Las fechas del inventario quedan vacías.
-    fuentes: [src-adjudicacion-datahub, src-ppt-datahub, src-adjudicacion-arqade, src-ppt-arqade]
+      los PDF de DataHub no fecha la compra original. La adquisición contable de 29 de diciembre
+      de 2021 tampoco fecha la recepción de las ocho A100. Las fechas del inventario quedan vacías.
+    fuentes: [src-adjudicacion-datahub, src-ppt-datahub, src-adjudicacion-arqade, src-ppt-arqade, src-cuentas-2024]
   - campo: ubicacion
     descripcion: >-
       Los pliegos señalan el edificio CTIC de Ada Byron 39 en Cabueñes como destino del hardware.
@@ -111,6 +116,14 @@ incertidumbres:
 confianza: media
 ultima_verificacion: 2026-10-15
 fuentes:
+  - id: src-cuentas-2024
+    url: https://www.fundacionctic.org/sites/default/files/2026-02/cuentasanualeseinformedeauditoria2024.pdf
+    titulo: Cuentas anuales 2024, inventario de activos, página 205 del PDF
+    editor: Fundación CTIC Centro Tecnológico
+    tipo: asociacion
+    fecha_publicacion: null
+    fecha_consulta: 2026-10-17
+    cita: 217.000225 [...] INFRAESTRUCTURA PARA INVESTIGACIÓN EN ESPACIOS DE DATOS COMPARTIDOS DATAHUB [...] 29/12/2021
   - id: src-mapa-contacto
     url: https://www.fundacionctic.org/es/contacto
     titulo: Contacto CTIC, mapa de sedes y marcador de la sede principal de Gijón

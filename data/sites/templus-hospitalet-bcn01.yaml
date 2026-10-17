@@ -15,18 +15,17 @@ ubicacion:
   direccion: "Carrer de Pablo Iglesias 56, 08908 L'Hospitalet de Llobregat"
   lat: 41.34862
   lon: 2.129779
-  precision: exacta
-  fuentes: [src-1]
+  precision: aproximada
+  fuentes: [ src-1, src-peering-mapa ]
 
 estado: operativo
 estado_detalle: >-
-  Comprado por Templus a Cellnex en febrero de 2025 y ampliado de 1,7 a 6 MW.
-  El campus formado por BCN01 y BCN02 se inauguró el 26 o 27 de mayo de 2026 con
-  presencia de la directora general de Infraestructures Digitals de la
-  Generalitat, y se comercializa como una única plataforma de 10 MW. La ficha de
-  producto de Templus atribuye a BCN01 700 m² de superficie TI, 2,5 MW de
-  potencia total y densidades de 4 a 15 kW por rack.
-estado_fuentes: [src-2, src-4, src-5]
+  Centro adquirido a Cellnex en febrero de 2025. La nota de Templus del 26 de mayo de 2026 confirma
+  la inauguración del campus comercial y 6 MW sin tipificar en este activo, frente a 4 MW en el
+  comprado a AtlasEdge. El inventario actual publica 2,25 MW IT para Barcelona 01; su ficha
+  individual mantiene 2,5 MW bajo Total power. No se fuerza equivalencia entre ambas magnitudes ni
+  con los 6 MW de la nota.
+estado_fuentes: [ src-2, src-4, src-5, src-nota-campus, src-inventario-it ]
 
 potencia:
   - tipo: no_especificado
@@ -41,11 +40,12 @@ potencia:
     ambito: edificio
     referencia: "Potencia tras la ampliación"
     estado_asociado: operativo
-    fecha_dato: "2026-05-28"
-    fuentes: [src-2]
+    fecha_dato: "2026-05-26"
+    fuentes: [ src-2, src-nota-campus ]
     nota: >-
-      La fuente dice "cuya potencia se ha ampliado de 1,7 a 6 MW" sin precisar
-      tipo de potencia.
+      La nota primaria de Templus del 26 de mayo confirma la ampliación a 6 MW del activo adquirido
+      a Cellnex, sin precisar tipo de MW. El inventario actual distingue una cifra IT menor, de otro
+      alcance publicado.
   - tipo: no_especificado
     valor_mw: 2.5
     ambito: edificio
@@ -57,6 +57,16 @@ potencia:
       La web de Templus publica "Total power 2.5 MW" y "Superficie IT 700 m²"
       para BCN01, cifra muy inferior a los 6 MW que la prensa especializada
       atribuye al centro comprado a Cellnex. Se conservan las dos.
+  - tipo: it
+    valor_mw: 2.25
+    ambito: edificio
+    referencia: Potencia IT de Barcelona 01 en el inventario de centros operativos
+    estado_asociado: operativo
+    fuentes:
+      - src-inventario-it
+    nota: Cifra expresamente rotulada Potencia IT en el bloque inferior del inventario del operador. La
+      misma página conserva otros valores en sus tarjetas Total power. No se equiparan ni se deduce
+      un PUE. La página no publica fecha del dato ni fecha de ampliación.
 
 refrigeracion: >-
   Templus declara estándar Tier III, energía 100% renovable y refrigeración
@@ -80,11 +90,10 @@ agua:
 incertidumbres:
   - campo: potencia
     descripcion: >-
-      La fuente atribuye 6 MW al "centro comprado a Cellnex" y 4 MW al "adquirido
-      a AtlasEdge", pero no nombra los edificios BCN01/BCN02. La asignación aquí
-      se apoya en que el activo de AtlasEdge en Barcelona es el antiguo "Colt
-      Barcelona / Barcelona Steel" de Carrer de l'Acer, que corresponde a BCN02.
-    fuentes: [src-2, src-3]
+      La nota primaria de Templus confirma 6 MW para el activo adquirido a Cellnex y 4 MW para el
+      procedente de AtlasEdge, sin usar códigos BCN01/BCN02. La atribución sigue la identidad y
+      dirección de cada inmueble; no se reparte el total del campus por proporción.
+    fuentes: [ src-2, src-3, src-nota-campus ]
   - campo: ubicacion
     descripcion: >-
       Data Center Market y Data Center Dynamics sitúan los dos edificios del
@@ -94,15 +103,30 @@ incertidumbres:
     fuentes: [src-1, src-2, src-5]
   - campo: potencia
     descripcion: >-
-      Las cifras de la propia Templus (2,5 MW en BCN01 y 8 MW en BCN02, total
-      10,5 MW) no cuadran con las de la prensa especializada (6 MW y 4 MW, total
-      10 MW), aunque los campus totales sean casi iguales. Podría tratarse de un
-      reparto distinto entre los dos edificios o de magnitudes distintas. No se
-      ha resuelto.
-    fuentes: [src-2, src-4]
+      La propia Templus publica 2,5 MW de Total power para BCN01 y 8 MW para BCN02, mientras su nota
+      de mayo distribuye 6 MW y 4 MW entre los activos adquiridos a Cellnex y AtlasEdge. El
+      inventario actual añade cifras explícitas de IT distintas. La discrepancia entre las cifras
+      sin tipificar sigue abierta; no se deduce cuál de ellas equivale a la carga IT.
+    fuentes: [ src-2, src-4, src-nota-campus, src-inventario-it ]
+  - campo: potencia
+    descripcion: El inventario actual de Templus etiqueta 2,25 MW como potencia IT de este edificio. Sus
+      fichas individuales y tarjetas Total power publican otra magnitud; la nota de mayo da un
+      reparto de 6 y 4 MW sin tipificar. No se igualan esas lecturas ni se considera que los 7 MW IT
+      adicionales de plataforma publicados por Colliers correspondan íntegros a un edificio.
+    fuentes:
+      - src-inventario-it
+      - src-4
+      - src-nota-campus
+      - src-colliers-20261008
+  - campo: ubicacion
+    descripcion: El registro nominal de PeeringDB enlaza el pin de Google Maps de este edificio y
+      confirma la dirección. Se conserva el punto con precisión aproximada, sin atribuirlo a una
+      sala o al conjunto del campus comercial.
+    fuentes:
+      - src-peering-mapa
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
   - id: src-1
@@ -138,7 +162,7 @@ fuentes:
     editor: "Templus Data Centers"
     tipo: empresa
     fecha_publicacion: "2026-04-27"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       Integra un sistema avanzado de refrigeración pionero en el mercado
       «District Heating & Cooling» y destaca por su alta eficiencia operativa y
@@ -159,3 +183,32 @@ fuentes:
       diciembre, con una capacidad de hasta 4 MW ... La compañía asegura que el
       uso de liquid cooling permitirá soportar entornos de alta densidad sin
       consumo de agua
+  - id: src-peering-mapa
+    url: https://www.peeringdb.com/fac/2890
+    titulo: Templus BCN01 · registro nominal y pin de Google Maps
+    editor: PeeringDB
+    tipo: asociacion
+    fecha_consulta: 2026-10-17
+    cita: Templus DC Barcelona BCN01 [...] Pablo iglesias, 56 [...] Geocode 41.34862 2.129779
+  - id: src-inventario-it
+    url: https://templus.com/data-centers/
+    titulo: Data centers actualmente operativos · inventario de potencia IT
+    editor: Templus Data Centers
+    tipo: empresa
+    fecha_consulta: 2026-10-17
+    cita: Barcelona 01 [...] Potencia IT 2,25MW [...] Barcelona 02 [...] Potencia IT 5,7MW
+  - id: src-nota-campus
+    url: https://templus.com/nota-de-prensa/templus-duplica-su-potencia-en-cataluna-con-un-nuevo-campus-de-10mw/
+    titulo: Templus duplica su potencia en Cataluña con un nuevo Campus de 10MW
+    editor: Templus Data Centers
+    tipo: empresa
+    fecha_publicacion: 2026-05-26
+    fecha_consulta: 2026-10-17
+    cita: ampliado de 1,7 a 6 MW [...] el comprado a AtlasEdge [...] hasta los 4 MW
+  - id: src-colliers-20261008
+    url: https://www.colliers.com/es-es/news/data-centers-iberian-region-snapshot-septiembre-2026
+    titulo: Data Centers Iberian Region Snapshot · septiembre de 2026
+    editor: Colliers
+    tipo: consultora
+    fecha_publicacion: 2026-10-08
+    fecha_consulta: 2026-10-17

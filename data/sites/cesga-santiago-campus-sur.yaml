@@ -1,0 +1,200 @@
+id: cesga-santiago-campus-sur
+nombre: CESGA, sede de Campus Sur, Santiago de Compostela
+alias:
+  - CESGA Avenida de Vigo
+  - Centro de Supercomputación de Galicia, Campus Vida
+  - FinisTerrae III
+  - Qmio, sede de Avenida de Vigo
+tipo: edificio
+operador: Centro de Supercomputación de Galicia (CESGA)
+propietario: null
+modelo: corporativo
+
+ubicacion:
+  municipio: Santiago de Compostela
+  provincia: A Coruña
+  ccaa: Galicia
+  direccion: Avenida de Vigo, s/n, Campus Sur, Santiago de Compostela
+  lat: 42.8757203
+  lon: -8.5531815
+  precision: aproximada
+  no_derivar: true
+  fuentes: [src-contacto-sede, src-visita-ft3, src-mapa-sede]
+
+estado: operativo
+estado_detalle: >-
+  Sede de avenida de Vigo donde CESGA documentó la instalación de Qmio en 2023 y una visita
+  presencial al FinisTerrae III en diciembre de 2025. El inventario institucional sigue
+  describiendo ambos sistemas en servicio, pero no fecha su ubicación física actual.
+  No se ha confirmado un traslado a A Sionlla ni la continuidad de cada equipo en Campus Sur
+  en octubre de 2026. Se conserva aquí su última ubicación física documentada.
+estado_fuentes: [src-computo, src-cuantica, src-visita-ft3, src-jornada-qmio]
+potencia: []
+
+computo:
+  - tipo: cpu_hpc
+    ambito: sistema
+    sistema: FinisTerrae III
+    modelo: Intel Xeon Ice Lake 8352Y de 32 núcleos a 2,2 GHz, 22.656 núcleos en total
+    unidades: 354
+    tipo_unidad: nodo
+    rendimiento: 4
+    rendimiento_unidad: pflops
+    rendimiento_tipo: pico
+    rendimiento_precision: fp64
+    estado: operativo
+    modalidad: instalado
+    fecha_dato: null
+    fuentes: [src-computo, src-visita-ft3]
+    nota: >-
+      La ficha institucional describe un Bull ATOS bullx instalado en 2021 y en producción
+      desde 2022, con 13 armarios, 118 TB de memoria y 5 PB de almacenamiento Lustre.
+      La visita de diciembre de 2025 vincula el sistema a Campus Sur; no fecha el inventario
+      ni confirma su permanencia allí en octubre de 2026.
+  - tipo: gpu
+    ambito: particion
+    sistema: FinisTerrae III, partición A100
+    modelo: NVIDIA A100
+    unidades: 128
+    tipo_unidad: acelerador
+    estado: operativo
+    modalidad: instalado
+    fecha_dato: null
+    fuentes: [src-computo, src-docs, src-visita-ft3]
+    nota: >-
+      Se conserva el recuento de la ficha institucional. La guía técnica publica 141 A100
+      y 157 GPU en total. Ambas lecturas carecen de fecha de corte y no se suman.
+      La última ubicación física documentada del sistema es Campus Sur en diciembre de 2025.
+  - tipo: gpu
+    ambito: particion
+    sistema: FinisTerrae III, partición T4
+    modelo: NVIDIA T4
+    unidades: 16
+    tipo_unidad: acelerador
+    estado: operativo
+    modalidad: instalado
+    fecha_dato: null
+    fuentes: [src-computo, src-docs, src-visita-ft3]
+    nota: >-
+      El recuento coincide en las dos páginas técnicas. La última ubicación física documentada
+      del FinisTerrae III es Campus Sur en diciembre de 2025; no consta confirmación posterior
+      de permanencia o traslado.
+  - tipo: qpu
+    ambito: sistema
+    sistema: Qmio
+    modelo: QPU de cúbits superconductores tipo coaxmon, fabricada por Oxford Quantum Circuits
+    unidades: 32
+    tipo_unidad: qubit
+    estado: operativo
+    modalidad: instalado
+    fecha_dato: null
+    fuentes: [src-cuantica, src-jornada-qmio, src-visitas]
+    nota: >-
+      Desplegado en 2023 y abierto a investigadores en 2024. La jornada de octubre de 2023
+      identifica la sede de avenida de Vigo y lo describe recién instalado. La página de
+      visitas mantiene esa vinculación, sin fechar una comprobación física de 2026.
+      Va acompañado de HPC y emuladores clásicos; no equivale a MW ni se suma a los nuevos
+      IQM Radiance y Spark previstos para la renovación.
+
+enlaces_proyecto:
+  - https://www.cesga.es/infraestructuras/computacion/
+  - https://www.cesga.es/infraestructuras/cuantica/
+
+incertidumbres:
+  - campo: computo.unidades
+    descripcion: >-
+      La ficha institucional de FinisTerrae III enumera 354 nodos y 128 A100; la guía técnica,
+      357 nodos y 141 A100. Ambas coinciden en 16 T4. Se conserva la primera lectura y la
+      discrepancia, sin inferir una ampliación o retirada ni sumar versiones del mismo equipo.
+    fuentes: [src-computo, src-docs]
+  - campo: computo.fecha_dato
+    descripcion: >-
+      Las páginas de inventario no indican fecha de corte. La fecha de consulta de agosto de
+      2026 del registro anterior no era una fecha del hardware y se sustituye por desconocida.
+      La visita de diciembre de 2025 no fecha el recuento de GPU.
+    fuentes: [src-computo, src-docs, src-cuantica, src-visita-ft3]
+  - campo: computo.modalidad
+    descripcion: >-
+      Campus Sur es la última ubicación física documentada de estos sistemas. Las páginas
+      técnicas actuales confirman el servicio del CESGA, pero no permiten afirmar que cada
+      equipo continúe en este edificio en octubre de 2026. No se ha localizado recepción o
+      traslado a A Sionlla. Los equipos se registran una sola vez, en su sede documentada.
+    fuentes: [src-computo, src-cuantica, src-visita-ft3, src-jornada-qmio, src-visitas]
+  - campo: ubicacion
+    descripcion: >-
+      El mapa enlazado por CESGA identifica el edificio de avenida de Vigo. Se usa su pin con
+      precisión aproximada; no identifica la posición de la sala de FinisTerrae III o Qmio.
+    fuentes: [src-visita-ft3, src-mapa-sede, src-contacto-sede]
+  - campo: potencia
+    descripcion: >-
+      No se ha verificado potencia IT o de conexión de Campus Sur. Los 3,2 MW IT de diseño
+      publicados para el nuevo edificio de A Sionlla no corresponden a esta sede.
+    fuentes: [src-computo, src-contacto-sede]
+
+confianza: media
+ultima_verificacion: 2026-10-17
+fuentes:
+  - id: src-computo
+    url: https://www.cesga.es/infraestructuras/computacion/
+    titulo: Computación, ficha institucional del FinisTerrae III
+    editor: CESGA
+    tipo: oficial
+    fecha_publicacion: null
+    fecha_consulta: 2026-10-17
+    cita: 354 nodos de computación [...] 128 GPUs Nvidia A100 y 16 Nvidia T4
+  - id: src-docs
+    url: https://cesga-docs.gitlab.io/ft3-user-guide/overview.html
+    titulo: Overview, guía técnica del FinisTerrae III
+    editor: CESGA
+    tipo: oficial
+    fecha_publicacion: null
+    fecha_consulta: 2026-10-17
+    cita: 357 nodes [...] 157 GPUs (141 Nvidia A100 and 16 Nvidia T4)
+  - id: src-cuantica
+    url: https://www.cesga.es/infraestructuras/cuantica/
+    titulo: Cuántica, inventario de Qmio
+    editor: CESGA
+    tipo: oficial
+    fecha_publicacion: null
+    fecha_consulta: 2026-10-17
+    cita: desplegado en CESGA en 2023 y abierto a investigadores en 2024 [...] 32 cúbits
+  - id: src-contacto-sede
+    url: https://www.cesga.es/cesga/contacto/
+    titulo: Contacto, sede de avenida de Vigo
+    editor: CESGA
+    tipo: oficial
+    fecha_publicacion: null
+    fecha_consulta: 2026-10-17
+    cita: Avenida de Vigo, s/n Campus Sur
+  - id: src-visita-ft3
+    url: https://www.cesga.es/el-nodo-gallego-de-rsg-spain-se-reune-en-el-cesga/
+    titulo: Encuentro presencial del RSG Spain y visita al FinisTerrae III, 16 de diciembre de 2025
+    editor: CESGA
+    tipo: oficial
+    fecha_publicacion: 2025-12-04
+    fecha_consulta: 2026-10-17
+    cita: "Presencial: Sala de Presentaciones del CESGA | Ubicación [...] Visita al Finisterrae III"
+  - id: src-mapa-sede
+    url: https://www.google.com/maps/place/Centro+de+Supercomputaci%C3%B3n+de+Galicia/data=!4m6!3m5!1s0xd2efe6b18df4601:0x9f7546a6084d6057!8m2!3d42.8757203!4d-8.5531815!16s%2Fg%2F12qg2kh0m
+    titulo: Pin del CESGA en Google Maps, enlazado por el operador
+    editor: Google Maps / CESGA
+    tipo: otro
+    fecha_publicacion: null
+    fecha_consulta: 2026-10-17
+    cita: Centro de Supercomputación de Galicia [...] 42.8757203 [...] -8.5531815
+  - id: src-jornada-qmio
+    url: https://www.cesga.es/jornada-tecnica-de-computacion-cuantica/
+    titulo: Jornada técnica de computación cuántica, Qmio instalado en la sede de avenida de Vigo
+    editor: CESGA
+    tipo: oficial
+    fecha_publicacion: 2023-10-17
+    fecha_consulta: 2026-10-17
+    cita: Qmio [...] recientemente instalado en CESGA [...] Avenida de Vigo, s/n
+  - id: src-visitas
+    url: https://www.cesga.es/cesga/visitas-al-centro/
+    titulo: Visitas al centro, Qmio instalado en la sede del CESGA
+    editor: CESGA
+    tipo: oficial
+    fecha_publicacion: null
+    fecha_consulta: 2026-10-17
+    cita: computador cuántico instalado en el centro [...] Avenida de Vigo, s/n

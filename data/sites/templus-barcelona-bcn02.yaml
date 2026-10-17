@@ -17,19 +17,17 @@ ubicacion:
   direccion: "Carrer de l'Acer 5-9, 08038 Barcelona (Zona Franca)"
   lat: 41.349513
   lon: 2.13885
-  precision: exacta
-  fuentes: [src-1]
+  precision: aproximada
+  fuentes: [ src-1, src-peering-mapa ]
 
 estado: operativo
 estado_detalle: >-
-  Edificio en servicio desde 2001 como "Barcelona Steel" (salas Acero 1 y Acero
-  2), explotado por Colt Data Centre Services y después por AtlasEdge. En
-  diciembre de 2025 AtlasEdge vendió nueve centros europeos a Templus, incluido
-  este. Desde mayo de 2026 se comercializa junto a BCN01 como campus de 10 MW. El
-  inmueble fue adquirido en agosto de 2022 por el Principal European Data Centre
-  Fund I por 22,6 millones de euros, con arrendamiento a AtlasEdge hasta agosto
-  de 2033.
-estado_fuentes: [src-2, src-3, src-5, src-6]
+  Edificio operativo desde la etapa Colt y AtlasEdge, adquirido por Templus en diciembre de 2025. La
+  nota primaria del 26 de mayo de 2026 lo integra con el antiguo Cellnex en un campus comercial y le
+  atribuye 4 MW sin tipificar. La ficha individual actual mantiene 8 MW bajo Total power y el
+  inventario de centros operativos publica 5,7 MW IT para Barcelona 02. Se conservan las tres
+  lecturas separadas.
+estado_fuentes: [ src-2, src-3, src-5, src-6, src-nota-campus, src-inventario-it ]
 fecha_puesta_en_servicio: "2001"
 
 potencia:
@@ -38,11 +36,12 @@ potencia:
     ambito: edificio
     referencia: "Potencia del edificio adquirido a AtlasEdge"
     estado_asociado: operativo
-    fecha_dato: "2026-05-28"
-    fuentes: [src-3]
+    fecha_dato: "2026-05-26"
+    fuentes: [ src-3, src-nota-campus ]
     nota: >-
-      La fuente dice "el adquirido a AtlasEdge en diciembre, que alcanza ya los
-      4 MW" sin precisar tipo de potencia.
+      La nota primaria de Templus del 26 de mayo confirma 4 MW para el activo comprado a AtlasEdge,
+      sin precisar tipo de MW. No se equipara a los 8 MW de Total power ni a los 5,7 MW IT que el
+      operador publica actualmente.
   - tipo: no_especificado
     valor_mw: 8
     ambito: edificio
@@ -65,6 +64,16 @@ potencia:
       La operación describe "a 6MW, 10,500 square meter data center in Barcelona"
       arrendado a AtlasEdge hasta agosto de 2033, con imágenes que corresponden a
       la antigua instalación de Colt DCS en Carrer de l'Acer 5.
+  - tipo: it
+    valor_mw: 5.7
+    ambito: edificio
+    referencia: Potencia IT de Barcelona 02 en el inventario de centros operativos
+    estado_asociado: operativo
+    fuentes:
+      - src-inventario-it
+    nota: Cifra expresamente rotulada Potencia IT en el bloque inferior del inventario del operador. La
+      misma página conserva otros valores en sus tarjetas Total power. No se equiparan ni se deduce
+      un PUE. La página no publica fecha del dato ni fecha de ampliación.
 
 superficie_construida_m2: 2160
 
@@ -104,9 +113,25 @@ incertidumbres:
       Baxtel todavía lista el activo como AtlasEdge; la venta a Templus se cerró
       en diciembre de 2025 y el campus se presentó en mayo de 2026.
     fuentes: [src-2, src-3]
+  - campo: potencia
+    descripcion: El inventario actual de Templus etiqueta 5,7 MW como potencia IT de este edificio. Sus
+      fichas individuales y tarjetas Total power publican otra magnitud; la nota de mayo da un
+      reparto de 6 y 4 MW sin tipificar. No se igualan esas lecturas ni se considera que los 7 MW IT
+      adicionales de plataforma publicados por Colliers correspondan íntegros a un edificio.
+    fuentes:
+      - src-inventario-it
+      - src-5
+      - src-nota-campus
+      - src-colliers-20261008
+  - campo: ubicacion
+    descripcion: El registro nominal de PeeringDB enlaza el pin de Google Maps de este edificio y
+      confirma la dirección. Se conserva el punto con precisión aproximada, sin atribuirlo a una
+      sala o al conjunto del campus comercial.
+    fuentes:
+      - src-peering-mapa
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
   - id: src-1
@@ -151,7 +176,7 @@ fuentes:
     editor: "Templus Data Centers"
     tipo: empresa
     fecha_publicacion: "2026-04-27"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       Cuenta con más de 2.100 m² IT y 8 MW de capacidad, proporcionando
       conectividad avanzada ... Densidad por rack 4 kW – 15 kW ... Superficie IT
@@ -178,3 +203,32 @@ fuentes:
     cita: >-
       Powered by 4.8 MVA AtlasEdge BCN001 Data Centre offers over 2.100m2 of
       secure resilient space.
+  - id: src-peering-mapa
+    url: https://www.peeringdb.com/fac/4084
+    titulo: Templus BCN02 · registro nominal y pin de Google Maps
+    editor: PeeringDB
+    tipo: asociacion
+    fecha_consulta: 2026-10-17
+    cita: Templus DC Barcelona BCN02 [...] Acero 5-9 [...] Geocode 41.349513 2.13885
+  - id: src-inventario-it
+    url: https://templus.com/data-centers/
+    titulo: Data centers actualmente operativos · inventario de potencia IT
+    editor: Templus Data Centers
+    tipo: empresa
+    fecha_consulta: 2026-10-17
+    cita: Barcelona 01 [...] Potencia IT 2,25MW [...] Barcelona 02 [...] Potencia IT 5,7MW
+  - id: src-nota-campus
+    url: https://templus.com/nota-de-prensa/templus-duplica-su-potencia-en-cataluna-con-un-nuevo-campus-de-10mw/
+    titulo: Templus duplica su potencia en Cataluña con un nuevo Campus de 10MW
+    editor: Templus Data Centers
+    tipo: empresa
+    fecha_publicacion: 2026-05-26
+    fecha_consulta: 2026-10-17
+    cita: ampliado de 1,7 a 6 MW [...] el comprado a AtlasEdge [...] hasta los 4 MW
+  - id: src-colliers-20261008
+    url: https://www.colliers.com/es-es/news/data-centers-iberian-region-snapshot-septiembre-2026
+    titulo: Data Centers Iberian Region Snapshot · septiembre de 2026
+    editor: Colliers
+    tipo: consultora
+    fecha_publicacion: 2026-10-08
+    fecha_consulta: 2026-10-17

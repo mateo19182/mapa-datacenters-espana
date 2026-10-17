@@ -1,4 +1,124 @@
 # Novedades revisadas. La fecha de incorporación y la del hecho se conservan por separado.
+- id: kumo-agua-20261017
+  fecha: 2026-10-17
+  tipo: proyecto
+  titulo: Corregido el circuito de agua de Kumo Paterna
+  resumen: El operador describe un circuito cerrado con llenado inicial para enfriar el CO2.
+    Se corrige la etiqueta «sin agua»; no hay consumo medido ni WUE publicados en las fuentes revisadas.
+  enlaces:
+    - href: /proyecto/kumo-paterna-tactica
+      texto: Kumo Paterna
+  fuentes:
+    - proyecto: kumo-paterna-tactica
+      fuente: src-agua-circuito
+- id: getafe2-clasificacion-20261017
+  fecha: 2026-10-17
+  fecha_hecho: 2026-07-27
+  tipo: proyecto
+  titulo: Corregida la clasificación de Getafe 2
+  resumen: "Getafe 2 queda en tramitación: el propietario documenta demolición preparatoria y licencia
+    solicitada. Sus 48 MW IT son previstos, con servicio estimado para el segundo semestre de 2029."
+  enlaces:
+    - href: /proyecto/merlin-edged-getafe-2
+      texto: Getafe 2
+  fuentes:
+    - proyecto: merlin-edged-getafe-2
+      fuente: src-merlin-6m26
+    - proyecto: merlin-edged-getafe-2
+      fuente: src-spec-mad02
+- id: templus-it-20261017
+  fecha: 2026-10-17
+  tipo: proyecto
+  titulo: Templus publica capacidad IT por edificio en Barcelona
+  resumen: El inventario del operador identifica 2,25 MW IT en BCN01 y 5,7 MW IT en BCN02. Se
+    conservan por separado las cifras comerciales de potencia total y sus discrepancias.
+  enlaces:
+    - href: /proyecto/templus-hospitalet-bcn01
+      texto: BCN01
+    - href: /proyecto/templus-barcelona-bcn02
+      texto: BCN02
+  fuentes:
+    - proyecto: templus-hospitalet-bcn01
+      fuente: src-inventario-it
+    - proyecto: templus-barcelona-bcn02
+      fuente: src-inventario-it
+- id: cesga-sedes-20261017
+  fecha: 2026-10-17
+  tipo: proyecto
+  titulo: "CESGA: Campus Sur y A Sionlla por separado"
+  resumen: FTIII y Qmio se registran una sola vez en su última sede documentada, Campus Sur, sin
+    permanencia actual o traslado confirmados. A Sionlla conserva la renovación; FTIV está adquirido
+    por contrato, sin recepción acreditada.
+  enlaces:
+    - href: /proyecto/cesga-santiago-campus-sur
+      texto: Campus Sur
+    - href: /proyecto/cesga-santiago-a-sionlla
+      texto: A Sionlla
+  fuentes:
+    - proyecto: cesga-santiago-campus-sur
+      fuente: src-visita-ft3
+    - proyecto: cesga-santiago-campus-sur
+      fuente: src-jornada-qmio
+    - proyecto: cesga-santiago-a-sionlla
+      fuente: src-contrato-ft4
+- id: mapas-revisados-20261017
+  fecha: 2026-10-17
+  tipo: proyecto
+  titulo: Ubicaciones revisadas con mapas y planos identificados
+  resumen: Se revisan los puntos de DATA4 Alcobendas, Getafe 1 y 2, Digital Realty BCN1 e IBM-Euskadi
+    con mapas y planos identificados. Todos representan instalaciones con precisión aproximada.
+  enlaces:
+    - href: /proyecto/data4-alcobendas-mad01
+      texto: DATA4 Alcobendas
+    - href: /proyecto/merlin-edged-getafe-mad01
+      texto: Getafe 1
+    - href: /proyecto/merlin-edged-getafe-2
+      texto: Getafe 2
+    - href: /proyecto/digital-realty-sant-adria-bcn1
+      texto: BCN1
+    - href: /proyecto/ibm-euskadi-donostia-computacion-cuantica
+      texto: IBM-Euskadi
+  fuentes:
+    - proyecto: data4-alcobendas-mad01
+      fuente: src-plano-acceso
+    - proyecto: merlin-edged-getafe-mad01
+      fuente: src-mapa
+    - proyecto: merlin-edged-getafe-2
+      fuente: src-mapa
+    - proyecto: digital-realty-sant-adria-bcn1
+      fuente: src-peering-mapa
+    - proyecto: ibm-euskadi-donostia-computacion-cuantica
+      fuente: src-mapa-b5m
+- id: rd731-incorporacion-20261017
+  fecha: 2026-10-17
+  fecha_hecho: 2026-09-17
+  tipo: normativa
+  titulo: Incorporado el decreto de inversiones estratégicas
+  resumen: Se incorpora el RD 731/2026, vigente desde septiembre. La apertura de solicitudes depende
+    de orden, medios y baremo publicados; no equivale a una declaración estratégica o permiso
+    eléctrico de un centro.
+  enlaces:
+    - href: /normativa/rd-731-2026
+      texto: RD 731/2026
+  fuentes:
+    - norma: rd-731-2026
+      fuente: src-boe
+- id: rdl7-vigencia-20261017
+  fecha: 2026-10-17
+  fecha_hecho: 2026-10-06
+  tipo: normativa
+  titulo: "RDL 7: vigencia y tramitación derivada diferenciadas"
+  resumen: El decreto-ley convalidado sigue vigente. La caducidad del proyecto derivado se deduce de
+    la disolución de las Cortes y del artículo 207 del Reglamento, sin asiento individual de cierre
+    recuperado.
+  enlaces:
+    - href: /normativa/rdl-7-2026
+      texto: RDL 7/2026
+  fuentes:
+    - norma: rdl-7-2026
+      fuente: src-disolucion-2026
+    - norma: rdl-7-2026
+      fuente: src-reglamento-congreso
 - id: coordenadas-gpu-mapas-20261015
   fecha: 2026-10-15
   tipo: proyecto

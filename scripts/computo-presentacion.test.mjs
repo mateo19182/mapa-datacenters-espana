@@ -44,10 +44,14 @@ test('los modelos abreviados de CTIC conservan compra, equivalencia y recepción
   assert.equal(avisoComputo(filas.find((r) => r.modalidad === 'instalado')), null)
 })
 
-test('el inventario histórico de CESGA mantiene explícito el traslado no confirmado', () => {
-  const filas = registros('cesga-santiago-a-sionlla')
-  assert.ok(filas.filter((r) => r.modalidad === 'sin_confirmar').every((r) => /Traslado a A Sionlla sin confirmar/.test(avisoComputo(r))))
-  assert.ok(filas.filter((r) => r.modalidad === 'previsto').every((r) => avisoComputo(r) === null))
+test('CESGA separa la sede documentada de la renovación y conserva visibles los recuentos en disputa', () => {
+  const nueva = registros('cesga-santiago-a-sionlla')
+  const anterior = registros('cesga-santiago-campus-sur')
+  assert.equal(anterior.filter((r) => r.modelo === 'NVIDIA A100').length, 1)
+  assert.match(avisoComputo(anterior.find((r) => r.modelo === 'NVIDIA A100')), /128 o 141 A100/)
+  assert.ok(anterior.every((r) => avisoComputo(r)))
+  assert.ok(nueva.every((r) => r.modalidad !== 'instalado'))
+  assert.ok(nueva.every((r) => !/FinisTerrae III|Qmio/.test(r.sistema)))
 })
 
 test('los sistemas que repiten el modelo o el centro quedan en la evidencia', () => {
@@ -56,7 +60,7 @@ test('los sistemas que repiten el modelo o el centro quedan en la evidencia', ()
   }
   const cesga = registros('cesga-santiago-a-sionlla')
   assert.equal(alcanceComputo(cesga.find((r) => r.modelo?.includes('Radiance'))), null)
-  assert.equal(alcanceComputo(cesga.find((r) => r.modelo === 'NVIDIA A100')), 'FinisTerrae III')
+  assert.equal(alcanceComputo(registros('cesga-santiago-campus-sur').find((r) => r.modelo === 'NVIDIA A100')), 'FinisTerrae III')
 })
 
 test('solo se omiten los estados que repiten la situación de despliegue', () => {

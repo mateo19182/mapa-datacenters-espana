@@ -96,6 +96,17 @@ ha cambiado no renueva `ultima_verificacion` de los hechos. La opción históric
 `--sellar` ya no cambia fechas de las fichas; se conserva por compatibilidad.
 Aceptar una huella cambiada sigue requiriendo una revisión explícita.
 
+`npm run refresh:informe` y la exportación reconstruyen el informe técnico desde las
+mismas observaciones y plazos que `/datos/revision.json`. Regenerar el informe no es
+volver a consultar las fuentes. Los 404 y 410, bloqueos y fallos de red o servidor se
+cuentan por separado. Un PDF antes vigilado solo por tamaño necesita una primera
+huella de contenido; ese cambio de método no prueba que el documento haya cambiado.
+Antes de comprobar fuentes, el flujo semanal fusiona las observaciones del PR automático
+anterior, aunque siga sin integrar. Conserva las huellas aceptadas de `main` y las fechas
+de detección de los cambios; no importa revisiones factuales de esa rama.
+La integración de propuestas tampoco renueva fechas factuales de fichas existentes.
+Un alta necesita una fecha de revisión explícita, distinta de la fecha de ejecución.
+
 El RSS `/actualizaciones.xml` usa exclusivamente las novedades revisadas de
 `data/actualizaciones.yaml`, resueltas y validadas por la construcción. Las
 candidatas y los fallos de enlaces no entran en ese canal.

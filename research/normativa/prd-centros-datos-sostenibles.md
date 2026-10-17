@@ -1,10 +1,11 @@
-## Situación a 14 de octubre de 2026
+## Situación a 17 de octubre de 2026
 
 La audiencia está cerrada y el proyecto sigue en tramitación. La resolución de 2 de
 septiembre amplió el plazo inicial del 4 al 10 de septiembre, a las 17:00. El informe
 del Pleno de la CNMC está fechado el 22 de septiembre. No se ha localizado un texto
-definitivo aprobado en el BOE hasta el 14 de octubre. Los porcentajes y plazos del
-borrador de agosto siguen siendo propuestas.
+definitivo aprobado en el BOE en la revisión del 17 de octubre. Los porcentajes y
+plazos del borrador de agosto siguen siendo propuestas. El Plan IA360 anunciaba su
+aprobación durante octubre; esa previsión no acredita aprobación ni entrada en vigor.
 
 ## Qué aporta el informe de la CNMC
 
@@ -29,6 +30,12 @@ la correlación horaria del 80 % son exigencias diferentes: contratar una cantid
 de energía renovable no acredita por sí solo su coincidencia con cada hora de consumo.
 La combinación de generación, almacenamiento y flexibilidad admitida por el texto final
 será relevante para evaluar el coste de cumplimiento.
+
+El artículo 7 del borrador prevé otra vía si la cuota nacional de generación renovable
+del año n−2 supera el 90 %. En ese caso se considerarían cumplidos los requisitos
+renovables y se limitarían las horas anuales de consumo conforme a una resolución.
+Hasta que esa resolución publique cuota y horas, se trataría la cuota como inferior
+al 90 %. El 80 % no debe describirse como una exigencia incondicional de toda la propuesta.
 
 El umbral de información pública de 500 kW se expresa en potencia TI. No equivale al
 umbral de acceso de 1 MW. Los plazos de tres y seis meses del borrador se contarían
