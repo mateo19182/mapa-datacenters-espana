@@ -57,6 +57,18 @@ potencia:
     estado_asociado: operativo
     fecha_dato: "2026-08-29"
     fuentes: [ src-1 ]
+  - tipo: it
+    valor_mw: 12
+    ambito: edificio
+    edificio: DC03
+    referencia: DC03, capacidad de diseño de seis salas según la constructora
+    estado_asociado: desconocido
+    fuentes:
+      - src-capingelec-dc03
+    nota: Cap Ingelec identifica el tercer edificio del campus Alcobendas y 12 MW IT, con dos entregas
+      previstas de 6 MW en julio de 2024 y marzo de 2025. La página no publica fecha editorial ni
+      confirma recepción. No se suman a los 50 MW del campus ni se identifican con el incremento
+      operativo de Colliers.
 
 conexion_electrica:
   subestacion: Sanchinarro
@@ -169,6 +181,14 @@ incertidumbres:
       - src-colliers-20261008
       - src-1
       - src-4
+  - campo: potencia.estado_asociado
+    descripcion: Cap Ingelec identifica DC03 con 12 MW IT de diseño, inicio de obra en marzo de 2023 y
+      cierre estructural en diciembre de 2023. Las entregas de 6 MW previstas para julio de 2024 y
+      marzo de 2025 no están confirmadas en la página. No acredita que los 12 MW adicionales de
+      Colliers correspondan a este edificio ni que estén entregados.
+    fuentes:
+      - src-capingelec-dc03
+      - src-colliers-20261008
 
 confianza: media
 ultima_verificacion: "2026-10-17"
@@ -261,3 +281,10 @@ fuentes:
     tipo: consultora
     fecha_publicacion: 2026-10-08
     fecha_consulta: 2026-10-17
+  - id: src-capingelec-dc03
+    url: https://www.capingelec.com/en/references/data-4-madrid-2/
+    titulo: Construction of the DC03 datacentre in Alcobendas — DATA4
+    editor: Cap Ingelec
+    tipo: empresa
+    fecha_consulta: 2026-10-17
+    cita: 12 MW IT [...] STEP 1 (6MW IT) [...] July 2024 [...] STEP 2 (6MW IT) [...] March 2025.

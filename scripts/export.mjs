@@ -12,6 +12,7 @@ import { prepararActualizaciones } from './actualizaciones.mjs'
 import { inventarioComputo } from '../src/lib/computo.js'
 import { estadoFuente, prepararRevision } from './revision.mjs'
 import { informeFuentes } from './source-report.mjs'
+import { informeSeguimiento, fusionarHistorial } from './source-review.mjs'
 import { createHash } from 'node:crypto'
 
 // src/data alimenta las páginas en tiempo de build; public/datos se sirve tal
@@ -520,6 +521,12 @@ const revision = prepararRevision(
 )
 escribir('revision.json', revision)
 writeFileSync(join(RAIZ, 'research/informe-actualizacion.md'), informeFuentes(revision, { huellas }))
+const rutaHistorial = join(RAIZ, 'data/seguimiento-fuentes.json')
+if (existsSync(rutaHistorial)) {
+  const historial = fusionarHistorial(JSON.parse(readFileSync(rutaHistorial, 'utf8')))
+  escribir('seguimiento-fuentes.json', historial)
+  writeFileSync(join(RAIZ, 'research/informe-evolucion-fuentes.md'), informeSeguimiento(historial))
+}
 const procedenciaCapacidad = YAML.parse(readFileSync(join(RAIZ, 'data/red/capacidad.yaml'), 'utf8'))
 const archivoCapacidad = procedenciaCapacidad.archivo_original_ree
 if (!/^capacidad-ree-\d{4}-\d{2}-\d{2}\.csv$/.test(archivoCapacidad ?? '')) throw new Error('Falta el archivo original de capacidad REE')

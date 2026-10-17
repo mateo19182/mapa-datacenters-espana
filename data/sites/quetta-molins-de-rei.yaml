@@ -12,7 +12,10 @@ ubicacion:
   provincia: "Barcelona"
   ccaa: "Cataluña"
   precision: municipio
-  fuentes: [src-1]
+  fuentes:
+    - src-1
+    - src-bop-20260313
+  direccion: Avinguda Barcelona 243, Polígon Industrial El Pla, Molins de Rei
 
 estado: en_construccion
 estado_detalle: >-
@@ -75,10 +78,10 @@ agua:
 incertidumbres:
   - campo: potencia
     descripcion: >-
-      No consta ninguna cifra de potencia de este emplazamiento. La compañía solo publica un
-      agregado de cartera —«a total capacity to 30 MW, 50% of its overall target of 60 MW»— que
-      suma Molins de Rei y la ampliación de Madrid, sin dar el reparto. Atribuir esos 30 MW a
-      este centro sería contarle capacidad de otro.
+      La gestora publica un agregado de cartera de 30 MW que suma Molins de Rei y la ampliación de
+      Madrid, sin reparto en esa nota. Los 7,2 MW IT y hasta 10 MW eléctricos de Molins proceden de
+      las declaraciones recogidas en abril de 2026. No se asignan los 30 MW del conjunto a este
+      edificio.
     fuentes: [src-1]
   - campo: potencia
     descripcion: >-
@@ -90,8 +93,21 @@ incertidumbres:
       ninguna fuente lo afirma.
     fuentes: [src-1, src-2]
   - campo: ubicacion
-    descripcion: "No se ha localizado dirección postal ni parcela concreta en Molins de Rei."
-    fuentes: [src-1]
+    descripcion: "El anuncio de licencia ambiental de marzo de 2026 identifica Avinguda Barcelona 243,
+      polígono El Pla. No se han fijado coordenadas a partir de la dirección ni confirmado una
+      parcela catastral."
+    fuentes:
+      - src-bop-20260313
+  - campo: estado
+    descripcion: Azora anunció en diciembre de 2025 construcción iniciada en Molins; la información
+      pública ambiental de marzo de 2026 no es una licencia concedida y las declaraciones de abril
+      aún esperaban licencia de obra. No se ha localizado acta o anuncio primario posterior que
+      resuelva esa diferencia. Se conserva el estado declarado por el promotor, sin dar las
+      previsiones por cumplidas.
+    fuentes:
+      - src-1
+      - src-2
+      - src-bop-20260313
 
 confianza: media
 ultima_verificacion: "2026-08-31"
@@ -123,3 +139,12 @@ fuentes:
       subestación eléctrica ... utilizará sistemas de refrigeración avanzados que
       no requieren de la absorción de agua ... 'direct liquid cooling', un método
       de refrigeración mediante un circuito cerrado de agua a través de tuberías
+  - id: src-bop-20260313
+    url: https://bop.diba.cat/anuncio/ver-pdf/3909206
+    titulo: Información pública de licencia ambiental — QUETTA MOLINS SLU, expediente 9/2025/LLIAM
+    editor: Ajuntament de Molins de Rei — BOP Barcelona
+    tipo: oficial
+    fecha_publicacion: 2026-03-13
+    fecha_consulta: 2026-10-17
+    cita: QUETTA MOLINS SLU [...] Centre de processament de dades amb equips electrògens. [...] Avinguda
+      Barcelona, 243 (Polígon Industrial El Pla)

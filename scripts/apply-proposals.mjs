@@ -38,6 +38,63 @@ const ESCALARES = [
   'confianza',
 ]
 
+// Los identificadores de una propuesta pertenecen a esa propuesta. Si se cambia
+// uno al integrarlo, sus referencias deben cambiar juntas, sin tocar la ficha previa.
+function prepararFuentes(propuesta, actual, fichero) {
+  const existentes = actual?.fuentes ?? []
+  const ids = new Set(existentes.map((f) => f.id))
+  const porUrl = new Map(existentes.map((f) => [f.url, f.id]))
+  const definiciones = new Map()
+  const equivalencias = new Map()
+  const nuevas = []
+
+  for (const f of propuesta.fuentes ?? []) {
+    if (typeof f?.id !== 'string' || !f.id || typeof f.url !== 'string' || !f.url) {
+      throw new Error(`${fichero}: cada fuente propuesta necesita id y url.`)
+    }
+    if (definiciones.has(f.id) && definiciones.get(f.id) !== f.url) {
+      throw new Error(`${fichero}: la fuente ${f.id} está definida con dos URLs distintas.`)
+    }
+    definiciones.set(f.id, f.url)
+
+    // Si la ficha conserva dos lecturas de una URL, respetar el ID explícito
+    // cuando ya corresponde a esa URL; para un alias basta reutilizar una.
+    const misma = existentes.find((g) => g.id === f.id && g.url === f.url)
+    let final = misma?.id ?? porUrl.get(f.url)
+    if (!final) {
+      final = f.id
+      while (ids.has(final)) final = `${final}b`
+      nuevas.push({ ...f, id: final })
+      ids.add(final)
+      porUrl.set(f.url, final)
+    }
+    equivalencias.set(f.id, final)
+  }
+
+  function referencias(valor, ruta = []) {
+    if (Array.isArray(valor)) return valor.map((v, i) => referencias(v, [...ruta, i]))
+    if (!valor || typeof valor !== 'object') return valor
+    return Object.fromEntries(Object.entries(valor).map(([campo, contenido]) => {
+      if (campo === 'fuentes' && ruta.length === 0) return [campo, nuevas]
+      if ((campo === 'fuentes' || campo.endsWith('_fuentes')) && contenido != null) {
+        if (!Array.isArray(contenido) || contenido.some((id) => typeof id !== 'string')) {
+          throw new Error(`${fichero}: ${[...ruta, campo].join('.')} debe contener identificadores de fuentes.`)
+        }
+        const finales = contenido.map((id) => {
+          const final = equivalencias.get(id) ?? id
+          if (!ids.has(final)) {
+            throw new Error(`${fichero}: referencia a fuente desconocida ${id} en ${[...ruta, campo].join('.')}.`)
+          }
+          return final
+        })
+        return [campo, [...new Set(finales)]]
+      }
+      return [campo, referencias(contenido, [...ruta, campo])]
+    }))
+  }
+  return referencias(propuesta)
+}
+
 export function integrarPropuestas({ raiz = RAIZ, aplicar = false, hoy = new Date().toISOString().slice(0, 10) } = {}) {
   const APLICAR = aplicar
   const DIR_SITIOS = join(raiz, 'data/sites')
@@ -55,18 +112,20 @@ export function integrarPropuestas({ raiz = RAIZ, aplicar = false, hoy = new Dat
 
   const ficheros = readdirSync(DIR_PROPUESTAS).filter((f) => /\.ya?ml$/i.test(f))
 
-  // Validar las altas antes de escribir: una importación no acredita revisión factual.
+  // Validar fechas y referencias antes de escribir cualquier ficha de la tanda.
   const propuestas = new Map(ficheros.map((fichero) => {
     const id = basename(fichero).replace(/\.ya?ml$/i, '')
     const propuesta = YAML.parse(readFileSync(join(DIR_PROPUESTAS, fichero), 'utf8'))
-    if (!existsSync(join(DIR_SITIOS, `${id}.yaml`))) {
+    const rutaSitio = join(DIR_SITIOS, `${id}.yaml`)
+    const actual = existsSync(rutaSitio) ? YAML.parse(readFileSync(rutaSitio, 'utf8')) : null
+    if (!actual) {
       const fecha = propuesta?.ultima_verificacion
       if (typeof fecha !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(fecha) ||
           !Number.isFinite(Date.parse(fecha)) || new Date(fecha).toISOString().slice(0, 10) !== fecha || fecha > hoy) {
         throw new Error(`${fichero}: un alta nueva necesita ultima_verificacion explícita y válida (AAAA-MM-DD), sin fecha futura.`)
       }
     }
-    return [fichero, propuesta]
+    return [fichero, prepararFuentes(propuesta, actual, fichero)]
   }))
 
   for (const fichero of ficheros) {
@@ -87,14 +146,8 @@ export function integrarPropuestas({ raiz = RAIZ, aplicar = false, hoy = new Dat
     let tocado = false
 
     // Fuentes nuevas: siempre son adición, jamás sustituyen a las existentes.
-    const idsFuente = new Set((actual.fuentes ?? []).map((f) => f.id))
-    const urlsFuente = new Set((actual.fuentes ?? []).map((f) => f.url))
     for (const f of propuesta.fuentes ?? []) {
-      if (urlsFuente.has(f.url)) continue
-      let nuevoId = f.id
-      while (idsFuente.has(nuevoId)) nuevoId = `${nuevoId}b`
-      resultado.fuentes = [...(resultado.fuentes ?? []), { ...f, id: nuevoId, fecha_consulta: f.fecha_consulta ?? hoy }]
-      idsFuente.add(nuevoId)
+      resultado.fuentes = [...(resultado.fuentes ?? []), { ...f, fecha_consulta: f.fecha_consulta ?? hoy }]
       adiciones.push({ id, campo: 'fuentes', valor: f.url, fichero })
       tocado = true
     }

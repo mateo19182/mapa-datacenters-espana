@@ -74,6 +74,12 @@ afecta:
     fuentes: [src-acto, src-anexos]
 relacionadas: [directiva-2023-1791, reglamento-delegado-2024-1364, prd-centros-datos-sostenibles, consulta-estandares-minimos-centros-datos-2026]
 incertidumbres:
+  - campo: seguimiento_publicacion
+    descripcion: >-
+      El registro de la Comisión mantiene el acto en fase de examen. Las etapas de fin del
+      control y publicación figuran pendientes y sin fecha; sus rótulos en el gráfico no
+      acreditan que hayan ocurrido. No se deduce una fecha de publicación del periodo de 2 + 2 meses.
+    fuentes: [src-registro-delegado, src-registro-fases]
   - campo: estado
     descripcion: >-
       El texto conserva el número definitivo y la referencia de publicación abiertos. Una nota
@@ -90,6 +96,22 @@ incertidumbres:
       - src-procedimiento
 ultima_verificacion: "2026-10-17"
 fuentes:
+  - id: src-registro-delegado
+    url: "https://webgate.ec.europa.eu/regdel/#/delegatedActs/2983"
+    titulo: "Registro de actos delegados, C(2026)3472, expediente 2983"
+    editor: "Comisión Europea"
+    tipo: oficial
+    fecha_publicacion: null
+    fecha_consulta: "2026-10-17"
+    cita: "Extension of 2 months by the European Parliament"
+  - id: src-registro-fases
+    url: "https://webgate.ec.europa.eu/regdel/web/delegatedActs/2983/phasesEvents"
+    titulo: "Registro delegado, fases pendientes de fin del control y publicación"
+    editor: "Comisión Europea"
+    tipo: oficial
+    fecha_publicacion: null
+    fecha_consulta: "2026-10-17"
+    cita: '"phasePending": true'
   - id: src-acto
     url: "https://data.consilium.europa.eu/doc/document/ST-13444-2026-INIT/en/pdf"
     titulo: "C(2026) 3472 final, texto adoptado; artículos 1 a 7"

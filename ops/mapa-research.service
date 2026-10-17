@@ -5,4 +5,11 @@ Description=Investigar novedades de centros de datos en España
 Type=oneshot
 WorkingDirectory=/home/mateo/projects/mapa-datacenters-espana
 ExecStart=/home/mateo/projects/mapa-datacenters-espana/scripts/run-research-agent.sh
-TimeoutStartSec=1h
+Environment=PATH=/home/mateo/.local/bin:/usr/local/bin:/usr/bin:/bin
+UMask=0077
+TimeoutStartSec=55min
+TimeoutStopSec=45
+KillMode=control-group
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=mapa-research

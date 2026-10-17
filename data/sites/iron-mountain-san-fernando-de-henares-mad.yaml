@@ -21,27 +21,29 @@ ubicacion:
 
 estado: parcialmente_operativo
 estado_detalle: >-
-  MAD-1 (4.000 m²) inaugurado el 25 de marzo de 2025, con entrada en operación de la primera fase
-  en julio de 2025. Restantes edificios en desarrollo: MAD-2 y MAD-3 previstos para 2027, MAD-4 y
-  MAD-5 para 2029 y MAD-6/7/8 para 2030 según la ficha corporativa; la compañía declaró en 2025
-  haber adelantado a 2027 la entrega del resto del campus. Permisos de potencia asegurados para
-  los 79 MW completos. En abril de 2026 Iron Mountain concretó el calendario: MAD-2 aportará
-  10 MW en el cuarto trimestre de 2026 y MAD-3 otros 10 MW en el primer trimestre de 2027, los
-  20 MW que la compañía declara en construcción. En marzo de 2026 el consejero de Digitalización
-  de la Comunidad de Madrid visitó las obras y el complejo figura en la candidatura española a
-  albergar una de las Gigafactorías de Inteligencia Artificial de la Unión Europea.
-estado_fuentes: [src-1, src-2, src-4, src-6, src-7]
-fecha_puesta_en_servicio: "2025-07"
+  MAD-1 está operativo con 3 MW IT. Las especificaciones actuales del operador sitúan MAD-2, de 10
+  MW IT, en el tercer trimestre de 2027 y MAD-3, de otros 10 MW IT, en el cuarto. Sustituyen las
+  previsiones de entrega de 2026 y comienzos de 2027 recogidas en prensa. MAD-2 y MAD-3 comparten un
+  edificio de 20 MW; no se suma este total a sus dos partes. El campus completo sigue siendo un
+  desarrollo por fases de 79 MW IT, con entregas posteriores previstas en 2029 y 2030. No consta una
+  nueva puesta en servicio de MAD-2 o MAD-3.
+estado_fuentes:
+  - src-1
+  - src-mad2-20261017
+  - src-mad3-20261017
+  - src-campana-20261017
 
 potencia:
   - tipo: it
     valor_mw: 79
     ambito: campus
     referencia: "Capacidad TI aprobada y planificada del campus completo"
-    estado_asociado: en_construccion
+    estado_asociado: anunciado
     fecha_dato: "2026-08-29"
     fuentes: [src-1]
-    nota: "\"79 MW of approved IT capacity\" / \"79 MW total IT capacity (approved & planned)\"."
+    nota: "Capacidad IT aprobada y planificada del campus completo, con fases hasta 2030. No acredita
+      que los 79 MW estén en construcción o entregados. MAD-1 aporta 3 MW actuales y MAD-2/MAD-3
+      suman 20 MW IT futuros."
   - tipo: it
     valor_mw: 3
     ambito: fase
@@ -55,29 +57,32 @@ potencia:
   - tipo: no_especificado
     valor_mw: 2
     ambito: fase
-    referencia: "Primera fase de MAD-1 en el momento de la inauguración"
-    estado_asociado: operativo
+    referencia: "Previsión inicial de 2 MW en MAD-1 publicada en marzo de 2025"
+    estado_asociado: desconocido
     fecha_dato: "2025-03-26"
     fuentes: [src-2]
-    nota: "Prensa especializada: \"la primera fase contará con 2 MW y comenzará a operar el próximo mes de julio\". Contradice los 3 MW de la ficha corporativa."
+    nota: "La noticia anticipaba 2 MW y operación en julio de 2025; no confirma entrega de esa cifra ni
+      su tipo. La capacidad actual publicada por el operador es 3 MW IT. Son fechas y alcances
+      distintos, no 2 MW operativos adicionales."
   - tipo: no_especificado
     valor_mw: 10
     ambito: fase
-    referencia: "MAD-2, capacidad prevista en el cuarto trimestre de 2026"
+    referencia: "MAD-2, previsión histórica de abril de 2026 para Q4 de 2026"
     estado_asociado: en_construccion
     fecha_dato: "2026-04-22"
     fuentes: [src-6]
     nota: >-
-      La compañía habla de «10 MW adicionales» sin decir si son carga TI, aunque la capacidad del
-      campus la publica como IT. Se registra sin tipificar.
+      Lectura histórica sin tipificar. La especificación actual identifica los mismos 10 MW como
+      carga IT y prevé Q3 de 2027; no son otros 10 MW adicionales.
   - tipo: no_especificado
     valor_mw: 10
     ambito: fase
-    referencia: "MAD-3, capacidad prevista en el primer trimestre de 2027"
+    referencia: "MAD-3, previsión histórica de abril de 2026 para Q1 de 2027"
     estado_asociado: en_construccion
     fecha_dato: "2026-04-22"
     fuentes: [src-6]
-    nota: "Misma salvedad que MAD-2: la fuente no dice de qué tipo de MW se trata."
+    nota: "Lectura histórica sin tipificar. La especificación actual identifica los mismos 10 MW como
+      carga IT y prevé Q4 de 2027; no son otros 10 MW adicionales."
   - tipo: no_especificado
     valor_mw: 130
     ambito: campus
@@ -86,22 +91,45 @@ potencia:
     fecha_dato: "2022-11-04"
     fuentes: [src-4]
     nota: "\"aspira a superar los 130 MW de potencia en su campus de San Fernando de Henares\" (2022). No coincide con los 79 MW que Iron Mountain publica hoy."
+  - tipo: it
+    valor_mw: 10
+    ambito: fase
+    referencia: MAD-2, capacidad IT prevista según la especificación actual
+    estado_asociado: en_construccion
+    fuentes:
+      - src-mad2-20261017
+    nota: Es uno de los dos centros de 10 MW que comparten un edificio de 20 MW. El total del edificio
+      no es capacidad adicional; la fecha editorial de la especificación no está publicada.
+  - tipo: it
+    valor_mw: 10
+    ambito: fase
+    referencia: MAD-3, capacidad IT prevista según la especificación actual
+    estado_asociado: en_construccion
+    fuentes:
+      - src-mad3-20261017
+    nota: Es uno de los dos centros de 10 MW que comparten un edificio de 20 MW. El total del edificio
+      no es capacidad adicional; la fecha editorial de la especificación no está publicada.
 
 fases:
   - nombre: "MAD-1"
     estado: operativo
-    fecha_puesta_en_servicio: "2025-07"
     superficie_m2: 4000
     fuentes: [src-1, src-2]
+    nota: La noticia de marzo de 2025 preveía julio. El servicio actual está acreditado, pero no su fecha efectiva de inicio.
   - nombre: "MAD-2"
     estado: en_construccion
-    fecha_puesta_en_servicio: "2026"
-    fuentes: [src-1, src-6]
+    fecha_puesta_en_servicio: "2027"
+    fuentes:
+      - src-mad2-20261017
+    nota: "Previsión actual: tercer trimestre de 2027. La misma página también usa la expresión menos
+      precisa late 2027; no es una entrega confirmada."
     # "MAD-2 mantiene el objetivo de aportar 10 MW adicionales en el cuarto trimestre de 2026"
   - nombre: "MAD-3"
     estado: en_construccion
     fecha_puesta_en_servicio: "2027"
-    fuentes: [src-1, src-6]
+    fuentes:
+      - src-mad3-20261017
+    nota: "Previsión actual: cuarto trimestre de 2027; no es una entrega confirmada."
     # "MAD-3 sumará otros 10 MW en el primer trimestre de 2027"
   - nombre: "MAD-4"
     estado: anunciado
@@ -124,36 +152,59 @@ enlaces_proyecto:
   - "https://www.ironmountain.com/data-centers/locations/emea/madrid"
 
 incertidumbres:
+  - campo: fecha_puesta_en_servicio
+    descripcion: La previsión de julio de 2025 no acredita la fecha efectiva de apertura de MAD-1.
+      Las fuentes posteriores confirman operación y 3 MW IT, sin fechar el inicio del servicio.
+    fuentes: [src-2, src-6, src-campana-20261017]
   - campo: potencia
     descripcion: >-
-      Los MW por edificio publicados por Iron Mountain (MAD-2 a MAD-5 con 10 MW cada uno y
-      MAD-6/7/8 con "36 MW each") suman muy por encima de los 79 MW declarados para el campus.
-      Lo más probable es que los 36 MW sean el conjunto de los tres últimos edificios, pero la
-      fuente dice "each" y no se corrige aquí.
+      Una lectura anterior de la ficha corporativa atribuía 36 MW each a MAD-6/7/8, incompatible con
+      un campus de 79 MW si se sumara literalmente. Se conserva el antecedente sin corregirlo por
+      cálculo; el calendario actual remite MAD-4 a MAD-8 a 2029 y 2030, sin sumar capacidad de esas
+      etapas a los 20 MW de MAD-2/MAD-3.
     fuentes: [src-1]
   - campo: potencia
     descripcion: >-
-      La ficha corporativa habla de 3 MW operativos en MAD-1 y la prensa especializada de una
-      primera fase de 2 MW. Además, la operación de compra en 2022 hablaba de más de 130 MW
-      potenciales frente a los 79 MW actuales.
+      La noticia de marzo de 2025 preveía una primera fase de 2 MW y entrada en julio. El operador
+      publica ahora 3 MW IT en MAD-1; no se suman ni se presenta la previsión inicial como capacidad
+      actual. La compra de 2022 describía más de 130 MW potenciales, frente a los 79 MW IT del plan
+      actual.
     fuentes: [src-1, src-2, src-4]
   - campo: estado
     descripcion: >-
-      La ficha corporativa fecha MAD-2/MAD-3 en 2027 y el resto en 2029-2030, mientras que un
-      artículo de opinión del director general de Iron Mountain para EMEA (julio de 2025) afirma
-      que los dos siguientes edificios entran en servicio en 2026 y el resto del campus se
-      adelanta de 2029 a 2027. La actualización de abril de 2026 sitúa MAD-2 en el cuarto
-      trimestre de 2026 y MAD-3 en el primero de 2027.
-    fuentes: [src-1, src-5, src-6]
+      Los calendarios previos de la ficha corporativa y de declaraciones en prensa no coincidían: en
+      julio de 2025 se adelantaban las dos siguientes entregas a 2026 y el resto a 2027; en abril de
+      2026 MAD-2 se preveía para Q4 de 2026 y MAD-3 para Q1 de 2027. Las páginas actuales del
+      operador los sitúan en Q3 y Q4 de 2027. Se conservan los antecedentes sin tratarlos como
+      fechas cumplidas.
+    fuentes:
+      - src-1
+      - src-5
+      - src-6
+      - src-mad2-20261017
+      - src-mad3-20261017
   - campo: estado
     descripcion: >-
-      La Comunidad de Madrid data en 2027 el conjunto de los 79 MW y de las ocho instalaciones,
-      mientras que el folleto de la compañía fecha el campus completo en 2030. Las dos fechas
-      conviven sin que ninguna fuente explique la diferencia.
-    fuentes: [src-1, src-7]
+      Una noticia de la visita institucional de marzo de 2026 situaba los 79 MW y ocho instalaciones
+      en 2027, frente al folleto corporativo que mantenía el horizonte completo en 2030. Las páginas
+      actuales continúan fechando MAD-4 a MAD-8 en 2029 y 2030; no se identifica el campus completo
+      como entregado en 2027.
+    fuentes:
+      - src-7
+      - src-campana-20261017
+  - campo: fases
+    descripcion: Las páginas actuales consultadas el 17 de octubre sitúan MAD-2 en Q3 de 2027 y MAD-3 en
+      Q4 de 2027. Se conservan como antecedentes las previsiones de prensa de abril de 2026, Q4 de
+      2026 y Q1 de 2027, y los calendarios anteriores del campus. Los resultados indexados del
+      buscador aún devolvían Q1/Q2 de 2027 y no reflejaban el texto servido en la consulta.
+    fuentes:
+      - src-mad2-20261017
+      - src-mad3-20261017
+      - src-campana-20261017
+      - src-6
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
   - id: src-1
@@ -210,3 +261,25 @@ fuentes:
     fecha_publicacion: "2026-03-16"
     fecha_consulta: "2026-08-31"
     cita: "El consejero de Digitalización, Miguel López-Valverde, ha visitado este lunes las obras del nuevo Centro de Procesamiento de Datos (CPD) que la empresa Iron Mountain Data Centers construye en San Fernando de Henares. Este complejo tecnológico ha sido seleccionado para formar parte de la candidatura española que aspira a albergar una de las futuras Gigafactorías de Inteligencia Artificial promovidas por la Unión Europea ... El complejo forma parte de un plan estratégico de expansión de Iron Mountain que prevé alcanzar 79 megavatios de potencia tecnológica en 2027, distribuidos en ocho instalaciones interconectadas dentro de la región."
+  - id: src-mad2-20261017
+    url: https://www.ironmountain.com/data-centers/locations/emea/madrid/mad-2
+    titulo: Madrid MAD-2 — especificaciones y calendario
+    editor: Iron Mountain
+    tipo: empresa
+    fecha_consulta: 2026-10-17
+    cita: "Total IT Capacity: 10MW at MAD-2, part of a 20MW building [...] Q3 2027 completion date"
+  - id: src-mad3-20261017
+    url: https://www.ironmountain.com/data-centers/locations/emea/madrid/mad-3
+    titulo: Madrid MAD-3 — especificaciones y calendario
+    editor: Iron Mountain
+    tipo: empresa
+    fecha_consulta: 2026-10-17
+    cita: "Total IT Capacity: 10MW purpose-built hyperscale infrastructure, part of a 20MW building
+      [...] Ready for Service: Q4 2027"
+  - id: src-campana-20261017
+    url: https://datacenter.ironmountain.com/es-es/madrid-data-centers-information-contact
+    titulo: Centros de datos de Iron Mountain en España
+    editor: Iron Mountain
+    tipo: empresa
+    fecha_consulta: 2026-10-17
+    cita: Se prevé que MAD-2 entre en funcionamiento a Q3 de 2027, y que MAD-3 lo haga entre Q4 de 2027.

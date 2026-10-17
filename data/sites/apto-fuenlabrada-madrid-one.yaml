@@ -26,8 +26,10 @@ estado_detalle: >-
   campus de cinco edificios sobre la parcela industrial en desuso de la antigua embotelladora. En
   marzo de 2026 Apto declaró el emplazamiento completamente despejado, con la subestación in situ
   ejecutada y licencia de obra para la primera fase, y anunció el arranque de una segunda fase de
-  122 MW.
-estado_fuentes: [src-1, src-2, src-6]
+  122 MW. En julio de 2026 Apto e IGNIS anunciaron un acuerdo para 82 MW de acceso y conexión; la
+  infraestructura eléctrica asociada se desarrollará como parte del proyecto. No acredita capacidad
+  IT entregada.
+estado_fuentes: [ src-1, src-2, src-6, src-ignis-20260714 ]
 
 potencia:
   - tipo: no_especificado
@@ -62,9 +64,30 @@ potencia:
     nota: >-
       Cifra anterior a la aparición de Apto como promotor. Se conserva porque describe la misma
       parcela.
+  - tipo: conexion_red
+    valor_mw: 82
+    ambito: campus
+    referencia: Acuerdo IGNIS–Apto de acceso y conexión a red
+    estado_asociado: anunciado
+    fecha_dato: 2026-07-14
+    fuentes:
+      - src-ignis-20260714
+    nota: Potencia del acuerdo de conexión, con infraestructura eléctrica por desarrollar por IGNIS. No
+      es carga IT, potencia operativa ni una cifra que deba sumarse a los 40 MW de subestación
+      descritos en marzo.
+conexion_electrica:
+  mw_concedidos: null
+  nota: El acuerdo de julio de 2026 con IGNIS incluye 82 MW de acceso y conexión. IGNIS desarrollará
+    líneas y subestaciones. No se adjunta resolución de acceso ni acta de energización; los 40 MW de
+    la subestación en marzo son otro ámbito y no se suman a los 82 MW.
+  fuentes:
+    - src-1
+    - src-ignis-20260714
 
 superficie_parcela_m2: 195000
 inversion_anunciada_eur: 2000000000
+refrigeracion: La nota del acuerdo con IGNIS describe enfriadoras por aire sin evaporación de agua,
+  sin publicar WUE ni consumo auxiliar.
 
 incertidumbres:
   - campo: operador
@@ -94,6 +117,13 @@ incertidumbres:
       campus. Los 40 MW de la subestación sí son potencia de conexión y no se comparan con
       aquella cifra.
     fuentes: [src-1]
+  - campo: conexion_electrica
+    descripcion: Los 82 MW corresponden al acuerdo comercial de acceso y conexión con IGNIS, no a un
+      permiso incorporado al registro ni a una apertura. La nota no explica qué parte reemplaza o
+      amplía los 40 MW de subestación descritos en marzo. No se suman ambas cifras.
+    fuentes:
+      - src-ignis-20260714
+      - src-1
 
 enlaces_proyecto:
   - "https://aptodc.com/apto-announces-largest-data-centre-campus-in-madrid-cloud-region/"
@@ -167,3 +197,11 @@ fuentes:
       La empresa británica Apto se encuentra ya en la segunda fase de construcción de su Centro de
       Procesamiento de Datos en Fuenlabrada, en la parcela industrial que antiguamente ocupaba
       Casbega (Coca Cola). En total contará con 195.000 metros cuadrados y tendrá cinco edificios
+  - id: src-ignis-20260714
+    url: https://aptodc.com/ignis-and-apto-reach-an-agreement-on-grid-access-and-renewable-self-consumption-for-aptos-data-centre-campus-in-madrid/
+    titulo: IGNIS and Apto reach an agreement on grid access and renewable self-consumption
+    editor: Apto
+    tipo: empresa
+    fecha_publicacion: 2026-07-14
+    fecha_consulta: 2026-10-17
+    cita: The agreement between IGNIS and Apto includes 82 MW of grid access and connection

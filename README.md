@@ -81,6 +81,14 @@ cola pública. Cada URL conserva la fecha de su observación. Solo las respuesta
 410 se clasifican como enlaces rotos; bloqueos y fallos de red tienen estados propios.
 Los PDF se comparan por contenido, aunque el servidor no publique su tamaño.
 
+El informe separa diferencias de texto, posibles cambios de plantilla, formato,
+migración de huellas PDF y falta de texto anterior. Los cambios de plantilla siguen
+pendientes. Las instantáneas completas quedan en `build/fuentes-cache/`; solo se
+publican extractos breves y las páginas PDF afectadas. El historial de hasta 52
+ejecuciones está en `data/seguimiento-fuentes.json` y su resumen en
+`research/informe-evolucion-fuentes.md`. Una ejecución parcial conserva su alcance;
+regenerar informes no añade consultas ni resultados al historial.
+
 `npm run refresh:sellar` conserva el argumento antiguo `--sellar`, pero tampoco modifica
 fechas de revisión factual. El flujo `.github/workflows/revision-fuentes.yml` ejecuta las
 comprobaciones cada lunes y abre un PR con los informes.

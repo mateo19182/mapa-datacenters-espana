@@ -20,20 +20,30 @@ ubicacion:
 
 estado: operativo
 estado_detalle: >-
-  Centro de datos propio de Arsys en Logroño, conocido como Centro de Datos
-  Portalada, en explotación y ampliado por fases mediante salas técnicas de 250 m².
-  Se inauguró en 2009 con una única sala técnica y una capacidad estimada de 5.000
-  servidores físicos. En abril de 2019 entró en servicio la segunda sala, duplicando
-  el suelo técnico hasta 500 m² y la capacidad hasta unos 10.000 servidores. El
-  diseño modular contempla cuatro salas técnicas y unos 20.000 servidores físicos a
-  plena capacidad. Obtuvo en 2020 la certificación Tier III de Diseño del Uptime
-  Institute para una de las cuatro salas y en 2024 la renovó, la amplió a Instalación
-  Construida y extendió su alcance al conjunto de las instalaciones. Cuenta con
-  suministro de fuentes renovables desde 2015 e ISO 50001. Aloja la nube privada del
+  Centro Portalada operativo desde 2009 y ampliado por salas de 250 m². La web de Arsys describe un
+  diseño de cuatro salas y 6 MW sin tipificar. La visita de DCD del 15 de octubre de 2026 describe
+  tres salas en uso y la cuarta pendiente de desarrollo. Los 6 MW no se atribuyen a capacidad
+  entregada ni a carga IT. El centro cuenta con certificación Tier III y aloja la nube privada del
   Gobierno de La Rioja.
-estado_fuentes: [src-aslan, src-arsys, src-dcm]
+estado_fuentes:
+  - src-aslan
+  - src-arsys
+  - src-dcm
+  - src-innovacion-20261017
+  - src-visita-dcd-20261015
 
-potencia: []
+potencia:
+  - {
+      tipo: no_especificado,
+      valor_mw: 6,
+      ambito: edificio,
+      referencia: Potencia declarada para el diseño del complejo Portalada,
+      estado_asociado: desconocido,
+      fuentes: [ src-innovacion-20261017, src-visita-dcd-20261015 ],
+      nota: Arsys no tipifica los MW ni desglosa su entrega por sala. DCD los describe como capacidad
+        proyectada y sitúa la cuarta sala pendiente de desarrollo; no se computan como 6 MW
+        operativos.
+    }
 
 fases:
   - nombre: "Primera sala técnica"
@@ -46,16 +56,25 @@ fases:
     fecha_puesta_en_servicio: "2019-04"
     superficie_m2: 250
     fuentes: [src-aslan, src-arsys]
-  - nombre: "Tercera y cuarta salas técnicas"
+  - nombre: Tercera sala técnica
+    estado: operativo
+    fuentes:
+      - src-visita-dcd-20261015
+    nota: La visita publicada el 15 de octubre de 2026 describe la sala 3 en uso, sin fechar su puesta
+      en servicio.
+  - nombre: Cuarta sala técnica
     estado: anunciado
-    nota: >-
-      Con las cuatro salas operativas la capacidad se situaría en 20.000
-      servidores físicos.
-    fuentes: [src-aslan]
+    fuentes:
+      - src-innovacion-20261017
+      - src-visita-dcd-20261015
+    nota: Espacio reservado pendiente de desarrollo. El diseño histórico de cuatro salas contemplaba
+      unos 20.000 servidores; no es un inventario operativo.
+superficie_construida_m2: 6000
 
 refrigeracion: >-
-  Climatización por agua de alto rendimiento con sistemas de refrigeración basados en
-  IoT e inteligencia artificial. PUE objetivo declarado de 1,25.
+  Arsys declara climatización por agua de alto rendimiento, PUE medio anual de 1,25 y WUE inferior a
+  0,16 l/kWh. DCD describe aire en circuito cerrado sin evaporación; no se resuelve la diferencia
+  entre descripciones.
 
 agua:
   circuito: desconocido
@@ -64,19 +83,24 @@ agua:
     en IoT e inteligencia artificial, según la descripción publicada por la compañía.
   origen: null
   nota: >-
-    Arsys no publica consumo de agua, WUE ni el tipo de circuito. Se registra el
-    sistema porque es de los pocos del norte que declara refrigeración por agua y no
-    free cooling.
-  fuentes: [src-dcm]
+    La página actual de Arsys declara WUE inferior a 0,16 l/kWh, sin fecha del periodo medido. No se
+    registra 0,16 como valor exacto ni se deduce un consumo anual. La visita de DCD describe aire en
+    circuito cerrado sin evaporación, frente a la descripción de climatización por agua del
+    operador. El circuito del agua y el consumo auxiliar siguen sin identificarse.
+  fuentes:
+    - src-dcm
+    - src-innovacion-20261017
+    - src-visita-dcd-20261015
 
 incertidumbres:
   - campo: potencia
     descripcion: >-
-      Arsys publica superficie técnica, número de racks y servidores, pero no la
-      potencia eléctrica del centro en ninguna de las fuentes consultadas, ni en su
-      propio blog, ni en las fichas de certificación, ni en la cobertura
-      especializada de 2024. Tampoco consta la potencia de acceso a la red.
-    fuentes: [src-aslan, src-arsys, src-dcm]
+      La página actual de Arsys declara 6 MW sin distinguir carga IT, potencia instalada o conexión.
+      La visita de octubre los describe como capacidad proyectada, con la cuarta sala aún sin
+      desarrollar. Se desconocen los MW entregados por sala y la potencia de acceso concedida.
+    fuentes:
+      - src-innovacion-20261017
+      - src-visita-dcd-20261015
   - campo: ubicacion
     descripcion: >-
       No se ha localizado la dirección exacta. El centro se llama «Portalada», que es
@@ -87,17 +111,18 @@ incertidumbres:
     fuentes: [src-osm, src-arsys]
   - campo: estado
     descripcion: >-
-      La descripción técnica más reciente localizada es de febrero de 2024 y sigue
-      hablando de «cuatro salas técnicas de 250 metros cuadrados y una capacidad total
-      aproximada de unos 20.000 servidores físicos», sin decir cuántas están en
-      producción. En 2022, con motivo del contrato de la nube privada del Gobierno de
-      La Rioja, la prensa especializada situaba la capacidad ampliada en 15.000
-      servidores con una nueva sala técnica. No se ha verificado cuántas salas están
-      hoy operativas.
-    fuentes: [src-aslan, src-dcm]
+      Las fuentes históricas describen un diseño modular de cuatro salas y aproximadamente 20.000
+      servidores. La visita publicada en octubre de 2026 identifica tres salas en uso y la cuarta
+      reservada, sin fecha de activación de la tercera ni MW operativos desglosados. No se deduce
+      capacidad eléctrica a partir de la ocupación ni del número de servidores.
+    fuentes:
+      - src-aslan
+      - src-dcm
+      - src-innovacion-20261017
+      - src-visita-dcd-20261015
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
   - id: src-aslan
@@ -151,3 +176,20 @@ fuentes:
       energético procedente de fuentes renovables desde 2015, climatización por agua
       de alto rendimiento y eficiencia e innovadores sistemas de refrigeración,
       basados en IoT e Inteligencia Artificial
+  - id: src-innovacion-20261017
+    url: https://www.arsys.es/quienes-somos/innovacion
+    titulo: Innovación — Un Centro de Datos innovador en todos sus aspectos
+    editor: Arsys
+    tipo: empresa
+    fecha_consulta: 2026-10-17
+    cita: Estas instalaciones tienen 6 MW de potencia [...] un WUE (Water-Use Efficiency) por debajo de
+      0,16 l/kWh
+  - id: src-visita-dcd-20261015
+    url: https://www.datacenterdynamics.com/es/features/viaje-al-data-center-de-arsys-en-logro%C3%B1o-evoluci%C3%B3n-t%C3%A9cnica-y-soberan%C3%ADa-desde-la-rioja/
+    titulo: "Viaje al data center de Arsys en Logroño: evolución técnica y soberanía desde La Rioja"
+    editor: Data Center Dynamics
+    tipo: prensa_especializada
+    fecha_publicacion: 2026-10-15
+    fecha_consulta: 2026-10-17
+    cita: el espacio reservado para la cuarta sala técnica espera su desarrollo detrás de los muros
+      actuales.

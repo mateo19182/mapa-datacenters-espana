@@ -110,3 +110,121 @@ test('conflicting values remain unresolved while safe additions keep their factu
   assert.deepEqual(f.leer('existente').alias, ['Alias'])
   assert.ok(existsSync(join(f.raiz, 'data/propuestas/existente.yaml')))
 })
+
+test('renaming a colliding source remaps every added reference while preserving existing evidence', (t) => {
+  const f = fixture(t)
+  const original = {
+    id: 'existente', ultima_verificacion: '2026-08-31',
+    fuentes: [
+      { id: 'src-1', url: 'https://example.com/original', cita: 'Original' },
+      { id: 'src-1b', url: 'https://example.com/otra' },
+    ],
+    potencia: [{ tipo: 'it', ambito: 'campus', referencia: 'Anterior', valor_mw: 3, fuentes: ['src-1'] }],
+    fases: [{ nombre: 'Anterior', fuentes: ['src-1'] }],
+    agua: { circuito: 'cerrado', fuentes: ['src-1'] },
+    incertidumbres: [{ campo: 'potencia', descripcion: 'Anterior', fuentes: ['src-1'] }],
+    energia: [{ referencia: 'Anterior', consumo_gwh_ano: 2, fuentes: ['src-1'] }],
+    empleo: [{ tipo: 'directo', referencia: 'Anterior', valor: 2, fuentes: ['src-1'] }],
+  }
+  f.escribir('sites', 'existente', original)
+  f.escribir('propuestas', 'existente', {
+    fuentes: [{ id: 'src-1', url: 'https://example.com/nueva', fecha_consulta: '2026-10-10' }],
+    potencia: [{ tipo: 'it', ambito: 'fase', referencia: 'Nueva', valor_mw: 5, fuentes: ['src-1'] }],
+    fases: [{ nombre: 'Nueva', fuentes: ['src-1'] }],
+    agua: { origen: 'Red municipal', fuentes: ['src-1'] },
+    incertidumbres: [{ campo: 'potencia', descripcion: 'Nueva', fuentes: ['src-1'] }],
+    energia: [{ referencia: 'Nueva', consumo_gwh_ano: 4, fuentes: ['src-1'] }],
+    empleo: [{ tipo: 'directo', referencia: 'Nueva', valor: 3, fuentes: ['src-1'] }],
+  })
+  assert.equal(f.integrar().conflictos.length, 0)
+  const actual = f.leer('existente')
+  assert.deepEqual(actual.fuentes.slice(0, 2), original.fuentes)
+  assert.equal(actual.fuentes[2].id, 'src-1bb')
+  assert.equal(actual.fuentes[2].url, 'https://example.com/nueva')
+  assert.equal(actual.fuentes[2].fecha_consulta, '2026-10-10')
+  for (const campo of ['potencia', 'fases', 'incertidumbres', 'energia', 'empleo']) {
+    assert.deepEqual(actual[campo][0], original[campo][0], campo)
+    assert.deepEqual(actual[campo][1].fuentes, ['src-1bb'], campo)
+  }
+  assert.deepEqual(actual.agua.fuentes, ['src-1', 'src-1bb'])
+  assert.equal(actual.agua.circuito, 'cerrado')
+  assert.equal(actual.agua.origen, 'Red municipal')
+  assert.equal(actual.ultima_verificacion, '2026-08-31')
+})
+
+test('a proposed alias for an existing URL points to the existing source without replacing its metadata', (t) => {
+  const f = fixture(t)
+  const fuente = { id: 'src-original', url: 'https://example.com/documento', cita: 'Texto conservado', fecha_consulta: '2026-08-31' }
+  f.escribir('sites', 'existente', { id: 'existente', ultima_verificacion: '2026-08-31', fuentes: [fuente] })
+  f.escribir('propuestas', 'existente', {
+    fuentes: [{ id: 'src-alias', url: fuente.url, cita: 'Otra cita', fecha_consulta: '2026-10-17' }],
+    potencia: [{ tipo: 'it', ambito: 'campus', valor_mw: 2, fuentes: ['src-alias'] }],
+  })
+  const resultado = f.integrar()
+  const actual = f.leer('existente')
+  assert.deepEqual(actual.fuentes, [fuente])
+  assert.deepEqual(actual.potencia[0].fuentes, ['src-original'])
+  assert.equal(resultado.adiciones.filter((a) => a.campo === 'fuentes').length, 0)
+  assert.equal(actual.ultima_verificacion, '2026-08-31')
+})
+
+test('repeated proposed URLs create one source and remap nested and state references in a new site', (t) => {
+  const f = fixture(t)
+  const fuentes = ['src-a', 'src-b', 'src-b'].map((id) => ({ id, url: 'https://example.com/unica', fecha_consulta: '2026-10-01' }))
+  f.escribir('propuestas', 'nuevo', {
+    id: 'nuevo', ultima_verificacion: '2026-10-01', fuentes,
+    estado_fuentes: ['src-a', 'src-b'],
+    ubicacion: { municipio: 'Madrid', fuentes: ['src-b'] },
+    conexion_electrica: { fuentes: ['src-b'] },
+    computo: [{ sistema: 'Clúster', fuentes: ['src-b', 'src-a'] }],
+    potencia: [{ valor_mw: 2, fuentes: ['src-b'] }],
+    fases: [{ nombre: 'Primera', fuentes: ['src-b'] }],
+    agua: { fuentes: ['src-b'] },
+    incertidumbres: [{ descripcion: 'Sin fecha de entrega', fuentes: ['src-b'] }],
+  })
+  f.integrar()
+  const actual = f.leer('nuevo')
+  assert.deepEqual(actual.fuentes, [{ id: 'src-a', url: 'https://example.com/unica', fecha_consulta: '2026-10-01' }])
+  assert.deepEqual(actual.estado_fuentes, ['src-a'])
+  for (const campo of ['ubicacion', 'conexion_electrica', 'agua']) assert.deepEqual(actual[campo].fuentes, ['src-a'], campo)
+  for (const campo of ['computo', 'potencia', 'fases', 'incertidumbres']) assert.deepEqual(actual[campo][0].fuentes, ['src-a'], campo)
+  assert.equal(actual.ultima_verificacion, '2026-10-01')
+})
+
+test('unknown source references reject the whole batch before existing-site additions or archiving', (t) => {
+  const f = fixture(t)
+  const original = { id: 'existente', ultima_verificacion: '2026-08-31', fuentes: [{ id: 'src-real', url: 'https://example.com/real' }] }
+  f.escribir('sites', 'existente', original)
+  f.escribir('propuestas', 'existente', { alias: ['Adición válida'] })
+  f.escribir('sites', 'invalido', { id: 'invalido', ultima_verificacion: '2026-08-31' })
+  const referencias = [
+    { potencia: [{ fuentes: ['src-ausente'] }] },
+    { agua: { fuentes: ['src-ausente'] } },
+    { estado_fuentes: ['src-ausente'] },
+    { computo: [{ fuentes: ['src-ausente'] }] },
+  ]
+  for (const propuesta of referencias) {
+    f.escribir('propuestas', 'invalido', propuesta)
+    for (const aplicar of [false, true]) {
+      assert.throws(() => f.integrar({ aplicar }), /invalido\.yaml: referencia a fuente desconocida src-ausente/)
+      assert.deepEqual(f.leer('existente'), original)
+      assert.ok(existsSync(join(f.raiz, 'data/propuestas/existente.yaml')))
+      assert.ok(!existsSync(join(f.raiz, 'data/propuestas/integradas')))
+      assert.ok(!existsSync(join(f.raiz, 'research/informe-propuestas.md')))
+    }
+  }
+})
+
+test('an ambiguous source ID or an unknown new-site reference is invalid before creating a site', (t) => {
+  const f = fixture(t)
+  f.escribir('propuestas', 'nuevo', {
+    id: 'nuevo', ultima_verificacion: '2026-10-01',
+    fuentes: [{ id: 'src', url: 'https://example.com/a' }, { id: 'src', url: 'https://example.com/b' }],
+    fases: [{ fuentes: ['src'] }],
+  })
+  assert.throws(() => f.integrar(), /fuente src está definida con dos URLs distintas/)
+  assert.ok(!existsSync(join(f.raiz, 'data/sites/nuevo.yaml')))
+  f.escribir('propuestas', 'nuevo', { id: 'nuevo', ultima_verificacion: '2026-10-01', fases: [{ fuentes: ['src-ausente'] }] })
+  assert.throws(() => f.integrar(), /referencia a fuente desconocida src-ausente/)
+  assert.ok(!existsSync(join(f.raiz, 'data/sites/nuevo.yaml')))
+})

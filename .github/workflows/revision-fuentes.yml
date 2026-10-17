@@ -2,116 +2,208 @@ name: Revisión periódica de fuentes
 
 on:
   schedule:
-    # Lunes a las 05:20 UTC. Semanal basta: estos proyectos se mueven en meses.
     - cron: '20 5 * * 1'
   workflow_dispatch:
+    inputs:
+      publicar:
+        description: Abrir o actualizar el PR técnico desde main
+        type: boolean
+        default: false
+      fuente:
+        description: URL registrada para prueba parcial en una rama; vacío comprueba todas
+        type: string
+        default: ''
+
+permissions:
+  contents: read
+
+concurrency:
+  group: revision-fuentes-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   revisar:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
     permissions:
       contents: write
+      actions: read
       pull-requests: write
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: '22'
           cache: npm
       - run: npm ci
+      - name: Instalar lector de documentos PDF
+        run: sudo apt-get update -qq && sudo apt-get install -y --no-install-recommends poppler-utils
+
+      - name: Recuperar texto de comprobaciones anteriores
+        id: cache
+        continue-on-error: true
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: build/fuentes-cache/
+          key: ${{ runner.os }}-fuentes-v1-${{ github.ref_name }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            ${{ runner.os }}-fuentes-v1-${{ github.ref_name }}-
+            ${{ runner.os }}-fuentes-v1-main-
+
+      - name: Buscar respaldo de instantáneas si falta la caché
+        id: respaldo
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: node scripts/source-cache-artifact.mjs
+
+      - name: Recuperar instantáneas del último run confiable
+        id: descarga
+        if: steps.respaldo.outputs.run-id != ''
+        continue-on-error: true
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: fuentes-texto-v1
+          path: build/fuentes-cache/
+          github-token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          run-id: ${{ steps.respaldo.outputs.run-id }}
 
       - name: Conservar observaciones del PR semanal pendiente
+        id: recuperar
+        continue-on-error: true
         run: |
+          mkdir -p build/monitorizacion
           referencia=$(git ls-remote --heads origin refs/heads/revision/fuentes)
           if [ -n "$referencia" ]; then
             git fetch --no-tags origin refs/heads/revision/fuentes
-            git show FETCH_HEAD:data/huellas.json > "$RUNNER_TEMP/huellas-pendientes.json"
-            node scripts/check-updates.mjs --fusionar "$RUNNER_TEMP/huellas-pendientes.json" --informe
+            if git show FETCH_HEAD:data/huellas.json > "$RUNNER_TEMP/huellas-pendientes.json"; then
+              node scripts/check-updates.mjs --fusionar "$RUNNER_TEMP/huellas-pendientes.json" --informe
+            else
+              echo 'No se pudieron recuperar las huellas pendientes; no se publicará el PR.' >&2
+              exit 1
+            fi
+            if git show FETCH_HEAD:data/seguimiento-fuentes.json > "$RUNNER_TEMP/historial-pendiente.json" 2>/dev/null; then
+              node scripts/check-updates.mjs --fusionar-historial "$RUNNER_TEMP/historial-pendiente.json" --informe
+            fi
           fi
 
-      # Nunca modifica datos: solo recalcula huellas y arma la cola de revisión.
       - name: Comprobar las fuentes registradas
         id: revision
         continue-on-error: true
+        env:
+          FUENTE_PRUEBA: ${{ github.ref != 'refs/heads/main' && inputs.fuente || '' }}
         run: |
-          resultado=0
-          node scripts/check-updates.mjs || resultado=$?
-          if [ "$resultado" -ne 0 ] && [ "$resultado" -ne 10 ]; then
-            exit "$resultado"
+          if [ -n "$FUENTE_PRUEBA" ]; then
+            node scripts/weekly-step.mjs fuentes -- node scripts/check-updates.mjs --url "$FUENTE_PRUEBA"
+          else
+            node scripts/weekly-step.mjs fuentes -- node scripts/check-updates.mjs
           fi
 
       - name: Comprobar publicación de REE
         id: ree
+        if: ${{ !cancelled() }}
         continue-on-error: true
-        run: |
-          resultado=0
-          npm run refresh:ree || resultado=$?
-          if [ "$resultado" -ne 0 ] && [ "$resultado" -ne 10 ]; then
-            exit "$resultado"
-          fi
+        run: node scripts/weekly-step.mjs ree -- npm run refresh:ree
 
-      # Integra adiciones y conserva los valores que requieren decisión.
-      - name: Integrar propuestas sin conflicto
+      - name: Comprobar e integrar propuestas autorizadas
         id: propuestas
+        if: ${{ !cancelled() }}
         continue-on-error: true
-        run: |
-          resultado=0
-          node scripts/apply-proposals.mjs --aplicar || resultado=$?
-          if [ "$resultado" -ne 0 ] && [ "$resultado" -ne 11 ]; then
-            exit "$resultado"
-          fi
-
-      - name: Generar datos e informe desde la misma instantánea
-        run: npm run data
-
-      - name: Informar de fallos del comprobador
-        if: always()
         env:
-          RESULTADO_FUENTES: ${{ steps.revision.outcome }}
-          RESULTADO_REE: ${{ steps.ree.outcome }}
-          RESULTADO_PROPUESTAS: ${{ steps.propuestas.outcome }}
+          APLICAR_PROPUESTAS: ${{ github.ref == 'refs/heads/main' && (github.event_name == 'schedule' || inputs.publicar) }}
         run: |
-          if [ "$RESULTADO_FUENTES" = failure ]; then
-            echo 'El comprobador de fuentes falló. Las observaciones conservan su fecha anterior.' >> "$GITHUB_STEP_SUMMARY"
-          fi
-          if [ "$RESULTADO_REE" = failure ]; then
-            echo 'No se pudo comprobar la publicación de REE. Consultar el informe antes de afirmar que no hay novedades.' >> "$GITHUB_STEP_SUMMARY"
-          fi
-          if [ "$RESULTADO_PROPUESTAS" = failure ]; then
-            echo 'La integración de propuestas falló. Revisar el error y el diff antes de fusionar.' >> "$GITHUB_STEP_SUMMARY"
+          if [ "$APLICAR_PROPUESTAS" = true ]; then
+            node scripts/weekly-step.mjs propuestas -- node scripts/apply-proposals.mjs --aplicar
+          else
+            node scripts/weekly-step.mjs propuestas -- node scripts/apply-proposals.mjs
           fi
 
-      - name: Abrir propuesta de actualización
-        uses: peter-evans/create-pull-request@v6
+      - name: Validar y generar los datos
+        id: validacion
+        if: ${{ !cancelled() }}
+        continue-on-error: true
+        run: node scripts/weekly-step.mjs validacion -- bash -ec 'npm run validate:strict && npm run data'
+
+      - name: Abrir propuesta técnica de actualización
+        id: pr
+        if: >-
+          github.ref == 'refs/heads/main' &&
+          (github.event_name == 'schedule' || inputs.publicar) &&
+          steps.recuperar.outcome == 'success' && steps.validacion.outcome == 'success'
+        continue-on-error: true
+        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
         with:
           branch: revision/fuentes
-          title: 'Revisión de fuentes — ${{ github.run_id }}'
-          commit-message: 'Actualizar huellas de fuentes y cola de revisión'
+          title: 'Revisión técnica de fuentes pendiente de revisión'
+          commit-message: 'Conservar observaciones técnicas y propuestas sin aceptar hechos'
           labels: datos, revisión
           body: |
-            Revisión automática de las fuentes registradas.
+            Observaciones técnicas y propuestas para revisión humana. No se han aceptado huellas ni renovado fechas factuales. Las adiciones sin conflicto de data/propuestas se integran en este PR; los conflictos requieren decisión humana. El agente investigador solo entrega borradores en research/.
 
-            **No se ha sobrescrito ningún dato existente.** Las adiciones sin conflicto
-            se han aplicado; los conflictos quedan listados para decidirlos a mano.
+            - `research/informe-actualizacion.md`: estado de enlaces y diferencias de contenido, separando migración PDF, plantillas y falta de comparación histórica.
+            - `research/informe-propuestas.md`: adiciones y conflictos pendientes. Las simulaciones manuales se identifican en el informe.
+            - `research/informe-ree.md`: publicación de REE, si se pudo comprobar.
+            - `data/seguimiento-fuentes.json`: historial acotado de ejecuciones técnicas.
 
-            - `research/informe-actualizacion.md` — fuentes cambiadas, enlaces rotos y fichas caducadas
-            - `research/informe-propuestas.md` — adiciones aplicadas y conflictos pendientes
-            - `research/informe-validacion.md` — estado del esquema tras los cambios
-            - `research/informe-ree.md` — si REE ha publicado una edición posterior de capacidad de demanda
-
-            Antes de fusionar: revisar los conflictos, editar los YAML afectados y actualizar
-            su `ultima_verificacion`.
+            Consultar también el resumen y los artefactos de esta ejecución. Un fallo de red o una comprobación incompleta no equivale a ausencia de novedades.
           add-paths: |
-            data/**
-            research/**
+            data/huellas.json
+            data/sites/**
+            data/propuestas/**
+            data/seguimiento-fuentes.json
+            research/informe-actualizacion.md
+            research/informe-evolucion-fuentes.md
+            research/informe-propuestas.md
+            research/informe-ree.md
+            research/informe-validacion.md
 
-      - name: Señalar comprobaciones incompletas
+      - name: Conservar resultados y documentos de esta ejecución
+        if: always()
+        continue-on-error: true
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: revision-fuentes-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            build/monitorizacion/
+            research/informe-actualizacion.md
+            research/informe-evolucion-fuentes.md
+            research/informe-propuestas.md
+            research/informe-ree.md
+            research/informe-validacion.md
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Respaldar instantáneas durante treinta días
+        id: copia_texto
+        if: always()
+        continue-on-error: true
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: fuentes-texto-v1
+          path: build/fuentes-cache/
+          if-no-files-found: ignore
+          retention-days: 30
+
+      - name: Conservar texto para la siguiente comparación
+        if: always()
+        continue-on-error: true
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: build/fuentes-cache/
+          key: ${{ steps.cache.outputs.cache-primary-key }}
+
+      - name: Resumen y estado final
         if: always()
         env:
-          RESULTADO_FUENTES: ${{ steps.revision.outcome }}
-          RESULTADO_REE: ${{ steps.ree.outcome }}
-          RESULTADO_PROPUESTAS: ${{ steps.propuestas.outcome }}
-        run: |
-          if [ "$RESULTADO_FUENTES" = failure ] || [ "$RESULTADO_REE" = failure ] || [ "$RESULTADO_PROPUESTAS" = failure ]; then
-            exit 1
-          fi
+          OUTCOME_RESPALDO: ${{ steps.respaldo.outcome }}
+          OUTCOME_DESCARGA: ${{ steps.descarga.outcome }}
+          OUTCOME_COPIA_TEXTO: ${{ steps.copia_texto.outcome }}
+          OUTCOME_RECUPERAR: ${{ steps.recuperar.outcome }}
+          OUTCOME_FUENTES: ${{ steps.revision.outcome }}
+          OUTCOME_REE: ${{ steps.ree.outcome }}
+          OUTCOME_PROPUESTAS: ${{ steps.propuestas.outcome }}
+          OUTCOME_VALIDACION: ${{ steps.validacion.outcome }}
+          OUTCOME_PR: ${{ steps.pr.outcome }}
+          PR_URL: ${{ steps.pr.outputs.pull-request-url }}
+        run: node scripts/weekly-step.mjs resumen

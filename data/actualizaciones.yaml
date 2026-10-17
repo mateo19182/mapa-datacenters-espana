@@ -1,4 +1,88 @@
 # Novedades revisadas. La fecha de incorporación y la del hecho se conservan por separado.
+- id: iron-madrid-fases-20261017
+  fecha: 2026-10-17
+  tipo: proyecto
+  titulo: Iron Mountain separa las fases de Madrid y actualiza entregas
+  resumen: MAD-2 y MAD-3 prevén servicio en Q3 y Q4 de 2027, con 10 MW IT cada uno. Se distinguen los
+    3 MW IT operativos, los 20 MW IT en obra y el techo previsto de 79 MW IT del campus.
+  enlaces:
+    - href: /proyecto/iron-mountain-san-fernando-de-henares-mad
+      texto: Iron Mountain Madrid
+  fuentes:
+    - proyecto: iron-mountain-san-fernando-de-henares-mad
+      fuente: src-mad2-20261017
+    - proyecto: iron-mountain-san-fernando-de-henares-mad
+      fuente: src-mad3-20261017
+- id: alto-sp01-calendario-20261017
+  fecha: 2026-10-17
+  tipo: proyecto
+  titulo: ALTO actualiza el calendario de SP01
+  resumen: El operador prevé 10 MW IT en octubre de 2027, 25 MW acumulados en enero de 2028 y 70 MW al
+    completar el campus en Q1 de 2030. La primera fase está en obra; los hitos posteriores son
+    previstos.
+  enlaces:
+    - href: /proyecto/alto-infrastructure-escuzar-sp01
+      texto: SP01, Escúzar
+  fuentes:
+    - proyecto: alto-infrastructure-escuzar-sp01
+      fuente: src-sp01-20261017
+- id: hscale-bcn1-desglose-20261017
+  fecha: 2026-10-17
+  tipo: proyecto
+  titulo: HSCALE distingue el plan de BCN1 y la obra actual
+  resumen: El operador publica 50 MW IT planificados, 10 MW en obra sin tipificar y 80 MVA
+    disponibles. La primera fase prevé servicio en Q4 de 2026, sin apertura confirmada. Las
+    magnitudes se conservan por separado.
+  enlaces:
+    - href: /proyecto/hscale-cerdanyola-parc-alba
+      texto: HSCALE BCN1
+  fuentes:
+    - proyecto: hscale-cerdanyola-parc-alba
+      fuente: src-hscale-bcn1-20261017
+    - proyecto: hscale-cerdanyola-parc-alba
+      fuente: src-hscale-inventario-20261017
+- id: apto-ignis-conexion-20261017
+  fecha: 2026-10-17
+  fecha_hecho: 2026-07-14
+  tipo: proyecto
+  titulo: Incorporado el acuerdo de conexión de Apto e IGNIS
+  resumen: El acuerdo incluye 82 MW de acceso y conexión para Fuenlabrada e infraestructura eléctrica
+    por desarrollar. No tipifica carga IT ni acredita energización o permiso incorporado al
+    registro; no se suma a los 40 MW de subestación anteriores.
+  enlaces:
+    - href: /proyecto/apto-fuenlabrada-madrid-one
+      texto: Apto Fuenlabrada
+  fuentes:
+    - proyecto: apto-fuenlabrada-madrid-one
+      fuente: src-ignis-20260714
+- id: arsys-logrono-alcance-20261017
+  fecha: 2026-10-17
+  tipo: proyecto
+  titulo: Arsys Logroño distingue salas en uso y capacidad de diseño
+  resumen: El reportaje publicado el 15 de octubre identifica tres salas en uso y una cuarta pendiente. Los 6 MW
+    publicados por Arsys quedan sin tipo ni entrega confirmados por sala. No se atribuyen GPU a este
+    edificio.
+  enlaces:
+    - href: /proyecto/arsys-logrono
+      texto: Arsys Logroño
+  fuentes:
+    - proyecto: arsys-logrono
+      fuente: src-innovacion-20261017
+    - proyecto: arsys-logrono
+      fuente: src-visita-dcd-20261015
+- id: data4-dc03-diseno-20261017
+  fecha: 2026-10-17
+  tipo: proyecto
+  titulo: DATA4 Alcobendas incorpora el diseño identificado de DC03
+  resumen: La constructora identifica DC03 con 12 MW IT de diseño y dos entregas previstas de 6 MW en
+    2024 y 2025. La página no confirma recepción; esos MW no se incorporan a capacidad operativa ni
+    se suman al techo del campus.
+  enlaces:
+    - href: /proyecto/data4-alcobendas-mad01
+      texto: DATA4 Alcobendas, DC03
+  fuentes:
+    - proyecto: data4-alcobendas-mad01
+      fuente: src-capingelec-dc03
 - id: kumo-agua-20261017
   fecha: 2026-10-17
   tipo: proyecto

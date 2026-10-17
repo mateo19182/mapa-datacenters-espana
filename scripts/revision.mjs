@@ -9,6 +9,7 @@ import { z } from 'zod'
 import { presentacionProyecto } from '../src/lib/proyecto-presentacion.js'
 import { pistasRevision } from '../src/lib/revision-presentacion.js'
 import { claseFallo } from './source-state.mjs'
+import { clasificarCambios } from './source-review.mjs'
 
 const fecha = z.string().regex(/^\d{4}-\d{2}-\d{2}$/).refine((s) => !Number.isNaN(Date.parse(s)) && new Date(s).toISOString().slice(0, 10) === s, 'Fecha inválida')
 const hallazgo = z.object({
@@ -75,9 +76,15 @@ export function fusionarHuellas(base, entrantes) {
     if (candidata && (candidata.visto ?? '') >= (siguiente.visto ?? '')) {
       const detecciones = candidatas.filter((l) => l.hash === candidata.hash)
         .map((l) => l.detectado ?? l.visto).filter(Boolean).sort()
+      const comparacion = candidatas.filter((l) => l.hash === candidata.hash && l.comparacion)
+        .sort((a, b) => Number(b.comparacion.hash_referencia === siguiente.hash) - Number(a.comparacion.hash_referencia === siguiente.hash))[0]?.comparacion
       siguiente.pendiente = {
         hash: candidata.hash, longitud: candidata.longitud,
         detectado: detecciones[0], visto: candidata.visto,
+        ...(comparacion ? { comparacion } : {}),
+      }
+      if (siguiente.pendiente.comparacion?.referencia === 'aceptada' && siguiente.pendiente.comparacion.hash_referencia !== siguiente.hash) {
+        siguiente.pendiente.comparacion = { ...siguiente.pendiente.comparacion, referencia: 'observacion' }
       }
     } else delete siguiente.pendiente
 
@@ -146,7 +153,7 @@ export function prepararRevision(documento, { borradores = [], pendientes = {}, 
     for (const h of previsiones) hitos.push({ id: s.id, nombre: s.nombre, href: `/proyecto/${s.id}#cronologia`, fecha: h.fecha, hito: h.titulo, tipo: 'proyecto' })
     if (!['operativo', 'ampliacion_en_construccion', 'parcialmente_operativo', 'cancelado', 'paralizado'].includes(s.estado) && s.fecha_puesta_en_servicio && finPeriodo(s.fecha_puesta_en_servicio) < hoy && !previsiones.some((h) => h.fecha === s.fecha_puesta_en_servicio)) hitos.push({ id: s.id, nombre: s.nombre, href: `/proyecto/${s.id}#cronologia`, fecha: s.fecha_puesta_en_servicio, hito: 'Puesta en servicio prevista en la ficha', tipo: 'proyecto' })
   }
-  return { generado: hoy, hallazgos, pistas: pistasRevision(pendientes), revision_factual: { registros, pendientes: registros.filter((r) => r.vencida).length }, comprobacion_automatica: { fuentes, registradas: fuentes.length, con_observacion: fuentes.filter((f) => f.comprobada).length, ultima_observacion: fuentes.map((f) => f.fecha).filter(Boolean).sort().at(-1) ?? null, rotas: fuentes.filter((f) => f.clase === 'rota').length, bloqueadas: fuentes.filter((f) => f.clase === 'bloqueada').length, errores: fuentes.filter((f) => f.clase === 'error').length, cambios_pendientes: fuentes.filter((f) => f.cambio_pendiente).length }, hitos_vencidos: hitos.sort((a, b) => a.fecha.localeCompare(b.fecha)) }
+  return { generado: hoy, hallazgos, pistas: pistasRevision(pendientes), revision_factual: { registros, pendientes: registros.filter((r) => r.vencida).length }, comprobacion_automatica: { fuentes, registradas: fuentes.length, con_observacion: fuentes.filter((f) => f.comprobada).length, ultima_observacion: fuentes.map((f) => f.fecha).filter(Boolean).sort().at(-1) ?? null, rotas: fuentes.filter((f) => f.clase === 'rota').length, bloqueadas: fuentes.filter((f) => f.clase === 'bloqueada').length, errores: fuentes.filter((f) => f.clase === 'error').length, cambios_pendientes: fuentes.filter((f) => f.cambio_pendiente).length, revision_cambios: clasificarCambios(fuentes, huellas) }, hitos_vencidos: hitos.sort((a, b) => a.fecha.localeCompare(b.fecha)) }
 }
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   if (process.argv[2] !== '--validar-borradores') throw new Error('Uso: revision.mjs --validar-borradores research/hallazgos.yaml')
