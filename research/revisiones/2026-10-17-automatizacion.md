@@ -74,10 +74,17 @@ altas o críticas; un fallo del registro se presenta como auditoría incompleta.
 - `actionlint` 1.7.12, sintaxis Bash, verificación systemd y `git diff --check` correctos.
 - Ejecución real de la puerta `check-npm-audit.mjs`: cero vulnerabilidades altas y críticas.
 
-La prueba remota del workflow requiere despachar la rama una vez publicada. El parámetro
-opcional `fuente` permite una prueba parcial con una URL registrada, solo fuera de `main`.
-La producción sigue comprobando el conjunto completo. Esta revisión local no afirma
-haber completado todavía ese despacho remoto ni una investigación real de 45 minutos.
+Se completaron dos ensayos remotos de la rama, sin publicar un PR técnico. El
+[primero](https://github.com/mateo19182/mapa-datacenters-espana/actions/runs/39031389562)
+comprobó una referencia BOE, REE, simulación de propuestas, validación estricta y
+conservación de informes y texto. El resumen identifica alcance parcial: una fuente
+de 1.021. Después se eliminó solo la caché de texto creada por ese ensayo.
+
+El [segundo](https://github.com/mateo19182/mapa-datacenters-espana/actions/runs/39031525445)
+recuperó el respaldo del primer ensayo mediante download-artifact y completó la misma
+consulta parcial. Se verificaron sus metadatos y el éxito del paso de descarga.
+`main` sigue comprobando el conjunto completo. No se lanzó una investigación autónoma
+de 45 minutos durante estas pruebas.
 
 Estos cambios conservan memoria y hacen visibles los fallos. No demuestran por sí solos
 que las propuestas sean más exactas; fuentes, discrepancias y decisiones siguen
