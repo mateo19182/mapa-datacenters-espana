@@ -56,24 +56,24 @@ fases:
     estado: anunciado
     superficie_m2: 156301
     fuentes: [src-1]
-    nota: >-
-      Un edificio de centro de datos de 156.301 m² construidos y 41.868 m² de ocupación en
-      planta, en dos niveles con seis data halls por planta, más un edificio de oficinas de
-      5.481 m² en tres plantas.
-
+    nota: Un edificio de centro de datos de 156.301 m² construidos y 41.868 m² de ocupación en planta,
+      en dos niveles con seis data halls por planta, más un edificio de oficinas de 5.481 m² en tres
+      plantas. El Acuerdo prevé funcionamiento en el tercer trimestre de 2029 y ejecución durante dos
+      años desde la aprobación definitiva del PIGA.
+    fecha_puesta_en_servicio: "2029"
 conexion_electrica:
-  subestacion: "Dos subestaciones eléctricas propias de transformación 220/132 kV, más la subestación integrada en el propio edificio; suministro desde las SET María 220 kV y Los Vientos 220 kV"
+  subestacion: Dos subestaciones eléctricas propias de transformación 220/132 kV, más la subestación
+    integrada en el propio edificio; suministro desde las SET María 220 kV y Los Vientos 220 kV
   tension_kv: 220
-  titular_red: "Red Eléctrica de España — SET María 220 kV y SET Los Vientos 220 kV"
+  titular_red: Red Eléctrica de España — SET María 220 kV y SET Los Vientos 220 kV
   mw_solicitados: null
   mw_concedidos: 227.4
-  fuentes: [src-1, src-4]
-  nota: >-
-    "Se proyecta la construcción de dos subestaciones eléctricas para transformar la
-    electricidad de 220 kV a 132 kV, desde las que se conducirá el suministro hasta la
-    subestación integrada en el propio edificio de centro de datos mediante canalización
-    enterrada". Las subestaciones se ubicarán en el suelo no urbanizable genérico al otro
-    lado de la carretera A-2101. No consta el nudo de conexión ni la potencia de acceso.
+  fuentes:
+    - src-1
+    - src-4
+  nota: Dos subestaciones privadas 220/132 kV recibirán 81 MW de María 220 kV y 146,4 MW de Los
+    Vientos 220 kV. El BOA documenta 227,4 MW de demanda concedida y prohíbe interconectar ambos
+    embarrados aguas abajo.
 
 superficie_parcela_m2: 288000
 superficie_construida_m2: 156301
@@ -159,7 +159,7 @@ incertidumbres:
     fuentes: [src-2]
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: 2026-10-17
 
 fuentes:
   - id: src-1
@@ -168,7 +168,7 @@ fuentes:
     editor: "Boletín Oficial de Aragón"
     tipo: oficial
     fecha_publicacion: "2026-08-14"
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "Implantación de un edificio destinado al alojamiento, procesamiento y gestión de datos, que contará con una potencia total de 144 MW IT. La superficie construida del edificio será de 156.301 m², con una ocupación en planta de 41.868 m²."
   - id: src-2
     url: "https://query.wikidata.org/sparql"
@@ -191,7 +191,7 @@ fuentes:
     editor: "Boletín Oficial de Aragón"
     tipo: oficial
     fecha_publicacion: "2026-08-14"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: "la inversión estimada asciende a 1.224,8 millones de euros, correspondiente a una capacidad total de 144 MW IT. [...] el promotor de la iniciativa dispone de energía garantizada para su puesta en marcha, con una potencia total de demanda garantizada de 227,4 MW, mediante un permiso de demanda de 81 MW asociado a la subestación María 220 kV y otro de 146,4 MW asociado a la subestación Los Vientos 220 kV. [...] Merlin ha declarado un PUE de 1,15, sustancialmente inferior a la media europea de 1,46 y global de 1,54 [...] mientras que la tecnología de refrigeración de circuito cerrado empleada prescinde del consumo de agua"
   - id: src-5
     url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1462255950606"
@@ -199,7 +199,7 @@ fuentes:
     editor: "Boletín Oficial de Aragón"
     tipo: oficial
     fecha_publicacion: "2026-08-14"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: "la información socio laboral reflejada en la memoria concluye con una estimación sobre la generación de empleo de 5.040 puestos de trabajo durante la fase de construcción (1.109 directos, 2.722 indirectos y 1.209 inducidos), mientras que durante la fase de explotación se crearán 520 puestos de trabajo (196 directos, 216 indirectos y 108 inducidos)."
   - id: src-6
     url: "https://www.elperiodicodearagon.com/aragon/2026/03/14/merlin-levantara-gran-centro-datos-127939373.html"
@@ -231,7 +231,7 @@ fuentes:
     editor: "MERLIN Properties SOCIMI, S.A."
     tipo: empresa
     fecha_publicacion: "2026-07-22"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: "El proyecto se desarrollará sobre una superficie de 28,8 hectáreas en el municipio de Botorrita, asociado a las subestaciones de Vientos (Muel) y María (María de Huerva)."
   - id: src-10
     url: "https://www.eldiario.es/aragon/economia/forestalia-merlin-socimi-espanola-impulsara-botorrita-centro-datos-adquirido-promotora-renovables_1_13399203.html"

@@ -13,11 +13,12 @@ ubicacion:
   municipio: "Albelda de Iregua"
   provincia: "La Rioja"
   ccaa: "La Rioja"
-  direccion: "Parcela cedida de 13.000 m²; 5.000 m² destinados al centro"
+  direccion: Antiguo Recinto Ferial de Albelda de Iregua, parcela de 13.000 m² con 5.000 m² previstos
+    para el Centro del Dato
   lat: 42.3560509
   lon: -2.4736796
   precision: municipio
-  fuentes: [src-eldiario, src-osm]
+  fuentes: [ src-eldiario, src-osm, src-larioja-20260127 ]
 
 estado: en_tramitacion
 estado_detalle: >-
@@ -35,7 +36,7 @@ estado_detalle: >-
   para la incubadora de proyectos de IA y tecnologías del lenguaje, cuyo Centro del
   Dato se sitúa en Albelda. No se ha localizado confirmación de que la parte
   constructiva del centro de datos se haya licitado ni ejecutado.
-estado_fuentes: [src-eldiario, src-ep]
+estado_fuentes: [ src-eldiario, src-ep, src-larioja-20260127 ]
 
 potencia: []
 
@@ -50,16 +51,12 @@ incertidumbres:
     descripcion: "No consta ninguna cifra de potencia eléctrica ni de carga TI."
     fuentes: [src-eldiario]
   - campo: estado
-    descripcion: >-
-      La previsión era tener el centro ejecutado en junio de 2026. Lo que el Gobierno
-      de La Rioja afirmó en mayo de 2026 es que estaría lista «la infraestructura
-      tecnológica de la Inteligencia Artificial de su espacio de datos», y su
-      argumento para no devolver fondos es precisamente que el convenio obliga a
-      contar con «un espacio» y no dice nada de construir un centro de datos. No
-      queda claro si el emplazamiento sigue siendo un proyecto de centro de datos
-      físico, y no se ha localizado confirmación de puesta en servicio a agosto de
-      2026.
-    fuentes: [src-eldiario, src-ep]
+    descripcion: La nota oficial de 27 de enero de 2026 adjudica suministros y servicios de una
+      incubadora, con ejecución prevista en junio. Enmayo el Gobierno distingue el espacio de datos
+      comprometido con fondos europeos de la construcción de un CPD. No se ha localizado recepción
+      de un centro físico ni capacidades técnicas que permitan darlo por operativo al vencer el
+      plazo.
+    fuentes: [ src-eldiario, src-ep, src-larioja-20260127 ]
   - campo: inversion_anunciada_eur
     descripcion: >-
       Se manejan cifras distintas: 14,5 millones (elDiario.es, abril de 2025), 14
@@ -67,9 +64,14 @@ incertidumbres:
       21 millones el importe de fondos europeos en riesgo). No se sustituye el valor
       registrado.
     fuentes: [src-eldiario, src-ep]
+  - campo: fecha_puesta_en_servicio
+    descripcion: La ficha oficial contiene una cabecera genérica errónea «01 Agosto 2017». El bloque de
+      la noticia y la hemeroteca oficial coinciden en 27/01/2026. Junio 2026 es una previsión de
+      ejecución del contrato tecnológico, no una apertura física contrastada.
+    fuentes: [ src-larioja-20260127 ]
 
 confianza: baja
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
   - id: src-eldiario
@@ -78,7 +80,7 @@ fuentes:
     editor: "elDiario.es La Rioja"
     tipo: prensa_general
     fecha_publicacion: "2025-04-02"
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: >-
       14,5 millones de euros, financiado por Fondos Europeos MMR–Next Generation
       [...] 5.000 metros cuadrados para la construcción del centro.
@@ -95,7 +97,7 @@ fuentes:
     editor: "Europa Press"
     tipo: prensa_general
     fecha_publicacion: "2026-05-21"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       El portavoz del Gobierno de La Rioja, Alfonso Domínguez, ha avanzado hoy en el
       pleno del Parlamento de La Rioja que el espacio de datos para la Inteligencia
@@ -106,3 +108,11 @@ fuentes:
       devolver ni un euro" [...] el plazo límite para los fondos europeos es el 30 de
       junio y "la infraestructura tecnológica de la Inteligencia Artificial de su
       espacio de datos está preparada para funcionar en junio".
+  - id: src-larioja-20260127
+    url: https://actualidad.larioja.org/noticia?n=not-el-gobierno-de-la-rioja-adjudica-a-telefonica-soluciones-de-informatica-y-comunicaciones-de-es
+    titulo: Adjudicación de suministros y servicios para la incubadora de IA y Tecnologías del Lenguaje
+    editor: Gobierno de La Rioja
+    tipo: oficial
+    fecha_publicacion: 2026-01-27
+    fecha_consulta: "2026-10-17"
+    cita: El importe del contrato, financiado a través de fondos europeos, asciende a 2.541.000 euros

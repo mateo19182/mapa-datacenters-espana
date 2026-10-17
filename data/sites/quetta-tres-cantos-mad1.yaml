@@ -70,7 +70,7 @@ incertidumbres:
     fuentes: [src-1]
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
   - id: src-1
@@ -79,7 +79,7 @@ fuentes:
     editor: "Azora"
     tipo: empresa
     fecha_publicacion: "2025-12-10"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       Quetta inicia las obras de su Data Center en Tres Cantos (Madrid) con una potencia duplicada
       hasta los 20 MW, consolidando sus capacidades en el principal mercado de España ... con
@@ -90,7 +90,7 @@ fuentes:
     titulo: "Centro de Proceso de Datos y Sede Corporativa de Quetta en Tres Cantos"
     editor: "Grupo TYPSA"
     tipo: empresa
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       Cliente Quetta Tres Cantos. Año 2025. Superficie construida 11.880 m2. Edificio para CPD con
       una superficie de 11.000 m². CPD de tipo Colocation Edge, operado con energía 100 %

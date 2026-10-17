@@ -8,14 +8,18 @@ propietario: "Novagrid Hub, S.L. (Boxleo TIC, Roberna Inversiones e Ivcus Holdin
 modelo: desconocido
 
 ubicacion:
-  municipio: "Elx / Elche"
-  provincia: "Alicante"
-  ccaa: "Comunitat Valenciana"
-  direccion: "Sector E-49, ampliación de Elche Parque Empresarial, pedanía de Torrellano/Saladas"
-  lat: 38.2896
-  lon: -0.5825
-  precision: aproximada
-  fuentes: [src-1, src-2, src-3]
+  municipio: Elx / Elche
+  provincia: Alicante
+  ccaa: Comunitat Valenciana
+  direccion: Sector E-49, ampliación de Elche Parque Empresarial, pedanía de Torrellano/Saladas
+  lat: null
+  lon: null
+  precision: municipio
+  fuentes:
+    - src-1
+    - src-2
+    - src-3
+  no_derivar: true
 
 estado: anunciado
 estado_detalle: >-
@@ -47,11 +51,9 @@ incertidumbres:
       podría alimentar al resto del sector, según el gerente de Pimesa.
     fuentes: [src-3]
   - campo: operador
-    descripcion: >-
-      Economía Digital (16/04/2026) aporta el accionariado y el objeto social, pero sigue sin
-      constar si Novagrid Hub operará el centro o solo lo promoverá. La sociedad tiene
-      capital social de 4.002 euros, de modo que la financiación del proyecto no procederá
-      de recursos propios.
+    descripcion: La información societaria no aclara si Novagrid operará el centro o solo lo promoverá,
+      ni la financiación del proyecto. El capital social por sí solo no identifica los recursos
+      disponibles.
     fuentes: [src-1, src-3, src-4]
   - campo: precio_suelo
     descripcion: >-
@@ -62,8 +64,14 @@ incertidumbres:
       proyecto sino el precio del suelo.
     fuentes: [src-1, src-2, src-4]
 
+  - campo: ubicacion
+    descripcion: Las noticias identifican siete parcelas del futuro E-49, pero no publican un plano o
+      pin que vincule el punto anterior al suelo del centro de datos.
+    fuentes:
+      - src-2
+      - src-3
 confianza: baja
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: 2026-10-17
 
 fuentes:
   - id: src-1
@@ -80,7 +88,7 @@ fuentes:
     editor: "Alicante Plaza"
     tipo: prensa_general
     fecha_publicacion: "2026-01-13"
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "En este caso, PLD Space por 2,8 millones de euros, y Novagrid por 3,6 millones de euros. [...] En cuanto a Novagrid Hub, dedicada a centros de gestión de datos. Su terreno son siete parcelas de 102.351 metros, con la parcela más grande de 53.700 metros."
   - id: src-3
     url: "https://alicanteplaza.es/alicanteplaza/elcheplaza/elche-parque-empresarial-ya-tiene-lista-su-reparcelacion-obras-a-principios-de-2027-por-375-millones"
@@ -88,7 +96,7 @@ fuentes:
     editor: "Alicante Plaza"
     tipo: prensa_general
     fecha_publicacion: "2026-07-16"
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "En el caso del centro de datos, por ejemplo, el gerente del medio municipal, Antonio Martínez, añadía que dado que requerirá de un gran suministro eléctrico, ha ahorrado al proyecto de urbanización la instalación de centros de transformación, porque será suficiente la subestación eléctrica de la compañía."
   - id: src-4
     url: "https://www.economiadigital.es/galicia/empresas/tino-fernandez-altia-desembarca-negocio-centros-datos-macquarie.html"

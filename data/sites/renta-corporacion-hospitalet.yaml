@@ -1,5 +1,6 @@
 id: renta-corporacion-hospitalet
-nombre: "Renta Corporación — Carrer 42 (L'Hospitalet de Llobregat)"
+nombre: Renta Corporación — Carretera del Mig, L’Hospitalet de Llobregat
+
 alias:
   - "Renta Corporation Barcelona"
 tipo: edificio
@@ -7,12 +8,14 @@ propietario: "Renta Corporación"
 modelo: desconocido
 
 ubicacion:
-  municipio: "L'Hospitalet de Llobregat"
-  provincia: "Barcelona"
-  ccaa: "Cataluña"
-  direccion: "Carrer 42, L'Hospitalet de Llobregat"
-  precision: aproximada
-  fuentes: [src-1]
+  municipio: L'Hospitalet de Llobregat
+  provincia: Barcelona
+  ccaa: Cataluña
+  direccion: Antigua planta de BASF y Stahl, Carretera del Mig, L’Hospitalet de Llobregat
+  precision: municipio
+  fuentes:
+    - src-2
+    - src-3
 
 estado: anunciado
 estado_detalle: >-
@@ -39,22 +42,18 @@ incertidumbres:
     descripcion: "No se ha publicado ninguna cifra de potencia."
     fuentes: [src-1]
   - campo: estado
-    descripcion: >-
-      Sin licencia ni expediente verificado. El anuncio es de julio de 2021 y no
-      se ha localizado información pública posterior sobre el desarrollo, pese a
-      que Baxtel sigue dando 2027 como año previsto. No puede descartarse que el
-      proyecto de centro de datos se haya abandonado en favor del uso logístico.
+    descripcion: El anuncio contrastado es de julio de 2021; no se ha localizado licencia, comienzo de
+      obra ni confirmación reciente del promotor. La falta de novedades no acredita abandono o
+      cancelación.
     fuentes: [src-1, src-2, src-3]
   - campo: ubicacion
-    descripcion: >-
-      Baxtel sitúa la promoción en «Carrer 42»; La Vanguardia y EjePrime la
-      sitúan en la Carretera del Mig, sobre la antigua planta de BASF y Stahl.
-      Ambas direcciones están en L'Hospitalet de Llobregat y podrían ser frentes
-      distintos de la misma parcela. No se cambia la dirección registrada.
+    descripcion: Se conserva la dirección Carretera del Mig que publicó la prensa contemporánea a la
+      compra. Carrer 42 procede del directorio Baxtel y no se ha acreditado que corresponda a la misma
+      parcela. No se asignan coordenadas.
     fuentes: [src-1, src-3]
 
 confianza: baja
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: 2026-10-17
 
 fuentes:
   - id: src-1
@@ -73,7 +72,7 @@ fuentes:
     editor: "Data Center Dynamics"
     tipo: prensa_especializada
     fecha_publicacion: "2021-07-30"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       The company has acquired a 16,500 sqm (177,600 sq ft) parcel of land in
       Hospitalet de Llobregat on which it plans to build a data center and three
@@ -88,7 +87,7 @@ fuentes:
     editor: "EjePrime"
     tipo: prensa_especializada
     fecha_publicacion: "2021-07-22"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       La inmobiliaria ha invertido 14 millones de euros en la compra de una
       parcela de 16.500 metros cuadrados de uso industrial y logístico en

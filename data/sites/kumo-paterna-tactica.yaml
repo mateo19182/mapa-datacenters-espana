@@ -12,20 +12,21 @@ ubicacion:
   municipio: "Paterna"
   provincia: "Valencia"
   ccaa: "Comunitat Valenciana"
-  direccion: "Parque Empresarial de Táctica, Paterna"
-  lat: 39.5191
-  lon: -0.4571
+  direccion: "Carrer del Corretger 31-33, Parque Empresarial Táctica, Paterna"
+  lat: 39.515955
+  lon: -0.4486038
   precision: aproximada
-  fuentes: [src-1]
+  no_derivar: true
+  fuentes: [src-centros-actual, src-diseno-valencia, src-mapa-valencia]
 
 estado: operativo
 estado_detalle: >-
-  Proyecto heredado de KIO Networks España, cuya compra completó El Corte Inglés en
-  noviembre de 2024. En junio de 2026 el centro estaba «plenamente operativo», había
-  superado las pruebas para la certificación Tier IV y se inició su comercialización tras
-  cerca de tres años de obra. Cinco Días lo describe como el que triplica la capacidad de
-  Kumo y sitúa la inversión «por encima de los 52 millones de euros».
-estado_fuentes: [src-1, src-4]
+  Centro de Kumo Networks, filial de El Corte Inglés, inaugurado en junio de 2026 según
+  el operador. La prensa publica 1.000 m² de salas IT, 2,4 MW totales y 1 MW para servidores.
+  Uptime Institute registra certificaciones Tier IV de diseño y de instalaciones para el
+  centro de Valencia. La carta de diseño de la fase I limita su alcance a 954 kW IT;
+  esa cifra no se toma como comprobación de la capacidad actualmente construida.
+estado_fuentes: [src-1, src-4, src-centros-actual, src-diseno-valencia, src-uptime-valencia]
 fecha_puesta_en_servicio: "2026-06"
 
 potencia:
@@ -44,22 +45,29 @@ potencia:
     fecha_dato: "2026-06-12"
     fuentes: [src-1, src-2]
     nota: "«una potencia de 2,4 MW, de los que 1 MW corresponden a servidores»."
+  - tipo: it
+    valor_mw: 0.954
+    ambito: fase
+    referencia: "Fase I, límite de carga IT del diseño certificado Tier IV"
+    estado_asociado: anunciado
+    fecha_dato: "2025-12-03"
+    fuentes: [src-diseno-valencia]
+    nota: >-
+      El certificado limita el diseño a 954 kW IT y no acredita el entorno construido.
+      Se conserva como capacidad de diseño, separada del 1 MW publicado por la prensa.
 
 fases:
   - nombre: "Edificio Paterna"
     estado: operativo
     fecha_puesta_en_servicio: "2026-06"
-    superficie_m2: 1000
     fuentes: [src-1, src-2]
 
-superficie_construida_m2: 1000
+superficie_construida_m2: null
 inversion_anunciada_eur: 50000000
 refrigeracion: >-
   Sistema de refrigeración alojado en el sótano del edificio: refrigeración por CO2 como
   refrigerante natural —sin gases fluorados— apoyada en 71 pozos de geotermia, con dos
-  depósitos de CO2 de 9.000 litros cada uno y diez bombas (dos por circuito). El operador
-  declara reaprovechamiento del calor residual para calefacción de distrito y certificación
-  LEED Platino del edificio.
+  depósitos de CO2 de 9.000 litros cada uno y diez bombas (dos por circuito).
 
 agua:
   circuito: cerrado
@@ -71,7 +79,7 @@ agua:
     El operador explica su declaración de «cero insumo» como un llenado inicial del
     circuito, sin reposición periódica por evaporación. El sistema contiene agua; no
     hay volumen de llenado, consumo medido ni WUE publicados en las fuentes revisadas.
-  fuentes: [src-4, src-5, src-6, src-agua-circuito]
+  fuentes: [src-4, src-6, src-agua-circuito]
 
 incertidumbres:
   - campo: inversion_anunciada_eur
@@ -84,12 +92,36 @@ incertidumbres:
     fuentes: [src-1, src-2, src-4]
   - campo: estado
     descripcion: >-
-      A junio de 2026 el centro había superado las pruebas de certificación Tier IV pero no
-      consta la fecha de emisión del certificado por el Uptime Institute.
-    fuentes: [src-1, src-3]
+      El registro de Uptime confirma Tier IV de diseño y de instalaciones para CAMPUS DATA
+      CENTER SEDE Valencia. La vista consultada no publica la fecha de emisión ni la carga IT
+      certificada en obra. Los 954 kW proceden únicamente de la carta de diseño de la fase I.
+    fuentes: [src-uptime-valencia, src-diseno-valencia]
+  - campo: potencia
+    descripcion: >-
+      La prensa redondea la carga para servidores a 1 MW. El diseño certificado de la fase I
+      se limita a 954 kW IT. Difieren en fecha, ámbito y respaldo documental; no se suman ni
+      se toma el certificado de diseño como medida de la capacidad actualmente construida.
+    fuentes: [src-1, src-diseno-valencia]
+  - campo: superficie_construida_m2
+    descripcion: >-
+      Los 1.000 m² publicados corresponden a salas IT. El complejo también incorpora oficinas,
+      por lo que esa cifra no se registra como superficie construida del edificio.
+    fuentes: [src-1, src-4]
+  - campo: refrigeracion
+    descripcion: >-
+      El certificado LEED Platino que enlaza actualmente el operador identifica KIO Networks
+      Murcia, abril de 2015. No acredita esa certificación para Paterna. Tampoco se ha localizado
+      prueba de una red de calefacción de distrito en servicio vinculada a este edificio.
+    fuentes: [src-5, src-certificaciones, src-leed-murcia]
+  - campo: ubicacion
+    descripcion: >-
+      La carta de certificación de diseño indica Corretger 31; Maps y el contacto del operador
+      indican el 33. El punto corresponde al centro de datos nombrado en Maps, con precisión
+      aproximada, sin identificar una sala ni resolver la numeración del conjunto.
+    fuentes: [src-certificaciones, src-diseno-valencia, src-mapa-valencia]
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
   - id: src-agua-circuito
@@ -106,7 +138,7 @@ fuentes:
     editor: "Economía Digital"
     tipo: prensa_general
     fecha_publicacion: "2026-06-12"
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "La instalación cuenta con 1.000 metros cuadrados de salas IT y una potencia de 2,4 MW, de los que 1 MW corresponden a servidores. El complejo incorpora también oficinas anexas en el municipio valenciano."
   - id: src-2
     url: "https://murciaplaza.com/murciaplaza/el-corte-ingles-completa-la-compra-de-kio-espana-y-toma-el-control-de-su-centro-de-datos-en-murcia"
@@ -129,7 +161,7 @@ fuentes:
     editor: "Cinco Días"
     tipo: prensa_general
     fecha_publicacion: "2026-06-12"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: "Cuenta con 1.000 metros cuadrados de salas de tecnología de la información, y dispone de un sistema de refrigerado que no utiliza gases fluorados (como los que se usan en los aparatos de aire acondicionado tradicionales), sino que emplea el propio CO2 como principal herramienta para, además, limitar el consumo de agua. Dichos sistemas se sitúan en el sótano del edificio, con hasta 71 pozos de geotermia, algo pionero en este tipo de centros en España. [...] La inversión se coloca por encima de los 52 millones de euros, según ha detallado la propia Kumo durante distintas fases de la construcción."
   - id: src-5
     url: "https://www.kumonetworks.es/sostenibilidad/"
@@ -144,5 +176,49 @@ fuentes:
     editor: "Kumo Networks"
     tipo: empresa
     fecha_publicacion: "2025-11-27"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: "Dentro del centro de datos de Paterna [...] Sirven para bombear el CO2 a las salas IT (o eléctricas) a través de 10 bombas (dos por circuito). [...] Con una capacidad de 9000 litros cada uno, se han fabricado a medida en Alemania"
+  - id: src-centros-actual
+    url: https://kumonetworks.es/centros-de-datos
+    titulo: Centros de datos de Kumo, Paterna y Espinardo
+    editor: Kumo Networks
+    tipo: empresa
+    fecha_consulta: "2026-10-17"
+    cita: "En junio de 2026 inauguramos nuestro segundo Centro de Datos en España, en el Parque Empresarial Táctica, en Paterna (Valencia)."
+  - id: src-certificaciones
+    url: https://kumonetworks.es/certificaciones
+    titulo: Certificaciones y documentos por centro
+    editor: Kumo Networks
+    tipo: empresa
+    fecha_consulta: "2026-10-17"
+    cita: "Tier IV en diseño [...] Centro de Datos de Valencia [...] Tier IV en construcción [...] Centro de Datos de Murcia"
+  - id: src-diseno-valencia
+    url: https://content.kumonetworks.es/wp-content/uploads/kumo-tier4design-vlc.pdf
+    titulo: Tier IV Certification of Design Documents, Campus Data Center Sede Valencia, fase I
+    editor: Uptime Institute, documento publicado por Kumo
+    tipo: empresa
+    fecha_publicacion: "2025-12-03"
+    fecha_consulta: "2026-10-17"
+    cita: "limited by the stated total peak IT load of 954 kilowatts (kW) [...] makes no assurances as to the constructed environment"
+  - id: src-leed-murcia
+    url: https://content.kumonetworks.es/wp-content/uploads/kumo-leed.pdf
+    titulo: Certificado LEED Platinum de KIO Networks Murcia
+    editor: US Green Building Council / Green Building Certification Institute, publicado por Kumo
+    tipo: empresa
+    fecha_publicacion: "2015-04"
+    fecha_consulta: "2026-10-17"
+    cita: "KIO NETWORKS MURCIA [...] LEED FOR NEW CONSTRUCTION [...] PLATINUM [...] April 2015"
+  - id: src-uptime-valencia
+    url: https://uptimeinstitute.com/uptime-institute-awards/country/id/ES
+    titulo: Registro de Uptime Institute, Campus Data Center Sede Valencia
+    editor: Uptime Institute
+    tipo: empresa
+    fecha_consulta: "2026-10-17"
+    cita: "CAMPUS DATA CENTER SEDE Valencia [...] Tier IV Certification of Design Documents [...] Tier IV Certification of Constructed Facility"
+  - id: src-mapa-valencia
+    url: https://www.google.com/maps/place/Kumo+Networks+%7C+Valencia+%7C+Data+Center+Tier+IV/data=!4m6!3m5!1s0xd6045007a0c1757:0xdb2ec1f81618442c!8m2!3d39.515955!4d-0.4486038!16s%2Fg%2F11yp44kdhf
+    titulo: Kumo Networks Valencia, centro de datos en Corretger 33, Google Maps
+    editor: Google Maps
+    tipo: otro
+    fecha_consulta: "2026-10-17"
+    cita: "Kumo Networks | Valencia | Data Center Tier IV [...] C. del Corretger, 33, 46988 Paterna, Valencia"

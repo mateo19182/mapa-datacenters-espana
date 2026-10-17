@@ -68,6 +68,13 @@ fases:
     fuentes: [src-1]
     nota: "Ampliación de la generación renovable asociada e integración de almacenamiento."
 
+  - nombre: Fase 3 — ampliación TI
+    estado: anunciado
+    fecha_puesta_en_servicio: "2030"
+    nota: El Acuerdo prevé para el primer semestre de 2030 ampliar la potencia TI de DCM Data hasta 275
+      MW. Es calendario del proyecto, no puesta en servicio confirmada.
+    fuentes:
+      - src-1
 conexion_electrica:
   subestacion: "SE Magallón 220 kV (Red Eléctrica de España)"
   tension_kv: 220
@@ -134,7 +141,7 @@ incertidumbres:
     fuentes: [src-1, src-2]
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: 2026-10-17
 
 fuentes:
   - id: src-1
@@ -143,7 +150,7 @@ fuentes:
     editor: "Boletín Oficial de Aragón"
     tipo: oficial
     fecha_publicacion: "2025-12-02"
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "posibilitando que la potencia para el suministro de energía de la red de transporte, concedida por REE, sea de 70 MW para \"DCM Data\", 81 MW para \"DCM Dédalo\" y 146,5 MW para \"DCM Blue\"; en total 297,5 MW de demanda IT suministrada por la red de transporte."
   - id: src-2
     url: "https://query.wikidata.org/sparql"
@@ -158,7 +165,7 @@ fuentes:
     editor: "Boletín Oficial de Aragón"
     tipo: oficial
     fecha_publicacion: "2025-12-02"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: "Inversión Capex DCM Data 3.307.774.000,00 € Inversión Capex DCM Dédalo 3.323.320.000,00 € Inversión Capex DCM Blue 5.417.400.000,00 € Inversión Capex total 12.048.494.000,00 €"
   - id: src-4
     url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1424067523636"
@@ -166,7 +173,7 @@ fuentes:
     editor: "Boletín Oficial de Aragón"
     tipo: oficial
     fecha_publicacion: "2025-12-02"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: "En cuanto a la generación de empleo asociada a la implantación del proyecto \"Búfalo\", tanto en fase de construcción como de explotación se han considerado las siguientes ratios por MW IT, para cada uno de los centros de datos: - 35 empleos directos, indirectos e inducidos por MW IT en fase de construcción. - 3 empleos directos, indirectos e inducidos por MW IT en fase de operación. [...] Data center Potencia DC (MW IT) Empleo (F construcción) Empleo (F explotación) Data 275 9.625 825 Dédalo 275 9.625 825 Blue 450 15.750 1.350"
   - id: src-5
     url: "https://www.elperiodicodearagon.com/aragon/2026/03/14/merlin-levantara-gran-centro-datos-127939373.html"

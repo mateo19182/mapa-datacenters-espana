@@ -8,24 +8,30 @@ propietario: "Global Technical Realty (respaldada por KKR)"
 modelo: mayorista
 
 ubicacion:
-  municipio: "Cerdanyola del Vallès"
-  provincia: "Barcelona"
-  ccaa: "Cataluña"
-  direccion: "Parc de l'Alba, Cerdanyola del Vallès"
-  lat: 41.485618
-  lon: 2.1076426
-  precision: aproximada
-  fuentes: [src-1, src-2]
+  municipio: Cerdanyola del Vallès
+  provincia: Barcelona
+  ccaa: Cataluña
+  direccion: Parc de l'Alba, Cerdanyola del Vallès
+  lat: null
+  lon: null
+  precision: municipio
+  fuentes:
+    - src-1
+    - src-2
+  no_derivar: true
 
 estado: anunciado
-estado_detalle: >-
-  Primera entrada de Global Technical Realty en España. Parcela de 15.000 m² en
-  el Parc de l'Alba, en fase de planificación y sin calendario de desarrollo
-  publicado. Baxtel indica año previsto 2027. La compañía, respaldada por el
-  tercer fondo global de infraestructuras de KKR, anunció la adquisición del
-  suelo el 31 de julio de 2023; la venta la asesoró JLL en nombre de DCITE,
-  plataforma promovida por Nilo Partners y ADEQUA Real Estate.
-estado_fuentes: [src-1, src-3, src-4]
+estado_detalle: Primera entrada de Global Technical Realty en España. Parcela de 15.000 m² en el
+  Parc de l'Alba, en fase de planificación y sin calendario de obra confirmado por el operador.
+  Baxtel indica año previsto 2027. La compañía, respaldada por el tercer fondo global de
+  infraestructuras de KKR, anunció la adquisición del suelo el 31 de julio de 2023; la venta la
+  asesoró JLL en nombre de DCITE, plataforma promovida por Nilo Partners y ADEQUA Real Estate.
+
+estado_fuentes:
+  - src-1
+  - src-3
+  - src-4
+  - src-grupovia-20250507
 
 potencia:
   - tipo: it
@@ -40,6 +46,16 @@ potencia:
       new 16MW IT load facility". Es la capacidad que admite el emplazamiento, no
       una potencia contratada ni construida.
 
+  - tipo: no_especificado
+    valor_mw: 12
+    ambito: edificio
+    referencia: Capacidad prevista en la exposición de JG Ingenieros recogida por Grupo Vía
+    estado_asociado: anunciado
+    fecha_dato: 2025-05-07
+    fuentes:
+      - src-grupovia-20250507
+    nota: El resumen del acto cita 12 MW para GTR Cerdanyola y previsión 2026, sin tipificar la
+      magnitud. No sustituye los 16 MW IT del anuncio del operador.
 superficie_parcela_m2: 15000
 
 incertidumbres:
@@ -51,14 +67,20 @@ incertidumbres:
       de 2025 sigue citando 16 MW para este proyecto.
     fuentes: [src-1, src-3, src-5]
   - campo: estado
-    descripcion: >-
-      No se ha localizado licencia urbanística ni expediente ambiental. El último
-      anuncio público de la compañía es de julio de 2023 y no se ha encontrado
-      información posterior sobre el desarrollo.
-    fuentes: [src-1, src-3]
-
+    descripcion: No se ha localizado licencia ni confirmación de apertura. La previsión de operación en
+      2026 procede del resumen del acto de mayo de 2025; la compra corporativa de 2023 no fijaba
+      calendario.
+    fuentes:
+      - src-1
+      - src-3
+      - src-grupovia-20250507
+  - campo: ubicacion
+    descripcion: El punto anterior correspondía al Parc de l’Alba; las fuentes del proyecto no
+      identifican parcela ni pin de este edificio dentro del parque.
+    fuentes:
+      - src-3
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: 2026-10-17
 
 fuentes:
   - id: src-1
@@ -85,7 +107,7 @@ fuentes:
     editor: "Global Technical Realty"
     tipo: empresa
     fecha_publicacion: "2023-07-31"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       The site is located on Parc de l'Alba in Cerdanyola del Vallès which is 20
       kilometres from the centre of Barcelona. The 15,000 sq m plot has the
@@ -111,3 +133,11 @@ fuentes:
     cita: >-
       Global Technical Realty construirá un data center de 16MW en el Parc de
       l'Alba de Cerdanyola
+  - id: src-grupovia-20250507
+    url: https://grupovia.net/eventos/arquitectura/barcelona/2025/construccion-de-datacenters-barcelona/
+    titulo: Construcción de Data Centers Barcelona, 7 Mayo 2025
+    editor: Grupo Vía
+    tipo: otro
+    fecha_publicacion: 2025-05-07
+    cita: GTR con el proyecto de Cerdanyola que está previsto que entre en operativa en 2026 con 12 MW
+    fecha_consulta: 2026-10-17

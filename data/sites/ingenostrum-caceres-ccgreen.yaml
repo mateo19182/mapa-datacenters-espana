@@ -5,7 +5,7 @@ alias:
   - "Ecopolígono CCGreen"
 tipo: campus
 operador: "Ingenostrum"
-propietario: "Ingenostrum, S.L. (Nostrum Group)"
+propietario: "Ingenostrum, S.L. (Nostrum Group, adquirido por IREN)"
 modelo: mayorista
 
 ubicacion:
@@ -70,10 +70,14 @@ fases:
     estado: anunciado
     fecha_puesta_en_servicio: "2027"
     fuentes: [src-ti]
+    nota: "Calendario histórico de la memoria: 2027. No confirmado tras la previsión de 2028 para el
+      primer despliegue publicada en 2026; no acredita entrada en servicio."
   - nombre: "Fase posterior — 40 MW"
     estado: anunciado
     fecha_puesta_en_servicio: "2028"
     fuentes: [src-ti]
+    nota: "Calendario histórico de la memoria: 2028. No confirmado tras la previsión de 2028 para el
+      primer despliegue publicada en 2026; no acredita entrada en servicio."
 
 superficie_parcela_m2: 2000000
 
@@ -114,10 +118,11 @@ incertidumbres:
       Capellanías II y Montebola suma más de 548.000 m², que no son los mismos terrenos.
     fuentes: [src-ti, src-pex-expropiaciones]
   - campo: operador
-    descripcion: >-
-      El 7 de mayo de 2026 IREN Limited anunció un acuerdo para adquirir
-      Ingenostrum, S.L. (Nostrum Group), pendiente de condiciones de cierre.
-    fuentes: [src-iren]
+    descripcion: IREN confirma la adquisición de Ingenostrum/Nostrum. El 20-F fecha la compra del 100%
+      el 12 de junio de 2026 y el comunicado del 15 de junio confirma la operación. Es una operación
+      corporativa, no puesta en servicio de este emplazamiento. Los 490 MW corporativos de acceso no
+      se reparten entre campus.
+    fuentes: [ src-iren, src-iren-cierre-20260615, src-iren-fy2026 ]
   - campo: agua
     descripcion: >-
       No se ha localizado ninguna cifra de consumo de agua ni descripción del circuito de
@@ -126,7 +131,7 @@ incertidumbres:
     fuentes: [src-dcd-feb]
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
   - id: src-ti
@@ -134,7 +139,7 @@ fuentes:
     titulo: "Ecopolígono CCGreen: Cáceres acogerá el primer Campus Data Center neutro en carbono"
     editor: "Técnica Industrial"
     tipo: prensa_especializada
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: >-
       Campus Data Center CCGreen, un centro de datos de 70 MW IT [...] parque
       fotovoltaico de 520 MW (de los cuales 120 MW serán para autoconsumo).
@@ -143,7 +148,7 @@ fuentes:
     titulo: "El centro de datos CC Green será el «motor» de la ampliación de Capellanías II en Cáceres"
     editor: "Región Digital"
     tipo: prensa_general
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: >-
       De momento, tienen adjudicados 34 megavatios (MW) pero este centro de
       procesamiento de datos necesita unos 300 MW.
@@ -196,7 +201,7 @@ fuentes:
     editor: "IREN Limited"
     tipo: empresa
     fecha_publicacion: "2026-05-07"
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: >-
       IREN Limited has entered into an agreement to acquire Ingenostrum, S.L.
       (Nostrum Group) [...] approximately 490MW of secured, grid-connected power
@@ -210,3 +215,18 @@ fuentes:
     cita: >-
       Polígono Industrial Las Capellanías, Industrial Las Capellanías, Cáceres,
       Extremadura, España — lat 39.4862979, lon -6.4190250
+  - id: src-iren-cierre-20260615
+    url: https://iren.gcs-web.com/news-releases/news-release-details/iren-completes-acquisition-nostrum-group-expanding-ai-cloud
+    titulo: IREN Completes Acquisition of Nostrum Group Expanding AI Cloud Platform to Europe
+    editor: IREN
+    tipo: empresa
+    fecha_publicacion: 2026-06-15
+    fecha_consulta: "2026-10-17"
+    cita: completed the acquisition of Ingenostrum, S.L.
+  - id: src-iren-fy2026
+    url: https://www.sec.gov/Archives/edgar/data/1878848/000187884826000052/iren-20260630.htm
+    titulo: "IREN FY2026 Form 20-F, nota 9: adquisición de Ingenostrum"
+    editor: IREN / SEC
+    tipo: empresa
+    fecha_consulta: "2026-10-17"
+    cita: Group acquired 100% of the equity interests

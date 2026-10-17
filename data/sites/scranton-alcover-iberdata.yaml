@@ -37,18 +37,15 @@ potencia:
     estado_asociado: anunciado
     fecha_dato: "2026-02-10"
     fuentes: [src-1, src-2]
-    nota: >-
-      Es potencia en negociación, no concedida, y un mínimo declarado: 20 MW es además el umbral
-      a partir del cual la Generalitat puede considerar el proyecto de interés estratégico, lo que
-      resta valor a la cifra como dimensionamiento real de la instalación.
-
+    nota: La promotora negocia un suministro superior a 20 MW; no consta solicitud registrada ni permiso
+      concedido. La cifra es un umbral declarado, sin dimensionamiento TI publicado.
 conexion_electrica:
   titular_red: null
-  mw_solicitados: 20
-  nota: >-
-    La compañía declara estar «intentando asegurar más de 20 MW» con la compañía eléctrica local.
+  mw_solicitados: null
+  nota: La compañía declara estar «intentando asegurar más de 20 MW» con la compañía eléctrica local.
     No consta solicitud de acceso formalizada ni permiso concedido.
-  fuentes: [src-1]
+  fuentes:
+    - src-1
 
 incertidumbres:
   - campo: potencia
@@ -71,7 +68,7 @@ incertidumbres:
     fuentes: [src-1, src-2]
 
 confianza: baja
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: 2026-10-17
 
 fuentes:
   - id: src-1
@@ -94,7 +91,7 @@ fuentes:
     editor: "El Nacional — On Economia"
     tipo: prensa_general
     fecha_publicacion: "2026-02-10"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       la planta industrial de Iberboard Mill en Alcover (Alt Camp) ha estado inactiva ... el grupo
       ya proyecta el futuro de la ubicación bajo la marca Iberdata ... se han establecido contactos

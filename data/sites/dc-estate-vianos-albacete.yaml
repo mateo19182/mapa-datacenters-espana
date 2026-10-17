@@ -6,7 +6,8 @@ alias:
   - "Pure DC Vianos"
 tipo: campus
 operador: null
-propietario: "DC Estate Vianos, S.L. (socio único Blackberry AIF, S.L.; sociedad conjunta con EdgeMode)"
+propietario: DC Estate Solutions, JV de EdgeMode (50,1%) y Blackberry AIF (49,9%), a través de la
+  sociedad promotora local
 cliente_ancla: null
 modelo: mayorista
 
@@ -61,7 +62,18 @@ potencia:
     fecha_dato: "2026-06"
     fuentes: [src-1]
     nota: "Generación asociada al emplazamiento, no capacidad del centro de datos."
-
+  - tipo: no_especificado
+    valor_mw: 360
+    ambito: campus
+    referencia: Capacidad prevista por emplazamiento en el MD&A del 10-Q a 30 de junio de 2026
+    estado_asociado: anunciado
+    fecha_dato: 2026-06-30
+    fuentes:
+      - src-sec-10q-20260814
+    nota: El MD&A enumera cinco arrendamientos, incluido este emplazamiento, y prevé 360 MW por sitio.
+      No tipifica carga IT ni acredita capacidad entregada. Es una lectura distinta de los 300 MW
+      del nombre de la sociedad y de la previsión separada de una instalación de generación de 360
+      MW.
 superficie_parcela_m2: 988000
 superficie_construida_m2: null
 inversion_anunciada_eur: null
@@ -89,21 +101,39 @@ incertidumbres:
       la zona y que haría falta un ramal de unos 90 kilómetros para alimentar las turbinas.
     fuentes: [src-2]
   - campo: propietario
-    descripcion: >-
-      La titularidad puede cambiar: el acuerdo con Pure DC es un term sheet no vinculante con
-      60 días de exclusividad, condicionado a permisos y a un contrato con un hiperescalador.
-      Expansión añade que Pure DC prevé descartar dos de los cuatro emplazamientos, y que
-      Vianos y Cáceres son los que espera desarrollar.
-    fuentes: [src-3, src-4]
+    descripcion: "La titularidad puede cambiar: el acuerdo con Pure DC es un term sheet no vinculante
+      con 60 días de exclusividad, condicionado a permisos y a un contrato con un hiperescalador.
+      Expansión añade que Pure DC prevé descartar dos de los cuatro emplazamientos, y que Vianos y
+      Cáceres son los que espera desarrollar. La nota 1 del 10-Q a 30 de junio de 2026 establece una
+      JV 50,1%/49,9% desde el 22 de enero, que sustituye el reparto histórico 75%/25%. Los activos
+      documentados son participaciones en sociedades y derechos de arrendamiento, no la adquisición
+      de un CPD construido."
+    fuentes:
+      - src-3
+      - src-4
+      - src-sec-jv-20260630
   - campo: superficie_parcela_m2
     descripcion: >-
       Cadena SER cifra la superficie en cerca de 988.000 m² de suelo rústico; elDiario.es habla
       de «más de un centenar de hectáreas». Se registra la cifra más precisa publicada.
     fuentes: [src-1, src-2]
-
+  - campo: superficie_parcela_m2
+    descripcion: El 10-Q describe arrendamientos de 100 hectáreas para cada sociedad, incluida Vianos.
+      Es una cifra redondeada compatible con los 988.000 m² del proyecto recogidos por la prensa,
+      pero no sustituye una delimitación parcelaria del documento ambiental.
+    fuentes:
+      - src-1
+      - src-sec-jv-20260630
+  - campo: potencia
+    descripcion: El MD&A del 10-Q prevé 360 MW por cada uno de los cinco sitios, mientras los nombres de
+      las sociedades incluyen 300 MW. No explica el cambio ni si se refiere a carga IT o potencia
+      eléctrica total. Se conservan ambas lecturas y la generación separada, sin sumarlas ni
+      contarlas como operativas.
+    fuentes:
+      - src-sec-jv-20260630
+      - src-sec-10q-20260814
 confianza: baja
-ultima_verificacion: "2026-08-31"
-
+ultima_verificacion: 2026-10-17
 fuentes:
   - id: src-1
     url: "https://cadenaser.com/castillalamancha/2026/06/29/un-macrocentro-de-datos-para-ia-de-300-mw-pone-el-foco-en-vianos-para-su-desarrollo-tecnologico-radio-albacete/"
@@ -111,7 +141,7 @@ fuentes:
     editor: "Cadena SER"
     tipo: prensa_general
     fecha_publicacion: "2026-06-29"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       El proyecto, promovido por DC Estate Vianos S.L., se encuentra en fase inicial y ya ha
       iniciado su tramitación ante la Junta. La iniciativa contempla la creación de un complejo
@@ -126,7 +156,7 @@ fuentes:
     editor: "elDiario.es Castilla-La Mancha"
     tipo: prensa_general
     fecha_publicacion: "2026-08-06"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       La Administración autonómica ya ha remitido este documento a varios departamentos
       regionales y estatales, así como a diversos colectivos ecologistas, para la realización de
@@ -140,7 +170,7 @@ fuentes:
     editor: "Expansión"
     tipo: prensa_general
     fecha_publicacion: "2026-07-13"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       Oaktree adquirirá sociedades que tramitan la ubicación de centros en Cáceres, Vianos
       (Albacete), Córdoba y Palma del Río (también en Córdoba), cuando tengan los permisos y
@@ -153,7 +183,7 @@ fuentes:
     editor: "Edgemode, Inc. / U.S. Securities and Exchange Commission"
     tipo: empresa
     fecha_publicacion: "2026-07-06"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       On July 1, 2026, Edgemode, Inc. (the "Company") entered into a non-binding term sheet (the
       "Term Sheet") with a third-party purchaser (the "Purchaser") regarding the sale of the
@@ -177,3 +207,18 @@ fuentes:
     tipo: otro
     fecha_consulta: "2026-08-31"
     cita: "Vianos, Albacete, Castilla-La Mancha, España — lat 38.6328160, lon -2.5007956"
+  - id: src-sec-jv-20260630
+    url: https://www.sec.gov/Archives/edgar/data/1652958/000168316826006473/R9.htm
+    titulo: "EdgeMode 10-Q: sociedades, arrendamientos y participación en DC Estate Solutions, junio 2026"
+    editor: EdgeMode / SEC
+    tipo: empresa
+    fecha_consulta: 2026-10-17
+    cita: owned 50.1% by the Company and 49.9% by BAIF.
+  - id: src-sec-10q-20260814
+    url: https://www.sec.gov/Archives/edgar/data/1652958/000168316826006473/edgemode_i10q-063026.htm
+    titulo: EdgeMode, Form 10-Q a 30 de junio de 2026, MD&A, página 25
+    editor: EdgeMode / SEC EDGAR
+    tipo: empresa
+    fecha_publicacion: 2026-08-14
+    fecha_consulta: 2026-10-17
+    cita: planned to be 360 MW per site

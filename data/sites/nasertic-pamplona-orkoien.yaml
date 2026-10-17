@@ -14,25 +14,31 @@ ubicacion:
   provincia: "Navarra"
   ccaa: "Comunidad Foral de Navarra"
   direccion: "Calle Orkoien, s/n, 31011 Pamplona (sede central de Nasertic)"
-  lat: null
-  lon: null
-  precision: municipio
-  fuentes: [src-3, src-4]
+  lat: 42.8178661
+  lon: -1.6598458
+  precision: aproximada
+  no_derivar: true
+  fuentes: [src-4, src-visitas-2022, src-ampliacion-2023, src-mapa-orkoien]
 
 estado: operativo
 estado_detalle: >-
-  Nasertic gestiona y mantiene los dos centros de proceso de datos del Gobierno de Navarra,
-  que alojan los sistemas de la Administración foral y de las sociedades públicas de la CPEN:
-  historia clínica electrónica, portales educativos, tributos, expedientes policiales y
-  servicios sociales, entre otros. Cuentan con certificaciones ISO 27001, ENS y CEEDA,
-  alimentación redundante N+1 con transformadores de media tensión, grupos electrógenos y SAI,
-  y climatización de precisión con enfriadoras aire-agua y free-cooling. En enero de 2024 el
-  Gobierno de Navarra anunció una inversión de 2,6 millones de euros para doblar la capacidad
-  del CPD; la ampliación y modernización se inauguró el 25 de abril de 2025 con un coste final
-  de 4 millones de euros procedentes del Mecanismo de Recuperación y Resiliencia.
-estado_fuentes: [src-1, src-2]
+  CPD principal del Gobierno de Navarra en la calle Orkoien, gestionado por Nasertic y sede
+  del clúster Urederra. La ampliación inaugurada el 25 de abril de 2025 elevó la potencia
+  instalada de 200 a 400 kW y los racks de 48 a 96, con una inversión publicada de 4 millones
+  de euros. Tiene un CPD de respaldo distinto en la Comisaría de la Policía Foral en Beloso.
+estado_fuentes: [src-1, src-2, src-visitas-2022, src-ampliacion-2023]
 
-potencia: []
+potencia:
+  - tipo: instalada_total
+    valor_mw: 0.4
+    ambito: edificio
+    referencia: "CPD de Orkoien tras la ampliación de 2025"
+    estado_asociado: operativo
+    fecha_dato: "2025-04-25"
+    fuentes: [src-2]
+    nota: >-
+      La fuente publica 400 kW de potencia eléctrica instalada. No son MW IT ni los
+      2x400 kVA del SAI, que el artículo describe por separado.
 
 inversion_anunciada_eur: 4000000
 refrigeracion: "Climatización de precisión con enfriadoras aire-agua con free-cooling, unidades CRAH o in-row y sistemas de puerta fría."
@@ -119,26 +125,28 @@ computo:
 incertidumbres:
   - campo: potencia
     descripcion: >-
-      Nasertic describe la infraestructura eléctrica y de clima pero no publica potencia,
-      superficie de sala técnica ni número de racks. La ampliación se anuncia como «doblar la
-      capacidad» sin decir capacidad de qué. Campo de potencia vacío.
-    fuentes: [src-1, src-2]
+      Los 400 kW publicados son potencia instalada del CPD, sin desglose de carga IT ni
+      consumo medido. Los 96 racks no permiten calcular capacidad eléctrica adicional.
+    fuentes: [src-2]
   - campo: ubicacion
     descripcion: >-
-      Nasertic no publica la dirección de sus centros de proceso de datos. La dirección
-      registrada, calle Orkoien s/n de Pamplona, coincide con la sede central de la sociedad y
-      procede de la ficha de obra de un proveedor (Legrand), rotulada «SEDE CPDs DEL GOBIERNO DE
-      NAVARRA». No se ha localizado la ubicación del segundo CPD, que podría estar en otro
-      municipio. No se registran coordenadas.
-    fuentes: [src-3, src-4]
+      Las visitas del operador y el expediente de ampliación sitúan expresamente el CPD
+      y Urederra en Orkoien s/n. El punto de Maps corresponde a la sede de esa dirección,
+      con precisión aproximada; no identifica la sala del clúster.
+    fuentes: [src-3, src-visitas-2022, src-ampliacion-2023, src-mapa-orkoien]
   - campo: tipo
     descripcion: >-
-      La ficha describe el CPD principal. El Gobierno de Navarra tiene dos y no publica cuál es
-      cuál ni dónde está el segundo, así que este registro no cubre el conjunto.
-    fuentes: [src-1]
+      Esta ficha cubre el CPD principal de Orkoien. Los datos de potencia y cómputo no se
+      atribuyen también al centro de respaldo de la Comisaría de la Policía Foral en Beloso.
+    fuentes: [src-1, src-2]
+  - campo: superficie_construida_m2
+    descripcion: >-
+      La zona IT pasó de 138 m² a más de 290 m² en 2025. Es superficie técnica con un
+      límite inferior, no superficie construida exacta del edificio.
+    fuentes: [src-2]
 
-confianza: baja
-ultima_verificacion: "2026-08-31"
+confianza: media
+ultima_verificacion: "2026-10-17"
 
 fuentes:
   - id: src-1
@@ -146,7 +154,7 @@ fuentes:
     titulo: "Centros de Proceso de Datos (CPD) — Nasertic"
     editor: "Nasertic — Navarra de Servicios y Tecnologías"
     tipo: oficial
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       NASERTIC gestiona y mantiene los dos Centros de Procesamiento de Datos (CPDs) del Gobierno
       de Navarra [...] Cuentan con certificaciones oficiales de seguridad y calidad (ISO 27001,
@@ -159,10 +167,8 @@ fuentes:
     editor: "Corporación Pública Empresarial de Navarra"
     tipo: oficial
     fecha_publicacion: "2025-04-25"
-    fecha_consulta: "2026-08-31"
-    cita: >-
-      La Presidenta Chivite inaugura esta infraestructura que se ha ampliado para avanzar en la
-      digitalización del Ejecutivo y las entidades locales y dar servicio a la ciudadanía.
+    fecha_consulta: "2026-10-17"
+    cita: "pasando de 200 a 400 kW de potencia instalada, y de 48 a 96 racks"
   - id: src-3
     url: "https://obrasemblematicas.legrand.es/ficha/?id=382"
     titulo: "cpd nasertic — Obras emblemáticas"
@@ -175,14 +181,14 @@ fuentes:
     titulo: "Contacto — Nasertic"
     editor: "Nasertic — Navarra de Servicios y Tecnologías"
     tipo: oficial
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: "Sede Central C/ Orkoien, s/n 31011 Pamplona (Navarra), España"
   - id: src-hpc
-    url: "https://www.nasertic.es/es/infraestructuras/supercomputacion-hpc"
+    url: "https://www.nasertic.es/es/hpc"
     titulo: "Supercomputación (HPC)"
     editor: "Nasertic — Navarra de Servicios y Tecnologías"
     tipo: oficial
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       2 particiones de cómputo general: 142 nodos Intel SkyLake: 2x Intel Xeon Platinum 8160 @
       2.10 GHz (6.816 cores) y 13.632 GB de RAM | 458 TFLOPS; 37 nodos Intel Broadwell: 2x Intel
@@ -191,3 +197,26 @@ fuentes:
       de memoria HBM3 y 270.336 CUDA cores | 544 TFLOPS; 1 nodo Intel Ice Lake: 2 GPU NVIDIA
       A100, 80 GB de memoria HBM2e y 13.824 CUDA cores | 19,5 TFLOPS; 1 nodo IBM Power9: 2 GPU
       NVIDIA V100 SXM2, 32 GB de memoria HBM y 10.240 CUDA cores | 15,6 TFLOPS.
+  - id: src-visitas-2022
+    url: https://nasertic.es/es/actualidad/nasertic-celebra-la-semana-de-la-administracion-abierta-abriendo-las-puertas-del-cpd
+    titulo: Visitas al CPD del Gobierno de Navarra que aloja Urederra, en la calle Orcoyen
+    editor: Nasertic
+    tipo: oficial
+    fecha_publicacion: "2022-05-16"
+    fecha_consulta: "2026-10-17"
+    cita: "visitas al Centro de Proceso de Datos del Gobierno de Navarra que aloja el Clúster de Supercomputación Urederra"
+  - id: src-ampliacion-2023
+    url: https://hacienda.navarra.es/sicpportal/mtoAnunciosModalidad.aspx?Cod=230613131157CDF312D9
+    titulo: Contratación de los trabajos para la ampliación del CPD de Nasertic
+    editor: Portal de contratación de Navarra
+    tipo: oficial
+    fecha_publicacion: "2023-06-13"
+    fecha_consulta: "2026-10-17"
+    cita: "JORNADA DE PUERTAS ABIERTAS: El día 21 de junio de 2023 a las 10:00 horas en la Calle Orcoyen s/n (Pamplona)"
+  - id: src-mapa-orkoien
+    url: https://www.google.com/maps/place/NASERTIC+-+Navarra+De+Servicios+Y+Tecnolog%C3%ADas+S+A+-+Sede+Central/data=!4m6!3m5!1s0xd50928c76f41251:0xea376ddddb6b3fc9!8m2!3d42.8178661!4d-1.6598458!16s%2Fg%2F11bx8m50h0
+    titulo: NASERTIC, sede central en Orkoien, Google Maps
+    editor: Google Maps
+    tipo: otro
+    fecha_consulta: "2026-10-17"
+    cita: "NASERTIC [...] Sede Central [...] C. Orcoyen, s/n, 31011 Pamplona, Navarra"

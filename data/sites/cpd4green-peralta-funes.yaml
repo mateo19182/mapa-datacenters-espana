@@ -1,0 +1,116 @@
+id: cpd4green-peralta-funes
+nombre: "CPD Peralta — Peralta y Funes"
+alias:
+  - "CPD Peralta"
+  - "Proyecto CPD4GREEN de Peralta"
+tipo: edificio
+operador: null
+propietario: null
+modelo: desconocido
+
+ubicacion:
+  municipio: "Peralta"
+  provincia: "Navarra"
+  ccaa: "Navarra"
+  direccion: "Ámbito de los términos municipales de Peralta y Funes; parcela del CPD sin publicar"
+  lat: null
+  lon: null
+  no_derivar: true
+  precision: municipio
+  fuentes: [src-cnmc-20251125]
+
+estado: en_tramitacion
+estado_detalle: >-
+  Instalación de demanda promovida por CPD4GREEN, S.L., en Peralta y Funes. REE
+  comunicó la cancelación automática de la solicitud AUT-33003-24 el 14 de marzo de
+  2025 por falta de respuesta. La CNMC desestimó el conflicto el 25 de noviembre;
+  no anuló esa cancelación. La resolución recoge otra solicitud de 132 MW,
+  AUT-36476-24, presentada el 9 de enero de 2025 y suspendida durante el conflicto,
+  asociada a FV Peralta. No se ha localizado su resolución posterior, permiso final
+  del CPD, obra ni apertura. La cancelación de la primera solicitud no se extiende
+  al proyecto completo ni acredita el desenlace de la segunda. Operador de explotación
+  y propiedad del inmueble sin identificar.
+estado_fuentes: [src-cnmc-20251125, src-cnmc-expediente]
+
+potencia:
+  - tipo: conexion_red
+    valor_mw: 132
+    ambito: edificio
+    referencia: "Solicitud original AUT-33003-24, asociada a PE El Raso y PE Portegado"
+    estado_asociado: cancelado
+    fecha_dato: "2024-09-09"
+    fuentes: [src-cnmc-20251125]
+    nota: >-
+      Capacidad de acceso solicitada, no TI ni concedida. REE comunicó su cancelación
+      automática el 14/03/2025 por falta de respuesta; la CNMC desestimó el conflicto.
+      Los 35,5 MW eran capacidad otorgable en una propuesta previa, no un permiso final.
+  - tipo: conexion_red
+    valor_mw: 132
+    ambito: edificio
+    referencia: "Solicitud alternativa AUT-36476-24, asociada a FV Peralta"
+    estado_asociado: desconocido
+    fecha_dato: "2025-01-09"
+    fuentes: [src-cnmc-20251125]
+    nota: >-
+      La resolución recoge esta solicitud separada de acceso para el mismo CPD,
+      suspendida durante el conflicto. No se ha localizado su desenlace posterior.
+      No se suma a la solicitud original ni representa acceso otorgado o demanda TI.
+
+conexion_electrica:
+  subestacion: "ST Castejón 400 kV, posición de generación CJN400-CTRP1"
+  tension_kv: 400
+  titular_red: "Red Eléctrica de España"
+  mw_solicitados: 132
+  mw_concedidos: null
+  nota: >-
+    Relación explícita en el expediente, sin inferir proximidad. La solicitud original
+    vinculada a los dos parques eólicos quedó cancelada; su propuesta previa de 35,5 MW
+    no fue permiso final. La alternativa AUT-36476-24 pretendía asociar el mismo CPD
+    de 132 MW a FV Peralta en la misma posición; la resolución la describe suspendida
+    durante el conflicto. Se conserva la demanda solicitada de esa alternativa, con
+    desenlace actual desconocido. No consta permiso de consumo concedido ni energización.
+  fuentes: [src-cnmc-20251125]
+
+incertidumbres:
+  - campo: ubicacion
+    descripcion: >-
+      La resolución identifica el centro por nombre y los municipios de Peralta y Funes,
+      pero no publica parcela, dirección del edificio, superficie ni número de edificios.
+      La ficha representa esa instalación de demanda; no se deduce un campus ni un pin.
+    fuentes: [src-cnmc-20251125]
+  - campo: potencia
+    descripcion: >-
+      Los dos registros de 132 MW son solicitudes alternativas para la misma demanda,
+      no capacidad acumulable. El original quedó cancelado; la alternativa estaba
+      suspendida al tramitarse el conflicto. Los 35,5 MW eran propuesta previa, no permiso.
+      No hay carga TI pública ni permiso final de consumo localizado.
+    fuentes: [src-cnmc-20251125]
+  - campo: estado
+    descripcion: >-
+      La cancelación del primer expediente de acceso consta expresamente. La resolución
+      no decide el desenlace posterior de la alternativa AUT-36476-24 ni la continuidad
+      material del CPD. Las búsquedas no han localizado licencia, obra, apertura ni
+      resolución posterior de esa alternativa; no se presume permiso vigente.
+    fuentes: [src-cnmc-20251125, src-cnmc-expediente]
+
+enlaces_proyecto:
+  - "https://www.cnmc.es/expedientes/cftde05025"
+confianza: media
+ultima_verificacion: "2026-10-17"
+
+fuentes:
+  - id: src-cnmc-20251125
+    url: "https://www.cnmc.es/sites/default/files/6289701.pdf"
+    titulo: "Resolución CFT/DE/050/25, CPD4GREEN / REE, instalación CPD Peralta"
+    editor: "Comisión Nacional de los Mercados y la Competencia"
+    tipo: oficial
+    fecha_publicacion: "2025-11-25"
+    fecha_consulta: "2026-10-17"
+    cita: "CPD Peralta (132 MW) [...] Peralta y Funes [...] 35,5MW [...] Desestimar el conflicto [...] CPD4GREEN, S.L."
+  - id: src-cnmc-expediente
+    url: "https://www.cnmc.es/expedientes/cftde05025"
+    titulo: "CFT/DE/050/25, CPD4GREEN / REE, ST Castejón 400 kV"
+    editor: "Comisión Nacional de los Mercados y la Competencia"
+    tipo: oficial
+    fecha_consulta: "2026-10-17"
+    cita: "Último resultado: Resolución del Consejo. Última actualización: 25 Nov 2025"

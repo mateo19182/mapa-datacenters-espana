@@ -114,7 +114,7 @@ incertidumbres:
     fuentes: [src-3, src-7]
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: 2026-10-17
 
 fuentes:
   - id: src-1
@@ -140,7 +140,7 @@ fuentes:
     editor: "AtlasEdge Data Centres"
     tipo: empresa
     fecha_publicacion: "2024-07-18"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       With initial power already secured, the new facility will deliver 10MW by
       2027, with the potential to increase this to 24MW. The 18,000 square-metre
@@ -152,7 +152,7 @@ fuentes:
     editor: "AtlasEdge Data Centres"
     tipo: empresa
     fecha_publicacion: null
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       BCN002 (Planned) — Carrer de la Industria, 2B, 08970 Sant Joan Despi,
       Barcelona, Spain. Information coming soon
@@ -162,7 +162,7 @@ fuentes:
     editor: "AtlasEdge Data Centres"
     tipo: empresa
     fecha_publicacion: null
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       In operation: Berlin BER001, Brussels BRU001, Düsseldorf DUS001, Hamburg
       HAM001 HAM002, Leverkusen LEV001, Lisbon LIS001, Manchester MAN001,

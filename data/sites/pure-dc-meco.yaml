@@ -9,21 +9,27 @@ propietario: "Pure DC"
 modelo: mayorista
 
 ubicacion:
-  municipio: "Meco"
-  provincia: "Madrid"
-  ccaa: "Comunidad de Madrid"
-  direccion: "Calle Zeus 17-19, Polígono Industrial Meco R-2, Meco"
-  lat: 40.532843
-  lon: -3.313717
-  precision: aproximada
-  fuentes: [src-3]
+  municipio: Meco
+  provincia: Madrid
+  ccaa: Comunidad de Madrid
+  direccion: Calle Zeus 17-19, Polígono Industrial Meco R-2, Meco
+  lat: null
+  lon: null
+  precision: municipio
+  fuentes:
+    - src-3
+  no_derivar: true
 
-estado: anunciado
-estado_detalle: >-
-  Suelo adquirido en julio de 2024 por Pure DC a ActivumSG Fund VI por 11 millones de euros.
-  Será el primer centro de datos de Pure DC en España. Tech-Stone continúa a cargo de la
-  ejecución del proyecto.
-estado_fuentes: [src-1, src-2]
+estado: en_construccion
+
+estado_detalle: Pure DC identifica MAD01 en Meco y confirma una primera fase de 30 MW con permisos y
+  en construcción. Una segunda fase de 40 MW depende de obtener permisos. Los 70 MW son el potencial
+  completo publicado por el operador, que no tipifica la magnitud ni da fecha de entrada en
+  servicio. El contrato de 25 MW de 2022 se conserva como antecedente separado.
+
+estado_fuentes:
+  - src-pure-madrid
+  - src-dcd-permisos-20251125
 
 potencia:
   - tipo: conexion_red
@@ -35,6 +41,36 @@ potencia:
     fuentes: [src-1, src-2]
     nota: "\"un contrato de 25 MW de potencia eléctrica para la conexión de cables de alimentación desde una subestación eléctrica cercana\"; alimentación dual obtenida en 2023."
 
+  - tipo: no_especificado
+    valor_mw: 30
+    ambito: fase
+    referencia: Fase 1 en construcción
+    estado_asociado: en_construccion
+    fecha_dato: null
+    fuentes:
+      - src-pure-madrid
+    nota: Ficha del operador sin fecha. No identifica la cifra como carga TI ni como potencia de acceso;
+      no se suman las fases al total de campus.
+  - tipo: no_especificado
+    valor_mw: 40
+    ambito: fase
+    referencia: Fase 2 adicional, pendiente de permisos
+    estado_asociado: anunciado
+    fecha_dato: null
+    fuentes:
+      - src-pure-madrid
+    nota: Ficha del operador sin fecha. No identifica la cifra como carga TI ni como potencia de acceso;
+      no se suman las fases al total de campus.
+  - tipo: no_especificado
+    valor_mw: 70
+    ambito: campus
+    referencia: Capacidad prevista del campus completo
+    estado_asociado: anunciado
+    fecha_dato: null
+    fuentes:
+      - src-pure-madrid
+    nota: Ficha del operador sin fecha. No identifica la cifra como carga TI ni como potencia de acceso;
+      no se suman las fases al total de campus.
 conexion_electrica:
   subestacion: "Subestación cercana no identificada; sistema dual feed obtenido en 2023"
   mw_concedidos: 25
@@ -50,20 +86,21 @@ incertidumbres:
       Se registra la cifra más precisa y se deja constancia de la otra.
     fuentes: [src-1, src-2]
   - campo: estado
-    descripcion: >-
-      No se ha localizado licencia municipal, expediente urbanístico ni fecha objetivo de puesta
-      en servicio. Tampoco consta capacidad TI proyectada.
-    fuentes: [src-1, src-2]
+    descripcion: El operador confirma obra y permisos para la fase 1; la fase 2 requiere permisos y no
+      hay fecha de servicio publicada. Los 30/40/70 MW de la ficha actual no están tipificados ni se
+      explica su relación con los 25 MW contratados en 2022.
+    fuentes:
+      - src-pure-madrid
+      - src-dcd-permisos-20251125
   - campo: ubicacion
-    descripcion: >-
-      Pure DC no publica la dirección. La calle Zeus 17-19 procede de un directorio sectorial y
-      encaja con el polígono Meco R-2, donde Microsoft tiene su parcela en las calles Hércules 9
-      y Zeus 14, pero no está confirmada por el promotor ni por el Ayuntamiento. Las coordenadas
-      son el centroide de la calle.
-    fuentes: [src-3]
-
+    descripcion: "La dirección Zeus 17-19 procede de un directorio y el punto anterior era el centro de
+      la calle. La ficha primaria confirma Meco, pero no esa parcela: se retira el punto hasta obtener
+      plano o pin del campus."
+    fuentes:
+      - src-3
+      - src-pure-madrid
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: 2026-10-17
 
 fuentes:
   - id: src-1
@@ -72,7 +109,7 @@ fuentes:
     editor: "Brainsre News"
     tipo: prensa_general
     fecha_publicacion: "2024-07-29"
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "Pure DC ... ha comprado a ActivumSG Fund VI un suelo de alrededor de 17.650 metros cuadrados en Meco, en la Comunidad de Madrid, por 11 millones de euros."
   - id: src-2
     url: "https://www.datacentermarket.es/news/asg-iberia-vende-a-pure-dc-un-solar-en-madrid-para-un-data-center/"
@@ -89,3 +126,32 @@ fuentes:
     tipo: otro
     fecha_consulta: "2026-08-31"
     cita: "The below data centers are located closest to Pol. Ind. el Encín, A-2, 29T. ... 2.42 km PureDC Madrid (Meco) C. Zeus, 19-17"
+  - id: src-pure-madrid
+    url: https://puredc.com/madrid
+    titulo: Madrid Meco (MAD01)
+    editor: Pure DC
+    tipo: empresa
+    cita: "Phase 1: 30MW: Fully permitted and under construction; Phase 2: 40MW Permitting required.
+      [...] Total site capacity is 70MW"
+    fecha_consulta: 2026-10-17
+  - id: src-dcd-permisos-20251125
+    url: https://www.datacenterdynamics.com/en/news/pure-granted-planning-permission-for-madrid-data-center-spain/
+    titulo: Pure granted planning permission for Madrid data center, Spain
+    editor: DatacenterDynamics
+    tipo: prensa_especializada
+    fecha_publicacion: 2025-11-25
+    fecha_consulta: 2026-10-17
+
+fases:
+  - nombre: Fase 1 — 30 MW
+    estado: en_construccion
+    fuentes:
+      - src-pure-madrid
+    nota: Permisos concedidos según el operador; sin fecha RFS publicada.
+  - nombre: Fase 2 — 40 MW adicionales
+    estado: anunciado
+    fuentes:
+      - src-pure-madrid
+    nota: Pendiente de permisos.
+
+superficie_construida_m2: 18783

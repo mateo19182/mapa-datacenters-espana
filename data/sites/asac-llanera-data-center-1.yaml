@@ -31,23 +31,23 @@ estado_detalle: >-
   Industria y Empleo para recibir financiación del Fondo de Transición Justa
   destinada a ampliar el centro. ASAC opera además un Data Center 2 de respaldo,
   unido al primero por un anillo de fibra óptica, que no se documenta en esta ficha.
-  La nota de la compañía que anunció la ampliación preveía «la generación de cinco
-  nuevos puestos de trabajo» una vez puesta en funcionamiento; no se registra en el
-  campo de empleo porque la fuente da la cifra en letra y no en número.
+  La nota de la compañía que anunció la ampliación preveía cinco nuevos puestos de
+  trabajo, sin confirmar su creación posterior.
 estado_fuentes: [src-1, src-2, src-3, src-4]
 
 potencia:
   - tipo: instalada_total
-    valor_mw: 1
+    valor_mw: null
+    valor_mva: 1
     ambito: edificio
     referencia: "Centro de transformación propio de 1 MVA"
     estado_asociado: operativo
-    fecha_dato: "2025-05"
+    fecha_dato: "2025-04"
     fuentes: [src-1]
     nota: >-
-      La fuente da «1MVA» (potencia aparente del centro de transformación), no MW de
-      carga TI. Se registra como potencia instalada por ser lo más próximo, con la
-      salvedad de que MVA y MW no son equivalentes.
+      Potencia aparente del transformador, publicada por ASAC al inaugurar la
+      ampliación. Sin factor de potencia no se convierte a MW; no acredita carga IT
+      ni potencia de acceso concedida.
 
 fases:
   - nombre: "Data Center 1 — instalación original"
@@ -126,7 +126,7 @@ fuentes:
     editor: "ASAC Comunicaciones"
     tipo: empresa
     fecha_publicacion: "2025-04-11"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       La obra consistió en la instalación de un segundo cubo en su Data Center
       principal, uno de los más avanzados de España gracias a su certificación

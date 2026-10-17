@@ -57,6 +57,15 @@ test('el caso mantenido de Iron Mountain distingue MAD-1 del campus completo', (
   assert.equal(sitio.fases.find((f) => f.nombre === 'MAD-1').fecha_puesta_en_servicio, null)
 })
 
+test('el transformador de ASAC conserva MVA sin aportar MW a la cartera', () => {
+  const sitio = cargarSitios().sitios.find((s) => s.id === 'asac-llanera-data-center-1')
+  assert.equal(sitio.potencia[0].valor_mva, 1)
+  assert.equal(sitio.potencia[0].valor_mw, null)
+  const grupos = resumirPorEtapa(sitio.potencia)
+  assert.equal(grupos.operativa.instalada_total, null)
+  assert.equal(sumarCartera([{ id: sitio.id, potencia_por_etapa: grupos }], 'instalada_total').total_mw, 0)
+})
+
 test('una potencia inferior a 1 MW conserva sus kW en la ficha y en la cartera', () => {
   const sitio = cargarSitios().sitios.find((s) => s.id === 'kumo-murcia-espinardo')
   const grupos = resumirPorEtapa(sitio.potencia)

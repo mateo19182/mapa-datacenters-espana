@@ -37,7 +37,7 @@ potencia:
     valor_mw: 15
     ambito: campus
     referencia: "Capacidad de TI del complejo completo, en tres fases"
-    estado_asociado: permisos_concedidos
+    estado_asociado: anunciado
     fecha_dato: "2026-01-27"
     fuentes: [src-4, src-5]
     nota: >-
@@ -48,7 +48,7 @@ potencia:
     valor_mw: 5
     ambito: fase
     referencia: "Fase 1 — primer edificio a plena implantación"
-    estado_asociado: permisos_concedidos
+    estado_asociado: anunciado
     fecha_dato: "2025-11-04"
     fuentes: [src-3, src-5]
     nota: "El informe del PIE dice «primer edificio de 5MW»."
@@ -79,15 +79,18 @@ potencia:
       los 3 MW restantes son la etapa 2 de la fase 1.
 
 fases:
-  - nombre: "Sala IT 1"
+  - nombre: "Fase 1, etapa 1: urbanización, primer edificio e implantación inicial de 2 MW"
     estado: permisos_concedidos
-    fuentes: [src-1]
-  - nombre: "Sala IT 2"
-    estado: permisos_concedidos
-    fuentes: [src-1]
-  - nombre: "Sala IT 3"
-    estado: permisos_concedidos
-    fuentes: [src-1]
+    fuentes: [ src-2, src-3 ]
+  - nombre: "Fase 1, etapa 2: implantación de los 3 MW restantes"
+    estado: anunciado
+    fuentes: [ src-3 ]
+  - nombre: "Fase 2: segundo edificio de 5 MW"
+    estado: anunciado
+    fuentes: [ src-3 ]
+  - nombre: "Fase 3: tercer edificio de 5 MW"
+    estado: anunciado
+    fuentes: [ src-3 ]
 
 conexion_electrica:
   subestacion: "SET Sidegasa (conexión principal) y SET anexa al propio centro de datos"
@@ -120,11 +123,10 @@ enlaces_proyecto:
 incertidumbres:
   - campo: potencia
     descripcion: >-
-      El anuncio del DOG describe el edificio con tres salas IT pero no publica la
-      potencia. El informe oficial del PIE sí desglosa 5 MW por edificio y una
-      implantación inicial de 2 MW, pero sin decir si son MW de carga TI. Quienes
-      tipifican la cifra como «MW IT» son SpainDC y DataCenterDynamics, no el
-      expediente.
+      El anuncio del DOG describe el edificio con tres salas IT pero no publica la potencia. El
+      informe oficial del PIE sí desglosa 5 MW por edificio y una implantación inicial de 2 MW, pero
+      sin decir si son MW de carga TI. Quienes tipifican la cifra como «MW IT» son SpainDC y
+      DataCenterDynamics, no el expediente.
     fuentes: [src-1, src-3, src-4, src-5]
   - campo: fases
     descripcion: >-
@@ -153,21 +155,26 @@ incertidumbres:
       registrado.
     fuentes: [src-3, src-4, src-5]
   - campo: propietario
-    descripcion: >-
-      El proyecto nació impulsado por Ingenostrum en el marco de la alianza
-      público-privada Impulsa Galicia. En mayo de 2026 la prensa gallega informó de
-      la compra de Ingenostrum por el grupo australiano IREN; no se ha podido abrir
-      una fuente primaria que lo confirme, por lo que no se registra el cambio.
-    fuentes: [src-1]
+    descripcion: IREN confirma la adquisición de Ingenostrum/Nostrum. El 20-F fecha la compra del 100%
+      el 12 de junio de 2026 y el comunicado del 15 de junio confirma la operación. Es una operación
+      corporativa, no puesta en servicio de este emplazamiento. Los 490 MW corporativos de acceso no
+      se reparten entre campus.
+    fuentes: [ src-1, src-iren-cierre-20260615, src-iren-fy2026 ]
   - campo: fecha_puesta_en_servicio
     descripcion: >-
       El anuncio de la Xunta no fija fecha; el plazo «comenzará a contar desde el
       momento en el que se disponga de todos los permisos necesarios». Titulares de
       enero de 2026 hablan de retraso del encendido a finales de 2027.
     fuentes: [src-2]
+  - campo: estado
+    descripcion: El informe urbanístico indica que el proyecto sometido a aprobación contempla la etapa
+      1 de fase I, con 2 MW equipados. Los 5 MW del primer edificio y 15 MW del complejo son
+      objetivos a completar por etapas; la aprobación del PIE no acredita obra iniciada ni
+      instalación de las fases futuras.
+    fuentes: [ src-2, src-3 ]
 
 confianza: alta
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
   - id: src-1
@@ -176,7 +183,7 @@ fuentes:
     editor: "Diario Oficial de Galicia (Xunta de Galicia)"
     tipo: oficial
     fecha_publicacion: "2025-01-23"
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "una conexión principal con una línea eléctrica subterránea de 66 kV que conectará la SET Sidegasa con la SET anexa al Data Center"
   - id: src-2
     url: "https://www.xunta.gal/dog/Publicados/2026/20260216/AnuncioG0763-060226-0025_es.html"
@@ -184,7 +191,7 @@ fuentes:
     editor: "Diario Oficial de Galicia (Xunta de Galicia)"
     tipo: oficial
     fecha_publicacion: "2026-02-16"
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "el proyecto industrial estratégico de un centro de procesamiento de datos promovido por Galicia Green Data Center, S.L."
   - id: src-3
     url: "https://territorioeurbanismo.xunta.gal/sites/default/files/2025-11/XP-25-006_OT-24-055_INFORME%20PIE_CENTRO%20DATOS%20CURTIS__PLENO_XC_CASTELLANO_04112025.pdf"
@@ -192,7 +199,7 @@ fuentes:
     editor: "Dirección Xeral de Urbanismo, Consellería de Vivenda e Planificación de Infraestruturas (Xunta de Galicia)"
     tipo: oficial
     fecha_publicacion: "2025-11-04"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       Fase 1 Etapa 1: corresponde con la construcción de la urbanización, garita de
       acceso y primer edificio de 5MW, pero con la implantación únicamente de 2MW
@@ -210,19 +217,18 @@ fuentes:
     editor: "SPAIN DC (Asociación Española de Data Centers)"
     tipo: asociacion
     fecha_publicacion: "2025-02-04"
-    fecha_consulta: "2026-08-31"
-    cita: >-
-      La infraestructura cuenta con 15 MW IT y se construirá en tres fases, la
-      primera de ellas en el segundo semestre de 2025 [...] Galicia Green Data
-      Center tendrá 15 MW IT y será construido en tres fases de 5MWIT cada una
-      [...] Esta infraestructura contará con una inversión de 150 millones de euros.
+    fecha_consulta: 2026-10-17
+    cita: La infraestructura cuenta con 15 MW IT y se construirá en tres fases, la primera de ellas en
+      el segundo semestre de 2025 [...] Galicia Green Data Center tendrá 15 MW IT y será construido
+      en tres fases de 5 MW IT cada una [...] Esta infraestructura contará con una inversión de 150
+      millones de euros.
   - id: src-5
     url: "https://www.datacenterdynamics.com/es/noticias/galicia-se-estrena-en-el-mapa-de-los-centros-de-datos-con-las-instalaciones-de-curtis/"
     titulo: "Galicia se estrena en el mapa de los centros de datos con las instalaciones de Curtis"
     editor: "DataCenterDynamics"
     tipo: prensa_especializada
     fecha_publicacion: "2026-01-27"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       incluirá un centro de procesamiento de datos TIER III con hasta 15 MW de
       capacidad de TI y una subestación eléctrica transformadora anexa. El
@@ -231,3 +237,18 @@ fuentes:
       edificio de oficinas y la primera sala técnica, que arrancará con 2 MW
       ampliables a 5 MW [...] con cifras de en torno a 130 puestos durante las obras
       y unos 45 empleos directos cuando esté en funcionamiento
+  - id: src-iren-cierre-20260615
+    url: https://iren.gcs-web.com/news-releases/news-release-details/iren-completes-acquisition-nostrum-group-expanding-ai-cloud
+    titulo: IREN Completes Acquisition of Nostrum Group Expanding AI Cloud Platform to Europe
+    editor: IREN
+    tipo: empresa
+    fecha_publicacion: 2026-06-15
+    fecha_consulta: 2026-10-17
+    cita: completed the acquisition of Ingenostrum, S.L.
+  - id: src-iren-fy2026
+    url: https://www.sec.gov/Archives/edgar/data/1878848/000187884826000052/iren-20260630.htm
+    titulo: "IREN FY2026 Form 20-F, nota 9: adquisición de Ingenostrum"
+    editor: IREN / SEC
+    tipo: empresa
+    fecha_consulta: 2026-10-17
+    cita: Group acquired 100% of the equity interests

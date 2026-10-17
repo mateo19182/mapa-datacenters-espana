@@ -79,7 +79,7 @@ incertidumbres:
     fuentes: [src-1, src-3]
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
   - id: src-1
@@ -87,7 +87,7 @@ fuentes:
     titulo: "Serosense adquireix terrenys a Alcarràs per a la implantació del primer Data Center de Lleida"
     editor: "Eléctrica Serosense"
     tipo: empresa
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: >-
       situats dins la zona regable del Canal de Pinyana ... un pla parcial de
       delimitació, un projecte d'urbanització i el projecte de reparcel·lació
@@ -96,7 +96,7 @@ fuentes:
     titulo: "La lleidatana Serosense entra al negoci dels centres de dades amb la compra d'uns terrenys a Alcarràs"
     editor: "ON Economia (El Nacional)"
     tipo: prensa_general
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: >-
       12.000 metres quadrats ... capacitat inicial de 10 MW, ampliable fins a 30
       MW ... SUDI (Sòl Urbà Delimitat Industrial)

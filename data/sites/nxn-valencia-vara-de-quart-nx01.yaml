@@ -22,7 +22,8 @@ ubicacion:
 estado: en_construccion
 estado_detalle: >-
   Licencia municipal de obras y actividad concedida el 28/02/2025 por el Ayuntamiento de
-  València. Primera piedra colocada el 02/02/2026 y obras iniciadas en abril de 2026.
+  València. InfraRed ya declaraba obras iniciadas el 16/12/2025; la primera piedra
+  se colocó el 02/02/2026 y Economía 3 volvió a informar de construcción en abril de 2026.
   Apertura anunciada para marzo de 2027 (Levante-EMV) o primer semestre de 2027 (Economía 3).
   El 16/12/2025 el gestor de infraestructuras InfraRed Capital Partners adquirió la mayoría
   accionarial de NxN, plataforma constituida en 2023 como sociedad conjunta de Nethits
@@ -118,7 +119,7 @@ incertidumbres:
     fuentes: [src-2, src-3, src-4, src-5, src-6]
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
   - id: src-1
@@ -143,14 +144,14 @@ fuentes:
     editor: "Economía 3"
     tipo: prensa_general
     fecha_publicacion: "2026-04-30"
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "El centro contará con una superficie aproximada de 6.500 metros cuadrados y una potencia inicial de 5 megavatios. Su apertura está prevista para el primer semestre de 2027."
   - id: src-4
     url: "https://observatorioedc.com/directorio/"
     titulo: "Data Centers — Directorio, Observatorio Español de Data Centers"
     editor: "Observatorio Español de Data Centers"
     tipo: otro
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "NxN Datacenters – Valencia NX01 | NX01 | Valencia | Comunidad Valenciana | 5 MW | COLOCATION | En construcción"
   - id: src-5
     url: "https://www.datacenterdynamics.com/es/noticias/primera-piedra-de-nxn-en-vara-de-quart-infraestructura-verde-para-ia-y-supercomputaci%C3%B3n-en-espa%C3%B1a/"
@@ -166,7 +167,7 @@ fuentes:
     editor: "Data Center Market"
     tipo: prensa_especializada
     fecha_publicacion: "2025-03-03"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: "Cuenta con permisos de acceso y conexión a la red por hasta 6MW de energía en una superficie total de 6.500 metros cuadrados [...] Con 6.500 metros cuadrados de superficie total, 6MW de potencia y una inversión de en torno a 60 millones de euros [...] Se estima que el proyecto generará más de 100 empleos directos y cerca de 500 indirectos durante los periodos de desarrollo y una vez este operativo. [...] asegurando así un consumo de agua nulo"
   - id: src-7
     url: "https://www.ircp.com/news/infrared-capital-partners-invests-in-spanish-data-centre-platform/"
@@ -174,5 +175,5 @@ fuentes:
     editor: "InfraRed Capital Partners"
     tipo: empresa
     fecha_publicacion: "2025-12-16"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: "InfraRed Capital Partners (\"InfraRed\"), a leading international infrastructure asset manager, is pleased to announce its majority investment in NxN Data Centers (\"NxN\"). NxN is a next-generation data centre platform based in Spain and formed in 2023, as a joint venture between Nethits Telecom Group (\"Nethits\") and asset manager Adequita Capital (\"Adequita\")."

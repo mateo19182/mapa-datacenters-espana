@@ -17,11 +17,14 @@ ubicacion:
 
 estado: en_construccion
 estado_detalle: >-
-  Instalación de 9.700 m² con diseño modular orientado a cargas de IA y HPC de
-  alta densidad. La compañía italiana anunció la compra de los terrenos el 17 de
-  febrero de 2026 y declaró tener ya las aprobaciones necesarias. Baxtel y la
-  propia compañía sitúan la puesta en servicio en el segundo semestre de 2027.
-estado_fuentes: [src-1, src-2, src-3, src-4]
+  Instalación de 9.700 m² con diseño modular orientado a cargas de IA y HPC de alta densidad. La
+  compañía italiana anunció la compra de los terrenos el 17 de febrero de 2026 y declaró tener ya
+  las aprobaciones necesarias. Baxtel y la propia compañía sitúan la puesta en servicio en el
+  segundo semestre de 2027. El BOP de 29 de septiembre de 2026 publica el acuerdo municipal de 28 de
+  julio para una concesión de subsuelo de la conexión eléctrica. El acuerdo queda sometido a 30 días
+  hábiles de información pública y solo devendrá definitivo si no hay alegaciones; no es un acta de
+  obra del CPD ni una apertura.
+estado_fuentes: [ src-1, src-2, src-3, src-4, src-bop-concesion-20260929 ]
 
 potencia:
   - tipo: conexion_red
@@ -59,12 +62,15 @@ potencia:
       distinto.
 
 conexion_electrica:
-  mw_concedidos: 12
-  nota: >-
-    Prensa especializada describe el emplazamiento como asegurado con una
-    conexión eléctrica de 12 MW. No consta la subestación, la tensión ni el
-    titular de la red.
-  fuentes: [src-2]
+  mw_concedidos: null
+  nota: Prensa especializada describe el emplazamiento como asegurado con una conexión eléctrica de 12
+    MW. No consta la subestación, la tensión ni el titular de la red. La concesión municipal cita la
+    subestación de Montmeló y el cruce del río Congost por el puente de la calle Tres Creus. No
+    publica tensión, MW ni permiso de acceso y no resuelve los 12 MW que solo cita la prensa. La
+    expresión comercial «secured connection» no permite acreditar por sí sola un permiso
+    administrativo otorgado; los 12 MW quedan como lectura documental, sin rellenar mw_concedidos.
+  fuentes: [ src-2, src-bop-concesion-20260929 ]
+  subestacion: Subestación de Montmeló, según el expediente de ocupación de subsuelo
 
 superficie_construida_m2: 9700
 refrigeracion: >-
@@ -91,14 +97,14 @@ incertidumbres:
       determinar cuál de las dos etiquetas es la correcta.
     fuentes: [src-2, src-3]
   - campo: ubicacion
-    descripcion: >-
-      No se ha localizado la dirección postal ni la parcela concreta en
-      Montmeló. La compañía no publica dirección y la prensa local solo indica
-      «uns terrenys a Montmeló».
-    fuentes: [src-1, src-4]
+    descripcion: La concesión de subsuelo identifica los tramos de conexión entre la subestación de
+      Montmeló, el puente de Tres Creus y el centro de recepción y medida, pero no identifica la
+      parcela del edificio CPD. Se mantienen coordenadas de municipio, hasta localizar un plano o un
+      pin del centro físico.
+    fuentes: [ src-1, src-4, src-bop-concesion-20260929 ]
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
   - id: src-1
@@ -106,7 +112,7 @@ fuentes:
     titulo: "Mediterra: Barcelona Data Center"
     editor: "Baxtel"
     tipo: prensa_especializada
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: >-
       Address/Municipality: Montmeló, Barcelona, Spain ... Size: 9,700 square
       meters ... Status: Under Construction ... Commissioning: Second half of
@@ -117,7 +123,7 @@ fuentes:
     editor: "Data Center Dynamics"
     tipo: prensa_especializada
     fecha_publicacion: "2026-02-18"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       The Italian company has secured a strategic location in the industrial
       heart of Catalonia with a 12MW electrical connection, of which 8MW will be
@@ -130,7 +136,7 @@ fuentes:
     editor: "Mediterra DataCenters"
     tipo: empresa
     fecha_publicacion: "2026-02-16"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       Total Surface 9.700 m2 Installed electricity 8 MW delivered in 1.3 MW
       blocks ... Equipped with a closed-circuit cooling system that eliminates
@@ -142,8 +148,17 @@ fuentes:
     editor: "El 9 Nou"
     tipo: prensa_general
     fecha_publicacion: "2026-02-18"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       La firma italiana Mediterra DataCenters ha comunicat aquest dimarts la
       compra d'uns terrenys a Montmeló on hi edificarà un centre de dades
       d'última generació.
+  - id: src-bop-concesion-20260929
+    url: https://bop.diba.cat/anunci/3994521
+    titulo: Concesión demanial de subsuelo a Mediterra Data Centers Iberia
+    editor: Ayuntamiento de Montmeló / BOPBarcelona
+    tipo: oficial
+    fecha_publicacion: 2026-09-29
+    fecha_consulta: "2026-10-17"
+    cita: El Ple Municipal, en sessió ordinària de data 28 de juliol de 2026, ha aprovat l’adjudicació
+      directa de la concessió administrativa.

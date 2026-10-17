@@ -28,7 +28,11 @@ estado_detalle: >-
   para incorporar nuevos proyectos eléctricos sometidos a información pública en agosto de
   2026. El punto de acceso y conexión a la red de transporte fue otorgado por Red Eléctrica
   de España en la SET "Peñaflor 400 kV" el 5 de septiembre de 2024.
-estado_fuentes: [src-1, src-2, src-4]
+estado_fuentes:
+  - src-1
+  - src-2
+  - src-4
+  - src-piga-modificacion-20260902
 
 potencia:
   - tipo: conexion_red
@@ -158,7 +162,7 @@ incertidumbres:
     fuentes: [src-1, src-3]
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
   - id: src-1
@@ -166,7 +170,7 @@ fuentes:
     titulo: "PIGA «Instalación de un centro de datos en el término municipal de La Puebla de Alfindén». Tomo I. Memoria (ACS DC Infra La Puebla, S.L.)"
     editor: "Gobierno de Aragón"
     tipo: oficial
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "El proyecto CENTRO DE DATOS LA PUEBLA DE ALFINDÉN pretende desarrollar la implantación de un centro de datos de 150MW de potencia eléctrica total en La Puebla de Alfindén [...] Para ello se cuenta con un punto de acceso y conexión de 150MW de potencia a 400kV."
   - id: src-2
     url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1425305720606"
@@ -197,7 +201,7 @@ fuentes:
     editor: "Gobierno de Aragón"
     tipo: oficial
     fecha_publicacion: "2025-09"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: "la tecnología elegida para la refrigeración del centro de datos de ACS DC Infra La Puebla, S.L., es de última generación y no requiere consumo de agua permanente, ya que es un sistema de climatización de circuito cerrado. [...] El Centro de Datos proyectado [...] consumirá en situación ordinaria, como sumatorio de los usos industriales, domésticos y riego, un caudal de 9,31 metros cúbicos al día. [...] Volumen de llenado total de los circuitos de climatización = 1.200 m3. [...] Volumen de llenado de los tanques de incendios = 385 m3. [...] El consumo extraordinario del Centro de Datos para el primer año será de 1.585 m3."
   - id: src-6
     url: "https://www.aragon.es/documents/d/guest/tomo-i-memoria-1"
@@ -205,7 +209,7 @@ fuentes:
     editor: "Gobierno de Aragón"
     tipo: oficial
     fecha_publicacion: "2025-09"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: "Se estima que la primera fase del proyecto, generará un impacto neto de 2.774 empleos totales, abarcando desde la fase de construcción hasta la operación del centro e incluyendo el empleo inducido derivado del aumento de la actividad económica en el entorno. [...] se estiman 2.774 empleos totales, de los cuales 964 serán directos y 1.086 indirectos (1.510 puestos en la fase de urbanización y construcción y cerca de 540 empleos permanentes en operación y mantenimiento), además de 724 empleos inducidos en la economía por el efecto multiplicador en la actividad económica."
   - id: src-7
     url: "https://www.aragon.es/documents/d/guest/tomo-i-memoria-1"
@@ -213,5 +217,12 @@ fuentes:
     editor: "Gobierno de Aragón"
     tipo: oficial
     fecha_publicacion: "2025-09"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: "Los 150 MW de potencia eléctrica máxima del acceso concedido, suponen 100 MW de potencia IT aproximadamente."
+  - id: src-piga-modificacion-20260902
+    url: https://www.aragon.es/-/piga-acs-modificacion%201
+    titulo: "Modificación del PIGA ACS DC La Puebla: proyectos eléctricos y documentación ambiental"
+    editor: Gobierno de Aragón
+    tipo: oficial
+    fecha_consulta: 2026-10-17
+    cita: Información Pública de la modificación de la aprobación inicial del PIGA

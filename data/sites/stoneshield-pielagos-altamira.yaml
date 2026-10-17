@@ -14,8 +14,9 @@ ubicacion:
   provincia: "Cantabria"
   ccaa: "Cantabria"
   direccion: "Terrenos entre los términos municipales de Piélagos y Villaescusa"
-  lat: 43.3600
-  lon: -3.9100
+  lat: null
+  lon: null
+  no_derivar: true
   precision: municipio
   fuentes: [src-1, src-3]
 
@@ -37,7 +38,7 @@ estado_detalle: >-
   eléctrica: el proyecto necesita que el Ministerio para la Transición Ecológica
   incluya dos nuevas posiciones en la subestación de Penagos en la planificación de
   la red de transporte, y las obras previstas para enero de 2026 no habían comenzado.
-estado_fuentes: [src-1, src-2, src-3, src-4, src-5]
+estado_fuentes: [src-1, src-2, src-3, src-4, src-5, src-ser-20261012]
 
 potencia:
   - tipo: no_especificado
@@ -103,7 +104,6 @@ potencia:
 fases:
   - nombre: "Fase 1 — Altamira 1 (3 edificios, 162 MW carga IT)"
     estado: en_tramitacion
-    fecha_puesta_en_servicio: "2028"
     superficie_m2: 103054
     fuentes: [src-1, src-3, src-4]
     nota: "374.572 m² de superficie del ámbito y 103.054 m² construidos."
@@ -221,16 +221,36 @@ incertidumbres:
       considera un error de la fuente y no se registra como dato.
     fuentes: [src-3]
 
+  - campo: fecha_puesta_en_servicio
+    descripcion: >-
+      La fecha 2028 corresponde a una previsión de potencia disponible, no a una apertura
+      acreditada de Altamira 1. Se retira de la fase; la presentación sitúa el conjunto
+      operativo en 2032 y el calendario depende de permisos y suministro.
+    fuentes: [src-1, src-4, src-ser-20261012]
+  - campo: ubicacion
+    descripcion: >-
+      No se ha recuperado un pin identificado del campus. Se retiran las coordenadas
+      municipales anteriores y se mantiene el ámbito documentado entre Piélagos y Villaescusa.
+    fuentes: [src-1, src-4]
+
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
+  - id: src-ser-20261012
+    url: "https://cadenaser.com/cantabria/2026/10/12/el-centro-de-datos-altamira-fuera-del-borrador-de-la-planificacion-electrica-cantabria-asegura-que-sigue-siendo-uno-de-los-mejores-proyectos-de-espana-radio-santander/"
+    titulo: "Altamira, fuera del borrador de planificación eléctrica, según declaraciones del consejero de Industria"
+    editor: "Cadena SER, Radio Santander"
+    tipo: prensa_general
+    fecha_publicacion: "2026-10-12"
+    fecha_consulta: "2026-10-17"
+    cita: "ha quedado fuera de la asignación inicial de potencia recogida en el borrador de la nueva Planificación Eléctrica"
   - id: src-1
     url: "https://investincantabria.com/en/cantabria-will-have-a-data-center-technology-campus-with-more-than-3600-million-euros/"
     titulo: "Cantabria will have a Data Center Technology Campus with more than 3,600 million euros"
     editor: "Invest in Cantabria (SODERCAN — Gobierno de Cantabria)"
     tipo: oficial
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "100 megawatts en 2028 y 500 en 2030"
   - id: src-2
     url: "https://www.cantabriaeconomica.com/empresas/cantabria-declara-el-centro-de-datos-altamira-como-primer-proyecto-empresarial-estrategico/"
@@ -238,7 +258,7 @@ fuentes:
     editor: "Cantabria Económica"
     tipo: prensa_general
     fecha_publicacion: "2025-06-19"
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "primera iniciativa empresarial en obtener esta declaración"
   - id: src-3
     url: "https://www.datacentermarket.es/datacenter-infrastructure/cantabria-tambien-tendra-su-centro-de-datos/"
@@ -246,7 +266,7 @@ fuentes:
     editor: "Data Center Market"
     tipo: prensa_especializada
     fecha_publicacion: "2025-02-26"
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "Impulsado a través de XDC Properties, filial de Stoneshield"
   - id: src-4
     url: "https://www.cantabriadirecta.es/wp-content/uploads/2025/02/ALTAMIRA-Presentacion-25-Feb_vFinal.pdf"
@@ -254,7 +274,7 @@ fuentes:
     editor: "Stoneshield Capital / XDC Properties, difundida por Cantabria Directa"
     tipo: empresa
     fecha_publicacion: "2025-02-25"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       integrando un parque tecnológico-industrial cuyo pilar será un centro de datos
       de 500MW [...] El Proyecto Altamira constará de 12 módulos de centros de datos
@@ -275,7 +295,7 @@ fuentes:
     editor: "Europa Press"
     tipo: prensa_general
     fecha_publicacion: "2025-06-16"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       el centro de datos Altamira consumirá 500 megawatios cuando esté ejecutado en
       su totalidad [...] ya que se pondrá en marcha en tres fases y en las dos

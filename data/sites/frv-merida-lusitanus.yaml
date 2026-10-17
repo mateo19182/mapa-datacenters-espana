@@ -8,14 +8,17 @@ propietario: "Fotowatio Renewable Ventures (FRV)"
 modelo: desconocido
 
 ubicacion:
-  municipio: "Mérida"
-  provincia: "Badajoz"
-  ccaa: "Extremadura"
-  direccion: "ExpacioMérida (240.000 m² reservados)"
-  lat: 38.8349
-  lon: -6.3596361
-  precision: aproximada
-  fuentes: [src-cope, src-osm]
+  municipio: Mérida
+  provincia: Badajoz
+  ccaa: Extremadura
+  direccion: ExpacioMérida (240.000 m² reservados)
+  lat: null
+  lon: null
+  precision: municipio
+  fuentes:
+    - src-cope
+    - src-osm
+  no_derivar: true
 
 estado: anunciado
 estado_detalle: >-
@@ -89,8 +92,13 @@ incertidumbres:
       generación asociada.
     fuentes: [src-juntaex, src-pex-perfil]
 
+  - campo: ubicacion
+    descripcion: La Junta identifica ExpacioMérida y una reserva de 240.000 m², pero no la parcela. El
+      punto anterior localizaba el parque, sin vincular el suelo reservado al proyecto.
+    fuentes:
+      - src-juntaex
 confianza: baja
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: 2026-10-17
 
 fuentes:
   - id: src-cope
@@ -110,7 +118,7 @@ fuentes:
     editor: "Junta de Extremadura"
     tipo: oficial
     fecha_publicacion: "2026-02-13"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       ocupará una superficie de 240.000 metros cuadrados para el que ya se ha formalizado el contrato
       de reserva de suelo [...] una inversión de 2.100 millones de euros en infraestructura digital

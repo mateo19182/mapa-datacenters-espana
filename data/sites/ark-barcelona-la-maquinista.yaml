@@ -9,12 +9,14 @@ propietario: "Ark Data Centres"
 modelo: mayorista
 
 ubicacion:
-  municipio: "Barcelona"
-  provincia: "Barcelona"
-  ccaa: "Cataluña"
-  direccion: "Carrer de Valentí Iglesias, zona industrial de La Maquinista, distrito de Sant Andreu, Barcelona"
+  municipio: Barcelona
+  provincia: Barcelona
+  ccaa: Cataluña
+  direccion: Carrer de Valentí Iglesias, zona industrial de La Maquinista, distrito de Sant Andreu, Barcelona
   precision: aproximada
-  fuentes: [src-1]
+  fuentes:
+    - src-1
+    - src-cushman-20260318
 
 estado: anunciado
 estado_detalle: >-
@@ -24,7 +26,11 @@ estado_detalle: >-
   institucional del Ajuntament de Barcelona y de la Generalitat a través de
   ACCIÓ; la operación la asesoró Cushman & Wakefield. No se ha publicado
   calendario de obra. Baxtel indica año previsto 2029.
-estado_fuentes: [src-1, src-2, src-3]
+estado_fuentes:
+  - src-1
+  - src-2
+  - src-3
+  - src-cushman-20260318
 
 potencia:
   - tipo: it
@@ -33,7 +39,10 @@ potencia:
     referencia: "Capacidad TI prevista del centro"
     estado_asociado: anunciado
     fecha_dato: "2026-03-18"
-    fuentes: [src-2, src-3]
+    fuentes:
+      - src-2
+      - src-3
+      - src-cushman-20260318
     nota: >-
       Dos fuentes independientes lo tipifican como carga TI: "plans to develop a
       facility with 45MW of IT capacity" (DCD) y "una capacitat prevista de fins
@@ -86,7 +95,7 @@ incertidumbres:
     fuentes: [src-1]
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: 2026-10-17
 
 fuentes:
   - id: src-1
@@ -105,7 +114,7 @@ fuentes:
     editor: "Data Center Dynamics"
     tipo: prensa_especializada
     fecha_publicacion: "2026-03-19"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       The company this week announced an investment of more than €600 million
       ($689.1m) to develop a new data center in the La Maquinista area of
@@ -127,3 +136,11 @@ fuentes:
       treball directes a l'any durant la fase d'obra ... S'estima que el centre
       podria generar fins a 150 llocs de feina directes a temps complet quan
       estigui plenament operatiu.
+  - id: src-cushman-20260318
+    url: https://www.cushmanwakefield.com/es-es/spain/news/2026/03/ark-to-invest--in-a-data-centre-in-barcelona
+    titulo: Ark apuesta por un centro de datos en Barcelona
+    editor: Cushman & Wakefield
+    tipo: consultora
+    fecha_publicacion: 2026-03-18
+    cita: un suelo industrial de 30.000 m² en La Maquinista
+    fecha_consulta: 2026-10-17

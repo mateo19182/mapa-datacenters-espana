@@ -108,7 +108,7 @@ incertidumbres:
     fuentes: [src-5]
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: 2026-10-17
 
 fuentes:
   - id: src-1
@@ -117,7 +117,7 @@ fuentes:
     editor: "DatacenterDynamics"
     tipo: prensa_especializada
     fecha_publicacion: "2026-06-03"
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "El proyecto se desarrollará en dos fases. La primera contempla 78 MW de potencia, mientras que una segunda ampliación añadiría otros 62 MW hasta alcanzar los 140 MW totales. [...] La compañía ya ha obtenido de Iberdrola el acceso a la red para la primera fase del proyecto"
   - id: src-2
     url: "https://murciaplaza.com/murciaplaza/empresas-murcia/murcia-acogera-su-primer-macroproyecto-tecnologico-fotones-impulsa-un-centro-de-datos-en-espinardo-que-costara-1150-millones-de-euros"
@@ -125,7 +125,7 @@ fuentes:
     editor: "Murcia Plaza"
     tipo: prensa_general
     fecha_publicacion: "2026-06-03"
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "En un primer momento contará con 78 MW de potencia, tras lo que luego sumará otros 62 MW adicionales, con lo que llegará a los 140 MW en total"
   - id: src-3
     url: "https://observatorioedc.com/directorio/"

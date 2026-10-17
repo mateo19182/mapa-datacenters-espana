@@ -16,7 +16,7 @@ ubicacion:
   lat: 36.6957
   lon: -4.4538
   precision: aproximada
-  fuentes: [src-1, src-2]
+  fuentes: [ src-1, src-2, src-gmu-uap-20250324 ]
 
 estado: en_tramitacion
 estado_detalle: >-
@@ -30,7 +30,7 @@ estado_detalle: >-
   de euros con Eiffel Investment Group, extendiendo vencimientos hasta 2027 para completar sus
   proyectos de Málaga, Guadalajara y Épila. No se ha localizado licencia de obra ni constancia del
   inicio de la construcción.
-estado_fuentes: [src-2, src-3, src-4, src-5, src-6]
+estado_fuentes: [ src-2, src-3, src-4, src-5, src-6, src-gmu-uap-20250324 ]
 
 superficie_parcela_m2: 16770
 superficie_construida_m2: 15000
@@ -89,9 +89,14 @@ incertidumbres:
       Consejería competente «en materia de aguas, sobre la afección hidráulica del sector», por la
       proximidad del arroyo de la Palma. Campo agua omitido.
     fuentes: [src-2]
+  - campo: estado
+    descripcion: La resolución municipal de 24 de marzo de 2025 asigna el seguimiento del proyecto Olive
+      Urban, en C/ Canadá, sector SUNC-O-G.13, a la UAP. Ese impulso administrativo no es una
+      licencia de obras ni confirma su inicio.
+    fuentes: [ src-gmu-uap-20250324 ]
 
 confianza: baja
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
   - id: src-1
@@ -99,7 +104,7 @@ fuentes:
     titulo: "Box2bit: Malaga Data Center"
     editor: "Baxtel"
     tipo: consultora
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "The facility will include solar panels and an on-site substation for power management."
   - id: src-2
     url: "https://www.laopiniondemalaga.es/malaga/2025/06/06/malaga-tendra-centro-procesamiento-datos-118319315.html"
@@ -107,7 +112,7 @@ fuentes:
     editor: "La Opinión de Málaga"
     tipo: prensa_general
     fecha_publicacion: "2025-06-06"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       un proyecto denominado Olive Urban que promueve la firma Box2Bit, vinculada a la compañía
       Capital Energy [...] hoy la Junta de Gobierno Local del Ayuntamiento de Málaga ha dado luz
@@ -123,7 +128,7 @@ fuentes:
     editor: "Data Center Dynamics"
     tipo: prensa_especializada
     fecha_publicacion: "2025-06-19"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       Box2bit aims to invest €279 million ($320.2m) developing a 15,000 sqm (161,460 sq ft) data
       center on Calle Canadá, in the El Viso industrial area of Malaga. The project was initially
@@ -135,7 +140,7 @@ fuentes:
     editor: "Sur in English"
     tipo: prensa_general
     fecha_publicacion: "2025-06-11"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       the building will reach a maximum height of 18.2 metres [...] Next to this main structure,
       which will have a total built area of 12,770 square metres, an administrative area covering
@@ -164,3 +169,12 @@ fuentes:
       Capital Energy—, ha refinanciado 25,5 millones de euros con su principal acreedor, Eiffel
       Investment Group, extendiendo vencimientos hasta 2027 para completar sus proyectos en Málaga,
       Guadalajara y Épila (Zaragoza).
+  - id: src-gmu-uap-20250324
+    url: https://urbanismo.malaga.eu/export/sites/urbanismo/.galleries/Unidad-Aceleradora/250324_Oficio-de-asignacion-de-expte-Centro_de_Datos_Calle_Canada.report....pdf
+    titulo: Asignación del proyecto Olive Urban a la Unidad Aceleradora de Proyectos
+    editor: Gerencia Municipal de Urbanismo del Ayuntamiento de Málaga
+    tipo: oficial
+    fecha_publicacion: 2025-03-24
+    fecha_consulta: "2026-10-17"
+    cita: Asignar a la Unidad Aceleradora de Proyectos el seguimiento e impulso del proyecto para la
+      construcción y desarrollo de un Centro de Procesamiento de Datos

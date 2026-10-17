@@ -4,7 +4,8 @@ alias:
   - "Nostrum Pinto"
 tipo: edificio
 operador: "Nostrum Data Centers"
-propietario: "Nostrum Group"
+propietario: Nostrum Group / IREN Limited
+
 modelo: desconocido
 
 ubicacion:
@@ -17,23 +18,41 @@ ubicacion:
   fuentes: [src-1, src-2]
 
 estado: anunciado
-estado_detalle: >-
-  Pinto es uno de los seis emplazamientos de la cartera española que Nostrum Data Centers, división
-  de infraestructura digital de Nostrum Group, encargó comercializar a JLL en enero de 2026. La
-  consultora declara que los seis activos tienen potencia eléctrica y suelo asegurados y prevé que
-  estén operativos a lo largo de 2027. No consta ningún trámite urbanístico ni ambiental
-  identificable para el emplazamiento de Pinto.
-estado_fuentes: [src-1, src-2]
+estado_detalle: Pinto es uno de los seis emplazamientos de la cartera española que Nostrum Data
+  Centers, división de infraestructura digital de Nostrum Group, encargó comercializar a JLL en
+  enero de 2026. La consultora declara que los seis activos tienen potencia eléctrica y suelo
+  asegurados y prevé que estén operativos a lo largo de 2027. No consta ningún trámite urbanístico
+  ni ambiental identificable para el emplazamiento de Pinto. El Form 20-F de IREN fecha la compra de
+  Nostrum el 12 de junio de 2026; DCD la sitúa el 15. La cobertura del cierre atribuye 21 MW al
+  proyecto de Pinto, sin precisar su tipo ni aportar parcela o nueva licencia.
 
-potencia: []
+estado_fuentes:
+  - src-1
+  - src-2
+  - src-iren-cierre
+  - src-iren-fy2026
+
+potencia:
+  - tipo: no_especificado
+    valor_mw: 21
+    ambito: campus
+    referencia: Capacidad del proyecto de Pinto en la cobertura del cierre de la compra por IREN
+    estado_asociado: anunciado
+    fecha_dato: 2026-06-16
+    fuentes:
+      - src-iren-cierre
+    nota: Cifra periodística por emplazamiento; el comunicado de JLL no publica este reparto ni tipifica
+      estos 21 MW.
 
 incertidumbres:
   - campo: potencia
-    descripcion: >-
-      La única cifra publicada es la de la cartera: 500 MW de capacidad TI en los seis
-      emplazamientos, con otros 300 MW para futuras ampliaciones. No hay reparto por
-      emplazamiento, y dividirlo o restarlo de los ya fichados sería inventar la cifra de Pinto.
-    fuentes: [src-1, src-2]
+    descripcion: "DCD atribuye 21 MW a Pinto en junio de 2026, sin tipificar la magnitud. El comunicado
+      de JLL solo publica la cartera agregada: falta respaldo primario de capacidad para este
+      emplazamiento."
+    fuentes:
+      - src-1
+      - src-2
+      - src-iren-cierre
   - campo: ubicacion
     descripcion: >-
       No consta dirección, polígono ni parcela: las fuentes solo nombran el municipio dentro de
@@ -47,7 +66,7 @@ incertidumbres:
     fuentes: [src-1]
 
 confianza: baja
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: 2026-10-17
 
 fuentes:
   - id: src-1
@@ -56,7 +75,7 @@ fuentes:
     editor: "JLL"
     tipo: consultora
     fecha_publicacion: "2026-01-27"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       Asesoramos a Nostrum Data Centers, un promotor líder de centros de datos de alto rendimiento
       sostenibles, en el desarrollo de seis activos en España en ubicaciones estratégicas:
@@ -73,3 +92,17 @@ fuentes:
     cita: >-
       JLL asesorará a Nostrum Data Centers en el desarrollo de seis centros de datos en España con
       una potencia combinada que puede alcanzar los 800 MW
+  - id: src-iren-cierre
+    url: https://www.datacenterdynamics.com/en/news/iren-completes-acquisition-of-spanish-data-center-developer-nostrum/
+    titulo: Iren completes acquisition of Spanish data center developer Nostrum
+    editor: DatacenterDynamics
+    tipo: prensa_especializada
+    fecha_publicacion: 2026-06-16
+    fecha_consulta: 2026-10-17
+  - id: src-iren-fy2026
+    url: https://www.sec.gov/Archives/edgar/data/1878848/000187884826000052/iren-20260630.htm
+    titulo: "IREN FY2026 Form 20-F, nota 9: adquisición de Ingenostrum"
+    editor: IREN / SEC
+    tipo: empresa
+    fecha_consulta: 2026-10-17
+    cita: June 12, 2026

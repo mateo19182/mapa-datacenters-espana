@@ -14,12 +14,16 @@ ubicacion:
   municipio: "Torrelobatón"
   provincia: "Valladolid"
   ccaa: "Castilla y León"
-  direccion: "Finca de San Lorenzo, Montes Torozos"
+  direccion: Finca San Lorenzo, polígono 38, parcelas 5002, 5003 y 5004; parcela de 117,83 ha a
+    segregar en Torrelobatón
   lat: 41.6490374
   lon: -5.0250798
   precision: municipio
-  fuentes: [src-jcyl, src-bebeez, src-osm]
-
+  fuentes:
+    - src-jcyl
+    - src-bebeez
+    - src-osm
+    - src-aai-202604
 estado: en_tramitacion
 estado_detalle: >-
   El proyecto tramita autorización ambiental y evaluación de impacto ambiental
@@ -38,7 +42,12 @@ potencia:
     referencia: "Potencia informática neta del campus a pleno desarrollo"
     estado_asociado: en_tramitacion
     fecha_dato: "2026-08"
-    fuentes: [src-bebeez, src-ti, src-dv, src-ec]
+    fuentes:
+      - src-bebeez
+      - src-ti
+      - src-dv
+      - src-ec
+      - src-resumen-aai-202604
     nota: >-
       Las fuentes hablan de "up to 160MW of IT capacity" y de "una potencia
       informática (IT) neta de 160 megavatios", repartida en dos edificios de
@@ -50,46 +59,63 @@ potencia:
     referencia: "Potencia térmica total del parque de grupos electrógenos de emergencia y equipos auxiliares"
     estado_asociado: en_tramitacion
     fecha_dato: "2026-08-08"
-    fuentes: [src-dv, src-ti]
+    fuentes:
+      - src-dv
+      - src-ti
+      - src-resumen-aai-202604
     nota: >-
       No es capacidad del centro de datos. Corresponde a 96 grupos electrógenos de
       emergencia de 8,16 MW de potencia térmica cada uno más otros equipos
       auxiliares. No se compara ni se suma con los 160 MW IT.
-
+  - tipo: instalada_total
+    valor_mw: 231.24966
+    ambito: campus
+    referencia: Previsión de potencia total máxima de las dos fases, tabla 20 de la solicitud de AAI
+    estado_asociado: en_tramitacion
+    fecha_dato: 2026-04
+    fuentes:
+      - src-aai-202604
+    nota: El documento da 231.249,66 kWe totales. Es un máximo de diseño, no capacidad instalada o
+      energizada comprobada. No es la carga IT de 160 MW ni el permiso de acceso.
 fases:
   - nombre: "Fase 1 — primer edificio de ocho salas IT"
     estado: en_tramitacion
-    superficie_m2: 141189
+    superficie_m2: 141189.64
     nota: >-
       Superficie de desarrollo de la primera fase. Incluye el primer edificio de
       centro de datos (24.771 m2 de edificación), una balsa de acumulación de
       7.200 m2 y la balsa final de 32.700 m2, que estará lista en esta fase.
-    fuentes: [src-dv]
+    fuentes:
+      - src-dv
+      - src-aai-202604
   - nombre: "Fase 2 — segundo edificio de ocho salas IT"
     estado: en_tramitacion
-    superficie_m2: 97298
-    nota: >-
-      Superficie de desarrollo de la segunda fase, con un segundo edificio de
-      24.771 m2 y otra balsa de acumulación de 7.200 m2. Las dos fases se
-      describen como idénticas.
-    fuentes: [src-dv]
-
+    superficie_m2: 97928.71
+    nota: Superficie total de desarrollo de la fase II según la tabla 7 de la AAI. El primer edificio y
+      el segundo se plantean con hasta ocho salas de 10 MW IT cada uno.
+    fuentes:
+      - src-dv
+      - src-aai-202604
 conexion_electrica:
-  subestacion: "Subestación eléctrica anexa propia, próxima a la SE La Mudarra"
-  tension_kv: null
+  subestacion: SET CPD San Lorenzo 30/220 kV, línea subterránea 220 kV y ampliación de la SET San
+    Lorenzo existente
+  tension_kv: 220
   titular_red: null
   mw_solicitados: null
   mw_concedidos: null
-  nota: >-
-    El emplazamiento se sitúa junto a los parques eólicos San Lorenzo de Vapat y
-    cerca de la subestación eléctrica de La Mudarra, descrita como punto
-    estratégico de la red de la zona; la ubicación se eligió por la proximidad de
-    infraestructura eléctrica con capacidad suficiente. El CPD contará además con
-    una subestación eléctrica anexa. La demanda eléctrica estimada a plena
-    capacidad es de 2.025,6 GWh al año, que es energía y no potencia. No consta la
-    potencia de acceso solicitada ni concedida.
-  fuentes: [src-bebeez, src-dv, src-ec]
-
+  nota: El emplazamiento se sitúa junto a los parques eólicos San Lorenzo de Vapat y cerca de la
+    subestación eléctrica de La Mudarra, descrita como punto estratégico de la red de la zona; la
+    ubicación se eligió por la proximidad de infraestructura eléctrica con capacidad suficiente. El
+    CPD contará además con una subestación eléctrica anexa. La demanda eléctrica estimada a plena
+    capacidad es de 2.025,6 GWh al año, que es energía y no potencia. No consta la potencia de
+    acceso solicitada ni concedida. La solicitud de AAI prevé dos transformadores de 142 MVA y una
+    línea subterránea de 220 kV. Son instalaciones proyectadas, sin prueba de acceso concedido; no
+    se convierten MVA a MW.
+  fuentes:
+    - src-bebeez
+    - src-dv
+    - src-ec
+    - src-aai-202604
 superficie_construida_m2: 49543
 
 refrigeracion: >-
@@ -102,17 +128,19 @@ agua:
   sistema: >-
     Circuitos sellados con recirculación y vertido cero, según la promotora, con
     balsas de acumulación de 7.200 m2 en cada fase y una balsa final de 32.700 m2.
-  origen: null
+  origen: Aprovisionamiento inicial mediante camiones cisterna y tanques; la parcela no dispone de red
+    de abastecimiento
   consumo_m3_ano: 5996
   consumo_m3_dia: null
   wue_l_kwh: null
-  nota: >-
-    Los 5.996 m3 anuales se refieren a las dos fases previstas y al desarrollo
-    completo. El consumo de agua es uno de los ejes de la oposición vecinal y
-    política al proyecto, pese a que la cifra declarada es modesta en términos
-    absolutos.
-  fuentes: [src-ti, src-ec]
-
+  nota: La tabla 19 de la AAI fija 5.996 m³/año para las dos fases, incluidos 2.044 m³ administrativos
+    y 3.916 m³ de tratamiento de aire. Añade llenados iniciales de 1.040 m³ de refrigeración y 400
+    m³ contra incendios, realizados una sola vez, que no se suman al anual. La ausencia de vertido
+    industrial no equivale a ausencia de consumo.
+  fuentes:
+    - src-ti
+    - src-ec
+    - src-aai-202604
 inversion_anunciada_eur: null
 
 empleo:
@@ -128,25 +156,25 @@ empleo:
 
 incertidumbres:
   - campo: superficie_parcela_m2
-    descripcion: >-
-      Las fuentes dan tres superficies distintas y no se registra ninguna como
-      dato firme. DCD, recogido por BeBeez, habla de hasta 250 hectáreas; El
-      Confidencial de 117,83 hectáreas; y el Diario de Valladolid, citando la
-      documentación sometida a información pública, de una parcela de 239.118
-      metros cuadrados (casi 40 hectáreas) repartidos en 141.189 m2 en la primera
-      fase y 97.298 en la segunda. Es probable que se trate de ámbitos distintos
-      (finca, ámbito de proyecto y superficie efectivamente ocupada), pero ninguna
-      fuente lo aclara. Sí se registra como superficie construida los 49.543 m2 de
-      edificaciones y elementos constructivos asociados.
-    fuentes: [src-bebeez, src-ec, src-dv]
+    descripcion: La AAI distingue 238,71 ha de parcelas catastrales actuales, 117,83 ha para la parcela
+      a segregar y 239.118,35 m² de superficies del complejo, tabla 7. Se registra la parcela de
+      117,83 ha. La prensa había mezclado esos ámbitos y transcrito incorrectamente la superficie de
+      fase II.
+    fuentes:
+      - src-bebeez
+      - src-ec
+      - src-dv
+      - src-aai-202604
   - campo: potencia
-    descripcion: >-
-      Junto a los 160 MW de potencia TI neta, el expediente declara una potencia
-      térmica total de 786,82 MW de grupos electrógenos de emergencia. Son
-      magnitudes distintas y no comparables. Las fuentes discrepan además sobre el
-      número de grupos: el Diario de Valladolid y Tercera Información hablan de 96
-      grupos electrógenos y El Confidencial de 100.
-    fuentes: [src-ti, src-dv, src-ec]
+    descripcion: El resumen oficial distingue 96 grupos de 8,16 MWt, dos de 1,32 MWt y dos de 0,52 MWt,
+      con 786,82 MWt totales. Esto explica los 100 grupos totales frente a 96 principales que
+      confundía la prensa. La potencia térmica de respaldo no se suma a la potencia IT ni a la
+      previsión eléctrica total.
+    fuentes:
+      - src-ti
+      - src-dv
+      - src-ec
+      - src-resumen-aai-202604
   - campo: inversion_anunciada_eur
     descripcion: >-
       La inversión se cita como una horquilla de 1.600 a 2.000 millones de euros
@@ -154,16 +182,16 @@ incertidumbres:
       los 2.000", "no menos de 1.600-2.000 millones"); no se registra cifra única.
     fuentes: [src-bebeez, src-dv, src-ec]
   - campo: ubicacion
-    descripcion: >-
-      El expediente oficial nombra el proyecto por la finca de San Lorenzo, en los
-      Montes Torozos, dentro del término municipal de Torrelobatón, pero no se ha
-      localizado la delimitación de la parcela. Las coordenadas son las del
-      municipio.
-    fuentes: [src-jcyl, src-osm]
-
+    descripcion: El expediente identifica la finca San Lorenzo y las parcelas 5002,5003 y 5004 del
+      polígono 38 de Torrelobatón, con 117,83 ha a segregar. Las coordenadas conservadas son una
+      referencia municipal. Falta contrastar un punto del edificio o de la parcela en el plano
+      georreferenciado antes de sustituirlas.
+    fuentes:
+      - src-jcyl
+      - src-osm
+      - src-aai-202604
 confianza: media
-ultima_verificacion: "2026-08-31"
-
+ultima_verificacion: 2026-10-17
 fuentes:
   - id: src-jcyl
     url: "https://medioambiente.jcyl.es/web/jcyl/MedioAmbiente/es/Plantilla100Detalle/1284745686027/Texto%20Generico/1285665196913/Texto"
@@ -171,7 +199,7 @@ fuentes:
     editor: "Consejería de Medio Ambiente, Junta de Castilla y León"
     tipo: oficial
     fecha_publicacion: "2026-07-22"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       INFORMACIÓN pública relativa al proyecto de autorización ambiental y al
       estudio de impacto ambiental del proyecto «Centro de Proceso de Datos San
@@ -184,7 +212,7 @@ fuentes:
     editor: "Diario de Valladolid"
     tipo: prensa_general
     fecha_publicacion: "2026-08-08"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       el proyecto contempla una inversión de más de 1.600 millones de euros
       —algunas fuentes elevan la inversión hasta rozar los 2.000—, y la creación
@@ -233,7 +261,7 @@ fuentes:
       una inversión millonaria y que creará 140 empleos directos
   - id: src-bebeez
     url: "https://bebeez.eu/2026/08/21/vapat-enters-the-data-center-market-with-a-160mw-project-in-valladolid/"
-    titulo: "Vapat enters the data center market with a 160MW project in Valladolid"
+    titulo: Vapat enters the data center market with a 160MW project in Valladolid
     editor: "BeBeez International"
     tipo: prensa_especializada
     fecha_publicacion: "2026-08-21"
@@ -248,7 +276,7 @@ fuentes:
     editor: "Tercera Información"
     tipo: prensa_general
     fecha_publicacion: "2026-08-06"
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: >-
       una potencia informática (IT) neta de 160 megavatios [...] parque de 96
       grupos electrógenos de emergencia [...] consumo directo de 5.996 metros
@@ -260,3 +288,18 @@ fuentes:
     tipo: otro
     fecha_consulta: "2026-08-29"
     cita: "Torrelobatón, Valladolid, Castilla y León, 47134, España — lat 41.6490374, lon -5.0250798"
+  - id: src-aai-202604
+    url: https://nebula.jcyl.es/index.php/s/ZgmiDZi67ZwzK79/download?path=%2F&files=AAI%20CPD%20SAN%20LORENZO_para_IP.pdf
+    titulo: Solicitud de AAI del Centro de Proceso de Datos San Lorenzo, abril 2026
+    editor: DC Mudarra, S.L.U. / Junta de Castilla y León
+    tipo: oficial
+    fecha_consulta: 2026-10-17
+    cita: Previsión de potencia total máxima dentro del CPD SAN LORENZO.
+  - id: src-resumen-aai-202604
+    url: https://nebula.jcyl.es/index.php/s/ZgmiDZi67ZwzK79/download?path=%2F&files=AAI%20CPD%20SAN%20LORENZO_Resumen%20no%20tecnico_para_IP.pdf
+    titulo: Resumen no técnico de la AAI del CPD San Lorenzo, abril 2026
+    editor: DC Mudarra, S.L.U. / Junta de Castilla y León
+    tipo: oficial
+    fecha_consulta: 2026-10-17
+    cita: Cada una de ellas tendría una potencia IT de 10 MW.
+superficie_parcela_m2: 1178300

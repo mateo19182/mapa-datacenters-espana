@@ -28,7 +28,7 @@ estado_detalle: >-
   Informe de Impacto Ambiental por Resolución de 28 de febrero de 2023 (BOCM de 16 de marzo de
   2023). Microsoft declaró en la apertura de su región cloud Spain Central que avanzaba en la
   construcción de centros de datos adicionales en Algete, Meco y San Sebastián de los Reyes.
-estado_fuentes: [src-1, src-2, src-3]
+estado_fuentes: [ src-1, src-2, src-3, src-ms-comunidad-20260305 ]
 
 potencia:
   - tipo: it
@@ -108,11 +108,12 @@ incertidumbres:
       servicio, y no consta si el proyecto ejecutado mantiene los 9,5 MW de carga TI.
     fuentes: [src-1, src-2]
   - campo: estado
-    descripcion: >-
-      No se ha localizado confirmación pública de la puesta en servicio. Microsoft situaba el
-      emplazamiento en construcción en la nota de apertura de la región; el expediente ambiental
-      es de 2023 y no hay publicación posterior sobre su ejecución.
-    fuentes: [src-1, src-2]
+    descripcion: La nota de apertura de la región de 2024 situaba este emplazamiento en construcción.
+      Microsoft confirma en marzo 2026 la presencia de centros en Algete, Meco y San Sebastián de
+      los Reyes, pero no identifica edificios o fases entregadas, fechas de recepción ni MW en
+      servicio. La operación regional no se atribuye automáticamente a la totalidad del diseño de
+      esta ficha.
+    fuentes: [ src-1, src-2, src-ms-comunidad-20260305 ]
   - campo: tipo
     descripcion: >-
       La ficha está registrada como campus, pero el expediente ambiental describe un único
@@ -128,7 +129,7 @@ incertidumbres:
     fuentes: [src-2, src-3]
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
   - id: src-1
@@ -136,7 +137,7 @@ fuentes:
     titulo: "Microsoft abre su primera región cloud en España para acelerar el desarrollo de la Economía de la IA"
     editor: "Microsoft"
     tipo: empresa
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "Microsoft avanza en la construcción de centros de datos adicionales ubicados en Algete, Meco y San Sebastián de los Reyes, que se inaugurarán próximamente."
   - id: src-2
     url: "https://transparencia.ssreyes.org/documents/1678104/2103617/819305892_1462023192729.pdf/6b22353e-8d39-6f69-e668-415d0316374e?t=1697736054194"
@@ -144,13 +145,35 @@ fuentes:
     editor: "Comunidad de Madrid — Consejería de Medio Ambiente, Vivienda y Agricultura (publicado en el portal de transparencia del Ayuntamiento de San Sebastián de los Reyes)"
     tipo: oficial
     fecha_publicacion: "2023-02-28"
-    fecha_consulta: "2026-08-31"
-    cita: "En la zona central de la parcela se construirá un Centro de Datos (también denominado MAD04), con un área de 7.085 m2 ... La parcela tiene una superficie de 24.762 m2 ... El edificio BALLARD dispondrá de 4 celdas destinadas a alojar equipos de informática y redes con una capacidad total de potencia de equipos informáticos de 9,5 MW. Existirán 4 generadores de emergencia para las salas de datos, cada uno con una potencia eléctrica de 3,5 MW y potencia térmica de 7,1 MW ... El suministro eléctrico se prevé desde dos subestaciones eléctricas situadas fuera del emplazamiento, con acometidas subterráneas independientes en alta tensión a 20 KV 50 Hz. El edificio tendrá una demanda de potencia de 13 MW, encontrándose previstos cinco (5) transformadores de 20/0,415 KV distribuidos por el complejo ... Las salas de datos se proveerán de un sistema de unidades de ventilación con enfriamiento evaporativo que utiliza agua como elemento refrigerante ... con una potencia instalada de 13 MW y un consumo eléctrico máximo estimado anual de aproximadamente 68.330 MWh Se encuentra previsto un consumo anual de agua de 9.199,2 m 3, destinado en su mayor parte al uso en la refrigeración de los equipos. Se estima un volumen de vertido anual de purgas del sistema de refrigeración de 2.490 m 3 anuales y 394 m 3 anuales de aguas sanitarias."
+    fecha_consulta: "2026-10-17"
+    cita: "En la zona central de la parcela se construirá un Centro de Datos (también denominado MAD04),
+      con un área de 7.085 m2 ... La parcela tiene una superficie de 24.762 m2 ... El edificio
+      BALLARD dispondrá de 4 celdas destinadas a alojar equipos de informática y redes con una
+      capacidad total de potencia de equipos informáticos de 9,5 MW. Existirán 4 generadores de
+      emergencia para las salas de datos, cada uno con una potencia eléctrica de 3,5 MW y potencia
+      térmica de 7,1 MW ... El suministro eléctrico se prevé desde dos subestaciones eléctricas
+      situadas fuera del emplazamiento, con acometidas subterráneas independientes en alta tensión a
+      20 KV 50 Hz. El edificio tendrá una demanda de potencia de 13 MW, encontrándose previstos
+      cinco (5) transformadores de 20/0,415 KV distribuidos por el complejo ... Las salas de datos
+      se proveerán de un sistema de unidades de ventilación con enfriamiento evaporativo que utiliza
+      agua como elemento refrigerante ... con una potencia instalada de 13 MW y un consumo eléctrico
+      máximo estimado anual de aproximadamente 68.330 MWh Se encuentra previsto un consumo anual de
+      agua de 9.199,2 m³, destinado en su mayor parte al uso en la refrigeración de los equipos. Se
+      estima un volumen de vertido anual de purgas del sistema de refrigeración de 2.490 m³ anuales
+      y 394 m³ anuales de aguas sanitarias."
   - id: src-3
     url: "https://www.bocm.es/boletin/CM_Orden_BOCM/2023/03/16/BOCM-20230316-50.PDF"
     titulo: "RESOLUCIÓN de 28 de febrero de 2023, del Director General de Descarbonización y Transición Energética de la Consejería de Medio Ambiente, Vivienda y Agricultura, por la que se acuerda hacer público el Informe de Impacto Ambiental del proyecto de “Centro de Datos en Avenida Fuente Nueva, número 3, localizado en el polígono industrial Sur”, en el término municipal de San Sebastián de los Reyes, promovido por Microsoft 7724 Spain, S. L."
     editor: "Boletín Oficial de la Comunidad de Madrid"
     tipo: oficial
     fecha_publicacion: "2023-03-16"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: "se acuerda hacer público el Informe de Impacto Ambiental correspondiente al proyecto de “Centro de Datos en Avenida Fuente Nueva, número 3, localizado en el polígono industrial Sur”, en el término municipal de San Sebastián de los Reyes, promovido por Microsoft 7724 Spain, S. L., con domicilio social en Paseo Club Deportivo, número 1, Parque Empresarial “La Finca”, 28223 Pozuelo de Alarcón, Madrid. (Expediente: 10-EIA-00035.3/2022)"
+  - id: src-ms-comunidad-20260305
+    url: https://news.microsoft.com/source/emea/features/microsoft-abre-una-nueva-convocatoria-del-fondo-comunitario-de-madrid-para-promover-el-impacto-social-en-la-region/?lang=es
+    titulo: Microsoft abre nueva convocatoria del Fondo Comunitario de Madrid
+    editor: Microsoft
+    tipo: empresa
+    fecha_publicacion: 2026-03-05
+    fecha_consulta: "2026-10-17"
+    cita: la compañía cuenta con centros de datos

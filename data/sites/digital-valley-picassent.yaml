@@ -115,12 +115,10 @@ incertidumbres:
       publicada que permita contrastar la cifra.
     fuentes: [src-6, src-8]
   - campo: estado
-    descripcion: >-
-      A 31/08/2026 el índice público de Proyectos de Interés Autonómico de la Conselleria de
-      Medio Ambiente solo contiene cuatro expedientes (El Plantío Golf en Alicante, Armonia
-      Green Castellón, PLD Space en Elche y el data center El Lobo en Monforte del Cid);
-      Picassent no figura entre ellos. La ausencia en el índice no equivale a una denegación,
-      pero tampoco consta admisión a trámite pública del PIA de Digital Valley.
+    descripcion: El índice público de Proyectos de Interés Autonómico consultado el 17 de octubre de
+      2026 no incluye el expediente de Digital Valley/Picassent. La nota oficial de enero 2025
+      anuncia el proyecto, pero no es una admisión o aprobación del PIA. La ausencia en el índice no
+      prueba denegación ni cancelación. No consta autorización de obra o puesta en servicio.
     fuentes: [src-9]
   - campo: inversion_anunciada_eur
     descripcion: >-
@@ -131,7 +129,7 @@ incertidumbres:
     fuentes: [src-2, src-7]
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
   - id: src-1
@@ -140,7 +138,7 @@ fuentes:
     editor: "Levante-EMV"
     tipo: prensa_general
     fecha_publicacion: "2025-01-28"
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "En materia energética, la actuación contempla instalar una capacidad de 200 MW para lo que se va a desarrollar una planta fotovoltaica y una central de generación de hidrógeno verde, entre otras medidas."
   - id: src-2
     url: "https://www.lasprovincias.es/economia/megacentro-datos-picassent-acceso-potencia-exigida-tras-20260203193335-nt.html"
@@ -148,7 +146,7 @@ fuentes:
     editor: "Las Provincias"
     tipo: prensa_general
     fecha_publicacion: "2026-02-03"
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "Los centros de datos, con una capacidad máxima de 200 MW, son la base de una megaconstrucción [...] La primera fase del mismo requiere algo más de 150 MW de potencia, lo equivalente a la energía suficiente para alimentar unos 70.000 hogares. Al menos esa es la cantidad solicitada al Gobierno."
   - id: src-3
     url: "https://www.datacentermarket.es/sostenibilidad/digital-valley-la-apuesta-de-la-comunidad-valenciana-por-los-data-centers/"
@@ -171,7 +169,7 @@ fuentes:
     editor: "El Salto"
     tipo: prensa_general
     fecha_publicacion: "2026-04-20"
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "Digital Valley Comunitat Valenciana se ubicará, según el proyecto, sobre una superficie de 77,3 hectáreas en el término municipal de Picassent. En la actuación están previstos espacios de data centers para la gestión y almacenamiento de datos que ocuparán 37 hectáreas, de las que 29 serán edificables"
   - id: src-6
     url: "https://comunica.gva.es/es/detalle?id=389502749&site=373409432"
@@ -179,7 +177,7 @@ fuentes:
     editor: "Generalitat Valenciana — Gabinete de prensa"
     tipo: oficial
     fecha_publicacion: "2025-01-28"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: "Digital Valley Comunitat Valenciana se ubicará en el municipio de Picassent sobre una superficie de 77,3 hectáreas en el que se instalarán espacios de Data Centers de última tecnología para la gestión y el almacenamiento a gran escalada de datos que ocuparán 37 hectáreas de las cuales 29 serán edificables. [...] En materia energética, la actuación contempla instalar una capacidad de 200 MW para lo que se va a desarrollar una planta fotovoltaica y una central de generación de hidrógeno verde, entre otras medidas. Además, contará con una superficie de 11,2 hectáreas de carácter dotacional [...] «generará una inversión superior a los 2.200 millones de euros y la creación de 30.000 empleos»."
   - id: src-7
     url: "https://www.elcomercio.es/economia/campus-datos-salas-asturias-proyectos-hermanos-20260804193017-nt.html"
@@ -195,12 +193,12 @@ fuentes:
     editor: "La Directa"
     tipo: prensa_general
     fecha_publicacion: "2026-02-19"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: "Amb una inversió anunciada de més de 2.200 milions d'euros i la suposada creació de 30.000 llocs de treball [...] Carles Climent, membre de l'organització veïnal Juntes pel Territori, es mostra taxatiu davant aquestes xifres: «sabem que són mentida». [...] des de Juntes pel Territori es mostren preocupades per l'elecció d'un espai «a 2.800 metres del Parc Natural de l'Albufera i al costat de la Séquia Reial del Xúquer»."
   - id: src-9
     url: "https://mediambient.gva.es/auto/planes-accion-territorial/Proyectos%20Inter%C3%A9s%20Auton%C3%B3mico%20%28PIA%29/"
     titulo: "Index of /auto/planes-accion-territorial/Proyectos Interés Autonómico (PIA)"
     editor: "Generalitat Valenciana — Conselleria de Medi Ambient, Infraestructures i Territori"
     tipo: oficial
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: "PIA Alicante - El Plantío Golf/ | PIA Castellón - Armonia Green Castellon/ | PIA Elche - PLD Space/ | PIA Monforte del Cid - El Lobo/"

@@ -69,17 +69,19 @@ fases:
       de logística.
 
 conexion_electrica:
-  subestacion: "SE VDG2HV 220/20 kV (propia de AWS)"
+  subestacion: "SE VDG2HV 220/20 kV (propia de AWS), alimentada desde SE Villanueva de Gállego 220 kV"
   tension_kv: 220
-  titular_red: null
+  titular_red: "Red Eléctrica — SE Villanueva de Gállego 220 kV"
   mw_solicitados: null
   mw_concedidos: null
   fuentes: [src-2]
   nota: >-
     El proyecto de la subestación VDG2HV 220/20 kV fue aprobado definitivamente por Acuerdo
-    del Gobierno de Aragón de 10 de junio de 2026. En el ámbito de Villanueva de Gállego el
-    PIGA incluye además líneas de 132 kV entre la SE Villanueva de Gállego y la parcela
-    VDG1 y hacia Villanueva de Gállego Oeste (VDG1E). No consta potencia de acceso en MW.
+    del Gobierno de Aragón de 10 de junio de 2026. Incluye seis transformadores de
+    100 MVA y conexión a Villanueva de Gállego 220 kV mediante dos líneas subterráneas
+    y centro de medida VDG2CM. La resolución exige las autorizaciones de esa conexión
+    antes del suministro. Los MVA de transformación no se convierten a MW de acceso;
+    no consta potencia concedida ni energización.
 
 superficie_construida_m2: 30701
 inversion_anunciada_eur: null
@@ -127,15 +129,13 @@ incertidumbres:
     fuentes: [src-3]
   - campo: empleo
     descripcion: >-
-      El cuadro de parámetros urbanísticos del Acuerdo de 4 de mayo de 2026 recoge los
-      trabajadores previstos en la Fase 1 de VDG1, VDG2 y WQA en una tabla de tres columnas
-      cuya correspondencia no se puede reconstruir de forma literal desde el texto
-      publicado. No se registra por ello un valor en «empleo»; la cifra que figura en la
-      nota de la fase procede de una lectura previa de esa tabla.
+      Los trabajadores previstos de la fase 1 se emplean en el cuadro urbanístico para
+      dimensionar aparcamientos. Son previsiones de diseño, no empleos ya creados, y
+      el documento no desglosa contratación directa, indirecta o de construcción.
     fuentes: [src-1]
 
 confianza: alta
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
   - id: src-1
@@ -144,7 +144,7 @@ fuentes:
     editor: "Boletín Oficial de Aragón"
     tipo: oficial
     fecha_publicacion: "2026-05-07"
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "para el centro de almacenamiento de datos denominado VDG2 (ZAZ100), ubicado en término municipal de Villanueva de Gállego coordenadas de referencia UTM ETRS89, Huso 30, X=678.737, Y=4.629.165 [...] con una potencia térmica nominal total de 1.169,46 MWt."
   - id: src-2
     url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1454107610505"
@@ -152,7 +152,7 @@ fuentes:
     editor: "Boletín Oficial de Aragón"
     tipo: oficial
     fecha_publicacion: "2026-06-24"
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "Tomo III. Villanueva de Gállego 2. Tomo III.4. Edificio B (Tipología A). Proyecto de edificación y urbanización interior de la parcela Fase 1. Tomo III.5. Proyecto subestación VDG2HV 220/20 kV."
   - id: src-3
     url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1406588900808"
@@ -160,7 +160,7 @@ fuentes:
     editor: "Boletín Oficial de Aragón"
     tipo: oficial
     fecha_publicacion: "2025-08-06"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: "Respecto de las afecciones al recurso hídrico, el consumo de agua asociado a la actividad de los centros de datos se ha estimado en: VDG1: 56.980 m 3/ año; VDG2: 208.920 m 3/año; BDE: 111.880 m 3/año, WQA: 143.400 m 3/año y CAR: 204.700 m 3/año. Por lo tanto, las necesidades de agua para sistemas de refrigeración del conjunto de centros de datos ascenderían, aproximadamente, a 725.880 m 3/año"
   - id: src-4
     url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1419875120606"
@@ -168,7 +168,7 @@ fuentes:
     editor: "Boletín Oficial de Aragón"
     tipo: oficial
     fecha_publicacion: "2025-11-11"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: "En el emplazamiento VDG2, el agua pluvial captada se canalizará parcialmente hacia la finca colindante VDG1, después de un primer tratamiento de filtrado en VDG2 y ambas fincas pertenecientes al mismo titular y el resto, se reutilizará en la misma parcela. [...] Para la red de suministro de agua de proceso, se propone construir un nuevo pozo (P1) junto al pozo municipal existente (1+1) [...] Adicionalmente se propone construir dos nuevos pozos P2 y P3 (1+1) como refuerzo del abastecimiento actual"
   - id: src-5
     url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1406588900808"
@@ -176,5 +176,5 @@ fuentes:
     editor: "Boletín Oficial de Aragón"
     tipo: oficial
     fecha_publicacion: "2025-08-06"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: "Los recursos de energía para la actividad a desarrollar en los centros de datos ascienden a: VDG1: 756,9 GWh/año, VDG2: 2.775 GWh/año, BDE: 1.766 GWh/año, WQA: 2.270,6 GWh/año y CAR: 3.279,7 GWh/año. Las necesidades de electricidad del conjunto de centros de datos ascenderían a 10.848,2 GWh/año."

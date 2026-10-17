@@ -5,7 +5,7 @@ alias:
   - "Adam: Cerdanyola 2"
 tipo: edificio
 operador: "Adam"
-propietario: "Adam"
+propietario: "Adam Ecotech, integrada en CVC DIF"
 modelo: colocation
 
 ubicacion:
@@ -26,8 +26,9 @@ estado_detalle: >-
   Adam Ecotech pasó a manos de CVC DIF, que acordó comprar el 100 % del capital a Ogic Informática
   el 31 de octubre de 2024. La web actual confirma construcción, ocho salas y 5 MW eléctricos
   contratados para la fase 1; difiere del anuncio inicial de cuatro salas y 4 MW. No consta nueva
-  apertura.
-estado_fuentes: [src-1, src-2, src-3, src-5]
+  apertura. La cronología corporativa consultada en octubre de 2026 anuncia la inauguración para
+  2026, frente a la previsión municipal de 2027. Ninguna confirma una apertura ya realizada.
+estado_fuentes: [ src-1, src-2, src-3, src-5, src-adam-historia-20261017 ]
 
 potencia:
   - tipo: no_especificado
@@ -120,15 +121,18 @@ incertidumbres:
       noviembre de 2025. Se conservan ambas fechas.
     fuentes: [src-2, src-3]
   - campo: propietario
-    descripcion: >-
-      El campo `propietario` registra «Adam», anterior a la compra del 100 % de
-      Adam Ecotech por CVC DIF acordada el 31 de octubre de 2024. No se
-      sobrescribe: queda anotado para que una persona decida cómo nombrar al
-      titular.
-    fuentes: [src-5]
+    descripcion: Adam confirma que fue adquirido por CVC DIF en 2024. Es una adquisición de la empresa
+      operadora; la fuente no identifica por separado la titularidad registral del inmueble de Parc
+      de l’Alba.
+    fuentes: [ src-5, src-adam-historia-20261017 ]
+  - campo: fecha_puesta_en_servicio
+    descripcion: El Ayuntamiento anunció en noviembre de 2025 una inauguración en 2027. La cronología de
+      Adam, sin fecha de publicación, anuncia «2026 (Próximamente)». Se conservan ambas previsiones;
+      no consta puesta en servicio.
+    fuentes: [ src-3, src-adam-historia-20261017 ]
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
   - id: src-1
@@ -145,7 +149,7 @@ fuentes:
     titulo: "Adam inicia la construcción de su cuarto centro de datos en Cerdanyola del Vallès"
     editor: "Data Center Market"
     tipo: prensa_especializada
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: >-
       El proyecto contará con salas modulares de última generación y una potencia
       instalada de 8 MW con certificación Tier III, que garantiza alta fiabilidad
@@ -166,7 +170,7 @@ fuentes:
     editor: "Ajuntament de Cerdanyola del Vallès"
     tipo: oficial
     fecha_publicacion: "2025-11-12"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       El nou centre disposarà de 8 MW de potència instal·lada, classificació Tier
       III i sistemes d'eficiència energètica i sostenibilitat amb plaques
@@ -191,7 +195,14 @@ fuentes:
     editor: "CVC"
     tipo: empresa
     fecha_publicacion: "2024-10-31"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       CVC DIF has agreed to acquire a 100% stake in Adam Ecotech, the data centre
       operator, with operations in Madrid and Barcelona, from Ogic Informatica.
+  - id: src-adam-historia-20261017
+    url: https://adam.es/sobre-adam/
+    titulo: "Sobre Adam: adquisición y calendario de Parc de l’Alba"
+    editor: Adam
+    tipo: empresa
+    fecha_consulta: "2026-10-17"
+    cita: 2026 (Próximamente) Inauguración cuarto data center en Parc de l’Alba Sincrotón (Barcelona)

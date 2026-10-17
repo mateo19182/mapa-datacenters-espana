@@ -18,20 +18,18 @@ ubicacion:
   precision: municipio
   fuentes: [src-1, src-2]
 
-estado: anunciado
-estado_detalle: >-
-  Anunciado por el Gobierno del Principado de Asturias el 3 de agosto de 2026.
-  Campus de diez módulos de centro de datos para procesamiento, almacenamiento y
-  gestión de datos e IA. Incluye subestación eléctrica propia e instalación
-  fotovoltaica. Tramitación administrativa prevista para 2026-2027, urbanización
-  entre el segundo semestre de 2027 y el primero de 2028, y construcción de
-  infraestructuras del tercer trimestre de 2027 al cuarto de 2030. El recinto reserva
-  un 28% del espacio para zonas verdes, contará con 375 plazas de aparcamiento y una
-  instalación fotovoltaica de 350 paneles. Aspira a la calificación de proyecto de
-  interés estratégico regional (PIER). Un informe de PwC estima una aportación
-  acumulada de 4.177 millones al PIB regional en veinte años. El proyecto está
-  financiado por un fondo de inversión estadounidense.
-estado_fuentes: [src-1, src-4, src-5]
+estado: en_tramitacion
+
+estado_detalle: El Principado confirmó el 11 de septiembre de 2026 la solicitud formal de Sales For
+  You Consulting para tramitar Digital Valley Asturias como PIER. Sekuens evaluará viabilidad,
+  solvencia e impactos antes de decidir la declaración. Se prevé un campus en Nonaya con dos fases y
+  subestación propia; no consta declaración concedida ni inicio de obras.
+
+estado_fuentes:
+  - src-1
+  - src-4
+  - src-5
+  - src-pier-20260911
 
 potencia:
   - tipo: no_especificado
@@ -69,9 +67,10 @@ fases:
     fuentes: [src-1]
   - nombre: "Fase 2 (96 MW adicionales, 960 M€)"
     estado: anunciado
-    fecha_puesta_en_servicio: "2030"
     fuentes: [src-1]
 
+    nota: El calendario divulgado en agosto prolongaba la construcción hasta finales de 2030; no consta
+      una fecha propia de puesta en servicio.
 conexion_electrica:
   fuentes: [src-1]
 
@@ -139,12 +138,13 @@ incertidumbres:
       titular de red ni el punto de conexión.
     fuentes: [src-1]
   - campo: estado
-    descripcion: >-
-      A agosto de 2026 el proyecto debe completar su tramitación y obtener la
-      consideración de proyecto de interés estratégico regional. No se han
-      identificado públicamente el operador final, los clientes ni la estructura
-      financiera, ni se concreta el sistema de refrigeración ni el consumo de agua.
-    fuentes: [src-1, src-3]
+    descripcion: La solicitud PIER está formalizada desde septiembre; falta resolución y evaluación
+      técnica. No se han identificado el operador final, clientes ni condiciones verificables de
+      financiación, refrigeración o consumo de agua.
+    fuentes:
+      - src-1
+      - src-3
+      - src-pier-20260911
   - campo: empleo
     descripcion: >-
       Las cifras no cuadran entre sí: la nota oficial habla de «1.318 empleos
@@ -155,7 +155,7 @@ incertidumbres:
     fuentes: [src-4, src-5]
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: 2026-10-17
 
 fuentes:
   - id: src-1
@@ -230,3 +230,11 @@ fuentes:
       está utilizando una y otra vez, salvo lógicamente pequeñas pérdidas; es decir,
       no hay reposición continua de agua, se llena una vez y se mantiene", afirmó
       Barbón.
+  - id: src-pier-20260911
+    url: https://actualidad.asturias.es/es/-/datos119
+    titulo: Digital Valley Asturias solicita tramitación como Proyecto de Interés Estratégico
+    editor: Gobierno del Principado de Asturias
+    tipo: oficial
+    fecha_publicacion: 2026-09-11
+    cita: Los promotores ya han formalizado la petición, que evaluará la Agencia Sekuens
+    fecha_consulta: 2026-10-17

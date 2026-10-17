@@ -23,12 +23,14 @@ ubicacion:
 estado: en_tramitacion
 estado_detalle: >-
   Declarado inversión empresarial de interés estratégico para Andalucía por Resolución de la
-  Comisión Delegada para Asuntos Económicos de 6 de mayo de 2026, publicada en BOJA nº 104 de 2026.
+  Comisión Delegada para Asuntos Económicos de 6 de mayo de 2026, publicada en BOJA nº 104 de 2 de junio de 2026.
   Integrado en la Unidad Aceleradora de Proyectos de la Junta. La vigencia de la declaración se
-  extiende hasta el 31 de diciembre de 2031. Sin licencia de obra acreditada a
+  extiende hasta el 31 de diciembre de 2031. El pleno municipal aprobó definitivamente el
+  plan parcial del sector SUS-CA.23 el 25 de junio de 2026; ese acuerdo no es una licencia
+  de obra del CPD. Sin licencia de obra acreditada a
   la fecha de verificación; la prensa especializada sitúa el inicio de obras en 2027 y el 30 de
   agosto de 2026 la prensa económica andaluza seguía sin constatar el inicio de las obras.
-estado_fuentes: [src-1, src-2, src-3, src-5, src-7, src-8]
+estado_fuentes: [src-1, src-2, src-3, src-5, src-7, src-8, src-plan-parcial-20260625]
 
 potencia:
   - tipo: it
@@ -57,8 +59,8 @@ conexion_electrica:
   titular_red: "Red Eléctrica de España"
   fuentes: [src-3, src-4, src-6]
 
-superficie_parcela_m2: 71415
-superficie_construida_m2: 47629
+superficie_parcela_m2: 71415.79
+superficie_construida_m2: 47629.4
 inversion_anunciada_eur: 1257183288
 
 empleo:
@@ -110,16 +112,24 @@ incertidumbres:
     fuentes: [src-1, src-2]
 
 confianza: alta
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
+  - id: src-plan-parcial-20260625
+    url: "https://urbanismo.malaga.eu/anuncios-de-planeamiento/planificacion/planes-parciales/detalle-del-anuncio/TOMA-DE-CONOCIMIENTO-Y-APROBACION-DEL-TEXTO-REFUNDIDO-DE-PLAN-PARCIAL-DE-ORDENACION-DEL-SECTOR-DE-SUELO-URBANIZABLE-SECTORIZADO-SUS-CA.23-EXTENSION-DEL-PTA/"
+    titulo: "Aprobación definitiva del Plan Parcial SUS-CA.23 Extensión del PTA, PL5/2019"
+    editor: "Gerencia Municipal de Urbanismo, Ayuntamiento de Málaga"
+    tipo: oficial
+    fecha_publicacion: "2026-07-13"
+    fecha_consulta: "2026-10-17"
+    cita: "FECHA APROBACIÓN DEFINITIVA: 25 de junio de 2026"
   - id: src-1
     url: "https://www.juntadeandalucia.es/boja/2026/104/37"
     titulo: "Orden de 27 de mayo de 2026, por la que se publica la Resolución de la Comisión Delegada para Asuntos Económicos, de 6 de mayo de 2026, por la que se declara inversión empresarial de interés estratégico para Andalucía el «Proyecto de Centro de Datos en la Extensión del PTA de Málaga», en Málaga"
     editor: "Boletín Oficial de la Junta de Andalucía"
     tipo: oficial
     fecha_publicacion: "2026-05-27"
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "implantación de un centro de datos Tier III/Tier III+ destinado a prestar servicios de almacenamiento de datos, procesamiento masivo de información, inteligencia artificial, cloud y conectividad crítica"
   - id: src-2
     url: "https://www.juntadeandalucia.es/organismos/consejo/sesion/detalle/661510.html"
@@ -127,7 +137,7 @@ fuentes:
     editor: "Junta de Andalucía"
     tipo: oficial
     fecha_publicacion: "2026-05-12"
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: >-
       Parcela C del sector SUS CA-23 'Extensión del PTA', en el término municipal de Málaga [...]
       prevé la generación de 710 empleos directos durante la fase de construcción, así como de otros
@@ -146,7 +156,7 @@ fuentes:
     titulo: "Así es el centro de datos de Benbros Energy que requerirá 1.257 millones de euros de inversión"
     editor: "El Conciso"
     tipo: prensa_general
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "nudo SET Cártama de Red Eléctrica de España"
   - id: src-5
     url: "https://dcnnmagazine.com/build/projects/andalusia-greenlights-e1-26bn-campus-at-malaga-techpark/"
@@ -161,7 +171,7 @@ fuentes:
     editor: "El Conciso"
     tipo: prensa_general
     fecha_publicacion: "2026-08-25"
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "suministro a través del nudo SET Cártama de Red Eléctrica"
   - id: src-7
     url: "https://www.pta.es/noticias/junta-andalucia-interes-estrategico-data-center-malaga/"

@@ -20,13 +20,17 @@ ubicacion:
 
 estado: en_tramitacion
 estado_detalle: >-
-  Declarado inversión de interés autonómico con interés general de Aragón el 20 de
-  diciembre de 2023. El Plan de Interés General de Aragón "Implantación de la Región
-  Microsoft en Aragón" se aprobó inicialmente por Orden FOM/1520/2025, de 14 de noviembre,
-  y se modificó por Orden VFL/1111/2026, de 24 de julio, para incorporar el estudio de
-  impacto ambiental de los proyectos de urbanización, sometido a nueva información pública.
-  El expediente se remitió a INAGA el 24 de febrero de 2026.
-estado_fuentes: [src-1, src-2]
+  Declarado inversión de interés autonómico con interés general de Aragón el 20 de diciembre de
+  2023. El Plan de Interés General de Aragón "Implantación de la Región Microsoft en Aragón" se
+  aprobó inicialmente por Orden FOM/1520/2025, de 14 de noviembre, y se modificó por Orden
+  VFL/1111/2026, de 24 de julio, para incorporar el estudio de impacto ambiental de los proyectos de
+  urbanización, sometido a nueva información pública. El expediente se remitió a INAGA el 24 de
+  febrero de 2026. La documentación de urbanización de julio 2026 describe seis edificios de 57,6 MW
+  y 345,6 MW por emplazamiento, sin tipificar. El procedimiento sigue siendo de aprobación inicial e
+  información pública; no se ha localizado autorización ambiental definitiva ni inicio de obra del
+  CPD. La Orden VFL/1410/2026, de 28 de septiembre, vuelve a modificar la aprobación inicial para
+  incorporar el EsIA de urbanización de La Muela.
+estado_fuentes: [ src-1, src-2, src-esia-urbanizacion-202607, src-piga-actual-20261017 ]
 
 potencia:
   - tipo: conexion_red
@@ -42,14 +46,25 @@ potencia:
   - tipo: no_especificado
     valor_mw: 300
     ambito: campus
-    referencia: "Objetivo de potencia por planta en segunda fase"
+    referencia: Objetivo histórico de segunda fase publicado en prensa en noviembre 2025
     estado_asociado: anunciado
     fecha_dato: "2025-11-19"
     fuentes: [src-3]
-    nota: >-
-      La prensa indica que "el resto, hasta 300 MW por planta, está previsto para una
-      segunda fase" y que la compañía ha solicitado al Ministerio conexión para otros
-      300 MW. No se precisa si es carga TI o potencia de acceso.
+    nota: La prensa indica que "el resto, hasta 300 MW por planta, está previsto para una segunda fase"
+      y que la compañía ha solicitado al Ministerio conexión para otros 300 MW. No se precisa si es
+      carga TI o potencia de acceso. La documentación ambiental de urbanización de julio 2026
+      publica posteriormente 345,6 MW sin tipificar; no son cifras adicionales.
+  - tipo: no_especificado
+    valor_mw: 345.6
+    ambito: campus
+    referencia: Capacidad prevista del emplazamiento en el EsIA de urbanización
+    estado_asociado: en_tramitacion
+    fecha_dato: 2026-07
+    fuentes:
+      - src-esia-urbanizacion-202607
+    nota: PDF, página 53. Seis edificios de 57,6 MW. El párrafo no etiqueta los MW como carga IT,
+      potencia total o permiso de acceso; no se asigna una tipificación por analogía ni se considera
+      capacidad construida.
 
 fases:
   - nombre: "Fase 1"
@@ -58,18 +73,24 @@ fases:
     nota: "La prensa sitúa el inicio de obras en 2026 y la puesta en marcha de la primera fase en 2030."
 
 conexion_electrica:
-  subestacion: "Subestación propia en el campus (132 kV, previsto paso a 220 kV en segunda fase); dos conexiones a la subestación de Plaza"
-  tension_kv: 132
+  subestacion: Suministro del campus proyectado mediante línea independiente de 220 kV; red auxiliar
+    de urbanización desde Centrovía 132/15 kV
+  tension_kv: 220
   titular_red: null
   mw_solicitados: null
   mw_concedidos: null
-  fuentes: [src-1, src-5]
-  nota: >-
-    El PIGA prevé una conexión de infraestructura eléctrica exterior de alta tensión
-    subterránea con dos líneas de 8.420 m y 8.355 m que discurren por los términos
-    municipales de La Muela y Zaragoza. Según la prensa, cada campus tendrá subestación
-    propia a 132 kV, con actualización a 220 kV en una segunda fase que requerirá modificar
-    el PIGA, y dos conexiones a la subestación de Plaza.
+  fuentes:
+    - src-1
+    - src-5
+    - src-esia-urbanizacion-202607
+  nota: El PIGA prevé una conexión de infraestructura eléctrica exterior de alta tensión subterránea
+    con dos líneas de 8.420 m y 8.355 m que discurren por los términos municipales de La Muela y
+    Zaragoza. Según la prensa, cada campus tendrá subestación propia a 132 kV, con actualización a
+    220 kV en una segunda fase que requerirá modificar el PIGA, y dos conexiones a la subestación de
+    Plaza. El EsIA de urbanización de julio 2026 aclara que la parcela EI-TIC del campus se
+    suministrará mediante una línea 220 kV independiente, fuera del alcance del documento y con Es
+    IA propio. La alimentación de urbanización desde Centrovía 132/15 kV no es la potencia de acceso
+    del CPD.
 
 superficie_parcela_m2: 1461200
 inversion_anunciada_eur: 2179843352
@@ -85,9 +106,17 @@ agua:
     continua entre los servidores y los equipos de refrigeración sin necesidad de suministro
     adicional". El agua de lluvia de las cubiertas se recoge para usos no potables.
   origen: null
-  nota: >-
-    La documentación del PIGA cifra en 3.975 m³/año la demanda industrial a plena capacidad a partir del segundo año de operación y en 27.717 m³ el llenado inicial del circuito el primer año, pero lo hace para los TRES campus de Microsoft en Aragón conjuntamente. No se registra consumo por emplazamiento porque repartir esa cifra exigiría una clave de reparto que no consta. El Acuerdo de declaración de interés autonómico recoge además el compromiso corporativo de "Impacto positivo en Agua (Water positive)" para 2030.
-  fuentes: [src-6]
+  nota: La documentación del PIGA cifra en 3.975 m³/año la demanda industrial a plena capacidad a
+    partir del segundo año de operación y en 27.717 m³ el llenado inicial del circuito el primer
+    año, pero lo hace para los TRES campus de Microsoft en Aragón conjuntamente. No se registra
+    consumo por emplazamiento porque repartir esa cifra exigiría una clave de reparto que no consta.
+    El Acuerdo de declaración de interés autonómico recoge además el compromiso corporativo de
+    "Impacto positivo en Agua (Water positive)" para 2030. El EsIA de urbanización localizado en
+    octubre 2026 no permite interpretar el riego de viarios o el consumo de obra como consumo
+    operativo del CPD.
+  fuentes:
+    - src-6
+    - src-esia-urbanizacion-202607
 
 energia:
   - consumo_gwh_ano: 3700
@@ -127,44 +156,41 @@ incertidumbres:
       infraestructuras exteriores). La prensa cita 2.179 millones para La Muela.
     fuentes: [src-1]
   - campo: potencia
-    descripcion: >-
-      Ninguna fuente oficial consultada publica potencia eléctrica por campus. Los 50 MW y
-      los 300 MW proceden únicamente de prensa.
-    fuentes: [src-1, src-3, src-5]
+    descripcion: El EsIA de urbanización de julio 2026 publica 345,6 MW previstos, sin tipificación.
+      Sustituye como objetivo documental más reciente a los 300 MW de prensa de 2025. Los 50 MW de
+      acceso de la primera fase siguen siendo una afirmación de prensa, sin resolución de acceso
+      contrastada.
+    fuentes:
+      - src-1
+      - src-3
+      - src-5
+      - src-esia-urbanizacion-202607
   - campo: agua
-    descripcion: >-
-      La única cifra publicada de consumo de agua —3.975 m³/año a plena capacidad y
-      27.717 m³ de llenado inicial— es conjunta para los tres campus de Microsoft en Aragón
-      y llega a través de prensa, que la atribuye a la documentación del PIGA. No se ha
-      localizado en abierto el estudio de impacto ambiental de cada campus, sometido a
-      información pública en agosto de 2026, que debería dar el desglose por emplazamiento.
-    fuentes: [src-6]
+    descripcion: Se ha localizado y leído el EsIA de urbanización de este campus. Describe redes y
+      consumos de obra o zonas verdes; no publica un consumo operativo integral del CPD que permita
+      repartir los 3.975 m³/año industriales y 27.717 m³ de llenado inicial citados por la prensa
+      para los tres campus. No se asigna una fracción a este emplazamiento.
+    fuentes:
+      - src-6
+      - src-esia-urbanizacion-202607
   - campo: ubicacion
     descripcion: >-
       Las coordenadas registradas son el centroide municipal de La Muela (Wikidata), no la
       posición del sector Centrovía Fase 5.
     fuentes: [src-4]
-
   - campo: energia
-    descripcion: >-
-      Las dos magnitudes eléctricas de esta ficha no pueden ser ciertas a la vez. Un consumo de
-      3.700 GWh/año exige una potencia media sostenida de 422 MW durante las 8.760 horas del
-      año (3700 GWh ÷ 8.760 h), por encima del techo de 300 MW que la propia ficha registra para
-      el campus, y muy por encima de los 50 MW asegurados. La contradicción se agrava con la
-      salvedad que acompaña a los 300 MW en la documentación del PIGA: «no se prevé que todos los
-      edificios funcionen simultáneamente a esa capacidad», lo que sitúa la potencia media por
-      debajo de 300 MW, no en 422.
-
-      Las dos cifras están transcritas correctamente y se atribuyen a la misma documentación del
-      PIGA a través de prensa, de modo que la incoherencia está en la fuente y no en el registro. No
-      se corrige ninguna de las dos ni se deriva una tercera: falta el documento original —el
-      estudio de impacto ambiental por emplazamiento, en información pública desde agosto de 2026—
-      para saber si el desajuste viene de un techo de potencia mayor que el publicado, de un consumo
-      que corresponde a un alcance distinto, o de un error de la propia memoria.
-    fuentes: [src-5, src-3, src-piga-hoyaragon]
+    descripcion: Las cifras anuales de energía proceden de prensa que cita el PIGA. El EsIA localizado
+      corresponde a urbanización exterior y no concilia esos consumos con la capacidad del CPD. Al
+      no estar tipificados los MW, no se deduce una potencia media ni se afirma una imposibilidad
+      física entre ámbitos que pueden ser distintos.
+    fuentes:
+      - src-5
+      - src-3
+      - src-piga-hoyaragon
+      - src-esia-urbanizacion-202607
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
   - id: src-1
@@ -189,7 +215,8 @@ fuentes:
     editor: "elDiario.es Aragón"
     tipo: prensa_general
     fecha_consulta: "2026-08-29"
-    cita: "Por ahora, la multinacional estadounidense tiene asegurados 50 megavatios de 'enchufe' para cada instalación; el resto, hasta 300 MW por planta, está previsto para una segunda fase."
+    cita: Por ahora, la multinacional estadounidense tiene asegurados 50 megavatios de 'enchufe' para
+      cada instalación; el resto, hasta 300 MW por planta, está previsto para una segunda fase.
   - id: src-4
     url: "https://query.wikidata.org/sparql"
     titulo: "Wikidata Query Service — coordenadas del municipio de La Muela (propiedad P625)"
@@ -228,7 +255,20 @@ fuentes:
     tipo: prensa_general
     fecha_publicacion: "2025-11-14"
     fecha_consulta: "2026-08-31"
-    cita: >-
-      Microsoft dispone ya de 50 MW de potencia de conexión asegurada y necesitará alrededor de 300
+    cita: Microsoft dispone ya de 50 MW de potencia de conexión asegurada y necesitará alrededor de 300
       MW por campus en el despliegue completo, aunque no se prevé que todos los edificios funcionen
       simultáneamente a esa capacidad.
+  - id: src-esia-urbanizacion-202607
+    url: https://www.aragon.es/documents/d/guest/260918_piga-msft_esia_urb_campus-la-muela_fdo
+    titulo: EsIA del proyecto de urbanización del campus Microsoft de La Muela, julio 2026
+    editor: Microsoft 7724 Spain / AECOM, expediente del Gobierno de Aragón
+    tipo: oficial
+    fecha_consulta: 2026-10-17
+    cita: con una capacidad total del emplazamiento de 345,6 MW
+  - id: src-piga-actual-20261017
+    url: https://www.aragon.es/-/Microsoft-eia
+    titulo: "PIGA para la implantación de la Región Microsoft en Aragón: tramitación y EsIA"
+    editor: Gobierno de Aragón
+    tipo: oficial
+    fecha_consulta: 2026-10-17
+    cita: Estudio Impacto Ambiental del Proyecto de Urbanización MSFT

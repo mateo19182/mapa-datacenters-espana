@@ -12,8 +12,9 @@ ubicacion:
   municipio: "Sagunt / Sagunto"
   provincia: "Valencia"
   ccaa: "Comunitat Valenciana"
-  lat: 39.6793
-  lon: -0.2786
+  lat: null
+  lon: null
+  no_derivar: true
   precision: municipio
   fuentes: [src-1, src-2]
 
@@ -29,7 +30,7 @@ estado_detalle: >-
   la concesión demanial solicitada por Valencia Digital Port Connect, S.L. a la Autoridad
   Portuaria de Valencia, por 410 metros lineales de terrenos junto al Muelle Norte I y
   2.614 metros lineales de aguas exteriores, a treinta años.
-estado_fuentes: [src-1, src-2, src-3, src-4, src-5]
+estado_fuentes: [src-1, src-2, src-3, src-4, src-5, src-costas-20260119]
 fecha_puesta_en_servicio: "2028"
 
 potencia:
@@ -65,8 +66,8 @@ incertidumbres:
       Las fuentes periodísticas sitúan la instalación en el término municipal de Sagunto sin
       dirección ni parcela. El anuncio del BOE concreta la ocupación de dominio público
       portuario junto al Muelle Norte I del puerto de Sagunto, pero se refiere al cable, no
-      al edificio del data center, cuya parcela sigue sin constar. Las coordenadas siguen
-      siendo de nivel municipal.
+      al edificio del data center, cuya parcela sigue sin constar. Se retira el punto municipal
+      anterior porque no identifica el edificio.
     fuentes: [src-1, src-2, src-4]
   - campo: potencia
     descripcion: >-
@@ -87,17 +88,31 @@ incertidumbres:
       center.
     fuentes: [src-1, src-5, src-6]
 
+  - campo: inversion_anunciada_eur
+    descripcion: >-
+      Los 100 millones anunciados corresponden al proyecto de conectividad Barracuda,
+      estación de aterraje y centro de datos. No consta presupuesto separado del edificio.
+    fuentes: [src-1, src-3, src-6]
+
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
+  - id: src-costas-20260119
+    url: "https://www.boe.es/diario_boe/txt.php?id=BOE-B-2026-1214"
+    titulo: "Información pública de la solicitud de concesión costera del cable de fibra de VDPC en Sagunto, CNC02/25/46/0013"
+    editor: "Demarcación de Costas en Valencia, BOE"
+    tipo: oficial
+    fecha_publicacion: "2026-01-19"
+    fecha_consulta: "2026-10-17"
+    cita: "solicitud de concesión de ocupación de dominio público marítimo-terrestre [...] con destino a instalación de cable submarino de fibra óptica"
   - id: src-1
     url: "https://www.redestelecom.es/infraestructuras/sagunto-albergara-la-estacion-de-aterrizaje-del-cable-submarino-barracuda/"
     titulo: "Sagunto albergará la estación de aterrizaje del cable submarino Barracuda"
     editor: "Redes & Telecom"
     tipo: prensa_especializada
     fecha_publicacion: "2025-05-29"
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "La estación de aterrizaje del cable submarino se ubicará en una instalación con una superficie disponible de 4.600 metros cuadrados y tendrá capacidad para albergar hasta cuatro sistemas de cables submarinos."
   - id: src-2
     url: "https://www.eleconomista.es/telecomunicaciones/noticias/13388719/05/25/ni-alicante-ni-valencia-el-cable-submarino-barracuda-y-su-data-center-aterrizan-en-sagunto-con-sus-100-millones.html"
@@ -121,7 +136,7 @@ fuentes:
     editor: "Boletín Oficial del Estado — Ministerio de Transportes y Movilidad Sostenible"
     tipo: oficial
     fecha_publicacion: "2026-04-01"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: "Valencia Digital Port Connect, S.L. con NIF B16761702, dirigió escrito a esta Autoridad Portuaria de Valencia solicitando el otorgamiento de concesión administrativa de ocupación de dominio público portuario para la instalación de un cable de fibra óptica en el puerto de Sagunto, destinado a establecer la conexión entre Génova y Sagunto, cuya superficie aproximada asciende a 410 metros lineales de terrenos, junto al Muelle Norte I, y a 2.614 metros lineales de aguas exteriores, por un plazo de 30 años."
   - id: src-5
     url: "https://www.levante-emv.com/morvedre/2026/01/25/proyecto-barracuda-unico-telecomunicaciones-toca-tierra-sagunt-125940909.html"

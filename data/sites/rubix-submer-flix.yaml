@@ -17,16 +17,13 @@ ubicacion:
   fuentes: [src-1, src-2]
 
 estado: anunciado
-estado_detalle: >-
-  Anunciado el 11 de julio de 2026 por el president de la Generalitat, Salvador
-  Illa, dentro del grupo de trabajo de reindustrialización de la comarca tras el
-  cierre de la actividad química de Ercros y en el contexto de la transición
-  nuclear (Ascó y Vandellòs). Submer prevé poner en marcha el centro a partir de
-  2027 y desplegarlo en dos fases. El centro lo desarrollará y
-  operará Rubix Data Centers bajo un modelo «develop and operate» para un
-  inquilino externo a largo plazo. Ercros arrienda los terrenos y presta
-  servicios necesarios para el proyecto. La compañía prevé pleno funcionamiento
-  en 2029.
+estado_detalle: Anunciado el 11 de julio de 2026 por el president de la Generalitat, Salvador Illa,
+  dentro del grupo de trabajo de reindustrialización de la comarca tras el cierre de la actividad
+  química de Ercros y en el contexto de la transición nuclear (Ascó y Vandellòs). Submer prevé poner
+  en marcha el centro a partir de 2027 y desplegarlo en dos fases. El centro lo desarrollará y
+  operará Rubix Data Centers bajo un modelo «develop and operate» para un inquilino externo a largo
+  plazo. Ercros arrienda los terrenos y presta servicios necesarios para el proyecto.
+
 estado_fuentes: [src-1, src-2, src-4, src-5, src-6]
 
 potencia:
@@ -53,17 +50,6 @@ potencia:
       fàbrica tindrà una potència de 50 MW". No precisa si es carga TI o
       potencia de acceso, ni cómo se relaciona con los 20+20 MW de Crónica
       Global.
-  - tipo: no_especificado
-    valor_mw: 70
-    ambito: campus
-    referencia: "Capacidad eléctrica total asociada al antiguo complejo de Ercros"
-    estado_asociado: anunciado
-    fecha_dato: "2026-07-11"
-    fuentes: [src-2]
-    nota: >-
-      La fuente atribuye ~70 MW al complejo industrial de Ercros, no al centro de
-      datos en sí.
-
 fases:
   - nombre: "Fase 1"
     estado: anunciado
@@ -72,7 +58,8 @@ fases:
     estado: anunciado
     fuentes: [src-1]
 
-superficie_parcela_m2: 13000
+superficie_parcela_m2: null
+
 inversion_anunciada_eur: 1000000000
 refrigeracion: >-
   Tecnología de refrigeración de alta eficiencia energética que, según la
@@ -110,12 +97,9 @@ incertidumbres:
       menor y se documenta la discrepancia.
     fuentes: [src-1, src-2]
   - campo: potencia
-    descripcion: >-
-      Los 50 MW de la fase 1 quedan confirmados por la agencia ACN, pero no
-      cuadran con los «más de 20 MW inmediatos más otros 20 MW» de Crónica
-      Global ni con los ~70 MW atribuidos al complejo de Ercros. Las cifras de
-      85-90 MW de capacidad instalada que circulan no se han podido confirmar.
-      No se suman entre sí.
+    descripcion: Las lecturas históricas de 20 MW disponibles y 50 MW de primera fase no aclaran su
+      magnitud ni relación. Los aproximadamente 70 MW atribuidos al complejo de Ercros no se registran
+      como potencia del CPD. Las notas primarias de Submer y Ercros no dimensionan la carga IT.
     fuentes: [src-2, src-5]
   - campo: empleo
     descripcion: >-
@@ -129,8 +113,15 @@ incertidumbres:
       habla de la fase 1 en dos años desde julio de 2026.
     fuentes: [src-1, src-3]
 
+  - campo: superficie_parcela_m2
+    descripcion: Los 13.000 m² se han descrito como superficie de la planta que se reutilizará, sin
+      demostrar que sean superficie de parcela del CPD. Se conserva el antecedente sin asignarlo a un
+      campo de superficie.
+    fuentes:
+      - src-1
+      - src-3
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: 2026-10-17
 
 fuentes:
   - id: src-1
@@ -171,7 +162,7 @@ fuentes:
     editor: "Submer Group"
     tipo: empresa
     fecha_publicacion: "2026-07-11"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       The data center is designed using the latest energy efficient liquid
       cooling technology, which uses no water during operations ... It is planned
@@ -197,7 +188,7 @@ fuentes:
     editor: "Ercros"
     tipo: empresa
     fecha_publicacion: "2026-07-11"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       Ercros ha firmado un contrato con Submer Group para la implantación de un
       centro de datos de última generación en terrenos propiedad de la compañía

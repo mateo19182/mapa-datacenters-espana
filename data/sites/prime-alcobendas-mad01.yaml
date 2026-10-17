@@ -67,7 +67,7 @@ enlaces_proyecto:
   - "https://primedatacenters.com/locations/madrid/"
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: 2026-10-17
 
 fuentes:
   - id: src-1
@@ -86,7 +86,7 @@ fuentes:
     titulo: "Madrid — Prime Data Centers"
     editor: "Prime Data Centers"
     tipo: empresa
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       Madrid Campus MAD01 ... 40MW Total critical power ... Critical IT Load 40MW Size 25,810 sq m
       No Of Data Halls 4 Utility Provider Iberdrola Substation On site ... Cooling Closed loop air
@@ -101,3 +101,13 @@ fuentes:
     cita: >-
       The company has acquired a 7.6-acre site at Calle de la Pedriza 1 in Alcobendas, close to
       Equinix, CyrusOne, and Data4 facilities. The 40MW facility will span 26,000 sqm
+
+conexion_electrica:
+  subestacion: Subestación propia prevista en el emplazamiento
+  titular_red: Iberdrola, según la ficha del promotor
+  mw_solicitados: null
+  mw_concedidos: null
+  fuentes:
+    - src-2
+  nota: "La ficha publica Utility Provider: Iberdrola y Substation: On site. No identifica permiso de
+    acceso ni MW concedidos."

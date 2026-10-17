@@ -7,14 +7,17 @@ operador: "Cartagena Data Green"
 modelo: colocation
 
 ubicacion:
-  municipio: "Cartagena"
-  provincia: "Murcia"
-  ccaa: "Región de Murcia"
-  direccion: "Valle de Escombreras, junto a la planta de regasificación de Enagás"
-  lat: 37.5805
-  lon: -0.9232
-  precision: aproximada
-  fuentes: [src-1, src-2]
+  municipio: Cartagena
+  provincia: Murcia
+  ccaa: Región de Murcia
+  direccion: Valle de Escombreras, junto a la planta de regasificación de Enagás
+  lat: null
+  lon: null
+  precision: municipio
+  fuentes:
+    - src-1
+    - src-2
+  no_derivar: true
 
 estado: anunciado
 estado_detalle: >-
@@ -90,8 +93,14 @@ incertidumbres:
       sin nombrar a las sociedades participantes.
     fuentes: [src-1]
 
+  - campo: ubicacion
+    descripcion: La noticia sitúa el proyecto junto a la regasificadora, pero no identifica la parcela
+      ni publica coordenadas. Se retira el punto aproximado anterior hasta disponer de plano o pin del
+      emplazamiento.
+    fuentes:
+      - src-1
 confianza: baja
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: 2026-10-17
 
 fuentes:
   - id: src-1
@@ -100,7 +109,7 @@ fuentes:
     editor: "DatacenterDynamics"
     tipo: prensa_especializada
     fecha_publicacion: "2026-02-06"
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "El hub Cartagena Data Green proyecta levantar en el Valle de Escombreras, Murcia, uno de los primeros centros de datos de Europa enfriados con gas natural licuado, GLN [...] El proyecto se apoya en la planta de regasificación de Enagás en Escombreras, cuyo excedente de frío se utilizará para refrigerar servidores de alto rendimiento [...] Esta integración permite reducir más de un 40% los costes operativos de refrigeración frente a centros de datos convencionales ubicados en polos como Madrid o Barcelona [...] El diseño del complejo deberá garantizar el vertido térmico cero [...] La construcción y montaje de la primera fase generará unos 250 empleos directos [...] Una vez en operación, el centro de datos contará con una plantilla estable de alrededor de 50 profesionales altamente cualificados [...] además de cerca de un centenar de empleos indirectos vinculados a servicios auxiliares."
   - id: src-2
     url: "https://observatorioedc.com/directorio/"

@@ -44,6 +44,16 @@ potencia:
       si son MW IT o de conexión. El propio term sheet valora la operación «based on a 300MW
       data centre».
 
+  - tipo: no_especificado
+    valor_mw: 360
+    ambito: campus
+    referencia: Capacidad prevista por emplazamiento en el Form 10-Q
+    estado_asociado: anunciado
+    fecha_dato: 2026-06-30
+    fuentes:
+      - src-sec-10q-20260814
+    nota: La memoria incluye este suelo entre cinco arrendamientos y prevé 360 MW por emplazamiento, sin
+      tipificarlos. Se conserva la lectura anterior de 300 MW.
 superficie_parcela_m2: 1000000
 inversion_anunciada_eur: null
 enlaces_proyecto: []
@@ -74,8 +84,20 @@ incertidumbres:
       fuente primaria ni de un expediente.
     fuentes: [src-3]
 
+  - campo: operador
+    descripcion: El comunicado de 4 de septiembre amplía hasta seis meses la revisión corporativa con
+      BlackBerry AIF y BLACK AI Group; no acredita cierre de fusión, venta del suelo ni autorización
+      del centro.
+    fuentes:
+      - src-edgemode-20260904
+  - campo: potencia
+    descripcion: El 10-Q da 360 MW por emplazamiento frente a los 300 MW de otras comunicaciones; faltan
+      tipo, fases y proyecto técnico que expliquen la diferencia. Ambas son previsiones.
+    fuentes:
+      - src-sec-10q-20260814
+      - src-1
 confianza: baja
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: 2026-10-17
 
 fuentes:
   - id: src-1
@@ -97,7 +119,7 @@ fuentes:
     editor: "Edgemode, Inc. / U.S. Securities and Exchange Commission"
     tipo: empresa
     fecha_publicacion: "2026-07-06"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       On July 1, 2026, Edgemode, Inc. (the "Company") entered into a non-binding term sheet (the
       "Term Sheet") with a third-party purchaser (the "Purchaser") regarding the sale of the
@@ -130,3 +152,18 @@ fuentes:
     tipo: otro
     fecha_consulta: "2026-08-31"
     cita: "Cáceres, Extremadura, España — lat 39.4745175, lon -6.3716761"
+  - id: src-sec-10q-20260814
+    url: https://www.sec.gov/Archives/edgar/data/1652958/000168316826006473/edgemode_i10q-063026.htm
+    titulo: EdgeMode, Form 10-Q a 30 de junio de 2026
+    editor: EdgeMode / SEC EDGAR
+    tipo: empresa
+    fecha_publicacion: 2026-08-14
+    cita: planned to be 360 MW per site
+    fecha_consulta: 2026-10-17
+  - id: src-edgemode-20260904
+    url: https://www.globenewswire.com/news-release/2026/09/04/3356540/0/en/statement-edgemode-confirms-that-the-current-review-process-with-blackberry-aif-and-black-ai-group-will-be-extended-for-up-to-six-months.html
+    titulo: EdgeMode amplía hasta seis meses la revisión con BlackBerry AIF y BLACK AI Group
+    editor: EdgeMode
+    tipo: empresa
+    fecha_publicacion: 2026-09-04
+    fecha_consulta: 2026-10-17

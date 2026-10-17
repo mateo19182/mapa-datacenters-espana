@@ -129,7 +129,7 @@ enlaces_proyecto:
   - "https://aptodc.com/apto-announces-largest-data-centre-campus-in-madrid-cloud-region/"
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
   - id: src-1
@@ -138,7 +138,7 @@ fuentes:
     editor: "Apto"
     tipo: empresa
     fecha_publicacion: "2026-03-13"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       Apto, a provider of world-class hyperscale data centres across Europe, has confirmed a
       landmark 195,000m2 site in Fuenlabrada as the location of its new Madrid campus. With a
@@ -152,7 +152,7 @@ fuentes:
     editor: "Ayuntamiento de Fuenlabrada"
     tipo: oficial
     fecha_publicacion: "2023-03-02"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       se ha aprobado el planeamiento para la instalación de uno de los más importantes campus de
       datos de España, que contará con 5 edificios y cerca de 225.000 metros cuadrados ... Lo

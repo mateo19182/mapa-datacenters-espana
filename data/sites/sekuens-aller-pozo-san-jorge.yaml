@@ -14,12 +14,12 @@ ubicacion:
   provincia: "Asturias"
   ccaa: "Asturias"
   direccion: "Antiguo pozo minero San Jorge, Caborana (Aller)"
-  lat: 43.1960
-  lon: -5.6800
-  precision: municipio
-  fuentes: [src-1]
+  lat: 43.179268
+  lon: -5.759124
+  precision: aproximada
+  fuentes: [src-1, src-pin-pozo]
 
-estado: en_construccion
+estado: en_tramitacion
 estado_detalle: >-
   Reconversión de los edificios del antiguo pozo minero San Jorge en un centro de
   datos que debe ser la base de la «nube asturiana». Financiado con 3 millones de
@@ -31,15 +31,25 @@ estado_detalle: >-
   aprovechar el agua de las galerías subterráneas para la refrigeración. En
   septiembre de 2025 el consejero de Ciencia, Industria y Empleo declaró que quedaba
   un único trámite en la CUOTA y que la licitación de las obras podría hacerse antes
-  de final de 2025; no se ha localizado el anuncio de licitación ni la adjudicación.
-estado_fuentes: [src-1, src-3, src-4]
+  de final de 2025. El 11 de febrero de 2026 Sekuens aún situó el proyecto en supervisión
+  y anunció su intención de iniciar obras en 2026. No se ha localizado confirmación
+  posterior de obras iniciadas ni de puesta en servicio.
+estado_fuentes: [src-1, src-3, src-4, src-jgpa-20260211]
 
 potencia:
+  - tipo: no_especificado
+    valor_mw: 0.7
+    ambito: edificio
+    referencia: "Potencia del CPD declarada por Sekuens ante la Junta General"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2026-02-11"
+    fuentes: [src-jgpa-20260211]
+    nota: "La comparecencia dice 0,7 megavatios, sin distinguir carga TI, potencia total o acceso."
   - tipo: no_especificado
     valor_mw: 0.4
     ambito: edificio
     referencia: "Potencia del centro de datos en la antigua instalación minera"
-    estado_asociado: en_construccion
+    estado_asociado: en_tramitacion
     fecha_dato: "2024-10-10"
     fuentes: [src-2]
     nota: >-
@@ -85,7 +95,6 @@ computo:
     sistema: "Asturcón"
     operador_computo: "Universidad de Oviedo"
     modelo: "Dos armarios rack con servidores procedentes del supercomputador MareNostrum 4 del BSC"
-    nodos: 2
     tipo_unidad: nodo
     estado: anunciado
     fecha_dato: "2026-07-03"
@@ -94,36 +103,56 @@ computo:
       El cómputo todavía no está aquí: Asturcón se instala primero en el centro de proceso de
       datos del Principado por razones de capacidad técnica, y el objetivo declarado es
       trasladarlo en una segunda fase al pozo San Jorge. Ninguna fuente publica núcleos,
-      rendimiento ni aceleradores del equipo. Los «dos armarios rack» se registran como nodos a
-      falta de una unidad mejor en el esquema; no son nodos de cómputo en el sentido habitual.
+      rendimiento ni aceleradores del equipo. Las fuentes describen dos armarios rack; no se
+      registra una cantidad de nodos a partir de ese número.
 
 incertidumbres:
   - campo: potencia
     descripcion: >-
-      La nota oficial del Principado no cuantifica la potencia; el dato de 0,4 MW
-      procede de prensa regional que cita a la Consejería de Ciencia. No se precisa
-      el tipo de potencia.
-    fuentes: [src-1, src-2]
+      La nota del Principado de marzo de 2025 no cuantifica la potencia; el dato de 0,4 MW
+      procede de prensa regional de 2024. En febrero de 2026 el consejero y el director
+      de Sekuens declararon 0,7 MW ante la Junta General, también sin precisar tipo.
+      Se conservan ambas previsiones fechadas, sin sumarlas.
+    fuentes: [src-1, src-2, src-jgpa-20260211]
   - campo: estado
     descripcion: >-
-      No se ha localizado confirmación de licitación, adjudicación, finalización de
-      obras ni puesta en servicio a agosto de 2026. La última referencia localizada es
-      de septiembre de 2025 y sitúa la licitación como intención para ese mismo año.
-      El estado «en construcción» registrado se apoya en la previsión de 2025, no en
-      un acta.
-    fuentes: [src-1, src-4]
+      El estado anterior en construcción procedía de la previsión de obras para 2025,
+      no de un inicio acreditado. La comparecencia de febrero de 2026 aún hablaba de
+      supervisión e intención de obras. Las búsquedas posteriores no han localizado
+      confirmación de inicio, terminación o apertura; esa ausencia no prueba que no existan.
+    fuentes: [src-1, src-4, src-jgpa-20260211]
+  - campo: ubicacion
+    descripcion: >-
+      Las coordenadas corresponden al pin identificado del pozo San Jorge, no a una
+      sala concreta del futuro CPD dentro del complejo minero.
+    fuentes: [src-pin-pozo]
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
+  - id: src-jgpa-20260211
+    url: "https://agoranet.jgpa.es/documentos/Diarios/PDF/12C322.pdf"
+    titulo: "Diario de Sesiones, Comisión de Ciencia, Industria y Empleo, 11 de febrero de 2026, pp. 19 y 21"
+    editor: "Junta General del Principado de Asturias"
+    tipo: oficial
+    fecha_publicacion: "2026-02-19"
+    fecha_consulta: "2026-10-17"
+    cita: "El pozo San Jorge. También está en supervisión. También queremos empezar las obras en el 2026 [...] 0,7 megavatios."
+  - id: src-pin-pozo
+    url: "https://www.wikidata.org/wiki/Q108554700"
+    titulo: "San Jorge's Shaft, pozo minero de Caborana, coordenadas del emplazamiento"
+    editor: "Wikidata"
+    tipo: otro
+    fecha_consulta: "2026-10-17"
+    cita: "43°10'45.365 N, 5°45'32.846 W"
   - id: src-1
     url: "https://actualidad.asturias.es/-/ciencia-conf%C3%ADa-en-que-el-centro-de-datos-del-principado-en-el-pozo-san-jorge-atraiga-empresas-del-sector-a-la-comunidad"
     titulo: "Ciencia confía en que el centro de datos del Principado en el pozo San Jorge atraiga empresas del sector a la comunidad"
     editor: "Gobierno del Principado de Asturias"
     tipo: oficial
     fecha_publicacion: "2025-03-26"
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "pasaremos de la economía del carbón a la economía del dato"
   - id: src-2
     url: "https://www.nortes.me/2024/10/10/la-transformacion-del-pozu-san-jorge-en-un-centro-de-datos-comenzara-en-2025/"
@@ -131,7 +160,7 @@ fuentes:
     editor: "Nortes"
     tipo: prensa_general
     fecha_publicacion: "2024-10-10"
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "una potencia aproximada de 0,4 megavatios"
   - id: src-3
     url: "https://www.lne.es/cuencas/2025/03/26/carbon-centro-datos-transformacion-pozo-115722334.html"

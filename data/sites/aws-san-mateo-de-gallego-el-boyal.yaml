@@ -88,7 +88,7 @@ incertidumbres:
     fuentes: [src-3]
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: 2026-10-17
 
 fuentes:
   - id: src-1
@@ -97,7 +97,7 @@ fuentes:
     editor: "Boletín Oficial de Aragón"
     tipo: oficial
     fecha_publicacion: "2026-04-09"
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "En San Mateo de Gállego el área de implantación abarca una superficie de 294,13 ha y se encuentra aproximadamente a 1,2 km al sureste del centro del municipio"
   - id: src-2
     url: "https://query.wikidata.org/sparql"
@@ -112,5 +112,5 @@ fuentes:
     editor: "Boletín Oficial de Aragón"
     tipo: oficial
     fecha_publicacion: "2026-04-09"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: "AWS tiene previsto invertir 33.700 millones de euros en la Región de AWS en España durante los próximos 10 años (período 2026-2035). [...] Por lo que respecta a la generación de empleo prevista, la promotora estima que la inversión de AWS en España podría promover la creación de una media anual de 29.900 empleos a tiempo completo, de los cuales alrededor de 13.400 se ubicarían en la Comunidad Autónoma de Aragón. En concreto, se prevé la generación de 6.700 empleos anuales directos en España (4.200 en Aragón)"

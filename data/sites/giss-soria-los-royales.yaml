@@ -14,11 +14,11 @@ ubicacion:
   provincia: "Soria"
   ccaa: "Castilla y León"
   direccion: "Barrio de Los Royales, sector SUR-D9, parcela municipal cedida al Ministerio"
-  lat: 41.6012505
-  lon: -2.7219380
-  precision: municipio
+  lat: null
+  lon: null
+  precision: desconocida
   fuentes: [src-1, src-3, src-osm]
-
+  no_derivar: true
 estado: en_construccion
 estado_detalle: >-
   Nueva sede del centro de proceso de datos de la Gerencia de Informática de la Seguridad
@@ -73,14 +73,13 @@ incertidumbres:
       la puesta en marcha seguía sin fecha.
     fuentes: [src-1, src-2]
   - campo: ubicacion
-    descripcion: >-
-      Consta el barrio (Los Royales, sector SUR-D9) pero no la dirección postal. Las coordenadas
-      son el centroide municipal de Soria.
+    descripcion: Consta el barrio Los Royales, sector SUR-D9, y la parcela cedida de 37.000 m². La
+      consulta Nominatim existente devuelve la provincia de Soria, con addresstype=state_district,
+      no el municipio ni el edificio. Se retira ese punto. Hace falta un plano de la parcela o un
+      pin cartográfico identificado como CPD GISS para situar el centro.
     fuentes: [src-3, src-osm]
-
 confianza: media
-ultima_verificacion: "2026-08-31"
-
+ultima_verificacion: 2026-10-17
 fuentes:
   - id: src-1
     url: "https://revistacloud.com/el-cpd-de-la-seguridad-social-en-soria-entra-en-la-fase-final-de-obras/"
@@ -88,7 +87,7 @@ fuentes:
     editor: "Revista Cloud"
     tipo: prensa_especializada
     fecha_publicacion: "2026-06-25"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       Las obras del futuro Centro de Procesamiento de Datos de la Seguridad Social en Soria han
       alcanzado el 82 % de ejecución y entran ya en su tramo final. La infraestructura, situada
@@ -102,7 +101,7 @@ fuentes:
     editor: "El Mirón de Soria"
     tipo: prensa_general
     fecha_publicacion: "2025-11-02"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       Las obras del Centro de Procesamiento de Datos de la Seguridad Social de Soria no
       finalizarán en diciembre de este año, como había anunciado el Gobierno, sino en el verano
@@ -112,7 +111,7 @@ fuentes:
     titulo: "El futuro CPD de la Seguridad Social ya cuenta con terreno definitivo en Soria"
     editor: "Revista de la Seguridad Social (Ministerio de Inclusión, Seguridad Social y Migraciones)"
     tipo: oficial
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       El Pleno del Ayuntamiento de Soria ha aprobado por unanimidad la cesión de una parcela de
       37.000 metros cuadrados al Ministerio de Inclusión, Seguridad Social y Migraciones para la
@@ -124,7 +123,7 @@ fuentes:
     editor: "Boletín Oficial del Estado"
     tipo: oficial
     fecha_publicacion: "2023"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       Anuncio de formalización de contratos de: Gerencia de Informática de la Seguridad Social.
       Objeto: Obras de construcción de la nueva sede del Centro de Procesos de Datos para la
@@ -134,5 +133,6 @@ fuentes:
     titulo: "Nominatim — Soria, Castilla y León"
     editor: "OpenStreetMap / Nominatim"
     tipo: otro
-    fecha_consulta: "2026-08-31"
-    cita: "Soria, Castilla y León, España — lat 41.6012505, lon -2.7219380"
+    fecha_consulta: 2026-10-17
+    cita: "La respuesta identifica Soria como addresstype=state_district, relation 349005: es la
+      provincia y no el centro de datos."

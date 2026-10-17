@@ -134,7 +134,7 @@ incertidumbres:
     fuentes: [src-8, src-6, src-4]
 
 confianza: baja
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: 2026-10-17
 
 fuentes:
   - id: src-1
@@ -143,7 +143,7 @@ fuentes:
     editor: "Echelon Data Centres"
     tipo: empresa
     fecha_publicacion: "2026-01-22"
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "160,000 sqm data centre campus [...] 230MW grid connection [...] This project will generate about 1,500 direct and indirect jobs."
   - id: src-2
     url: "https://www.pv-magazine.es/2025/11/26/iberdrola-se-alia-con-echelon-para-invertir-mas-de-2-000-millones-en-centros-de-datos-en-espana/"
@@ -197,7 +197,7 @@ fuentes:
     editor: "Iberdrola España"
     tipo: empresa
     fecha_publicacion: "2025-11-26"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       La nueva sociedad cuenta con más de 700 MW asegurados y una cartera
       potencial de 5.000 MW - El primer proyecto será Madrid Sur, un centro de

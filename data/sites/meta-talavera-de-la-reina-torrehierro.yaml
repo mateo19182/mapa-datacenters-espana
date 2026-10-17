@@ -23,15 +23,14 @@ ubicacion:
 
 estado: permisos_concedidos
 estado_detalle: >-
-  Proyecto de Singular Interés aprobado definitivamente el 22 de octubre de 2024,
-  con declaración de impacto ambiental de 20 de marzo de 2024 publicada en el DOCM
-  el 22 de marzo. El ámbito se extiende por los términos municipales de Talavera
-  de la Reina y Calera y Chozas: la subestación de conexión está proyectada en la
-  parcela 35 del polígono 506 de Calera y Chozas. El 21 de agosto de 2026 el DOCM
-  publicó la aprobación definitiva de la reparcelación urbanística y el 26 de
-  agosto de 2026 la Junta otorgó la autorización definitiva, de modo que Meta ya
-  puede presentar los proyectos constructivos y pedir licencia de obra al
-  Ayuntamiento. Las obras no han comenzado a 31 de agosto de 2026.
+  Proyecto de Singular Interés aprobado definitivamente el 14 de octubre de 2024 y publicado el 22
+  de octubre, con declaración de impacto ambiental de 20 de marzo de 2024 publicada en el DOCM el 22
+  de marzo. El ámbito se extiende por los términos municipales de Talavera de la Reina y Calera y
+  Chozas: la subestación de conexión está proyectada en la parcela 35 del polígono 506 de Calera y
+  Chozas. El 21 de agosto de 2026 el DOCM publicó la aprobación definitiva de la reparcelación
+  urbanística y el 26 de agosto de 2026 la Junta otorgó la autorización definitiva, de modo que Meta
+  ya puede presentar los proyectos constructivos y pedir licencia de obra al Ayuntamiento. Las obras
+  no han comenzado a 31 de agosto de 2026.
 estado_fuentes: [src-psi, src-docm-dia, src-eldiario-2026, src-elespanol-repar, src-jccm-reparcelacion]
 
 potencia:
@@ -80,10 +79,10 @@ potencia:
     fecha_dato: "2024-03-20"
     fuentes: [src-docm-dia]
     nota: >-
-      Capacidad de producir, no de consumir. La DIA da 24,3 MW de potencia
-      nominal total y 31,6 MW de potencia pico sobre 526.552 m2, en la fase 4 del
-      calendario. Aparte, y por exigencia del Código Técnico de la Edificación,
-      se prevé una fotovoltaica in situ de 1,09 MW pico junto a la subestación.
+      Capacidad de producir, no de consumir. La DIA da 24,3 MW de potencia nominal total y 31,6 MW
+      de potencia pico sobre 526.552 m2, en la fase 4 del calendario. Aparte, y por exigencia del
+      Código Técnico de la Edificación, se prevé una fotovoltaica in situ de 1,09 MWpico junto a la
+      subestación.
 
 fases:
   - nombre: "Declaración de Interés Regional (DIR)"
@@ -288,9 +287,15 @@ incertidumbres:
       laboral. Los 780 "empleos anuales apoyados en la región" son una magnitud
       distinta que incluye cadena de suministro y consumo inducido.
     fuentes: [src-jccm-reparcelacion, src-jccm-delegado]
+  - campo: estado
+    descripcion: La reparcelación de agosto 2026 culmina la fase urbanística del PSI. La propia Junta
+      indica que Meta debe presentar proyectos constructivos y solicitar las licencias de obra
+      municipales. La aprobación urbanística no acredita esos permisos ejecutivos ni obras
+      iniciadas.
+    fuentes: [ src-jccm-reparcelacion, src-jccm-delegado ]
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
   - id: src-psi
@@ -298,7 +303,7 @@ fuentes:
     titulo: "Meta Data Center Campus — Proyectos de Singular Interés"
     editor: "Consejería de Fomento, Junta de Comunidades de Castilla-La Mancha"
     tipo: oficial
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       el desarrollo de un Centro de Datos (Data Center Campus) dentro de un suelo
       urbano no consolidado (SUNC) de uso industrial en el ámbito Torrehierro
@@ -309,46 +314,40 @@ fuentes:
     editor: "Diario Oficial de Castilla-La Mancha — Consejería de Desarrollo Sostenible"
     tipo: oficial
     fecha_publicacion: "2024-03-22"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
-      Agua industrial necesaria para los equipos de refrigeración del centro de
-      datos: 600 m3 anuales; caudal pico de demanda: 12 l/s. - Agua potable
-      necesaria para el centro de datos: 40.000 m3 anuales; caudal pico de
-      demanda: 10 l/s. [...] Aguas subterráneas destinadas a riego en el resto del
-      ámbito del PSI: 7.000 m3 anuales de riego en el parque fluvial. [...] Agua
-      necesaria para el conjunto del ámbito del PSI, excluyendo la consumida por
-      el propio centro de datos: 470.900 m3 anuales. Agua necesaria para el
-      conjunto del PSI, incluyendo la estimada para el ámbito completo de la
-      urbanización además de la consumida por el propio centro de datos: 511.500
-      m3 anuales; 504.500 m3 anuales de agua potable con 59 l/s de caudal punta, y
-      7.000 m3 anuales de aguas subterráneas. [...] Agua residual industrial del
-      Centro de Datos: 360 m3 anuales [...] Subestación (SUB): ocupa 18.688 m2
-      [...] Contará con cuatro transformadores de 120 MVA cada uno y una demanda
-      máxima global prevista de 240 MVA. Recibirá energía de las dos líneas aéreas
-      de transmisión de 220 kV y suministrará energía de 33 kV al campus. [...]
-      Planta fotovoltaica in situ: en cumplimiento del Código Técnico de la
-      Edificación, al sur de la subestación se emplazarán 1,09 MW pico [...] Se
-      prevén 526.552 m2 de planta solar fotovoltaica [...] 24,3 MW de potencia
-      nominal total. - 31,6 MW de potencia pico. [...] la potencia térmica nominal
-      total de los grupos generadores es de 12,9 MW frente a los 50 MW
-      establecidos como umbral [...] Se selecciona el empleo de enfriadores de
-      aire seco (alternativa 1) por minimizar la demanda de agua para su
-      funcionamiento. [...] Mediante la modificación de la tecnología de
-      refrigeración del Centro de Datos, se ha logrado reducir un 80% la demanda
-      de agua respecto a la alternativa 2. Del mismo modo, se han podido optimizar
-      los generadores de reserva pasando de nueve a tres. [...] El ámbito del PSI
-      se extiende por 191 hectáreas situadas al noroeste del núcleo urbano de
-      Talavera de la Reina [...] La subestación está proyectada en la parcela 35
-      del polígono 506 de Calera y Chozas [...] Edificio de centro de datos 2 (DCB
-      2): presenta 288 m x 96 m; 27.779,77 m2 [...] Edificio de centro de datos 1
-      (DCB 1) [...] presenta 340 m x 96 m; 32.723,79 m2
+      Agua industrial necesaria para los equipos de refrigeración del centro de datos: 600 m3
+      anuales; caudal pico de demanda: 12 l/s. - Agua potable necesaria para el centro de datos:
+      40.000 m3 anuales; caudal pico de demanda: 10 l/s. [...] Aguas subterráneas destinadas a riego
+      en el resto del ámbito del PSI: 7.000 m3 anuales de riego en el parque fluvial. [...] Agua
+      necesaria para el conjunto del ámbito del PSI, excluyendo la consumida por el propio centro de
+      datos: 470.900 m3 anuales. Agua necesaria para el conjunto del PSI, incluyendo la estimada
+      para el ámbito completo de la urbanización además de la consumida por el propio centro de
+      datos: 511.500 m3 anuales; 504.500 m3 anuales de agua potable con 59 l/s de caudal punta, y
+      7.000 m3 anuales de aguas subterráneas. [...] Agua residual industrial del Centro de Datos:
+      360 m3 anuales [...] Subestación (SUB): ocupa 18.688 m2 [...] Contará con cuatro
+      transformadores de 120 MVA cada uno y una demanda máxima global prevista de 240 MVA. Recibirá
+      energía de las dos líneas aéreas de transmisión de 220 kV y suministrará energía de 33 kV al
+      campus. [...] Planta fotovoltaica in situ: en cumplimiento del Código Técnico de la
+      Edificación, al sur de la subestación se emplazarán 1,09 MWpico [...] Se prevén 526.552 m2 de
+      planta solar fotovoltaica [...] 24,3 MW de potencia nominal total. - 31,6 MW de potencia pico.
+      [...] la potencia térmica nominal total de los grupos generadores es de 12,9 MW frente a los
+      50 MW establecidos como umbral [...] Se selecciona el empleo de enfriadores de aire seco
+      (alternativa 1) por minimizar la demanda de agua para su funcionamiento. [...] Mediante la
+      modificación de la tecnología de refrigeración del Centro de Datos, se ha logrado reducir un
+      80% la demanda de agua respecto a la alternativa 2. Del mismo modo, se han podido optimizar
+      los generadores de reserva pasando de nueve a tres. [...] El ámbito del PSI se extiende por
+      191 hectáreas situadas al noroeste del núcleo urbano de Talavera de la Reina [...] La
+      subestación está proyectada en la parcela 35 del polígono 506 de Calera y Chozas [...]
+      Edificio de centro de datos 2 (DCB 2): presenta 288 m x 96 m; 27.779,77 m2 [...] Edificio de
+      centro de datos 1 (DCB 1) [...] presenta 340 m x 96 m; 32.723,79 m2
   - id: src-jccm-reparcelacion
     url: "https://urbanismo.castillalamancha.es/actualidad/el-gobierno-regional-aprueba-definitivamente-la-reparcelacion-del-psi-del-futuro-campus"
     titulo: "El Gobierno regional aprueba definitivamente la reparcelación del PSI del futuro campus de centros de datos de Meta en Talavera de la Reina"
     editor: "Consejería de Fomento, Junta de Comunidades de Castilla-La Mancha"
     tipo: oficial
     fecha_publicacion: "2026-08-11"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       El proyecto contempla una inversión estimada de 750 millones de euros y
       permitirá la creación de 250 puestos de trabajo directos, además de otros
@@ -359,7 +358,7 @@ fuentes:
     editor: "Gobierno de Castilla-La Mancha"
     tipo: oficial
     fecha_publicacion: "2026-08-25"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       el consumo directo de agua de la instalación será de apenas 0,2 Hm3/año
       gracias al uso de refrigeración por aire seco [...] las estimaciones de 0,5
@@ -376,7 +375,7 @@ fuentes:
     editor: "Gobierno de Castilla-La Mancha"
     tipo: oficial
     fecha_publicacion: "2024-10-14"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       contará con una inversión de 750 millones de euros, va a generar 250 empleos
       directos y 300 en la fase de construcción y estará ubicado en una superficie
@@ -389,7 +388,7 @@ fuentes:
     editor: "Diario Oficial de Castilla-La Mancha — Consejería de Fomento"
     tipo: oficial
     fecha_publicacion: "2025-12-23"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       Zarza Networks, S.L., perteneciente al grupo empresarial Meta Platforms,
       Inc., promueve la tramitación y aprobación del proyecto de singular interés
@@ -400,7 +399,7 @@ fuentes:
     editor: "Gobierno de Castilla-La Mancha"
     tipo: oficial
     fecha_publicacion: "2024-03-22"
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: >-
       Sistema de refrigeración de aire seco que consumirá poco o nada de agua,
       utilizando un 100 por cien de energías renovables.

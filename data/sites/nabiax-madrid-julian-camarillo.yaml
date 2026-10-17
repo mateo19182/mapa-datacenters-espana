@@ -12,18 +12,18 @@ ubicacion:
   municipio: "Madrid"
   provincia: "Madrid"
   ccaa: "Comunidad de Madrid"
-  direccion: "Polígono de Julián Camarillo, 28037 Madrid (distrito de San Blas-Canillejas)"
+  direccion: "Calle Julián Camarillo 8, 28037 Madrid"
   lat: null
   lon: null
   precision: aproximada
-  fuentes: [src-1]
+  fuentes: [src-1, src-ens-ayuntamiento]
 
-estado: ampliacion_en_construccion
+estado: operativo
 estado_detalle: >-
   Tres módulos en servicio con arranques escalonados entre 1995 y 2011. Adquirido a Telefónica
   en 2019. En mayo de 2024 Nabiax contrató 2,5 MW IT adicionales en este campus con
-  hiperescalares. Entre 2024 y 2025 el centro pasó por una modernización de doce meses,
-  ejecutada con el CPD en producción: partía de una infraestructura de baja densidad, de unos
+  hiperescalares. Fibratel documenta una modernización de doce meses con el CPD en
+  producción: partía de una infraestructura de baja densidad, de unos
   2 kW por armario y con una sala IT de 2,5 MW operativa y sin posibilidad de ampliación física,
   y se rediseñaron los sistemas eléctricos e hidráulicos, se reubicaron enfriadoras y grupos
   electrógenos, se sustituyeron transformadores y se incorporó almacenamiento térmico.
@@ -50,43 +50,62 @@ potencia:
     valor_mw: 2.5
     ambito: fase
     referencia: "Capacidad contratada con hiperescalares en 2024"
-    estado_asociado: en_construccion
+    estado_asociado: desconocido
     fecha_dato: "2024-05-07"
     fuentes: [src-2]
+    nota: >-
+      Contratación anunciada en 2024, sin confirmación separada de entrega ni de obras
+      actuales. No consta si esos 2,5 MW ya están incluidos en los 10 MW operativos que
+      publica Nabiax; no se suman a esa cifra.
 
 fases:
   - nombre: "Módulos 1, 2 y 3"
     estado: operativo
-    fecha_puesta_en_servicio: "1995"
+    fecha_puesta_en_servicio: null
     superficie_m2: 10000
     fuentes: [src-1]
+    nota: "Los tres módulos entraron en servicio de forma escalonada entre 1995 y 2011; no se publica la fecha de cada uno."
 
 superficie_construida_m2: 10000
 refrigeracion: >-
-  Chiller N+1 y CRAH N+1; 100% energía renovable. La modernización de 2024-2025 reubicó las
+  Chiller N+1 y CRAH N+1; energía 100 % renovable según el operador. La modernización reubicó las
   enfriadoras y los cuadros de climatización e incorporó almacenamiento térmico; la ingeniería
   que la ejecutó declara un uso optimizado del agua, sin cifras.
 enlaces_proyecto:
   - "https://nabiax.com/en/our-data-centers/spain/julian-camarillo/"
 
 incertidumbres:
+  - campo: estado
+    descripcion: >-
+      El contrato de 2,5 MW de 2024 no acredita una ampliación en obras a octubre de 2026.
+      Nabiax publica 10 MW IT actuales y 15 MW máximos; Fibratel describe la modernización
+      como terminada, sin precisar su fecha de recepción. No se asigna una nueva apertura.
+    fuentes: [src-1, src-2, src-3]
   - campo: ubicacion
     descripcion: >-
-      Nabiax no publica la dirección postal del centro; la única dirección disponible en su web
-      (Calle Julián Camarillo 29) corresponde a sus oficinas. La geolocalización queda a nivel de
-      polígono.
-    fuentes: [src-1]
+      El certificado ENS de Informática del Ayuntamiento de Madrid identifica el CPD en Julián
+      Camarillo 8. El número 29 corresponde a oficinas de Nabiax. No se ha recuperado un pin
+      identificado del edificio para añadir coordenadas.
+    fuentes: [src-1, src-ens-ayuntamiento]
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
+  - id: src-ens-ayuntamiento
+    url: "https://www.madrid.es/UnidadWeb/Contenidos/Ficheros/ENS/Certificado_ENS_2025.pdf"
+    titulo: "Certificado ENS de Informática del Ayuntamiento de Madrid, CERT-ENS-25398"
+    editor: "Audertis Audit Services, publicado por el Ayuntamiento de Madrid"
+    tipo: empresa
+    fecha_publicacion: "2025-11-07"
+    fecha_consulta: "2026-10-17"
+    cita: "CPD Nabiax Julián Camarillo (colocación): C/ de Julián Camarillo 8, 28037, Madrid"
   - id: src-1
     url: "https://nabiax.com/en/our-data-centers/spain/julian-camarillo/"
     titulo: "Julián Camarillo"
     editor: "Nabiax"
     tipo: empresa
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "All 3 modules supply 10 MW of IT Power, scalable to 15 MW ... Start of operations 1995 - 2011 IT Rooms 29 Surface 10.000 sqm"
   - id: src-2
     url: "https://www.datacentermarket.es/news/nabiax-habilitara-10-mw-nuevos-para-dos-hiperescalares/"
@@ -94,7 +113,7 @@ fuentes:
     editor: "Data Center Market"
     tipo: prensa_especializada
     fecha_publicacion: "2024-05-07"
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "La nueva capacidad se desarrolla en los campus de data center ubicados en Alcalá de Henares (7,5 MW) y Julián Camarillo (2,5 MW)"
   - id: src-3
     url: "https://www.fibratel.com/wp-content/uploads/2026/05/Caso-de-exito-Nabiax-Julian-Camarillo_fdata-2025.pdf"
@@ -102,5 +121,5 @@ fuentes:
     editor: "fibratel"
     tipo: empresa
     fecha_publicacion: "2026-05"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: "El punto de partida era una infraestructura diseñada originalmente para entornos IT de baja densidad, con una capacidad aproximada de 2 kW por rack. El centro contaba con una sala IT de 2,5 MW totalmente operativa, sin posibilidad de ampliación física ni construcción de nuevas áreas ... Todo el proceso debía completarse en un plazo exigente de 12 meses ... La solución contempló el desplazamiento y reorganización de sistemas críticos, como los chillers y los cuadros de climatización, así como la reconfiguración de las alimentaciones eléctricas para soportar mayores densidades de carga. Se incorporaron nuevos sistemas de almacenamiento térmico y se sustituyeron equipos obsoletos, como transformadores ... La nueva configuración ofrece una elevada eficiencia energética y un uso optimizado del agua, apoyándose además en un suministro eléctrico proveniente al 100 % de fuentes renovables."

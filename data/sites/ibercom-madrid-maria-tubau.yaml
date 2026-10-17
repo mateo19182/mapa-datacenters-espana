@@ -14,38 +14,46 @@ ubicacion:
   direccion: "Calle María Tubau 8, 4ª planta, 28050 Madrid (distrito de Fuencarral-El Pardo)"
   lat: 40.513898
   lon: -3.673567
-  precision: exacta
-  fuentes: [src-1, src-2]
+  precision: aproximada
+  fuentes: [src-1, src-2, src-borme-2007]
 
 estado: desconocido
 estado_detalle: >-
-  Instalación registrada en PeeringDB y en directorios de colocation, en la cuarta planta del
-  número 8 de la calle María Tubau. No se ha localizado documentación del operador que la
-  describa. En esa misma dirección tiene domicilio Másmóvil Ibercom, S. A., la sociedad
-  resultante de la absorción de Ibercom por MásMóvil.
-estado_fuentes: [src-1, src-2, src-3]
+  Instalación registrada en PeeringDB y directorios de colocation en María Tubau 8.
+  Ibercom documentó su IDC de Madrid en el folleto corporativo de 2012, y el BORME sitúa
+  el domicilio de Ibercom Telecom en esa calle. La cuarta planta procede del directorio.
+  Estas referencias históricas no confirman la actividad ni el operador actual del centro.
+estado_fuentes: [src-1, src-2, src-borme-2007, src-folleto-2012]
 
 potencia: []
 
 incertidumbres:
   - campo: estado
     descripcion: >-
-      El dominio del operador no responde y las únicas fuentes localizadas son registros de
-      directorios, que no datan sus datos. No puede confirmarse el estado actual ni el modelo de
-      negocio, ni si la instalación sobrevivió a la integración de Ibercom en MásMóvil.
-    fuentes: [src-1, src-2, src-3]
+      El folleto de 2012 acredita un IDC de Madrid, pero no confirma su continuidad en 2026.
+      PeeringDB mantiene la instalación y tres redes asociadas; esa relación de catálogo no
+      acredita por sí sola su operatividad actual. Se mantiene el estado desconocido.
+    fuentes: [src-1, src-2, src-folleto-2012]
   - campo: operador
     descripcion: >-
-      Los directorios siguen atribuyendo el centro a «Ibercom», marca que hoy forma parte de
-      Másmóvil Ibercom, S. A. No se ha localizado ninguna comunicación del grupo sobre este
-      emplazamiento, así que el operador se mantiene como estaba registrado.
-    fuentes: [src-2, src-3]
+      Los directorios atribuyen la instalación a Ibercom. No se ha localizado documentación
+      actual del grupo que confirme quién explota este emplazamiento. El domicilio societario
+      histórico no se toma como prueba de actividad del CPD.
+    fuentes: [src-1, src-2, src-borme-2007]
   - campo: potencia
-    descripcion: "Sin datos de potencia ni superficie."
-    fuentes: [src-1, src-2]
+    descripcion: >-
+      Sin potencia publicada. El folleto de 2012 describe 510 m² de IDC dentro de 1.250 m²
+      que incluyen oficinas, laboratorios y zonas técnicas. No se extrapolan como superficie
+      actual del edificio ni como potencia eléctrica.
+    fuentes: [src-folleto-2012]
+  - campo: ubicacion
+    descripcion: >-
+      Se conserva el punto de la instalación nominada en PeeringDB con precisión aproximada.
+      No hay plano del operador que confirme la sala ni la cuarta planta indicada por el directorio.
+    fuentes: [src-1, src-2, src-3]
 
 confianza: baja
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
   - id: src-1
@@ -53,14 +61,14 @@ fuentes:
     titulo: "Ibercom Madrid"
     editor: "PeeringDB"
     tipo: asociacion
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "Ibercom Madrid | Maria Tubau, 8 | 28050 Madrid"
   - id: src-2
     url: "https://datacenterplatform.com/data-centers/ibercom/"
     titulo: "Ibercom — Data Center Platform"
     editor: "Data Center Platform"
     tipo: otro
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: "Ibercom Headquarters: Spain, Madrid ... Amount of DC: 2 ... Categories: Colocation ... Ibercom Madrid Calle María Tubau, 8 4ª planta 28050 Madrid ... Ibercom San Sebastian Parque Empresarial Zuatzu, Edificio Easo 2 20018 San Sebastian"
   - id: src-3
     url: "https://electronicasanchez.es/masmovil-ibercom-sa/"
@@ -70,3 +78,19 @@ fuentes:
     fecha_publicacion: "2025-04-06"
     fecha_consulta: "2026-08-31"
     cita: "Dirección: Calle de María Tubau, 8, Planta 4, Fuencarral-El Pardo, 28050 Madrid, España ... Másmóvil Ibercom, S.A. es una compañía telefónica y proveedor de servicios de telecomunicaciones"
+  - id: src-borme-2007
+    url: https://www.boe.es/diario_borme/txt.php?id=BORME-C-2007-189043
+    titulo: Ibercom Telecom, S. A., convocatoria de junta de 2007
+    editor: Boletín Oficial del Registro Mercantil
+    tipo: oficial
+    fecha_publicacion: "2007-10-01"
+    fecha_consulta: "2026-10-17"
+    cita: "domicilio social, calle maría Tubau, 8, de Madrid"
+  - id: src-folleto-2012
+    url: https://apiweb.bolsasymercados.es/Market/MTFDocuments/Otros/2012/03/84696_Folleto_20120328.pdf
+    titulo: Documento informativo de incorporación al MAB de World Wide Web Ibercom, marzo de 2012, páginas 11 y 15
+    editor: World Wide Web Ibercom / BME
+    tipo: empresa
+    fecha_publicacion: "2012-03"
+    fecha_consulta: "2026-10-17"
+    cita: "1.250 m² de instalaciones en el norte de Madrid [...] 510 m² de IDC"
