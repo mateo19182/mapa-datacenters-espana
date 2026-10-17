@@ -1,0 +1,82 @@
+id: nasertic-pamplona-beloso
+nombre: "Nasertic — CPD de respaldo de Beloso (Pamplona)"
+alias:
+  - "CPD Beloso"
+  - "Segundo CPD del Gobierno de Navarra"
+tipo: edificio
+operador: "Nasertic — Navarra de Servicios y Tecnologías, S.A."
+propietario: "Gobierno de Navarra"
+modelo: corporativo
+
+ubicacion:
+  municipio: "Pamplona / Iruña"
+  provincia: "Navarra"
+  ccaa: "Navarra"
+  direccion: "Nave en la Comisaría de la Policía Foral de Beloso, Pamplona"
+  lat: null
+  lon: null
+  no_derivar: true
+  precision: municipio
+  fuentes: [src-nasertic-20191030, src-cpen-20250425]
+
+estado: operativo
+estado_detalle: >-
+  Segundo centro de proceso de datos del Gobierno de Navarra, en una nave de la
+  Comisaría de la Policía Foral en Beloso. Nasertic describió en octubre de 2019 su
+  operación a pleno rendimiento desde el primer semestre de 2017, tras un proyecto
+  iniciado en 2015 y una primera puesta en funcionamiento en 2016. La información
+  institucional de abril de 2025 confirma que sigue como respaldo del CPD principal,
+  con ambos centros trabajando de forma simultánea. Es un emplazamiento distinto de
+  la sede de Nasertic en la calle Orkoien.
+estado_fuentes: [src-nasertic-20191030, src-cpen-20250425]
+fecha_puesta_en_servicio: "2016"
+potencia: []
+
+incertidumbres:
+  - campo: ubicacion
+    descripcion: >-
+      Las fuentes identifican la nave dentro del complejo policial de Beloso, pero no
+      se ha recuperado un pin propio del CPD. No se fija una sala o edificio del complejo
+      por proximidad ni se usan coordenadas del CPD principal.
+    fuentes: [src-nasertic-20191030, src-cpen-20250425]
+  - campo: potencia
+    descripcion: >-
+      No se publica potencia de Beloso en las fuentes leídas. Los 400 kW, 96 racks,
+      ampliación de salas y recursos HPC de la nota de 2025 corresponden al CPD principal
+      de Orkoien; no se trasladan a este centro de respaldo.
+    fuentes: [src-cpen-20250425]
+  - campo: fecha_puesta_en_servicio
+    descripcion: >-
+      La noticia de 2019 menciona una primera puesta en funcionamiento en 2016 y operación
+      a pleno rendimiento desde el primer semestre de 2017. Se registra 2016 para la primera
+      puesta en funcionamiento y se distingue la operación plena posterior, sin inventar día o mes.
+    fuentes: [src-nasertic-20191030]
+  - campo: inversion_anunciada_eur
+    descripcion: >-
+      Nasertic cifra en 1,28 millones de euros el acondicionamiento de la nave en la segunda
+      fase. No se publica coste total actualizado del emplazamiento; no se le asignan los
+      cuatro millones de la ampliación de Orkoien de 2025.
+    fuentes: [src-nasertic-20191030, src-cpen-20250425]
+
+enlaces_proyecto:
+  - "https://www.nasertic.es/es/infraestructuras/centros-de-proceso-de-datos-cpd"
+confianza: media
+ultima_verificacion: "2026-10-17"
+
+fuentes:
+  - id: src-nasertic-20191030
+    url: "https://nasertic.es/es/actualidad/la-comision-de-universidad-innovacion-y-transformacion-digital-visita-los-dos-centros-de"
+    titulo: "Visita parlamentaria a los dos CPD del Gobierno de Navarra"
+    editor: "Nasertic, información del Parlamento de Navarra"
+    tipo: oficial
+    fecha_publicacion: "2019-10-30"
+    fecha_consulta: "2026-10-17"
+    cita: "ya en Beloso [...] el segundo CPD opera a pleno rendimiento desde el primer semestre de 2017 [...] inversión de 1,28 millones"
+  - id: src-cpen-20250425
+    url: "https://www.sociedadespublicasdenavarra.es/es/cpen-al-dia/nuestras-noticias/el-gobierno-de-navarra-ha-invertido-4-millones-de-euros-para-duplicar"
+    titulo: "Ampliación del CPD principal y confirmación del respaldo en Beloso"
+    editor: "Corporación Pública Empresarial de Navarra, información del Gobierno de Navarra"
+    tipo: oficial
+    fecha_publicacion: "2025-04-25"
+    fecha_consulta: "2026-10-17"
+    cita: "centro de respaldo ubicado en la Comisaría de la Policía Foral en Beloso. Ambos trabajan de forma simultánea"

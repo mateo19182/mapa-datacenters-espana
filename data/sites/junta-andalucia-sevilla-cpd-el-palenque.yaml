@@ -25,8 +25,11 @@ estado_detalle: >-
   maquinaria entrando en la parcela desde finales de septiembre de 2025. A 30 de agosto de 2026
   seguía en obras: la prensa económica lo cita, junto al SP01 de Escúzar, como uno de los dos únicos
   centros de datos andaluces con obras en marcha. El pliego técnico del equipamiento crítico
-  (Sandetel, expediente 24-00025) lo diseña para certificación Tier III del Uptime Institute.
-estado_fuentes: [src-1, src-2, src-3, src-5, src-6]
+  (Sandetel, expediente 24-00025) lo diseña para certificación Tier III del Uptime Institute. DCD
+  publicó el 7 de septiembre de 2026 un avance del 33% y una previsión de servicio en junio 2027.
+  Esa crónica añade capacidades de diseño de 2,24 MW IT iniciales y 3,35 MW IT ampliables; no
+  confirma una entrega y no se ha recuperado el documento primario que las detalla.
+estado_fuentes: [ src-1, src-2, src-3, src-5, src-6, src-dcd-20260907 ]
 
 potencia:
   - tipo: it
@@ -36,12 +39,13 @@ potencia:
     estado_asociado: en_construccion
     fecha_dato: "2024-05-24"
     fuentes: [src-4]
-    nota: >-
-      El pliego de prescripciones técnicas de Sandetel dimensiona los SAI de cargas IT para
+    nota: El pliego de prescripciones técnicas de Sandetel dimensiona los SAI de cargas IT para
       garantizar 850 kW de salida (935 kW con el coeficiente de seguridad del 10%), repartidos en
       cuatro sistemas de dos SAI modulares de 500 kW en paralelo. Es la única cifra de potencia
-      publicada del edificio y se refiere a la carga IT, no al suministro contratado.
-  - tipo: termica_respaldo
+      publicada del edificio y se refiere a la carga IT, no al suministro contratado. Es un
+      requisito de un contrato de equipamiento crítico, no una medición de la capacidad final del
+      edificio. La crónica deseptiembre 2026 publica un diseño inicial más amplio.
+  - tipo: generacion_asociada
     valor_mw: 1.75
     ambito: edificio
     referencia: "Cada uno de los cuatro grupos electrógenos de emergencia"
@@ -51,6 +55,27 @@ potencia:
     nota: >-
       Cuatro grupos en contenedor insonorizado sobre cubierta, de 2.250 kVA / 1.750 kW nominales
       cada uno. Es potencia de respaldo, no capacidad del centro de datos, y no se suma a nada.
+  - tipo: it
+    valor_mw: 2.24
+    ambito: edificio
+    referencia: Diseño inicial del CPD según crónica de avance de obras
+    estado_asociado: en_construccion
+    fecha_dato: 2026-09-07
+    fuentes:
+      - src-dcd-20260907
+    nota: Lectura de prensa especializada, con 416 racks previstos. No se ha recuperado la fuente
+      técnica primaria que concilie este diseño con los 850 kW mínimos del contrato de equipamiento
+      crítico. No es capacidad entregada.
+  - tipo: it
+    valor_mw: 3.35
+    ambito: edificio
+    referencia: Ampliación máxima de diseño según crónica de avance de obras
+    estado_asociado: anunciado
+    fecha_dato: 2026-09-07
+    fuentes:
+      - src-dcd-20260907
+    nota: Objetivo ampliable de 624 racks, del mismo edificio y no capacidad adicional a los 2,24 MW
+      iniciales.
 
 fases:
   - nombre: "Módulo CPD"
@@ -118,9 +143,18 @@ incertidumbres:
       y la finalización en el primer semestre de 2026; la obra empezó en realidad a finales de 2025
       y en agosto de 2026 seguía en construcción, sin nota de inauguración ni de puesta en servicio.
     fuentes: [src-1, src-5, src-6]
+  - campo: potencia
+    descripcion: DCD publica 2,24 MW IT iniciales y 3,35 MW IT ampliables en septiembre 2026; el
+      contrato de equipamiento crítico exigía 850 kW de carga SAIIT. Son documentos con alcance y
+      fecha distintos, no una suma. Falta el proyecto de ejecución o su modificación que permita
+      conciliarlos. Los 1,75 MW por grupo del pliego son potencia eléctrica de generación de
+      respaldo, no potencia térmica ni carga IT.
+    fuentes:
+      - src-4
+      - src-dcd-20260907
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
   - id: src-1
@@ -135,14 +169,14 @@ fuentes:
     titulo: "Arrancan las obras del nuevo 'cerebro' tecnológico de la Junta, el Centro de Proceso de Datos (CPD) 'El Palenque'"
     editor: "Sevilla TechPark (PCT Cartuja)"
     tipo: oficial
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "sistema de autoconsumo fotovoltaico de más de 20.000 metros cuadrados, que permitirá cubrir al menos el 50% de su demanda energética con fuentes renovables"
   - id: src-3
     url: "https://www.datacentermarket.es/news/la-junta-de-andalucia-albergara-un-nuevo-cpd-en-la-cartuja-de-sevilla/"
     titulo: "La Junta de Andalucía albergará un nuevo CPD en La Cartuja de Sevilla"
     editor: "Data Center Market"
     tipo: prensa_especializada
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "1.900 m² para equipos + 2.084 m² infraestructura [...] un módulo de operaciones de tres plantas para unos 140 puestos"
   - id: src-4
     url: "https://www.juntadeandalucia.es/haciendayadministracionpublica/apl/pdc_sirec_documentacion/rest/descargar/documento/220110"
@@ -150,7 +184,7 @@ fuentes:
     editor: "Sociedad Andaluza para el Desarrollo de las Telecomunicaciones (Sandetel), Junta de Andalucía"
     tipo: oficial
     fecha_publicacion: "2024-05-24"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       Los sistemas SAI IT se dimensionarán para una carga máxima que garantice 850 kW (+10% de
       coeficiente de seguridad 935 kW aprox.) de salida [...] Para las cargas IT se instalarán 4
@@ -166,7 +200,7 @@ fuentes:
     editor: "Europa Press"
     tipo: prensa_general
     fecha_publicacion: "2025-12-05"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       ha participado este viernes en el acto simbólico de colocación de la primera piedra del nuevo
       Centro de Proceso de Datos (CPD) de la Junta de Andalucía [...] contará con "un innovador
@@ -176,11 +210,21 @@ fuentes:
       región"
   - id: src-6
     url: "https://www.economiadigital.es/andalucia/empresas/meridian-edge-mode-elmya-asi-futuros-centros-datos-andaluces-afectados-normativa-gobierno.html"
-    titulo: "Meridian, Edge Mode o Elmya: así son los futuros centros de datos andaluces afectados por la normativa del Gobierno"
+    titulo: "Meridian, EdgeMode o Elmya: así son los futuros centros de datos andaluces afectados por
+      la normativa del Gobierno"
     editor: "Economía Digital"
     tipo: prensa_general
     fecha_publicacion: "2026-08-30"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       Por ahora, solo están en obras el SP01 de Escúzar, en Granada, y El Palenque, en Sevilla. Los
       demás siguen en fase de preparación.
+  - id: src-dcd-20260907
+    url: https://www.datacenterdynamics.com/es/noticias/el-nuevo-cpd-de-la-junta-en-sevilla-alcanza-el-33-de-ejecuci%C3%B3n/
+    titulo: El nuevo CPD de la Junta en Sevilla alcanza el 33% de ejecución
+    editor: DataCenterDynamics
+    tipo: prensa_especializada
+    fecha_publicacion: 2026-09-07
+    fecha_consulta: "2026-10-17"
+    cita: La infraestructura contará inicialmente con espacio para hasta 416 racks y una potencia IT de
+      2,24 MW.

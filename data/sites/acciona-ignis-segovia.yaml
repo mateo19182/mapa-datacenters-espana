@@ -75,7 +75,7 @@ incertidumbres:
     fuentes: [src-abc-sociedades]
 
 confianza: baja
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: 2026-10-17
 
 fuentes:
   - id: src-ignis
@@ -84,7 +84,7 @@ fuentes:
     editor: "IGNIS"
     tipo: empresa
     fecha_publicacion: "2026-08-07"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       IGNIS y Acciona están impulsando conjuntamente un proyecto de centro de datos
       en Segovia y una planta fotovoltaica adyacente para cubrir su consumo

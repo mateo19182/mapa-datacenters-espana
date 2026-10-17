@@ -9,23 +9,42 @@ propietario: "Templus Datacenters"
 modelo: colocation
 
 ubicacion:
-  municipio: "Alcalá de Henares"
-  provincia: "Madrid"
-  ccaa: "Comunidad de Madrid"
-  direccion: "Calle Tales de Mileto 1, 28806 Alcalá de Henares"
-  lat: 40.49285
-  lon: -3.392774
+  municipio: Alcalá de Henares
+  provincia: Madrid
+  ccaa: Comunidad de Madrid
+  direccion: Calle Tales de Mileto 1, 28806 Alcalá de Henares
+  lat: 40.49175
+  lon: -3.3956319
+  no_derivar: true
   precision: aproximada
-  fuentes: [src-3, src-4]
+  fuentes:
+    - src-3
+    - src-4
+    - src-pin-mad01
+    - src-mapa-mad01
 
 estado: ampliacion_en_construccion
 estado_detalle: >-
-  Instalación de 16.000 m² con dos CPD simétricos, operativa desde 2024. En septiembre de 2025
-  Templus declaró 10 MW en servicio y el objetivo de duplicar hasta 20 MW a medio plazo.
-estado_fuentes: [src-2]
+  Centro operativo desde 2024. En septiembre de 2025 Templus declaró 10 MW en servicio,
+  32.000 m² construidos entre zonas técnicas y oficinas y una nueva sala IT en construcción
+  para duplicar hasta 20 MW. La ficha comercial actual anuncia 20 MW sin acreditar su entrega.
+  En octubre de 2025 el operador documentó un rack Lenovo con NVIDIA B200 instalado para
+  GPU Solutions; no publica número de aceleradores.
+estado_fuentes: [src-2, src-ampliacion-20250917, src-gpu-solutions-20251009]
 fecha_puesta_en_servicio: "2024"
 
 potencia:
+  - tipo: no_especificado
+    valor_mw: 20
+    ambito: edificio
+    referencia: "Objetivo completo tras construir una nueva sala IT, anunciado en septiembre de 2025"
+    estado_asociado: en_construccion
+    fecha_dato: "2025-09-17"
+    fuentes: [src-ampliacion-20250917]
+    nota: >-
+      La nota primaria confirma nueva sala en construcción para pasar de 10 a 20 MW.
+      Los 20 MW incluyen los 10 existentes; no son un incremento de 20 MW ni se suman a
+      ellos. El objetivo fechado no acredita entrega posterior de toda la capacidad.
   - tipo: no_especificado
     valor_mw: 20
     ambito: edificio
@@ -33,6 +52,7 @@ potencia:
     estado_asociado: desconocido
     fecha_dato: "2026-08-29"
     fuentes: [src-1]
+    nota: "Valor comercial sin fecha de entrega. La página de red también lo etiqueta como potencia IT, en otro bloque; no se normaliza esa contradicción."
   - tipo: no_especificado
     valor_mw: 10
     ambito: edificio
@@ -44,47 +64,104 @@ potencia:
 fases:
   - nombre: "Dos CPD simétricos"
     estado: operativo
-    superficie_m2: 16000
     fuentes: [src-2]
 
-superficie_construida_m2: 16000
+superficie_construida_m2: 32000
 refrigeracion: "PUE declarado de 1,3; estación solar fotovoltaica propia; objetivo de cero emisiones netas."
 enlaces_proyecto:
   - "https://templus.com/data-centers/madrid-mad01/"
 
+computo:
+  - tipo: gpu
+    modalidad: instalado
+    ambito: particion
+    sistema: "Rack de IA de GPU Solutions en Templus Alcalá de Henares"
+    operador_computo: "GPU Solutions"
+    modelo: "NVIDIA B200 en infraestructura Lenovo con refrigeración líquida Neptune"
+    unidades: null
+    tipo_unidad: acelerador
+    estado: operativo
+    fecha_dato: "2025-10-09"
+    fuentes: [src-gpu-solutions-20251009, src-pin-mad01]
+    nota: >-
+      Templus documenta un primer rack instalado en su CPD de Alcalá. No publica cantidad de
+      GPU ni nodos. Los hasta 60 kW son la capacidad del rack, no potencia TI medida del CPD;
+      la posibilidad de cuadruplicar capacidad es una ampliación futura. La atribución a
+      MAD01 identifica el centro de Alcalá, sin asignar una sala o edificio interno concreto.
+
 incertidumbres:
   - campo: ubicacion
-    descripcion: >-
-      La ficha del centro en la web de Templus no da dirección postal y MAD01 no figura en
-      PeeringDB. La dirección registrada, calle Tales de Mileto 1, es el domicilio que la propia
-      Templus declara en su aviso de privacidad y la que usan los directorios sectoriales; un
-      directorio la sitúa en el número 21 de la misma calle. Las coordenadas son el centroide de
-      la calle, no del edificio, y por eso la precisión es aproximada.
-    fuentes: [src-1, src-3, src-4, src-5]
+    descripcion: El pin nominal Templus MAD01 en Google Maps identifica Tales de Mileto 1 y enlaza
+      templus.com, coincidiendo con la dirección documental. Se usa su marcador del lugar con
+      precisión aproximada, sin situar una sala de GPU ni cada uno de los dos CPD internos. La
+      referencia de un directorio al número 21 se conserva como discrepancia de dirección.
+    fuentes:
+      - src-1
+      - src-3
+      - src-4
+      - src-5
+      - src-pin-mad01
+      - src-mapa-mad01
   - campo: superficie_construida_m2
-    descripcion: >-
-      La prensa especializada da dos superficies para el mismo centro en la misma semana de
-      septiembre de 2025: 16.000 m² «de superficie» y 32.000 m² «construidos entre zonas técnicas
-      y oficinas». Se conserva la primera, que es la del registro, y se deja constancia de la
-      segunda.
-    fuentes: [src-2, src-5]
+    descripcion: La prensa especializada da 16.000 m² de superficie y 32.000 m² construidos entre zonas
+      técnicas y oficinas para el mismo centro. La nota primaria de Templus confirma 32.000 m²
+      construidos; se adopta esa magnitud sin equipararla con los 2.600 m² de superficie IT de la
+      ficha comercial ni sumarla a los 16.000 m² de la otra noticia.
+    fuentes:
+      - src-1
+      - src-2
+      - src-5
+      - src-ampliacion-20250917
   - campo: potencia
-    descripcion: >-
-      La ficha de Templus etiqueta los 20 MW como "Total power" pero la nota de prensa habla de
-      "20 MW de potencia" como objetivo a medio plazo partiendo de 10 MW. No se aclara si son
-      MW TI o totales.
-    fuentes: [src-1, src-2]
+    descripcion: La ficha de Templus etiqueta los 20 MW como "Total power" pero la nota de prensa habla
+      de "20 MW de potencia" como objetivo a medio plazo partiendo de 10 MW. No se aclara si son MW
+      TI o totales. La página de red contiene además otro bloque que llama a los mismos 20 MW
+      potencia IT, sin fecha ni confirmación de entrega. Se mantiene el tipo desconocido.
+    fuentes:
+      - src-1
+      - src-2
+      - src-red-actual
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
+  - id: src-gpu-solutions-20251009
+    url: "https://templus.com/nota-de-prensa/templus-instala-junto-a-gpu-solutions-y-lenovo-la-primera-solucion-para-ia-con-refrigeracion-liquida-en-espana/"
+    titulo: "Templus instala junto a GPU Solutions y Lenovo una solución para IA con refrigeración líquida"
+    editor: "Templus"
+    tipo: empresa
+    fecha_publicacion: "2025-10-09"
+    fecha_consulta: "2026-10-17"
+    cita: "ha instalado en su centro de datos de Alcalá de Henares [...] encargado por GPU Solutions [...] contando con aceleradoras gráficas Nvidia B200"
+  - id: src-ampliacion-20250917
+    url: "https://templus.com/nota-de-prensa/templus-duplicara-la-potencia-de-su-centro-de-datos-de-madrid-hasta-los-20-mw/"
+    titulo: "Templus duplicará la potencia de su centro de datos de Madrid hasta los 20 MW"
+    editor: "Templus"
+    tipo: empresa
+    fecha_publicacion: "2025-09-17"
+    fecha_consulta: "2026-10-17"
+    cita: "El proceso de aumento de potencia ya está en marcha con la construcción de una nueva sala IT"
+  - id: src-pin-mad01
+    url: "https://www.waze.com/live-map/directions/es/md/alcala-de-henares/templus-mad01?to=place.ChIJv8wITZJJQg0R3P4CfFjH8DM"
+    titulo: "Pin identificado Templus MAD01, Tales de Mileto 1, Alcalá de Henares"
+    editor: "Waze"
+    tipo: otro
+    fecha_consulta: "2026-10-17"
+    cita: "Templus MAD01. C. Tales de Mileto, 1, 28806 Alcalá de Henares, Madrid, Spain"
+  - id: src-red-actual
+    url: "https://templus.com/data-centers/"
+    titulo: "Red de centros de Templus, bloques Total power y Potencia IT"
+    editor: "Templus"
+    tipo: empresa
+    fecha_consulta: "2026-10-17"
+    cita: "Madrid 01 [...] Total power 20MW [...] Potencia IT 20MW"
   - id: src-1
     url: "https://templus.com/data-centers/madrid-mad01/"
     titulo: "Data Center en Madrid | Infraestructura Tier III - Templus (MAD01)"
     editor: "Templus"
     tipo: empresa
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "Densidad por rack 4 kW – 120 kW Superficie IT 2.600 m² Total power 20 MW ... Nivel Tier III certificado ... Planta fotovoltaica Propia"
   - id: src-2
     url: "https://www.datacentermarket.es/datacenter-infrastructure/templus-duplicara-hasta-los-20-mw-su-data-center-de-alcala-de-henares/"
@@ -92,14 +169,14 @@ fuentes:
     editor: "Data Center Market"
     tipo: prensa_especializada
     fecha_publicacion: "2025-09-18"
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "El centro, de 16.000 metros cuadrados de superficie, acoge dos CPD simétricos con el objetivo de alcanzar a medio plazo los 20 MW de potencia, pasando de los 10 MW actuales."
   - id: src-3
     url: "https://templus.com/politica-de-privacidad/"
     titulo: "Política de privacidad"
     editor: "Templus Centros de Datos, S. L."
     tipo: empresa
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: "el Responsable del tratamiento, TEMPLUS CENTROS DE DATOS, S.L. con nº de CIF B56381379 y con domicilio en C/ Tales de Mileto nº 1, 28806 Alcalá de Henares – Madrid"
   - id: src-4
     url: "https://guia.datacentermarket.es/gratuita/templus/"
@@ -115,5 +192,12 @@ fuentes:
     editor: "Material Eléctrico (CdeComunicación)"
     tipo: prensa_especializada
     fecha_publicacion: "2025-09-18"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: "Con 32.000 metros cuadrados construidos entre zonas técnicas y oficinas se ubica en Alcalá de Henares el centro de datos de Templus Insight Madrid"
+  - id: src-mapa-mad01
+    url: https://www.google.com/maps/place/Templus+MAD01/data=!4m6!3m5!1s0xd4249924d08ccbf:0x33f0c7587c02fedc!8m2!3d40.49175!4d-3.3956319!16s%2Fg%2F11g8xcbkfn
+    titulo: Templus MAD01, centro de datos en Tales de Mileto 1, Google Maps
+    editor: Google Maps
+    tipo: otro
+    fecha_consulta: 2026-10-17
+    cita: Templus MAD01. Centro de datos. C. Tales de Mileto, 1, Alcalá de Henares. templus.com.

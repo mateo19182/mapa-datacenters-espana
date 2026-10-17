@@ -71,9 +71,9 @@ fases:
       datos y 1 edificio administrativo.
 
 conexion_electrica:
-  subestacion: "SE WQA1HV 132/20 kV y SE WQA2HV 220/20 kV (propias de AWS), alimentadas desde la SE Esquedas 132 kV"
-  tension_kv: 132
-  titular_red: "Endesa (E-Distribución) — SE Esquedas 132 kV"
+  subestacion: "WQA1HV 132/20 kV desde Esquedas 132 kV; WQA2HV 220/20 kV desde Esquedas 220 kV"
+  tension_kv: null
+  titular_red: "E-Distribución en 132 kV y Red Eléctrica en 220 kV, según cada alimentación"
   mw_solicitados: null
   mw_concedidos: null
   fuentes: [src-1, src-2]
@@ -84,7 +84,10 @@ conexion_electrica:
     "LSAT 132 kV SET Esquedas - SET centro de datos WQA" obtuvo autorización administrativa
     previa y de construcción por Resolución de 24 de febrero de 2026 y discurre por Huesca,
     Almudévar, Lupiñén-Ortilla, Chimillas y La Sotonera. Presupuesto de ejecución material
-    de la subestación: 22.094.974,35 €. No consta potencia de acceso concedida en MW.
+    de la subestación: 22.094.974,35 €. La aprobación de junio describe otra alimentación
+    para WQA2HV desde Esquedas 220 kV, propiedad de REE, con centro de medida y doble
+    línea subterránea. Exige las autorizaciones de esa infraestructura de conexión antes
+    del suministro; no acredita energización ni publica MW de acceso concedidos.
 
 superficie_construida_m2: 70449
 inversion_anunciada_eur: null
@@ -98,11 +101,10 @@ agua:
     refrigeración en verano, con dos tanques de tormentas debajo y planta fotovoltaica sobre
     su superficie, más planta de tratamiento de agua en la parcela.
   origen: >-
-    Agua bruta bombeada desde el embalse de Valdabra mediante una tubería de impulsión de
-    400 mm y 9 km hasta las balsas del CEEI, con ampliación de la ETAP existente, y tres
-    pozos de extracción de agua subterránea dentro del propio emplazamiento. El caudal
-    máximo de agua potable que recibe hoy el Parque Tecnológico Walqa, 7,31 l/s, se
-    considera insuficiente.
+    Infraestructuras de suministro evaluadas en la DIA: red del Parque Tecnológico Walqa,
+    nueva toma del Canal del Cinca, tres pozos y captación en el embalse de Valdabra. El
+    documento también describe impulsión de agua bruta y ampliación de la ETAP. No se
+    atribuye una solución definitiva ni una concesión de agua sin acreditación adicional.
   consumo_m3_ano: 143400
   nota: >-
     La estimación de 143.400 m³/año procede de la declaración ambiental estratégica del
@@ -132,15 +134,13 @@ incertidumbres:
     fuentes: [src-3, src-4]
   - campo: empleo
     descripcion: >-
-      El cuadro de parámetros urbanísticos del Acuerdo de 4 de mayo de 2026 recoge los
-      trabajadores previstos en la Fase 1 de VDG1, VDG2 y WQA en una tabla de tres columnas
-      cuya correspondencia no se puede reconstruir de forma literal desde el texto
-      publicado. No se registra por ello un valor en «empleo»; la cifra que figura en la
-      nota de la fase procede de una lectura previa de esa tabla.
+      Los trabajadores previstos de la fase 1 se emplean en el cuadro urbanístico para
+      dimensionar aparcamientos. Son previsiones de diseño, no empleos ya creados, y
+      el documento no desglosa contratación directa, indirecta o de construcción.
     fuentes: [src-1]
 
 confianza: alta
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
   - id: src-1
@@ -149,7 +149,7 @@ fuentes:
     editor: "Boletín Oficial de Aragón"
     tipo: oficial
     fecha_publicacion: "2026-05-07"
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "para el centro de almacenamiento de datos denominado WQA (ZAZ081/ZAZ111), ubicado en el Parque Tecnológico Walqa coordenadas de referencia UTM ETRS89, Huso 30, X: 710.532 e Y: 4.665.535, Z=460 msnm [...] con una potencia térmica nominal total de 342,08 MWt."
   - id: src-2
     url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1454107610505"
@@ -157,7 +157,7 @@ fuentes:
     editor: "Boletín Oficial de Aragón"
     tipo: oficial
     fecha_publicacion: "2026-06-24"
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "Tomo IV. Huesca. Tomo IV.5 Proyecto subestación WQA2HV 220/20 kV."
   - id: src-3
     url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1406588900808"
@@ -165,7 +165,7 @@ fuentes:
     editor: "Boletín Oficial de Aragón"
     tipo: oficial
     fecha_publicacion: "2025-08-06"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: "Respecto de las afecciones al recurso hídrico, el consumo de agua asociado a la actividad de los centros de datos se ha estimado en: VDG1: 56.980 m 3/ año; VDG2: 208.920 m 3/año; BDE: 111.880 m 3/año, WQA: 143.400 m 3/año y CAR: 204.700 m 3/año. Por lo tanto, las necesidades de agua para sistemas de refrigeración del conjunto de centros de datos ascenderían, aproximadamente, a 725.880 m 3/año"
   - id: src-4
     url: "https://gd.aragon.es/cgi-bin/INPU/BRSCGI?CMD=VEROBJ&MLKOB=1419282150202"
@@ -173,7 +173,7 @@ fuentes:
     editor: "Gobierno de Aragón / Boletín Oficial de Aragón"
     tipo: oficial
     fecha_publicacion: "2025-11-06"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: "Se estima que el caudal máximo de agua potable que recibe actualmente el PT Walqa, de 7,31 l/s, no es suficiente [...] Nuevos pozos de agua subterránea. Esta fuente de suministro industrial incluye la creación de tres pozos de extracción de agua subterránea dentro del emplazamiento donde se ubicarán los nuevos centros de datos WQA [...] Nueva tubería de impulsión de agua bruta de 400 mm de diámetro y 9 km de longitud desde el embalse de Valdabra hasta las balsas existentes del CEEI. - Ampliación de la ETAP existente"
   - id: src-5
     url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1406588900808"
@@ -181,5 +181,5 @@ fuentes:
     editor: "Boletín Oficial de Aragón"
     tipo: oficial
     fecha_publicacion: "2025-08-06"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: "Los recursos de energía para la actividad a desarrollar en los centros de datos ascienden a: VDG1: 756,9 GWh/año, VDG2: 2.775 GWh/año, BDE: 1.766 GWh/año, WQA: 2.270,6 GWh/año y CAR: 3.279,7 GWh/año. Las necesidades de electricidad del conjunto de centros de datos ascenderían a 10.848,2 GWh/año."

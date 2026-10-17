@@ -32,7 +32,18 @@ estado_detalle: >-
   primera fase. La documentación ambiental describe dos edificios, 16 salas técnicas de 12 MW IT,
   104 generadores diésel de emergencia, 48 depósitos de gasóleo de 120 m³ y 144 equipos de
   refrigeración en cubierta.
-estado_fuentes: [src-merlin, src-cope, src-eldiario-premia, src-brains, src-pex-aai, src-doe-sumario, src-hoy, src-cincodias]
+estado_fuentes:
+  [
+    src-merlin,
+    src-cope,
+    src-eldiario-premia,
+    src-brains,
+    src-pex-aai,
+    src-doe-sumario,
+    src-hoy,
+    src-cincodias,
+    src-doe-aai-20260522
+  ]
 
 potencia:
   - tipo: it
@@ -152,12 +163,12 @@ empleo:
 incertidumbres:
   - campo: potencia
     descripcion: >-
-      Conviven cifras heterogéneas y no sumables: 1 GW de capacidad TI del campus
-      (compañía, enero 2025), 1,4 GW de capacidad IT como objetivo a largo plazo (fuentes de la
-      empresa citadas por Cinco Días y por El Periódico Extremadura, agosto 2026), 288 MW de demanda
-      total y 192 MW de demanda crítica repartida en 16 salas técnicas de 12 MW IT (expediente
-      ambiental, mayo 2026), 200 MW de primer tramo y 1,2 GW de ampliación posterior según prensa, y
-      solo 29 MW de potencia eléctrica efectivamente asegurada en agosto de 2026.
+      Conviven cifras heterogéneas y no sumables: 1 GW de capacidad TI del campus (compañía, enero
+      2025), 1,4 GW de capacidad IT como objetivo a largo plazo (fuentes de la empresa citadas por
+      Cinco Días y por El Periódico Extremadura, agosto 2026), 288 MW de demanda total y 192 MW de
+      demanda crítica repartida en 16 salas técnicas de 12 MW IT (expediente ambiental, mayo 2026),
+      200 MW de primer tramo y 1,2 GW de ampliación posterior según prensa, y solo 29 MW de potencia
+      eléctrica efectivamente asegurada en agosto de 2026.
 
       Dos consecuencias para los agregados. Primera: el 1 GW y el 1,4 GW son la misma magnitud
       medida dos veces, así que la agregación toma la más reciente (1.400 MW) y marca la
@@ -167,20 +178,19 @@ incertidumbres:
       crítica, coherente con 16 salas de 12 MW IT— sigue fuera del total de MW IT, porque el
       expediente la publica como demanda y no como carga TI del campus, y multiplicar 12 por 16 para
       derivarla sería rellenar un hueco. El resultado es que el agregado de este emplazamiento lo
-      fija un objetivo empresarial a largo plazo, no el proyecto autorizado.
+      fija un objetivo empresarial a largo plazo, no el proyecto sometido a autorización.
     fuentes: [src-merlin, src-cope, src-brains, src-cincodias, src-pex-aai, src-pex-1400]
   - campo: inversion_anunciada_eur
-    descripcion: >-
-      La información pública de la AAI cita 1.600 millones de euros, cifra que
-      coincide con la declaración PREMIA; la prensa habla además de 400 millones
-      para la primera fase, de 2.000 millones para los dos primeros edificios y de 14.000 millones
-      (Cinco Días) o hasta 15.000 (El Periódico Extremadura) para el desarrollo completo de 1,4 GW.
-      No se sustituye la cifra registrada. Conviene no dividir la inversión registrada por la
-      potencia agregada: los 1.600 millones corresponden al proyecto de 288 MW que tramita la AAI, y
-      dividirlos por los 1.400 MW del objetivo a largo plazo da 1,1 millones por MW, un coste
-      unitario que ninguna fuente afirma y que resulta de cruzar dos alcances distintos. Contra los
-      288 MW autorizados la ratio es de 5,6 millones por MW, y los 14.000-15.000 millones contra los
-      1.400 MW dan 10-10,7.
+    descripcion: "La información pública de la AAI cita 1.600 millones de euros, cifra que coincide con
+      la declaración PREMIA; la prensa habla además de 400 millones para la primera fase, de 2.000
+      millones para los dos primeros edificios y de 14.000 millones (Cinco Días) o hasta 15.000 (El
+      Periódico Extremadura) para el desarrollo completo de 1,4 GW. No se sustituye la cifra
+      registrada. Conviene no dividir la inversión registrada por la potencia agregada: los 1.600
+      millones corresponden al proyecto de 288 MW que tramita la AAI, y dividirlos por los 1.400 MW
+      del objetivo a largo plazo da 1,1 millones por MW, un coste unitario que ninguna fuente afirma
+      y que resulta de cruzar dos alcances distintos. Contra los 288 MW descritos en la solicitud de
+      AAI la ratio es de 5,6 millones por MW, y los 14.000-15.000 millones contra los 1.400 MW dan
+      10-10,7."
     fuentes: [src-cope, src-eldiario-premia, src-brains, src-cincodias, src-pex-1400]
   - campo: conexion_electrica
     descripcion: >-
@@ -194,9 +204,15 @@ incertidumbres:
       La densidad por rack difiere según la fuente: la nota de MERLIN habla de hasta 70 kW por rack
       y la de Edged Energy, para los mismos dos campus extremeños, de hasta 200 kW por rack.
     fuentes: [src-merlin, src-edged]
+  - campo: estado
+    descripcion: La declaración PREMIA y la información pública del expediente AAI 25/032 son actos
+      distintos de una autorización ambiental definitiva o una licencia de construcción. No se ha
+      localizado la resolución final ni un inicio físico verificable después de las previsiones de
+      otoño 2026. El calendario vencido no acredita obra ni entrega.
+    fuentes: [ src-doe-aai-20260522, src-hoy, src-brains ]
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
   - id: src-merlin
@@ -205,7 +221,7 @@ fuentes:
     editor: "MERLIN Properties SOCIMI"
     tipo: empresa
     fecha_publicacion: "2025-01-14"
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: >-
       8 y 10 edificios con 100MW de capacidad IT cada uno [...] subestación
       Arañuelo 400kv (Redeia).
@@ -215,7 +231,7 @@ fuentes:
     editor: "Edged Energy"
     tipo: empresa
     fecha_publicacion: "2025-01-14"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       will each offer up to 1GW of IT capacity with an industry-leading average PUE of 1.15 [...]
       They are expected to consume no water for cooling [...] the breakthrough ThermalWorks waterless
@@ -236,7 +252,7 @@ fuentes:
     editor: "El Periódico Extremadura"
     tipo: prensa_general
     fecha_publicacion: "2026-05-22"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       un proyecto promovido por Merlin Edged, SL que prevé una inversión de 1.600 millones de euros y
       la creación de 250 empleos [...] la parcela I-64 del Parque Industrial Norte de Extremadura
@@ -250,7 +266,7 @@ fuentes:
     editor: "Junta de Extremadura"
     tipo: oficial
     fecha_publicacion: "2026-05-22"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       Anuncio de 19 de mayo de 2026 por el que se someten a información pública la solicitud de
       autorización ambiental integrada y el estudio de impacto ambiental del proyecto de un centro de
@@ -273,7 +289,7 @@ fuentes:
     editor: "Cinco Días"
     tipo: prensa_general
     fecha_publicacion: "2026-08-10"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       La compañía planea comenzar con una primera fase de 20 MW (megawatios) de capacidad de
       tecnología de la información (TI), aunque su intención es alcanzar los 1,4 GW en el futuro, lo
@@ -318,7 +334,7 @@ fuentes:
     editor: "Brains Real Estate News"
     tipo: prensa_especializada
     fecha_publicacion: "2026-08"
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: >-
       20 megavatios (MW) de capacidad destinada a tecnología de la información
       (TI) [...] 29 MW de potencia eléctrica.
@@ -331,3 +347,12 @@ fuentes:
     cita: >-
       Expacio Navalmoral, Navalmoral de la Mata, Cáceres, Extremadura, España —
       lat 39.9130138, lon -5.5173522
+  - id: src-doe-aai-20260522
+    url: https://doe.juntaex.es/pdfs/doe/2026/970o/26080815.pdf
+    titulo: Información pública de la solicitud de AAI y EsIA del CPD de Navalmoral, AAI 25/032
+    editor: Junta de Extremadura / DOE
+    tipo: oficial
+    fecha_publicacion: 2026-05-22
+    fecha_consulta: 2026-10-17
+    cita: se someten a información pública la solicitud de autorización ambiental integrada y el estudio
+      de impacto ambiental

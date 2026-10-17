@@ -13,8 +13,9 @@ ubicacion:
   provincia: "Zaragoza"
   ccaa: "Aragón"
   direccion: "Sector delimitado por la carretera A-129 y el Camino de la Carbonera"
-  lat: 41.685556
-  lon: -0.773889
+  lat: null
+  lon: null
+  no_derivar: true
   precision: municipio
   fuentes: [src-1, src-3]
 
@@ -29,6 +30,29 @@ estado_detalle: >-
 estado_fuentes: [src-1, src-2, src-4]
 
 potencia:
+  - tipo: it
+    valor_mw: 300
+    ambito: campus
+    referencia: "Potencia IT total de las dos fases en el proyecto de solicitud de AAI"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2026-05-19"
+    fuentes: [src-aai-202605]
+    nota: "El apartado de fases dice 300 MW IT; los apartados técnicos describen 72 MWe IT por edificio. Véase la discrepancia documental."
+  - tipo: it
+    valor_mw: 150
+    ambito: fase
+    referencia: "Etapa 1, edificios DC-I y DC-II, en el proyecto de solicitud de AAI"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2026-05-19"
+    fuentes: [src-aai-202605]
+  - tipo: instalada_total
+    valor_mw: 432
+    ambito: campus
+    referencia: "Potencia eléctrica máxima de red, con redundancia, en el proyecto de solicitud de AAI"
+    estado_asociado: en_tramitacion
+    fecha_dato: "2026-05-19"
+    fuentes: [src-aai-202605]
+    nota: "432 MWe en el conjunto, 108 MWe por edificio; no es potencia de acceso concedida ni potencia de respaldo."
   - tipo: no_especificado
     valor_mw: 75
     ambito: edificio
@@ -53,12 +77,13 @@ potencia:
     valor_mw: 150
     ambito: campus
     referencia: "Potencia de suministro ya asegurada"
-    estado_asociado: permisos_concedidos
+    estado_asociado: desconocido
     fecha_dato: "2026-02-21"
     fuentes: [src-1]
     nota: >-
       "el proyecto prevé una demanda total de 300 MW, de los cuales ya se encuentran
-      asegurados 150 MW, con ampliación solicitada hasta completar el total".
+      asegurados 150 MW, con ampliación solicitada hasta completar el total". Es una
+      declaración de la promotora; no se ha localizado el permiso que acredite la concesión.
 
 fases:
   - nombre: "Etapa 1"
@@ -77,48 +102,59 @@ conexion_electrica:
   tension_kv: 400
   titular_red: "Red Eléctrica de España — SE Peñaflor 400 kV"
   mw_solicitados: 300
-  mw_concedidos: 150
+  mw_concedidos: null
   fuentes: [src-1, src-2]
   nota: >-
     "El suministro se realizará en alta tensión (400 kV) desde la Subestación de Peñaflor,
     conectando con una subestación propia situada dentro del ámbito del campus". El PIGA
     incluye además cuatro líneas subterráneas de alta tensión de 66 kV y cuatro
-    subestaciones 66/11 kV, una por edificio.
+    subestaciones 66/11 kV, una por edificio. La memoria declara 150 MW asegurados; no
+    se registra esa declaración como permiso concedido sin el documento de acceso.
 
 superficie_parcela_m2: 799073
 superficie_construida_m2: 300000
 inversion_anunciada_eur: 2360000000
 refrigeracion: >-
-  Refrigeración por aire. La ordenación orienta las cuatro unidades de edificación de
-  noroeste a sureste, alineadas con el viento dominante, para favorecer la ventilación
-  natural y la evacuación del aire caliente de los sistemas de refrigeración.
+  Circuito cerrado de agua enfriada compartido por refrigeración directa al chip mediante
+  CDU y refrigeración por aire mediante HCU. Enfriadoras sin sistemas evaporativos o
+  adiabáticos de rechazo de calor; la climatización sí contempla humectación. Pico de
+  PUE de diseño 1,5, no rendimiento medido.
 
 agua:
-  circuito: desconocido
+  circuito: cerrado
   sistema: >-
-    Refrigeración por aire según la documentación ambiental del PIGA. La promotora afirma que
-    "la instalación minimiza el consumo de agua".
-  origen: "Conexión exterior de abastecimiento de agua potable incluida en el PIGA"
-  consumo_m3_ano: 6066
+    Agua enfriada en circuito cerrado para CDU y HCU. Los equipos de tratamiento de aire
+    emplean agua osmotizada para humectación. La memoria prevé riego con aguas pluviales.
+  origen: "Abastecimiento municipal de agua potable; captación de pluviales para riego"
+  consumo_m3_ano: 6066.36
+  wue_l_kwh: 0.01
   nota: >-
-    Cifra tomada del estudio de impacto ambiental publicado en julio de 2026 y difundida por
-    prensa; no se ha localizado el documento ambiental original en abierto. La memoria del
-    PIGA de febrero de 2026 no cuantifica el consumo de agua. La misma fuente atribuye al
-    proyecto un consumo eléctrico de 2.628 GWh al año una vez completadas las dos fases.
-  fuentes: [src-5]
+    Previsión del proyecto básico de solicitud de AAI de mayo de 2026, no consumo medido:
+    4.511,40 m³/año sanitarios y de limpieza, menos de 1 m³ para PCI y 1.554,96 m³ de
+    humectación; tabla total 6.066,36 m³/año. El WUE 0,01 es un objetivo de diseño cuya
+    base no se concilia expresamente con el consumo eléctrico anual del mismo documento.
+  fuentes: [src-aai-202605]
 
 energia:
   - consumo_gwh_ano: 2628
-    referencia: "Consumo eléctrico anual del campus una vez completadas las dos fases previstas"
-    fecha_dato: "2026-07-08"
-    fuentes: [src-5]
+    referencia: "Consumo medio anual estimado del conjunto del campus en el proyecto de solicitud de AAI"
+    fecha_dato: "2026-05-19"
+    fuentes: [src-aai-202605]
     nota: >-
-      Cifra de la documentación ambiental del PIGA publicada en julio de 2026, conocida a
-      través de prensa; no se ha podido leer el documento original. La segunda fase queda
-      condicionada a disponer de la capacidad eléctrica necesaria, de modo que es un techo,
-      no una previsión firme.
+      La fuente lo presenta como estimación, no como medición de un campus operativo.
+      El mismo documento cifra la potencia instalada total de red en 432 MWe.
 
 empleo:
+  - tipo: construccion
+    valor: 1142
+    referencia: "Personal previsto durante la construcción en el proyecto de solicitud de AAI"
+    fecha_dato: "2026-05-19"
+    fuentes: [src-aai-202605]
+  - tipo: directo
+    valor: 254
+    referencia: "Personal directo previsto durante la operación en el proyecto de solicitud de AAI"
+    fecha_dato: "2026-05-19"
+    fuentes: [src-aai-202605]
   - tipo: total
     valor: 1308
     referencia: "Media anual de empleos durante la vida útil del proyecto, incluidos directos, indirectos e inducidos"
@@ -133,65 +169,67 @@ enlaces_proyecto:
 incertidumbres:
   - campo: potencia
     descripcion: >-
-      La memoria del PIGA usa "capacidad" y "potencia eléctrica total" sin distinguir carga
-      TI de potencia de conexión, por lo que los 75 MW por edificio y los 300 MW del campus
-      se registran como no especificados. Solo los 150 MW asegurados pueden clasificarse con
-      seguridad como potencia de acceso a la red.
-
-      Dos periódicos que cubren la misma documentación el mismo día leen los 300 MW de forma
-      incompatible: El Periódico de Aragón los llama "300 megavatios informáticos (MW IT)" y
-      añade que eso "indica la potencia instalada de los procesadores"; El Español habla de
-      "una demanda total de 300 MW, a dividir a partes iguales entre los cuatro edificios".
-      Son los dos extremos de la magnitud —carga TI frente a demanda del campus— y de cuál sea
-      depende que la cifra de consumo de esta ficha sea posible o no (ver la incertidumbre sobre
-      `energia`). El tipo se mantiene sin especificar mientras el desacuerdo siga abierto.
-    fuentes: [src-1, src-7, src-8]
+      La memoria urbanística denomina 300 MW a la potencia eléctrica total y demanda del campus,
+      sin tipo TI. El proyecto de solicitud de AAI de mayo de 2026 sí llama 150 MW IT a la primera
+      fase y 300 MW IT al conjunto. En sus apartados técnicos, sin embargo, describe 72 MWe IT por
+      edificio y 108 MWe de carga total por edificio, con 432 MWe totales de red. Se conservan las
+      magnitudes y la contradicción; no se equiparan demanda de red y carga TI ni se fuerza una
+      suma única de edificios. Los 150 MW de suministro asegurado son una declaración de la
+      promotora, sin permiso de acceso localizado.
+    fuentes: [src-1, src-aai-202605, src-7, src-8]
   - campo: inversion_anunciada_eur
     descripcion: >-
-      La cifra de 2.360 millones procede de la documentación ambiental del PIGA publicada en
-      julio de 2026, difundida por prensa. Anuncios anteriores de la promotora y de la
-      prensa hablaron de 1.100 millones en una primera fase y hasta 1.950 o 2.000 millones
-      con la ampliación. No se ha podido leer el documento ambiental original para
-      contrastar la cifra.
-    fuentes: [src-5]
+      El estudio económico-financiero de mayo de 2026 cifra el PEC sin IVA en
+      2.359.916.340,83 euros y el resumen da costes totales de 2.360.215.606,37 euros.
+      Se conserva la cifra redondeada anunciada de 2.360 millones. No es gasto ya ejecutado.
+    fuentes: [src-economico-202605, src-5]
   - campo: energia
     descripcion: >-
-      Los 2.628 GWh/año son exactamente los 300 MW del campus funcionando las 8.760 horas del
-      año (300 x 8.760 = 2.628.000 MWh), de modo que la cifra no es una previsión de consumo
-      sino el techo aritmético que resulta de suponer la potencia máxima sostenida todo el año.
-      Eso obliga a leerla con dos cautelas. Si los 300 MW son demanda total del campus, el
-      consumo implica un factor de carga del 100 %, que ninguna instalación alcanza. Y si son
-      carga TI, como sostiene El Periódico de Aragón, entonces el consumo total tendría que ser
-      mayor que 2.628 GWh —un PUE de 1,0 no existe— y la cifra estaría subestimada en la
-      proporción que marque el rendimiento de la refrigeración.
-
-      No se corrige ni se deriva ninguna cifra: no se ha podido leer el estudio de impacto
-      ambiental original, que es el documento donde constaría si el consumo se calculó así o si
-      la coincidencia es casual.
-    fuentes: [src-5, src-7, src-8]
+      Los 2.628 GWh/año coinciden con 300 MW sostenidos 8.760 horas, pero esa coincidencia
+      no demuestra el método de cálculo. El documento primario los llama consumo medio anual
+      estimado y distingue 432 MWe de potencia total de red, además de las lecturas TI descritas
+      arriba. No se deriva un PUE medido ni se corrige la cifra mediante una regla aritmética.
+    fuentes: [src-aai-202605]
   - campo: agua
     descripcion: >-
-      La memoria del PIGA no cuantifica el consumo de agua; los 6.066 m³/año proceden del
-      estudio de impacto ambiental a través de prensa. No consta el sistema concreto de
-      refrigeración ni el origen del agua de proceso.
-    fuentes: [src-1, src-5]
+      El proyecto de AAI publica consumo y circuito, con agua para humectación, además del
+      circuito cerrado de refrigeración. Sus cifras de WUE, energía y agua son previsiones
+      de diseño; no se ha localizado una conciliación explícita de sus denominadores ni una
+      medición de explotación.
+    fuentes: [src-aai-202605]
   - campo: ubicacion
     descripcion: >-
-      Las coordenadas registradas son el centroide municipal de Villamayor de Gállego
-      (Wikidata). En el mismo municipio se proyecta también el campus de Microsoft y las
-      estaciones de medida de AWS y de ACS, todos ellos emplazamientos distintos.
-    fuentes: [src-3]
+      Se retira el centroide municipal de Villamayor de Gállego que figuraba como coordenada
+      del campus. No se ha recuperado un pin identificado de la parcela. En el mismo municipio
+      se proyectan otros campus de Microsoft, AWS y ACS, que son emplazamientos distintos.
+    fuentes: [src-1, src-3]
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
+  - id: src-aai-202605
+    url: "https://www.aragon.es/documents/d/guest/til_5_06_autorizacion-ambiental-integrada_rev01_00"
+    titulo: "Tillion Aragón, proyecto básico de solicitud de autorización ambiental integrada, revisión 01, mayo de 2026"
+    editor: "Tillion Aragón, documentación del expediente PIGA publicada por el Gobierno de Aragón"
+    tipo: empresa
+    fecha_publicacion: null
+    fecha_consulta: "2026-10-17"
+    cita: "potencia IT agregada de 150 MW [...] 300 MW [...] 432 MWe [...] 72 MWe [...] 2.628 GWh [...] 6.066,36 [...] WUE de 0,01 L/kWh [...] 1.142 empleados [...] 254 empleados directos"
+  - id: src-economico-202605
+    url: "https://www.aragon.es/documents/d/guest/til_6_03_esteco_rev08_00"
+    titulo: "Tillion Aragón, estudio económico-financiero, revisión 08, mayo de 2026"
+    editor: "Tillion Aragón, documentación del expediente PIGA publicada por el Gobierno de Aragón"
+    tipo: empresa
+    fecha_publicacion: null
+    fecha_consulta: "2026-10-17"
+    cita: "El presupuesto total de ejecución por contrata (PEC, sin IVA) [...] asciende a 2.359.916.340,83 €"
   - id: src-1
     url: "https://www.aragon.es/documents/d/guest/til_1_01_memoria-piga_rev05_00"
     titulo: "Plan de Interés General de Aragón «Tillion Aragón». Tomo 1, Documento 1: Memoria PIGA"
     editor: "Gobierno de Aragón"
     tipo: oficial
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "Cada edificio tendrá una capacidad de 75 MW, resultando en una potencia total de 300 MW. En relación con el suministro eléctrico, el proyecto prevé una demanda total de 300 MW, de los cuales ya se encuentran asegurados 150 MW"
   - id: src-2
     url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1456133040707"
@@ -199,7 +237,7 @@ fuentes:
     editor: "Boletín Oficial de Aragón"
     tipo: oficial
     fecha_publicacion: "2026-07-07"
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "se aprueba inicialmente el Plan de Interés General de Aragón \"Tillion Aragón\" promovido por la mercantil Tillion Aragón, SL"
   - id: src-3
     url: "https://query.wikidata.org/sparql"
@@ -222,14 +260,14 @@ fuentes:
     editor: "elDiario.es Aragón"
     tipo: prensa_general
     fecha_publicacion: "2026-07-08"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: "El proyecto de Azora, denominado Tillion Aragón, prevé una inversión de 2.360 millones de euros para levantar cuatro edificios de centros de datos en Villamayor de Gállego. La documentación ambiental estima un consumo de 2.628 GWh anuales una vez completadas las dos fases previstas [...] Tanto Blackstone como Azora recurrirán a sistemas de refrigeración por aire, una tecnología que reduce notablemente las necesidades hídricas frente a otros modelos. El proyecto de Calatorao estima un consumo anual de 4.782 metros cúbicos de agua y el de Villamayor, 6.066 metros cúbicos."
   - id: src-6
     url: "https://www.aragon.es/documents/d/guest/til_1_01_memoria-piga_rev05_00"
     titulo: "Plan de Interés General de Aragón «Tillion Aragón». Tomo 1, Documento 1: Memoria PIGA — apartado 3.2 Aumento de la oferta de empleo"
     editor: "Gobierno de Aragón"
     tipo: oficial
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: "Se estima la creación de una media de 1.308 empleos anuales durante la vida útil del Proyecto (1.773 en el caso de 300 MW). Se crearán puestos de trabajo en las distintas etapas de construcción y operación."
   - id: src-7
     url: "https://www.elperiodicodearagon.com/aragon/2026/07/08/centro-datos-azora-villamayor-inversiones-aragon-medio-ambiente-132219108.html"

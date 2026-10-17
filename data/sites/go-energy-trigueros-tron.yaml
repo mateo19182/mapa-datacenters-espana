@@ -128,7 +128,7 @@ incertidumbres:
     fuentes: [src-6]
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
   - id: src-1
@@ -136,7 +136,7 @@ fuentes:
     titulo: "TSK selected by Go Energy for a Green AI hyperscale campus in Huelva"
     editor: "TSK"
     tipo: empresa
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "green artificial intelligence hyperscale campus"
   - id: src-2
     url: "https://www.pv-magazine.es/2025/12/05/go-energy-pondra-en-marcha-en-huelva-un-campus-ia-verde-hyperscale-en-2028/"
@@ -144,14 +144,14 @@ fuentes:
     editor: "pv magazine España"
     tipo: prensa_especializada
     fecha_publicacion: "2025-12-05"
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "declarado de interés general y carácter supramunicipal"
   - id: src-3
     url: "https://elperiodicodelaenergia.com/go-energy-invertira-1-500-millones-en-tron-el-primer-campus-ia-verde-hyperscale-de-europa-que-se-desarrollara-en-huelva/"
     titulo: "Go Energy invertirá 1.500 millones en TRON, el primer Campus IA Verde hyperscale de Europa, que se desarrollará en Huelva"
     editor: "El Periódico de la Energía"
     tipo: prensa_especializada
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "un suministro energético verde, estable y competitivo"
   - id: src-4
     url: "https://www.huelva24.com/provincia/condado-campina/1000-empleos-inversion-millonaria-campus-ia-cuenta-20260219190947-nth.html"
@@ -159,14 +159,14 @@ fuentes:
     editor: "Huelva24"
     tipo: prensa_general
     fecha_publicacion: "2026-02-19"
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "más de un millar de empleos entre puestos directos e indirectos"
   - id: src-5
     url: "https://www.elconciso.es/empresas/data-centers-andalucia-edgemode-goenergy-sierradc_0_2006448488.html"
     titulo: "Andalucía se cae del mapa de 'data centers', con EdgeMode, Sierra DC o Go Energy como únicos actores"
     editor: "El Conciso"
     tipo: prensa_general
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "ubicado en la localidad de Trigueros (Huelva), un proyecto con capacidad de 133 MW y que se espera que comience a operar en 2028"
   - id: src-6
     url: "https://www.pv-magazine.es/2026/02/06/el-proyecto-tron-de-hidrogeno-verde-y-campus-ia-de-200-mw-obtiene-la-compatibilidad-urbanistica-en-gibraleon/"
@@ -174,7 +174,7 @@ fuentes:
     editor: "pv magazine España"
     tipo: prensa_especializada
     fecha_publicacion: "2026-02-06"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       Go Energy Group [...] ha obtenido la compatibilidad urbanística para el proyecto TRON, que
       promueve en Trigueros (Huelva). Se trata de un campus de centro de datos de inteligencia
@@ -187,7 +187,7 @@ fuentes:
     editor: "Energías Renovables"
     tipo: prensa_especializada
     fecha_publicacion: "2026-02-05"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       un campus de centros de datos de inteligencia artificial de 200 MW de potencia IT, que ha
       obtenido el certificado de compatibilidad urbanística del Ayuntamiento
@@ -197,7 +197,7 @@ fuentes:
     editor: "Europa Press"
     tipo: prensa_general
     fecha_publicacion: "2026-07-14"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       un ecosistema de IA, hidrógeno renovable y amoniaco bajo con una inversión de 10.000 millones
       de euros, compuesto por tres emplazamientos "estratégicamente ubicados" en un radio inferior a
@@ -205,7 +205,8 @@ fuentes:
       iniciar la construcción de las primeras fases a partir de 2028
   - id: src-9
     url: "https://www.economiadigital.es/andalucia/empresas/meridian-edge-mode-elmya-asi-futuros-centros-datos-andaluces-afectados-normativa-gobierno.html"
-    titulo: "Meridian, Edge Mode o Elmya: así son los futuros centros de datos andaluces afectados por la normativa del Gobierno"
+    titulo: "Meridian, EdgeMode o Elmya: así son los futuros centros de datos andaluces afectados por
+      la normativa del Gobierno"
     editor: "Economía Digital"
     tipo: prensa_general
     fecha_publicacion: "2026-08-30"
@@ -220,7 +221,7 @@ fuentes:
     editor: "Huelva Información"
     tipo: prensa_general
     fecha_publicacion: "2025-12-05"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       contempla la construcción del primer campus de IA verde hyperscale de Europa, con una capacidad
       prevista de 200 MW y una entrada en operación programada para 2028 [...] Con una inversión

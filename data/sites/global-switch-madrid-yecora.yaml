@@ -25,7 +25,7 @@ estado_detalle: >-
   en agosto de 2026, con 24.000 m² y 56 MW, entrada en funcionamiento prevista en 2029 y plena
   capacidad en 2032, a cargo de la constructora EIGO Construcciones. Con los dos edificios el campus
   declara 70 MW.
-estado_fuentes: [ src-1, src-4 ]
+estado_fuentes: [ src-1, src-4, src-icex-20260909 ]
 
 potencia:
   - tipo: no_especificado
@@ -58,12 +58,11 @@ potencia:
     valor_mw: 18
     ambito: campus
     referencia: "Instalación de Madrid según directorio comercial"
-    estado_asociado: operativo
-    fecha_dato: "2026-08-29"
+    estado_asociado: desconocido
     fuentes: [ src-3 ]
-    nota: >-
-      Contradice la suma de las cifras publicadas por el propio operador. La fecha del dato es la de
-      consulta del directorio, no la del dato: el directorio no lo data.
+    nota: El directorio no fecha ni tipifica estos 18 MW y no acredita que estén entregados. Se conserva
+      la discrepancia documental, separada de los 14 MW actuales de Madrid 1 publicados por el
+      operador y de los 56 MW previstos para Madrid 2.
 
 fases:
   - nombre: "Madrid 1"
@@ -102,9 +101,13 @@ incertidumbres:
       registrarse con la fecha de consulta, es la lectura de ámbito campus más reciente y domina la
       agregación por delante de los 70 MW que declara el operador.
     fuentes: [ src-1, src-3, src-4 ]
+  - campo: conexion_electrica
+    descripcion: Las cifras 14 MW y 56 MW publicadas por el operador no identifican un permiso de
+      acceso. No consta potencia de acceso otorgada, tensión ni volumen de agua del campus.
+    fuentes: [ src-listado-operador-20261014, src-icex-20260909 ]
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
   - id: src-1
@@ -112,7 +115,7 @@ fuentes:
     titulo: "Madrid - Global Switch"
     editor: "Global Switch"
     tipo: empresa
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "Madrid 1 14MW Calle Yécora 4 28022 Madrid Spain / Madrid 2 56MW Calle Yécora 4 28022 Madrid
       Spain"
   - id: src-2
@@ -127,7 +130,7 @@ fuentes:
     titulo: "Comunidad de Madrid Data Centers"
     editor: "OCOLO"
     tipo: otro
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "Madrid C. de Yécora, 4, San Blas-Canillejas, 28022 Madrid, Spain 18.00 MW"
   - id: src-4
     url: "https://www.datacenterdynamics.com/es/noticias/global-switch-inicia-las-obras-de-su-segundo-c\
@@ -136,7 +139,7 @@ fuentes:
     editor: "DatacenterDynamics"
     tipo: prensa_especializada
     fecha_publicacion: "2026-08-17"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: "Han comenzado las obras del segundo centro de datos de Global Switch en Madrid, España ... La
       instalación de coubicación, de 24 000 m² (258 335 pies cuadrados), tendrá una capacidad de 56
       MW ... Está previsto que el centro de datos entre en funcionamiento en 2029 y alcance su plena
@@ -151,5 +154,13 @@ fuentes:
     titulo: Data centre locations, Madrid 1 y Madrid 2
     editor: Global Switch
     tipo: empresa
-    fecha_consulta: 2026-10-14
+    fecha_consulta: "2026-10-17"
     cita: Madrid 1 14MW [...] Madrid 2 56MW [...] Calle Yécora 4
+  - id: src-icex-20260909
+    url: https://www.investinspain.org/en/noticias-main/2026/global
+    titulo: Global Switch begins construction of second Madrid data centre
+    editor: ICEX / Invest in Spain
+    tipo: oficial
+    fecha_publicacion: 2026-09-09
+    fecha_consulta: "2026-10-17"
+    cita: Madrid 2 will become operational in 2029 and reach full capacity in 2032.

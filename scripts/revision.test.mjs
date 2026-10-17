@@ -188,3 +188,11 @@ test('la cola incorpora las pistas anteriores una vez y conserva los antecedente
   assert.equal(antigua.potencia_citada, '20 MW sin verificar')
   assert.equal(hallazgos[0].antecedentes, undefined, 'se conservan las decisiones de origen')
 })
+
+test('las pistas de Madrid Digital y Google conservan enlaces al corregir su descripción', () => {
+  const anteriores = pistasRevision({ pistas: ['CPD de la Comunidad de Madrid sin anfitrión.', 'Las dos zonas pendientes de Google.'] })
+  const actuales = pistasRevision({ pistas: ['Madrid Digital / Telefónica: contrato recuperado.', 'Google europe-southwest1: tres zonas sin edificio.'] })
+  assert.deepEqual(actuales.map((p) => p.id), anteriores.map((p) => p.id))
+  assert.equal(actuales[0].titulo, 'Identificar el centro arrendado por la Comunidad de Madrid')
+  assert.equal(actuales[1].titulo, 'Localizar las zonas de Google Cloud Madrid')
+})

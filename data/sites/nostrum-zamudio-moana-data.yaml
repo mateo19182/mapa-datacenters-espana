@@ -77,7 +77,7 @@ fases:
     estado: anunciado
     fuentes: [src-1, src-2]
 
-superficie_parcela_m2: 20000
+superficie_parcela_m2: 21423.72
 superficie_construida_m2: 5726.5
 
 agua:
@@ -101,14 +101,14 @@ incertidumbres:
     descripcion: >-
       Fuentes distintas describen los 30 MW como «potencia eléctrica» (El Correo, vía
       resumen) y como «capacidad TI» (titular de Crónica Vasca de enero de 2026). No se
-      ha localizado el expediente del BOPV para dirimirlo.
-    fuentes: [src-1, src-2]
+      publica el tipo de potencia del centro en la AAI del BOPV, que sí se ha leído.
+      Los generadores de emergencia tienen su potencia térmica separada.
+    fuentes: [src-1, src-2, src-3]
   - campo: superficie_parcela_m2
     descripcion: >-
-      El valor registrado (20.000 m²) procede de «ocupará unas dos hectáreas». La
-      autorización ambiental integrada, posterior y más precisa, dice que «la empresa
-      se asienta ocupando una superficie total de unos 21.423,72 m2». No se sustituye
-      el valor registrado; se dejan ambos.
+      La prensa redondea la parcela a dos hectáreas. Se registra la superficie más precisa
+      de la autorización ambiental integrada, 21.423,72 m², conservando el carácter
+      aproximado que expresa el propio texto.
     fuentes: [src-1, src-3]
   - campo: otros
     descripcion: >-
@@ -124,7 +124,7 @@ incertidumbres:
     fuentes: [src-1, src-2]
 
 confianza: alta
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
   - id: src-1
@@ -133,7 +133,7 @@ fuentes:
     editor: "Revista Cloud"
     tipo: prensa_especializada
     fecha_publicacion: "2026-06-03"
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "Polígono 1001, Parcela 20011, Subparcela 01, dentro de la parcela SZI-3B del Sector Aresti, en el término municipal de Zamudio"
   - id: src-2
     url: "https://cronicavasca.elespanol.com/empresas/20251118/sevillana-nostrum-proyecta-centro-bizkaia-mw-capacidad/1003742708080_0.html"
@@ -141,7 +141,7 @@ fuentes:
     editor: "Crónica Vasca (El Español)"
     tipo: prensa_general
     fecha_publicacion: "2025-11-18"
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "dividirá en tres fases de 10 MW para alcanzar a pleno rendimiento los 30 MW"
   - id: src-3
     url: "https://www.euskadi.eus/y22-bopv/es/bopv2/datos/2026/05/2602178a.shtml"
@@ -149,7 +149,7 @@ fuentes:
     editor: "Boletín Oficial del País Vasco (Gobierno Vasco)"
     tipo: oficial
     fecha_publicacion: "2026-05-22"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       La empresa se asienta ocupando una superficie total de unos 21.423,72 m2,
       correspondiendo 5.726,5 m2 a superficie construida en la que se incluyen sus

@@ -18,15 +18,15 @@ ubicacion:
   precision: exacta
   fuentes: [src-1, src-pdb]
 
-estado: ampliacion_en_construccion
+estado: operativo
 estado_detalle: >-
   Centro operativo adquirido por Templus al Grupo Aire en enero de 2026 dentro de un lote
   de tres activos (Madrid, Valencia y Lisboa). En mayo de 2026 Templus anunció una
-  ampliación progresiva de 1 MW y 400 m² de salas IT hasta 4 MW y más de 1.600 m², con
+  ampliación progresiva, sin acreditar inicio de obras, de 1 MW y 400 m² de salas IT hasta 4 MW y más de 1.600 m², con
   objetivo de certificación Tier III. La ficha comercial del propio operador, consultada en
-  agosto de 2026, describe VAL01 como «Tier III Ready», con 400 m² de superficie IT,
+  octubre de 2026, aún describe VAL01 como «Tier III Ready», con 400 m² de superficie IT,
   0,6 MW de «total power», densidades de 2 a 12 kW por rack y disponibilidad «Q3 2026».
-estado_fuentes: [src-1, src-2, src-4]
+estado_fuentes: [src-1, src-2, src-4, src-ampliacion-20260513]
 
 potencia:
   - tipo: no_especificado
@@ -35,19 +35,19 @@ potencia:
     referencia: "Potencia en operación antes de la ampliación"
     estado_asociado: operativo
     fecha_dato: "2026-05-13"
-    fuentes: [src-1]
+    fuentes: [src-1, src-ampliacion-20260513]
   - tipo: no_especificado
     valor_mw: 4
     ambito: edificio
     referencia: "Potencia objetivo tras la ampliación anunciada"
-    estado_asociado: ampliacion_en_construccion
+    estado_asociado: anunciado
     fecha_dato: "2026-05-13"
     fuentes: [src-1, src-3]
   - tipo: instalada_total
     valor_mw: 0.6
     ambito: edificio
     referencia: "«Total power» publicada por el operador en la ficha de VAL01"
-    estado_asociado: operativo
+    estado_asociado: desconocido
     fecha_dato: "2026-04-27"
     fuentes: [src-4]
     nota: >-
@@ -61,7 +61,7 @@ fases:
     superficie_m2: 400
     fuentes: [src-1]
   - nombre: "Ampliación anunciada 2026"
-    estado: ampliacion_en_construccion
+    estado: anunciado
     superficie_m2: 1600
     fuentes: [src-1]
 
@@ -82,19 +82,38 @@ incertidumbres:
       (Madrid, Valencia y Lisboa), cifra que no puede desglosarse por emplazamiento. A ello
       se añade una discrepancia abierta sobre la potencia de partida: la ficha del propio
       operador publica 0,6 MW de «total power» (abril de 2026) frente al «1 MW de potencia
-      actual» de elEconomista (mayo de 2026). Ambas se registran sin fusionar.
-    fuentes: [src-1, src-2, src-4]
+      actual» que también declara Templus en su nota de mayo de 2026. La página de red contiene
+      otro bloque con 2,5 MW IT, sin fecha ni prueba de entrega, que no se adopta como capacidad
+      operativa nueva.
+    fuentes: [src-1, src-2, src-4, src-ampliacion-20260513, src-red-actual]
   - campo: estado
     descripcion: >-
       La ficha del operador marca VAL01 como «Disponible Q3 2026» y «Tier III Ready», no
       certificado, mientras que el directorio del Observatorio lo lista como operativo con
-      4 MW. La ampliación anunciada no consta terminada.
-    fuentes: [src-3, src-4]
+      4 MW. La nota primaria de mayo acredita la inauguración del centro existente y anuncia
+      el crecimiento, sin confirmar obras ni entrega de los 4 MW. No se da por cumplido el
+      plazo comercial por haber transcurrido el trimestre.
+    fuentes: [src-3, src-4, src-ampliacion-20260513]
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
+  - id: src-ampliacion-20260513
+    url: "https://templus.com/nota-de-prensa/templus-multiplicara-por-cuatro-la-potencia-de-su-centro-dedatos-de-valencia-hasta-los-4mw/"
+    titulo: "Templus multiplicará por cuatro la potencia de Valencia hasta los 4 MW"
+    editor: "Templus"
+    tipo: empresa
+    fecha_publicacion: "2026-05-13"
+    fecha_consulta: "2026-10-17"
+    cita: "acto de inauguración del centro de datos [...] pasará de una potencia actual de 1 MW [...] hasta alcanzar los 4MW"
+  - id: src-red-actual
+    url: "https://templus.com/data-centers/"
+    titulo: "Red de centros de Templus, bloques Total power y Potencia IT"
+    editor: "Templus"
+    tipo: empresa
+    fecha_consulta: "2026-10-17"
+    cita: "Valencia 01 - VAL01 [...] Total power 0,6MW [...] Potencia IT 2,5MW"
   - id: src-1
     url: "https://www.eleconomista.es/tecnologia/noticias/13918140/05/26/templus-multiplicara-por-cuatro-la-capacidad-del-data-center-que-compro-a-grupo-aire-en-valencia.html"
     titulo: "Templus multiplicará por cuatro la capacidad del data center que compró a Grupo Aire en Valencia"
@@ -109,21 +128,21 @@ fuentes:
     editor: "Redes & Telecom"
     tipo: prensa_especializada
     fecha_publicacion: "2026-01-12"
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "Gracias a esta transacción, Templus añade 6,5 MW a su potencia instalada, que superará los 60MW a lo largo de 2026"
   - id: src-3
     url: "https://observatorioedc.com/directorio/"
     titulo: "Data Centers — Directorio, Observatorio Español de Data Centers"
     editor: "Observatorio Español de Data Centers"
     tipo: otro
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "Templus | Paterna | Comunidad Valenciana | 4 MW | COLOCATION | Operativo"
   - id: src-pdb
     url: "https://www.peeringdb.com/api/fac?country=ES&limit=400"
     titulo: "PeeringDB — Facilities API, España"
     editor: "PeeringDB"
     tipo: asociacion
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "Templus DC Valencia VAL01 | Parque Tecnológico de Valencia, Carrer de Louis Pasteur, 6 | Paterna | 46980 | 39.554075 -0.467377 | TEMPLUS DATACENTERS"
   - id: src-4
     url: "https://templus.com/data-centers/valencia-val01/"
@@ -131,5 +150,5 @@ fuentes:
     editor: "Templus"
     tipo: empresa
     fecha_publicacion: "2026-04-27"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: "Valencia · VAL01 [...] VAL01 está ubicado en Paterna, dentro de una de las áreas tecnológicas más consolidadas del arco mediterráneo. Diseñado para ofrecer flexibilidad, permite densidades de 2 a 12 kW por rack [...] Disponible Q3 2026 [...] Densidad por rack 2 kW – 12 kW. Superficie IT 400 m². Total power 0,6 MW. Arquitectura Carrier neutral. Nivel Tier III Ready."

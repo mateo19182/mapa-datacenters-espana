@@ -24,16 +24,16 @@ estado_detalle: >-
   Ekin Inbertsioak, propietaria del suelo desde 2019, trabaja en el proyecto desde 2021 y ha
   constituido para ejecutarlo la sociedad CPD 4 Arakaldo, S.L. Presentó la solicitud de Plan
   Especial en marzo de 2025, la retiró en mayo y volvió a presentarla en septiembre. El pleno
-  municipal de marzo de 2026 le dio la aprobación inicial, con el informe urbanístico
-  favorable del arquitecto municipal y el visto bueno de la Diputación Foral de Bizkaia y de
-  la agencia URA. El alcalde, Humberto Perea, se declara escéptico sobre la viabilidad: calcula
-  que los trámites pueden alargarse otros dos años, la aprobación definitiva corresponde a la
-  Diputación Foral por tener Arakaldo menos de 1.000 habitantes, y advierte de que el
-  emplazamiento no está preparado hoy para el consumo eléctrico de un centro de datos. Según el
-  alcalde, Ekin Inbertsioak se limitaría a gestionar el suelo y dejaría después el proyecto en
-  manos de otra empresa. La compañía declinó hacer declaraciones al medio que publicó la
-  información. El terreno se usa entretanto como depósito de residuos.
-estado_fuentes: [src-1]
+  municipal de 19 de febrero de 2026 le dio la aprobación inicial, publicada en el BOB de 27 de
+  febrero de 2026, con el informe urbanístico favorable del arquitecto municipal y el visto bueno de
+  la Diputación Foral de Bizkaia y de la agencia URA. El alcalde, Humberto Perea, se declara
+  escéptico sobre la viabilidad: calcula que los trámites pueden alargarse otros dos años, la
+  aprobación definitiva corresponde a la Diputación Foral por tener Arakaldo menos de 1.000
+  habitantes, y advierte de que el emplazamiento no está preparado hoy para el consumo eléctrico de
+  un centro de datos. Según el alcalde, Ekin Inbertsioak se limitaría a gestionar el suelo y dejaría
+  después el proyecto en manos de otra empresa. La compañía declinó hacer declaraciones al medio que
+  publicó la información. El terreno se usa entretanto como depósito de residuos.
+estado_fuentes: [ src-1, src-bob-20260227 ]
 
 potencia: []
 
@@ -57,7 +57,7 @@ incertidumbres:
       Solo hay aprobación inicial de un Plan Especial municipal. Faltan la aprobación definitiva
       foral, la tramitación ambiental y la licencia de obras. El Ayuntamiento estima dos años más
       de trámites y no descarta recursos.
-    fuentes: [src-1]
+    fuentes: [ src-1, src-bob-20260227 ]
   - campo: ubicacion
     descripcion: >-
       Consta el polígono (Ugarriza, antigua Norten) pero no una dirección ni referencia
@@ -65,7 +65,7 @@ incertidumbres:
     fuentes: [src-1, src-osm]
 
 confianza: baja
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
   - id: src-1
@@ -74,7 +74,7 @@ fuentes:
     editor: "Aiaraldea Komunikabidea"
     tipo: prensa_general
     fecha_publicacion: "2026-05-05"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       Arakaldon datu zentro bat eraikitzeko lehen urrats legalak eman ditu Ekin Inbertsioak
       enpresak. Ugarrizan kokatutako zoru industrialean eraikiko litzateke azpiegitura, Norten
@@ -99,3 +99,12 @@ fuentes:
     tipo: otro
     fecha_consulta: "2026-08-31"
     cita: "Arakaldo, Bizkaia, Euskadi, 48498, España — lat 43.1527730, lon -2.9349498"
+  - id: src-bob-20260227
+    url: https://www.bizkaia.eus/lehendakaritza/Bao_bob/2026/02/27/II-919_cas.pdf
+    titulo: Aprobación inicial del Plan Especial de Ugarriza, promovido por CPD 4 Arakaldo
+    editor: Ayuntamiento de Arakaldo / Boletín Oficial de Bizkaia
+    tipo: oficial
+    fecha_publicacion: 2026-02-27
+    fecha_consulta: "2026-10-17"
+    cita: El Ayuntamiento de Arakaldo, en sesión ordinaria del 19 de febrero de 2026, ha adoptado el
+      siguiente acuerdo

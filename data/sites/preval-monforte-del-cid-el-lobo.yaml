@@ -177,11 +177,12 @@ incertidumbres:
     fuentes: [src-1, src-2, src-3, src-6, src-7]
   - campo: conexion_electrica
     descripcion: >-
-      Castellón Plaza menciona la «proximidad a la subestación eléctrica de Petrer» como
-      factor de localización, pero no consta el punto de conexión solicitado ni concedido.
-      El expediente PIA prevé subestación dedicada propia y alimentación exclusiva desde la
-      planta fotovoltaica El Lobo, sin publicar MW de acceso.
-    fuentes: [src-2, src-5]
+      La memoria identifica ST Petrel 66 kV para el conjunto de generación y autoconsumo
+      asociado al CPD y describe la tramitación de 10 MW de autoconsumo. La admisión del
+      PIA prevé además una subestación dedicada en una parcela contigua. Ninguno de esos
+      documentos acredita un permiso de demanda de 30 MW concedido al CPD; la autorización
+      de evacuación fotovoltaica anexa no sustituye ese permiso.
+    fuentes: [src-2, src-5, src-7]
   - campo: ubicacion
     descripcion: >-
       El expediente sitúa la parcela (referencia catastral 8218305XH9581N0001FK) en suelo
@@ -219,7 +220,7 @@ incertidumbres:
     fuentes: [src-5, src-7]
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
   - id: src-1

@@ -79,7 +79,7 @@ incertidumbres:
     fuentes: [src-1, src-2, src-3]
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: 2026-10-17
 
 fuentes:
   - id: src-1
@@ -88,7 +88,7 @@ fuentes:
     editor: "EDGNEX Data Centers by DAMAC (nota de prensa)"
     tipo: empresa
     fecha_publicacion: "2024-10-16"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       The 22,000 sqm facility, with the committed power of 40MW, is scheduled to commence
       operations by 2026 ... EDGNEX's data center will be in the Vicalvaro region, just 10km from
@@ -111,7 +111,7 @@ fuentes:
     editor: "Brainsre News"
     tipo: prensa_especializada
     fecha_publicacion: "2024-10-15"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       Después de adquirir la parcela de cerca de 23.000 metros cuadrados en el año 2022, ASG
       Iberia aprovechó su experiencia local para ratificar los derechos de suministro eléctrico de

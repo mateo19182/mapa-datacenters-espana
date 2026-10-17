@@ -1,0 +1,12 @@
+# Cierre de la revisión de seguimientos normativos
+
+Comprobación del 17 de octubre de 2026 de los cuatro seguimientos abiertos. Complementa la [lectura completa realizada el mismo día](2026-10-17-seguimientos-normativos.md); no vuelve a presentar ese trabajo como novedad jurídica.
+
+| Seguimiento | Comprobación final | Resultado y próxima prueba |
+| --- | --- | --- |
+| `rd731-apertura-solicitudes` | Búsqueda dirigida en BOE de desarrollo del RD 731/2026 y contraste con su [texto oficial](https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-19327). | No se localiza orden de apertura ni baremo. Se conserva el seguimiento de orden, medios electrónicos habilitados y metodología, con el límite de acceso a la sede ya documentado. |
+| `prd-cpd-publicacion-definitiva` | Búsquedas dirigidas en BOE y MITECO; la [audiencia oficial](https://www.miteco.gob.es/es/energia/participacion/2026/detalle-participacion-publica-k-851.html) sigue identificando un proyecto y una consulta cerrada. | Sin publicación definitiva localizada. Una previsión política de octubre o noviembre no activa las obligaciones del borrador. Falta acuerdo, texto publicado y fecha de entrada en vigor. |
+| `etiquetado-ue-control-publicacion` | Descarga directa HTTP 200 del [detalle](https://webgate.ec.europa.eu/regdel/web/delegatedActs/2983?language=en), [fases](https://webgate.ec.europa.eu/regdel/web/delegatedActs/2983/phasesEvents) y [eventos](https://webgate.ec.europa.eu/regdel/web/delegatedActs/2983/events). | Continúan ADOPTED y SCRUTINY, CELEX nulo. Fin del examen y publicación tienen phasePending=true y fecha nula. Se necesita un evento efectivo fechado y publicación en DOUE; las etiquetas del gráfico no bastan. |
+| `acceso-flexible-apertura-gestores` | Búsqueda nueva de avisos por gestor y modalidades; contraste con los portales y documentos leídos en el informe anterior y la [resolución de CNMC](https://www.boe.es/buscar/doc.php?id=BOE-A-2026-17571). | No se localiza un aviso fechado adicional que cierre la apertura por modalidad. Se mantienen pendientes los avisos y notas técnicas; un formulario general no demuestra una modalidad abierta ni un permiso de un CPD. |
+
+Los cuatro permanecen `awaiting_primary`, revisados en esta fecha. Las búsquedas sin hallazgo no prueban inexistencia de un acto. No se cambian estados jurídicos ni se borran condiciones de entrada en vigor. Respuestas JSON guardadas durante el trabajo en `/tmp/mapa-revision-completa-20261017/etiquetado-*.json`.

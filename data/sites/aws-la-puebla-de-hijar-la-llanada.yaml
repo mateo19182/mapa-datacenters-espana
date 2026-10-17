@@ -20,14 +20,17 @@ ubicacion:
   fuentes: [src-1, src-3]
 
 estado: anunciado
-estado_detalle: >-
-  Campus del "Plan para la consolidación de la Región AWS en Aragón", declarado inversión
-  de interés autonómico con interés general de Aragón el 25 de marzo de 2026. Es el primer
-  centro de datos de esta escala proyectado en la provincia de Teruel. La Dirección General
-  de Energía y Minas informó favorablemente la fase 1, condicionando la fase 2 a la
-  existencia de capacidad eléctrica. Se propone delimitar un nuevo sector de suelo
-  urbanizable no delimitado denominado "La Llanaza".
-estado_fuentes: [src-1]
+estado_detalle: Campus del "Plan para la consolidación de la Región AWS en Aragón", declarado
+  inversión de interés autonómico con interés general de Aragón el 25 de marzo de 2026. Es el primer
+  centro de datos de esta escala proyectado en la provincia de Teruel. La Dirección General de
+  Energía y Minas informó favorablemente la fase 1, condicionando la fase 2 a la existencia de
+  capacidad eléctrica. Se propone delimitar un nuevo sector de suelo urbanizable no delimitado
+  denominado "La Llanaza". DCD reiteró en abril de 2026 una previsión de obras en otoño de 2027,
+  condicionada a la tramitación; no es una fecha de apertura ni acredita obras actuales.
+
+estado_fuentes:
+  - src-1
+  - src-dcd-20260427
 
 potencia:
   - tipo: no_especificado
@@ -36,7 +39,9 @@ potencia:
     referencia: "Potencia eléctrica garantizada según la prensa para el emplazamiento de La Puebla de Híjar"
     estado_asociado: anunciado
     fecha_dato: "2026-04-25"
-    fuentes: [src-2]
+    fuentes:
+      - src-2
+      - src-dcd-20260427
     nota: >-
       Dato de prensa, no confirmado por fuente oficial. La fuente escribe "la compañía tiene
       garantizados 100 megavatios de potencia eléctrica" sin precisar si es carga TI o
@@ -73,8 +78,10 @@ incertidumbres:
     descripcion: >-
       Los 100 MW proceden solo de prensa; ninguna fuente oficial publica potencia para este
       emplazamiento.
-    fuentes: [src-1, src-2]
-
+    fuentes:
+      - src-1
+      - src-2
+      - src-dcd-20260427
   - campo: empleo
     descripcion: >-
       El Acuerdo de 25 de marzo de 2026 no publica ninguna cifra de empleo ni de inversión
@@ -94,7 +101,7 @@ incertidumbres:
     fuentes: [src-4]
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: 2026-10-17
 
 fuentes:
   - id: src-1
@@ -103,7 +110,7 @@ fuentes:
     editor: "Boletín Oficial de Aragón"
     tipo: oficial
     fecha_publicacion: "2026-04-09"
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "En La Puebla de Híjar y Azaila el área seleccionada tiene una superficie total de 328,59 ha y se encuentra ubicada en la provincia de Teruel, en el municipio de La Puebla de Híjar (317,7 ha) y, una pequeña parte, en el de Azaila (19,9 ha)."
   - id: src-2
     url: "https://www.hoyaragon.es/articulo/noticias-aragon/centro-datos-amazon-teruel-inteligencia-artificial/20260425114638128866.html"
@@ -126,5 +133,14 @@ fuentes:
     editor: "Boletín Oficial de Aragón"
     tipo: oficial
     fecha_publicacion: "2026-04-09"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: "AWS tiene previsto invertir 33.700 millones de euros en la Región de AWS en España durante los próximos 10 años (período 2026-2035). [...] Por lo que respecta a la generación de empleo prevista, la promotora estima que la inversión de AWS en España podría promover la creación de una media anual de 29.900 empleos a tiempo completo, de los cuales alrededor de 13.400 se ubicarían en la Comunidad Autónoma de Aragón. En concreto, se prevé la generación de 6.700 empleos anuales directos en España (4.200 en Aragón)"
+  - id: src-dcd-20260427
+    url: https://www.datacenterdynamics.com/es/noticias/amazon-refuerza-arag%C3%B3n-con-un-nuevo-data-center-en-teruel/
+    titulo: Amazon refuerza Aragón con un nuevo data center en Teruel
+    editor: DatacenterDynamics
+    tipo: prensa_especializada
+    fecha_publicacion: 2026-04-27
+    cita: unas 70 hectáreas de suelo junto a la carretera N-232, con una capacidad eléctrica estimada de
+      100 MW
+    fecha_consulta: 2026-10-17

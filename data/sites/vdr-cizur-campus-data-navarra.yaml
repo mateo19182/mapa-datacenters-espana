@@ -8,14 +8,17 @@ propietario: "Grupo VDR"
 modelo: mayorista
 
 ubicacion:
-  municipio: "Cizur"
-  provincia: "Navarra"
-  ccaa: "Navarra"
-  direccion: "Polígono industrial de Gazólaz, Cendea de Cizur, a siete kilómetros de Pamplona"
-  lat: 42.7916465
-  lon: -1.7175431
-  precision: aproximada
-  fuentes: [src-sener, src-osm]
+  municipio: Cizur
+  provincia: Navarra
+  ccaa: Navarra
+  direccion: Polígono industrial de Gazólaz, Cendea de Cizur, a siete kilómetros de Pamplona
+  lat: null
+  lon: null
+  precision: municipio
+  fuentes:
+    - src-sener
+    - src-osm
+  no_derivar: true
 
 estado: anunciado
 estado_detalle: >-
@@ -34,7 +37,7 @@ potencia:
     ambito: campus
     referencia: "Capacidad instalada del campus"
     estado_asociado: anunciado
-    fecha_dato: "2026"
+    fecha_dato: 2025-06-27
     fuentes: [src-sener]
     nota: >-
       La nota de Sener dice "300 MW installed capacity"; no se precisa el reparto
@@ -64,7 +67,7 @@ potencia:
   - tipo: instalada_total
     valor_mw: 100
     ambito: edificio
-    edificio: "Edificio 3"
+    edificio: Edificio 3
     referencia: "Uno de los tres edificios similares de fases posteriores"
     estado_asociado: anunciado
     fecha_dato: "2025-06-23"
@@ -73,18 +76,18 @@ potencia:
   - tipo: instalada_total
     valor_mw: 100
     ambito: edificio
-    edificio: "Edificio 4"
+    edificio: Edificio 4
     referencia: "Uno de los tres edificios similares de fases posteriores"
     estado_asociado: anunciado
     fecha_dato: "2025-06-23"
     fuentes: [src-ndn]
     nota: null
-
 fases:
   - nombre: "Fase 1 — un edificio de 50 MW"
     estado: anunciado
-    fecha_puesta_en_servicio: "2027"
     fuentes: [src-sener, src-ndn]
+    nota: El desarrollo se prevé entre 2027 y 2029; no se ha publicado una fecha de apertura
+      independiente para el primer edificio.
   - nombre: "Fases siguientes — tres edificios de 100 MW cada uno"
     estado: anunciado
     fecha_puesta_en_servicio: "2029"
@@ -106,7 +109,8 @@ conexion_electrica:
     solicitud publicada.
   fuentes: [src-ndn]
 
-superficie_parcela_m2: 200000
+superficie_parcela_m2: null
+
 inversion_anunciada_eur: 3300000000
 
 empleo:
@@ -131,10 +135,9 @@ incertidumbres:
       Se conservan ambas lecturas: la cifra de campus manda sobre la suma.
     fuentes: [src-sener, src-ndn, src-dcd]
   - campo: superficie_parcela_m2
-    descripcion: >-
-      Las fuentes dicen que los cuatro edificios «en total, ocuparán una superficie de
-      200.000 m2», sin aclarar si es superficie de parcela o construida. Se registra
-      como superficie de parcela por ser la lectura más conservadora.
+    descripcion: Los 200.000 m² se publican como superficie conjunta de cuatro edificios, sin aclarar si
+      corresponden a parcela o superficie construida. No se asignan a ninguno de esos campos sin plano o
+      memoria.
     fuentes: [src-ndn, src-dcd]
   - campo: conexion_electrica
     descripcion: >-
@@ -151,8 +154,14 @@ incertidumbres:
       los portales del Gobierno foral o de la Cendea de Cizur.
     fuentes: [src-sener, src-dcd]
 
+  - campo: ubicacion
+    descripcion: El punto de Nominatim correspondía a Gazólaz, no al campus. El diseñador identifica el
+      polígono industrial, pero no parcela o pin del proyecto.
+    fuentes:
+      - src-sener
+      - src-osm
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: 2026-10-17
 
 fuentes:
   - id: src-sener
@@ -160,10 +169,11 @@ fuentes:
     titulo: "Quark to lead technical design of Campus Data Navarra"
     editor: "Grupo Sener"
     tipo: empresa
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: 2026-10-17
     cita: >-
       Gazólaz industrial estate, Cendea de Cizur, seven kilometres from Pamplona
       [...] 300 MW installed capacity [...] €3.3 billion estimated.
+    fecha_publicacion: 2025-06-27
   - id: src-osm
     url: "https://nominatim.openstreetmap.org/search?q=Gaz%C3%B3laz%2C+Navarra&format=json&limit=1"
     titulo: "Nominatim — Gazólaz, Cizur, Navarra"
@@ -179,7 +189,7 @@ fuentes:
     editor: "Diario de Noticias de Navarra"
     tipo: prensa_general
     fecha_publicacion: "2025-06-23"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       Su puesta en servicio sería en 2029 / El proyecto consta de cuatro edificios que
       ocuparían una superficie de 200.000 m2 y requeriría una capacidad total de 300MW

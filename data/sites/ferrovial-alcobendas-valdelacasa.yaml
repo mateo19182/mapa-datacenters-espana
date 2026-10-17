@@ -33,7 +33,7 @@ potencia:
     valor_mw: 100
     ambito: campus
     referencia: "Capacidad del campus; la fuente dice «superior a los 100 MW»"
-    estado_asociado: permisos_concedidos
+    estado_asociado: anunciado
     fecha_dato: "2026-07-09"
     fuentes: [src-1, src-2]
     nota: >-
@@ -84,9 +84,15 @@ incertidumbres:
       el CyrusOne MAD1 (parcela 5A). Son proyectos distintos de promotores distintos; no se han
       podido delimitar las parcelas concretas de Ferrovial más allá de la dirección de la fase 1.
     fuentes: [src-2]
+  - campo: estado
+    descripcion: La licencia identificada por la Comunidad de Madrid es de movimiento de tierras para la
+      primera fase MAD01. No se ha localizado licencia de edificación del CPD ni acta de puesta en
+      servicio. Las autorizaciones de acceso y conexión citadas para esa fase no acreditan permiso
+      para todo el objetivo de campus superior a 100 MW.
+    fuentes: [ src-1, src-2 ]
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
   - id: src-1
@@ -95,7 +101,7 @@ fuentes:
     editor: "Comunidad de Madrid"
     tipo: oficial
     fecha_publicacion: "2026-07-09"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       un campus de centros de datos en Alcobendas que tendrá una capacidad superior a los 100
       megavatios (MW) y una inversión de más de 1.000 millones de euros. Este proyecto de la
@@ -110,7 +116,7 @@ fuentes:
     editor: "El Debate"
     tipo: prensa_general
     fecha_publicacion: "2026-07-09"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       Se localizará en cuatro parcelas urbanizadas recogidas en el Plan Parcial de Valdelacasa ...
       La primera fase del campus, denominada MAD 01, levantará un centro de datos en la Avenida

@@ -17,22 +17,23 @@ ubicacion:
     - src-bop-20260313
   direccion: Avinguda Barcelona 243, Polígon Industrial El Pla, Molins de Rei
 
-estado: en_construccion
+estado: permisos_concedidos
 estado_detalle: >-
   Primer proyecto de Quetta en Barcelona, anunciado en diciembre de 2025 junto
   con la ampliación de su centro de Tres Cantos (Madrid). Forma parte de un plan
   de seis centros edge en España y Portugal, con 500 millones de euros para el
-  conjunto. En abril de 2026 la compañía declaraba estar esperando la licencia
-  de obra «a principios de mayo», con 14 a 18 meses de construcción más seis de
-  pruebas, y situaba la entrada en servicio entre 2027 y 2028.
-estado_fuentes: [src-1, src-2]
+  conjunto. El 2 de septiembre de 2026 la compañía declaró a Viu Molins de Rei
+  que disponía de permisos municipales y esperaba iniciar las obras, sin fecha
+  concretada. Estimaba 18 meses de construcción y seis de pruebas. Esa información
+  posterior contradice el inicio anunciado por Azora en diciembre de 2025.
+estado_fuentes: [src-1, src-2, src-viu-20260902]
 
 potencia:
   - tipo: it
     valor_mw: 7.2
     ambito: edificio
     referencia: "Capacidad de procesamiento del centro"
-    estado_asociado: en_construccion
+    estado_asociado: permisos_concedidos
     fecha_dato: "2026-04-14"
     fuentes: [src-2]
     nota: >-
@@ -42,7 +43,7 @@ potencia:
     valor_mw: 10
     ambito: edificio
     referencia: "Consumo eléctrico máximo de la instalación"
-    estado_asociado: en_construccion
+    estado_asociado: permisos_concedidos
     fecha_dato: "2026-04-14"
     fuentes: [src-2]
     nota: >-
@@ -101,24 +102,33 @@ incertidumbres:
   - campo: estado
     descripcion: Azora anunció en diciembre de 2025 construcción iniciada en Molins; la información
       pública ambiental de marzo de 2026 no es una licencia concedida y las declaraciones de abril
-      aún esperaban licencia de obra. No se ha localizado acta o anuncio primario posterior que
-      resuelva esa diferencia. Se conserva el estado declarado por el promotor, sin dar las
-      previsiones por cumplidas.
+      aún esperaban licencia de obra. En septiembre la compañía declaró permisos disponibles y
+      obras pendientes. Se adopta ese último estado declarado, sin acta municipal de concesión
+      localizada ni confirmación de obras posteriores.
     fuentes:
       - src-1
       - src-2
       - src-bop-20260313
+      - src-viu-20260902
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
+  - id: src-viu-20260902
+    url: "https://viumolinsderei.com/2026/09/02/el-nou-centre-de-dades-del-pla-preveu-crear-50-llocs-de-treball-directes/"
+    titulo: "El nou centre de dades del Pla preveu crear 50 llocs de treball directes"
+    editor: "Viu Molins de Rei"
+    tipo: prensa_general
+    fecha_publicacion: "2026-09-02"
+    fecha_consulta: "2026-10-17"
+    cita: "El projecte ja disposa dels permisos municipals i es troba ara pendent de l’inici de les obres"
   - id: src-1
     url: "https://www.azora.com/en/blog/quetta-data-centers-starts-construction-of-its-madrid-data-center-doubling-its-capacity-to-20-mw-and-boosts-its-expansion-with-a-new-project-in-barcelona/"
     titulo: "Quetta Data Centers starts construction of its Madrid data center, doubling its capacity to 20 MW, and boosts its expansion with a new project in Barcelona"
     editor: "Azora"
     tipo: empresa
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: >-
       located in Molins de Rei ... a total capacity to 30 MW, 50% of its overall
       target of 60 MW ... closed-loop liquid cooling (DLC), no water consumption
@@ -145,6 +155,6 @@ fuentes:
     editor: Ajuntament de Molins de Rei — BOP Barcelona
     tipo: oficial
     fecha_publicacion: 2026-03-13
-    fecha_consulta: 2026-10-17
+    fecha_consulta: "2026-10-17"
     cita: QUETTA MOLINS SLU [...] Centre de processament de dades amb equips electrògens. [...] Avinguda
       Barcelona, 243 (Polígon Industrial El Pla)

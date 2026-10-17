@@ -97,8 +97,10 @@ test('los actos de Meta y el diseño de Nostrum no se presentan como aperturas',
   const dir = meta.cronologia.find((e) => e.titulo === 'Declaración de Interés Regional (DIR)')
   assert.equal(dir.fecha, '2022-06-20')
   const nostrum = presentacionProyecto(ficha('nostrum-guadalajara-el-ruisenor'))
-  const diseno = nostrum.cronologia.find((e) => e.titulo === 'Fase de diseño')
-  assert.equal(diseno.prevista, true)
+  assert.ok(!nostrum.cronologia.some((e) => e.titulo.includes('Fase de diseño')))
+  const aperturas = nostrum.cronologia.filter((e) => e.titulo.includes('Puesta en servicio'))
+  assert.equal(aperturas.length, 1)
+  assert.ok(aperturas.every((e) => e.prevista && e.fecha === '2028'))
 })
 
 

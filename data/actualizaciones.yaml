@@ -1,4 +1,213 @@
 # Novedades revisadas. La fecha de incorporación y la del hecho se conservan por separado.
+- id: estados-obras-revisados-20261017
+  fecha: 2026-10-17
+  tipo: proyecto
+  titulo: Corregidas las etapas de proyectos y ampliaciones
+  resumen: Panattoni y Quetta Molins conservan permisos sin inicio físico acreditado. San Jorge vuelve
+    a tramitación porque el arranque publicado era una previsión. Nabiax Camarillo queda operativo
+    tras la modernización terminada; Paterna mantiene su ampliación como anuncio.
+  enlaces:
+    - href: /proyecto/panattoni-cerdanyola-parc-alba
+      texto: Panattoni Barcelona Data Center Campus — Parc de l'Alba (Cerdanyola del Vallès)
+    - href: /proyecto/quetta-molins-de-rei
+      texto: Quetta Data Centers — Molins de Rei
+    - href: /proyecto/sekuens-aller-pozo-san-jorge
+      texto: Centro de datos del pozo San Jorge — Caborana (Aller)
+    - href: /proyecto/nabiax-madrid-julian-camarillo
+      texto: Nabiax Julián Camarillo Data Center
+    - href: /proyecto/templus-paterna-parque-tecnologico
+      texto: Templus — Paterna (Parc Tecnològic de València)
+  fuentes:
+    - proyecto: panattoni-cerdanyola-parc-alba
+      fuente: src-panattoni-licencia
+    - proyecto: quetta-molins-de-rei
+      fuente: src-viu-20260902
+    - proyecto: sekuens-aller-pozo-san-jorge
+      fuente: src-jgpa-20260211
+    - proyecto: nabiax-madrid-julian-camarillo
+      fuente: src-3
+    - proyecto: templus-paterna-parque-tecnologico
+      fuente: src-ampliacion-20260513
+- id: nasertic-kumo-fuentes-20261017
+  fecha: 2026-10-17
+  tipo: proyecto
+  titulo: Nasertic y Kumo corrigen ubicación y alcance de sus cifras
+  resumen: La fuente institucional de Nasertic confirma 0,4 MW eléctricos instalados en Orkoien. Kumo
+    distingue 954 kW IT de diseño, superficie de salas y un certificado LEED de Murcia. Ambos puntos
+    se contrastan con mapas nominales.
+  enlaces:
+    - href: /proyecto/nasertic-pamplona-orkoien
+      texto: Nasertic — Centro de Proceso de Datos del Gobierno de Navarra (Pamplona)
+    - href: /proyecto/kumo-paterna-tactica
+      texto: Kumo Networks — Paterna (Parque Empresarial Táctica)
+  fuentes:
+    - proyecto: nasertic-pamplona-orkoien
+      fuente: src-2
+    - proyecto: nasertic-pamplona-orkoien
+      fuente: src-mapa-orkoien
+    - proyecto: kumo-paterna-tactica
+      fuente: src-diseno-valencia
+    - proyecto: kumo-paterna-tactica
+      fuente: src-leed-murcia
+    - proyecto: kumo-paterna-tactica
+      fuente: src-mapa-valencia
+- id: cobertura-nuevos-centros-20261017
+  fecha: 2026-10-17
+  tipo: proyecto
+  titulo: Beloso, ODC2 y CPD Peralta completan tres pistas de cobertura
+  resumen: Se identifican el respaldo de Nasertic en Beloso, ODC2 en el 22@ y el proyecto de CPD4GREEN
+    en Peralta y Funes. El conflicto de acceso de Peralta conserva por separado la solicitud
+    cancelada y la alternativa posterior.
+  enlaces:
+    - href: /proyecto/nasertic-pamplona-beloso
+      texto: Nasertic — CPD de respaldo de Beloso (Pamplona)
+    - href: /proyecto/oxigen-barcelona-22-odc2
+      texto: Oxigen Data Center ODC2 — Barcelona 22@
+    - href: /proyecto/cpd4green-peralta-funes
+      texto: CPD Peralta — Peralta y Funes
+  fuentes:
+    - proyecto: nasertic-pamplona-beloso
+      fuente: src-nasertic-20191030
+    - proyecto: nasertic-pamplona-beloso
+      fuente: src-cpen-20250425
+    - proyecto: oxigen-barcelona-22-odc2
+      fuente: src-uptime-odc2
+    - proyecto: oxigen-barcelona-22-odc2
+      fuente: src-oxigen-linkedin
+    - proyecto: cpd4green-peralta-funes
+      fuente: src-cnmc-20251125
+- id: gpu-solutions-alcala-20261017
+  fecha: 2026-10-17
+  fecha_hecho: 2025-10-09
+  tipo: proyecto
+  titulo: B200 de GPU Solutions localizadas en Templus Alcalá
+  resumen: La nota de Templus confirma un rack con B200 instalado junto a Lenovo. Se incorpora al
+    centro de Alcalá sin deducir cantidad de tarjetas ni sumar ampliaciones futuras.
+  enlaces:
+    - href: /proyecto/templus-alcala-de-henares-mad01
+      texto: Templus Madrid MAD01 — Alcalá de Henares
+  fuentes:
+    - proyecto: templus-alcala-de-henares-mad01
+      fuente: src-gpu-solutions-20251009
+- id: trevenque-gpu-sede-20261017
+  fecha: 2026-10-17
+  fecha_hecho: 2026-09-22
+  tipo: proyecto
+  titulo: Trevenque incorpora GPU instaladas y su ubicación documentada
+  resumen: La entrevista al CTO y HPE confirma despliegue físico y validación en Cloud Center
+    Andalucía. Se corrige el punto con el mapa del edificio; el modelo y la cantidad de GPU siguen
+    sin publicarse.
+  enlaces:
+    - href: /proyecto/trevenque-granada-cloud-center-andalucia
+      texto: Trevenque Data Center — Cloud Center Andalucía (Granada)
+  fuentes:
+    - proyecto: trevenque-granada-cloud-center-andalucia
+      fuente: src-hpe-20260922
+    - proyecto: trevenque-granada-cloud-center-andalucia
+      fuente: src-sedes-20261017
+    - proyecto: trevenque-granada-cloud-center-andalucia
+      fuente: src-mapa-20261017
+- id: microsoft-aragon-esia-20261017
+  fecha: 2026-10-17
+  tipo: proyecto
+  titulo: Microsoft Aragón incorpora las capacidades del EsIA
+  resumen: Los documentos de urbanización publican 345,6 MW para La Muela y Villamayor y 288 MW para
+    Zaragoza, sin tipificarlos como IT. Son proyectos en tramitación; se conservan aparte los
+    objetivos históricos.
+  enlaces:
+    - href: /proyecto/microsoft-la-muela-centrovia
+      texto: Microsoft Región Aragón — Campus La Muela (Centrovía)
+    - href: /proyecto/microsoft-villamayor-de-gallego
+      texto: Microsoft Región Aragón — Campus Villamayor de Gállego
+    - href: /proyecto/microsoft-zaragoza-puerto-venecia
+      texto: Microsoft Región Aragón — Campus Zaragoza (Área 88/3, Puerto Venecia)
+  fuentes:
+    - proyecto: microsoft-la-muela-centrovia
+      fuente: src-esia-urbanizacion-202607
+    - proyecto: microsoft-villamayor-de-gallego
+      fuente: src-esia-urbanizacion-202607
+    - proyecto: microsoft-zaragoza-puerto-venecia
+      fuente: src-esia-urbanizacion-202607
+- id: tillion-aai-20261017
+  fecha: 2026-10-17
+  tipo: proyecto
+  titulo: Tillion incorpora el diseño técnico y sus discrepancias
+  resumen: El proyecto de AAI publica 300 MW IT y refrigeración líquida en circuito cerrado, con agua
+    para humectación. Se conservan sus cifras discordantes por edificio y los 432 MW eléctricos de
+    diseño, sin dar por concedido el acceso.
+  enlaces:
+    - href: /proyecto/tillion-villamayor-de-gallego
+      texto: Tillion Aragón — Campus de centros de datos (Villamayor de Gállego)
+  fuentes:
+    - proyecto: tillion-villamayor-de-gallego
+      fuente: src-aai-202605
+- id: monfarracinos-expediente-20261017
+  fecha: 2026-10-17
+  tipo: proyecto
+  titulo: Monfarracinos se contrasta con el expediente completo
+  resumen: El BOCYL confirma 200 MW IT previstos y tramitación regional. El dossier aclara que el agua
+    se expresa por año y separa el CPD de la planta energética. Las magnitudes térmicas quedan fuera
+    de la capacidad eléctrica del centro.
+  enlaces:
+    - href: /proyecto/frv-edison-monfarracinos-zamora
+      texto: Data Center Hiperescalar IA Zamora — Monfarracinos (polígono Zamora Norte)
+  fuentes:
+    - proyecto: frv-edison-monfarracinos-zamora
+      fuente: src-bocyl-20260916
+    - proyecto: frv-edison-monfarracinos-zamora
+      fuente: src-rnt-aai-202607
+    - proyecto: frv-edison-monfarracinos-zamora
+      fuente: src-basico-r04
+- id: dayone-escatron-it-20261017
+  fecha: 2026-10-17
+  tipo: proyecto
+  titulo: DayOne declara 304 MW IT previstos en Escatrón
+  resumen: El F-1 identifica 304 MW IT estimados en suelo con suministro asegurado. No los presenta
+    como construidos u operativos. Se conservan separados de los 444 MW de conexión publicados en
+    prensa.
+  enlaces:
+    - href: /proyecto/dayone-escatron-peaker
+      texto: DayOne — campus de centros de datos de IA de Escatrón (junto a la central Peaker)
+  fuentes:
+    - proyecto: dayone-escatron-peaker
+      fuente: src-dayone-sec-f1-20261005
+- id: pure-meco-obra-20261017
+  fecha: 2026-10-17
+  tipo: proyecto
+  titulo: Pure DC Meco confirma obra en la primera fase
+  resumen: El operador identifica una fase de 30 MW en construcción y otra de 40 MW pendiente de
+    permisos. Ninguna cifra se tipifica como IT; el total de 70 MW no se suma de nuevo a las fases.
+  enlaces:
+    - href: /proyecto/pure-dc-meco
+      texto: Pure DC — Centro de datos de Meco
+  fuentes:
+    - proyecto: pure-dc-meco
+      fuente: src-pure-madrid
+- id: salas-pier-tramitacion-20261017
+  fecha: 2026-10-17
+  fecha_hecho: 2026-09-11
+  tipo: proyecto
+  titulo: Digital Valley Salas formaliza la solicitud PIER
+  resumen: La solicitud de tramitación estratégica se formalizó el 11 de septiembre. La ficha pasa a
+    en tramitación, sin dar por concedida la declaración ni por iniciadas las obras.
+  enlaces:
+    - href: /proyecto/s4u-salas-digital-valley-asturias
+      texto: Digital Valley Asturias — Salas (polígono de Nonaya Este)
+  fuentes:
+    - proyecto: s4u-salas-digital-valley-asturias
+      fuente: src-pier-20260911
+- id: asac-unidad-mva-20261017
+  fecha: 2026-10-17
+  tipo: proyecto
+  titulo: ASAC DC1 corrige la unidad del transformador
+  resumen: El transformador anunciado es de 1 MVA. Se elimina el MW que se había registrado sin factor
+    de potencia, conservando la magnitud original fuera de los totales MW.
+  enlaces:
+    - href: /proyecto/asac-llanera-data-center-1
+      texto: ASAC Comunicaciones — Data Center 1 (Parque Tecnológico de Asturias, Llanera)
+  fuentes:
+    - proyecto: asac-llanera-data-center-1
+      fuente: src-1
 - id: iron-madrid-fases-20261017
   fecha: 2026-10-17
   tipo: proyecto

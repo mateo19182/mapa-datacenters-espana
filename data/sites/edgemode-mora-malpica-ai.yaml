@@ -53,6 +53,16 @@ potencia:
       sólido (SOFC) de Bloom Energy alimentados con gas natural, que suman también
       300 MW de generación propia.
 
+  - tipo: no_especificado
+    valor_mw: 360
+    ambito: campus
+    referencia: Capacidad prevista por emplazamiento en el Form 10-Q
+    estado_asociado: anunciado
+    fecha_dato: 2026-06-30
+    fuentes:
+      - src-sec-10q-20260814
+    nota: La memoria incluye este suelo entre cinco arrendamientos y prevé 360 MW por emplazamiento, sin
+      tipificarlos. Se conserva la lectura anterior de 300 MW.
 fases: []
 
 conexion_electrica:
@@ -172,8 +182,23 @@ incertidumbres:
       cambiar.
     fuentes: [src-eldiario, src-globenewswire, src-dcd]
 
+  - campo: operador
+    descripcion: El comunicado de 4 de septiembre amplía hasta seis meses la revisión corporativa con
+      BlackBerry AIF y BLACK AI Group; no acredita cierre de fusión, venta del suelo ni autorización
+      del centro.
+    fuentes:
+      - src-edgemode-20260904
+  - campo: potencia
+    descripcion: El 10-Q da 360 MW por emplazamiento frente a los 300 MW de otras comunicaciones; faltan
+      tipo, fases y proyecto técnico que expliquen la diferencia. Ambas son previsiones.
+    fuentes:
+      - src-sec-10q-20260814
+      - src-globenewswire
+      - src-eldiario
+      - src-idealista
+      - src-enclm
 confianza: baja
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: 2026-10-17
 
 fuentes:
   - id: src-idealista
@@ -200,7 +225,7 @@ fuentes:
     editor: "EdgeMode Inc. (GlobeNewswire)"
     tipo: empresa
     fecha_publicacion: "2026-07-20"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       The project, developed by EdgeMode and BlackBerry AIF, contemplates an
       estimated investment of 3 billion euros for the construction of a
@@ -259,3 +284,18 @@ fuentes:
     tipo: otro
     fecha_consulta: "2026-08-29"
     cita: "Mora, Toledo, Castilla-La Mancha, 45400, España — lat 39.6832230, lon -3.7727849"
+  - id: src-sec-10q-20260814
+    url: https://www.sec.gov/Archives/edgar/data/1652958/000168316826006473/edgemode_i10q-063026.htm
+    titulo: EdgeMode, Form 10-Q a 30 de junio de 2026
+    editor: EdgeMode / SEC EDGAR
+    tipo: empresa
+    fecha_publicacion: 2026-08-14
+    cita: planned to be 360 MW per site
+    fecha_consulta: 2026-10-17
+  - id: src-edgemode-20260904
+    url: https://www.globenewswire.com/news-release/2026/09/04/3356540/0/en/statement-edgemode-confirms-that-the-current-review-process-with-blackberry-aif-and-black-ai-group-will-be-extended-for-up-to-six-months.html
+    titulo: EdgeMode amplía hasta seis meses la revisión con BlackBerry AIF y BLACK AI Group
+    editor: EdgeMode
+    tipo: empresa
+    fecha_publicacion: 2026-09-04
+    fecha_consulta: 2026-10-17

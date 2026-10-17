@@ -11,12 +11,13 @@ ubicacion:
   municipio: "Arrasate/Mondragón"
   provincia: "Gipuzkoa"
   ccaa: "País Vasco"
-  direccion: "Parque Tecnológico Garaia, Arrasate-Mondragón"
-  lat: 43.0580
-  lon: -2.4940
+  direccion: Parcela 7B del Polo de Innovación Garaia, entre Goiru Kalea e Isasi Kalea, 20500 Arrasate
+  lat: 43.067275
+  lon: -2.506113
   precision: aproximada
-  fuentes: [src-1]
-
+  fuentes:
+    - src-1
+    - src-aau-rnt-202407
 estado: en_construccion
 estado_detalle: >-
   Segundo centro de ADI. Proyecto adjudicado a KREAN en febrero de 2025. La prensa
@@ -36,7 +37,10 @@ potencia:
     referencia: "Capacidad máxima del edificio en equipos IT, repartida en dos salas"
     estado_asociado: en_construccion
     fecha_dato: "2025-02-07"
-    fuentes: [src-1, src-3]
+    fuentes:
+      - src-1
+      - src-3
+      - src-aau-rnt-202407
     nota: >-
       El Parque Tecnológico Garaia dice «hasta 3MW en equipos IT» y KREAN, la
       ingeniería del proyecto, «up to 3MW of IT equipment in two rooms».
@@ -51,7 +55,6 @@ potencia:
       Crónica Vasca dice «La primera de ellas contará con 1 MW de potencia», como
       reparto de los 3 MW que las fuentes del promotor y del proyectista tipifican
       como equipos IT. La propia fuente no repite la tipificación.
-
 fases:
   - nombre: "Sala 1 (1 MW iniciales)"
     estado: en_construccion
@@ -60,15 +63,18 @@ fases:
     estado: anunciado
     fuentes: [src-1]
 
-superficie_construida_m2: 5000
-
+superficie_construida_m2: 5440
 enlaces_proyecto:
   - "https://www.ptgaraia.eus/es/adi-data-center-euskadi-adjudica-a-krean-el-proyecto-del-nuevo-edificio-de-centro-de-procesamiento-de-datos-en-ptgaraia/"
 
 incertidumbres:
   - campo: superficie_construida_m2
-    descripcion: "La fuente dice «más de 5.000 m² de superficie construida»; se registra el umbral."
-    fuentes: [src-1]
+    descripcion: Las notas de 2025 hablan de más de 5.000 m² construidos. El RNT de 2024 detalla 5.440
+      m² construidos entre edificio principal y anexos, frente a 2.020 m² de ocupación y 3.856 m² de
+      parcela. Se conservan las magnitudes publicadas sin recalcular sus redondeos.
+    fuentes:
+      - src-1
+      - src-aau-rnt-202407
   - campo: fecha_puesta_en_servicio
     descripcion: >-
       Febrero de 2025: «estará todo listo para finales del próximo año» (finales de
@@ -82,10 +88,19 @@ incertidumbres:
       expediente AAU01338: en el tablón electrónico del Gobierno Vasco solo consta el
       anuncio de información pública del proyecto técnico.
     fuentes: [src-5]
-
+  - campo: agua
+    descripcion: 76,65 m³/año es una previsión del diseño, con fecha interna 2024, previa a las obras.
+      No consta consumo medido ni WUE; la cifra no sirve como medición de explotación.
+    fuentes:
+      - src-aau-rnt-202407
+  - campo: ubicacion
+    descripcion: Punto de emplazamiento del RNT, X=540212 e Y=4768404, convertido de ETRS89/UTM30 N a
+      WGS84. El plano 302 del anexo 003, página 26, identifica el sistema y dibuja la parcela 7B
+      sobre ortofoto. Precisión aproximada del emplazamiento, sin identificar una sala o equipo.
+    fuentes:
+      - src-aau-rnt-202407
 confianza: media
-ultima_verificacion: "2026-08-31"
-
+ultima_verificacion: 2026-10-17
 fuentes:
   - id: src-1
     url: "https://www.ptgaraia.eus/es/adi-data-center-euskadi-adjudica-a-krean-el-proyecto-del-nuevo-edificio-de-centro-de-procesamiento-de-datos-en-ptgaraia/"
@@ -93,7 +108,7 @@ fuentes:
     editor: "Parque Tecnológico Garaia"
     tipo: oficial
     fecha_publicacion: "2025-02-07"
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "podrá llegar a albergar hasta 3MW en equipos IT repartidos en dos salas"
   - id: src-2
     url: "https://cronicavasca.elespanol.com/empresas/20250211/adi-tendra-listo-segundo-center-arrasate-finales/923157723_0.html"
@@ -109,7 +124,7 @@ fuentes:
     editor: "KREAN"
     tipo: empresa
     fecha_publicacion: "2025-02-06"
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "up to 3MW of IT equipment in two rooms"
   - id: src-4
     url: "https://cronicavasca.elespanol.com/empresas/20260407/adi-arranca-obras-segundo-centro-arrasate-albergara/1003742747384_0.html"
@@ -117,7 +132,7 @@ fuentes:
     editor: "Crónica Vasca (El Español)"
     tipo: prensa_general
     fecha_publicacion: "2026-04-07"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       Contará con una superficie de más de 5.000 metros cuadrados que albergará
       potentes salas de equipos informáticos y un espacio reducido de oficinas.
@@ -131,5 +146,47 @@ fuentes:
     titulo: "AAU01338. ANUNCIO del director de Administración Ambiental, por el que se somete a información pública el proyecto técnico presentado por la empresa DATA CENTER EUSKADI S.L., para la actividad de CENTRO DE PROCESAMIENTO DE DATOS, en el polo de innovación Garaia, de Mondragón (Gipuzkoa)"
     editor: "Gobierno Vasco / Eusko Jaurlaritza — Dirección de Administración Ambiental"
     tipo: oficial
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: "para la actividad de CENTRO DE PROCESAMIENTO DE DATOS, en el polo de innovación Garaia, de Mondragón (Gipuzkoa)"
+  - id: src-aau-rnt-202407
+    url: https://www.euskadi.eus/contenidos/anuncio_tablon/inf_3113295/es_def/adjuntos/Doc.-AAU01338.7z
+    titulo: "AAU01338: resumen no técnico de julio de 2024 y planos de emplazamiento de marzo de 2024"
+    editor: Data Center Euskadi / Ondoan, expediente del Gobierno Vasco
+    tipo: empresa
+    fecha_consulta: 2026-10-17
+    cita: El servicio público entrante es de 30 kV
+superficie_parcela_m2: 3856
+refrigeracion: Sistema de agua-glicol para salas críticas, con enfriadoras condensadas por aire y
+  fan-coils. El diseño excluye refrigeración evaporativa; el agua municipal se destina a sanitarios
+  y protección contra incendios.
+agua:
+  circuito: cerrado
+  sistema: Agua fría de glicol/agua recirculada, con enfriadoras condensadas por aire y sin
+    refrigeración por evaporación.
+  origen: Red municipal de abastecimiento
+  consumo_m3_ano: 76.65
+  wue_l_kwh: null
+  nota: Previsión del RNT de 2024, página 26, de 76,65 m³/año de agua municipal para servicios
+    sanitarios. El balance asigna 0 al uso ordinario contra incendios. No es consumo medido ni se
+    deduce WUE; la ausencia de evaporación no supone consumo total nulo.
+  fuentes:
+    - src-aau-rnt-202407
+conexion_electrica:
+  subestacion: null
+  tension_kv: 30
+  titular_red: null
+  mw_solicitados: null
+  mw_concedidos: null
+  nota: El resumen no técnico, página 18, prevé suministro público entrante a 30 kV, transformado a
+    0,42 kV para las cargas internas. No identifica subestación, distribuidora ni permiso de acceso
+    en MW.
+  fuentes:
+    - src-aau-rnt-202407
+energia:
+  - consumo_gwh_ano: 24
+    referencia: Previsión de consumo eléctrico del diseño presentado para la AAU
+    fecha_dato: 2024-07-01
+    fuentes:
+      - src-aau-rnt-202407
+    nota: El RNT, página 24, da 24.000 MWh eléctricos anuales estimados. Se conservan como 24 GWh de
+      energía prevista, sin derivar potencia ni consumo real.

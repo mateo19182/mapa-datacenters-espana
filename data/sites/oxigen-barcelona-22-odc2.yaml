@@ -1,0 +1,110 @@
+id: oxigen-barcelona-22-odc2
+nombre: "Oxigen Data Center ODC2 — Barcelona 22@"
+alias:
+  - "Oxigen ODC2"
+  - "Oxigen Data Center 2"
+tipo: edificio
+operador: "Oxigen Data Center"
+propietario: null
+modelo: colocation
+
+ubicacion:
+  municipio: "Barcelona"
+  provincia: "Barcelona"
+  ccaa: "Cataluña"
+  direccion: "Distrito 22@, sin dirección actual contrastada"
+  lat: null
+  lon: null
+  no_derivar: true
+  precision: municipio
+  fuentes: [src-oxigen-linkedin, src-uptime-odc2]
+
+estado: operativo
+estado_detalle: >-
+  Segundo centro de Oxigen en Barcelona, identificado por la propia compañía como ODC2
+  en 22@ y por Uptime Institute como Oxigen Data Center 2, Barcelona. Las entrevistas al
+  consejero delegado describen la operación del antiguo espacio MediaCloud de Mediapro,
+  distinto del centro de Sant Cugat y del adquirido a Banc Sabadell en Sant Fruitós de
+  Bages. Uptime acredita diseño Tier III; esa certificación no se presenta como una
+  certificación de instalación construida u operación.
+estado_fuentes: [src-oxigen-linkedin, src-viaempresa, src-oneconomia-20260407, src-uptime-odc2, src-uptime-lista]
+potencia: []
+
+incertidumbres:
+  - campo: ubicacion
+    descripcion: >-
+      La propia compañía confirma el nombre ODC2 y el distrito 22@. La prensa lo vincula
+      con el espacio MediaCloud adquirido a Mediapro. Directorios históricos sitúan
+      MediaCloud en Diagonal 177, edificio Imagina, pero no se ha leído una fuente primaria
+      que confirme esa dirección para el ODC2 actual. No se fija dirección exacta ni pin.
+    fuentes: [src-oxigen-linkedin, src-viaempresa, src-directorio-mediacloud]
+  - campo: potencia
+    descripcion: >-
+      No se publica potencia individual contrastada para ODC2. No se asignan los 10 o
+      20 MW agregados de la plataforma ni los 8 MW que el Observatorio atribuye a un ODC2
+      situado erróneamente en Sant Fruitós de Bages.
+    fuentes: [src-oneconomia-20260407, src-observatorio]
+  - campo: fecha_puesta_en_servicio
+    descripcion: >-
+      No se ha localizado fecha propia de apertura de ODC2 bajo Oxigen. La fecha de
+      apertura histórica de MediaCloud y la de su compra no se usan como inauguración
+      de este centro sin una relación documental completa.
+    fuentes: [src-viaempresa, src-directorio-mediacloud]
+
+enlaces_proyecto:
+  - "https://oxigendc.com/"
+  - "https://uptimeinstitute.com/uptime-institute-awards/datacenter/oxigen-data-center-2-odc2/2398?l="
+confianza: media
+ultima_verificacion: "2026-10-17"
+
+fuentes:
+  - id: src-uptime-lista
+    url: "https://uptimeinstitute.com/uptime-institute-awards/country/id/ES"
+    titulo: "Registro español de certificaciones Tier, ODC2"
+    editor: "Uptime Institute"
+    tipo: empresa
+    fecha_consulta: "2026-10-17"
+    cita: "Oxigen Data Center 2 (ODC2) [...] Tier III Certification of Design Documents"
+  - id: src-oxigen-linkedin
+    url: "https://es.linkedin.com/posts/oxigen-data-center_oxigendatacenter-uptimeinstitute-tieriii-activity-7480157983025373184-z7sq"
+    titulo: "Oxigen identifica ODC2 en 22@ al comunicar su certificación de diseño"
+    editor: "Oxigen Data Center"
+    tipo: empresa
+    fecha_consulta: "2026-10-17"
+    cita: "sumando al TIER III de ODC2, de 22@, la nueva certificación TIER III de ODC1 en Sant Cugat"
+  - id: src-uptime-odc2
+    url: "https://uptimeinstitute.com/uptime-institute-awards/datacenter/oxigen-data-center-2-odc2/2398?l="
+    titulo: "Registro de Oxigen Data Center 2, Barcelona"
+    editor: "Uptime Institute"
+    tipo: empresa
+    fecha_consulta: "2026-10-17"
+    cita: "OXIGEN Data Center S.L. [...] Oxigen Data Center 2 (ODC2). Location: Barcelona, Spain"
+  - id: src-viaempresa
+    url: "https://www.viaempresa.cat/es/empresa/oxigen-centro-datos-catalan-da-aire_2207109_102.html"
+    titulo: "Oxigen, el centro de datos catalán que da aire a las empresas"
+    editor: "VIA Empresa"
+    tipo: prensa_general
+    fecha_consulta: "2026-10-17"
+    cita: "adquirieron el espacio de Mediacloud, el centro de datos que Mediapro tenía en Barcelona. Desde allí también gestionan las salas técnicas de fútbol de Mediapro"
+  - id: src-oneconomia-20260407
+    url: "https://www.elnacional.cat/oneconomia/es/empresas/oxigen-dc-se-fija-en-espana-portugal-llegar-40mw-potencia-en-2027_1620692_102.html"
+    titulo: "Entrevista al consejero delegado de Oxigen sobre sus tres centros catalanes"
+    editor: "ON Economia"
+    tipo: prensa_general
+    fecha_publicacion: "2026-04-07"
+    fecha_consulta: "2026-10-17"
+    cita: "la que tienen en Barcelona -el espacio de Mediacloud, el centro de datos que tenía Mediapro en Barcelona-"
+  - id: src-directorio-mediacloud
+    url: "https://www.datacentermap.com/spain/barcelona/22at/specs/"
+    titulo: "Directorio histórico MediaCloud, edificio Imagina"
+    editor: "Data Center Map"
+    tipo: consultora
+    fecha_consulta: "2026-10-17"
+    cita: "Mediacloud Edificio Imagina. Avda. Diagonal 177, 08018 Barcelona"
+  - id: src-observatorio
+    url: "https://observatorioedc.com/datacenter/oxigen-data-center-s-l-2/"
+    titulo: "Ficha ODC2 con ubicación y potencia contradictorias"
+    editor: "Observatorio Español de Data Centers"
+    tipo: otro
+    fecha_consulta: "2026-10-17"
+    cita: "ODC2. Sant Fruitós de Bages. 8 MW Potencia IT"

@@ -9,14 +9,16 @@ propietario: "Google"
 modelo: corporativo
 
 ubicacion:
-  municipio: "Santander"
-  provincia: "Cantabria"
-  ccaa: "Cantabria"
-  direccion: "Parcela del Parque Científico y Tecnológico de Cantabria (PCTCAN), Santander"
-  lat: 43.4720
-  lon: -3.8080
-  precision: aproximada
-  fuentes: [src-1]
+  municipio: Santander
+  provincia: Cantabria
+  ccaa: Cantabria
+  direccion: Parcela del Parque Científico y Tecnológico de Cantabria (PCTCAN), Santander
+  lat: null
+  lon: null
+  precision: municipio
+  fuentes:
+    - src-1
+  no_derivar: true
 
 estado: anunciado
 estado_detalle: >-
@@ -53,8 +55,14 @@ incertidumbres:
     descripcion: "La fuente da 5.907,72 m²; se redondea a la unidad."
     fuentes: [src-1, src-2]
 
+  - campo: ubicacion
+    descripcion: Las notas identifican una parcela de 5.907,72 m² del PCTCAN, sin referencia ni plano
+      que permita fijar el punto del centro de transmisión. Se retiran las coordenadas anteriores.
+    fuentes:
+      - src-1
+      - src-2
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: 2026-10-17
 
 fuentes:
   - id: src-1
@@ -63,7 +71,7 @@ fuentes:
     editor: "Cantabria Económica"
     tipo: prensa_general
     fecha_publicacion: "2026-05-06"
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "5.907,72 metros cuadrados"
   - id: src-2
     url: "https://www.pctcan.es/buruaga-anuncia-la-compra-por-parte-de-google-de-una-parcela-en-el-pctcan-para-construir-un-centro-de-transmision-de-datos-vinculado-al-cable-submarino-sol/"

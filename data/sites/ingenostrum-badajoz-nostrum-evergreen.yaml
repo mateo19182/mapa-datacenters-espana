@@ -6,7 +6,7 @@ alias:
   - "BAZ01"
 tipo: campus
 operador: "Nostrum Data Centers"
-propietario: "Data Riocaya, S.L.U. (Nostrum Group)"
+propietario: "Data Riocaya, S.L.U. (Nostrum Group, adquirido por IREN)"
 modelo: mayorista
 
 ubicacion:
@@ -21,15 +21,28 @@ ubicacion:
 
 estado: en_tramitacion
 estado_detalle: >-
-  Declarado Proyecto Empresarial de Interés Autonómico (PREMIA) por acuerdo del Consejo de
-  Gobierno de 11 de noviembre de 2025, publicado en el DOE el 17 de noviembre. El 25 de mayo de
-  2026 el DOE sometió a información pública la solicitud de autorización ambiental integrada y el
-  estudio de impacto ambiental (expediente AAI25/024, anuncio de 19 de mayo de 2026). El 28 de
-  agosto de 2026 la consejera de Industria afirmó que la instalación ya cuenta con la autorización
-  de la Junta para la línea eléctrica de 220 kV y que la autorización ambiental fue favorable,
-  quedando pendiente el permiso estatal para la línea de 400 kV; la empresa espera empezar a
-  construir en octubre de 2026. La declaración PREMIA sitúa el fin de la construcción en 2031.
-estado_fuentes: [src-dcm, src-premia, src-eldiario-aai, src-doe-sumario, src-hoy]
+  Declarado Proyecto Empresarial de Interés Autonómico (PREMIA) por acuerdo del Consejo de Gobierno
+  de 11 de noviembre de 2025, publicado en el DOE el 17 de noviembre. El 25 de mayo de 2026 el DOE
+  sometió a información pública la solicitud de autorización ambiental integrada y el estudio de
+  impacto ambiental (expediente AAI 25/024, anuncio de 19 de mayo de 2026). El 28 de agosto de 2026
+  la consejera de Industria afirmó que la instalación ya cuenta con la autorización de la Junta para
+  la línea eléctrica de 220 kV y que la autorización ambiental fue favorable, quedando pendiente el
+  permiso estatal para la línea de 400 kV; la empresa espera empezar a construir en octubre de 2026.
+  La declaración PREMIA sitúa el fin de la construcción en 2031. La resolución de 26 de agosto,
+  publicada el 7 de septiembre de 2026, concede autorización administrativa previa a las
+  infraestructuras autonómicas de 220 kV. El BOE de 15 de septiembre abre información pública de la
+  solicitud estatal para la SET de enlace 400/220 kV y la línea 400 kV, expediente CON-01. Ninguno
+  de esos actos acredita obra terminada, energización ni apertura.
+estado_fuentes:
+  [
+    src-dcm,
+    src-premia,
+    src-eldiario-aai,
+    src-doe-sumario,
+    src-hoy,
+    src-doe-aap-20260907,
+    src-boe-con01-20260915
+  ]
 
 potencia:
   - tipo: no_especificado
@@ -37,11 +50,14 @@ potencia:
     ambito: campus
     referencia: "Capacidad prevista del campus"
     estado_asociado: anunciado
-    fecha_dato: "2026"
-    fuentes: [src-dcm, src-dcd-extremadura]
-    nota: >-
-      Data Center Market da "300MW" y Data Center Dynamics «una capacidad de hasta 300 MW», ninguna
-      de las dos distinguiendo carga TI de potencia de conexión.
+    fecha_dato: 2026-09-15
+    fuentes:
+      - src-dcm
+      - src-dcd-extremadura
+      - src-boe-con01-20260915
+    nota: Data Center Market da "300 MW" y DataCenterDynamics «una capacidad de hasta 300 MW», ninguna
+      de las dos distinguiendo carga TI de potencia de conexión. El anuncio estatal CON-01 de
+      septiembre de 2026 identifica también el futuro DC como de 300 MW, sin tipificarlos.
   - tipo: conexion_red
     valor_mw: 300
     ambito: campus
@@ -83,20 +99,24 @@ potencia:
     nota: "La consejera dice que «la idea es que arranque con 150 MW, pero alcance los 500 MW»."
 
 fases:
-  - nombre: "Ejecución por fases desde 2026"
+  - nombre: Ejecución por fases, inicio previsto en 2026
     estado: anunciado
-    fecha_puesta_en_servicio: "2026"
     fuentes: [src-dcm]
+    nota: 2026 era una previsión de inicio de construcción, no una fecha de puesta en servicio. La
+      declaración PREMIA prevé final de construcción en 2031.
 
 conexion_electrica:
-  subestacion: "Subestación 220/30 kV adyacente y subestación de enlace 400/220 kV"
+  subestacion: SET de enlace 400/220 kV y SET DC Badajoz 220/20 kV
   tension_kv: 220
-  nota: >-
-    La declaración PREMIA describe una subestación 220/30 kV adyacente al centro, una subestación de
-    enlace 400/220 kV —excluido el campo de 400 kV, de competencia estatal— y las líneas de alta
-    tensión necesarias. En agosto de 2026 la Junta de Extremadura había autorizado la línea de
-    220 kV; la de 400 kV seguía en tramitación ante la Administración General del Estado.
-  fuentes: [src-premia, src-hoy]
+  nota: El PREMIA describía una SET 220/30 kV. La autorización previa de 26 de agosto de 2026 describe
+    una SET 220/20 kV y las dos líneas 220 kV desde la SET de enlace. La parte estatal 400 kV fue
+    sometida a información pública el 15 de septiembre. No consta autorización de explotación ni
+    puesta en tensión. Los transformadores se publican en MVA y no se convierten a MW.
+  fuentes:
+    - src-premia
+    - src-hoy
+    - src-doe-aap-20260907
+    - src-boe-con01-20260915
 
 superficie_parcela_m2: 222735
 inversion_anunciada_eur: 1913000000
@@ -126,10 +146,11 @@ incertidumbres:
       Solo la fuente oficial tipifica su cifra.
     fuentes: [src-premia, src-eldiario-aai, src-hoy, src-rankia]
   - campo: operador
-    descripcion: >-
-      El 7 de mayo de 2026 IREN Limited anunció un acuerdo para adquirir
-      Ingenostrum, S.L. (Nostrum Group), pendiente de condiciones de cierre.
-    fuentes: [src-iren]
+    descripcion: IREN confirma la adquisición de Ingenostrum/Nostrum. El 20-F fecha la compra del 100%
+      el 12 de junio de 2026 y el comunicado del 15 de junio confirma la operación. Es una operación
+      corporativa, no puesta en servicio de este emplazamiento. Los 490 MW corporativos de acceso no
+      se reparten entre campus.
+    fuentes: [ src-iren, src-iren-cierre-20260615, src-iren-fy2026 ]
   - campo: superficie_parcela_m2
     descripcion: >-
       La declaración PREMIA recogida por prensa cifra la ocupación en 222.735 m² en la Plataforma
@@ -145,7 +166,7 @@ incertidumbres:
     fuentes: [src-hoy]
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
   - id: src-dcm
@@ -163,7 +184,7 @@ fuentes:
     editor: "Junta de Extremadura"
     tipo: oficial
     fecha_publicacion: "2025-11-17"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       La empresa prevé inversiones por valor de 1.913 millones de euros y la creación 330 puestos de
       trabajo. Se espera que la construcción esté terminada en 2031. [...] diseñado para alcanzar una
@@ -186,7 +207,7 @@ fuentes:
     editor: "Junta de Extremadura"
     tipo: oficial
     fecha_publicacion: "2026-05-25"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       Anuncio de 19 de mayo de 2026 por el que se someten a información pública la solicitud de
       autorización ambiental integrada y el estudio de impacto ambiental del proyecto de un centro de
@@ -248,7 +269,7 @@ fuentes:
     editor: "IREN Limited"
     tipo: empresa
     fecha_publicacion: "2026-05-07"
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "IREN Limited has entered into an agreement to acquire Ingenostrum, S.L. (Nostrum Group)"
   - id: src-osm
     url: "https://nominatim.openstreetmap.org/search?q=Plataforma+Log%C3%ADstica+del+Suroeste+Europeo%2C+Badajoz&format=json&limit=1"
@@ -259,3 +280,37 @@ fuentes:
     cita: >-
       Plataforma Logística del Suroeste Europeo, El Nevero, Badajoz, Extremadura,
       España — lat 38.9101139, lon -7.0048802
+  - id: src-iren-cierre-20260615
+    url: https://iren.gcs-web.com/news-releases/news-release-details/iren-completes-acquisition-nostrum-group-expanding-ai-cloud
+    titulo: IREN Completes Acquisition of Nostrum Group Expanding AI Cloud Platform to Europe
+    editor: IREN
+    tipo: empresa
+    fecha_publicacion: 2026-06-15
+    fecha_consulta: 2026-10-17
+    cita: completed the acquisition of Ingenostrum, S.L.
+  - id: src-iren-fy2026
+    url: https://www.sec.gov/Archives/edgar/data/1878848/000187884826000052/iren-20260630.htm
+    titulo: "IREN FY2026 Form 20-F, nota 9: adquisición de Ingenostrum"
+    editor: IREN / SEC
+    tipo: empresa
+    fecha_consulta: 2026-10-17
+    cita: Group acquired 100% of the equity interests
+  - id: src-doe-aap-20260907
+    url: https://doe.juntaex.es/otrosFormatos/html.php?anio=2026&doe=1730o&xml=2026062239
+    titulo: Autorización administrativa previa de infraestructuras eléctricas de consumo del DC Nostrum
+      Evergreen
+    editor: Dirección General de Industria, Energía y Minas / DOE
+    tipo: oficial
+    fecha_publicacion: 2026-09-07
+    fecha_consulta: 2026-10-17
+    cita: Conceder a Data Riocaya, SLU, autorización administrativa previa de las instalaciones
+      correspondientes al proyecto.
+  - id: src-boe-con01-20260915
+    url: https://www.boe.es/diario_boe/txt.php?id=BOE-B-2026-29930
+    titulo: Información pública de la SET de enlace y línea 400 kV del DC Badajoz, CON-01
+    editor: Delegación del Gobierno en Extremadura / BOE
+    tipo: oficial
+    fecha_publicacion: 2026-09-15
+    fecha_consulta: 2026-10-17
+    cita: Conexión de las instalaciones del futuro Data Center (DC) Nostrum Evergreen de 300 MW de
+      potencia con la red de transporte.

@@ -20,13 +20,15 @@ ubicacion:
 
 estado: en_tramitacion
 estado_detalle: >-
-  Declarado inversión de interés autonómico con interés general de Aragón el 3 de julio de
-  2024, con modificación de la delimitación del ámbito aprobada el 14 de mayo de 2025 y una
-  redelimitación posterior publicada el 10 de marzo de 2026. Integrado en el PIGA
-  "Implantación de la Región Microsoft en Aragón", aprobado inicialmente el 14 de noviembre
-  de 2025 y modificado el 24 de julio de 2026 para incorporar el estudio de impacto
-  ambiental.
-estado_fuentes: [src-1, src-2]
+  Declarado inversión de interés autonómico con interés general de Aragón el 3 de julio de 2024, con
+  modificación de la delimitación del ámbito aprobada el 14 de mayo de 2025 y una redelimitación
+  posterior publicada el 10 de marzo de 2026. Integrado en el PIGA "Implantación de la Región
+  Microsoft en Aragón", aprobado inicialmente el 14 de noviembre de 2025 y modificado el 24 de julio
+  de 2026 para incorporar el estudio de impacto ambiental. La documentación de urbanización de julio
+  2026 describe seis edificios de 57,6 MW y 345,6 MW por emplazamiento, sin tipificar. El
+  procedimiento sigue siendo de aprobación inicial e información pública; no se ha localizado
+  autorización ambiental definitiva ni inicio de obra del CPD.
+estado_fuentes: [ src-1, src-2, src-esia-urbanizacion-202607, src-piga-actual-20261017 ]
 
 potencia:
   - tipo: conexion_red
@@ -40,11 +42,23 @@ potencia:
   - tipo: no_especificado
     valor_mw: 300
     ambito: campus
-    referencia: "Objetivo de potencia por planta en segunda fase"
+    referencia: Objetivo histórico de segunda fase publicado en prensa en noviembre 2025
     estado_asociado: anunciado
     fecha_dato: "2025-11-19"
     fuentes: [src-3, src-8]
-    nota: "Dato de prensa, sin precisar tipo de potencia."
+    nota: Dato de prensa, sin precisar tipo de potencia. La documentación ambiental de urbanización de
+      julio 2026 publica posteriormente 345,6 MW sin tipificar; no son cifras adicionales.
+  - tipo: no_especificado
+    valor_mw: 345.6
+    ambito: campus
+    referencia: Capacidad prevista del emplazamiento en el EsIA de urbanización
+    estado_asociado: en_tramitacion
+    fecha_dato: 2026-07
+    fuentes:
+      - src-esia-urbanizacion-202607
+    nota: PDF, página 52. Seis edificios de 57,6 MW. El párrafo no etiqueta los MW como carga IT,
+      potencia total o permiso de acceso; no se asigna una tipificación por analogía ni se considera
+      capacidad construida.
 
 fases:
   - nombre: "Fase 1"
@@ -77,9 +91,18 @@ agua:
     continua entre los servidores y los equipos de refrigeración sin necesidad de suministro
     adicional". El agua de lluvia de las cubiertas se recoge para usos no potables.
   origen: null
-  nota: >-
-    La documentación del PIGA cifra en 3.975 m³/año la demanda industrial a plena capacidad a partir del segundo año de operación y en 27.717 m³ el llenado inicial del circuito el primer año, pero lo hace para los TRES campus de Microsoft en Aragón conjuntamente. No se registra consumo por emplazamiento porque repartir esa cifra exigiría una clave de reparto que no consta. El Acuerdo de declaración de interés autonómico recoge además el compromiso corporativo de "Impacto positivo en Agua (Water positive)" para 2030.
-  fuentes: [src-6, src-7]
+  nota: La documentación del PIGA cifra en 3.975 m³/año la demanda industrial a plena capacidad a
+    partir del segundo año de operación y en 27.717 m³ el llenado inicial del circuito el primer
+    año, pero lo hace para los TRES campus de Microsoft en Aragón conjuntamente. No se registra
+    consumo por emplazamiento porque repartir esa cifra exigiría una clave de reparto que no consta.
+    El Acuerdo de declaración de interés autonómico recoge además el compromiso corporativo de
+    "Impacto positivo en Agua (Water positive)" para 2030. El EsIA de urbanización localizado en
+    octubre 2026 no permite interpretar el riego de viarios o el consumo de obra como consumo
+    operativo del CPD.
+  fuentes:
+    - src-6
+    - src-7
+    - src-esia-urbanizacion-202607
 
 energia:
   - consumo_gwh_ano: 3777
@@ -123,29 +146,27 @@ incertidumbres:
       (1.700.093.540,63 € de obras en el campus y 33.483.845,89 € de urbanización).
     fuentes: [src-1]
   - campo: potencia
-    descripcion: "Ninguna fuente oficial publica potencia por campus; 50 MW y 300 MW proceden de prensa."
-    fuentes: [src-1, src-3]
-
+    descripcion: El EsIA de urbanización de julio 2026 publica 345,6 MW previstos, sin tipificación.
+      Sustituye como objetivo documental más reciente a los 300 MW de prensa de 2025. Los 50 MW de
+      acceso de la primera fase siguen siendo una afirmación de prensa, sin resolución de acceso
+      contrastada.
+    fuentes:
+      - src-1
+      - src-3
+      - src-esia-urbanizacion-202607
   - campo: energia
-    descripcion: >-
-      Las dos magnitudes eléctricas de esta ficha no pueden ser ciertas a la vez. Un consumo de
-      3.777 GWh/año exige una potencia media sostenida de 431 MW durante las 8.760 horas del
-      año (3777 GWh ÷ 8.760 h), por encima del techo de 300 MW que la propia ficha registra para
-      el campus, y muy por encima de los 50 MW asegurados. La contradicción se agrava con la
-      salvedad que acompaña a los 300 MW en la documentación del PIGA: «no se prevé que todos los
-      edificios funcionen simultáneamente a esa capacidad», lo que sitúa la potencia media por
-      debajo de 300 MW, no en 431.
-
-      Las dos cifras están transcritas correctamente y se atribuyen a la misma documentación del
-      PIGA a través de prensa, de modo que la incoherencia está en la fuente y no en el registro. No
-      se corrige ninguna de las dos ni se deriva una tercera: falta el documento original —el
-      estudio de impacto ambiental por emplazamiento, en información pública desde agosto de 2026—
-      para saber si el desajuste viene de un techo de potencia mayor que el publicado, de un consumo
-      que corresponde a un alcance distinto, o de un error de la propia memoria.
-    fuentes: [src-5, src-3, src-piga-hoyaragon]
+    descripcion: Las cifras anuales de energía proceden de prensa que cita el PIGA. El EsIA localizado
+      corresponde a urbanización exterior y no concilia esos consumos con la capacidad del CPD. Al
+      no estar tipificados los MW, no se deduce una potencia media ni se afirma una imposibilidad
+      física entre ámbitos que pueden ser distintos.
+    fuentes:
+      - src-5
+      - src-3
+      - src-piga-hoyaragon
+      - src-esia-urbanizacion-202607
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
   - id: src-1
@@ -208,7 +229,8 @@ fuentes:
     editor: "elDiario.es Aragón"
     tipo: prensa_general
     fecha_consulta: "2026-08-31"
-    cita: "Por ahora, la multinacional estadounidense tiene asegurados 50 megavatios de 'enchufe' para cada instalación; el resto, hasta 300 MW por planta, está previsto para una segunda fase."
+    cita: Por ahora, la multinacional estadounidense tiene asegurados 50 megavatios de 'enchufe' para
+      cada instalación; el resto, hasta 300 MW por planta, está previsto para una segunda fase.
   - id: src-piga-hoyaragon
     url: "https://www.hoyaragon.es/aragon/piga-microsoft-aragon-centro-datos/20251114215413116030.html"
     titulo: "La letra pequeña del PIGA de Microsoft: ¿qué incluyen los tres centros de datos?"
@@ -216,7 +238,20 @@ fuentes:
     tipo: prensa_general
     fecha_publicacion: "2025-11-14"
     fecha_consulta: "2026-08-31"
-    cita: >-
-      Microsoft dispone ya de 50 MW de potencia de conexión asegurada y necesitará alrededor de 300
+    cita: Microsoft dispone ya de 50 MW de potencia de conexión asegurada y necesitará alrededor de 300
       MW por campus en el despliegue completo, aunque no se prevé que todos los edificios funcionen
       simultáneamente a esa capacidad.
+  - id: src-esia-urbanizacion-202607
+    url: https://www.aragon.es/documents/d/guest/esia-p-urbanizacion-campus-villamayor-msft
+    titulo: EsIA del proyecto de urbanización del campus Microsoft de Villamayor de Gállego, julio 2026
+    editor: Microsoft 7724 Spain / AECOM, expediente del Gobierno de Aragón
+    tipo: oficial
+    fecha_consulta: 2026-10-17
+    cita: con una capacidad total del emplazamiento de 345,6 MW
+  - id: src-piga-actual-20261017
+    url: https://www.aragon.es/-/Microsoft-eia
+    titulo: "PIGA para la implantación de la Región Microsoft en Aragón: tramitación y EsIA"
+    editor: Gobierno de Aragón
+    tipo: oficial
+    fecha_consulta: 2026-10-17
+    cita: Estudio Impacto Ambiental del Proyecto de Urbanización MSFT

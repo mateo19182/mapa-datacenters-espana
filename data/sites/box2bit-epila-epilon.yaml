@@ -54,10 +54,10 @@ fases:
     estado: anunciado
     superficie_m2: 330000
     fuentes: [src-1]
-    nota: >-
-      Urbanización, edificio 1 (37.100 m² construidos, 8 módulos en 2 plantas), edificio 2
-      (29.000 m², 8 módulos en 2 plantas), edificio de control de accesos 1,
-      infraestructuras eléctricas comunes y fibra. Inversión 1.125 millones de euros.
+    nota: Urbanización, edificio 1 (37.100 m² construidos, 8 módulos en 2 plantas), edificio 2 (29.000
+      m², 8 módulos en 2 plantas), edificio de control de accesos 1, infraestructuras eléctricas comunes
+      y fibra. Inversión 1.125 millones de euros. El calendario del Acuerdo prevé terminar esta fase a
+      finales de 2029; no publica fecha de puesta en servicio.
   - nombre: "Fases 2 y 3"
     estado: anunciado
     fuentes: [src-1]
@@ -66,17 +66,16 @@ fases:
       obtención de 370 MW adicionales. Inversión 2.775 millones de euros.
 
 conexion_electrica:
-  subestacion: "SE EPILON 220/30 kV, alimentada desde la SE Calatorao 220 kV de REE"
+  subestacion: SE EPILON 220/30 kV, alimentada desde la SE Calatorao 220 kV de REE
   tension_kv: 220
-  titular_red: "Red Eléctrica de España — SE Calatorao 220 kV"
+  titular_red: Red Eléctrica de España — SE Calatorao 220 kV
   mw_solicitados: null
-  mw_concedidos: 150
-  fuentes: [src-1]
-  nota: >-
-    Línea aéreo-subterránea de 220 kV entre la SE Calatorao 220 kV (REE) y la SE EPILON
-    220/30 kV, con posición de consumo exclusiva y posición adicional de redundancia en la
-    SE Calatorao y centro de medida. El proyecto ha solicitado una posición de conexión
-    adicional en la red de transporte.
+  mw_concedidos: null
+  fuentes:
+    - src-1
+  nota: Infraestructura prevista de 220 kV desde Calatorao a Campus EPILON 220/30 kV. El Acuerdo
+    dimensiona 150 MW de suministro inicial y hasta 520 MW posteriores, pero no publica una
+    resolución de acceso concedido.
 
 superficie_parcela_m2: 330000
 inversion_anunciada_eur: 3900000000
@@ -135,8 +134,14 @@ incertidumbres:
       "Venta Romera" no tiene coordenadas publicadas.
     fuentes: [src-3]
 
+  - campo: conexion_electrica
+    descripcion: Los 150 MW son el suministro previsto para la primera fase. El Acuerdo no identifica un
+      permiso que conceda esa potencia; no se registra como acceso otorgado.
+    fuentes:
+      - src-1
+      - src-6
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: 2026-10-17
 
 fuentes:
   - id: src-1
@@ -145,7 +150,7 @@ fuentes:
     editor: "Boletín Oficial de Aragón"
     tipo: oficial
     fecha_publicacion: "2026-02-06"
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "se localiza en el término municipal de Épila (Zaragoza), en el ámbito denominado \"Venta Romera\", ocupando una superficie de aproximadamente 33 ha en su primera fase y pudiendo alcanzar hasta aproximadamente 100 ha en caso de completar las fases posteriores"
   - id: src-2
     url: "https://www.elespanol.com/aragon/actualidad/zaragoza/20260512/box2bit-libera-parcelas-fallido-centro-datos-carinena-ampliacion-industria/1003744242872_0.html"
@@ -168,7 +173,7 @@ fuentes:
     editor: "Boletín Oficial de Aragón"
     tipo: oficial
     fecha_publicacion: "2026-02-06"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: "en cuanto a la gestión de los recursos hídricos, se indica que el sistema de climatización de los centros de datos desarrollados por Box2Bit se basa en un modo de enfriamiento mediante circuito cerrado de agua, lo que permite eliminar el consumo directo de agua en el proceso de climatización de sus salas, minimizando el consumo a volúmenes propios de otras industrias como la logística [...] Se incluye en la memoria estimación del consumo de agua en atención a los distintos usos: consumo operacional, consumo no operacional y consumo de las zonas verdes."
   - id: src-5
     url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1434356510505"
@@ -176,7 +181,7 @@ fuentes:
     editor: "Boletín Oficial de Aragón"
     tipo: oficial
     fecha_publicacion: "2026-02-06"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: "Se estima que el proyecto en primera fase generará aproximadamente 550 empleos directos y 1.000 indirectos en la fase de construcción, así como 63 empleos directos y 200 empleos indirectos en la fase de operación. Se estima que, en las fases posteriores de desarrollo del proyecto, el número total de empleos aumente de manera proporcional a las cifras indicadas para la fase inicial."
   - id: src-6
     url: "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1434356510505"
@@ -184,5 +189,5 @@ fuentes:
     editor: "Boletín Oficial de Aragón"
     tipo: oficial
     fecha_publicacion: "2026-02-06"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: "El proyecto incluirá infraestructuras eléctricas necesarias para asegurar un suministro energético, que durante la primera fase será de 150 MW, y en las fases posteriores alcanzaría hasta 520 MW."

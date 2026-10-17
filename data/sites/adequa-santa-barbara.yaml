@@ -58,7 +58,7 @@ incertidumbres:
     fuentes: [src-1]
 
 confianza: baja
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: 2026-10-17
 
 fuentes:
   - id: src-1
@@ -67,7 +67,7 @@ fuentes:
     editor: "Cadena SER"
     tipo: prensa_general
     fecha_publicacion: "2026-03-25"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       Entre els principals promotors hi ha la immobiliària Adequa, que vol instal·lar data centers
       a Santa Bàrbara (el Montsià) i Òdena (l'Anoia) de 200 MW cada un.
@@ -77,7 +77,7 @@ fuentes:
     editor: "Ebre Digital"
     tipo: prensa_general
     fecha_publicacion: "2026-03-27"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       Entre aquestes iniciatives ... se'n troba un d'ubicat a Santa Bàraba, tal com ha avançat
       aquest divendres SER Catalunya. La seva promotora, Adequa, preveu que tingui una capacitat

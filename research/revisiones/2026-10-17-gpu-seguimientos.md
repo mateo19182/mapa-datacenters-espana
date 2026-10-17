@@ -1,5 +1,7 @@
 # Seguimiento de inventarios GPU y sedes, 17 de octubre de 2026
 
+Esta es la primera revisión del día. La [revisión posterior de las 25 lagunas](2026-10-17-lagunas-gpu-cobertura.md) identifica Templus Alcalá como anfitrión de GPU Solutions y documenta la instalación de Trevenque. Sus decisiones sustituyen esos seguimientos abiertos; el resto conserva los límites descritos aquí.
+
 Consulta de fuentes públicas primarias. Se separan hardware instalado, compras y acceso a servicios. Una sede social, una ciudad o la denominación de un servicio cloud no bastan para situar GPU en un edificio. No se han contactado operadores ni accedido a cuentas privadas.
 
 ## Decisiones y cambios

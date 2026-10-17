@@ -41,7 +41,7 @@ incertidumbres:
     fuentes: [src-1, src-2]
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
   - id: src-1
@@ -50,7 +50,7 @@ fuentes:
     editor: "MERLIN Properties"
     tipo: empresa
     fecha_publicacion: "2026-07-28"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       En la Fase II (254 MW IT), la comercialización continúa superando previsiones. Bilbao-Arasur
       02 (48 MW) se alquiló por completo doce meses antes de su entrega y Bilbao-Arasur 01 (48 MW)
@@ -62,7 +62,7 @@ fuentes:
     editor: "DatacenterDynamics"
     tipo: prensa_especializada
     fecha_publicacion: "2026-06-02"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       el anuncio que ha hecho el alcalde de la ciudad, Jesús Moreno, sobre la puesta en marcha de
       un Plan Especial de Data Centers con el objetivo de atraer nuevas inversiones y consolidar

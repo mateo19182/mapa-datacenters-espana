@@ -1,27 +1,10 @@
-# Cobertura pendiente: proyectos de los que se conoce al menos el municipio
-# pero que todavía NO tienen ficha.
-#
-# Esto no es el dataset: son pistas de trabajo. Ningún dato de aquí se muestra
-# como hecho registrado ni entra en ningún total. Existe para que el mapa diga
-# también lo que sabe que le falta, en vez de aparentar completitud.
-#
-# Origen: cruce del dossier por compañías (research/companias.md, sección 9a)
-# contra las fichas existentes, hecho en la auditoría de cobertura del
-# 29 de agosto de 2026, y revisado a fondo el 31 de agosto de 2026 tras el
-# barrido documental descrito en research/acceso-a-fuentes.md.
-#
-# En esa revisión, 32 de las entradas originales pasaron a tener ficha propia y
-# salen de aquí. Las que quedan no se han fichado por una razón concreta, que
-# cada una explica: unas porque podrían duplicar un emplazamiento ya registrado,
-# otras porque la fuente se contradice, otras porque resultaron no ser centros
-# de datos. Que una pista no prospere también es un resultado.
-
-fecha: "2026-10-14"
-origen: "Auditoría de cobertura (research/cobertura.md, sección 3) y barrido documental del 31 de
-  agosto de 2026; revisión de investigaciones semanales del 14 de octubre de 2026"
+# Pistas de cobertura sin ficha física suficiente. No forman parte de los totales.
+# La revisión de 17/10/2026 conserva los límites de las fuentes y documenta
+# las tres altas resueltas en research/revisiones/2026-10-17-lagunas-cobertura-normativa.md.
+fecha: "2026-10-17"
+origen: "Auditoría original de agosto y revisión completa de las 17 pistas el 17 de octubre de 2026"
 
 proyectos:
-  # --- la fuente se contradice o no basta -----------------------------------
   - municipio: Granada
     provincia: Granada
     ccaa: Andalucía
@@ -29,11 +12,11 @@ proyectos:
     potencia_citada: null
     prioridad: baja
     nota: >-
-      La fuente se contradice consigo misma. DataRush anunció en 2024 un centro en Granada «para
-      finales de este año», pero su ficha de proveedor en Baxtel dice en prosa que opera tres
-      centros —dos en Málaga y uno en Granada— mientras su propio listado muestra solo los dos de
-      Málaga, ambos ya fichados. Sin dirección, sin fecha de apertura y sin confirmación de la
-      compañía.
+      La nota de DataRush publicada el 17/07/2024 preveía abrir Granada a finales de ese año.
+      No se ha localizado confirmación posterior de apertura, dirección ni instalación nombrada.
+      Baxtel describe tres centros pero enumera los dos de Málaga ya registrados; no basta para
+      dar el objetivo por cumplido. Fuente primaria:
+      https://www.datarush.es/inauguracion_del_segundo_centro_de_datarush_en_malaga/
   - municipio: Velilla del Río Carrión
     provincia: Palencia
     ccaa: Castilla y León
@@ -41,33 +24,11 @@ proyectos:
     potencia_citada: null
     prioridad: media
     nota: >-
-      Sigue sin fuente primaria tras dos barridos. La nota de Iberdrola de 26/11/2025 que formaliza
-      la empresa conjunta nombra solo Madrid Sur y habla de «más de 700 MW asegurados cerca de
-      Madrid». Velilla no aparece ahí, ni en la nota de julio de 2025, ni en echelon-dc.com. La
-      única mención es un reportaje de DCD que además sitúa mal la central de Aceca. La térmica de
-      Velilla existe y es de Iberdrola, pero está en desmantelamiento desde 2020: que haya suelo y
-      nudo no es prueba de proyecto.
-  # --- huecos nuevos detectados en el barrido -------------------------------
-  - municipio: Peralta
-    provincia: Navarra
-    ccaa: Navarra
-    compania: null
-    potencia_citada: 132 MW
-    prioridad: alta
-    nota: >-
-      El mayor de los seis proyectos de la Ribera de Navarra y el único que faltaba en esta lista.
-      Sigue en tramitación, con nudo previsto en Castejón 400 kV. El Gobierno foral se niega a
-      identificar al promotor.
-  - municipio: Barcelona (22@)
-    provincia: Barcelona
-    ccaa: Cataluña
-    compania: Oxigen Data Center (ODC2)
-    potencia_citada: null
-    prioridad: media
-    nota: >-
-      Hueco descubierto al corregir un error del Observatorio EDC. El código ODC2 no corresponde al
-      centro de Sant Fruitós de Bages, que es el tercero del operador y tiene 10 MW y no 8: ODC2 es
-      un centro del 22@ de Barcelona que no tiene ficha.
+      No se ha localizado proyecto físico confirmado en las búsquedas de Iberdrola, Echelon
+      y fuentes públicas. La nota de la empresa conjunta de 26/11/2025 identifica Madrid Sur;
+      los más de 700 MW que cita están cerca de Madrid y no se asignan a Velilla. Las menciones
+      secundarias y la existencia de la antigua central no identifican un CPD. Fuente primaria:
+      https://www.iberdrolaespana.com/sala-comunicacion/noticias/joint-venture-echelon-iberdrola-digital-centros-datos-espana
   - municipio: Madrid
     provincia: Madrid
     ccaa: Comunidad de Madrid
@@ -75,21 +36,23 @@ proyectos:
     potencia_citada: null
     prioridad: baja
     nota: >-
-      Sustituye a la antigua entrada de Málaga, que estaba mal formulada. Lo que Unicaja anunció el
-      04/06/2026 en su Plan Estratégico 2025-2027 son dos cosas distintas: un hub tecnológico de
-      oficinas en el Málaga TechPark, que no es un CPD, y un centro de datos nuevo en Madrid para el
-      proyecto Atlas. Sin ubicación publicada.
+      Unicaja confirmó el 04/06/2026 un nuevo CPD en Madrid para ATLAS, cuyo despliegue prevé
+      desde 2026 hasta mediados de 2028. No publica anfitrión, edificio ni capacidad. Es distinto
+      del hub de oficinas de Málaga TechPark, previsto para 2027; el presupuesto del plan
+      tecnológico tampoco es inversión aislada del CPD. Fuente:
+      https://www.unicajabanco.com/es/sala-de-comunicacion/buscador-noticias/2026/06/refuerzo-de-la-seguridad-tecnologica-e-incremento-de-las-capacid
   - municipio: Cifuentes
     provincia: Guadalajara
     ccaa: Castilla-La Mancha
     compania: Solaria
-    potencia_citada: 50-100 MW
+    potencia_citada: "50-100 MW, mención secundaria sin tipo ni confirmación"
     prioridad: media
     nota: >-
-      Sin confirmación oficial ni expediente administrativo. Plataformas vecinales (Alcarria es
-      Patrimonio, ALIENTE, Ecologistas en Acción) alertan de que Solaria busca unas 20 hectáreas en
-      el municipio, incluida una parcela municipal sacada a licitación. Solaria no respondió a
-      elDiario.es el 06/08/2026.
+      Las búsquedas nuevas no han localizado expediente técnico del CPD ni confirmación del
+      promotor. Las alertas vecinales de agosto de 2026 sobre unas 20 hectáreas siguen siendo
+      pistas, no permisos. Las autorizaciones fotovoltaicas de Trillo/Cifuentes no prueban un
+      centro de datos ni su potencia. Referencia de la denuncia:
+      https://www.guadapress.es/noticia/58050/guadalajara/un-cetro-de-datos-en-cifuentes.html
   - municipio: A Coruña
     provincia: A Coruña
     ccaa: Galicia
@@ -97,76 +60,88 @@ proyectos:
     potencia_citada: null
     prioridad: media
     nota: >-
-      Segundo CPD del banco, gemelo del de Pocomaco y situado en la sede de A Coruña. Dos fuentes
-      independientes confirman que existe, opera en paralelo y replica cada operación. No tiene
-      ficha porque no consta dirección ni ninguna magnitud.
+      La propia ABANCA confirma el 30/04/2026 un segundo CPD en su sede de A Coruña, de su
+      propiedad y operativo en paralelo con Pocomaco. La existencia ya tiene respaldo primario;
+      falta identificar sin ambigüedad el edificio anfitrión. No se le asigna la dirección de
+      una oficina o sede legal ni la superficie reformada de Pocomaco. Fuente:
+      https://comunicacion.abanca.com/es/noticias/abanca-transforma-el-edificio-de-su-principal-centro-de-datos-en-un-espacio-mas-funcional-eficiente-y-sostenible/
   - municipio: Méntrida
     provincia: Toledo
     ccaa: Castilla-La Mancha
     compania: Operador del CPD sin identificar; Solaria es la peticionaria eléctrica
     potencia_citada: null
     prioridad: alta
-    nota: "BOE-B-2026-32678, de 8 de octubre, somete a información pública la línea directa y SE Venero
-      220/20 kV para un nuevo CPD, expediente Con-09. Las parcelas 57 y 58 del polígono 17 y los
-      5.745,2 m² son de la subestación, no del CPD. Falta localizar el centro, su titular y
-      operador. Los MVA de transformación no se convierten a MW IT. Fuente:
-      https://www.boe.es/diario_boe/txt.php?id=BOE-B-2026-32678"
+    nota: >-
+      BOE-B-2026-32678, publicado el 08/10/2026, abre información pública de la línea directa y
+      SE Venero 220/20 kV, Con-09, para un CPD nuevo. Las parcelas 57 y 58 del polígono 17 y
+      5.745,2 m² corresponden a la subestación. La conexión restante a Villaviciosa 400 kV
+      pertenece a PFot-417AC. El proyecto eléctrico, plano VENE-SOL-SE-PE-DRW-0021, dibuja
+      edificios, límite y acceso del CPD junto a la SE desde CM-5007; ya existe emplazamiento
+      gráfico. La memoria de línea cita 213 MW del CPD sin tipo IT, distintos de 311,29 MW
+      de transporte, sin permiso o entrega acreditados. Faltan identidad, parcela propia, titular
+      y operador; los MVA y las coordenadas de la SE no son MW TI ni un pin del centro. No es
+      licencia del CPD. Fuentes: https://www.boe.es/diario_boe/txt.php?id=BOE-B-2026-32678
+      y https://almacen.redsara.es/sending/public/d082558d-91ae-4e49-86e0-d5b14713e429
 
-# Pistas abiertas: aquí falta el municipio, el promotor o ambos, así que no
-# pueden pasar ni a la tabla de arriba. Cada una dice qué le falta.
 pistas:
   - >-
-    L14 REIS promueve el «Campus Logístico de Datos de Villena» sobre los 332.000 m² del área
-    industrial Casa del Padre (Alicante), con Plan Parcial aprobado y la promotora como propietaria
-    del 100 % del suelo y agente urbanizador. Se le abrió ficha el 31 de agosto de 2026 y se retiró
-    el mismo día, por el mismo criterio que Ponentia: no hay operador de centro de datos, y los
-    «hasta 100 MW IT» son un techo de masterplan que publica la asesora legal de la promotora, no
-    potencia de una instalación. Es la más sólida de las pistas de suelo, porque el Ayuntamiento la
-    presentó oficialmente el 23 de septiembre de 2025.
+    L14 REIS / Villena, Casa del Padre: sigue siendo oferta de suelo industrial para un campus,
+    sin operador ni edificio técnico identificado. El Ayuntamiento presentó el ámbito de
+    332.000 m² el 23/09/2025. La asesora Pygmalion habla de solicitudes de potencia de hasta
+    100 MW a 132 kV, no de 100 MW TI ni acceso concedido. Fuentes:
+    https://www.villena.es/noticia/villena-desarrollara-el-primer-campus-logistico-de-datos-de-la-provincia-en-el-suelo-industrial-casa-del-padre/
+    y https://pygmalionspain.com/campus-data-center-villena/
   - >-
-    Ponentia Logistics comercializa cuatro suelos para centros de datos —Lleida Nord, L'Hospitalet
-    de l'Infant, L'Espluga de Francolí (Tarragona) y La Melusa, en Tamarite de Litera (Huesca)— sin
-    operador conocido en ninguno. Se les llegó a abrir ficha el 31 de agosto de 2026 y se retiraron
-    el mismo día: este registro documenta centros de datos, no ofertas de suelo, y ninguno tiene
-    promotor de centro ni proyecto técnico. El de Tamarite es el más avanzado, con un Plan de
-    Interés General de Aragón cuya modificación sustancial se aprobó inicialmente (Orden
-    VFL/907/2026) y una línea de 132 kV en información pública. Si alguno llega a tener operador,
-    vuelve a la tabla de arriba.
+    Ponentia comercializa actualmente tres suelos: Lleida Nord, L'Hospitalet de l'Infant y
+    La Melusa, Tamarite de Litera. L'Espluga de Francolí constaba en la pista histórica, pero no
+    aparece en la oferta actual; no se deduce retirada definitiva. No se identifica operador
+    de CPD. En La Melusa, la modificación inicial VFL/907/2026 trata de una línea de 132 kV y
+    la VFL/1319/2026, publicada en el portal el 11/09/2026, de una planta fotovoltaica de
+    47,5 MW; ninguna acredita construcción de un CPD. Fuentes:
+    https://ponentia.eu/data-centers/ y https://www.aragon.es/-/modif2-piga-melusa-tamarite
   - >-
-    Ribera de Navarra: seis proyectos y 382 MW, ahora desglosados gracias a la respuesta del
-    consejero Irujo de 15/11/2025. Son Peralta (132 MW), Valtierra I y II (50 cada uno), Tudela I
-    (50), Arguedas (50) y Ribaforada (50). Solo dos siguen en tramitación, Peralta y uno de
-    Valtierra; a los otros cuatro Industria les devolvió el aval por falta de acceso a la red. Nudos
-    previstos: Castejón 400 kV, La Serna 66, Tudela 66 y Quel 66. Los promotores no se publican: una
-    empresa navarra impulsa los de Ribaforada y Tudela, una madrileña los de Valtierra y Arguedas, y
-    el de Peralta va sin atribuir.
+    Ribera de Navarra: el desglose publicado en noviembre de 2025 recogía Peralta 132 MW y
+    cinco solicitudes de 50 MW en Valtierra I/II, Tudela, Arguedas y Ribaforada; no describe por
+    sí solo su situación actual. Peralta ya tiene ficha como CPD4GREEN: la CNMC documenta la
+    cancelación de su primera solicitud y otra alternativa suspendida durante el conflicto.
+    Los demás promotores y desenlaces requieren expedientes individualizados; no se suman
+    estos 382 MW de solicitudes históricas como capacidad vigente. Fuentes:
+    https://www.diariodenavarra.es/noticias/navarra/2025/11/15/dos-seis-centros-datos-proyectados-ribera-siguen-tramite-dnexclusivo-800176-15.html
+    y https://www.cnmc.es/sites/default/files/6289701.pdf
   - >-
-    Aprisco Group en Asturias: compañía catalana fundada en 2018. En marzo de 2026 ofreció 1.000
-    millones y 700-800 empleos y exigió al Principado 100.000 m² con alta potencia en la zona
-    central, con un plazo de siete días y la amenaza de irse a Galicia o Cantabria. No consta
-    desenlace ni terreno.
+    Aprisco Group / Asturias: la propuesta de marzo de 2026 buscaba 100.000 m² en la zona
+    central. No se ha localizado selección de parcela, proyecto técnico ni desenlace oficial.
+    Las ubicaciones candidatas y el plazo de siete días de su oferta no prueban implantación
+    ni cancelación. Referencia:
+    https://www.datacenterdynamics.com/es/noticias/aprisco-group-tienta-a-asturias-con-un-data-center-y-1000-millones-de-euros-de-inversi%C3%B3n/
   - >-
-    Segundo CPD del Gobierno de Navarra: Nasertic gestiona dos, y solo el principal, en la calle
-    Orkoien de Pamplona, tiene ficha. La ubicación del segundo no se publica.
+    Madrid Digital / Telefónica: recuperado el expediente ECON/000145/2024 de arrendamiento,
+    adjudicado por acuerdo de 30/05/2025 y formalizado el 14/06/2025 por un máximo de
+    24.559.881,88 euros con IVA. El contrato y los anexos publicados consultados no identifican
+    el edificio adjudicado. No es un nuevo CPD propio ni ese importe un CAPEX de construcción.
+    El pliego exige 400 m² y 500 kW para el inquilino; no son capacidad total del anfitrión.
+    La modificación de noviembre reduce temporalmente la sala a 200 m² por retrasos de
+    migraciones. Falta identificar el anfitrión y comprobar la recepción efectiva. Fuente:
+    https://www.contratos-publicos.comunidad.madrid/contrato-publico/contrato-arrendamiento-espacios-tecnicos-necesarios-albergar-centro-proceso-0
   - >-
-    CPD de la Comunidad de Madrid adjudicado a Telefónica en junio de 2025 por más de 24,5 millones
-    a diez años: no es un emplazamiento nuevo sino un contrato de arrendamiento de espacios
-    técnicos, es decir, capacidad alojada en una instalación de terceros. Ficharlo duplicaría MW ya
-    contados bajo el anfitrión. Debe modelarse como inquilino cuando se identifique dónde está. El
-    expediente original, ECON/000182/2023, quedó desierto el 26/04/2024 pese a tres ofertas
-    (Telefónica, Kyndryl y Data4); falta el expediente de la relicitación de 2024-2025, que diría en
-    qué instalación física se aloja.
+    MasOrange: el Informe de Sostenibilidad 2025 recuperado desde el portal ESG oficial no
+    aporta un inventario de CPD con nombre y dirección. Las noticias sobre una posible venta
+    de cerca de doce centros no acreditan su cierre ni doce instalaciones identificables.
+    Se conserva la búsqueda de inventario y de una comunicación oficial de operación, sin
+    asignar ubicaciones ni comprador. Informe vigente:
+    https://www.orange.es/static/pdf/ES_2025-Informe-de-Sostenibilidad-MasOrange_vdef.pdf
   - >-
-    MasOrange: cerca de doce centros en España puestos en venta, con Templus, CVC DIF y AtlasEdge
-    como candidatos. Ninguna fuente publica el inventario de ubicaciones. El sitio más probable
-    donde estén listados es el Informe de Sostenibilidad 2025 de la compañía.
+    Quetta / Azora: la cartera objetivo sigue siendo seis centros en España y Portugal;
+    Tres Cantos y Molins de Rei son los dos emplazamientos españoles identificados. La
+    mención de Lisboa entre ciudades objetivo no identifica un tercer edificio y no permite
+    calcular que solo quedan tres centros por anunciar. Faltan nombres y ubicaciones de los
+    demás proyectos, sin convertir el objetivo de cartera en seis compromisos firmes. Fuente:
+    https://www.azora.com/en/blog/azora-in-collaboration-with-core-capital-launches-quetta-platform-to-invest-more-than-e500m-into-iberian-data-centers/
   - >-
-    Quetta (Azora): quedan tres emplazamientos por anunciar, no cuatro. El objetivo declarado en
-    2024 eran seis centros y 60 MW en España y Portugal; hoy tiene fichados Tres Cantos y Molins de
-    Rei, y el tercero conocido es Lisboa, fuera del ámbito peninsular español.
-  - >-
-    Las dos zonas no publicadas de la región Google europe-southwest1: la documentación de Google
-    Cloud lista las tres zonas y a las tres les asigna la misma etiqueta genérica, «Madrid, España».
-    Google no publica direcciones de zona por política, así que la pista solo es cerrable por vía
-    indirecta: contratos de colocation, licencias municipales o permisos de grupos electrógenos. La
-    única de las tres atribuida es la de Alcalá de Henares, herencia de Telefónica y hoy de Nabiax.
+    Google europe-southwest1: Compute Engine enumera tres zonas con ubicación genérica Madrid,
+    sin correspondencia física publicada. El identificador mad-zone1-99037 de Cloud Interconnect
+    en Nabiax Alcalá no es europe-southwest1-a y no permite asignar una zona de cómputo al
+    edificio. Siguen pendientes las relaciones físicas de las tres zonas, sin multiplicar
+    capacidad ni confundir un punto de interconexión con servidores. Fuentes:
+    https://docs.cloud.google.com/compute/docs/regions-zones?hl=es
+    y https://docs.cloud.google.com/network-connectivity/docs/interconnect/concepts/choosing-colocation-facilities

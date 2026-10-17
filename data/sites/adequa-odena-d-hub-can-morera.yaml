@@ -21,14 +21,20 @@ ubicacion:
   fuentes: [src-1, src-2]
 
 estado: anunciado
-estado_detalle: >-
-  Campus promovido por Adequa Real Estate sobre la finca privada de Can Morera. El Pla Director
-  Urbanístic de l'Activitat Econòmica de la Conca d'Òdena, aprobado inicialmente en 2022, dejó
-  fuera el ámbito de la Plataforma Ferroviària Nord donde se sitúa Can Morera, y la promotora
+estado_detalle: Campus promovido por Adequa Real Estate sobre la finca privada de Can Morera. El Pla
+  Director Urbanístic de l'Activitat Econòmica de la Conca d'Òdena, aprobado inicialmente en 2022,
+  dejó fuera el ámbito de la Plataforma Ferroviària Nord donde se sitúa Can Morera, y la promotora
   presentó alegaciones. En marzo de 2026 el proyecto figuraba entre los 26 que la Generalitat
   estudia declarar estratégicos o de interés general superior; según la Cadena SER, Òdena concentra
-  tres de esos proyectos. No consta aprobación urbanística ni licencia.
-estado_fuentes: [src-3, src-4, src-5]
+  tres de esos proyectos. No consta aprobación urbanística ni licencia. La cartera actual de Adequa
+  mantiene DHUB Òdena con iniciativas en estudio para atraer operadores. No publica capacidad,
+  parcela ni licencia.
+
+estado_fuentes:
+  - src-3
+  - src-4
+  - src-5
+  - src-adequa-dhub-actual
 
 potencia:
   - tipo: no_especificado
@@ -46,6 +52,8 @@ potencia:
     fecha_dato: "2023-09-01"
     fuentes: [src-2]
 
+    nota: Lectura histórica del artículo de 2023, hoy no recuperable. La ficha actual de Adequa mantiene
+      el proyecto en estudio pero no publica MW; no se ratifica esta cifra como capacidad actual.
 incertidumbres:
   - campo: potencia
     descripcion: >-
@@ -62,12 +70,14 @@ incertidumbres:
       100 hectáreas». No se registra ninguna de las dos como dato.
     fuentes: [src-1, src-2]
   - campo: estado
-    descripcion: >-
-      El material del promotor accesible es de 2020-2023 y el planeamiento director de la Conca
-      d'Òdena excluyó el ámbito de Can Morera. La única señal reciente es la inclusión del
-      proyecto en la lista de la Generalitat de marzo de 2026, que es una solicitud en estudio, no
-      una autorización.
-    fuentes: [src-3, src-4, src-5]
+    descripcion: La cartera actual del promotor confirma DHUB Òdena como iniciativa en estudio para
+      atraer operadores. No publica licencia ni resolución urbanística. Los antecedentes de Can Morera y
+      su exclusión del PDU proceden del material histórico, hoy no recuperado.
+    fuentes:
+      - src-3
+      - src-4
+      - src-5
+      - src-adequa-dhub-actual
   - campo: ubicacion
     descripcion: >-
       La finca es un ámbito rústico al norte de la A-2, fuera del casco urbano de Òdena. No se
@@ -79,7 +89,7 @@ enlaces_proyecto:
   - "https://adequa-re.cat/ca/data-center-hub-can-morera-2/"
 
 confianza: baja
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: 2026-10-17
 
 fuentes:
   - id: src-1
@@ -111,7 +121,7 @@ fuentes:
     editor: "Cadena SER"
     tipo: prensa_general
     fecha_publicacion: "2026-03-25"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       Entre els principals promotors hi ha la immobiliària Adequa, que vol instal·lar data centers
       a Santa Bàrbara (el Montsià) i Òdena (l'Anoia) de 200 MW cada un. De fet, Òdena concentra 3
@@ -143,7 +153,15 @@ fuentes:
     editor: "Ebre Digital"
     tipo: prensa_general
     fecha_publicacion: "2026-03-27"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       La seva promotora, Adequa, preveu que tingui una capacitat de 200 MW, els mateixos que
       planifica per l'altra implantació que té programada a Òdena (l'Anoia).
+  - id: src-adequa-dhub-actual
+    url: https://adequa.pro/es/portfolio/dhub/
+    titulo: DHUB — Data Center, Òdena
+    editor: Adequa
+    tipo: empresa
+    cita: Actualmente, el proyecto cuenta con iniciativas avanzadas en estudio orientadas a atraer
+      operadores de data center de primer nivel
+    fecha_consulta: 2026-10-17

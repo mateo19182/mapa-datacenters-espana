@@ -28,23 +28,22 @@ estado_detalle: >-
   Microsoft, y dejó pendientes el anexo de la licencia de actividad de la subestación de
   Microsoft y la licencia de 66 kV. El Ayuntamiento y la prensa local describen un complejo con
   dos centros de procesamiento de datos.
-estado_fuentes: [src-1, src-2, src-3]
+estado_fuentes: [ src-1, src-2, src-3, src-ms-comunidad-20260305 ]
 
 potencia: []
 
 conexion_electrica:
-  subestacion: null
-  tension_kv: null
-  titular_red: "Iberdrola"
+  subestacion: ST Microsoft SE Algete Datacenter 66/20 kV
+  tension_kv: 66
+  titular_red: null
   mw_solicitados: null
   mw_concedidos: null
-  nota: >-
-    El Ayuntamiento de Algete cita entre las licencias del proyecto una «Licencia de Actividad de
-    Subestación de Iberdrola para Microsoft» ya resuelta, un «Anexo de Licencia de Actividad
-    Subestación de Microsoft» pendiente y una «Licencia de 66 kw» pendiente, que por el contexto
-    corresponde a una tensión de 66 kV y no a una potencia. No se publica el nombre de la
-    subestación ni los MW del punto de conexión, así que la tensión se deja sin registrar.
-  fuentes: [src-2]
+  nota: Resolución de 14 de octubre de 2022, publicada el 21 de noviembre, autoriza construir la SET
+    con dos transformadores de 45 MVA cada uno. No acredita explotación ni publica MW otorgados; no
+    se suman los transformadores ni se convierten MVA a MW. La SET se sitúa en calle Torrecilla,
+    P.I.Río de Janeiro; no se traslada su coordenada al edificio CPD.
+  fuentes:
+    - src-bocm-set-20221121
 
 refrigeracion: "Microsoft indica refrigeración evaporativa directa para los centros de datos de la región, con uso de agua en torno al 15% del tiempo de operación."
 
@@ -58,16 +57,20 @@ incertidumbres:
       registra como dato.
     fuentes: [src-1, src-4]
   - campo: estado
-    descripcion: >-
-      La última información municipal localizada es de agosto de 2023 y describe licencias en
-      curso. No se ha encontrado confirmación pública posterior de la puesta en servicio.
-    fuentes: [src-1, src-2]
+    descripcion: La nota de apertura de la región de 2024 situaba este emplazamiento en construcción.
+      Microsoft confirma en marzo 2026 la presencia de centros en Algete, Meco y San Sebastián de
+      los Reyes, pero no identifica edificios o fases entregadas, fechas de recepción ni MW en
+      servicio. La operación regional no se atribuye automáticamente a la totalidad del diseño de
+      esta ficha.
+    fuentes: [ src-1, src-2, src-ms-comunidad-20260305 ]
   - campo: ubicacion
-    descripcion: "No consta dirección ni parcela; la geolocalización queda a nivel de municipio."
-    fuentes: [src-1]
+    descripcion: El BOCM identifica la subestación del Datacenter en calle Torrecilla, polígono Río de
+      Janeiro. No establece la parcela o el edificio del CPD; no se usa el punto UTM de la SET como
+      coordenada de servidores.
+    fuentes: [ src-1, src-bocm-set-20221121 ]
 
 confianza: baja
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
   - id: src-1
@@ -75,7 +78,7 @@ fuentes:
     titulo: "Microsoft abre su primera región cloud en España para acelerar el desarrollo de la Economía de la IA"
     editor: "Microsoft"
     tipo: empresa
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "Microsoft avanza en la construcción de centros de datos adicionales ubicados en Algete, Meco y San Sebastián de los Reyes, que se inaugurarán próximamente."
   - id: src-2
     url: "https://www.aytoalgete.es/index.php?id=1205%3Adespues-de-25-meses-de-espera-el-nuevo-gobierno-de-algete-logra-agilizar-las-licencias-para-el-data-center-de-microsoft&Itemid=455&option=com_k2&view=item"
@@ -83,7 +86,7 @@ fuentes:
     editor: "Ayuntamiento de Algete"
     tipo: oficial
     fecha_publicacion: "2023-08-02"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: "Entre las licencias resueltas, se encuentran la Licencia de Actividad MAD02, con 25 meses de retraso, y la Licencia de Actividad de Subestación de Iberdrola para Microsoft, con 18 meses de retraso. Ambas han sido resueltas en un mes ... El Anexo de Licencia de Actividad Subestación de Microsoft, con otros 18 meses de retraso, podría estar listo para la próxima semana. Sin embargo, la Licencia de 66 kw, con 5 meses de retraso, tendrá que esperar hasta septiembre."
   - id: src-3
     url: "https://www.cronicanorte.es/la-multinacional-microsoft-instala-en-la-localidad-de-algete-un-importante-centro-de-datos-referente-en-toda-europa/176951"
@@ -100,3 +103,20 @@ fuentes:
     tipo: consultora
     fecha_consulta: "2026-08-31"
     cita: "Algete Microsoft Azure 003 is a hyperscale data centre operated by Microsoft in Algete, Spain, in the Madrid market. ... 60 MW est."
+  - id: src-ms-comunidad-20260305
+    url: https://news.microsoft.com/source/emea/features/microsoft-abre-una-nueva-convocatoria-del-fondo-comunitario-de-madrid-para-promover-el-impacto-social-en-la-region/?lang=es
+    titulo: Microsoft abre nueva convocatoria del Fondo Comunitario de Madrid
+    editor: Microsoft
+    tipo: empresa
+    fecha_publicacion: 2026-03-05
+    fecha_consulta: "2026-10-17"
+    cita: la compañía cuenta con centros de datos
+  - id: src-bocm-set-20221121
+    url: https://www.bocm.es/boletin/CM_Orden_BOCM/2022/11/21/BOCM-20221121-38.PDF
+    titulo: Autorización administrativa y proyecto de la ST Microsoft SE Algete Datacenter
+    editor: Comunidad de Madrid / BOCM
+    tipo: oficial
+    fecha_publicacion: 2022-11-21
+    fecha_consulta: "2026-10-17"
+    cita: Autorizar a Microsoft Ibérica, S.R.L., la construcción de una subestación denominada ST
+      Microsoft SE Algete Datacenter

@@ -1,5 +1,5 @@
 id: trevenque-granada-cloud-center-andalucia
-nombre: "Cloud Center Andalucía — Grupo Trevenque (Granada)"
+nombre: "Trevenque Data Center — Cloud Center Andalucía (Granada)"
 alias:
   - "Cloud Center Andalucía"
   - "CCA"
@@ -15,24 +15,41 @@ ubicacion:
   provincia: "Granada"
   ccaa: "Andalucía"
   direccion: "Calle Pago de Cambea, nave 13, Parque Empresarial Cortijo del Conde, Polígono Sur, 18015 Granada"
-  lat: 37.1734995
-  lon: -3.5995337
-  precision: municipio
-  fuentes: [src-1, src-osm]
+  lat: 37.20076
+  lon: -3.65699
+  precision: aproximada
+  no_derivar: true
+  fuentes: [src-sedes-20261017, src-mapa-20261017]
 
 estado: operativo
 estado_detalle: >-
-  Centro de datos neutral operado por el Grupo Trevenque, en funcionamiento desde noviembre de
-  2012. En 2015 se describía como el mayor centro de datos de Andalucía por capacidad, con más
-  de 1.000 m² y sitio para más de 5.000 servidores físicos, catorce operarios en el centro y
-  clientes en dieciséis países. En junio de 2020 instaló placas solares en la cubierta que
-  cubren en torno al 25 % de la energía que consume.
-estado_fuentes: [src-1, src-2, src-4]
+  Centro de datos neutral de Grupo Trevenque, antes denominado Cloud Center Andalucía,
+  operativo desde noviembre de 2012. El operador identifica su nave en Pago de Cambea 13 y
+  publica capacidad para 100 racks y 3.000 servidores físicos. La entrevista de septiembre de
+  2026 con sus responsables y HPE describe el despliegue físico de HPE Private Cloud AI en
+  este centro de Granada, sin modelos ni recuento de GPU.
+estado_fuentes: [src-2, src-3, src-4, src-sedes-20261017, src-housing-20261017, src-hpe-20260922]
 fecha_puesta_en_servicio: "2012-11"
 
 potencia: []
 
-superficie_construida_m2: 1000
+computo:
+  - tipo: gpu
+    ambito: sistema
+    sistema: HPE Private Cloud AI de Trevenque
+    operador_computo: Grupo Trevenque
+    modelo: GPU NVIDIA; modelo no publicado
+    tipo_unidad: acelerador
+    estado: operativo
+    modalidad: instalado
+    fecha_dato: "2026-09-22"
+    fuentes: [src-hpe-20260922, src-sedes-20261017]
+    nota: >-
+      La entrevista describe diseño, despliegue físico y validación en el centro de Granada.
+      No publica configuración, cantidad ni fecha de instalación. No se deduce el inventario
+      a partir de las configuraciones genéricas de HPE Private Cloud AI.
+
+superficie_construida_m2: null
 inversion_anunciada_eur: null
 refrigeracion: null
 enlaces_proyecto:
@@ -41,10 +58,10 @@ enlaces_proyecto:
 incertidumbres:
   - campo: potencia
     descripcion: >-
-      Ni Trevenque ni la prensa publican potencia eléctrica del centro. La única magnitud de
-      capacidad difundida es el número de servidores físicos alojables (más de 5.000), que no es
-      convertible a MW. Campo de potencia vacío.
-    fuentes: [src-2, src-4]
+      No se publica potencia eléctrica del centro. El catálogo actual describe capacidad para
+      100 racks y 3.000 servidores, distinta de los más de 5.000 servidores de las noticias
+      históricas. Son capacidades de alojamiento, no inventario instalado ni MW.
+    fuentes: [src-2, src-4, src-housing-20261017]
   - campo: operador
     descripcion: >-
       El cruce por compañías que originó esta pista atribuía un centro de datos en Granada a
@@ -55,19 +72,18 @@ incertidumbres:
     fuentes: [src-1, src-2]
   - campo: superficie_construida_m2
     descripcion: >-
-      Los «más de 1.000 m²» son de 2015 y no se ha localizado una cifra actualizada. Se registra
-      como suelo mínimo conocido.
-    fuentes: [src-2]
-  - campo: ubicacion
+      El operador publica más de 1.000 m² entre nave, centro de datos y salas técnicas. Es un
+      límite inferior con ese ámbito, no una superficie construida exacta de 1.000 m².
+    fuentes: [src-2, src-housing-20261017]
+  - campo: computo
     descripcion: >-
-      La dirección procede de la guía sectorial de Data Center Market. Una nota de la propia
-      Trevenque de 2020 sitúa las instalaciones «en el noroeste de Granada capital», mientras que
-      el Parque Empresarial Cortijo del Conde está al sur de la ciudad. Las coordenadas
-      registradas son el centroide municipal, no la nave.
-    fuentes: [src-1, src-3, src-osm]
+      El despliegue de HPE Private Cloud AI queda vinculado al centro propio de Granada, pero no
+      se publican modelo, número de GPU o fecha de instalación. El día de la entrevista no se
+      registra como puesta en servicio del hardware.
+    fuentes: [src-hpe-20260922]
 
 confianza: baja
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
   - id: src-1
@@ -113,10 +129,32 @@ fuentes:
       El Cloud Center Andalucía es, por capacidad, el primer data center de la región de
       Andalucía, con capacidad para albergar más de 5.000 servidores físicos. Puesto en marcha por
       Grupo Trevenque [...] en funcionamiento desde el pasado mes de noviembre.
-  - id: src-osm
-    url: "https://nominatim.openstreetmap.org/search?q=Granada%2C+Andaluc%C3%ADa&format=json&limit=1"
-    titulo: "Nominatim — Granada, Andalucía"
-    editor: "OpenStreetMap / Nominatim"
+  - id: src-sedes-20261017
+    url: https://www.trevenque.es/quienes-somos/nuestras-sedes/
+    titulo: Nuestras sedes, Data Center de Granada
+    editor: Grupo Trevenque
+    tipo: empresa
+    fecha_consulta: "2026-10-17"
+    cita: "Data Center [...] C/ Pago de Cambea nave 13, Parque Empresarial Cortijo del Conde, 18015 Granada"
+  - id: src-housing-20261017
+    url: https://www.trevenque.es/servicio/housing/
+    titulo: Housing, características de Trevenque Data Center
+    editor: Grupo Trevenque
+    tipo: empresa
+    fecha_consulta: "2026-10-17"
+    cita: "Capacidad actual de 100 Racks, caben 3.000 servidores físicos"
+  - id: src-hpe-20260922
+    url: https://www.muycomputerpro.com/2026/09/22/trevenque-group-hpe-private-cloud-ai
+    titulo: Trevenque Group lleva la IA soberana a sus servicios cloud con HPE
+    editor: MuyComputerPRO, entrevista con Trevenque y HPE
+    tipo: prensa_especializada
+    fecha_publicacion: "2026-09-22"
+    fecha_consulta: "2026-10-17"
+    cita: "Después se llevó a cabo el despliegue físico en el centro de datos de Granada"
+  - id: src-mapa-20261017
+    url: https://mapcarta.com/es/W591288487
+    titulo: Cloud Center Andalucía, edificio en Calle Pago de Cambea
+    editor: Mapcarta / OpenStreetMap
     tipo: otro
-    fecha_consulta: "2026-08-31"
-    cita: "Granada, Comarca de la Vega de Granada, Granada, Andalucía, España — lat 37.1734995, lon -3.5995337"
+    fecha_consulta: "2026-10-17"
+    cita: "Cloud Center Andalucía [...] Calle Pago de Cambea [...] 37.20076° [...] -3.65699° [...] way 591288487"

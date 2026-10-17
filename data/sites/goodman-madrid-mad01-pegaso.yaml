@@ -18,27 +18,28 @@ ubicacion:
   precision: municipio
   fuentes: [src-1]
 
-estado: en_construccion
+estado: anunciado
 estado_detalle: >-
-  Reconversión de suelo industrial en desuso de la antigua fábrica de Iveco-Pegaso, dentro de la
-  operación que Goodman denomina «Madrid Gate». La compañía lo incluye en su cartera de proyectos
-  «en construcción o cuyo desarrollo está previsto que comience antes de junio de 2026» y lo
-  comercializa como disponible, en el corredor este de la A-2, a unos 7 km del nodo de San Blas.
-estado_fuentes: [src-1, src-2]
+  MAD01 es el proyecto de Goodman sobre suelo de la antigua fábrica de Iveco-Pegaso, en Madrid Gate.
+  La cartera actual mantiene 6 MW IT y la dirección C/Provisional Iveco-Pegaso Cinco,2. El informe
+  Q1 FY26 lo incluyó en un conjunto de proyectos en obra o con trabajos previos para iniciarse antes
+  de junio 2026, sin individualizar el avance de Madrid. No se ha localizado confirmación de inicio
+  de construcción del CPD ni de apertura.
+estado_fuentes: [ src-1, src-2, src-cartera-20261017, src-q1-fy26 ]
 
 potencia:
   - tipo: it
     valor_mw: 6
     ambito: fase
     referencia: "Primera fase — «6 MW IT power»"
-    estado_asociado: en_construccion
+    estado_asociado: anunciado
     fecha_dato: "2026-08-31"
-    fuentes: [src-1, src-2]
+    fuentes: [ src-1, src-2, src-cartera-20261017 ]
   - tipo: it
     valor_mw: 5.7
     ambito: fase
     referencia: "Segunda fase — «second phase of 5,7 MW IT»"
-    estado_asociado: en_construccion
+    estado_asociado: anunciado
     fecha_dato: "2026-08-31"
     fuentes: [src-1]
   - tipo: conexion_red
@@ -46,14 +47,14 @@ potencia:
     ambito: edificio
     edificio: "MAD01"
     referencia: "Potencia disponible en el emplazamiento"
-    estado_asociado: en_construccion
+    estado_asociado: anunciado
     fecha_dato: "2026-08-31"
     fuentes: [src-1, src-2]
   - tipo: conexion_red
     valor_mw: 8.6
     ambito: fase
     referencia: "Potencia adicional asegurada, sobre los 9 MW ya disponibles en el emplazamiento"
-    estado_asociado: en_construccion
+    estado_asociado: anunciado
     fecha_dato: "2026-08-31"
     fuentes: [src-1]
 
@@ -80,12 +81,24 @@ incertidumbres:
       de Iveco-Pegaso; un directorio de mercado sitúa la instalación en la Calle de Lola Flores
       (San Blas-Canillejas). No se ha fijado un punto exacto.
     fuentes: [src-1]
+  - campo: estado
+    descripcion: La inclusión en una cartera mixta de obra y preconstrucción no permite marcar MAD01
+      individualmente comoen_construccion. Tampoco el paso del plazo objetivo de junio 2026 acredita
+      inicio o entrega. Se conserva el proyecto anunciado y la capacidad prevista, hasta una
+      licencia, parte de obra o comunicación individualizada.
+    fuentes: [ src-q1-fy26, src-cartera-20261017 ]
+  - campo: potencia
+    descripcion: La cartera actual vuelve a publicar 6 MW IT, pero no confirma la entrega de esos MW ni
+      las ampliaciones 5,7 MW IT y 8,6 MW eléctricos de la ficha histórica. Los enlaces históricos
+      no devolvieron su contenido durante esta revisión; sus lecturas se conservan con su
+      procedencia y sin atribuirles operación.
+    fuentes: [ src-1, src-2, src-cartera-20261017 ]
 
 enlaces_proyecto:
   - "https://es.goodman.com/en/our-properties/properties-for-lease/mad-01"
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
   - id: src-1
@@ -109,3 +122,18 @@ fuentes:
       Data centre projects under construction or scheduled to commence development by June 2026
       include: ... MAD01 ... Madrid – MAD01 ... 6MW IT power ... 9MW of power capacity secured ...
       Located in Madrid Central Availability Zone
+  - id: src-cartera-20261017
+    url: https://www.goodman.com/our-properties/data-centres/global-data-centre-pipeline
+    titulo: "Global data centre pipeline: MAD01"
+    editor: Goodman
+    tipo: empresa
+    fecha_consulta: "2026-10-17"
+    cita: 6 MW IT power
+  - id: src-q1-fy26
+    url: https://www.goodman.com/-/media/project/goodman/global/files/investor-centre/gmg-goodman-group/announcements/asx-announcements/2025/q1-fy26-operational-update-final.pdf
+    titulo: Q1 FY26 Operational Update, cartera de centros de datos, página 4
+    editor: Goodman
+    tipo: empresa
+    fecha_consulta: "2026-10-17"
+    cita: Projects are either under construction or with substantially progressed site infrastructure
+      and pre-construction works enabling FY26 starts.

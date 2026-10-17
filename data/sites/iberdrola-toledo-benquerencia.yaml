@@ -8,31 +8,38 @@ propietario: "Iberdrola"
 modelo: desconocido
 
 ubicacion:
-  municipio: "Toledo"
-  provincia: "Toledo"
-  ccaa: "Castilla-La Mancha"
-  direccion: "Calle Río Jarama, polígono industrial Santa María de Benquerencia (antigua Standard Eléctrica)"
-  lat: 39.8788319
-  lon: -3.9314502
-  precision: aproximada
-  fuentes: [src-elespanol, src-osm]
+  municipio: Toledo
+  provincia: Toledo
+  ccaa: Castilla-La Mancha
+  direccion: Calle Río Jarama, polígono industrial Santa María de Benquerencia (antigua Standard Eléctrica)
+  lat: null
+  lon: null
+  precision: municipio
+  fuentes:
+    - src-elespanol
+    - src-osm
+  no_derivar: true
 
 estado: anunciado
-estado_detalle: >-
-  Iberdrola mantiene el plan de un centro de procesamiento de datos en el polígono
-  industrial de Toledo pese al rechazo del MITECO a la fotovoltaica FV Aceca
-  (347,51 MW nominales, 726.180 módulos, 531 hectáreas en Toledo, Mocejón y
-  Almonacid) que debía dar soporte energético a la operación. La Dirección General
-  de Calidad y Evaluación Ambiental emitió declaración de impacto ambiental
-  desfavorable en agosto de 2026 por impacto "crítico e incompatible" sobre
-  avifauna protegida —águila imperial ibérica, sisón común y cernícalo primilla—;
-  además, al no obtener las autorizaciones en plazo, Red Eléctrica comunicó a
-  finales de junio de 2026 la caducidad del permiso de acceso y conexión de la
-  fotovoltaica. Iberdrola ha manifestado su "total disconformidad". Según El
-  Español, a 19 de agosto de 2026 "el plan sigue plenamente vigente": la compañía
-  busca reubicar los paneles y sostiene que el nudo de Aceca conserva sus derechos
-  de evacuación por el ciclo combinado.
-estado_fuentes: [src-elespanol, src-elmundo]
+estado_detalle: 'Iberdrola mantiene el plan de un centro de procesamiento de datos en el polígono
+  industrial de Toledo pese al rechazo del MITECO a la fotovoltaica FV Aceca (347,51 MW nominales,
+  726.180 módulos, 531 hectáreas en Toledo, Mocejón y Almonacid) que debía dar soporte energético a
+  la operación. La Dirección General de Calidad y Evaluación Ambiental emitió declaración de impacto
+  ambiental desfavorable en agosto de 2026 por impacto "crítico e incompatible" sobre avifauna
+  protegida —águila imperial ibérica, sisón común y cernícalo primilla—; además, al no obtener las
+  autorizaciones en plazo, Red Eléctrica comunicó a finales de junio de 2026 la caducidad del
+  permiso de acceso y conexión de la fotovoltaica. Iberdrola ha manifestado su "total
+  disconformidad". Según El Español, a 19 de agosto de 2026 "el plan sigue plenamente vigente": la
+  compañía busca reubicar los paneles y sostiene que el nudo de Aceca conserva sus derechos de
+  evacuación por el ciclo combinado. En septiembre de 2026 el alcalde anunció un centro de datos sin
+  nombrar al promotor; El Español lo identifica con el proyecto de Iberdrola de la antigua Standard
+  Eléctrica y lo relaciona con Echelon. Esta atribución sigue sin documento técnico que permita
+  fusionarlo con Madrid Sur.'
+
+estado_fuentes:
+  - src-elespanol
+  - src-elmundo
+  - src-toledo-septiembre
 
 potencia:
   - tipo: generacion_asociada
@@ -99,8 +106,15 @@ incertidumbres:
       propia sobre el CPD de Toledo capital.
     fuentes: [src-elespanol, src-elmundo]
 
+  - campo: ubicacion
+    descripcion: El punto anterior procedía de geocodificar la calle Río Jarama, sin identificar la
+      parcela adquirida. La dirección periodística se conserva, pero no se presenta ese punto de calle
+      como ubicación del CPD.
+    fuentes:
+      - src-elespanol
+      - src-toledo-septiembre
 confianza: baja
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: 2026-10-17
 
 fuentes:
   - id: src-elespanol
@@ -109,7 +123,7 @@ fuentes:
     editor: "El Digital de Castilla-La Mancha (El Español)"
     tipo: prensa_general
     fecha_publicacion: "2026-08-19"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       El proyecto contemplaba la instalación de 726.180 módulos bifaciales y una
       potencia nominal de 347,51 MW sobre 531 hectáreas valladas en los términos de
@@ -177,3 +191,11 @@ fuentes:
       Calle Río Jarama, Polígono Industrial Santa María de Benquerencia, Santa
       María de Benquerencia, Toledo, Castilla-La Mancha, 45007, España — lat
       39.8788319, lon -3.9314502
+  - id: src-toledo-septiembre
+    url: https://www.elespanol.com/eldigitalcastillalamancha/region/toledo/20260917/centro-datos-cientos-empleos-pabellon-publico-privado-anuncios-alcalde-toledo-viene/1003744386571_0.amp.html
+    titulo: "Toledo tendrá un centro de datos: anuncio municipal e identificación periodística del proyecto"
+    editor: El Español de Castilla-La Mancha
+    tipo: prensa_general
+    fecha_publicacion: 2026-09-17
+    cita: el centro de datos que proyecta Iberdrola en los terrenos de la antigua Standard Eléctrica
+    fecha_consulta: 2026-10-17

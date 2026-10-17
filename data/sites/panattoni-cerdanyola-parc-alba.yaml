@@ -14,30 +14,33 @@ ubicacion:
   provincia: "Barcelona"
   ccaa: "Cataluña"
   direccion: "Parc de l'Alba, Camí Ral, Cerdanyola del Vallès"
-  lat: 41.485618
-  lon: 2.1076426
-  precision: aproximada
+  lat: null
+  lon: null
+  no_derivar: true
+  precision: municipio
   fuentes: [src-1, src-2, src-alba]
 
-estado: en_construccion
+estado: permisos_concedidos
 estado_detalle: >-
   Panattoni compró la parcela al Consorci del Parc de l'Alba y obtuvo la licencia
-  de obra para la primera fase de 42 MW. Las obras de conexión eléctrica se
-  ejecutaron entre enero y junio de 2025; la fase 1 se anuncia para finales de
-  2026 con un plazo de obra de 14 meses. La segunda fase (DC02) figura en
+  de obra para la primera fase de 42 MW. En enero de 2025 anunció adjudicar la
+  conexión eléctrica y terminarla en junio; no se ha localizado acta de terminación
+  ni confirmación primaria del inicio del edificio. El dosier de marzo de 2026
+  declara el acceso de 42 MW concedido y la licencia disponible. La entrega de la
+  fase 1 a finales de 2026 sigue siendo una previsión. La segunda fase (DC02) figura en
   directorios como planificada para 2028. La compraventa se formalizó el 11 de
   abril de 2023 por 30,67 millones de euros según el INCASÒL.
-estado_fuentes: [src-1, src-2, src-3]
+estado_fuentes: [src-1, src-2, src-3, src-4, src-panattoni-licencia]
 
 potencia:
   - tipo: instalada_total
     valor_mw: 88
     ambito: campus
     referencia: "Potencia total instalada del campus (fases 1 y 2)"
-    estado_asociado: en_construccion
+    estado_asociado: anunciado
     fecha_dato: "2025"
     fuentes: [src-1]
-    nota: "La fuente dice literalmente '88 MW de potencia total instalada'."
+    nota: "La fuente dice '88 MW de potencia total instalada' para el objetivo de las dos fases; no acredita su entrega."
   - tipo: instalada_total
     valor_mw: 42
     ambito: campus
@@ -53,14 +56,14 @@ potencia:
     valor_mw: 42
     ambito: fase
     referencia: "Fase 1 (DC01)"
-    estado_asociado: en_construccion
+    estado_asociado: permisos_concedidos
     fecha_dato: "2025"
     fuentes: [src-1, src-4]
   - tipo: conexion_red
     valor_mw: 42
     ambito: fase
     referencia: "Potencia de acceso concedida por Endesa para la fase I"
-    estado_asociado: en_construccion
+    estado_asociado: permisos_concedidos
     fecha_dato: "2026-03"
     fuentes: [src-4]
     nota: >-
@@ -77,7 +80,7 @@ potencia:
 
 fases:
   - nombre: "Fase 1 (DC01)"
-    estado: en_construccion
+    estado: permisos_concedidos
     fecha_puesta_en_servicio: "2026"
     superficie_m2: 21292
     fuentes: [src-1, src-2, src-4]
@@ -98,23 +101,24 @@ conexion_electrica:
     emplazamiento posible de una nueva subestación.
   fuentes: [src-4, src-5]
 
-superficie_parcela_m2: 50169
+superficie_parcela_m2: 60859
+superficie_construida_m2: 50169
 inversion_anunciada_eur: 300000000
 
 incertidumbres:
   - campo: ubicacion
     descripcion: >-
-      Las coordenadas son el centroide del Parc de l'Alba según Nominatim, no la
-      parcela concreta del proyecto. Precisión aproximada. El INCASÒL sitúa la
+      El punto anterior era el centroide del Parc de l'Alba, no la parcela del
+      proyecto. Se retira hasta disponer de un pin identificado. El INCASÒL sitúa la
       parcela a lo largo de la Avinguda de la Ciència, mientras que el directorio
       Baxtel la sitúa en Camí Ral.
     fuentes: [src-2, src-3, src-alba]
   - campo: potencia
     descripcion: >-
       La fuente da 88 MW como "potencia total instalada" del campus y desglosa 42
-      MW + 46 MW por fases, pero no indica cuánta de esa potencia es carga TI ni
-      cuál es la potencia de acceso concedida en el punto de conexión.
-    fuentes: [src-1]
+      MW + 46 MW por fases, pero no indica cuánta es carga TI. El dosier sí declara
+      acceso concedido de 42 MW para la fase 1; no acredita 88 MW concedidos.
+    fuentes: [src-1, src-4]
   - campo: potencia
     descripcion: >-
       La nota del INCASÒL de abril de 2023 atribuye al campus "una potència
@@ -125,12 +129,10 @@ incertidumbres:
     fuentes: [src-1, src-3]
   - campo: superficie_parcela_m2
     descripcion: >-
-      El valor registrado de 50.169 m² procede de prensa especializada, pero el
-      dosier del promotor lo describe como superficie construida total del campus
-      ("TOTAL: 50,169 sq.m, max. buildable area 62,162 sq.m") y cifra la parcela
-      en 60.859 m². El INCASÒL habla de una parcela de 68.000 m² y la nota del
-      propio Panattoni de 2023, de 60.000 m². Las cuatro cifras se conservan sin
-      elegir entre ellas.
+      Se adoptan los 60.859 m² de parcela del dosier de marzo de 2026. Sus 50.169 m²
+      son la superficie construida prevista de las dos fases, no la parcela ni
+      obra terminada. La nota del INCASÒL de 2023 daba 68.000 m² y la de Panattoni,
+      60.000 m²; no se ha localizado el deslinde que explique esa diferencia.
     fuentes: [src-1, src-3, src-4]
   - campo: conexion_electrica
     descripcion: >-
@@ -139,17 +141,31 @@ incertidumbres:
       localizado la autorización administrativa de la instalación eléctrica ni
       la potencia de acceso de la fase 2.
     fuentes: [src-4]
+  - campo: estado
+    descripcion: >-
+      Baxtel etiqueta el proyecto como en construcción, pero la nota primaria de
+      enero de 2025 anunciaba las obras futuras y el dosier de marzo de 2026
+      ofrece desarrollar el edificio con licencia y acceso concedidos. Se conserva
+      el último hito acreditado sin dar el calendario por ejecutado.
+    fuentes: [src-2, src-4, src-panattoni-licencia]
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
+  - id: src-panattoni-licencia
+    url: "https://panattonieurope.com/es-es/noticias/panattoni-obtiene-licencia-de-obra-para-el-desarrollo-de-su-data-center-de-42-mw-de-potencia-en-barcelona"
+    titulo: "Panattoni obtiene licencia de obra para el desarrollo de su Data Center de 42 MW de potencia en Barcelona"
+    editor: "Panattoni"
+    tipo: empresa
+    fecha_consulta: "2026-10-17"
+    cita: "Las obras para conectar los 42 MW de potencia eléctrica en media tensión a la parcela [...] se adjudicarán en el transcurso de este mes"
   - id: src-1
     url: "https://observatorioinmobiliario.es/noticias/logistica/panattoni-invierte-300-millones-en-la-primera-fase-de-su-centro-de-datos-en-barcelona/"
     titulo: "Panattoni invierte 300 millones en la primera fase de su centro de datos en Barcelona"
     editor: "Observatorio Inmobiliario"
     tipo: prensa_especializada
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: >-
       ubicado en el Parc de l'Alba de Cerdanyola del Vallès, tras obtener la
       licencia de obra para desarrollar un campus tecnológico de 50.169 m2 y 88
@@ -170,7 +186,7 @@ fuentes:
     editor: "Generalitat de Catalunya — INCASÒL"
     tipo: oficial
     fecha_publicacion: "2023-04-11"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       Els terrenys tenen una superfície de 68.000 m2 i un preu de venda de 30,67
       milions d'euros. En aquesta parcel·la, Panattoni preveu la construcció d'un
@@ -183,7 +199,7 @@ fuentes:
     editor: "Panattoni Europe"
     tipo: empresa
     fecha_publicacion: "2026-03-02"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       Panattoni has already been granted with 42 MWs for phase I, by Endesa ...
       ST Codonyers – at 800 m distance, connected to the plot which provides 42

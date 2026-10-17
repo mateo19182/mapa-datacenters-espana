@@ -7,9 +7,11 @@ const PISTAS = [
   ['Aprisco', 'aprisco-asturias', 'Localizar el proyecto de Aprisco en Asturias'],
   ['Segundo CPD del Gobierno de Navarra', 'navarra-segundo-cpd', 'Localizar el segundo CPD del Gobierno de Navarra'],
   ['CPD de la Comunidad de Madrid', 'madrid-cpd-arrendado', 'Identificar el centro arrendado por la Comunidad de Madrid'],
+  ['Madrid Digital', 'madrid-cpd-arrendado', 'Identificar el centro arrendado por la Comunidad de Madrid'],
   ['MasOrange', 'masorange', 'Localizar el inventario de MasOrange', 'masorange-inventario-centros'],
   ['Quetta', 'quetta-ubicaciones', 'Identificar los emplazamientos pendientes de Quetta'],
-  ['Las dos zonas', 'google-zonas-madrid', 'Localizar las otras zonas de Google Cloud Madrid'],
+  ['Las dos zonas', 'google-zonas-madrid', 'Localizar las zonas de Google Cloud Madrid'],
+  ['Google europe-southwest1', 'google-zonas-madrid', 'Localizar las zonas de Google Cloud Madrid'],
 ]
 
 export function pistasRevision(pendientes = {}) {

@@ -61,12 +61,20 @@
   "longitud": 2892,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "c2e9058434caedf4",
+   "hash": "935e38b0adec5d03",
    "longitud": 2923,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "c2e9058434caedf4",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "Nueva sede Banco Popular Madrid, España El edificio ocupa 123.000 m2, con",
+    "despues": "Ciudad de las Comunicaciones de Telefónica Madrid, España La actuación consiste en",
+    "palabras_antes": 141,
+    "palabras_despues": 141
    }
   }
  },
@@ -75,12 +83,20 @@
   "longitud": 1903,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "abafec8f9d0187bd",
+   "hash": "d189b30e777d4c39",
    "longitud": 1903,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "abafec8f9d0187bd",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "35660 Networks 5885 Facilities 76 Campuses 288 Carriers 66464 Connections to Exchanges",
+    "despues": "35661 Networks 5885 Facilities 76 Campuses 288 Carriers 66466 Connections to Exchanges",
+    "palabras_antes": 23,
+    "palabras_despues": 23
    }
   }
  },
@@ -131,12 +147,20 @@
   "longitud": 1978,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "a9a82e338a9eca36",
+   "hash": "317c100a5efc154e",
    "longitud": 1994,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "a9a82e338a9eca36",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "35660 Networks 5885 Facilities 76 Campuses 288 Carriers 66464 Connections to Exchanges",
+    "despues": "35661 Networks 5885 Facilities 76 Campuses 288 Carriers 66467 Connections to Exchanges",
+    "palabras_antes": 23,
+    "palabras_despues": 23
    }
   }
  },
@@ -178,12 +202,21 @@
   "longitud": 17586,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "4741f958c1a0618d",
-   "longitud": 17400,
+   "hash": "59d6c3a24f167f82",
+   "longitud": 17407,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "4741f958c1a0618d",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "9f37df13947846d2",
+    "antes": "Las izquierdas en su laberinto Comienza la huelga indefinida en la educación",
+    "despues": "Comienza la huelga indefinida en la educación madrileña IPC y revalorización de",
+    "palabras_antes": 13,
+    "palabras_despues": 14
    }
   }
  },
@@ -206,12 +239,20 @@
   "longitud": 994,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "129734fd43409f2d",
+   "hash": "488504d70c975e2b",
    "longitud": 993,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "129734fd43409f2d",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "[{\"place_id\":83475735,\"licence\":\"Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright\",\"osm_type\":\"way\",\"osm_id\":345264050,\"lat\":\"41.4856180\",\"lon\":\"2.1076426\",\"class\":\"landuse\",\"type\":\"industrial\",\"place_rank\":24,\"importan",
+    "despues": "[ { \"addresstype\": \"industrial\", \"boundingbox\": [ \"41.4824359\", \"41.4884747\", \"2.1023853\", \"2.1129202\" ], \"class\":",
+    "palabras_antes": 36,
+    "palabras_despues": 107
    }
   }
  },
@@ -225,12 +266,21 @@
   "longitud": 4886,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "46514876d8b117c1",
-   "longitud": 5116,
+   "hash": "83bed63d6c2430eb",
+   "longitud": 5120,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "46514876d8b117c1",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "7ef551b389c8f397",
+    "antes": "",
+    "despues": "PNV",
+    "palabras_antes": 0,
+    "palabras_despues": 1
    }
   }
  },
@@ -239,12 +289,21 @@
   "longitud": 5389,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "3a6edfab66716cd0",
-   "longitud": 5622,
+   "hash": "aad2fcd549dc53f1",
+   "longitud": 5626,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "3a6edfab66716cd0",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "7ef551b389c8f397",
+    "antes": "",
+    "despues": "PNV",
+    "palabras_antes": 0,
+    "palabras_despues": 1
    }
   }
  },
@@ -253,12 +312,21 @@
   "longitud": 8780,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "464152abd38113c8",
-   "longitud": 9013,
+   "hash": "ef7d1fc7d9b3e927",
+   "longitud": 9017,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "464152abd38113c8",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "7ef551b389c8f397",
+    "antes": "",
+    "despues": "PNV",
+    "palabras_antes": 0,
+    "palabras_despues": 1
    }
   }
  },
@@ -393,12 +461,21 @@
   "longitud": 11287,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "f071f56196523c1d",
-   "longitud": 11595,
+   "hash": "fdfb2c5f978671ed",
+   "longitud": 11596,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "f071f56196523c1d",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "6a2e43876954db9e",
+    "antes": "Hub PlusInterested",
+    "despues": "Plaza ProInterested",
+    "palabras_antes": 2,
+    "palabras_despues": 2
    }
   }
  },
@@ -419,28 +496,28 @@
  "https://nominatim.openstreetmap.org/search?q=Logro%C3%B1o%2C+La+Rioja&format=json&limit=1": {
   "hash": "642de613cd139e97",
   "longitud": 422,
-  "visto": "2026-10-12",
-  "pendiente": {
-   "hash": "85940b979fbefe7a",
-   "longitud": 422,
-   "detectado": "2026-10-17",
-   "visto": "2026-10-17",
-   "comparacion": {
-    "clase": "sin_comparacion"
-   }
-  }
+  "visto": "2026-10-17"
  },
  "https://baxtel.com/data-center/atlasedge-barcelona-2": {
   "hash": "c5eeb299c7873d4e",
   "longitud": 11390,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "24301fb92891a92a",
-   "longitud": 11697,
+   "hash": "2592b26ee86f96b2",
+   "longitud": 11702,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "24301fb92891a92a",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "8ae41caf208f1ae7",
+    "antes": "SouthInterested",
+    "despues": "Prime ParkInterested",
+    "palabras_antes": 1,
+    "palabras_despues": 2
    }
   }
  },
@@ -531,7 +608,10 @@
    "comparacion": {
     "clase": "metodo"
    }
-  }
+  },
+  "ultimo_fallo": "2026-10-17",
+  "clase": "error",
+  "motivo": "fetch failed"
  },
  "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1125625724545": {
   "hash": "bin:?",
@@ -664,12 +744,21 @@
   "longitud": 11052,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "72c37d03b16021df",
-   "longitud": 11370,
+   "hash": "8b96d4b02c91931f",
+   "longitud": 11378,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "72c37d03b16021df",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "c960e2ffa2de87bd",
+    "antes": "EastInterested",
+    "despues": "North CenterInterested",
+    "palabras_antes": 1,
+    "palabras_despues": 2
    }
   }
  },
@@ -767,31 +856,46 @@
   "longitud": 564,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "9afb90de87341c65",
+   "hash": "eda789148f0e3f48",
    "longitud": 564,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "9afb90de87341c65",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "[{\"place_id\":83660572,\"licence\":\"Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright\",\"osm_type\":\"way\",\"osm_id\":980891038,\"lat\":\"41.3897809\",\"lon\":\"2.1163849\",\"class\":\"amenity\",\"type\":\"research_institute\",\"place_rank\":30,\"",
+    "despues": "[ { \"addresstype\": \"amenity\", \"boundingbox\": [ \"41.3893095\", \"41.3902292\", \"2.1151444\", \"2.1169992\" ], \"class\":",
+    "palabras_antes": 24,
+    "palabras_despues": 60
    }
   }
  },
  "https://www.datacenterdynamics.com/es/noticias/cartagena-se-postula-como-nuevo-hub-digital-con-un-centro-de-datos-refrigerado-con-gas-natural-licuado/": {
   "hash": "00deba14c27fdeb5",
   "longitud": 7889,
-  "visto": "2026-10-17"
+  "visto": "2026-10-17",
+  "ultimo_fallo": "2026-10-17",
+  "clase": "bloqueada",
+  "motivo": "HTTP 403"
  },
  "https://observatorioedc.com/directorio/": {
   "hash": "a740ed75b18503a8",
   "longitud": 25690,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "92ec75aa5a1dfdaa",
+   "hash": "f5dd4f62873a94a9",
    "longitud": 27525,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "92ec75aa5a1dfdaa",
+    "parcial": false,
+    "clase": "formato"
    }
   }
  },
@@ -842,12 +946,20 @@
   "longitud": 8089,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "31603bb87bb74c69",
-   "longitud": 7950,
+   "hash": "ac090fdc753d545d",
+   "longitud": 8316,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "31603bb87bb74c69",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "El Puerto de Huelva acoge la presentación del nuevo servicio marítimo regular",
+    "despues": "Innaero visibiliza en Sevilla proyectos andaluces que están definiendo el futuro de",
+    "palabras_antes": 545,
+    "palabras_despues": 592
    }
   }
  },
@@ -894,12 +1006,20 @@
   "longitud": 1887,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "10f8f8f3947fcef4",
+   "hash": "93854c55a62c36da",
    "longitud": 1887,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "10f8f8f3947fcef4",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "35660 Networks 5885 Facilities 76 Campuses 288 Carriers 66464 Connections to Exchanges",
+    "despues": "35661 Networks 5885 Facilities 76 Campuses 288 Carriers 66467 Connections to Exchanges",
+    "palabras_antes": 23,
+    "palabras_despues": 23
    }
   }
  },
@@ -913,12 +1033,20 @@
   "longitud": 2484,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "50515961f1fe4466",
+   "hash": "da3620b19cf02cad",
    "longitud": 2484,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "50515961f1fe4466",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "35660 Networks 5885 Facilities 76 Campuses 288 Carriers 66464 Connections to Exchanges",
+    "despues": "35661 Networks 5885 Facilities 76 Campuses 288 Carriers 66467 Connections to Exchanges",
+    "palabras_antes": 23,
+    "palabras_despues": 23
    }
   }
  },
@@ -941,12 +1069,16 @@
   "longitud": 6186,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "e814589e1254f1da",
-   "longitud": 6222,
+   "hash": "8e077a82a3a1da8e",
+   "longitud": 6227,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "e814589e1254f1da",
+    "parcial": false,
+    "clase": "formato"
    }
   }
  },
@@ -969,12 +1101,20 @@
   "longitud": 461,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "54488b58105a72c1",
+   "hash": "fffb6b9b74056217",
    "longitud": 461,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "54488b58105a72c1",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "[{\"place_id\":292401566,\"licence\":\"Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright\",\"osm_type\":\"relation\",\"osm_id\":343769,\"lat\":\"41.6490374\",\"lon\":\"-5.0250798\",\"class\":\"boundary\",\"type\":\"administrative\",\"place_rank\":16,",
+    "despues": "[ { \"addresstype\": \"village\", \"boundingbox\": [ \"41.6033945\", \"41.7327901\", \"-5.0849737\", \"-4.9107058\" ], \"class\":",
+    "palabras_antes": 13,
+    "palabras_despues": 49
    }
   }
  },
@@ -1067,12 +1207,21 @@
   "longitud": 11461,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "fc8a973a8963048a",
+   "hash": "fe58db62112e62da",
    "longitud": 12395,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "fc8a973a8963048a",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "e56b0e04e50bf0a0",
+    "antes": "Perfil de la Semana Sergio Criado Cirujeda Director financiero y de Relación",
+    "despues": "Lo más leído Amancio Ortega formaliza la compra de una torre de",
+    "palabras_antes": 338,
+    "palabras_despues": 338
    }
   }
  },
@@ -1095,12 +1244,20 @@
   "longitud": 7715,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "15ff716e45b17b29",
+   "hash": "c9ed39edd41c5b15",
    "longitud": 7762,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "15ff716e45b17b29",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "35660 Networks 5885 Facilities 76 Campuses 288 Carriers 66464 Connections to Exchanges",
+    "despues": "35661 Networks 5885 Facilities 76 Campuses 288 Carriers 66467 Connections to Exchanges",
+    "palabras_antes": 23,
+    "palabras_despues": 23
    }
   }
  },
@@ -1123,12 +1280,20 @@
   "longitud": 10866,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "2d55fc63d48f7b78",
+   "hash": "afb4048231c79b02",
    "longitud": 11230,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "2d55fc63d48f7b78",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "954",
+    "despues": "956",
+    "palabras_antes": 1,
+    "palabras_despues": 1
    }
   }
  },
@@ -1144,12 +1309,32 @@
    "comparacion": {
     "clase": "sin_comparacion"
    }
-  }
+  },
+  "ultimo_fallo": "2026-10-17",
+  "clase": "error",
+  "motivo": "tiempo agotado"
  },
  "https://nominatim.openstreetmap.org/search?q=Carrer+d%27Ifni+26%2C+Sant+Adri%C3%A0+de+Bes%C3%B2s&format=json&limit=3": {
   "hash": "e366b6f54275ad66",
   "longitud": 508,
-  "visto": "2026-10-17"
+  "visto": "2026-10-17",
+  "pendiente": {
+   "hash": "891e585705a6d61c",
+   "longitud": 508,
+   "detectado": "2026-10-17",
+   "visto": "2026-10-17",
+   "comparacion": {
+    "referencia": "aceptada",
+    "fecha": "2026-10-17",
+    "hash_referencia": "e366b6f54275ad66",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "[{\"place_id\":83260125,\"licence\":\"Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright\",\"osm_type\":\"node\",\"osm_id\":6034206367,\"lat\":\"41.4293991\",\"lon\":\"2.2313856\",\"class\":\"place\",\"type\":\"house\",\"place_rank\":30,\"importance\":6",
+    "despues": "[ { \"addresstype\": \"place\", \"boundingbox\": [ \"41.4293491\", \"41.4294491\", \"2.2313356\", \"2.2314356\" ], \"class\":",
+    "palabras_antes": 25,
+    "palabras_despues": 61
+   }
+  }
  },
  "https://www.levante-emv.com/economia/2025/01/28/centro-datos-picassent-consell-anuncia-complejo-centros-datos-113786298.html": {
   "hash": "9afd4f1c60403e8b",
@@ -1179,12 +1364,21 @@
   "longitud": 12033,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "c8c396f0d2927454",
-   "longitud": 12546,
+   "hash": "cd4aa5602cdf42f5",
+   "longitud": 12440,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "c8c396f0d2927454",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "001ba12204bd392b",
+    "antes": "Una joven muere atropellada en Valencia al perder un conductor el control",
+    "despues": "Acusado de violar a una vecina que se negó a hacer un",
+    "palabras_antes": 335,
+    "palabras_despues": 314
    }
   }
  },
@@ -1193,12 +1387,21 @@
   "longitud": 12479,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "66039c950486b3fe",
-   "longitud": 12753,
+   "hash": "e786972e0be44c6c",
+   "longitud": 12758,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "66039c950486b3fe",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "8a364ec906b2fe61",
+    "antes": "CenterInterested",
+    "despues": "North RidgeInterested",
+    "palabras_antes": 1,
+    "palabras_despues": 2
    }
   }
  },
@@ -1212,12 +1415,20 @@
   "longitud": 2168,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "dfbaa5037374d00a",
+   "hash": "67ab72e3a3b699cf",
    "longitud": 2168,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "dfbaa5037374d00a",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "35660 Networks 5885 Facilities 76 Campuses 288 Carriers 66464 Connections to Exchanges",
+    "despues": "35661 Networks 5885 Facilities 76 Campuses 288 Carriers 66467 Connections to Exchanges",
+    "palabras_antes": 23,
+    "palabras_despues": 23
    }
   }
  },
@@ -1240,12 +1451,20 @@
   "longitud": 5875,
   "visto": "2026-10-17",
   "pendiente": {
-   "hash": "ca549ddc6b9dd6cc",
-   "longitud": 5874,
+   "hash": "c96ecea56379ebfc",
+   "longitud": 5870,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "ca549ddc6b9dd6cc",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "Facebook",
+    "despues": "Name",
+    "palabras_antes": 1,
+    "palabras_despues": 1
    }
   }
  },
@@ -1319,12 +1538,20 @@
   "longitud": 7796,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "81a9ad679996f7f5",
-   "longitud": 7743,
+   "hash": "d66119c0b3c74e23",
+   "longitud": 7752,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "81a9ad679996f7f5",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "A información pública las expropiaciones del AVE a Extremadura en 26 municipios",
+    "despues": "Se declara un incendio, ya controlado, en una finca privada del barrio",
+    "palabras_antes": 60,
+    "palabras_despues": 62
    }
   }
  },
@@ -1333,12 +1560,20 @@
   "longitud": 441,
   "visto": "2026-10-17",
   "pendiente": {
-   "hash": "4159fdc1a8d9a27f",
+   "hash": "5652f20f761fe3f3",
    "longitud": 441,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "4159fdc1a8d9a27f",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "[{\"place_id\":294732769,\"licence\":\"Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright\",\"osm_type\":\"relation\",\"osm_id\":344011,\"lat\":\"39.6832230\",\"lon\":\"-3.7727849\",\"class\":\"boundary\",\"type\":\"administrative\",\"place_rank\":16,",
+    "despues": "[ { \"addresstype\": \"town\", \"boundingbox\": [ \"39.5951689\", \"39.7895980\", \"-3.8371190\", \"-3.6583580\" ], \"class\":",
+    "palabras_antes": 12,
+    "palabras_despues": 48
    }
   }
  },
@@ -1408,12 +1643,21 @@
   "longitud": 14900,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "363631dbe6eb68f7",
-   "longitud": 15917,
+   "hash": "22d33ed213f998c3",
+   "longitud": 15925,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "363631dbe6eb68f7",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "4559c15c18336b4a",
+    "antes": "PlazaInterested in this information?Contact us Microsoft operates a data center in Madrid,",
+    "despues": "West StationInterested in this information?Contact us Microsoft operates a data center in",
+    "palabras_antes": 907,
+    "palabras_despues": 908
    }
   }
  },
@@ -1436,12 +1680,21 @@
   "longitud": 11244,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "405174431e4481be",
-   "longitud": 11598,
+   "hash": "ad63b146e6a9e029",
+   "longitud": 11596,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "405174431e4481be",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "ca5e93e9a92f578a",
+    "antes": "UltraInterested",
+    "despues": "ProInterested",
+    "palabras_antes": 1,
+    "palabras_despues": 1
    }
   }
  },
@@ -1450,12 +1703,20 @@
   "longitud": 2445,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "db4c4dc125a06571",
+   "hash": "81899b9ffe01a436",
    "longitud": 2445,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "db4c4dc125a06571",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "35660 Networks 5885 Facilities 76 Campuses 288 Carriers 66464 Connections to Exchanges",
+    "despues": "35661 Networks 5885 Facilities 76 Campuses 288 Carriers 66467 Connections to Exchanges",
+    "palabras_antes": 23,
+    "palabras_despues": 23
    }
   }
  },
@@ -1492,12 +1753,20 @@
   "longitud": 1914,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "eb17bc5f057180a9",
+   "hash": "1d09675bfb8dc131",
    "longitud": 1914,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "eb17bc5f057180a9",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "35660 Networks 5885 Facilities 76 Campuses 288 Carriers 66464 Connections to Exchanges",
+    "despues": "35661 Networks 5885 Facilities 76 Campuses 288 Carriers 66467 Connections to Exchanges",
+    "palabras_antes": 23,
+    "palabras_despues": 23
    }
   }
  },
@@ -1558,7 +1827,10 @@
    "comparacion": {
     "clase": "metodo"
    }
-  }
+  },
+  "ultimo_fallo": "2026-10-17",
+  "clase": "error",
+  "motivo": "fetch failed"
  },
  "https://www.elespanol.com/castilla-y-leon/region/zamora/20260829/dilema-monfarracinos-megacentro-datos-empleo-inversion-ruidos-irreversible-impacto-ambiental/1003744364453_0.html": {
   "hash": "37a072c3c22ae3d5",
@@ -1579,12 +1851,20 @@
   "longitud": 8190,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "688620f94d8ab99b",
+   "hash": "034f45baae709a35",
    "longitud": 7847,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "688620f94d8ab99b",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "Cartagena, en alerta por lluvia: preparan tres colegios por si hubiera que",
+    "despues": "El Hozono Jairis busca alargar su racha a tres triunfos ligueros ante",
+    "palabras_antes": 104,
+    "palabras_despues": 103
    }
   }
  },
@@ -1593,12 +1873,20 @@
   "longitud": 6527,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "9108043be69b1e8d",
+   "hash": "b0bf3e0323348914",
    "longitud": 6184,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "9108043be69b1e8d",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "Cartagena, en alerta por lluvia: preparan tres colegios por si hubiera que",
+    "despues": "El Hozono Jairis busca alargar su racha a tres triunfos ligueros ante",
+    "palabras_antes": 104,
+    "palabras_despues": 103
    }
   }
  },
@@ -1607,12 +1895,20 @@
   "longitud": 3289,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "55e8bc7304105d44",
+   "hash": "9c6472ebb96b2c17",
    "longitud": 3307,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "55e8bc7304105d44",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "35660 Networks 5885 Facilities 76 Campuses 288 Carriers 66464 Connections to Exchanges",
+    "despues": "35661 Networks 5885 Facilities 76 Campuses 288 Carriers 66467 Connections to Exchanges",
+    "palabras_antes": 23,
+    "palabras_despues": 23
    }
   }
  },
@@ -1621,12 +1917,20 @@
   "longitud": 452,
   "visto": "2026-10-17",
   "pendiente": {
-   "hash": "6c308ea9335ac133",
+   "hash": "0a0884d036eabcbb",
    "longitud": 452,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "6c308ea9335ac133",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "[{\"place_id\":293599387,\"licence\":\"Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright\",\"osm_type\":\"relation\",\"osm_id\":343523,\"lat\":\"41.5526221\",\"lon\":\"-5.7064267\",\"class\":\"boundary\",\"type\":\"administrative\",\"place_rank\":16,",
+    "despues": "[ { \"addresstype\": \"village\", \"boundingbox\": [ \"41.5367925\", \"41.5899104\", \"-5.7342492\", \"-5.6583415\" ], \"class\":",
+    "palabras_antes": 12,
+    "palabras_despues": 48
    }
   }
  },
@@ -1635,12 +1939,20 @@
   "longitud": 7080,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "90b9534a1a9ffe62",
-   "longitud": 6998,
+   "hash": "f45c52312767c269",
+   "longitud": 7210,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "90b9534a1a9ffe62",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "Declarado un incendio forestal en Luque 17 oct 2026, 13:48 1 min",
+    "despues": "Javier de Cos, astrofísico: \"El objetivo en los próximos diez años es",
+    "palabras_antes": 91,
+    "palabras_despues": 125
    }
   }
  },
@@ -1696,12 +2008,20 @@
   "longitud": 2502,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "8361e5a83dfb2ce4",
+   "hash": "ab67f368bafb99c6",
    "longitud": 2502,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "8361e5a83dfb2ce4",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "35660 Networks 5885 Facilities 76 Campuses 288 Carriers 66464 Connections to Exchanges",
+    "despues": "35661 Networks 5885 Facilities 76 Campuses 288 Carriers 66467 Connections to Exchanges",
+    "palabras_antes": 23,
+    "palabras_despues": 23
    }
   }
  },
@@ -1739,12 +2059,21 @@
   "longitud": 9786,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "38e657b1d337d296",
-   "longitud": 9271,
+   "hash": "542b17b1908ff025",
+   "longitud": 9120,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "38e657b1d337d296",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "3b76b919b7ed7aef",
+    "antes": "Desde Cala hasta Aroche: así es la ruta definitiva para visitar los",
+    "despues": "Vox alerta de 1.070 electores más en el censo exterior de Huelva",
+    "palabras_antes": 214,
+    "palabras_despues": 186
    }
   }
  },
@@ -1753,12 +2082,20 @@
   "longitud": 9980,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "ef329ddb5bc7bb90",
-   "longitud": 9897,
+   "hash": "0fa0b2d071a95a60",
+   "longitud": 9974,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "ef329ddb5bc7bb90",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "Agricultura treballa en una línia d’ajuts pels danys dels últims aiguats al",
+    "despues": "Renfe suspèn els Regionals del sud a partir de les 22 hores",
+    "palabras_antes": 132,
+    "palabras_despues": 154
    }
   }
  },
@@ -1767,12 +2104,20 @@
   "longitud": 452,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "a99b95ff3b7935de",
+   "hash": "8cdb191a5a74fc30",
    "longitud": 452,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "a99b95ff3b7935de",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "[{\"place_id\":293909014,\"licence\":\"Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright\",\"osm_type\":\"relation\",\"osm_id\":341488,\"lat\":\"42.3560509\",\"lon\":\"-2.4736796\",\"class\":\"boundary\",\"type\":\"administrative\",\"place_rank\":16,",
+    "despues": "[ { \"addresstype\": \"village\", \"boundingbox\": [ \"42.3304761\", \"42.3966617\", \"-2.5086507\", \"-2.4375657\" ], \"class\":",
+    "palabras_antes": 15,
+    "palabras_despues": 51
    }
   }
  },
@@ -1781,12 +2126,21 @@
   "longitud": 15148,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "9fbabe6068854072",
-   "longitud": 16003,
+   "hash": "144e36dd9c38cb79",
+   "longitud": 16006,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "9fbabe6068854072",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "41d5bc5a8861715c",
+    "antes": "La Rioja será referente en la inteligencia artificial asociada al español con",
+    "despues": "ÚLTIMA HORA Detenidos dos menores por la muerte de una mujer de",
+    "palabras_antes": 2094,
+    "palabras_despues": 2092
    }
   }
  },
@@ -1865,12 +2219,20 @@
   "longitud": 2430,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "db075bf6eb1ba266",
+   "hash": "23106ac01a7d81f0",
    "longitud": 2430,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "db075bf6eb1ba266",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "35660 Networks 5885 Facilities 76 Campuses 288 Carriers 66464 Connections to Exchanges",
+    "despues": "35661 Networks 5885 Facilities 76 Campuses 288 Carriers 66467 Connections to Exchanges",
+    "palabras_antes": 23,
+    "palabras_despues": 23
    }
   }
  },
@@ -1879,12 +2241,21 @@
   "longitud": 11045,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "fd1241d9a5c9aa72",
-   "longitud": 11344,
+   "hash": "b506f27622ac2aed",
+   "longitud": 11341,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "fd1241d9a5c9aa72",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "e85cc22acd96c5c2",
+    "antes": "Valley",
+    "despues": "Hub",
+    "palabras_antes": 1,
+    "palabras_despues": 1
    }
   }
  },
@@ -1893,12 +2264,21 @@
   "longitud": 11689,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "7b098dd16f85b0e1",
+   "hash": "cf3b7962d611bac0",
    "longitud": 12031,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "7b098dd16f85b0e1",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "96012d72017d95f4",
+    "antes": "TowerInterested",
+    "despues": "RidgeInterested",
+    "palabras_antes": 1,
+    "palabras_despues": 1
    }
   }
  },
@@ -1926,12 +2306,20 @@
   "longitud": 1897,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "cd2d00025ebb62a3",
+   "hash": "851361e05cf569a3",
    "longitud": 1897,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "cd2d00025ebb62a3",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "35660 Networks 5885 Facilities 76 Campuses 288 Carriers 66464 Connections to Exchanges",
+    "despues": "35661 Networks 5885 Facilities 76 Campuses 288 Carriers 66467 Connections to Exchanges",
+    "palabras_antes": 23,
+    "palabras_despues": 23
    }
   }
  },
@@ -1966,16 +2354,7 @@
  "https://nominatim.openstreetmap.org/search?q=Calle+R%C3%ADo+Jarama%2C+Toledo&format=json&limit=1": {
   "hash": "853a4ace14a4c843",
   "longitud": 538,
-  "visto": "2026-08-31",
-  "pendiente": {
-   "hash": "ec3c82eb60bee75c",
-   "longitud": 538,
-   "detectado": "2026-10-17",
-   "visto": "2026-10-17",
-   "comparacion": {
-    "clase": "sin_comparacion"
-   }
-  }
+  "visto": "2026-10-17"
  },
  "https://www.rankia.com/blog/bolsa-al-dia/7317729-centros-datos-espana-boom-66-900-millones-euros": {
   "hash": "6a62e2a47001e055",
@@ -1996,12 +2375,20 @@
   "longitud": 512,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "9be2eba0b546f9af",
+   "hash": "56841cc21ed2e370",
    "longitud": 512,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "9be2eba0b546f9af",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "[{\"place_id\":294244476,\"licence\":\"Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright\",\"osm_type\":\"way\",\"osm_id\":608640435,\"lat\":\"38.9101139\",\"lon\":\"-7.0048802\",\"class\":\"landuse\",\"type\":\"industrial\",\"place_rank\":24,\"import",
+    "despues": "[ { \"addresstype\": \"industrial\", \"boundingbox\": [ \"38.9023848\", \"38.9177515\", \"-7.0138791\", \"-6.9970311\" ], \"class\":",
+    "palabras_antes": 20,
+    "palabras_despues": 56
    }
   }
  },
@@ -2024,12 +2411,21 @@
   "longitud": 8127,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "59d27f6ffd1e38a2",
-   "longitud": 8118,
+   "hash": "2a8a85320d4a4547",
+   "longitud": 8119,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "59d27f6ffd1e38a2",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "2114c5cbb17477d7",
+    "antes": "Aprobada la lista del PSOE que encabeza Yolanda García Seco... 17 octubre",
+    "despues": "Cáceres se suma a la celebración del XI Día de las Escritoras...",
+    "palabras_antes": 63,
+    "palabras_despues": 66
    }
   }
  },
@@ -2038,12 +2434,20 @@
   "longitud": 520,
   "visto": "2026-10-17",
   "pendiente": {
-   "hash": "9729049fa217a784",
+   "hash": "b29e7e512adf29fa",
    "longitud": 520,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "9729049fa217a784",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "[{\"place_id\":296902386,\"licence\":\"Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright\",\"osm_type\":\"relation\",\"osm_id\":5627613,\"lat\":\"39.4862979\",\"lon\":\"-6.4190250\",\"class\":\"landuse\",\"type\":\"industrial\",\"place_rank\":24,\"imp",
+    "despues": "[ { \"addresstype\": \"industrial\", \"boundingbox\": [ \"39.4812303\", \"39.4919628\", \"-6.4252572\", \"-6.4119028\" ], \"class\":",
+    "palabras_antes": 19,
+    "palabras_despues": 55
    }
   }
  },
@@ -2062,12 +2466,20 @@
   "longitud": 2266,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "f87c6ed497841cbb",
+   "hash": "d96c6be4a9c32da1",
    "longitud": 2266,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "f87c6ed497841cbb",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "35660 Networks 5885 Facilities 76 Campuses 288 Carriers 66464 Connections to Exchanges",
+    "despues": "35661 Networks 5885 Facilities 76 Campuses 288 Carriers 66467 Connections to Exchanges",
+    "palabras_antes": 23,
+    "palabras_despues": 23
    }
   }
  },
@@ -2109,12 +2521,20 @@
   "longitud": 18895,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "fa2b72e3130ecb1d",
+   "hash": "f8c2e1dbe19bd536",
    "longitud": 18897,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "fa2b72e3130ecb1d",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "2.998 Compartir Implementar la transición energética, la descarbonización de la economía y",
+    "despues": "3.002 Compartir Implementar la transición energética, la descarbonización de la economía y",
+    "palabras_antes": 2000,
+    "palabras_despues": 2000
    }
   }
  },
@@ -2123,12 +2543,20 @@
   "longitud": 2124,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "9ef3784669e7e1c6",
+   "hash": "3a69cffa470fc8a8",
    "longitud": 2157,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "9ef3784669e7e1c6",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "35660 Networks 5885 Facilities 76 Campuses 288 Carriers 66464 Connections to Exchanges",
+    "despues": "35661 Networks 5885 Facilities 76 Campuses 288 Carriers 66467 Connections to Exchanges",
+    "palabras_antes": 23,
+    "palabras_despues": 23
    }
   }
  },
@@ -2142,12 +2570,21 @@
   "longitud": 10890,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "6ae9a8c99eedd841",
-   "longitud": 11217,
+   "hash": "282d07d275764b34",
+   "longitud": 11214,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "6ae9a8c99eedd841",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "72c24fb1815b9613",
+    "antes": "Global StationInterested",
+    "despues": "Tower AlphaInterested",
+    "palabras_antes": 2,
+    "palabras_despues": 2
    }
   }
  },
@@ -2156,12 +2593,21 @@
   "longitud": 10418,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "6177b11d2a719ec0",
-   "longitud": 10732,
+   "hash": "d9aff0548b41640a",
+   "longitud": 10735,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "6177b11d2a719ec0",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "8f0fb07f0f74c992",
+    "antes": "CentralInterested",
+    "despues": "Ridge BetaInterested",
+    "palabras_antes": 1,
+    "palabras_despues": 2
    }
   }
  },
@@ -2170,12 +2616,20 @@
   "longitud": 1630,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "6b4a11d0ac49c5b8",
+   "hash": "eeba6d6830d87359",
    "longitud": 1630,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "6b4a11d0ac49c5b8",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "[{\"place_id\":83475983,\"licence\":\"Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright\",\"osm_type\":\"way\",\"osm_id\":158619973,\"lat\":\"41.4901952\",\"lon\":\"2.1076475\",\"class\":\"highway\",\"type\":\"residential\",\"place_rank\":26,\"importa",
+    "despues": "[ { \"addresstype\": \"road\", \"boundingbox\": [ \"41.4890914\", \"41.4906451\", \"2.1054054\", \"2.1100675\" ], \"class\":",
+    "palabras_antes": 83,
+    "palabras_despues": 189
    }
   }
  },
@@ -2198,40 +2652,48 @@
   "longitud": 11907,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "f0b4711b39851d17",
-   "longitud": 12708,
+   "hash": "bc094052de5efa61",
+   "longitud": 12685,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "f0b4711b39851d17",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "273 Añadir Brains en Google Stoneshield vende su filial de centros de",
+    "despues": "276 Añadir Brains en Google Stoneshield vende su filial de centros de",
+    "palabras_antes": 635,
+    "palabras_despues": 629
    }
   }
  },
  "https://nominatim.openstreetmap.org/search?q=Antiguo+Hospital+Militar%2C+Valladolid&format=json&limit=2": {
   "hash": "ffd828396d2ec35d",
   "longitud": 547,
-  "visto": "2026-08-31",
-  "pendiente": {
-   "hash": "960d4d8a5531cb51",
-   "longitud": 547,
-   "detectado": "2026-10-17",
-   "visto": "2026-10-17",
-   "comparacion": {
-    "clase": "sin_comparacion"
-   }
-  }
+  "visto": "2026-10-17"
  },
  "https://baxtel.com/data-center/kyndryl-barcelona": {
   "hash": "f0454eb1dbb33585",
   "longitud": 11293,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "bfe0042e3dc78589",
-   "longitud": 11618,
+   "hash": "19ca7b6e62e00f38",
+   "longitud": 11616,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "bfe0042e3dc78589",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "e5c87ad41baa2a38",
+    "antes": "Metro PointInterested",
+    "despues": "Park BetaInterested",
+    "palabras_antes": 2,
+    "palabras_despues": 2
    }
   }
  },
@@ -2268,12 +2730,20 @@
   "longitud": 7698,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "dddc0845cd23f7b4",
+   "hash": "d0b9885348d19dd0",
    "longitud": 7355,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "dddc0845cd23f7b4",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "Cartagena, en alerta por lluvia: preparan tres colegios por si hubiera que",
+    "despues": "El Hozono Jairis busca alargar su racha a tres triunfos ligueros ante",
+    "palabras_antes": 104,
+    "palabras_despues": 103
    }
   }
  },
@@ -2296,12 +2766,21 @@
   "longitud": 11550,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "e5c7caa0fd643fc9",
+   "hash": "51ab27756badb197",
    "longitud": 11869,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "e5c7caa0fd643fc9",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "3d4b93228cd29f42",
+    "antes": "Center OneInterested",
+    "despues": "Ridge PlusInterested",
+    "palabras_antes": 2,
+    "palabras_despues": 2
    }
   }
  },
@@ -2315,12 +2794,20 @@
   "longitud": 1615,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "159500cfec288405",
+   "hash": "1138720de523775a",
    "longitud": 1615,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "159500cfec288405",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "[{\"place_id\":83619230,\"licence\":\"Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright\",\"osm_type\":\"way\",\"osm_id\":44648976,\"lat\":\"41.3516502\",\"lon\":\"2.1249623\",\"class\":\"highway\",\"type\":\"unclassified\",\"place_rank\":26,\"importa",
+    "despues": "[ { \"addresstype\": \"road\", \"boundingbox\": [ \"41.3499600\", \"41.3534127\", \"2.1220384\", \"2.1278423\" ], \"class\":",
+    "palabras_antes": 77,
+    "palabras_despues": 183
    }
   }
  },
@@ -2329,12 +2816,21 @@
   "longitud": 11401,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "e949034977c96945",
-   "longitud": 11715,
+   "hash": "4c9f92d05ed77396",
+   "longitud": 11714,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "e949034977c96945",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "0e6a2fc758b7b5be",
+    "antes": "RidgeInterested",
+    "despues": "BetaInterested",
+    "palabras_antes": 1,
+    "palabras_despues": 1
    }
   }
  },
@@ -2343,12 +2839,20 @@
   "longitud": 8168,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "dc4c0f31b507fc50",
-   "longitud": 8258,
+   "hash": "27cd1753d37c9734",
+   "longitud": 8240,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "dc4c0f31b507fc50",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "El Hospital Universitario Infanta Elena, reconocido por los Premios Top 20 en",
+    "despues": "Valderrama pide a la ciudadanía tomar medidas de precaución por las lluvias",
+    "palabras_antes": 101,
+    "palabras_despues": 94
    }
   }
  },
@@ -2390,12 +2894,20 @@
   "longitud": 1082,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "c02bc831c47550b0",
+   "hash": "8b881951440e678d",
    "longitud": 1081,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "c02bc831c47550b0",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "[{\"place_id\":83372103,\"licence\":\"Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright\",\"osm_type\":\"way\",\"osm_id\":782419118,\"lat\":\"41.3412630\",\"lon\":\"2.1287858\",\"class\":\"highway\",\"type\":\"residential\",\"place_rank\":26,\"importa",
+    "despues": "[ { \"addresstype\": \"road\", \"boundingbox\": [ \"41.3409876\", \"41.3415974\", \"2.1278521\", \"2.1297351\" ], \"class\":",
+    "palabras_antes": 53,
+    "palabras_despues": 124
    }
   }
  },
@@ -2433,12 +2945,20 @@
   "longitud": 4895,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "bb78a746a9611b63",
-   "longitud": 4922,
+   "hash": "130994c836a59e09",
+   "longitud": 4916,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "bb78a746a9611b63",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "Offices Aticco acquires Nimbler Spaces and expands to 16,000 sqm in Lisbon",
+    "despues": "Residential Stoneweg sells out one of its two Skyline Madrid residential towers",
+    "palabras_antes": 28,
+    "palabras_despues": 28
    }
   }
  },
@@ -2461,12 +2981,20 @@
   "longitud": 2067,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "e64fc1da04378b9e",
+   "hash": "34fbf78387861bc5",
    "longitud": 2067,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "e64fc1da04378b9e",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "35660 Networks 5885 Facilities 76 Campuses 288 Carriers 66464 Connections to Exchanges",
+    "despues": "35661 Networks 5885 Facilities 76 Campuses 288 Carriers 66467 Connections to Exchanges",
+    "palabras_antes": 23,
+    "palabras_despues": 23
    }
   }
  },
@@ -2475,12 +3003,21 @@
   "longitud": 14863,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "ae28042f9653a3d4",
+   "hash": "3b77aa4aa9f2006d",
    "longitud": 15069,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "ae28042f9653a3d4",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "7952fd5d66cff641",
+    "antes": "699 visto #2 NxN Datacenters desembarca en Portugal tras adquirir el centro",
+    "despues": "701 visto #2 NxN Datacenters desembarca en Portugal tras adquirir el centro",
+    "palabras_antes": 69,
+    "palabras_despues": 69
    }
   }
  },
@@ -2489,12 +3026,21 @@
   "longitud": 12313,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "3701661bcb5a0daa",
-   "longitud": 13061,
+   "hash": "335af3e82eaf6bf1",
+   "longitud": 13091,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "3701661bcb5a0daa",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "8f34eeb31936497e",
+    "antes": "Rebeca Torró Urtasun Rufián Montero Medidas Vox Vivienda Julio Iglesias Trump Putin",
+    "despues": "Dana Valencia Rebeca Torró Urtasun Rufián Montero Medidas Vox Vivienda Julio Iglesias",
+    "palabras_antes": 1903,
+    "palabras_despues": 1901
    }
   }
  },
@@ -2503,40 +3049,47 @@
   "longitud": 7355,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "39a0764acc8a94d0",
-   "longitud": 7273,
+   "hash": "215a24746a789595",
+   "longitud": 7485,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "39a0764acc8a94d0",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "Declarado un incendio forestal en Luque 17 oct 2026, 13:48 1 min",
+    "despues": "Javier de Cos, astrofísico: \"El objetivo en los próximos diez años es",
+    "palabras_antes": 91,
+    "palabras_despues": 125
    }
   }
  },
  "https://nominatim.openstreetmap.org/search?q=Expacio+Navalmoral&format=json&limit=1": {
   "hash": "8a4311ecc70d7ce1",
   "longitud": 480,
-  "visto": "2026-08-31",
-  "pendiente": {
-   "hash": "14ee8a8065f12610",
-   "longitud": 480,
-   "detectado": "2026-10-17",
-   "visto": "2026-10-17",
-   "comparacion": {
-    "clase": "sin_comparacion"
-   }
-  }
+  "visto": "2026-10-17"
  },
  "https://brainsre.news/merlin-prealquila-primer-data-center/": {
   "hash": "09f05f5a85664f44",
   "longitud": 11112,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "10578c07dd108e02",
-   "longitud": 11381,
+   "hash": "9952191ad8881b44",
+   "longitud": 11387,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "10578c07dd108e02",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "337 Añadir Brains en Google Merlin prealquila el primer data center que",
+    "despues": "339 Añadir Brains en Google Merlin prealquila el primer data center que",
+    "palabras_antes": 456,
+    "palabras_despues": 456
    }
   }
  },
@@ -2583,12 +3136,21 @@
   "longitud": 6615,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "d922aa9a6d5c96b7",
-   "longitud": 6848,
+   "hash": "e788c328df46ceb3",
+   "longitud": 6852,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "d922aa9a6d5c96b7",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "7ef551b389c8f397",
+    "antes": "",
+    "despues": "PNV",
+    "palabras_antes": 0,
+    "palabras_despues": 1
    }
   }
  },
@@ -2609,7 +3171,24 @@
  "https://nominatim.openstreetmap.org/search?q=Valdecaballeros%2C+Badajoz&format=json&limit=1": {
   "hash": "1cb85c45b2f8d1a4",
   "longitud": 460,
-  "visto": "2026-10-17"
+  "visto": "2026-10-17",
+  "pendiente": {
+   "hash": "d4a42bcc3d69e130",
+   "longitud": 460,
+   "detectado": "2026-10-17",
+   "visto": "2026-10-17",
+   "comparacion": {
+    "referencia": "aceptada",
+    "fecha": "2026-10-17",
+    "hash_referencia": "1cb85c45b2f8d1a4",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "[{\"place_id\":299114279,\"licence\":\"Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright\",\"osm_type\":\"relation\",\"osm_id\":344413,\"lat\":\"39.2427410\",\"lon\":\"-5.1897862\",\"class\":\"boundary\",\"type\":\"administrative\",\"place_rank\":16,",
+    "despues": "[ { \"addresstype\": \"village\", \"boundingbox\": [ \"39.2009253\", \"39.3195944\", \"-5.3031910\", \"-5.1347562\" ], \"class\":",
+    "palabras_antes": 11,
+    "palabras_despues": 47
+   }
+  }
  },
  "https://urbanismo.castillalamancha.es/planeamiento/planeamiento-territorial/proyectos-de-singular-interes/meta-data-center-campus": {
   "hash": "e7d80d16ba9b762b",
@@ -2630,12 +3209,20 @@
   "longitud": 7510,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "0bc54528976c3f33",
-   "longitud": 7703,
+   "hash": "531c8c4adec296a4",
+   "longitud": 7538,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "0bc54528976c3f33",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "CIUDAD REAL Piden cuatro años de cárcel para un policía local de",
+    "despues": "TIEMPO Aemet eleva a nivel naranja el aviso por lluvias en la",
+    "palabras_antes": 137,
+    "palabras_despues": 114
    }
   }
  },
@@ -2658,12 +3245,21 @@
   "longitud": 11502,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "c4be524a6954ceb6",
+   "hash": "4736521931100222",
    "longitud": 12822,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "c4be524a6954ceb6",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "846c018f0a4e600d",
+    "antes": "Rebeca Torró Urtasun Rufián Montero Medidas Vox Vivienda Julio Iglesias Trump Putin",
+    "despues": "Dana Valencia Rebeca Torró Urtasun Rufián Montero Medidas Vox Vivienda Julio Iglesias",
+    "palabras_antes": 1722,
+    "palabras_despues": 1727
    }
   }
  },
@@ -2714,12 +3310,21 @@
   "longitud": 13089,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "dc327b50c740a8a9",
-   "longitud": 13202,
+   "hash": "cf0bca2a511059e1",
+   "longitud": 13200,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "dc327b50c740a8a9",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "0c1d0d4929e1dda5",
+    "antes": "En 1960 la URSS esquilmó el Mar de Aral para regar cultivos",
+    "despues": "Un puñado de rocas de Sudáfrica tiene en sus manos resolver el",
+    "palabras_antes": 399,
+    "palabras_despues": 401
    }
   }
  },
@@ -2728,12 +3333,20 @@
   "longitud": 509,
   "visto": "2026-10-17",
   "pendiente": {
-   "hash": "8d5373fd2440dea4",
+   "hash": "89d447b0e2616364",
    "longitud": 509,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "8d5373fd2440dea4",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "[{\"place_id\":296484043,\"licence\":\"Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright\",\"osm_type\":\"way\",\"osm_id\":67302214,\"lat\":\"39.9584244\",\"lon\":\"-4.9336660\",\"class\":\"landuse\",\"type\":\"industrial\",\"place_rank\":24,\"importa",
+    "despues": "[ { \"addresstype\": \"industrial\", \"boundingbox\": [ \"39.9514640\", \"39.9647899\", \"-4.9441165\", \"-4.9207379\" ], \"class\":",
+    "palabras_antes": 19,
+    "palabras_despues": 55
    }
   }
  },
@@ -2780,12 +3393,21 @@
   "longitud": 12634,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "80f586dce33c9a4a",
-   "longitud": 13366,
+   "hash": "5a02d38e39e62d79",
+   "longitud": 13440,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "80f586dce33c9a4a",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "e309318ec030c4cf",
+    "antes": "Rebeca Torró Urtasun Rufián Montero Medidas Vox Vivienda Julio Iglesias Trump Putin",
+    "despues": "Dana Valencia Rebeca Torró Urtasun Rufián Montero Medidas Vox Vivienda Julio Iglesias",
+    "palabras_antes": 1985,
+    "palabras_despues": 2005
    }
   }
  },
@@ -2836,12 +3458,21 @@
   "longitud": 10795,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "77b3ecaf5f502299",
+   "hash": "1990dd837a2f4a69",
    "longitud": 10331,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "77b3ecaf5f502299",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "861034d76ada7ee8",
+    "antes": "22 ℃ Buscar Inicio/Actualidad/Última Hora/La subestación de Calera impulsa la llegada de",
+    "despues": "23 ℃ Buscar Inicio/Actualidad/Última Hora/La subestación de Calera impulsa la llegada de",
+    "palabras_antes": 1006,
+    "palabras_despues": 1006
    }
   }
  },
@@ -2879,12 +3510,20 @@
   "longitud": 1920,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "6d1533c46e5d3f84",
+   "hash": "3dc7ae67e748e6e8",
    "longitud": 1920,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "6d1533c46e5d3f84",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "35660 Networks 5885 Facilities 76 Campuses 288 Carriers 66464 Connections to Exchanges",
+    "despues": "35661 Networks 5885 Facilities 76 Campuses 288 Carriers 66467 Connections to Exchanges",
+    "palabras_antes": 23,
+    "palabras_despues": 23
    }
   }
  },
@@ -2906,12 +3545,20 @@
   "longitud": 517,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "5b10eddee678a5f5",
+   "hash": "428bf24933333bf9",
    "longitud": 517,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "5b10eddee678a5f5",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "[{\"place_id\":83666511,\"licence\":\"Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright\",\"osm_type\":\"way\",\"osm_id\":80778674,\"lat\":\"41.5725814\",\"lon\":\"2.0123239\",\"class\":\"highway\",\"type\":\"residential\",\"place_rank\":26,\"importan",
+    "despues": "[ { \"addresstype\": \"road\", \"boundingbox\": [ \"41.5703108\", \"41.5748595\", \"2.0122339\", \"2.0123240\" ], \"class\":",
+    "palabras_antes": 24,
+    "palabras_despues": 60
    }
   }
  },
@@ -2920,12 +3567,20 @@
   "longitud": 2245,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "c52b8b3a0db22f1c",
+   "hash": "231746e2bd14b12e",
    "longitud": 2255,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "c52b8b3a0db22f1c",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "35660 Networks 5885 Facilities 76 Campuses 288 Carriers 66464 Connections to Exchanges",
+    "despues": "35661 Networks 5885 Facilities 76 Campuses 288 Carriers 66467 Connections to Exchanges",
+    "palabras_antes": 23,
+    "palabras_despues": 23
    }
   }
  },
@@ -2958,12 +3613,20 @@
   "longitud": 440,
   "visto": "2026-10-17",
   "pendiente": {
-   "hash": "9b70acf849570f9d",
+   "hash": "0575262fc9d5032a",
    "longitud": 440,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "9b70acf849570f9d",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "[{\"place_id\":293441749,\"licence\":\"Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright\",\"osm_type\":\"relation\",\"osm_id\":342800,\"lat\":\"40.6326979\",\"lon\":\"-3.1646067\",\"class\":\"boundary\",\"type\":\"administrative\",\"place_rank\":16,",
+    "despues": "[ { \"addresstype\": \"city\", \"boundingbox\": [ \"40.4608341\", \"40.7707222\", \"-3.3141493\", \"-2.9811900\" ], \"class\":",
+    "palabras_antes": 10,
+    "palabras_despues": 46
    }
   }
  },
@@ -2986,12 +3649,21 @@
   "longitud": 5613,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "3bdef23aa83bd517",
-   "longitud": 5846,
+   "hash": "c8655cc705229f54",
+   "longitud": 5850,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "3bdef23aa83bd517",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "7ef551b389c8f397",
+    "antes": "",
+    "despues": "PNV",
+    "palabras_antes": 0,
+    "palabras_despues": 1
    }
   }
  },
@@ -3015,12 +3687,20 @@
   "longitud": 11830,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "fff905972ccc3af4",
-   "longitud": 11962,
+   "hash": "17887ccd22e494ce",
+   "longitud": 11938,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "fff905972ccc3af4",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "Alicante reparte 340.000 euros entre 56 proyectos sociales para atender a personas",
+    "despues": "Fallece Ángel Gómez Navarro, consejero delegado del grupo IMED Hospitales 2 Alicante",
+    "palabras_antes": 87,
+    "palabras_despues": 80
    }
   }
  },
@@ -3029,12 +3709,20 @@
   "longitud": 7888,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "be558efc723192f5",
-   "longitud": 8020,
+   "hash": "7a789c4bd587cc5d",
+   "longitud": 7996,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "be558efc723192f5",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "Alicante reparte 340.000 euros entre 56 proyectos sociales para atender a personas",
+    "despues": "Fallece Ángel Gómez Navarro, consejero delegado del grupo IMED Hospitales 2 Alicante",
+    "palabras_antes": 87,
+    "palabras_despues": 80
    }
   }
  },
@@ -3043,12 +3731,20 @@
   "longitud": 12232,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "046a4df3cc39ce27",
-   "longitud": 12364,
+   "hash": "913267091fc43e2f",
+   "longitud": 12340,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "046a4df3cc39ce27",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "Alicante reparte 340.000 euros entre 56 proyectos sociales para atender a personas",
+    "despues": "Fallece Ángel Gómez Navarro, consejero delegado del grupo IMED Hospitales 2 Alicante",
+    "palabras_antes": 87,
+    "palabras_despues": 80
    }
   }
  },
@@ -3062,12 +3758,20 @@
   "longitud": 2607,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "dcde2da167b1a724",
+   "hash": "84144b029da5b825",
    "longitud": 2607,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "dcde2da167b1a724",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "35660 Networks 5885 Facilities 76 Campuses 288 Carriers 66464 Connections to Exchanges",
+    "despues": "35661 Networks 5885 Facilities 76 Campuses 288 Carriers 66466 Connections to Exchanges",
+    "palabras_antes": 23,
+    "palabras_despues": 23
    }
   }
  },
@@ -3076,12 +3780,20 @@
   "longitud": 8180,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "a4641e4ad77d0843",
-   "longitud": 8270,
+   "hash": "0eeea857857748b2",
+   "longitud": 8252,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "a4641e4ad77d0843",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "El Hospital Universitario Infanta Elena, reconocido por los Premios Top 20 en",
+    "despues": "Valderrama pide a la ciudadanía tomar medidas de precaución por las lluvias",
+    "palabras_antes": 101,
+    "palabras_despues": 94
    }
   }
  },
@@ -3090,12 +3802,21 @@
   "longitud": 10081,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "71f61a67e633b586",
-   "longitud": 10489,
+   "hash": "39de928e17a04e46",
+   "longitud": 10516,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "71f61a67e633b586",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "095252e71ba0f9b2",
+    "antes": "Una joven muere atropellada en Valencia al perder un conductor el control",
+    "despues": "Acusado de violar a una vecina que se negó a hacer un",
+    "palabras_antes": 315,
+    "palabras_despues": 318
    }
   }
  },
@@ -3150,12 +3871,21 @@
   "longitud": 7500,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "2aa514e12f746a6a",
-   "longitud": 7501,
+   "hash": "6047a624499e0879",
+   "longitud": 7549,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "2aa514e12f746a6a",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "dcf74af787b09d9f",
+    "antes": "Tesla Roadster: the first flying car 2. Alert in many regions for",
+    "despues": "They are looking for two gunmen for the death of a man",
+    "palabras_antes": 109,
+    "palabras_despues": 118
    }
   }
  },
@@ -3164,12 +3894,21 @@
   "longitud": 11997,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "222c05499c94aa9f",
-   "longitud": 12307,
+   "hash": "352ca99f20f71813",
+   "longitud": 12310,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "222c05499c94aa9f",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "da12e59ced46d5f9",
+    "antes": "SouthInterested",
+    "despues": "Park TwoInterested",
+    "palabras_antes": 1,
+    "palabras_despues": 2
    }
   }
  },
@@ -3192,12 +3931,20 @@
   "longitud": 10992,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "b2e823673ea8ec51",
-   "longitud": 11082,
+   "hash": "8884753f26e6b9d3",
+   "longitud": 11110,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "b2e823673ea8ec51",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "El PPCS acusa a Sánchez de \"dejar caducar el acuerdo de 2024",
+    "despues": "Vila-real se suma a la reclamación del Colegio Oficial de Psicología de",
+    "palabras_antes": 89,
+    "palabras_despues": 91
    }
   }
  },
@@ -3241,7 +3988,10 @@
    "comparacion": {
     "clase": "metodo"
    }
-  }
+  },
+  "ultimo_fallo": "2026-10-17",
+  "clase": "error",
+  "motivo": "fetch failed"
  },
  "https://www.calatorao.es/wp-content/uploads/2025/08/boa-11082025-proyecto-rhodes-Calatorao.pdf": {
   "hash": "bin:562169",
@@ -3295,12 +4045,21 @@
   "longitud": 11228,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "c02dd25def45d7d6",
-   "longitud": 11548,
+   "hash": "99a96b03bf1d4923",
+   "longitud": 11547,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "c02dd25def45d7d6",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "2002effaa81f5d79",
+    "antes": "Prime CampusInterested",
+    "despues": "Plaza PrimeInterested",
+    "palabras_antes": 2,
+    "palabras_despues": 2
    }
   }
  },
@@ -3309,12 +4068,20 @@
   "longitud": 11272,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "218025b75f95c3e0",
+   "hash": "45e41283e954f586",
    "longitud": 11516,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "218025b75f95c3e0",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "663",
+    "despues": "666",
+    "palabras_antes": 1,
+    "palabras_despues": 1
    }
   }
  },
@@ -3340,22 +4107,28 @@
  "https://www.datacenterdynamics.com/en/news/the-digital-valley-asturias-project-for-a-data-center-in-salas/": {
   "hash": "e03bd8ff32ffcd0c",
   "longitud": 8017,
-  "visto": "2026-10-17",
-  "ultimo_fallo": "2026-10-17",
-  "clase": "bloqueada",
-  "motivo": "HTTP 403"
+  "visto": "2026-10-17"
  },
  "https://en.ara.cat/economy/submer-will-invest-more-than-1-000-million-in-new-data-center-in-flix_1_5795996.html": {
   "hash": "e14010aaeca3305b",
   "longitud": 6444,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "0c5006ca8f3d8a25",
-   "longitud": 6467,
+   "hash": "64b585b97eee9dcc",
+   "longitud": 6515,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "0c5006ca8f3d8a25",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "dcf74af787b09d9f",
+    "antes": "Tesla Roadster: the first flying car 2. Alert in many regions for",
+    "despues": "They are looking for two gunmen for the death of a man",
+    "palabras_antes": 109,
+    "palabras_despues": 118
    }
   }
  },
@@ -3364,12 +4137,16 @@
   "longitud": 13879,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "78f42158e019532b",
-   "longitud": 14023,
+   "hash": "5e6ebbb8ffd2915c",
+   "longitud": 14019,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "78f42158e019532b",
+    "parcial": false,
+    "clase": "formato"
    }
   }
  },
@@ -3575,12 +4352,21 @@
   "longitud": 13485,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "7e51a0817c779fdd",
+   "hash": "6befa5e2c58f1a1f",
    "longitud": 14778,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "7e51a0817c779fdd",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "1583eb10584c948b",
+    "antes": "Rebeca Torró Urtasun Rufián Montero Medidas Vox Vivienda Julio Iglesias Trump Putin",
+    "despues": "Dana Valencia Rebeca Torró Urtasun Rufián Montero Medidas Vox Vivienda Julio Iglesias",
+    "palabras_antes": 2026,
+    "palabras_despues": 2031
    }
   }
  },
@@ -3661,12 +4447,21 @@
   "longitud": 11045,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "0d7cc80b2273bd03",
-   "longitud": 11364,
+   "hash": "f87ad2a6c92983c6",
+   "longitud": 11357,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "0d7cc80b2273bd03",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "4934cf06e33f4c5c",
+    "antes": "Global CampusInterested",
+    "despues": "ValleyInterested",
+    "palabras_antes": 2,
+    "palabras_despues": 1
    }
   }
  },
@@ -3755,12 +4550,21 @@
   "longitud": 12673,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "8149ae06ca9bcb6c",
-   "longitud": 12997,
+   "hash": "8001da4f52323fa5",
+   "longitud": 12992,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "8149ae06ca9bcb6c",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "03ae07c23c9830c4",
+    "antes": "East TowerInterested",
+    "despues": "PlazaInterested",
+    "palabras_antes": 2,
+    "palabras_despues": 1
    }
   }
  },
@@ -3797,12 +4601,20 @@
   "longitud": 2251,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "76db3ff37c095f19",
+   "hash": "bd4b5bb2a438f115",
    "longitud": 2274,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "76db3ff37c095f19",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "35660 Networks 5885 Facilities 76 Campuses 288 Carriers 66464 Connections to Exchanges",
+    "despues": "35661 Networks 5885 Facilities 76 Campuses 288 Carriers 66467 Connections to Exchanges",
+    "palabras_antes": 23,
+    "palabras_despues": 23
    }
   }
  },
@@ -3825,12 +4637,20 @@
   "longitud": 2098,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "87c35e7fad8c0e37",
+   "hash": "2106f7ad25bf3b3d",
    "longitud": 2110,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "87c35e7fad8c0e37",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "35660 Networks 5885 Facilities 76 Campuses 288 Carriers 66464 Connections to Exchanges",
+    "despues": "35661 Networks 5885 Facilities 76 Campuses 288 Carriers 66467 Connections to Exchanges",
+    "palabras_antes": 23,
+    "palabras_despues": 23
    }
   }
  },
@@ -4086,7 +4906,24 @@
  "https://www.datacenterdynamics.com/es/noticias/valencia-digital-port-connect-ubicar%C3%A1-en-sagunto-la-estaci%C3%B3n-de-aterrizaje-del-cable-submarino-barracuda/": {
   "hash": "46690b01670ae2f9",
   "longitud": 7265,
-  "visto": "2026-10-17"
+  "visto": "2026-10-17",
+  "pendiente": {
+   "hash": "56e495269ebe46a3",
+   "longitud": 7287,
+   "detectado": "2026-10-17",
+   "visto": "2026-10-17",
+   "comparacion": {
+    "referencia": "aceptada",
+    "fecha": "2026-10-17",
+    "hash_referencia": "46690b01670ae2f9",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "Tendencias en Edge & Networks 2026 01 Oct 2026 Nuevo corredor digital",
+    "despues": "E Book: Informe sobre Wave Services 06 Jul 2026 Cellnex y Vodafone",
+    "palabras_antes": 32,
+    "palabras_despues": 40
+   }
+  }
  },
  "https://www.group.sener/en/noticias/quark-to-lead-technical-design-of-campus-data-navarra/": {
   "hash": "10d423ebce985809",
@@ -4096,21 +4933,29 @@
  "https://nominatim.openstreetmap.org/search?q=Gaz%C3%B3laz%2C+Navarra&format=json&limit=1": {
   "hash": "20f5f360ecd0a5cd",
   "longitud": 463,
-  "visto": "2026-08-31",
-  "pendiente": {
-   "hash": "0152b64f5205cd7e",
-   "longitud": 463,
-   "detectado": "2026-10-17",
-   "visto": "2026-10-17",
-   "comparacion": {
-    "clase": "sin_comparacion"
-   }
-  }
+  "visto": "2026-10-17"
  },
  "https://www.datacenterdynamics.com/es/features/visitando-el-data-center-tier-iv-de-walhalla-en-castellon-cual-es-su-crecimiento-presente-y-futuro/": {
   "hash": "8e87ed6d824b521f",
   "longitud": 9782,
-  "visto": "2026-10-17"
+  "visto": "2026-10-17",
+  "pendiente": {
+   "hash": "21c39a3652fd27e3",
+   "longitud": 9755,
+   "detectado": "2026-10-17",
+   "visto": "2026-10-17",
+   "comparacion": {
+    "referencia": "aceptada",
+    "fecha": "2026-10-17",
+    "hash_referencia": "8e87ed6d824b521f",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "31 Ago 2026 Claro invertirá 25,5 millones de dólares en Colombia para",
+    "despues": "08 Jun 2026 Unicaja modernizará su infraestructura tecnológica con un CPD y",
+    "palabras_antes": 37,
+    "palabras_despues": 32
+   }
+  }
  },
  "https://www.walhallacloud.com/data-center": {
   "hash": "80e2402f1d21c941",
@@ -4266,7 +5111,25 @@
  "https://www.merca2.es/2026/06/19/renovable-precio-cero-espana-amazon-2401403/": {
   "hash": "dceffaf315e631ca",
   "longitud": 9999,
-  "visto": "2026-10-17"
+  "visto": "2026-10-17",
+  "pendiente": {
+   "hash": "873f5dfd7c979062",
+   "longitud": 9999,
+   "detectado": "2026-10-17",
+   "visto": "2026-10-17",
+   "comparacion": {
+    "referencia": "aceptada",
+    "fecha": "2026-10-17",
+    "hash_referencia": "dceffaf315e631ca",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "b25af2a86f21d9f2",
+    "antes": "La justicia declara nulo el despido de Mercadona y... SEMAF convoca huelga",
+    "despues": "Dividendos Santander y BBVA: elevan solvencia y ca... Entra en vigor el",
+    "palabras_antes": 179,
+    "palabras_despues": 180
+   }
+  }
  },
  "https://www.datacentermarket.es/sostenibilidad/iberdrola-y-amazon-amplian-su-alianza-en-renovables-y-nube/": {
   "hash": "cbab1cb7e352d33a",
@@ -4532,12 +5395,20 @@
   "longitud": 8398,
   "visto": "2026-08-31",
   "pendiente": {
-   "hash": "8c863fdd38d4f46b",
-   "longitud": 8488,
+   "hash": "58e53a941b065eec",
+   "longitud": 8470,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "8c863fdd38d4f46b",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "El Hospital Universitario Infanta Elena, reconocido por los Premios Top 20 en",
+    "despues": "Valderrama pide a la ciudadanía tomar medidas de precaución por las lluvias",
+    "palabras_antes": 101,
+    "palabras_despues": 94
    }
   }
  },
@@ -4596,19 +5467,45 @@
  "https://nominatim.openstreetmap.org/search?q=Valle+de+Elorz%2C+Navarra&format=json&limit=1": {
   "hash": "374b6136d24e1067",
   "longitud": 492,
-  "visto": "2026-10-17"
+  "visto": "2026-10-17",
+  "pendiente": {
+   "hash": "99062ee4c3d9ab94",
+   "longitud": 492,
+   "detectado": "2026-10-17",
+   "visto": "2026-10-17",
+   "comparacion": {
+    "referencia": "aceptada",
+    "fecha": "2026-10-17",
+    "hash_referencia": "374b6136d24e1067",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "[{\"place_id\":291537649,\"licence\":\"Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright\",\"osm_type\":\"relation\",\"osm_id\":347847,\"lat\":\"42.7315535\",\"lon\":\"-1.5876645\",\"class\":\"boundary\",\"type\":\"administrative\",\"place_rank\":16,",
+    "despues": "[ { \"addresstype\": \"city\", \"boundingbox\": [ \"42.6853505\", \"42.7778718\", \"-1.6451312\", \"-1.5363210\" ], \"class\":",
+    "palabras_antes": 21,
+    "palabras_despues": 57
+   }
+  }
  },
  "https://www.diariodenavarra.es/noticias/navarra/pamplona-comarca/2025/12/11/valle-elorz-desdice-cesion-acciona-centro-datos-803080-16.html": {
   "hash": "ba753bbd8c23f9d1",
   "longitud": 4252,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "310ec5a9109b660e",
-   "longitud": 4431,
+   "hash": "479fff45dc8c7c74",
+   "longitud": 4388,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "310ec5a9109b660e",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "4fdd5da223ef35c3",
+    "antes": "\"¡Menos promesas, más soluciones!\", cientos de personas piden una salida para las",
+    "despues": "Saray reclama reducir las listas de espera para las revisiones del cáncer",
+    "palabras_antes": 87,
+    "palabras_despues": 77
    }
   }
  },
@@ -4617,12 +5514,21 @@
   "longitud": 7390,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "34a7b6b48df0b924",
-   "longitud": 7569,
+   "hash": "9308c18bd3dbfc18",
+   "longitud": 7526,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "34a7b6b48df0b924",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "4fdd5da223ef35c3",
+    "antes": "\"¡Menos promesas, más soluciones!\", cientos de personas piden una salida para las",
+    "despues": "Saray reclama reducir las listas de espera para las revisiones del cáncer",
+    "palabras_antes": 87,
+    "palabras_despues": 77
    }
   }
  },
@@ -4631,12 +5537,21 @@
   "longitud": 4300,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "5af4f21c4d719ace",
-   "longitud": 4479,
+   "hash": "46bd093b0c5e48c3",
+   "longitud": 4436,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "5af4f21c4d719ace",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "4fdd5da223ef35c3",
+    "antes": "\"¡Menos promesas, más soluciones!\", cientos de personas piden una salida para las",
+    "despues": "Saray reclama reducir las listas de espera para las revisiones del cáncer",
+    "palabras_antes": 87,
+    "palabras_despues": 77
    }
   }
  },
@@ -4719,12 +5634,21 @@
   "longitud": 13368,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "727bfaa4cca2b76a",
-   "longitud": 13902,
+   "hash": "b30405835ab19a52",
+   "longitud": 13904,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "727bfaa4cca2b76a",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "6484fff3763f42e8",
+    "antes": "6 anys i mig de presó per abusar sexualment de tres menors",
+    "despues": "Juanjo Brau explica com s'autogestiona Lamine Yamal: \"Aquests jugadors entrenen jugant\" 16/10/2026",
+    "palabras_antes": 64,
+    "palabras_despues": 65
    }
   }
  },
@@ -4739,8 +5663,8 @@
   "ultimo_fallo": "2026-10-17"
  },
  "https://adequa-re.cat/es/los-data-centers-un-activo-con-alta-rentabilidad/": {
-  "clase": "rota",
-  "motivo": "HTTP 404",
+  "clase": "error",
+  "motivo": "fetch failed",
   "ultimo_fallo": "2026-10-17"
  },
  "https://www.laplanaradio.cat/news/santa-barbara-podria-acollir-una-gran-infraestructura-digital-amb-debat-ambiental-obert/": {
@@ -4776,12 +5700,21 @@
   "longitud": 6701,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "dc6012b2b4f0b464",
-   "longitud": 6691,
+   "hash": "f7e12ce2efe61850",
+   "longitud": 6695,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "dc6012b2b4f0b464",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "7ef551b389c8f397",
+    "antes": "",
+    "despues": "PNV",
+    "palabras_antes": 0,
+    "palabras_despues": 1
    }
   }
  },
@@ -4838,12 +5771,20 @@
   "longitud": 10990,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "428080ce3e38006f",
-   "longitud": 11153,
+   "hash": "6b2e69145ddc629d",
+   "longitud": 11177,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "428080ce3e38006f",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "Granada abre desde este sábado los patios de diez colegios para jugar",
+    "despues": "Premian la labor de la Asociación Local de Fibromialgia con el centro",
+    "palabras_antes": 114,
+    "palabras_despues": 113
    }
   }
  },
@@ -4855,7 +5796,10 @@
  "https://www.datacenterdynamics.com/es/noticias/apto-confirma-un-campus-de-centros-de-datos-en-fuenlabrada-con-capacidad-de-240-mw/": {
   "hash": "dd07ba9b0a2553b7",
   "longitud": 8038,
-  "visto": "2026-10-17"
+  "visto": "2026-10-17",
+  "ultimo_fallo": "2026-10-17",
+  "clase": "bloqueada",
+  "motivo": "HTTP 403"
  },
  "https://www.economiadigital.es/andalucia/empresas/meridian-edge-mode-elmya-asi-futuros-centros-datos-andaluces-afectados-normativa-gobierno.html": {
   "hash": "1d6e6a0bfd579ef1",
@@ -4879,7 +5823,24 @@
  "https://www.datacenterdynamics.com/en/news/thors-form8ation-breaks-ground-on-spanish-data-center-campus-in-madrid/": {
   "hash": "24428278badc328b",
   "longitud": 7269,
-  "visto": "2026-10-17"
+  "visto": "2026-10-17",
+  "pendiente": {
+   "hash": "a3cc23f7f2e55bad",
+   "longitud": 7265,
+   "detectado": "2026-10-17",
+   "visto": "2026-10-17",
+   "comparacion": {
+    "referencia": "aceptada",
+    "fecha": "2026-10-17",
+    "hash_referencia": "24428278badc328b",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "2026 guide to navigating data center supply chain complexity 10 Sep 2026",
+    "despues": "The case for portfolio governance 28 May 2026 Strict new data center",
+    "palabras_antes": 83,
+    "palabras_despues": 75
+   }
+  }
  },
  "https://www.ayto-fuenlabrada.es/web/portal/w/fuenlabrada-da-luz-verde-a-la-creacion-de-uno-de-los-mayores-centros-tecnologicos-de-espana": {
   "hash": "ad2775d98a719133",
@@ -5039,7 +6000,10 @@
    "comparacion": {
     "clase": "metodo"
    }
-  }
+  },
+  "ultimo_fallo": "2026-10-17",
+  "clase": "error",
+  "motivo": "fetch failed"
  },
  "https://gd.aragon.es/cgi-bin/INPU/BRSCGI?CMD=VEROBJ&MLKOB=1419282150202": {
   "hash": "bin:?",
@@ -5067,7 +6031,10 @@
    "comparacion": {
     "clase": "metodo"
    }
-  }
+  },
+  "ultimo_fallo": "2026-10-17",
+  "clase": "error",
+  "motivo": "fetch failed"
  },
  "https://gd.aragon.es/cgi-bin/INPU/BRSCGI?CMD=VEROBJ&MLKOB=1419005732727": {
   "hash": "bin:?",
@@ -5180,12 +6147,21 @@
   "longitud": 7775,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "871cb52d1a2d525e",
-   "longitud": 7738,
+   "hash": "f55da2f86b033b5f",
+   "longitud": 7747,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "871cb52d1a2d525e",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "0a60cc749615614f",
+    "antes": "Ya hay diagnóstico sobre qué sucedió a los 40 intoxicados en la",
+    "despues": "Costco prepara su llegada a Málaga: comienza el plazo para hacerse socio",
+    "palabras_antes": 146,
+    "palabras_despues": 145
    }
   }
  },
@@ -5265,12 +6241,20 @@
   "longitud": 599,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "07bf859f07279cd6",
-   "longitud": 604,
+   "hash": "7ca46dc39b4005cb",
+   "longitud": 590,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "07bf859f07279cd6",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "[{\"place_id\":291685660,\"licence\":\"Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright\",\"osm_type\":\"way\",\"osm_id\":29028022,\"lat\":\"40.5453765\",\"lon\":\"-3.6949578\",\"class\":\"amenity\",\"type\":\"university\",\"place_rank\":30,\"importa",
+    "despues": "[ { \"addresstype\": \"amenity\", \"boundingbox\": [ \"40.5389989\", \"40.5510284\", \"-3.7021001\", \"-3.6839585\" ], \"class\":",
+    "palabras_antes": 34,
+    "palabras_despues": 68
    }
   }
  },
@@ -5309,12 +6293,16 @@
   "longitud": 10408,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "b7d35721435376f1",
+   "hash": "2648146f83f37548",
    "longitud": 10407,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "b7d35721435376f1",
+    "parcial": false,
+    "clase": "formato"
    }
   }
  },
@@ -5323,12 +6311,16 @@
   "longitud": 12536,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "fb3250721453f18d",
-   "longitud": 12539,
+   "hash": "5196af1e441be9c6",
+   "longitud": 12533,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "fb3250721453f18d",
+    "parcial": false,
+    "clase": "formato"
    }
   }
  },
@@ -5381,7 +6373,24 @@
  "https://nominatim.openstreetmap.org/search?q=CITIC%2C+Campus+de+Elvi%C3%B1a%2C+A+Coru%C3%B1a&format=json&limit=1": {
   "hash": "32edb7c2f4140994",
   "longitud": 649,
-  "visto": "2026-10-17"
+  "visto": "2026-10-17",
+  "pendiente": {
+   "hash": "867b3c559ae0c3a7",
+   "longitud": 649,
+   "detectado": "2026-10-17",
+   "visto": "2026-10-17",
+   "comparacion": {
+    "referencia": "aceptada",
+    "fecha": "2026-10-17",
+    "hash_referencia": "32edb7c2f4140994",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "[{\"place_id\":287600790,\"licence\":\"Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright\",\"osm_type\":\"way\",\"osm_id\":166501035,\"lat\":\"43.3325834\",\"lon\":\"-8.4079677\",\"class\":\"building\",\"type\":\"university\",\"place_rank\":30,\"impor",
+    "despues": "[ { \"addresstype\": \"building\", \"boundingbox\": [ \"43.3324020\", \"43.3327791\", \"-8.4082351\", \"-8.4076923\" ], \"class\":",
+    "palabras_antes": 46,
+    "palabras_despues": 82
+   }
+  }
  },
  "https://citic.udc.es/contacto/": {
   "hash": "483deeb2bf9a88a9",
@@ -5403,12 +6412,20 @@
   "longitud": 861,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "d24e1b5509879030",
+   "hash": "a116916a7eb70bb7",
    "longitud": 861,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "d24e1b5509879030",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "[{\"place_id\":296913843,\"licence\":\"Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright\",\"osm_type\":\"relation\",\"osm_id\":1899973,\"lat\":\"39.4745175\",\"lon\":\"-6.3716761\",\"class\":\"boundary\",\"type\":\"administrative\",\"place_rank\":16",
+    "despues": "[ { \"addresstype\": \"city\", \"boundingbox\": [ \"39.1552618\", \"39.6488278\", \"-6.8020698\", \"-6.0787446\" ], \"class\":",
+    "palabras_antes": 17,
+    "palabras_despues": 88
    }
   }
  },
@@ -5451,12 +6468,20 @@
   "longitud": 442,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "645358cac2b250e8",
-   "longitud": 442,
+   "hash": "21a854fc717d7b3d",
+   "longitud": 440,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "645358cac2b250e8",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "[{\"place_id\":292002974,\"licence\":\"Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright\",\"osm_type\":\"relation\",\"osm_id\":344974,\"lat\":\"43.1527730\",\"lon\":\"-2.9349498\",\"class\":\"boundary\",\"type\":\"administrative\",\"place_rank\":16,",
+    "despues": "[ { \"addresstype\": \"town\", \"boundingbox\": [ \"43.1419599\", \"43.1587380\", \"-2.9407886\", \"-2.9132254\" ], \"class\":",
+    "palabras_antes": 11,
+    "palabras_despues": 47
    }
   }
  },
@@ -5465,12 +6490,20 @@
   "longitud": 3466,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "b7db8ae78109b976",
+   "hash": "ed51e699989f493b",
    "longitud": 3433,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "b7db8ae78109b976",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "AIR MOVEMENT TECHNOLOGIES SL NOVOTRANS IGORRE SL OLAETXE OPTIKA ZENTRUA SLP CONSTRUCCIONES",
+    "despues": "NOVOTRANS IGORRE SL GASOLINDEGIEK SL FUNDIARQUETA SL TBI WELDING SYSTEMS SL LIMPIEZAS",
+    "palabras_antes": 48,
+    "palabras_despues": 48
    }
   }
  },
@@ -5534,19 +6567,44 @@
  "https://nominatim.openstreetmap.org/search?q=D-ALiX%2C+Granadilla+de+Abona%2C+Tenerife&format=json&limit=2": {
   "hash": "bd5099156a57eefd",
   "longitud": 514,
-  "visto": "2026-10-17"
+  "visto": "2026-10-17",
+  "pendiente": {
+   "hash": "a7af6ebd13d7758b",
+   "longitud": 514,
+   "detectado": "2026-10-17",
+   "visto": "2026-10-17",
+   "comparacion": {
+    "referencia": "aceptada",
+    "fecha": "2026-10-17",
+    "hash_referencia": "bd5099156a57eefd",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "[{\"place_id\":297935986,\"licence\":\"Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright\",\"osm_type\":\"way\",\"osm_id\":152274054,\"lat\":\"28.0693750\",\"lon\":\"-16.5113378\",\"class\":\"building\",\"type\":\"yes\",\"place_rank\":30,\"importance\"",
+    "despues": "[ { \"addresstype\": \"building\", \"boundingbox\": [ \"28.0690605\", \"28.0696895\", \"-16.5115955\", \"-16.5110801\" ], \"class\":",
+    "palabras_antes": 22,
+    "palabras_despues": 58
+   }
+  }
  },
  "https://www.iter.es/d-alix/": {
   "hash": "2294757fe7074a7a",
   "longitud": 10399,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "77ce55379e4739fa",
-   "longitud": 10382,
+   "hash": "f37f3100448233a7",
+   "longitud": 10416,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "77ce55379e4739fa",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "Centro de Visitantes Taller de modelado CANALINK Túnel de viento",
+    "despues": "Laboratorio de eficiencia energética movil LAVE Túnel de viento Taller de modelado",
+    "palabras_antes": 10,
+    "palabras_despues": 14
    }
   }
  },
@@ -5579,16 +6637,7 @@
  "https://www.datacenterdynamics.com/es/noticias/datarush-inaugura-su-segundo-data-center-en-malaga/": {
   "hash": "9d1c79a75060f566",
   "longitud": 5090,
-  "visto": "2026-10-17",
-  "pendiente": {
-   "hash": "c9361d588f9be18b",
-   "longitud": 5092,
-   "detectado": "2026-10-17",
-   "visto": "2026-10-17",
-   "comparacion": {
-    "clase": "sin_comparacion"
-   }
-  }
+  "visto": "2026-10-17"
  },
  "https://www.datacenters.com/providers/datarush-it": {
   "clase": "bloqueada",
@@ -5645,16 +6694,7 @@
  "https://www.datacenterdynamics.com/en/news/ignis-to-build-dayones-300mw-data-center-in-aragon-spain/": {
   "hash": "2f74bc27b3904992",
   "longitud": 6504,
-  "visto": "2026-10-17",
-  "pendiente": {
-   "hash": "6c2e9f1dcc0775e7",
-   "longitud": 6533,
-   "detectado": "2026-10-17",
-   "visto": "2026-10-17",
-   "comparacion": {
-    "clase": "sin_comparacion"
-   }
-  }
+  "visto": "2026-10-17"
  },
  "https://www.datarush.es/inauguracion_del_segundo_centro_de_datarush_en_malaga/": {
   "hash": "babb7f65fd3c439e",
@@ -5676,12 +6716,21 @@
   "longitud": 6599,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "fbb2e91b40a99bab",
+   "hash": "b394593b077db09c",
    "longitud": 6739,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "fbb2e91b40a99bab",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "78e7a4263323d449",
+    "antes": "El juzgado frena el desahucio de un jubilado de Málaga y evita",
+    "despues": "Banderas abandona el proyecto de Sohrlin en Málaga para centrarse en otras",
+    "palabras_antes": 49,
+    "palabras_despues": 49
    }
   }
  },
@@ -5707,28 +6756,27 @@
  "https://nominatim.openstreetmap.org/search?q=Escatr%C3%B3n%2C+Zaragoza&format=json&limit=1": {
   "hash": "ab57eb28780c8ee4",
   "longitud": 464,
-  "visto": "2026-10-12",
-  "pendiente": {
-   "hash": "a566f969efe3850d",
-   "longitud": 464,
-   "detectado": "2026-10-17",
-   "visto": "2026-10-17",
-   "comparacion": {
-    "clase": "sin_comparacion"
-   }
-  }
+  "visto": "2026-10-17"
  },
  "https://www.expansion.com/empresas/2026/07/13/6a538798e5fdea2b078b456e.html": {
   "hash": "febadbf93739fe7a",
   "longitud": 11561,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "2d22862bd36a515e",
-   "longitud": 11491,
+   "hash": "a83ac058213fe57e",
+   "longitud": 11402,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "2d22862bd36a515e",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "13:21 Cuatro de cada diez madrile�os tienen dificultades para llegar a fin",
+    "despues": "14:41 Un mejor equilibrio entre clima e industria 14:34 Feij�o: la \"coalici�n",
+    "palabras_antes": 77,
+    "palabras_despues": 58
    }
   }
  },
@@ -5761,31 +6809,65 @@
   "longitud": 426,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "2f57bb3df1ab786c",
+   "hash": "d479fbd5525aa879",
    "longitud": 426,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "2f57bb3df1ab786c",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "[{\"place_id\":296982469,\"licence\":\"Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright\",\"osm_type\":\"relation\",\"osm_id\":1899973,\"lat\":\"39.4745175\",\"lon\":\"-6.3716761\",\"class\":\"boundary\",\"type\":\"administrative\",\"place_rank\":16",
+    "despues": "[ { \"addresstype\": \"city\", \"boundingbox\": [ \"39.1552618\", \"39.6488278\", \"-6.8020698\", \"-6.0787446\" ], \"class\":",
+    "palabras_antes": 9,
+    "palabras_despues": 45
    }
   }
  },
  "https://nominatim.openstreetmap.org/search?q=Vianos%2C+Albacete&format=json&limit=1": {
   "hash": "0d286b96dd09a710",
   "longitud": 443,
-  "visto": "2026-10-17"
+  "visto": "2026-10-17",
+  "pendiente": {
+   "hash": "ae534c3387226603",
+   "longitud": 443,
+   "detectado": "2026-10-17",
+   "visto": "2026-10-17",
+   "comparacion": {
+    "referencia": "aceptada",
+    "fecha": "2026-10-17",
+    "hash_referencia": "0d286b96dd09a710",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "[{\"place_id\":294544589,\"licence\":\"Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright\",\"osm_type\":\"relation\",\"osm_id\":342485,\"lat\":\"38.6328160\",\"lon\":\"-2.5007956\",\"class\":\"boundary\",\"type\":\"administrative\",\"place_rank\":16,",
+    "despues": "[ { \"addresstype\": \"village\", \"boundingbox\": [ \"38.3931822\", \"38.6653845\", \"-2.6345705\", \"-2.4225492\" ], \"class\":",
+    "palabras_antes": 11,
+    "palabras_despues": 47
+   }
+  }
  },
  "https://www.eldiario.es/castilla-la-mancha/social/proyecto-nuevo-centro-datos-corredor-ecologico-serrania-albacetena-desata-alarma-inviable_1_13427493.html": {
   "hash": "67a1a4e24713021d",
   "longitud": 19859,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "9209ed4483827579",
-   "longitud": 20771,
+   "hash": "fc4e70157be29142",
+   "longitud": 20898,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "9209ed4483827579",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "8babee5d60cd649f",
+    "antes": "Rebeca Torró Urtasun Rufián Montero Medidas Vox Vivienda Julio Iglesias Trump Putin",
+    "despues": "Dana Valencia Rebeca Torró Urtasun Rufián Montero Medidas Vox Vivienda Julio Iglesias",
+    "palabras_antes": 2925,
+    "palabras_despues": 2947
    }
   }
  },
@@ -5794,12 +6876,20 @@
   "longitud": 3869,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "8d25607a6d84ba40",
-   "longitud": 3876,
+   "hash": "9104bdd55e2364a3",
+   "longitud": 3897,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "8d25607a6d84ba40",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "TOMELLOSO SL DC ESTATE PALMA SL BLACK ARTIFICIAL INTELLIGENCE SL DC ESTATE",
+    "despues": "PALMA SL DC ESTATE TOMELLOSO SL BLACK ARTIFICIAL INTELLIGENCE SL STARDAV SL",
+    "palabras_antes": 151,
+    "palabras_despues": 156
    }
   }
  },
@@ -5808,12 +6898,21 @@
   "longitud": 10018,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "a18483bcb83b5d8c",
-   "longitud": 9762,
+   "hash": "4cb16476e59a0ef1",
+   "longitud": 9713,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "a18483bcb83b5d8c",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "7af28fb545f4e54d",
+    "antes": "Ayuso cierra la estación de Sol tras quejarse por el amoníaco de",
+    "despues": "Dimite la portavoz del PSOE, Montse Mínguez, tras hacerse públicos los negocios",
+    "palabras_antes": 77,
+    "palabras_despues": 72
    }
   }
  },
@@ -5834,28 +6933,28 @@
  "https://www.datacenterdynamics.com/es/noticias/valladolid-atrae-uno-de-los-mayores-centros-de-datos-de-espa%C3%B1a/": {
   "hash": "7c1fafd2c4174eb7",
   "longitud": 7616,
-  "visto": "2026-10-17",
-  "pendiente": {
-   "hash": "f668be72bd9f09e7",
-   "longitud": 7605,
-   "detectado": "2026-10-17",
-   "visto": "2026-10-17",
-   "comparacion": {
-    "clase": "sin_comparacion"
-   }
-  }
+  "visto": "2026-10-17"
  },
  "https://www.elconfidencial.com/espana/castilla-y-leon/2026-08-01/castilla-y-leon-entra-en-la-carrera-de-los-centros-de-datos-con-un-importante-proyecto-de-1-600-millones_4399021/": {
   "hash": "7e618a755ba7b4b2",
   "longitud": 20446,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "1df1576849b44487",
-   "longitud": 32429,
+   "hash": "625ed8faa3620dd5",
+   "longitud": 33202,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "1df1576849b44487",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "aa9149bcdffeb117",
+    "antes": "Mercadona Esperanza Aguirre Dana Frente amplio Cortes de tráfico Bilbao Cierre metro",
+    "despues": "Mourinho Esperanza Aguirre Dana Frente amplio Cortes de tráfico Bilbao Cierre metro",
+    "palabras_antes": 5125,
+    "palabras_despues": 5266
    }
   }
  },
@@ -5888,12 +6987,21 @@
   "longitud": 11674,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "d8322d5efa042cff",
-   "longitud": 11757,
+   "hash": "e9076e46550ca51a",
+   "longitud": 11674,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "d8322d5efa042cff",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "d3d54eabda063823",
+    "antes": "Un terremoto de magnitud 4,2 en el entorno de El Bierzo se",
+    "despues": "Vuelca un camión en la autovía del Cantábrico a la altura de",
+    "palabras_antes": 258,
+    "palabras_despues": 246
    }
   }
  },
@@ -5930,9 +7038,9 @@
   "ultimo_fallo": "2026-10-17"
  },
  "https://www.datacenterdynamics.com/en/news/starwoods-echelon-partners-with-iberdrola-for-spanish-data-center-venture/": {
-  "clase": "bloqueada",
-  "motivo": "HTTP 403",
-  "ultimo_fallo": "2026-10-17"
+  "hash": "a697041b0b9a7d12",
+  "longitud": 9255,
+  "visto": "2026-10-17"
  },
  "https://www.iberdrolaespana.com/sala-comunicacion/noticias/joint-venture-echelon-iberdrola-digital-centros-datos-espana": {
   "hash": "309c0370241f0a6d",
@@ -5994,12 +7102,21 @@
   "longitud": 14968,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "610697f9fe5854d4",
-   "longitud": 15845,
+   "hash": "3600d1da32c2e26e",
+   "longitud": 15958,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "610697f9fe5854d4",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "adb8344f0b6146f0",
+    "antes": "Rebeca Torró Urtasun Rufián Montero Medidas Vox Vivienda Julio Iglesias Trump Putin",
+    "despues": "Dana Valencia Rebeca Torró Urtasun Rufián Montero Medidas Vox Vivienda Julio Iglesias",
+    "palabras_antes": 2198,
+    "palabras_despues": 2218
    }
   }
  },
@@ -6050,7 +7167,24 @@
  "https://www.zawya.com/en/press-release/companies-news/edgnex-data-centers-by-damac-powers-european-expansion-with-40mw-data-center-investment-in-spain-r6oamwj0": {
   "hash": "4fa391c3225dc752",
   "longitud": 8453,
-  "visto": "2026-10-17"
+  "visto": "2026-10-17",
+  "pendiente": {
+   "hash": "2fb33bba4ab78ac2",
+   "longitud": 8461,
+   "detectado": "2026-10-17",
+   "visto": "2026-10-17",
+   "comparacion": {
+    "referencia": "aceptada",
+    "fecha": "2026-10-17",
+    "hash_referencia": "4fa391c3225dc752",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "IPO More details on Dubai Investment Park IPO expected next week REAL",
+    "despues": "BONDS Jordan accepts all $396mln tendered in 2027 bond buyback offer IPO",
+    "palabras_antes": 181,
+    "palabras_despues": 185
+   }
+  }
  },
  "http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCallejero.asmx/Consulta_DNPRC?Provincia=&Municipio=&RC=14062A005000190000DS": {
   "hash": "79e6b4bf44b5f480",
@@ -6096,12 +7230,20 @@
   "longitud": 11639,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "44604a57fc1a4738",
+   "hash": "74fbdab1e01d05f6",
    "longitud": 11847,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "44604a57fc1a4738",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "413",
+    "despues": "416",
+    "palabras_antes": 1,
+    "palabras_despues": 1
    }
   }
  },
@@ -6160,7 +7302,10 @@
  "https://colocationm.com/spain/madrid-dc-28": {
   "hash": "3884fea1d64e4050",
   "longitud": 5737,
-  "visto": "2026-10-17"
+  "visto": "2026-10-17",
+  "ultimo_fallo": "2026-10-17",
+  "clase": "error",
+  "motivo": "fetch failed"
  },
  "https://dcatlas.io/en/explore/facilities/espaciorack-madrid-espaciorack-pozuelo-de-alarc-n": {
   "hash": "9b6fd64555c3ec26",
@@ -6174,7 +7319,10 @@
    "comparacion": {
     "clase": "sin_comparacion"
    }
-  }
+  },
+  "ultimo_fallo": "2026-10-17",
+  "clase": "error",
+  "motivo": "fetch failed"
  },
  "https://www.espanix.net/es/post/ininterrumpido/": {
   "hash": "d81f3085a51a565e",
@@ -6221,12 +7369,20 @@
   "longitud": 4678,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "5e91fc0ed4b3a972",
-   "longitud": 4602,
+   "hash": "5c8d8c61dd6e3b79",
+   "longitud": 4587,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "5e91fc0ed4b3a972",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "Una revisión independiente del CIS resta 41 escaños al PSOE: «Todo el",
+    "despues": "TVE tapó en sus programas las 30 casas de la pareja de",
+    "palabras_antes": 160,
+    "palabras_despues": 160
    }
   }
  },
@@ -6278,12 +7434,21 @@
   "longitud": 11254,
   "visto": "2026-10-17",
   "pendiente": {
-   "hash": "cfc2ac53462005b2",
-   "longitud": 11218,
+   "hash": "966fca7be4a763fb",
+   "longitud": 11205,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "cfc2ac53462005b2",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "9252917f00d94d8e",
+    "antes": "Sánchez convierte su mitin en una declaración de amor: «Que lo oigan",
+    "despues": "Detenidos dos menores por matar a una anciana de 83 años durante",
+    "palabras_antes": 1378,
+    "palabras_despues": 1375
    }
   }
  },
@@ -6306,12 +7471,21 @@
   "longitud": 6795,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "857fa096463597f5",
-   "longitud": 6635,
+   "hash": "6e4633d3fbf57f62",
+   "longitud": 6611,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "857fa096463597f5",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "5d6534d23bd88747",
+    "antes": "Feijóo: «Un Gobierno que desahucia a 75 familias de guardias civiles en",
+    "despues": "Page planta a Sánchez y no acude al Comité Federal al no",
+    "palabras_antes": 223,
+    "palabras_despues": 221
    }
   }
  },
@@ -6320,12 +7494,21 @@
   "longitud": 13604,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "77048c69491de3ae",
-   "longitud": 14210,
+   "hash": "5a807e38f80e43df",
+   "longitud": 14411,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "77048c69491de3ae",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "c9e90807308f5ddf",
+    "antes": "Rebeca Torró Urtasun Rufián Montero Medidas Vox Vivienda Julio Iglesias Trump Putin",
+    "despues": "Dana Valencia Rebeca Torró Urtasun Rufián Montero Medidas Vox Vivienda Julio Iglesias",
+    "palabras_antes": 2126,
+    "palabras_despues": 2163
    }
   }
  },
@@ -6339,12 +7522,20 @@
   "longitud": 442,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "9ae8c7fd130795ad",
+   "hash": "1ebff98a5995a6a4",
    "longitud": 442,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "9ae8c7fd130795ad",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "[{\"place_id\":294834801,\"licence\":\"Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright\",\"osm_type\":\"relation\",\"osm_id\":345160,\"lat\":\"40.7506848\",\"lon\":\"-3.0292084\",\"class\":\"boundary\",\"type\":\"administrative\",\"place_rank\":16,",
+    "despues": "[ { \"addresstype\": \"city\", \"boundingbox\": [ \"40.7083245\", \"40.7934617\", \"-3.0827558\", \"-2.9941613\" ], \"class\":",
+    "palabras_antes": 11,
+    "palabras_despues": 47
    }
   }
  },
@@ -6353,12 +7544,20 @@
   "longitud": 7542,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "3c89b008d62835b2",
-   "longitud": 7847,
+   "hash": "d2d65c2be11031e8",
+   "longitud": 7539,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "3c89b008d62835b2",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "Este es el plan gratis en Madrid que arrasa este sábado en",
+    "despues": "Vivienda, salarios e impuestos: las propuestas económicas que distancian a Podemos y",
+    "palabras_antes": 573,
+    "palabras_despues": 521
    }
   }
  },
@@ -6408,7 +7607,10 @@
  "https://www.datacenterdynamics.com/es/noticias/extremadura-acelera-sus-grandes-proyectos-de-centros-de-datos/": {
   "hash": "55fcef8af0c5af37",
   "longitud": 6984,
-  "visto": "2026-10-17"
+  "visto": "2026-10-17",
+  "ultimo_fallo": "2026-10-17",
+  "clase": "bloqueada",
+  "motivo": "HTTP 403"
  },
  "https://www.ecologistaszamora.org/ez/alegaciones/alegaciones-contra-el-data-center-de-monfarracinos/": {
   "hash": "4c240fb9bac649cb",
@@ -6434,12 +7636,20 @@
   "longitud": 5168,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "2e60890c5dd35923",
-   "longitud": 5318,
+   "hash": "9b42de397bbb80ee",
+   "longitud": 5313,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "2e60890c5dd35923",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "Protecció Civil enviará dos ES-Alert por lluvias torrenciales en Catalunya Castigo y",
+    "despues": "Ari Sánchez y Andrea Ustero vuelven a tumbar a las números uno",
+    "palabras_antes": 65,
+    "palabras_despues": 61
    }
   }
  },
@@ -6481,12 +7691,21 @@
   "longitud": 6329,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "27b40bad47ea5dca",
-   "longitud": 6197,
+   "hash": "e62f73f17cb96b13",
+   "longitud": 6201,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "27b40bad47ea5dca",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "9d6a1c210f06db66",
+    "antes": "El Ayuntamiento da luz verde a instalación de nuevos bancos en la",
+    "despues": "Conductores heridos en choque frontal de dos camiones en CL-101 3 Soria",
+    "palabras_antes": 114,
+    "palabras_despues": 113
    }
   }
  },
@@ -6512,19 +7731,30 @@
  "https://www.datacenterdynamics.com/es/noticias/global-switch-inicia-las-obras-de-su-segundo-centro-de-datos-en-madrid/": {
   "hash": "9dab2fb63c8777cf",
   "longitud": 5983,
-  "visto": "2026-10-17"
+  "visto": "2026-10-17",
+  "ultimo_fallo": "2026-10-17",
+  "clase": "bloqueada",
+  "motivo": "HTTP 403"
  },
  "https://nominatim.openstreetmap.org/search?q=Soria%2C+Castilla+y+Le%C3%B3n&format=json&limit=1": {
   "hash": "cba8fa35f64696b9",
   "longitud": 435,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "6e1ce36c3c3eed24",
+   "hash": "475c38f0b7126351",
    "longitud": 435,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "6e1ce36c3c3eed24",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "[{\"place_id\":294984689,\"licence\":\"Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright\",\"osm_type\":\"relation\",\"osm_id\":349005,\"lat\":\"41.6012505\",\"lon\":\"-2.7219380\",\"class\":\"boundary\",\"type\":\"administrative\",\"place_rank\":10,",
+    "despues": "[ { \"addresstype\": \"state_district\", \"boundingbox\": [ \"41.0565078\", \"42.1467061\", \"-3.5504383\", \"-1.7753716\" ], \"class\":",
+    "palabras_antes": 11,
+    "palabras_despues": 47
    }
   }
  },
@@ -6538,12 +7768,20 @@
   "longitud": 6983,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "9633c7caddbb5067",
+   "hash": "a4f774894379292b",
    "longitud": 6931,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "9633c7caddbb5067",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "Igual dice que el delegado del Gobierno \"da más derechos\" a los",
+    "despues": "PSOE, Frente Amplio y otros partidos de izquierda acuerdan presentarse unidos en",
+    "palabras_antes": 37,
+    "palabras_despues": 37
    }
   }
  },
@@ -6557,12 +7795,20 @@
   "longitud": 5665,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "8203e1b12d3f2960",
-   "longitud": 5573,
+   "hash": "2596b4676a8450ab",
+   "longitud": 5579,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "8203e1b12d3f2960",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "Igual dice que el delegado del Gobierno \"da más derechos\" a los",
+    "despues": "El delegado de Gobierno pregunta a la Comunidad cuándo reabrirá Sol tras",
+    "palabras_antes": 75,
+    "palabras_despues": 76
    }
   }
  },
@@ -6581,12 +7827,20 @@
   "longitud": 6415,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "a13666fda2a119e5",
-   "longitud": 6389,
+   "hash": "c3a3bc6116b46aab",
+   "longitud": 6390,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "a13666fda2a119e5",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "Fuerza la cerradura de su expareja y acaba detenido por allanamiento en",
+    "despues": "Declarado un incendio forestal en el paraje El Cuervo de Rosal de",
+    "palabras_antes": 53,
+    "palabras_despues": 56
    }
   }
  },
@@ -6635,7 +7889,10 @@
    "comparacion": {
     "clase": "sin_comparacion"
    }
-  }
+  },
+  "ultimo_fallo": "2026-10-17",
+  "clase": "error",
+  "motivo": "fetch failed"
  },
  "https://www.pctcan.es/buruaga-anuncia-la-compra-por-parte-de-google-de-una-parcela-en-el-pctcan-para-construir-un-centro-de-transmision-de-datos-vinculado-al-cable-submarino-sol/": {
   "hash": "a78d70985f432320",
@@ -6688,7 +7945,10 @@
    "comparacion": {
     "clase": "sin_comparacion"
    }
-  }
+  },
+  "ultimo_fallo": "2026-10-17",
+  "clase": "error",
+  "motivo": "fetch failed"
  },
  "https://www.res.es/en/about-res/nodes/lapalma-iac": {
   "hash": "d4baf7c0714651ea",
@@ -6728,12 +7988,20 @@
   "longitud": 455,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "e46504eae8850ffb",
+   "hash": "a48a345481acc0c7",
    "longitud": 455,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "e46504eae8850ffb",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "[{\"place_id\":298577928,\"licence\":\"Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright\",\"osm_type\":\"relation\",\"osm_id\":345075,\"lat\":\"28.6304235\",\"lon\":\"-17.7904002\",\"class\":\"boundary\",\"type\":\"administrative\",\"place_rank\":16",
+    "despues": "[ { \"addresstype\": \"city\", \"boundingbox\": [ \"28.5964364\", \"28.6643934\", \"-17.8409771\", \"-17.7530474\" ], \"class\":",
+    "palabras_antes": 15,
+    "palabras_despues": 51
    }
   }
  },
@@ -6771,12 +8039,21 @@
   "longitud": 11466,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "015921f8901433e4",
-   "longitud": 11678,
+   "hash": "83d0cbc5b646d50c",
+   "longitud": 11660,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "015921f8901433e4",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "2ea0c0d13a7eaaa5",
+    "antes": "La reforma de la estación de autobuses de Donostia prevé tornos y",
+    "despues": "Podemos pasa la factura del 23J y las izquierdas irán a la",
+    "palabras_antes": 307,
+    "palabras_despues": 303
    }
   }
  },
@@ -6824,12 +8101,20 @@
   "longitud": 5024,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "9708e4fbd9494d5f",
-   "longitud": 5013,
+   "hash": "bde69e527051ee35",
+   "longitud": 4950,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "9708e4fbd9494d5f",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "La Feria de Minerales de Los Rosales, un viaje por el interior",
+    "despues": "Dos heridos en Curtis tras chocar un coche y una moto EFE",
+    "palabras_antes": 65,
+    "palabras_despues": 54
    }
   }
  },
@@ -6843,12 +8128,21 @@
   "longitud": 10088,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "0860c26dbbda0921",
-   "longitud": 10303,
+   "hash": "c7c0801ed2cd7f89",
+   "longitud": 10203,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "0860c26dbbda0921",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "fd8a42d8fa61acfb",
+    "antes": "última hora Herido un hombre tras recibir un disparo durante un accidente",
+    "despues": "Extremadura Semana Santa en Extremadura Crónica Negra Sucesos Extremeños de HOY Fotos",
+    "palabras_antes": 366,
+    "palabras_despues": 348
    }
   }
  },
@@ -6857,12 +8151,21 @@
   "longitud": 11648,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "681881f8576a8e19",
-   "longitud": 12042,
+   "hash": "7fe95fbb204e2f76",
+   "longitud": 12194,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "681881f8576a8e19",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "413341d6ee3c0c83",
+    "antes": "Rebeca Torró Urtasun Rufián Montero Medidas Vox Vivienda Julio Iglesias Trump Putin",
+    "despues": "Dana Valencia Rebeca Torró Urtasun Rufián Montero Medidas Vox Vivienda Julio Iglesias",
+    "palabras_antes": 1744,
+    "palabras_despues": 1772
    }
   }
  },
@@ -6886,12 +8189,20 @@
   "longitud": 6768,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "ad1ca2da07465c2f",
-   "longitud": 6780,
+   "hash": "1ecce3668d293417",
+   "longitud": 6808,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "ad1ca2da07465c2f",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "Tras vender más de 1.200.000 unidades en todo el mundo, el coche",
+    "despues": "Un s400 por 18.990 € y un s700 por 25.990 €: EBRO",
+    "palabras_antes": 59,
+    "palabras_despues": 64
    }
   }
  },
@@ -6903,16 +8214,7 @@
  "https://www.datacenterdynamics.com/es/noticias/cc-green-acelera-en-c%C3%A1ceres-con-el-85-del-suelo-asegurado/": {
   "hash": "1bb892cc7993797b",
   "longitud": 6109,
-  "visto": "2026-10-17",
-  "pendiente": {
-   "hash": "9035eb5dffab4b62",
-   "longitud": 6125,
-   "detectado": "2026-10-17",
-   "visto": "2026-10-17",
-   "comparacion": {
-    "clase": "sin_comparacion"
-   }
-  }
+  "visto": "2026-10-17"
  },
  "https://www.elperiodicoextremadura.com/caceres-local/2026/07/29/caceres-expropiaciones-capellanias-suelo-industrial-132874338.html": {
   "clase": "bloqueada",
@@ -6922,16 +8224,7 @@
  "https://www.datacenterdynamics.com/es/noticias/galicia-se-estrena-en-el-mapa-de-los-centros-de-datos-con-las-instalaciones-de-curtis/": {
   "hash": "54e5aa2ce677754d",
   "longitud": 7416,
-  "visto": "2026-10-17",
-  "pendiente": {
-   "hash": "d153221b50ef6b79",
-   "longitud": 7366,
-   "detectado": "2026-10-17",
-   "visto": "2026-10-17",
-   "comparacion": {
-    "clase": "sin_comparacion"
-   }
-  }
+  "visto": "2026-10-17"
  },
  "https://territorioeurbanismo.xunta.gal/sites/default/files/2025-11/XP-25-006_OT-24-055_INFORME%20PIE_CENTRO%20DATOS%20CURTIS__PLENO_XC_CASTELLANO_04112025.pdf": {
   "hash": "bin:2235652",
@@ -6959,7 +8252,10 @@
    "comparacion": {
     "clase": "sin_comparacion"
    }
-  }
+  },
+  "ultimo_fallo": "2026-10-17",
+  "clase": "error",
+  "motivo": "fetch failed"
  },
  "https://www.ipcore.com/es/": {
   "hash": "ddaa2d3b85566d84",
@@ -7099,12 +8395,20 @@
   "longitud": 9087,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "6f5fcc18d0d52695",
-   "longitud": 9132,
+   "hash": "679d4fc21f3b109f",
+   "longitud": 9114,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "6f5fcc18d0d52695",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "El Hospital Universitario Infanta Elena, reconocido por los Premios Top 20 en",
+    "despues": "Valderrama pide a la ciudadanía tomar medidas de precaución por las lluvias",
+    "palabras_antes": 101,
+    "palabras_despues": 94
    }
   }
  },
@@ -7125,19 +8429,30 @@
    "comparacion": {
     "clase": "sin_comparacion"
    }
-  }
+  },
+  "ultimo_fallo": "2026-10-17",
+  "clase": "error",
+  "motivo": "fetch failed"
  },
  "https://el9nou.cat/valles-oriental/actualitat/economia/mediterra-construira-un-centre-de-dades-de-9-700-metres-quadrats-a-montmelo/": {
   "hash": "b5459bc3b4f6896d",
   "longitud": 3569,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "1fe304845ccdaff8",
+   "hash": "1d190003cb434bd8",
    "longitud": 3658,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "1fe304845ccdaff8",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "904",
+    "despues": "910",
+    "palabras_antes": 1,
+    "palabras_despues": 1
    }
   }
  },
@@ -7156,12 +8471,20 @@
   "longitud": 7766,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "22afffa43e046a69",
-   "longitud": 8071,
+   "hash": "d3a829cbf168563a",
+   "longitud": 7763,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "22afffa43e046a69",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "Este es el plan gratis en Madrid que arrasa este sábado en",
+    "despues": "Vivienda, salarios e impuestos: las propuestas económicas que distancian a Podemos y",
+    "palabras_antes": 573,
+    "palabras_despues": 521
    }
   }
  },
@@ -7333,19 +8656,31 @@
    "comparacion": {
     "clase": "sin_comparacion"
    }
-  }
+  },
+  "ultimo_fallo": "2026-10-17",
+  "clase": "error",
+  "motivo": "fetch failed"
  },
  "https://madridinforma.eldiario.es/microsoft-avanza-en-su-gran-campus-de-centros-de-datos-en-alcala-de-henares-donde-estara-y-que-falta-para-que-salga-adelante/": {
   "hash": "89ad83f2a51519bd",
   "longitud": 5846,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "47251a51e1af9725",
-   "longitud": 5922,
+   "hash": "883f6bd8556f134c",
+   "longitud": 5931,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "47251a51e1af9725",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "b9b972d3c1ba46c6",
+    "antes": "Las Tablas Oeste tendrá 741 viviendas y el Ayuntamiento de Madrid reservará",
+    "despues": "Madrid prepara más de 18.000 viviendas protegidas y estos son los cambios",
+    "palabras_antes": 239,
+    "palabras_despues": 228
    }
   }
  },
@@ -7490,12 +8825,20 @@
   "longitud": 8533,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "229e764b75e85879",
-   "longitud": 8635,
+   "hash": "69e132f6ad24a8a3",
+   "longitud": 8569,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "229e764b75e85879",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "Alcalá Desarrollo publica dos vacantes indefinidas para comerciales de automoción con incorporación",
+    "despues": "El salario mínimo podría subir cerca de un 5 % en 2027:",
+    "palabras_antes": 120,
+    "palabras_despues": 120
    }
   }
  },
@@ -7575,17 +8918,26 @@
  "https://www.datacenterdynamics.com/en/product-news/nostrum-data-centers-consolidates-its-maturity-with-key-milestones-in-badajoz-guadalajara-and-galicia/": {
   "hash": "c6836184ee8c089e",
   "longitud": 10923,
-  "visto": "2026-10-17"
+  "visto": "2026-10-17",
+  "ultimo_fallo": "2026-10-17",
+  "clase": "bloqueada",
+  "motivo": "HTTP 403"
  },
  "https://www.datacenterdynamics.com/en/news/iren-completes-acquisition-of-spanish-data-center-developer-nostrum/": {
   "hash": "83b81f0d486af200",
   "longitud": 7439,
-  "visto": "2026-10-17"
+  "visto": "2026-10-17",
+  "ultimo_fallo": "2026-10-17",
+  "clase": "bloqueada",
+  "motivo": "HTTP 403"
  },
  "https://www.datacenterdynamics.com/es/noticias/jll-y-nostrum-data-centers-impulsan-seis-nuevos-campus-de-datos-de-hasta-800-mw-en-espa%C3%B1a/": {
   "hash": "d2612f50dbf71dc4",
   "longitud": 7962,
-  "visto": "2026-10-17"
+  "visto": "2026-10-17",
+  "ultimo_fallo": "2026-10-17",
+  "clase": "bloqueada",
+  "motivo": "HTTP 403"
  },
  "https://www.idom.com/noticia/idom-disena-el-nuevo-centro-de-datos-gua1-en-guadalajara-un-proyecto-estrategico-de-1-000-millones-de-euros/": {
   "hash": "ec3dc8fb7a76bf5f",
@@ -7629,19 +8981,30 @@
   "longitud": 6897,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "d0b69fb75a8928ba",
-   "longitud": 6826,
+   "hash": "7e2aac2d372c8a7b",
+   "longitud": 6737,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "d0b69fb75a8928ba",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "13:21 Cuatro de cada diez madrileños tienen dificultades para llegar a fin",
+    "despues": "14:41 Un mejor equilibrio entre clima e industria 14:34 Feijóo: la \"coalición",
+    "palabras_antes": 77,
+    "palabras_despues": 58
    }
   }
  },
  "https://www.datacenterdynamics.com/es/noticias/nunsys-cloud-inaugura-un-nuevo-centro-de-datos-en-paterna-tras-invertir-10-millones-de-euros/": {
   "hash": "5c6579c0f975e2e3",
   "longitud": 6555,
-  "visto": "2026-10-17"
+  "visto": "2026-10-17",
+  "ultimo_fallo": "2026-10-17",
+  "clase": "bloqueada",
+  "motivo": "HTTP 403"
  },
  "https://www.datacenterdynamics.com/es/noticias/primera-piedra-de-nxn-en-vara-de-quart-infraestructura-verde-para-ia-y-supercomputaci%C3%B3n-en-espa%C3%B1a/": {
   "hash": "a356fa0ddd518855",
@@ -7678,12 +9041,20 @@
   "longitud": 1565,
   "visto": "2026-10-17",
   "pendiente": {
-   "hash": "bcc1de7472a8f425",
+   "hash": "a1ea01f37b5a6fc7",
    "longitud": 1565,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "bcc1de7472a8f425",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "[{\"place_id\":83202227,\"licence\":\"Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright\",\"osm_type\":\"node\",\"osm_id\":632362945,\"lat\":\"41.4926186\",\"lon\":\"2.0552643\",\"class\":\"place\",\"type\":\"house\",\"place_rank\":30,\"importance\":6.",
+    "despues": "[ { \"addresstype\": \"place\", \"boundingbox\": [ \"41.4925686\", \"41.4926686\", \"2.0552143\", \"2.0553143\" ], \"class\":",
+    "palabras_antes": 72,
+    "palabras_despues": 178
    }
   }
  },
@@ -7780,16 +9151,7 @@
  "https://nominatim.openstreetmap.org/search?q=Carrer+de+l%27Albareda%2C+Bellaterra%2C+Cerdanyola+del+Valles&format=json&limit=3": {
   "hash": "e49b0c5d2edca734",
   "longitud": 512,
-  "visto": "2026-10-12",
-  "pendiente": {
-   "hash": "895d640bf84975e6",
-   "longitud": 512,
-   "detectado": "2026-10-17",
-   "visto": "2026-10-17",
-   "comparacion": {
-    "clase": "sin_comparacion"
-   }
-  }
+  "visto": "2026-10-17"
  },
  "https://www.res.es/en/about-res/nodes/pic-uab": {
   "hash": "daeef046190975e1",
@@ -7831,12 +9193,20 @@
   "longitud": 11928,
   "visto": "2026-10-17",
   "pendiente": {
-   "hash": "51890adbce4091fa",
-   "longitud": 12195,
+   "hash": "20d51c174a4d6ea6",
+   "longitud": 12123,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "51890adbce4091fa",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "HUESCA Cientos de personas exigen en Sabiñánigo la reanudación inmediata de las",
+    "despues": "ESPAÑA La Aemet alerta de lluvias muy fuertes y persistentes en Alicante",
+    "palabras_antes": 222,
+    "palabras_despues": 208
    }
   }
  },
@@ -7869,12 +9239,21 @@
   "longitud": 11219,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "f5fae883d5b9ff29",
-   "longitud": 11791,
+   "hash": "f7aef77f60de0bcd",
+   "longitud": 11847,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "f5fae883d5b9ff29",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "52c0f2fcaced14e1",
+    "antes": "Rebeca Torró Urtasun Rufián Montero Medidas Vox Vivienda Julio Iglesias Trump Putin",
+    "despues": "Dana Valencia Rebeca Torró Urtasun Rufián Montero Medidas Vox Vivienda Julio Iglesias",
+    "palabras_antes": 1712,
+    "palabras_despues": 1727
    }
   }
  },
@@ -7904,22 +9283,28 @@
  "https://www.datacenterdynamics.com/es/noticias/repsol-invertir%C3%A1-118-millones-para-reforzar-la-infraestructura-energ%C3%A9tica-de-su-campus-de-ia/": {
   "hash": "7603e8a03ec752c4",
   "longitud": 7691,
-  "visto": "2026-10-17",
-  "ultimo_fallo": "2026-10-17",
-  "clase": "bloqueada",
-  "motivo": "HTTP 403"
+  "visto": "2026-10-17"
  },
  "https://www.ejeprime.com/industrial/renta-corporacion-invierte-14-millones-en-una-nave-logistica-en-lhospitalet": {
   "hash": "2f2a14e99b21d8d0",
   "longitud": 8250,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "44e5c986dfa911bf",
-   "longitud": 7596,
+   "hash": "61cbb78eb88f54de",
+   "longitud": 8241,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "44e5c986dfa911bf",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "bcf11a8bd010c33d",
+    "antes": "Especiales Especial New Voices Publicidad Últimas noticias Especiales Especial New Voices Perfil",
+    "despues": "Newsletter Date de alta gratis y recibe las noticias más importantes del",
+    "palabras_antes": 30,
+    "palabras_despues": 129
    }
   }
  },
@@ -7928,12 +9313,21 @@
   "longitud": 9719,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "6a7941706d1e437e",
-   "longitud": 9986,
+   "hash": "f9145483585edf9b",
+   "longitud": 10066,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "6a7941706d1e437e",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "112da2c18780325d",
+    "antes": "Casares se niega a desalojar la acampada de La Porticada y pide",
+    "despues": "El Ayuntamiento de Santander se opone a la testifical de un bombero",
+    "palabras_antes": 142,
+    "palabras_despues": 160
    }
   }
  },
@@ -7942,12 +9336,21 @@
   "longitud": 7964,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "aff65bdc14abc55d",
-   "longitud": 8231,
+   "hash": "4395f11c0b48507c",
+   "longitud": 8311,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "aff65bdc14abc55d",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "112da2c18780325d",
+    "antes": "Casares se niega a desalojar la acampada de La Porticada y pide",
+    "despues": "El Ayuntamiento de Santander se opone a la testifical de un bombero",
+    "palabras_antes": 142,
+    "palabras_despues": 160
    }
   }
  },
@@ -7966,12 +9369,20 @@
   "longitud": 431,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "41ff3704b8e5d656",
+   "hash": "baf47e144bdb7229",
    "longitud": 431,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "41ff3704b8e5d656",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "[{\"place_id\":291597493,\"licence\":\"Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright\",\"osm_type\":\"relation\",\"osm_id\":345456,\"lat\":\"43.3487303\",\"lon\":\"-4.0515082\",\"class\":\"boundary\",\"type\":\"administrative\",\"place_rank\":16,",
+    "despues": "[ { \"addresstype\": \"town\", \"boundingbox\": [ \"43.3001419\", \"43.3819364\", \"-4.0818542\", \"-4.0023453\" ], \"class\":",
+    "palabras_antes": 9,
+    "palabras_despues": 45
    }
   }
  },
@@ -8037,28 +9448,27 @@
  "https://nominatim.openstreetmap.org/search?q=Le%C3%B3n%2C+Castilla+y+Le%C3%B3n&format=json&limit=1": {
   "hash": "733712f4cb821dbe",
   "longitud": 432,
-  "visto": "2026-10-17",
-  "pendiente": {
-   "hash": "3359567a772abe92",
-   "longitud": 432,
-   "detectado": "2026-10-17",
-   "visto": "2026-10-17",
-   "comparacion": {
-    "clase": "sin_comparacion"
-   }
-  }
+  "visto": "2026-10-17"
  },
  "https://cronicacastillayleon.es/el-centro-de-supercomputacion-de-castilla-y-leon-migrara-a-su-nueva-sede-en-2026-2027": {
   "hash": "3968c653f2fd3957",
   "longitud": 7969,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "c9fecfaee3fcc9b9",
-   "longitud": 7861,
+   "hash": "c00c2eeabcce510a",
+   "longitud": 7952,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "c9fecfaee3fcc9b9",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "2",
+    "despues": "3",
+    "palabras_antes": 1,
+    "palabras_despues": 1
    }
   }
  },
@@ -8080,16 +9490,7 @@
  "https://nominatim.openstreetmap.org/search?q=Calle+Severo+Ochoa%2C+Campanillas%2C+M%C3%A1laga&format=json&limit=2": {
   "hash": "36c0bc0f2a0bac70",
   "longitud": 553,
-  "visto": "2026-10-12",
-  "pendiente": {
-   "hash": "c81ee74f81364583",
-   "longitud": 1071,
-   "detectado": "2026-10-17",
-   "visto": "2026-10-17",
-   "comparacion": {
-    "clase": "sin_comparacion"
-   }
-  }
+  "visto": "2026-10-17"
  },
  "https://www.scbi.uma.es/web/es/contacto/": {
   "hash": "9235797f59623cbc",
@@ -8138,7 +9539,10 @@
  "https://www.datacenterdynamics.com/es/noticias/serosense-impulsa-en-alcarr%C3%A0s-el-primer-data-center-de-lleida/": {
   "hash": "7043c6c9cdc4b93e",
   "longitud": 7460,
-  "visto": "2026-10-17"
+  "visto": "2026-10-17",
+  "ultimo_fallo": "2026-10-17",
+  "clase": "bloqueada",
+  "motivo": "HTTP 403"
  },
  "https://www.segre.com/ca/comarques/260319/alcarrs-allotjar-el-primer-centre-de-dades-de-lleida-de-12000-m-i-amb-80-llocs-de-treball_1148024.html": {
   "hash": "1f93f933502f96ea",
@@ -8173,12 +9577,21 @@
   "longitud": 8206,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "a8f1768a7ddd012f",
-   "longitud": 8174,
+   "hash": "e8a4f9b9341d0734",
+   "longitud": 8014,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "a8f1768a7ddd012f",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "941c096cbbbb4409",
+    "antes": "Ayuso cierra la estación de Sol tras quejarse por el amoníaco de",
+    "despues": "Dimite la portavoz del PSOE, Montse Mínguez, tras hacerse públicos los negocios",
+    "palabras_antes": 120,
+    "palabras_despues": 98
    }
   }
  },
@@ -8211,12 +9624,20 @@
   "longitud": 521,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "643e0edfd6873d2a",
+   "hash": "b2e5597ae7e60ca4",
    "longitud": 521,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "643e0edfd6873d2a",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "[{\"place_id\":296360686,\"licence\":\"Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright\",\"osm_type\":\"way\",\"osm_id\":164761480,\"lat\":\"39.9569433\",\"lon\":\"-4.8440534\",\"class\":\"highway\",\"type\":\"residential\",\"place_rank\":26,\"impor",
+    "despues": "[ { \"addresstype\": \"road\", \"boundingbox\": [ \"39.9559460\", \"39.9579888\", \"-4.8444948\", \"-4.8434832\" ], \"class\":",
+    "palabras_antes": 26,
+    "palabras_despues": 62
    }
   }
  },
@@ -8249,12 +9670,20 @@
   "longitud": 10574,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "4ab61f086516a37b",
+   "hash": "ac0762849952ebf8",
    "longitud": 10694,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "4ab61f086516a37b",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "Igual dice que el delegado del Gobierno \"da más derechos\" a los",
+    "despues": "PSOE, Frente Amplio y otros partidos de izquierda acuerdan presentarse unidos en",
+    "palabras_antes": 37,
+    "palabras_despues": 37
    }
   }
  },
@@ -8408,12 +9837,21 @@
   "longitud": 5653,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "2b7736a34b01fa16",
-   "longitud": 5799,
+   "hash": "f571c5e2e22bbad3",
+   "longitud": 5841,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "2b7736a34b01fa16",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "630b9cba4891d9da",
+    "antes": "La DANA llega a Granada con alerta por tormentas en numerosos municipios:",
+    "despues": "Investigan un tiroteo entre dos clanes en la Zona Norte de Granada",
+    "palabras_antes": 132,
+    "palabras_despues": 139
    }
   }
  },
@@ -8470,12 +9908,21 @@
   "longitud": 5969,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "752ff28f5868db8f",
+   "hash": "d33fff0aaeabb1f4",
    "longitud": 5969,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "752ff28f5868db8f",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "1a55524494faf75d",
+    "antes": "71, \"requestCorrelationId\": \"97d553e13249c003\"}",
+    "despues": "81, \"requestCorrelationId\": \"9f6c1986eb4bd29a\"}",
+    "palabras_antes": 3,
+    "palabras_despues": 3
    }
   }
  },
@@ -8497,28 +9944,28 @@
  "https://nominatim.openstreetmap.org/search?q=Carrer+del+Doctor+Moliner+50%2C+Burjassot%2C+Valencia&format=json&limit=1": {
   "hash": "b905b44b37d5ad05",
   "longitud": 609,
-  "visto": "2026-10-17",
-  "pendiente": {
-   "hash": "e9fc24604b6adacf",
-   "longitud": 609,
-   "detectado": "2026-10-17",
-   "visto": "2026-10-17",
-   "comparacion": {
-    "clase": "sin_comparacion"
-   }
-  }
+  "visto": "2026-10-17"
  },
  "https://uveg.atlassian.net/wiki/spaces/STU/pages/13090790/VA+SUPERCOMPUTACI+UV+Visites+guiades": {
   "hash": "32a11fd478ac5061",
   "longitud": 4740,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "b22fd1e8bdba928e",
+   "hash": "157fc4576e9b64d8",
    "longitud": 4740,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "b22fd1e8bdba928e",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "856c7c2318c0a509",
+    "antes": "\"b2b4db65fd7a46f2a1b454a341193920\"}",
+    "despues": "\"306f7eecff0b4a58abb4180e69f36863\"}",
+    "palabras_antes": 1,
+    "palabras_despues": 1
    }
   }
  },
@@ -8546,12 +9993,20 @@
   "longitud": 8181,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "a17178043385ecd5",
-   "longitud": 8226,
+   "hash": "86448aa95cb753b9",
+   "longitud": 8208,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "a17178043385ecd5",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "El Hospital Universitario Infanta Elena, reconocido por los Premios Top 20 en",
+    "despues": "Valderrama pide a la ciudadanía tomar medidas de precaución por las lluvias",
+    "palabras_antes": 101,
+    "palabras_despues": 94
    }
   }
  },
@@ -8626,28 +10081,27 @@
  "https://nominatim.openstreetmap.org/search?q=Estrada+de+Marcosende+10%2C+Vigo&format=json&limit=1": {
   "hash": "e41a11c27b4ae6bd",
   "longitud": 489,
-  "visto": "2026-10-12",
-  "pendiente": {
-   "hash": "eea2e7d4199397fd",
-   "longitud": 488,
-   "detectado": "2026-10-17",
-   "visto": "2026-10-17",
-   "comparacion": {
-    "clase": "sin_comparacion"
-   }
-  }
+  "visto": "2026-10-17"
  },
  "https://vqcc.uvigo.es/a-new-optical-quantum-computing-facility-at-the-vqcc/": {
   "hash": "6d9f99adcd5578f4",
   "longitud": 5632,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "3fb394ad1f1cba7f",
-   "longitud": 5632,
+   "hash": "21d191d560ca0e28",
+   "longitud": 5678,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "3fb394ad1f1cba7f",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "31-10-2024 The VQCC visits the University of Toyama, Japan. 10-07-2023 Two new",
+    "despues": "22-02-2025 The VQCC participates in the event organised by the Generalitat de",
+    "palabras_antes": 23,
+    "palabras_despues": 33
    }
   }
  },
@@ -8705,12 +10159,20 @@
   "longitud": 8315,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "3a4afb9cbc254c90",
-   "longitud": 8244,
+   "hash": "f215b783f3d0af67",
+   "longitud": 8155,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "3a4afb9cbc254c90",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "13:21 Cuatro de cada diez madrileños tienen dificultades para llegar a fin",
+    "despues": "14:41 Un mejor equilibrio entre clima e industria 14:34 Feijóo: la \"coalición",
+    "palabras_antes": 77,
+    "palabras_despues": 58
    }
   }
  },
@@ -8731,7 +10193,16 @@
  "https://eur-lex.europa.eu/eli/dir/2023/1791/oj": {
   "hash": "bc74bf86fbc31be6",
   "longitud": 157,
-  "visto": "2026-10-17"
+  "visto": "2026-10-17",
+  "pendiente": {
+   "hash": "7085b5a425a0a0b0",
+   "longitud": 386466,
+   "detectado": "2026-10-17",
+   "visto": "2026-10-17",
+   "comparacion": {
+    "clase": "sin_comparacion"
+   }
+  }
  },
  "https://www.ree.es/sites/default/files/12_CLIENTES/Documentos/2026_08_03_GRT_demanda.csv": {
   "hash": "e98d84c0549f3c0c",
@@ -8774,16 +10245,7 @@
  "https://www.miteco.gob.es/es/energia/participacion/2026/detalle-participacion-publica-k-851.html": {
   "hash": "8698a74b0ddbd80b",
   "longitud": 51693,
-  "visto": "2026-10-17",
-  "pendiente": {
-   "hash": "81485c674f989d37",
-   "longitud": 51693,
-   "detectado": "2026-10-17",
-   "visto": "2026-10-17",
-   "comparacion": {
-    "clase": "sin_comparacion"
-   }
-  }
+  "visto": "2026-10-17"
  },
  "https://www.miteco.gob.es/es/prensa/ultimas-noticias/2026/agosto/-el-gobierno-plantea-impulsar-los-centros-de-datos-sostenibles--.html": {
   "hash": "94f4d9388b290820",
@@ -8795,12 +10257,20 @@
   "longitud": 7564,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "6ad4f04755862b00",
-   "longitud": 7513,
+   "hash": "5aaeb3b46ff0e6cf",
+   "longitud": 7493,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "6ad4f04755862b00",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "Agricultores y ganaderos percibirán 2.691 millones en pagos anticipados de las ayudas",
+    "despues": "Llamadas comerciales: qué significa el nuevo prefijo 400 y qué hacer si",
+    "palabras_antes": 77,
+    "palabras_despues": 70
    }
   }
  },
@@ -8831,12 +10301,20 @@
   "longitud": 11440,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "855b179cfcb93027",
-   "longitud": 11370,
+   "hash": "2592e7f1e6b78eba",
+   "longitud": 11281,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "855b179cfcb93027",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "13:21 Cuatro de cada diez madrile�os tienen dificultades para llegar a fin",
+    "despues": "14:41 Un mejor equilibrio entre clima e industria 14:34 Feij�o: la \"coalici�n",
+    "palabras_antes": 77,
+    "palabras_despues": 58
    }
   }
  },
@@ -8850,12 +10328,21 @@
   "longitud": 9043,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "d00ff027dacffc99",
-   "longitud": 9284,
+   "hash": "6683831e00c6ffee",
+   "longitud": 9018,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "d00ff027dacffc99",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "5e5d19746f7d7e04",
+    "antes": "Newsletter Date de alta gratis y recibe las noticias más importantes del",
+    "despues": "Especiales Especial New Voices Publicidad Últimas noticias Lo más leído Amancio Ortega",
+    "palabras_antes": 129,
+    "palabras_despues": 100
    }
   }
  },
@@ -8892,12 +10379,21 @@
   "longitud": 12787,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "6525626db7f68952",
-   "longitud": 13386,
+   "hash": "07116bcbfa693af1",
+   "longitud": 13442,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "6525626db7f68952",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "eec5211dccd5fc5d",
+    "antes": "Rebeca Torró Urtasun Rufián Montero Medidas Vox Vivienda Julio Iglesias Trump Putin",
+    "despues": "Dana Valencia Rebeca Torró Urtasun Rufián Montero Medidas Vox Vivienda Julio Iglesias",
+    "palabras_antes": 1981,
+    "palabras_despues": 1996
    }
   }
  },
@@ -8945,12 +10441,20 @@
   "longitud": 13761,
   "visto": "2026-10-12",
   "pendiente": {
-   "hash": "dd7f7dd081b14dfc",
-   "longitud": 13534,
+   "hash": "eff73949801ec292",
+   "longitud": 13470,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "dd7f7dd081b14dfc",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "Ayuntamiento condena una agresión sexual en la ciudad y suspende temporalmente los",
+    "despues": "sector agroalimentario aragonés, presente en SIAL París 2026, con el apoyo de",
+    "palabras_antes": 239,
+    "palabras_despues": 242
    }
   }
  },
@@ -9071,12 +10575,16 @@
   "longitud": 5687,
   "visto": "2026-10-17",
   "pendiente": {
-   "hash": "c08078566584f547",
-   "longitud": 5688,
+   "hash": "1834c5958e14131d",
+   "longitud": 5694,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "c08078566584f547",
+    "parcial": false,
+    "clase": "formato"
    }
   }
  },
@@ -9099,12 +10607,16 @@
   "longitud": 4479,
   "visto": "2026-10-17",
   "pendiente": {
-   "hash": "2d14235e2bacefd4",
-   "longitud": 4473,
+   "hash": "24e034710ce45d31",
+   "longitud": 4480,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "2d14235e2bacefd4",
+    "parcial": false,
+    "clase": "formato"
    }
   }
  },
@@ -9113,12 +10625,16 @@
   "longitud": 3177,
   "visto": "2026-10-17",
   "pendiente": {
-   "hash": "0cbe3c2991716561",
-   "longitud": 3176,
+   "hash": "6fa833a03194e2bf",
+   "longitud": 3173,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "0cbe3c2991716561",
+    "parcial": false,
+    "clase": "formato"
    }
   }
  },
@@ -9161,12 +10677,16 @@
   "longitud": 12945,
   "visto": "2026-10-17",
   "pendiente": {
-   "hash": "568588dc2d68076c",
-   "longitud": 12945,
+   "hash": "1d24a9ac308888db",
+   "longitud": 12946,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "568588dc2d68076c",
+    "parcial": false,
+    "clase": "formato"
    }
   }
  },
@@ -9180,12 +10700,16 @@
   "longitud": 10921,
   "visto": "2026-10-17",
   "pendiente": {
-   "hash": "87d6183c78732084",
-   "longitud": 10921,
+   "hash": "193f04ff0ad8cbaa",
+   "longitud": 10922,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "87d6183c78732084",
+    "parcial": false,
+    "clase": "formato"
    }
   }
  },
@@ -9199,12 +10723,20 @@
   "longitud": 2279,
   "visto": "2026-10-17",
   "pendiente": {
-   "hash": "d4d5886897a38cbd",
+   "hash": "b960fb58e9128ceb",
    "longitud": 2279,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "d4d5886897a38cbd",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "35660 Networks 5885 Facilities 76 Campuses 288 Carriers 66464 Connections to Exchanges",
+    "despues": "35661 Networks 5885 Facilities 76 Campuses 288 Carriers 66467 Connections to Exchanges",
+    "palabras_antes": 23,
+    "palabras_despues": 23
    }
   }
  },
@@ -9271,7 +10803,10 @@
  "https://easydatahost.com/nvidia-dgx-spark": {
   "hash": "7071bfd510f22de1",
   "longitud": 12902,
-  "visto": "2026-10-17"
+  "visto": "2026-10-17",
+  "ultimo_fallo": "2026-10-17",
+  "clase": "bloqueada",
+  "motivo": "HTTP 403"
  },
  "https://easydatahost.com/gpu-servers": {
   "ultimo_fallo": "2026-10-17",
@@ -9406,7 +10941,10 @@
  "https://www.upf.edu/web/sct-sit/equipment": {
   "hash": "be2520a03f912c19",
   "longitud": 5138,
-  "visto": "2026-10-17"
+  "visto": "2026-10-17",
+  "ultimo_fallo": "2026-10-17",
+  "clase": "bloqueada",
+  "motivo": "HTTP 403"
  },
  "https://www.upf.edu/web/sct-sit": {
   "hash": "f8b06f6fa26c307f",
@@ -9468,12 +11006,21 @@
   "longitud": 5524,
   "visto": "2026-10-17",
   "pendiente": {
-   "hash": "2a8b46e25b7a4a39",
+   "hash": "9e599081f989f1ac",
    "longitud": 5524,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "2a8b46e25b7a4a39",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "554a475a73005175",
+    "antes": "FR - français EN - English",
+    "despues": "EN - English FR - français",
+    "palabras_antes": 6,
+    "palabras_despues": 6
    }
   }
  },
@@ -9490,19 +11037,41 @@
  "https://oeil.europarl.europa.eu/oeil/en/procedure-file?reference=2026/2895(DEA)": {
   "hash": "41b0b171b3e41c3a",
   "longitud": 3185,
-  "visto": "2026-10-17"
+  "visto": "2026-10-17",
+  "pendiente": {
+   "hash": "0c1598782d23dcbb",
+   "longitud": 3185,
+   "detectado": "2026-10-17",
+   "visto": "2026-10-17",
+   "comparacion": {
+    "referencia": "aceptada",
+    "fecha": "2026-10-17",
+    "hash_referencia": "41b0b171b3e41c3a",
+    "parcial": false,
+    "clase": "plantilla",
+    "firma": "cfdcf838ca3a4954",
+    "antes": "EN - English FR - français",
+    "despues": "FR - français EN - English",
+    "palabras_antes": 6,
+    "palabras_despues": 6
+   }
+  }
  },
  "https://www.cesga.es/jornada-tecnica-de-computacion-cuantica/": {
   "hash": "6706733d8a091711",
   "longitud": 2346,
   "visto": "2026-10-17",
   "pendiente": {
-   "hash": "96f9f91e075331cb",
-   "longitud": 2338,
+   "hash": "4b65dce4c12b4bae",
+   "longitud": 2347,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "96f9f91e075331cb",
+    "parcial": false,
+    "clase": "formato"
    }
   }
  },
@@ -9511,12 +11080,16 @@
   "longitud": 3177,
   "visto": "2026-10-17",
   "pendiente": {
-   "hash": "0cbe3c2991716561",
-   "longitud": 3176,
+   "hash": "6fa833a03194e2bf",
+   "longitud": 3173,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "0cbe3c2991716561",
+    "parcial": false,
+    "clase": "formato"
    }
   }
  },
@@ -9525,12 +11098,16 @@
   "longitud": 4833,
   "visto": "2026-10-17",
   "pendiente": {
-   "hash": "184ecd0635c3d741",
-   "longitud": 4833,
+   "hash": "26ca86a45ccb795f",
+   "longitud": 4831,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "184ecd0635c3d741",
+    "parcial": false,
+    "clase": "formato"
    }
   }
  },
@@ -9539,12 +11116,16 @@
   "longitud": 4314,
   "visto": "2026-10-17",
   "pendiente": {
-   "hash": "4e6cf54cd6571e5e",
-   "longitud": 4313,
+   "hash": "dcf4e4380eb28e82",
+   "longitud": 4316,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "4e6cf54cd6571e5e",
+    "parcial": false,
+    "clase": "formato"
    }
   }
  },
@@ -9598,12 +11179,20 @@
   "longitud": 2043,
   "visto": "2026-10-17",
   "pendiente": {
-   "hash": "562241b4c89b17d7",
+   "hash": "2c3519bb1e05f65d",
    "longitud": 2043,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "562241b4c89b17d7",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "35660 Networks 5885 Facilities 76 Campuses 288 Carriers 66464 Connections to Exchanges",
+    "despues": "35661 Networks 5885 Facilities 76 Campuses 288 Carriers 66467 Connections to Exchanges",
+    "palabras_antes": 23,
+    "palabras_despues": 23
    }
   }
  },
@@ -9637,12 +11226,20 @@
   "longitud": 1972,
   "visto": "2026-10-17",
   "pendiente": {
-   "hash": "0b19b735c8c78419",
+   "hash": "f92947d39321d8c7",
    "longitud": 1972,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "0b19b735c8c78419",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "35660 Networks 5885 Facilities 76 Campuses 288 Carriers 66464 Connections to Exchanges",
+    "despues": "35661 Networks 5885 Facilities 76 Campuses 288 Carriers 66467 Connections to Exchanges",
+    "palabras_antes": 23,
+    "palabras_despues": 23
    }
   }
  },
@@ -9661,12 +11258,20 @@
   "longitud": 3339,
   "visto": "2026-10-17",
   "pendiente": {
-   "hash": "ea721b99beb2f4db",
+   "hash": "f6e98db1a5f6f330",
    "longitud": 3339,
    "detectado": "2026-10-17",
    "visto": "2026-10-17",
    "comparacion": {
-    "clase": "sin_comparacion"
+    "referencia": "observacion",
+    "fecha": "2026-10-17",
+    "hash_referencia": "ea721b99beb2f4db",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "35660 Networks 5885 Facilities 76 Campuses 288 Carriers 66464 Connections to Exchanges",
+    "despues": "35661 Networks 5885 Facilities 76 Campuses 288 Carriers 66467 Connections to Exchanges",
+    "palabras_antes": 23,
+    "palabras_despues": 23
    }
   }
  },
@@ -9768,7 +11373,24 @@
  "https://www.datacenterdynamics.com/es/features/viaje-al-data-center-de-arsys-en-logro%C3%B1o-evoluci%C3%B3n-t%C3%A9cnica-y-soberan%C3%ADa-desde-la-rioja/": {
   "hash": "7f0700688c4d4fab",
   "longitud": 13927,
-  "visto": "2026-10-17"
+  "visto": "2026-10-17",
+  "pendiente": {
+   "hash": "d86753267fe3020d",
+   "longitud": 13983,
+   "detectado": "2026-10-17",
+   "visto": "2026-10-17",
+   "comparacion": {
+    "referencia": "aceptada",
+    "fecha": "2026-10-17",
+    "hash_referencia": "7f0700688c4d4fab",
+    "parcial": false,
+    "clase": "contenido",
+    "antes": "16 Jun 2026 Paraguay atrae el interés de Taiwán para desarrollar un",
+    "despues": "30 Sep 2026 Asterion y Teras estudian el futuro de la red",
+    "palabras_antes": 33,
+    "palabras_despues": 43
+   }
+  }
  },
  "https://www.capingelec.com/en/references/data-4-madrid-2/": {
   "hash": "ae5db25a116ba933",
@@ -9828,6 +11450,436 @@
  "https://www.edistribucion.com/content/dam/edistribucion/conexion-a-la-red/descargables/Memoria-tecnicaESP.pdf": {
   "hash": "bin-sha256:2f1f9ee97211a8a6",
   "longitud": 427491,
+  "visto": "2026-10-17"
+ },
+ "https://www.linkedin.com/posts/grupo-acs_onegrouponeteam-activity-7419782892647788545-ZIAT": {
+  "hash": "f38860280f7a3b2c",
+  "longitud": 5103,
+  "visto": "2026-10-17"
+ },
+ "https://adam.es/sobre-adam/": {
+  "hash": "67ee46dff141cc85",
+  "longitud": 20315,
+  "visto": "2026-10-17"
+ },
+ "https://adequa.pro/es/portfolio/dhub/": {
+  "hash": "7e3f19d0b1add73a",
+  "longitud": 4688,
+  "visto": "2026-10-17"
+ },
+ "https://www.cushmanwakefield.com/es-es/spain/news/2026/03/ark-to-invest--in-a-data-centre-in-barcelona": {
+  "hash": "331e92c099e20505",
+  "longitud": 12737,
+  "visto": "2026-10-17"
+ },
+ "https://www.datacenterdynamics.com/es/noticias/amazon-refuerza-arag%C3%B3n-con-un-nuevo-data-center-en-teruel/": {
+  "ultimo_fallo": "2026-10-17",
+  "clase": "bloqueada",
+  "motivo": "HTTP 403"
+ },
+ "https://urbanismo.malaga.eu/export/sites/urbanismo/.galleries/Unidad-Aceleradora/250324_Oficio-de-asignacion-de-expte-Centro_de_Datos_Calle_Canada.report....pdf": {
+  "hash": "bin-sha256:aff9bbd7630ff21f",
+  "longitud": 553918,
+  "visto": "2026-10-17"
+ },
+ "https://www.bizkaia.eus/lehendakaritza/Bao_bob/2026/02/27/II-919_cas.pdf": {
+  "hash": "bin-sha256:333ad36b975be9f7",
+  "longitud": 115928,
+  "visto": "2026-10-17"
+ },
+ "https://www.sec.gov/Archives/edgar/data/2118192/000119312526414188/d223752df1.htm": {
+  "hash": "a50cc453224cb6ea",
+  "longitud": 933238,
+  "visto": "2026-10-17"
+ },
+ "https://www.globenewswire.com/news-release/2026/09/04/3356540/0/en/statement-edgemode-confirms-that-the-current-review-process-with-blackberry-aif-and-black-ai-group-will-be-extended-for-up-to-six-months.html": {
+  "hash": "51d36c60fd6716a8",
+  "longitud": 4924,
+  "visto": "2026-10-17"
+ },
+ "https://www.sec.gov/Archives/edgar/data/1652958/000168316826006473/R9.htm": {
+  "hash": "b877d42cea8a66fe",
+  "longitud": 9637,
+  "visto": "2026-10-17"
+ },
+ "https://nebula.jcyl.es/index.php/s/ZgmiDZi67ZwzK79/download?path=%2F&files=AAI%20CPD%20SAN%20LORENZO_Resumen%20no%20tecnico_para_IP.pdf": {
+  "hash": "bin-sha256:51187bd0dbacc324",
+  "longitud": 1239395,
+  "visto": "2026-10-17"
+ },
+ "https://nebula.jcyl.es/index.php/s/ZgmiDZi67ZwzK79/download?path=%2F&files=AAI%20CPD%20SAN%20LORENZO_para_IP.pdf": {
+  "hash": "bin-sha256:f8c296087faba342",
+  "longitud": 50327155,
+  "visto": "2026-10-17"
+ },
+ "https://www.peeringdb.com/fac/15307": {
+  "hash": "e6c6b2d3915eaf93",
+  "longitud": 1901,
+  "visto": "2026-10-17"
+ },
+ "https://www.exainfra.net/network/pop-list?c528b115_page=5": {
+  "hash": "14422b3dc42deae9",
+  "longitud": 8461,
+  "visto": "2026-10-17"
+ },
+ "https://www.ccyl.es/Publicaciones/TextoEntradaBOCCL?Fichero=%5C%5CSIRDOCfiles%5Csirdoc%24%5CXML%5CEBOCCL%5C12L%5CBOCCL1200043%5CBOCCL-12-001586.xml": {
+  "ultimo_fallo": "2026-10-17",
+  "clase": "error",
+  "motivo": "fetch failed"
+ },
+ "https://bocyl.jcyl.es/boletines/2026/09/16/pdf/BOCYL-D-16092026-180-17.pdf": {
+  "hash": "bin-sha256:4b171f106e70c0c1",
+  "longitud": 862666,
+  "visto": "2026-10-17"
+ },
+ "https://www.jcyl.es/plaipdf//49/49122/301893/EG1823%20EIA%20RESUMEN%20NO%20TECNICO_INF%20PUBLICA.pdf": {
+  "hash": "bin-sha256:846b72f8fcea0858",
+  "longitud": 1108678,
+  "visto": "2026-10-17"
+ },
+ "https://www.jcyl.es/plaipdf//49/49122/301893/PROYECTO_REGIONAL.pdf": {
+  "hash": "bin-sha256:50614690c3dc9a84",
+  "longitud": 6870333,
+  "visto": "2026-10-17"
+ },
+ "https://www.jcyl.es/plaipdf//49/49122/301893/ZAMDC-GE-GPE-MEM-0010%20R04%20Proyecto%20B%C3%A1sico%20Data%20Center%20IA%20Hiperescalar%20Zamora%20Firmado.pdf": {
+  "hash": "bin-sha256:e5ef1aa6bcbc192f",
+  "longitud": 50577404,
+  "visto": "2026-10-17"
+ },
+ "https://www.investinspain.org/en/noticias-main/2026/global": {
+  "hash": "ee2f1ace2d2273c5",
+  "longitud": 5985,
+  "visto": "2026-10-17"
+ },
+ "https://actualidad.larioja.org/noticia?n=not-el-gobierno-de-la-rioja-adjudica-a-telefonica-soluciones-de-informatica-y-comunicaciones-de-es": {
+  "ultimo_fallo": "2026-10-17",
+  "clase": "bloqueada",
+  "motivo": "HTTP 403"
+ },
+ "https://www.goodman.com/our-properties/data-centres/global-data-centre-pipeline": {
+  "ultimo_fallo": "2026-10-17",
+  "clase": "bloqueada",
+  "motivo": "HTTP 403"
+ },
+ "https://www.goodman.com/-/media/project/goodman/global/files/investor-centre/gmg-goodman-group/announcements/asx-announcements/2025/q1-fy26-operational-update-final.pdf": {
+  "hash": "bin-sha256:03ec23d56aee5d13",
+  "longitud": 1785777,
+  "visto": "2026-10-17"
+ },
+ "https://grupovia.net/eventos/arquitectura/barcelona/2025/construccion-de-datacenters-barcelona/": {
+  "hash": "a7ff10f8e303670f",
+  "longitud": 19171,
+  "visto": "2026-10-17"
+ },
+ "https://www.boe.es/diario_borme/txt.php?id=BORME-C-2007-189043": {
+  "hash": "fa85f17b07b735f4",
+  "longitud": 2993,
+  "visto": "2026-10-17"
+ },
+ "https://apiweb.bolsasymercados.es/Market/MTFDocuments/Otros/2012/03/84696_Folleto_20120328.pdf": {
+  "hash": "bin-sha256:8999929fb69b5dd3",
+  "longitud": 6329611,
+  "visto": "2026-10-17"
+ },
+ "https://www.elespanol.com/eldigitalcastillalamancha/region/toledo/20260917/centro-datos-cientos-empleos-pabellon-publico-privado-anuncios-alcalde-toledo-viene/1003744386571_0.amp.html": {
+  "hash": "55f9e0dcc7f48617",
+  "longitud": 12142,
+  "visto": "2026-10-17"
+ },
+ "https://iren.gcs-web.com/news-releases/news-release-details/iren-completes-acquisition-nostrum-group-expanding-ai-cloud": {
+  "hash": "ac2e280d078c1055",
+  "longitud": 4596,
+  "visto": "2026-10-17"
+ },
+ "https://www.sec.gov/Archives/edgar/data/1878848/000187884826000052/iren-20260630.htm": {
+  "hash": "a503f43256203241",
+  "longitud": 818282,
+  "visto": "2026-10-17"
+ },
+ "https://doe.juntaex.es/otrosFormatos/html.php?anio=2026&doe=1730o&xml=2026062239": {
+  "hash": "40710b3f0ceb95f8",
+  "longitud": 12973,
+  "visto": "2026-10-17"
+ },
+ "https://www.boe.es/diario_boe/txt.php?id=BOE-B-2026-29930": {
+  "hash": "77882eec3ec07460",
+  "longitud": 11850,
+  "visto": "2026-10-17"
+ },
+ "https://www.datacenterdynamics.com/es/noticias/el-nuevo-cpd-de-la-junta-en-sevilla-alcanza-el-33-de-ejecuci%C3%B3n/": {
+  "ultimo_fallo": "2026-10-17",
+  "clase": "bloqueada",
+  "motivo": "HTTP 403"
+ },
+ "https://kumonetworks.es/certificaciones": {
+  "hash": "b36f3c5d4a0763a9",
+  "longitud": 5540,
+  "visto": "2026-10-17"
+ },
+ "https://kumonetworks.es/centros-de-datos": {
+  "hash": "ebce7b496bb538c6",
+  "longitud": 5516,
+  "visto": "2026-10-17"
+ },
+ "https://content.kumonetworks.es/wp-content/uploads/kumo-tier4design-vlc.pdf": {
+  "hash": "bin-sha256:c7d47721724d0b0d",
+  "longitud": 88490,
+  "visto": "2026-10-17"
+ },
+ "https://content.kumonetworks.es/wp-content/uploads/kumo-leed.pdf": {
+  "hash": "bin-sha256:c594b71bb091b900",
+  "longitud": 649379,
+  "visto": "2026-10-17"
+ },
+ "https://www.google.com/maps/place/Kumo+Networks+%7C+Valencia+%7C+Data+Center+Tier+IV/data=!4m6!3m5!1s0xd6045007a0c1757:0xdb2ec1f81618442c!8m2!3d39.515955!4d-0.4486038!16s%2Fg%2F11yp44kdhf": {
+  "hash": "98f9e488a4723211",
+  "longitud": 135,
+  "visto": "2026-10-17"
+ },
+ "https://bop.diba.cat/anunci/3994521": {
+  "hash": "d2df3015446ba0ae",
+  "longitud": 1201,
+  "visto": "2026-10-17"
+ },
+ "https://doe.juntaex.es/pdfs/doe/2026/970o/26080815.pdf": {
+  "hash": "bin-sha256:5afe982493ca168d",
+  "longitud": 147906,
+  "visto": "2026-10-17"
+ },
+ "https://www.rtve.es/play/videos/noticias-de-extremadura/noticias-extremadura-09-10-2026/17260591/": {
+  "hash": "64c76a2c84f122ab",
+  "longitud": 4909,
+  "visto": "2026-10-17"
+ },
+ "https://www.bocm.es/boletin/CM_Orden_BOCM/2022/11/21/BOCM-20221121-38.PDF": {
+  "hash": "bin-sha256:94d5f940c458243e",
+  "longitud": 102082,
+  "visto": "2026-10-17"
+ },
+ "https://news.microsoft.com/source/emea/features/microsoft-abre-una-nueva-convocatoria-del-fondo-comunitario-de-madrid-para-promover-el-impacto-social-en-la-region/?lang=es": {
+  "hash": "ee5c8221e9eb3823",
+  "longitud": 10175,
+  "visto": "2026-10-17"
+ },
+ "https://www.aragon.es/-/Microsoft-eia": {
+  "hash": "f9bdc12afd8f5706",
+  "longitud": 9813,
+  "visto": "2026-10-17"
+ },
+ "https://www.madrid.es/UnidadWeb/Contenidos/Ficheros/ENS/Certificado_ENS_2025.pdf": {
+  "hash": "bin-sha256:0a1cb516c9957ed2",
+  "longitud": 327500,
+  "visto": "2026-10-17"
+ },
+ "https://www.aragon.es/documents/d/guest/260918_piga-msft_esia_urb_campus-la-muela_fdo": {
+  "ultimo_fallo": "2026-10-17",
+  "clase": "error",
+  "motivo": "tiempo agotado"
+ },
+ "https://www.nasertic.es/es/hpc": {
+  "ultimo_fallo": "2026-10-17",
+  "clase": "error",
+  "motivo": "fetch failed"
+ },
+ "https://nasertic.es/es/actualidad/nasertic-celebra-la-semana-de-la-administracion-abierta-abriendo-las-puertas-del-cpd": {
+  "ultimo_fallo": "2026-10-17",
+  "clase": "error",
+  "motivo": "fetch failed"
+ },
+ "https://www.google.com/maps/place/NASERTIC+-+Navarra+De+Servicios+Y+Tecnolog%C3%ADas+S+A+-+Sede+Central/data=!4m6!3m5!1s0xd50928c76f41251:0xea376ddddb6b3fc9!8m2!3d42.8178661!4d-1.6598458!16s%2Fg%2F11bx8m50h0": {
+  "hash": "98f9e488a4723211",
+  "longitud": 135,
+  "visto": "2026-10-17"
+ },
+ "https://hacienda.navarra.es/sicpportal/mtoAnunciosModalidad.aspx?Cod=230613131157CDF312D9": {
+  "hash": "6dab62fbef7c3dc2",
+  "longitud": 4628,
+  "visto": "2026-10-17"
+ },
+ "https://www.aragon.es/documents/d/guest/esia-p-urbanizacion-campus-villamayor-msft": {
+  "ultimo_fallo": "2026-10-17",
+  "clase": "error",
+  "motivo": "tiempo agotado"
+ },
+ "https://www.aragon.es/documents/d/guest/esia-p-urbanizacion-campus-zaragoza-msft": {
+  "ultimo_fallo": "2026-10-17",
+  "clase": "error",
+  "motivo": "tiempo agotado"
+ },
+ "https://www.elnacional.cat/oneconomia/es/empresas/oxigen-dc-se-fija-en-espana-portugal-llegar-40mw-potencia-en-2027_1620692_102.html": {
+  "hash": "6e5cf3adac7ae2fd",
+  "longitud": 5234,
+  "visto": "2026-10-17"
+ },
+ "https://panattonieurope.com/es-es/noticias/panattoni-obtiene-licencia-de-obra-para-el-desarrollo-de-su-data-center-de-42-mw-de-potencia-en-barcelona": {
+  "ultimo_fallo": "2026-10-17",
+  "clase": "bloqueada",
+  "motivo": "HTTP 403"
+ },
+ "https://puredc.com/madrid": {
+  "hash": "2dad0678e73a2668",
+  "longitud": 4242,
+  "visto": "2026-10-17"
+ },
+ "https://www.datacenterdynamics.com/en/news/pure-granted-planning-permission-for-madrid-data-center-spain/": {
+  "hash": "2249e9ea9c7ec2a7",
+  "longitud": 9062,
+  "visto": "2026-10-17"
+ },
+ "https://viumolinsderei.com/2026/09/02/el-nou-centre-de-dades-del-pla-preveu-crear-50-llocs-de-treball-directes/": {
+  "hash": "beec5acf4baffa41",
+  "longitud": 9992,
+  "visto": "2026-10-17"
+ },
+ "https://actualidad.asturias.es/es/-/datos119": {
+  "hash": "dd0761ab3f921dd0",
+  "longitud": 6569,
+  "visto": "2026-10-17"
+ },
+ "https://urbanismo.malaga.eu/anuncios-de-planeamiento/planificacion/planes-parciales/detalle-del-anuncio/TOMA-DE-CONOCIMIENTO-Y-APROBACION-DEL-TEXTO-REFUNDIDO-DE-PLAN-PARCIAL-DE-ORDENACION-DEL-SECTOR-DE-SUELO-URBANIZABLE-SECTORIZADO-SUS-CA.23-EXTENSION-DEL-PTA/": {
+  "ultimo_fallo": "2026-10-17",
+  "clase": "error",
+  "motivo": "fetch failed"
+ },
+ "https://agoranet.jgpa.es/documentos/Diarios/PDF/12C322.pdf": {
+  "hash": "bin-sha256:fec530adf3ce94af",
+  "longitud": 836937,
+  "visto": "2026-10-17"
+ },
+ "https://www.wikidata.org/wiki/Q108554700": {
+  "hash": "64451656e55a6fca",
+  "longitud": 2342,
+  "visto": "2026-10-17"
+ },
+ "https://cadenaser.com/cantabria/2026/10/12/el-centro-de-datos-altamira-fuera-del-borrador-de-la-planificacion-electrica-cantabria-asegura-que-sigue-siendo-uno-de-los-mejores-proyectos-de-espana-radio-santander/": {
+  "hash": "f1512a3273814fc5",
+  "longitud": 10245,
+  "visto": "2026-10-17"
+ },
+ "https://www.waze.com/live-map/directions/es/md/alcala-de-henares/templus-mad01?to=place.ChIJv8wITZJJQg0R3P4CfFjH8DM": {
+  "hash": "add473cadf0f84a4",
+  "longitud": 367,
+  "visto": "2026-10-17"
+ },
+ "https://templus.com/nota-de-prensa/templus-instala-junto-a-gpu-solutions-y-lenovo-la-primera-solucion-para-ia-con-refrigeracion-liquida-en-espana/": {
+  "hash": "8131dcdcb9a398e0",
+  "longitud": 5792,
+  "visto": "2026-10-17"
+ },
+ "https://templus.com/nota-de-prensa/templus-duplicara-la-potencia-de-su-centro-de-datos-de-madrid-hasta-los-20-mw/": {
+  "hash": "9d6edac8fb9b26f1",
+  "longitud": 4746,
+  "visto": "2026-10-17"
+ },
+ "https://www.peeringdb.com/api/fac/1870": {
+  "hash": "c90018c15bfd1677",
+  "longitud": 1680,
+  "visto": "2026-10-17"
+ },
+ "https://templus.com/nota-de-prensa/templus-inicia-la-ampliacion-de-su-centro-de-datos-de-malaga-para-alcanzar-los-3mw-de-potencia-en-2027/": {
+  "hash": "edf1f0a22ddf77a8",
+  "longitud": 5463,
+  "visto": "2026-10-17"
+ },
+ "https://templus.com/nota-de-prensa/templus-multiplicara-por-cuatro-la-potencia-de-su-centro-dedatos-de-valencia-hasta-los-4mw/": {
+  "hash": "74f86c264d149901",
+  "longitud": 5797,
+  "visto": "2026-10-17"
+ },
+ "https://www.aragon.es/documents/d/guest/til_6_03_esteco_rev08_00": {
+  "hash": "bin-sha256:0024b5186912b211",
+  "longitud": 826298,
+  "visto": "2026-10-17"
+ },
+ "https://www.trevenque.es/quienes-somos/nuestras-sedes/": {
+  "hash": "30c6d1fb7538fb51",
+  "longitud": 6308,
+  "visto": "2026-10-17"
+ },
+ "https://www.trevenque.es/servicio/housing/": {
+  "hash": "c572fc8124b3f98b",
+  "longitud": 11659,
+  "visto": "2026-10-17"
+ },
+ "https://www.muycomputerpro.com/2026/09/22/trevenque-group-hpe-private-cloud-ai": {
+  "hash": "3e7362a7543edc4b",
+  "longitud": 26903,
+  "visto": "2026-10-17"
+ },
+ "https://mapcarta.com/es/W591288487": {
+  "ultimo_fallo": "2026-10-17",
+  "clase": "bloqueada",
+  "motivo": "HTTP 403"
+ },
+ "https://www.aragon.es/documents/d/guest/til_5_06_autorizacion-ambiental-integrada_rev01_00": {
+  "hash": "bin-sha256:8a70d020be90d282",
+  "longitud": 35314343,
+  "visto": "2026-10-17"
+ },
+ "https://www.boe.es/diario_boe/txt.php?id=BOE-B-2026-1214": {
+  "hash": "10e3f26a26e46727",
+  "longitud": 3151,
+  "visto": "2026-10-17"
+ },
+ "https://www.cnmc.es/expedientes/cftde05025": {
+  "hash": "b715abe924b3ebf5",
+  "longitud": 5159,
+  "visto": "2026-10-17"
+ },
+ "https://www.cnmc.es/sites/default/files/6289701.pdf": {
+  "hash": "bin-sha256:5ac5f0ff6209a635",
+  "longitud": 325464,
+  "visto": "2026-10-17"
+ },
+ "https://nasertic.es/es/actualidad/la-comision-de-universidad-innovacion-y-transformacion-digital-visita-los-dos-centros-de": {
+  "ultimo_fallo": "2026-10-17",
+  "clase": "error",
+  "motivo": "fetch failed"
+ },
+ "https://www.aragon.es/-/piga-acs-modificacion%201": {
+  "hash": "8b19a2bbe79d7094",
+  "longitud": 9472,
+  "visto": "2026-10-17"
+ },
+ "https://es.linkedin.com/posts/oxigen-data-center_oxigendatacenter-uptimeinstitute-tieriii-activity-7480157983025373184-z7sq": {
+  "hash": "0e121526d5030bae",
+  "longitud": 4533,
+  "visto": "2026-10-17"
+ },
+ "https://uptimeinstitute.com/uptime-institute-awards/country/id/ES": {
+  "hash": "2d0c07155465a678",
+  "longitud": 9964,
+  "visto": "2026-10-17"
+ },
+ "https://www.datacentermap.com/spain/barcelona/22at/specs/": {
+  "ultimo_fallo": "2026-10-17",
+  "clase": "bloqueada",
+  "motivo": "HTTP 429"
+ },
+ "https://www.viaempresa.cat/es/empresa/oxigen-centro-datos-catalan-da-aire_2207109_102.html": {
+  "hash": "fc3f419b3ae5bded",
+  "longitud": 9298,
+  "visto": "2026-10-17"
+ },
+ "https://uptimeinstitute.com/uptime-institute-awards/datacenter/oxigen-data-center-2-odc2/2398?l=": {
+  "hash": "cc5913a700043482",
+  "longitud": 4120,
+  "visto": "2026-10-17"
+ },
+ "https://www.euskadi.eus/contenidos/anuncio_tablon/inf_3113295/es_def/adjuntos/Doc.-AAU01338.7z": {
+  "hash": "bin-sha256:ecd5c7d28f3ab292",
+  "longitud": 56309798,
+  "visto": "2026-10-17"
+ },
+ "https://observatorioedc.com/datacenter/oxigen-data-center-s-l-2/": {
+  "ultimo_fallo": "2026-10-17",
+  "clase": "rota",
+  "motivo": "HTTP 404"
+ },
+ "https://www.google.com/maps/place/Templus+MAD01/data=!4m6!3m5!1s0xd4249924d08ccbf:0x33f0c7587c02fedc!8m2!3d40.49175!4d-3.3956319!16s%2Fg%2F11g8xcbkfn": {
+  "hash": "98f9e488a4723211",
+  "longitud": 135,
   "visto": "2026-10-17"
  }
 }

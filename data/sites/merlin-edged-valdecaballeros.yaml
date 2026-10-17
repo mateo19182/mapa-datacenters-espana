@@ -18,16 +18,21 @@ ubicacion:
   fuentes: [src-merlin, src-osm]
 
 estado: anunciado
-estado_detalle: >-
-  Protocolo firmado con la Junta de Extremadura el 14 de enero de 2025. La
-  propia compañía indica que el suelo requiere tramitación urbanística local y
-  autonómica y obras previas de conectividad viaria y fibra, por lo que el
-  campus se promocionará internacionalmente en una etapa posterior a la de
-  Navalmoral. A 31 de agosto de 2026 no consta expediente ambiental ni urbanístico iniciado: en el
-  DOE solo ha salido a información pública el campus de Navalmoral. El 28 de agosto de 2026 la
-  consejera de Industria confirmó que el planteamiento para Valdecaballeros es el mismo que para
-  Navalmoral —empezar con 20 MW y aspirar a 1 GW—, sin anunciar ningún trámite nuevo.
-estado_fuentes: [src-merlin, src-hoy, src-dcd-extremadura]
+estado_detalle: "Protocolo firmado con la Junta de Extremadura el 14 de enero de 2025. La propia
+  compañía indica que el suelo requiere tramitación urbanística local y autonómica y obras previas
+  de conectividad viaria y fibra, por lo que el campus se promocionará internacionalmente en una
+  etapa posterior a la de Navalmoral. A 31 de agosto de 2026 no consta expediente ambiental ni
+  urbanístico iniciado: en el DOE solo ha salido a información pública el campus de Navalmoral. El
+  28 de agosto de 2026 la consejera de Industria confirmó que el planteamiento para Valdecaballeros
+  es el mismo que para Navalmoral —empezar con 20 MW y aspirar a 1 GW—, sin anunciar ningún trámite
+  nuevo. El informativo de RTVE del 9 de octubre recoge que MERLIN y la consejera mantienen el
+  recorrido administrativo de ambos proyectos, sin identificar un acto concreto de Valdecaballeros."
+
+estado_fuentes:
+  - src-merlin
+  - src-hoy
+  - src-dcd-extremadura
+  - src-rtve-20261009
 
 potencia:
   - tipo: it
@@ -92,7 +97,7 @@ incertidumbres:
     fuentes: [src-merlin]
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: 2026-10-17
 
 fuentes:
   - id: src-merlin
@@ -101,7 +106,7 @@ fuentes:
     editor: "MERLIN Properties SOCIMI"
     tipo: empresa
     fecha_publicacion: "2025-01-14"
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: >-
       10 edificios con 100MW de capacidad IT cada uno [...] subestación
       Valdecaballeros 400kv (Redeia) [...] Decommissioned Nuclear Power Plant
@@ -123,7 +128,7 @@ fuentes:
     editor: "MERLIN Properties SOCIMI"
     tipo: empresa
     fecha_publicacion: "2025-01-14"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       Se trata de instalaciones ultra-eficientes de última generación, sin consumo de agua y
       alimentadas por energía verde, y se ubicarán en Navalmoral de la Mata y Valdecaballeros
@@ -155,3 +160,12 @@ fuentes:
     tipo: otro
     fecha_consulta: "2026-08-29"
     cita: "Valdecaballeros, Badajoz, Extremadura, 06689, España — lat 39.2427410, lon -5.1897862"
+  - id: src-rtve-20261009
+    url: https://www.rtve.es/play/videos/noticias-de-extremadura/noticias-extremadura-09-10-2026/17260591/
+    titulo: "Noticias de Extremadura, 9 de octubre de 2026: proyectos de Navalmoral y Valdecaballeros"
+    editor: RTVE
+    tipo: prensa_general
+    fecha_publicacion: 2026-10-09
+    cita: Los proyectos industriales de centros de datos en Navalmoral de la Mata y Valdecaballeros
+      continúan su trazado administrativo.
+    fecha_consulta: 2026-10-17

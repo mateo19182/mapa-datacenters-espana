@@ -20,17 +20,14 @@ ubicacion:
   fuentes: [src-1, src-2, src-osm]
 
 estado: anunciado
-estado_detalle: >-
-  RIC Energy proyecta un centro de datos sobre parte de los cerca de 500.000 m² de los
-  antiguos terrenos de Sniace, junto a su plan industrial de hidrógeno verde y combustibles
-  sintéticos. El proyecto energético matriz, Besaya Green H2, fue declarado Proyecto
-  Empresarial Estratégico por el Consejo de Gobierno de Cantabria el 26 de febrero de 2026 y
-  se sitúa en los términos municipales de Torrelavega y Santillana del Mar. Según El Diario
-  Montañés, la compañía contempla otros usos en la superficie sobrante y ya realiza gestiones
-  con Viesgo y la Consejería de Industria para garantizar el punto de conexión eléctrica. El
-  desarrollo depende de que concluyan los derribos y la descontaminación del recinto; la
-  planta de hidrógeno no empezaría a construirse antes de 2027.
-estado_fuentes: [src-1, src-2, src-3]
+estado_detalle: RIC Energy incluye un centro de datos entre los usos previstos del complejo Besaya
+  Green H2 en los antiguos terrenos de Sniace, entre Torrelavega y Santillana del Mar. La nota
+  corporativa del 26 de febrero de 2026 documenta la declaración estratégica del proyecto de
+  hidrógeno y combustibles sintéticos, sin identificar autorización propia, parcela, operador ni
+  capacidad del centro de datos.
+
+estado_fuentes:
+  - src-2
 
 potencia: []
 
@@ -63,7 +60,7 @@ incertidumbres:
     fuentes: [src-1, src-4]
 
 confianza: baja
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: 2026-10-17
 
 fuentes:
   - id: src-1
@@ -85,12 +82,8 @@ fuentes:
     editor: "RIC Energy"
     tipo: empresa
     fecha_publicacion: "2026-02-26"
-    fecha_consulta: "2026-08-31"
-    cita: >-
-      El Consejo de Gobierno de Cantabria ha declarado hoy como Proyecto Empresarial Estratégico
-      el proyecto Besaya Green H2 de RIC Energy, destinado a la construcción de una planta de
-      producción de hidrógeno verde y combustibles sintéticos sostenibles, que se situará en los
-      antiguos terrenos de Sniace, en los municipios de Torrelavega y Santillana del Mar.
+    fecha_consulta: 2026-10-17
+    cita: El complejo incluirá también biomasa, cogeneración, centro de datos y área comercial.
   - id: src-3
     url: "https://www.eldiariomontanes.es/economia/ric-reduce-capacidad-fabrica-hidrogeno-sniace-agrega-20250929073646-nt.html"
     titulo: "RIC reduce un 75% la capacidad de su fábrica de hidrógeno en Sniace y agrega más negocios al plan"

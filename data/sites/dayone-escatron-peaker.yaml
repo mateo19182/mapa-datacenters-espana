@@ -21,16 +21,21 @@ ubicacion:
   fuentes: [src-1, src-2, src-osm]
 
 estado: anunciado
-estado_detalle: >-
-  Proyecto anunciado en junio de 2026. DayOne, filial internacional del grupo chino GDS
-  independizada en 2025, se alía con IGNIS para levantar un campus de centros de datos de
-  inteligencia artificial junto a la central de ciclo combinado «Peaker Escatrón», propiedad
-  de IGNIS desde 2016. IGNIS aporta el suelo, el acceso a la red y el respaldo del ciclo de
-  gas; DayOne operará las instalaciones. El 25 de junio de 2026 el Ayuntamiento de Escatrón
-  aprobó la segregación de las 78 hectáreas que ocupará el complejo, primer trámite
-  urbanístico del proyecto. No se ha publicado calendario de obras ni tamaño de la primera
-  fase.
-estado_fuentes: [src-1, src-2, src-3]
+estado_detalle: Proyecto anunciado en junio de 2026. DayOne, filial internacional del grupo chino
+  GDS independizada en 2025, se alía con IGNIS para levantar un campus de centros de datos de
+  inteligencia artificial junto a la central de ciclo combinado «Peaker Escatrón», propiedad de
+  IGNIS desde 2016. IGNIS aporta el suelo, el acceso a la red y el respaldo del ciclo de gas; DayOne
+  operará las instalaciones. El 25 de junio de 2026 el Ayuntamiento de Escatrón aprobó la
+  segregación de las 78 hectáreas que ocupará el complejo, primer trámite urbanístico del proyecto.
+  No se ha publicado calendario de obras ni tamaño de la primera fase. El F-1 presentado el 5 de
+  octubre de 2026 identifica el campus de Escatrón y declara 304 MW de capacidad TI estimada en
+  suelo con suministro asegurado a 20 de septiembre; está negociando compromisos con clientes.
+
+estado_fuentes:
+  - src-1
+  - src-2
+  - src-3
+  - src-dayone-sec-f1-20261005
 
 potencia:
   - tipo: conexion_red
@@ -54,6 +59,17 @@ potencia:
       DCD dice «designed to scale to 300MW» sin precisar si son MW IT o de conexión. No se
       suma ni se compara con los 444 MW de acceso a red.
 
+  - tipo: it
+    valor_mw: 304
+    ambito: campus
+    referencia: Capacidad TI estimada de suelo con suministro asegurado, según DayOne
+    estado_asociado: anunciado
+    fecha_dato: 2026-09-20
+    fuentes:
+      - src-dayone-sec-f1-20261005
+    nota: El F-1 define Secured Powered Land como capacidad IT estimada para desarrollo futuro. Su tabla
+      de Zaragoza sitúa aquí los 304 MW, sin capacidad en servicio o en construcción; no es consumo
+      medido ni potencia de conexión.
 conexion_electrica:
   subestacion: null
   tension_kv: null
@@ -80,10 +96,13 @@ empleo:
 
 incertidumbres:
   - campo: potencia
-    descripcion: >-
-      Conviven dos cifras que no miden lo mismo: 444 MW de acceso a la red (Heraldo) y 300 MW
-      de capacidad de diseño del campus (DCD). Se registran por separado y no se suman.
-    fuentes: [src-1, src-3]
+    descripcion: "La lectura corporativa más reciente identifica 304 MW IT previstos. Se conservan los
+      300 MW de diseño sin tipificar de junio y los 444 MW de conexión atribuidos por Heraldo: no se
+      suman ni se equiparan. El F-1 no identifica las resoluciones españolas de acceso y obra."
+    fuentes:
+      - src-1
+      - src-3
+      - src-dayone-sec-f1-20261005
   - campo: superficie_parcela_m2
     descripcion: >-
       Heraldo cifra la parcela en 78,5 hectáreas y el Ayuntamiento segregó 78 hectáreas,
@@ -104,7 +123,7 @@ incertidumbres:
     fuentes: [src-1, src-3]
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: 2026-10-17
 
 fuentes:
   - id: src-1
@@ -113,7 +132,7 @@ fuentes:
     editor: "Heraldo de Aragón"
     tipo: prensa_general
     fecha_publicacion: "2026-06-07"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       La compañía de Singapur se alía con Ignis para garantizarse un enchufe de 444 MW a la red
       eléctrica, energía verde y respaldo de su ciclo de gas. Se levantará junto a la central
@@ -126,7 +145,7 @@ fuentes:
     editor: "Heraldo de Aragón"
     tipo: prensa_general
     fecha_publicacion: "2026-06-25"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       El Ayuntamiento ha aprobado la segregación de los suelos que ocupará el complejo
       tecnológico junto a la central de ciclo combinado Peaker. Se trata de 78 hectáreas que son
@@ -138,7 +157,7 @@ fuentes:
     editor: "DatacenterDynamics"
     tipo: prensa_especializada
     fecha_publicacion: "2026-06-10"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       Renewable energy firm Ignis is developing the data center in the municipality of Escatrón,
       near Zaragoza. The project, which will cost more than €3 billion ($3.47bn), aims to become
@@ -181,3 +200,11 @@ fuentes:
     tipo: otro
     fecha_consulta: "2026-08-31"
     cita: "Escatrón, Ribera Baja del Ebro, Zaragoza, Aragón, 50790, España — lat 41.2870705, lon -0.3249532"
+  - id: src-dayone-sec-f1-20261005
+    url: https://www.sec.gov/Archives/edgar/data/2118192/000119312526414188/d223752df1.htm
+    titulo: "DayOne Data Centers Limited, Form F-1: Escatrón y cartera a 20 de septiembre de 2026"
+    editor: DayOne / SEC EDGAR
+    tipo: empresa
+    fecha_publicacion: 2026-10-05
+    cita: Our Spain campus comprises 304MW of Secured Powered Land
+    fecha_consulta: 2026-10-17

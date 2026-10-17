@@ -19,13 +19,10 @@ ubicacion:
   fuentes: [src-1, src-4]
 
 estado: ampliacion_en_construccion
-estado_detalle: >-
-  Centro de datos neutro operado por Comvive, con sala técnica propia desde 2017 y marca Sevilla
-  Datacenter desde 2019. La ampliación anunciada en mayo de 2025 triplica la capacidad de racks y
-  eleva la potencia disponible a 1 MW, con inversión propia superior a un millón de euros. El
-  dosier comercial de octubre de 2025 describe la ampliación como «en marcha» y en diciembre de 2025
-  la empresa comunicaba la recepción de los cuadros eléctricos de la siguiente fase. El operador lo
-  presenta como el mayor CPD privado de Andalucía.
+estado_detalle: Centro operativo de Comvive en La Rinconada, con sala técnica desde 2017 y marca
+  Sevilla Datacenter desde 2019. La página técnica declara un suministro actual de 150 kW, sin fecha
+  del dato. El dosier de octubre de 2025 describe una ampliación en marcha para alcanzar 1 MW de
+  potencia eléctrica y añadir 120 racks; no se ha localizado recepción de esa ampliación.
 estado_fuentes: [src-1, src-2, src-3, src-4]
 
 potencia:
@@ -33,14 +30,13 @@ potencia:
     valor_mw: 1
     ambito: edificio
     referencia: "Potencia disponible tras la ampliación"
-    estado_asociado: ampliacion_en_construccion
+    estado_asociado: en_construccion
     fecha_dato: "2025-10"
     fuentes: [src-2, src-4]
-    nota: >-
-      La fuente habla de «potencia disponible» de 1 MW sin precisar si se refiere a carga TI o a
-      potencia contratada en el punto de suministro. El dosier del operador precisa que es el
-      objetivo de una ampliación en curso —«para alcanzar 1 megavatio (MW) de potencia eléctrica»—,
-      no la potencia ya instalada.
+    nota: El dosier de octubre de 2025 describe una ampliación en marcha para alcanzar 1 MW de potencia
+      eléctrica total del centro, incluidos los 0,15 MW actuales. No es un incremento de 1 MW ni
+      capacidad entregada. No precisa carga IT o potencia contratada y no consta recepción de la
+      ampliación.
   - tipo: termica_respaldo
     valor_mva: 0.2
     ambito: edificio
@@ -51,7 +47,16 @@ potencia:
     nota: >-
       «Generador propio de gasoil de 200 KVA con autonomía indefinida». Es potencia de respaldo, no
       capacidad del centro, y la fuente la da en kVA, así que no se convierte a MW.
-
+  - tipo: no_especificado
+    valor_mw: 0.15
+    ambito: edificio
+    referencia: Suministro actual declarado en la página técnica del operador
+    estado_asociado: operativo
+    fuentes:
+      - src-5
+    nota: La web afirma «Actualmente tenemos 150 KW para dar servicio a nuestros cliente». No fecha el
+      inventario ni identifica carga IT. Es distinto del objetivo de ampliación a 1 MW y de los dos
+      SAI redundantes de 150 kW; no se suman.
 superficie_parcela_m2: 1200
 superficie_construida_m2: 1100
 inversion_anunciada_eur: 1000000
@@ -74,10 +79,14 @@ incertidumbres:
       de puesta en servicio del CPD. Campo omitido.
     fuentes: [src-4, src-5]
   - campo: potencia
-    descripcion: >-
-      1 MW es el objetivo de la ampliación en curso, no una capacidad verificada en servicio. Ninguna
-      fuente publica la potencia actual del centro ni distingue carga TI de potencia contratada.
-    fuentes: [src-2, src-4]
+    descripcion: 1 MW es el objetivo de ampliación, no capacidad entregada. La página técnica declara
+      150 kW actuales, sin fecha del dato ni etiqueta IT, y dos SAI de 150 kW en redundancia A/B. El
+      dosier da el grupo de respaldo en 200 kVA y la web en 200 kW; se conserva la magnitud original
+      del dosier sin convertir.
+    fuentes:
+      - src-2
+      - src-4
+      - src-5
   - campo: superficie_construida_m2
     descripcion: >-
       El dosier distingue 1.200 m² de parcela, 800 m² en planta, 1.100 m² construidos, 500 m² de
@@ -97,31 +106,29 @@ incertidumbres:
       refrigeración ni consumo de agua. Al no declararse el circuito, el campo agua se omite en lugar
       de suponerlo seco.
     fuentes: [src-4]
-
 confianza: media
-ultima_verificacion: "2026-08-31"
-
+ultima_verificacion: 2026-10-17
 fuentes:
   - id: src-1
     url: "https://www.comvive.es/blog/nace-sevilla-datacenter-el-mayor-centro-de-datos-de-andalucia/"
     titulo: "Nace Sevilla Datacenter, el mayor centro de datos de Andalucía"
     editor: "Comvive"
     tipo: empresa
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "La energía que contratamos es 100% de fuentes renovables"
   - id: src-2
     url: "https://andaluciaeconomica.com/comvive-triplica-la-capacidad-de-su-data-center-con-una-inversion-100-andaluza-y-sostenible/"
     titulo: "Comvive triplica la capacidad de su data center con una inversión 100% andaluza y sostenible"
     editor: "Revista Andalucía Económica"
     tipo: prensa_general
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "con esfuerzo, con visión a largo plazo y con la convicción de que el crecimiento sostenible es posible"
   - id: src-3
     url: "https://mercados21.es/empresas/sevilla-datacenter-se-consolida-como-el-centro-de-datos-mas-importante-de-andalucia/"
     titulo: "Sevilla Datacenter se consolida como «el centro de datos más importante de Andalucía»"
     editor: "Mercados21"
     tipo: prensa_general
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "el CPD privado más grande de Andalucía"
   - id: src-4
     url: "https://sevilladatacenter.com/wp-content/uploads/2025/10/Dosier_Sevilla_Datacenter.pdf"
@@ -129,7 +136,7 @@ fuentes:
     editor: "Sevilla Datacenter (Comvive Servidores)"
     tipo: empresa
     fecha_publicacion: "2025-10"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       La infraestructura se ubica en una parcela vallada y aislada de 1.200 m², que incluye 800 m² en
       planta y 1.100 m² construidos. Las oficinas y salas técnicas suman 500 m², y la sala CPD cuenta
@@ -142,7 +149,7 @@ fuentes:
     titulo: "Datacenter en España. Housing servidores y alquiler de racks"
     editor: "Comvive"
     tipo: empresa
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       en el año 2017 decidimos ponernos manos a la obra y montar desde cero una sala técnica de
       100m2, ampliables, en nuestras instalaciones de San José de la Rinconada (P.I. El Cáñamo II),

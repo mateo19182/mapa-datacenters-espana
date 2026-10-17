@@ -20,10 +20,10 @@ ubicacion:
 estado: parcialmente_operativo
 estado_detalle: >-
   Centro de datos comprado por Oxigen DC a Banc Sabadell y anunciado en febrero de 2026. La
-  compañía declaró que la puesta en producción se completaría durante el primer semestre de 2026 y
-  que la operación duplicaba su capacidad operativa hasta los 20 MW. No se ha localizado
-  confirmación posterior de que la puesta en producción esté terminada.
-estado_fuentes: [src-1, src-2, src-3]
+  compañía declaró inicialmente que completaría la puesta en producción en el primer semestre
+  de 2026. En abril su consejero delegado situó una primera fase en junio y la capacidad conjunta
+  de 20 MW a finales de 2026. No se ha localizado confirmación del cierre de ambas fases.
+estado_fuentes: [src-1, src-2, src-3, src-oneconomia-20260407]
 
 potencia:
   - tipo: no_especificado
@@ -46,24 +46,34 @@ incertidumbres:
     fuentes: [src-1, src-2]
   - campo: estado
     descripcion: >-
-      El anuncio es de febrero de 2026 y hablaba de completar la puesta en producción «durante el
-      primer semestre». No hay confirmación pública del cierre de ese proceso.
-    fuentes: [src-1, src-3]
+      El anuncio de febrero hablaba de completar la puesta en producción en el primer semestre.
+      En abril el consejero delegado describió dos fases, la primera prevista para junio, y
+      situó los 20 MW conjuntos al cierre de 2026. El agregado comercial no acredita entrega
+      completa de los 10 MW de Sant Fruitós y no hay confirmación posterior de ambas fases.
+    fuentes: [src-1, src-2, src-3, src-oneconomia-20260407]
   - campo: ubicacion
     descripcion: "No consta dirección ni parcela; solo el municipio."
     fuentes: [src-1, src-2]
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
+  - id: src-oneconomia-20260407
+    url: "https://www.elnacional.cat/oneconomia/es/empresas/oxigen-dc-se-fija-en-espana-portugal-llegar-40mw-potencia-en-2027_1620692_102.html"
+    titulo: "Los centros de datos catalanes de Oxigen DC ponen rumbo a España y Portugal para llegar a los 40 MW en 2027"
+    editor: "ON Economia"
+    tipo: prensa_general
+    fecha_publicacion: "2026-04-07"
+    fecha_consulta: "2026-10-17"
+    cita: "poner en marcha -en dos fases, la primera el próximo junio- el centro de datos"
   - id: src-1
     url: "https://revistacloud.com/oxigen-dc-acelera-en-cataluna-con-un-centro-de-datos-bunker-de-banco-sabadell-y-mira-ya-a-madrid/"
     titulo: "Oxigen DC acelera en Cataluña con un centro de datos «búnker» de Banco Sabadell y mira ya a Madrid"
     editor: "Revista Cloud"
     tipo: prensa_especializada
     fecha_publicacion: "2026-02-15"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       la compañía ha adquirido a Banco Sabadell un centro de datos de 10 MW en Sant Fruitós de
       Bages (Barcelona), una instalación que prevé poner en producción durante el primer semestre
@@ -74,7 +84,7 @@ fuentes:
     editor: "Oxigen Data Center (LinkedIn)"
     tipo: empresa
     fecha_publicacion: "2026-02-16"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       Nos complace compartir la adquisición de un nuevo data center en Sant Fruitós de Bages, un
       paso estratégico en nuestro plan de expansión en la Península Ibérica

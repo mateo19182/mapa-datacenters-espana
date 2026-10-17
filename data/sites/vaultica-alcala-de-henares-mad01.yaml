@@ -8,14 +8,17 @@ propietario: "Vaultica Data Centers"
 modelo: colocation
 
 ubicacion:
-  municipio: "Alcalá de Henares"
-  provincia: "Madrid"
-  ccaa: "Comunidad de Madrid"
-  direccion: "Polígono industrial Los Salobrales, Alcalá de Henares"
-  lat: 40.497181
-  lon: -3.411786
-  precision: aproximada
-  fuentes: [src-1, src-2]
+  municipio: Alcalá de Henares
+  provincia: Madrid
+  ccaa: Comunidad de Madrid
+  direccion: Polígono industrial Los Salobrales, Alcalá de Henares
+  lat: null
+  lon: null
+  precision: municipio
+  fuentes:
+    - src-1
+    - src-2
+  no_derivar: true
 
 estado: anunciado
 estado_detalle: >-
@@ -49,13 +52,13 @@ incertidumbres:
       ni fecha prevista de puesta en servicio.
     fuentes: [src-1, src-2]
   - campo: ubicacion
-    descripcion: >-
-      No se ha publicado la dirección concreta dentro del polígono Los Salobrales. Las
-      coordenadas registradas son el centroide del polígono industrial, no las de la parcela.
-    fuentes: [src-2]
-
+    descripcion: Las fuentes identifican Los Salobrales, pero no el edificio o parcela. El punto
+      anterior era el centroide del polígono y no un pin documentado de MAD01.
+    fuentes:
+      - src-1
+      - src-2
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: 2026-10-17
 
 fuentes:
   - id: src-1
@@ -63,7 +66,7 @@ fuentes:
     titulo: "Spain - Vaultica | Data Centres"
     editor: "Vaultica"
     tipo: empresa
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "Installed IT capacity up to 12 MW ... Power supply design: two grid connections, fed by two independent electrical substations"
   - id: src-2
     url: "https://www.datacentermarket.es/datacenter-infrastructure/vaultica-abrira-un-data-center-en-alcala-de-henares-madrid/"

@@ -16,16 +16,13 @@ ubicacion:
 
 estado: en_tramitacion
 estado_detalle: >-
-  Candidatura al programa europeo InvestAI presentada por el Gobierno de España
-  con sede jurídica en Móra la Nova. La Generalitat ratificó un acuerdo para la
-  adquisición de 20 MW de potencia adicional para el sector. Si la candidatura
-  prospera, las obras empezarían en 2027 y la puesta en marcha se sitúa a finales
-  de 2028. Hay oposición pública organizada (Ecologistes en Acció, CGT) por
-  consumo energético e hídrico. El Govern aprobó una declaración de apoyo
-  institucional el 25 de junio de 2025 y reconoció el proyecto como proyecto
-  estratégico de inversión mediante el Acuerdo GOV/141/2026. El suelo es
-  propiedad del Institut Català del Sòl.
-estado_fuentes: [src-1, src-5, src-6]
+  Candidatura española multisede al programa europeo de gigafactorías de IA, con emplazamiento
+  propuesto en Móra la Nova/Tivissa y otra sede en San Fernando de Henares. El portal oficial del
+  PRTR sitúa la convocatoria de EuroHPC entre 30 de julio y 12 de noviembre de 2026, con selección
+  prevista a comienzos de 2027. La candidatura no equivale a adjudicación ni a centro construido. La
+  Generalitat declaró estratégico el proyecto y ratificó la compra por Incasòl de 20 MW adicionales
+  para el sector El Molló.
+estado_fuentes: [ src-1, src-5, src-6, src-prtr ]
 
 potencia:
   - tipo: no_especificado
@@ -69,33 +66,33 @@ potencia:
     valor_mw: 34
     ambito: campus
     referencia: "Potencia disponible en el sector El Molló antes de la compra adicional"
-    estado_asociado: en_tramitacion
+    estado_asociado: desconocido
     fecha_dato: "2026-07-21"
     fuentes: [src-5]
-    nota: >-
-      Es la potencia de que disponía el polígono, no la contratada por el
-      proyecto: "actualmente el sector solo dispone de 34 MW".
+    nota: Potencia del sector industrial El Molló o adquisición de Incasòl para el sector. No se ha
+      acreditado un permiso de acceso concedido directamente al CPD. No se suma como capacidad
+      propia del emplazamiento.
   - tipo: conexion_red
     valor_mw: 20
     ambito: campus
     referencia: "Potencia adicional adquirida por el Incasòl a Cetenis SL"
-    estado_asociado: en_tramitacion
+    estado_asociado: desconocido
     fecha_dato: "2026-07-21"
     fuentes: [src-5]
-    nota: >-
-      Acuerdo del consejo de administración del Incasòl ratificado por el Govern
-      el 21 de julio de 2026. No se suma a los 34 MW: la propia fuente explica
-      que ambas cifras se agregan para cubrir los 54 MW requeridos.
+    nota: Potencia del sector industrial El Molló o adquisición de Incasòl para el sector. No se ha
+      acreditado un permiso de acceso concedido directamente al CPD. No se suma como capacidad
+      propia del emplazamiento.
 
 conexion_electrica:
   subestacion: "Subestación eléctrica dels Aubals"
-  mw_solicitados: 54
-  nota: >-
-    Los estudios técnicos del Incasòl cifran en 54 MW la potencia que necesita la
-    implantación inicial. El sector El Molló disponía de 34 MW y el Incasòl
-    adquirió 20 MW más a la empresa Cetenis SL, operación ratificada por el
-    Govern el 21 de julio de 2026. No consta el titular de la red ni la tensión
-    del punto de conexión.
+  mw_solicitados: null
+  nota: Los estudios técnicos del Incasòl cifran en 54 MW la potencia que necesita la implantación
+    inicial. El sector El Molló disponía de 34 MW y el Incasòl adquirió 20 MW más a la empresa
+    Cetenis SL, operación ratificada por el Govern el 21 de julio de 2026. No consta el titular de
+    la red ni la tensión del punto de conexión. Los 34 MW existentes y 20 MW adquiridos son
+    magnitudes del sector industrial; no se registran como permiso de acceso concedido al CPD. Los
+    54 MW son una necesidad de implantación, no una solicitud formal de acceso contrastada;
+    mw_solicitados queda vacío.
   fuentes: [src-1, src-5]
 
 superficie_parcela_m2: 40000
@@ -169,9 +166,15 @@ incertidumbres:
       La fuente habla de "unes quatre hectàrees del polígon del Molló"; se
       registra como 40.000 m² con esa imprecisión.
     fuentes: [src-1]
+  - campo: estado
+    descripcion: La fecha inicial de selección europea, primer trimestre de 2026, ha quedado superada
+      por la convocatoria oficial cuyo plazo acaba el 12 de noviembre de 2026. Las previsiones de
+      obras 2027 y operación 2028 publicadas antes de esa convocatoria no constituyen una
+      adjudicación ni una puesta en marcha.
+    fuentes: [ src-6, src-prtr ]
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
   - id: src-1
@@ -179,7 +182,7 @@ fuentes:
     titulo: "La gigafactoria de Móra la Nova podria estar en funcionament a finals de 2028"
     editor: "Canal 21 Ebre"
     tipo: prensa_general
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: >-
       les instal·lacions ocuparien unes quatre hectàrees del polígon del Molló i
       estarien connectades a la subestació elèctrica dels Aubals, amb una
@@ -189,7 +192,7 @@ fuentes:
     titulo: "La gigafactoria i els centres de dades per IA no aportaran prosperitat a Móra la Nova i la Ribera d'Ebre"
     editor: "CGT Catalunya / Ecologistes en Acció"
     tipo: otro
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: >-
       La gigafactoria contindrà uns 100.000 processadors de càlcul per a IA, el
       que suposa una potència d'uns 150 MW i implicarà multiplicar per 10 del
@@ -199,14 +202,14 @@ fuentes:
     titulo: "La gigafactoria d'IA de Móra la Nova consumirà l'electricitat de 180.000 llars"
     editor: "La Directa"
     tipo: prensa_general
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "la gigafactoria consumirà el mateix que 180.000 llars"
   - id: src-4
     url: "https://www.elcritic.cat/reportatges/oportunitat-o-sacrifici-mora-la-nova-busca-convertir-se-en-epicentre-europeu-de-la-intel-ligencia-artificial-263108"
     titulo: "Oportunitat o sacrifici? Móra la Nova pot convertir-se en l'epicentre europeu de la intel·ligència artificial"
     editor: "El Crític"
     tipo: prensa_general
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "un pressupost publicoprivat d'uns 20.000 milions d'euros"
   - id: src-5
     url: "https://www.diaridetarragona.com/economia/266313/govern-ratifica-adquisicion-20-mw-reforzar-gigafactoria-ia-mora-nova.html"
@@ -214,7 +217,7 @@ fuentes:
     editor: "Diari de Tarragona"
     tipo: prensa_general
     fecha_publicacion: "2026-07-21"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       El Govern de la Generalitat ha ratificado el acuerdo del Consejo de
       Administración del Institut Català del Sòl (Incasòl) para la adquisición de
@@ -230,7 +233,7 @@ fuentes:
     editor: "Generalitat de Catalunya — Acords de Govern"
     tipo: oficial
     fecha_publicacion: "2025-06-25"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       El Govern ha aprovat aquest dimecres una declaració de suport institucional
       a la proposta presentada per un consorci publicoprivat per a la creació
@@ -244,7 +247,7 @@ fuentes:
     editor: "Plan de Recuperación, Transformación y Resiliencia — Gobierno de España"
     tipo: oficial
     fecha_publicacion: "2026-07-22"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       La diferencia con las fábricas de IA (AI Factories) ya en funcionamiento es, sobre todo,
       de escala. Según el Reglamento EuroHPC modificado, las gigafactorías contarán con más de

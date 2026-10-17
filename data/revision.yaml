@@ -145,17 +145,26 @@ hallazgos:
     estado: awaiting_primary
     prioridad: alta
     detectado: 2026-10-12
-    revisado: 2026-10-14
+    revisado: 2026-10-17
     revisar_antes: 2026-10-21
-    motivo: El BOE acredita una línea directa y subestación para un CPD, pero no identifica el emplazamiento ni al
-      operador del centro. Las parcelas y MVA corresponden a la infraestructura eléctrica.
-    siguiente_paso: Recuperar el proyecto Con-09 y contrastar la ubicación y titular del CPD antes de crear una ficha.
+    motivo: Los proyectos de SE y línea sitúan gráficamente el CPD junto a Venero. La memoria de línea, página 8
+      del PDF, cita 213 MW del centro sin tipo IT ni permiso acreditado, distintos de los 311,29 MW de
+      transporte. Los cuatro adjuntos públicos, incluidos los ZIP GIS, no identifican operador, titular o
+      parcelario propios del CPD. Las coordenadas de SE y servidumbres eléctricas no son un pin del centro.
+    siguiente_paso: Contrastar nombre, titular y parcelas del CPD dibujado con su proyecto y permisos propios; no
+      asignarle las coordenadas de SE Venero ni convertir sus MVA a MW IT.
     enlaces:
       - href: /cobertura
         texto: Cobertura pendiente
     fuentes:
       - url: https://www.boe.es/diario_boe/txt.php?id=BOE-B-2026-32678
         titulo: BOE-B-2026-32678, expediente Con-09
+        primaria: true
+      - url: https://almacen.redsara.es/api/v1/sending/public/d082558d-91ae-4e49-86e0-d5b14713e429/attachment/225e2e41-9815-4f5d-8f9e-18f85a456d6c
+        titulo: Proyecto ejecutivo SE Venero, plano VENE-SOL-SE-PE-DRW-0021, página 81
+        primaria: true
+      - url: https://almacen.redsara.es/api/v1/sending/public/d082558d-91ae-4e49-86e0-d5b14713e429/attachment/8d05c725-7daf-4333-9d88-77f267ee0abe
+        titulo: Proyecto de línea Con-09, páginas 8, 79, 84 y 359; CPD de 213 MW sin tipo IT
         primaria: true
   - id: colliers-20261008-fases
     titulo: Confirmar las fases y MW IT del informe de Colliers
@@ -165,13 +174,12 @@ hallazgos:
     detectado: 2026-10-12
     revisado: 2026-10-17
     revisar_antes: 2026-10-21
-    motivo: Contrastadas ocho fichas con operadores y documentación técnica. Se tipifican 20 MW IT de
-      Getafe 1 y 2,25/5,7 MW IT de Templus; Getafe 2 conserva capacidad futura. Quedan sin cerrar
-      los MW entregados por edificio de DATA4, los 14 MW de BCN1, el tipo de los 4 MW iniciales de
-      MD5 y la apertura de NxN.
-    siguiente_paso: Confirmar recepción por edificio de DATA4, incluidos los dos STEP de DC03; entrega y
-      tipo de los 14 MW de BCN1; tipo de los 4 MW de MD5 y apertura de NxN. No identificar
-      incrementos semestrales con edificios por coincidencia numérica.
+    motivo: Contrastadas ocho fichas con operadores y documentación técnica. Se tipifican 20 MW IT de Getafe 1 y
+      2,25/5,7 MW IT de Templus; Getafe 2 conserva capacidad futura. Quedan sin cerrar los MW entregados por
+      edificio de DATA4, los 14 MW de BCN1, el tipo de los 4 MW iniciales de MD5 y la apertura de NxN.
+    siguiente_paso: Confirmar recepción por edificio de DATA4, incluidos los dos STEP de DC03; entrega y tipo de
+      los 14 MW de BCN1; tipo de los 4 MW de MD5 y apertura de NxN. No identificar incrementos semestrales con
+      edificios por coincidencia numérica.
     enlaces:
       - href: /proyecto/equinix-alcobendas-campus
         texto: Equinix Alcobendas
@@ -195,11 +203,13 @@ hallazgos:
     estado: awaiting_primary
     prioridad: media
     detectado: 2026-10-12
-    revisado: 2026-10-14
+    revisado: 2026-10-17
     revisar_antes: 2026-10-28
-    motivo: La prensa atribuye a AWS pagos municipales retroactivos. No se ha localizado un comunicado o acuerdo
-      municipal que permita registrar importes o pagos realizados.
-    siguiente_paso: Localizar acuerdos de los ayuntamientos o una comunicación de AWS.
+    motivo: La noticia del 8 de octubre atribuye a AWS un cambio de cuota del IAE y compensación de cuatro años
+      para Huesca, El Burgo y Villanueva. No concreta importes ni fechas y no enlaza el comunicado o acuerdo
+      municipal. La búsqueda de fuentes oficiales no cerró esos extremos.
+    siguiente_paso: Localizar comunicación de AWS o acuerdos municipales de Huesca, El Burgo y Villanueva que
+      documenten compromiso, importes y pagos. No registrar una recaudación realizada a partir de la noticia.
     enlaces:
       - href: /compania/amazon-web-services
         texto: Cartera AWS
@@ -233,21 +243,25 @@ hallazgos:
   - id: masorange-inventario-centros
     titulo: Localizar el inventario de centros de MasOrange
     tipo: proyecto
-    estado: detected
+    estado: awaiting_primary
     prioridad: media
     detectado: 2026-10-14
-    revisado: 2026-10-14
+    revisado: 2026-10-17
     revisar_antes: 2026-11-13
-    motivo: La cola de cobertura recoge una cartera de centros sin inventario de ubicaciones suficiente. Una
-      operación corporativa no identifica por sí sola edificios ni evita duplicar al operador anfitrión.
-    siguiente_paso: Revisar la memoria corporativa y sus anexos de instalaciones; conservar los nombres anteriores
-      como alias cuando se documenten.
+    motivo: Se recuperó y leyó el informe de sostenibilidad 2025 desde la web oficial de Orange. Describe centros
+      propios y medidas energéticas, sin inventario de edificios que permita completar ubicaciones o evitar
+      duplicados. La antigua URL entrega ahora una página HTML.
+    siguiente_paso: Localizar un inventario nominal de instalaciones o fuentes individuales del operador;
+      conservar los nombres anteriores como alias cuando se documenten.
     enlaces:
       - href: /cobertura
         texto: Pistas de cobertura
     fuentes:
-      - url: https://masorange.es/wp-content/uploads/2026/04/ES_2025-Informe-de-Sostenibilidad-MasOrange_vdef.pdf
-        titulo: MasOrange, informe de sostenibilidad 2025, documento por revisar
+      - url: https://www.orange.es/static/pdf/ES_2025-Informe-de-Sostenibilidad-MasOrange_vdef.pdf
+        titulo: Informe de sostenibilidad MasOrange 2025, PDF recuperado y revisado
+        primaria: true
+      - url: https://corporativo.orange.es/esg
+        titulo: Orange, documentación ESG y enlace al informe
         primaria: true
   - id: ree-cobertura-completa-20261014
     titulo: "REE: cobertura completa de los nudos publicados"
@@ -468,23 +482,24 @@ hallazgos:
         titulo: Proyecto de RD SUCYR, artículo 15, apartados 1.c y 6
         primaria: true
   - id: gpu-solutions-madrid-ubicacion
-    titulo: Identificar el centro madrileño de GPU Solutions
+    titulo: B200 de GPU Solutions identificadas en Templus Alcalá
     tipo: calidad
-    estado: awaiting_primary
+    estado: published
     prioridad: alta
     detectado: 2026-10-15
     revisado: 2026-10-17
-    revisar_antes: 2026-10-29
-    motivo: La infraestructura sigue describiendo HGX B200 en Madrid sin nombrar anfitrión. Los certificados
-      revisados identifican una oficina en Granada; no sitúan allí el clúster madrileño. No se ha cerrado el
-      edificio físico.
-    siguiente_paso: Localizar una fuente que vincule el clúster con un centro nombrado y distinga inventario
-      actual de ampliación.
+    revisar_antes: null
+    motivo: La nota conjunta del 9 de octubre de 2025 confirma un rack de GPU Solutions con NVIDIA B200 instalado
+      en Templus Alcalá de Henares y Lenovo. Se incorpora al edificio existente sin inferir cantidad de tarjetas
+      ni atribuir ampliaciones futuras.
+    siguiente_paso: null
     enlaces:
-      - &a1
-        href: /computo
-        texto: Explorar cómputo documentado
+      - href: /proyecto/templus-alcala-de-henares-mad01
+        texto: GPU Solutions en Templus Alcalá
     fuentes:
+      - url: https://templus.com/nota-de-prensa/templus-instala-junto-a-gpu-solutions-y-lenovo-la-primera-solucion-para-ia-con-refrigeracion-liquida-en-espana/
+        titulo: Templus, instalación de GPU Solutions y Lenovo en Alcalá, 9 de octubre de 2025
+        primaria: true
       - url: https://gpusolutions.ai/en/infrastructure
         titulo: GPU Solutions, infraestructura HGX B200 en Madrid
         primaria: true
@@ -494,14 +509,15 @@ hallazgos:
     estado: awaiting_primary
     prioridad: alta
     detectado: 2026-10-15
-    revisado: 2026-10-15
+    revisado: 2026-10-17
     revisar_antes: 2026-10-29
-    motivo: El caso de Valohai describe 22 GPU en siete máquinas, incluidas ocho A100 de 80 GB. No
-      identifica el edificio y menciona distintas redes y VPN.
-    siguiente_paso: Obtener distribución física por instalación antes de crear un punto en Tenerife o
-      atribuir el total a una sede.
+    motivo: El caso de Valohai describe 22 GPU en siete máquinas, incluidas ocho A100 de 80 GB. No identifica el
+      edificio y menciona distintas redes y VPN.
+    siguiente_paso: Obtener distribución física por instalación antes de crear un punto en Tenerife o atribuir el
+      total a una sede.
     enlaces:
-      - *a1
+      - href: /computo
+        texto: Explorar cómputo documentado
     fuentes:
       - url: https://valohai.com/success-stories/arquimea-gpu-utilization/
         titulo: Valohai, caso de cliente ARQUIMEA Research Center
@@ -514,18 +530,23 @@ hallazgos:
     detectado: 2026-10-15
     revisado: 2026-10-17
     revisar_antes: 2026-10-29
-    motivo: TSA mantiene dos DGX H100 alojados por Telefónica sin nombrar el centro. El anuncio de Idoven de julio
-      de 2024 habla de instalación futura y no resuelve la fecha discordante de la página de TSA. No se asigna
-      a Nabiax u otro anfitrión por inferencia.
-    siguiente_paso: Cerrar el edificio y el hito de entrega con una fuente primaria; no asignar por defecto a Nabiax Alcalá.
+    motivo: TSA describe dos DGX H100 y su nota del premio de agosto de 2025 confirma suministro, integración y
+      alojamiento en un Data Center de Telefónica. Ninguna nombra el edificio. La fecha del primer artículo
+      sigue discordando con el anuncio de adquisición de julio de 2024.
+    siguiente_paso: Identificar el edificio anfitrión y la fecha efectiva de instalación; no asignar por defecto a
+      Nabiax Alcalá ni calcular tarjetas a partir de una configuración genérica.
     enlaces:
-      - *a1
+      - href: /computo
+        texto: Explorar cómputo documentado
     fuentes:
       - url: https://www.telefonicaserviciosaudiovisuales.com/noticias/tsa-impulsa-innovadora-solucion-ia-medica-para-idoven-tecnologia-nvidia-ultima-generacion/
         titulo: TSA, integración y alojamiento de los DGX H100 de Idoven
         primaria: true
       - url: https://es.idoven.ai/blog/idoven-acquires-nvidia-dgx-systems-to-advance-its-mission-of-revolutionizing-cardiovascular-disease-diagnosis-with-ai
         titulo: Idoven, anuncio de adquisición y futura instalación
+        primaria: true
+      - url: https://www.telefonicaserviciosaudiovisuales.com/noticias/tsa-galardonada-en-premios-av-integracion-audiovisual-2025-por-proyecto-tecnologico-sector-salud/
+        titulo: TSA, suministro e integración de Idoven, premio de 7 de agosto de 2025
         primaria: true
   - id: arsys-gpu-ubicacion
     titulo: Vincular las GPU de Arsys con una instalación concreta
@@ -555,10 +576,10 @@ hallazgos:
     estado: awaiting_primary
     prioridad: media
     detectado: 2026-10-15
-    revisado: 2026-10-15
+    revisado: 2026-10-17
     revisar_antes: 2026-11-14
-    motivo: ASAC confirma el clúster alojado en Llanera y el CTO de Genei identifica L40S. ASAC tiene
-      dos centros allí; no está cerrado si corresponde al Data Center 1 del registro.
+    motivo: ASAC confirma el clúster alojado en Llanera y el CTO de Genei identifica L40S. ASAC tiene dos centros
+      allí; no está cerrado si corresponde al Data Center 1 del registro.
     siguiente_paso: Identificar el centro concreto antes de incorporar hardware a la ficha de Data Center 1.
     enlaces:
       - href: /proyecto/asac-llanera-data-center-1
@@ -576,12 +597,13 @@ hallazgos:
     estado: awaiting_primary
     prioridad: alta
     detectado: 2026-10-15
-    revisado: 2026-10-15
+    revisado: 2026-10-17
     revisar_antes: 2026-10-29
-    motivo: CDTI describe dos nodos propiedad de Gradiant alojados por CESGA. No distingue Campus Vida
-      del nuevo centro de A Sionlla; la ficha de este último sigue en construcción.
-    siguiente_paso: Localizar el documento de alojamiento con edificio e inventario. No registrar estas
-      GPU como instaladas en A Sionlla sin confirmar traslado.
+    motivo: El catálogo CDTI describe siete GPU en dos nodos propiedad de Gradiant alojados por CESGA. No
+      identifica el edificio. La dirección corporativa de Gradiant en Vigo y el listado de convenios de CESGA no
+      resuelven la ubicación física.
+    siguiente_paso: Localizar alojamiento o inventario fechado con edificio CESGA identificado; no situar las GPU
+      en la sede de Gradiant ni en A Sionlla sin confirmar su instalación.
     enlaces:
       - href: /proyecto/cesga-santiago-a-sionlla
         texto: CESGA A Sionlla y límites de ubicación
@@ -595,15 +617,16 @@ hallazgos:
     estado: awaiting_primary
     prioridad: media
     detectado: 2026-10-15
-    revisado: 2026-10-15
+    revisado: 2026-10-17
     revisar_antes: 2026-11-14
-    motivo: Eurecat confirma un clúster CPU/GPU implementado en junio, sin sede ni inventario. El
-      anuncio de QuantIA Lab de octubre describe implantación progresiva hasta 2027 y no identifica
-      GPU.
-    siguiente_paso: Obtener la correspondencia entre el clúster de junio y una instalación; no
-      fusionarlo con QuantIA por inferencia.
+    motivo: Eurecat confirma un clúster CPU/GPU implementado, premiado en junio, sin edificio ni inventario. La
+      nota primaria de QuantIA Lab del 18 de mayo sitúa otro despliegue progresivo en Cerdanyola hasta
+      principios de 2027, sin identificar sus GPU ni vincularlo al clúster premiado.
+    siguiente_paso: Obtener la correspondencia del clúster premiado con un edificio e inventario; mantener QuantIA
+      separado hasta que el operador documente el vínculo.
     enlaces:
-      - *a1
+      - href: /computo
+        texto: Explorar cómputo documentado
     fuentes:
       - url: https://eurecat.org/els-premis-computing-2026-distingeixen-eurecat-pel-seu-cluster-dalta-computacio-i-intelligencia-artificial/
         titulo: Eurecat, clúster implementado y premio Computing 2026
@@ -611,25 +634,37 @@ hallazgos:
       - url: https://eurecat.org/computacio-quantica-aplicada-a-la-industria/
         titulo: Eurecat, QuantIA Lab y calendario de implantación
         primaria: true
+      - url: https://eurecat.org/es/eurecat-despliega-el-quantia-lab-una-infraestructura-de-emulacion-cuantica-unica-en-cataluna-abierta-a-la-innovacion-empresarial/
+        titulo: Eurecat, QuantIA Lab, sede y calendario, 18 de mayo de 2026
+        primaria: true
   - id: dinahosting-gpu-reparto
-    titulo: Distribuir las GPU de Dinahosting entre sus centros
+    titulo: Localizar las GPU actuales de Dinahosting por edificio
     tipo: calidad
     estado: awaiting_primary
     prioridad: media
     detectado: 2026-10-15
-    revisado: 2026-10-15
+    revisado: 2026-10-17
     revisar_antes: 2026-11-14
-    motivo: Dinahosting ofrece GPU A2 y nombra Aire Networks y Global Switch en Madrid como anfitriones.
-      No publica asignación de GPU por centro.
-    siguiente_paso: Encontrar el reparto por instalación; no duplicar el mismo inventario en ambos anfitriones.
+    motivo: La cronología corporativa actual indica traslado de sus servidores a Aire Networks Madrid en 2025. Las
+      referencias a Interxion y Global Switch son históricas. Ni esa cronología ni el catálogo A2 identifican el
+      edificio que aloja hoy las GPU.
+    siguiente_paso: Vincular el servicio A2 actual a un centro físico de Aire con inventario fechado; no repetir
+      el antiguo reparto entre anfitriones como situación vigente.
     enlaces:
-      - *a1
+      - href: /computo
+        texto: Explorar cómputo documentado
     fuentes:
       - url: https://dinahosting.com/vps/vps-gpu
         titulo: Dinahosting, servicio VPS GPU
         primaria: true
+      - url: https://en.dinahosting.com/somos-dinahosting
+        titulo: Dinahosting, cronología corporativa y traslado de 2025
+        primaria: true
+      - url: https://ca.dinahosting.com/somos-dinahosting
+        titulo: Dinahosting, versión catalana de la cronología
+        primaria: true
       - url: https://dinahosting.com/blog/atencion-al-cliente-dinahosting-2023/
-        titulo: Dinahosting, infraestructura en Aire Networks y Global Switch
+        titulo: Dinahosting, infraestructura de 2023, antecedente histórico
         primaria: true
   - id: stackscale-aire-gpu-reparto
     titulo: Localizar por centro las GPU de Stackscale y Aire
@@ -637,13 +672,14 @@ hallazgos:
     estado: awaiting_primary
     prioridad: media
     detectado: 2026-10-15
-    revisado: 2026-10-15
+    revisado: 2026-10-17
     revisar_antes: 2026-11-14
-    motivo: Stackscale ofrece T4, L4 y L40S en infraestructura de Madrid y Ámsterdam, sin reparto. La
-      guía L4 de Aire tampoco identifica un centro físico.
+    motivo: Stackscale ofrece T4, L4 y L40S en infraestructura de Madrid y Ámsterdam, sin reparto. La guía L4 de
+      Aire tampoco identifica un centro físico.
     siguiente_paso: Obtener vínculo modelo-centro y separar catálogo global de hardware alojado en España.
     enlaces:
-      - *a1
+      - href: /computo
+        texto: Explorar cómputo documentado
     fuentes:
       - url: https://www.stackscale.com/es/bare-metal/servidores-gpu/
         titulo: Stackscale, catálogo GPU y ubicaciones generales
@@ -657,14 +693,15 @@ hallazgos:
     estado: awaiting_primary
     prioridad: media
     detectado: 2026-10-15
-    revisado: 2026-10-15
+    revisado: 2026-10-17
     revisar_antes: 2026-11-14
-    motivo: AWS, Azure y Oracle documentan disponibilidad regional GPU en España. Oracle nombra Digital
-      Realty Madrid, sin precisar edificio. No se asignan estos servicios a centros por proximidad.
-    siguiente_paso: Buscar correspondencias públicas entre SKU o plataforma y centro concreto. Conservar
-      recuentos por instancia separados de inventario físico.
+    motivo: AWS, Azure y Oracle documentan disponibilidad regional GPU en España. Oracle nombra Digital Realty
+      Madrid, sin precisar edificio. No se asignan estos servicios a centros por proximidad.
+    siguiente_paso: Buscar correspondencias públicas entre SKU o plataforma y centro concreto. Conservar recuentos
+      por instancia separados de inventario físico.
     enlaces:
-      - *a1
+      - href: /computo
+        texto: Explorar cómputo documentado
     fuentes:
       - url: https://aws.amazon.com/ec2/capacityblocks/pricing/
         titulo: AWS, Capacity Blocks P5en H200 en Europe Spain
@@ -681,12 +718,13 @@ hallazgos:
     estado: awaiting_primary
     prioridad: media
     detectado: 2026-10-15
-    revisado: 2026-10-15
+    revisado: 2026-10-17
     revisar_antes: 2026-11-14
-    motivo: La matriz de regiones ofrece RTX PRO 6000 en Madrid. El contrato de 18 MW de Getafe es
-      conocido, pero ninguna de las fuentes enlaza ese modelo con MAD01.
-    siguiente_paso: Confirmar si la región eu-south1 se sirve desde Getafe MAD01 antes de elevar acceso
-      contratado a instalación.
+    motivo: La matriz actual ofrece RTX PRO 6000 en Madrid eu-south1 y marca B300 como no disponible allí. MERLIN
+      identifica un contrato de 18 MW en Getafe, pero ninguna fuente vincula un modelo con MAD01. Se conserva
+      acceso contratado con modelo desconocido.
+    siguiente_paso: Confirmar el vínculo modelo-edificio para Getafe MAD01; no convertir la disponibilidad
+      regional o el arrendamiento en inventario instalado.
     enlaces:
       - href: /proyecto/merlin-edged-getafe-mad01
         texto: Nebius en MERLIN Getafe
@@ -703,12 +741,12 @@ hallazgos:
     estado: awaiting_primary
     prioridad: media
     detectado: 2026-10-15
-    revisado: 2026-10-15
+    revisado: 2026-10-17
     revisar_antes: 2026-11-14
-    motivo: La documentación ofrece B200 y RTX PRO 6000 en Álava, sin edificio ni cantidad. Es una pista
-      anterior, todavía sin cierre físico.
-    siguiente_paso: Obtener vínculo explícito con un centro; no asignar al BIL03 de Arasur por
-      coincidencia provincial.
+    motivo: La documentación actual ofrece B200 InfiniBand y RTX PRO 6000 Blackwell Server Edition High Memory en
+      EU-SOUTH-04A, Álava. No publica el edificio ni la cantidad física. El catálogo regional no prueba
+      instalación en un edificio concreto de Arasur.
+    siguiente_paso: Obtener vínculo explícito con un centro; no asignar al BIL03 de Arasur por coincidencia provincial.
     enlaces:
       - href: /proyecto/merlin-edged-ribera-baja-arasur
         texto: Campus Arasur y límites de atribución
@@ -717,23 +755,29 @@ hallazgos:
         titulo: CoreWeave, modelos y zonas EU-SOUTH
         primaria: true
   - id: trevenque-gpu-instalacion
-    titulo: Confirmar la instalación GPU de Trevenque Granada
+    titulo: GPU de Trevenque documentadas en Cloud Center Andalucía
     tipo: calidad
-    estado: awaiting_primary
+    estado: published
     prioridad: media
     detectado: 2026-10-15
-    revisado: 2026-10-15
-    revisar_antes: 2026-11-14
-    motivo: Un caso de prensa describe HPE Private Cloud AI desplegado en Granada. Falta verificar la
-      declaración primaria de instalación y el hardware; la configuración genérica HPE no cubre ese
-      hueco.
-    siguiente_paso: Recuperar la intervención del CTO o un anuncio primario con sede, estado y modelos.
+    revisado: 2026-10-17
+    revisar_antes: null
+    motivo: La entrevista al CTO de Trevenque y a HPE describe el despliegue físico y validación de HPE Private
+      Cloud AI en su propio centro de Granada. La sede del operador y el mapa nominal identifican Cloud Center
+      Andalucía. Se registra instalación NVIDIA sin modelo ni cantidad.
+    siguiente_paso: null
     enlaces:
       - href: /proyecto/trevenque-granada-cloud-center-andalucia
-        texto: Trevenque Granada
+        texto: Trevenque, Cloud Center Andalucía
     fuentes:
       - url: https://www.muycomputerpro.com/2026/09/22/trevenque-group-hpe-private-cloud-ai
         titulo: Caso de prensa Trevenque HPE Private Cloud AI, 22 de septiembre de 2026
+        primaria: false
+      - url: https://www.trevenque.es/quienes-somos/nuestras-sedes/
+        titulo: Trevenque, dirección del Data Center en Pago de Cambea 13
+        primaria: true
+      - url: https://mapcarta.com/es/W591288487
+        titulo: Mapa nominal de Cloud Center Andalucía
         primaria: false
   - id: occentus-nixval-gpu-instalacion
     titulo: Confirmar hardware GPU de Occentus en NIXVAL
@@ -741,12 +785,11 @@ hallazgos:
     estado: awaiting_primary
     prioridad: baja
     detectado: 2026-10-15
-    revisado: 2026-10-15
+    revisado: 2026-10-17
     revisar_antes: 2026-11-14
-    motivo: Occentus ofrece GPU como opción y documenta presencia en NIXVAL Paterna. La oferta no
-      publica modelo, inventario ni entrega.
-    siguiente_paso: Buscar prueba de hardware efectivamente instalado y vinculado al centro; evitar un
-      duplicado del anfitrión.
+    motivo: Occentus ofrece GPU como opción y documenta presencia en NIXVAL Paterna. La oferta no publica modelo,
+      inventario ni entrega.
+    siguiente_paso: Buscar prueba de hardware efectivamente instalado y vinculado al centro; evitar un duplicado del anfitrión.
     enlaces:
       - href: /proyecto/nixval-paterna-fuente-del-jarro
         texto: NIXVAL Paterna
@@ -763,17 +806,22 @@ hallazgos:
     estado: awaiting_primary
     prioridad: media
     detectado: 2026-10-15
-    revisado: 2026-10-15
+    revisado: 2026-10-17
     revisar_antes: 2026-11-14
-    motivo: La página declara 26 GPU y hardware operativo, pero conserva referencias a traslado desde
-      Barcelona y reservas previas a inauguración. No se conoce el reparto por modelo.
-    siguiente_paso: Confirmar apertura y traslado finalizado con un inventario local fechado antes de
-      crear un centro operativo.
+    motivo: La web mezcla 26 GPU y hardware declarado operativo con traslado desde Barcelona, reservas e
+      inauguración prevista. Otra página del operador mantiene activación prevista en el cuarto trimestre de
+      2026. No se acredita apertura, migración terminada ni reparto local por modelo.
+    siguiente_paso: Localizar dirección del centro y confirmación fechada de apertura y traslado completado, con
+      inventario local, antes de registrar 26 GPU como instaladas en Zamora.
     enlaces:
-      - *a1
+      - href: /computo
+        texto: Explorar cómputo documentado
     fuentes:
       - url: https://towinia.es/centro-de-datos-soberano-en-zamora-con-cumplimiento-rgpd-ia-act-nis2-y-ens-servidores-dedicados-alquiler-gpu-e-inteligencia-artificial-hosting-almacenamiento-frio-alta-disponibilidad/
         titulo: TOWINIA, centro Muralla de Zamora e inventario declarado
+        primaria: true
+      - url: https://towinia.es/arellano-vigia-y-coordinador-de-agentes-de-ciberseguridad-agente-de-inteligencia-artificial-soberana-en-espana/
+        titulo: TOWINIA, infraestructura y activación futura en el cuarto trimestre de 2026
         primaria: true
   - id: paivotal-b300-despliegue
     titulo: Identificar centro y entrega de las B300 de Paivotal
@@ -781,14 +829,15 @@ hallazgos:
     estado: awaiting_primary
     prioridad: media
     detectado: 2026-10-15
-    revisado: 2026-10-15
+    revisado: 2026-10-17
     revisar_antes: 2026-11-14
-    motivo: El inversor anuncia un despliegue futuro de B300 en España con cuatro Scale Units. No
-      identifica el centro ni una cantidad de tarjetas. Cartagon AI cambió de nombre a Paivotal.
-    siguiente_paso: Localizar instalación y hito de entrega. No convertir Scale Units en tarjetas ni
-      vincular a centros Quetta sin fuente.
+    motivo: El inversor anuncia un despliegue futuro de B300 en España con cuatro Scale Units. No identifica el
+      centro ni una cantidad de tarjetas. Cartagon AI cambió de nombre a Paivotal.
+    siguiente_paso: Localizar instalación y hito de entrega. No convertir Scale Units en tarjetas ni vincular a
+      centros Quetta sin fuente.
     enlaces:
-      - *a1
+      - href: /computo
+        texto: Explorar cómputo documentado
     fuentes:
       - url: https://www.coretechcapital.eu/post/paivotal-ampl%C3%ADa-su-financiaci%C3%B3n-hasta-los-200-millones-de-euros-y-se-convierte-en-preferred-partner
         titulo: Core Tech Capital, anuncio Paivotal del 14 de julio de 2026
@@ -802,14 +851,14 @@ hallazgos:
     estado: awaiting_primary
     prioridad: baja
     detectado: 2026-10-15
-    revisado: 2026-10-15
+    revisado: 2026-10-17
     revisar_antes: 2026-11-14
-    motivo: La adjudicación CEL.IA de diciembre de 2021 documenta un servidor con dos V100 de 32 GB. No
-      se ha encontrado recepción ni edificio; el domicilio del comprador no localiza el equipo.
-    siguiente_paso: Obtener acta de recepción e inventario local antes de situarlo en Cantón Grande,
-      CITEXVI o Cidade das TIC.
+    motivo: La adjudicación CEL.IA de diciembre de 2021 documenta un servidor con dos V100 de 32 GB. No se ha
+      encontrado recepción ni edificio; el domicilio del comprador no localiza el equipo.
+    siguiente_paso: Obtener acta de recepción e inventario local antes de situarlo en Cantón Grande, CITEXVI o Cidade das TIC.
     enlaces:
-      - *a1
+      - href: /computo
+        texto: Explorar cómputo documentado
     fuentes:
       - url: https://itg.es/wp-content/uploads/Informe-Adjudicacion_signed_CELIA_SUMINISTROS_27dic.pdf
         titulo: ITG, adjudicación CEL.IA del 27 de diciembre de 2021
@@ -848,8 +897,8 @@ hallazgos:
     revisado: 2026-10-17
     revisar_antes: 2026-11-14
     motivo: El inventario contable de 2024 acredita adquisición de DataHub sin modelo GPU. Los expedientes
-      revisados no permiten identificar las configuraciones efectivamente recibidas de CT008/2021 o
-      CT004/2026. A100 y Blackwell siguen como referencias de compras, sin instalación confirmada.
+      revisados no permiten identificar las configuraciones efectivamente recibidas de CT008/2021 o CT004/2026.
+      A100 y Blackwell siguen como referencias de compras, sin instalación confirmada.
     siguiente_paso: Localizar actas de recepción y modelos entregados, incluida la posibilidad de equivalente en
       ARQADE; evitar duplicar el servicio y sus compras.
     enlaces:
@@ -871,10 +920,10 @@ hallazgos:
     estado: awaiting_primary
     prioridad: media
     detectado: 2026-10-15
-    revisado: 2026-10-15
+    revisado: 2026-10-17
     revisar_antes: 2026-11-14
-    motivo: El anuncio del 30 de septiembre identifica BCN1 y MI355X. El despliegue sigue documentado
-      como entrega y puesta en servicio prevista en 2026, sin cantidad publicada.
+    motivo: El anuncio del 30 de septiembre identifica BCN1 y MI355X. El despliegue sigue documentado como entrega
+      y puesta en servicio prevista en 2026, sin cantidad publicada.
     siguiente_paso: Buscar un hito posterior de operación en BCN1 antes de cambiar la modalidad prevista a instalada.
     enlaces:
       - href: /proyecto/digital-realty-sant-adria-bcn1
@@ -1154,6 +1203,9 @@ hallazgos:
       - url: https://www.lamoncloa.gob.es/presidente/actividades/Documents/2026/20260920%20Plan%20IA360.pdf
         titulo: Plan IA360, apartado de nueva regulación de centros de datos, página 5
         primaria: true
+      - url: https://www.miteco.gob.es/es/energia/participacion/2026/detalle-participacion-publica-k-851.html
+        titulo: MITECO, proyecto de real decreto y audiencia cerrada
+        primaria: true
   - id: etiquetado-ue-control-publicacion
     titulo: Seguir el control y la publicación del etiquetado europeo
     tipo: normativa
@@ -1162,11 +1214,10 @@ hallazgos:
     detectado: 2026-10-17
     revisado: 2026-10-17
     revisar_antes: 2026-10-31
-    motivo: El acto C(2026) 3472 sigue bajo control y sin publicación definitiva localizada. La primera
-      emisión de etiquetas prevista para agosto de 2027 está condicionada a su entrada en vigor.
-    siguiente_paso: Comprobar en el registro delegado un evento fechado con phasePending=false y después
-      DOUE, CELEX y texto publicado. Las palabras Published y Scrutiny finished del gráfico pueden
-      ser etapas futuras.
+    motivo: El acto C(2026) 3472 sigue bajo control y sin publicación definitiva localizada. La primera emisión de
+      etiquetas prevista para agosto de 2027 está condicionada a su entrada en vigor.
+    siguiente_paso: Comprobar en el registro delegado un evento fechado con phasePending=false y después DOUE,
+      CELEX y texto publicado. Las palabras Published y Scrutiny finished del gráfico pueden ser etapas futuras.
     enlaces:
       - href: /normativa/reglamento-etiquetado-centros-datos-2026
         texto: Etiquetado europeo
@@ -1185,11 +1236,11 @@ hallazgos:
     detectado: 2026-10-17
     revisado: 2026-10-17
     revisar_antes: 2026-10-31
-    motivo: La resolución produce efectos generales desde septiembre, con implantación por modalidades.
-      No se ha acreditado apertura por gestor ni permiso flexible de un CPD concreto.
-    siguiente_paso: Localizar avisos fechados de apertura por gestor y modalidad, además de las notas
-      técnicas de habilitación, intercambio y pruebas. Los formularios genéricos y la memoria de
-      perfiles no acreditan modalidades abiertas.
+    motivo: La resolución produce efectos generales desde septiembre, con implantación por modalidades. No se ha
+      acreditado apertura por gestor ni permiso flexible de un CPD concreto.
+    siguiente_paso: Localizar avisos fechados de apertura por gestor y modalidad, además de las notas técnicas de
+      habilitación, intercambio y pruebas. Los formularios genéricos y la memoria de perfiles no acreditan
+      modalidades abiertas.
     enlaces:
       - href: /normativa/resolucion-acceso-flexible-demanda-2026
         texto: Acceso flexible
@@ -1238,9 +1289,6 @@ hallazgos:
       - href: /proyecto/templus-barcelona-bcn02
         texto: BCN02
     fuentes:
-      - url: https://templus.com/data-centers/
-        titulo: Data centers actualmente operativos · inventario de potencia IT
-        primaria: true
       - url: https://templus.com/data-centers/
         titulo: Data centers actualmente operativos · inventario de potencia IT
         primaria: true
@@ -1487,4 +1535,258 @@ hallazgos:
     fuentes:
       - url: https://www.capingelec.com/en/references/data-4-madrid-2/
         titulo: Construction of the DC03 datacentre in Alcobendas — DATA4
+        primaria: true
+  - id: microsoft-aragon-esia-20261017
+    titulo: Microsoft Aragón incorpora las capacidades del EsIA
+    tipo: proyecto
+    estado: published
+    prioridad: media
+    detectado: 2026-10-17
+    revisado: 2026-10-17
+    revisar_antes: null
+    motivo: Los documentos de urbanización publican 345,6 MW para La Muela y Villamayor y 288 MW para Zaragoza,
+      sin tipificarlos como IT. Son proyectos en tramitación; se conservan aparte los objetivos históricos.
+    siguiente_paso: null
+    enlaces:
+      - href: /proyecto/microsoft-la-muela-centrovia
+        texto: Microsoft Región Aragón — Campus La Muela (Centrovía)
+      - href: /proyecto/microsoft-villamayor-de-gallego
+        texto: Microsoft Región Aragón — Campus Villamayor de Gállego
+      - href: /proyecto/microsoft-zaragoza-puerto-venecia
+        texto: Microsoft Región Aragón — Campus Zaragoza (Área 88/3, Puerto Venecia)
+    fuentes:
+      - url: https://www.aragon.es/documents/d/guest/260918_piga-msft_esia_urb_campus-la-muela_fdo
+        titulo: EsIA del proyecto de urbanización del campus Microsoft de La Muela, julio 2026
+        primaria: true
+      - url: https://www.aragon.es/documents/d/guest/esia-p-urbanizacion-campus-villamayor-msft
+        titulo: EsIA del proyecto de urbanización del campus Microsoft de Villamayor de Gállego, julio 2026
+        primaria: true
+      - url: https://www.aragon.es/documents/d/guest/esia-p-urbanizacion-campus-zaragoza-msft
+        titulo: EsIA del proyecto de urbanización del campus Microsoft de Zaragoza, julio 2026
+        primaria: true
+  - id: tillion-aai-20261017
+    titulo: Tillion incorpora el diseño técnico y sus discrepancias
+    tipo: proyecto
+    estado: published
+    prioridad: media
+    detectado: 2026-10-17
+    revisado: 2026-10-17
+    revisar_antes: null
+    motivo: El proyecto de AAI publica 300 MW IT y refrigeración líquida en circuito cerrado, con agua para
+      humectación. Se conservan sus cifras discordantes por edificio y los 432 MW eléctricos de diseño, sin dar
+      por concedido el acceso.
+    siguiente_paso: null
+    enlaces:
+      - href: /proyecto/tillion-villamayor-de-gallego
+        texto: Tillion Aragón — Campus de centros de datos (Villamayor de Gállego)
+    fuentes:
+      - url: https://www.aragon.es/documents/d/guest/til_5_06_autorizacion-ambiental-integrada_rev01_00
+        titulo: Tillion Aragón, proyecto básico de solicitud de autorización ambiental integrada, revisión 01, mayo de
+          2026
+        primaria: true
+  - id: monfarracinos-expediente-20261017
+    titulo: Monfarracinos se contrasta con el expediente completo
+    tipo: proyecto
+    estado: published
+    prioridad: media
+    detectado: 2026-10-17
+    revisado: 2026-10-17
+    revisar_antes: null
+    motivo: El BOCYL confirma 200 MW IT previstos y tramitación regional. El dossier aclara que el agua se expresa
+      por año y separa el CPD de la planta energética. Las magnitudes térmicas quedan fuera de la capacidad
+      eléctrica del centro.
+    siguiente_paso: null
+    enlaces:
+      - href: /proyecto/frv-edison-monfarracinos-zamora
+        texto: Data Center Hiperescalar IA Zamora — Monfarracinos (polígono Zamora Norte)
+    fuentes:
+      - url: https://bocyl.jcyl.es/boletines/2026/09/16/pdf/BOCYL-D-16092026-180-17.pdf
+        titulo: Resolución de 11 de septiembre, inicio del Proyecto Regional de Monfarracinos
+        primaria: true
+      - url: https://www.jcyl.es/plaipdf//49/49122/301893/EG1823%20EIA%20RESUMEN%20NO%20TECNICO_INF%20PUBLICA.pdf
+        titulo: EG1823, resumen no técnico de AAI, texto refundido, páginas 15, 17 y 18
+        primaria: true
+      - url: https://www.jcyl.es/plaipdf//49/49122/301893/ZAMDC-GE-GPE-MEM-0010%20R04%20Proyecto%20B%C3%A1sico%20Data%20Center%20IA%20Hiperescalar%20Zamora%20Firmado.pdf
+        titulo: ZAMDC-GE-GPE-MEM-0010 R04, memoria básica, tablas 4, 48, 49, 69, 96, 105 y 106
+        primaria: true
+  - id: dayone-escatron-it-20261017
+    titulo: DayOne declara 304 MW IT previstos en Escatrón
+    tipo: proyecto
+    estado: published
+    prioridad: media
+    detectado: 2026-10-17
+    revisado: 2026-10-17
+    revisar_antes: null
+    motivo: El F-1 identifica 304 MW IT estimados en suelo con suministro asegurado. No los presenta como
+      construidos u operativos. Se conservan separados de los 444 MW de conexión publicados en prensa.
+    siguiente_paso: null
+    enlaces:
+      - href: /proyecto/dayone-escatron-peaker
+        texto: DayOne — campus de centros de datos de IA de Escatrón (junto a la central Peaker)
+    fuentes:
+      - url: https://www.sec.gov/Archives/edgar/data/2118192/000119312526414188/d223752df1.htm
+        titulo: "DayOne Data Centers Limited, Form F-1: Escatrón y cartera a 20 de septiembre de 2026"
+        primaria: true
+  - id: pure-meco-obra-20261017
+    titulo: Pure DC Meco confirma obra en la primera fase
+    tipo: proyecto
+    estado: published
+    prioridad: media
+    detectado: 2026-10-17
+    revisado: 2026-10-17
+    revisar_antes: null
+    motivo: El operador identifica una fase de 30 MW en construcción y otra de 40 MW pendiente de permisos.
+      Ninguna cifra se tipifica como IT; el total de 70 MW no se suma de nuevo a las fases.
+    siguiente_paso: null
+    enlaces:
+      - href: /proyecto/pure-dc-meco
+        texto: Pure DC — Centro de datos de Meco
+    fuentes:
+      - url: https://puredc.com/madrid
+        titulo: Madrid Meco (MAD01)
+        primaria: true
+  - id: salas-pier-tramitacion-20261017
+    titulo: Digital Valley Salas formaliza la solicitud PIER
+    tipo: proyecto
+    estado: published
+    prioridad: media
+    detectado: 2026-10-17
+    revisado: 2026-10-17
+    revisar_antes: null
+    motivo: La solicitud de tramitación estratégica se formalizó el 11 de septiembre. La ficha pasa a en
+      tramitación, sin dar por concedida la declaración ni por iniciadas las obras.
+    siguiente_paso: null
+    enlaces:
+      - href: /proyecto/s4u-salas-digital-valley-asturias
+        texto: Digital Valley Asturias — Salas (polígono de Nonaya Este)
+    fuentes:
+      - url: https://actualidad.asturias.es/es/-/datos119
+        titulo: Digital Valley Asturias solicita tramitación como Proyecto de Interés Estratégico
+        primaria: true
+  - id: asac-unidad-mva-20261017
+    titulo: ASAC DC1 corrige la unidad del transformador
+    tipo: proyecto
+    estado: published
+    prioridad: media
+    detectado: 2026-10-17
+    revisado: 2026-10-17
+    revisar_antes: null
+    motivo: El transformador anunciado es de 1 MVA. Se elimina el MW que se había registrado sin factor de
+      potencia, conservando la magnitud original fuera de los totales MW.
+    siguiente_paso: null
+    enlaces:
+      - href: /proyecto/asac-llanera-data-center-1
+        texto: ASAC Comunicaciones — Data Center 1 (Parque Tecnológico de Asturias, Llanera)
+    fuentes:
+      - url: https://www.asacti.es/actualidad/asac-inaugura-la-obra-de-ampliacion-de-su-data-center-1/
+        titulo: ASAC inaugura la obra de ampliación de su Data Center 1
+        primaria: true
+  - id: cobertura-nuevos-centros-20261017
+    titulo: Beloso, ODC2 y CPD Peralta completan tres pistas de cobertura
+    tipo: proyecto
+    estado: published
+    prioridad: media
+    detectado: 2026-10-17
+    revisado: 2026-10-17
+    revisar_antes: null
+    motivo: Se identifican el respaldo de Nasertic en Beloso, ODC2 en el 22@ y el proyecto de CPD4GREEN en Peralta
+      y Funes. El conflicto de acceso de Peralta conserva por separado la solicitud cancelada y la alternativa
+      posterior.
+    siguiente_paso: null
+    enlaces:
+      - href: /proyecto/nasertic-pamplona-beloso
+        texto: Nasertic — CPD de respaldo de Beloso (Pamplona)
+      - href: /proyecto/oxigen-barcelona-22-odc2
+        texto: Oxigen Data Center ODC2 — Barcelona 22@
+      - href: /proyecto/cpd4green-peralta-funes
+        texto: CPD Peralta — Peralta y Funes
+    fuentes:
+      - url: https://nasertic.es/es/actualidad/la-comision-de-universidad-innovacion-y-transformacion-digital-visita-los-dos-centros-de
+        titulo: Visita parlamentaria a los dos CPD del Gobierno de Navarra
+        primaria: true
+      - url: https://www.sociedadespublicasdenavarra.es/es/cpen-al-dia/nuestras-noticias/el-gobierno-de-navarra-ha-invertido-4-millones-de-euros-para-duplicar
+        titulo: Ampliación del CPD principal y confirmación del respaldo en Beloso
+        primaria: true
+      - url: https://uptimeinstitute.com/uptime-institute-awards/datacenter/oxigen-data-center-2-odc2/2398?l=
+        titulo: Registro de Oxigen Data Center 2, Barcelona
+        primaria: true
+      - url: https://www.linkedin.com/company/oxigen-data-center/?originalSubdomain=es
+        titulo: Oxigen identifica ODC2 en 22@ al comunicar su certificación de diseño
+        primaria: true
+      - url: https://www.cnmc.es/sites/default/files/6289701.pdf
+        titulo: Resolución CFT/DE/050/25, CPD4GREEN / REE, instalación CPD Peralta
+        primaria: true
+  - id: nasertic-kumo-fuentes-20261017
+    titulo: Nasertic y Kumo corrigen ubicación y alcance de sus cifras
+    tipo: proyecto
+    estado: published
+    prioridad: media
+    detectado: 2026-10-17
+    revisado: 2026-10-17
+    revisar_antes: null
+    motivo: La fuente institucional de Nasertic confirma 0,4 MW eléctricos instalados en Orkoien. Kumo distingue
+      954 kW IT de diseño, superficie de salas y un certificado LEED de Murcia. Ambos puntos se contrastan con
+      mapas nominales.
+    siguiente_paso: null
+    enlaces:
+      - href: /proyecto/nasertic-pamplona-orkoien
+        texto: Nasertic — Centro de Proceso de Datos del Gobierno de Navarra (Pamplona)
+      - href: /proyecto/kumo-paterna-tactica
+        texto: Kumo Networks — Paterna (Parque Empresarial Táctica)
+    fuentes:
+      - url: https://www.sociedadespublicasdenavarra.es/es/cpen-al-dia/nuestras-noticias/el-gobierno-de-navarra-ha-invertido-4-millones-de-euros-para-duplicar
+        titulo: El Gobierno de Navarra ha invertido 4 millones de euros para duplicar la capacidad de su Centro de
+          Proceso de Datos
+        primaria: true
+      - url: https://www.google.com/maps/place/NASERTIC+-+Navarra+De+Servicios+Y+Tecnolog%C3%ADas+S+A+-+Sede+Central/data=!4m6!3m5!1s0xd50928c76f41251:0xea376ddddb6b3fc9!8m2!3d42.8178661!4d-1.6598458!16s%2Fg%2F11bx8m50h0
+        titulo: NASERTIC, sede central en Orkoien, Google Maps
+        primaria: false
+      - url: https://content.kumonetworks.es/wp-content/uploads/kumo-tier4design-vlc.pdf
+        titulo: Tier IV Certification of Design Documents, Campus Data Center Sede Valencia, fase I
+        primaria: true
+      - url: https://content.kumonetworks.es/wp-content/uploads/kumo-leed.pdf
+        titulo: Certificado LEED Platinum de KIO Networks Murcia
+        primaria: true
+      - url: https://www.google.com/maps/place/Kumo+Networks+%7C+Valencia+%7C+Data+Center+Tier+IV/data=!4m6!3m5!1s0xd6045007a0c1757:0xdb2ec1f81618442c!8m2!3d39.515955!4d-0.4486038!16s%2Fg%2F11yp44kdhf
+        titulo: Kumo Networks Valencia, centro de datos en Corretger 33, Google Maps
+        primaria: false
+  - id: estados-obras-revisados-20261017
+    titulo: Corregidas las etapas de proyectos y ampliaciones
+    tipo: proyecto
+    estado: published
+    prioridad: media
+    detectado: 2026-10-17
+    revisado: 2026-10-17
+    revisar_antes: null
+    motivo: Panattoni y Quetta Molins conservan permisos sin inicio físico acreditado. San Jorge vuelve a
+      tramitación porque el arranque publicado era una previsión. Nabiax Camarillo queda operativo tras la
+      modernización terminada; Paterna mantiene su ampliación como anuncio.
+    siguiente_paso: null
+    enlaces:
+      - href: /proyecto/panattoni-cerdanyola-parc-alba
+        texto: Panattoni Barcelona Data Center Campus — Parc de l'Alba (Cerdanyola del Vallès)
+      - href: /proyecto/quetta-molins-de-rei
+        texto: Quetta Data Centers — Molins de Rei
+      - href: /proyecto/sekuens-aller-pozo-san-jorge
+        texto: Centro de datos del pozo San Jorge — Caborana (Aller)
+      - href: /proyecto/nabiax-madrid-julian-camarillo
+        texto: Nabiax Julián Camarillo Data Center
+      - href: /proyecto/templus-paterna-parque-tecnologico
+        texto: Templus — Paterna (Parc Tecnològic de València)
+    fuentes:
+      - url: https://panattonieurope.com/es-es/noticias/panattoni-obtiene-licencia-de-obra-para-el-desarrollo-de-su-data-center-de-42-mw-de-potencia-en-barcelona
+        titulo: Panattoni obtiene licencia de obra para el desarrollo de su Data Center de 42 MW de potencia en
+          Barcelona
+        primaria: true
+      - url: https://viumolinsderei.com/2026/09/02/el-nou-centre-de-dades-del-pla-preveu-crear-50-llocs-de-treball-directes/
+        titulo: El nou centre de dades del Pla preveu crear 50 llocs de treball directes
+        primaria: false
+      - url: https://agoranet.jgpa.es/documentos/Diarios/PDF/12C322.pdf
+        titulo: Diario de Sesiones, Comisión de Ciencia, Industria y Empleo, 11 de febrero de 2026, pp. 19 y 21
+        primaria: true
+      - url: https://www.fibratel.com/wp-content/uploads/2026/05/Caso-de-exito-Nabiax-Julian-Camarillo_fdata-2025.pdf
+        titulo: Nabiax moderniza el Centro de Datos Julián Camarillo para responder a las nuevas demandas digitales
+        primaria: true
+      - url: https://templus.com/nota-de-prensa/templus-multiplicara-por-cuatro-la-potencia-de-su-centro-dedatos-de-valencia-hasta-los-4mw/
+        titulo: Templus multiplicará por cuatro la potencia de Valencia hasta los 4 MW
         primaria: true
