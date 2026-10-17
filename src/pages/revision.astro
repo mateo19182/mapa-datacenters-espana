@@ -20,6 +20,8 @@ const filtros = [
 ]
 const ordenes = [{ valor:'revision', campo:'ordenrevision', etiqueta:'Orden de revisión', numerico:true }, { valor:'prioridad', campo:'ordenprioridad', etiqueta:'Prioridad', numerico:true }, { valor:'plazo', etiqueta:'Revisión más próxima' }, { valor:'detectado', etiqueta:'Detección más reciente', direccion:'desc' }]
 const tecnica = revision.comprobacion_automatica
+const categorias = tecnica.revision_cambios.categorias
+const comparaciones = tecnica.revision_cambios.grupos.filter((g) => ['contenido', 'plantilla'].includes(g.clase)).slice(0, 10)
 ---
 <Base titulo="Pendientes de revisión" descripcion="Investigaciones abiertas, pistas anteriores y decisiones del registro.">
   <div class="contenedor revision">
@@ -47,6 +49,14 @@ const tecnica = revision.comprobacion_automatica
     <details class="bloque"><summary>Comprobación automática de fuentes · última observación {fechaLegible(tecnica.ultima_observacion) ?? 'sin fecha'}</summary>
       <p class="pequeno">{tecnica.con_observacion} de {tecnica.registradas} referencias tienen observaciones técnicas. {tecnica.rotas} respuestas 404 o 410, {tecnica.bloqueadas} bloqueadas, {tecnica.errores} fallos de comprobación y {tecnica.cambios_pendientes} cambios de contenido pendientes. Incluye proyectos, normativa, red y energía.</p>
       <p class="pequeno">Estas observaciones técnicas no renuevan la fecha de revisión factual.</p>
+      <p class="pequeno">{categorias.contenido} diferencias de texto · {categorias.plantilla + categorias.formato} posibles cambios de plantilla o formato · {categorias.metodo} primeras huellas de archivos · {categorias.sin_comparacion} sin texto anterior comparable.</p>
+      {comparaciones.length > 0 && <ul>{comparaciones.map((g) => <li>
+        <a href={g.fuentes[0].url} target="_blank" rel="noopener nofollow">{g.dominio}</a> · {g.fuentes.length} referencia{g.fuentes.length !== 1 && 's'} · {g.clase === 'plantilla' ? 'Posible cambio de plantilla' : 'Texto distinto'}
+        <p class="pequeno">Comparado con {g.comparacion.referencia === 'aceptada' ? 'la versión aceptada' : 'una observación anterior'} del {fechaLegible(g.comparacion.fecha) ?? 'día desconocido'}{g.comparacion.parcial && ' · Extracción parcial'}.</p>
+        {g.comparacion.paginas?.length > 0 && <p class="pequeno">Páginas con texto distinto: {g.comparacion.paginas.join(', ')}.</p>}
+        <p class="pequeno">Antes: <q>{g.comparacion.antes || 'Sin texto en este tramo'}</q><br/>Después: <q>{g.comparacion.despues || 'Sin texto en este tramo'}</q></p>
+      </li>)}</ul>}
+      <p class="pequeno"><a href={`${REPOSITORIO}/blob/main/research/informe-actualizacion.md`}>Informe de comparaciones y referencias</a> · <a href={`${REPOSITORIO}/blob/main/research/informe-evolucion-fuentes.md`}>Evolución de las comprobaciones</a> · <a href="/datos/seguimiento-fuentes.json" download>Datos de las ejecuciones</a></p>
       <p class="pequeno"><a href="/fuentes?enlace=rota">Respuestas 404 o 410 de proyectos</a> · <a href="/fuentes?enlace=bloqueada">Bloqueados</a> · <a href="/fuentes?enlace=error">Comprobación sin resultado</a></p>
     </details>
     <details class="bloque"><summary>Fechas previstas pendientes de contraste · {revision.hitos_vencidos.length}</summary>

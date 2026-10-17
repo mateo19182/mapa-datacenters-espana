@@ -1,0 +1,60 @@
+{
+ "version": 1,
+ "ejecuciones": [
+  {
+   "version": 1,
+   "id": "2026-10-17T11:52:11.370Z-ae143e1e",
+   "iniciada": "2026-10-17T11:52:11.370Z",
+   "finalizada": "2026-10-17T11:56:20.580Z",
+   "estado": "completa",
+   "comprobadas": 1021,
+   "resultados": {
+    "ok": 899,
+    "bloqueada": 100,
+    "rota": 5,
+    "error": 17
+   },
+   "antes": {
+    "registradas": 1021,
+    "con_observacion": 1006,
+    "ultima_observacion": "2026-10-17",
+    "rotas": 5,
+    "bloqueadas": 98,
+    "errores": 19,
+    "cambios_pendientes": 473,
+    "categorias": {
+     "contenido": 0,
+     "plantilla": 0,
+     "formato": 0,
+     "metodo": 69,
+     "sin_comparacion": 404
+    },
+    "grupos": 431,
+    "revisiones_pendientes": 95,
+    "decisiones_publicadas": 32,
+    "decisiones_descartadas": 0
+   },
+   "despues": {
+    "registradas": 1021,
+    "con_observacion": 1021,
+    "ultima_observacion": "2026-10-17",
+    "rotas": 5,
+    "bloqueadas": 100,
+    "errores": 17,
+    "cambios_pendientes": 510,
+    "categorias": {
+     "contenido": 0,
+     "plantilla": 0,
+     "formato": 0,
+     "metodo": 69,
+     "sin_comparacion": 441
+    },
+    "grupos": 468,
+    "revisiones_pendientes": 95,
+    "decisiones_publicadas": 32,
+    "decisiones_descartadas": 0
+   },
+   "duracion_ms": 249210
+  }
+ ]
+}

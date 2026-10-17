@@ -28,6 +28,8 @@ export function registrarLectura(previa, lectura, hoy) {
           longitud: lectura.longitud,
           detectado: previa.pendiente?.hash === lectura.hash ? previa.pendiente.detectado : hoy,
           visto: hoy,
+          ...(lectura.comparacion ? { comparacion: lectura.comparacion } :
+            previa.pendiente?.hash === lectura.hash && previa.pendiente.comparacion ? { comparacion: previa.pendiente.comparacion } : {}),
         },
       },
       resultado: 'cambiada',

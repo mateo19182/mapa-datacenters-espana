@@ -51,7 +51,10 @@ test('el caso mantenido de Iron Mountain distingue MAD-1 del campus completo', (
   const sitio = cargarSitios().sitios.find((s) => s.id === 'iron-mountain-san-fernando-de-henares-mad')
   const grupos = resumirPorEtapa(sitio.potencia)
   assert.equal(grupos.operativa.it.valor_mw, 3)
-  assert.equal(grupos.construccion.it.valor_mw, 79)
+  assert.equal(grupos.construccion.it.valor_mw, 20)
+  assert.equal(grupos.prevista.it.valor_mw, 79)
+  assert.equal(sitio.fecha_puesta_en_servicio, null)
+  assert.equal(sitio.fases.find((f) => f.nombre === 'MAD-1').fecha_puesta_en_servicio, null)
 })
 
 test('una potencia inferior a 1 MW conserva sus kW en la ficha y en la cartera', () => {

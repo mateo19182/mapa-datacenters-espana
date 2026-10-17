@@ -56,6 +56,15 @@ potencia:
     nota: "La ficha corporativa vigente indica 50 MW y 6,7 hectáreas, cifra distinta de la anunciada en
       2023. Objetivo del campus completo, sin confirmación de entrega por edificio; no equivale a
       potencia operativa del primer centro abierto."
+conexion_electrica:
+  tension_kv: 66
+  mw_concedidos: null
+  nota: El expediente 1053/23 sometió a información pública una acometida subterránea de 66 kV para el
+    CPD de DATA4 en SAU-8 Los Ardales. Resolución de 20 de marzo de 2026, publicada el 31. No es
+    autorización definitiva, acta de puesta en servicio ni cifra de MW concedidos; no resuelve la
+    capacidad entregada por edificio.
+  fuentes:
+    - src-bocm-linea-20260331
 
 fases:
   - nombre: "Primer edificio del campus"
@@ -110,6 +119,13 @@ incertidumbres:
       - src-1
       - src-2
       - src-3
+  - campo: conexion_electrica
+    descripcion: La exposición pública de marzo de 2026 afecta a una línea de suministro al proyecto de
+      Los Ardales. No permite fechar energización ni desmentir la apertura del primer edificio
+      difundida ese mes. Siguen sin publicarse MW IT operativos por edificio.
+    fuentes:
+      - src-bocm-linea-20260331
+      - src-3
 
 confianza: media
 ultima_verificacion: "2026-10-14"
@@ -147,3 +163,12 @@ fuentes:
       cerrado que permite operar sin consumo de agua ... una inversión de alrededor de 530 millones
       de euros y una capacidad total prevista cercana a los 70–80 MW, distribuida en cuatro
       edificios ... la compañía prevé destinar hasta 850 millones de euros hasta 2030"
+  - id: src-bocm-linea-20260331
+    url: https://www.bocm.es/boletin/CM_Orden_BOCM/2026/03/31/BOCM-20260331-50.PDF
+    titulo: Expediente 1053/23 — información pública de acometida eléctrica para DATA4 en Los Ardales
+    editor: Comunidad de Madrid — BOCM
+    tipo: oficial
+    fecha_publicacion: 2026-03-31
+    fecha_consulta: 2026-10-17
+    cita: línea de alta tensión de 66kV, para dar suministro eléctrico a una parcela destinada a centro
+      de datos en construcción

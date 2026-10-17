@@ -73,6 +73,13 @@ afecta:
     fuentes: [src-boe]
 relacionadas: [circular-1-2024-cnmc, rd-1183-2020, rdl-7-2026]
 incertidumbres:
+  - campo: apertura_por_gestor
+    descripcion: >-
+      La memoria de e-distribución exige perfiles de funcionamiento para solicitudes de acceso
+      flexible, pero no identifica una fecha de apertura por tipo. REE remite las solicitudes a
+      su portal general. Estos documentos no acreditan qué modalidades están abiertas ni su
+      disponibilidad en un nudo concreto.
+    fuentes: [src-edistribucion-memoria, src-ree-tramitacion]
   - campo: aplicacion
     descripcion: "Los tipos 1, 2 y 3 se limitan al sistema eléctrico peninsular. El tipo 0 tiene su
       ámbito propio en distribución. La cobertura insular del CSV de REE no acredita disponibilidad
@@ -81,6 +88,22 @@ incertidumbres:
     fuentes: [ src-boe ]
 ultima_verificacion: "2026-10-17"
 fuentes:
+  - id: src-edistribucion-memoria
+    url: "https://www.edistribucion.com/content/dam/edistribucion/conexion-a-la-red/descargables/Memoria-tecnicaESP.pdf"
+    titulo: "Memoria técnica de e-distribución, perfiles de funcionamiento para acceso flexible"
+    editor: "e-distribución"
+    tipo: empresa
+    fecha_publicacion: null
+    fecha_consulta: "2026-10-17"
+    cita: "se deberán aportar los perfiles de funcionamiento esperado de la instalación de demanda objeto de la solicitud."
+  - id: src-ree-tramitacion
+    url: "https://www.ree.es/es/clientes/consumidor/acceso-conexion/accede-a-tu-gestion-telematica"
+    titulo: "REE, tramitación telemática de acceso y conexión de consumidores"
+    editor: "Red Eléctrica"
+    tipo: empresa
+    fecha_publicacion: null
+    fecha_consulta: "2026-10-17"
+    cita: "Las solicitudes se deberán realizar exclusivamente a través de la plataforma telemática"
   - id: src-boe
     url: "https://www.boe.es/buscar/doc.php?id=BOE-A-2026-17571"
     titulo: "Resolución de 31 de julio de 2026, resuelves primero, sexto y undécimo"

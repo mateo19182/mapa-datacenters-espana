@@ -20,12 +20,13 @@ ubicacion:
 
 estado: en_construccion
 estado_detalle: >-
-  Cuarto centro de datos del grupo Adam (tercero en Cataluña). El acto de
-  colocación de la primera piedra se celebró el 11 de noviembre de 2025 con el
-  conseller d'Empresa i Treball y el alcalde de Cerdanyola. La compañía prevé
-  entrada en servicio en 2027 con una primera fase de cuatro salas. Adam Ecotech
-  pasó a manos de CVC DIF, que acordó comprar el 100 % del capital a Ogic
-  Informática el 31 de octubre de 2024.
+  Cuarto centro de datos del grupo Adam (tercero en Cataluña). El acto de colocación de la primera
+  piedra se celebró el 11 de noviembre de 2025 con el conseller d'Empresa i Treball y el alcalde de
+  Cerdanyola. La compañía prevé entrada en servicio en 2027 con una primera fase de cuatro salas.
+  Adam Ecotech pasó a manos de CVC DIF, que acordó comprar el 100 % del capital a Ogic Informática
+  el 31 de octubre de 2024. La web actual confirma construcción, ocho salas y 5 MW eléctricos
+  contratados para la fase 1; difiere del anuncio inicial de cuatro salas y 4 MW. No consta nueva
+  apertura.
 estado_fuentes: [src-1, src-2, src-3, src-5]
 
 potencia:
@@ -55,6 +56,15 @@ potencia:
     estado_asociado: en_construccion
     fecha_dato: "2025-10"
     fuentes: [src-2]
+  - tipo: conexion_red
+    valor_mw: 5
+    ambito: fase
+    referencia: Potencia eléctrica contratada para la fase 1
+    estado_asociado: en_construccion
+    fuentes:
+      - src-1
+    nota: La web actual dice 5 MW of electrical power already contracted for Phase 1. No es carga IT ni
+      entrega energizada; no consta fecha editorial o resolución de acceso.
 
 fases:
   - nombre: "Fase 1 (4 salas)"
@@ -87,11 +97,14 @@ incertidumbres:
     fuentes: [src-alba]
   - campo: potencia
     descripcion: >-
-      La web de Adam indica 5 MW para la fase 1 mientras que la prensa
-      especializada habla de 4 MW en la primera fase. Se registran ambos
-      contextos; se toma 4 MW de la prensa y se deja constancia del 5 MW de la
-      ficha web. Ninguna fuente precisa si son MW TI o potencia instalada.
-    fuentes: [src-1, src-2]
+      La ficha actual de Adam da 5 MW eléctricos contratados para la fase 1 y ocho salas, frente a
+      cuatro salas y 4 MW publicados en el anuncio inicial. El Ayuntamiento tipifica 8 MW instalados
+      para el edificio completo. Se conservan los alcances y las previsiones; los 5 MW contratados
+      no acreditan puesta en servicio ni carga IT.
+    fuentes:
+      - src-1
+      - src-2
+      - src-3
   - campo: ubicacion
     descripcion: >-
       Baxtel sitúa este proyecto en Carrer dels Artesans (Parc Tecnològic del
@@ -123,11 +136,10 @@ fuentes:
     titulo: "Data Center in Barcelona 24/7"
     editor: "Adam"
     tipo: empresa
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: >-
-      Parc de l'Alba Cerdanyola del Vallès (Under Construction) — Parc de l'Alba
-      Sincrotrón — 7.500 m² — 5 MW (Phase 1) — Tier III — 8 neutral rooms in
-      Phase 1
+      We are building our 4th data center in Barcelona. [...] 5 MW of electrical power already
+      contracted for Phase 1.
   - id: src-2
     url: "https://www.datacentermarket.es/datacenter-infrastructure/adam-inicia-la-construccion-de-su-cuarto-centro-de-datos-en-cerdanyola-del-valles/"
     titulo: "Adam inicia la construcción de su cuarto centro de datos en Cerdanyola del Vallès"

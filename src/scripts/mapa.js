@@ -1,12 +1,13 @@
 import { ETAPAS_CAPACIDAD, campoCapacidad } from '../lib/capacidad.js'
-// MapLibre 5: lleva su worker incorporado en el propio bundle. La rama 6 lo
-// emite como fichero aparte que el empaquetado estático no llega a publicar,
-// y el mapa se queda en blanco en producción.
 // `Map` se renombra para no pisar el Map nativo que usa este módulo.
-import { Map as MapaGL, NavigationControl, AttributionControl, ScaleControl } from 'maplibre-gl'
+import { Map as MapaGL, NavigationControl, AttributionControl, ScaleControl, setWorkerUrl } from 'maplibre-gl'
+import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?url'
 import 'maplibre-gl/dist/maplibre-gl.css'
 import { coincideBusqueda } from '../lib/busqueda.js'
 import { nombreProyecto } from '../lib/nombres.js'
+
+// Vite publica el worker de MapLibre 6 como recurso del mismo origen.
+setWorkerUrl(workerUrl)
 
 // El mapa se alimenta de ficheros estáticos servidos desde /datos.
 // Las capas pesadas (red de transporte) se piden solo al activarlas.
@@ -748,7 +749,7 @@ const ESTILO_RESERVA = () => ({
 function soportaWebgl() {
   try {
     const lienzo = document.createElement('canvas')
-    const ctx = lienzo.getContext('webgl2') ?? lienzo.getContext('webgl')
+    const ctx = lienzo.getContext('webgl2')
     if (!ctx) return false
     ctx.getExtension('WEBGL_lose_context')?.loseContext()
     return true

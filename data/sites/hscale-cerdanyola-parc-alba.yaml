@@ -22,20 +22,23 @@ ubicacion:
 
 estado: en_construccion
 estado_detalle: >-
-  Campus de edificios independientes en el Parc de l'Alba. ACCIÓ anunció el inicio de obras con
-  un primer edificio de 15 MW y 43.000 m², previsto para 2025. El directorio Baxtel describe el
-  campus ya bajo la marca hscale, con cinco edificios de dos plantas más uno auxiliar y año
-  previsto 2026. No se ha localizado confirmación pública de puesta en servicio. El acto de
-  colocación de la primera piedra se celebró el 27 de junio de 2024 con presencia del alcalde
-  de Cerdanyola y del secretario de Polítiques Digitals de la Generalitat.
-estado_fuentes: [src-accio, src-baxtel, src-cerdanyola]
+  Campus BCN1 en el Parc de l’Alba, iniciado bajo la marca AQ Compute. El operador actual confirma
+  10 MW en construcción y prevé disponibilidad en el cuarto trimestre de 2026. Su inventario
+  distingue 50 MW IT planificados para el campus y 80 MVA de potencia disponible. No hay
+  confirmación de puesta en servicio. Se conservan las previsiones iniciales de 15 MW para el primer
+  edificio y 60 MW para el campus, así como el objetivo de 2025, como antecedentes discrepantes.
+estado_fuentes:
+  - src-accio
+  - src-cerdanyola
+  - src-hscale-bcn1-20261017
+  - src-hscale-inventario-20261017
 
 potencia:
   - tipo: no_especificado
     valor_mw: 60
     ambito: campus
-    referencia: "Capacidad total del campus"
-    estado_asociado: en_construccion
+    referencia: "Objetivo histórico de capacidad total del campus"
+    estado_asociado: anunciado
     fuentes: [src-accio, src-cerdanyola]
     nota: >-
       ACCIÓ habla de «IT capacity of 60MW» para el campus terminado. Al proceder de una agencia
@@ -44,9 +47,11 @@ potencia:
   - tipo: no_especificado
     valor_mw: 15
     ambito: fase
-    referencia: "Primer edificio"
-    estado_asociado: en_construccion
+    referencia: "Previsión inicial del primer edificio"
+    estado_asociado: anunciado
     fuentes: [src-accio]
+    nota: La previsión inicial era de 15 MW. La página actual del operador identifica 10 MW en
+      construcción, sin confirmar entrega de los 15 MW ni explicar el cambio de alcance.
   - tipo: no_especificado
     valor_mw: 80
     ambito: campus
@@ -57,13 +62,46 @@ potencia:
     nota: >-
       El Ayuntamiento escribe «amb una potència de 60 MW (s'està treballant perquè siguin 80
       MW)». Es un objetivo declarado, no una capacidad confirmada.
+  - tipo: it
+    valor_mw: 50
+    ambito: campus
+    referencia: BCN1, carga IT planificada según el operador actual
+    estado_asociado: anunciado
+    fuentes:
+      - src-hscale-inventario-20261017
+    nota: Capacidad final planificada. No equivale a MW operativos ni a los 10 MW que la ficha describe
+      en construcción; inventario sin fecha editorial.
+  - tipo: no_especificado
+    valor_mw: 10
+    ambito: fase
+    referencia: BCN1, capacidad en construcción según el operador actual
+    estado_asociado: en_construccion
+    fuentes:
+      - src-hscale-bcn1-20261017
+    nota: La frase 10MW under construction no tipifica estos 10 MW. No se convierte en carga IT por el
+      contexto de los 50 MW finales.
+  - tipo: conexion_red
+    valor_mw: null
+    valor_mva: 80
+    ambito: campus
+    referencia: Potencia aparente comercialmente disponible según HSCALE
+    estado_asociado: desconocido
+    fuentes:
+      - src-hscale-inventario-20261017
+    nota: El operador publica 80MVA POWER AVAILABLE. No se convierte a MW ni acredita una resolución de
+      acceso; no se trata como potencia energizada.
 
 fases:
   - nombre: "Fase 1 (primer edificio)"
     estado: en_construccion
     superficie_m2: 43000
-    nota: "Primera piedra colocada el 27 de junio de 2024."
-    fuentes: [src-accio, src-cerdanyola]
+    nota: "Primera piedra el 27 de junio de 2024. La ficha actual prevé Q4 de 2026; sustituye el
+      objetivo inicial de 2025, sin recepción ni servicio acreditados."
+    fuentes:
+      - src-accio
+      - src-cerdanyola
+      - src-hscale-bcn1-20261017
+    fecha_puesta_en_servicio: "2026"
 
 refrigeracion: >-
   Agua refrigerada con freecooling e infraestructura preparada para refrigeración líquida;
@@ -96,10 +134,14 @@ incertidumbres:
     fuentes: [src-accio, src-baxtel]
   - campo: potencia
     descripcion: >-
-      Los 60 MW y los 15 MW proceden de la agencia de promoción de la Generalitat, no del
-      operador, y no puede confirmarse si son carga TI o potencia de acceso. La ficha de Baxtel,
-      posterior y ya bajo la marca hscale, no publica ninguna cifra de MW.
-    fuentes: [src-accio, src-baxtel]
+      ACCIÓ atribuía al diseño inicial 60 MW IT y 15 MW al primer edificio; las cifras históricas se
+      conservan. El operador actual publica 50 MW IT planificados, 10 MW en obra sin tipificar y 80
+      MVA disponibles. Son lecturas y ámbitos distintos; no se suman ni se convierten MVA a MW.
+    fuentes:
+      - src-accio
+      - src-cerdanyola
+      - src-hscale-bcn1-20261017
+      - src-hscale-inventario-20261017
   - campo: superficie
     descripcion: >-
       Los 43.000 m² se atribuyen al «primer edificio», lo que encaja mal con una fase de 15 MW;
@@ -115,17 +157,19 @@ incertidumbres:
     fuentes: [src-cerdanyola]
   - campo: estado
     descripcion: >-
-      Ninguna de las dos fuentes es del operador. ACCIÓ daba la fase 1 por terminada en 2025 y
-      Baxtel da el campus como en construcción con año previsto 2026. El estado real a 2026 no
-      está corroborado por una fuente primaria.
-    fuentes: [src-accio, src-baxtel]
+      La previsión inicial de ACCIÓ era 2025. La ficha actual del operador confirma obra y objetivo
+      de disponibilidad Q4 de 2026, sin anuncio de apertura localizado. Consultar una página en
+      octubre no acredita una entrega en ese trimestre.
+    fuentes:
+      - src-accio
+      - src-hscale-bcn1-20261017
   - campo: ubicacion
     descripcion: >-
       Las coordenadas son el centroide del Parc de l'Alba según Nominatim, no la parcela concreta.
     fuentes: [src-nominatim]
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
   - id: src-accio
@@ -170,3 +214,18 @@ fuentes:
       perquè siguin 80 MW) i abastit amb energia 100% renovable ... L'AQ-BCN 1 Data Center
       Campus ocuparà una superfície de 7.000 metres quadrats i preveu generar 300 llocs de
       treball directes i 1.500 d'indirectes.
+  - id: src-hscale-bcn1-20261017
+    url: https://www.hscaledc.com/data-centres/spain-barcelona/
+    titulo: BCN1 — Spain, Barcelona
+    editor: HSCALE
+    tipo: empresa
+    fecha_consulta: 2026-10-17
+    cita: BCN1 Q4 2026 [...] 5 buildings on site (10MW under construction), alongside a multipurpose
+      ancillary building, 2 floors per building
+  - id: src-hscale-inventario-20261017
+    url: https://www.hscaledc.com/data-centres/
+    titulo: Our data centres — BCN I 1 site
+    editor: HSCALE
+    tipo: empresa
+    fecha_consulta: 2026-10-17
+    cita: 80MVA POWER AVAILABLE [...] 50 MW PLANNED IT LOAD [...] 1.2 TARGET DESIGN PUE

@@ -6,7 +6,7 @@ Generado el 2026-10-17 por `npm run validate`.
 - Nodos de red: **133**
 - Activos renovables/BESS: **22**
 - Normas registradas: **17**
-- Errores: **0** · Avisos: **288**
+- Errores: **0** · Avisos: **290**
 
 ## Incidencias por fichero
 
@@ -72,6 +72,10 @@ Generado el 2026-10-17 por `npm run validate`.
 
 - aviso: sin ningún dato de potencia
 
+### `alto-infrastructure-escuzar-sp01.yaml`
+
+- aviso: la fuente «src-7» no respalda ningún campo concreto
+
 ### `apto-fuenlabrada-madrid-one.yaml`
 
 - aviso: potencia[0] («Capacidad total prevista del campus, repartida en cinco centros de datos») no distingue el tipo de MW
@@ -85,7 +89,7 @@ Generado el 2026-10-17 por `npm run validate`.
 
 ### `arsys-logrono.yaml`
 
-- aviso: sin ningún dato de potencia
+- aviso: potencia[0] («Potencia declarada para el diseño del complejo Portalada») no distingue el tipo de MW
 
 ### `atlasedge-sant-adria-barcelona2.yaml`
 
@@ -401,9 +405,10 @@ Generado el 2026-10-17 por `npm run validate`.
 
 ### `hscale-cerdanyola-parc-alba.yaml`
 
-- aviso: potencia[0] («Capacidad total del campus») no distingue el tipo de MW
-- aviso: potencia[1] («Primer edificio») no distingue el tipo de MW
+- aviso: potencia[0] («Objetivo histórico de capacidad total del campus») no distingue el tipo de MW
+- aviso: potencia[1] («Previsión inicial del primer edificio») no distingue el tipo de MW
 - aviso: potencia[2] («Objetivo de potencia en negociación en el momento de la primera piedra») no distingue el tipo de MW
+- aviso: potencia[4] («BCN1, capacidad en construcción según el operador actual») no distingue el tipo de MW
 
 ### `iaas-datacenter-madrid-maraton.yaml`
 
@@ -448,9 +453,9 @@ Generado el 2026-10-17 por `npm run validate`.
 
 ### `iron-mountain-san-fernando-de-henares-mad.yaml`
 
-- aviso: potencia[2] («Primera fase de MAD-1 en el momento de la inauguración») no distingue el tipo de MW
-- aviso: potencia[3] («MAD-2, capacidad prevista en el cuarto trimestre de 2026») no distingue el tipo de MW
-- aviso: potencia[4] («MAD-3, capacidad prevista en el primer trimestre de 2027») no distingue el tipo de MW
+- aviso: potencia[2] («Previsión inicial de 2 MW en MAD-1 publicada en marzo de 2025») no distingue el tipo de MW
+- aviso: potencia[3] («MAD-2, previsión histórica de abril de 2026 para Q4 de 2026») no distingue el tipo de MW
+- aviso: potencia[4] («MAD-3, previsión histórica de abril de 2026 para Q1 de 2027») no distingue el tipo de MW
 - aviso: potencia[5] («Capacidad potencial del campus según la venta de Xdata Properties a Iron Mountain») no distingue el tipo de MW
 
 ### `islalink-valencia-fsl.yaml`

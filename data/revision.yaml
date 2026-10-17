@@ -165,11 +165,13 @@ hallazgos:
     detectado: 2026-10-12
     revisado: 2026-10-17
     revisar_antes: 2026-10-21
-    motivo: Contrastadas ocho fichas con operadores y documentación técnica. Se tipifican 20 MW IT de Getafe 1 y
-      2,25/5,7 MW IT de Templus; Getafe 2 conserva capacidad futura. Quedan sin cerrar los MW entregados por
-      edificio de DATA4, los 14 MW de BCN1, el tipo de los 4 MW iniciales de MD5 y la apertura de NxN.
-    siguiente_paso: Obtener el reparto y entrega de potencia de DATA4 y BCN1, tipificación primaria de MD5 y
-      confirmación inequívoca de apertura de NxN; no sumar incrementos semestrales a máximos.
+    motivo: Contrastadas ocho fichas con operadores y documentación técnica. Se tipifican 20 MW IT de
+      Getafe 1 y 2,25/5,7 MW IT de Templus; Getafe 2 conserva capacidad futura. Quedan sin cerrar
+      los MW entregados por edificio de DATA4, los 14 MW de BCN1, el tipo de los 4 MW iniciales de
+      MD5 y la apertura de NxN.
+    siguiente_paso: Confirmar recepción por edificio de DATA4, incluidos los dos STEP de DC03; entrega y
+      tipo de los 14 MW de BCN1; tipo de los 4 MW de MD5 y apertura de NxN. No identificar
+      incrementos semestrales con edificios por coincidencia numérica.
     enlaces:
       - href: /proyecto/equinix-alcobendas-campus
         texto: Equinix Alcobendas
@@ -1160,15 +1162,20 @@ hallazgos:
     detectado: 2026-10-17
     revisado: 2026-10-17
     revisar_antes: 2026-10-31
-    motivo: El acto C(2026) 3472 sigue bajo control y sin publicación definitiva localizada. La primera emisión de
-      etiquetas prevista para agosto de 2027 está condicionada a su entrada en vigor.
-    siguiente_paso: Revisar OEIL y DOUE para el fin del control y la publicación; conservar las condiciones de los plazos.
+    motivo: El acto C(2026) 3472 sigue bajo control y sin publicación definitiva localizada. La primera
+      emisión de etiquetas prevista para agosto de 2027 está condicionada a su entrada en vigor.
+    siguiente_paso: Comprobar en el registro delegado un evento fechado con phasePending=false y después
+      DOUE, CELEX y texto publicado. Las palabras Published y Scrutiny finished del gráfico pueden
+      ser etapas futuras.
     enlaces:
       - href: /normativa/reglamento-etiquetado-centros-datos-2026
         texto: Etiquetado europeo
     fuentes:
       - url: https://oeil.europarl.europa.eu/oeil/en/procedure-file?reference=2026/2895(DEA)
         titulo: Procedimiento 2026/2895(DEA)
+        primaria: true
+      - url: https://webgate.ec.europa.eu/regdel/web/delegatedActs/2983/phasesEvents
+        titulo: Registro delegado, estado fechado de las fases del expediente 2983
         primaria: true
   - id: acceso-flexible-apertura-gestores
     titulo: Comprobar apertura real del acceso flexible por gestor
@@ -1178,16 +1185,20 @@ hallazgos:
     detectado: 2026-10-17
     revisado: 2026-10-17
     revisar_antes: 2026-10-31
-    motivo: La resolución produce efectos generales desde septiembre, con implantación por modalidades. No se ha
-      acreditado apertura por gestor ni permiso flexible de un CPD concreto.
-    siguiente_paso: Localizar procedimientos habilitados y fechas por gestor y modalidad; no confundir efectos
-      generales con disponibilidad de todas las modalidades.
+    motivo: La resolución produce efectos generales desde septiembre, con implantación por modalidades.
+      No se ha acreditado apertura por gestor ni permiso flexible de un CPD concreto.
+    siguiente_paso: Localizar avisos fechados de apertura por gestor y modalidad, además de las notas
+      técnicas de habilitación, intercambio y pruebas. Los formularios genéricos y la memoria de
+      perfiles no acreditan modalidades abiertas.
     enlaces:
       - href: /normativa/resolucion-acceso-flexible-demanda-2026
         texto: Acceso flexible
     fuentes:
       - url: https://www.boe.es/buscar/doc.php?id=BOE-A-2026-17571
         titulo: Resolución de acceso flexible, efectos e implantación por modalidades
+        primaria: true
+      - url: https://www.edistribucion.com/content/dam/edistribucion/conexion-a-la-red/descargables/Memoria-tecnicaESP.pdf
+        titulo: Memoria de e-distribución, perfiles para acceso flexible sin fecha de apertura
         primaria: true
   - id: getafe2-clasificacion-20261017
     titulo: Corregida la clasificación de Getafe 2
@@ -1354,4 +1365,126 @@ hallazgos:
         primaria: true
       - url: https://www.boe.es/buscar/act.php?id=BOE-A-1982-5196#art207
         titulo: Reglamento del Congreso, artículo 207 vigente
+        primaria: true
+  - id: iron-madrid-fases-20261017
+    titulo: Iron Mountain separa las fases de Madrid y actualiza entregas
+    tipo: proyecto
+    estado: published
+    prioridad: media
+    detectado: 2026-10-17
+    revisado: 2026-10-17
+    revisar_antes: null
+    motivo: MAD-2 y MAD-3 prevén servicio en Q3 y Q4 de 2027, con 10 MW IT cada uno. Se distinguen los 3
+      MW IT operativos, los 20 MW IT en obra y el techo previsto de 79 MW IT del campus.
+    siguiente_paso: null
+    enlaces:
+      - href: /proyecto/iron-mountain-san-fernando-de-henares-mad
+        texto: Iron Mountain Madrid
+    fuentes:
+      - url: https://www.ironmountain.com/data-centers/locations/emea/madrid/mad-2
+        titulo: Madrid MAD-2 — especificaciones y calendario
+        primaria: true
+      - url: https://www.ironmountain.com/data-centers/locations/emea/madrid/mad-3
+        titulo: Madrid MAD-3 — especificaciones y calendario
+        primaria: true
+  - id: alto-sp01-calendario-20261017
+    titulo: ALTO actualiza el calendario de SP01
+    tipo: proyecto
+    estado: published
+    prioridad: media
+    detectado: 2026-10-17
+    revisado: 2026-10-17
+    revisar_antes: null
+    motivo: El operador prevé 10 MW IT en octubre de 2027, 25 MW acumulados en enero de 2028 y 70 MW al
+      completar el campus en Q1 de 2030. La primera fase está en obra; los hitos posteriores son
+      previstos.
+    siguiente_paso: null
+    enlaces:
+      - href: /proyecto/alto-infrastructure-escuzar-sp01
+        texto: SP01, Escúzar
+    fuentes:
+      - url: https://altoinfrastructure.com/
+        titulo: SP01 Granada — calendario y características actuales del campus
+        primaria: true
+  - id: hscale-bcn1-desglose-20261017
+    titulo: HSCALE distingue el plan de BCN1 y la obra actual
+    tipo: proyecto
+    estado: published
+    prioridad: media
+    detectado: 2026-10-17
+    revisado: 2026-10-17
+    revisar_antes: null
+    motivo: El operador publica 50 MW IT planificados, 10 MW en obra sin tipificar y 80 MVA disponibles.
+      La primera fase prevé servicio en Q4 de 2026, sin apertura confirmada. Las magnitudes se
+      conservan por separado.
+    siguiente_paso: null
+    enlaces:
+      - href: /proyecto/hscale-cerdanyola-parc-alba
+        texto: HSCALE BCN1
+    fuentes:
+      - url: https://www.hscaledc.com/data-centres/spain-barcelona/
+        titulo: BCN1 — Spain, Barcelona
+        primaria: true
+      - url: https://www.hscaledc.com/data-centres/
+        titulo: Our data centres — BCN I 1 site
+        primaria: true
+  - id: apto-ignis-conexion-20261017
+    titulo: Incorporado el acuerdo de conexión de Apto e IGNIS
+    tipo: proyecto
+    estado: published
+    prioridad: media
+    detectado: 2026-10-17
+    revisado: 2026-10-17
+    revisar_antes: null
+    motivo: El acuerdo incluye 82 MW de acceso y conexión para Fuenlabrada e infraestructura eléctrica
+      por desarrollar. No tipifica carga IT ni acredita energización o permiso incorporado al
+      registro; no se suma a los 40 MW de subestación anteriores.
+    siguiente_paso: null
+    enlaces:
+      - href: /proyecto/apto-fuenlabrada-madrid-one
+        texto: Apto Fuenlabrada
+    fuentes:
+      - url: https://aptodc.com/ignis-and-apto-reach-an-agreement-on-grid-access-and-renewable-self-consumption-for-aptos-data-centre-campus-in-madrid/
+        titulo: IGNIS and Apto reach an agreement on grid access and renewable self-consumption
+        primaria: true
+  - id: arsys-logrono-alcance-20261017
+    titulo: Arsys Logroño distingue salas en uso y capacidad de diseño
+    tipo: proyecto
+    estado: published
+    prioridad: media
+    detectado: 2026-10-17
+    revisado: 2026-10-17
+    revisar_antes: null
+    motivo: El reportaje publicado el 15 de octubre identifica tres salas en uso y una cuarta pendiente. Los 6 MW
+      publicados por Arsys quedan sin tipo ni entrega confirmados por sala. No se atribuyen GPU a
+      este edificio.
+    siguiente_paso: null
+    enlaces:
+      - href: /proyecto/arsys-logrono
+        texto: Arsys Logroño
+    fuentes:
+      - url: https://www.arsys.es/quienes-somos/innovacion
+        titulo: Innovación — Un Centro de Datos innovador en todos sus aspectos
+        primaria: true
+      - url: https://www.datacenterdynamics.com/es/features/viaje-al-data-center-de-arsys-en-logro%C3%B1o-evoluci%C3%B3n-t%C3%A9cnica-y-soberan%C3%ADa-desde-la-rioja/
+        titulo: "Viaje al data center de Arsys en Logroño: evolución técnica y soberanía desde La Rioja"
+        primaria: false
+  - id: data4-dc03-diseno-20261017
+    titulo: DATA4 Alcobendas incorpora el diseño identificado de DC03
+    tipo: proyecto
+    estado: published
+    prioridad: media
+    detectado: 2026-10-17
+    revisado: 2026-10-17
+    revisar_antes: null
+    motivo: La constructora identifica DC03 con 12 MW IT de diseño y dos entregas previstas de 6 MW en
+      2024 y 2025. La página no confirma recepción; esos MW no se incorporan a capacidad operativa
+      ni se suman al techo del campus.
+    siguiente_paso: null
+    enlaces:
+      - href: /proyecto/data4-alcobendas-mad01
+        texto: DATA4 Alcobendas, DC03
+    fuentes:
+      - url: https://www.capingelec.com/en/references/data-4-madrid-2/
+        titulo: Construction of the DC03 datacentre in Alcobendas — DATA4
         primaria: true

@@ -7,7 +7,7 @@ import { chromium } from 'playwright'
 
 const raiz = resolve('dist')
 await stat(join(raiz, 'index.html')).catch(() => { throw new Error('Construye el sitio con npm run build antes de ejecutar test:ui.') })
-const tipos = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.geojson': 'application/geo+json', '.svg': 'image/svg+xml', '.png': 'image/png', '.woff2': 'font/woff2' }
+const tipos = { '.html': 'text/html', '.js': 'text/javascript', '.mjs': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.geojson': 'application/geo+json', '.svg': 'image/svg+xml', '.png': 'image/png', '.woff2': 'font/woff2' }
 const servidor = createServer(async (req, res) => {
   try {
     let ruta = resolve(raiz, `.${decodeURIComponent(new URL(req.url, 'http://localhost').pathname)}`)
@@ -27,7 +27,7 @@ const resultados = []
 try {
   navegador = await chromium.launch({
     ...(process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH ? { executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH } : {}),
-    args: ['--no-sandbox', '--disable-dev-shm-usage'],
+    args: ['--no-sandbox', '--disable-dev-shm-usage', '--use-angle=swiftshader', '--enable-unsafe-swiftshader'],
   })
   const contexto = await navegador.newContext({ viewport: { width: 1440, height: 900 }, colorScheme: 'light' })
   const pagina = await contexto.newPage()
@@ -79,9 +79,11 @@ try {
     assert.equal(await pagina.locator('select[name=etapa]').inputValue(), 'operativa')
     assert.equal(await fila.getAttribute('data-it'), '3')
     await pagina.locator('select[name=etapa]').selectOption('construccion')
-    assert.equal(await fila.getAttribute('data-it'), '79')
+    assert.equal(await fila.getAttribute('data-it'), '20')
     assert.equal(new URL(pagina.url()).searchParams.get('etapa'), 'construccion')
     await pagina.reload({ waitUntil: 'networkidle' })
+    assert.equal(await pagina.locator('[data-list-item]:visible').first().getAttribute('data-it'), '20')
+    await pagina.locator('select[name=etapa]').selectOption('prevista')
     assert.equal(await pagina.locator('[data-list-item]:visible').first().getAttribute('data-it'), '79')
   })
   await comprobar('Getafe 2: los MW futuros quedan fuera de la vista operativa', async () => {
@@ -271,6 +273,36 @@ try {
       assert.equal(await pagina.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, ruta)
     }
     await pagina.screenshot({ path: join(artefactos, 'inversion-movil.png') })
+  })
+  await comprobar('Mapa: el worker publicado carga y WebGL2 dibuja sin depender del mapa base externo', async () => {
+    const contextoMapa = await navegador.newContext({ viewport: { width: 1440, height: 900 } })
+    const prueba = await contextoMapa.newPage()
+    const fallos = []
+    prueba.on('pageerror', (e) => fallos.push(e.message))
+    await prueba.addInitScript(() => {
+      window.__dibujosMapa = 0
+      for (const nombre of ['drawArrays', 'drawElements']) {
+        const original = WebGL2RenderingContext.prototype[nombre]
+        WebGL2RenderingContext.prototype[nombre] = function (...args) {
+          window.__dibujosMapa++
+          return original.apply(this, args)
+        }
+      }
+    })
+    await prueba.route('https://basemaps.cartocdn.com/**', (ruta) => ruta.fulfill({
+      contentType: 'application/json', body: JSON.stringify({ version: 8, glyphs: `${origen}/glifos-prueba/{fontstack}/{range}.pbf`, sources: {}, layers: [{ id: 'fondo-prueba', type: 'background', paint: { 'background-color': '#faf8f3' } }] }),
+    }))
+    const worker = prueba.waitForResponse((r) => /maplibre-gl-worker.*\.mjs/.test(r.url()))
+    await prueba.goto(origen + '/', { waitUntil: 'networkidle' })
+    const respuesta = await worker
+    assert.equal(respuesta.status(), 200)
+    assert.match(respuesta.headers()['content-type'], /javascript/)
+    await prueba.waitForFunction(() => window.__dibujosMapa > 1)
+    assert.equal(await prueba.locator('#mapa canvas').count(), 1)
+    assert.equal(await prueba.locator('.aviso-mapa').count(), 0)
+    assert.deepEqual(fallos, [])
+    await prueba.screenshot({ path: join(artefactos, 'mapa-webgl2-worker.png') })
+    await contextoMapa.close()
   })
   await comprobar('Mapa sin WebGL: búsqueda, lista, foco y enlaces compartidos siguen disponibles', async () => {
     await pagina.addInitScript(() => {

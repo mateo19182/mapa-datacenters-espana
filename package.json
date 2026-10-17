@@ -33,7 +33,8 @@
     "@astrojs/sitemap": "^3.7.3",
     "astro": "^7.2.9",
     "better-sqlite3": "^13.0.3",
-    "maplibre-gl": "^5.24.0",
+    "maplibre-gl": "^6.14.0",
+    "parse5": "^8.0.1",
     "yaml": "^2.9.0",
     "zod": "^4.5.2"
   },

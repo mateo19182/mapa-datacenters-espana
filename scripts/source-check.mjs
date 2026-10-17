@@ -1,4 +1,5 @@
 import { createHash } from 'node:crypto'
+import { extraerContenido } from './source-content.mjs'
 
 export function huellaContenido(contenido, tipo = '') {
   if (!/text|html|xml|json/i.test(tipo)) {
@@ -36,7 +37,7 @@ export async function comprobarFuente(url, { fetchImpl = fetch, tiempoLimiteMs =
         return { estado: 'bloqueada', mensaje: 'Página de verificación automática; HTTP 200' }
       }
     }
-    return { estado: 'ok', ...huellaContenido(contenido, tipo), tipo }
+    return { estado: 'ok', ...huellaContenido(contenido, tipo), tipo, contenido: extraerContenido(contenido, tipo) }
   } catch (error) {
     return { estado: 'error', mensaje: error.name === 'AbortError' ? 'tiempo agotado' : error.message }
   } finally {

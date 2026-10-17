@@ -21,57 +21,81 @@ ubicacion:
 
 estado: en_construccion
 estado_detalle: >-
-  Primera piedra colocada el 25 de junio de 2026 en el parque tecnológico CITAI de Escúzar. La
-  empresa, antes denominada Sierra DC, se renombró Alto Infrastructure y tiene su oficina en
-  Benahavís (Málaga). El campus se desarrolla en fases hasta 2029 sobre 100.000 m², a unos 500
-  metros del futuro acelerador IFMIF-DONES. A 30 de agosto de 2026 es, junto al CPD de la Junta en
-  Sevilla, uno de los dos únicos centros de datos andaluces con obras en marcha.
-estado_fuentes: [src-2, src-3, src-4, src-5, src-7]
+  Campus SP01 en CITAI, Escúzar, con construcción iniciada en junio de 2026. El calendario actual
+  del operador prevé 10 MW IT en octubre de 2027, 25 MW acumulados en enero de 2028 y 70 MW al
+  completar el campus en el primer trimestre de 2030. Sustituye las previsiones iniciales de
+  apertura en verano de 2027 y desarrollo hasta 2029, que se conservan como antecedentes. El
+  operador anuncia 100 MW de red asegurados, sin resolución de acceso incorporada a la ficha.
+estado_fuentes:
+  - src-2
+  - src-3
+  - src-5
+  - src-sp01-20261017
 
 potencia:
   - tipo: it
     valor_mw: 70
     ambito: campus
-    referencia: "Capacidad IT máxima del campus al completar las ocho fases"
-    estado_asociado: en_construccion
-    fecha_dato: "2026-06-29"
-    fuentes: [src-2, src-3, src-4]
-    nota: "«70 MW de potencia IT» al máximo de capacidad."
+    referencia: "Capacidad IT máxima prevista para el campus completo"
+    estado_asociado: anunciado
+    fecha_dato: null
+    fuentes:
+      - src-2
+      - src-3
+      - src-4
+      - src-sp01-20261017
+    nota: "Objetivo de 70 MW IT, ahora previsto para Q1 de 2030. No es capacidad entregada ni se afirma
+      que todas las fases estén en construcción. La nota inicial describía ocho fases."
   - tipo: conexion_red
     valor_mw: 100
     ambito: campus
     referencia: "Potencia redundante requerida por la instalación completa"
     estado_asociado: en_construccion
-    fecha_dato: "2026-07-24"
-    fuentes: [src-1, src-5]
+    fecha_dato: null
+    fuentes:
+      - src-1
+      - src-5
+      - src-sp01-20261017
     nota: >-
-      La fuente habla de «hasta 100 MW» de potencia redundante para la instalación completa. Granada
-      Hoy los describe como «100 megavatios de potencia brutos ya concedidos» y El Español como
-      «100 MW de potencia bruta»: las tres formulaciones apuntan al mismo dato, pero ninguna emplea
-      el lenguaje de un permiso de acceso.
+      La web actual del operador declara 100 MW of grid capacity secured. Las fuentes anteriores
+      hablaban de potencia redundante o bruta ya concedida. No se ha localizado resolución de acceso
+      ni acta de energización; no se identifica como carga IT ni se suma a los 70 MW IT.
   - tipo: it
     valor_mw: 10
     ambito: fase
-    referencia: "Fase 1 — entrada en operación comercial"
+    referencia: "Fase Ia — 10 MW IT previstos para octubre de 2027"
     estado_asociado: en_construccion
-    fecha_dato: "2026-07-01"
-    fuentes: [src-3, src-4]
+    fecha_dato: null
+    fuentes:
+      - src-3
+      - src-4
+      - src-sp01-20261017
+    nota: Se mantiene el dato histórico de 10 MW. La previsión actual es octubre de 2027, frente a
+      junio/verano o Q3 de 2027 en fuentes anteriores; la consulta no fecha instalación.
   - tipo: it
     valor_mw: 25
     ambito: fase
-    referencia: "Capacidad acumulada prevista a cierre de 2027"
+    referencia: "Fase Ib — 25 MW IT acumulados previstos para enero de 2028"
     acumulado: true
-    estado_asociado: en_construccion
-    fecha_dato: "2026-07-01"
-    fuentes: [src-3, src-4]
+    estado_asociado: anunciado
+    fecha_dato: null
+    fuentes:
+      - src-3
+      - src-4
+      - src-sp01-20261017
+    nota: Misma capacidad acumulada, con calendario actualizado a enero de 2028. La previsión anterior
+      era cierre de 2027; no es una ampliación adicional de 25 MW.
   - tipo: it
     valor_mw: 45
     ambito: fase
-    referencia: "Capacidad acumulada prevista en 2028"
+    referencia: "Previsión histórica de 45 MW IT acumulados en 2028"
     acumulado: true
-    estado_asociado: en_construccion
+    estado_asociado: desconocido
     fecha_dato: "2026-07-01"
     fuentes: [src-3, src-4]
+    nota: Antecedente de julio de 2026 que ya no aparece como hito independiente en el calendario actual
+      del operador. Se conserva la lectura sin presentarla como entrega confirmada ni sumarla al
+      objetivo de 70 MW.
   - tipo: instalada_total
     valor_mw: 15
     ambito: fase
@@ -84,35 +108,50 @@ potencia:
       informática» para la primera fase. Es la única fuente que publica la potencia bruta de la fase.
 
 fases:
-  - nombre: "Fase 1"
+  - nombre: Fase Ia — 10 MW IT
     estado: en_construccion
-    fecha_puesta_en_servicio: "2027-06"
-    fuentes: [src-1, src-3]
-  - nombre: "Fase Ia — 10 MW IT (RFS)"
-    estado: en_construccion
-    fecha_puesta_en_servicio: "2027"
-    fuentes: [src-4]
-  - nombre: "Fase Ib — 25 MW IT acumulados"
-    estado: en_construccion
-    fecha_puesta_en_servicio: "2027"
-    fuentes: [src-4]
-  - nombre: "Desarrollo completo (ocho fases)"
-    estado: en_construccion
-    fecha_puesta_en_servicio: "2029"
-    fuentes: [src-2, src-3, src-4]
+    fecha_puesta_en_servicio: 2027-10
+    fuentes:
+      - src-sp01-20261017
+      - src-1
+      - src-3
+      - src-4
+    nota: Previsión actual de RFO en octubre de 2027. Las fuentes iniciales hablaban de junio, verano o
+      Q3 de 2027; no se conserva como otro edificio una segunda fila de la misma primera fase.
+  - nombre: Fase Ib — 25 MW IT acumulados
+    estado: anunciado
+    fecha_puesta_en_servicio: 2028-01
+    fuentes:
+      - src-sp01-20261017
+      - src-4
+    nota: Previsión actual de capacidad acumulada. La web anterior la situaba en Q4 de 2027.
+  - nombre: Fases II y III — desarrollo completo de 70 MW IT
+    estado: anunciado
+    fecha_puesta_en_servicio: "2030"
+    fuentes:
+      - src-sp01-20261017
+      - src-2
+      - src-3
+      - src-4
+    nota: "Previsión actual: primer trimestre de 2030. El objetivo anterior de 2029 y la descripción
+      histórica de ocho fases se conservan en fuentes e incertidumbres."
 
 conexion_electrica:
   subestacion: "SE Escúzar 132/66/20 kV (ampliación) y nueva subestación 220/132 kV"
-  tension_kv: 220
+  tension_kv: null
   titular_red: "Red Eléctrica de España / Cuerva (distribución)"
-  mw_concedidos: 100
+  mw_concedidos: null
   nota: >-
-    Cuerva desarrollará la infraestructura eléctrica: ampliación de la SE Escúzar 132/66/20 kV para
-    la primera fase y, después, una nueva subestación 220/132 kV conectada a la red de transporte que
-    dé un segundo punto de alimentación independiente. Granada Hoy afirma que el proyecto «cuenta con
-    100 megavatios de potencia brutos ya concedidos»; no se ha localizado la resolución de acceso y
-    conexión que lo acredite.
-  fuentes: [src-1, src-5, src-6]
+    La web actual anuncia 100 MW de capacidad de red asegurada y una nueva línea de 400 kV con
+    subestación propia. Cuerva y las fuentes de julio describían ampliación de la SE Escúzar
+    132/66/20 kV y otra subestación 220/132 kV; la web anterior decía 130 kV. Pueden ser tramos o
+    fases distintos y no se elige una tensión única sin expediente. Granada Hoy hablaba de 100 MW
+    brutos ya concedidos, pero no se dispone de resolución administrativa para fijar mw_concedidos.
+  fuentes:
+    - src-1
+    - src-5
+    - src-6
+    - src-sp01-20261017
 
 superficie_parcela_m2: 100000
 inversion_anunciada_eur: 3000000000
@@ -128,10 +167,15 @@ agua:
   origen: null
   wue_l_kwh: 0.0013
   nota: >-
-    La cifra de WUE la publica el propio operador en su web junto al PUE de diseño de 1,29. Granada
-    Hoy habla de consumo de agua «prácticamente nulo». No hay expediente ambiental publicado que
-    cuantifique el consumo.
-  fuentes: [src-4, src-5, src-6]
+    El WUE de 0,0013 l/kWh es una cifra de diseño publicada por el operador para un centro aún en
+    construcción, sin periodo medido. La web actual da PUE de diseño 1,25 frente al 1,29 de la
+    lectura anterior; mantiene refrigeración híbrida y uso de agua casi nulo para control de
+    humedad. No se ha localizado expediente ambiental que cuantifique consumo.
+  fuentes:
+    - src-4
+    - src-5
+    - src-6
+    - src-sp01-20261017
 
 empleo:
   - tipo: directo
@@ -156,27 +200,49 @@ incertidumbres:
     fuentes: [src-1, src-2, src-5]
   - campo: conexion_electrica
     descripcion: >-
-      Smart Grids Info y Data Center Dynamics describen la ampliación de la SE Escúzar 132/66/20 kV
-      más una nueva subestación 220/132 kV conectada a Red Eléctrica; el propio operador anuncia en
-      su web una «direct 130 kV grid connection» con subestación propia, igual que Revista Cloud.
-      No se ha localizado el expediente de acceso y conexión que resuelva si la tensión de conexión
-      es 132 kV (denominada 130 kV comercialmente) o 220 kV.
-    fuentes: [src-1, src-3, src-4, src-6]
+      Las fuentes describen 132/66/20 kV y una nueva subestación 220/132 kV; la web anterior
+      publicaba conexión de 130 kV y la actual una nueva línea de 400 kV. No consta el expediente
+      que permita distinguir sus tramos y fases ni fijar una tensión de acceso única. La afirmación
+      comercial de 100 MW asegurados no sustituye una resolución de acceso.
+    fuentes:
+      - src-1
+      - src-3
+      - src-4
+      - src-6
+      - src-sp01-20261017
   - campo: potencia
     descripcion: >-
-      Los 100 MW se describen como «potencia redundante» (Smart Grids Info), «potencia bruta»
-      (El Español) y «potencia brutos ya concedidos» (Granada Hoy). Se registran como potencia de
-      conexión por ser la lectura mayoritaria, pero ninguna fuente cita una resolución de acceso.
-    fuentes: [src-1, src-5]
+      Se conservan las expresiones históricas potencia redundante, bruta y ya concedida. La web
+      actual confirma una afirmación comercial de 100 MW de capacidad de red asegurada, sin adjuntar
+      permiso. Se registra esa potencia de conexión prevista y se mantiene desconocida la concesión
+      administrativa.
+    fuentes:
+      - src-1
+      - src-5
+      - src-sp01-20261017
   - campo: refrigeracion
     descripcion: >-
-      La densidad por rack difiere: el operador anuncia «120+ kW per rack» con refrigeración híbrida
-      preparada para líquido y Granada Hoy atribuye a la compañía «refrigeración líquida directa al
-      chip de hasta 250 kilovatios por rack».
-    fuentes: [src-4, src-5]
+      La lectura anterior de la web daba 120+ kW por rack y PUE de diseño 1,29. La página actual
+      publica 250+ kW por rack y PUE de diseño 1,25. Son parámetros anunciados de diseño, no medidas
+      de una instalación operativa; se conserva el antecedente de refrigeración directa al chip
+      recogido por Granada Hoy.
+    fuentes:
+      - src-4
+      - src-5
+      - src-sp01-20261017
+  - campo: fases
+    descripcion: El calendario actual desplaza la primera entrega a octubre de 2027, los 25 MW
+      acumulados a enero de 2028 y el campus completo a Q1 de 2030. Las lecturas anteriores daban
+      junio/verano o Q3 de 2027, 25 MW a cierre de 2027 y 70 MW en 2029. No se calcula un retraso
+      exacto ni una nueva fecha de inicio de obra.
+    fuentes:
+      - src-1
+      - src-3
+      - src-4
+      - src-sp01-20261017
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
   - id: src-1
@@ -252,3 +318,11 @@ fuentes:
       En Granada sí se está construyendo el SP01, promovido por Alto Infrastructure con la
       participación de la compañía granadina Cuerva [...] la empresa espera abrir su primera parte en
       2027 y terminar el complejo en 2029, cuando tendrá 100 MW de potencia total.
+  - id: src-sp01-20261017
+    url: https://altoinfrastructure.com/
+    titulo: SP01 Granada — calendario y características actuales del campus
+    editor: Alto Infrastructure
+    tipo: empresa
+    fecha_consulta: 2026-10-17
+    cita: Oct 2027 Phase Ia [...] Jan 2028 Phase Ib [...] Q1 2030 Phase II and III [...] 70 MW IT full
+      campus
