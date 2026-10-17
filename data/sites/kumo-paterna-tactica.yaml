@@ -62,16 +62,16 @@ refrigeracion: >-
   LEED Platino del edificio.
 
 agua:
-  circuito: sin_agua
+  circuito: cerrado
   sistema: >-
-    Refrigeración por CO2 con refrigerantes naturales y apoyo geotérmico (71 pozos), sin
-    torres de evaporación.
+    Agua en circuito cerrado para enfriar el CO2, con apoyo geotérmico de 71 pozos y
+    sin torres de evaporación.
   origen: null
   nota: >-
-    El operador declara «un insumo cero de agua en el DC de Valencia»; Cinco Días describe
-    el uso del CO2 como forma de «limitar el consumo de agua». No hay cifra auditada ni WUE
-    publicado, y las dos formulaciones (cero frente a limitado) no son idénticas.
-  fuentes: [src-4, src-5, src-6]
+    El operador explica su declaración de «cero insumo» como un llenado inicial del
+    circuito, sin reposición periódica por evaporación. El sistema contiene agua; no
+    hay volumen de llenado, consumo medido ni WUE publicados en las fuentes revisadas.
+  fuentes: [src-4, src-5, src-6, src-agua-circuito]
 
 incertidumbres:
   - campo: inversion_anunciada_eur
@@ -92,6 +92,14 @@ confianza: media
 ultima_verificacion: "2026-08-31"
 
 fuentes:
+  - id: src-agua-circuito
+    url: https://kumonetworks.es/agua-insumo-data-center-valencia
+    titulo: Innovación detrás del cero insumo de agua, circuito cerrado del centro de Paterna
+    editor: Kumo Networks
+    tipo: empresa
+    fecha_publicacion: null
+    fecha_consulta: 2026-10-17
+    cita: un único llenado en un circuito cerrado durante toda la vida útil de este CPD
   - id: src-1
     url: "https://www.economiadigital.es/valencia/empresas/corte-ingles-abre-centro-datos-paterna-inicia-comercializacion.html"
     titulo: "El Corte Inglés abre un centro de datos en Paterna e inicia su comercialización"

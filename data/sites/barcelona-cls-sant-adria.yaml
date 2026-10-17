@@ -117,11 +117,11 @@ fuentes:
     fecha_consulta: "2026-08-29"
     cita: "400m2 space ... 8 colocation rooms for subsea systems"
   - id: src-5
-    url: "https://barcelonacls.com/thebuilding/"
+    url: "https://barcelonacls.com/the-building/"
     titulo: "The Building — Barcelona Cable Landing Station"
     editor: "AFR-IX telecom / Barcelona CLS"
     tipo: empresa
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       400m2 of Colocation Hall ... 8 Submarine System Rooms ... 2 Meet Me Rooms
       ... Tier 4 Design Topology ... Low PUE (power usage effectiveness) - Solar

@@ -5,11 +5,10 @@ ambito: europeo
 rango: reglamento_delegado_ue
 estado: adoptada_en_control
 estado_detalle: >-
-  La Comisión adoptó C(2026) 3472 final el 21 de septiembre. El Parlamento amplió su examen
-  dos meses el 6 de octubre y anunció la remisión a comisión el día 7. A 14 de octubre el
-  expediente figura pendiente de decisión de comisión. No se ha localizado publicación
-  definitiva en el DOUE ni entrada en vigor. La adopción por la Comisión no equivale a
-  una norma ya aplicable.
+  La Comisión adoptó C(2026) 3472 final el 21 de septiembre. El periodo de examen se amplió dos
+  meses a petición del Parlamento el 6 de octubre. A 17 de octubre, OEIL sigue pendiente de decisión
+  de comisión y no se ha localizado publicación definitiva en el DOUE. La entrada en vigor prevista
+  exige publicación y veinte días adicionales.
 boletin: null
 referencia: "C(2026) 3472 final; 2026/2895(DEA)"
 url_oficial: "https://oeil.europarl.europa.eu/oeil/en/procedure-file?reference=2026/2895(DEA)"
@@ -48,8 +47,8 @@ hitos:
     hito: "La Comisión adopta C(2026) 3472 final y lo remite al control de los colegisladores"
     fuentes: [src-acto, src-procedimiento]
   - fecha: "2026-10-06"
-    hito: "El Parlamento solicita ampliar dos meses el periodo de examen"
-    fuentes: [src-procedimiento]
+    hito: "Se amplía dos meses el periodo de examen a petición del Parlamento"
+    fuentes: [ src-procedimiento ]
   - fecha: "2026-10-07"
     hito: "Anuncio de remisión a comisión en el Parlamento"
     fuentes: [src-procedimiento]
@@ -81,7 +80,15 @@ incertidumbres:
       interna menciona 2026/7000, que no se usa aquí como número definitivo. El artículo 7 prevé
       entrada en vigor veinte días después de su publicación en el DOUE.
     fuentes: [src-acto, src-procedimiento]
-ultima_verificacion: "2026-10-14"
+  - campo: plazos_transitorios
+    descripcion: El artículo 5 del acto adoptado menciona confirmaciones estatales del cierre del
+      reporte desde 2026, antes del 15 de agosto. Esa primera fecha ya era anterior a su adopción.
+      No se interpreta como un plazo retroactivo exigible mientras el acto siga sin entrar en vigor;
+      hay que comprobar la publicación definitiva y cualquier ajuste transitorio.
+    fuentes:
+      - src-acto
+      - src-procedimiento
+ultima_verificacion: "2026-10-17"
 fuentes:
   - id: src-acto
     url: "https://data.consilium.europa.eu/doc/document/ST-13444-2026-INIT/en/pdf"
@@ -89,7 +96,7 @@ fuentes:
     editor: "Consejo de la Unión Europea, documento de la Comisión"
     tipo: oficial
     fecha_publicacion: "2026-09-21"
-    fecha_consulta: "2026-10-14"
+    fecha_consulta: "2026-10-17"
     cita: "By 15 August 2027 and every year thereafter, an electronic label"
   - id: src-anexos
     url: "https://data.consilium.europa.eu/doc/document/ST-13444-2026-ADD-1/en/pdf"
@@ -97,7 +104,7 @@ fuentes:
     editor: "Consejo de la Unión Europea, documento de la Comisión"
     tipo: oficial
     fecha_publicacion: "2026-09-21"
-    fecha_consulta: "2026-10-14"
+    fecha_consulta: "2026-10-17"
     cita: "Energy and water efficiency classes"
   - id: src-procedimiento
     url: "https://oeil.europarl.europa.eu/oeil/en/procedure-file?reference=2026/2895(DEA)"
@@ -105,5 +112,5 @@ fuentes:
     editor: "Parlamento Europeo"
     tipo: oficial
     fecha_publicacion: null
-    fecha_consulta: "2026-10-14"
+    fecha_consulta: "2026-10-17"
     cita: "06/10/2026: Initial period for examining delegated act extended at Parliament's request by 2 month(s)"

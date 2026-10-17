@@ -3,13 +3,13 @@ titulo: "Real Decreto-ley 7/2026, del Plan Integral de Respuesta a la Crisis en 
 titulo_oficial: "Real Decreto-ley 7/2026, de 20 de marzo, por el que se aprueba el Plan Integral de Respuesta a la Crisis en Oriente Medio"
 ambito: estatal
 rango: real_decreto_ley
-estado: en_vigor_en_tramitacion
+estado: en_vigor
 estado_detalle: >-
-  En vigor desde el 22 de marzo de 2026. El Congreso lo convalidó el 26 de marzo por
-  175 votos a favor, 33 en contra y 141 abstenciones, y en la misma sesión acordó
-  —por 346 votos— tramitarlo como proyecto de ley por el procedimiento de urgencia.
-  Esa tramitación sigue abierta: el articulado que hoy está en vigor puede cambiar
-  en sede parlamentaria.
+  Vigente desde el 22 de marzo de 2026 y convalidado el 26 de marzo. Se acordó tramitarlo como
+  proyecto de ley por urgencia, expediente 121/000091. La disolución de las Cortes rige desde el 6
+  de octubre y el artículo 207 del Reglamento del Congreso dispone la caducidad de los asuntos
+  pendientes, salvo competencias de la Diputación Permanente. De ambas normas se deduce la
+  caducidad del proyecto de ley derivado; el decreto-ley convalidado sigue vigente.
 boletin: BOE
 referencia: "BOE-A-2026-6544"
 url_oficial: "https://www.boe.es/buscar/act.php?id=BOE-A-2026-6544"
@@ -23,21 +23,22 @@ resumen: >-
   capacidad, endurece los hitos de caducidad de los permisos y ordena al Gobierno
   aprobar por real decreto los requisitos de sostenibilidad de los centros de datos.
 por_que_importa: >-
-  Es la norma que cambia el precio de estar en la cola. Hasta marzo de 2026 acaparar
-  capacidad de red costaba un aval; desde entonces cuesta un pago mensual creciente que
-  no se recupera si el proyecto no se construye. De su disposición adicional primera
-  cuelga, además, el proyecto de requisitos específicos de centros de datos, todavía
-  sin aprobar.
+  Distingue el permiso reservado del consumo efectivo: establece una prestación mensual, con
+  exenciones y recuperación parcial mediante peajes al comenzar la actividad. También habilita el
+  decreto específico de centros de datos, que sigue pendiente.
 obligaciones:
   - quien: "Titular de un permiso de acceso de demanda en un punto de tensión igual o superior a 1 kV"
     que: >-
-      Pagar todos los meses la prestación por reserva de capacidad de acceso, desde que
-      obtiene el permiso hasta que inicia la actividad. Se calcula sobre el término de
-      potencia del peaje en P1, modulado por nivel de tensión y por el tiempo que lleve
-      sin construir. Tiene la consideración de pago anticipado de peajes.
+      Abonar mensualmente la prestación por reserva hasta la firma del contrato ATR, calculada con
+      el término de potencia del peaje P1, el factor k y la capacidad otorgada. La disposición
+      transitoria primera establece una exención inicial de tres meses y factores con incremento
+      semestral mientras no los sustituya una resolución. El artículo 11.8 exceptúa determinados
+      desarrollos urbanísticos con cesión de infraestructura.
     umbral: "≥ 1 kV"
-    plazo: "Mensual, desde el otorgamiento del permiso hasta la firma del contrato ATR"
-    fuentes: [src-boe-rdl7, src-hsf]
+    plazo: "Mensual, tras la exención transitoria aplicable y hasta la firma del contrato ATR"
+    fuentes:
+      - src-boe-rdl7
+      - src-hsf
   - quien: "Gobierno (Consejo de Ministros)"
     que: >-
       Aprobar por real decreto los requisitos de sostenibilidad energética,
@@ -56,6 +57,15 @@ obligaciones:
     umbral: null
     plazo: null
     fuentes: [src-boe-rdl7]
+  - quien: Titulares de permisos de demanda anteriores al 22 de marzo de 2026 sin contrato de acceso
+      formalizado
+    que: Aportar el pago del 10 % de la inversión en las actuaciones de red. La disposición transitoria
+      cuarta prevé caducidad automática si no se cumple el hito. El plazo se cuenta desde la fecha
+      más tardía entre el 7 de noviembre de 2025 y la concesión del permiso.
+    umbral: Permisos y actuaciones de red comprendidos en la disposición transitoria cuarta.a
+    plazo: Doce meses desde la fecha más tardía; no es un vencimiento común para todos los permisos
+    fuentes:
+      - src-boe-rdl7
 hitos:
   - fecha: "2026-03-20"
     hito: "Aprobado en Consejo de Ministros extraordinario"
@@ -76,6 +86,17 @@ hitos:
       Sale a audiencia pública el real decreto de centros de datos que ordena su
       disposición adicional primera
     fuentes: [src-miteco-prensa]
+  - fecha: 2026-10-06
+    hito: Entra en vigor la disolución de las Cortes; el artículo 207 dispone la caducidad de asuntos
+      pendientes, sin derogar el decreto-ley convalidado
+    fuentes:
+      - src-disolucion-2026
+      - src-reglamento-congreso
+  - fecha: 2026-09-18
+    hito: Entra en vigor el RD 731/2026, que desarrolla la declaración de Proyectos Estratégicos de
+      Inversión del artículo 29
+    fuentes:
+      - src-rd731
 actores:
   - nombre: "Ministerio para la Transición Ecológica y el Reto Demográfico"
     rol: promotor
@@ -117,35 +138,38 @@ afecta:
       Red Eléctrica marca su capacidad y su posición como no otorgables por estar
       reservadas por la disposición transitoria tercera de este real decreto-ley.
     fuentes: [src-ree-csv]
-relacionadas: [prd-centros-datos-sostenibles, rdl-18-2026, rd-1183-2020, circular-1-2024-cnmc]
+relacionadas: [ prd-centros-datos-sostenibles, rdl-18-2026, rd-1183-2020, circular-1-2024-cnmc, rd-731-2026 ]
 incertidumbres:
   - campo: estado
     descripcion: >-
-      Se tramita como proyecto de ley por urgencia desde marzo de 2026 y no consta
-      fuente que documente en qué fase parlamentaria está esa tramitación a fecha de
-      hoy. Lo que está en vigor es el texto del decreto-ley; lo que salga de las Cortes
-      puede no coincidir.
-    fuentes: [src-congreso-nota]
-ultima_verificacion: "2026-09-01"
+      La caducidad de la tramitación legislativa derivada se determina por el artículo 207 y la
+      disolución efectiva de las Cortes. No se ha obtenido una ficha individual del Congreso que
+      confirme el asiento de cierre del expediente 121/000091; se conserva esa limitación
+      documental. No afecta a la vigencia del decreto-ley convalidado.
+    fuentes:
+      - src-proyecto-ley-91
+      - src-disolucion-2026
+      - src-reglamento-congreso
+ultima_verificacion: "2026-10-17"
 fuentes:
   - id: src-boe-rdl7
     url: "https://www.boe.es/buscar/act.php?id=BOE-A-2026-6544"
-    titulo: "Real Decreto-ley 7/2026, de 20 de marzo, por el que se aprueba el Plan Integral de Respuesta a la Crisis en Oriente Medio"
+    titulo: "Real Decreto-ley 7/2026, de 20 de marzo, por el que se aprueba el Plan Integral de
+      Respuesta a la Crisis en Oriente Medio"
     editor: "BOE"
     tipo: oficial
     fecha_publicacion: "2026-03-21"
-    fecha_consulta: "2026-09-01"
+    fecha_consulta: "2026-10-17"
     cita: >-
-      Se establece una prestación por reserva de capacidad de acceso, exigible desde la
-      obtención de los permisos de demanda para puntos de conexión de tensión igual o
-      superior a 1 kV y hasta el inicio de la actividad.
+      se establece la obligación para los consumidores titulares de permisos de acceso y conexión de
+      demanda
   - id: src-congreso-nota
     url: "https://www.congreso.es/es/notas-de-prensa?_notasprensa_mvcPath=detalle&_notasprensa_notaId=51199"
     titulo: "El Congreso convalida el Real Decreto-ley de medidas para responder a la crisis en Oriente Medio"
     editor: "Congreso de los Diputados"
     tipo: oficial
     fecha_publicacion: "2026-03-26"
-    fecha_consulta: "2026-09-01"
+    fecha_consulta: "2026-10-17"
     cita: >-
       La norma ha sido convalidada por 175 votos a favor, 33 en contra y 141
       abstenciones. Y, se ha acordado por 346 votos a favor su tramitación como proyecto
@@ -191,7 +215,7 @@ fuentes:
     editor: "BOE"
     tipo: oficial
     fecha_publicacion: "2026-06-30"
-    fecha_consulta: "2026-09-01"
+    fecha_consulta: "2026-10-17"
     cita: >-
       Se procederá a la caducidad automática de dichos permisos cuando el incumplimiento
       del pago sea, en un trimestre natural, superior al 10 por ciento de la cuantía que
@@ -227,3 +251,35 @@ fuentes:
     fecha_publicacion: "2026-08-03"
     fecha_consulta: "2026-08-29"
     cita: "Capacidad y posición reservada por disposición transitoria tercera del Real Decreto-ley 7/2026"
+  - id: src-proyecto-ley-91
+    url: https://www.congreso.es/public_oficiales/L15/CONG/BOCG/A/BOCG-15-A-91-1.PDF
+    titulo: Proyecto de Ley 121/000091, procedente del RDL 7/2026
+    editor: Congreso de los Diputados
+    tipo: oficial
+    fecha_publicacion: 2026-04-13
+    fecha_consulta: 2026-10-17
+    cita: Dicho Proyecto de Ley se tramitará por el procedimiento de urgencia
+  - id: src-disolucion-2026
+    url: https://www.boe.es/buscar/doc.php?id=BOE-A-2026-20742
+    titulo: RD 806/2026, artículos 1 y disposición final única
+    editor: BOE
+    tipo: oficial
+    fecha_publicacion: 2026-10-06
+    fecha_consulta: 2026-10-17
+    cita: Quedan disueltos el Congreso de los Diputados y el Senado
+  - id: src-reglamento-congreso
+    url: https://www.boe.es/buscar/act.php?id=BOE-A-1982-5196#art207
+    titulo: Reglamento del Congreso, artículo 207 vigente
+    editor: BOE
+    tipo: oficial
+    fecha_publicacion: null
+    fecha_consulta: 2026-10-17
+    cita: Disuelto el Congreso o expirado su mandato, quedarán caducados todos los asuntos pendientes de
+      examen y resolución por la Cámara
+  - id: src-rd731
+    url: https://www.boe.es/buscar/doc.php?id=BOE-A-2026-19327
+    titulo: RD 731/2026, desarrollo de Proyectos Estratégicos de Inversión
+    editor: BOE
+    tipo: oficial
+    fecha_publicacion: 2026-09-17
+    fecha_consulta: 2026-10-17

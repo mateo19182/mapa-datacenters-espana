@@ -163,11 +163,13 @@ hallazgos:
     estado: awaiting_primary
     prioridad: alta
     detectado: 2026-10-12
-    revisado: 2026-10-14
+    revisado: 2026-10-17
     revisar_antes: 2026-10-21
-    motivo: La consultora atribuye incrementos a Equinix MD5, Getafe, DATA4 y Templus sin reparto suficiente por
-      edificio o fase. Sus cifras no se suman a capacidades finales.
-    siguiente_paso: Buscar las publicaciones de cada operador y distinguir capacidad entregada, ampliada y máxima.
+    motivo: Contrastadas ocho fichas con operadores y documentación técnica. Se tipifican 20 MW IT de Getafe 1 y
+      2,25/5,7 MW IT de Templus; Getafe 2 conserva capacidad futura. Quedan sin cerrar los MW entregados por
+      edificio de DATA4, los 14 MW de BCN1, el tipo de los 4 MW iniciales de MD5 y la apertura de NxN.
+    siguiente_paso: Obtener el reparto y entrega de potencia de DATA4 y BCN1, tipificación primaria de MD5 y
+      confirmación inequívoca de apertura de NxN; no sumar incrementos semestrales a máximos.
     enlaces:
       - href: /proyecto/equinix-alcobendas-campus
         texto: Equinix Alcobendas
@@ -179,6 +181,12 @@ hallazgos:
       - url: https://www.colliers.com/es-es/news/data-centers-iberian-region-snapshot-septiembre-2026
         titulo: Colliers, Iberian Region Snapshot, septiembre de 2026
         primaria: false
+      - url: https://www.cnmv.es/webservices/verdocumento/ver?t=%7B5e11756a-f13c-4928-91cf-cc6f01589e61%7D
+        titulo: MERLIN Properties · resultados 6M26, 27 de julio de 2026
+        primaria: true
+      - url: https://templus.com/data-centers/
+        titulo: Data centers actualmente operativos · inventario de potencia IT
+        primaria: true
   - id: aws-iae-municipios-20261008
     titulo: Verificar el compromiso fiscal atribuido a AWS
     tipo: proyecto
@@ -203,11 +211,13 @@ hallazgos:
     estado: awaiting_primary
     prioridad: media
     detectado: 2026-10-14
-    revisado: 2026-10-14
+    revisado: 2026-10-17
     revisar_antes: 2026-11-13
-    motivo: El catálogo del CSA contiene dos y tres servidores A40 en apartados distintos. El acceso a H200
-      anunciado no confirma instalación física. La ficha conserva ambas limitaciones.
-    siguiente_paso: Buscar un inventario fechado del CSA o una aclaración pública del Clúster.
+    motivo: Revisados catálogo y servicios del CSA. La tabla comercial sigue publicando tres servidores A40 y la
+      técnica dos; las configuraciones de máquinas virtuales no permiten deducir tarjetas. H200 continúa como
+      oferta sin instalación física identificada.
+    siguiente_paso: Localizar un inventario físico fechado o aclaración del Clúster para A40 y un vínculo de H200
+      con el CPD; mantener el recuento desconocido mientras no exista.
     enlaces:
       - href: /proyecto/cluster-tic-galicia-a-coruna-csa
         texto: Hardware y fuentes del CSA
@@ -461,12 +471,13 @@ hallazgos:
     estado: awaiting_primary
     prioridad: alta
     detectado: 2026-10-15
-    revisado: 2026-10-15
+    revisado: 2026-10-17
     revisar_antes: 2026-10-29
-    motivo: La empresa documenta infraestructura HGX B200 propia en Madrid, sin identificar el centro ni
-      el total instalado. La ampliación anunciada no acredita recepción.
-    siguiente_paso: Localizar una fuente que vincule el clúster con un centro nombrado y distinga
-      inventario actual de ampliación.
+    motivo: La infraestructura sigue describiendo HGX B200 en Madrid sin nombrar anfitrión. Los certificados
+      revisados identifican una oficina en Granada; no sitúan allí el clúster madrileño. No se ha cerrado el
+      edificio físico.
+    siguiente_paso: Localizar una fuente que vincule el clúster con un centro nombrado y distinga inventario
+      actual de ampliación.
     enlaces:
       - &a1
         href: /computo
@@ -499,13 +510,12 @@ hallazgos:
     estado: awaiting_primary
     prioridad: alta
     detectado: 2026-10-15
-    revisado: 2026-10-15
+    revisado: 2026-10-17
     revisar_antes: 2026-10-29
-    motivo: TSA documenta dos servidores DGX H100 alojados por Telefónica, sin nombre de centro. Dos
-      servidores no es un recuento publicado de tarjetas y la cronología de las páginas es
-      contradictoria.
-    siguiente_paso: Cerrar el edificio y el hito de entrega con una fuente primaria; no asignar por
-      defecto a Nabiax Alcalá.
+    motivo: TSA mantiene dos DGX H100 alojados por Telefónica sin nombrar el centro. El anuncio de Idoven de julio
+      de 2024 habla de instalación futura y no resuelve la fecha discordante de la página de TSA. No se asigna
+      a Nabiax u otro anfitrión por inferencia.
+    siguiente_paso: Cerrar el edificio y el hito de entrega con una fuente primaria; no asignar por defecto a Nabiax Alcalá.
     enlaces:
       - *a1
     fuentes:
@@ -521,12 +531,12 @@ hallazgos:
     estado: awaiting_primary
     prioridad: alta
     detectado: 2026-10-15
-    revisado: 2026-10-15
+    revisado: 2026-10-17
     revisar_antes: 2026-10-29
-    motivo: Arsys ofrece A10 y RTX PRO 6000 Blackwell alojadas en España. Las páginas GPU no vinculan el
-      hardware expresamente con Logroño.
-    siguiente_paso: Encontrar el vínculo público hardware-centro; conservar cantidad y fecha de
-      instalación desconocidas.
+    motivo: Las páginas primarias revisadas sitúan A10 y Blackwell en un centro del grupo en España, sin
+      vincularlos a Logroño. La dirección corporativa y una visita al CPD riojano no identifican las GPU. Se
+      mantiene el edificio pendiente.
+    siguiente_paso: Encontrar el vínculo público hardware-centro; conservar cantidad y fecha de instalación desconocidas.
     enlaces:
       - href: /proyecto/arsys-logrono
         texto: Arsys Logroño
@@ -811,18 +821,21 @@ hallazgos:
     estado: awaiting_primary
     prioridad: media
     detectado: 2026-10-15
-    revisado: 2026-10-15
+    revisado: 2026-10-17
     revisar_antes: 2026-11-14
-    motivo: El catálogo publica 13 GPU y un desglose incompatible, con diferencias entre versiones
-      idiomáticas. La ficha conserva los modelos y la discrepancia sin reconciliar un total.
-    siguiente_paso: Localizar inventario fechado o corrección pública del catálogo; conservar las
-      lecturas anteriores con su alcance.
+    motivo: Las versiones española e inglesa declaran 13 GPU, pero discrepan en GTX 1080 Ti y GTX Titan X CC5.2.
+      Las fuentes y lecturas se conservan sin calcular otro total ni presentarlas como ampliaciones.
+    siguiente_paso: Localizar inventario fechado o corrección pública del catálogo; conservar las lecturas
+      anteriores con su alcance.
     enlaces:
       - href: /proyecto/tecnalia-derio-deep-learning
         texto: TECNALIA Derio
     fuentes:
       - url: https://www.tecnalia.com/infraestructuras/infraestructura-de-servidores-de-alta-capacidad-de-procesamiento-para-deep-learning
-        titulo: TECNALIA, inventario de servidores de deep learning
+        titulo: Infraestructura de servidores de alta capacidad de procesamiento para deep learning
+        primaria: true
+      - url: https://www.tecnalia.com/en/infrastructure/high-throughput-server-infrastructure-for-deep-learning
+        titulo: High-throughput server infrastructure for deep learning, versión inglesa del inventario
         primaria: true
   - id: ctic-recepcion-gpu
     titulo: Confirmar recepción de las compras GPU de CTIC
@@ -830,13 +843,13 @@ hallazgos:
     estado: awaiting_primary
     prioridad: media
     detectado: 2026-10-15
-    revisado: 2026-10-15
+    revisado: 2026-10-17
     revisar_antes: 2026-11-14
-    motivo: DataHub documenta servicio GPU en uso. Las configuraciones adjudicadas A100 de 2021 y
-      Blackwell de 2026 se mantienen como adquiridas; falta recepción o inventario operativo que
-      confirme modelos.
-    siguiente_paso: Localizar actas de recepción y modelos entregados, incluida la posibilidad de
-      equivalente en ARQADE; evitar duplicar el servicio y sus compras.
+    motivo: El inventario contable de 2024 acredita adquisición de DataHub sin modelo GPU. Los expedientes
+      revisados no permiten identificar las configuraciones efectivamente recibidas de CT008/2021 o
+      CT004/2026. A100 y Blackwell siguen como referencias de compras, sin instalación confirmada.
+    siguiente_paso: Localizar actas de recepción y modelos entregados, incluida la posibilidad de equivalente en
+      ARQADE; evitar duplicar el servicio y sus compras.
     enlaces:
       - href: /proyecto/ctic-gijon-cabuenes
         texto: CTIC Cabueñes
@@ -846,6 +859,9 @@ hallazgos:
         primaria: true
       - url: https://fundacionctic.org/es/licitacion/infraestructura-de-computacion-de-alto-rendimiento-arqade-alianza-de-centros
         titulo: CTIC, adjudicación ARQADE CT004/2026
+        primaria: true
+      - url: https://www.fundacionctic.org/sites/default/files/2026-02/cuentasanualeseinformedeauditoria2024.pdf
+        titulo: Cuentas anuales 2024, inventario de activos, página 205 del PDF
         primaria: true
   - id: blackfuel-bcn1-puesta-servicio
     titulo: Confirmar puesta en servicio de Blackfuel en BCN1
@@ -1071,4 +1087,271 @@ hallazgos:
         primaria: true
       - url: https://www.fundacionctic.org/es/contacto
         titulo: Contacto CTIC, mapa de sedes y marcador de la sede principal de Gijón
+        primaria: true
+  - id: cesga-ubicacion-recepcion
+    titulo: Confirmar ubicación actual y recepción de equipos del CESGA
+    tipo: calidad
+    estado: awaiting_primary
+    prioridad: media
+    detectado: 2026-10-17
+    revisado: 2026-10-17
+    revisar_antes: 2026-10-31
+    motivo: Campus Sur es la última sede documentada de FTIII y Qmio. No se ha confirmado su permanencia actual ni
+      un traslado a A Sionlla. FTIV tiene contrato formalizado, sin recepción o servicio acreditados.
+    siguiente_paso: Buscar confirmación física actual de FTIII/Qmio y documentos de recepción y servicio de la
+      renovación; no duplicar equipos entre sedes.
+    enlaces:
+      - href: /proyecto/cesga-santiago-campus-sur
+        texto: Campus Sur
+      - href: /proyecto/cesga-santiago-a-sionlla
+        texto: A Sionlla
+    fuentes:
+      - url: https://www.cesga.es/el-nodo-gallego-de-rsg-spain-se-reune-en-el-cesga/
+        titulo: Encuentro presencial del RSG Spain y visita al FinisTerrae III, 16 de diciembre de 2025
+        primaria: true
+      - url: https://www.cesga.es/jornada-tecnica-de-computacion-cuantica/
+        titulo: Jornada técnica de computación cuántica, Qmio instalado en la sede de avenida de Vigo
+        primaria: true
+      - url: https://www.contratosdegalicia.gal/licitacion?N=826006&lang=es
+        titulo: CTS-2025-0021, FinisTerrae IV, formalización y modificaciones del contrato
+        primaria: true
+  - id: rd731-apertura-solicitudes
+    titulo: Comprobar apertura de solicitudes de inversión estratégica
+    tipo: normativa
+    estado: awaiting_primary
+    prioridad: alta
+    detectado: 2026-10-17
+    revisado: 2026-10-17
+    revisar_antes: 2026-10-21
+    motivo: El RD 731/2026 está vigente, pero la apertura requiere una orden, medios electrónicos habilitados y
+      baremo publicado. La revisión no ha localizado el desarrollo completo.
+    siguiente_paso: Localizar orden, baremo y fecha efectiva de apertura; no inferirla del plazo de un mes ni
+      atribuir declaración estratégica a un CPD.
+    enlaces:
+      - href: /normativa/rd-731-2026
+        texto: RD 731/2026
+    fuentes:
+      - url: https://www.boe.es/buscar/doc.php?id=BOE-A-2026-19327
+        titulo: RD 731/2026, artículos 1 a 6 y 21; disposiciones adicionales tercera, cuarta y sexta; final tercera
+        primaria: true
+  - id: prd-cpd-publicacion-definitiva
+    titulo: Comprobar publicación del decreto de centros de datos
+    tipo: normativa
+    estado: awaiting_primary
+    prioridad: alta
+    detectado: 2026-10-17
+    revisado: 2026-10-17
+    revisar_antes: 2026-10-31
+    motivo: La audiencia está cerrada y existe informe de la CNMC. IA360 anuncia una aprobación en octubre; no se
+      ha localizado el texto definitivo publicado. Los plazos del borrador todavía no corren.
+    siguiente_paso: Buscar acuerdo y texto definitivo en BOE y MITECO; distinguir aprobación, publicación y entrada en vigor.
+    enlaces:
+      - href: /normativa/prd-centros-datos-sostenibles
+        texto: Proyecto de decreto de CPD
+    fuentes:
+      - url: https://www.lamoncloa.gob.es/presidente/actividades/Documents/2026/20260920%20Plan%20IA360.pdf
+        titulo: Plan IA360, apartado de nueva regulación de centros de datos, página 5
+        primaria: true
+  - id: etiquetado-ue-control-publicacion
+    titulo: Seguir el control y la publicación del etiquetado europeo
+    tipo: normativa
+    estado: awaiting_primary
+    prioridad: alta
+    detectado: 2026-10-17
+    revisado: 2026-10-17
+    revisar_antes: 2026-10-31
+    motivo: El acto C(2026) 3472 sigue bajo control y sin publicación definitiva localizada. La primera emisión de
+      etiquetas prevista para agosto de 2027 está condicionada a su entrada en vigor.
+    siguiente_paso: Revisar OEIL y DOUE para el fin del control y la publicación; conservar las condiciones de los plazos.
+    enlaces:
+      - href: /normativa/reglamento-etiquetado-centros-datos-2026
+        texto: Etiquetado europeo
+    fuentes:
+      - url: https://oeil.europarl.europa.eu/oeil/en/procedure-file?reference=2026/2895(DEA)
+        titulo: Procedimiento 2026/2895(DEA)
+        primaria: true
+  - id: acceso-flexible-apertura-gestores
+    titulo: Comprobar apertura real del acceso flexible por gestor
+    tipo: normativa
+    estado: awaiting_primary
+    prioridad: media
+    detectado: 2026-10-17
+    revisado: 2026-10-17
+    revisar_antes: 2026-10-31
+    motivo: La resolución produce efectos generales desde septiembre, con implantación por modalidades. No se ha
+      acreditado apertura por gestor ni permiso flexible de un CPD concreto.
+    siguiente_paso: Localizar procedimientos habilitados y fechas por gestor y modalidad; no confundir efectos
+      generales con disponibilidad de todas las modalidades.
+    enlaces:
+      - href: /normativa/resolucion-acceso-flexible-demanda-2026
+        texto: Acceso flexible
+    fuentes:
+      - url: https://www.boe.es/buscar/doc.php?id=BOE-A-2026-17571
+        titulo: Resolución de acceso flexible, efectos e implantación por modalidades
+        primaria: true
+  - id: getafe2-clasificacion-20261017
+    titulo: Corregida la clasificación de Getafe 2
+    tipo: proyecto
+    estado: published
+    prioridad: media
+    detectado: 2026-10-17
+    revisado: 2026-10-17
+    revisar_antes: null
+    motivo: "Getafe 2 queda en tramitación: el propietario documenta demolición preparatoria y licencia
+      solicitada. Sus 48 MW IT son previstos, con servicio estimado para el segundo semestre de 2029."
+    siguiente_paso: null
+    enlaces:
+      - href: /proyecto/merlin-edged-getafe-2
+        texto: Getafe 2
+    fuentes:
+      - url: https://www.cnmv.es/webservices/verdocumento/ver?t=%7B5e11756a-f13c-4928-91cf-cc6f01589e61%7D
+        titulo: MERLIN Properties · resultados 6M26, 27 de julio de 2026
+        primaria: true
+      - url: https://cdn.prod.website-files.com/612d5118cc3229538b508294/68bf2b6a1186eb51f6c433e8_MAD02_Spec%20Sheet_250730_Digital.pdf
+        titulo: MAD02 · ficha técnica enlazada por Edged
+        primaria: true
+  - id: templus-it-20261017
+    titulo: Templus publica capacidad IT por edificio en Barcelona
+    tipo: proyecto
+    estado: published
+    prioridad: media
+    detectado: 2026-10-17
+    revisado: 2026-10-17
+    revisar_antes: null
+    motivo: El inventario del operador identifica 2,25 MW IT en BCN01 y 5,7 MW IT en BCN02. Se conservan por
+      separado las cifras comerciales de potencia total y sus discrepancias.
+    siguiente_paso: null
+    enlaces:
+      - href: /proyecto/templus-hospitalet-bcn01
+        texto: BCN01
+      - href: /proyecto/templus-barcelona-bcn02
+        texto: BCN02
+    fuentes:
+      - url: https://templus.com/data-centers/
+        titulo: Data centers actualmente operativos · inventario de potencia IT
+        primaria: true
+      - url: https://templus.com/data-centers/
+        titulo: Data centers actualmente operativos · inventario de potencia IT
+        primaria: true
+  - id: cesga-sedes-20261017
+    titulo: "CESGA: Campus Sur y A Sionlla por separado"
+    tipo: proyecto
+    estado: published
+    prioridad: media
+    detectado: 2026-10-17
+    revisado: 2026-10-17
+    revisar_antes: null
+    motivo: FTIII y Qmio se registran una sola vez en su última sede documentada, Campus Sur, sin permanencia
+      actual o traslado confirmados. A Sionlla conserva la renovación; FTIV está adquirido por contrato, sin
+      recepción acreditada.
+    siguiente_paso: null
+    enlaces:
+      - href: /proyecto/cesga-santiago-campus-sur
+        texto: Campus Sur
+      - href: /proyecto/cesga-santiago-a-sionlla
+        texto: A Sionlla
+    fuentes:
+      - url: https://www.cesga.es/el-nodo-gallego-de-rsg-spain-se-reune-en-el-cesga/
+        titulo: Encuentro presencial del RSG Spain y visita al FinisTerrae III, 16 de diciembre de 2025
+        primaria: true
+      - url: https://www.cesga.es/jornada-tecnica-de-computacion-cuantica/
+        titulo: Jornada técnica de computación cuántica, Qmio instalado en la sede de avenida de Vigo
+        primaria: true
+      - url: https://www.contratosdegalicia.gal/licitacion?N=826006&lang=es
+        titulo: CTS-2025-0021, FinisTerrae IV, formalización y modificaciones del contrato
+        primaria: true
+  - id: mapas-revisados-20261017
+    titulo: Ubicaciones revisadas con mapas y planos identificados
+    tipo: proyecto
+    estado: published
+    prioridad: media
+    detectado: 2026-10-17
+    revisado: 2026-10-17
+    revisar_antes: null
+    motivo: Se revisan los puntos de DATA4 Alcobendas, Getafe 1 y 2, Digital Realty BCN1 e IBM-Euskadi con mapas y
+      planos identificados. Todos representan instalaciones con precisión aproximada.
+    siguiente_paso: null
+    enlaces:
+      - href: /proyecto/data4-alcobendas-mad01
+        texto: DATA4 Alcobendas
+      - href: /proyecto/merlin-edged-getafe-mad01
+        texto: Getafe 1
+      - href: /proyecto/merlin-edged-getafe-2
+        texto: Getafe 2
+      - href: /proyecto/digital-realty-sant-adria-bcn1
+        texto: BCN1
+      - href: /proyecto/ibm-euskadi-donostia-computacion-cuantica
+        texto: IBM-Euskadi
+    fuentes:
+      - url: https://www.data4group.com/wp-content/uploads/2024/10/2024_MADRID_campus_access_plan.pdf
+        titulo: Plano de acceso · DATA4 MAD1 Campus, Alcobendas
+        primaria: true
+      - url: https://maps.app.goo.gl/BgvaJiwRKVH9Km3B9
+        titulo: Google Maps · pin enlazado por Edged para Madrid-Getafe 1
+        primaria: true
+      - url: https://maps.app.goo.gl/JdzJb9eSPuFwbL7R6
+        titulo: Google Maps · pin enlazado por Edged para Madrid-Getafe 2
+        primaria: true
+      - url: https://www.peeringdb.com/fac/17642
+        titulo: Digital Realty BCN1 · registro nominal y pin de Google Maps
+        primaria: true
+      - url: https://b5m.gipuzkoa.eus/map/es/D_A191486
+        titulo: B5M, edificio Ikerbasque, avenida de Tolosa 74
+        primaria: true
+  - id: rd731-incorporacion-20261017
+    titulo: Incorporado el decreto de inversiones estratégicas
+    tipo: normativa
+    estado: published
+    prioridad: media
+    detectado: 2026-10-17
+    revisado: 2026-10-17
+    revisar_antes: null
+    motivo: Se incorpora el RD 731/2026, vigente desde septiembre. La apertura de solicitudes depende de orden,
+      medios y baremo publicados; no equivale a una declaración estratégica o permiso eléctrico de un centro.
+    siguiente_paso: null
+    enlaces:
+      - href: /normativa/rd-731-2026
+        texto: RD 731/2026
+    fuentes:
+      - url: https://www.boe.es/buscar/doc.php?id=BOE-A-2026-19327
+        titulo: RD 731/2026, artículos 1 a 6 y 21; disposiciones adicionales tercera, cuarta y sexta; final tercera
+        primaria: true
+  - id: kumo-agua-20261017
+    titulo: Corregido el circuito de agua de Kumo Paterna
+    tipo: proyecto
+    estado: published
+    prioridad: media
+    detectado: 2026-10-17
+    revisado: 2026-10-17
+    revisar_antes: null
+    motivo: El operador explica un llenado inicial y agua en circuito cerrado para enfriar el CO2.
+      Se corrige la etiqueta «sin agua» sin atribuir un consumo medido o WUE.
+    siguiente_paso: null
+    enlaces:
+      - href: /proyecto/kumo-paterna-tactica
+        texto: Kumo Paterna
+    fuentes:
+      - url: https://kumonetworks.es/agua-insumo-data-center-valencia
+        titulo: Kumo Networks, circuito cerrado de Paterna y llenado inicial
+        primaria: true
+  - id: rdl7-vigencia-20261017
+    titulo: "RDL 7: vigencia y tramitación derivada diferenciadas"
+    tipo: normativa
+    estado: published
+    prioridad: media
+    detectado: 2026-10-17
+    revisado: 2026-10-17
+    revisar_antes: null
+    motivo: El decreto-ley convalidado sigue vigente. La caducidad del proyecto derivado se deduce de la
+      disolución de las Cortes y del artículo 207 del Reglamento, sin asiento individual de cierre recuperado.
+    siguiente_paso: null
+    enlaces:
+      - href: /normativa/rdl-7-2026
+        texto: RDL 7/2026
+    fuentes:
+      - url: https://www.boe.es/buscar/doc.php?id=BOE-A-2026-20742
+        titulo: RD 806/2026, artículos 1 y disposición final única
+        primaria: true
+      - url: https://www.boe.es/buscar/act.php?id=BOE-A-1982-5196#art207
+        titulo: Reglamento del Congreso, artículo 207 vigente
         primaria: true

@@ -5,10 +5,10 @@ ambito: europeo
 rango: directiva_ue
 estado: en_vigor
 estado_detalle: >-
-  En vigor. El artículo 12 requiere transposición nacional. MITECO sigue indicando su transposición
-  en curso; la segunda audiencia del proyecto español cerró el 10 de septiembre de 2026. El proyecto
-  de calor residual desarrolla otros contenidos de la directiva. Ninguna consulta cerrada acredita
-  por sí sola aprobación de su texto definitivo.
+  En vigor desde el 10 de octubre de 2023. El artículo 12.1 fijó la publicación de información desde
+  el 15 de mayo de 2024; no pospuso esa fecha a las futuras etiquetas. MITECO mantiene a 17 de
+  octubre de 2026 la transposición en curso. No se ha localizado publicación definitiva del proyecto
+  español de centros de datos ni del proyecto de calor residual.
 boletin: DOUE
 referencia: "Directiva (UE) 2023/1791"
 url_oficial: "https://eur-lex.europa.eu/eli/dir/2023/1791/oj"
@@ -26,19 +26,23 @@ por_que_importa: >-
 obligaciones:
   - quien: "Estados miembros"
     que: >-
-      Poner a disposición del público, el 15 de mayo de cada año, la información del anexo
-      VII de la directiva, salvo la protegida por secreto empresarial.
+      Exigir a propietarios y operadores la publicación anual de la información del anexo VII, salvo
+      la protegida por secretos comerciales y confidencialidad. Se excluyen los centros destinados
+      exclusivamente a defensa y protección civil.
     umbral: "≥ 500 kW de potencia de tecnología de la información"
-    plazo: "Anual, 15 de mayo"
-    fuentes: [src-miteco-faq]
+    plazo: "Desde el 15 de mayo de 2024 y posteriormente cada año"
+    fuentes:
+      - src-boe-directiva
+      - src-miteco-faq
   - quien: "Estados miembros"
     que: >-
-      Impulsar que los centros de datos de su territorio tengan en cuenta las mejores
-      prácticas del código de conducta europeo sobre eficiencia energética de centros de
-      datos (artículo 12.4).
-    umbral: null
+      Impulsar que los centros de datos de su territorio tengan en cuenta las mejores prácticas del
+      código de conducta europeo sobre eficiencia energética de centros de datos (artículo 12.4).
+    umbral: ≥ 1 MW de potencia eléctrica demandada por los sistemas TI
     plazo: null
-    fuentes: [src-prd]
+    fuentes:
+      - src-boe-directiva
+      - src-prd
 hitos:
   - fecha: 2023-09-20
     hito: Publicación en el Diario Oficial de la Unión Europea
@@ -57,6 +61,11 @@ hitos:
     hito: La Comisión adopta el acto delegado de etiquetado; pendiente del control institucional
     fuentes:
       - src-etiquetado
+  - fecha: 2024-05-15
+    hito: Primera fecha del artículo 12.1 para exigir información pública por centro, distinta del
+      reporte europeo y de las futuras etiquetas
+    fuentes:
+      - src-boe-directiva
 actores:
   - nombre: "Ministerio para la Transición Ecológica y el Reto Demográfico"
     rol: competente
@@ -77,7 +86,7 @@ relacionadas:
   - reglamento-etiquetado-centros-datos-2026
   - consulta-estandares-minimos-centros-datos-2026
   - prd-calor-residual-2026
-ultima_verificacion: "2026-10-14"
+ultima_verificacion: "2026-10-17"
 fuentes:
   - id: src-eurlex-eed
     url: https://eur-lex.europa.eu/eli/dir/2023/1791/oj
@@ -93,7 +102,7 @@ fuentes:
     editor: MITECO
     tipo: oficial
     fecha_publicacion: null
-    fecha_consulta: 2026-09-01
+    fecha_consulta: "2026-10-17"
     cita: El artículo 12 de la Directiva, el cual debe ser transpuesto a la legislación española, obliga
       a poner a disposición del público el 15 de mayo de cada año la información indicada en su
       anexo VII, excepto aquella sujeta al Derecho de la Unión y al nacional en materia de
@@ -104,7 +113,7 @@ fuentes:
     editor: MITECO
     tipo: oficial
     fecha_publicacion: 2026-08-27
-    fecha_consulta: 2026-09-01
+    fecha_consulta: "2026-10-17"
     cita: Mediante este real decreto se incorpora parcialmente al ordenamiento jurídico español el
       artículo 12 de la Directiva (UE) 2023/1791.
   - id: src-miteco-estado
@@ -113,7 +122,7 @@ fuentes:
     editor: MITECO
     tipo: oficial
     fecha_publicacion: null
-    fecha_consulta: 2026-10-14
+    fecha_consulta: "2026-10-17"
     cita: desde el jueves, 27 de agosto de 2026 hasta el jueves, 10 de septiembre de 2026
   - id: src-etiquetado
     url: https://data.consilium.europa.eu/doc/document/ST-13444-2026-INIT/en/pdf
@@ -121,5 +130,14 @@ fuentes:
     editor: Consejo de la Unión Europea, documento de la Comisión
     tipo: oficial
     fecha_publicacion: 2026-09-21
-    fecha_consulta: 2026-10-14
+    fecha_consulta: "2026-10-17"
     cita: Labels for data centres shall be publicly available in electronic form in the European database
+  - id: src-boe-directiva
+    url: https://www.boe.es/buscar/doc.php?id=DOUE-L-2023-81299
+    titulo: Directiva (UE) 2023/1791, artículos 12, 36 y 39
+    editor: Diario Oficial de la Unión Europea, reproducción en BOE
+    tipo: oficial
+    fecha_publicacion: 2023-09-20
+    fecha_consulta: 2026-10-17
+    cita: A más tardar el 15 de mayo de 2024 y posteriormente cada año
+fecha_entrada_vigor: 2023-10-10

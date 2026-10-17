@@ -88,16 +88,24 @@ const PRESENTACIONES = {
     ],
   },
   'cesga-santiago-a-sionlla': {
-    resumen: 'A Sionlla albergará FinisTerrae IV y nueva computación cuántica. Están anunciados Radiance de 54 cúbits y Spark de 5. Falta confirmar servicio y traslado del inventario anterior a este edificio.',
-    fuentes: ['src-adjudicacion-ft4', 'src-presentacion-en-20260612', 'src-contacto-sede'],
+    resumen: 'A Sionlla albergará FinisTerrae IV y nueva computación cuántica. El contrato del supercomputador está formalizado; faltan recepción y servicio. FinisTerrae III y Qmio se registran por separado en Campus Sur.',
+    fuentes: ['src-adjudicacion-ft4', 'src-contrato-ft4', 'src-presentacion-en-20260612', 'src-contacto-sede'],
     hardware: [
-      { modelo: 'FinisTerrae IV', dato: 'Adjudicado; servicio sin confirmar', matiz: 'Supercomputador previsto para la nueva sede, distinto de la futura factoría 1HealthAI.', fuentes: ['src-adjudicacion-ft4'] },
+      { modelo: 'FinisTerrae IV', dato: 'Adquirido; servicio sin confirmar', matiz: 'Contrato formalizado el 17 de marzo; recepción sin confirmar. Distinto de la futura factoría 1HealthAI.', fuentes: ['src-adjudicacion-ft4', 'src-contrato-ft4'] },
       { modelo: 'IQM Radiance y Spark', dato: '54 y 5 cúbits previstos', matiz: 'Dos equipos anunciados; instalación definitiva y servicio sin confirmar.', fuentes: ['src-presentacion-en-20260612'] },
-      { modelo: 'FinisTerrae III y Qmio', dato: 'Traslado a A Sionlla sin confirmar', matiz: 'Equipos operativos del CESGA; no acreditan que este edificio esté en servicio.', fuentes: ['src-computo', 'src-cuantica', 'src-contacto-sede'] },
     ],
     cronologia: [
       { fecha: '2026-03-03', titulo: 'Adjudicación de FinisTerrae IV y almacenamiento', detalle: 'La Xunta anuncia la adjudicación a Fsas Technologies. El contrato no acredita recepción ni puesta en servicio; es distinto de la futura factoría 1HealthAI.', fuentes: ['src-adjudicacion-ft4'] },
+      { fecha: '2026-03-17', titulo: 'Formalización del contrato de FinisTerrae IV', detalle: 'La formalización acredita la adquisición, sin confirmar recepción o puesta en servicio.', fuentes: ['src-contrato-ft4'] },
       { fecha: '2026-06-12', titulo: 'Presentación de Radiance y Spark', detalle: 'El anuncio del CESGA convoca el acto para esa fecha. Describe equipos de 54 y 5 cúbits, sin acreditar servicio científico abierto ni instalación definitiva.', prevista: true, fuentes: ['src-presentacion-20260612', 'src-presentacion-en-20260612'] },
+    ],
+  },
+  'cesga-santiago-campus-sur': {
+    resumen: 'Campus Sur es la última sede documentada de FinisTerrae III y Qmio. Las fuentes discrepan en el recuento de A100. No se ha confirmado su permanencia actual ni un traslado a A Sionlla.',
+    fuentes: ['src-computo', 'src-docs', 'src-visita-ft3', 'src-jornada-qmio'],
+    hardware: [
+      { modelo: 'FinisTerrae III', dato: '128 o 141 A100; 16 T4', matiz: 'Recuentos sin fecha de corte. Ubicación documentada en diciembre de 2025; permanencia actual sin confirmar.', fuentes: ['src-computo', 'src-docs', 'src-visita-ft3'] },
+      { modelo: 'Qmio', dato: '32 cúbits', matiz: 'Instalación documentada en esta sede en 2023; continuidad física sin confirmar.', fuentes: ['src-cuantica', 'src-jornada-qmio'] },
     ],
   },
   'nabiax-alcala-de-henares-adc': {

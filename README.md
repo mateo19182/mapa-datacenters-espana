@@ -75,6 +75,12 @@ aceptar su nueva referencia:
 npm run refresh -- --aceptar "URL"
 ```
 
+`npm run refresh:informe` regenera el informe con las observaciones guardadas, sin
+acceder a la red. La exportación también lo genera desde la misma instantánea que la
+cola pública. Cada URL conserva la fecha de su observación. Solo las respuestas 404 y
+410 se clasifican como enlaces rotos; bloqueos y fallos de red tienen estados propios.
+Los PDF se comparan por contenido, aunque el servidor no publique su tamaño.
+
 `npm run refresh:sellar` conserva el argumento antiguo `--sellar`, pero tampoco modifica
 fechas de revisión factual. El flujo `.github/workflows/revision-fuentes.yml` ejecuta las
 comprobaciones cada lunes y abre un PR con los informes.
@@ -82,7 +88,8 @@ comprobaciones cada lunes y abre un PR con los informes.
 Las propuestas parciales van en `data/propuestas/<id>.yaml`. `npm run propuestas` simula
 la integración; `npm run propuestas:aplicar` añade campos vacíos y conserva los valores
 existentes cuando hay conflicto. Los desacuerdos quedan en
-`research/informe-propuestas.md` para revisión.
+`research/informe-propuestas.md` para revisión. Una adición automática conserva la fecha
+factual existente. Las altas nuevas requieren una fecha de revisión explícita en la propuesta.
 
 Las decisiones y las pistas anteriores se consultan en
 [Pendientes de revisión](https://datacenters.m19182.dev/revision). Las entradas ya

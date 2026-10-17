@@ -83,8 +83,10 @@ computo:
     estado: operativo
     modalidad: instalado
     fecha_dato: null
-    fuentes: [src-infraestructura]
-    nota: Parte del desglose que contradice el total de 13 GPU. Inventario sin fecha de corte.
+    fuentes: [src-infraestructura, src-infraestructura-en]
+    nota: >-
+      La versión española enumera una GPU y la inglesa tres. Se conserva la lectura española,
+      sin fecha de corte ni evidencia que permita escoger entre ambas versiones.
   - tipo: gpu
     ambito: particion
     sistema: TECNALIA Derio, desglose GTX Titan X CC5.2 del clúster
@@ -94,8 +96,10 @@ computo:
     estado: operativo
     modalidad: instalado
     fecha_dato: null
-    fuentes: [src-infraestructura]
-    nota: La fuente distingue esta denominación de Titan X CC6.1. El total del clúster está en disputa.
+    fuentes: [src-infraestructura, src-infraestructura-en]
+    nota: >-
+      La versión española enumera dos GPU y la inglesa tres. La fuente distingue esta
+      denominación de Titan X CC6.1. El total del clúster está en disputa.
   - tipo: gpu
     ambito: particion
     sistema: TECNALIA Derio, desglose Tesla K20 del clúster
@@ -117,7 +121,9 @@ incertidumbres:
       El catálogo declara 13 GPU, pero enumera 3 RTX 2080 Ti, 4 Tesla V100, 4 Titan X CC6.1,
       1 GTX 1080 Ti, 2 GTX Titan X CC5.2 y 1 Tesla K20. No consta una corrección que concilie
       las lecturas. Se conserva el total publicado junto a sus partidas, sin calcular otro total.
-    fuentes: [src-infraestructura]
+      La versión inglesa mantiene el total de 13, pero cambia GTX 1080 Ti de una a tres y GTX
+      Titan X CC5.2 de dos a tres. Ninguna versión fecha o explica esos cambios.
+    fuentes: [src-infraestructura, src-infraestructura-en]
   - campo: computo.fecha_dato
     descripcion: >-
       La página describe el equipamiento como existente, pero carece de fecha del inventario y
@@ -136,6 +142,14 @@ incertidumbres:
 confianza: baja
 ultima_verificacion: 2026-10-15
 fuentes:
+  - id: src-infraestructura-en
+    url: https://www.tecnalia.com/en/infrastructure/high-throughput-server-infrastructure-for-deep-learning
+    titulo: High-throughput server infrastructure for deep learning, versión inglesa del inventario
+    editor: TECNALIA
+    tipo: empresa
+    fecha_publicacion: null
+    fecha_consulta: 2026-10-17
+    cita: 3 x GeForce GTX 1080 Ti [...] 3 x GeForce GTX Titan X
   - id: src-infraestructura
     url: https://www.tecnalia.com/infraestructuras/infraestructura-de-servidores-de-alta-capacidad-de-procesamiento-para-deep-learning
     titulo: Infraestructura de servidores de alta capacidad de procesamiento para deep learning

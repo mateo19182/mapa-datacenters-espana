@@ -12,6 +12,7 @@ const NOMBRES = {
   'aws-el-burgo-de-ebro-bde': 'AWS · El Burgo de Ebro, BDE',
   'bsc-barcelona-marenostrum': 'BSC · MareNostrum, Barcelona',
   'cesga-santiago-a-sionlla': 'CESGA · A Sionlla, Santiago',
+  'cesga-santiago-campus-sur': 'CESGA · Campus Sur, Santiago',
   'nabiax-alcala-de-henares-adc': 'Nabiax · Alcalá ADC',
   'nabiax-madrid-julian-camarillo': 'Nabiax · Julián Camarillo, Madrid',
   'iron-mountain-san-fernando-de-henares-mad': 'Iron Mountain · Madrid MAD',

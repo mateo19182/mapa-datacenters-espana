@@ -163,7 +163,10 @@ test('CESGA muestra primero los equipos de la nueva sede sin atribuirle el inven
   assert.equal(hardware[0].modelo, 'FinisTerrae IV')
   assert.match(hardware[0].dato, /servicio sin confirmar/)
   assert.match(hardware[1].dato, /54 y 5 cúbits previstos/)
-  assert.match(hardware[2].dato, /Traslado a A Sionlla sin confirmar/)
+  assert.equal(hardware.length, 2)
+  const anterior = presentacionProyecto(ficha('cesga-santiago-campus-sur'))
+  assert.match(anterior.resumen, /No se ha confirmado su permanencia/)
+  assert.match(anterior.hardware[0].dato, /128 o 141 A100/)
   assert.ok(hardware.every((h) => h.fuentes.length > 0))
 })
 

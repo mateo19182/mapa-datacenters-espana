@@ -12,11 +12,14 @@ ubicacion:
   municipio: "Sant Adrià de Besòs"
   provincia: "Barcelona"
   ccaa: "Cataluña"
-  direccion: "Carrer d'Ifni, 26, 08930 Sant Adrià de Besòs (antigua fábrica de Henkel, junto a las Tres Xemeneies)"
-  lat: 41.4293991
-  lon: 2.2313856
-  precision: exacta
-  fuentes: [src-1, src-3]
+  direccion: "Av. del Maresme 43, 08930 Sant Adrià de Besòs, según la ficha técnica del operador"
+  lat: 41.429798
+  lon: 2.23282
+  precision: aproximada
+  fuentes:
+    - src-6
+    - src-ficha-tecnica
+    - src-peering-mapa
 
 estado: operativo
 estado_detalle: >-
@@ -91,13 +94,18 @@ enlaces_proyecto:
 incertidumbres:
   - campo: ubicacion
     descripcion: >-
-      La prensa local sitúa el edificio en "calle d'Ifni, 26"; el directorio
-      Baxtel da "Av. del Maresme, 43", ambos en Sant Adrià de Besòs. Podrían ser
-      dos frentes de la misma parcela. Se toman las coordenadas de la dirección
-      de Ifni 26. La propia Digital Realty publica la dirección "Av. del
-      Maresme, 43 – 08930 Sant Adrià de Besòs", lo que refuerza la lectura de
-      Baxtel; la coordenada registrada no se ha cambiado.
-    fuentes: [src-1, src-4, src-6]
+      Se usa Av. del Maresme 43, dirección de la ficha técnica del operador, y el pin del registro
+      nominal BCN1 de PeeringDB con enlace a Google Maps. La prensa anterior daba Ifni 26. El PDF
+      del operador sitúa Maresme 43 en Sant Adrià, pero su web actual indica Badalona y otro código
+      postal. Se conserva Sant Adrià por el documento técnico, con coordenadas aproximadas de
+      edificio y sin resolver los límites de parcela.
+    fuentes:
+      - src-1
+      - src-6
+      - src-ficha-tecnica
+      - src-peering-mapa
+      - src-3
+      - src-4
   - campo: superficie_construida_m2
     descripcion: >-
       Los 15.000 m² son el "total building size" que publica la compañía en la
@@ -122,9 +130,17 @@ incertidumbres:
       Los anuncios del 30 de septiembre prevén servicio durante 2026 y no publican cantidad de
       tarjetas ni MW numéricos. El cómputo queda previsto hasta confirmar entrada en producción.
     fuentes: [src-blackfuel-bcn1, src-blackfuel-mi355x]
+  - campo: potencia
+    descripcion: Colliers clasifica 14 MW como IT operativos. Digital Realty los anuncia como capacidad
+      total planificada, y la ficha técnica no publica MW entregados. Se mantiene la cifra prevista
+      sin tipificar.
+    fuentes:
+      - src-colliers-20261008
+      - src-5
+      - src-ficha-tecnica
 
 confianza: media
-ultima_verificacion: "2026-10-15"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
   - id: src-1
@@ -133,10 +149,9 @@ fuentes:
     editor: "Metrópoli Abierta (El Español)"
     tipo: prensa_general
     fecha_publicacion: "2025-09-24"
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: >-
-      Va a ser una parte muy importante para la infraestructura digital tanto
-      para el país como para el área metropolitana de Barcelona
+      14 MW de potencia eléctrica, que se ampliarán hasta 20 MW en una segunda fase.
   - id: src-2
     url: "https://metropoliabierta.elespanol.com/economia/20260519/digital-realty-abre-centro-datos-chimeneas-sant-adria-proyecta-hub-digital/1003742762940_0.html"
     titulo: "Digital Realty abre su centro de datos en las Tres Chimeneas de Sant Adrià y proyecta un hub digital"
@@ -173,7 +188,7 @@ fuentes:
     editor: "Digital Realty Trust"
     tipo: empresa
     fecha_publicacion: "2026-05-18"
-    fecha_consulta: "2026-10-14"
+    fecha_consulta: "2026-10-17"
     cita: >-
       today announced the opening of its first data center in Barcelona, BCN1 ...
       14 MW of total planned capacity
@@ -182,11 +197,10 @@ fuentes:
     titulo: "BCN1 Data Center | Av. del Maresme, 43"
     editor: "Digital Realty"
     tipo: empresa
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
-      BCN1 Av. del Maresme, 43 – 08930 Sant Adrià de Besòs ... Total building
-      size: 161,500 ft² (15,000 m²) ... UPS redundancy: N+1 ... Cooling
-      redundancy: N+2 ... Certifications LEED Gold ... Renewable Energy % 100%
+      Av. del Maresme, 43, 08918 Badalona, Barcelona, Spain [...] Total building size: 161,500 ft²
+      (15,000 m²)
   - id: src-blackfuel-bcn1
     url: "https://investor.digitalrealty.com/news-releases/news-release-details/digital-realty-brings-native-ai-inference-platform"
     titulo: "Digital Realty Brings Native AI Inference Platform on ServiceFabric with Blackfuel"
@@ -205,3 +219,24 @@ fuentes:
     cita: >-
       First deployment scheduled to enter service in 2026 ... Dell PowerEdge XE9785L servers
       with AMD Instinct™ MI355X accelerators
+  - id: src-ficha-tecnica
+    url: https://go2.digitalrealty.com/rs/087-YZJ-646/images/DS_Digital_Realty_2601_BCN1_Property_Facthseet_EN.pdf
+    titulo: BCN1 · Technical specifications, ficha enlazada por Digital Realty
+    editor: Digital Realty
+    tipo: empresa
+    fecha_consulta: 2026-10-17
+    cita: Av. del Maresme, 43 – 08930 Sant Adrià de Besòs – Barcelona
+  - id: src-peering-mapa
+    url: https://www.peeringdb.com/fac/17642
+    titulo: Digital Realty BCN1 · registro nominal y pin de Google Maps
+    editor: PeeringDB
+    tipo: asociacion
+    fecha_consulta: 2026-10-17
+    cita: Digital Realty BCN1 - Barcelona [...] 43 Avenida del Maresme [...] Geocode 41.429798 2.23282
+  - id: src-colliers-20261008
+    url: https://www.colliers.com/es-es/news/data-centers-iberian-region-snapshot-septiembre-2026
+    titulo: Data Centers Iberian Region Snapshot · septiembre de 2026
+    editor: Colliers
+    tipo: consultora
+    fecha_publicacion: 2026-10-08
+    fecha_consulta: 2026-10-17

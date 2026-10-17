@@ -45,9 +45,9 @@ const tecnica = revision.comprobacion_automatica
       <div class="tabla-envoltorio"><table><thead><tr><th>Ficha</th><th>Última revisión registrada</th><th>Revisar antes de</th></tr></thead><tbody>{revision.revision_factual.registros.filter((r) => r.vencida).map((r) => <tr><td><a href={r.href}>{r.nombre}</a></td><td>{fechaLegible(r.ultima_revision_registrada) ?? 'Sin fecha'}</td><td>{fechaLegible(r.revisar_antes) ?? 'Pendiente'}</td></tr>)}</tbody></table></div>
     </details>
     <details class="bloque"><summary>Comprobación automática de fuentes · última observación {fechaLegible(tecnica.ultima_observacion) ?? 'sin fecha'}</summary>
-      <p class="pequeno">{tecnica.con_observacion} de {tecnica.registradas} referencias tienen observaciones técnicas. {tecnica.rotas} enlaces rotos, {tecnica.bloqueadas} bloqueados para el comprobador y {tecnica.cambios_pendientes} cambios de contenido pendientes de revisión. Son referencias de proyectos, normativa, red y energía.</p>
+      <p class="pequeno">{tecnica.con_observacion} de {tecnica.registradas} referencias tienen observaciones técnicas. {tecnica.rotas} respuestas 404 o 410, {tecnica.bloqueadas} bloqueadas, {tecnica.errores} fallos de comprobación y {tecnica.cambios_pendientes} cambios de contenido pendientes. Incluye proyectos, normativa, red y energía.</p>
       <p class="pequeno">Estas observaciones técnicas no renuevan la fecha de revisión factual.</p>
-      <p class="pequeno"><a href="/fuentes?enlace=rota">Consultar enlaces de proyectos rotos</a> · <a href="/fuentes?enlace=bloqueada">Bloqueados para el comprobador</a></p>
+      <p class="pequeno"><a href="/fuentes?enlace=rota">Respuestas 404 o 410 de proyectos</a> · <a href="/fuentes?enlace=bloqueada">Bloqueados</a> · <a href="/fuentes?enlace=error">Comprobación sin resultado</a></p>
     </details>
     <details class="bloque"><summary>Fechas previstas pendientes de contraste · {revision.hitos_vencidos.length}</summary>
       <p class="pequeno">Estas fechas ya han pasado y siguen registradas como previsiones. Señalan qué comprobar; no confirman por sí solas un retraso.</p>

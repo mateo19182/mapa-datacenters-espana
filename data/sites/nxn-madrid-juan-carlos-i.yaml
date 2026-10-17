@@ -19,11 +19,11 @@ ubicacion:
   fuentes:
     - src-nota
 estado: anunciado
-estado_detalle: NxN anunció el 23 de abril de 2026 la incorporación de un activo existente cerca del
-  Parque Juan Carlos I, con 8.500 m² y 20 millones de euros de modernización. Preveía comenzar a
-  operar en septiembre; su web todavía anuncia una próxima inauguración en 2026. No se ha acreditado
-  la apertura. La propia nota publica 7,5 y 15 MW con una arquitectura redundante 2N; no se
-  presentan como capacidad IT ni se suman las acometidas.
+estado_detalle: NxN anunció el 23 de abril de 2026 un activo existente cerca del Parque Juan Carlos
+  I, de 8.500 m², con 20 millones de euros de modernización y apertura prevista en septiembre. El 17
+  de octubre su web todavía combina "próxima inauguración" con lenguaje de centro operativo.
+  Colliers lo da por abierto con 5 MW IT; no se ha recuperado confirmación inequívoca del operador.
+  Se mantienen separados los 7,5 y 15 MW sin tipo del anuncio y sus acometidas redundantes 2N.
 estado_fuentes:
   - src-nota
   - src-web
@@ -102,8 +102,16 @@ incertidumbres:
       sala IT. Se conserva en el texto y no se rellena uno de esos campos por analogía.
     fuentes:
       - src-nota
+  - campo: estado
+    descripcion: Colliers atribuye a NxN 5 MW IT en funcionamiento. La web del operador mantiene
+      "Próxima inauguración en 2026" y "Será el primer centro", junto a frases en presente. Falta
+      confirmación fechada y dirección del activo; no se convierte la previsión vencida en apertura.
+    fuentes:
+      - src-colliers-20261008
+      - src-nota
+      - src-web
 confianza: baja
-ultima_verificacion: 2026-10-14
+ultima_verificacion: 2026-10-17
 fuentes:
   - id: src-nota
     url: https://nxndata.com/downloads/NdP_NxN_Nuevo_centro_de_datos_Madrid.pdf
@@ -111,12 +119,19 @@ fuentes:
     editor: NxN Data Centers
     tipo: empresa
     fecha_publicacion: 2026-04-23
-    fecha_consulta: 2026-10-14
+    fecha_consulta: 2026-10-17
     cita: capacidad total de 7,5 MW [...] capacidad total de 15 MW
   - id: src-web
     url: https://nxndata.com/
     titulo: NxN Datacenters — Madrid y próxima inauguración en 2026
     editor: NxN Data Centers
     tipo: empresa
-    fecha_consulta: 2026-10-14
+    fecha_consulta: 2026-10-17
     cita: Próxima inauguración en 2026 [...] dos acometidas eléctricas independientes de 7,5 MW cada una
+  - id: src-colliers-20261008
+    url: https://www.colliers.com/es-es/news/data-centers-iberian-region-snapshot-septiembre-2026
+    titulo: Data Centers Iberian Region Snapshot · septiembre de 2026
+    editor: Colliers
+    tipo: consultora
+    fecha_publicacion: 2026-10-08
+    fecha_consulta: 2026-10-17

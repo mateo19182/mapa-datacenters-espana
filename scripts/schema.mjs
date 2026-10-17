@@ -823,7 +823,9 @@ export function revisarCoherencia(sitio) {
     }
   }
 
-  if (sitio.ubicacion.lat == null) problemas.push({ nivel: 'aviso', msg: 'sin coordenadas: no aparecerá en el mapa' })
+  if (sitio.ubicacion.lat == null) problemas.push({ nivel: 'aviso', msg: sitio.ubicacion.no_derivar
+    ? 'sin coordenadas propias; no se permite usar un centroide municipal'
+    : 'sin coordenadas propias; el mapa solo podrá usar una referencia municipal si está disponible' })
   else if (territorioDe(sitio.ubicacion.lat, sitio.ubicacion.lon) == null) {
     // La caja del esquema es holgada por fuerza: abarca de Canarias a Cataluña, y
     // media Marruecos con ella. Esta comprobación descarta lo que cae fuera de

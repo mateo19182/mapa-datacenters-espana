@@ -14,12 +14,12 @@ ubicacion:
   provincia: "Gipuzkoa"
   ccaa: "País Vasco"
   direccion: >-
-    Edificio de Ikerbasque, avenida Tolosa, anexo al edificio Korta, campus de Ibaeta,
+    Edificio de Ikerbasque, avenida de Tolosa 74, anexo al edificio Korta, campus de Ibaeta,
     Donostia-San Sebastián.
-  lat: null
-  lon: null
-  precision: desconocida
-  fuentes: [src-1, src-4]
+  lat: 43.305556
+  lon: -2.008048
+  precision: aproximada
+  fuentes: [src-1, src-4, src-mapa-b5m]
 
 estado: operativo
 estado_detalle: >-
@@ -32,9 +32,10 @@ estado_detalle: >-
   Heron de 156 cúbits. Ocupa una sala de 110 m² en la planta baja de un edificio de Ikerbasque de
   cinco plantas y 6.000 m² construidos, levantado en el campus de Ibaeta; los sistemas de
   refrigeración están en la planta inferior. Forma parte de la estrategia vasca de computación
-  cuántica BasQ / IKUR 2030. En 2027 el mismo edificio debe alojar además Hyperion, un
-  supercomputador convencional del DIPC, lo que cambiará la naturaleza del emplazamiento.
-estado_fuentes: [src-1, src-2, src-3, src-4]
+  cuántica BasQ / IKUR 2030. BasQ mantiene disponible el sistema ibm_basquecountry para sus
+  miembros. Hyperion y Atlas pertenecen a las instalaciones del DIPC; no se atribuyen a este
+  edificio ni se presupone su traslado.
+estado_fuentes: [src-1, src-2, src-3, src-4, src-acceso-basq, src-dipc]
 fecha_puesta_en_servicio: "2025-10-14"
 
 potencia: []
@@ -88,6 +89,12 @@ computo:
       a `potencia[]`. Está diseñado para escalar e integrar varios procesadores en el futuro.
 
 incertidumbres:
+  - campo: ubicacion
+    descripcion: >-
+      Punto aproximado del edificio Ikerbasque identificado por la cartografía B5M de Gipuzkoa,
+      código D_A191486. Representa el edificio de avenida de Tolosa 74, no la sala del sistema
+      cuántico. No se usa el domicilio de la fundación en Bilbao ni el del DIPC vecino.
+    fuentes: [src-mapa-b5m, src-ibm]
   - campo: potencia
     descripcion: >-
       No hay ninguna magnitud eléctrica publicada de esta instalación: ni MW IT, ni potencia de
@@ -133,7 +140,7 @@ incertidumbres:
     fuentes: [src-1, src-4]
 
 confianza: media
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
   - id: src-1
@@ -173,12 +180,12 @@ fuentes:
       millones de euros hasta 2028. De esta cantidad, 25 millones han sido aportados por la
       Diputación de Gipuzkoa.
   - id: src-4
-    url: "https://www.euskadi.eus/gobierno-vasco/-/noticia/2022/el-departamento-educacion-impulsa-nuevo-edificio-para-la-investigacion/"
+    url: "https://www.euskadi.eus/gobierno-vasco/-/noticia/2022/el-departamento-educacion-impulsa-nuevo-edificio-investigacion/"
     titulo: "El Departamento de Educación impulsa un nuevo edificio para la investigación"
     editor: "Gobierno Vasco"
     tipo: oficial
-    fecha_publicacion: "2022-01-01"
-    fecha_consulta: "2026-08-31"
+    fecha_publicacion: "2022-05-19"
+    fecha_consulta: "2026-10-17"
     cita: >-
       El edificio ubicado en la avenida Tolosa estará anexo al actual edificio Korta y contará con
       6.000 m² construidos, distribuidos en 5 plantas sobre superficie y una planta sótano, con
@@ -190,10 +197,31 @@ fuentes:
     editor: "IBM"
     tipo: empresa
     fecha_publicacion: "2025-10-14"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: >-
       This IBM Quantum System Two installation is only the second such deployment outside the
       US. It is powered by a 156-qubit IBM Quantum Heron processor, one of the best performing
       quantum processors developed by the company, to date. Designed to be scalable and
       integrate multiple processors in the future, this system marks a technological milestone
       by enabling the execution of utility-scale algorithms.
+  - id: src-mapa-b5m
+    url: https://b5m.gipuzkoa.eus/map/es/D_A191486
+    titulo: B5M, edificio Ikerbasque, avenida de Tolosa 74
+    editor: Diputación Foral de Gipuzkoa
+    tipo: oficial
+    fecha_consulta: 2026-10-17
+    cita: ikerbasque - Avenida de Tolosa, 74 20018 San Sebastián
+  - id: src-acceso-basq
+    url: https://www.basquequantum.eus/en/about/basq-ibm-quantum-computing-services
+    titulo: BasQ, acceso al sistema IBM Quantum System Two
+    editor: Basque Quantum
+    tipo: oficial
+    fecha_consulta: 2026-10-17
+    cita: The BasQ on-premises System Two QPU (ibm_basquecountry) is now available across all BasQ hub instances.
+  - id: src-dipc
+    url: https://dipc.ehu.eus/en/supercomputing-center
+    titulo: DIPC, ubicación de Hyperion y Atlas
+    editor: Donostia International Physics Center
+    tipo: oficial
+    fecha_consulta: 2026-10-17
+    cita: the supercomputers Atlas and Hyperion, located in the DIPC facilities

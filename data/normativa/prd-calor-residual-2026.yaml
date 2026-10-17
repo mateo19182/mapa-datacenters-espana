@@ -5,10 +5,10 @@ ambito: estatal
 rango: proyecto_real_decreto
 estado: en_tramitacion
 estado_detalle: >-
-  La segunda audiencia se celebró del 27 de mayo al 17 de junio de 2026 y figura cerrada.
-  Es un proyecto distinto del decreto de sostenibilidad de centros de datos. A 14 de octubre
-  no se ha localizado un texto definitivo aprobado en el BOE. Los requisitos registrados
-  corresponden al borrador publicado y no se presentan como obligaciones ya aplicables.
+  La segunda audiencia se celebró del 27 de mayo al 17 de junio de 2026 y figura cerrada. Es un
+  proyecto distinto del decreto de sostenibilidad de centros de datos. La revisión a 17 de octubre
+  no ha localizado publicación definitiva en el BOE. Los requisitos corresponden al borrador, no a
+  obligaciones ya aplicables.
 boletin: null
 referencia: null
 url_oficial: "https://www.miteco.gob.es/es/energia/participacion/2026/detalle-participacion-publica-k-831.html"
@@ -63,7 +63,7 @@ incertidumbres:
   - campo: estado
     descripcion: "La consulta cerrada no acredita aprobación. Debe verificarse el texto definitivo y su régimen transitorio antes de asignar obligaciones a un centro."
     fuentes: [src-consulta, src-borrador]
-ultima_verificacion: "2026-10-14"
+ultima_verificacion: "2026-10-17"
 fuentes:
   - id: src-consulta
     url: "https://www.miteco.gob.es/es/energia/participacion/2026/detalle-participacion-publica-k-831.html"
@@ -71,7 +71,7 @@ fuentes:
     editor: "MITECO"
     tipo: oficial
     fecha_publicacion: "2026-05-27"
-    fecha_consulta: "2026-10-14"
+    fecha_consulta: "2026-10-17"
     cita: "desde el miércoles, 27 de mayo de 2026 hasta el miércoles, 17 de junio de 2026"
   - id: src-borrador
     url: "https://www.miteco.gob.es/content/dam/miteco/es/energia/files-1/es-ES/Participacion/Documents/anexos/aeip-sucyr/Proyecto%20RD%20SUCYR.pdf"
@@ -79,5 +79,5 @@ fuentes:
     editor: "MITECO"
     tipo: oficial
     fecha_publicacion: null
-    fecha_consulta: "2026-10-14"
+    fecha_consulta: "2026-10-17"
     cita: "Los centros de datos cuya potencia energética nominal total sea superior a 1 MW"

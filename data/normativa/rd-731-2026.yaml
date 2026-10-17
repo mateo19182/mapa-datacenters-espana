@@ -1,0 +1,117 @@
+id: rd-731-2026
+titulo: "Real Decreto 731/2026, de Proyectos Estratégicos de Inversión"
+titulo_oficial: "Real Decreto 731/2026, de 16 de septiembre, por el que se regula el Comité de Inversiones Estratégicas y se desarrollan los criterios y el procedimiento de declaración de Proyectos Estratégicos de Inversión"
+ambito: estatal
+rango: real_decreto
+estado: en_vigor
+estado_detalle: >-
+  Publicado el 17 de septiembre de 2026 y vigente desde el día 18. Desarrolla el artículo 29
+  del RDL 7/2026. La apertura de solicitudes requiere medios electrónicos habilitados,
+  baremo y metodología publicados y una orden que determine la fecha de inicio. La revisión
+  a 17 de octubre no ha localizado esa apertura; la vigencia del decreto no la acredita.
+boletin: BOE
+referencia: "BOE-A-2026-19327"
+url_oficial: "https://www.boe.es/buscar/doc.php?id=BOE-A-2026-19327"
+fecha_aprobacion: "2026-09-15"
+fecha_publicacion: "2026-09-17"
+fecha_entrada_vigor: "2026-09-18"
+materias: [acceso_a_red, energia, medio_ambiente, soberania_digital]
+resumen: >-
+  Regula la declaración previa y definitiva de inversiones estratégicas, su evaluación y las
+  medidas de apoyo que pueden acompañarlas. Valora inversión, empleo, viabilidad, autonomía
+  estratégica e impacto ambiental. No es el decreto pendiente de sostenibilidad de los CPD.
+por_que_importa: >-
+  Añade una vía estatal de priorización de inversiones que puede afectar a centros de datos.
+  La declaración y sus efectos deben acreditarse para cada proyecto. No se confunde con una
+  declaración autonómica ni permite atribuir capacidad eléctrica o permisos por sí sola.
+obligaciones:
+  - quien: "Comisión Delegada del Gobierno para Asuntos Económicos"
+    que: "Aprobar el baremo y la metodología de evaluación de proyectos."
+    umbral: null
+    plazo: "Un mes desde la publicación del real decreto, según su disposición adicional cuarta"
+    fuentes: [src-boe]
+  - quien: "Comité de Inversiones Estratégicas"
+    que: "Constituirse conforme al régimen de la disposición adicional tercera."
+    umbral: null
+    plazo: "Un mes desde la entrada en vigor del real decreto"
+    fuentes: [src-boe]
+  - quien: "Ministerios de Economía y de la Presidencia"
+    que: >-
+      Aprobar una orden conjunta que determine cuándo se podrán presentar solicitudes y dé
+      publicidad a los medios electrónicos habilitados. Las solicitudes también requieren
+      que se hayan publicado el baremo y la metodología.
+    umbral: null
+    plazo: "Orden en el plazo máximo de un mes desde la entrada en vigor; apertura en la fecha que esta determine"
+    fuentes: [src-boe]
+  - quien: "Promotor que solicite la declaración estratégica"
+    que: >-
+      Acreditar los criterios y la documentación exigidos para las declaraciones previa y
+      definitiva, así como cumplir los compromisos que esta última incorpore. Las medidas
+      de apoyo se determinan para cada proyecto dentro del marco regulatorio vigente.
+    umbral: "Elegibilidad y valoración de los artículos 2, 3 y 4; no se asigna un umbral cuantitativo sin el baremo"
+    plazo: "Conforme al procedimiento y a la declaración de cada proyecto"
+    fuentes: [src-boe, src-rdl7]
+hitos:
+  - fecha: "2026-09-15"
+    hito: "El Consejo de Ministros delibera sobre el decreto, según su preámbulo"
+    fuentes: [src-boe]
+  - fecha: "2026-09-16"
+    hito: "Fecha formal del Real Decreto 731/2026"
+    fuentes: [src-boe]
+  - fecha: "2026-09-17"
+    hito: "Publicación en el BOE"
+    fuentes: [src-boe]
+  - fecha: "2026-09-18"
+    hito: "Entrada en vigor; la apertura de solicitudes conserva sus requisitos específicos"
+    fuentes: [src-boe]
+actores:
+  - nombre: "Comité de Inversiones Estratégicas"
+    rol: competente
+    postura: sin_constar
+    resumen: "Evalúa solicitudes, otorga la declaración previa y propone la definitiva."
+    fuentes: [src-boe]
+  - nombre: "Comisión Delegada del Gobierno para Asuntos Económicos"
+    rol: competente
+    postura: sin_constar
+    resumen: "Aprueba el baremo y resuelve sobre la declaración definitiva y sus medidas de apoyo."
+    fuentes: [src-boe, src-rdl7]
+afecta:
+  - tipo: registro
+    ref: null
+    como: >-
+      Permite documentar futuras declaraciones estatales de proyectos concretos. No se
+      atribuye esa condición a un emplazamiento por su tamaño o por disponer de una figura autonómica.
+    fuentes: [src-boe, src-rdl7]
+relacionadas: [rdl-7-2026, prd-centros-datos-sostenibles, rd-1183-2020]
+incertidumbres:
+  - campo: apertura_solicitudes
+    descripcion: >-
+      No se han localizado la orden de apertura ni el baremo publicado en las búsquedas de
+      BOE revisadas. Los plazos de un mes son mandatos a la Administración, no una fecha de
+      apertura automática ni prueba de que un proyecto haya sido declarado estratégico.
+    fuentes: [src-boe, src-boe-sumario-20261017]
+ultima_verificacion: "2026-10-17"
+fuentes:
+  - id: src-boe
+    url: "https://www.boe.es/buscar/doc.php?id=BOE-A-2026-19327"
+    titulo: "RD 731/2026, artículos 1 a 6 y 21; disposiciones adicionales tercera, cuarta y sexta; final tercera"
+    editor: "BOE"
+    tipo: oficial
+    fecha_publicacion: "2026-09-17"
+    fecha_consulta: "2026-10-17"
+    cita: "El Comité se constituirá en el plazo de un mes desde la entrada en vigor de este real decreto."
+  - id: src-rdl7
+    url: "https://www.boe.es/buscar/act.php?id=BOE-A-2026-6544#a2-11"
+    titulo: "RDL 7/2026, artículo 29, Proyectos Estratégicos de Inversión"
+    editor: "BOE"
+    tipo: oficial
+    fecha_publicacion: "2026-03-21"
+    fecha_consulta: "2026-10-17"
+    cita: "Esta disposición se aplica sin perjuicio del debido cumplimiento de la normativa vigente"
+  - id: src-boe-sumario-20261017
+    url: "https://www.boe.es/boe/dias/2026/10/17/"
+    titulo: "Sumario del BOE de 17 de octubre de 2026, búsqueda del desarrollo posterior"
+    editor: "BOE"
+    tipo: oficial
+    fecha_publicacion: "2026-10-17"
+    fecha_consulta: "2026-10-17"

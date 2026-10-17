@@ -5,6 +5,7 @@ import YAML from 'yaml'
 import { fusionarHuellas, estadoFuente, validarBorradoresAnadidos, prepararRevision, finPeriodo, plazoRevision } from './revision.mjs'
 import { generarRss } from '../src/lib/rss.js'
 import { pistasRevision, colaRevision } from '../src/lib/revision-presentacion.js'
+import { registrarLectura } from './source-state.mjs'
 const candidato = (extra = {}) => ({ id:'caso-prueba', titulo:'Hallazgo de prueba', tipo:'proyecto', estado:'detected', prioridad:'alta', detectado:'2026-10-12', revisar_antes:'2026-10-13', motivo:'Se necesita una fuente para identificar el edificio.', siguiente_paso:'Localizar la fuente original.', enlaces:[], fuentes:[{url:'https://example.org/nota',titulo:'Una pista',primaria:false}], ...extra })
 test('merging observations preserves accepted fingerprints and unresolved evidence', () => {
   const base = { 'https://a':{hash:'aceptada',longitud:10,visto:'2026-08-31',pendiente:{hash:'cambio',longitud:12,detectado:'2026-09-01',visto:'2026-09-10'}} }
@@ -18,6 +19,106 @@ test('merging observations preserves accepted fingerprints and unresolved eviden
   assert.equal(base['https://a'].pendiente.hash,'cambio')
   assert.deepEqual(fusionarHuellas(resultado,{'https://a':base['https://a']}),resultado)
 })
+
+test('weekly runs seeded from an unmerged PR keep their baseline and first detection date', () => {
+  const url = 'https://example.org/fuente'
+  const main = { [url]: { hash: 'revisada', longitud: 10, visto: '2026-09-01' } }
+  const primerPr = { [url]: registrarLectura(main[url], { estado: 'ok', hash: 'cambio', longitud: 20 }, '2026-10-05').estado }
+  const semilla = fusionarHuellas(main, primerPr)
+  const segundaSemana = registrarLectura(semilla[url], { estado: 'ok', hash: 'cambio', longitud: 20 }, '2026-10-12').estado
+  assert.equal(segundaSemana.hash, 'revisada')
+  assert.equal(segundaSemana.pendiente.detectado, '2026-10-05')
+  assert.equal(segundaSemana.pendiente.visto, '2026-10-12')
+  const urlNueva = { 'https://example.org/nueva': { hash: 'primera', longitud: 1, visto: '2026-10-05' } }
+  const seedNueva = fusionarHuellas(main, urlNueva)
+  assert.equal(registrarLectura(seedNueva['https://example.org/nueva'], { estado: 'ok', hash: 'segunda', longitud: 2 }, '2026-10-12').resultado, 'cambiada')
+  assert.equal(main[url].pendiente, undefined)
+})
+
+test('an older branch baseline can still report a newer observation of the content accepted in main', () => {
+  const main = { 'https://a': { hash: 'B', longitud: 20, visto: '2026-10-11', aceptado: '2026-10-12', pendiente: { hash: 'C', longitud: 30, detectado: '2026-10-15', visto: '2026-10-15' } } }
+  const rama = { 'https://a': { hash: 'A', longitud: 10, visto: '2026-10-01', pendiente: { hash: 'B', longitud: 20, detectado: '2026-10-11', visto: '2026-10-17' } } }
+  const fusion = fusionarHuellas(main, rama)['https://a']
+  assert.equal(fusion.hash, 'B')
+  assert.equal(fusion.visto, '2026-10-17')
+  assert.equal(fusion.aceptado, '2026-10-12')
+  assert.equal(fusion.pendiente, undefined, 'the latest observation restores accepted content')
+  assert.equal(main['https://a'].pendiente.hash, 'C')
+})
+
+test('a newer connection failure cannot erase an older unresolved content observation', () => {
+  const url = 'https://example.org/fuente'
+  const main = { [url]: { hash: 'A', longitud: 10, visto: '2026-10-10', aceptado: '2026-10-11', clase: 'error', motivo: 'fetch failed', ultimo_fallo: '2026-10-17' } }
+  const rama = { [url]: { hash: 'A', longitud: 10, visto: '2026-10-10', pendiente: { hash: 'B', longitud: 20, detectado: '2026-10-15', visto: '2026-10-16' } } }
+  const originales = structuredClone({ main, rama })
+  const fusion = fusionarHuellas(main, rama)[url]
+  assert.equal(fusion.hash, 'A')
+  assert.equal(fusion.aceptado, '2026-10-11')
+  assert.equal(fusion.pendiente.hash, 'B')
+  assert.equal(fusion.pendiente.detectado, '2026-10-15')
+  assert.equal(fusion.pendiente.visto, '2026-10-16')
+  assert.equal(fusion.ultimo_fallo, '2026-10-17')
+  assert.deepEqual(estadoFuente(fusion), { clase: 'error', fecha: '2026-10-17', motivo: 'fetch failed', cambio_pendiente: true })
+  assert.deepEqual({ main, rama }, originales)
+})
+
+test('content and health merge independently when either branch owns the latest failure', () => {
+  const url = 'https://example.org/fuente'
+  const principal = { hash: 'A', longitud: 10, visto: '2026-10-01', aceptado: '2026-10-02' }
+  const temprana = { hash: 'B', longitud: 20, detectado: '2026-10-05', visto: '2026-10-16' }
+  const reciente = { hash: 'B', longitud: 20, detectado: '2026-10-10', visto: '2026-10-18' }
+  const fallo = { clase: 'bloqueada', motivo: 'HTTP 403', ultimo_fallo: '2026-10-19' }
+  for (const falloEnMain of [true, false]) {
+    const main = { [url]: { ...principal, pendiente: reciente, ...(falloEnMain ? fallo : {}) } }
+    const rama = { [url]: { ...principal, pendiente: temprana, ...(!falloEnMain ? fallo : {}) } }
+    const fusion = fusionarHuellas(main, rama)[url]
+    assert.equal(fusion.hash, 'A')
+    assert.equal(fusion.aceptado, '2026-10-02')
+    assert.deepEqual(fusion.pendiente, { hash: 'B', longitud: 20, detectado: '2026-10-05', visto: '2026-10-18' })
+    assert.equal(estadoFuente(fusion).clase, 'bloqueada')
+    assert.equal(fusion.ultimo_fallo, '2026-10-19')
+  }
+})
+
+test('a later accepted-content observation clears the older pending version while retaining a still newer failure', () => {
+  const url = 'https://example.org/fuente'
+  const main = { [url]: { hash: 'B', longitud: 20, visto: '2026-10-11', aceptado: '2026-10-12', pendiente: { hash: 'C', longitud: 30, detectado: '2026-10-15', visto: '2026-10-15' }, clase: 'error', motivo: 'HTTP 503', ultimo_fallo: '2026-10-18' } }
+  const rama = { [url]: { hash: 'A', longitud: 10, visto: '2026-10-01', pendiente: { hash: 'B', longitud: 20, detectado: '2026-10-11', visto: '2026-10-17' } } }
+  const fusion = fusionarHuellas(main, rama)[url]
+  assert.equal(fusion.hash, 'B')
+  assert.equal(fusion.visto, '2026-10-17')
+  assert.equal(fusion.aceptado, '2026-10-12')
+  assert.equal(fusion.pendiente, undefined)
+  assert.deepEqual(estadoFuente(fusion), { clase: 'error', fecha: '2026-10-18', motivo: 'HTTP 503' })
+  const recuperada = fusionarHuellas({ [url]: fusion }, { [url]: { hash: 'B', longitud: 20, visto: '2026-10-20' } })[url]
+  assert.equal(recuperada.visto, '2026-10-20')
+  assert.equal(recuperada.aceptado, '2026-10-12')
+  assert.equal(recuperada.ultimo_fallo, undefined)
+  assert.equal(estadoFuente(recuperada).clase, 'viva')
+})
+
+test('initial observations survive a newer failure without importing an unmerged acceptance', () => {
+  const url = 'https://example.org/nueva'
+  const main = { [url]: { clase: 'error', motivo: 'fetch failed', ultimo_fallo: '2026-10-19' } }
+  const rama = { [url]: { hash: 'primera', longitud: 10, visto: '2026-10-10', aceptado: '2026-10-11', pendiente: { hash: 'segunda', longitud: 20, detectado: '2026-10-15', visto: '2026-10-16' } } }
+  const fusion = fusionarHuellas(main, rama)[url]
+  assert.equal(fusion.hash, 'primera')
+  assert.equal(fusion.aceptado, undefined)
+  assert.equal(fusion.pendiente.hash, 'segunda')
+  assert.equal(fusion.ultimo_fallo, '2026-10-19')
+})
+
+test('same-day date-only observations cannot silently resolve a pending change', () => {
+  const url = 'https://example.org/fuente'
+  const main = { [url]: { hash: 'A', longitud: 10, visto: '2026-10-01', pendiente: { hash: 'B', longitud: 20, detectado: '2026-10-15', visto: '2026-10-17' } } }
+  const rama = { [url]: { hash: 'A', longitud: 10, visto: '2026-10-17' } }
+  const fusion = fusionarHuellas(main, rama)[url]
+  assert.equal(fusion.hash, 'A')
+  assert.equal(fusion.visto, '2026-10-17')
+  assert.equal(fusion.pendiente.hash, 'B')
+  assert.equal(fusion.pendiente.detectado, '2026-10-15')
+})
+
 test('technical checks cannot renew factual review dates or turn a candidate into a publication', () => {
   const sitio={id:'sitio-prueba',nombre:'Proyecto',estado:'en_construccion',ultima_verificacion:'2026-08-31',fuentes:[{id:'s1',url:'https://example.org/nota',titulo:'Nota'}],fases:[]}
   const revision=prepararRevision([candidato()],{sitios:[sitio],huellas:{'https://example.org/nota':{hash:'igual',longitud:3,visto:'2026-10-14'}},hoy:'2026-10-14'})

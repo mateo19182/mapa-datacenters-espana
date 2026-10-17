@@ -5,10 +5,10 @@ ambito: europeo
 rango: reglamento_delegado_ue
 estado: en_vigor
 estado_detalle: >-
-  En vigor y de aplicación directa desde el 6 de junio de 2024. Es la primera fase de información.
-  La Comisión adoptó el 21 de septiembre de 2026 un acto delegado de etiquetado, C(2026) 3472 final,
-  que lo modificaría. El Parlamento amplió el control el 6 de octubre; el nuevo acto no está todavía
-  en vigor.
+  En vigor desde el 6 de junio de 2024. El reporte anual sigue regulado por este texto. La
+  modificación de etiquetado C(2026) 3472 final, adoptada el 21 de septiembre de 2026, continúa bajo
+  control institucional a 17 de octubre y no se ha localizado publicación definitiva que la haga
+  entrar en vigor.
 boletin: DOUE
 referencia: "DOUE-L-2024-80715"
 url_oficial: "https://eur-lex.europa.eu/eli/reg_del/2024/1364/oj"
@@ -59,6 +59,13 @@ hitos:
     hito: Primera emisión de etiquetas prevista en C(2026) 3472, sujeta a su entrada en vigor
     fuentes:
       - src-etiquetado
+  - fecha: 2027-05-15
+    previsto: true
+    hito: Plazo anual de comunicación a ReportENER de la información e indicadores de 2026, según el
+      régimen vigente
+    fuentes:
+      - src-boe-doue
+      - src-miteco-faq
 actores:
   - nombre: Comisión Europea
     rol: promotor
@@ -103,7 +110,7 @@ incertidumbres:
       - src-miteco-prensa
       - src-boe-doue
       - src-etiquetado
-ultima_verificacion: "2026-10-14"
+ultima_verificacion: "2026-10-17"
 fuentes:
   - id: src-eurlex
     url: https://eur-lex.europa.eu/eli/reg_del/2024/1364/oj
@@ -122,7 +129,7 @@ fuentes:
     editor: BOE (referencia DOUE)
     tipo: oficial
     fecha_publicacion: 2024-05-17
-    fecha_consulta: 2026-09-01
+    fecha_consulta: "2026-10-17"
     cita: "Fecha de entrada en vigor: 06/06/2024"
   - id: src-miteco-faq
     url: https://www.miteco.gob.es/es/energia/eficiencia/centros-de-datos/preguntas-frecuentes.html
@@ -130,7 +137,7 @@ fuentes:
     editor: MITECO
     tipo: oficial
     fecha_publicacion: null
-    fecha_consulta: 2026-09-01
+    fecha_consulta: "2026-10-17"
     cita: Los operadores de centros de datos con una demanda de potencia eléctrica de los sistemas de
       tecnologías de la información instalados de 500 kW como mínimo deben comunicar a la base de
       datos europea ReportENER.
@@ -149,7 +156,7 @@ fuentes:
     editor: Consejo de la Unión Europea, documento de la Comisión
     tipo: oficial
     fecha_publicacion: 2026-09-21
-    fecha_consulta: 2026-10-14
+    fecha_consulta: "2026-10-17"
     cita: By 15 August 2027 and every year thereafter, an electronic label
   - id: src-procedimiento-etiquetado
     url: https://oeil.europarl.europa.eu/oeil/en/procedure-file?reference=2026/2895(DEA)
@@ -157,5 +164,5 @@ fuentes:
     editor: Parlamento Europeo
     tipo: oficial
     fecha_publicacion: null
-    fecha_consulta: 2026-10-14
+    fecha_consulta: "2026-10-17"
     cita: Awaiting committee decision

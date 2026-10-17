@@ -105,10 +105,10 @@ fuentes:
     fecha_consulta: "2026-08-29"
     cita: "NTT Madrid 1 Data Center (MAD1) | Calle Aquisgran 2 | 28232 Las Rozas de Madrid"
   - id: src-3
-    url: "https://services.global.ntt/-/media/ntt/global/insights-and-resources/data-sheets/madrid-1-data-center-fact-sheet-es.pdf"
+    url: "https://dam.nttdata.com/api/public/content/95a4bc9b9a6b40ca873edca3f5d1932f?v=34ce356c"
     titulo: "Fact sheet: Madrid 1 Data Center"
     editor: "NTT DATA Global Data Centers"
     tipo: empresa
     fecha_publicacion: "2024"
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: "Espacio del centro de datos • 3.400 m² de espacio para TI ... Potencia • Dos subestaciones externas redundantes que proporcionan 10 MVA de potencia • Potencia de TI: 6,9 MW • Densidad media de potencia de 1,5 - 2,0 kW/m² • Dos subestaciones para un suministro dual a 20 kV • Dos sistemas de alimentación ininterrumpida independientes (suministro A y B) con redundancia 2N • Sistema redundante de alimentación de emergencia con generadores diésel N+1 Refrigeración • Sistema redundante de refrigeración por agua con respaldo de refrigeración natural (N+1) • Unidades de tratamiento de aire para salas de ordenadores (CRAH) en las suites y salas técnicas ... • Contención mediante pasillos fríos"

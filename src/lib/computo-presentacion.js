@@ -16,6 +16,8 @@ const ALCANCES = {
   'Cibeles 3': 'Cibeles 3',
   'Cibeles 4': 'Cibeles 4',
   'FinisTerrae III': 'FinisTerrae III',
+  'FinisTerrae III, partición A100': 'FinisTerrae III',
+  'FinisTerrae III, partición T4': 'FinisTerrae III',
   'Qmio': 'Qmio',
   'CPD del CITIC — computación embebida': 'Computación embebida',
   'Centro de datos de IA de Puertollano (fase 1)': 'Fase 1',
@@ -79,8 +81,9 @@ export function avisoComputo(registro) {
     if (sistema.includes('recursos NVIDIA L4')) return 'El anuncio dice más de 15; el dosier publica 15.'
     if (sistema.includes('servidores A40')) return 'El catálogo discrepa: dos o tres servidores.'
   }
-  if (esProyecto(registro, 'cesga-santiago-a-sionlla') && registro.modalidad === 'sin_confirmar') {
-    return 'Traslado a A Sionlla sin confirmar.'
+  if (esProyecto(registro, 'cesga-santiago-campus-sur')) {
+    if (registro.modelo === 'NVIDIA A100') return 'Recuento en disputa: 128 o 141 A100. Continuidad física sin confirmar.'
+    return 'Última sede documentada; continuidad física sin confirmar.'
   }
   if (esProyecto(registro, 'bsc-barcelona-marenostrum') && sistema === 'MareNostrum 5 GPP (partición de propósito general)') {
     return 'Pico en disputa: 54 o 45,9 PFlop/s.'

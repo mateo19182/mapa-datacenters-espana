@@ -15,16 +15,26 @@ ubicacion:
   provincia: "Madrid"
   ccaa: "Comunidad de Madrid"
   direccion: "Calle Fundidores 40, Polígono Industrial Los Ángeles, 28906 Getafe"
-  lat: 40.310814
+  lat: 40.310986
   lon: -3.692923
-  precision: exacta
-  fuentes: [ src-1, src-2, src-4 ]
+  precision: aproximada
+  fuentes:
+    - src-1
+    - src-2
+    - src-mapa
+    - src-4
 
 estado: operativo
 estado_detalle: >-
-  Edificio de nueva planta de tres alturas con dos muelles de carga. Edged lo marca como "Now Open".
-  MERLIN declaró 20 MW en operación ampliables a 27 MW en enero de 2025.
-estado_fuentes: [ src-1, src-3 ]
+  MAD01 está abierto y Edged lo clasifica como operativo, con 20 MW de carga crítica. MERLIN
+  identifica esa capacidad como 20 MW IT. Su informe de julio de 2026 preveía las conexiones finales
+  en octubre; no se ha recuperado un acta o anuncio fechado de su terminación. La previsión anterior
+  no se usa para negar la operación que el operador publica actualmente.
+estado_fuentes:
+  - src-1
+  - src-3
+  - src-spec-mad01
+  - src-merlin-6m26
 
 potencia:
   - tipo: no_especificado
@@ -33,15 +43,20 @@ potencia:
     referencia: "Critical Load Capacity"
     estado_asociado: operativo
     fecha_dato: "2026-08-29"
-    fuentes: [ src-1 ]
-    nota: "Edged lo denomina \"Critical Load Capacity\", sin equipararlo explícitamente a carga TI."
+    fuentes: [ src-1, src-merlin-6m26 ]
+    nota: "La cifra describe el total del edificio y no se añade a las otras lecturas de 20 MW. Edged
+      presenta actualmente MAD01 como operativo; el informe de MERLIN de julio de 2026 preveía las
+      conexiones finales para octubre. No consta el día de su terminación."
   - tipo: no_especificado
     valor_mw: 20
     ambito: edificio
     referencia: "Capacidad en operación (MERLIN, enero 2025)"
     estado_asociado: operativo
     fecha_dato: "2025-01-14"
-    fuentes: [ src-3 ]
+    fuentes: [ src-3, src-merlin-6m26 ]
+    nota: La cifra describe el total del edificio y no se añade a las otras lecturas de 20 MW. Edged
+      presenta actualmente MAD01 como operativo; el informe de MERLIN de julio de 2026 preveía las
+      conexiones finales para octubre. No consta el día de su terminación.
   - tipo: no_especificado
     valor_mw: 27
     ambito: edificio
@@ -55,12 +70,12 @@ potencia:
     referencia: "Potencia eléctrica instalada para uso IT según la ingeniería del proyecto"
     estado_asociado: operativo
     fecha_dato: "2024-10"
-    fuentes: [ src-7 ]
+    fuentes: [ src-7, src-merlin-6m26, src-spec-mad01 ]
     nota: >-
-      JG Ingenieros, autora del diseño y de la dirección de obra, dice «La potencia eléctrica total
-      instalada es de 20 MW para uso IT». Es la única fuente que tipifica los 20 MW como carga TI;
-      Edged y MERLIN los publican sin tipo. Se registra como lectura tipificada de la misma cifra,
-      no como capacidad adicional.
+      JG Ingenieros tipifica los 20 MW como potencia instalada para uso IT. El informe 6M26 de
+      MERLIN confirma ese total IT equipado, aunque todavía preveía las conexiones finales para
+      octubre. El estado operativo corresponde a la ficha actual MAD01 de Edged. No consta el día de
+      energización completa; estas lecturas describen el mismo edificio y no se suman.
 
 refrigeracion: >-
   Sistema ThermalWorks sin consumo de agua (WUE 0,00 l/kWh); PUE anualizado de 1,15; plantas
@@ -118,9 +133,33 @@ incertidumbres:
       se registran como no_especificado. La ingeniería del proyecto sí los llama «20 MW para uso
       IT», de modo que hay una lectura tipificada y dos sin tipificar del mismo número.
     fuentes: [ src-1, src-3, src-7 ]
+  - campo: potencia.estado_asociado
+    descripcion: La nota de MERLIN de enero de 2025 y las fichas de Edged presentan 20 MW en operación.
+      El informe 6M26 distingue 20 MW IT equipados y conexiones finales previstas para octubre. La
+      web y la ficha MAD01 mantienen el estado operativo, y Colliers publica un aumento operativo en
+      Getafe en octubre. Falta confirmación fechada de la energización completa; la previsión de
+      julio no demuestra que siguiera pendiente el 17 de octubre. No se inventa una cifra operativa
+      intermedia.
+    fuentes:
+      - src-3
+      - src-spec-mad01
+      - src-merlin-6m26
+  - campo: potencia
+    descripcion: Colliers publica 16 MW IT adicionales en Getafe sin identificar edificio ni hito
+      eléctrico. No se añaden a los 20 MW de MAD01 ni a los 48 MW previstos de MAD02.
+    fuentes:
+      - src-colliers-20261008
+      - src-merlin-6m26
+  - campo: ubicacion
+    descripcion: Se utiliza el pin de Google Maps que enlaza el operador para Fundidores 40. La ficha
+      PDF da otro punto del mismo entorno. La precisión es aproximada y no identifica salas ni
+      límites del edificio.
+    fuentes:
+      - src-mapa
+      - src-spec-mad01
 
 confianza: alta
-ultima_verificacion: "2026-08-31"
+ultima_verificacion: "2026-10-17"
 
 fuentes:
   - id: src-1
@@ -128,7 +167,7 @@ fuentes:
     titulo: "Edged Spain | Madrid-Getafe"
     editor: "Edged (MERLIN Edged)"
     tipo: empresa
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "20 MW Critical Load Capacity ... Now Open ... Calle Fundidores nº 40 Polígono Industrial, Los
       Ángeles 28906; Getafe ... Water Usage Effectiveness (WUE) 0.00 liters/kWh of cooling"
   - id: src-2
@@ -136,7 +175,7 @@ fuentes:
     titulo: "Madrid-Getafe Data Center"
     editor: "MERLIN Properties"
     tipo: empresa
-    fecha_consulta: "2026-08-29"
+    fecha_consulta: "2026-10-17"
     cita: "Calle Fundidores nº40 Polígono Industrial Los Ángeles 28906 Getafe, Madrid, Spain"
   - id: src-3
     url: "https://ir.merlinproperties.com/en/new-opportunity-in-data-centers/"
@@ -193,7 +232,7 @@ fuentes:
     titulo: "España | Madrid-Getafe"
     editor: "Edged (MERLIN Edged)"
     tipo: empresa
-    fecha_consulta: "2026-08-31"
+    fecha_consulta: "2026-10-17"
     cita: "20 MW Capacidad de carga crítica 1,15 PUE ... Sistema avanzado de refrigeración sin agua -
       Eficacia del uso del agua (WUE) 0,00 litros/kWh de refrigeración - Redundancia N+1 -
       Transferencia de calor con glicol con enfriadoras de techo refrigeradas por aire - Los
@@ -217,5 +256,34 @@ fuentes:
     titulo: Firma de un contrato de 18 MW con Nebius para Madrid-Getafe
     editor: MERLIN Properties
     tipo: empresa
-    fecha_consulta: 2026-10-14
+    fecha_consulta: 2026-10-17
     cita: firma de un contrato de 18 MW con Nebius en nuestro data center MERLIN Edged Madrid-Getafe
+  - id: src-merlin-6m26
+    url: https://www.cnmv.es/webservices/verdocumento/ver?t=%7B5e11756a-f13c-4928-91cf-cc6f01589e61%7D
+    titulo: MERLIN Properties · resultados 6M26, 27 de julio de 2026
+    editor: MERLIN Properties / CNMV
+    tipo: empresa
+    fecha_publicacion: 2026-07-27
+    fecha_consulta: 2026-10-17
+    cita: Madrid-Getafe [...] IT capacity 20 MW [...] Electricity supplied (10/2026)
+  - id: src-spec-mad01
+    url: https://cdn.prod.website-files.com/612d5118cc3229538b508294/68bf2c9b403c90409a15d5e1_MAD01_Spec%20Sheet_250730_Digital.pdf
+    titulo: MAD01 · ficha técnica enlazada por Edged
+    editor: Edged (MERLIN Edged)
+    tipo: empresa
+    fecha_consulta: 2026-10-17
+    cita: MAD01 [...] 20 MW CRITICAL CAPACITY [...] Status Operational
+  - id: src-mapa
+    url: https://maps.app.goo.gl/BgvaJiwRKVH9Km3B9
+    titulo: Google Maps · pin enlazado por Edged para Madrid-Getafe 1
+    editor: Google Maps / enlace de Edged
+    tipo: otro
+    fecha_consulta: 2026-10-17
+    cita: 40.310986, -3.692923
+  - id: src-colliers-20261008
+    url: https://www.colliers.com/es-es/news/data-centers-iberian-region-snapshot-septiembre-2026
+    titulo: Data Centers Iberian Region Snapshot · septiembre de 2026
+    editor: Colliers
+    tipo: consultora
+    fecha_publicacion: 2026-10-08
+    fecha_consulta: 2026-10-17

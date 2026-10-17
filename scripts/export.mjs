@@ -11,6 +11,7 @@ import { ESTADOS, TIPOS_CAPACIDAD, PRECISIONES } from './schema.mjs'
 import { prepararActualizaciones } from './actualizaciones.mjs'
 import { inventarioComputo } from '../src/lib/computo.js'
 import { estadoFuente, prepararRevision } from './revision.mjs'
+import { informeFuentes } from './source-report.mjs'
 import { createHash } from 'node:crypto'
 
 // src/data alimenta las páginas en tiempo de build; public/datos se sirve tal
@@ -124,13 +125,14 @@ const sitios = q('SELECT * FROM sitios ORDER BY nombre').map((s) => {
       nota: f.nota,
       fuentes: respaldoDe(`fases[${f.idx}]`),
     })),
-    conexion_electrica: s.subestacion || s.tension_kv || s.mw_solicitados || s.mw_concedidos
+    conexion_electrica: s.subestacion || s.tension_kv || s.mw_solicitados != null || s.mw_concedidos != null || s.conexion_nota
       ? {
           subestacion: s.subestacion,
           tension_kv: s.tension_kv,
           titular_red: s.titular_red,
           mw_solicitados: s.mw_solicitados,
           mw_concedidos: s.mw_concedidos,
+          nota: s.conexion_nota,
           fuentes: respaldoDe('conexion_electrica'),
         }
       : null,
@@ -509,13 +511,15 @@ escribir('normativa.json', normativa)
 escribir('fuentes.json', [...todasLasFuentes.values()].sort((a, b) => b.usos.length - a.usos.length))
 escribir('resumen.json', resumen)
 escribir('computo.json', inventarioComputo(sitios))
-escribir('revision.json', prepararRevision(
+const revision = prepararRevision(
   YAML.parse(readFileSync(join(RAIZ, 'data/revision.yaml'), 'utf8')),
   {
     sitios, normativa, red, renovables, huellas, pendientes,
     borradores: existsSync(join(RAIZ, 'research/hallazgos.yaml')) ? YAML.parse(readFileSync(join(RAIZ, 'research/hallazgos.yaml'), 'utf8')) : [],
   },
-))
+)
+escribir('revision.json', revision)
+writeFileSync(join(RAIZ, 'research/informe-actualizacion.md'), informeFuentes(revision, { huellas }))
 const procedenciaCapacidad = YAML.parse(readFileSync(join(RAIZ, 'data/red/capacidad.yaml'), 'utf8'))
 const archivoCapacidad = procedenciaCapacidad.archivo_original_ree
 if (!/^capacidad-ree-\d{4}-\d{2}-\d{2}\.csv$/.test(archivoCapacidad ?? '')) throw new Error('Falta el archivo original de capacidad REE')
