@@ -125,6 +125,24 @@ jobs:
         continue-on-error: true
         run: node scripts/weekly-step.mjs validacion -- bash -ec 'npm run validate:strict && npm run data'
 
+      # git add aborta si una ruta no existe: sin propuestas no hay data/propuestas ni su informe.
+      - name: Elegir rutas existentes para el PR
+        id: rutas
+        if: >-
+          github.ref == 'refs/heads/main' &&
+          (github.event_name == 'schedule' || inputs.publicar) &&
+          steps.recuperar.outcome == 'success' && steps.validacion.outcome == 'success'
+        run: |
+          {
+            echo 'lista<<EOF'
+            for ruta in data/huellas.json data/sites data/propuestas data/seguimiento-fuentes.json \
+              research/informe-actualizacion.md research/informe-evolucion-fuentes.md \
+              research/informe-propuestas.md research/informe-ree.md research/informe-validacion.md; do
+              if [ -e "$ruta" ] || [ -n "$(git ls-files -- "$ruta")" ]; then echo "$ruta"; fi
+            done
+            echo EOF
+          } >> "$GITHUB_OUTPUT"
+
       - name: Abrir propuesta técnica de actualización
         id: pr
         if: >-
@@ -147,16 +165,7 @@ jobs:
             - `data/seguimiento-fuentes.json`: historial acotado de ejecuciones técnicas.
 
             Consultar también el resumen y los artefactos de esta ejecución. Un fallo de red o una comprobación incompleta no equivale a ausencia de novedades.
-          add-paths: |
-            data/huellas.json
-            data/sites/**
-            data/propuestas/**
-            data/seguimiento-fuentes.json
-            research/informe-actualizacion.md
-            research/informe-evolucion-fuentes.md
-            research/informe-propuestas.md
-            research/informe-ree.md
-            research/informe-validacion.md
+          add-paths: ${{ steps.rutas.outputs.lista }}
 
       - name: Conservar resultados y documentos de esta ejecución
         if: always()
