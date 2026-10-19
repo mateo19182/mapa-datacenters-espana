@@ -275,6 +275,61 @@
     "decisiones_descartadas": 0
    },
    "duracion_ms": 837
+  },
+  {
+   "version": 1,
+   "id": "39244566107-1",
+   "iniciada": "2026-10-19T11:26:25.242Z",
+   "finalizada": "2026-10-19T11:34:34.675Z",
+   "estado": "completa",
+   "comprobadas": 1105,
+   "resultados": {
+    "ok": 937,
+    "bloqueada": 114,
+    "rota": 14,
+    "error": 40
+   },
+   "antes": {
+    "registradas": 1105,
+    "con_observacion": 1105,
+    "ultima_observacion": "2026-10-17",
+    "rotas": 5,
+    "bloqueadas": 115,
+    "errores": 38,
+    "cambios_pendientes": 506,
+    "categorias": {
+     "contenido": 111,
+     "plantilla": 71,
+     "formato": 14,
+     "metodo": 69,
+     "sin_comparacion": 241
+    },
+    "grupos": 446,
+    "revisiones_pendientes": 0,
+    "decisiones_publicadas": 50,
+    "decisiones_descartadas": 0
+   },
+   "despues": {
+    "registradas": 1105,
+    "con_observacion": 1105,
+    "ultima_observacion": "2026-10-19",
+    "rotas": 14,
+    "bloqueadas": 114,
+    "errores": 40,
+    "cambios_pendientes": 573,
+    "categorias": {
+     "contenido": 76,
+     "plantilla": 51,
+     "formato": 2,
+     "metodo": 69,
+     "sin_comparacion": 375
+    },
+    "grupos": 517,
+    "revisiones_pendientes": 0,
+    "decisiones_publicadas": 50,
+    "decisiones_descartadas": 0
+   },
+   "duracion_ms": 489433
   }
  ]
 }
