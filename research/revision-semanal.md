@@ -1,3 +1,107 @@
+# Revisión semanal y mensual — 19 de octubre de 2026
+
+Periodo semanal: **12–18 de octubre de 2026**, ambos inclusive, Europe/Madrid. Las publicaciones del día 19 quedan fuera. Ámbito: toda España, incluidas islas, Ceuta y Melilla. Se incluye el trabajo mensual por ser la primera ejecución semanal satisfactoria del mes indicada por el encargo; no se omite por la fecha del calendario.
+
+**Resultado: dos hallazgos documentales nuevos, dos candidatas sin resolver y ninguna propuesta de ficha.** Hay respaldo primario para dos trámites, pero no documentación suficiente para dar de alta sus emplazamientos físicos sin ambigüedad. No se modifican decisiones, fechas factuales ni huellas. La revisión mensual no identifica una edición de REE posterior a la ya incorporada. Las búsquedas son selectivas: este resultado no certifica ausencia de novedades en todos los boletines y expedientes.
+
+## Antecedentes, prioridades y duplicados
+
+Leídos `docs/INVESTIGACION-PROGRAMADA.md`, `docs/ESQUEMA.md`, `data/revision.yaml`, `research/hallazgos.yaml`, el informe semanal anterior, `research/informe-ree.md`, las previsiones vencidas del informe técnico y las fichas pertinentes. Se conservan al final el informe anterior y su integración del 14 de octubre. El archivo de candidatas estaba vacío y no existía `research/propuestas-revision/`.
+
+La cola revisada no tiene seguimientos sin resolver con `revisar_antes` vencido a 19 de octubre: los primeros de prioridad alta vencen el 21 (Colliers, Méntrida y RD 731). Sí hay dos **hitos previstos vencidos**, distintos de esos plazos de trabajo: apertura de NxN Madrid en septiembre y presentación de Radiance/Spark el 12 de junio. Se revisan en el bloque mensual. No se confunde presentar equipos con recibirlos o ponerlos en servicio.
+
+El trámite de Copiapo no coincide por promotor con `aws-san-mateo-de-gallego-el-boyal`. Se ha contrastado también `vantage-villanueva-de-gallego-el-olivar`, que ya figura paralizado: la continuidad empresarial relatada por la prensa no permite trasladar el emplazamiento histórico a otro municipio ni reutilizar sus permisos. La búsqueda en los YAML de `data/` no encontró un registro nominal de Copiapo/O-Green ni de los CPD ADIF Delicias–Atocha–Villaverde. La ausencia de coincidencia textual no sustituye identificar cada edificio.
+
+## Hallazgos con fuente primaria
+
+| Nº | Fecha del hecho y de publicación | URL primaria | Identificador | Campo afectado | Dato anterior | Dato propuesto para revisión | Fragmento de evidencia | Decisión pendiente |
+|---|---|---|---|---|---|---|---|---|
+| 1 | Anuncio firmado 2026-09-15; BOA 2026-10-15 | [BOA20261015033, dos páginas](https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1470394820808) | Candidata `copiapo-san-mateo-consultas-20261015`; sin ficha nueva | Identidad, ubicación y tramitación | AWS El Boyal ya tiene ficha; Vantage El Olivar está paralizado. Copiapo no tiene ficha identificada. | Registrar el expediente INAGA 500201/71/2026/08944 de consultas previas del Campus Data Center San Mateo de Gállego, promovido por Copiapo Renovables, SL. Su ámbito incluye cinco municipios. | P. 1: «promovido por Copiapo Renovables, SL»; «consultas previas». | Recuperar documento inicial y planos, distinguir recinto de conexiones exteriores y comprobar relación con El Olivar. El anuncio no acredita autorización ambiental, obras, operador, MW IT ni parcelas del CPD. Candidata `awaiting_primary` para esos extremos. |
+| 2 | Envío y firma 2026-10-13; BOE 2026-10-16. Antecedente de envío al DOUE 2026-10-09 | [BOE-B-2026-33587](https://www.boe.es/diario_boe/txt.php?id=BOE-B-2026-33587) | Candidata `adif-cpd-interconexion-20261016`; sin fichas nuevas | Cobertura de emplazamientos e interconexión | Sin registros nominales identificados para los tres CPD en los YAML. | Conservar como pista de cobertura la licitación ADIF 4.26/27520.0047 de interconexión DWDM. | Apartado 7: «interconexión de centro de procesamiento de datos (CDPS) Delicias-Atocha-Villaverde». | Recuperar pliego y direcciones físicas, contrastar anfitriones y edificios antes de altas. Es una licitación de comunicaciones, no apertura o ampliación de capacidad de tres CPD. No usar la dirección del órgano contratante como ubicación. |
+
+La publicación semanal de ADIF es verificable, pero no se afirma que la contratación naciera esa semana: el anuncio cita un envío anterior al DOUE. No se deducen tres altas ni un campus único de los tres nombres.
+
+## Resultados sin fuente primaria suficiente
+
+No se añaden hallazgos separados para las siguientes afirmaciones del mismo asunto. [DCD, 16 de octubre](https://www.datacenterdynamics.com/es/noticias/arag%C3%B3n-tramita-un-centro-de-datos-de-570-mw-en-san-mateo/) y [elDiario.es, 16 de octubre](https://www.eldiario.es/aragon/economia/impulso-segundo-centro-datos-san-mateo-gallego-sustituye-proyectaba-vantage-villanueva_1_13589955.html) describen siete edificios y un objetivo de 570 MW para Copiapo. El segundo medio relaciona la iniciativa con el antiguo proyecto de Vantage. El BOA recuperado confirma nombre, promotor y consultas, pero no esas cifras ni la continuidad física o jurídica. No se tipifican esos MW como IT, no se registran permisos eléctricos como concedidos y no se extrapola el agua de la primera fase al campus completo. La referencia a O-Green se conserva como pista periodística, no como operador confirmado.
+
+## Candidatas a Últimos cambios
+
+| Título breve | Fecha del hecho publicable | Identificador afectado | Fuente primaria y condición |
+|---|---|---|---|
+| Copiapo abre consultas ambientales en San Mateo de Gállego | Publicación 2026-10-15; firma 2026-09-15 | `copiapo-san-mateo-consultas-20261015` (candidata, todavía sin destino de proyecto) | [BOA20261015033](https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1470394820808). Puede merecer novedad editorial cuando una revisión identifique y cree el destino. Limitar el título al trámite. |
+
+ADIF queda como pista de cobertura, sin propuesta editorial de apertura. El 19 de octubre es la fecha de detección de estas candidatas, **no** la fecha del acto ni de incorporación al mapa. No se escribe `data/actualizaciones.yaml`.
+
+## Trabajo mensual: REE
+
+Se contrastó el [informe local](informe-ree.md), `data/red/capacidad.yaml` y la [página oficial](https://www.ree.es/es/clientes/consumidor/acceso-conexion/conoce-la-capacidad-de-acceso), que sigue indicando datos del **1 de octubre de 2026**. El [CSV enlazado](https://www.ree.es/sites/default/files/12_CLIENTES/Documentos/2026_10_01_GRT_demanda.csv) se descargó de nuevo: 361.536 bytes, idénticos al original archivado, SHA-256 `485ad3a29888125f946f3fe9b832f7f7116709d45e226d928982e7521e19bd1a`. Esto es una comparación documental, no una aceptación de huella ni una nueva revisión factual de cada nudo.
+
+Se leyeron las cuatro filas de cabecera y los 937 registros. Permanecen los identificadores «Nombre y tensión del nudo», «Código de subestación», «Comunidad Autónoma» y los grupos de capacidad otorgada, solicitada, margen y disponible. Se mantienen separados demanda/almacenamiento, RdT/RdD, CEP/NO CEP y CH/SH. La capacidad de acceso es potencia activa (MW); la tensión del nudo se expresa en kV. Las posiciones son recuentos y los criterios limitantes son texto; la cabecera no añade una fila general de unidades. No se convierten MVA, no se interpretan estos MW como IT y no se suman márgenes compartidos.
+
+**No procede reconciliar otra edición ni cambiar fecha o cifras.** Cuando REE enlace un CSV posterior, comparar primero sus cabeceras y unidades; reconciliar por código de subestación y tensión/nombre para distinguir barras, preservando códigos UFD/VS, ceros y valores ausentes. Revisar altas, bajas y cambios antes de proponer conjuntamente valores y fecha. No deducir conexiones de campus por proximidad.
+
+## Trabajo mensual: normas en tramitación y fechas prometidas
+
+La revisión mensual solicitada justifica estas comprobaciones puntuales de fuentes canónicas ya revisadas el 17. No se vuelve a ejecutar toda la batería de búsquedas históricas. Los resultados que no cambian se vinculan a seguimientos existentes.
+
+| Asunto y seguimiento | Evidencia y comprobación del 19 de octubre | Resultado y siguiente condición |
+|---|---|---|
+| Decreto CPD — `prd-cpd-publicacion-definitiva` | Títulos de los sumarios BOE del 12 al 17; consulta de novedades MITECO posterior al 17. Los resultados remiten al [proyecto](https://www.miteco.gob.es/en/energia/eficiencia/centros-de-datos.html) y a la nota de agosto. | Sin publicación definitiva localizada. No prueba inexistencia de actuaciones no publicadas. La promesa de octubre aún no ha vencido. Retomar con acuerdo o texto definitivo; mantener revisión del 31. |
+| RD 731 — `rd731-apertura-solicitudes` | Barrido BOE y consulta acotada posterior al 17; el resultado identificable es el [RD ya registrado](https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-19327). | No localizada orden de apertura y baremo. El transcurso de un mes no abre solicitudes por sí solo. Mantener seguimiento del 21, sin repetir búsquedas generales sin documento nuevo. |
+| Etiquetas — `etiquetado-ue-control-publicacion` | [JSON oficial de fases](https://webgate.ec.europa.eu/regdel/web/delegatedActs/2983/phasesEvents), recuperado por descarga directa tras fallo de la herramienta web: `SCRUTINY_FINISHED` y `PUBLISHED` tienen `phasePending=true`, eventos vacíos y fecha nula. | No hay evento completado de publicación en este registro. No se interpretan las etapas futuras como DOUE publicado. Retomar cuando cambie a evento fechado completado y contrastar DOUE/CELEX; no renovar fechas factuales. |
+| Calor residual — `prd-calor-residual-2026` | [Audiencia MITECO](https://www.miteco.gob.es/es/energia/participacion/2026/detalle-participacion-publica-k-831.html), recuperada por descarga alternativa: «Cerrado», 27 de mayo–17 de junio. Barrido de títulos BOE sin texto definitivo identificado. | El cierre no acredita aprobación. No crear obligaciones de un borrador. Retomar ante publicación definitiva. |
+| CADA — `propuesta-cada-2026` | [OEIL 2026/0138(COD)](https://oeil.europarl.europa.eu/oeil/en/procedure-file?reference=2026/0138(COD)): «Awaiting committee decision»; última remisión plenaria listada, 17 de septiembre. | Continúa como propuesta; sin nueva entrada en vigor acreditada. Retomar ante decisión de comisiones o acto adoptado. |
+| Estándares mínimos UE — `consulta-estandares-minimos-centros-datos-2026` | [DG ENER](https://energy.ec.europa.eu/news/minimum-performance-standards-data-centres-europe-public-consultation-launched-2026-09-21_en) conserva el cierre del 14 de diciembre de 2026. | Fecha futura, no vencida. La propuesta prevista para 2027 no es una norma vigente. |
+| Acceso flexible — `acceso-flexible-apertura-gestores` | Releída la ficha y el seguimiento del 17; hitos estructurados de 2028 y 2029 aún futuros. | No se ha hecho una nueva auditoría de cada gestor ni localizado un aviso nuevo que la justifique. Sigue sin acreditarse apertura real por modalidad; un formulario genérico no basta. |
+| NxN Madrid — `colliers-20261008-fases` | Hito vencido 2026-09; la [web del operador](https://nxndata.com/) conserva «Próxima inauguración en 2026» junto a lenguaje de centro operativo. | Sin confirmación inequívoca nueva de apertura, dirección o MW IT. No se duplica la candidata. Retomar con comunicación fechada o identificación del edificio. |
+| CESGA — `cesga-ubicacion-recepcion` | Hito vencido 2026-06-12. La [convocatoria](https://www.cesga.es/presentacion-nueva-infraestructura-cesga/) sigue anunciando una presentación en el edificio CINC de Cidade da Cultura. Revisados antecedentes y contrato descritos en la ficha. | El lugar del evento no identifica alojamiento de equipos ni recepción. FTIV sigue adquirido y sin instalación acreditada; no trasladar FTIII/Qmio desde Campus Sur. Retomar con acta de recepción, inventario físico fechado o anuncio de servicio que nombre el edificio. |
+
+Los dos hitos vencidos siguen abiertos; no se convierten en fechas cumplidas ni cancelaciones. No se renueva la verificación factual de las fichas por comprobar que las páginas responden.
+
+## Búsquedas sin resultado suficiente, fallos y condiciones para retomarlas
+
+Todas estas consultas se realizaron el **2026-10-19**. En las consultas de descubrimiento se usó el intervalo `after:2026-10-11 before:2026-10-19`, comprobando después la fecha visible: el buscador devolvió también documentos antiguos. El nuevo intervalo semanal justifica el barrido general, pero no reabre automáticamente pistas fallidas concretas.
+
+| Identificador / ámbito | Fecha | Consulta o URL | Resultado y límite | Motivo de esta ejecución / condición para retomarla |
+|---|---|---|---|---|
+| `boe-semana-20261019` | 2026-10-19 | `"centro de datos"` con intervalo semanal en `boe.es`; descarga de sumarios `/boe/dias/2026/10/12/` a `/18/` | Seis sumarios recuperados; domingo 18, HTTP 404. Lectura de títulos buscando centro de datos/procesamiento, CPD, data center, inversiones/proyectos estratégicos, baremo, calor residual, soberanía digital, Amazon y Copiapo. ADIF seleccionado; supervisión técnica de Taibilla descartada por no probar cambios físicos. | Nuevo intervalo. No repetir el domingo como fallo transitorio; revisar próximos sumarios y anuncios identificados. No se leyeron todos los anexos. |
+| `autonomicas-20261019` | 2026-10-19 | `("centro de datos" OR "data center")` + intervalo en grupos `boa.aragon.es`, `bocm.es`, `dogc.gencat.cat`, `doe.juntaex.es`; `euskadi.eus`, `dogv.gva.es`, `navarra.es`, `larioja.org` | Sin otro acto seleccionable en los resultados. El portal general BOA no entregó texto; el anuncio Copiapo se recuperó mediante su enlace individual localizado después. | Nueva semana. Retomar con anuncio o expediente preciso; no atribuir cobertura íntegra a una consulta agrupada. |
+| `autonomicas-cpd-20261019` | 2026-10-19 | `("centro de datos" OR "CPD")` + intervalo en grupos `docm.jccm.es`, `bocyl.jcyl.es`, `juntadeandalucia.es`, `xunta.gal`; `caib.es`, `gobiernodecanarias.org`, `borm.es`, `asturias.es`, `cantabria.es`, `ceuta.es`, `melilla.es` | Resultados antiguos, catálogos de servicios y páginas sin hecho nuevo fechado. Sin novedad retenida. | Nueva semana. Una publicación concreta o un sumario nuevo justifica volver. No se inspeccionaron todos los boletines ni sedes ambientales. |
+| `administraciones-20261019` | 2026-10-19 | `"centro de datos" "octubre" "2026"` en `aragonhoy.es` y `comunidad.madrid`, acotado desde el 12 | Madrid devuelve resultados no pertinentes y agenda de Nabiax de septiembre; sin nuevo acto seleccionable. | Nuevo intervalo; no duplicar primera piedra ya publicada. Reabrir con acto distinto. |
+| `copiapo-san-mateo-consultas-20261015` | 2026-10-19 | `"San Mateo" "O-Green" "2026"`; `site:aragon.es "San Mateo" "Ecoindustriales"`; `"Copiapo Renovables" "consultas"`; `"500201/71/2026/08944"`; [INAGA](https://www.aragon.es/inaga/anunciopublico) | Las primeras consultas no recuperaron el expediente; el número permitió localizar BOA20261015033 vía Oficius. Se leyó el PDF primario. El portal del documento inicial falló en web y descarga directa con error SSL `UNEXPECTED_EOF_WHILE_READING`. | Noticias nuevas del 16 y referencia precisa del BOA justificaron las búsquedas sucesivas. Retomar con URL directa del documento inicial o acceso funcional al expediente, no repetir la consulta genérica. |
+| `adif-cpd-interconexion-20261016` | 2026-10-19 | [Plataforma de contratación, enlace del BOE](https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=sTBv1JItK33gL1BHd3qjQA%3D%3D) | Herramienta web no pudo acceder. No se leyó el pliego ni se confirmaron edificios. | Nueva licitación. Retomar con enlace accesible a los pliegos o documentación de adjudicación. |
+| `canalink-candelaria-20261013` | 2026-10-19 | `"Canalink" "Candelaria" "octubre" "2026"`; búsquedas en `canalink.com`, `canalink.es`, `diariodetenerife.info` | Prensa del 13 sobre cables; fuentes localizadas no acreditan cambio de un CPD del registro. El tendido se relata como hecho del día 11. | Pista nueva de prensa. Retomar solo con vínculo documental a una instalación física o puesta en servicio pertinente; no añadir capacidad a D-ALiX por asociación. |
+| `rd731-apertura-solicitudes` / `prd-cpd-publicacion-definitiva` | 2026-10-19 | `"centros de datos" "731/2026" "orden"` y `"centros de datos" "real decreto" site:miteco.gob.es`, del 18 al 19; títulos BOE semanales | Sin desarrollo nuevo recuperado; resultados remiten a textos anteriores. | Comprobación mensual obligatoria y extensión temporal posterior a la revisión del 17. Retomar con orden/baremo o acuerdo/texto definitivo, conservando plazos existentes. |
+| `etiquetado-ue-control-publicacion` | 2026-10-19 | Endpoint `delegatedActs/2983/phasesEvents` | Fallo de herramienta web resuelto por descarga directa. Publicación sigue pendiente; no es ausencia de acceso ni texto nuevo. | Revisión mensual; próximo intento al aparecer evento fechado completado. |
+| `prd-calor-residual-2026` | 2026-10-19 | Página MITECO `detalle-participacion-publica-k-831.html` | Fallo web resuelto por descarga directa; audiencia cerrada, sin novedad de aprobación. | Revisión mensual. Retomar con texto definitivo, no por cambio de plantilla. |
+| `colliers-20261008-fases` / `cesga-ubicacion-recepcion` | 2026-10-19 | `site:nxndata.com Madrid inauguración octubre 2026`; `site:cesga.es Radiance Spark junio 2026 inauguración`; páginas canónicas citadas arriba | Sin nueva confirmación suficiente en los resultados; páginas mantienen anuncio o formulaciones ambiguas. | Revisión mensual de los dos hitos vencidos. No repetir hasta comunicación fechada de apertura/recepción o documento nuevo. |
+
+No se reabren Méntrida, IAE de AWS ni las ubicaciones GPU de ARQUIMEA, Arsys, Gradiant e Idoven: no se localizó un disparador nuevo y sus seguimientos del 17 siguen vigentes. Tampoco se reinterpreta como noticia una diferencia de plantilla, una migración del método PDF o la falta de texto histórico. Los 506 cambios técnicos pendientes y sus categorías son antecedentes de monitorización, no 506 cambios factuales ni una medida de exactitud.
+
+## Hallazgos descartados como novedades o cambios de ficha
+
+| Pista | Fuente / fecha comprobada | Motivo |
+|---|---|---|
+| AECOM / Nostrum Evergreen | [Nota primaria AECOM](https://aecom.com/press-releases/aecom-appointed-to-deliver-nostrum-groups-data-centre-in-southwest-spain/), 2025-12-02 | El índice apareció como reciente en búsqueda, pero la nota es de 2025. No acredita licencia obtenida ni obras en octubre. Retomar con permiso o avance fechado distinto. |
+| Blackfuel en BCN1 | [DCD](https://www.datacenterdynamics.com/es/noticias/digital-realty-integra-inferencia-de-ia-y-refrigeraci%C3%B3n-l%C3%ADquida-en-barcelona/), 2026-10-14 | Ya incorporado mediante `blackfuel-bcn1-20261015`; sigue abierto `blackfuel-bcn1-puesta-servicio`. La noticia no acredita recepción ni recuento nuevo. |
+| Colliers y CNMC | Publicaciones del 8 y 9 recuperadas en búsqueda semanal | Fuera de ventana y ya contrastadas en decisiones del 14/17. No repetir cifras ni recomendaciones como hechos nuevos. |
+| Solaria en Uruguay | [MIEM Uruguay](https://www.gub.uy/ministerio-industria-energia-mineria/comunicacion/noticias/uruguay-recibira-inversion-historica-5700-millones-dolares-para-instalar), 2026-10-14 | Fuera del ámbito español. No se traslada capacidad a Puertollano. |
+| Índices comerciales y agendas | DC Market Insights, ScienceShot, Spain DC; fechas de actualización variables | Una fecha de rastreo o actualización del índice no fecha la instalación. No se usan sus agregados como cambios de edificios. |
+| Canalink y FOSMARIN | DCD, 2026-10-13 | Conectividad e investigación sin cambio de emplazamiento CPD identificado; no se crean nuevas candidatas para llenar el cupo. |
+
+## Entrega y validación
+
+Se añaden únicamente las dos candidatas descritas a `research/hallazgos.yaml`, ambas `awaiting_primary`, sin `revisado`. No se crea propuesta de alta: faltan documentos para resolver emplazamientos y correspondencias; tampoco se introduce una fecha de revisión factual de alta para hacer pasar el esquema. Los trámites confirmados quedan documentados en este informe y sus fuentes.
+
+Validación completada con `validarEntrega` del propio proyecto en un entorno temporal, reutilizando las dependencias instaladas: código 0, dos candidatas añadidas, cero propuestas y cero conflictos. Las comprobaciones de ámbito, conservación de decisiones, esquema y simulación devolvieron `ok`. `git diff --check` pasó. Solo cambiaron `research/revision-semanal.md` y `research/hallazgos.yaml`; las entradas anteriores permanecen intactas. No se ejecutaron comandos que regenerasen informes técnicos en el checkout. No hubo commits, publicación ni contacto con terceros.
+
+---
+
+## Archivo del informe anterior (12 de octubre e integración del 14)
+
+El texto que sigue es histórico. Sus decisiones pendientes y sus recuentos no describen esta ejecución; prevalecen `data/revision.yaml` y la revisión del 19 anterior.
+
 > Informe original del 12 de octubre, conservado como antecedente. La revisión e integración del 14 de octubre figura al final. Las propuestas enlazan ahora a las fichas revisadas.
 
 # Revisión semanal de centros de datos en España
