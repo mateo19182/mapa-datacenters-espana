@@ -589,6 +589,10 @@ if (existsSync(RUTA_CENTRALES)) {
 const contorno = join(RAIZ, 'data/geo/contorno.geojson')
 if (existsSync(contorno)) copyFileSync(contorno, join(PUBLICO, 'contorno.geojson'))
 
+// La tabla de la carrera de clústeres de IA se genera en analisis/clusters-ia.
+const clustersIa = join(RAIZ, 'analisis/clusters-ia/data/clusters.csv')
+if (existsSync(clustersIa)) copyFileSync(clustersIa, join(PUBLICO, 'clusters-ia.csv'))
+
 // La propia base SQLite se publica como descarga.
 copyFileSync(join(RAIZ, 'build/datacenters.db'), join(PUBLICO, 'datacenters.db'))
 
@@ -596,7 +600,7 @@ copyFileSync(join(RAIZ, 'build/datacenters.db'), join(PUBLICO, 'datacenters.db')
 // para que Astro los renderice como páginas. Se generan, no se editan a mano.
 const CONTENIDO = join(RAIZ, 'src/contenido')
 mkdirSync(CONTENIDO, { recursive: true })
-for (const doc of ['red-electrica', 'renovables', 'cobertura']) {
+for (const doc of ['red-electrica', 'renovables', 'cobertura', 'clusters-ia']) {
   const origen = join(RAIZ, `research/${doc}.md`)
   writeFileSync(
     join(CONTENIDO, `${doc}.md`),

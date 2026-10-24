@@ -1,0 +1,28 @@
+---
+import Base from '../../layouts/Base.astro'
+import { Content as Documento } from '../../contenido/clusters-ia.md'
+import { REPOSITORIO } from '../../lib/enlaces.js'
+---
+<Base titulo="Carrera de clústeres de IA" descripcion="Los doce mayores clústeres de GPU y aceleradores de IA del mundo, de 2007 a 2028, por FLOP/s de 16 bits; qué cuenta como clúster y dónde queda España.">
+  <div class="contenedor-estrecho">
+    <p class="migas"><a href="/computo">Cómputo y GPU</a> · Guía</p>
+    <figure class="video">
+      <video controls preload="metadata" poster="/video/clusters-ia.jpg" width="1920" height="1080">
+        <source src="/video/clusters-ia.mp4" type="video/mp4" />
+        <a href="/video/clusters-ia.mp4">Descargar el vídeo (MP4)</a>
+      </video>
+      <figcaption class="pequeno silencio">Vídeo en inglés, 1 min 53 s. Datos: Epoch AI (CC BY) y fuentes públicas; <a href="/datos/clusters-ia.csv" download>tabla en CSV</a> · <a href={`${REPOSITORIO}/tree/main/analisis/clusters-ia`}>código</a>.</figcaption>
+    </figure>
+    <article class="prosa"><Documento /></article>
+    <p class="volver"><a href="/computo">Volver al inventario de cómputo</a></p>
+  </div>
+</Base>
+<style>
+  .video { margin: 1.5rem 0 2rem; }
+  .video video { width: 100%; height: auto; display: block; background: #121211; border-radius: 4px; }
+  .video figcaption { margin-top: .5rem; }
+  .volver { margin: 2rem 0 3rem; }
+  .prosa { overflow-wrap: anywhere; }
+  .prosa :global(table) { font-size: .85rem; }
+  .prosa :global(pre) { overflow-x: auto; }
+</style>

@@ -1,0 +1,49 @@
+action,match_key,label,group,start,end,chips,chip_type,flops16,source,confidence,note
+rename,Undisclosed Chinese system #112,Pengcheng Cloud Brain II,China,2020-09-15,,4096.0,Huawei Ascend 910,1.049e+18,"Pengcheng Lab / Huawei announcements; IO500 Nov 2020; Epoch row: 4k chips, 1e18 FP16, 2e18 INT8, public, 3 MW",high,"Ascend 910 = 256 TF FP16 / 512 TOPS INT8 -> 1.05e18 / 2.1e18 matches exactly; public lab, 2020 H2"
+remove,Undisclosed Chinese system #120,Sunway OceanLight (Wuxi),China,2021-03-15,,107520.0,Sunway SW26010-Pro,5.946e+18,"BaGuaLu PPoPP'22 (doi 10.1145/3503221.3508417): SW26010-Pro 55.3 TF FP16; NextPlatform 2022-03-12/2023-09-15: 107,520 nodes; Gordon Bell 2021",high,"107,520 x 55.3 TF = 5.95e18 vs Epoch 6e18 / ~1e5 chips / public. NOTE: many-core CPU, not a GPU/accelerator - consider remove if scope is strict"
+rename,Undisclosed Chinese system #126,Fire-Flyer 2 (DeepSeek),China,2021-07-15,,10000.0,NVIDIA A100 PCIe,3.12e+18,"DeepSeek, Fire-Flyer AI-HPC, SC24 / arXiv 2408.14158: 10,000 PCIe A100, built 2021",high,"Epoch row: 10k chips, 3e18 FP16, 6e18 INT8, private, 6 MW, 2021-07 -> A100 x10k exactly; owned by High-Flyer (DeepSeek parent)"
+rename,Undisclosed Chinese system #134,Alibaba Cloud Zhangbei,China,2022-08-30,,,,1e+19,"CCTV / China Daily / Alibaba Cloud dev blog 2022-08-30: Zhangbei super AI computing center launched, 12 EFLOPS",medium,Epoch 1e19 private 2022-08 vs announced 12 EF build-out (precision unstated); keep Epoch value. Same day Alibaba launched 3 EF Ulanqab
+rename,Undisclosed Chinese system #164,China Mobile Harbin,China,2024-08-30,,18000.0,"domestic AI accelerators (100% domestic, likely Ascend 910B)",6.9e+18,"Heilongjiang gov / Xinhua 2024-08-31; SASAC 2024-09-10: >18,000 cards, 6.9 EF half precision, operational 2024-08-30",high,"Epoch row: 2024-08, 2e4 chips (rounded), 7e18, public/private (SOE)"
+rename,Undisclosed Chinese system #173,Chinese private 10k-GPU (2025),China,2025-02-15,,10000.0,likely NVIDIA H800/H100-class,9.895e+18,Epoch AI supercomputers dataset (anonymized row),medium,16-bit value missing in Epoch; clusters.csv falls back to Max OP/s (2e19 = 8-bit). 2e19/10k = ~2 PF/chip only fits Hopper FP8 -> BF16 ~9.9e18 (half current value)
+rename,Undisclosed Chinese system #113,Chinese state system (20k chips),China,2020-09-15,,20000.0,,6e+17,Epoch AI supercomputers dataset (anonymized row),high,"public, 20 MW; 30 TF/chip suggests HPC/CPU system"
+rename,Undisclosed Chinese system #118,Chinese state system (40k chips),China,2020-11-15,,40000.0,,1e+18,Epoch AI supercomputers dataset (anonymized row),high,"public, 30 MW; 25 TF/chip suggests HPC/CPU system"
+rename,Undisclosed Chinese system #121,Chinese private cluster (2021),China,2021-04-15,,,,4e+18,Epoch AI supercomputers dataset (anonymized row),high,"private, 4 EF. Candidate: SenseTime AIDC Lingang (3.74 EF) but it opened 2022-01, so not claimed"
+rename,Undisclosed Chinese system #133,Chinese state-backed AI (2022),China,2022-07-15,,,,2e+18,Epoch AI supercomputers dataset (anonymized row),high,public/private
+rename,Undisclosed Chinese system #149,Chinese private 10k-chip (2023),China,2023-09-15,,10000.0,,4e+18,Epoch AI supercomputers dataset (anonymized row),high,"private, 10 MW, 4e18 FP16/8e18 INT8. Fits ByteDance MegaScale (12,288 Ampere GPUs, arXiv 2402.15627) or iFlytek Feixing-1 (10k Ascend 910B, 2023-10); ambiguous so not claimed"
+rename,Undisclosed Chinese system #151,Chinese private cluster (2024),China,2024-01-15,,,,5e+18,Epoch AI supercomputers dataset (anonymized row),high,"private, 5 EF"
+rename,Undisclosed Chinese system #154,Chinese state-backed 20EF '24,China,2024-03-15,,,,2e+19,Epoch AI supercomputers dataset (anonymized row),high,public/private; no public 20 EF single site found for 2024-03
+rename,Undisclosed Chinese system #160,Chinese state-backed 8EF '24,China,2024-05-15,,,,8e+18,Epoch AI supercomputers dataset (anonymized row),high,"public/private. China Mobile Hohhot (20k cards, 6.7 EF, online 2024-04/06) is a candidate but value differs"
+rename,Undisclosed Chinese system #162,Chinese state-backed 40k '24,China,2024-06-15,,40000.0,,9e+18,Epoch AI supercomputers dataset (anonymized row),high,public/private
+rename,Undisclosed Chinese system #163,Chinese private 8k-GPU (2024),China,2024-08-15,,8000.0,likely NVIDIA H800/H100-class,8e+18,Epoch AI supercomputers dataset (anonymized row),high,"private, 10 MW; 1e18/chip FP16, 2.5e18 8-bit -> Hopper-class"
+rename,Undisclosed Chinese system #167,Chinese state-backed 30EF '24,China,2024-10-15,,20000.0,,3e+19,Epoch AI supercomputers dataset (anonymized row),high,public/private; 1.5 PF/chip FP16 is implausible for 2024 China -> chip count or FLOP/s likely off
+rename,Undisclosed Chinese system #171,Chinese private 10k-chip (2025),China,2025-01-15,,10000.0,,5e+18,Epoch AI supercomputers dataset (anonymized row),high,"private; 16-bit missing, uses Max OP/s"
+rename,Undisclosed Chinese system #172,Chinese state-backed 10EF '25,China,2025-02-15,,,,1e+19,Epoch AI supercomputers dataset (anonymized row),high,public/private
+add,,Google TPU v5e cluster (50k),Google,2023-11-08,2025-08-01,50944.0,Google TPU v5e,1.004e+19,"Google Cloud blog 2023-11-08 'world's largest distributed LLM training job on TPU v5e': 50,944 chips, 10 EF 16-bit",high,"199 pods on one Jupiter fabric; ~10.1k H100e, top-5 at the time. End at cutover (Google DC timelines take over)"
+add,,Google TPU v5p cluster,Google,2024-04-09,2025-08-01,49600.0,Google TPU v5p,2.275e+19,Google Cloud blog 2024-10-30 (Trillium preview): Trillium 91 EF cluster 'is four times more than the largest cluster we built with TPU v5p',medium,flops = 91/4 EF; chips derived (/459 TF). Start = v5p GA (Next '24) - estimate. Gemini 2.5 tech report: trained on TPU v5p
+add,,Google TPU v6e Trillium cluster,Google,2024-10-30,2025-08-01,99000.0,Google TPU v6e,9.1e+19,"Google Cloud blog 2024-10-30 (91 EF in a single TPU cluster); Trillium GA blog 2024-12-11 (100k chips per Jupiter fabric, Gemini 2.0 trained on Trillium)",high,"~92k H100e: #3-4 in 2024-11..2025-07, the only Google entry near the top before cutover"
+rename,Meta 100k,Meta Llama 4 cluster,Meta,,,100000.0,NVIDIA H100,,"Meta Q3 2024 earnings call 2024-10-30: training Llama 4 'on a cluster bigger than 100,000 H100s'",high,label only; no public site name
+rename,Meta GenAI 2024a,Meta Llama 3 cluster (RoCE),Meta,,,24576.0,NVIDIA H100,,Meta engineering blog 2024-03-12 'Building Meta's GenAI infrastructure',high,"Meta eng blog 2024-03-12: two identical 24,576-H100 clusters, RoCE vs InfiniBand fabric; Llama 3 trained on them. Epoch does not say which row is which; sizes identical so assignment is cosmetic"
+rename,Meta GenAI 2024b,Meta Llama 3 cluster (InfiniBand),Meta,,,24576.0,NVIDIA H100,,Meta engineering blog 2024-03-12,high,"Meta eng blog 2024-03-12: two identical 24,576-H100 clusters, RoCE vs InfiniBand fabric; Llama 3 trained on them. Epoch does not say which row is which; sizes identical so assignment is cosmetic"
+rename,Meta Research SuperCluster (RSC-1),Meta Research SuperCluster,Meta,,,,,,Meta AI blog 2022-01-24,high,label only
+rename,Microsoft GPT-4 cluster,Microsoft/OpenAI GPT-4 cluster,OpenAI / Microsoft,,,,,,Epoch,high,label only
+rename,Azure OpenAI GPT-3 Cluster,Microsoft/OpenAI GPT-3 cluster,OpenAI / Microsoft,,,,,,Microsoft blog 2020-05-19,high,label only
+rename,Microsoft Azure ND H100 v5 VM,Azure ND H100 v5 cluster,OpenAI / Microsoft,,,,,,Epoch,high,label only
+rename,NVIDIA CoreWeave Eos-DFW,NVIDIA Eos-DFW (CoreWeave),Other,,,,,,"NVIDIA blog 2023-11-08 (MLPerf 3.1, 10,752 H100)",high,label only
+rename,Oracle OCI Supercluster A100s,Oracle OCI A100 Supercluster,Other,,,,,,Epoch,high,label only
+rename,Oracle OCI Supercluster H100s,Oracle OCI H100s (xAI),xAI,,,,,,Epoch note: xAI renting 16k Oracle H100s (May 2024),medium,"label only; Epoch users = Cohere, xAI"
+rename,Oracle OCI Supercluster H200s,Oracle OCI H200 Supercluster,Other,,,,,,Epoch,high,label only; Epoch itself unsure it was ever built as one cluster
+rename,Oracle OCI MI300x,Oracle OCI MI300X Supercluster,Other,,,,,,Epoch,high,label only
+rename,CoreWeave H200s,CoreWeave H200 cluster,Other,,,,,,Epoch,high,label only
+rename,NexGen Cloud Hyperstack AQ Compute Supercomputer,NexGen Hyperstack (Norway),Other,,,,,,"Epoch (DCD); owner NexGen Cloud, site AQ Compute Hønefoss",high,"group fix: private neocloud, regex mis-tags it Public HPC via 'supercomput'"
+rename,Tesla Training Cluster,Tesla auto-labeling cluster,Other,,,4032.0,NVIDIA A100,,"Tesla AI Day 2021 / DCD: 5,760-GPU training + 4,032-GPU auto-labeling clusters",medium,"the 4,032-GPU row is the auto-labeling cluster, not the main training cluster"
+rename,Gemini 1.0 Ultra training cluster A,Google Gemini 1 TPU v4 cluster,Google,,,,,,Gemini 1.0 tech report,high,label only
+rename,Paper on PaLM,Google PaLM TPU v4 pods,Google,,,,,,"PaLM paper (6,144 TPU v4 over 2 pods)",high,label only
+rename,Google MLPerf 0.7 Submission,Google TPU v3 MLPerf pod,Google,,,,,,"Google Cloud blog 2020-07-29 (4,096-chip TPU v3 pod)",high,label only
+rename,Oak Ridge NL Frontier,Frontier (ORNL),Public HPC,,,,,,TOP500,high,label only
+rename,Lawrence Livermore NL El Capitan,El Capitan (LLNL),Public HPC,,,,,,TOP500,high,label only
+rename,Lawrence Berkeley NL NERSC Perlmutter,Perlmutter (NERSC),Public HPC,,,,,,TOP500,high,label only
+rename,EuroHPC LUMI,"LUMI (EuroHPC, Finland)",Public HPC,,,,,,TOP500,high,label only
+rename,EuroHPC Leonardo,"Leonardo (EuroHPC, Italy)",Public HPC,,,,,,TOP500,high,label only
+rename,"Jupiter, Jülich",JUPITER (Jülich),Public HPC,,,,,,TOP500,high,label only
+rename,Alps Supercomputer,Alps (CSCS),Public HPC,,,,,,TOP500,high,label only
+rename,Mare Nostrum 5,MareNostrum 5 (BSC),Public HPC,,,,,,TOP500,high,label only
