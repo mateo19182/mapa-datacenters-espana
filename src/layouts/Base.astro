@@ -10,7 +10,7 @@ const ruta = Astro.url.pathname.replace(/\/$/, '') || '/'
 const activo = (href) => (ruta === href || (href !== '/' && ruta.startsWith(href)) ? 'page' : undefined)
 
 const grupos = [
-  { titulo: 'Explorar', enlaces: [['/proyectos', 'Emplazamientos'], ['/computo', 'Cómputo y GPU'], ['/companias', 'Operadores'], ['/regiones', 'Comunidades']] },
+  { titulo: 'Explorar', enlaces: [['/proyectos', 'Emplazamientos'], ['/computo', 'Cómputo y GPU'], ['/guias/clusters-ia', 'Carrera de clústeres de IA'], ['/companias', 'Operadores'], ['/regiones', 'Comunidades']] },
   { titulo: 'Energía', enlaces: [['/red-electrica', 'Red eléctrica'], ['/renovables', 'Renovables y almacenamiento'], ['/guias/red-electrica', 'Guía de acceso a la red'], ['/guias/renovables', 'Guía de contratos y energía']] },
 ]
 const referencias = [
