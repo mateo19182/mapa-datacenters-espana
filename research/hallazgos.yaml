@@ -1,4 +1,105 @@
-# Candidatas de investigación, acumulativas y pendientes de revisión.
-# El trabajo programado solo añade entradas; no cambia decisiones ni publica hechos.
 version: 1
-hallazgos: []
+hallazgos:
+  - id: copiapo-san-mateo-consultas-20261015
+    titulo: Identificar el campus Copiapo en consultas previas de San Mateo
+    tipo: proyecto
+    estado: awaiting_primary
+    prioridad: alta
+    detectado: 2026-10-19
+    revisar_antes: 2026-11-02
+    motivo: El BOA de 15 de octubre confirma consultas previas del expediente INAGA
+      500201/71/2026/08944, promovido por Copiapo Renovables, SL. Falta
+      recuperar el documento inicial para localizar el recinto y confirmar la
+      relación con el antiguo proyecto Vantage de El Olivar. Las cifras de
+      prensa no se incorporan como MW IT ni permisos concedidos.
+    siguiente_paso: Recuperar documento inicial y planos del expediente; separar
+      campus de conexiones exteriores, contrastar titular y operador y
+      continuidad con El Olivar. No confundir con AWS El Boyal ni trasladar
+      coordenadas o permisos históricos.
+    enlaces:
+      - href: /cobertura
+        texto: Cobertura pendiente
+      - href: /proyecto/vantage-villanueva-de-gallego-el-olivar
+        texto: Antecedente de El Olivar
+    fuentes:
+      - url: https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VEROBJ&MLKOB=1470394820808
+        titulo: BOA20261015033, consultas previas del Campus Data Center San Mateo de
+          Gállego
+        primaria: true
+      - url: https://www.eldiario.es/aragon/economia/impulso-segundo-centro-datos-san-mateo-gallego-sustituye-proyectaba-vantage-villanueva_1_13589955.html
+        titulo: "elDiario.es, 16 de octubre: Copiapo y relación con el anterior proyecto
+          de Vantage"
+        primaria: false
+  - id: adif-cpd-interconexion-20261016
+    titulo: Identificar los CPD de ADIF Delicias, Atocha y Villaverde
+    tipo: proyecto
+    estado: awaiting_primary
+    prioridad: media
+    detectado: 2026-10-19
+    revisar_antes: 2026-11-02
+    motivo: El BOE de 16 de octubre publica la licitación 4.26/27520.0047 para
+      interconexión DWDM de los CPD Delicias-Atocha-Villaverde. No se han
+      recuperado los pliegos ni identificado edificios y anfitriones. La
+      licitación no acredita aperturas o ampliaciones de cómputo.
+    siguiente_paso: Recuperar pliegos y direcciones de los centros, contrastar
+      anfitriones y duplicados antes de proponer altas. No usar la dirección del
+      órgano contratante ni interpretar la interconexión como puesta en
+      servicio.
+    enlaces:
+      - href: /cobertura
+        texto: Cobertura pendiente
+    fuentes:
+      - url: https://www.boe.es/diario_boe/txt.php?id=BOE-B-2026-33587
+        titulo: BOE-B-2026-33587, licitación ADIF de interconexión DWDM
+          Delicias-Atocha-Villaverde
+        primaria: true
+  - id: upm-iqm-spark-ubicacion-20261023
+    titulo: Identificar el edificio de la UPM previsto para IQM Spark
+    tipo: proyecto
+    estado: awaiting_primary
+    prioridad: alta
+    detectado: 2026-10-26
+    revisar_antes: 2026-11-25
+    motivo: Telefónica anuncia el 23 de octubre un IQM Spark para la Universidad
+      Politécnica de Madrid antes de terminar 2026, sin identificar edificio.
+      La pertenencia a la UPM no permite asignarlo a CeSViMa ni acredita recepción.
+    siguiente_paso: Localizar edificio y sala técnica en documentación de UPM o
+      del proveedor; contrastar el anfitrión antes de crear ficha o añadir
+      cómputo. Confirmar recepción por separado y no inferir número de cúbits.
+    enlaces:
+      - href: /cobertura
+        texto: Ubicación pendiente
+      - href: /proyecto/cesvima-upm-pozuelo-magerit
+        texto: CeSViMa, sin vínculo acreditado con Spark
+    fuentes:
+      - url: https://www.telefonica.com/es/sala-comunicacion/prensa/telefonica-iqm-dotaran-comunidad-madrid-primer-ordenador-cuantico-impulsar-desarrollo-casos-industrias-region/
+        titulo: Telefónica e IQM anuncian un ordenador cuántico para la UPM, 23 de octubre de 2026
+        primaria: true
+  - id: krolmap-belchite-identidad-20261019
+    titulo: Identificar el campus Krolmap de Belchite y su diseño energético
+    tipo: proyecto
+    estado: awaiting_primary
+    prioridad: alta
+    detectado: 2026-10-26
+    revisar_antes: 2026-11-25
+    motivo: DCD publica el 19 de octubre una pista de 225 MW sin tipo IT en La
+      Legua, Belchite, basada en Heraldo del 18. La web de Krolmap describe
+      un diseño de 25 MW IT en Aragón sin municipio. No se acredita que
+      ambos documentos correspondan al mismo recinto ni se identifican permisos.
+    siguiente_paso: Obtener proyecto o anuncio primario que nombre Belchite,
+      titular y parcelas; distinguirlo del proyecto de Villanueva. Confirmar
+      tipo y alcance de potencia y generación propia sin unir 25 MW IT y
+      225 MW ni trasladar la dirección corporativa de Zaragoza al campus.
+    enlaces:
+      - href: /cobertura
+        texto: Campus pendiente de identificar
+    fuentes:
+      - url: https://www.datacenterdynamics.com/es/noticias/belchite-proyecta-un-centro-de-datos-de-225-mw-aislado-de-la-red/
+        titulo: DCD, Belchite proyecta un centro de datos de 225 MW aislado de la red, 19 de octubre de 2026
+        primaria: false
+      - url: https://www.heraldo.es/noticias/aragon/2026/10/18/una-ingenieria-aragonesa-proyecta-belchite-primer-centro-datos-espana-sin-conexion-red-electrica-2060352.html
+        titulo: Heraldo, proyecto Krolmap de Belchite, 18 de octubre de 2026
+        primaria: false
+      - url: https://krolmap.com/proyectos/centrales-de-datos/centro-de-datos-con-generacion-energetica-hibrida-25-mw-fase-1/
+        titulo: Krolmap, diseño de 25 MW IT en Aragón sin municipio identificado
+        primaria: true
