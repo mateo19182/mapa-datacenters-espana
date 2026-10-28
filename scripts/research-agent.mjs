@@ -213,7 +213,7 @@ export function terminarEjecucion(state, runDir, values, keep = 30) {
   const record = { schema_version: 1, run_id: basename(runDir), ...values, finished_at: new Date().toISOString(), counts: { findings: validation.findings ?? 0, proposals: validation.proposals ?? 0, conflicts: validation.conflicts ?? 0 }, checks: validation.checks ?? {} }
   record.duration_seconds = Math.max(0, Math.round((Date.parse(record.finished_at) - Date.parse(record.started_at)) / 1000))
   record.truncated_files = []
-  for (const name of ['codex.log', 'cambios.diff', 'resultado.txt', 'preparacion.log', 'publicacion.log', 'validacion.log']) {
+  for (const name of ['agente.log', 'cambios.diff', 'resultado.txt', 'preparacion.log', 'publicacion.log', 'validacion.log']) {
     const path = join(runDir, name), limit = 4 * 1024 * 1024
     if (!existsSync(path) || lstatSync(path).size <= limit) continue
     const fd = openSync(path, 'r'), tail = Buffer.alloc(limit)

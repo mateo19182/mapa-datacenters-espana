@@ -4,7 +4,7 @@ umask 077
 
 repo_dir="${MAPA_RESEARCH_REPO:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
 state_dir="${MAPA_RESEARCH_STATE_DIR:-${XDG_STATE_HOME:-$HOME/.local/state}/mapa-datacenters/research}"
-codex_bin="${MAPA_RESEARCH_CODEX_BIN:-/home/mateo/.local/bin/codex}"
+agent_bin="${MAPA_RESEARCH_AGENT_BIN:-$repo_dir/scripts/opencode-agent.mjs}"
 gh_bin="${MAPA_RESEARCH_GH_BIN:-gh}"
 github_repo="${MAPA_RESEARCH_GITHUB_REPO:-mateo19182/mapa-datacenters-espana}"
 helper="$repo_dir/scripts/research-agent.mjs"
@@ -72,14 +72,13 @@ if [[ "$monthly" = true ]]; then
   prompt+=' Es la primera ejecución semanal del mes: realiza también el trabajo mensual en el informe.'
 fi
 stage=investigacion
-# Existing CLI approval policy and sandbox are preserved; no unattended expansion.
-if timeout --kill-after=30s 45m "$codex_bin" exec \
-  -C "$checkout" --approve-for-me --ephemeral --color never \
-  -o "$run_dir/resultado.txt" "$prompt" < "$run_dir/contexto.md" > "$run_dir/codex.log" 2>&1; then
+# The agent's own permissions limit it to reading, web research and writes under research/.
+if timeout --kill-after=30s 45m "$agent_bin" \
+  -C "$checkout" -o "$run_dir/resultado.txt" "$prompt" < "$run_dir/contexto.md" > "$run_dir/agente.log" 2>&1; then
   :
 else
   code=$?
-  tail -n 60 "$run_dir/codex.log" >&2
+  tail -n 60 "$run_dir/agente.log" >&2
   exit "$code"
 fi
 stage=validacion

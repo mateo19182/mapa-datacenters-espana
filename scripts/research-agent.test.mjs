@@ -108,12 +108,12 @@ test('failed runs keep evidence and bound history without deleting unrelated sta
   writeFileSync(join(state, 'unrelated.txt'), 'keep')
   for (let i = 0; i < 4; i++) {
     const dir = join(state, `run.${i}`); mkdirSync(dir)
-    writeFileSync(join(dir, 'codex.log'), 'Failure evidence')
+    writeFileSync(join(dir, 'agente.log'), 'Failure evidence')
     terminarEjecucion(state, dir, { status: 'failed', started_at: '2026-10-17T00:00:00Z', failure: { stage: 'investigacion' } }, 2)
   }
   assert.equal(JSON.parse(readFileSync(join(state, 'history.json'))).length, 2)
   assert.equal(readdirSync(state).filter((n) => n.startsWith('run.')).length, 2)
-  assert.match(readFileSync(join(state, 'run.3/codex.log'), 'utf8'), /evidence/)
+  assert.match(readFileSync(join(state, 'run.3/agente.log'), 'utf8'), /evidence/)
   assert.ok(existsSync(join(state, 'unrelated.txt')))
   const retainedCheckout = join(state, 'run.checkout'), retainedFailure = join(state, 'run.failed')
   mkdirSync(join(retainedCheckout, 'checkout'), { recursive: true }); mkdirSync(retainedFailure)
@@ -157,30 +157,30 @@ test('shell runner preserves failed output, removes worktree and never pushes af
   git(p, 'add', 'scripts'); git(p, 'commit', '-m', 'Runner helper')
   execFileSync('git', ['init', '--bare', origin], { stdio: 'ignore' }); git(p, 'remote', 'add', 'origin', origin); git(p, 'push', 'origin', 'main')
   writeFileSync(join(tools, 'gh'), '#!/bin/sh\nprintf "[]\\n"\n', { mode: 0o755 })
-  writeFileSync(join(tools, 'codex'), `#!/usr/bin/env node
+  writeFileSync(join(tools, 'agent'), `#!/usr/bin/env node
 const fs=require('node:fs'),a=process.argv.slice(2),p=a[a.indexOf('-C')+1];
 fs.mkdirSync(p+'/research/propuestas-revision',{recursive:true});fs.writeFileSync(p+'/research/propuestas-revision/nueva.yaml','id: nueva\\n');console.log('Simulated agent failure');process.exit(17);
 `, { mode: 0o755 })
-  const result = spawnSync('bash', [resolve('scripts/run-research-agent.sh')], { encoding: 'utf8', timeout: 15000, env: { ...process.env, MAPA_RESEARCH_REPO: p, MAPA_RESEARCH_STATE_DIR: state, MAPA_RESEARCH_CODEX_BIN: join(tools, 'codex'), MAPA_RESEARCH_GH_BIN: join(tools, 'gh') } })
+  const result = spawnSync('bash', [resolve('scripts/run-research-agent.sh')], { encoding: 'utf8', timeout: 15000, env: { ...process.env, MAPA_RESEARCH_REPO: p, MAPA_RESEARCH_STATE_DIR: state, MAPA_RESEARCH_AGENT_BIN: join(tools, 'agent'), MAPA_RESEARCH_GH_BIN: join(tools, 'gh') } })
   assert.equal(result.status, 17, result.stderr)
   const runs = readdirSync(state).filter((n) => n.startsWith('run.'))
   assert.equal(runs.length, 1)
   const meta = JSON.parse(readFileSync(join(state, runs[0], 'ejecucion.json')))
   assert.equal(meta.status, 'failed'); assert.equal(meta.failure.stage, 'investigacion')
-  assert.match(readFileSync(join(state, runs[0], 'codex.log'), 'utf8'), /agent failure/)
+  assert.match(readFileSync(join(state, runs[0], 'agente.log'), 'utf8'), /agent failure/)
   assert.equal(readFileSync(join(state, runs[0], 'entrega/research/propuestas-revision/nueva.yaml'), 'utf8'), 'id: nueva\n')
   assert.equal(git(p, 'ls-remote', '--heads', 'origin', 'research/semanal'), '')
   assert.equal(existsSync(join(state, runs[0], 'checkout')), false)
   // If archiving fails, the worker must keep the original worktree instead of deleting evidence.
   writeFileSync(join(p, 'scripts/research-agent.mjs'), `import{execFileSync}from'node:child_process';if(process.argv[2]==='archive')process.exit(7);execFileSync(process.execPath,[${JSON.stringify(resolve('scripts/research-agent.mjs'))},...process.argv.slice(2)],{stdio:'inherit'});\n`)
-  let again = spawnSync('bash', [resolve('scripts/run-research-agent.sh')], { encoding: 'utf8', timeout: 15000, env: { ...process.env, MAPA_RESEARCH_REPO: p, MAPA_RESEARCH_STATE_DIR: state, MAPA_RESEARCH_CODEX_BIN: join(tools, 'codex'), MAPA_RESEARCH_GH_BIN: join(tools, 'gh') } })
+  let again = spawnSync('bash', [resolve('scripts/run-research-agent.sh')], { encoding: 'utf8', timeout: 15000, env: { ...process.env, MAPA_RESEARCH_REPO: p, MAPA_RESEARCH_STATE_DIR: state, MAPA_RESEARCH_AGENT_BIN: join(tools, 'agent'), MAPA_RESEARCH_GH_BIN: join(tools, 'gh') } })
   assert.equal(again.status, 17)
   let last = JSON.parse(readFileSync(join(state, 'history.json'))).at(-1)
   assert.equal(last.archive_status, 'failed')
   assert.ok(existsSync(join(state, last.run_id, 'checkout/research/propuestas-revision/nueva.yaml')))
   // A successful no-change agent also becomes a failed run if its evidence cannot be preserved.
-  writeFileSync(join(tools, 'codex'), '#!/bin/sh\nexit 0\n', { mode: 0o755 })
-  again = spawnSync('bash', [resolve('scripts/run-research-agent.sh')], { encoding: 'utf8', timeout: 15000, env: { ...process.env, MAPA_RESEARCH_REPO: p, MAPA_RESEARCH_STATE_DIR: state, MAPA_RESEARCH_CODEX_BIN: join(tools, 'codex'), MAPA_RESEARCH_GH_BIN: join(tools, 'gh') } })
+  writeFileSync(join(tools, 'agent'), '#!/bin/sh\nexit 0\n', { mode: 0o755 })
+  again = spawnSync('bash', [resolve('scripts/run-research-agent.sh')], { encoding: 'utf8', timeout: 15000, env: { ...process.env, MAPA_RESEARCH_REPO: p, MAPA_RESEARCH_STATE_DIR: state, MAPA_RESEARCH_AGENT_BIN: join(tools, 'agent'), MAPA_RESEARCH_GH_BIN: join(tools, 'gh') } })
   assert.equal(again.status, 1)
   last = JSON.parse(readFileSync(join(state, 'history.json'))).at(-1)
   assert.equal(last.status, 'failed'); assert.equal(last.failure.stage, 'conservacion')
@@ -207,11 +207,11 @@ if(a[0]==='api'){
   if(process.env.MAPA_STUB_API_FAIL){console.error('Simulated REST update failure');process.exit(23);}
 }
 `, { mode: 0o755 })
-  writeFileSync(join(tools, 'codex'), `#!/usr/bin/env node
+  writeFileSync(join(tools, 'agent'), `#!/usr/bin/env node
 const fs=require('node:fs'),a=process.argv.slice(2),p=a[a.indexOf('-C')+1];
 fs.writeFileSync(p+'/research/revision-semanal.md',process.env.MAPA_STUB_REPORT);
 `, { mode: 0o755 })
-  const env = { ...process.env, MAPA_RESEARCH_REPO: p, MAPA_RESEARCH_STATE_DIR: state, MAPA_RESEARCH_CODEX_BIN: join(tools, 'codex'), MAPA_RESEARCH_GH_BIN: join(tools, 'gh'), MAPA_RESEARCH_GITHUB_REPO: 'example/repo', MAPA_STUB_REPORT: '# Weekly report\nNo new primary evidence. Prior unsuccessful search remains open.\n' }
+  const env = { ...process.env, MAPA_RESEARCH_REPO: p, MAPA_RESEARCH_STATE_DIR: state, MAPA_RESEARCH_AGENT_BIN: join(tools, 'agent'), MAPA_RESEARCH_GH_BIN: join(tools, 'gh'), MAPA_RESEARCH_GITHUB_REPO: 'example/repo', MAPA_STUB_REPORT: '# Weekly report\nNo new primary evidence. Prior unsuccessful search remains open.\n' }
   const run = () => spawnSync('bash', [resolve('scripts/run-research-agent.sh')], { encoding: 'utf8', timeout: 15000, env })
   let result = run(); assert.equal(result.status, 0, result.stderr)
   const first = git(p, 'ls-remote', '--heads', 'origin', 'research/semanal')

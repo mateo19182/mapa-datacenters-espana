@@ -2,7 +2,7 @@
 
 El temporizador local `ops/mapa-research.timer` ejecuta la investigación los lunes
 a las 09:00 de Europe/Madrid. Requiere el equipo encendido, el gestor de usuario,
-Node.js y las sesiones de `codex` y `gh` vigentes. Codex tiene un límite de 45 minutos.
+Node.js, OpenCode y la sesión de `gh` vigentes. El agente (OpenCode, `.opencode/agents/mapa-research.md`) tiene un límite de 45 minutos: prueba Opus, reintenta a los dos minutos y después usa `gpt-6.1-sol`. Solo puede leer el repositorio, buscar y leer la web y escribir bajo `research/`; no tiene shell.
 El ejecutor usa un worktree aislado y una única propuesta abierta en
 `research/semanal`. Si sigue pendiente un PR anterior, recupera su material de
 investigación y lo actualiza. Conserva las decisiones factuales de `main`.
@@ -73,7 +73,7 @@ nuevos del proyecto. Una cola menor tampoco demuestra una mayor exactitud factua
 
 El estado local vive en `~/.local/state/mapa-datacenters/research/`, con permisos
 privados y exclusión de ejecuciones simultáneas. `history.json` conserva 30 resultados.
-Cada directorio `run.*` guarda contexto, informe, diff, validación, salida de Codex
+Cada directorio `run.*` guarda contexto, informe, diff, validación, salida del agente (`agente.log`)
 y `ejecucion.json`. También se conservan fallos, tiempos agotados y publicaciones
 fallidas; los registros individuales se limitan a sus últimos 4 MiB. El worktree
 se elimina tras archivar la entrega. Si falla la conservación, el ejecutor termina
@@ -196,9 +196,9 @@ real de investigación ni escribir en remotos externos:
 node --test scripts/research-agent.test.mjs scripts/weekly-step.test.mjs
 ```
 
-`MAPA_RESEARCH_REPO`, `MAPA_RESEARCH_STATE_DIR`, `MAPA_RESEARCH_CODEX_BIN`,
+`MAPA_RESEARCH_REPO`, `MAPA_RESEARCH_STATE_DIR`, `MAPA_RESEARCH_AGENT_BIN`,
 `MAPA_RESEARCH_GH_BIN` y `MAPA_RESEARCH_GITHUB_REPO` permiten aislar esas pruebas.
-No cambian los límites de tiempo, el ámbito de escritura ni la política de Codex.
+No cambian los límites de tiempo, el ámbito de escritura ni los permisos del agente.
 
 Dependabot propone actualizaciones semanales de npm y acciones, con agrupación y
 límite de PRs abiertos, sin fusión automática. CI consulta `npm audit` y bloquea
