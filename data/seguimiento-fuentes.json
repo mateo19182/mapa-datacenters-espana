@@ -330,6 +330,116 @@
     "decisiones_descartadas": 0
    },
    "duracion_ms": 489433
+  },
+  {
+   "version": 1,
+   "id": "40312951002-1",
+   "iniciada": "2026-10-26T11:10:12.499Z",
+   "finalizada": "2026-10-26T11:18:32.199Z",
+   "estado": "completa",
+   "comprobadas": 1105,
+   "resultados": {
+    "ok": 899,
+    "bloqueada": 126,
+    "rota": 16,
+    "error": 64
+   },
+   "antes": {
+    "registradas": 1105,
+    "con_observacion": 1105,
+    "ultima_observacion": "2026-10-19",
+    "rotas": 14,
+    "bloqueadas": 114,
+    "errores": 40,
+    "cambios_pendientes": 573,
+    "categorias": {
+     "contenido": 76,
+     "plantilla": 51,
+     "formato": 2,
+     "metodo": 69,
+     "sin_comparacion": 375
+    },
+    "grupos": 517,
+    "revisiones_pendientes": 0,
+    "decisiones_publicadas": 50,
+    "decisiones_descartadas": 0
+   },
+   "despues": {
+    "registradas": 1105,
+    "con_observacion": 1105,
+    "ultima_observacion": "2026-10-26",
+    "rotas": 16,
+    "bloqueadas": 126,
+    "errores": 64,
+    "cambios_pendientes": 652,
+    "categorias": {
+     "contenido": 293,
+     "plantilla": 138,
+     "formato": 10,
+     "metodo": 69,
+     "sin_comparacion": 142
+    },
+    "grupos": 586,
+    "revisiones_pendientes": 0,
+    "decisiones_publicadas": 50,
+    "decisiones_descartadas": 0
+   },
+   "duracion_ms": 499700
+  },
+  {
+   "version": 1,
+   "id": "41453833487-1",
+   "iniciada": "2026-11-02T13:32:58.750Z",
+   "finalizada": "2026-11-02T13:40:47.898Z",
+   "estado": "completa",
+   "comprobadas": 1105,
+   "resultados": {
+    "ok": 925,
+    "bloqueada": 126,
+    "rota": 17,
+    "error": 37
+   },
+   "antes": {
+    "registradas": 1105,
+    "con_observacion": 1105,
+    "ultima_observacion": "2026-10-26",
+    "rotas": 16,
+    "bloqueadas": 126,
+    "errores": 64,
+    "cambios_pendientes": 652,
+    "categorias": {
+     "contenido": 293,
+     "plantilla": 138,
+     "formato": 10,
+     "metodo": 69,
+     "sin_comparacion": 142
+    },
+    "grupos": 586,
+    "revisiones_pendientes": 75,
+    "decisiones_publicadas": 50,
+    "decisiones_descartadas": 0
+   },
+   "despues": {
+    "registradas": 1105,
+    "con_observacion": 1105,
+    "ultima_observacion": "2026-11-02",
+    "rotas": 17,
+    "bloqueadas": 126,
+    "errores": 37,
+    "cambios_pendientes": 689,
+    "categorias": {
+     "contenido": 328,
+     "plantilla": 168,
+     "formato": 17,
+     "metodo": 69,
+     "sin_comparacion": 107
+    },
+    "grupos": 610,
+    "revisiones_pendientes": 75,
+    "decisiones_publicadas": 50,
+    "decisiones_descartadas": 0
+   },
+   "duracion_ms": 469148
   }
  ]
 }
