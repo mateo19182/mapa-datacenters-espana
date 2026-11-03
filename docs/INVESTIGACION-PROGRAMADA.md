@@ -14,7 +14,7 @@ anteriores y propuestas que no pasan el esquema. Las propuestas se comprueban en
 una copia temporal del conjunto de datos; los conflictos se dejan para revisión.
 No se trasladan automáticamente desde `research/` a `data/propuestas/`.
 
-Para instalarlo después de integrar estos archivos en `main`:
+Las unidades `ops/mapa-research.service` y `ops/mapa-research.timer` no se versionan porque contienen rutas del equipo: créalas en `ops/` (ignorado por Git), con `WorkingDirectory` y `ExecStart` apuntando a tu copia del repositorio y a `scripts/run-research-agent.sh`. Para instalarlas:
 
 ```bash
 systemctl --user link "$PWD/ops/mapa-research.service" "$PWD/ops/mapa-research.timer"

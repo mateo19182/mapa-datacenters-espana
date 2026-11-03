@@ -8,3 +8,7 @@ src/data/
 *.log
 src/contenido/
 .claude/settings.local.json
+
+# Unidades systemd locales (rutas del equipo)
+/ops/*.service
+/ops/*.timer
