@@ -1,12 +1,23 @@
 ---
 import '../styles/global.css'
 import resumen from '../data/resumen.json'
-import { REPOSITORIO } from '../lib/enlaces.js'
+import { AUTOR, BLOG_AUTOR, REPOSITORIO } from '../lib/enlaces.js'
 
 // `pantallaCompleta` es para la vista de mapa: ocupa exactamente la ventana y
 // el scroll ocurre dentro del panel, no en la página.
 const { titulo, descripcion, sinPie = false, pantallaCompleta = false } = Astro.props
 const ruta = Astro.url.pathname.replace(/\/$/, '') || '/'
+// Cloudflare Pages redirige /ruta a /ruta/ (build.format 'directory'): la
+// canónica apunta a la versión con barra para no señalar una redirección.
+const canonica = new URL(Astro.url.pathname.replace(/\/?$/, '/'), Astro.site).href
+const sitioWeb = ruta === '/' && JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Centros de datos en España',
+  url: new URL('/', Astro.site).href,
+  inLanguage: 'es',
+  author: { '@type': 'Person', name: AUTOR, url: BLOG_AUTOR },
+})
 const activo = (href) => (ruta === href || (href !== '/' && ruta.startsWith(href)) ? 'page' : undefined)
 
 const grupos = [
@@ -33,11 +44,15 @@ const referencias = [
     <title>{titulo ? `${titulo} · Centros de datos en España` : 'Centros de datos en España'}</title>
     <meta name="description" content={descripcion ?? 'Registro documental de centros de datos en España y su relación con la red eléctrica de transporte.'} />
     <meta name="robots" content="index, follow" />
+    <meta name="author" content={AUTOR} />
+    <link rel="canonical" href={canonica} />
+    <meta property="og:url" content={canonica} />
     <meta property="og:title" content={titulo ?? 'Centros de datos en España'} />
     <meta property="og:description" content={descripcion ?? 'Registro documental de centros de datos en España y su relación con la red eléctrica.'} />
     <meta property="og:type" content="website" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="alternate" type="application/rss+xml" title="Últimos cambios · Centros de datos en España" href="/actualizaciones.xml" />
+    {sitioWeb && <script type="application/ld+json" set:html={sitioWeb} />}
   </head>
   <body class:list={[pantallaCompleta && 'pantalla-completa']}>
     <a class="saltar-contenido" href="#contenido">Saltar al contenido</a>
@@ -90,6 +105,7 @@ const referencias = [
             <a href="/cobertura">Cobertura</a>
             <a href="/datos">Datos abiertos</a>
             <a href={REPOSITORIO} rel="noopener">GitHub</a>
+            <a href={BLOG_AUTOR} rel="author">{AUTOR}</a>
           </p>
           <p>
             Cartografía © <a href="https://www.openstreetmap.org/copyright" rel="noopener">colaboradores de OpenStreetMap</a> y ©
